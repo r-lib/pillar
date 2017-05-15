@@ -1,21 +1,24 @@
 #' Format a vector suitable for tabular display
 #'
 #' @param x A vector to format
-#' @param width Preferred width of output
 #' @param ... Other arguments passed to methods
 #' @return A character vector with class `colformat` and
 #'   `width` and `align` attributes.
 #' @export
 #' @examples
 #'
-#' x <- sample(c(TRUE, FALSE, NA), 10, replace = TRUE, prob = c(0.4, 0.4, 0.2))
+#' x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
 #' colformat(x)
 #'
 #' x <- c("This is string is rather long", NA, "?", "Short")
 #' colformat(x)
 #' colformat(x, width = 30)
 #' colformat(x, width = 5)
-colformat <- function(x, ..., width = NA) {
+#'
+#' date <- as.Date("2017-05-15")
+#' colformat(date + c(1, NA, 3:5))
+#' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
+colformat <- function(x, ...) {
   UseMethod("colformat")
 }
 
@@ -35,8 +38,7 @@ format.colformat <- function(x, title = "title", ...) {
 print.colformat <- function(x, title = "title", ...) {
   x <- format(x, title = title, ...)
 
-  cat_line(attr(x, "title"))
-  cat_line(boxes::rule(line = 1, width = attr(x, "width")))
+  cat_line(crayon::bold(attr(x, "title")))
   cat_line(paste(x, collapse = "\n"))
 }
 
@@ -52,16 +54,41 @@ new_colformat <- function(x, width, align = "left") {
 # Methods -----------------------------------------------------------------
 
 #' @export
-colformat.logical <- function(x, ..., width = NA) {
+#' @rdname colformat
+colformat.logical <- function(x, ...) {
   out <- character(length(x))
-  out[x & !is.na(x)] <- crayon::green("*")
-  out[!x & !is.na(x)] <- crayon::silver("-")
+  out[x & !is.na(x)] <- style_accent("*")
+  out[!x & !is.na(x)] <- style_subtle("-")
   out[is.na(x)] <- col_na()
 
   new_colformat(out, width = 1, align = "right")
 }
 
 #' @export
+#' @rdname colformat
+colformat.Date <- function(x, ...) {
+  x <- format(x, format = "%Y-%m-%d")
+  x[is.na(x)] <- col_na()
+
+  new_colformat(x, width = 11, align = "right")
+}
+
+#' @export
+#' @rdname colformat
+colformat.POSIXct <- function(x, ...) {
+  date <- format(x, format = "%Y-%m-%d")
+  time <- format(x, format = "%H:%M:%S")
+
+  datetime <- paste0(date, " " , style_subtle(time))
+  datetime[is.na(x)] <- col_na()
+
+  new_colformat(datetime, width = 19, align = "right")
+}
+
+
+#' @export
+#' @param width Preferred width of output
+#' @rdname colformat
 colformat.character <- function(x, ..., width = NA) {
   if (is.na(width)) {
     width <- pmin(max(nchar(x), na.rm = TRUE), 20)

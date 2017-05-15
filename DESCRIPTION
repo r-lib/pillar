@@ -13,6 +13,5 @@ LazyData: true
 URL: https://github.com/hadley/colformat
 BugReports: https://github.com/hadley/colformat/issues
 Imports:
-    boxes,
     crayon
 RoxygenNote: 6.0.1

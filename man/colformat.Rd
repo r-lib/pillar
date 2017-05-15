@@ -2,9 +2,21 @@
 % Please edit documentation in R/colformat.R
 \name{colformat}
 \alias{colformat}
+\alias{colformat.logical}
+\alias{colformat.Date}
+\alias{colformat.POSIXct}
+\alias{colformat.character}
 \title{Format a vector suitable for tabular display}
 \usage{
-colformat(x, ..., width = NA)
+colformat(x, ...)
+
+\method{colformat}{logical}(x, ...)
+
+\method{colformat}{Date}(x, ...)
+
+\method{colformat}{POSIXct}(x, ...)
+
+\method{colformat}{character}(x, ..., width = NA)
 }
 \arguments{
 \item{x}{A vector to format}
@@ -22,11 +34,15 @@ Format a vector suitable for tabular display
 }
 \examples{
 
-x <- sample(c(TRUE, FALSE, NA), 10, replace = TRUE, prob = c(0.4, 0.4, 0.2))
+x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
 colformat(x)
 
 x <- c("This is string is rather long", NA, "?", "Short")
 colformat(x)
 colformat(x, width = 30)
 colformat(x, width = 5)
+
+date <- as.Date("2017-05-15")
+colformat(date + c(1, NA, 3:5))
+colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 }
