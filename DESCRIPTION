@@ -10,3 +10,5 @@ Description: Provides a `colformat` generic designed for formatting columns
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/hadley/colformat
+BugReports: https://github.com/hadley/colformat/issues
