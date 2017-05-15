@@ -3,11 +3,11 @@ style_accent <- function(x) {
 }
 
 style_subtle <- function(...) {
-  style_grey(0.8, ...)
+  style_grey(0.5, ...)
 }
 
 style_na <- function(x) {
-  crayon::bold(crayon::style(x, grDevices::rgb(5, 3, 0, maxColorValue = 5)))
+  crayon::bold(crayon::style(x, grDevices::rgb(5, 2, 0, maxColorValue = 5)))
 }
 
 style_grey <- function(level, ...) {
