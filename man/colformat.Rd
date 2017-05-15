@@ -14,8 +14,8 @@ colformat(x, ..., width = NA)
 \item{width}{Preferred width of output}
 }
 \value{
-A character vector where every element is the same width.
-  Should have `colformat` for better default print method.
+A character vector with class `colformat` and
+  `width` and `align` attributes.
 }
 \description{
 Format a vector suitable for tabular display
@@ -24,4 +24,9 @@ Format a vector suitable for tabular display
 
 x <- sample(c(TRUE, FALSE, NA), 10, replace = TRUE, prob = c(0.4, 0.4, 0.2))
 colformat(x)
+
+x <- c("This is string is rather long", NA, "?", "Short")
+colformat(x)
+colformat(x, width = 30)
+colformat(x, width = 5)
 }
