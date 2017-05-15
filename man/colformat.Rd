@@ -20,3 +20,8 @@ A character vector where every element is the same width.
 \description{
 Format a vector suitable for tabular display
 }
+\examples{
+
+x <- sample(c(TRUE, FALSE, NA), 10, replace = TRUE, prob = c(0.4, 0.4, 0.2))
+colformat(x)
+}

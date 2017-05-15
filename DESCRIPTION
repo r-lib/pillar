@@ -12,5 +12,7 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/hadley/colformat
 BugReports: https://github.com/hadley/colformat/issues
-Imports: crayon
+Imports:
+    boxes,
+    crayon
 RoxygenNote: 6.0.1
