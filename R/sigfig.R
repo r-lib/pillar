@@ -46,7 +46,7 @@ decimal_format <- function(x, sigfig = 3) {
 
   num <- is.finite(x)
 
-  lhs <- round(abs_x, 0)
+  lhs <- trunc(abs_x)
   lhs_str <- sprintf("%.0f", lhs)
   lhs_width <- max(nchar(lhs_str))
   lhs_sig <- substr(lhs_str, 1, sigfig)

@@ -15,3 +15,4 @@ BugReports: https://github.com/hadley/colformat/issues
 Imports:
     crayon
 RoxygenNote: 6.0.1
+Suggests: testthat
