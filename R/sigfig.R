@@ -29,11 +29,13 @@ decimal_format <- function(x, sigfig = 3) {
 
   n <- length(x)
   abs_x <- abs(x)
+  round_x <- signif(abs_x, sigfig)
 
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
   exp <- floor(log10(abs_x))
   digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
+
   rhs_digits <- pmax(digits - pmax(exp, 0), 0)
   dec <- !is.na(digits) & rhs_digits > 0
 
@@ -48,33 +50,41 @@ decimal_format <- function(x, sigfig = 3) {
   # Digits on LHS of .
   num <- is.finite(x)
 
-  lhs <- trunc(abs_x)
+  lhs <- trunc(round_x)
+  lhs_zero <- lhs == 0
   lhs_str <- sprintf("%.0f", lhs)
   lhs_width <- max(nchar(lhs_str))
   lhs_sig <- substr(lhs_str, 1, sigfig)
   lhs_non <- substr(lhs_str, sigfig + 1, nchar(lhs_str))
 
   lhs_col <- ifelse(num,
-    paste0(ifelse(neg & lhs != 0, style_neg(lhs_sig), lhs_sig), style_subtle(lhs_non)),
+    paste0(
+      ifelse(neg & lhs_zero, style_subtle(lhs_sig), style_num(lhs_sig, neg)),
+      style_subtle(lhs_non)
+    ),
     style_na(lhs_str)
   )
-  lhs_col[!dec && lhs == 0] <- ""
 
   lhs_col <- crayon::col_align(lhs_col, width = lhs_width, align = "right")
 
   # Decimal column
   if (any(dec)) {
-    dec_col <- ifelse(dec, ".", " ")
+    dec_col <- ifelse(dec, style_num(".", neg & !lhs_zero), " ")
   } else {
     dec_col <- rep("", n)
   }
 
   # Digits on RHS of .
-  rhs_num <- as.character(abs(round((abs_x - lhs) * 10 ^ rhs_digits)))
-  rhs_zero <- strrep("0", pmax(0, digits - sigfig))
+  rhs <- round_x - lhs
+
+  rhs_num <- as.character(abs(round(rhs * 10 ^ rhs_digits)))
+  rhs_zero <- strrep("0", pmax(0, rhs_digits - nchar(rhs_num)))
 
   rhs_col <- ifelse(dec,
-    paste0(style_subtle(rhs_zero), ifelse(neg, style_neg(rhs_num), rhs_num)),
+    paste0(
+      ifelse(lhs_zero, style_subtle(rhs_zero), style_num(rhs_zero, neg)),
+      style_num(rhs_num, neg)
+    ),
     ""
   )
 
@@ -89,6 +99,9 @@ decimal_format <- function(x, sigfig = 3) {
   )
 }
 
+style_num <- function(x, negative) {
+  ifelse(negative, style_neg(x), x)
+}
 
 #' @export
 format.decimal_format <- function(x, title = "title", ...) {

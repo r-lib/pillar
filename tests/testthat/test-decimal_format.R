@@ -32,3 +32,17 @@ test_that("sigfigs split between lhs and rhs", {
   expect_equal(f$lhs, format(trunc(x)))
   expect_equal(f$rhs, c("50", "5", ""))
 })
+
+test_that("leading 0 added to rhs", {
+  f <- decimal_bw(1.01)
+
+  expect_equal(f$lhs, "1")
+  expect_equal(f$rhs, "01")
+})
+
+test_that("values rounded up as expect", {
+  f <- decimal_bw(c(18.9, 18.99))
+
+  expect_equal(f$lhs, c("18", "19"))
+  expect_equal(f$rhs, c("9", "0"))
+})
