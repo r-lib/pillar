@@ -6,6 +6,12 @@
 #'   `width` and `align` attributes.
 #' @export
 #' @examples
+#' x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
+#' colformat(x)
+#' colformat(-x)
+#' colformat(runif(10))
+#' colformat(rcauchy(10))
+#' colformat(c(1, 0.5, 1e-10, NA, NaN, Inf, -Inf))
 #'
 #' x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
 #' colformat(x)
@@ -62,6 +68,15 @@ colformat.logical <- function(x, ...) {
   out[is.na(x)] <- col_na()
 
   new_colformat(out, width = 1, align = "right")
+}
+
+#' @export
+#' @rdname colformat
+#' @param sigfig Minimum number of significant figures to display. Numbers
+#'   larger than 1 will potentially show more signficiant figures than this
+#'   but they will be greyed out.
+colformat.numeric <- function(x, ..., sigfig = 3) {
+  decimal_format(x, sigfig = sigfig)
 }
 
 #' @export

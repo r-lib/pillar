@@ -10,6 +10,11 @@ style_na <- function(x) {
   crayon::bold(crayon::style(x, grDevices::rgb(5, 2, 0, maxColorValue = 5)))
 }
 
+style_neg <- function(x) {
+  crayon::red(x)
+}
+
+
 style_grey <- function(level, ...) {
   crayon::style(
     paste0(...),
@@ -17,4 +22,8 @@ style_grey <- function(level, ...) {
   )
 }
 
-col_na <- function() style_na("?")
+col_na <- function(width = 1L) {
+  width <- pmax(1, width - 1)
+
+  style_na(paste0(strrep(" ", width), "?"))
+}
