@@ -40,7 +40,7 @@ decimal_format <- function(x, sigfig = 3) {
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
   if (any(neg)) {
-    neg_col <- ifelse(neg, style_neg("-"), " ")
+    neg_col <- ifelse(neg, "-", " ")
   } else {
     neg_col <- rep("", n)
   }
