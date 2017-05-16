@@ -24,3 +24,11 @@ test_that("trailing zeros pad to sigfigs", {
   expect_equal(f$lhs, c("1", "0"))
   expect_equal(f$rhs, c("50", "500"))
 })
+
+test_that("sigfigs split between lhs and rhs", {
+  x <- c(1.50, 10.50, 100.50)
+  f <- decimal_bw(x)
+
+  expect_equal(f$lhs, format(trunc(x)))
+  expect_equal(f$rhs, c("50", "5", ""))
+})

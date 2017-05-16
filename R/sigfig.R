@@ -34,9 +34,10 @@ decimal_format <- function(x, sigfig = 3) {
   # Otherwise ensure we have sigfig digits shown
   exp <- floor(log10(abs_x))
   digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
+  rhs_digits <- pmax(digits - pmax(exp, 0), 0)
+  dec <- !is.na(digits) & rhs_digits > 0
 
-  # Compute column components in natural type then as fixed width strings
-
+  # Do we need negative signs?
   neg <- !is.na(x) & x < 0
   if (any(neg)) {
     neg_col <- ifelse(neg, style_neg("-"), " ")
@@ -44,6 +45,7 @@ decimal_format <- function(x, sigfig = 3) {
     neg_col <- rep("", n)
   }
 
+  # Digits on LHS of .
   num <- is.finite(x)
 
   lhs <- trunc(abs_x)
@@ -56,16 +58,19 @@ decimal_format <- function(x, sigfig = 3) {
     paste0(ifelse(neg & lhs != 0, style_neg(lhs_sig), lhs_sig), style_subtle(lhs_non)),
     style_na(lhs_str)
   )
+  lhs_col[!dec && lhs == 0] <- ""
+
   lhs_col <- crayon::col_align(lhs_col, width = lhs_width, align = "right")
 
-  dec <- !is.na(digits) & digits > 0
+  # Decimal column
   if (any(dec)) {
     dec_col <- ifelse(dec, ".", " ")
   } else {
     dec_col <- rep("", n)
   }
 
-  rhs_num <- as.character(abs(round((abs_x - lhs) * 10 ^ digits)))
+  # Digits on RHS of .
+  rhs_num <- as.character(abs(round((abs_x - lhs) * 10 ^ rhs_digits)))
   rhs_zero <- strrep("0", pmax(0, digits - sigfig))
 
   rhs_col <- ifelse(dec,
