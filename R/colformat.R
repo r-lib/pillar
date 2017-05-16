@@ -10,7 +10,7 @@
 #' colformat(x)
 #' colformat(-x)
 #' colformat(runif(10))
-#' colformat(rcauchy(10))
+#' colformat(rcauchy(20))
 #' colformat(c(1, 0.5, 1e-10, NA, NaN, Inf, -Inf))
 #'
 #' x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)

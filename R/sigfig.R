@@ -15,7 +15,7 @@
 #' x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
 #' decimal_format(x, 3)
 #'
-#' x <- sample(x) * sample(c(-1, 1), length(x), rep = TRUE)
+#' x <- x * sample(c(-1, 1), length(x), rep = TRUE)
 #' decimal_format(x, 3)
 #'
 #' decimal_format(c(Inf, -Inf, NA, NaN), 3)

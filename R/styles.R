@@ -7,7 +7,7 @@ style_subtle <- function(...) {
 }
 
 style_na <- function(x) {
-  crayon::bold(crayon::style(x, grDevices::rgb(5, 2, 0, maxColorValue = 5)))
+  crayon::style(x, bg = grDevices::rgb(5, 5, 2, maxColorValue = 5))
 }
 
 style_neg <- function(x) {
@@ -23,7 +23,7 @@ style_grey <- function(level, ...) {
 }
 
 col_na <- function(width = 1L) {
-  width <- pmax(1, width - 1)
+  width <- pmax(0, width - 1)
 
-  style_na(paste0(strrep(" ", width), "?"))
+  paste0(strrep(" ", width), style_na("?"))
 }
