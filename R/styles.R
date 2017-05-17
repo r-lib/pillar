@@ -3,7 +3,7 @@ style_accent <- function(x) {
 }
 
 style_subtle <- function(...) {
-  style_grey(0.5, ...)
+  style_grey(0.6, ...)
 }
 
 style_na <- function(x) {
