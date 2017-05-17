@@ -25,7 +25,7 @@ format_scentific <- function(x, sigfig = 3, superscript = TRUE) {
 
   mnt <- round_x * 10 ^ (-exp)
   mnt_chr <- ifelse(num,
-    format(mnt, digits = sigfig),
+    sprintf(paste0("%.", sigfig - 1, "f"), mnt),
     crayon::col_align(style_na(as.character(round_x)), sigfig + 1, "right")
   )
 
@@ -35,13 +35,14 @@ format_scentific <- function(x, sigfig = 3, superscript = TRUE) {
 supernum <- function(x, superscript = TRUE) {
   stopifnot(is.integer(x))
 
+  neg <- !is.na(x) & x < 0
   if (any(x < 0, na.rm = TRUE)) {
     if (superscript) {
       neg <- ifelse(x < 0, "\u207b", "\u207a")
     } else {
       neg <- ifelse(x < 0, "-", "+")
     }
-
+    neg[is.na(x)] <- " "
   } else {
     neg <- rep("", length(x))
   }
@@ -51,6 +52,8 @@ supernum <- function(x, superscript = TRUE) {
   } else {
     digits <- as.character(abs(x))
   }
+  digits <- ifelse(is.na(x), "", digits)
+
   exp <- paste0(neg, format(digits, justify = "right"))
 
   paste0(style_subtle("e"), style_num(exp, x < 0))
