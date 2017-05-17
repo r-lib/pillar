@@ -12,6 +12,9 @@
 spark_bar <- function(x) {
   stopifnot(is.numeric(x))
 
+  # Full set has too many rendering problems on common fonts
+  # https://en.wikipedia.org/wiki/Block_Elements
+  # vapply(0x2581:0x2588, intToUtf8, character(1))
   bars <- c("\u2581", "\u2582", "\u2583", "\u2585", "\u2587")
 
   factor <- cut(
