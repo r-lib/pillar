@@ -41,7 +41,7 @@ print.colformat <- function(x, title = "title", ...) {
   print(format(x, title = title, ...))
 }
 
-new_colformat <- function(x, width, align = "left") {
+new_colformat <- function(x, width = max(crayon::col_nchar(x)), align = "left") {
   structure(
     x,
     width = width,
