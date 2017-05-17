@@ -43,3 +43,5 @@ Inspirations
 -   [TextPlots](https://github.com/sunetos/TextPlots.jl) for use of Braille characters
 
 -   [spark](https://github.com/holman/spark) for use of block characters.
+
+The earliest use of this technique that I could find is [from 2009](https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/).
