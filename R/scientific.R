@@ -8,8 +8,8 @@
 #' @export
 #' @examples
 #' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
-#' format_scentific(x)
-format_scentific <- function(x, sigfig = 3, superscript = TRUE) {
+#' format_scientific(x)
+format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 

@@ -4,7 +4,7 @@ format_scientific_bw <- function(x, ...) {
   old <- options(crayon.enabled = FALSE)
   on.exit(options(old))
 
-  format_scentific(x, ...)
+  format_scientific(x, ...)
 }
 
 test_that("negative values displayed correct", {

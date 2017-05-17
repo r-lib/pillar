@@ -84,7 +84,7 @@ colformat.numeric <- function(x, ..., sigfig = 3, sci_threshold = 15) {
   if (width <= sci_threshold) {
     dec
   } else {
-    format_scentific(x, sigfig = sigfig)
+    format_scientific(x, sigfig = sigfig)
   }
 }
 
