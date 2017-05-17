@@ -107,24 +107,13 @@ style_num <- function(x, negative) {
 
 #' @export
 format.decimal_format <- function(x, title = "title", ...) {
-
   row <- paste0(x$neg, x$lhs, x$dec, x$rhs)
   width <- max(nchar(title), crayon::col_nchar(row))
 
-  structure(
-    row,
-    title = col_align(title, width = width, align = "right"),
-    width = width
-  )
+  new_column(row, title = title, width = width, align = "right")
 }
 
 #' @export
 print.decimal_format <- function(x, title = "title", ...) {
-  align <- attr(x, "align")
-  width <- max(nchar(title), attr(x, "width"))
-
-  x <- format(x, title = title, ...)
-
-  cat_line(crayon::bold(attr(x, "title")))
-  cat_line(paste(x, collapse = "\n"))
+  print(format(x, title = title, ...))
 }

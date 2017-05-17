@@ -33,19 +33,12 @@ format.colformat <- function(x, title = "title", ...) {
   align <- attr(x, "align")
   width <- max(nchar(title), attr(x, "width"))
 
-  structure(
-    col_align(x, width = width, align = align),
-    title = col_align(title, width = width, align = align),
-    width = width
-  )
+  new_column(x, title = title, width = width, align = attr(x, "align"))
 }
 
 #' @export
 print.colformat <- function(x, title = "title", ...) {
-  x <- format(x, title = title, ...)
-
-  cat_line(crayon::bold(attr(x, "title")))
-  cat_line(paste(x, collapse = "\n"))
+  print(format(x, title = title, ...))
 }
 
 new_colformat <- function(x, width, align = "left") {
