@@ -11,7 +11,7 @@ colour_na <- function() {
 }
 
 style_na <- function(x) {
-  crayon::style(x, bg = na_colour)
+  crayon::style(x, bg = colour_na())
 }
 
 style_neg <- function(x) {
