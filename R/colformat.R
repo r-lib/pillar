@@ -69,7 +69,7 @@ colformat.logical <- function(x, ...) {
 #'   larger than 1 will potentially show more signficiant figures than this
 #'   but they will be greyed out.
 colformat.numeric <- function(x, ..., sigfig = 3) {
-  decimal_format(x, sigfig = sigfig)
+  format_decimal(x, sigfig = sigfig)
 }
 
 #' @export

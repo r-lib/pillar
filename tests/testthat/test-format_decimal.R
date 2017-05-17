@@ -1,47 +1,47 @@
-context("decimal_format")
+context("format_decimal")
 
-decimal_bw <- function(x, ...) {
+format_decimal_bw <- function(x, ...) {
   old <- options(crayon.enabled = FALSE)
   on.exit(options(old))
 
-  decimal_format(x, ...)
+  format_decimal(x, ...)
 }
 
 test_that("special values appear in LHS", {
   x <- c(NA, NaN, Inf)
-  f <- decimal_bw(x)
+  f <- format_decimal_bw(x)
 
   expect_equal(f$lhs, format(x))
 })
 
 test_that("negative values get - in neg", {
-  f <- decimal_bw(c(-Inf, Inf))
+  f <- format_decimal_bw(c(-Inf, Inf))
   expect_equal(f$neg, c("-", " "))
 })
 
 test_that("trailing zeros pad to sigfigs", {
-  f <- decimal_bw(c(1.5, 0.5))
+  f <- format_decimal_bw(c(1.5, 0.5))
   expect_equal(f$lhs, c("1", "0"))
   expect_equal(f$rhs, c("50 ", "500"))
 })
 
 test_that("sigfigs split between lhs and rhs", {
   x <- c(1.50, 10.50, 100.50)
-  f <- decimal_bw(x)
+  f <- format_decimal_bw(x)
 
   expect_equal(f$lhs, format(trunc(x)))
   expect_equal(f$rhs, c("50", "5 ", "  "))
 })
 
 test_that("leading 0 added to rhs", {
-  f <- decimal_bw(1.01)
+  f <- format_decimal_bw(1.01)
 
   expect_equal(f$lhs, "1")
   expect_equal(f$rhs, "01")
 })
 
 test_that("values rounded up as expect", {
-  f <- decimal_bw(c(18.9, 18.99))
+  f <- format_decimal_bw(c(18.9, 18.99))
 
   expect_equal(f$lhs, c("18", "19"))
   expect_equal(f$rhs, c("9", "0"))

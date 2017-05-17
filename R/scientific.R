@@ -3,14 +3,14 @@
 #' Uses colour, careful alignment, and superscripts to display numbers
 #' in scientific notation.
 #'
-#' @param x A numeric vector
-#' @param sigfig Number of signficiant figures to display.
+#' @inheritParams format_decimal
 #' @export
 #' @examples
 #' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
 #' format_scentific(x)
 format_scentific <- function(x, sigfig = 3) {
   stopifnot(is.numeric(x))
+  sigfig <- check_sigfig(sigfig)
 
   n <- length(x)
   abs_x <- abs(x)

@@ -15,3 +15,13 @@ str_trunc <- function(x, width = 20) {
 
   x
 }
+
+check_sigfig <- function(x) {
+  stopifnot(is.numeric(x), length(x) == 1)
+  x <- as.integer(x)
+  if (x < 1L) {
+    stop("Must show at least one significant figure", call. = FALSE)
+  }
+
+  x
+}

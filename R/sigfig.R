@@ -1,7 +1,9 @@
-#' Create a decimal table
+#' Format numbers in decimal notation
 #'
-#' This is a key building block of number formatting. It carefully uses
-#' colour and alignment to make it as easy as possible to compare numbers.
+#' This formatting system is designed to make it as easy as possible to
+#' compare columns of numbers. Significant digits are coloured black or red
+#' (for positive and negative numbers) and non-significant digits are coloured
+#' in paler gray.
 #'
 #' @return A tibble with four columns:
 #' * `neg`: negative sign or space, if needed
@@ -9,23 +11,21 @@
 #' * `dec`: decimal point, if needed
 #' * `rhs`: remainder of number
 #'
-#' @keywords internal
+#' @param x A numeric vector
+#' @param sigfig Number of signficiant figures to display.
 #' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
-#' decimal_format(x, 3)
+#' format_decimal(x, 3)
 #'
 #' x <- x * sample(c(-1, 1), length(x), rep = TRUE)
-#' decimal_format(x, 3)
+#' format_decimal(x, 3)
 #'
-#' decimal_format(c(Inf, -Inf, NA, NaN), 3)
-#' decimal_format(c(1e10, 1e-10), 3)
-decimal_format <- function(x, sigfig = 3) {
-  stopifnot(is.numeric(sigfig), length(sigfig) == 1)
-  sigfig <- as.integer(sigfig)
-  if (sigfig < 1L) {
-    stop("Must show at least one significant figure", call. = FALSE)
-  }
+#' format_decimal(c(Inf, -Inf, NA, NaN), 3)
+#' format_decimal(c(1e10, 1e-10), 3)
+format_decimal <- function(x, sigfig = 3) {
+  stopifnot(is.numeric(x))
+  sigfig <- check_sigfig(sigfig)
 
   n <- length(x)
   abs_x <- abs(x)

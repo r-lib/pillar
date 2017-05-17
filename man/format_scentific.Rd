@@ -9,7 +9,7 @@ format_scentific(x, sigfig = 3)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{sigfig}{Number of signficiant figures}
+\item{sigfig}{Number of signficiant figures to display.}
 }
 \description{
 Uses colour, careful alignment, and superscripts to display numbers
