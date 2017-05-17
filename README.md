@@ -21,16 +21,15 @@ colformat is not designed for end-users but will eventually be incorporated in p
 ``` r
 library(colformat)
 
-x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
+x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10))
 colformat(x)
-#>                title
-#> 1234567890          
-#>     123457          
-#>       1235          
-#>         NA          
-#>          1.23       
-#>          0.0123     
-#>          0.000000123
+#>           title
+#> 1234567890     
+#>     123457     
+#>       1235     
+#>         NA     
+#>          1.23  
+#>          0.0123
 ```
 
 If you render this in a console that supports colour, you'll see something that looks like this:
