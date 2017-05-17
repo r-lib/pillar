@@ -6,8 +6,12 @@ style_subtle <- function(...) {
   style_grey(0.6, ...)
 }
 
+colour_na <- function() {
+  grDevices::rgb(5, 5, 2, maxColorValue = 5)
+}
+
 style_na <- function(x) {
-  crayon::style(x, bg = grDevices::rgb(5, 5, 2, maxColorValue = 5))
+  crayon::style(x, bg = na_colour)
 }
 
 style_neg <- function(x) {
