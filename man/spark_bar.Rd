@@ -2,7 +2,7 @@
 % Please edit documentation in R/spark-bar.R
 \name{spark_bar}
 \alias{spark_bar}
-\title{Draw a sparkline bar graph}
+\title{Draw a sparkline bar graph with unicode block characters}
 \usage{
 spark_bar(x)
 }
@@ -10,7 +10,7 @@ spark_bar(x)
 \item{x}{A numeric vector between 0 and 1}
 }
 \description{
-Draw a sparkline bar graph
+Draw a sparkline bar graph with unicode block characters
 }
 \examples{
 x <- seq(0, 1, length = 15)

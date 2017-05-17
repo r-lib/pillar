@@ -1,4 +1,4 @@
-#' Draw a sparkline bar graph
+#' Draw a sparkline bar graph with unicode block characters
 #'
 #' @export
 #' @param x A numeric vector between 0 and 1
