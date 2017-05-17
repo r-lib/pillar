@@ -13,7 +13,7 @@ colformat(x, ...)
 
 \method{colformat}{logical}(x, ...)
 
-\method{colformat}{numeric}(x, ..., sigfig = 3)
+\method{colformat}{numeric}(x, ..., sigfig = 3, sci_threshold = 15)
 
 \method{colformat}{Date}(x, ...)
 
@@ -30,6 +30,9 @@ colformat(x, ...)
 larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
 
+\item{sci_threshold}{If decimal display is wider than this threshold,
+use scientific display instead.}
+
 \item{width}{Preferred width of output}
 }
 \value{
@@ -40,12 +43,18 @@ A character vector with class `colformat` and
 Format a vector suitable for tabular display
 }
 \examples{
-x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
+x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
 colformat(x)
 colformat(-x)
 colformat(runif(10))
 colformat(rcauchy(20))
-colformat(c(1, 0.5, 1e-10, NA, NaN, Inf, -Inf))
+
+# Special values are highlighted
+colformat(c(runif(5), NA, NaN, Inf, -Inf))
+
+# Very wide ranges will be displayed in scientific format
+colformat(c(1e10, 1e-10))
+colformat(c(1e10, 1e-10), sci_threshold = Inf)
 
 x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
 colformat(x)
