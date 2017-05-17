@@ -16,3 +16,5 @@ Imports:
     crayon
 RoxygenNote: 6.0.1
 Suggests: testthat
+Remotes:
+    gaborcsardi/crayon
