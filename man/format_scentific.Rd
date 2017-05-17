@@ -4,12 +4,14 @@
 \alias{format_scentific}
 \title{Format numbers in scientific notation}
 \usage{
-format_scentific(x, sigfig = 3)
+format_scentific(x, sigfig = 3, superscript = TRUE)
 }
 \arguments{
 \item{x}{A numeric vector}
 
 \item{sigfig}{Number of signficiant figures to display.}
+
+\item{superscript}{If `TRUE`, will use superscript numbers in exponent.}
 }
 \description{
 Uses colour, careful alignment, and superscripts to display numbers
