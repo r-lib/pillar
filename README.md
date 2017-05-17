@@ -37,7 +37,9 @@ If you render this in a console that supports colour, you'll see something that 
 
 <img src="man/figures/colours.png" width="200px" />
 
-Related work
+Inspirations
 ------------
 
--   [TextPlots](https://github.com/sunetos/TextPlots.jl)
+-   [TextPlots](https://github.com/sunetos/TextPlots.jl) for use of Braille characters
+
+-   [spark](https://github.com/holman/spark) for use of block characters.
