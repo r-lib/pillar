@@ -46,3 +46,8 @@ test_that("values rounded up as expect", {
   expect_equal(f$lhs, c("18", "19"))
   expect_equal(f$rhs, c("9", "0"))
 })
+
+test_that("values on LHS not rounded", {
+  f <- format_decimal_bw(123456)
+  expect_equal(f$lhs, "123456")
+})

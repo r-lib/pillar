@@ -29,11 +29,11 @@ format_decimal <- function(x, sigfig = 3) {
 
   n <- length(x)
   abs_x <- abs(x)
-  round_x <- signif(abs_x, sigfig)
 
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
   exp <- floor(log10(abs_x))
+  round_x <- signif(abs_x, pmax(sigfig, exp + 1))
   digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
 
   rhs_digits <- pmax(digits - pmax(exp, 0), 0)
