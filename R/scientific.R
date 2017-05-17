@@ -34,7 +34,7 @@ format_scentific <- function(x, sigfig = 3) {
 supernum <- function(x) {
   stopifnot(is.integer(x))
 
-  if (any(x < 0)) {
+  if (any(x < 0, na.rm = TRUE)) {
     neg <- ifelse(x < 0, "\u207b", "\u207a")
   } else {
     neg <- rep("", length(x))
