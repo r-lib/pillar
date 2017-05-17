@@ -87,6 +87,8 @@ decimal_format <- function(x, sigfig = 3) {
     ),
     ""
   )
+  # ensure all same width
+  rhs_col <- crayon::col_align(rhs_col, max(rhs_digits, na.rm = TRUE), "left")
 
   structure(
     list(

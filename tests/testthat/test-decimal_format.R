@@ -22,7 +22,7 @@ test_that("negative values get - in neg", {
 test_that("trailing zeros pad to sigfigs", {
   f <- decimal_bw(c(1.5, 0.5))
   expect_equal(f$lhs, c("1", "0"))
-  expect_equal(f$rhs, c("50", "500"))
+  expect_equal(f$rhs, c("50 ", "500"))
 })
 
 test_that("sigfigs split between lhs and rhs", {
@@ -30,7 +30,7 @@ test_that("sigfigs split between lhs and rhs", {
   f <- decimal_bw(x)
 
   expect_equal(f$lhs, format(trunc(x)))
-  expect_equal(f$rhs, c("50", "5", ""))
+  expect_equal(f$rhs, c("50", "5 ", "  "))
 })
 
 test_that("leading 0 added to rhs", {
