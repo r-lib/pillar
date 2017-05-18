@@ -44,3 +44,5 @@ Inspirations
 -   [spark](https://github.com/holman/spark) for use of block characters.
 
 The earliest use of this technique that I could find is [from 2009](https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/).
+
+Exercising these ideas to their fullest requires a font with good support for block drawing characters. [PragamataPro](https://www.fsd.it/shop/fonts/pragmatapro/) is one such font.
