@@ -7,11 +7,27 @@ format_decimal_bw <- function(x, ...) {
   format_decimal(x, ...)
 }
 
+test_that("compute_rhs_digits() works", {
+  x <- c(NA, NaN, Inf, 0, 1, 100, 1e10, 0.001, 1e-20)
+  expect_equal(compute_rhs_digits(x, 3), c(0, 0, 0, 0, 2, 0, 0, 5, 22))
+  expect_equal(compute_rhs_digits(x, 7), c(0, 0, 0, 0, 6, 3, 0, 9, 26))
+})
+
+test_that("compute_exp() does not return NA for positive input", {
+  x <- c(NA, NaN, Inf, 0, 1, 100, 0.001)
+  expect_equal(compute_exp(x), c(Inf, Inf, Inf, Inf, 0, 2, -3))
+})
+
 test_that("special values appear in LHS", {
   x <- c(NA, NaN, Inf)
   f <- format_decimal_bw(x)
 
   expect_equal(f$lhs, format(x))
+})
+
+test_that("all-positive values get nothing in neg", {
+  f <- format_decimal_bw(c(0, Inf))
+  expect_equal(f$neg, c("", ""))
 })
 
 test_that("negative values get - in neg", {
