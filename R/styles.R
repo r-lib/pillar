@@ -1,22 +1,32 @@
-style_accent <- function(x) {
-  crayon::green(x)
+keep_empty <- function(fun) {
+   function(x) {
+    ret <- rep_along(x, "")
+    update <- is.na(x) | x != ""
+    x <- x[update]
+    ret[update] <- fun(x)
+    ret
+  }
 }
 
-style_subtle <- function(...) {
-  style_grey(0.6, ...)
-}
+style_accent <- keep_empty(function(x) {
+  crayon::green(x)
+})
+
+style_subtle <- keep_empty(function(x) {
+  style_grey(0.6, x)
+})
 
 colour_na <- function() {
   grDevices::rgb(5, 5, 2, maxColorValue = 5)
 }
 
-style_na <- function(x) {
+style_na <- keep_empty(function(x) {
   crayon::style(x, bg = colour_na())
-}
+})
 
-style_neg <- function(x) {
+style_neg <- keep_empty(function(x) {
   crayon::red(x)
-}
+})
 
 
 style_grey <- function(level, ...) {

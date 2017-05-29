@@ -51,3 +51,8 @@ test_that("values on LHS not rounded", {
   f <- format_decimal_bw(123456)
   expect_equal(f$lhs, "123456")
 })
+
+test_that("output test", {
+  expect_colformat_output(10 ^ (-3:3), filename = "basic.txt")
+  expect_colformat_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
+})
