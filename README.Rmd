@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  github_document:
+    html_preview: false
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -13,6 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 # colformat
+
+[![Travis-CI Build Status](https://travis-ci.org/hadley/colformat.svg?branch=master)](https://travis-ci.org/hadley/colformat)
 
 colformat provides tools for styling columns of data, artfully using colour and unicode characters to 
 
