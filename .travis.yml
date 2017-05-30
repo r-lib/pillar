@@ -3,3 +3,6 @@
 language: R
 sudo: false
 cache: packages
+
+before_script:
+- head -n 100 tests/testthat/out/*
