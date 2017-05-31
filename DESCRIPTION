@@ -13,7 +13,8 @@ LazyData: true
 URL: https://github.com/hadley/colformat
 BugReports: https://github.com/hadley/colformat/issues
 Imports:
-    crayon
+    crayon,
+    rlang
 RoxygenNote: 6.0.1
 Suggests: testthat
 Remotes:

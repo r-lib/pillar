@@ -17,3 +17,8 @@ test_that("exponents correct in presence of NA", {
 
   expect_equal(f, c("  NA", "1.00e-5"))
 })
+
+test_that("output test", {
+  expect_colformat_output(10 ^ c(-9, -6, 3, 9), filename = "scientific.txt")
+  expect_colformat_output((10 ^ c(3, 9, 15, 22)) * c(-1, 1), filename = "scientific-short-neg.txt")
+})

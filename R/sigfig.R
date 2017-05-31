@@ -27,29 +27,15 @@ format_decimal <- function(x, sigfig = 3) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
-  n <- length(x)
   abs_x <- abs(x)
 
-  # If already bigger than sigfig, can round to zero.
-  # Otherwise ensure we have sigfig digits shown
-  exp <- floor(log10(abs_x))
-  round_x <- signif(abs_x, pmax(sigfig, exp + 1))
-  digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
-
-  rhs_digits <- pmax(digits - pmax(exp, 0), 0)
-  dec <- !is.na(digits) & rhs_digits > 0
+  rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+  dec <- rhs_digits > 0
 
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
-  if (any(neg)) {
-    neg_col <- ifelse(neg, "-", " ")
-  } else {
-    neg_col <- rep("", n)
-  }
 
-  # Digits on LHS of .
-  num <- is.finite(x)
-
+  round_x <- signif(abs_x, pmax(sigfig, compute_exp(abs_x) + 1))
   lhs <- trunc(round_x)
   lhs_zero <- lhs == 0
   lhs_str <- sprintf("%.0f", lhs)
@@ -57,52 +43,91 @@ format_decimal <- function(x, sigfig = 3) {
   lhs_sig <- substr(lhs_str, 1, sigfig)
   lhs_non <- substr(lhs_str, sigfig + 1, nchar(lhs_str))
 
+  # Digits on RHS of .
+  rhs <- round_x - lhs
+  rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+  rhs_num <- as.character(abs(round(rhs * 10 ^ rhs_digits)))
+
+  structure(
+    list(
+      neg = format_neg(neg),
+      lhs = format_lhs(
+        neg, lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non,
+        num = is.finite(x)),
+      dec = format_dec(neg, dec, lhs_zero),
+      rhs = format_rhs(neg, dec, lhs_zero, rhs_num, rhs_digits)
+    ),
+    class = "decimal_format"
+  )
+}
+
+compute_rhs_digits <- function(x, sigfig) {
+  # If already bigger than sigfig, can round to zero.
+  # Otherwise ensure we have sigfig digits shown
+  exp <- compute_exp(x)
+  digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
+  rhs_digits <- pmax(digits - pmax(exp, 0), 0)
+  rhs_digits
+}
+
+compute_exp <- function(x) {
+  ret <- rep_along(x, Inf)
+  nonzero <- which(x != 0 & is.finite(x))
+  ret[nonzero] <- floor(log10(x[nonzero]))
+  ret
+}
+
+format_neg <- function(neg) {
+  if (any(neg)) {
+    neg_col <- ifelse(neg, "-", " ")
+  } else {
+    neg_col <- rep_along(neg, "")
+  }
+  neg_col
+}
+
+format_lhs <- function(neg, lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non, num) {
   lhs_col <- ifelse(num,
     paste0(
-      ifelse(neg & lhs_zero, style_subtle(lhs_sig), style_num(lhs_sig, neg)),
+      style_num(lhs_sig, neg, lhs_zero),
       style_subtle(lhs_non)
     ),
     style_na(lhs_str)
   )
 
   lhs_col <- crayon::col_align(lhs_col, width = lhs_width, align = "right")
+  lhs_col
+}
 
+format_dec <- function(neg, dec, lhs_zero) {
   # Decimal column
   if (any(dec)) {
-    dec_col <- ifelse(dec, style_num(".", neg & !lhs_zero), " ")
+    dec_col <- ifelse(dec, style_num(".", neg, lhs_zero), " ")
   } else {
-    dec_col <- rep("", n)
+    dec_col <- rep_along(neg, "")
   }
+  dec_col
+}
 
-  # Digits on RHS of .
-  rhs <- round_x - lhs
-
-  rhs_num <- as.character(abs(round(rhs * 10 ^ rhs_digits)))
+format_rhs <- function(neg, dec, lhs_zero, rhs_num, rhs_digits) {
   rhs_zero <- strrep("0", pmax(0, rhs_digits - nchar(rhs_num)))
 
   rhs_col <- ifelse(dec,
     paste0(
-      ifelse(lhs_zero, style_subtle(rhs_zero), style_num(rhs_zero, neg)),
+      style_num(rhs_zero, neg, lhs_zero),
       style_num(rhs_num, neg)
     ),
     ""
   )
+
   # ensure all same width
   rhs_col <- crayon::col_align(rhs_col, max(rhs_digits, na.rm = TRUE), "left")
 
-  structure(
-    list(
-      neg = neg_col,
-      lhs = lhs_col,
-      dec = dec_col,
-      rhs = rhs_col
-    ),
-    class = "decimal_format"
-  )
+  rhs_col
 }
 
-style_num <- function(x, negative) {
-  ifelse(negative, style_neg(x), x)
+style_num <- function(x, negative, subtle = rep_along(x, FALSE)) {
+  ifelse(subtle, style_subtle(x), ifelse(negative, style_neg(x), x))
 }
 
 #' @export

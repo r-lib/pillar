@@ -3,6 +3,8 @@
 colformat
 =========
 
+[![Travis-CI Build Status](https://travis-ci.org/hadley/colformat.svg?branch=master)](https://travis-ci.org/hadley/colformat)
+
 colformat provides tools for styling columns of data, artfully using colour and unicode characters to
 
 Installation
