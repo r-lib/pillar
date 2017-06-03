@@ -24,6 +24,30 @@
 #' format_decimal(c(Inf, -Inf, NA, NaN), 3)
 #' format_decimal(c(1e10, 1e-10), 3)
 format_decimal <- function(x, sigfig = 3) {
+  s <- split_decimal(x, sigfig)
+
+  lhs_str <- sprintf("%.0f", s$lhs)
+  lhs_width <- max(nchar(lhs_str))
+  lhs_sig <- substr(lhs_str, 1, sigfig)
+  lhs_non <- substr(lhs_str, sigfig + 1, nchar(lhs_str))
+
+  # Digits on RHS of .
+  rhs_num <- as.character(abs(round(s$rhs * 10 ^ s$rhs_digits)))
+
+  structure(
+    list(
+      neg = format_neg(s$neg),
+      lhs = format_lhs(
+        s$neg, s$lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non,
+        num = is.finite(x)),
+      dec = format_dec(s$neg, s$dec, s$lhs_zero),
+      rhs = format_rhs(s$neg, s$dec, s$lhs_zero, rhs_num, s$rhs_digits)
+    ),
+    class = "decimal_format"
+  )
+}
+
+split_decimal <- function(x, sigfig) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -37,27 +61,17 @@ format_decimal <- function(x, sigfig = 3) {
 
   round_x <- signif(abs_x, pmax(sigfig, compute_exp(abs_x) + 1))
   lhs <- trunc(round_x)
-  lhs_zero <- lhs == 0
-  lhs_str <- sprintf("%.0f", lhs)
-  lhs_width <- max(nchar(lhs_str))
-  lhs_sig <- substr(lhs_str, 1, sigfig)
-  lhs_non <- substr(lhs_str, sigfig + 1, nchar(lhs_str))
-
-  # Digits on RHS of .
   rhs <- round_x - lhs
-  rhs_digits <- compute_rhs_digits(abs_x, sigfig)
-  rhs_num <- as.character(abs(round(rhs * 10 ^ rhs_digits)))
 
-  structure(
-    list(
-      neg = format_neg(neg),
-      lhs = format_lhs(
-        neg, lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non,
-        num = is.finite(x)),
-      dec = format_dec(neg, dec, lhs_zero),
-      rhs = format_rhs(neg, dec, lhs_zero, rhs_num, rhs_digits)
-    ),
-    class = "decimal_format"
+  lhs_zero <- lhs == 0
+
+  list(
+    neg = neg,
+    lhs = lhs,
+    lhs_zero = lhs_zero,
+    rhs = rhs,
+    dec = dec,
+    rhs_digits = rhs_digits
   )
 }
 
