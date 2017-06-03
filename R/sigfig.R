@@ -39,7 +39,7 @@ format_decimal <- function(x, sigfig = 3) {
       neg = format_neg(s$neg),
       lhs = format_lhs(
         s$neg, s$lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non,
-        num = is.finite(x)),
+        s$num),
       dec = format_dec(s$neg, s$dec, s$lhs_zero),
       rhs = format_rhs(s$neg, s$dec, s$lhs_zero, rhs_num, s$rhs_digits)
     ),
@@ -54,7 +54,6 @@ split_decimal <- function(x, sigfig) {
   abs_x <- abs(x)
 
   rhs_digits <- compute_rhs_digits(abs_x, sigfig)
-  dec <- rhs_digits > 0
 
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
@@ -63,15 +62,14 @@ split_decimal <- function(x, sigfig) {
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
 
-  lhs_zero <- lhs == 0
-
   list(
+    num = is.finite(x),
     neg = neg,
     lhs = lhs,
-    lhs_zero = lhs_zero,
+    lhs_zero = (lhs == 0),
     rhs = rhs,
-    dec = dec,
-    rhs_digits = rhs_digits
+    rhs_digits = rhs_digits,
+    dec = rhs_digits > 0
   )
 }
 
