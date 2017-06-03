@@ -28,8 +28,8 @@ format_decimal <- function(x, sigfig = 3) {
 
   lhs_str <- sprintf("%.0f", s$lhs)
   lhs_width <- max(nchar(lhs_str))
-  lhs_sig <- substr(lhs_str, 1, sigfig)
-  lhs_non <- substr(lhs_str, sigfig + 1, nchar(lhs_str))
+  lhs_sig <- substr(lhs_str, 1, s$sigfig)
+  lhs_non <- substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
 
   # Digits on RHS of .
   rhs_num <- as.character(abs(round(s$rhs * 10 ^ s$rhs_digits)))
@@ -63,6 +63,7 @@ split_decimal <- function(x, sigfig) {
   rhs <- round_x - lhs
 
   list(
+    sigfig = sigfig,
     num = is.finite(x),
     neg = neg,
     lhs = lhs,
