@@ -27,12 +27,7 @@ format_decimal <- function(x, sigfig = 3) {
   s <- split_decimal(x, sigfig)
 
   structure(
-    list(
-      neg = format_neg(s),
-      lhs = format_lhs(s),
-      dec = format_dec(s),
-      rhs = format_rhs(s)
-    ),
+    s,
     class = "decimal_format"
   )
 }
@@ -158,7 +153,12 @@ style_num <- function(x, negative, subtle = rep_along(x, FALSE)) {
 
 #' @export
 format.decimal_format <- function(x, title = "title", ...) {
-  row <- paste0(x$neg, x$lhs, x$dec, x$rhs)
+  neg <- format_neg(x)
+  lhs <- format_lhs(x)
+  dec <- format_dec(x)
+  rhs <- format_rhs(x)
+
+  row <- paste0(neg, lhs, dec, rhs)
   width <- max(nchar(title), crayon::col_nchar(row))
 
   new_column(row, title = title, width = width, align = "right")
