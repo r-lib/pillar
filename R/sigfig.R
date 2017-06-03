@@ -26,22 +26,12 @@
 format_decimal <- function(x, sigfig = 3) {
   s <- split_decimal(x, sigfig)
 
-  lhs_str <- sprintf("%.0f", s$lhs)
-  lhs_width <- max(nchar(lhs_str))
-  lhs_sig <- substr(lhs_str, 1, s$sigfig)
-  lhs_non <- substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
-
-  # Digits on RHS of .
-  rhs_num <- as.character(abs(round(s$rhs * 10 ^ s$rhs_digits)))
-
   structure(
     list(
-      neg = format_neg(s$neg),
-      lhs = format_lhs(
-        s$neg, s$lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non,
-        s$num),
-      dec = format_dec(s$neg, s$dec, s$lhs_zero),
-      rhs = format_rhs(s$neg, s$dec, s$lhs_zero, rhs_num, s$rhs_digits)
+      neg = format_neg(s),
+      lhs = format_lhs(s),
+      dec = format_dec(s),
+      rhs = format_rhs(s)
     ),
     class = "decimal_format"
   )
@@ -90,7 +80,8 @@ compute_exp <- function(x) {
   ret
 }
 
-format_neg <- function(neg) {
+format_neg <- function(s) {
+  neg <- s$neg
   if (any(neg)) {
     neg_col <- ifelse(neg, "-", " ")
   } else {
@@ -99,7 +90,16 @@ format_neg <- function(neg) {
   neg_col
 }
 
-format_lhs <- function(neg, lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non, num) {
+format_lhs <- function(s) {
+  neg <- s$neg
+  num <- s$num
+  lhs_zero <- s$lhs_zero
+
+  lhs_str <- sprintf("%.0f", s$lhs)
+  lhs_width <- max(nchar(lhs_str))
+  lhs_sig <- substr(lhs_str, 1, s$sigfig)
+  lhs_non <- substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
+
   lhs_col <- ifelse(num,
     paste0(
       style_num(lhs_sig, neg, lhs_zero),
@@ -112,7 +112,11 @@ format_lhs <- function(neg, lhs_zero, lhs_str, lhs_width, lhs_sig, lhs_non, num)
   lhs_col
 }
 
-format_dec <- function(neg, dec, lhs_zero) {
+format_dec <- function(s) {
+  neg <- s$neg
+  dec <- s$dec
+  lhs_zero <- s$lhs_zero
+
   # Decimal column
   if (any(dec)) {
     dec_col <- ifelse(dec, style_num(".", neg, lhs_zero), " ")
@@ -122,7 +126,16 @@ format_dec <- function(neg, dec, lhs_zero) {
   dec_col
 }
 
-format_rhs <- function(neg, dec, lhs_zero, rhs_num, rhs_digits) {
+format_rhs <- function(s) {
+  neg <- s$neg
+  dec <- s$dec
+  lhs_zero <- s$lhs_zero
+  rhs_num <- s$rhs_num
+  rhs_digits <- s$rhs_digits
+
+  # Digits on RHS of .
+  rhs_num <- as.character(abs(round(s$rhs * 10 ^ s$rhs_digits)))
+
   rhs_zero <- strrep("0", pmax(0, rhs_digits - nchar(rhs_num)))
 
   rhs_col <- ifelse(dec,
