@@ -5,7 +5,7 @@
 #' (for positive and negative numbers) and non-significant digits are coloured
 #' in paler gray.
 #'
-#' @return A tibble with four columns:
+#' @return A list with at least the following elements:
 #' * `neg`: negative sign or space, if needed
 #' * `lhs`: whole number
 #' * `dec`: decimal point, if needed
@@ -32,30 +32,45 @@ format_decimal <- function(x, sigfig = 3) {
   )
 }
 
-split_decimal <- function(x, sigfig) {
+split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
   abs_x <- abs(x)
 
-  rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+  num <- is.finite(x)
 
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
 
-  round_x <- signif(abs_x, pmax(sigfig, compute_exp(abs_x) + 1))
+  # Compute exponent and mantissa
+  exp <- compute_exp(abs_x)
+
+  if (scientific) {
+    mnt <- ifelse(num, abs_x * 10 ^ (-exp), abs_x)
+    round_x <- signif(mnt, sigfig)
+    rhs_digits <- ifelse(num, sigfig - 1, 0)
+    exp_display <- exp
+  } else {
+    round_x <- signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
+    rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+    exp_display <- rep_along(x, NA_integer_)
+  }
+
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
 
   list(
     sigfig = sigfig,
-    num = is.finite(x),
+    num = num,
     neg = neg,
     lhs = lhs,
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
-    dec = rhs_digits > 0
+    dec = rhs_digits > 0,
+    exp = exp_display,
+    superscript = superscript
   )
 }
 
@@ -63,15 +78,16 @@ compute_rhs_digits <- function(x, sigfig) {
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
   exp <- compute_exp(x)
+  exp[is.na(exp)] <- Inf
   digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
   rhs_digits <- pmax(digits - pmax(exp, 0), 0)
   rhs_digits
 }
 
 compute_exp <- function(x) {
-  ret <- rep_along(x, Inf)
+  ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
-  ret[nonzero] <- floor(log10(x[nonzero]))
+  ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
   ret
 }
 
@@ -157,8 +173,9 @@ format.decimal_format <- function(x, title = "title", ...) {
   lhs <- format_lhs(x)
   dec <- format_dec(x)
   rhs <- format_rhs(x)
+  exp <- format_exp(x)
 
-  row <- paste0(neg, lhs, dec, rhs)
+  row <- paste0(neg, lhs, dec, rhs, exp)
   width <- max(nchar(title), crayon::col_nchar(row))
 
   new_column(row, title = title, width = width, align = "right")

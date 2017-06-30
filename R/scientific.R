@@ -10,41 +10,34 @@
 #' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
 #' format_scientific(x)
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
-  stopifnot(is.numeric(x))
-  sigfig <- check_sigfig(sigfig)
+  s <- split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 
-  n <- length(x)
-  abs_x <- abs(x)
-  round_x <- signif(abs_x, sigfig)
-  num <- is.finite(x)
-  abs_x[!num] <- NA # supress warning from log10
-
-  # Compute exponent and mantissa
-  exp <- as.integer(floor(log10(abs_x)))
-  exp_chr <- ifelse(num, supernum(exp, superscript = superscript), "")
-
-  mnt <- round_x * 10 ^ (-exp)
-  mnt_chr <- ifelse(num,
-    sprintf(paste0("%.", sigfig - 1, "f"), mnt),
-    crayon::col_align(style_na(as.character(round_x)), sigfig + 1, "right")
+  structure(
+    s,
+    class = "decimal_format"
   )
+}
 
-  new_colformat(paste0(mnt_chr, exp_chr))
+format_exp <- function(x) {
+  supernum(x$exp, superscript = x$superscript)
 }
 
 supernum <- function(x, superscript = TRUE) {
   stopifnot(is.integer(x))
 
-  neg <- !is.na(x) & x < 0
-  if (any(x < 0, na.rm = TRUE)) {
+  num <- !is.na(x)
+  if (!any(num)) return(rep_along(x, ""))
+
+  neg <- num & x < 0
+  if (any(neg)) {
     if (superscript) {
-      neg <- ifelse(x < 0, "\u207b", "\u207a")
+      neg_chr <- ifelse(neg, "\u207b", "\u207a")
     } else {
-      neg <- ifelse(x < 0, "-", "+")
+      neg_chr <- ifelse(neg, "-", "+")
     }
-    neg[is.na(x)] <- " "
+    neg_chr[!num] <- " "
   } else {
-    neg <- rep("", length(x))
+    neg_chr <- rep("", length(x))
   }
 
   if (superscript) {
@@ -52,11 +45,11 @@ supernum <- function(x, superscript = TRUE) {
   } else {
     digits <- as.character(abs(x))
   }
-  digits <- ifelse(is.na(x), "", digits)
+  digits[!num] <- ""
 
-  exp <- paste0(neg, format(digits, justify = "right"))
+  exp <- paste0(neg_chr, format(digits, justify = "right"))
 
-  paste0(style_subtle("e"), style_num(exp, x < 0))
+  paste0(style_subtle(ifelse(num, "e", " ")), style_num(exp, neg))
 }
 
 supernum1 <- function(x) {
