@@ -29,13 +29,13 @@ split_scientific <- function(x, sigfig, superscript) {
 
   # Compute exponent and mantissa
   exp <- compute_exp(abs_x)
-  mnt <- abs_x * 10 ^ (-exp)
 
-  round_x <- signif(mnt, sigfig)
+  round_x <- signif(abs_x * 10 ^ (-exp), sigfig)
+  rhs_digits <- rep_along(x, sigfig - 1L)
+  exp_display <- exp
+
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
-
-  rhs_digits <- rep_along(x, sigfig - 1L)
 
   list(
     sigfig = sigfig,
@@ -46,7 +46,7 @@ split_scientific <- function(x, sigfig, superscript) {
     rhs = rhs,
     rhs_digits = rhs_digits,
     dec = rhs_digits > 0,
-    exp = exp,
+    exp = exp_display,
     superscript = superscript
   )
 }

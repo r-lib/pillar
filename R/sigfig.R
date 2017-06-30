@@ -32,18 +32,22 @@ format_decimal <- function(x, sigfig = 3) {
   )
 }
 
-split_decimal <- function(x, sigfig) {
+split_decimal <- function(x, sigfig, superscript = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
   abs_x <- abs(x)
 
-  rhs_digits <- compute_rhs_digits(abs_x, sigfig)
-
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
 
-  round_x <- signif(abs_x, pmax(sigfig, compute_exp(abs_x) + 1, na.rm = TRUE))
+  # Compute exponent and mantissa
+  exp <- compute_exp(abs_x)
+
+  round_x <- signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
+  rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+  exp_display <- rep_along(x, NA_integer_)
+
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
 
@@ -56,8 +60,8 @@ split_decimal <- function(x, sigfig) {
     rhs = rhs,
     rhs_digits = rhs_digits,
     dec = rhs_digits > 0,
-    exp = rep_along(x, NA_integer_),
-    superscript = FALSE
+    exp = exp_display,
+    superscript = superscript
   )
 }
 
