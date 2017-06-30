@@ -1,4 +1,6 @@
 expect_colformat_output <- function(x, ..., filename) {
+  x <- c(x, NA, -Inf, Inf)
+
   old <- options(crayon.enabled = TRUE)
   on.exit(options(old))
 
