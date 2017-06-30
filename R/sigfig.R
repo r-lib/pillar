@@ -32,7 +32,7 @@ format_decimal <- function(x, sigfig = 3) {
   )
 }
 
-split_decimal <- function(x, sigfig, superscript = FALSE) {
+split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -44,9 +44,15 @@ split_decimal <- function(x, sigfig, superscript = FALSE) {
   # Compute exponent and mantissa
   exp <- compute_exp(abs_x)
 
-  round_x <- signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
-  rhs_digits <- compute_rhs_digits(abs_x, sigfig)
-  exp_display <- rep_along(x, NA_integer_)
+  if (scientific) {
+    round_x <- signif(abs_x * 10 ^ (-exp), sigfig)
+    rhs_digits <- rep_along(x, sigfig - 1L)
+    exp_display <- exp
+  } else {
+    round_x <- signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
+    rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+    exp_display <- rep_along(x, NA_integer_)
+  }
 
   lhs <- trunc(round_x)
   rhs <- round_x - lhs

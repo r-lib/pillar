@@ -10,44 +10,11 @@
 #' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
 #' format_scientific(x)
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
-  s <- split_scientific(x, sigfig, superscript)
+  s <- split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 
   structure(
     s,
     class = "decimal_format"
-  )
-}
-
-split_scientific <- function(x, sigfig, superscript) {
-  stopifnot(is.numeric(x))
-  sigfig <- check_sigfig(sigfig)
-
-  abs_x <- abs(x)
-
-  # Do we need negative signs?
-  neg <- !is.na(x) & x < 0
-
-  # Compute exponent and mantissa
-  exp <- compute_exp(abs_x)
-
-  round_x <- signif(abs_x * 10 ^ (-exp), sigfig)
-  rhs_digits <- rep_along(x, sigfig - 1L)
-  exp_display <- exp
-
-  lhs <- trunc(round_x)
-  rhs <- round_x - lhs
-
-  list(
-    sigfig = sigfig,
-    num = is.finite(x),
-    neg = neg,
-    lhs = lhs,
-    lhs_zero = (lhs == 0),
-    rhs = rhs,
-    rhs_digits = rhs_digits,
-    dec = rhs_digits > 0,
-    exp = exp_display,
-    superscript = superscript
   )
 }
 
