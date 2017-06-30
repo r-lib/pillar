@@ -28,7 +28,7 @@ split_scientific <- function(x, sigfig, superscript) {
   neg <- !is.na(x) & x < 0
 
   # Compute exponent and mantissa
-  exp <- as.integer(compute_exp(abs_x, default = NA))
+  exp <- compute_exp(abs_x)
   mnt <- abs_x * 10 ^ (-exp)
 
   round_x <- signif(mnt, sigfig)

@@ -70,10 +70,10 @@ compute_rhs_digits <- function(x, sigfig) {
   rhs_digits
 }
 
-compute_exp <- function(x, default = NA_integer_) {
-  ret <- rep_along(x, default)
+compute_exp <- function(x) {
+  ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
-  ret[nonzero] <- floor(log10(x[nonzero]))
+  ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
   ret
 }
 
