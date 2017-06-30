@@ -43,7 +43,7 @@ split_decimal <- function(x, sigfig) {
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
 
-  round_x <- signif(abs_x, pmax(sigfig, compute_exp(abs_x) + 1))
+  round_x <- signif(abs_x, pmax(sigfig, compute_exp(abs_x) + 1, na.rm = TRUE))
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
 
@@ -65,12 +65,12 @@ compute_rhs_digits <- function(x, sigfig) {
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
   exp <- compute_exp(x)
-  digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
-  rhs_digits <- pmax(digits - pmax(exp, 0), 0)
+  digits <- ifelse(is.na(exp) | exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
+  rhs_digits <- pmax(digits - pmax(exp, 0, na.rm = TRUE), 0)
   rhs_digits
 }
 
-compute_exp <- function(x, default = Inf) {
+compute_exp <- function(x, default = NA_integer_) {
   ret <- rep_along(x, default)
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- floor(log10(x[nonzero]))
