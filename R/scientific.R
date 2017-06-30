@@ -10,26 +10,53 @@
 #' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
 #' format_scientific(x)
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
+  s <- split_scientific(x, sigfig, superscript)
+
+  structure(
+    s,
+    class = "decimal_format"
+  )
+}
+
+split_scientific <- function(x, sigfig, superscript) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
-  n <- length(x)
   abs_x <- abs(x)
-  round_x <- signif(abs_x, sigfig)
-  num <- is.finite(x)
-  abs_x[!num] <- NA # supress warning from log10
+
+  # Do we need negative signs?
+  neg <- !is.na(x) & x < 0
 
   # Compute exponent and mantissa
-  exp <- as.integer(floor(log10(abs_x)))
-  exp_chr <- ifelse(num, supernum(exp, superscript = superscript), "")
+  exp <- as.integer(compute_exp(abs_x, default = NA))
+  mnt <- abs_x * 10 ^ (-exp)
 
-  mnt <- round_x * 10 ^ (-exp)
-  mnt_chr <- ifelse(num,
-    sprintf(paste0("%.", sigfig - 1, "f"), mnt),
-    crayon::col_align(style_na(as.character(round_x)), sigfig + 1, "right")
+  round_x <- signif(mnt, sigfig)
+  lhs <- trunc(round_x)
+  rhs <- round_x - lhs
+
+  rhs_digits <- rep_along(x, sigfig - 1L)
+
+  list(
+    sigfig = sigfig,
+    num = is.finite(x),
+    neg = neg,
+    lhs = lhs,
+    lhs_zero = (lhs == 0),
+    rhs = rhs,
+    rhs_digits = rhs_digits,
+    dec = rhs_digits > 0,
+    exp = exp,
+    superscript = superscript
   )
+}
 
-  new_colformat(paste0(mnt_chr, exp_chr))
+format_exp <- function(x) {
+  ifelse(
+    is.na(x$exp),
+    "",
+    supernum(x$exp, superscript = x$superscript)
+  )
 }
 
 supernum <- function(x, superscript = TRUE) {

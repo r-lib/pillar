@@ -5,7 +5,7 @@
 #' (for positive and negative numbers) and non-significant digits are coloured
 #' in paler gray.
 #'
-#' @return A tibble with four columns:
+#' @return A list with at least the following elements:
 #' * `neg`: negative sign or space, if needed
 #' * `lhs`: whole number
 #' * `dec`: decimal point, if needed
@@ -55,7 +55,9 @@ split_decimal <- function(x, sigfig) {
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
-    dec = rhs_digits > 0
+    dec = rhs_digits > 0,
+    exp = rep_along(x, NA_integer_),
+    superscript = FALSE
   )
 }
 
@@ -68,8 +70,8 @@ compute_rhs_digits <- function(x, sigfig) {
   rhs_digits
 }
 
-compute_exp <- function(x) {
-  ret <- rep_along(x, Inf)
+compute_exp <- function(x, default = Inf) {
+  ret <- rep_along(x, default)
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- floor(log10(x[nonzero]))
   ret
@@ -157,8 +159,9 @@ format.decimal_format <- function(x, title = "title", ...) {
   lhs <- format_lhs(x)
   dec <- format_dec(x)
   rhs <- format_rhs(x)
+  exp <- format_exp(x)
 
-  row <- paste0(neg, lhs, dec, rhs)
+  row <- paste0(neg, lhs, dec, rhs, exp)
   width <- max(nchar(title), crayon::col_nchar(row))
 
   new_column(row, title = title, width = width, align = "right")
