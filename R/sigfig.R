@@ -38,6 +38,8 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
 
   abs_x <- abs(x)
 
+  num <- is.finite(x)
+
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
 
@@ -45,8 +47,9 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   exp <- compute_exp(abs_x)
 
   if (scientific) {
-    round_x <- signif(abs_x * 10 ^ (-exp), sigfig)
-    rhs_digits <- rep_along(x, sigfig - 1L)
+    mnt <- ifelse(num, abs_x * 10 ^ (-exp), abs_x)
+    round_x <- signif(mnt, sigfig)
+    rhs_digits <- ifelse(num, sigfig - 1, 0)
     exp_display <- exp
   } else {
     round_x <- signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
@@ -59,7 +62,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
 
   list(
     sigfig = sigfig,
-    num = is.finite(x),
+    num = num,
     neg = neg,
     lhs = lhs,
     lhs_zero = (lhs == 0),

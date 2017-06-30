@@ -19,26 +19,25 @@ format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
 }
 
 format_exp <- function(x) {
-  ifelse(
-    is.na(x$exp),
-    "",
-    supernum(x$exp, superscript = x$superscript)
-  )
+  supernum(x$exp, superscript = x$superscript)
 }
 
 supernum <- function(x, superscript = TRUE) {
   stopifnot(is.integer(x))
 
-  neg <- !is.na(x) & x < 0
-  if (any(x < 0, na.rm = TRUE)) {
+  num <- !is.na(x)
+  if (!any(num)) return(rep_along(x, ""))
+
+  neg <- num & x < 0
+  if (any(neg)) {
     if (superscript) {
-      neg <- ifelse(x < 0, "\u207b", "\u207a")
+      neg_chr <- ifelse(neg, "\u207b", "\u207a")
     } else {
-      neg <- ifelse(x < 0, "-", "+")
+      neg_chr <- ifelse(neg, "-", "+")
     }
-    neg[is.na(x)] <- " "
+    neg_chr[!num] <- " "
   } else {
-    neg <- rep("", length(x))
+    neg_chr <- rep("", length(x))
   }
 
   if (superscript) {
@@ -46,11 +45,11 @@ supernum <- function(x, superscript = TRUE) {
   } else {
     digits <- as.character(abs(x))
   }
-  digits <- ifelse(is.na(x), "", digits)
+  digits[!num] <- ""
 
-  exp <- paste0(neg, format(digits, justify = "right"))
+  exp <- paste0(neg_chr, format(digits, justify = "right"))
 
-  paste0(style_subtle("e"), style_num(exp, x < 0))
+  paste0(style_subtle(ifelse(num, "e", " ")), style_num(exp, neg))
 }
 
 supernum1 <- function(x) {
