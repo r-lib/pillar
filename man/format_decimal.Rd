@@ -12,7 +12,7 @@ format_decimal(x, sigfig = 3)
 \item{sigfig}{Number of signficiant figures to display.}
 }
 \value{
-A tibble with four columns:
+A list with at least the following elements:
 * `neg`: negative sign or space, if needed
 * `lhs`: whole number
 * `dec`: decimal point, if needed
