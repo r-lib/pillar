@@ -1,0 +1,49 @@
+#' Format a vector suitable for tabular display
+#'
+#' @param x A vector to format
+#' @param ... Other arguments passed to methods
+#' @return A character vector with class `coldisplay` and
+#'   `width` and `align` attributes.
+#' @export
+#' @examples
+#' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
+#' coldisplay(x)
+#' coldisplay(-x)
+#' coldisplay(runif(10))
+#' coldisplay(rcauchy(20))
+#'
+#' # Special values are highlighted
+#' coldisplay(c(runif(5), NA, NaN, Inf, -Inf))
+#'
+#' # Very wide ranges will be displayed in scientific format
+#' coldisplay(c(1e10, 1e-10))
+#' coldisplay(c(1e10, 1e-10), sci_threshold = Inf)
+#'
+#' x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
+#' coldisplay(x)
+#'
+#' x <- c("This is string is rather long", NA, "?", "Short")
+#' coldisplay(x)
+#' coldisplay(x, width = 30)
+#' coldisplay(x, width = 5)
+#'
+#' date <- as.Date("2017-05-15")
+#' coldisplay(date + c(1, NA, 3:5))
+#' coldisplay(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
+coldisplay <- function(x, ...) {
+  data <- colformat(x, ...)
+  structure(
+    list(data = data),
+    class = "coldisplay"
+  )
+}
+
+#' @export
+format.coldisplay <- function(x, title = "title", ...) {
+  format(x$data, title = title, ...)
+}
+
+#' @export
+print.coldisplay <- function(x, title = "title", ...) {
+  print(format(x, title = title, ...))
+}
