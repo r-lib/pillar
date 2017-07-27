@@ -2,40 +2,40 @@
 #'
 #' @param x A vector to format
 #' @param ... Other arguments passed to methods
-#' @return A character vector with class `colformat` and
+#' @return A character vector with class `coldata` and
 #'   `width` and `align` attributes.
 #' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
-#' colformat(x)
-#' colformat(-x)
-#' colformat(runif(10))
-#' colformat(rcauchy(20))
+#' coldata(x)
+#' coldata(-x)
+#' coldata(runif(10))
+#' coldata(rcauchy(20))
 #'
 #' # Special values are highlighted
-#' colformat(c(runif(5), NA, NaN, Inf, -Inf))
+#' coldata(c(runif(5), NA, NaN, Inf, -Inf))
 #'
 #' # Very wide ranges will be displayed in scientific format
-#' colformat(c(1e10, 1e-10))
-#' colformat(c(1e10, 1e-10), sci_threshold = Inf)
+#' coldata(c(1e10, 1e-10))
+#' coldata(c(1e10, 1e-10), sci_threshold = Inf)
 #'
 #' x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
-#' colformat(x)
+#' coldata(x)
 #'
 #' x <- c("This is string is rather long", NA, "?", "Short")
-#' colformat(x)
-#' colformat(x, width = 30)
-#' colformat(x, width = 5)
+#' coldata(x)
+#' coldata(x, width = 30)
+#' coldata(x, width = 5)
 #'
 #' date <- as.Date("2017-05-15")
-#' colformat(date + c(1, NA, 3:5))
-#' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
-colformat <- function(x, ...) {
-  UseMethod("colformat")
+#' coldata(date + c(1, NA, 3:5))
+#' coldata(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
+coldata <- function(x, ...) {
+  UseMethod("coldata")
 }
 
 #' @export
-format.colformat <- function(x, title = "title", ...) {
+format.coldata <- function(x, title = "title", ...) {
   align <- attr(x, "align")
   width <- max(nchar(title), attr(x, "width"))
 
@@ -43,40 +43,40 @@ format.colformat <- function(x, title = "title", ...) {
 }
 
 #' @export
-print.colformat <- function(x, title = "title", ...) {
+print.coldata <- function(x, title = "title", ...) {
   print(format(x, title = title, ...))
 }
 
-new_colformat <- function(x, width = max(crayon::col_nchar(x)), align = "left") {
+new_coldata <- function(x, width = max(crayon::col_nchar(x)), align = "left") {
   structure(
     x,
     width = width,
     align = align,
-    class = "colformat"
+    class = "coldata"
   )
 }
 
 # Methods -----------------------------------------------------------------
 
 #' @export
-#' @rdname colformat
-colformat.logical <- function(x, ...) {
+#' @rdname coldata
+coldata.logical <- function(x, ...) {
   out <- character(length(x))
   out[x & !is.na(x)] <- style_accent("*")
   out[!x & !is.na(x)] <- style_subtle("-")
   out[is.na(x)] <- col_na()
 
-  new_colformat(out, width = 1, align = "right")
+  new_coldata(out, width = 1, align = "right")
 }
 
 #' @export
-#' @rdname colformat
+#' @rdname coldata
 #' @param sigfig Minimum number of significant figures to display. Numbers
 #'   larger than 1 will potentially show more signficiant figures than this
 #'   but they will be greyed out.
 #' @param sci_threshold If decimal display is wider than this threshold,
 #'   use scientific display instead.
-colformat.numeric <- function(x, ..., sigfig = 3, sci_threshold = 15) {
+coldata.numeric <- function(x, ..., sigfig = 3, sci_threshold = 15) {
   dec <- format_decimal(x, sigfig = sigfig)
 
   # This is somewhat inefficient but we can fix if it becomes a bottleneck
@@ -89,31 +89,31 @@ colformat.numeric <- function(x, ..., sigfig = 3, sci_threshold = 15) {
 }
 
 #' @export
-#' @rdname colformat
-colformat.Date <- function(x, ...) {
+#' @rdname coldata
+coldata.Date <- function(x, ...) {
   x <- format(x, format = "%Y-%m-%d")
   x[is.na(x)] <- col_na()
 
-  new_colformat(x, width = 11, align = "right")
+  new_coldata(x, width = 11, align = "right")
 }
 
 #' @export
-#' @rdname colformat
-colformat.POSIXct <- function(x, ...) {
+#' @rdname coldata
+coldata.POSIXct <- function(x, ...) {
   date <- format(x, format = "%Y-%m-%d")
   time <- format(x, format = "%H:%M:%S")
 
   datetime <- paste0(date, " " , style_subtle(time))
   datetime[is.na(x)] <- col_na()
 
-  new_colformat(datetime, width = 19, align = "right")
+  new_coldata(datetime, width = 19, align = "right")
 }
 
 
 #' @export
 #' @param width Preferred width of output
-#' @rdname colformat
-colformat.character <- function(x, ..., width = NA) {
+#' @rdname coldata
+coldata.character <- function(x, ..., width = NA) {
   if (is.na(width)) {
     width <- pmin(max(nchar(x), na.rm = TRUE), 20)
   }
@@ -122,5 +122,5 @@ colformat.character <- function(x, ..., width = NA) {
   out <- str_trunc(x, width = width)
   out[is.na(out)] <- col_na()
 
-  new_colformat(out, width = width, align = "left")
+  new_coldata(out, width = width, align = "left")
 }
