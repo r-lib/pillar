@@ -1,9 +1,9 @@
-#' Format a vector suitable for tabular display
+#' Column data
+#'
+#' Internal class for formatting the data part of a column.
 #'
 #' @param x A vector to format
 #' @param ... Other arguments passed to methods
-#' @return A character vector with class `coldata` and
-#'   `width` and `align` attributes.
 #' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))

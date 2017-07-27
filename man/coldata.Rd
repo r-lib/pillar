@@ -7,7 +7,7 @@
 \alias{coldata.Date}
 \alias{coldata.POSIXct}
 \alias{coldata.character}
-\title{Format a vector suitable for tabular display}
+\title{Column data}
 \usage{
 coldata(x, ...)
 
@@ -35,12 +35,8 @@ use scientific display instead.}
 
 \item{width}{Preferred width of output}
 }
-\value{
-A character vector with class `coldata` and
-  `width` and `align` attributes.
-}
 \description{
-Format a vector suitable for tabular display
+Internal class for formatting the data part of a column.
 }
 \examples{
 x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
