@@ -1,6 +1,10 @@
-expect_colformat_output <- function(x, ..., filename, xp = add_special(x)) {
-  old <- options(crayon.enabled = TRUE, crayon.colors = 16L)
-  crayon::num_colors(forget = TRUE)
+expect_colformat_output <- function(x, ..., filename, xp = add_special(x), crayon = TRUE) {
+  if (crayon) {
+    old <- options(crayon.enabled = TRUE, crayon.colors = 16L)
+    crayon::num_colors(forget = TRUE)
+  } else {
+    old <- options(crayon.enabled = FALSE)
+  }
 
   on.exit({
     options(old)
