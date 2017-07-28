@@ -1,10 +1,11 @@
 new_column <- function(row, width = NULL, align = NULL) {
-  structure(
+  ret <- structure(
     row,
-    width = width,
     align = align,
     class = "column"
   )
+  ret <- set_width(ret, width)
+  ret
 }
 
 #' @export

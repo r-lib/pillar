@@ -73,8 +73,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     superscript = superscript
   )
 
-  attr(ret, "width") <- max(crayon::col_nchar(assemble_decimal(ret)))
-  ret
+  set_width(ret, max(crayon::col_nchar(assemble_decimal(ret))))
 }
 
 compute_rhs_digits <- function(x, sigfig) {

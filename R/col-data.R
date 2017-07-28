@@ -37,7 +37,7 @@ col_data <- function(x, ...) {
 #' @export
 format.col_data <- function(x, ...) {
   align <- attr(x, "align")
-  width <- attr(x, "width")
+  width <- get_width(x)
 
   new_column(x, width = width, align = attr(x, "align"))
 }
@@ -48,12 +48,13 @@ print.col_data <- function(x, ...) {
 }
 
 new_col_data <- function(x, width = max(crayon::col_nchar(x)), align = "left") {
-  structure(
+  ret <- structure(
     x,
-    width = as.integer(width),
     align = align,
     class = "col_data"
   )
+  ret <- set_width(ret, width)
+  ret
 }
 
 # Methods -----------------------------------------------------------------
@@ -80,7 +81,7 @@ col_data.numeric <- function(x, ..., sigfig = 3, sci_threshold = 15) {
   dec <- format_decimal(x, sigfig = sigfig)
 
   # This is somewhat inefficient but we can fix if it becomes a bottleneck
-  width <- attr(format(dec), "width")
+  width <- get_width(format(dec))
   if (width <= sci_threshold) {
     dec
   } else {

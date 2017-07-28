@@ -1,11 +1,12 @@
 col_title <- function(title, ...) {
-  structure(
+  ret <- structure(
     list(
       title = title
     ),
-    width = if (is.null(title)) 0L else nchar(title, "width"),
     class = "col_title"
   )
+  ret <- set_width(ret, if (is.null(title)) 0L else nchar(title, "width"))
+  ret
 }
 
 #' @export
