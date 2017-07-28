@@ -4,7 +4,7 @@
 \alias{format_decimal}
 \title{Format numbers in decimal notation}
 \usage{
-format_decimal(x, sigfig = 3)
+format_decimal(x, sigfig = 3, ...)
 }
 \arguments{
 \item{x}{A numeric vector}

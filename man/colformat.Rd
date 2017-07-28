@@ -4,12 +4,14 @@
 \alias{colformat}
 \title{Format a vector suitable for tabular display}
 \usage{
-colformat(x, title = "title", ...)
+colformat(x, title = "title", width = NULL, ...)
 }
 \arguments{
 \item{x}{A vector to format}
 
 \item{title}{An optional title for the column}
+
+\item{width}{Default width, optional}
 
 \item{...}{Other arguments passed to methods}
 }

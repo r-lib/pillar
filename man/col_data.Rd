@@ -19,7 +19,7 @@ col_data(x, ...)
 
 \method{col_data}{POSIXct}(x, ...)
 
-\method{col_data}{character}(x, ..., width = NA)
+\method{col_data}{character}(x, ...)
 }
 \arguments{
 \item{x}{A vector to format}
