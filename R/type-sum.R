@@ -23,6 +23,10 @@ format.col_type <- function(x, width = NULL, ...) {
 #' @description
 #' `type_sum()` gives a brief summary of object type. Objects that commonly
 #' occur in a data frame should return a string with four or less characters.
+#'
+#' @param x an object to summarise. Generally only methods of atomic vectors
+#'   and variants have been implemented.
+#'
 #' @export
 type_sum <- function(x) UseMethod("type_sum")
 

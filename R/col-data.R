@@ -94,7 +94,6 @@ col_data.POSIXct <- function(x, ...) {
 
 
 #' @export
-#' @param width Preferred width of output
 #' @rdname col_data
 col_data.character <- function(x, ...) {
   width <- max(nchar(x, type = "width"), na.rm = TRUE)

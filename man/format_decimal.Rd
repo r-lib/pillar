@@ -10,6 +10,8 @@ format_decimal(x, sigfig = 3, ...)
 \item{x}{A numeric vector}
 
 \item{sigfig}{Number of signficiant figures to display.}
+
+\item{...}{Ignored}
 }
 \value{
 A list with at least the following elements:

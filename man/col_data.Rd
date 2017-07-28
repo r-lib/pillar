@@ -29,8 +29,6 @@ col_data(x, ...)
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
-
-\item{width}{Preferred width of output}
 }
 \description{
 Internal class for formatting the data part of a column.
