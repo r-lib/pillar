@@ -11,7 +11,7 @@ col_type <- function(x, ...) {
 }
 
 format.col_type <- function(x, ...) {
-  character()
+  paste0("<", x$type, ">")
 }
 
 #' Provide a succinct summary of an object
