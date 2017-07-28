@@ -1,3 +1,7 @@
+col_type <- function(x, ...) {
+  NULL
+}
+
 #' Provide a succinct summary of an object
 #'
 #' @description

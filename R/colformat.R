@@ -1,9 +1,8 @@
 #' Format a vector suitable for tabular display
 #'
 #' @param x A vector to format
+#' @param title An optional title for the column
 #' @param ... Other arguments passed to methods
-#' @return A character vector with class `colformat` and
-#'   `width` and `align` attributes.
 #' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
@@ -30,10 +29,12 @@
 #' date <- as.Date("2017-05-15")
 #' colformat(date + c(1, NA, 3:5))
 #' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
-colformat <- function(x, ...) {
+colformat <- function(x, title = NULL, ...) {
+  title <- col_title(title, ...)
+  type <- col_type(x, ...)
   data <- col_data(x, ...)
   structure(
-    list(data = data),
+    list(title = title, type = type, data = data),
     class = "colformat"
   )
 }
