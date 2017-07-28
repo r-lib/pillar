@@ -10,6 +10,10 @@ col_type <- function(x, ...) {
   )
 }
 
+format.col_type <- function(x, ...) {
+  x$type
+}
+
 #' Provide a succinct summary of an object
 #'
 #' @description
