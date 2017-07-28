@@ -50,7 +50,7 @@ print.col_data <- function(x, ...) {
 new_col_data <- function(x, width = max(crayon::col_nchar(x)), align = "left") {
   structure(
     x,
-    width = width,
+    width = as.integer(width),
     align = align,
     class = "col_data"
   )

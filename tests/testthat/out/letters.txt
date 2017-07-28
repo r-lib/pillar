@@ -1,4 +1,5 @@
 [1mtitle[22m
+<chr>
 a    
 b    
 c    
