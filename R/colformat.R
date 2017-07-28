@@ -31,7 +31,7 @@
 #' colformat(date + c(1, NA, 3:5))
 #' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 colformat <- function(x, ...) {
-  data <- coldata(x, ...)
+  data <- col_data(x, ...)
   structure(
     list(data = data),
     class = "colformat"
