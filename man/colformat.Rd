@@ -4,7 +4,7 @@
 \alias{colformat}
 \title{Format a vector suitable for tabular display}
 \usage{
-colformat(x, title = "title", width = NULL, ...)
+colformat(x, title = NULL, width = NULL, ...)
 }
 \arguments{
 \item{x}{A vector to format}

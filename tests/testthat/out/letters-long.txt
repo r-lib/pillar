@@ -1,4 +1,3 @@
-[1mtitle[22m                     
 <chr>                     
 abcdefghijklmnopqrstuvwxyz
 [43m?[49m                         

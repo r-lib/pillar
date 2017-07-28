@@ -30,7 +30,7 @@
 #' date <- as.Date("2017-05-15")
 #' colformat(date + c(1, NA, 3:5))
 #' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
-colformat <- function(x, title = "title", width = NULL, ...) {
+colformat <- function(x, title = NULL, width = NULL, ...) {
   title <- col_title(title, ...)
   type <- col_type(x, ...)
   data <- col_data(x, ...)
