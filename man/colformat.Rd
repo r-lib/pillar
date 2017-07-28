@@ -2,38 +2,14 @@
 % Please edit documentation in R/colformat.R
 \name{colformat}
 \alias{colformat}
-\alias{colformat.logical}
-\alias{colformat.numeric}
-\alias{colformat.Date}
-\alias{colformat.POSIXct}
-\alias{colformat.character}
 \title{Format a vector suitable for tabular display}
 \usage{
 colformat(x, ...)
-
-\method{colformat}{logical}(x, ...)
-
-\method{colformat}{numeric}(x, ..., sigfig = 3, sci_threshold = 15)
-
-\method{colformat}{Date}(x, ...)
-
-\method{colformat}{POSIXct}(x, ...)
-
-\method{colformat}{character}(x, ..., width = NA)
 }
 \arguments{
 \item{x}{A vector to format}
 
 \item{...}{Other arguments passed to methods}
-
-\item{sigfig}{Minimum number of significant figures to display. Numbers
-larger than 1 will potentially show more signficiant figures than this
-but they will be greyed out.}
-
-\item{sci_threshold}{If decimal display is wider than this threshold,
-use scientific display instead.}
-
-\item{width}{Preferred width of output}
 }
 \value{
 A character vector with class `colformat` and
