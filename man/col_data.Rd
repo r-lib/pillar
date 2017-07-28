@@ -13,7 +13,7 @@ col_data(x, ...)
 
 \method{col_data}{logical}(x, ...)
 
-\method{col_data}{numeric}(x, ..., sigfig = 3, sci_threshold = 15)
+\method{col_data}{numeric}(x, ..., sigfig = 3)
 
 \method{col_data}{Date}(x, ...)
 
@@ -29,9 +29,6 @@ col_data(x, ...)
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
-
-\item{sci_threshold}{If decimal display is wider than this threshold,
-use scientific display instead.}
 
 \item{width}{Preferred width of output}
 }

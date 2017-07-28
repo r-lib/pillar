@@ -57,9 +57,7 @@ col_data.logical <- function(x, ...) {
 #' @param sigfig Minimum number of significant figures to display. Numbers
 #'   larger than 1 will potentially show more signficiant figures than this
 #'   but they will be greyed out.
-#' @param sci_threshold If decimal display is wider than this threshold,
-#'   use scientific display instead.
-col_data.numeric <- function(x, ..., sigfig = 3, sci_threshold = 15) {
+col_data.numeric <- function(x, ..., sigfig = 3) {
   dec <- format_decimal(x, ..., sigfig = sigfig)
   sci <- format_scientific(x, ..., sigfig = sigfig)
 
