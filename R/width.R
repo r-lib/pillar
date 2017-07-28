@@ -3,6 +3,7 @@ get_width <- function(x) {
 }
 
 set_width <- function(x, width) {
+  if (is.null(width)) return(x)
   attr(x, "width") <- as.integer(width)
   x
 }

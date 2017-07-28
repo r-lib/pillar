@@ -2,6 +2,7 @@
 #'
 #' @param x A vector to format
 #' @param title An optional title for the column
+#' @param width Default width, optional
 #' @param ... Other arguments passed to methods
 #' @export
 #' @examples
@@ -29,18 +30,24 @@
 #' date <- as.Date("2017-05-15")
 #' colformat(date + c(1, NA, 3:5))
 #' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
-colformat <- function(x, title = "title", ...) {
+colformat <- function(x, title = "title", width = NULL, ...) {
   title <- col_title(title, ...)
   type <- col_type(x, ...)
   data <- col_data(x, ...)
-  structure(
+  ret <- structure(
     list(title = title, type = type, data = data),
     class = "colformat"
   )
+  ret <- set_width(ret, width)
+  ret
 }
 
 #' @export
 format.colformat <- function(x, width = NULL, ...) {
+  if (is.null(width)) {
+    width <- get_width(x)
+  }
+
   if (is.null(width)) {
     widths <- get_widths(x)
     width <- max(widths)
