@@ -38,29 +38,3 @@ use scientific display instead.}
 \description{
 Internal class for formatting the data part of a column.
 }
-\examples{
-x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
-col_data(x)
-col_data(-x)
-col_data(runif(10))
-col_data(rcauchy(20))
-
-# Special values are highlighted
-col_data(c(runif(5), NA, NaN, Inf, -Inf))
-
-# Very wide ranges will be displayed in scientific format
-col_data(c(1e10, 1e-10))
-col_data(c(1e10, 1e-10), sci_threshold = Inf)
-
-x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
-col_data(x)
-
-x <- c("This is string is rather long", NA, "?", "Short")
-col_data(x)
-col_data(x, width = 30)
-col_data(x, width = 5)
-
-date <- as.Date("2017-05-15")
-col_data(date + c(1, NA, 3:5))
-col_data(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
-}
