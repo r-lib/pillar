@@ -34,7 +34,7 @@ spark_bar <- function(x, safe = TRUE) {
     include.lowest = TRUE
   )
   chars <- as.character(factor)
-  chars[is.na(chars)] <- crayon::style(bars[length(bars)], colour_na())
+  chars[is.na(chars)] <- style_spark_na(bars[length(bars)])
 
   structure(paste0(chars, collapse = ""), class = "spark")
 }

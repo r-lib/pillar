@@ -16,13 +16,13 @@ style_subtle <- keep_empty(function(x) {
   style_grey(0.6, x)
 })
 
-colour_na <- function() {
-  grDevices::rgb(5, 5, 2, maxColorValue = 5)
+style_spark_na <- function(x) {
+  crayon::yellow(x)
 }
 
-style_na <- keep_empty(function(x) {
-  crayon::style(x, bg = colour_na())
-})
+style_na <- function(x) {
+  crayon::bgYellow(crayon::black(x))
+}
 
 style_neg <- keep_empty(function(x) {
   crayon::red(x)
