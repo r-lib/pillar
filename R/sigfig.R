@@ -73,7 +73,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     superscript = superscript
   )
 
-  ret$width <- max(crayon::col_nchar(assemble_decimal(ret)))
+  attr(ret, "width") <- max(crayon::col_nchar(assemble_decimal(ret)))
   ret
 }
 

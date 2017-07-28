@@ -2,10 +2,10 @@ col_type <- function(x, ...) {
   type <- type_sum(x)
   structure(
     list(
-      type = type,
-      min_width = 3L,
-      width = nchar(type, type = "width") + 2L
+      type = type
     ),
+    min_width = 3L,
+    width = nchar(type, type = "width") + 2L,
     class = "col_type"
   )
 }

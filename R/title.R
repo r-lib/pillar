@@ -1,9 +1,9 @@
 col_title <- function(title, ...) {
   structure(
     list(
-      title = title,
-      width = if (is.null(title)) 0L else nchar(title, "width")
+      title = title
     ),
+    width = if (is.null(title)) 0L else nchar(title, "width"),
     class = "col_title"
   )
 }

@@ -42,7 +42,7 @@ colformat <- function(x, title = "title", ...) {
 #' @export
 format.colformat <- function(x, width = NULL, ...) {
   if (is.null(width)) {
-    width <- max(map_int(x, "[[", "width"))
+    width <- max(map_int(x, attr, "width"))
   }
 
   title_format <- format(x$title, ...)
