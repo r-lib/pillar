@@ -168,7 +168,7 @@ style_num <- function(x, negative, subtle = rep_along(x, FALSE)) {
 }
 
 #' @export
-format.decimal_format <- function(x, title = "title", ...) {
+format.decimal_format <- function(x, ...) {
   neg <- format_neg(x)
   lhs <- format_lhs(x)
   dec <- format_dec(x)
@@ -176,12 +176,12 @@ format.decimal_format <- function(x, title = "title", ...) {
   exp <- format_exp(x)
 
   row <- paste0(neg, lhs, dec, rhs, exp)
-  width <- max(nchar(title), crayon::col_nchar(row))
+  width <- max(crayon::col_nchar(row))
 
-  new_column(row, title = title, width = width, align = "right")
+  new_column(row, width = width, align = "right")
 }
 
 #' @export
-print.decimal_format <- function(x, title = "title", ...) {
-  print(format(x, title = title, ...))
+print.decimal_format <- function(x, ...) {
+  print(format(x, ...))
 }

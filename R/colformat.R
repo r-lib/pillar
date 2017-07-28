@@ -29,7 +29,7 @@
 #' date <- as.Date("2017-05-15")
 #' colformat(date + c(1, NA, 3:5))
 #' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
-colformat <- function(x, title = NULL, ...) {
+colformat <- function(x, title = "title", ...) {
   title <- col_title(title, ...)
   type <- col_type(x, ...)
   data <- col_data(x, ...)
@@ -40,11 +40,24 @@ colformat <- function(x, title = NULL, ...) {
 }
 
 #' @export
-format.colformat <- function(x, title = "title", ...) {
-  format(x$data, title = title, ...)
+format.colformat <- function(x, ...) {
+  col_data <- c(
+    format(x$title, ...),
+    format(x$type, ...),
+    format(x$data, ...)
+  )
+  values <- crayon::col_align(
+    col_data,
+    width = max(crayon::col_nchar(col_data)),
+    align = "right"
+  )
+  structure(
+    values,
+    class = "column"
+  )
 }
 
 #' @export
-print.colformat <- function(x, title = "title", ...) {
-  print(format(x, title = title, ...))
+print.colformat <- function(x, ...) {
+  print(format(x, ...))
 }

@@ -35,16 +35,16 @@ col_data <- function(x, ...) {
 }
 
 #' @export
-format.col_data <- function(x, title = "title", ...) {
+format.col_data <- function(x, ...) {
   align <- attr(x, "align")
-  width <- max(nchar(title), attr(x, "width"))
+  width <- max(attr(x, "width"))
 
-  new_column(x, title = title, width = width, align = attr(x, "align"))
+  new_column(x, width = width, align = attr(x, "align"))
 }
 
 #' @export
-print.col_data <- function(x, title = "title", ...) {
-  print(format(x, title = title, ...))
+print.col_data <- function(x, ...) {
+  print(format(x, ...))
 }
 
 new_col_data <- function(x, width = max(crayon::col_nchar(x)), align = "left") {

@@ -36,4 +36,3 @@ ruler <- function(width = getOption("width")) {
   cat(y, "\n", sep = "")
   cat(x %% 10, "\n", sep = "")
 }
-
