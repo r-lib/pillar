@@ -60,7 +60,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
 
-  list(
+  ret <- list(
     sigfig = sigfig,
     num = num,
     neg = neg,
@@ -72,6 +72,9 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     exp = exp_display,
     superscript = superscript
   )
+
+  ret$width <- max(crayon::col_nchar(assemble_decimal(ret)))
+  ret
 }
 
 compute_rhs_digits <- function(x, sigfig) {
@@ -167,15 +170,19 @@ style_num <- function(x, negative, subtle = rep_along(x, FALSE)) {
   ifelse(subtle, style_subtle(x), ifelse(negative, style_neg(x), x))
 }
 
-#' @export
-format.decimal_format <- function(x, ...) {
+assemble_decimal <- function(x) {
   neg <- format_neg(x)
   lhs <- format_lhs(x)
   dec <- format_dec(x)
   rhs <- format_rhs(x)
   exp <- format_exp(x)
 
-  row <- paste0(neg, lhs, dec, rhs, exp)
+  paste0(neg, lhs, dec, rhs, exp)
+}
+
+#' @export
+format.decimal_format <- function(x, ...) {
+  row <- assemble_decimal(x)
   width <- max(crayon::col_nchar(row))
 
   new_column(row, width = width, align = "right")

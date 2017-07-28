@@ -1,8 +1,7 @@
 [1mtitle[22m
-<chr>
-    a
-    b
-    c
-    d
-    e
-    [43m?[49m
+a    
+b    
+c    
+d    
+e    
+[43m?[49m    
