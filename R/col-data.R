@@ -85,15 +85,17 @@ col_data.logical <- function(x, ...) {
 #' @param sci_threshold If decimal display is wider than this threshold,
 #'   use scientific display instead.
 col_data.numeric <- function(x, ..., sigfig = 3, sci_threshold = 15) {
-  dec <- format_decimal(x, sigfig = sigfig)
+  dec <- format_decimal(x, ..., sigfig = sigfig)
+  sci <- format_scientific(x, ..., sigfig = sigfig)
 
-  # This is somewhat inefficient but we can fix if it becomes a bottleneck
-  width <- get_width(format(dec))
-  if (width <= sci_threshold) {
-    dec
-  } else {
-    format_scientific(x, sigfig = sigfig)
-  }
+  ret <- structure(
+    list(dec = dec, sci = sci),
+    class = "decimal_format"
+  )
+
+  ret <- set_width(ret, max(get_widths(ret)))
+  ret <- set_min_width(ret, min(get_min_widths(ret)))
+  ret
 }
 
 #' @export

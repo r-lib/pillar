@@ -10,12 +10,7 @@
 #' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
 #' format_scientific(x)
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
-  s <- split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
-
-  structure(
-    s,
-    class = "decimal_format"
-  )
+  split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 }
 
 format_exp <- function(x) {

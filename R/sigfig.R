@@ -23,13 +23,8 @@
 #'
 #' format_decimal(c(Inf, -Inf, NA, NaN), 3)
 #' format_decimal(c(1e10, 1e-10), 3)
-format_decimal <- function(x, sigfig = 3) {
-  s <- split_decimal(x, sigfig)
-
-  structure(
-    s,
-    class = "decimal_format"
-  )
+format_decimal <- function(x, sigfig = 3, ...) {
+  split_decimal(x, sigfig)
 }
 
 split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
@@ -180,10 +175,22 @@ assemble_decimal <- function(x) {
 }
 
 #' @export
-format.decimal_format <- function(x, ...) {
-  row <- assemble_decimal(x)
-  width <- max(crayon::col_nchar(row))
+format.decimal_format <- function(x, width, ...) {
+  if (width < get_min_width(x)) {
+    stop(
+      "Need at least width ", get_min_width(x), " requested ", width, ".",
+      call = FALSE
+    )
+  }
 
+  if (width >= get_width(x$dec)) {
+    row <- assemble_decimal(x$dec)
+  } else {
+    row <- assemble_decimal(x$sci)
+  }
+
+  used_width <- max(crayon::col_nchar(row))
+  row <- paste0(strrep(" ", width - used_width), row)
   new_column(row, width = width, align = "right")
 }
 
