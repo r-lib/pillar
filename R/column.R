@@ -1,9 +1,8 @@
-new_column <- function(row, width, align = "right") {
-  row <- col_align(row, width = width, align = align)
-
+new_column <- function(row, width = NULL, align = NULL) {
   structure(
     row,
     width = width,
+    align = align,
     class = "column"
   )
 }

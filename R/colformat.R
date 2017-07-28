@@ -45,19 +45,17 @@ format.colformat <- function(x, width = NULL, ...) {
     width <- max(map_int(x, "[[", "width"))
   }
 
-  col_data <- c(
-    format(x$title, ...),
-    format(x$type, ...),
-    format(x$data, ...)
-  )
-  values <- crayon::col_align(
-    col_data,
-    width = max(crayon::col_nchar(col_data)),
-    align = "right"
-  )
-  structure(
-    values,
-    class = "column"
+  title_format <- format(x$title, ...)
+  type_format <- format(x$type, ...)
+  data_format <- format(x$data, ...)
+  align <- attr(data_format, "align")
+
+  col_data <- c(title_format, type_format, data_format)
+
+  new_column(
+    crayon::col_align(col_data, width = width, align = align),
+    width,
+    align = "left"
   )
 }
 
