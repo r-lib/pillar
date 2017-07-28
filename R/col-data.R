@@ -37,7 +37,7 @@ col_data <- function(x, ...) {
 #' @export
 format.col_data <- function(x, ...) {
   align <- attr(x, "align")
-  width <- max(attr(x, "width"))
+  width <- attr(x, "width")
 
   new_column(x, width = width, align = attr(x, "align"))
 }
