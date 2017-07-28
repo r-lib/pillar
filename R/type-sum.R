@@ -1,5 +1,13 @@
 col_type <- function(x, ...) {
-  NULL
+  type <- type_sum(x)
+  structure(
+    list(
+      type = type,
+      min_width = 3L,
+      width = nchar(type, type = "width") + 2L
+    ),
+    class = "col_type"
+  )
 }
 
 #' Provide a succinct summary of an object
