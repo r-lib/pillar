@@ -42,12 +42,16 @@ colformat <- function(x, title = "title", ...) {
 #' @export
 format.colformat <- function(x, width = NULL, ...) {
   if (is.null(width)) {
-    width <- max(get_widths(x))
+    widths <- get_widths(x)
+    width <- max(widths)
   }
 
-  title_format <- format(x$title, ...)
-  type_format <- format(x$type, ...)
-  data_format <- format(x$data, ...)
+  min_widths <- max(get_min_widths(x))
+  if (width < min_widths) width <- min_widths
+
+  title_format <- format(x$title, width = width, ...)
+  type_format <- format(x$type, width = width, ...)
+  data_format <- format(x$data, width = width, ...)
   align <- attr(data_format, "align")
 
   col_data <- c(title_format, type_format, data_format)

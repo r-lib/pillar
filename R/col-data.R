@@ -35,11 +35,16 @@ col_data <- function(x, ...) {
 }
 
 #' @export
-format.col_data <- function(x, ...) {
+format.col_data <- function(x, width, ...) {
   align <- attr(x, "align")
-  width <- get_width(x)
+  desired_width <- get_width(x)
+  if (width < desired_width) {
+    data <- str_trunc(x, width)
+  } else {
+    data <- x
+  }
 
-  new_column(x, width = width, align = attr(x, "align"))
+  new_column(data, width = width, align = align)
 }
 
 #' @export
@@ -47,13 +52,15 @@ print.col_data <- function(x, ...) {
   print(format(x, ...))
 }
 
-new_col_data <- function(x, width = max(crayon::col_nchar(x)), align = "left") {
+new_col_data <- function(x, width = max(crayon::col_nchar(x)), align = "left",
+                         min_width = NULL) {
   ret <- structure(
     x,
     align = align,
     class = "col_data"
   )
   ret <- set_width(ret, width)
+  ret <- set_min_width(ret, min_width)
   ret
 }
 
@@ -114,14 +121,12 @@ col_data.POSIXct <- function(x, ...) {
 #' @export
 #' @param width Preferred width of output
 #' @rdname col_data
-col_data.character <- function(x, ..., width = NA) {
-  if (is.na(width)) {
-    width <- pmin(max(nchar(x), na.rm = TRUE), 20)
-  }
+col_data.character <- function(x, ...) {
+  width <- max(nchar(x, type = "width"), na.rm = TRUE)
 
   x <- encodeString(x, na.encode = FALSE)
   out <- str_trunc(x, width = width)
   out[is.na(out)] <- col_na()
 
-  new_col_data(out, width = width, align = "left")
+  new_col_data(out, width = width, align = "left", min_width = min(width, 3L))
 }

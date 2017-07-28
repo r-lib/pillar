@@ -11,8 +11,11 @@ col_type <- function(x, ...) {
   ret
 }
 
-format.col_type <- function(x, ...) {
-  paste0("<", x$type, ">")
+#' @export
+format.col_type <- function(x, width = NULL, ...) {
+  if (is.null(width) || width >= get_width(x)) type <- x$type
+  else type <- substr(x$type, 1, width - 2)
+  paste0("<", type, ">")
 }
 
 #' Provide a succinct summary of an object
