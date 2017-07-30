@@ -5,7 +5,13 @@ col_title <- function(title, ...) {
     ),
     class = "col_title"
   )
-  ret <- set_width(ret, if (is.null(title)) 0L else nchar(title, "width"))
+
+  if (is.null(title)) {
+    width <- 0L
+  } else {
+    width <- nchar(format_title(title, width = Inf), "width")
+  }
+  ret <- set_width(ret, width)
   ret <- set_min_width(ret, 3L)
   ret
 }
@@ -16,9 +22,7 @@ format.col_title <- function(x, width, ...) {
   if (is.null(title)) return(character())
 
   desired_width <- get_width(x)
-  if (width < desired_width) {
-    title <- str_trunc(title, width)
-  }
+  title <- format_title(title, width)
 
   crayon::bold(title)
 }
