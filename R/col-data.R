@@ -106,6 +106,20 @@ cf_data.character <- function(x, ...) {
 }
 
 #' @export
+#' @rdname cf_list
+cf_data.list <- function(x, ...) {
+  out <- paste0("<", obj_sum(x), ">")
+
+  width <- max(nchar(x, type = "width"))
+
+  new_cf_data(style_list(out), width = width, align = "left", min_width = min(width, 3L))
+}
+
+style_list <- function(x) {
+  style_subtle(x)
+}
+
+#' @export
 #' @rdname cf_data
 cf_data.default <- function(x, ...) {
   out <- paste0("<", obj_sum(x), ">")
