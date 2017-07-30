@@ -29,8 +29,8 @@ colformat(rcauchy(20))
 colformat(c(runif(5), NA, NaN, Inf, -Inf))
 
 # Very wide ranges will be displayed in scientific format
+colformat(c(1e10, 1e-10), width = 20)
 colformat(c(1e10, 1e-10))
-colformat(c(1e10, 1e-10), sci_threshold = Inf)
 
 x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
 colformat(x)
