@@ -1,4 +1,4 @@
-[1mtitle[22m
+[90m<chr>[39m
 a    
 b    
 c    

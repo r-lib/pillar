@@ -4,16 +4,16 @@
 \alias{colformat}
 \title{Format a vector suitable for tabular display}
 \usage{
-colformat(x, ...)
+colformat(x, title = NULL, width = NULL, ...)
 }
 \arguments{
 \item{x}{A vector to format}
 
+\item{title}{An optional title for the column}
+
+\item{width}{Default width, optional}
+
 \item{...}{Other arguments passed to methods}
-}
-\value{
-A character vector with class `colformat` and
-  `width` and `align` attributes.
 }
 \description{
 Format a vector suitable for tabular display
@@ -29,8 +29,8 @@ colformat(rcauchy(20))
 colformat(c(runif(5), NA, NaN, Inf, -Inf))
 
 # Very wide ranges will be displayed in scientific format
+colformat(c(1e10, 1e-10), width = 20)
 colformat(c(1e10, 1e-10))
-colformat(c(1e10, 1e-10), sci_threshold = Inf)
 
 x <- c(FALSE, NA, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
 colformat(x)

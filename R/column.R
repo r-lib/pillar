@@ -1,17 +1,14 @@
-new_column <- function(row, title, width, align = "right") {
-  row <- col_align(row, width = width, align = align)
-  title <- col_align(title, width = width, align = align)
-
-  structure(
+new_column <- function(row, width = NULL, align = NULL) {
+  ret <- structure(
     row,
-    title = title,
-    width = width,
+    align = align,
     class = "column"
   )
+  ret <- set_width(ret, width)
+  ret
 }
 
 #' @export
 print.column <- function(x, ...) {
-  cat_line(crayon::bold(attr(x, "title")))
   cat_line(paste(x, collapse = "\n"))
 }

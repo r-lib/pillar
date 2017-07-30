@@ -13,6 +13,7 @@
 #'
 #' @param x A numeric vector
 #' @param sigfig Number of signficiant figures to display.
+#' @param ... Ignored
 #' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
@@ -23,13 +24,8 @@
 #'
 #' format_decimal(c(Inf, -Inf, NA, NaN), 3)
 #' format_decimal(c(1e10, 1e-10), 3)
-format_decimal <- function(x, sigfig = 3) {
-  s <- split_decimal(x, sigfig)
-
-  structure(
-    s,
-    class = "decimal_format"
-  )
+format_decimal <- function(x, sigfig = 3, ...) {
+  split_decimal(x, sigfig)
 }
 
 split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
@@ -60,7 +56,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
 
-  list(
+  ret <- list(
     sigfig = sigfig,
     num = num,
     neg = neg,
@@ -72,6 +68,8 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     exp = exp_display,
     superscript = superscript
   )
+
+  set_width(ret, max(crayon::col_nchar(assemble_decimal(ret))))
 }
 
 compute_rhs_digits <- function(x, sigfig) {
@@ -167,21 +165,37 @@ style_num <- function(x, negative, subtle = rep_along(x, FALSE)) {
   ifelse(subtle, style_subtle(x), ifelse(negative, style_neg(x), x))
 }
 
-#' @export
-format.decimal_format <- function(x, title = "title", ...) {
+assemble_decimal <- function(x) {
   neg <- format_neg(x)
   lhs <- format_lhs(x)
   dec <- format_dec(x)
   rhs <- format_rhs(x)
   exp <- format_exp(x)
 
-  row <- paste0(neg, lhs, dec, rhs, exp)
-  width <- max(nchar(title), crayon::col_nchar(row))
-
-  new_column(row, title = title, width = width, align = "right")
+  paste0(neg, lhs, dec, rhs, exp)
 }
 
 #' @export
-print.decimal_format <- function(x, title = "title", ...) {
-  print(format(x, title = title, ...))
+format.decimal_format <- function(x, width, ...) {
+  if (width < get_min_width(x)) {
+    stop(
+      "Need at least width ", get_min_width(x), " requested ", width, ".",
+      call = FALSE
+    )
+  }
+
+  if (width >= get_width(x$dec)) {
+    row <- assemble_decimal(x$dec)
+  } else {
+    row <- assemble_decimal(x$sci)
+  }
+
+  used_width <- max(crayon::col_nchar(row))
+  row <- paste0(strrep(" ", width - used_width), row)
+  new_column(row, width = width, align = "right")
+}
+
+#' @export
+print.decimal_format <- function(x, ...) {
+  print(format(x, ...))
 }
