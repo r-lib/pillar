@@ -1,3 +1,7 @@
+style_type <- function(x) {
+  style_subtle(x)
+}
+
 col_type <- function(x, ...) {
   type <- type_sum(x)
   ret <- structure(
@@ -15,7 +19,7 @@ col_type <- function(x, ...) {
 format.col_type <- function(x, width = NULL, ...) {
   if (is.null(width) || width >= get_width(x)) type <- x$type
   else type <- substr(x$type, 1, width - 2)
-  paste0("<", type, ">")
+  style_type(paste0("<", type, ">"))
 }
 
 #' Provide a succinct summary of an object
