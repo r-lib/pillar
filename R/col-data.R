@@ -106,7 +106,7 @@ cf_data.character <- function(x, ...) {
 }
 
 #' @export
-#' @rdname cf_list
+#' @rdname cf_data
 cf_data.list <- function(x, ...) {
   out <- paste0("<", obj_sum(x), ">")
 

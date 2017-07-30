@@ -7,6 +7,8 @@
 \alias{cf_data.Date}
 \alias{cf_data.POSIXct}
 \alias{cf_data.character}
+\alias{cf_data.list}
+\alias{cf_data.default}
 \title{Column data}
 \usage{
 cf_data(x, ...)
@@ -20,6 +22,10 @@ cf_data(x, ...)
 \method{cf_data}{POSIXct}(x, ...)
 
 \method{cf_data}{character}(x, ...)
+
+\method{cf_data}{list}(x, ...)
+
+\method{cf_data}{default}(x, ...)
 }
 \arguments{
 \item{x}{A vector to format}
