@@ -1,27 +1,3 @@
-style_type <- function(x) {
-  style_subtle(x)
-}
-
-cf_type <- function(x, ...) {
-  type <- type_sum(x)
-  ret <- structure(
-    list(
-      type = type
-    ),
-    class = "cf_type"
-  )
-  ret <- set_width(ret, width = nchar(type, type = "width") + 2L)
-  ret <- set_min_width(ret, 3L)
-  ret
-}
-
-#' @export
-format.cf_type <- function(x, width = NULL, ...) {
-  if (is.null(width) || width >= get_width(x)) type <- x$type
-  else type <- substr(x$type, 1, width - 2)
-  style_type(paste0("<", type, ">"))
-}
-
 #' Provide a succinct summary of an object
 #'
 #' @description
@@ -67,3 +43,56 @@ type_sum.default <- function(x) {
     paste0("S4: ", methods::is(x)[[1]])
   }
 }
+
+#' @description
+#' `obj_sum()` also includes the size of the object if `is_vector_s3()`
+#' is `TRUE`.
+#'
+#' @keywords internal
+#' @examples
+#' obj_sum(1:10)
+#' obj_sum(matrix(1:10))
+#' obj_sum(Sys.Date())
+#' obj_sum(Sys.time())
+#' obj_sum(mean)
+#' @rdname type_sum
+#' @export
+obj_sum <- function(x) UseMethod("obj_sum")
+
+#' @export
+obj_sum.default <- function(x) {
+  paste0(type_sum(x), size_sum(x))
+}
+
+#' @export
+obj_sum.list <- function(x) {
+  map_chr(x, obj_sum.default)
+}
+
+#' @export
+obj_sum.POSIXlt <- function(x) {
+  rep("POSIXlt", length(x))
+}
+
+size_sum <- function(x) {
+  ""
+}
+
+#' @export
+#' @rdname type_sum
+is_vector_s3 <- function(x) UseMethod("is_vector_s3")
+#' @export
+is_vector_s3.ordered <- function(x) TRUE
+#' @export
+is_vector_s3.factor <- function(x) TRUE
+#' @export
+is_vector_s3.Date <- function(x) TRUE
+#' @export
+is_vector_s3.POSIXct <- function(x) TRUE
+#' @export
+is_vector_s3.difftime <- function(x) TRUE
+#' @export
+is_vector_s3.data.frame <- function(x) TRUE
+#' @export
+is_vector_s3.default <- function(x) !is.object(x) && is_vector(x)
+
