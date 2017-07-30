@@ -110,7 +110,7 @@ cf_data.character <- function(x, ...) {
 cf_data.list <- function(x, ...) {
   out <- paste0("<", obj_sum(x), ">")
 
-  width <- max(nchar(x, type = "width"))
+  width <- max(nchar(out, type = "width"))
 
   new_cf_data(style_list(out), width = width, align = "left", min_width = min(width, 3L))
 }
@@ -125,7 +125,7 @@ cf_data.default <- function(x, ...) {
   out <- paste0("<", obj_sum(x), ">")
   out[is.na(x)] <- cf_na()
 
-  width <- max(nchar(x, type = "width"))
+  width <- max(nchar(out, type = "width"))
 
   new_cf_data(style_unknown(out), width = width, align = "left", min_width = min(width, 3L))
 }
