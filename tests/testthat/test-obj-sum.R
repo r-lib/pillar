@@ -17,12 +17,10 @@ test_that("NULL handled specially", {
 })
 
 test_that("data frame and tibbles include rows and cols", {
-  skip("Dimensions not supported yet")
   expect_equal(obj_sum(mtcars), "data.frame [32 x 11]")
 })
 
 test_that("common data vectors treated as atomic", {
-  skip("Dimensions not supported yet")
   expect_equal(obj_sum(factor(1:3)), "fctr [3]")
   expect_equal(obj_sum(ordered(1:3)), "ord [3]")
   expect_equal(obj_sum(Sys.Date() + 1:3), "date [3]")
@@ -30,7 +28,6 @@ test_that("common data vectors treated as atomic", {
 })
 
 test_that("difftime is shown as time", {
-  skip("Dimensions not supported yet")
   expect_equal(obj_sum(Sys.time() - Sys.time() + 1:3), "time [3]")
 })
 

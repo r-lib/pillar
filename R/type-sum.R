@@ -74,10 +74,6 @@ obj_sum.POSIXlt <- function(x) {
   rep("POSIXlt", length(x))
 }
 
-size_sum <- function(x) {
-  ""
-}
-
 #' @export
 #' @rdname type_sum
 is_vector_s3 <- function(x) UseMethod("is_vector_s3")
@@ -95,4 +91,3 @@ is_vector_s3.difftime <- function(x) TRUE
 is_vector_s3.data.frame <- function(x) TRUE
 #' @export
 is_vector_s3.default <- function(x) !is.object(x) && is_vector(x)
-
