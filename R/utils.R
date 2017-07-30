@@ -10,8 +10,8 @@ col_align <- function(x, width, align) {
 str_trunc <- function(x, width = 20) {
   str_width <- nchar(x, type = "width")
 
-  too_long <- !is.na(x) & str_width > width
-  x[too_long] <- paste0(substr(x[too_long], 1, width - 1), "\u2026")
+  too_wide <- !is.na(x) & str_width > width
+  x[too_wide] <- paste0(substr(x[too_wide], 1, width - 1), "\u2026")
 
   x
 }
