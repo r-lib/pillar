@@ -8,6 +8,8 @@ cf_align <- function(x, width, align) {
 }
 
 str_trunc <- function(x, width = 20) {
+  if (width == Inf) return(x)
+
   str_width <- nchar(x, type = "width")
 
   too_wide <- !is.na(x) & str_width > width
