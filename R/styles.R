@@ -1,9 +1,8 @@
 keep_empty <- function(fun) {
    function(x) {
     ret <- rep_along(x, "")
-    update <- is.na(x) | x != ""
-    x <- x[update]
-    ret[update] <- fun(x)
+    update <- which(is.na(x) | x != "")
+    ret[update] <- fun(x[update])
     ret
   }
 }
