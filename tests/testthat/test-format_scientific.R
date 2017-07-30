@@ -4,7 +4,7 @@ format_scientific_bw <- function(x, ...) {
   old <- options(crayon.enabled = FALSE)
   on.exit(options(old))
 
-  ret <- col_data(x, ...)
+  ret <- cf_data(x, ...)
   # Hack: Pretend decimal format requires 100 characters
   ret$dec <- set_width(ret$dec, 100)
   ret <- set_width(ret, 100)

@@ -1,9 +1,9 @@
-col_title <- function(title, ...) {
+cf_title <- function(title, ...) {
   ret <- structure(
     list(
       title = title
     ),
-    class = "col_title"
+    class = "cf_title"
   )
 
   if (is.null(title)) {
@@ -17,7 +17,7 @@ col_title <- function(title, ...) {
 }
 
 #' @export
-format.col_title <- function(x, width, ...) {
+format.cf_title <- function(x, width, ...) {
   title <- x$title
   if (is.null(title)) return(character())
 

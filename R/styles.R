@@ -35,7 +35,7 @@ style_grey <- function(level, ...) {
   )
 }
 
-col_na <- function(width = 1L) {
+cf_na <- function(width = 1L) {
   width <- pmax(0, width - 1)
 
   paste0(strrep(" ", width), style_na("?"))

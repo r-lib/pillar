@@ -31,9 +31,9 @@
 #' colformat(date + c(1, NA, 3:5))
 #' colformat(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 colformat <- function(x, title = NULL, width = NULL, ...) {
-  title <- col_title(title, ...)
-  type <- col_type(x, ...)
-  data <- col_data(x, ...)
+  title <- cf_title(title, ...)
+  type <- cf_type(x, ...)
+  data <- cf_data(x, ...)
   ret <- structure(
     list(title = title, type = type, data = data),
     class = "colformat"
@@ -61,10 +61,10 @@ format.colformat <- function(x, width = NULL, ...) {
   data_format <- format(x$data, width = width, ...)
   align <- attr(data_format, "align")
 
-  col_data <- c(title_format, type_format, data_format)
+  cf_data <- c(title_format, type_format, data_format)
 
   new_column(
-    crayon::col_align(col_data, width = width, align = align),
+    crayon::col_align(cf_data, width = width, align = align),
     width,
     align = "left"
   )
