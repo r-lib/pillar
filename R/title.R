@@ -1,4 +1,13 @@
 cf_title <- function(title, ...) {
+  if (is.null(title)) {
+    width <- 0L
+  } else if (is.na(title) || title == "") {
+    width <- 0L
+    title <- NULL
+  } else {
+    width <- nchar(format_title(title, width = Inf), "width")
+  }
+
   ret <- structure(
     list(
       title = title
@@ -6,11 +15,6 @@ cf_title <- function(title, ...) {
     class = "cf_title"
   )
 
-  if (is.null(title)) {
-    width <- 0L
-  } else {
-    width <- nchar(format_title(title, width = Inf), "width")
-  }
   ret <- set_width(ret, width)
   ret <- set_min_width(ret, 3L)
   ret
