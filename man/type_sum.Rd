@@ -2,9 +2,15 @@
 % Please edit documentation in R/type-sum.R
 \name{type_sum}
 \alias{type_sum}
+\alias{obj_sum}
+\alias{is_vector_s3}
 \title{Provide a succinct summary of an object}
 \usage{
 type_sum(x)
+
+obj_sum(x)
+
+is_vector_s3(x)
 }
 \arguments{
 \item{x}{an object to summarise. Generally only methods of atomic vectors
@@ -13,4 +19,15 @@ and variants have been implemented.}
 \description{
 `type_sum()` gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
+
+`obj_sum()` also includes the size of the object if `is_vector_s3()`
+is `TRUE`.
 }
+\examples{
+obj_sum(1:10)
+obj_sum(matrix(1:10))
+obj_sum(Sys.Date())
+obj_sum(Sys.time())
+obj_sum(mean)
+}
+\keyword{internal}
