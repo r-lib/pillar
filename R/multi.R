@@ -37,7 +37,10 @@ mcf_get_width <- function(x, width) {
 
   col_widths <- mcf_compute_col_widths(min_widths, max_widths, width)
 
-  col_widths
+  max_widths <- max_widths[seq_along(col_widths)]
+  added_space <- mcf_distribute_space(col_widths, max_widths, width)
+
+  col_widths + added_space
 }
 
 mcf_compute_col_widths <- function(min_widths, max_widths, width) {
@@ -53,4 +56,16 @@ mcf_compute_col_widths <- function(min_widths, max_widths, width) {
     col_widths <- ifelse(allowed_max, max_widths, min_widths)
   }
   col_widths
+}
+
+mcf_distribute_space <- function(col_widths, max_widths, width) {
+  missing_space <- max_widths - col_widths
+
+  # Avoid division by zero:
+  if (all(missing_space == 0L)) return(rep_along(col_widths, 0L))
+
+  remaining_width <- min(width - sum(col_widths + 1L), sum(missing_space))
+  added_space_frac <- missing_space / sum(missing_space) * remaining_width
+  added_space <- diff(c(0L, as.integer(round(cumsum(added_space_frac)))))
+  added_space
 }
