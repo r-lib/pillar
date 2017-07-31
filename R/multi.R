@@ -21,9 +21,14 @@ format.multicolformat <- function(x, width = NULL, ...) {
   }
 
   col_widths <- mcf_get_width(x, width)
-  formats <- map2(x[seq_along(col_widths)], col_widths, format)
+  out <- map2(x[seq_along(col_widths)], col_widths, cf_format_parts)
+  mcf_data <- c(
+    invoke(paste, map(out, `[[`, "title_format")),
+    crayon::underline(invoke(paste, map(out, `[[`, "type_format"))),
+    invoke(paste, map(out, `[[`, "data_format"))
+  )
 
-  new_vertical(invoke(paste, formats))
+  new_vertical(mcf_data)
 }
 
 #' @export
