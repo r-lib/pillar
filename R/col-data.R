@@ -66,7 +66,7 @@ cf_data.numeric <- function(x, ..., sigfig = 3) {
     class = "decimal_format"
   )
 
-  ret <- set_width(ret, max(get_widths(ret)))
+  ret <- set_width(ret, get_width(ret$dec))
   ret <- set_min_width(ret, min(get_min_widths(ret)))
   ret
 }
