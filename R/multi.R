@@ -35,11 +35,15 @@ mcf_get_width <- function(x, width) {
   widths <- map_int(map(x, get_widths), max)
   min_widths <- map_int(map(x, get_min_widths), max)
 
+  col_widths <- mcf_compute_col_widths(min_widths, widths, width)
+
+  col_widths
+}
+
+mcf_compute_col_widths <- function(min_widths, widths, width) {
   cum_min_widths <- cumsum(min_widths + 1L)
   allowed_min <- which(cum_min_widths <= width)
-  if (length(allowed_min) < length(x)) {
-    x <- x[allowed_min]
-    widths <- widths[allowed_min]
+  if (length(allowed_min) < length(min_widths)) {
     col_widths <- min_widths[allowed_min]
   } else {
     cum_widths <- cumsum(widths + 1L)
@@ -48,6 +52,5 @@ mcf_get_width <- function(x, width) {
     allowed_max <- (cum_widths + c(rev_cum_rev_min_widths[-1L], 0L)) <= width
     col_widths <- ifelse(allowed_max, widths, min_widths)
   }
-
   col_widths
 }
