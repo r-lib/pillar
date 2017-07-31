@@ -1,7 +1,7 @@
 context("format_multi")
 
 test_that("output test", {
-  x <- list(1:3 + 0.23, letters[1:3], factor(letters[1:3]), ordered(letters[1:3]))
+  x <- list(col_01 = 1:3 + 0.23, col_02 = letters[1:3], col_03 = factor(letters[1:3]), col_04 = ordered(letters[1:3]))
   expect_colformat_output(xf = multicolformat(x, width = 4), filename = "multi-04.txt")
   expect_colformat_output(xf = multicolformat(x, width = 5), filename = "multi-05.txt")
   expect_colformat_output(xf = multicolformat(x, width = 6), filename = "multi-06.txt")
