@@ -63,11 +63,7 @@ format.colformat <- function(x, width = NULL, ...) {
 
   cf_data <- c(title_format, type_format, data_format)
 
-  new_column(
-    crayon::col_align(cf_data, width = width, align = align),
-    width,
-    align = "left"
-  )
+  new_vertical(crayon::col_align(cf_data, width = width, align = align))
 }
 
 #' @export
