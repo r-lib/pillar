@@ -44,6 +44,7 @@ colformat <- function(x, title = NULL, width = NULL, ...) {
 
 #' @export
 format.colformat <- function(x, width = NULL, ...) {
+  width <- cf_get_width(x, width)
   out <- cf_format_parts(x, width, ...)
 
   cf_data <- c(out$title_format, crayon::underline(out$type_format), out$data_format)
@@ -56,7 +57,7 @@ print.colformat <- function(x, ...) {
   print(format(x, ...))
 }
 
-cf_format_parts <- function(x, width, ...) {
+cf_get_width <- function(x, width) {
   if (is.null(width)) {
     width <- get_width(x)
   }
@@ -69,6 +70,10 @@ cf_format_parts <- function(x, width, ...) {
   min_widths <- max(get_min_widths(x))
   if (width < min_widths) width <- min_widths
 
+  width
+}
+
+cf_format_parts <- function(x, width, ...) {
   title_format <- format(x$title, width = width, ...)
   type_format <- format(x$type, width = width, ...)
   data_format <- format(x$data, width = width, ...)
