@@ -16,7 +16,7 @@ expect_colformat_output <- function(x, ..., filename, xp = add_special(x), crayo
 
 add_special <- function(x) {
   x <- c(x, NA)
-  if (is.numeric(x)) x <- c(x, -Inf, Inf)
+  if (is.numeric(x) && is.double(x)) x <- c(x, -Inf, Inf)
   x
 }
 
