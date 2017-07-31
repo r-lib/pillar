@@ -99,7 +99,7 @@ cf_data.character <- function(x, ...) {
   out <- encodeString(x, na.encode = FALSE)
   out[is.na(out)] <- cf_na()
 
-  width <- max(nchar(out, type = "width"))
+  width <- max(crayon::col_nchar(out))
 
   new_cf_data(out, width = width, align = "left", min_width = min(width, 3L))
 }

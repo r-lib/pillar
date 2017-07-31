@@ -7,7 +7,7 @@ cf_align <- function(x, width, align) {
     FUN.VALUE = character(1))
 }
 
-str_trunc <- function(x, width = 20) {
+str_trunc <- function(x, width) {
   if (width == Inf) return(x)
 
   str_width <- nchar(x, type = "width")
