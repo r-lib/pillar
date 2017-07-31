@@ -4,7 +4,11 @@
 #' @param width Default width of the entire output, optional
 #' @param ... Ignored
 multicolformat <- function(x, width = NULL, ...) {
-  ret <- map2(x, names2(x), colformat)
+  if (is_named(x)) {
+    ret <- map2(x, names(x), colformat)
+  } else {
+    ret <- map(x, colformat)
+  }
   ret <- structure(ret, class = "multicolformat")
   ret <- set_width(ret, width)
   ret

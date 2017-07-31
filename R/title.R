@@ -1,9 +1,6 @@
 cf_title <- function(title, ...) {
   if (is.null(title)) {
     width <- 0L
-  } else if (is.na(title) || title == "") {
-    width <- 0L
-    title <- NULL
   } else {
     width <- nchar(format_title(title, width = Inf), "width")
   }
