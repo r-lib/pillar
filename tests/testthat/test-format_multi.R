@@ -1,7 +1,7 @@
 context("format_multi")
 
 test_that("output test", {
-  x <- list(col_01 = 1:3 + 0.23, col_02 = letters[1:3], col_03 = factor(letters[1:3]), col_04 = ordered(letters[1:3]))
+  x <- list(column_zero_one = 1:3 + 0.23, col_02 = letters[1:3], col_03 = factor(letters[1:3]), col_04 = ordered(letters[1:3]))
   expect_colformat_output(xf = multicolformat(x, width = 4), filename = "multi-04.txt")
   expect_colformat_output(xf = multicolformat(x, width = 5), filename = "multi-05.txt")
   expect_colformat_output(xf = multicolformat(x, width = 6), filename = "multi-06.txt")
@@ -28,4 +28,14 @@ test_that("output test", {
   expect_colformat_output(xf = multicolformat(x, width = 27), filename = "multi-27.txt")
   expect_colformat_output(xf = multicolformat(x, width = 28), filename = "multi-28.txt")
   expect_colformat_output(xf = multicolformat(x, width = 29), filename = "multi-29.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 30), filename = "multi-30.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 31), filename = "multi-31.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 32), filename = "multi-32.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 33), filename = "multi-33.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 34), filename = "multi-34.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 35), filename = "multi-35.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 36), filename = "multi-36.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 37), filename = "multi-37.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 38), filename = "multi-38.txt")
+  expect_colformat_output(xf = multicolformat(x, width = 39), filename = "multi-39.txt")
 })
