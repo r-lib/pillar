@@ -31,4 +31,10 @@ For computing the column widths, two cases are distinguished:
 1. All columns fit with their minimum width. In this case, starting at
    the leftmost column, the maximum width is allocated to the columns
    until all available space is used.
+
+The remaining space is distributed from left to right.
+Each column gains space proportional to the fraction of missing and
+remaining space, rounded up.
+Columns closer to the left potentially gain more of the remaining space,
+ensuring consistent output.
 }
