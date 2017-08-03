@@ -14,5 +14,21 @@ multicolformat(x, width = NULL, ...)
 \item{...}{Ignored}
 }
 \description{
-Format multiple vectors in a tabular display
+The vectors are formatted to fit horizontally into a user-supplied number of
+characters per row.
+}
+\details{
+In a first pass, for each column it is decided if it is hidden, shown with
+its minimum width or shown with its maximum width.
+Remaining space is then distributed proportionally to columns that do not
+use their desired width.
+
+For computing the column widths, two cases are distinguished:
+1. When taking the minimum width for each column (plus one inter-column
+   space), at least one column does not fit.
+   In this case, the minimum width is assigned to all columns that do fit,
+   the non-fitting columns are stripped.
+1. All columns fit with their minimum width. In this case, starting at
+   the leftmost column, the maximum width is allocated to the columns
+   until all available space is used.
 }
