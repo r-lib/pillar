@@ -11,7 +11,7 @@ cf_type <- function(x, ...) {
     class = "cf_type"
   )
   ret <- set_width(ret, width = nchar(type, type = "width") + 2L)
-  ret <- set_min_width(ret, 3L)
+  ret <- set_min_width(ret, 5L)
   ret
 }
 
