@@ -34,7 +34,8 @@ For computing the column widths, two cases are distinguished:
 
 The remaining space is distributed from left to right.
 Each column gains space proportional to the fraction of missing and
-remaining space, rounded up.
-Columns closer to the left potentially gain more of the remaining space,
-ensuring consistent output.
+remaining space,
+rounded down.
+Any space remaining after rounding is distributed from left to right,
+one space per column.
 }

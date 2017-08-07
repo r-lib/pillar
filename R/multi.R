@@ -102,16 +102,17 @@ mcf_distribute_space <- function(col_widths, max_widths, width) {
   #' @details
   #' The remaining space is distributed from left to right.
   #' Each column gains space proportional to the fraction of missing and
-  #' remaining space, rounded up.
+  #' remaining space,
   remaining_width <- min(width - sum(col_widths + 1L), sum(missing_space))
   added_space_prop <- missing_space / sum(missing_space) * remaining_width
+
+  #' rounded down.
   added_space_ceil <- ceiling(added_space_prop)
   added_space_floor <- floor(added_space_prop)
   added_space_diff <- added_space_ceil - added_space_floor
-
-  #' Columns closer to the left potentially gain more of the remaining space,
-  #' ensuring consistent output.
   added_space <- ifelse(
+    #' Any space remaining after rounding is distributed from left to right,
+    #' one space per column.
     sum(added_space_floor) + cumsum(added_space_diff) <= remaining_width,
     added_space_ceil,
     added_space_floor
