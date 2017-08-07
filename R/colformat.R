@@ -44,6 +44,20 @@ colformat <- function(x, title = NULL, width = NULL, ...) {
 
 #' @export
 format.colformat <- function(x, width = NULL, ...) {
+  width <- cf_get_width(x, width)
+  out <- cf_format_parts(x, width)
+
+  cf_data <- c(out$title_format, crayon::underline(out$type_format), out$data_format)
+
+  new_vertical(cf_data)
+}
+
+#' @export
+print.colformat <- function(x, ...) {
+  print(format(x, ...))
+}
+
+cf_get_width <- function(x, width) {
   if (is.null(width)) {
     width <- get_width(x)
   }
@@ -56,21 +70,22 @@ format.colformat <- function(x, width = NULL, ...) {
   min_widths <- max(get_min_widths(x))
   if (width < min_widths) width <- min_widths
 
+  width
+}
+
+cf_format_parts <- function(x, width, ...) {
   title_format <- format(x$title, width = width, ...)
   type_format <- format(x$type, width = width, ...)
   data_format <- format(x$data, width = width, ...)
   align <- attr(data_format, "align")
 
-  cf_data <- c(title_format, type_format, data_format)
+  title_format <- crayon::col_align(title_format, width = width, align = align)
+  type_format <- crayon::col_align(type_format, width = width, align = align)
+  data_format <- crayon::col_align(data_format, width = width, align = align)
 
-  new_column(
-    crayon::col_align(cf_data, width = width, align = align),
-    width,
-    align = "left"
+  list(
+    title_format = title_format,
+    type_format = type_format,
+    data_format = data_format
   )
-}
-
-#' @export
-print.colformat <- function(x, ...) {
-  print(format(x, ...))
 }

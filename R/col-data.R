@@ -66,7 +66,7 @@ cf_data.numeric <- function(x, ..., sigfig = 3) {
     class = "decimal_format"
   )
 
-  ret <- set_width(ret, max(get_widths(ret)))
+  ret <- set_width(ret, get_width(ret$dec))
   ret <- set_min_width(ret, min(get_min_widths(ret)))
   ret
 }
@@ -99,7 +99,7 @@ cf_data.character <- function(x, ...) {
   out <- encodeString(x, na.encode = FALSE)
   out[is.na(out)] <- cf_na()
 
-  width <- max(nchar(out, type = "width"))
+  width <- max(crayon::col_nchar(out))
 
   new_cf_data(out, width = width, align = "left", min_width = min(width, 3L))
 }
