@@ -96,34 +96,26 @@ mcf_compute_col_widths <- function(min_widths, max_widths, width) {
 #' @aliases NULL
 mcf_distribute_space <- function(col_widths, max_widths, width) {
   missing_space <- max_widths - col_widths
+  # Shortcut to avoid division by zero
   if (all(missing_space == 0L)) return(rep_along(col_widths, 0L))
 
   #' @details
   #' The remaining space is distributed from left to right.
-  first_missing_space_idx <- which(missing_space != 0L)[[1L]]
-  chunk <- seq_len(first_missing_space_idx)
-  rest <- seq.int(first_missing_space_idx, length(col_widths), by = 1L)[-1L]
-
-  remaining_width <- min(width - sum(col_widths + 1L), sum(missing_space))
-
   #' Each column gains space proportional to the fraction of missing and
   #' remaining space, rounded up.
-  added_space_this <- ceiling(
-    missing_space[[first_missing_space_idx]] /
-      sum(missing_space) *
-      remaining_width
-  )
+  remaining_width <- min(width - sum(col_widths + 1L), sum(missing_space))
+  added_space_prop <- missing_space / sum(missing_space) * remaining_width
+  added_space_ceil <- ceiling(added_space_prop)
+  added_space_floor <- floor(added_space_prop)
+  added_space_diff <- added_space_ceil - added_space_floor
+
   #' Columns closer to the left potentially gain more of the remaining space,
   #' ensuring consistent output.
-  added_space_rest <- mcf_distribute_space(
-    col_widths[rest],
-    max_widths[rest],
-    width - sum(col_widths[chunk] + 1L) - added_space_this
+  added_space <- ifelse(
+    sum(added_space_floor) + cumsum(added_space_diff) <= remaining_width,
+    added_space_ceil,
+    added_space_floor
   )
 
-  c(
-    rep_len(0L, first_missing_space_idx - 1L),
-    added_space_this,
-    added_space_rest
-  )
+  added_space
 }
