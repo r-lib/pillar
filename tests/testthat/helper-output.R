@@ -1,4 +1,6 @@
-expect_colformat_output <- function(x, ..., filename, xp = add_special(x), crayon = TRUE) {
+expect_colformat_output <- function(x, ..., filename,
+                                    xp = add_special(x), xf = colformat(xp, ...),
+                                    crayon = TRUE) {
   if (crayon) {
     old <- options(crayon.enabled = TRUE, crayon.colors = 16L)
     crayon::num_colors(forget = TRUE)
@@ -11,7 +13,7 @@ expect_colformat_output <- function(x, ..., filename, xp = add_special(x), crayo
     crayon::num_colors(forget = TRUE)
   })
 
-  expect_output_file(print(colformat(xp, ...)), file.path("out", filename), update = TRUE)
+  expect_output_file(print(xf), file.path("out", filename), update = TRUE)
 }
 
 add_special <- function(x) {
