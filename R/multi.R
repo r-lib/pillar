@@ -4,13 +4,24 @@
 #' characters per row.
 #'
 #' @param x A list of vectors to format
+#' @param has_row_id Include a column indicating row IDs? Pass `"*"` to mark
+#'   the row ID column with a star.
 #' @param width Default width of the entire output, optional
 #' @param ... Ignored
-multicolformat <- function(x, width = NULL, ...) {
-  if (is_named(x)) {
+multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
+  has_title <- is_named(x)
+  if (has_title) {
     ret <- map2(x, names(x), colformat)
   } else {
     ret <- map(x, colformat)
+  }
+  if (!is_false(has_row_id) && length(x) > 0) {
+    rowid <- rowidformat(
+      length(x[[1]]),
+      has_star = identical(has_row_id, "*"),
+      has_title = has_title
+    )
+    ret <- c(list(rowid), ret)
   }
   ret <- structure(ret, class = "multicolformat")
   ret <- set_width(ret, width)
