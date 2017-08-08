@@ -1,5 +1,8 @@
 #' Format a vector suitable for tabular display
 #'
+#' `colformat()` formats a vector using one row for a title (if given),
+#' one row for the type, and `length(x)` rows for the data.
+#'
 #' @param x A vector to format
 #' @param title An optional title for the column
 #' @param width Default width, optional

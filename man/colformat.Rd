@@ -16,7 +16,8 @@ colformat(x, title = NULL, width = NULL, ...)
 \item{...}{Other arguments passed to methods}
 }
 \description{
-Format a vector suitable for tabular display
+`colformat()` formats a vector using one row for a title (if given),
+one row for the type, and `length(x)` rows for the data.
 }
 \examples{
 x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
