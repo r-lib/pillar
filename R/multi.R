@@ -19,7 +19,7 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
     rowid <- rowidformat(
       length(x[[1]]),
       has_star = identical(has_row_id, "*"),
-      has_title = has_title
+      has_title_row = has_title
     )
     ret <- c(list(rowid), ret)
   }
