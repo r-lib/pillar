@@ -77,7 +77,11 @@ compute_rhs_digits <- function(x, sigfig) {
   # Otherwise ensure we have sigfig digits shown
   exp <- compute_exp(x)
   exp[is.na(exp)] <- Inf
-  digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
+  if (is.integer(x)) {
+    digits <- 0
+  } else {
+    digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
+  }
   rhs_digits <- pmax(digits - pmax(exp, 0), 0)
   rhs_digits
 }
