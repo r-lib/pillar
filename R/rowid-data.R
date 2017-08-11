@@ -3,11 +3,13 @@ style_rowid <- function(x) {
 }
 
 rif_data <- function(n, ...) {
-  structure(
+  ret <- structure(
     list(n = n),
-    width = as.integer(floor(log10(n)) + 1),
+    align = "right",
     class = "rif_data"
   )
+  ret <- set_width(ret, as.integer(floor(log10(n)) + 1))
+  ret
 }
 
 #' @export
@@ -18,6 +20,6 @@ format.rif_data <- function(x, width, ...) {
 }
 
 #' @export
-print.cf_data <- function(x, ...) {
+print.rif_data <- function(x, ...) {
   print(format(x, ...))
 }
