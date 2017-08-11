@@ -48,13 +48,11 @@ colformat <- function(x, title = NULL, width = NULL, ...) {
 rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
   title <- rif_title(has_title_row, ...)
   type <- rif_type(has_star, ...)
-  data <- cf_data(seq_len(n), ...)
+  data <- rif_data(n, ...)
   ret <- structure(
     list(title = title, type = type, data = data),
     class = "colformat"
   )
-  width <- floor(log10(n)) + 1
-  ret <- set_width(ret, width)
   ret
 }
 
