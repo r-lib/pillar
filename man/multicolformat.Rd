@@ -4,10 +4,13 @@
 \alias{multicolformat}
 \title{Format multiple vectors in a tabular display}
 \usage{
-multicolformat(x, width = NULL, ...)
+multicolformat(x, has_row_id = TRUE, width = NULL, ...)
 }
 \arguments{
 \item{x}{A list of vectors to format}
+
+\item{has_row_id}{Include a column indicating row IDs? Pass `"*"` to mark
+the row ID column with a star.}
 
 \item{width}{Default width of the entire output, optional}
 
