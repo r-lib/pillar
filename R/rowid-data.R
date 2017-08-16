@@ -7,7 +7,7 @@ rif_data <- function(n, ...) {
     list(n = n),
     class = "rif_data"
   )
-  ret <- set_width(ret, as.integer(floor(log10(n)) + 1))
+  ret <- set_width(ret, as.integer(floor(log10(max(n, 1))) + 1))
   ret
 }
 

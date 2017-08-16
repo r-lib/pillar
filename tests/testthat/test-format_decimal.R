@@ -68,6 +68,11 @@ test_that("values on LHS not rounded", {
   expect_equal(format_lhs(f), "123456")
 })
 
+test_that("corner cases", {
+  expect_equal(format_lhs(format_decimal_bw(numeric())), character())
+  expect_equal(format_lhs(format_decimal_bw(numeric(), scientific = TRUE)), character())
+})
+
 test_that("output test", {
   expect_colformat_output((10 ^ (-3:4)) * c(-1, 1), filename = "basic.txt")
   expect_colformat_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
