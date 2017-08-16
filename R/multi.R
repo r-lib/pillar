@@ -47,7 +47,28 @@ format.multicolformat <- function(x, width = NULL, ...) {
     invoke(paste, map(out, `[[`, "data_format"))
   )
 
-  new_vertical(mcf_data)
+  new_vertical(
+    mcf_data,
+    extra_cols = map_chr(x[seq2_along(length(col_widths), x)], cf_format_abbrev),
+    extra_class = "mcf_vertical"
+  )
+}
+
+#' Retrieve information about columns that didn't fit the available width
+#'
+#' Formatting a [multicolformat] object may lead to some columns being omitted
+#' due to width restrictions. This method returns a character vector that
+#' describes each of the omitted columns.
+#' @param x The result of [format()] on a [multicolformat] object
+#' @param ... Unused
+#' @export
+extra_cols <- function(x, ...) {
+  UseMethod("extra_cols")
+}
+
+#' @export
+extra_cols.mcf_vertical <- function(x, ...) {
+  attr(x, "extra_cols")
 }
 
 #' @export

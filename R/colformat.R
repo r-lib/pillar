@@ -103,3 +103,9 @@ cf_format_parts <- function(x, width, ...) {
     data_format = data_format
   )
 }
+
+cf_format_abbrev <- function(x, ...) {
+  title_format <- format(x$title, width = Inf, ...)
+  type_format <- format(x$type, width = Inf, ...)
+  paste0(title_format, "\u00a0", type_format)
+}
