@@ -8,6 +8,7 @@
 #'   the row ID column with a star.
 #' @param width Default width of the entire output, optional
 #' @param ... Ignored
+#' @export
 multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
   has_title <- is_named(x)
   if (has_title) {
