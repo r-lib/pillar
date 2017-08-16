@@ -2,5 +2,5 @@
 NULL
 
 .onAttach <- function(...) {
-  crayon::num_colors(TRUE)
+  crayon::num_colors(forget = TRUE)
 }
