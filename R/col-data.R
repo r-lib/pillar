@@ -49,7 +49,7 @@ cf_data.logical <- function(x, ...) {
   out[!x & !is.na(x)] <- style_subtle("-")
   out[is.na(x)] <- cf_na()
 
-  new_cf_data(out, width = 1, align = "right")
+  new_cf_data(out, width = 1, align = "left")
 }
 
 #' @export
