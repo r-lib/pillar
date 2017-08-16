@@ -77,27 +77,30 @@ cf_data.Date <- function(x, ...) {
   x <- format(x, format = "%Y-%m-%d")
   x[is.na(x)] <- cf_na()
 
-  new_cf_data(x, width = 11, align = "right")
+  new_cf_data(x, width = 10, align = "left")
 }
 
 #' @export
 #' @rdname cf_data
-cf_data.POSIXct <- function(x, ...) {
+cf_data.POSIXt <- function(x, ...) {
   date <- format(x, format = "%Y-%m-%d")
   time <- format(x, format = "%H:%M:%S")
 
   datetime <- paste0(date, " " , style_subtle(time))
   datetime[is.na(x)] <- cf_na()
 
-  new_cf_data(datetime, width = 19, align = "right")
+  new_cf_data(datetime, width = 19, align = "left")
 }
 
 
 #' @export
 #' @rdname cf_data
 cf_data.character <- function(x, ...) {
-  out <- encodeString(x, na.encode = FALSE)
-  out[is.na(out)] <- cf_na()
+  out <- x
+  needs_quotes <- which(!is_syntactic(x))
+  is_na <- is.na(x)
+  out[needs_quotes] <- encodeString(x[needs_quotes], quote ='"', na.encode = FALSE)
+  out[is_na] <- cf_na()
 
   width <- max(crayon::col_nchar(out), 0L)
 
