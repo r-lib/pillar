@@ -30,10 +30,9 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
   ret
 }
 
-#' @export
-format.multicolformat <- function(x, width = NULL, ...) {
+squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
-  if (attr(x, "zero_height")) return(new_mcf_vertical(character(), x[names2(x) != ""]))
+  if (attr(x, "zero_height")) return(new_mcf_sqeezed(character(), x[names2(x) != ""]))
 
   if (is.null(width)) {
     width <- get_width(x)
@@ -45,21 +44,39 @@ format.multicolformat <- function(x, width = NULL, ...) {
 
   col_widths <- mcf_get_width(x, width)
   out <- map2(x[seq_along(col_widths)], col_widths, cf_format_parts)
-  mcf_data <- c(
-    invoke(paste, map(out, `[[`, "title_format")),
-    crayon::underline(invoke(paste, map(out, `[[`, "type_format"))),
-    invoke(paste, map(out, `[[`, "data_format"))
-  )
 
-  new_mcf_vertical(mcf_data, x[seq2_along(length(col_widths) + 1L, x)])
+  new_mcf_sqeezed(out, x[seq2_along(length(col_widths) + 1L, x)])
 }
 
-new_mcf_vertical <- function(x, extra_cols) {
-  new_vertical(
+new_mcf_sqeezed <- function(x, extra_cols) {
+  structure(
     x,
     extra_cols = map_chr(extra_cols, cf_format_abbrev),
-    extra_class = "mcf_vertical"
+    class = "mcf_squeezed"
   )
+}
+
+#' @export
+format.mcf_squeezed <- function(x, ...) {
+  xt <- list(
+    title = map(x, `[[`, "title_format"),
+    type = map(x, `[[`, "type_format"),
+    data = map(x, `[[`, "data_format")
+  )
+
+  formatted <- c(
+    invoke(paste, xt$title),
+    crayon::underline(invoke(paste, xt$type)),
+    invoke(paste, xt$data)
+  )
+
+  new_vertical(formatted)
+}
+
+#' @export
+print.mcf_squeezed <- function(x, ...) {
+  print(format(x, ...), ...)
+  invisible(x)
 }
 
 #' Retrieve information about columns that didn't fit the available width
@@ -75,8 +92,13 @@ extra_cols <- function(x, ...) {
 }
 
 #' @export
-extra_cols.mcf_vertical <- function(x, ...) {
+extra_cols.mcf_squeezed <- function(x, ...) {
   attr(x, "extra_cols")
+}
+
+#' @export
+format.multicolformat <- function(x, ...) {
+  format(squeeze(x, ...))
 }
 
 #' @export
