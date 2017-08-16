@@ -69,7 +69,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     superscript = superscript
   )
 
-  set_width(ret, max(crayon::col_nchar(assemble_decimal(ret)), 0L))
+  set_width(ret, max(crayon::col_nchar(assemble_decimal(ret), type = "width"), 0L))
 }
 
 safe_signif <- function(x, digits) {
@@ -202,7 +202,7 @@ format.decimal_format <- function(x, width, ...) {
     row <- assemble_decimal(x$sci)
   }
 
-  used_width <- max(crayon::col_nchar(row), 0L)
+  used_width <- max(crayon::col_nchar(row, type = "width"), 0L)
   row <- paste0(strrep(" ", width - used_width), row)
   new_column(row, width = width, align = "right")
 }

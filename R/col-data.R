@@ -27,8 +27,8 @@ print.cf_data <- function(x, ...) {
   print(format(x, ...))
 }
 
-new_cf_data <- function(x, width = max(crayon::col_nchar(x), 0L), align = "left",
-                         min_width = NULL) {
+new_cf_data <- function(x, width = max(crayon::col_nchar(x, type = "width"), 0L),
+                        align = "left", min_width = NULL) {
   ret <- structure(
     x,
     align = align,
@@ -102,7 +102,7 @@ cf_data.character <- function(x, ...) {
   out[needs_quotes] <- encodeString(x[needs_quotes], quote ='"', na.encode = FALSE)
   out[is_na] <- cf_na()
 
-  width <- max(crayon::col_nchar(out), 0L)
+  width <- max(crayon::col_nchar(out, type = "width"), 0L)
 
   new_cf_data(out, width = width, align = "left", min_width = min(width, 3L))
 }

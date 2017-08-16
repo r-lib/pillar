@@ -32,7 +32,8 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
 
 #' @export
 format.multicolformat <- function(x, width = NULL, ...) {
-  if (attr(x, "zero_height")) return(new_mcf_vertical(character(), x))
+  # Hacky shortcut for zero-height corner case
+  if (attr(x, "zero_height")) return(new_mcf_vertical(character(), x[names2(x) != ""]))
 
   if (is.null(width)) {
     width <- get_width(x)
