@@ -30,6 +30,14 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
   ret
 }
 
+#' @description
+#' The `squeeze()` function is called by [format()]  and [print()] and usually
+#' doesn't need to be called manually.
+#' It returns an object suitable for printing and formatting at a fixed width
+#' with additional information about omitted columns.
+#'
+#' @rdname multicolformat
+#' @export
 squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
   if (attr(x, "zero_height")) return(new_mcf_sqeezed(character(), x[names2(x) != ""]))

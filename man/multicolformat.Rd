@@ -2,9 +2,12 @@
 % Please edit documentation in R/multi.R
 \name{multicolformat}
 \alias{multicolformat}
+\alias{squeeze}
 \title{Format multiple vectors in a tabular display}
 \usage{
 multicolformat(x, has_row_id = TRUE, width = NULL, ...)
+
+squeeze(x, width = NULL, ...)
 }
 \arguments{
 \item{x}{A list of vectors to format}
@@ -19,6 +22,11 @@ the row ID column with a star.}
 \description{
 The vectors are formatted to fit horizontally into a user-supplied number of
 characters per row.
+
+The `squeeze()` function is called by [format()]  and [print()] and usually
+doesn't need to be called manually.
+It returns an object suitable for printing and formatting at a fixed width
+with additional information about omitted columns.
 }
 \details{
 In a first pass, for each column it is decided if it is hidden, shown with
