@@ -22,5 +22,5 @@ print.cf_vertical <- function(x, ...) {
   if (length(x) > 0) {
     cat_line(paste(x, collapse = "\n"))
   }
-  x
+  invisible(x)
 }
