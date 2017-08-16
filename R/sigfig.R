@@ -118,13 +118,14 @@ format_lhs <- function(s) {
   lhs_sig <- substr(lhs_str, 1, s$sigfig)
   lhs_non <- substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
 
-  lhs_col <- ifelse(num,
+  # as.character() to support corner case of length zero
+  lhs_col <- as.character(ifelse(num,
     paste0(
       style_num(lhs_sig, neg, lhs_zero),
       style_subtle(lhs_non)
     ),
     style_na(lhs_str)
-  )
+  ))
 
   lhs_col <- crayon::col_align(lhs_col, width = lhs_width, align = "right")
   lhs_col
