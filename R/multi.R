@@ -49,7 +49,7 @@ format.multicolformat <- function(x, width = NULL, ...) {
 
   new_vertical(
     mcf_data,
-    extra_cols = map_chr(x[seq2_along(length(col_widths), x)], cf_format_abbrev),
+    extra_cols = map_chr(x[seq2_along(length(col_widths) + 1L, x)], cf_format_abbrev),
     extra_class = "mcf_vertical"
   )
 }
