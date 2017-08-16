@@ -24,16 +24,13 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
     )
     ret <- c(list(rowid), ret)
   }
-  zero_height <- length(x) == 0L || length(x[[1]]) == 0L
-  ret <- structure(ret, zero_height = zero_height, class = "multicolformat")
+  ret <- structure(ret, class = "multicolformat")
   ret <- set_width(ret, width)
   ret
 }
 
 #' @export
 format.multicolformat <- function(x, width = NULL, ...) {
-  if (attr(x, "zero_height")) return(new_mcf_vertical(character(), x))
-
   if (is.null(width)) {
     width <- get_width(x)
   }
@@ -50,13 +47,9 @@ format.multicolformat <- function(x, width = NULL, ...) {
     invoke(paste, map(out, `[[`, "data_format"))
   )
 
-  new_mcf_vertical(mcf_data, x[seq2_along(length(col_widths), x)])
-}
-
-new_mcf_vertical <- function(x, extra_cols) {
   new_vertical(
-    x,
-    extra_cols = map_chr(extra_cols, cf_format_abbrev),
+    mcf_data,
+    extra_cols = map_chr(x[seq2_along(length(col_widths), x)], cf_format_abbrev),
     extra_class = "mcf_vertical"
   )
 }
