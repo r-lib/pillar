@@ -45,8 +45,8 @@ new_cf_data <- function(x, width = max(crayon::col_nchar(x, type = "width"), 0L)
 #' @rdname cf_data
 cf_data.logical <- function(x, ...) {
   out <- character(length(x))
-  out[x & !is.na(x)] <- style_accent("*")
-  out[!x & !is.na(x)] <- style_subtle("-")
+  out[x] <- style_accent("T")
+  out[!x] <- style_subtle("F")
   out[is.na(x)] <- cf_na()
 
   new_cf_data(out, width = 1, align = "left")
