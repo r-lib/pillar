@@ -87,6 +87,14 @@ print.mcf_squeezed <- function(x, ...) {
   invisible(x)
 }
 
+# Method registration happens in .onLoad()
+knit_print.mcf_squeezed <- function(x, ...) {
+  header <- map_chr(x, `[[`, "title_format")
+  col <- map(x, function(xx) c(xx[["type_format"]], xx[["data_format"]]))
+
+  knitr::kable(as.data.frame(col), row.names = NA, col.names = header)
+}
+
 #' Retrieve information about columns that didn't fit the available width
 #'
 #' Formatting a [multicolformat] object may lead to some columns being omitted
