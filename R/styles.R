@@ -35,8 +35,7 @@ style_grey <- function(level, ...) {
   )
 }
 
-cf_na <- function(width = 1L) {
-  width <- pmax(0, width - 1)
-
-  paste0(strrep(" ", width), style_na("NA"))
+cf_na <- function(use_brackets_if_no_color = FALSE) {
+  if (use_brackets_if_no_color && !crayon::has_color()) "<NA>"
+  else style_na("NA")
 }
