@@ -16,6 +16,8 @@ Imports:
     crayon,
     methods,
     rlang
+Suggests:
+    knitr
 RoxygenNote: 6.0.1
 Suggests: testthat
 Remotes:
