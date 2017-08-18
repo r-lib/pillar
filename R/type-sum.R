@@ -15,8 +15,6 @@ type_sum.ordered <- function(x) "ord"
 #' @export
 type_sum.factor <- function(x) "fctr"
 #' @export
-type_sum.POSIXlt <- function(x) "ldttm"
-#' @export
 type_sum.POSIXct <- function(x) "dttm"
 #' @export
 type_sum.difftime <- function(x) "time"
