@@ -61,7 +61,7 @@ format.colformat <- function(x, width = NULL, ...) {
   width <- cf_get_width(x, width)
   out <- cf_format_parts(x, width)
 
-  cf_data <- c(out$title_format, crayon::underline(out$type_format), out$data_format)
+  cf_data <- c(out$title_format, style_type(out$type_format), out$data_format)
 
   new_vertical(cf_data)
 }

@@ -74,7 +74,7 @@ format.mcf_squeezed <- function(x, ...) {
 
   formatted <- c(
     invoke(paste, xt$title),
-    crayon::underline(invoke(paste, xt$type)),
+    style_type(invoke(paste, xt$type)),
     invoke(paste, xt$data)
   )
 

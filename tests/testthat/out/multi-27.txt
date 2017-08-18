@@ -1,5 +1,5 @@
   [1mcolum…[22m [1mcol_…[22m [1mcol_…[22m [1mcol_…[22m
-[4m   [90m<dbl>[39m [90m<chr>[39m [90m<fct>[39m [90m<ord>[39m[24m
+[4m[90m   <dbl> <chr> <fct> <ord>[39m[24m
 [90m1[39m   1.23 a     a     a    
 [90m2[39m   2.23 b     b     b    
 [90m3[39m   3.23 c     c     c    
