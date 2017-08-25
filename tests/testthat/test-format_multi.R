@@ -39,3 +39,52 @@ test_that("output test", {
   expect_colformat_output(xf = multicolformat(x, width = 38), filename = "multi-38.txt")
   expect_colformat_output(xf = multicolformat(x, width = 39), filename = "multi-39.txt")
 })
+
+test_that("tests from tibble", {
+  expect_colformat_output(
+    crayon = FALSE,
+    xf = multicolformat(mtcars[1:8, ], has_row_id = "*", width = 30),
+    filename = "tibble-mtcars-8-30.txt"
+  )
+  expect_colformat_output(
+    crayon = FALSE,
+    xf = multicolformat(iris[1:5, ], width = 30),
+    filename = "tibble-iris-5-30.txt"
+  )
+  expect_colformat_output(
+    crayon = FALSE,
+    xf = multicolformat(iris[1:3, ], width = 20),
+    filename = "tibble-iris-3-20.txt"
+  )
+  expect_colformat_output(
+    crayon = FALSE,
+    xf = multicolformat(df_all, width = 30),
+    filename = "tibble-all--30.txt"
+  )
+  expect_colformat_output(
+    crayon = FALSE,
+    xf = multicolformat(df_all, width = 300),
+    filename = "tibble-all--300.txt"
+  )
+  expect_colformat_output(
+    crayon = FALSE,
+    xf = multicolformat(list(`\n` = c("\n", '"'), `\r` = factor("\n")), width = 30),
+    filename = "tibble-newline.txt"
+  )
+  expect_colformat_output(
+    crayon = FALSE,
+    xf = multicolformat(list("mean(x)" = 5, "var(x)" = 3), width = 30),
+    filename = "tibble-non-syntactic.txt"
+  )
+})
+
+test_that("empty", {
+  expect_equal(
+    format(multicolformat(list(a = character(), b = logical()), width = 30)),
+    structure(character(), class = "cf_vertical")
+  )
+  expect_equal(
+    format(multicolformat(iris[1:5, character()], width = 30)),
+    structure(character(), class = "cf_vertical")
+  )
+})
