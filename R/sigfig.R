@@ -115,8 +115,8 @@ format_lhs <- function(s) {
 
   lhs_str <- sprintf("%.0f", s$lhs)
   lhs_width <- max(nchar(lhs_str), 0L)
-  lhs_sig <- substr(lhs_str, 1, s$sigfig)
-  lhs_non <- substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
+  lhs_sig <- crayon::col_substr(lhs_str, 1, s$sigfig)
+  lhs_non <- crayon::col_substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
 
   # as.character() to support corner case of length zero
   lhs_col <- as.character(ifelse(num,
