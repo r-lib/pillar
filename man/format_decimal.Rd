@@ -28,13 +28,3 @@ compare columns of numbers. Significant digits are coloured black or red
 (for positive and negative numbers) and non-significant digits are coloured
 in paler gray.
 }
-\examples{
-x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
-format_decimal(x, 3)
-
-x <- x * sample(c(-1, 1), length(x), rep = TRUE)
-format_decimal(x, 3)
-
-format_decimal(c(Inf, -Inf, NA, NaN), 3)
-format_decimal(c(1e10, 1e-10), 3)
-}

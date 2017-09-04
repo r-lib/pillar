@@ -14,15 +14,6 @@
 #' @param x A numeric vector
 #' @param sigfig Number of signficiant figures to display.
 #' @param ... Ignored
-#' @examples
-#' x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
-#' format_decimal(x, 3)
-#'
-#' x <- x * sample(c(-1, 1), length(x), rep = TRUE)
-#' format_decimal(x, 3)
-#'
-#' format_decimal(c(Inf, -Inf, NA, NaN), 3)
-#' format_decimal(c(1e10, 1e-10), 3)
 format_decimal <- function(x, sigfig = 3, ...) {
   split_decimal(x, sigfig)
 }
