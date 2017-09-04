@@ -18,6 +18,7 @@ format.cf_data <- function(x, width, ...) {
   } else {
     data <- x
   }
+  data[is.na(x)] <- cf_na()
 
   new_column(data, width = width, align = align)
 }
@@ -49,10 +50,9 @@ new_cf_data <- function(x, width = max(crayon::col_nchar(x, type = "width"), 0L)
 #' @export
 #' @rdname cf_data
 cf_data.logical <- function(x, ...) {
-  out <- character(length(x))
+  out <- rep(NA, length(x))
   out[x] <- style_accent("T")
   out[!x] <- style_subtle("F")
-  out[is.na(x)] <- cf_na()
 
   new_cf_data(out, width = 1, align = "left")
 }
@@ -80,7 +80,6 @@ cf_data.numeric <- function(x, ..., sigfig = 3) {
 #' @rdname cf_data
 cf_data.Date <- function(x, ...) {
   x <- format(x, format = "%Y-%m-%d")
-  x[is.na(x)] <- cf_na()
 
   new_cf_data(x, width = 10, align = "left")
 }
@@ -92,7 +91,7 @@ cf_data.POSIXt <- function(x, ...) {
   time <- format(x, format = "%H:%M:%S")
 
   datetime <- paste0(date, " " , style_subtle(time))
-  datetime[is.na(x)] <- cf_na()
+  datetime[is.na(x)] <- NA
 
   new_cf_data(datetime, width = 19, align = "left")
 }
