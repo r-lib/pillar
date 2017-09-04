@@ -14,7 +14,6 @@
 #' @param x A numeric vector
 #' @param sigfig Number of signficiant figures to display.
 #' @param ... Ignored
-#' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
 #' format_decimal(x, 3)

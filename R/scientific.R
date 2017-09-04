@@ -5,7 +5,6 @@
 #'
 #' @inheritParams format_decimal
 #' @param superscript If `TRUE`, will use superscript numbers in exponent.
-#' @export
 #' @examples
 #' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
 #' format_scientific(x)
