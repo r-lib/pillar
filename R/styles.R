@@ -11,6 +11,10 @@ style_accent <- keep_empty(function(x) {
   crayon::green(x)
 })
 
+#' Styling helpers
+#'
+#' @param x The character vector to style.
+#' @export
 style_subtle <- keep_empty(function(x) {
   style_grey(0.6, x)
 })

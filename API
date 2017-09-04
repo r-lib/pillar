@@ -8,10 +8,12 @@ dim_desc(x)
 extra_cols(x, ...)
 is_vector_s3(x)
 multicolformat(x, has_row_id = TRUE, width = NULL, ...)
+new_cf_data(x, width = max(crayon::col_nchar(x, type = "width"), 0L), align = "left", min_width = NULL)
 obj_sum(x)
 spark_bar(x, safe = TRUE)
 spark_line(x)
 squeeze(x, width = NULL, ...)
+style_subtle(x)
 type_sum(x)
 
 ## S3 methods
