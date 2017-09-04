@@ -8,6 +8,7 @@
 #'   the row ID column with a star.
 #' @param width Default width of the entire output, optional
 #' @param ... Ignored
+#' @export
 multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
   has_title <- is_named(x)
   if (has_title) {
@@ -23,13 +24,24 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
     )
     ret <- c(list(rowid), ret)
   }
-  ret <- structure(ret, class = "multicolformat")
+  zero_height <- length(x) == 0L || length(x[[1]]) == 0L
+  ret <- structure(ret, zero_height = zero_height, class = "multicolformat")
   ret <- set_width(ret, width)
   ret
 }
 
+#' @description
+#' The `squeeze()` function is called by [format()]  and [print()] and usually
+#' doesn't need to be called manually.
+#' It returns an object suitable for printing and formatting at a fixed width
+#' with additional information about omitted columns.
+#'
+#' @rdname multicolformat
 #' @export
-format.multicolformat <- function(x, width = NULL, ...) {
+squeeze <- function(x, width = NULL, ...) {
+  # Hacky shortcut for zero-height corner case
+  if (attr(x, "zero_height")) return(new_mcf_sqeezed(character(), x[names2(x) != ""]))
+
   if (is.null(width)) {
     width <- get_width(x)
   }
@@ -40,13 +52,69 @@ format.multicolformat <- function(x, width = NULL, ...) {
 
   col_widths <- mcf_get_width(x, width)
   out <- map2(x[seq_along(col_widths)], col_widths, cf_format_parts)
-  mcf_data <- c(
-    invoke(paste, map(out, `[[`, "title_format")),
-    crayon::underline(invoke(paste, map(out, `[[`, "type_format"))),
-    invoke(paste, map(out, `[[`, "data_format"))
+
+  new_mcf_sqeezed(out, x[seq2_along(length(col_widths) + 1L, x)])
+}
+
+new_mcf_sqeezed <- function(x, extra_cols) {
+  structure(
+    x,
+    extra_cols = map_chr(extra_cols, cf_format_abbrev),
+    class = "mcf_squeezed"
+  )
+}
+
+#' @export
+format.mcf_squeezed <- function(x, ...) {
+  xt <- list(
+    title = map(x, `[[`, "title_format"),
+    type = map(x, `[[`, "type_format"),
+    data = map(x, `[[`, "data_format")
   )
 
-  new_vertical(mcf_data)
+  formatted <- c(
+    invoke(paste, xt$title),
+    style_type(invoke(paste, xt$type)),
+    invoke(paste, xt$data)
+  )
+
+  new_vertical(formatted)
+}
+
+#' @export
+print.mcf_squeezed <- function(x, ...) {
+  print(format(x, ...), ...)
+  invisible(x)
+}
+
+# Method registration happens in .onLoad()
+knit_print.mcf_squeezed <- function(x, ...) {
+  header <- map_chr(x, `[[`, "title_format")
+  col <- map(x, function(xx) c(xx[["type_format"]], xx[["data_format"]]))
+
+  knitr::kable(as.data.frame(col), row.names = NA, col.names = header)
+}
+
+#' Retrieve information about columns that didn't fit the available width
+#'
+#' Formatting a [multicolformat] object may lead to some columns being omitted
+#' due to width restrictions. This method returns a character vector that
+#' describes each of the omitted columns.
+#' @param x The result of [format()] on a [multicolformat] object
+#' @param ... Unused
+#' @export
+extra_cols <- function(x, ...) {
+  UseMethod("extra_cols")
+}
+
+#' @export
+extra_cols.mcf_squeezed <- function(x, ...) {
+  attr(x, "extra_cols")
+}
+
+#' @export
+format.multicolformat <- function(x, ...) {
+  format(squeeze(x, ...))
 }
 
 #' @export

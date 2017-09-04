@@ -5,7 +5,7 @@
 \alias{cf_data.logical}
 \alias{cf_data.numeric}
 \alias{cf_data.Date}
-\alias{cf_data.POSIXct}
+\alias{cf_data.POSIXt}
 \alias{cf_data.character}
 \alias{cf_data.list}
 \alias{cf_data.default}
@@ -19,7 +19,7 @@ cf_data(x, ...)
 
 \method{cf_data}{Date}(x, ...)
 
-\method{cf_data}{POSIXct}(x, ...)
+\method{cf_data}{POSIXt}(x, ...)
 
 \method{cf_data}{character}(x, ...)
 

@@ -13,7 +13,7 @@ str_trunc <- function(x, width) {
   str_width <- nchar(x, type = "width")
 
   too_wide <- !is.na(x) & str_width > width
-  x[too_wide] <- paste0(substr(x[too_wide], 1, width - 1), "\u2026")
+  x[too_wide] <- paste0(crayon::col_substr(x[too_wide], 1, width - 1), "\u2026")
 
   x
 }

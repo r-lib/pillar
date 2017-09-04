@@ -27,8 +27,8 @@ print.cf_data <- function(x, ...) {
   print(format(x, ...))
 }
 
-new_cf_data <- function(x, width = max(crayon::col_nchar(x)), align = "left",
-                         min_width = NULL) {
+new_cf_data <- function(x, width = max(crayon::col_nchar(x, type = "width"), 0L),
+                        align = "left", min_width = NULL) {
   ret <- structure(
     x,
     align = align,
@@ -45,11 +45,11 @@ new_cf_data <- function(x, width = max(crayon::col_nchar(x)), align = "left",
 #' @rdname cf_data
 cf_data.logical <- function(x, ...) {
   out <- character(length(x))
-  out[x & !is.na(x)] <- style_accent("*")
-  out[!x & !is.na(x)] <- style_subtle("-")
+  out[x] <- style_accent("T")
+  out[!x] <- style_subtle("F")
   out[is.na(x)] <- cf_na()
 
-  new_cf_data(out, width = 1, align = "right")
+  new_cf_data(out, width = 1, align = "left")
 }
 
 #' @export
@@ -77,29 +77,32 @@ cf_data.Date <- function(x, ...) {
   x <- format(x, format = "%Y-%m-%d")
   x[is.na(x)] <- cf_na()
 
-  new_cf_data(x, width = 11, align = "right")
+  new_cf_data(x, width = 10, align = "left")
 }
 
 #' @export
 #' @rdname cf_data
-cf_data.POSIXct <- function(x, ...) {
+cf_data.POSIXt <- function(x, ...) {
   date <- format(x, format = "%Y-%m-%d")
   time <- format(x, format = "%H:%M:%S")
 
   datetime <- paste0(date, " " , style_subtle(time))
   datetime[is.na(x)] <- cf_na()
 
-  new_cf_data(datetime, width = 19, align = "right")
+  new_cf_data(datetime, width = 19, align = "left")
 }
 
 
 #' @export
 #' @rdname cf_data
 cf_data.character <- function(x, ...) {
-  out <- encodeString(x, na.encode = FALSE)
-  out[is.na(out)] <- cf_na()
+  out <- x
+  needs_quotes <- which(!is_syntactic(x))
+  is_na <- is.na(x)
+  out[needs_quotes] <- encodeString(x[needs_quotes], quote ='"', na.encode = FALSE)
+  out[is_na] <- cf_na(use_brackets_if_no_color = TRUE)
 
-  width <- max(crayon::col_nchar(out))
+  width <- max(crayon::col_nchar(out, type = "width"), 0L)
 
   new_cf_data(out, width = width, align = "left", min_width = min(width, 3L))
 }

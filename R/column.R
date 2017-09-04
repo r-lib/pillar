@@ -8,15 +8,19 @@ new_column <- function(row, width = NULL, align = NULL) {
   ret
 }
 
-new_vertical <- function(row) {
+new_vertical <- function(row, ..., extra_class = NULL) {
   ret <- structure(
     row,
-    class = "cf_vertical"
+    ...,
+    class = c(extra_class, "cf_vertical")
   )
   ret
 }
 
 #' @export
 print.cf_vertical <- function(x, ...) {
-  cat_line(paste(x, collapse = "\n"))
+  if (length(x) > 0) {
+    cat_line(paste(x, collapse = "\n"))
+  }
+  invisible(x)
 }

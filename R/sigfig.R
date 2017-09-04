@@ -44,11 +44,11 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
 
   if (scientific) {
     mnt <- ifelse(num, abs_x * 10 ^ (-exp), abs_x)
-    round_x <- signif(mnt, sigfig)
+    round_x <- safe_signif(mnt, sigfig)
     rhs_digits <- ifelse(num, sigfig - 1, 0)
     exp_display <- exp
   } else {
-    round_x <- signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
+    round_x <- safe_signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
     rhs_digits <- compute_rhs_digits(abs_x, sigfig)
     exp_display <- rep_along(x, NA_integer_)
   }
@@ -69,7 +69,12 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     superscript = superscript
   )
 
-  set_width(ret, max(crayon::col_nchar(assemble_decimal(ret))))
+  set_width(ret, max(crayon::col_nchar(assemble_decimal(ret), type = "width"), 0L))
+}
+
+safe_signif <- function(x, digits) {
+  if (length(x) == 0L) return(numeric())
+  signif(x, digits)
 }
 
 compute_rhs_digits <- function(x, sigfig) {
@@ -109,17 +114,18 @@ format_lhs <- function(s) {
   lhs_zero <- s$lhs_zero
 
   lhs_str <- sprintf("%.0f", s$lhs)
-  lhs_width <- max(nchar(lhs_str))
-  lhs_sig <- substr(lhs_str, 1, s$sigfig)
-  lhs_non <- substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
+  lhs_width <- max(nchar(lhs_str), 0L)
+  lhs_sig <- crayon::col_substr(lhs_str, 1, s$sigfig)
+  lhs_non <- crayon::col_substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
 
-  lhs_col <- ifelse(num,
+  # as.character() to support corner case of length zero
+  lhs_col <- as.character(ifelse(num,
     paste0(
       style_num(lhs_sig, neg, lhs_zero),
       style_subtle(lhs_non)
     ),
     style_na(lhs_str)
-  )
+  ))
 
   lhs_col <- crayon::col_align(lhs_col, width = lhs_width, align = "right")
   lhs_col
@@ -181,6 +187,8 @@ assemble_decimal <- function(x) {
 
 #' @export
 format.decimal_format <- function(x, width, ...) {
+  if (length(x$dec$num) == 0L) return(character())
+
   if (width < get_min_width(x)) {
     stop(
       "Need at least width ", get_min_width(x), " requested ", width, ".",
@@ -194,7 +202,7 @@ format.decimal_format <- function(x, width, ...) {
     row <- assemble_decimal(x$sci)
   }
 
-  used_width <- max(crayon::col_nchar(row))
+  used_width <- max(crayon::col_nchar(row, type = "width"), 0L)
   row <- paste0(strrep(" ", width - used_width), row)
   new_column(row, width = width, align = "right")
 }
