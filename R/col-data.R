@@ -63,7 +63,7 @@ cf_data.numeric <- function(x, ..., sigfig = 3) {
 
   ret <- structure(
     list(dec = dec, sci = sci),
-    class = "decimal_format"
+    class = c("cf_decimal", "cf_data")
   )
 
   ret <- set_width(ret, get_width(ret$dec))

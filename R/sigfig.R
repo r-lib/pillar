@@ -185,7 +185,7 @@ assemble_decimal <- function(x) {
 }
 
 #' @export
-format.decimal_format <- function(x, width, ...) {
+format.cf_decimal <- function(x, width, ...) {
   if (length(x$dec$num) == 0L) return(character())
 
   if (width < get_min_width(x)) {
@@ -204,9 +204,4 @@ format.decimal_format <- function(x, width, ...) {
   used_width <- max(crayon::col_nchar(row, type = "width"), 0L)
   row <- paste0(strrep(" ", width - used_width), row)
   new_column(row, width = width, align = "right")
-}
-
-#' @export
-print.decimal_format <- function(x, ...) {
-  print(format(x, ...))
 }
