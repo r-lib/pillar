@@ -2,11 +2,14 @@
 % Please edit documentation in R/sigfig.R, R/styles.R
 \name{style_num}
 \alias{style_num}
+\alias{style_signif}
 \alias{style_subtle}
 \alias{style_neg}
 \title{Styling helpers}
 \usage{
 style_num(x, negative, significant = rep_along(x, TRUE))
+
+style_signif(x, significant)
 
 style_subtle(x)
 
