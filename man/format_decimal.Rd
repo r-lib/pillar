@@ -15,10 +15,12 @@ format_decimal(x, sigfig = 3, ...)
 }
 \value{
 A list with at least the following elements:
-* `neg`: negative sign or space, if needed
-* `lhs`: whole number
-* `dec`: decimal point, if needed
-* `rhs`: remainder of number
+\itemize{
+\item \code{neg}: negative sign or space, if needed
+\item \code{lhs}: whole number
+\item \code{dec}: decimal point, if needed
+\item \code{rhs}: remainder of number
+}
 }
 \description{
 This formatting system is designed to make it as easy as possible to

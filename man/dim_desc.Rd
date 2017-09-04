@@ -10,7 +10,7 @@ dim_desc(x)
 \item{x}{The object to format the dimensions for}
 }
 \description{
-Multi-dimensional objects are formatted as `a x b x ...`, for vectors the
+Multi-dimensional objects are formatted as \code{a x b x ...}, for vectors the
 length is returned.
 }
 \examples{

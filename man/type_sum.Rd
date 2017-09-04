@@ -17,11 +17,11 @@ is_vector_s3(x)
 and variants have been implemented.}
 }
 \description{
-`type_sum()` gives a brief summary of object type. Objects that commonly
+\code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 
-`obj_sum()` also includes the size of the object if `is_vector_s3()`
-is `TRUE`.
+\code{obj_sum()} also includes the size of the object if \code{is_vector_s3()}
+is \code{TRUE}.
 }
 \examples{
 obj_sum(1:10)

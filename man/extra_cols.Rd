@@ -7,12 +7,12 @@
 extra_cols(x, ...)
 }
 \arguments{
-\item{x}{The result of [format()] on a [multicolformat] object}
+\item{x}{The result of \code{\link[=format]{format()}} on a \link{multicolformat} object}
 
 \item{...}{Unused}
 }
 \description{
-Formatting a [multicolformat] object may lead to some columns being omitted
+Formatting a \link{multicolformat} object may lead to some columns being omitted
 due to width restrictions. This method returns a character vector that
 describes each of the omitted columns.
 }

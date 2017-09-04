@@ -12,7 +12,7 @@ squeeze(x, width = NULL, ...)
 \arguments{
 \item{x}{A list of vectors to format}
 
-\item{has_row_id}{Include a column indicating row IDs? Pass `"*"` to mark
+\item{has_row_id}{Include a column indicating row IDs? Pass \code{"*"} to mark
 the row ID column with a star.}
 
 \item{width}{Default width of the entire output, optional}
@@ -23,7 +23,7 @@ the row ID column with a star.}
 The vectors are formatted to fit horizontally into a user-supplied number of
 characters per row.
 
-The `squeeze()` function is called by [format()]  and [print()] and usually
+The \code{squeeze()} function is called by \code{\link[=format]{format()}}  and \code{\link[=print]{print()}} and usually
 doesn't need to be called manually.
 It returns an object suitable for printing and formatting at a fixed width
 with additional information about omitted columns.
@@ -35,13 +35,15 @@ Remaining space is then distributed proportionally to columns that do not
 use their desired width.
 
 For computing the column widths, two cases are distinguished:
-1. When taking the minimum width for each column (plus one inter-column
-   space), at least one column does not fit.
-   In this case, the minimum width is assigned to all columns that do fit,
-   the non-fitting columns are stripped.
-1. All columns fit with their minimum width. In this case, starting at
-   the leftmost column, the maximum width is allocated to the columns
-   until all available space is used.
+\enumerate{
+\item When taking the minimum width for each column (plus one inter-column
+space), at least one column does not fit.
+In this case, the minimum width is assigned to all columns that do fit,
+the non-fitting columns are stripped.
+\item All columns fit with their minimum width. In this case, starting at
+the leftmost column, the maximum width is allocated to the columns
+until all available space is used.
+}
 
 The remaining space is distributed from left to right.
 Each column gains space proportional to the fraction of missing and

@@ -11,7 +11,7 @@ format_scientific(x, sigfig = 3, superscript = TRUE)
 
 \item{sigfig}{Number of signficiant figures to display.}
 
-\item{superscript}{If `TRUE`, will use superscript numbers in exponent.}
+\item{superscript}{If \code{TRUE}, will use superscript numbers in exponent.}
 }
 \description{
 Uses colour, careful alignment, and superscripts to display numbers

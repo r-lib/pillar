@@ -14,7 +14,7 @@ height (8/8). However, the half-height and full-height blocks appear
 to be rendered inconsistently (possibly due to font substitution).}
 }
 \description{
-Rendered using [block elements](https://en.wikipedia.org/wiki/Block_Elements).
+Rendered using \href{https://en.wikipedia.org/wiki/Block_Elements}{block elements}.
 In most common fixed width fonts these are rendered wider than regular
 characters which means they are not suitable if you need precise alignment.
 }
