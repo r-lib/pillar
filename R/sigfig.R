@@ -111,7 +111,7 @@ format_lhs <- function(s) {
   # as.character() to support corner case of length zero
   lhs_col <- as.character(ifelse(num,
     paste0(
-      style_num(lhs_sig, neg, lhs_zero),
+      style_num(lhs_sig, neg, !lhs_zero),
       style_subtle(lhs_non)
     ),
     style_na(lhs_str)
@@ -128,7 +128,7 @@ format_dec <- function(s) {
 
   # Decimal column
   if (any(dec)) {
-    dec_col <- ifelse(dec, style_num(".", neg, lhs_zero), " ")
+    dec_col <- ifelse(dec, style_num(".", neg, !lhs_zero), " ")
   } else {
     dec_col <- rep_along(neg, "")
   }
@@ -149,7 +149,7 @@ format_rhs <- function(s) {
 
   rhs_col <- ifelse(dec,
     paste0(
-      style_num(rhs_zero, neg, lhs_zero),
+      style_num(rhs_zero, neg, !lhs_zero),
       style_num(rhs_num, neg)
     ),
     ""
@@ -161,8 +161,12 @@ format_rhs <- function(s) {
   rhs_col
 }
 
-style_num <- function(x, negative, subtle = rep_along(x, FALSE)) {
-  ifelse(subtle, style_subtle(x), ifelse(negative, style_neg(x), x))
+#' @export
+#' @param negative,significant Logical vector the same length as `x` that
+#'   indicate if the values are negative and significant, respectively
+#' @rdname style_subtle
+style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
+  ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle(x))
 }
 
 assemble_decimal <- function(x) {
