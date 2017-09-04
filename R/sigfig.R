@@ -169,12 +169,6 @@ style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
   ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle(x))
 }
 
-#' @export
-#' @rdname style_subtle
-style_signif <- function(x, significant) {
-  ifelse(significant, x, style_subtle(x))
-}
-
 assemble_decimal <- function(x) {
   neg <- format_neg(x)
   lhs <- format_lhs(x)
