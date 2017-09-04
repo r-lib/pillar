@@ -5,9 +5,6 @@
 #'
 #' @inheritParams format_decimal
 #' @param superscript If `TRUE`, will use superscript numbers in exponent.
-#' @examples
-#' x <- c(runif(10) * 10 ^ (sample(-100:100, 5)), NA, Inf, NaN)
-#' format_scientific(x)
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
   split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 }
