@@ -38,6 +38,11 @@ test_that("output test", {
   expect_colformat_output(xf = multicolformat(x, width = 37), filename = "multi-37.txt")
   expect_colformat_output(xf = multicolformat(x, width = 38), filename = "multi-38.txt")
   expect_colformat_output(xf = multicolformat(x, width = 39), filename = "multi-39.txt")
+
+  expect_colformat_output(
+    xf = new_vertical(extra_cols(squeeze(multicolformat(x), width = 10))),
+    filename = "multi-extra-10.txt"
+  )
 })
 
 test_that("tests from tibble", {

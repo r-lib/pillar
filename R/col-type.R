@@ -1,5 +1,9 @@
+style_type_header <- function(x) {
+  crayon::underline(style_type(x))
+}
+
 style_type <- function(x) {
-  crayon::underline(style_subtle(x))
+  style_subtle(x)
 }
 
 cf_type <- function(x, ...) {

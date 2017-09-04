@@ -74,7 +74,7 @@ format.mcf_squeezed <- function(x, ...) {
 
   formatted <- c(
     invoke(paste, xt$title),
-    style_type(invoke(paste, xt$type)),
+    style_type_header(invoke(paste, xt$type)),
     invoke(paste, xt$data)
   )
 
