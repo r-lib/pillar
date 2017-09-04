@@ -2,6 +2,7 @@
 % Please edit documentation in R/col-data.R
 \name{cf_data}
 \alias{cf_data}
+\alias{new_cf_data}
 \alias{cf_data.logical}
 \alias{cf_data.numeric}
 \alias{cf_data.Date}
@@ -12,6 +13,9 @@
 \title{Column data}
 \usage{
 cf_data(x, ...)
+
+new_cf_data(x, width = max(crayon::col_nchar(x, type = "width"), 0L),
+  align = "left", min_width = NULL)
 
 \method{cf_data}{logical}(x, ...)
 
@@ -31,6 +35,12 @@ cf_data(x, ...)
 \item{x}{A vector to format}
 
 \item{...}{Other arguments passed to methods}
+
+\item{width}{The maximum column width}
+
+\item{align}{Alignment of the column}
+
+\item{min_width}{The minimum allowed column width, \code{width} if omitted}
 
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more signficiant figures than this
