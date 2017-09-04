@@ -97,7 +97,7 @@ cf_data.POSIXt <- function(x, ...) {
 #' @rdname cf_data
 cf_data.character <- function(x, ...) {
   out <- x
-  needs_quotes <- which(!is_syntactic(x))
+  needs_quotes <- which(!is_proper_string(x))
   is_na <- is.na(x)
   out[needs_quotes] <- encodeString(x[needs_quotes], quote ='"', na.encode = FALSE)
   out[is_na] <- cf_na(use_brackets_if_no_color = TRUE)
