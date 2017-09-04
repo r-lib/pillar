@@ -13,6 +13,9 @@ style_accent <- keep_empty(function(x) {
 
 #' Styling helpers
 #'
+#' Functions that allow implementers of formatters for custom data types to
+#' maintain a consistent style wit the default data types.
+#'
 #' @param x The character vector to style.
 #' @export
 style_subtle <- keep_empty(function(x) {
@@ -27,6 +30,8 @@ style_na <- function(x) {
   crayon::bgYellow(crayon::black(x))
 }
 
+#' @export
+#' @rdname style_subtle
 style_neg <- keep_empty(function(x) {
   crayon::red(x)
 })

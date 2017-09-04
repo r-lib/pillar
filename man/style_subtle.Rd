@@ -2,13 +2,17 @@
 % Please edit documentation in R/styles.R
 \name{style_subtle}
 \alias{style_subtle}
+\alias{style_neg}
 \title{Styling helpers}
 \usage{
 style_subtle(x)
+
+style_neg(x)
 }
 \arguments{
 \item{x}{The character vector to style.}
 }
 \description{
-Styling helpers
+Functions that allow implementers of formatters for custom data types to
+maintain a consistent style wit the default data types.
 }
