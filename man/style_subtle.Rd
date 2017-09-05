@@ -20,5 +20,5 @@ indicate if the values are negative and significant, respectively}
 }
 \description{
 Functions that allow implementers of formatters for custom data types to
-maintain a consistent style wit the default data types.
+maintain a consistent style with the default data types.
 }
