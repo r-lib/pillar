@@ -11,7 +11,7 @@ is_syntactic <- function(x) {
 }
 
 is_proper_string <- function(x) {
-  !grepl("[[:blank:][:cntrl:]\"]", x, perl = TRUE)
+  grepl("^[^[:blank:][:cntrl:]\"]+$", x, perl = TRUE)
 }
 
 tick <- function(x) {
