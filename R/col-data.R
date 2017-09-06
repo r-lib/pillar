@@ -18,7 +18,7 @@ format.cf_data <- function(x, width, ...) {
   } else {
     data <- x
   }
-  data[is.na(x)] <- cf_na()
+  data[is.na(x)] <- paste0(strrep(" ", attr(x, "na_indent")), cf_na())
 
   new_column(data, width = width, align = align)
 }
@@ -30,20 +30,19 @@ print.cf_data <- function(x, ...) {
 
 #' @export
 #' @param ... Unused, for extensibility.
-#' @param width The maximum column width
-#' @param align Alignment of the column
-#' @param min_width The minimum allowed column width, `width` if omitted
-#' @param na_pos The horizontal position at which `NA` values will be
-#'   inserted
+#' @param width The maximum column width.
+#' @param align Alignment of the column.
+#' @param min_width The minimum allowed column width, `width` if omitted.
+#' @param na_indent Indention of `NA` values.
 #' @rdname cf_data
 new_cf_data <- function(x, ...,
                         width = max(crayon::col_nchar(x, type = "width"), 0L),
                         align = "left", min_width = NULL,
-                        na_pos = 1L) {
+                        na_indent = 0L) {
   ret <- structure(
     x,
     align = align,
-    na_pos = na_pos,
+    na_indent = na_indent,
     class = "cf_data"
   )
   ret <- set_width(ret, width)
