@@ -29,11 +29,13 @@ print.cf_data <- function(x, ...) {
 }
 
 #' @export
+#' @param ... Unused, for extensibility.
 #' @param width The maximum column width
 #' @param align Alignment of the column
 #' @param min_width The minimum allowed column width, `width` if omitted
 #' @rdname cf_data
-new_cf_data <- function(x, width = max(crayon::col_nchar(x, type = "width"), 0L),
+new_cf_data <- function(x, ...,
+                        width = max(crayon::col_nchar(x, type = "width"), 0L),
                         align = "left", min_width = NULL) {
   ret <- structure(
     x,
