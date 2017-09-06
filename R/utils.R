@@ -10,7 +10,7 @@ cf_align <- function(x, width, align) {
 str_trunc <- function(x, width) {
   if (width == Inf) return(x)
 
-  str_width <- nchar(x, type = "width")
+  str_width <- crayon::col_nchar(x, type = "width")
 
   too_wide <- !is.na(x) & str_width > width
   x[too_wide] <- paste0(crayon::col_substr(x[too_wide], 1, width - 1), "\u2026")
