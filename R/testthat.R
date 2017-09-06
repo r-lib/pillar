@@ -1,6 +1,8 @@
 #' Test helpers
 #'
-#' Unexported functions for packages that implement their own colformat.
+#' Helper functions for packages that implement their own colformat.
+#' `expect_colformat_output()` is an expectation that allows storing the
+#' desired result in a file, and comparing the output with the file contents.
 #'
 #' @param x An object to be formatted.
 #' @param ... Passed on to [colformat()] if `xf` is left at its default.
@@ -9,6 +11,7 @@
 #'   `NA` and `Inf` values.
 #' @param xf Pass the result of a [colformat()] call here for full control.
 #' @param crayon Color the output?
+#' @export
 expect_colformat_output <- function(x, ..., filename,
                                     xp = add_special(x), xf = colformat(xp, ...),
                                     crayon = TRUE) {
@@ -27,6 +30,8 @@ expect_colformat_output <- function(x, ..., filename,
   expect_output_file(print(xf), file.path("out", filename), update = TRUE)
 }
 
+#' `add_special()` is not exported, and used only for initializing default
+#' values to `expect_colformat_output()`.
 #' @rdname expect_colformat_output
 add_special <- function(x) {
   x <- c(x, NA)

@@ -25,5 +25,10 @@ add_special(x)
 \item{crayon}{Color the output?}
 }
 \description{
-Unexported functions for packages that implement their own colformat.
+Helper functions for packages that implement their own colformat.
+\code{expect_colformat_output()} is an expectation that allows storing the
+desired result in a file, and comparing the output with the file contents.
+
+\code{add_special()} is not exported, and used only for initializing default
+values to \code{expect_colformat_output()}.
 }
