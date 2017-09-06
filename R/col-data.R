@@ -29,15 +29,21 @@ print.cf_data <- function(x, ...) {
 }
 
 #' @export
+#' @param ... Unused, for extensibility.
 #' @param width The maximum column width
 #' @param align Alignment of the column
 #' @param min_width The minimum allowed column width, `width` if omitted
+#' @param na_pos The horizontal position at which `NA` values will be
+#'   inserted
 #' @rdname cf_data
-new_cf_data <- function(x, width = max(crayon::col_nchar(x, type = "width"), 0L),
-                        align = "left", min_width = NULL) {
+new_cf_data <- function(x, ...,
+                        width = max(crayon::col_nchar(x, type = "width"), 0L),
+                        align = "left", min_width = NULL,
+                        na_pos = 1L) {
   ret <- structure(
     x,
     align = align,
+    na_pos = na_pos,
     class = "cf_data"
   )
   ret <- set_width(ret, width)
