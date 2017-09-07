@@ -14,8 +14,8 @@
 \usage{
 cf_data(x, ...)
 
-new_cf_data(x, width = max(crayon::col_nchar(x, type = "width"), 0L),
-  align = "left", min_width = NULL)
+new_cf_data(x, ..., width = max(crayon::col_nchar(x, type = "width"), 0L),
+  align = "left", min_width = NULL, na_indent = 0L)
 
 \method{cf_data}{logical}(x, ...)
 
@@ -36,15 +36,19 @@ new_cf_data(x, width = max(crayon::col_nchar(x, type = "width"), 0L),
 
 \item{...}{Other arguments passed to methods}
 
-\item{width}{The maximum column width}
+\item{width}{The maximum column width.}
 
-\item{align}{Alignment of the column}
+\item{align}{Alignment of the column.}
 
-\item{min_width}{The minimum allowed column width, \code{width} if omitted}
+\item{min_width}{The minimum allowed column width, \code{width} if omitted.}
+
+\item{na_indent}{Indention of \code{NA} values.}
 
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
+
+\item{...}{Unused, for extensibility.}
 }
 \description{
 Internal class for formatting the data part of a column.
