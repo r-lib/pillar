@@ -78,6 +78,11 @@ test_that("tests from tibble", {
   )
   expect_colformat_output(
     crayon = FALSE,
+    xf = multicolformat(list(a = c("", " ", "a ", " a")), width = 30),
+    filename = "tibble-space.txt"
+  )
+  expect_colformat_output(
+    crayon = FALSE,
     xf = multicolformat(list("mean(x)" = 5, "var(x)" = 3), width = 30),
     filename = "tibble-non-syntactic.txt"
   )
