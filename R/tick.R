@@ -10,6 +10,10 @@ is_syntactic <- function(x) {
   ret
 }
 
+is_proper_string <- function(x) {
+  grepl("^[^[:blank:][:cntrl:]\"]+$", x, perl = TRUE)
+}
+
 tick <- function(x) {
   x[is.na(x)] <- "NA"
   encodeString(x, quote = "`")
