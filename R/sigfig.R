@@ -180,7 +180,7 @@ assemble_decimal <- function(x) {
 }
 
 #' @export
-format.cf_decimal <- function(x, width, ...) {
+format.pillar_decimal <- function(x, width, ...) {
   if (length(x$dec$num) == 0L) return(character())
 
   if (width < get_min_width(x)) {

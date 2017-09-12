@@ -40,7 +40,7 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
 #' @export
 squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
-  if (attr(x, "zero_height")) return(new_mcf_sqeezed(character(), x[names2(x) != ""]))
+  if (attr(x, "zero_height")) return(new_colonnade_sqeezed(character(), x[names2(x) != ""]))
 
   if (is.null(width)) {
     width <- get_width(x)
@@ -50,22 +50,22 @@ squeeze <- function(x, width = NULL, ...) {
     width <- getOption("width")
   }
 
-  col_widths <- mcf_get_width(x, width)
-  out <- map2(x[seq_along(col_widths)], col_widths, cf_format_parts)
+  col_widths <- colonnade_get_width(x, width)
+  out <- map2(x[seq_along(col_widths)], col_widths, pillar_format_parts)
 
-  new_mcf_sqeezed(out, x[seq2_along(length(col_widths) + 1L, x)])
+  new_colonnade_sqeezed(out, x[seq2_along(length(col_widths) + 1L, x)])
 }
 
-new_mcf_sqeezed <- function(x, extra_cols) {
+new_colonnade_sqeezed <- function(x, extra_cols) {
   structure(
     x,
-    extra_cols = map_chr(extra_cols, cf_format_abbrev),
-    class = "mcf_squeezed"
+    extra_cols = map_chr(extra_cols, pillar_format_abbrev),
+    class = "squeezed_colonnade"
   )
 }
 
 #' @export
-format.mcf_squeezed <- function(x, ...) {
+format.squeezed_colonnade <- function(x, ...) {
   xt <- list(
     title = map(x, `[[`, "title_format"),
     type = map(x, `[[`, "type_format"),
@@ -82,13 +82,13 @@ format.mcf_squeezed <- function(x, ...) {
 }
 
 #' @export
-print.mcf_squeezed <- function(x, ...) {
+print.squeezed_colonnade <- function(x, ...) {
   print(format(x, ...), ...)
   invisible(x)
 }
 
 # Method registration happens in .onLoad()
-knit_print.mcf_squeezed <- function(x, ...) {
+knit_print.squeezed_colonnade <- function(x, ...) {
   header <- map_chr(x, `[[`, "title_format")
   col <- map(x, function(xx) c(xx[["type_format"]], xx[["data_format"]]))
 
@@ -108,7 +108,7 @@ extra_cols <- function(x, ...) {
 }
 
 #' @export
-extra_cols.mcf_squeezed <- function(x, ...) {
+extra_cols.squeezed_colonnade <- function(x, ...) {
   attr(x, "extra_cols")
 }
 
@@ -125,19 +125,19 @@ print.colonnade <- function(x, ...) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-mcf_get_width <- function(x, width) {
+colonnade_get_width <- function(x, width) {
   max_widths <- map_int(map(x, get_widths), max)
   min_widths <- map_int(map(x, get_min_widths), max)
 
   #' @details
   #' In a first pass, for each column it is decided if it is hidden, shown with
   #' its minimum width or shown with its maximum width.
-  col_widths <- mcf_compute_col_widths(min_widths, max_widths, width)
+  col_widths <- colonnade_compute_col_widths(min_widths, max_widths, width)
 
   #' Remaining space is then distributed proportionally to columns that do not
   #' use their desired width.
   max_widths <- max_widths[seq_along(col_widths)]
-  added_space <- mcf_distribute_space(col_widths, max_widths, width)
+  added_space <- colonnade_distribute_space(col_widths, max_widths, width)
 
   col_widths + added_space
 }
@@ -145,7 +145,7 @@ mcf_get_width <- function(x, width) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-mcf_compute_col_widths <- function(min_widths, max_widths, width) {
+colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
   #' @details
   #' For computing the column widths, two cases are distinguished:
   #' 1. When taking the minimum width for each column (plus one inter-column
@@ -173,7 +173,7 @@ mcf_compute_col_widths <- function(min_widths, max_widths, width) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-mcf_distribute_space <- function(col_widths, max_widths, width) {
+colonnade_distribute_space <- function(col_widths, max_widths, width) {
   missing_space <- max_widths - col_widths
   # Shortcut to avoid division by zero
   if (all(missing_space == 0L)) return(rep_along(col_widths, 0L))
