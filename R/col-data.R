@@ -3,7 +3,7 @@
 #' Internal class for formatting the data part of a column.
 #'
 #' @param x A vector to format
-#' @param ... Other arguments passed to methods
+#' @param ... Unused, for extensibility.
 #' @export
 pillar_shaft <- function(x, ...) {
   UseMethod("pillar_shaft")
@@ -29,7 +29,6 @@ print.pillar_shaft <- function(x, ...) {
 }
 
 #' @export
-#' @param ... Unused, for extensibility.
 #' @param width The maximum column width.
 #' @param align Alignment of the column.
 #' @param min_width The minimum allowed column width, `width` if omitted.

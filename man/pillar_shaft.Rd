@@ -34,7 +34,7 @@ new_pillar_shaft(x, ..., width = max(crayon::col_nchar(x, type = "width"),
 \arguments{
 \item{x}{A vector to format}
 
-\item{...}{Other arguments passed to methods}
+\item{...}{Unused, for extensibility.}
 
 \item{width}{The maximum column width.}
 
@@ -47,8 +47,6 @@ new_pillar_shaft(x, ..., width = max(crayon::col_nchar(x, type = "width"),
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
-
-\item{...}{Unused, for extensibility.}
 }
 \description{
 Internal class for formatting the data part of a column.

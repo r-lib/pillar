@@ -27,7 +27,7 @@ expect_pillar_output <- function(x, ..., filename,
     crayon::num_colors(forget = TRUE)
   })
 
-  expect_output_file(print(xf), file.path("out", filename), update = TRUE)
+  testthat::expect_output_file(print(xf), file.path("out", filename), update = TRUE)
 }
 
 #' `add_special()` is not exported, and used only for initializing default
