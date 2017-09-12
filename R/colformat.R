@@ -61,9 +61,8 @@ format.pillar <- function(x, width = NULL, ...) {
   width <- pillar_get_width(x, width)
   out <- pillar_format_parts(x, width)
 
-  pillar_shaft <- c(out$title_format, style_type_header(out$type_format), out$data_format)
-
-  new_vertical(pillar_shaft)
+  fmt <- c(out$title_format, style_type_header(out$type_format), out$data_format)
+  new_vertical(fmt)
 }
 
 #' @export
