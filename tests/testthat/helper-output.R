@@ -1,5 +1,5 @@
-expect_colformat_output <- function(x, ..., filename,
-                                    xp = add_special(x), xf = colformat(xp, ...),
+expect_pillar_output <- function(x, ..., filename,
+                                    xp = add_special(x), xf = pillar(xp, ...),
                                     crayon = TRUE) {
   if (crayon) {
     old <- options(crayon.enabled = TRUE, crayon.colors = 16L)

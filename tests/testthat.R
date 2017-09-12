@@ -1,4 +1,4 @@
 library(testthat)
-library(colformat)
+library(pillar)
 
-test_check("colformat")
+test_check("pillar")
