@@ -74,6 +74,6 @@ test_that("corner cases", {
 })
 
 test_that("output test", {
-  expect_colformat_output((10 ^ (-3:4)) * c(-1, 1), filename = "basic.txt")
-  expect_colformat_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
+  expect_pillar_output((10 ^ (-3:4)) * c(-1, 1), filename = "basic.txt")
+  expect_pillar_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
 })

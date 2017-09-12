@@ -1,16 +1,16 @@
-# API for colformat package
+# API for pillar package
 
 ## Exported functions
 
 cf_data(x, ...)
-colformat(x, title = NULL, width = NULL, ...)
+colonnade(x, has_row_id = TRUE, width = NULL, ...)
 dim_desc(x)
-expect_colformat_output(x, ..., filename, xp = add_special(x), xf = colformat(xp, ...), crayon = TRUE)
+expect_pillar_output(x, ..., filename, xp = add_special(x), xf = pillar(xp, ...), crayon = TRUE)
 extra_cols(x, ...)
 is_vector_s3(x)
-multicolformat(x, has_row_id = TRUE, width = NULL, ...)
 new_cf_data(x, ..., width = max(crayon::col_nchar(x, type = "width"), 0L), align = "left", min_width = NULL, na_indent = 0L)
 obj_sum(x)
+pillar(x, title = NULL, width = NULL, ...)
 spark_bar(x, safe = TRUE)
 spark_line(x)
 squeeze(x, width = NULL, ...)

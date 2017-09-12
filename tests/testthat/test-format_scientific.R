@@ -23,6 +23,6 @@ test_that("exponents correct in presence of NA", {
 })
 
 test_that("output test", {
-  expect_colformat_output(10 ^ c(-9, -6, 3, 9), width = 10, filename = "scientific.txt")
-  expect_colformat_output((10 ^ c(3, 9, 15, 22)) * c(-1, 1), width = 10, filename = "scientific-short-neg.txt")
+  expect_pillar_output(10 ^ c(-9, -6, 3, 9), width = 10, filename = "scientific.txt")
+  expect_pillar_output((10 ^ c(3, 9, 15, 22)) * c(-1, 1), width = 10, filename = "scientific-short-neg.txt")
 })

@@ -9,12 +9,12 @@
 #' @param width Default width of the entire output, optional
 #' @param ... Ignored
 #' @export
-multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
+colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
   has_title <- is_named(x)
   if (has_title) {
-    ret <- map2(x, names(x), colformat)
+    ret <- map2(x, names(x), pillar)
   } else {
-    ret <- map(x, colformat)
+    ret <- map(x, pillar)
   }
   if (!is_false(has_row_id) && length(x) > 0) {
     rowid <- rowidformat(
@@ -25,7 +25,7 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
     ret <- c(list(rowid), ret)
   }
   zero_height <- length(x) == 0L || length(x[[1]]) == 0L
-  ret <- structure(ret, zero_height = zero_height, class = "multicolformat")
+  ret <- structure(ret, zero_height = zero_height, class = "colonnade")
   ret <- set_width(ret, width)
   ret
 }
@@ -36,7 +36,7 @@ multicolformat <- function(x, has_row_id = TRUE, width = NULL, ...) {
 #' It returns an object suitable for printing and formatting at a fixed width
 #' with additional information about omitted columns.
 #'
-#' @rdname multicolformat
+#' @rdname colonnade
 #' @export
 squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
@@ -97,10 +97,10 @@ knit_print.mcf_squeezed <- function(x, ...) {
 
 #' Retrieve information about columns that didn't fit the available width
 #'
-#' Formatting a [multicolformat] object may lead to some columns being omitted
+#' Formatting a [colonnade] object may lead to some columns being omitted
 #' due to width restrictions. This method returns a character vector that
 #' describes each of the omitted columns.
-#' @param x The result of [format()] on a [multicolformat] object
+#' @param x The result of [format()] on a [colonnade] object
 #' @param ... Unused
 #' @export
 extra_cols <- function(x, ...) {
@@ -113,16 +113,16 @@ extra_cols.mcf_squeezed <- function(x, ...) {
 }
 
 #' @export
-format.multicolformat <- function(x, ...) {
+format.colonnade <- function(x, ...) {
   format(squeeze(x, ...))
 }
 
 #' @export
-print.multicolformat <- function(x, ...) {
+print.colonnade <- function(x, ...) {
   print(format(x, ...))
 }
 
-#' @rdname multicolformat
+#' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
 mcf_get_width <- function(x, width) {
@@ -142,7 +142,7 @@ mcf_get_width <- function(x, width) {
   col_widths + added_space
 }
 
-#' @rdname multicolformat
+#' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
 mcf_compute_col_widths <- function(min_widths, max_widths, width) {
@@ -170,7 +170,7 @@ mcf_compute_col_widths <- function(min_widths, max_widths, width) {
   col_widths
 }
 
-#' @rdname multicolformat
+#' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
 mcf_distribute_space <- function(col_widths, max_widths, width) {
