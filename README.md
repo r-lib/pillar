@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 pillar
-=========
+======
 
 [![Travis-CI Build Status](https://travis-ci.org/hadley/pillar.svg?branch=master)](https://travis-ci.org/hadley/pillar)
 
@@ -25,7 +25,7 @@ library(pillar)
 
 x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10))
 pillar(x)
-#>           title
+#>           <dbl>
 #> 1234567890     
 #>     123457     
 #>       1235     
