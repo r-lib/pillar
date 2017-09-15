@@ -14,16 +14,6 @@
 #' @param x A numeric vector
 #' @param sigfig Number of signficiant figures to display.
 #' @param ... Ignored
-#' @export
-#' @examples
-#' x <- 123456789 * (10 ^ c(1, -3, -5, NA, -8, -10, -15))
-#' format_decimal(x, 3)
-#'
-#' x <- x * sample(c(-1, 1), length(x), rep = TRUE)
-#' format_decimal(x, 3)
-#'
-#' format_decimal(c(Inf, -Inf, NA, NaN), 3)
-#' format_decimal(c(1e10, 1e-10), 3)
 format_decimal <- function(x, sigfig = 3, ...) {
   split_decimal(x, sigfig)
 }
@@ -121,7 +111,7 @@ format_lhs <- function(s) {
   # as.character() to support corner case of length zero
   lhs_col <- as.character(ifelse(num,
     paste0(
-      style_num(lhs_sig, neg, lhs_zero),
+      style_num(lhs_sig, neg, !lhs_zero),
       style_subtle(lhs_non)
     ),
     style_na(lhs_str)
@@ -138,7 +128,7 @@ format_dec <- function(s) {
 
   # Decimal column
   if (any(dec)) {
-    dec_col <- ifelse(dec, style_num(".", neg, lhs_zero), " ")
+    dec_col <- ifelse(dec, style_num(".", neg, !lhs_zero), " ")
   } else {
     dec_col <- rep_along(neg, "")
   }
@@ -159,7 +149,7 @@ format_rhs <- function(s) {
 
   rhs_col <- ifelse(dec,
     paste0(
-      style_num(rhs_zero, neg, lhs_zero),
+      style_num(rhs_zero, neg, !lhs_zero),
       style_num(rhs_num, neg)
     ),
     ""
@@ -171,8 +161,12 @@ format_rhs <- function(s) {
   rhs_col
 }
 
-style_num <- function(x, negative, subtle = rep_along(x, FALSE)) {
-  ifelse(subtle, style_subtle(x), ifelse(negative, style_neg(x), x))
+#' @export
+#' @param negative,significant Logical vector the same length as `x` that
+#'   indicate if the values are negative and significant, respectively
+#' @rdname style_subtle
+style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
+  ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle(x))
 }
 
 assemble_decimal <- function(x) {
@@ -186,7 +180,7 @@ assemble_decimal <- function(x) {
 }
 
 #' @export
-format.decimal_format <- function(x, width, ...) {
+format.pillar_decimal <- function(x, width, ...) {
   if (length(x$dec$num) == 0L) return(character())
 
   if (width < get_min_width(x)) {
@@ -205,9 +199,4 @@ format.decimal_format <- function(x, width, ...) {
   used_width <- max(crayon::col_nchar(row, type = "width"), 0L)
   row <- paste0(strrep(" ", width - used_width), row)
   new_column(row, width = width, align = "right")
-}
-
-#' @export
-print.decimal_format <- function(x, ...) {
-  print(format(x, ...))
 }

@@ -1,4 +1,4 @@
-cf_title <- function(title, ...) {
+pillar_title <- function(title, ...) {
   if (is.null(title)) {
     width <- 0L
   } else {
@@ -9,7 +9,7 @@ cf_title <- function(title, ...) {
     list(
       title = title
     ),
-    class = "cf_title"
+    class = "pillar_title"
   )
 
   ret <- set_width(ret, width)
@@ -18,7 +18,7 @@ cf_title <- function(title, ...) {
 }
 
 #' @export
-format.cf_title <- function(x, width, ...) {
+format.pillar_title <- function(x, width, ...) {
   title <- x$title
   if (is.null(title)) return(character())
 

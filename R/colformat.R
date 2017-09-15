@@ -34,9 +34,9 @@
 #' pillar(date + c(1, NA, 3:5))
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
-  title <- cf_title(title, ...)
-  type <- cf_type(x, ...)
-  data <- cf_data(x, ...)
+  title <- pillar_title(title, ...)
+  type <- pillar_type(x, ...)
+  data <- pillar_shaft(x, ...)
   ret <- structure(
     list(title = title, type = type, data = data),
     class = "pillar"
@@ -58,12 +58,11 @@ rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
 
 #' @export
 format.pillar <- function(x, width = NULL, ...) {
-  width <- cf_get_width(x, width)
-  out <- cf_format_parts(x, width)
+  width <- pillar_get_width(x, width)
+  out <- pillar_format_parts(x, width)
 
-  cf_data <- c(out$title_format, style_type_header(out$type_format), out$data_format)
-
-  new_vertical(cf_data)
+  fmt <- c(out$title_format, style_type_header(out$type_format), out$data_format)
+  new_vertical(fmt)
 }
 
 #' @export
@@ -71,7 +70,7 @@ print.pillar <- function(x, ...) {
   print(format(x, ...))
 }
 
-cf_get_width <- function(x, width) {
+pillar_get_width <- function(x, width) {
   if (is.null(width)) {
     width <- get_width(x)
   }
@@ -87,7 +86,7 @@ cf_get_width <- function(x, width) {
   width
 }
 
-cf_format_parts <- function(x, width, ...) {
+pillar_format_parts <- function(x, width, ...) {
   title_format <- format(x$title, width = width, ...)
   type_format <- format(x$type, width = width, ...)
   data_format <- format(x$data, width = width, ...)
@@ -104,7 +103,7 @@ cf_format_parts <- function(x, width, ...) {
   )
 }
 
-cf_format_abbrev <- function(x, ...) {
+pillar_format_abbrev <- function(x, ...) {
   title_format <- format(x$title, width = Inf, ...)
   type_format <- style_type(format(x$type, width = Inf, ...))
   paste0(title_format, "\u00a0", type_format)

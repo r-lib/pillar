@@ -6,7 +6,7 @@ NULL
 }
 
 .onLoad <- function(libname, pkgname) {
-  register_s3_method("knitr", "knit_print", "mcf_squeezed")
+  register_s3_method("knitr", "knit_print", "squeezed_colonnade")
 
   invisible()
 }
