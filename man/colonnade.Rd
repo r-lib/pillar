@@ -29,22 +29,22 @@ It returns an object suitable for printing and formatting at a fixed width
 with additional information about omitted columns.
 }
 \details{
-In a first pass, for each pillar it is decided in which chunk it is shown,
+In a first pass, for each pillar it is decided in which tier it is shown,
 if at all, and how much horizontal space it may use (either its minumum
-or its maximum width). More than one chunk may be created if
-\code{width > getOption("width")}, in this case each chunk is at most
+or its maximum width). More than one tier may be created if
+\code{width > getOption("width")}, in this case each tier is at most
 \code{getOption("width")} characters wide.
 Remaining space is then distributed proportionally to pillars that do not
 use their desired width.
 
-For computing the column widths, two cases are distinguished:
+For computing the pillar widths in a single tier, two cases are distinguished:
 \enumerate{
-\item When taking the minimum width for each column (plus one inter-column
-space), at least one column does not fit.
-In this case, the minimum width is assigned to all columns that do fit,
-the non-fitting columns are stripped.
-\item All columns fit with their minimum width. In this case, starting at
-the leftmost column, the maximum width is allocated to the columns
+\item When taking the minimum width for each pillar (plus one inter-pillar
+space), at least one pillar does not fit.
+In this case, the minimum width is assigned to all pillars that do fit,
+the non-fitting pillars are stripped.
+\item All pillars fit with their minimum width. In this case, starting at
+the leftmost pillar, the maximum width is allocated to the pillars
 until all available space is used.
 }
 
