@@ -179,9 +179,38 @@ get_tier_widths <- function(width, rowid_width, tier_width = getOption("width"))
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths) {
-  col_tier_df <- colonnade_compute_col_widths_df(col_df, tier_widths[[1]])
-  col_tier_df
+colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_tier_df = data.frame()) {
+  tier_id <- max(c(fixed_tier_df$tier), 0L) + 1L
+  tier_df <- colonnade_compute_col_widths_df(col_df, tier_widths[[1]], tier_id)
+
+  #' @details
+  #' For fitting pillars in one or more tiers, it is first attempted to fit all
+  #' of them in the first tier.
+  if (length(tier_widths) == 1 || all(tier_df$width >= tier_df$max_widths)) {
+    #' If this succeeds (or if no more tiers are available), this fit is
+    #' accepted.
+    return(rbind(fixed_tier_df, tier_df))
+  }
+
+  #' Otherwise, an attempt is made to fit all remaining pillars in the remaining
+  #' tiers (with a recursive call).
+  all_tier_df <- colonnade_compute_tiered_col_widths_df(
+    col_df[tier_df$tier == 0, ],
+    tier_widths[-1],
+    rbind(fixed_tier_df, tier_df[tier_df$tier != 0, ])
+  )
+
+  #' If there still are columns that don't fit, the results from the first and
+  #' remaining tiers are combined and accepted.
+  if (any(all_tier_df$tier == 0)) {
+    return(all_tier_df)
+  }
+
+  #'
+  #' In case all remaining pillars fit all remaining tiers, an optimization
+  #' that selects the optimal number of pillars in the first tier is required
+  #' to avoid packing top tiers too densely. This is currently not implemented.
+  all_tier_df
 }
 
 #' @rdname colonnade
