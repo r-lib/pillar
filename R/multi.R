@@ -22,10 +22,11 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
       has_star = identical(has_row_id, "*"),
       has_title_row = has_title
     )
-    ret <- c(list(rowid), ret)
+  } else {
+    rowid <- NULL
   }
   zero_height <- length(x) == 0L || length(x[[1]]) == 0L
-  ret <- structure(ret, zero_height = zero_height, class = "colonnade")
+  ret <- structure(ret, zero_height = zero_height, rowid = rowid, class = "colonnade")
   ret <- set_width(ret, width)
   ret
 }
@@ -40,7 +41,9 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
 #' @export
 squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
-  if (attr(x, "zero_height")) return(new_colonnade_sqeezed(character(), x[names2(x) != ""]))
+  if (attr(x, "zero_height")) {
+    return(new_colonnade_sqeezed(list(), x))
+  }
 
   if (is.null(width)) {
     width <- get_width(x)
@@ -50,10 +53,25 @@ squeeze <- function(x, width = NULL, ...) {
     width <- getOption("width")
   }
 
-  col_widths <- colonnade_get_width(x, width)
-  out <- map2(x[seq_along(col_widths)], col_widths, pillar_format_parts)
+  rowid <- attr(x, "rowid")
+  if (is.null(rowid)) rowid_width <- 0
+  else rowid_width <- max(get_widths(rowid)) + 1L
 
-  new_colonnade_sqeezed(out, x[seq2_along(length(col_widths) + 1L, x)])
+  col_widths <- colonnade_get_width(x, width, rowid_width)
+  col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
+  col_widths_shown <- col_widths_show[["TRUE"]]
+  col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
+  out <- map(col_widths_tiers, function(tier) {
+    map2(x[tier$id], tier$width, pillar_format_parts)
+  })
+
+  if (!is.null(rowid)) {
+    rowid_formatted <- pillar_format_parts(rowid, rowid_width - 1L)
+    out <- map(out, function(x) c(list(rowid_formatted), x))
+  }
+
+  col_widths_extra <- col_widths_show[["FALSE"]]
+  new_colonnade_sqeezed(out, x[col_widths_extra$id])
 }
 
 new_colonnade_sqeezed <- function(x, extra_cols) {
@@ -66,19 +84,22 @@ new_colonnade_sqeezed <- function(x, extra_cols) {
 
 #' @export
 format.squeezed_colonnade <- function(x, ...) {
+  formatted <- map(x, format_colonnade_tier)
+  new_vertical(as.character(unlist(formatted)))
+}
+
+format_colonnade_tier <- function(x) {
   xt <- list(
     title = map(x, `[[`, "title_format"),
     type = map(x, `[[`, "type_format"),
     data = map(x, `[[`, "data_format")
   )
 
-  formatted <- c(
+  c(
     invoke(paste, xt$title),
     style_type_header(invoke(paste, xt$type)),
     invoke(paste, xt$data)
   )
-
-  new_vertical(formatted)
 }
 
 #' @export
@@ -125,21 +146,58 @@ print.colonnade <- function(x, ...) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_get_width <- function(x, width) {
-  max_widths <- map_int(map(x, get_widths), max)
-  min_widths <- map_int(map(x, get_min_widths), max)
+colonnade_get_width <- function(x, width, rowid_width) {
+  col_df <- data.frame(
+    id = seq_along(x),
+    max_widths = map_int(map(x, get_widths), max),
+    min_widths = map_int(map(x, get_min_widths), max)
+  )
 
   #' @details
-  #' In a first pass, for each column it is decided if it is hidden, shown with
-  #' its minimum width or shown with its maximum width.
-  col_widths <- colonnade_compute_col_widths(min_widths, max_widths, width)
+  #' In a first pass, for each pillar it is decided in which tier it is shown,
+  #' if at all, and how much horizontal space it may use (either its minumum
+  #' or its maximum width). More than one tier may be created if
+  #' `width > getOption("width")`, in this case each tier is at most
+  #' `getOption("width")` characters wide.
+  tier_widths <- get_tier_widths(width, rowid_width)
+  col_widths_df <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths)
 
-  #' Remaining space is then distributed proportionally to columns that do not
+  #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
-  max_widths <- max_widths[seq_along(col_widths)]
-  added_space <- colonnade_distribute_space(col_widths, max_widths, width)
+  colonnade_distribute_space_df(col_widths_df, tier_widths)
+}
 
-  col_widths + added_space
+get_tier_widths <- function(width, rowid_width, tier_width = getOption("width")) {
+  pos <- c(
+    seq(0, width - 1, by = tier_width),
+    width
+  )
+  diff(pos) - rowid_width
+}
+
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
+colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths) {
+  col_tier_df <- colonnade_compute_col_widths_df(col_df, tier_widths[[1]])
+  col_tier_df
+}
+
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
+colonnade_compute_col_widths_df <- function(col_df, width, tier_id = 1L) {
+  col_widths <- colonnade_compute_col_widths(
+    col_df$min_widths,
+    col_df$max_widths,
+    width
+  )
+  n_fitting_cols <- length(col_widths)
+  col_widths <- c(col_widths, rep(0L, nrow(col_df) - length(col_widths)))
+
+  col_df$width <- col_widths
+  col_df$tier <- ifelse(seq_along(col_widths) > n_fitting_cols, 0L, tier_id)
+  col_df
 }
 
 #' @rdname colonnade
@@ -173,7 +231,23 @@ colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
+colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
+  col_widths_split <- split(col_widths_df, col_widths_df$tier)
+  if (any(col_widths_df$tier == 0)) tier_widths <- c(NA, tier_widths)
+  tier_widths <- tier_widths[seq_along(col_widths_split)]
+  col_widths_apply <- map2(col_widths_split, tier_widths, function(x, width) {
+    x$width <- x$width + colonnade_distribute_space(x$width, x$max_widths, width)
+    x
+  })
+  invoke(rbind, unname(col_widths_apply))
+}
+
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
 colonnade_distribute_space <- function(col_widths, max_widths, width) {
+  if (any(is.na(col_widths))) return(col_widths)
+
   missing_space <- max_widths - col_widths
   # Shortcut to avoid division by zero
   if (all(missing_space == 0L)) return(rep_along(col_widths, 0L))

@@ -29,9 +29,12 @@ It returns an object suitable for printing and formatting at a fixed width
 with additional information about omitted columns.
 }
 \details{
-In a first pass, for each column it is decided if it is hidden, shown with
-its minimum width or shown with its maximum width.
-Remaining space is then distributed proportionally to columns that do not
+In a first pass, for each pillar it is decided in which chunk it is shown,
+if at all, and how much horizontal space it may use (either its minumum
+or its maximum width). More than one chunk may be created if
+\code{width > getOption("width")}, in this case each chunk is at most
+\code{getOption("width")} characters wide.
+Remaining space is then distributed proportionally to pillars that do not
 use their desired width.
 
 For computing the column widths, two cases are distinguished:
