@@ -28,7 +28,4 @@ add_special(x)
 Helper functions for packages that implement their own pillar.
 \code{expect_pillar_output()} is an expectation that allows storing the
 desired result in a file, and comparing the output with the file contents.
-
-\code{add_special()} is not exported, and used only for initializing default
-values to \code{expect_pillar_output()}.
 }
