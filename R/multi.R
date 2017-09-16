@@ -22,10 +22,11 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
       has_star = identical(has_row_id, "*"),
       has_title_row = has_title
     )
-    ret <- c(list(rowid), ret)
+  } else {
+    rowid <- NULL
   }
   zero_height <- length(x) == 0L || length(x[[1]]) == 0L
-  ret <- structure(ret, zero_height = zero_height, class = "colonnade")
+  ret <- structure(ret, zero_height = zero_height, rowid = rowid, class = "colonnade")
   ret <- set_width(ret, width)
   ret
 }
@@ -41,7 +42,7 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
 squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
   if (attr(x, "zero_height")) {
-    return(new_colonnade_sqeezed(list(), x[names2(x) != ""]))
+    return(new_colonnade_sqeezed(list(), x))
   }
 
   if (is.null(width)) {
@@ -52,13 +53,22 @@ squeeze <- function(x, width = NULL, ...) {
     width <- getOption("width")
   }
 
-  col_widths <- colonnade_get_width(x, width)
-  col_widths_show <- split(col_widths, col_widths$chunk != 0)
+  rowid <- attr(x, "rowid")
+  if (is.null(rowid)) rowid_width <- 0
+  else rowid_width <- max(get_widths(rowid)) + 1L
+
+  col_widths <- colonnade_get_width(x, max(width - rowid_width, 0L))
+  col_widths_show <- split(col_widths, factor(col_widths$chunk != 0, levels = c(FALSE, TRUE)))
   col_widths_shown <- col_widths_show[["TRUE"]]
   col_widths_chunks <- split(col_widths_shown, col_widths_shown$chunk)
   out <- map(col_widths_chunks, function(chunk) {
     map2(x[chunk$id], chunk$width, pillar_format_parts)
   })
+
+  if (!is.null(rowid)) {
+    rowid_formatted <- pillar_format_parts(rowid, rowid_width - 1L)
+    out <- map(out, function(x) c(list(rowid_formatted), x))
+  }
 
   col_widths_extra <- col_widths_show[["FALSE"]]
   new_colonnade_sqeezed(out, x[col_widths_extra$id])
