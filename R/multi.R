@@ -159,7 +159,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' or its maximum width). More than one chunk may be created if
   #' `width > getOption("width")`, in this case each chunk is at most
   #' `getOption("width")` characters wide.
-  col_widths_df <- colonnade_compute_col_widths_df(col_df, width, rowid_width)
+  col_widths_df <- colonnade_compute_chunked_col_widths_df(col_df, width, rowid_width)
 
   #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
@@ -169,17 +169,34 @@ colonnade_get_width <- function(x, width, rowid_width) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_col_widths_df <- function(col_df, width, rowid_width) {
+colonnade_compute_chunked_col_widths_df <- function(col_df, width, rowid_width) {
+  chunk_widths <- get_chunk_widths(width, rowid_width)
+  col_chunk_df <- colonnade_compute_col_widths_df(col_df, chunk_widths[[1]])
+  col_chunk_df
+}
+
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
+colonnade_compute_col_widths_df <- function(col_df, width) {
   col_widths <- colonnade_compute_col_widths(
     col_df$min_widths,
     col_df$max_widths,
-    width - rowid_width
+    width
   )
   length(col_widths) <- nrow(col_df)
 
   col_df$width <- col_widths
   col_df$chunk <- ifelse(is.na(col_widths), 0L, 1L)
   col_df
+}
+
+get_chunk_widths <- function(width, rowid_width, chunk_width = getOption("width")) {
+  pos <- c(
+    seq(0, width - 1, by = chunk_width),
+    width
+  )
+  diff(pos) - rowid_width
 }
 
 #' @rdname colonnade
