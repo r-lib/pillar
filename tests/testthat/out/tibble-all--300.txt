@@ -1,5 +1,10 @@
-      a     b c     d     e      f          g                   h         i    
-  <dbl> <int> <lgl> <chr> <fctr> <date>     <dttm>              <list>    <lis>
-1  1.00     1 T     a     a      2015-12-10 2015-12-09 10:51:35 <int [1]> <lis…
-2  2.50     2 F     b     b      2015-12-11 2015-12-09 10:51:36 <int [1]> <lis…
-3 NA       NA NA    <NA>  <NA>   NA         NA                  <int [1]> <lis…
+      a     b c     d     e      f          g                   h        
+  <dbl> <int> <lgl> <chr> <fctr> <date>     <dttm>              <list>   
+1  1.00     1 T     a     a      2015-12-10 2015-12-09 10:51:35 <int [1]>
+2  2.50     2 F     b     b      2015-12-11 2015-12-09 10:51:36 <int [1]>
+3 NA       NA NA    <NA>  <NA>   NA         NA                  <int [1]>
+  i         
+  <list>    
+1 <list [2]>
+2 <list [1]>
+3 <list [1]>
