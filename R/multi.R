@@ -40,7 +40,9 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
 #' @export
 squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
-  if (attr(x, "zero_height")) return(new_colonnade_sqeezed(character(), x[names2(x) != ""]))
+  if (attr(x, "zero_height")) {
+    return(new_colonnade_sqeezed(list(), x[names2(x) != ""]))
+  }
 
   if (is.null(width)) {
     width <- get_width(x)
@@ -53,7 +55,7 @@ squeeze <- function(x, width = NULL, ...) {
   col_widths <- colonnade_get_width(x, width)
   out <- map2(x[seq_along(col_widths)], col_widths, pillar_format_parts)
 
-  new_colonnade_sqeezed(out, x[seq2_along(length(col_widths) + 1L, x)])
+  new_colonnade_sqeezed(list(out), x[seq2_along(length(col_widths) + 1L, x)])
 }
 
 new_colonnade_sqeezed <- function(x, extra_cols) {
@@ -66,19 +68,22 @@ new_colonnade_sqeezed <- function(x, extra_cols) {
 
 #' @export
 format.squeezed_colonnade <- function(x, ...) {
+  formatted <- map(x, format_colonnade_chunk)
+  new_vertical(as.character(unlist(formatted)))
+}
+
+format_colonnade_chunk <- function(x) {
   xt <- list(
     title = map(x, `[[`, "title_format"),
     type = map(x, `[[`, "type_format"),
     data = map(x, `[[`, "data_format")
   )
 
-  formatted <- c(
+  c(
     invoke(paste, xt$title),
     style_type_header(invoke(paste, xt$type)),
     invoke(paste, xt$data)
   )
-
-  new_vertical(formatted)
 }
 
 #' @export
