@@ -71,6 +71,7 @@ abbreviate_olson <- function(tz, width = 14L, dictionary = NULL) {
     if (identical(i, length(tz_components))) {
       width_component <- 
         nchar(tz_components[[i]]) - (nchar(tz_abbreviated) - width)
+      # width - nchar(tz_abbreviated)
     } else {
       width_component <- 4L
     }
