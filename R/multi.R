@@ -147,27 +147,32 @@ print.colonnade <- function(x, ...) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_get_width <- function(x, width) {
-  max_widths <- map_int(map(x, get_widths), max)
-  min_widths <- map_int(map(x, get_min_widths), max)
+  col_df <- data.frame(
+    id = seq_along(x),
+    max_widths = map_int(map(x, get_widths), max),
+    min_widths = map_int(map(x, get_min_widths), max)
+  )
 
   #' @details
   #' In a first pass, for each column it is decided if it is hidden, shown with
   #' its minimum width or shown with its maximum width.
-  col_widths <- colonnade_compute_col_widths(min_widths, max_widths, width)
-
-  length(col_widths) <- length(x)
-
-  col_widths_df <- data.frame(
-    id = seq_along(x),
-    width = col_widths,
-    min_widths = min_widths,
-    max_widths = max_widths,
-    chunk = ifelse(is.na(col_widths), 0L, 1L)
-  )
+  col_widths_df <- colonnade_compute_col_widths_df(col_df, width)
 
   #' Remaining space is then distributed proportionally to columns that do not
   #' use their desired width.
   colonnade_distribute_space_df(col_widths_df, width)
+}
+
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
+colonnade_compute_col_widths_df <- function(col_df, width) {
+  col_widths <- colonnade_compute_col_widths(col_df$min_widths, col_df$max_widths, width)
+  length(col_widths) <- nrow(col_df)
+
+  col_df$width <- col_widths
+  col_df$chunk <- ifelse(is.na(col_widths), 0L, 1L)
+  col_df
 }
 
 #' @rdname colonnade
@@ -198,6 +203,9 @@ colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
   col_widths
 }
 
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
 colonnade_distribute_space_df <- function(col_widths_df, width) {
   col_widths_split <- split(col_widths_df, col_widths_df$chunk)
   col_widths_apply <- map(col_widths_split, function(x) {
