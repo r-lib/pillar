@@ -192,10 +192,11 @@ colonnade_compute_col_widths_df <- function(col_df, width) {
     col_df$max_widths,
     width
   )
-  length(col_widths) <- nrow(col_df)
+  n_fitting_cols <- length(col_widths)
+  col_widths <- c(col_widths, rep(0L, nrow(col_df) - length(col_widths)))
 
   col_df$width <- col_widths
-  col_df$chunk <- ifelse(is.na(col_widths), 0L, 1L)
+  col_df$chunk <- ifelse(seq_along(col_widths) > n_fitting_cols, 0L, 1L)
   col_df
 }
 
