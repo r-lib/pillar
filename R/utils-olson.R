@@ -1,7 +1,6 @@
 #' Abbreviate an Olson timezone name
 #' 
 #' @param tz             `character`, length-one, timezone-name to abbreviate 
-#' @param tz_compopnent  `character`, timezone-name component to abbreviate
 #' @param width          `integer`, maximum number of characters
 #' @param dictionary     `character`, named vector: values are abbreviated 
 #'   components, names are unabbreviated components
@@ -22,6 +21,10 @@ abbreviate_olson <- function(tz, width = 14L, dictionary = NULL) {
     stop("tz must be a length-one character vector", call. = FALSE) 
   }
 
+  #####
+  # dictionaries
+  #####
+  
   # tries to comport with standard ISO names where applicable
   dictionary_first <- c(
     Africa = "Afr",
@@ -52,6 +55,13 @@ abbreviate_olson <- function(tz, width = 14L, dictionary = NULL) {
   
   dictionary_default <- list(dictionary_first, dictionary_second, NULL)
   
+  dictionary_default <- 
+    lapply(
+      dictionary_default, 
+      function(x, y) {c(y, x)},
+      y = dictionary
+    )
+  
   # this is why we restrict to single-string
   tz_components <- strsplit(tz, split = "/")[[1]]
   tz_abbreviated <- tz
@@ -71,7 +81,8 @@ abbreviate_olson <- function(tz, width = 14L, dictionary = NULL) {
     if (identical(i, length(tz_components))) {
       width_component <- 
         nchar(tz_components[[i]]) - (nchar(tz_abbreviated) - width)
-      # width - nchar(tz_abbreviated)
+      # width of current component - 
+      #   difference between (current) abbreviated timezone and budgeted width
     } else {
       width_component <- 4L
     }
@@ -91,12 +102,7 @@ abbreviate_olson <- function(tz, width = 14L, dictionary = NULL) {
   tz_abbreviated
 }
 
-# @rdname abbreviate_olson
-# @examples
-# abbreviate_olson_component("America")
-# abbreviate_olson_component("America", width = 5)
-# abbreviate_olson_component("America", dictionary = c(America = "USA"))
-#   
+# abbreviate a component of the timezone
 abbreviate_olson_component <- function(tz_component, width = 4L, 
                                        dictionary = NULL) {
   
@@ -104,5 +110,7 @@ abbreviate_olson_component <- function(tz_component, width = 4L,
     tz_component <- dictionary[[tz_component]]
   }
   
-  abbreviate(tz_component, minlength = width)
+  tz_component_abbrevieted <- abbreviate(tz_component, minlength = width)
+  
+  tz_component_abbrevieted
 }
