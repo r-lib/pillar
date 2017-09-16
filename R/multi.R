@@ -172,7 +172,8 @@ get_tier_widths <- function(width, rowid_width, tier_width = getOption("width"))
     seq(0, width - 1, by = tier_width),
     width
   )
-  diff(pos) - rowid_width
+  widths <- diff(pos) - rowid_width
+  widths[widths >= 1]
 }
 
 #' @rdname colonnade
