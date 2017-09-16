@@ -13,8 +13,6 @@ abbreviate_olson(tz, width = 14L, dictionary = NULL)
 
 \item{dictionary}{\code{character}, named vector: values are abbreviated
 components, names are unabbreviated components}
-
-\item{tz_compopnent}{\code{character}, timezone-name component to abbreviate}
 }
 \value{
 \code{character}, abbreviated name

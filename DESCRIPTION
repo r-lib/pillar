@@ -23,7 +23,7 @@ Suggests:
     knitr,
     testthat
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 Collate: 
     'compat-purrr.R'
     'dim.R'
@@ -47,6 +47,7 @@ Collate:
     'title.R'
     'type-sum.R'
     'type.R'
+    'utils-olson.R'
     'utils.R'
     'width.R'
     'zzz.R'

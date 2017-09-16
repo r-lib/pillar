@@ -47,11 +47,7 @@ S3method(type_sum,default)
 S3method(type_sum,difftime)
 S3method(type_sum,factor)
 S3method(type_sum,ordered)
-<<<<<<< HEAD
-=======
-S3method(type_sum,tbl_df)
 export(abbreviate_olson)
->>>>>>> first pass at functions
 export(colonnade)
 export(dim_desc)
 export(expect_known_display)
