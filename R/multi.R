@@ -154,11 +154,14 @@ colonnade_get_width <- function(x, width) {
   )
 
   #' @details
-  #' In a first pass, for each column it is decided if it is hidden, shown with
-  #' its minimum width or shown with its maximum width.
+  #' In a first pass, for each pillar it is decided in which chunk it is shown,
+  #' if at all, and how much horizontal space it may use (either its minumum
+  #' or its maximum width). More than one chunk may be created if
+  #' `width > getOption("width")`, in this case each chunk is at most
+  #' `getOption("width")` characters wide.
   col_widths_df <- colonnade_compute_col_widths_df(col_df, width)
 
-  #' Remaining space is then distributed proportionally to columns that do not
+  #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
   colonnade_distribute_space_df(col_widths_df, width)
 }
