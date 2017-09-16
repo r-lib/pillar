@@ -58,11 +58,11 @@ squeeze <- function(x, width = NULL, ...) {
   else rowid_width <- max(get_widths(rowid)) + 1L
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
-  col_widths_show <- split(col_widths, factor(col_widths$chunk != 0, levels = c(FALSE, TRUE)))
+  col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
   col_widths_shown <- col_widths_show[["TRUE"]]
-  col_widths_chunks <- split(col_widths_shown, col_widths_shown$chunk)
-  out <- map(col_widths_chunks, function(chunk) {
-    map2(x[chunk$id], chunk$width, pillar_format_parts)
+  col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
+  out <- map(col_widths_tiers, function(tier) {
+    map2(x[tier$id], tier$width, pillar_format_parts)
   })
 
   if (!is.null(rowid)) {
@@ -84,11 +84,11 @@ new_colonnade_sqeezed <- function(x, extra_cols) {
 
 #' @export
 format.squeezed_colonnade <- function(x, ...) {
-  formatted <- map(x, format_colonnade_chunk)
+  formatted <- map(x, format_colonnade_tier)
   new_vertical(as.character(unlist(formatted)))
 }
 
-format_colonnade_chunk <- function(x) {
+format_colonnade_tier <- function(x) {
   xt <- list(
     title = map(x, `[[`, "title_format"),
     type = map(x, `[[`, "type_format"),
@@ -154,22 +154,22 @@ colonnade_get_width <- function(x, width, rowid_width) {
   )
 
   #' @details
-  #' In a first pass, for each pillar it is decided in which chunk it is shown,
+  #' In a first pass, for each pillar it is decided in which tier it is shown,
   #' if at all, and how much horizontal space it may use (either its minumum
-  #' or its maximum width). More than one chunk may be created if
-  #' `width > getOption("width")`, in this case each chunk is at most
+  #' or its maximum width). More than one tier may be created if
+  #' `width > getOption("width")`, in this case each tier is at most
   #' `getOption("width")` characters wide.
-  chunk_widths <- get_chunk_widths(width, rowid_width)
-  col_widths_df <- colonnade_compute_chunked_col_widths_df(col_df, chunk_widths)
+  tier_widths <- get_tier_widths(width, rowid_width)
+  col_widths_df <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
-  colonnade_distribute_space_df(col_widths_df, chunk_widths)
+  colonnade_distribute_space_df(col_widths_df, tier_widths)
 }
 
-get_chunk_widths <- function(width, rowid_width, chunk_width = getOption("width")) {
+get_tier_widths <- function(width, rowid_width, tier_width = getOption("width")) {
   pos <- c(
-    seq(0, width - 1, by = chunk_width),
+    seq(0, width - 1, by = tier_width),
     width
   )
   diff(pos) - rowid_width
@@ -178,15 +178,15 @@ get_chunk_widths <- function(width, rowid_width, chunk_width = getOption("width"
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_chunked_col_widths_df <- function(col_df, chunk_widths) {
-  col_chunk_df <- colonnade_compute_col_widths_df(col_df, chunk_widths[[1]])
-  col_chunk_df
+colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths) {
+  col_tier_df <- colonnade_compute_col_widths_df(col_df, tier_widths[[1]])
+  col_tier_df
 }
 
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_col_widths_df <- function(col_df, width) {
+colonnade_compute_col_widths_df <- function(col_df, width, tier_id = 1L) {
   col_widths <- colonnade_compute_col_widths(
     col_df$min_widths,
     col_df$max_widths,
@@ -196,7 +196,7 @@ colonnade_compute_col_widths_df <- function(col_df, width) {
   col_widths <- c(col_widths, rep(0L, nrow(col_df) - length(col_widths)))
 
   col_df$width <- col_widths
-  col_df$chunk <- ifelse(seq_along(col_widths) > n_fitting_cols, 0L, 1L)
+  col_df$tier <- ifelse(seq_along(col_widths) > n_fitting_cols, 0L, tier_id)
   col_df
 }
 
@@ -231,11 +231,11 @@ colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_distribute_space_df <- function(col_widths_df, chunk_widths) {
-  col_widths_split <- split(col_widths_df, col_widths_df$chunk)
-  if (any(col_widths_df$chunk == 0)) chunk_widths <- c(NA, chunk_widths)
-  chunk_widths <- chunk_widths[seq_along(col_widths_split)]
-  col_widths_apply <- map2(col_widths_split, chunk_widths, function(x, width) {
+colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
+  col_widths_split <- split(col_widths_df, col_widths_df$tier)
+  if (any(col_widths_df$tier == 0)) tier_widths <- c(NA, tier_widths)
+  tier_widths <- tier_widths[seq_along(col_widths_split)]
+  col_widths_apply <- map2(col_widths_split, tier_widths, function(x, width) {
     x$width <- x$width + colonnade_distribute_space(x$width, x$max_widths, width)
     x
   })
