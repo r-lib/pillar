@@ -7,15 +7,15 @@
 \usage{
 abbreviate_olson(tz, width = 14L, dictionary = NULL)
 
-abbreviate_olson_component(tz_component, width = 4, dictionary = NULL)
+abbreviate_olson_component(tz_component, width = 4L, dictionary = NULL)
 }
 \arguments{
 \item{tz}{\code{character}, length-one, timezone-name to abbreviate}
 
 \item{width}{\code{integer}, maximum number of characters}
 
-\item{dictionary}{\code{character}, named: values are abbreviated components,
-names are unabbreviated components}
+\item{dictionary}{\code{character}, named vector: values are abbreviated
+components, names are unabbreviated components}
 
 \item{tz_compopnent}{\code{character}, timezone-name component to abbreviate}
 }

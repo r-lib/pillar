@@ -90,13 +90,12 @@ abbreviate_olson <- function(tz, width = 14L, dictionary = NULL) {
   tz_abbreviated
 }
 
-#' @rdname abbreviate_olson
-#' @keywords internal
-#' @examples
-#' abbreviate_olson_component("America")
-#' abbreviate_olson_component("America", width = 5)
-#' abbreviate_olson_component("America", dictionary = c(America = "USA"))
-#'   
+# @rdname abbreviate_olson
+# @examples
+# abbreviate_olson_component("America")
+# abbreviate_olson_component("America", width = 5)
+# abbreviate_olson_component("America", dictionary = c(America = "USA"))
+#   
 abbreviate_olson_component <- function(tz_component, width = 4L, 
                                        dictionary = NULL) {
   
