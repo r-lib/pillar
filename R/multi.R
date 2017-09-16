@@ -53,9 +53,15 @@ squeeze <- function(x, width = NULL, ...) {
   }
 
   col_widths <- colonnade_get_width(x, width)
-  out <- map2(x[seq_along(col_widths)], col_widths, pillar_format_parts)
+  col_widths_show <- split(col_widths, col_widths$chunk != 0)
+  col_widths_shown <- col_widths_show[["TRUE"]]
+  col_widths_chunks <- split(col_widths_shown, col_widths_shown$chunk)
+  out <- map(col_widths_chunks, function(chunk) {
+    map2(x[chunk$id], chunk$width, pillar_format_parts)
+  })
 
-  new_colonnade_sqeezed(list(out), x[seq2_along(length(col_widths) + 1L, x)])
+  col_widths_extra <- col_widths_show[["FALSE"]]
+  new_colonnade_sqeezed(out, x[col_widths_extra$id])
 }
 
 new_colonnade_sqeezed <- function(x, extra_cols) {
@@ -141,10 +147,12 @@ colonnade_get_width <- function(x, width) {
 
   #' Remaining space is then distributed proportionally to columns that do not
   #' use their desired width.
-  max_widths <- max_widths[seq_along(col_widths)]
-  added_space <- colonnade_distribute_space(col_widths, max_widths, width)
+  added_space <- colonnade_distribute_space(col_widths, max_widths[seq_along(col_widths)], width)
 
-  col_widths + added_space
+  total_widths <- col_widths + added_space
+  length(total_widths) <- length(x)
+
+  data.frame(id = seq_along(x), width = total_widths, chunk = ifelse(is.na(total_widths), 0L, 1L))
 }
 
 #' @rdname colonnade
