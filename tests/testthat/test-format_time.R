@@ -2,7 +2,7 @@ context("format_time")
 
 test_that("Olson-name abbreviation", {
   
-  # gat all Olson abbreviations
+  # get all Olson abbreviations
   abb_olson <- unlist(lapply(OlsonNames(), abbreviate_olson))
   
   # ensure all abbreviations are no more than 14 characters
