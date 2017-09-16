@@ -1,0 +1,5 @@
+      a     b c     d     e     
+  <dbl> <int> <lgl> <chr> <fctr>
+1  1.00     1 T     a     a     
+2  2.50     2 F     b     b     
+3 NA       NA NA    <NA>  <NA>  

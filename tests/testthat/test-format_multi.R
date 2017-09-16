@@ -73,6 +73,42 @@ test_that("tests from tibble", {
   )
   expect_pillar_output(
     crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 70L,
+    filename = "tibble-all--300-70.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 60L,
+    filename = "tibble-all--300-60.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 50L,
+    filename = "tibble-all--300-50.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 40L,
+    filename = "tibble-all--300-40.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 30L,
+    filename = "tibble-all--300-30.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 20L,
+    filename = "tibble-all--300-20.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
     xf = colonnade(list(`\n` = c("\n", '"'), `\r` = factor("\n")), width = 30),
     filename = "tibble-newline.txt"
   )

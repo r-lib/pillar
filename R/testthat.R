@@ -11,10 +11,11 @@
 #'   `NA` and `Inf` values.
 #' @param xf Pass the result of a [pillar()] call here for full control.
 #' @param crayon Color the output?
+#' @param output_width Passed on as `width` to [testthat::expect_output_file()].
 #' @export
 expect_pillar_output <- function(x, ..., filename,
-                                    xp = add_special(x), xf = pillar(xp, ...),
-                                    crayon = TRUE) {
+                                 xp = add_special(x), xf = pillar(xp, ...),
+                                 crayon = TRUE, output_width = 80L) {
   if (crayon) {
     old <- options(crayon.enabled = TRUE, crayon.colors = 16L)
     crayon::num_colors(forget = TRUE)
@@ -27,7 +28,12 @@ expect_pillar_output <- function(x, ..., filename,
     crayon::num_colors(forget = TRUE)
   })
 
-  testthat::expect_output_file(print(xf), file.path("out", filename), update = TRUE)
+  testthat::expect_output_file(
+    print(xf),
+    file.path("out", filename),
+    update = TRUE,
+    width = output_width
+  )
 }
 
 #' `add_special()` is not exported, and used only for initializing default
