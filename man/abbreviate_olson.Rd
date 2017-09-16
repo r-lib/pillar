@@ -2,12 +2,9 @@
 % Please edit documentation in R/utils-olson.R
 \name{abbreviate_olson}
 \alias{abbreviate_olson}
-\alias{abbreviate_olson_component}
 \title{Abbreviate an Olson timezone name}
 \usage{
 abbreviate_olson(tz, width = 14L, dictionary = NULL)
-
-abbreviate_olson_component(tz_component, width = 4L, dictionary = NULL)
 }
 \arguments{
 \item{tz}{\code{character}, length-one, timezone-name to abbreviate}
@@ -29,9 +26,5 @@ Abbreviate an Olson timezone name
 abbreviate_olson("America/Chicago")
 abbreviate_olson("America/Chicago", width = 9)
 abbreviate_olson("America/Chicago", dictionary = c(America = "USA"))
-abbreviate_olson_component("America")
-abbreviate_olson_component("America", width = 5)
-abbreviate_olson_component("America", dictionary = c(America = "USA"))
-  
 }
 \keyword{internal}
