@@ -172,7 +172,8 @@ get_tier_widths <- function(width, rowid_width, tier_width = getOption("width"))
     seq(0, width - 1, by = tier_width),
     width
   )
-  diff(pos) - rowid_width
+  widths <- diff(pos) - rowid_width
+  widths[widths >= 1]
 }
 
 #' @rdname colonnade
@@ -205,18 +206,18 @@ colonnade_compute_col_widths_df <- function(col_df, width, tier_id = 1L) {
 #' @aliases NULL
 colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
   #' @details
-  #' For computing the column widths, two cases are distinguished:
-  #' 1. When taking the minimum width for each column (plus one inter-column
-  #'    space), at least one column does not fit.
+  #' For computing the pillar widths in a single tier, two cases are distinguished:
+  #' 1. When taking the minimum width for each pillar (plus one inter-pillar
+  #'    space), at least one pillar does not fit.
   cum_min_widths <- cumsum(min_widths + 1L)
   allowed_min <- which(cum_min_widths <= width)
   if (length(allowed_min) < length(min_widths)) {
-    #'    In this case, the minimum width is assigned to all columns that do fit,
-    #'    the non-fitting columns are stripped.
+    #'    In this case, the minimum width is assigned to all pillars that do fit,
+    #'    the non-fitting pillars are stripped.
     col_widths <- min_widths[allowed_min]
   } else {
-    #' 1. All columns fit with their minimum width. In this case, starting at
-    #'    the leftmost column, the maximum width is allocated to the columns
+    #' 1. All pillars fit with their minimum width. In this case, starting at
+    #'    the leftmost pillar, the maximum width is allocated to the pillars
     #'    until all available space is used.
     cum_max_widths <- cumsum(max_widths + 1L)
     rev_cum_rev_min_widths <- rev(cumsum(rev(min_widths) + 1L))

@@ -4,7 +4,7 @@
 
 colonnade(x, has_row_id = TRUE, width = NULL, ...)
 dim_desc(x)
-expect_pillar_output(x, ..., filename, xp = add_special(x), xf = pillar(xp, ...), crayon = TRUE)
+expect_pillar_output(x, ..., filename, xp = add_special(x), xf = pillar(xp, ...), crayon = TRUE, output_width = 80L)
 extra_cols(x, ...)
 is_vector_s3(x)
 new_pillar_shaft(x, ..., width = max(crayon::col_nchar(x, type = "width"), 0L), align = "left", min_width = NULL, na_indent = 0L)

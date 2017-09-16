@@ -1,0 +1,5 @@
+      a     b c    
+  <dbl> <int> <lgl>
+1  1.00     1 T    
+2  2.50     2 F    
+3 NA       NA NA   
