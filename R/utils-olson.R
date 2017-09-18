@@ -31,10 +31,10 @@
 #' @seealso OlsonNames()
 #' @examples 
 #' abbreviate_olson("America/Chicago")
-#' abbreviate_olson("America/Chicago", width = 9)
+#' abbreviate_olson("America/Chicago", width = 20)
 #' abbreviate_olson("America/Chicago", dictionary = c(America = "USA"))
 #' \dontrun{
-#'   unlist(lapply(OlsonNames(), abbreviate_olson))
+#'   purrr::map_chr(OlsonNames(), abbreviate_olson)
 #' }
 #' @export
 #' 

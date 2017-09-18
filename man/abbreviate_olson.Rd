@@ -22,7 +22,10 @@ Abbreviate an Olson timezone name
 }
 \examples{
 abbreviate_olson("America/Chicago")
-abbreviate_olson("America/Chicago", width = 9)
+abbreviate_olson("America/Chicago", minwidth = 20)
 abbreviate_olson("America/Chicago", dictionary = c(America = "USA"))
+}
+\seealso{
+OlsonNames()
 }
 \keyword{internal}
