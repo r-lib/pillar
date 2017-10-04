@@ -55,8 +55,8 @@ new_pillar_shaft <- function(x, ...,
 #' @rdname pillar_shaft
 pillar_shaft.logical <- function(x, ...) {
   out <- rep(NA, length(x))
-  out[x] <- style_accent("T")
-  out[!x] <- style_subtle("F")
+  out[x] <- "T"
+  out[!x] <- "F"
 
   new_pillar_shaft(out, width = 1, align = "left")
 }

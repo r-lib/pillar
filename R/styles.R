@@ -1,15 +1,11 @@
 keep_empty <- function(fun) {
-   function(x) {
+  function(x) {
     ret <- rep_along(x, "")
     update <- which(is.na(x) | x != "")
     ret[update] <- fun(x[update])
     ret
   }
 }
-
-style_accent <- keep_empty(function(x) {
-  crayon::green(x)
-})
 
 #' Styling helpers
 #'
