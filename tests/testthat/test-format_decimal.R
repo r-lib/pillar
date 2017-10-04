@@ -1,10 +1,14 @@
 context("format_decimal")
 
-format_decimal_bw <- function(x, ...) {
+without_color <- function(code) {
   old <- options(crayon.enabled = FALSE)
   on.exit(options(old))
 
-  format_decimal(x, ...)
+  code
+}
+
+format_decimal_bw <- function(x, ...) {
+  without_color(format_decimal(x, ...))
 }
 
 test_that("compute_rhs_digits() works", {
@@ -22,7 +26,7 @@ test_that("special values appear in LHS", {
   x <- c(NA, NaN, Inf)
   f <- format_decimal_bw(x)
 
-  expect_equal(format_lhs(f), format(x))
+  expect_equal(without_color(format_lhs(f)), format(x))
 })
 
 test_that("all-positive values get nothing in neg", {
@@ -37,7 +41,7 @@ test_that("negative values get - in neg", {
 
 test_that("trailing zeros pad to sigfigs", {
   f <- format_decimal_bw(c(1.5, 0.5))
-  expect_equal(format_lhs(f), c("1", "0"))
+  expect_equal(without_color(format_lhs(f)), c("1", "0"))
   expect_equal(format_rhs(f), c("50 ", "500"))
 })
 
@@ -64,8 +68,8 @@ test_that("values rounded up as expect", {
 })
 
 test_that("values on LHS not rounded", {
-  f <- format_decimal_bw(123456)
-  expect_equal(format_lhs(f), "123456")
+  f <- without_color(format_lhs(format_decimal(123456)))
+  expect_equal(f, "123456")
 })
 
 test_that("corner cases", {
