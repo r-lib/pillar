@@ -179,9 +179,59 @@ get_tier_widths <- function(width, rowid_width, tier_width = getOption("width"))
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths) {
-  col_tier_df <- colonnade_compute_col_widths_df(col_df, tier_widths[[1]])
-  col_tier_df
+colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_tier_df = data.frame()) {
+  if (nrow(col_df) == 0L) return(data.frame())
+
+  tier_id <- max(c(fixed_tier_df$tier), 0L) + 1L
+  tier_df <- colonnade_compute_col_widths_df(col_df, tier_widths[[1]], tier_id)
+
+  #' @details
+  #' For fitting pillars in one or more tiers, it is first attempted to fit all
+  #' of them in the first tier.
+  if (length(tier_widths) == 1 || all(tier_df$width >= tier_df$max_widths)) {
+    #' If this succeeds (or if no more tiers are available), this fit is
+    #' accepted.
+    return(rbind(fixed_tier_df, tier_df))
+  }
+
+  #' Otherwise, an attempt is made to fit all remaining pillars in the remaining
+  #' tiers (with a recursive call).
+  all_tier_df <- colonnade_compute_tiered_col_widths_df(
+    col_df[tier_df$tier == 0, ],
+    tier_widths[-1],
+    rbind(fixed_tier_df, slice(tier_df, tier_df$tier != 0))
+  )
+
+  #' If there still are pillars that don't fit, the minimum-width fit is accepted.
+  if (!all_pillars_fit(all_tier_df)) return(all_tier_df)
+
+  #'
+  #' In case all remaining pillars fit all remaining tiers, a heuristic
+  #' selects the optimal number of pillars in the first tier.
+  first_expandable <- which(cumsum(tier_df$max_widths + 1L) > tier_widths[[1L]])[[1L]]
+  last_fitting <- utils::tail(which(c(tier_df$tier, 0L) != 0L), 1L)
+  #' The tier is grown starting with all pillars that are fitting with their
+  #' desired width (at least one pillar will be used), and
+  for (n_pillars_in_first_tier in seq2(max(first_expandable - 1L, 1L), last_fitting - 1L)) {
+    #' attempts are made to fit the remaining pillars in the remaining tiers
+    #' (with a recursive call for each attempt).
+    all_tier_try_df <- colonnade_compute_tiered_col_widths_df(
+      slice(col_df, seq2(n_pillars_in_first_tier + 1L, nrow(col_df))),
+      tier_widths[-1],
+      rbind(fixed_tier_df, slice(tier_df, seq_len(n_pillars_in_first_tier)))
+    )
+
+    #' The first successful fit
+    if (all_pillars_fit(all_tier_try_df)) return(all_tier_try_df)
+  }
+
+  #' (or otherwise the initial minimum-width fit) is accepted.
+  all_tier_df
+}
+
+all_pillars_fit <- function(tier_df) {
+  rows <- nrow(tier_df)
+  rows == 0 || tier_df$tier[[nrow(tier_df)]] != 0
 }
 
 #' @rdname colonnade

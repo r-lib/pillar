@@ -37,6 +37,23 @@ or its maximum width). More than one tier may be created if
 Remaining space is then distributed proportionally to pillars that do not
 use their desired width.
 
+For fitting pillars in one or more tiers, it is first attempted to fit all
+of them in the first tier.
+If this succeeds (or if no more tiers are available), this fit is
+accepted.
+Otherwise, an attempt is made to fit all remaining pillars in the remaining
+tiers (with a recursive call).
+If there still are pillars that don't fit, the minimum-width fit is accepted.
+
+In case all remaining pillars fit all remaining tiers, a heuristic
+selects the optimal number of pillars in the first tier.
+The tier is grown starting with all pillars that are fitting with their
+desired width (at least one pillar will be used), and
+attempts are made to fit the remaining pillars in the remaining tiers
+(with a recursive call for each attempt).
+The first successful fit
+(or otherwise the initial minimum-width fit) is accepted.
+
 For computing the pillar widths in a single tier, two cases are distinguished:
 \enumerate{
 \item When taking the minimum width for each pillar (plus one inter-pillar

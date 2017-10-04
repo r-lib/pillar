@@ -8,4 +8,5 @@ test_that("output test", {
   expect_pillar_output("\u6210\u4ea4\u65e5", title = "\u6210\u4ea4", filename = "deal1.txt")
   expect_pillar_output("\u6210\u4ea4", title = "\u6210\u4ea4\u65e5", filename = "deal2.txt")
   expect_pillar_output(1L, title = "\u6210\u4ea4\u65e5", filename = "deal3.txt")
+  expect_pillar_output(c("", " ", " a", "a ", "a b"), width = 5, filename = "spaces.txt")
 })
