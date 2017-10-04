@@ -18,6 +18,10 @@ style_subtle <- keep_empty(function(x) {
   style_grey(0.6, x)
 })
 
+style_hint <- keep_empty(function(x) {
+  style_grey(0.8, x)
+})
+
 style_spark_na <- function(x) {
   crayon::yellow(x)
 }

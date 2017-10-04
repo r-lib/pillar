@@ -1,5 +1,5 @@
 style_rowid <- function(x) {
-  style_subtle(x)
+  style_hint(x)
 }
 
 rif_data <- function(n, ...) {

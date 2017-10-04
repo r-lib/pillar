@@ -1,5 +1,5 @@
 style_star <- function(x) {
-  style_subtle(x)
+  style_hint(x)
 }
 
 rif_type <- function(has_star, ...) {
