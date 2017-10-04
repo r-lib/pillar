@@ -110,6 +110,10 @@ print.squeezed_colonnade <- function(x, ...) {
 
 # Method registration happens in .onLoad()
 knit_print.squeezed_colonnade <- function(x, ...) {
+  unlist(map(x, knit_print_squeezed_colonnade_tier))
+}
+
+knit_print_squeezed_colonnade_tier <- function(x) {
   header <- map_chr(x, `[[`, "title_format")
   col <- map(x, function(xx) c(xx[["type_format"]], xx[["data_format"]]))
 
