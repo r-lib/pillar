@@ -38,6 +38,7 @@ test_that("output test", {
   expect_pillar_output(xf = colonnade(x, width = 37), filename = "multi-37.txt")
   expect_pillar_output(xf = colonnade(x, width = 38), filename = "multi-38.txt")
   expect_pillar_output(xf = colonnade(x, width = 39), filename = "multi-39.txt")
+  expect_pillar_output(xf = colonnade(x, width = Inf), filename = "multi-inf.txt")
 
   expect_pillar_output(
     xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 10))),

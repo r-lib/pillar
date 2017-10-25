@@ -163,7 +163,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' or its maximum width). More than one tier may be created if
   #' `width > getOption("width")`, in this case each tier is at most
   #' `getOption("width")` characters wide.
-  tier_widths <- get_tier_widths(width, rowid_width)
+  tier_widths <- get_tier_widths(width, length(x), rowid_width)
   col_widths_df <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not
@@ -171,11 +171,16 @@ colonnade_get_width <- function(x, width, rowid_width) {
   colonnade_distribute_space_df(col_widths_df, tier_widths)
 }
 
-get_tier_widths <- function(width, rowid_width, tier_width = getOption("width")) {
-  pos <- c(
-    seq(0, width - 1, by = tier_width),
-    width
-  )
+get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("width")) {
+  if (is.finite(width)) {
+    pos <- c(
+      seq(0, width - 1, by = tier_width),
+      width
+    )
+  } else {
+    pos <- seq(0, length.out = ncol, by = tier_width)
+  }
+
   widths <- diff(pos) - rowid_width
   widths[widths >= 1]
 }

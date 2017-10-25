@@ -4,7 +4,11 @@ get_width <- function(x) {
 
 set_width <- function(x, width) {
   if (is.null(width)) return(x)
-  attr(x, "width") <- as.integer(width)
+  if (is.infinite(width)) {
+    attr(x, "width") <- NA_integer_
+  } else {
+    attr(x, "width") <- as.integer(width)
+  }
   x
 }
 
