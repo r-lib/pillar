@@ -20,7 +20,7 @@ format.pillar_shaft <- function(x, width, ...) {
   }
   data[is.na(x)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
 
-  new_column(data, width = width, align = align)
+  new_ornament(data, width = width, align = align)
 }
 
 #' @export
@@ -72,7 +72,7 @@ pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
 
   ret <- structure(
     list(dec = dec, sci = sci),
-    class = c("pillar_decimal", "pillar_shaft")
+    class = c("pillar_shaft_decimal", "pillar_shaft")
   )
 
   ret <- set_width(ret, get_width(ret$dec))

@@ -180,7 +180,7 @@ assemble_decimal <- function(x) {
 }
 
 #' @export
-format.pillar_decimal <- function(x, width, ...) {
+format.pillar_shaft_decimal <- function(x, width, ...) {
   if (length(x$dec$num) == 0L) return(character())
 
   if (width < get_min_width(x)) {
@@ -198,5 +198,5 @@ format.pillar_decimal <- function(x, width, ...) {
 
   used_width <- max(crayon::col_nchar(row, type = "width"), 0L)
   row <- paste0(strrep(" ", width - used_width), row)
-  new_column(row, width = width, align = "right")
+  new_ornament(row, width = width, align = "right")
 }
