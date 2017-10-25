@@ -35,9 +35,9 @@ print.pillar_shaft <- function(x, ...) {
 #' @param na_indent Indention of `NA` values.
 #' @rdname pillar_shaft
 new_pillar_shaft <- function(x, ...,
-                        width = max(crayon::col_nchar(x, type = "width"), 0L),
-                        align = "left", min_width = NULL,
-                        na_indent = 0L) {
+                             width = max(crayon::col_nchar(x, type = "width"), 0L),
+                             align = "left", min_width = NULL,
+                             na_indent = 0L) {
   ret <- structure(
     x,
     align = align,
