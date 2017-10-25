@@ -12,8 +12,6 @@ new_pillar_shaft(x, ..., width = max(crayon::col_nchar(x, type = "width"), 0L), 
 obj_sum(x)
 pillar(x, title = NULL, width = NULL, ...)
 pillar_shaft(x, ...)
-spark_bar(x, safe = TRUE)
-spark_line(x)
 squeeze(x, width = NULL, ...)
 style_neg(x)
 style_num(x, negative, significant = rep_along(x, TRUE))
