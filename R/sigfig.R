@@ -33,9 +33,9 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   exp <- compute_exp(abs_x)
 
   if (scientific) {
-    mnt <- ifelse(num, abs_x * 10 ^ (-exp), abs_x)
+    mnt <- ifelse(num & abs_x != 0, abs_x * 10 ^ (-exp), abs_x)
     round_x <- safe_signif(mnt, sigfig)
-    rhs_digits <- ifelse(num, sigfig - 1, 0)
+    rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
     exp_display <- exp
   } else {
     round_x <- safe_signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
