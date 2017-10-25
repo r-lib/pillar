@@ -26,12 +26,14 @@ style_spark_na <- function(x) {
   crayon::yellow(x)
 }
 
+#' @rdname style_subtle
+#' @export
 style_na <- function(x) {
   crayon::bgYellow(crayon::black(x))
 }
 
-#' @export
 #' @rdname style_subtle
+#' @export
 style_neg <- keep_empty(function(x) {
   crayon::red(x)
 })

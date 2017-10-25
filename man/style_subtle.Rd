@@ -3,12 +3,15 @@
 \name{style_num}
 \alias{style_num}
 \alias{style_subtle}
+\alias{style_na}
 \alias{style_neg}
 \title{Styling helpers}
 \usage{
 style_num(x, negative, significant = rep_along(x, TRUE))
 
 style_subtle(x)
+
+style_na(x)
 
 style_neg(x)
 }
