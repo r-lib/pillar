@@ -151,3 +151,34 @@ abbreviate_olson_component <- function(tz_component, width = 4L,
 
   tz_component_abbrevieted
 }
+
+# get a budget for the width available to each component
+# - note: we cannot expect anything meaningful at width less than 2
+get_width_component <- function(width, n_component) {
+
+  # make sure we use integers
+  width <- as.integer(width)
+  n_component <- as.integer(n_component)
+
+  # account for the separators
+  width_available <- width - (n_component - 1)
+
+  # distribute width equally among components
+  width_component <- rep(floor(width_available / n_component), n_component)
+
+  # distribute extra width
+  width_extra <- as.integer(width_available %% n_component)
+
+  # if we have any extra, give it to the last component
+  if (width_extra > 0L) {
+    width_component[n_component] <- width_component[n_component] + 1
+  }
+
+  # if we have two extra, give it to the first component
+  # - by definition, this can be the case only if n_component == 3L
+  if (identical(width_extra, 2L)) {
+    width_component[1] <- width_component[1] + 1
+  }
+
+  width_component
+}
