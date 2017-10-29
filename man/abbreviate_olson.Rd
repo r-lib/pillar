@@ -4,12 +4,16 @@
 \alias{abbreviate_olson}
 \title{Abbreviate an Olson timezone name}
 \usage{
-abbreviate_olson(tz, width = 14L, dictionary = NULL)
+abbreviate_olson(tz, width = 14L, consistent = TRUE, dictionary = NULL)
 }
 \arguments{
 \item{tz}{\code{character}, length-one, timezone-name to abbreviate}
 
 \item{width}{\code{integer}, maximum number of characters}
+
+\item{consistent}{\code{logical}, always abbvreviate first and second
+level names, i.e. \code{Africa/Bissau} is abbreviated to \code{Afr/Bissau} regardless
+of available space}
 
 \item{dictionary}{\code{character}, named vector: values are abbreviated
 components, names are unabbreviated components}

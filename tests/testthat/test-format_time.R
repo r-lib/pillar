@@ -28,7 +28,6 @@ test_that("Olson-name abbreviation", {
     "Africa/Bissau"
   )
 
-
 })
 
 test_that("output test", {
