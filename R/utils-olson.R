@@ -100,7 +100,11 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
 
   # this is why we restrict to single-string
   tz_components <- strsplit(tz, split = "/")[[1]]
+  n_component <- length(tz_components)
   tz_abbreviated <- tz
+
+  # get a width-budget
+  width_budget <- get_width_budget(width, n_component)
 
   # loop over our components, abbreviate as needed
   for (i in seq_along(tz_components)) {
@@ -121,7 +125,7 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
       # width of current component -
       #   difference between (current) abbreviated timezone and budgeted width
     } else {
-      width_component <- 4L
+      width_component <- width_budget[i]
     }
 
     # abbreviate the component
@@ -154,7 +158,7 @@ abbreviate_olson_component <- function(tz_component, width = 4L,
 
 # get a budget for the width available to each component
 # - note: we cannot expect anything meaningful at width less than 2
-get_width_component <- function(width, n_component) {
+get_width_budget <- function(width, n_component) {
 
   # make sure we use integers
   width <- as.integer(width)
@@ -164,21 +168,21 @@ get_width_component <- function(width, n_component) {
   width_available <- width - (n_component - 1)
 
   # distribute width equally among components
-  width_component <- rep(floor(width_available / n_component), n_component)
+  width_budget <- rep(floor(width_available / n_component), n_component)
 
   # distribute extra width
   width_extra <- as.integer(width_available %% n_component)
 
   # if we have any extra, give it to the last component
   if (width_extra > 0L) {
-    width_component[n_component] <- width_component[n_component] + 1
+    width_budget[n_component] <- width_budget[n_component] + 1
   }
 
   # if we have two extra, give it to the first component
   # - by definition, this can be the case only if n_component == 3L
   if (identical(width_extra, 2L)) {
-    width_component[1] <- width_component[1] + 1
+    width_budget[1] <- width_budget[1] + 1
   }
 
-  width_component
+  width_budget
 }
