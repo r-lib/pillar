@@ -3,7 +3,8 @@ context("format_time")
 test_that("Olson-name abbreviation", {
 
   # get all Olson abbreviations
-  abb_olson <- unlist(lapply(OlsonNames(), abbreviate_olson))
+  abb_olson_14 <- unlist(lapply(OlsonNames(), abbreviate_olson))
+  abb_olson_10 <- unlist(lapply(OlsonNames(), abbreviate_olson, width = 10L))
 
   # case: width == 0
   expect_identical(abbreviate_olson("America/Chicago", width = 0), "")
@@ -16,6 +17,7 @@ test_that("Olson-name abbreviation", {
 
   # ensure all abbreviations are unique
   expect_identical(unique(abb_olson), abb_olson)
+  expect_identical(unique(abb_olson_10), abb_olson_10)
 
   # ensure short name is unchanged
   expect_identical(abbreviate_olson("US/Central"), "US/Central")
