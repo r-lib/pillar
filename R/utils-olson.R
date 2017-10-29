@@ -55,8 +55,6 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
     stop("tz must be a length-one character vector", call. = FALSE)
   }
 
-  # we try to
-
   #####
   # dictionaries
   #####
@@ -92,7 +90,7 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
 
   dictionary_default <- list(dictionary_first, dictionary_second, NULL)
 
-  # merge dictionaries, favoring the user-supplied set of dictionaries
+  # merge dictionaries, favouring the user-supplied set of dictionaries
   dictionary_merged <-
     lapply(
       dictionary_default,
