@@ -6,7 +6,7 @@
 \title{Test helpers}
 \usage{
 expect_pillar_output(x, ..., filename, xp = add_special(x), xf = pillar(xp,
-  ...), crayon = TRUE)
+  ...), crayon = TRUE, output_width = 80L)
 
 add_special(x)
 }
@@ -23,6 +23,8 @@ add_special(x)
 \item{xf}{Pass the result of a \code{\link[=pillar]{pillar()}} call here for full control.}
 
 \item{crayon}{Color the output?}
+
+\item{output_width}{Passed on as \code{width} to \code{\link[testthat:expect_output_file]{testthat::expect_output_file()}}.}
 }
 \description{
 Helper functions for packages that implement their own pillar.

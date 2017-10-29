@@ -1,9 +1,9 @@
 style_type_header <- function(x) {
-  crayon::underline(style_type(x))
+  style_type(x)
 }
 
 style_type <- function(x) {
-  style_subtle(x)
+  crayon::italic(style_subtle(x))
 }
 
 pillar_type <- function(x, ...) {

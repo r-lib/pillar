@@ -1,5 +1,5 @@
 style_rowid <- function(x) {
-  style_subtle(x)
+  style_hint(x)
 }
 
 rif_data <- function(n, ...) {
@@ -13,7 +13,7 @@ rif_data <- function(n, ...) {
 
 #' @export
 format.rif_data <- function(x, width, ...) {
-  new_column(
+  new_ornament(
     style_rowid(format(seq_len(x$n), width = width)),
     width = width,
     align = "right"

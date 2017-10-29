@@ -13,6 +13,8 @@ spark_line(x)
 Draw a sparkline line graph with Braille characters.
 }
 \examples{
+\dontrun{
 x <- seq(0, 1, length = 10)
 spark_line(x)
+}
 }

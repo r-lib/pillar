@@ -4,13 +4,12 @@
 #' In most common fixed width fonts these are rendered wider than regular
 #' characters which means they are not suitable if you need precise alignment.
 #'
-#' @export
 #' @param x A numeric vector between 0 and 1
 #' @param safe Nominally there are 8 block elements from 1/8 height to full
 #'   height (8/8). However, the half-height and full-height blocks appear
 #'   to be rendered inconsistently (possibly due to font substitution).
-#' @export
 #' @examples
+#' \dontrun{
 #' x <- seq(0, 1, length = 6)
 #' spark_bar(x)
 #' spark_bar(sample(x))
@@ -19,6 +18,7 @@
 #' spark_bar(seq(0, 1, length = 8), safe = FALSE)
 #'
 #' spark_bar(c(0, NA, 0.5, NA, 1))
+#' }
 spark_bar <- function(x, safe = TRUE) {
   stopifnot(is.numeric(x))
 

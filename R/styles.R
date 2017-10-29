@@ -1,15 +1,11 @@
 keep_empty <- function(fun) {
-   function(x) {
+  function(x) {
     ret <- rep_along(x, "")
     update <- which(is.na(x) | x != "")
     ret[update] <- fun(x[update])
     ret
   }
 }
-
-style_accent <- keep_empty(function(x) {
-  crayon::green(x)
-})
 
 #' Styling helpers
 #'
@@ -22,16 +18,22 @@ style_subtle <- keep_empty(function(x) {
   style_grey(0.6, x)
 })
 
+style_hint <- keep_empty(function(x) {
+  style_grey(0.8, x)
+})
+
 style_spark_na <- function(x) {
   crayon::yellow(x)
 }
 
+#' @rdname style_subtle
+#' @export
 style_na <- function(x) {
   crayon::bgYellow(crayon::black(x))
 }
 
-#' @export
 #' @rdname style_subtle
+#' @export
 style_neg <- keep_empty(function(x) {
   crayon::red(x)
 })

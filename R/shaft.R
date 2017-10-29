@@ -20,7 +20,7 @@ format.pillar_shaft <- function(x, width, ...) {
   }
   data[is.na(x)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
 
-  new_column(data, width = width, align = align)
+  new_ornament(data, width = width, align = align)
 }
 
 #' @export
@@ -35,9 +35,9 @@ print.pillar_shaft <- function(x, ...) {
 #' @param na_indent Indention of `NA` values.
 #' @rdname pillar_shaft
 new_pillar_shaft <- function(x, ...,
-                        width = max(crayon::col_nchar(x, type = "width"), 0L),
-                        align = "left", min_width = NULL,
-                        na_indent = 0L) {
+                             width = max(crayon::col_nchar(x, type = "width"), 0L),
+                             align = "left", min_width = NULL,
+                             na_indent = 0L) {
   ret <- structure(
     x,
     align = align,
@@ -55,8 +55,8 @@ new_pillar_shaft <- function(x, ...,
 #' @rdname pillar_shaft
 pillar_shaft.logical <- function(x, ...) {
   out <- rep(NA, length(x))
-  out[x] <- style_accent("T")
-  out[!x] <- style_subtle("F")
+  out[x] <- "T"
+  out[!x] <- "F"
 
   new_pillar_shaft(out, width = 1, align = "left")
 }
@@ -72,7 +72,7 @@ pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
 
   ret <- structure(
     list(dec = dec, sci = sci),
-    class = c("pillar_decimal", "pillar_shaft")
+    class = c("pillar_shaft_decimal", "pillar_shaft")
   )
 
   ret <- set_width(ret, get_width(ret$dec))

@@ -38,6 +38,7 @@ test_that("output test", {
   expect_pillar_output(xf = colonnade(x, width = 37), filename = "multi-37.txt")
   expect_pillar_output(xf = colonnade(x, width = 38), filename = "multi-38.txt")
   expect_pillar_output(xf = colonnade(x, width = 39), filename = "multi-39.txt")
+  expect_pillar_output(xf = colonnade(x, width = Inf), filename = "multi-inf.txt")
 
   expect_pillar_output(
     xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 10))),
@@ -70,6 +71,42 @@ test_that("tests from tibble", {
     crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     filename = "tibble-all--300.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 70L,
+    filename = "tibble-all--300-70.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 60L,
+    filename = "tibble-all--300-60.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 50L,
+    filename = "tibble-all--300-50.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 40L,
+    filename = "tibble-all--300-40.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 30L,
+    filename = "tibble-all--300-30.txt"
+  )
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(df_all, width = 300),
+    output_width = 20L,
+    filename = "tibble-all--300-20.txt"
   )
   expect_pillar_output(
     crayon = FALSE,
