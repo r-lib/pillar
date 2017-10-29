@@ -13,10 +13,10 @@ test_that("Olson-name abbreviation", {
   expect_error(abbreviate_olson(c("foo", "bar")))
 
   # ensure all abbreviations are no more than 14 characters
-  expect_lte(max(nchar(abb_olson)), 14L)
+  expect_lte(max(nchar(abb_olson_14)), 14L)
 
   # ensure all abbreviations are unique
-  expect_identical(unique(abb_olson), abb_olson)
+  expect_identical(unique(abb_olson_14), abb_olson_14)
   expect_identical(unique(abb_olson_10), abb_olson_10)
 
   # ensure short name is unchanged
