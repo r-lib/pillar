@@ -8,8 +8,8 @@ test_that("Olson-name abbreviation", {
   # case: width == 0
   expect_identical(abbreviate_olson("America/Chicago", width = 0), "")
 
-  # case: tz is non-string
-  expect_error(abbreviate_olson(3))
+  # case: tz is not a length-one character-vector
+  expect_error(abbreviate_olson(c("foo", "bar")))
 
   # ensure all abbreviations are no more than 14 characters
   expect_lte(max(nchar(abb_olson)), 14L)
