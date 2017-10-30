@@ -17,7 +17,6 @@ test_that("Olson-name abbreviation", {
 
   # ensure all abbreviations are unique
   expect_identical(unique(abb_olson_14), abb_olson_14)
-  expect_identical(unique(abb_olson_10), abb_olson_10)
 
   # ensure short name is unchanged
   expect_identical(abbreviate_olson("US/Central"), "US/Central")
