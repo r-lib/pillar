@@ -49,10 +49,8 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
     return("")
   }
 
-  # could use assertthat here, but for the dependence
-  if (!rlang::is_string(tz)) {
-    # confirm we want .call = FALSE
-    stop("tz must be a length-one character vector", call. = FALSE)
+  if (!rlang::is_character(tz)) {
+    stop("tz must be a character vector", call. = FALSE)
   }
 
   #####
@@ -98,9 +96,11 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
       y = dictionary
     )
 
-  # this is why we restrict to single-string
-  tz_components <- strsplit(tz, split = "/")[[1]]
-  n_component <- length(tz_components)
+  tz_components_list <- strsplit(tz, split = "/")
+  n_component <- max(map_int(tz_components_list, length))
+  tz_components_t <- transpose(map(tz_components_list, `length<-`, n_component))
+  tz_components <- map(tz_components_t, unlist)
+
   tz_abbreviated <- tz
 
   # get a width-budget
@@ -121,7 +121,11 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
     #
     if (identical(i, length(tz_components))) {
       width_component <-
-        nchar(tz_components[[i]]) - (nchar(tz_abbreviated) - width)
+        max(
+          nchar(tz_components[[i]]) - (nchar(tz_abbreviated) - width),
+          0L,
+          na.rm = TRUE
+        )
       # width of current component -
       #   difference between (current) abbreviated timezone and budgeted width
     } else {
@@ -136,8 +140,7 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
         dictionary = dictionary_merged[[i]]
       )
 
-    tz_abbreviated <- paste(tz_components, collapse = "/")
-
+    tz_abbreviated <- combine_olson_components(tz_components)
   }
 
   tz_abbreviated
@@ -147,13 +150,23 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
 abbreviate_olson_component <- function(tz_component, width = 4L,
                                        dictionary = NULL) {
 
-  if (tz_component %in% names(dictionary)) {
-    tz_component <- dictionary[[tz_component]]
+  if (!is_null(dictionary)) {
+    tz_component_lookup <- dictionary[tz_component]
+    tz_component[!is.na(tz_component_lookup)] <- tz_component_lookup[!is.na(tz_component_lookup)]
   }
 
-  tz_component_abbrevieted <- abbreviate(tz_component, minlength = width)
+  abbreviate(tz_component, minlength = width)
+}
 
-  tz_component_abbrevieted
+combine_olson_components <- function(tz_components) {
+  reduce(
+    tz_components,
+    function(x, y) {
+      pos <- which(!is.na(y))
+      x[pos] <- paste0(x[pos], "/", y[pos])
+      x
+    }
+  )
 }
 
 # get a budget for the width available to each component
