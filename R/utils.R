@@ -42,3 +42,12 @@ ruler <- function(width = getOption("width")) {
 slice <- function(df, index) {
   df[index, , drop = FALSE]
 }
+
+is_utf8_output <- function() {
+  l10n_info()$`UTF-8` && !is_latex_output()
+}
+
+is_latex_output <- function() {
+  if (!("knitr" %in% loadedNamespaces())) return(FALSE)
+  get("is_latex_output", asNamespace("knitr"))()
+}

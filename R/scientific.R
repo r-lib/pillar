@@ -6,6 +6,7 @@
 #' @inheritParams format_decimal
 #' @param superscript If `TRUE`, will use superscript numbers in exponent.
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
+  if (!is_utf8_output()) superscript <- FALSE
   split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 }
 
