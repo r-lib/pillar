@@ -7,7 +7,10 @@ style_type <- function(x) {
 }
 
 pillar_type <- function(x, ...) {
-  type <- type_sum(x)
+  type <- as_character(type_sum(x))
+  if (length(type) == 0L) type <- ""
+  type <- type[[1L]]
+
   ret <- structure(
     list(
       type = type
