@@ -199,3 +199,27 @@ get_width_budget <- function(width, n_component) {
 
   width_budget
 }
+
+# given Olson timezones, return a dataframe with:
+#  - tz        `character`, full tz-name
+#  - index     `integer`, index of component within `tz`
+#  - index_max `integer`, maximum index for `tz`
+#  - component `character`, this component
+component_olson <- function(tz) {
+
+  # calculate for every timezone supplied
+  components <- strsplit(tz, split = "/")
+  index <- lapply(components, seq_along)
+  index_max <- lapply(index, function(x){rep(max(x), max(x))})
+  tz_list <- mapply(function(tz, index){rep(tz, max(index))}, tz, index)
+
+  # collapse into a data.frame
+  data.frame(
+    tz = unlist(tz_list, use.names = FALSE),
+    index = unlist(index, use.names = FALSE),
+    index_max = unlist(index_max, use.names = FALSE),
+    component = unlist(components, use.names = FALSE)
+  )
+}
+
+
