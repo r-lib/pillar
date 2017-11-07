@@ -1,6 +1,6 @@
 ---
 title: "Adding pillar support to a datatype"
-author: "Kirill Müller"
+author: "Kirill Müller, Hadley Wickham"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -9,29 +9,64 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This short vignette assumes an S3 class that encapsulates a vector. It demonstrates how to extend this class so that it renders nicely in a tibble.
+To extend the tibble package for new types of columnar data, you need to understand how printing works. The presentation of a column in a tibble is powered by four S3 generics:
+
+* `type_sum()` determines what goes into the column header.
+* `pillar_shaft()` determines what goes into the body of the column.
+* `is_vector_s3()` and `obj_sum()` are used when rendering list columns.
+
+If you have written an S3 or S4 class that can be used as a column, you can override these generics to make sure your data prints well in a tibble. To start, you must import the `pillar` package that powers the printing of tibbles. Either add `pillar` to the `Imports:` section of your `DESCRIPTION`, or simply call:
+
+```{r, eval = FALSE}
+devtools::use_package("pillar")
+```
+
+This short vignette assumes a package that implements an S3 class `"latlon"` and uses `roxygen2` to create documentation and the `NAMESPACE` file.  For this vignette to work we need to attach pillar:
+
+```{r}
+library(pillar)
+```
+
+
 
 ## Prerequisites
 
 We define a class `"latlon"` that encodes geographic coordinates in a complex number. For simplicity, the values are printed as hours and minutes only.
 
 ```{r}
+#' @export
 latlon <- function(lat, lon) {
   as_latlon(complex(real = lon, imaginary = lat))
 }
 
+#' @export
 as_latlon <- function(x) {
   structure(x, class = "latlon")
 }
 
+#' @export
+c.latlon <- function(x, ...) {
+  as_latlon(NextMethod())
+}
+
+#' @export
 `[.latlon` <- function(x, i) {
   as_latlon(NextMethod())
 }
 
+#' @export
 format.latlon <- function(x, ..., formatter = deg_rad) {
-  lat <- Im(x)
-  lon <- Re(x)
-  paste(formatter(Im(x), c("N", "S")), formatter(Re(x), c("E", "W")))
+  x_valid <- which(!is.na(x))
+
+  lat <- unclass(Im(x[x_valid]))
+  lon <- unclass(Re(x[x_valid]))
+
+  ret <- rep("<NA>", length(x))
+  ret[x_valid] <- paste(
+    formatter(lat, c("N", "S")),
+    formatter(lon, c("E", "W"))
+  )
+  format(ret, justify = "right")
 }
 
 deg_rad <- function(x, pm) {
@@ -40,11 +75,10 @@ deg_rad <- function(x, pm) {
   deg <- trunc(x)
   x <- x - deg
   rad <- round(x * 60)
-  ret <- sprintf("%d°%.2d'%s", deg, rad, pm[ifelse(sign >= 0, 1, 2)])
-  ret[is.na(x)] <- ""
-  format(ret, justify = "right")
+  sprintf("%3d°%.2d'%s", deg, rad, pm[ifelse(sign >= 0, 1, 2)])
 }
 
+#' @export
 print.latlon <- function(x, ...) {
   cat(format(x), sep = "\n")
   invisible(x)
@@ -64,26 +98,39 @@ Columns on this class can be used in a tibble right away, but the output will be
 library(tibble)
 data <- tibble(
   venue = "rstudio::conf",
-  year  = 2018:2019,
-  loc   = latlon(c(32.7102978, NA), c(-117.1704058, NA))
+  year  = 2017:2019,
+  loc   = latlon(
+    c(28.3411783, 32.7102978, NA),
+    c(-81.5480348, -117.1704058, NA)
+  ),
+  paths = list(
+    loc[1],
+    c(loc[1], loc[2]),
+    loc[2]
+  )
 )
 
 data
 ```
 
-The output has two main problems:
+(The `paths` column is a list that contains arbitrary data, in our case `latlon` vectors. A list column is a powerful way to attach hierarchical or unstructured data to an observation in a data frame.)
 
-1. The column type is displayed as `<S3: latlon>`. While this is technically correct, we might like a shorter representation.
-1. The values are formatted as complex numbers (the underlying storage), without using the `format()` method we have defined. This is by design.
+The output has three main problems:
 
-In the remainder I'll show how to fix both problems, and also how to implement rendering that adapts to the available width.
+1. The column type is displayed as `<S3: latlon>`.  This default formatting works reasonably well for any kind of object, but the generated output may be too wide and waste precious space when displaying the tibble.
+1. The cells in the `paths` column are also displayed as `<S3: latlon>`.
+1. The values in the `loc` column are formatted as complex numbers (the underlying storage), without using the `format()` method we have defined. This is by design.
+
+In the remainder I'll show how to fix these problems, and also how to implement rendering that adapts to the available width.
 
 
 ## Fixing the data type
 
-To display `<geo>` as data type, we need to override the `type_sum()` method:
+To display `<geo>` as data type, we need to override the `type_sum()` method.  This method should return a length-1 character vector that can be used in a column header.  For your own classes, strive for an evocative abbreviation that's under 6 characters.
+
 
 ```{r}
+#' @export
 type_sum.latlon <- function(x) {
   "geo"
 }
@@ -101,7 +148,7 @@ data
 To use our format method for rendering, we implement the `pillar_shaft()` method for our class. (A [*pillar*](https://en.wikipedia.org/wiki/Column#Nomenclature) is mainly a *shaft* (decorated with an *ornament*), with a *capital* above and a *base* below. Multiple pillars form a *colonnade*, which can be stacked in multiple *tiers*. This is the motivation behind the names in our API.)
 
 ```{r}
-library(pillar)
+#' @export
 pillar_shaft.latlon <- function(x, ...) {
   out <- format(x)
   out[is.na(x)] <- NA
@@ -118,6 +165,7 @@ data
 We could also use left alignment and indent only the `NA` values:
 
 ```{r}
+#' @export
 pillar_shaft.latlon <- function(x, ...) {
   out <- format(x)
   out[is.na(x)] <- NA
@@ -139,6 +187,7 @@ print(data, width = 35)
 If we specify a minimum width when constructing the shaft, the `loc` column will be truncated:
 
 ```{r}
+#' @export
 pillar_shaft.latlon <- function(x, ...) {
   out <- format(x)
   out[is.na(x)] <- NA
@@ -151,6 +200,7 @@ print(data, width = 35)
 This may be useful for character data, but for lat-lon data we may prefer to show full degrees and remove the minutes if the available space is not enough to show accurate values. A more sophisticated implementation of the `pillar_shaft()` method is required to achieve this:
 
 ```{r}
+#' @export
 pillar_shaft.latlon <- function(x, ...) {
   deg <- format(x, formatter = deg)
   deg[is.na(x)] <- style_na("NA")
@@ -175,15 +225,14 @@ deg <- function(x, pm) {
   sign <- sign(x)
   x <- abs(x)
   deg <- round(x)
-  ret <- sprintf("%d°%s", deg, pm[ifelse(sign >= 0, 1, 2)])
-  ret[is.na(x)] <- ""
-  format(ret, justify = "right")
+  sprintf("%d°%s", deg, pm[ifelse(sign >= 0, 1, 2)])
 }
 ```
 
 All that's left to do is to implement a `format()` method for our new `"pillar_shaft_latlon"` class. This method will be called with a `width` argument, which then determines which of the formattings to choose:
 
 ```{r}
+#' @export
 format.pillar_shaft_latlon <- function(x, width, ...) {
   if (all(crayon::col_nchar(x$deg_rad) <= width)) {
     ornament <- x$deg_rad
@@ -204,6 +253,7 @@ print(data, width = 35)
 Both `new_pillar_shaft()` and `new_ornament()` accept escape codes for coloring, emphasis, or other ways of highlighting text on terminals that support it. Some formattings are predefined, e.g. `style_subtle()` displays text in a light gray. For default data types, this style is used for insignificant digits. We'll be formatting the degree and minute signs in a subtle style, because they serve only as separators. You can also use the [crayon](https://cran.r-project.org/package=crayon) package to add custom formattings to your text.
 
 ```{r}
+#' @export
 pillar_shaft.latlon <- function(x, ...) {
   out <- format(x, formatter = deg_rad_color)
   out[is.na(x)] <- NA
@@ -234,6 +284,41 @@ data
 Currently, ANSI escapes are not rendered in vignettes, so the display here isn't much different from earlier examples. This may change in the future.
 
 
-## In a package
+## Fixing list columns
 
-Remember to use namespace imports instead of `library()` calls in package code!
+To tweak the output in the `paths` column, we simply need to indicate that our class is an S3 vector:
+
+```{r}
+#' @export
+is_vector_s3.latlon <- function(x) TRUE
+
+data
+```
+
+This is picked up by the default implementation of `obj_sum()`, which then shows the type and the length in brackets. If your object is built on top of an atomic vector the default will be adequate. You, will, however, need to provide an `obj_sum()` method for your class if your object is vectorised and built on top of a list.
+
+An example of an object of this type in base R is `POSIXlt`: it is a list with 9 components.
+
+```{r}
+x <- as.POSIXlt(Sys.time() + c(0, 60, 3600)) 
+str(unclass(x))
+```
+
+But it pretends to be a vector with 3 elements:
+
+```{r}
+x
+length(x)
+str(x)
+```
+
+So we need to define a method that returns a character vector the same length as `x`:
+
+```{r}
+#' @export
+obj_sum.POSIXlt <- function(x) {
+  rep("POSIXlt", length(x))
+}
+```
+
+
