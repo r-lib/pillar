@@ -18,7 +18,7 @@ To extend the tibble package for new types of columnar data, you need to underst
 If you have written an S3 or S4 class that can be used as a column, you can override these generics to make sure your data prints well in a tibble. To start, you must import the `pillar` package that powers the printing of tibbles. Either add `pillar` to the `Imports:` section of your `DESCRIPTION`, or simply call:
 
 ```{r, eval = FALSE}
-devtools::use_package("pillar")
+usethis::use_package("pillar")
 ```
 
 This short vignette assumes a package that implements an S3 class `"latlon"` and uses `roxygen2` to create documentation and the `NAMESPACE` file.  For this vignette to work we need to attach pillar:
