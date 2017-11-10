@@ -295,6 +295,6 @@ test_olson <- c(
     width_budget[1] <- width_budget[1] + 1
   }
 
-  width_budget
+  as.integer(width_budget)
 }
 
