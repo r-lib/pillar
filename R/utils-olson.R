@@ -80,7 +80,7 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
 
   # ISO name, or US postal abbreviations
   dictionary_second <- c(
-    Argentina = "Arg",
+    Argentina = "Ar",
     Indiana = "IN",
     Kentucky = "KY",
     North_Dakota = "ND"
@@ -104,7 +104,7 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
   tz_abbreviated <- tz
 
   # get a width-budget
-  width_budget <- get_width_budget(width, n_component)
+  width_budget <- .width_budget(width, n_component)
 
   # loop over our components, abbreviate as needed
   for (i in seq_along(tz_components)) {
@@ -169,57 +169,132 @@ combine_olson_components <- function(tz_components) {
   )
 }
 
-# get a budget for the width available to each component
-# - note: we cannot expect anything meaningful at width less than 2
-get_width_budget <- function(width, n_component) {
 
-  # make sure we use integers
-  width <- as.integer(width)
-  n_component <- as.integer(n_component)
+test_olson <- c(
+  "EST5EDT",
+  "America/Chicago",
+  "Europe/Paris",
+  "America/Kentucky/Louisville",
+  "America/Indiana/Indianapolis"
+)
 
-  # account for the separators
-  width_available <- width - (n_component - 1)
-
-  # distribute width equally among components
-  width_budget <- rep(floor(width_available / n_component), n_component)
-
-  # distribute extra width
-  width_extra <- as.integer(width_available %% n_component)
-
-  # if we have any extra, give it to the last component
-  if (width_extra > 0L) {
-    width_budget[n_component] <- width_budget[n_component] + 1
-  }
-
-  # if we have two extra, give it to the first component
-  # - by definition, this can be the case only if n_component == 3L
-  if (identical(width_extra, 2L)) {
-    width_budget[1] <- width_budget[1] + 1
-  }
-
-  width_budget
-}
-
-# given Olson timezones, return a dataframe with:
-#  - tz        `character`, full tz-name
+# tz           `character`, one-or-more Olson time zones
+# width        `integer`, width to which the time zones are to be abbreviated
+#
+# `data.frame` with variables:
 #  - index     `integer`, index of component within `tz`
 #  - index_max `integer`, maximum index for `tz`
+#  - tz        `character`, full tz-name
 #  - component `character`, this component
-component_olson <- function(tz) {
+#  - budget    `integer`, width budget for this component
+#
+.abb_inital <- function(tz, width = 14L) {
+
+  # left join the Olson components with the inital width-budget
+  result <-
+    merge(
+      .component_olson(tz),
+      .component_budget(width),
+      by = c("index", "index_max"),
+      all.x = TRUE,
+      all.y = FALSE
+    )
+
+  result
+}
+
+# `data.frame` with variables
+#
+#
+#
+
+# tz           `character`, one-or-more Olson time zones
+#
+# `data.frame` with variables:
+#  - tz        `character`, full tz-name
+#  - index     `integer`, index of component within `tz`
+#  - index_max `integer`, maximum index of component within `tz`
+#  - component `character`, this component
+#
+.component_olson <- function(tz) {
 
   # calculate for every timezone supplied
   components <- strsplit(tz, split = "/")
   index <- lapply(components, seq_along)
-  index_max <- lapply(index, function(x){rep(max(x), max(x))})
-  tz_list <- mapply(function(tz, index){rep(tz, max(index))}, tz, index)
+  index_max <- lapply(index, function(x) {rep(max(x), max(x))})
+  tz_list <- mapply(
+    function(tz, index) {rep(tz, max(index))},
+    tz, index,
+    SIMPLIFY = FALSE
+  )
 
   # collapse into a data.frame
   data.frame(
     tz = unlist(tz_list, use.names = FALSE),
     index = unlist(index, use.names = FALSE),
     index_max = unlist(index_max, use.names = FALSE),
-    component = unlist(components, use.names = FALSE)
+    component = unlist(components, use.names = FALSE),
+    stringsAsFactors = FALSE
   )
 }
 
+# tmp <- component_olson(OlsonNames())
+# aggregate(tmp["component"], by = tmp[c("tz")], FUN = function(x){paste(x, collapse = "/")})
+
+# width        `integer`, width to which the time zones are to be abbreviated
+#
+# `data.frame` with variables:
+#  - index     `integer`, index
+#  - index_max `integer`, maximum index
+#  - budget    `integer`, width budget
+#
+.component_budget <- function(width) {
+
+  index <- lapply(seq(3), seq)
+  index_max <- lapply(seq(3), function(x) {rep(x, x)})
+  budget <- lapply(seq(3), function(x) {.width_budget(width, x)})
+
+  data.frame(
+    index = unlist(index),
+    index_max = unlist(index_max),
+    budget = unlist(budget)
+  )
+}
+
+# width        `integer`, width to which the time zones are to be abbreviated
+# index_max    `integer`, maximum index of component within a time zone
+#
+# `integer`, length is index_max, values sum to width
+#
+# each value represents an initial budget for the width of each component
+# of a time zone
+#
+.width_budget <- function(width, index_max) {
+
+  # make sure we use integers
+  width <- as.integer(width)
+  index_max <- as.integer(index_max)
+
+  # account for the separators
+  width_available <- width - (index_max - 1)
+
+  # distribute width equally among components
+  width_budget <- rep(floor(width_available / index_max), index_max)
+
+  # distribute extra width
+  width_extra <- as.integer(width_available %% index_max)
+
+  # if we have any extra, give it to the last component
+  if (width_extra > 0L) {
+    width_budget[index_max] <- width_budget[index_max] + 1
+  }
+
+  # if we have two extra, give it to the first component
+  # - by definition, this can be the case only if index_max == 3L
+  if (identical(width_extra, 2L)) {
+    width_budget[1] <- width_budget[1] + 1
+  }
+
+  width_budget
+}
 
