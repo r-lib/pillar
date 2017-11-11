@@ -193,7 +193,7 @@ test_olson <- c(
   # left join the Olson components with the inital width-budget
   result <-
     merge(
-      .component_olson(tz),
+      .component_create(tz),
       .component_budget(width),
       by = c("index", "index_max"),
       all.x = TRUE,
@@ -216,7 +216,7 @@ test_olson <- c(
 #  - index_max `integer`, maximum index of component within `tz`
 #  - component `character`, this component
 #
-.component_olson <- function(tz) {
+.component_create <- function(tz) {
 
   # calculate for every timezone supplied
   components <- strsplit(tz, split = "/")
@@ -238,7 +238,7 @@ test_olson <- c(
   )
 }
 
-# tmp <- component_olson(OlsonNames())
+# tmp <- component_create(OlsonNames())
 # aggregate(tmp["component"], by = tmp[c("tz")], FUN = function(x){paste(x, collapse = "/")})
 
 # width        `integer`, width to which the time zones are to be abbreviated
