@@ -27,6 +27,42 @@ test_that("Olson-name abbreviation utils", {
     3L,      3L,        "America/Indiana/Indianapolis", "Indianapolis", 4L
   )
 
+  test_that("width budgeting works", {
+    # width 14
+    expect_identical(.width_budget(14L, index_max = 1L), c(14L))
+    expect_identical(.width_budget(14L, index_max = 2L), c(6L, 7L))
+    expect_identical(.width_budget(14L, index_max = 3L), c(4L, 4L, 4L))
+    # width 10
+    expect_identical(.width_budget(10L, index_max = 1L), c(10L))
+    expect_identical(.width_budget(10L, index_max = 2L), c(4L, 5L))
+    expect_identical(.width_budget(10L, index_max = 3L), c(3L, 2L, 3L))
+  })
+
+  test_that("component budgeting works", {
+    expect_identical(
+      .component_budget(14L),
+      data.frame(
+        index = c(1L, 1L, 2L, 1L, 2L, 3L),
+        index_max = c(1L, 2L, 2L, 3L, 3L, 3L),
+        budget = c(14L, 6L, 7L, 4L, 4L, 4L)
+      )
+    )
+  })
+
+  test_that("component creation works", {
+    expect_identical(
+      .component_create("America/Chicago"),
+      data.frame(
+        tz = "America/Chicago",
+        index = c(1L, 2L),
+        index_max = c(2L, 2L),
+        component = c("America", "Chicago"),
+        stringsAsFactors = FALSE
+      )
+    )
+
+  })
+
   test_that("inital abbreviation works", {
     expect_identical(.abb_inital(test_olson, 14L), as.data.frame(component))
   })
