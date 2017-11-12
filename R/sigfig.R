@@ -59,7 +59,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     superscript = superscript
   )
 
-  set_width(ret, max(crayon::col_nchar(assemble_decimal(ret), type = "width"), 0L))
+  set_width(ret, get_max_extent(assemble_decimal(ret)))
 }
 
 safe_signif <- function(x, digits) {
@@ -104,9 +104,9 @@ format_lhs <- function(s) {
   lhs_zero <- s$lhs_zero
 
   lhs_str <- sprintf("%.0f", s$lhs)
-  lhs_width <- max(nchar(lhs_str), 0L)
+  lhs_width <- get_max_extent(lhs_str)
   lhs_sig <- crayon::col_substr(lhs_str, 1, s$sigfig)
-  lhs_non <- crayon::col_substr(lhs_str, s$sigfig + 1, nchar(lhs_str))
+  lhs_non <- crayon::col_substr(lhs_str, s$sigfig + 1, get_extent(lhs_str))
 
   # as.character() to support corner case of length zero
   lhs_col <- as.character(ifelse(num,
@@ -145,7 +145,7 @@ format_rhs <- function(s) {
   # Digits on RHS of .
   rhs_num <- as.character(abs(round(s$rhs * 10 ^ s$rhs_digits)))
 
-  rhs_zero <- strrep("0", pmax(0, rhs_digits - nchar(rhs_num)))
+  rhs_zero <- strrep("0", pmax(0, rhs_digits - get_extent(rhs_num)))
 
   rhs_col <- ifelse(dec,
     paste0(
@@ -196,7 +196,7 @@ format.pillar_shaft_decimal <- function(x, width, ...) {
     row <- assemble_decimal(x$sci)
   }
 
-  used_width <- max(crayon::col_nchar(row, type = "width"), 0L)
+  used_width <- get_max_extent(row)
   row <- paste0(strrep(" ", width - used_width), row)
   new_ornament(row, width = width, align = "right")
 }

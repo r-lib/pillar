@@ -5,7 +5,7 @@ cat_line <- function(...) {
 str_trunc <- function(x, width) {
   if (width == Inf) return(x)
 
-  str_width <- crayon::col_nchar(x, type = "width")
+  str_width <- utf8::utf8_width(crayon::strip_style(x), encode = FALSE)
 
   too_wide <- which(!is.na(x) & str_width > width)
   x[too_wide] <- paste0(crayon::col_substr(x[too_wide], 1, width - 1), get_ellipsis())

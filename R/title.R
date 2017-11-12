@@ -2,7 +2,7 @@ pillar_title <- function(title, ...) {
   if (is.null(title)) {
     width <- 0L
   } else {
-    width <- nchar(format_title(title, width = Inf), "width")
+    width <- get_extent(format_title(title, width = Inf))
   }
 
   ret <- structure(

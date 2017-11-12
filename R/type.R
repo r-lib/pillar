@@ -17,7 +17,7 @@ pillar_type <- function(x, ...) {
     ),
     class = "pillar_type"
   )
-  ret <- set_width(ret, width = nchar(type, type = "width") + 2L)
+  ret <- set_width(ret, width = get_extent(type) + 2L)
   ret <- set_min_width(ret, 5L)
   ret
 }

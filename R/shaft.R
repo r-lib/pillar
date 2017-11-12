@@ -39,7 +39,7 @@ new_pillar_shaft <- function(x, ...,
                              align = "left", min_width = NULL,
                              na_indent = 0L) {
   if (is.null(width)) {
-    width <- max(crayon::col_nchar(x, type = "width"), 0L)
+    width <- get_max_extent(x)
   }
 
   ret <- structure(
@@ -116,7 +116,7 @@ pillar_shaft.character <- function(x, ...) {
   out[needs_quotes] <- quoted
   out[is_na] <- pillar_na(use_brackets_if_no_color = TRUE)
 
-  width <- max(crayon::col_nchar(out, type = "width"), 0L)
+  width <- get_max_extent(out)
 
   new_pillar_shaft(out, width = width, align = "left", min_width = min(width, 3L))
 }
@@ -126,7 +126,7 @@ pillar_shaft.character <- function(x, ...) {
 pillar_shaft.list <- function(x, ...) {
   out <- paste0("<", obj_sum(x), ">")
 
-  width <- max(nchar(out, type = "width"))
+  width <- get_max_extent(out)
 
   new_pillar_shaft(style_list(out), width = width, align = "left", min_width = min(width, 3L))
 }
