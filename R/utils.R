@@ -2,11 +2,6 @@ cat_line <- function(...) {
   cat(..., "\n", sep = "")
 }
 
-pillar_align <- function(x, width, align) {
-  vapply(x, crayon::col_align, width = width, align = align,
-    FUN.VALUE = character(1))
-}
-
 str_trunc <- function(x, width) {
   if (width == Inf) return(x)
 
