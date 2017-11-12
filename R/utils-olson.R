@@ -359,17 +359,17 @@ combine_olson_components <- function(tz_components) {
   df_min$budget_local
 }
 
-.abbv_final <- function(df) {
+.abbv_final <- function(abbv_dict, budget_harmonised) {
 
-  .abb <- function(df) {
-    budget <- min(df$budget)
-    df$abbreviation_new <- abbreviate(df$abbreviation, budget)
+  abbv <- split(abbv_dict, budget_harmonised)
+  len <- as.integer(names(abbv))
 
-    df
-  }
+  abbv_new <- unlist(map2(abbv, len, abbreviate))
+  names(abbv_new) <- unlist(abbv)
 
-  # group by budget
-  by(df, list(df$budget), .abb)
+  abbv_final <- abbv_new[abbv_dict]
+  names(abbv_final) <- NULL
 
+  abbv_final
 }
 

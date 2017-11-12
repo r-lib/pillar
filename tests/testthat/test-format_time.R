@@ -109,55 +109,24 @@ test_that(".abbv_dict works", {
   expect_identical(.abbv_dict(input, dictionary = dict), result)
 })
 
-#
-#
-#   test_that("min budget by abbreviation works", {
-#
-#     df_test <- tribble(
-#       ~abbreviation, ~budget,
-#       "chicago",     5L,
-#       "chicago",     4L,
-#       "denver",      3L
-#     )
-#
-#     df_result <- tribble(
-#       ~abbreviation, ~budget,
-#       "chicago",     4L,
-#       "chicago",     4L,
-#       "denver",      3L
-#     )
-#
-#     expect_identical(
-#       .min_budget_by_abbreviation(df_test),
-#       as.data.frame(df_result)
-#     )
-#
-#   })
-#
-#   test_that("abbreviate by budget works", {
-#
-#     # this test is a bit pathological as none of the strings
-#     # is abbreviated to the length we want - instrad the point is
-#     # to make sure that all the 4's are considered together
-#     # and all the 5's are considered together
-#
-#     df_test <- tribble(
-#       ~abbreviation, ~budget,
-#       "new_yorks",   5L,
-#       "new_york",    5L,
-#       "chicagos",    4L,
-#       "chicago",     4L
-#     )
-#
-#     df_result <- tribble(
-#       ~abbreviation, ~budget,
-#       "nw_yrks",     5L,
-#       "new_yrk",     5L,
-#       "chcgs",       4L,
-#       "chicg",       4L
-#     )
-#
-#   })
-#
+test_that(".abbv_final works", {
+
+  # this test is a bit pathological as none of the strings
+  # is abbreviated to the length we want - instead the point is
+  # to make sure that all the 4's are considered together
+  # and all the 5's are considered together
+
+  abbv_dict <-         c("new_yorks",  "new_york", "chicagos", "chicago")
+  budget_harmonised <- c(         5L,          5L,         4L,        4L)
+
+  abbv_final <-        c( "nw_yrks",    "new_yrk",    "chcgs",   "chicg")
+
+  expect_identical(
+    .abbv_final(abbv_dict, budget_harmonised),
+    abbv_final
+  )
+
+})
+
 
 
