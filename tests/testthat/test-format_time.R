@@ -71,13 +71,44 @@ test_that(".decompose_tz works", {
 
 })
 
-#   test_that("dictionary works", {
-#     dict <- c(foo = "foo2", bar = "bar3")
-#     expect_identical(
-#       .abbreviate_dictionary(c("foo", "notfoo", "bar"), dictionary = dict),
-#       c("foo2", "notfoo", "bar3")
-#     )
-#   })
+test_that(".budget_local works", {
+
+  index <-            c( 1L,  2L, 3L)
+  index_max <-        c( 3L,  3L, 3L)
+  budget_global <-    c( 4L,  3L, 6L)
+  budget_remaining <- c(14L, 12L, 9L)
+
+  budget_local <-     c( 4L,  3L, 9L)
+
+  expect_identical(
+    .budget_local(budget_global, budget_remaining, index, index_max),
+    budget_local
+  )
+})
+
+test_that(".budget_harmonised works", {
+
+  component <-         c("chicago", "chicago", "denver")
+  budget_local <-      c(       5L,        4L,       3L)
+
+  budget_harmonised <- c(       4L,        4L,       3L)
+
+  expect_identical(
+    .budget_harmonised(budget_local, component),
+    budget_harmonised
+  )
+})
+
+test_that(".abbv_dict works", {
+
+  dict <- c(foo = "foo2", bar = "bar3")
+
+  input <-  c("foo",  "notfoo", "bar")
+  result <- c("foo2", "notfoo", "bar3")
+
+  expect_identical(.abbv_dict(input, dictionary = dict), result)
+})
+
 #
 #
 #   test_that("min budget by abbreviation works", {
