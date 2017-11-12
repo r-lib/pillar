@@ -334,39 +334,31 @@ combine_olson_components <- function(tz_components) {
 
 .budget_harmonised <- function(budget_local, component) {
 
-  df <-
-    data.frame(
-      budget_local,
-      component,
-      stringsAsFactors = FALSE
-    )
+  # group budget_local by component
+  budget <- split(budget_local, component)
 
-  # group by component, find the minimum budget
-  budget_min <- stats::aggregate(
-    df,
-    by = list(component = df$component),
-    min
-  )
+  # find minimum budget for each component
+  budget_min <- unlist(map(budget, min))
 
-  # keep only the columns we want
-  budget_min <- budget_min[, c("component", "budget_local")]
+  # put this in terms of the original component vector
+  budget_harmonised <- budget_min[component]
+  names(budget_harmonised) <- NULL
 
-  # merge this into data-frame
-  df["budget_local"] <- NULL
-  df_min <- merge(df, budget_min, by = "component", all.y = FALSE)
-
-  # we are interested only in the budget
-  df_min$budget_local
+  budget_harmonised
 }
 
 .abbv_final <- function(abbv_dict, budget_harmonised) {
 
+  # group abbv_dict by budget_harmonised
   abbv <- split(abbv_dict, budget_harmonised)
-  len <- as.integer(names(abbv))
+  # get the budget for each group
+  budget <- as.integer(names(abbv))
 
-  abbv_new <- unlist(map2(abbv, len, abbreviate))
+  # get the new abbreviations
+  abbv_new <- unlist(map2(abbv, budget, abbreviate))
   names(abbv_new) <- unlist(abbv)
 
+  # put this in terms of the originial abbv_dict vector
   abbv_final <- abbv_new[abbv_dict]
   names(abbv_final) <- NULL
 
