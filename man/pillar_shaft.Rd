@@ -14,8 +14,8 @@
 \usage{
 pillar_shaft(x, ...)
 
-new_pillar_shaft(x, ..., width = max(crayon::col_nchar(x, type = "width"),
-  0L), align = "left", min_width = NULL, na_indent = 0L)
+new_pillar_shaft(x, ..., width = NULL, align = "left", min_width = NULL,
+  na_indent = 0L)
 
 \method{pillar_shaft}{logical}(x, ...)
 
@@ -36,7 +36,7 @@ new_pillar_shaft(x, ..., width = max(crayon::col_nchar(x, type = "width"),
 
 \item{...}{Unused, for extensibility.}
 
-\item{width}{The maximum column width.}
+\item{width}{The maximum column width, by default the natural width of \code{x}.}
 
 \item{align}{Alignment of the column.}
 

@@ -29,15 +29,19 @@ print.pillar_shaft <- function(x, ...) {
 }
 
 #' @export
-#' @param width The maximum column width.
+#' @param width The maximum column width, by default the natural width of `x`.
 #' @param align Alignment of the column.
 #' @param min_width The minimum allowed column width, `width` if omitted.
 #' @param na_indent Indention of `NA` values.
 #' @rdname pillar_shaft
 new_pillar_shaft <- function(x, ...,
-                             width = max(crayon::col_nchar(x, type = "width"), 0L),
+                             width = NULL,
                              align = "left", min_width = NULL,
                              na_indent = 0L) {
+  if (is.null(width)) {
+    width <- max(crayon::col_nchar(x, type = "width"), 0L)
+  }
+
   ret <- structure(
     x,
     align = align,
