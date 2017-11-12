@@ -36,9 +36,7 @@
 #' abbreviate_olson("America/Chicago")
 #' abbreviate_olson("America/Chicago", width = 20)
 #' abbreviate_olson("America/Chicago", dictionary = c(America = "USA"))
-#' \dontrun{
-#'   purrr::map_chr(OlsonNames(), abbreviate_olson)
-#' }
+#' abbreviate_olson(OlsonNames())
 #' @export
 #'
 abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
@@ -104,7 +102,7 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
   tz_abbreviated <- tz
 
   # get a width-budget
-  width_budget <- .budget_local(width, n_component)
+  width_budget <- .calculate_budget(width, n_component)
 
   # loop over our components, abbreviate as needed
   for (i in seq_along(tz_components)) {
@@ -316,7 +314,15 @@ combine_olson_components <- function(tz_components) {
   df
 }
 
-.abbreviate_dictionary <- function(component, dictionary) {
+.budget_local <- function(budget_global, budget_remaining, index, index_max) {
+  ifelse(
+    index < index_max,
+    budget_global,
+    budget_remaining
+  )
+}
+
+.abbv_dict <- function(component, dictionary) {
 
   abbrev <- component
   index <- component %in% names(dictionary)
@@ -326,26 +332,34 @@ combine_olson_components <- function(tz_components) {
   abbrev
 }
 
-.min_budget_by_abbreviation <- function(df) {
+.budget_harmonised <- function(budget_local, component) {
 
-  # group by abbreviation, find the minimum budget
+  df <-
+    data.frame(
+      budget_local,
+      component,
+      stringsAsFactors = FALSE
+    )
+
+  # group by component, find the minimum budget
   budget_min <- stats::aggregate(
     df,
-    by = list(abb_dict = df$abb_dict),
+    by = list(component = df$component),
     min
   )
 
   # keep only the columns we want
-  budget_min <- budget_min[, c("abbreviation", "budget")]
+  budget_min <- budget_min[, c("component", "budget_local")]
 
   # merge this into data-frame
-  df["budget"] <- NULL
-  df_min <- merge(df, budget_min, by = "abbreviation")
+  df["budget_local"] <- NULL
+  df_min <- merge(df, budget_min, by = "component", all.y = FALSE)
 
-  df_min
+  # we are interested only in the budget
+  df_min$budget_local
 }
 
-.abbreviate_by_budget <- function(df) {
+.abbv_final <- function(df) {
 
   .abb <- function(df) {
     budget <- min(df$budget)
