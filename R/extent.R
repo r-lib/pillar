@@ -5,3 +5,14 @@ get_extent <- function(x) {
 get_max_extent <- function(x) {
   max(get_extent(x), 0L)
 }
+
+align <- function(x, width, align = c("left", "right")) {
+  align <- match.arg(align)
+  extent <- get_extent(x)
+  spaces <- pmax(width - extent, 0L)
+  if (align == "left") {
+    paste0(x, strrep(" ", spaces))
+  } else {
+    paste0(strrep(" ", spaces), x)
+  }
+}

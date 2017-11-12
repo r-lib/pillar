@@ -117,7 +117,7 @@ format_lhs <- function(s) {
     style_na(lhs_str)
   ))
 
-  lhs_col <- crayon::col_align(lhs_col, width = lhs_width, align = "right")
+  lhs_col <- align(lhs_col, width = lhs_width, align = "right")
   lhs_col
 }
 
@@ -156,7 +156,7 @@ format_rhs <- function(s) {
   )
 
   # ensure all same width
-  rhs_col <- crayon::col_align(rhs_col, max(rhs_digits, na.rm = TRUE), "left")
+  rhs_col <- align(rhs_col, max(rhs_digits, 0L, na.rm = TRUE), "left")
 
   rhs_col
 }

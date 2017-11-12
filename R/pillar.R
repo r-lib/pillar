@@ -92,9 +92,9 @@ pillar_format_parts <- function(x, width, ...) {
   data_format <- format(x$data, width = width, ...)
   align <- attr(data_format, "align")
 
-  title_format <- crayon::col_align(title_format, width = width, align = align)
-  type_format <- crayon::col_align(type_format, width = width, align = align)
-  data_format <- crayon::col_align(data_format, width = width, align = align)
+  title_format <- align(title_format, width = width, align = align)
+  type_format <- align(type_format, width = width, align = align)
+  data_format <- align(data_format, width = width, align = align)
 
   list(
     title_format = title_format,
