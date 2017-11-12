@@ -1,19 +1,59 @@
 context("format_time")
 
-test_that("Olson-name abbreviation utils", {
+library("tibble")
 
-  library("tibble")
+test_olson <- c(
+  "EST5EDT",
+  "America/Chicago",
+  "Europe/Paris",
+  "America/Kentucky/Louisville",
+  "America/Indiana/Indianapolis"
+)
 
-  test_olson <- c(
-    "EST5EDT",
-    "America/Chicago",
-    "Europe/Paris",
-    "America/Kentucky/Louisville",
-    "America/Indiana/Indianapolis"
+test_that("output test", {
+  expect_pillar_output(as.POSIXct("2017-07-28 18:04:35 +0200"), filename = "time.txt")
+  expect_pillar_output(as.POSIXlt("2017-07-28 18:04:35 +0200"), filename = "time-posix.txt")
+})
+
+test_that(".component works", {
+  expect_identical(
+    .component("America/Chicago"),
+    data.frame(
+      tz = rep("America/Chicago", 2L),
+      index = c(1L, 2L),
+      index_max = c(2L, 2L),
+      component = c("America", "Chicago"),
+      stringsAsFactors = FALSE
+    )
   )
+})
 
-  component <- tribble(
-    ~index, ~index_max, ~tz,                            ~component,     ~budget,
+test_that(".calculate_budget works", {
+  # width 14
+  expect_identical(.calculate_budget(1L, width = 14L), c(14L))
+  expect_identical(.calculate_budget(2L, width = 14L), c(6L, 7L))
+  expect_identical(.calculate_budget(3L, width = 14L), c(4L, 4L, 4L))
+  # width 10
+  expect_identical(.calculate_budget(1L, width = 10L), c(10L))
+  expect_identical(.calculate_budget(2L, width = 10L), c(4L, 5L))
+  expect_identical(.calculate_budget(3L, width = 10L), c(3L, 2L, 3L))
+})
+
+test_that(".budget_global works", {
+  expect_identical(
+    .budget_global(14L),
+    data.frame(
+      index = c(1L, 1L, 2L, 1L, 2L, 3L),
+      index_max = c(1L, 2L, 2L, 3L, 3L, 3L),
+      budget_global = c(14L, 6L, 7L, 4L, 4L, 4L)
+    )
+  )
+})
+
+test_that(".decompose_tz works", {
+
+  decompose_tz <- tribble(
+    ~index, ~index_max, ~tz,                            ~component,     ~budget_global,
     1L,      1L,        "EST5EDT",                      "EST5EDT",      14L,
     1L,      2L,        "America/Chicago",              "America",      6L,
     1L,      2L,        "Europe/Paris",                 "Europe",       6L,
@@ -27,49 +67,66 @@ test_that("Olson-name abbreviation utils", {
     3L,      3L,        "America/Indiana/Indianapolis", "Indianapolis", 4L
   )
 
-  test_that("width budgeting works", {
-    # width 14
-    expect_identical(.width_budget(14L, index_max = 1L), c(14L))
-    expect_identical(.width_budget(14L, index_max = 2L), c(6L, 7L))
-    expect_identical(.width_budget(14L, index_max = 3L), c(4L, 4L, 4L))
-    # width 10
-    expect_identical(.width_budget(10L, index_max = 1L), c(10L))
-    expect_identical(.width_budget(10L, index_max = 2L), c(4L, 5L))
-    expect_identical(.width_budget(10L, index_max = 3L), c(3L, 2L, 3L))
-  })
-
-  test_that("component budgeting works", {
-    expect_identical(
-      .component_budget(14L),
-      data.frame(
-        index = c(1L, 1L, 2L, 1L, 2L, 3L),
-        index_max = c(1L, 2L, 2L, 3L, 3L, 3L),
-        budget = c(14L, 6L, 7L, 4L, 4L, 4L)
-      )
-    )
-  })
-
-  test_that("component creation works", {
-    expect_identical(
-      .component_create("America/Chicago"),
-      data.frame(
-        tz = "America/Chicago",
-        index = c(1L, 2L),
-        index_max = c(2L, 2L),
-        component = c("America", "Chicago"),
-        stringsAsFactors = FALSE
-      )
-    )
-
-  })
-
-  test_that("inital abbreviation works", {
-    expect_identical(.abb_inital(test_olson, 14L), as.data.frame(component))
-  })
+  expect_identical(.decompose_tz(test_olson, 14L), as.data.frame(decompose_tz))
 
 })
 
-test_that("output test", {
-  expect_pillar_output(as.POSIXct("2017-07-28 18:04:35 +0200"), filename = "time.txt")
-  expect_pillar_output(as.POSIXlt("2017-07-28 18:04:35 +0200"), filename = "time-posix.txt")
-})
+#   test_that("dictionary works", {
+#     dict <- c(foo = "foo2", bar = "bar3")
+#     expect_identical(
+#       .abbreviate_dictionary(c("foo", "notfoo", "bar"), dictionary = dict),
+#       c("foo2", "notfoo", "bar3")
+#     )
+#   })
+#
+#
+#   test_that("min budget by abbreviation works", {
+#
+#     df_test <- tribble(
+#       ~abbreviation, ~budget,
+#       "chicago",     5L,
+#       "chicago",     4L,
+#       "denver",      3L
+#     )
+#
+#     df_result <- tribble(
+#       ~abbreviation, ~budget,
+#       "chicago",     4L,
+#       "chicago",     4L,
+#       "denver",      3L
+#     )
+#
+#     expect_identical(
+#       .min_budget_by_abbreviation(df_test),
+#       as.data.frame(df_result)
+#     )
+#
+#   })
+#
+#   test_that("abbreviate by budget works", {
+#
+#     # this test is a bit pathological as none of the strings
+#     # is abbreviated to the length we want - instrad the point is
+#     # to make sure that all the 4's are considered together
+#     # and all the 5's are considered together
+#
+#     df_test <- tribble(
+#       ~abbreviation, ~budget,
+#       "new_yorks",   5L,
+#       "new_york",    5L,
+#       "chicagos",    4L,
+#       "chicago",     4L
+#     )
+#
+#     df_result <- tribble(
+#       ~abbreviation, ~budget,
+#       "nw_yrks",     5L,
+#       "new_yrk",     5L,
+#       "chcgs",       4L,
+#       "chicg",       4L
+#     )
+#
+#   })
+#
+
+

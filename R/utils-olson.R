@@ -104,7 +104,7 @@ abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
   tz_abbreviated <- tz
 
   # get a width-budget
-  width_budget <- .width_budget(width, n_component)
+  width_budget <- .budget_local(width, n_component)
 
   # loop over our components, abbreviate as needed
   for (i in seq_along(tz_components)) {
@@ -170,14 +170,6 @@ combine_olson_components <- function(tz_components) {
 }
 
 
-test_olson <- c(
-  "EST5EDT",
-  "America/Chicago",
-  "Europe/Paris",
-  "America/Kentucky/Louisville",
-  "America/Indiana/Indianapolis"
-)
-
 # tz           `character`, one-or-more Olson time zones
 # width        `integer`, width to which the time zones are to be abbreviated
 #
@@ -188,13 +180,13 @@ test_olson <- c(
 #  - component `character`, this component
 #  - budget    `integer`, width budget for this component
 #
-.abb_inital <- function(tz, width = 14L) {
+.decompose_tz <- function(tz, width = 14L) {
 
   # left join the Olson components with the inital width-budget
   result <-
     merge(
-      .component_create(tz),
-      .component_budget(width),
+      .component(tz),
+      .budget_global(width),
       by = c("index", "index_max"),
       all.x = TRUE,
       all.y = FALSE
@@ -216,11 +208,11 @@ test_olson <- c(
 #  - index_max `integer`, maximum index of component within `tz`
 #  - component `character`, this component
 #
-.component_create <- function(tz) {
+.component <- function(tz) {
 
   # calculate for every timezone supplied
-  components <- strsplit(tz, split = "/")
-  index <- lapply(components, seq_along)
+  component <- strsplit(tz, split = "/")
+  index <- lapply(component, seq_along)
   index_max <- lapply(index, function(x) {rep(max(x), max(x))})
   tz_list <- mapply(
     function(tz, index) {rep(tz, max(index))},
@@ -233,7 +225,7 @@ test_olson <- c(
     tz = unlist(tz_list, use.names = FALSE),
     index = unlist(index, use.names = FALSE),
     index_max = unlist(index_max, use.names = FALSE),
-    component = unlist(components, use.names = FALSE),
+    component = unlist(component, use.names = FALSE),
     stringsAsFactors = FALSE
   )
 }
@@ -248,28 +240,28 @@ test_olson <- c(
 #  - index_max `integer`, maximum index
 #  - budget    `integer`, width budget
 #
-.component_budget <- function(width) {
+.budget_global <- function(width) {
 
   index <- lapply(seq(3), seq)
   index_max <- lapply(seq(3), function(x) {rep(x, x)})
-  budget <- lapply(seq(3), function(x) {.width_budget(width, x)})
+  budget_global <- lapply(seq(3), .calculate_budget, width = width)
 
   data.frame(
     index = unlist(index),
     index_max = unlist(index_max),
-    budget = unlist(budget)
+    budget_global = unlist(budget_global)
   )
 }
 
-# width        `integer`, width to which the time zones are to be abbreviated
 # index_max    `integer`, maximum index of component within a time zone
+# width        `integer`, width to which the time zones are to be abbreviated
 #
 # `integer`, length is index_max, values sum to width
 #
 # each value represents an initial budget for the width of each component
 # of a time zone
 #
-.width_budget <- function(width, index_max) {
+.calculate_budget <- function(index_max, width) {
 
   # make sure we use integers
   width <- as.integer(width)
@@ -296,5 +288,74 @@ test_olson <- c(
   }
 
   as.integer(width_budget)
+}
+
+# `data.frame` with variables:
+#  - tz        `character`, full tz-name
+#  - component `character`, this component
+#  - budget    `integer`, width budget for this component
+# `character` abbreviation dictionary
+#
+# `data.frame` with additional variables:
+#  - abbreviation
+#
+# Assuming the input data-frame has observations with the
+# same index and index_max. Applies to each
+#
+.abbreviate_component <- function(df, dictionary) {
+
+  # apply dictionary
+  df$abb_dict <- .abbreviate_dictionary(df$component, dictionary)
+
+  # find and apply minimum budget, grouping by abbreviation
+  df <- .min_budget_by_abbreviation(df)
+
+  # find and apply the abbreviation, grouping by budget
+
+
+  df
+}
+
+.abbreviate_dictionary <- function(component, dictionary) {
+
+  abbrev <- component
+  index <- component %in% names(dictionary)
+
+  abbrev[index] <- dictionary[abbrev[index]]
+
+  abbrev
+}
+
+.min_budget_by_abbreviation <- function(df) {
+
+  # group by abbreviation, find the minimum budget
+  budget_min <- stats::aggregate(
+    df,
+    by = list(abb_dict = df$abb_dict),
+    min
+  )
+
+  # keep only the columns we want
+  budget_min <- budget_min[, c("abbreviation", "budget")]
+
+  # merge this into data-frame
+  df["budget"] <- NULL
+  df_min <- merge(df, budget_min, by = "abbreviation")
+
+  df_min
+}
+
+.abbreviate_by_budget <- function(df) {
+
+  .abb <- function(df) {
+    budget <- min(df$budget)
+    df$abbreviation_new <- abbreviate(df$abbreviation, budget)
+
+    df
+  }
+
+  # group by budget
+  by(df, list(df$budget), .abb)
+
 }
 
