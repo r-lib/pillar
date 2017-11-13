@@ -10,8 +10,8 @@ is_syntactic <- function(x) {
   ret
 }
 
-is_proper_string <- function(x) {
-  grepl("^[^[:blank:][:cntrl:]\"](?:|[^[:cntrl:]\"]*[^[:blank:][:cntrl:]\"])$", x, perl = TRUE)
+is_ambiguous_string <- function(x) {
+  grepl("^$|^ | $|\\\\|\"", x)
 }
 
 tick <- function(x) {

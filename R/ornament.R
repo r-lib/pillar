@@ -9,7 +9,7 @@
 #' @param x A character vector with formatting, see [crayon]
 #' @param width An optional width of the resulting pillar, computed from `x` if
 #'   missing
-#' @param align Alignment, passed on to [crayon::col_align()]
+#' @param align Alignment, one of `"left"` or `"right"`
 #'
 #' @export
 new_ornament <- function(x, width = NULL, align = NULL) {

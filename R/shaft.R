@@ -108,16 +108,25 @@ pillar_shaft.POSIXt <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.character <- function(x, ...) {
+  x <- utf8::utf8_encode(x)
   out <- x
-  needs_quotes <- which(!is_proper_string(x))
-  is_na <- is.na(x)
-  quoted <- encodeString(x[needs_quotes], quote = '"', na.encode = FALSE)
-  quoted <- gsub('^"|"$', style_subtle('"'), quoted)
-  out[needs_quotes] <- quoted
-  out[is_na] <- pillar_na(use_brackets_if_no_color = TRUE)
+
+  # Add subtle quotes if necessary
+  needs_quotes <- which(is_ambiguous_string(x))
+  if (length(needs_quotes) > 0) {
+    quoted <- gsub('"', '\\"', x[needs_quotes], fixed = TRUE)
+    quoted <- paste0(style_subtle('"'), quoted, style_subtle('"'))
+    out[needs_quotes] <- quoted
+  }
+
+  # Format NA values separately
+  is_na <- which(is.na(x))
+  if (length(is_na) > 0) {
+    na_contents <- pillar_na(use_brackets_if_no_color = TRUE)
+    out[is_na] <- na_contents
+  }
 
   width <- get_max_extent(out)
-
   new_pillar_shaft(out, width = width, align = "left", min_width = min(width, 3L))
 }
 

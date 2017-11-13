@@ -12,7 +12,7 @@ new_ornament(x, width = NULL, align = NULL)
 \item{width}{An optional width of the resulting pillar, computed from \code{x} if
 missing}
 
-\item{align}{Alignment, passed on to \code{\link[crayon:col_align]{crayon::col_align()}}}
+\item{align}{Alignment, one of \code{"left"} or \code{"right"}}
 }
 \description{
 This function is useful if your data renders differently depending on the
