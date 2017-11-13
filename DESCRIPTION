@@ -16,7 +16,8 @@ Imports:
     cli,
     crayon,
     methods,
-    rlang
+    rlang,
+    utf8
 Suggests:
     knitr,
     testthat
