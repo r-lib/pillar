@@ -3,5 +3,5 @@ get_extent <- function(x) {
 }
 
 get_max_extent <- function(x) {
-  max(get_extent(x), 0L)
+  max(get_extent(x), 0L, na.rm = TRUE)
 }
