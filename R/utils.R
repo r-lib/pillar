@@ -3,7 +3,7 @@ cat_line <- function(...) {
 }
 
 str_trunc <- function(x, width) {
-  if (width == Inf) return(x)
+  if (is.infinite(width)) return(x)
 
   str_width <- utf8::utf8_width(crayon::strip_style(x), encode = FALSE)
 
