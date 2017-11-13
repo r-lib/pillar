@@ -25,6 +25,8 @@ type_sum.data.frame <- function(x) class(x)[[1]]
 #' @export
 type_sum.tbl_df <- function(x) "tibble"
 #' @export
+type_sum.AsIs <- function(x) paste0("I(", type_sum(remove_as_is_class(x)), ")")
+#' @export
 type_sum.default <- function(x) {
   if (!is.object(x)) {
     switch(typeof(x),
@@ -72,6 +74,11 @@ obj_sum.list <- function(x) {
 #' @export
 obj_sum.POSIXlt <- function(x) {
   rep("POSIXlt", length(x))
+}
+
+#' @export
+obj_sum.AsIs <- function(x) {
+  paste0("I(", obj_sum(remove_as_is_class(x)), ")")
 }
 
 #' @export

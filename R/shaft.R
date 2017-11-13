@@ -137,6 +137,12 @@ style_list <- function(x) {
 
 #' @export
 #' @rdname pillar_shaft
+pillar_shaft.AsIs <- function(x, ...) {
+  pillar_shaft(remove_as_is_class(x))
+}
+
+#' @export
+#' @rdname pillar_shaft
 pillar_shaft.default <- function(x, ...) {
   pillar_shaft(as.character(x), ...)
 }

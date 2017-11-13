@@ -9,6 +9,7 @@
 \alias{pillar_shaft.POSIXt}
 \alias{pillar_shaft.character}
 \alias{pillar_shaft.list}
+\alias{pillar_shaft.AsIs}
 \alias{pillar_shaft.default}
 \title{Column data}
 \usage{
@@ -28,6 +29,8 @@ new_pillar_shaft(x, ..., width = NULL, align = "left", min_width = NULL,
 \method{pillar_shaft}{character}(x, ...)
 
 \method{pillar_shaft}{list}(x, ...)
+
+\method{pillar_shaft}{AsIs}(x, ...)
 
 \method{pillar_shaft}{default}(x, ...)
 }

@@ -46,3 +46,9 @@ is_latex_output <- function() {
   if (!("knitr" %in% loadedNamespaces())) return(FALSE)
   get("is_latex_output", asNamespace("knitr"))()
 }
+
+remove_as_is_class <- function(x) {
+  if (all(class(x) == "AsIs")) return(unclass(x))
+  class(x) <- setdiff(class(x), "AsIs")
+  x
+}
