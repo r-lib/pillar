@@ -6,7 +6,6 @@
 #' @inheritParams format_decimal
 #' @param superscript If `TRUE`, will use superscript numbers in exponent.
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
-  if (!is_utf8_output()) superscript <- FALSE
   split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 }
 
@@ -23,7 +22,7 @@ supernum <- function(x, superscript = TRUE) {
   neg <- num & x < 0
   if (any(neg)) {
     if (superscript) {
-      neg_chr <- ifelse(neg, "\u207b", "\u207a")
+      neg_chr <- ifelse(neg, cli::symbol$sup_minus, cli::symbol$sup_plus)
     } else {
       neg_chr <- ifelse(neg, "-", "+")
     }
@@ -46,13 +45,5 @@ supernum <- function(x, superscript = TRUE) {
 
 supernum1 <- function(x) {
   chars <- strsplit(as.character(x), "")[[1]]
-
-  # super <- c("⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹")
-  super <- c(
-    "\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074",
-    "\u2075", "\u2076", "\u2077", "\u2078", "\u2079"
-  )
-  names(super) <- 0:9
-
-  paste0(super[chars], collapse = "")
+  paste0(cli::symbol[paste0("sup_", chars)], collapse = "")
 }

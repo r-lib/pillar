@@ -13,6 +13,7 @@ LazyData: true
 URL: https://github.com/hadley/pillar
 BugReports: https://github.com/hadley/pillar/issues
 Imports:
+    cli,
     crayon,
     methods,
     rlang

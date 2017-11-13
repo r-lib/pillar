@@ -23,7 +23,7 @@ size_sum <- function(x) {
 }
 
 mult_sign <- function() {
-  "x"
+  cli::symbol$times
 }
 
 spaces_around <- function(x) {

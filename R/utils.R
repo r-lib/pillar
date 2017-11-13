@@ -39,11 +39,7 @@ slice <- function(df, index) {
 }
 
 get_ellipsis <- function() {
-  if (is_utf8_output()) "\u2026" else "~"
-}
-
-is_utf8_output <- function() {
-  l10n_info()$`UTF-8` && !is_latex_output()
+  cli::symbol$continue
 }
 
 is_latex_output <- function() {
