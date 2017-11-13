@@ -17,10 +17,10 @@ expect_pillar_output <- function(x, ..., filename,
                                  xp = add_special(x), xf = pillar(xp, ...),
                                  crayon = TRUE, output_width = 80L) {
   if (crayon) {
-    old <- options(crayon.enabled = TRUE, crayon.colors = 16L)
+    old <- options(crayon.enabled = TRUE, crayon.colors = 16L, width = output_width)
     crayon::num_colors(forget = TRUE)
   } else {
-    old <- options(crayon.enabled = FALSE)
+    old <- options(crayon.enabled = FALSE, width = output_width)
   }
 
   on.exit({
@@ -28,11 +28,11 @@ expect_pillar_output <- function(x, ..., filename,
     crayon::num_colors(forget = TRUE)
   })
 
+  # FIXME: Pass output_width argument here with testthat >= 2.0.0
   testthat::expect_output_file(
     print(xf),
     file.path("out", filename),
-    update = TRUE,
-    width = output_width
+    update = TRUE
   )
 }
 
