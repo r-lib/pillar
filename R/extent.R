@@ -1,6 +1,7 @@
 #' Calculate display width
 #'
-#' `get_extent()` calculates the display width of a character vector as a vector.
+#' `get_extent()` calculates the display width for each string in a character
+#' vector.
 #'
 #' @param x A character vector.
 #' @export
