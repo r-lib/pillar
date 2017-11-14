@@ -14,11 +14,11 @@ format.pillar_shaft <- function(x, width, ...) {
   align <- attr(x, "align")
   desired_width <- get_width(x)
   if (width < desired_width) {
-    data <- str_trunc(x, width)
+    data <- str_trunc(as.character(x[[1]]), width)
   } else {
-    data <- x
+    data <- as.character(x[[1]])
   }
-  data[is.na(x)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
+  data[is.na(x[[1]])] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
 
   new_ornament(data, width = width, align = align)
 }
@@ -43,7 +43,7 @@ new_pillar_shaft <- function(x, ...,
   }
 
   ret <- structure(
-    x,
+    list(x),
     align = align,
     na_indent = na_indent,
     class = "pillar_shaft"
