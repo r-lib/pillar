@@ -7,6 +7,10 @@
 #' By default, the required width is computed from the natural width of the
 #' `formatted` argument.
 #'
+#' @details
+#' The `formatted` argument may also contain ANSI escapes to change color
+#' or other attributes of the text, see [crayon].
+#'
 #' @param formatted An object coercible to [character].
 #' @param align Alignment of the column.
 #' @param na_indent Indention of `NA` values.

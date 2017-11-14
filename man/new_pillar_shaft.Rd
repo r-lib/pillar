@@ -27,7 +27,9 @@ new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
 }
 \description{
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}
-class. This is a virtual class, you must specify the \code{subclass} argument.
+class.
+This is a virtual or abstract class, you must specify the \code{subclass}
+argument.
 By convention, this should be a string that starts with \code{"pillar_shaft_"}.
 
 \code{new_pillar_shaft_simple()} provides an implementation of the \code{pillar_shaft}
@@ -36,4 +38,8 @@ truncated with a continuation character (ellipsis or \code{~}) if it doesn't fit
 the available width.
 By default, the required width is computed from the natural width of the
 \code{formatted} argument.
+}
+\details{
+The \code{formatted} argument may also contain ANSI escapes to change color
+or other attributes of the text, see \link{crayon}.
 }

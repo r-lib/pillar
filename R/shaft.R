@@ -1,7 +1,9 @@
 #' Constructor for column data
 #'
 #' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
-#' class. This is a virtual class, you must specify the `subclass` argument.
+#' class.
+#' This is a virtual or abstract class, you must specify the `subclass`
+#' argument.
 #' By convention, this should be a string that starts with `"pillar_shaft_"`.
 #'
 #' @param x An object
@@ -25,7 +27,7 @@ new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
 
 #' Column data
 #'
-#' Internal class for formatting the data part of a column.
+#' Internal class for formatting the data for a column.
 #' `pillar()` is a coercion method that must be implemented for your data type
 #' to display it in a tibble.
 #'

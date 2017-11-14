@@ -40,7 +40,7 @@ larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
 }
 \description{
-Internal class for formatting the data part of a column.
+Internal class for formatting the data for a column.
 \code{pillar()} is a coercion method that must be implemented for your data type
 to display it in a tibble.
 }
