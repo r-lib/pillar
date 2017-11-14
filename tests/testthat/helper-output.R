@@ -14,3 +14,34 @@ df_all <- list(
   h = as.list(c(1:2, NA)),
   i = list(list(1, 2:3), list(4:6), list(NA))
 )
+
+expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
+                                 crayon = TRUE, output_width = 80L) {
+  expect_known_display(
+    object = get_pillar_output_object(x, ..., xp = xp, xf = xf),
+    file = file.path("out", filename),
+    crayon = crayon,
+    width = output_width
+  )
+}
+
+get_pillar_output_object <- function(x = NULL, ..., xp = NULL, xf = NULL) {
+  if (is.null(xf)) {
+    if (is.null(xp)) {
+      xp <- add_special(x)
+    }
+    xf <- pillar(xp, ...)
+  }
+  xf
+}
+
+#' `add_special()` is not exported, and used only for initializing default
+#' values to `expect_pillar_output()`.
+#' @rdname expect_pillar_output
+add_special <- function(x) {
+  x <- c(x, NA)
+  if (is.numeric(x) && is.double(x)) {
+    x <- c(x, -Inf, Inf)
+  }
+  x
+}
