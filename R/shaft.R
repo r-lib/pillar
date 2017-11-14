@@ -38,14 +38,26 @@ pillar_shaft <- function(x, ...) {
   UseMethod("pillar_shaft")
 }
 
+#' @param width Width for printing and formatting.
 #' @export
+#' @rdname pillar_shaft
 print.pillar_shaft <- function(x, width = NULL, ...) {
+  #' @description
+  #' This class comes with a default method for [print()] that calls [format()].
+  #' If `print()` is called without `width` argument, the natural width will be
+  #' used when calling `format()`.
+  #' Usually there's no need to implement this method for your subclass.
   if (is.null(width)) width <- get_width(x)
   print(format(x, width = width, ...))
 }
 
 #' @export
-format.pillar_shaft <- function(x, ...) {
+#' @rdname pillar_shaft
+format.pillar_shaft <- function(x, width, ...) {
+  #' @description
+  #' Your subclass must implement `format()`, the default implementation just
+  #' raises an error.
+  #' Your `format()` method can assume a valid value for the `width` argument.
   stop("Please implement a format() method for class ", class(x)[[1]], call. = FALSE)
 }
 
