@@ -13,13 +13,24 @@
 #'
 #' @export
 new_ornament <- function(x, width = NULL, align = NULL) {
-  ret <- new_vertical(
+  ret <- structure(
     x,
     align = align,
-    extra_class = "pillar_ornament"
+    class = "pillar_ornament"
   )
   ret <- set_width(ret, width)
   ret
+}
+
+#' @export
+print.pillar_ornament <- function(x, ...) {
+  if (length(x) > 0) {
+    cat_line(paste(
+      align(x, width = get_width(x), align = attr(x, "align")),
+      collapse = "\n"
+    ))
+  }
+  invisible(x)
 }
 
 new_vertical <- function(x, ..., subclass = NULL) {
