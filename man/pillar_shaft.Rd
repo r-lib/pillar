@@ -2,7 +2,6 @@
 % Please edit documentation in R/shaft.R
 \name{pillar_shaft}
 \alias{pillar_shaft}
-\alias{new_pillar_shaft}
 \alias{pillar_shaft.logical}
 \alias{pillar_shaft.numeric}
 \alias{pillar_shaft.Date}
@@ -14,9 +13,6 @@
 \title{Column data}
 \usage{
 pillar_shaft(x, ...)
-
-new_pillar_shaft(x, ..., width = NULL, align = "left", min_width = NULL,
-  na_indent = 0L)
 
 \method{pillar_shaft}{logical}(x, ...)
 
@@ -39,18 +35,13 @@ new_pillar_shaft(x, ..., width = NULL, align = "left", min_width = NULL,
 
 \item{...}{Unused, for extensibility.}
 
-\item{width}{The maximum column width, by default the natural width of \code{x}.}
-
-\item{align}{Alignment of the column.}
-
-\item{min_width}{The minimum allowed column width, \code{width} if omitted.}
-
-\item{na_indent}{Indention of \code{NA} values.}
-
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
 }
 \description{
 Internal class for formatting the data part of a column.
+\code{pillar()} is a coercion method that must be implemented for your data type
+to display it in a tibble.
+The default method will display values coerced to character.
 }

@@ -1,6 +1,9 @@
 #' Column data
 #'
 #' Internal class for formatting the data part of a column.
+#' `pillar()` is a coercion method that must be implemented for your data type
+#' to display it in a tibble.
+#' The default method will display values coerced to character.
 #'
 #' @param x A vector to format
 #' @param ... Unused, for extensibility.
@@ -10,15 +13,14 @@ pillar_shaft <- function(x, ...) {
 }
 
 #' @export
-format.pillar_shaft <- function(x, width, ...) {
+format.pillar_shaft_simple <- function(x, width, ...) {
   align <- attr(x, "align")
   desired_width <- get_width(x)
+  data <- as.character(x[[1]])
   if (width < desired_width) {
-    data <- str_trunc(as.character(x[[1]]), width)
-  } else {
-    data <- as.character(x[[1]])
+    data <- str_trunc(data, width)
   }
-  data[is.na(x[[1]])] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
+  data[is.na(data)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
 
   new_ornament(data, width = width, align = align)
 }
@@ -28,29 +30,58 @@ print.pillar_shaft <- function(x, ...) {
   print(format(x, ...))
 }
 
-#' @export
-#' @param width The maximum column width, by default the natural width of `x`.
-#' @param align Alignment of the column.
+#' Constructor for column data
+#'
+#' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
+#' class. This is a virtual class, you must specify the `subclass` argument.
+#' By convention, this should be a string that starts with `"pillar_shaft_"`.
+#'
+#' @param x An object
+#' @param ... Additional attributes
+#' @param width The maximum column width.
 #' @param min_width The minimum allowed column width, `width` if omitted.
-#' @param na_indent Indention of `NA` values.
-#' @rdname pillar_shaft
-new_pillar_shaft <- function(x, ...,
-                             width = NULL,
-                             align = "left", min_width = NULL,
-                             na_indent = 0L) {
-  if (is.null(width)) {
-    width <- get_max_extent(x)
-  }
+#' @export
+new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
+  stopifnot(is.character(subclass))
+  stopifnot(length(subclass) > 0)
 
   ret <- structure(
-    list(x),
-    align = align,
-    na_indent = na_indent,
-    class = "pillar_shaft"
+    x,
+    ...,
+    class = c(subclass, "pillar_shaft")
   )
   ret <- set_width(ret, width)
   ret <- set_min_width(ret, min_width)
   ret
+}
+
+#' @description
+#' `new_pillar_shaft_simple()` is an implementation of the `pillar_shaft` class
+#' suitable for output that has a fixed formatting, which will be truncated with
+#' a continuation character (ellipsis or `~`) if it doesn't fit the available
+#' width. By default, the required width is computed from the natural width
+#' of the `formatted` argument.
+#' @param formatted An object coercible to [character].
+#' @param align Alignment of the column.
+#' @param na_indent Indention of `NA` values.
+#' @export
+#' @rdname new_pillar_shaft
+new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left",
+                                    min_width = NULL, na_indent = 0L,
+                                    subclass = NULL) {
+  if (is.null(width)) {
+    width <- get_max_extent(as.character(formatted))
+  }
+
+  new_pillar_shaft(
+    list(formatted),
+    ...,
+    width = width,
+    min_width = min_width,
+    align = align,
+    na_indent = na_indent,
+    subclass = c(subclass, "pillar_shaft_simple")
+  )
 }
 
 # Methods -----------------------------------------------------------------
@@ -62,7 +93,7 @@ pillar_shaft.logical <- function(x, ...) {
   out[x] <- "T"
   out[!x] <- "F"
 
-  new_pillar_shaft(out, width = 1, align = "left")
+  new_pillar_shaft_simple(out, width = 1, align = "left")
 }
 
 #' @export
@@ -89,7 +120,7 @@ pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
 pillar_shaft.Date <- function(x, ...) {
   x <- format(x, format = "%Y-%m-%d")
 
-  new_pillar_shaft(x, width = 10, align = "left")
+  new_pillar_shaft_simple(x, width = 10, align = "left")
 }
 
 #' @export
@@ -101,7 +132,7 @@ pillar_shaft.POSIXt <- function(x, ...) {
   datetime <- paste0(date, " " , style_subtle(time))
   datetime[is.na(x)] <- NA
 
-  new_pillar_shaft(datetime, width = 19, align = "left")
+  new_pillar_shaft_simple(datetime, width = 19, align = "left")
 }
 
 
@@ -127,7 +158,7 @@ pillar_shaft.character <- function(x, ...) {
   }
 
   width <- get_max_extent(out)
-  new_pillar_shaft(out, width = width, align = "left", min_width = min(width, 3L))
+  new_pillar_shaft_simple(out, width = width, align = "left", min_width = min(width, 3L))
 }
 
 #' @export
@@ -137,7 +168,7 @@ pillar_shaft.list <- function(x, ...) {
 
   width <- get_max_extent(out)
 
-  new_pillar_shaft(style_list(out), width = width, align = "left", min_width = min(width, 3L))
+  new_pillar_shaft_simple(style_list(out), width = width, align = "left", min_width = min(width, 3L))
 }
 
 style_list <- function(x) {
