@@ -3,6 +3,7 @@
 S3method(extra_cols,squeezed_colonnade)
 S3method(format,colonnade)
 S3method(format,pillar)
+S3method(format,pillar_shaft)
 S3method(format,pillar_shaft_decimal)
 S3method(format,pillar_shaft_simple)
 S3method(format,pillar_title)

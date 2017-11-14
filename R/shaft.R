@@ -41,6 +41,11 @@ print.pillar_shaft <- function(x, ...) {
   print(format(x, ...))
 }
 
+#' @export
+format.pillar_shaft <- function(x, ...) {
+  stop("Please implement a format() method for class ", class(x)[[1]], call. = FALSE)
+}
+
 # Methods -----------------------------------------------------------------
 
 #' @export
