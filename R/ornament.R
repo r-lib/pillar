@@ -22,11 +22,11 @@ new_ornament <- function(x, width = NULL, align = NULL) {
   ret
 }
 
-new_vertical <- function(x, ..., extra_class = NULL) {
+new_vertical <- function(x, ..., subclass = NULL) {
   ret <- structure(
     x,
     ...,
-    class = c(extra_class, "pillar_vertical")
+    class = c(subclass, "pillar_vertical")
   )
   ret
 }
