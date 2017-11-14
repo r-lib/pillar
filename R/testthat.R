@@ -11,6 +11,9 @@
 #' @export
 expect_known_display <- function(object, file, ...,
                                  crayon = TRUE, width = 80L) {
+
+  object <- enquo(object)
+
   if (crayon) {
     old <- options(crayon.enabled = TRUE, crayon.colors = 16L, width = width)
     crayon::num_colors(forget = TRUE)
@@ -24,5 +27,5 @@ expect_known_display <- function(object, file, ...,
   })
 
   # FIXME: Pass width argument here with testthat >= 2.0.0
-  testthat::expect_output_file(print(object), file, update = TRUE)
+  testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE)
 }

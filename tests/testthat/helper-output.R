@@ -17,8 +17,9 @@ df_all <- list(
 
 expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
                                  crayon = TRUE, output_width = 80L) {
+  object_quo <- quo(get_pillar_output_object(x, ..., xp = xp, xf = xf))
   expect_known_display(
-    object = get_pillar_output_object(x, ..., xp = xp, xf = xf),
+    object = !!object_quo,
     file = file.path("out", filename),
     crayon = crayon,
     width = output_width
