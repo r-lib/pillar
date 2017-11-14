@@ -1,35 +1,3 @@
-#' Column data
-#'
-#' Internal class for formatting the data part of a column.
-#' `pillar()` is a coercion method that must be implemented for your data type
-#' to display it in a tibble.
-#' The default method will display values coerced to character.
-#'
-#' @param x A vector to format
-#' @param ... Unused, for extensibility.
-#' @export
-pillar_shaft <- function(x, ...) {
-  UseMethod("pillar_shaft")
-}
-
-#' @export
-format.pillar_shaft_simple <- function(x, width, ...) {
-  align <- attr(x, "align")
-  desired_width <- get_width(x)
-  data <- as.character(x[[1]])
-  if (width < desired_width) {
-    data <- str_trunc(data, width)
-  }
-  data[is.na(data)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
-
-  new_ornament(data, width = width, align = align)
-}
-
-#' @export
-print.pillar_shaft <- function(x, ...) {
-  print(format(x, ...))
-}
-
 #' Constructor for column data
 #'
 #' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
@@ -55,33 +23,22 @@ new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
   ret
 }
 
-#' @description
-#' `new_pillar_shaft_simple()` is an implementation of the `pillar_shaft` class
-#' suitable for output that has a fixed formatting, which will be truncated with
-#' a continuation character (ellipsis or `~`) if it doesn't fit the available
-#' width. By default, the required width is computed from the natural width
-#' of the `formatted` argument.
+#' Column data
 #'
-#' @param formatted An object coercible to [character].
-#' @param align Alignment of the column.
-#' @param na_indent Indention of `NA` values.
+#' Internal class for formatting the data part of a column.
+#' `pillar()` is a coercion method that must be implemented for your data type
+#' to display it in a tibble.
+#'
+#' @param x A vector to format
+#' @param ... Unused, for extensibility.
 #' @export
-#' @rdname new_pillar_shaft
-new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left",
-                                    min_width = NULL, na_indent = 0L) {
-  if (is.null(width)) {
-    width <- get_max_extent(as.character(formatted))
-  }
+pillar_shaft <- function(x, ...) {
+  UseMethod("pillar_shaft")
+}
 
-  new_pillar_shaft(
-    list(formatted),
-    ...,
-    width = width,
-    min_width = min_width,
-    align = align,
-    na_indent = na_indent,
-    subclass = "pillar_shaft_simple"
-  )
+#' @export
+print.pillar_shaft <- function(x, ...) {
+  print(format(x, ...))
 }
 
 # Methods -----------------------------------------------------------------
@@ -171,10 +128,6 @@ pillar_shaft.list <- function(x, ...) {
   new_pillar_shaft_simple(style_list(out), width = width, align = "left", min_width = min(width, 3L))
 }
 
-style_list <- function(x) {
-  style_subtle(x)
-}
-
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.AsIs <- function(x, ...) {
@@ -184,5 +137,8 @@ pillar_shaft.AsIs <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.default <- function(x, ...) {
+  #' @details
+  #' The default method will currently display values coerced with
+  #' [as.character()] as a fallback, but you should not rely on this behavior.
   pillar_shaft(as.character(x), ...)
 }

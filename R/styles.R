@@ -50,3 +50,7 @@ pillar_na <- function(use_brackets_if_no_color = FALSE) {
   if (use_brackets_if_no_color && !crayon::has_color()) "<NA>"
   else style_na("NA")
 }
+
+style_list <- function(x) {
+  style_subtle(x)
+}

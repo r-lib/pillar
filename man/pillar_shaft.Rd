@@ -43,5 +43,8 @@ but they will be greyed out.}
 Internal class for formatting the data part of a column.
 \code{pillar()} is a coercion method that must be implemented for your data type
 to display it in a tibble.
-The default method will display values coerced to character.
+}
+\details{
+The default method will currently display values coerced with
+\code{\link[=as.character]{as.character()}} as a fallback, but you should not rely on this behavior.
 }
