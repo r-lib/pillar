@@ -28,8 +28,8 @@ new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
 #' Column data
 #'
 #' Internal class for formatting the data for a column.
-#' `pillar()` is a coercion method that must be implemented for your data type
-#' to display it in a tibble.
+#' `pillar_shaft()` is a coercion method that must be implemented
+#' for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
 #' @param ... Unused, for extensibility.
@@ -145,7 +145,7 @@ pillar_shaft.AsIs <- function(x, ...) {
 #' @rdname pillar_shaft
 pillar_shaft.default <- function(x, ...) {
   #' @details
-  #' The default method will currently display values coerced with
-  #' [as.character()] as a fallback, but you should not rely on this behavior.
+  #' The default method will currently coerce via [as.character()],
+  #' but you should not rely on this behavior.
   pillar_shaft(as.character(x), ...)
 }

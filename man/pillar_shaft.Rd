@@ -41,10 +41,10 @@ but they will be greyed out.}
 }
 \description{
 Internal class for formatting the data for a column.
-\code{pillar()} is a coercion method that must be implemented for your data type
-to display it in a tibble.
+\code{pillar_shaft()} is a coercion method that must be implemented
+for your data type to display it in a tibble.
 }
 \details{
-The default method will currently display values coerced with
-\code{\link[=as.character]{as.character()}} as a fallback, but you should not rely on this behavior.
+The default method will currently coerce via \code{\link[=as.character]{as.character()}},
+but you should not rely on this behavior.
 }
