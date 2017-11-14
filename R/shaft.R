@@ -105,14 +105,14 @@ pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
   dec <- format_decimal(x, ..., sigfig = sigfig)
   sci <- format_scientific(x, ..., sigfig = sigfig)
 
-  ret <- structure(
-    list(dec = dec, sci = sci),
-    class = c("pillar_shaft_decimal", "pillar_shaft")
-  )
+  ret <- list(dec = dec, sci = sci)
 
-  ret <- set_width(ret, get_width(ret$dec))
-  ret <- set_min_width(ret, min(get_min_widths(ret)))
-  ret
+  new_pillar_shaft(
+    ret,
+    width = get_width(ret$dec),
+    min_width = min(get_min_widths(ret)),
+    subclass = "pillar_shaft_decimal"
+  )
 }
 
 #' @export
