@@ -61,14 +61,14 @@ new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
 #' a continuation character (ellipsis or `~`) if it doesn't fit the available
 #' width. By default, the required width is computed from the natural width
 #' of the `formatted` argument.
+#'
 #' @param formatted An object coercible to [character].
 #' @param align Alignment of the column.
 #' @param na_indent Indention of `NA` values.
 #' @export
 #' @rdname new_pillar_shaft
 new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left",
-                                    min_width = NULL, na_indent = 0L,
-                                    subclass = NULL) {
+                                    min_width = NULL, na_indent = 0L) {
   if (is.null(width)) {
     width <- get_max_extent(as.character(formatted))
   }
@@ -80,7 +80,7 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
     min_width = min_width,
     align = align,
     na_indent = na_indent,
-    subclass = c(subclass, "pillar_shaft_simple")
+    subclass = "pillar_shaft_simple"
   )
 }
 

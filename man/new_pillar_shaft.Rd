@@ -8,7 +8,7 @@
 new_pillar_shaft(x, ..., width, min_width = width, subclass)
 
 new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
-  min_width = NULL, na_indent = 0L, subclass = NULL)
+  min_width = NULL, na_indent = 0L)
 }
 \arguments{
 \item{x}{An object}
