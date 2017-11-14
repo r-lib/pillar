@@ -39,8 +39,9 @@ pillar_shaft <- function(x, ...) {
 }
 
 #' @export
-print.pillar_shaft <- function(x, ...) {
-  print(format(x, width = get_width(x), ...))
+print.pillar_shaft <- function(x, width = NULL, ...) {
+  if (is.null(width)) width <- get_width(x)
+  print(format(x, width = width, ...))
 }
 
 #' @export
