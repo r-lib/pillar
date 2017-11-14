@@ -1,16 +1,37 @@
 #' Test helpers
 #'
-#' Helper functions for packages that implement their own pillar.
-#' `expect_pillar_output()` is an expectation that allows storing the
-#' desired result in a file, and comparing the output with the file contents.
+#' Expectation for packages that implement a data type with pillar support.
+#' Allows storing the desired result in a file,
+#' and comparing the output with the file contents.
+#' Note that this expectation sets options that affect the formatting of the
+#' pillar, see examples for usage.
 #'
-#' @inheritParams testthat::expect_output
+#' @inheritParams testthat::expect_output_file
 #' @param ... Unused.
+#' @param width The width of the output.
 #' @param crayon Color the output?
-#' @param width Output width.
 #' @export
-expect_known_display <- function(object, file, ...,
-                                 crayon = TRUE, width = 80L) {
+#' @examples
+#' file <- tempfile("pillar", fileext = ".txt")
+#'
+#' # The pillar is constructed after options have been set
+#' # (need two runs because reference file doesn't exist during the first run)
+#' suppressWarnings(tryCatch(
+#'   expect_known_display(pillar(1:3), file, crayon = FALSE),
+#'   expectation_failure = function(e) {}
+#' ))
+#' expect_known_display(pillar(1:3), file, crayon = FALSE)
+#'
+#' # Good: Use tidyeval to defer construction
+#' pillar_quo <- rlang::quo(pillar(1:3))
+#' expect_known_display(!!pillar_quo, "integer.txt", crayon = FALSE)
+#'
+#' \dontrun{
+#' # Bad: Options set in the active session may affect the display
+#' integer_pillar <- pillar(1:3)
+#' expect_known_display(integer_pillar, "integer.txt", crayon = FALSE)
+#' }
+expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) {
 
   object <- enquo(object)
 
@@ -26,6 +47,7 @@ expect_known_display <- function(object, file, ...,
     crayon::num_colors(forget = TRUE)
   })
 
-  # FIXME: Pass width argument here with testthat >= 2.0.0
+  # FIXME: Use expect_known_output() for testthat >= 2.0.0, and avoid
+  # setting the width in the options above
   testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE)
 }
