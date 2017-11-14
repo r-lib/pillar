@@ -40,7 +40,7 @@ pillar_shaft <- function(x, ...) {
 
 #' @export
 print.pillar_shaft <- function(x, ...) {
-  print(format(x, ...))
+  print(format(x, width = get_width(x), ...))
 }
 
 #' @export
