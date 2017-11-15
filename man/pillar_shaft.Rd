@@ -2,7 +2,8 @@
 % Please edit documentation in R/shaft.R
 \name{pillar_shaft}
 \alias{pillar_shaft}
-\alias{new_pillar_shaft}
+\alias{print.pillar_shaft}
+\alias{format.pillar_shaft}
 \alias{pillar_shaft.logical}
 \alias{pillar_shaft.numeric}
 \alias{pillar_shaft.Date}
@@ -15,8 +16,9 @@
 \usage{
 pillar_shaft(x, ...)
 
-new_pillar_shaft(x, ..., width = NULL, align = "left", min_width = NULL,
-  na_indent = 0L)
+\method{print}{pillar_shaft}(x, width = NULL, ...)
+
+\method{format}{pillar_shaft}(x, width, ...)
 
 \method{pillar_shaft}{logical}(x, ...)
 
@@ -39,18 +41,27 @@ new_pillar_shaft(x, ..., width = NULL, align = "left", min_width = NULL,
 
 \item{...}{Unused, for extensibility.}
 
-\item{width}{The maximum column width, by default the natural width of \code{x}.}
-
-\item{align}{Alignment of the column.}
-
-\item{min_width}{The minimum allowed column width, \code{width} if omitted.}
-
-\item{na_indent}{Indention of \code{NA} values.}
+\item{width}{Width for printing and formatting.}
 
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more signficiant figures than this
 but they will be greyed out.}
 }
 \description{
-Internal class for formatting the data part of a column.
+Internal class for formatting the data for a column.
+\code{pillar_shaft()} is a coercion method that must be implemented
+for your data type to display it in a tibble.
+
+This class comes with a default method for \code{\link[=print]{print()}} that calls \code{\link[=format]{format()}}.
+If \code{print()} is called without \code{width} argument, the natural width will be
+used when calling \code{format()}.
+Usually there's no need to implement this method for your subclass.
+
+Your subclass must implement \code{format()}, the default implementation just
+raises an error.
+Your \code{format()} method can assume a valid value for the \code{width} argument.
+}
+\details{
+The default method will currently coerce via \code{\link[=as.character]{as.character()}},
+but you should not rely on this behavior.
 }

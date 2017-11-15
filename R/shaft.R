@@ -1,6 +1,35 @@
+#' Constructor for column data
+#'
+#' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
+#' class.
+#' This is a virtual or abstract class, you must specify the `subclass`
+#' argument.
+#' By convention, this should be a string that starts with `"pillar_shaft_"`.
+#'
+#' @param x An object
+#' @param ... Additional attributes
+#' @param width The maximum column width.
+#' @param min_width The minimum allowed column width, `width` if omitted.
+#' @export
+new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
+  stopifnot(is.character(subclass))
+  stopifnot(length(subclass) > 0)
+
+  ret <- structure(
+    x,
+    ...,
+    class = c(subclass, "pillar_shaft")
+  )
+  ret <- set_width(ret, width)
+  ret <- set_min_width(ret, min_width)
+  ret
+}
+
 #' Column data
 #'
-#' Internal class for formatting the data part of a column.
+#' Internal class for formatting the data for a column.
+#' `pillar_shaft()` is a coercion method that must be implemented
+#' for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
 #' @param ... Unused, for extensibility.
@@ -9,48 +38,27 @@ pillar_shaft <- function(x, ...) {
   UseMethod("pillar_shaft")
 }
 
+#' @param width Width for printing and formatting.
 #' @export
-format.pillar_shaft <- function(x, width, ...) {
-  align <- attr(x, "align")
-  desired_width <- get_width(x)
-  if (width < desired_width) {
-    data <- str_trunc(x, width)
-  } else {
-    data <- x
-  }
-  data[is.na(x)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
-
-  new_ornament(data, width = width, align = align)
-}
-
-#' @export
-print.pillar_shaft <- function(x, ...) {
-  print(format(x, ...))
-}
-
-#' @export
-#' @param width The maximum column width, by default the natural width of `x`.
-#' @param align Alignment of the column.
-#' @param min_width The minimum allowed column width, `width` if omitted.
-#' @param na_indent Indention of `NA` values.
 #' @rdname pillar_shaft
-new_pillar_shaft <- function(x, ...,
-                             width = NULL,
-                             align = "left", min_width = NULL,
-                             na_indent = 0L) {
-  if (is.null(width)) {
-    width <- get_max_extent(x)
-  }
+print.pillar_shaft <- function(x, width = NULL, ...) {
+  #' @description
+  #' This class comes with a default method for [print()] that calls [format()].
+  #' If `print()` is called without `width` argument, the natural width will be
+  #' used when calling `format()`.
+  #' Usually there's no need to implement this method for your subclass.
+  if (is.null(width)) width <- get_width(x)
+  print(format(x, width = width, ...))
+}
 
-  ret <- structure(
-    x,
-    align = align,
-    na_indent = na_indent,
-    class = "pillar_shaft"
-  )
-  ret <- set_width(ret, width)
-  ret <- set_min_width(ret, min_width)
-  ret
+#' @export
+#' @rdname pillar_shaft
+format.pillar_shaft <- function(x, width, ...) {
+  #' @description
+  #' Your subclass must implement `format()`, the default implementation just
+  #' raises an error.
+  #' Your `format()` method can assume a valid value for the `width` argument.
+  stop("Please implement a format() method for class ", class(x)[[1]], call. = FALSE)
 }
 
 # Methods -----------------------------------------------------------------
@@ -62,7 +70,7 @@ pillar_shaft.logical <- function(x, ...) {
   out[x] <- "T"
   out[!x] <- "F"
 
-  new_pillar_shaft(out, width = 1, align = "left")
+  new_pillar_shaft_simple(out, width = 1, align = "left")
 }
 
 #' @export
@@ -74,14 +82,14 @@ pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
   dec <- format_decimal(x, ..., sigfig = sigfig)
   sci <- format_scientific(x, ..., sigfig = sigfig)
 
-  ret <- structure(
-    list(dec = dec, sci = sci),
-    class = c("pillar_shaft_decimal", "pillar_shaft")
-  )
+  ret <- list(dec = dec, sci = sci)
 
-  ret <- set_width(ret, get_width(ret$dec))
-  ret <- set_min_width(ret, min(get_min_widths(ret)))
-  ret
+  new_pillar_shaft(
+    ret,
+    width = get_width(ret$dec),
+    min_width = min(get_min_widths(ret)),
+    subclass = "pillar_shaft_decimal"
+  )
 }
 
 #' @export
@@ -89,7 +97,7 @@ pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
 pillar_shaft.Date <- function(x, ...) {
   x <- format(x, format = "%Y-%m-%d")
 
-  new_pillar_shaft(x, width = 10, align = "left")
+  new_pillar_shaft_simple(x, width = 10, align = "left")
 }
 
 #' @export
@@ -101,7 +109,7 @@ pillar_shaft.POSIXt <- function(x, ...) {
   datetime <- paste0(date, " " , style_subtle(time))
   datetime[is.na(x)] <- NA
 
-  new_pillar_shaft(datetime, width = 19, align = "left")
+  new_pillar_shaft_simple(datetime, width = 19, align = "left")
 }
 
 
@@ -127,7 +135,7 @@ pillar_shaft.character <- function(x, ...) {
   }
 
   width <- get_max_extent(out)
-  new_pillar_shaft(out, width = width, align = "left", min_width = min(width, 3L))
+  new_pillar_shaft_simple(out, width = width, align = "left", min_width = min(width, 3L))
 }
 
 #' @export
@@ -137,11 +145,7 @@ pillar_shaft.list <- function(x, ...) {
 
   width <- get_max_extent(out)
 
-  new_pillar_shaft(style_list(out), width = width, align = "left", min_width = min(width, 3L))
-}
-
-style_list <- function(x) {
-  style_subtle(x)
+  new_pillar_shaft_simple(style_list(out), width = width, align = "left", min_width = min(width, 3L))
 }
 
 #' @export
@@ -153,5 +157,8 @@ pillar_shaft.AsIs <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.default <- function(x, ...) {
+  #' @details
+  #' The default method will currently coerce via [as.character()],
+  #' but you should not rely on this behavior.
   pillar_shaft(as.character(x), ...)
 }

@@ -1,26 +1,45 @@
 #' Test helpers
 #'
-#' Helper functions for packages that implement their own pillar.
-#' `expect_pillar_output()` is an expectation that allows storing the
-#' desired result in a file, and comparing the output with the file contents.
+#' Expectation for packages that implement a data type with pillar support.
+#' Allows storing the desired result in a file,
+#' and comparing the output with the file contents.
+#' Note that this expectation sets options that affect the formatting of the
+#' pillar, see examples for usage.
 #'
-#' @param x An object to be formatted.
-#' @param ... Passed on to [pillar()] if `xf` is left at its default.
-#' @param filename File name that contains the desired output.
-#' @param xp Pass a value here instead of `x` if you want to omit appending
-#'   `NA` and `Inf` values.
-#' @param xf Pass the result of a [pillar()] call here for full control.
+#' @inheritParams testthat::expect_output_file
+#' @param ... Unused.
+#' @param width The width of the output.
 #' @param crayon Color the output?
-#' @param output_width Passed on as `width` to [testthat::expect_output_file()].
 #' @export
-expect_pillar_output <- function(x, ..., filename,
-                                 xp = add_special(x), xf = pillar(xp, ...),
-                                 crayon = TRUE, output_width = 80L) {
+#' @examples
+#' file <- tempfile("pillar", fileext = ".txt")
+#'
+#' # The pillar is constructed after options have been set
+#' # (need two runs because reference file doesn't exist during the first run)
+#' suppressWarnings(tryCatch(
+#'   expect_known_display(pillar(1:3), file, crayon = FALSE),
+#'   expectation_failure = function(e) {}
+#' ))
+#' expect_known_display(pillar(1:3), file, crayon = FALSE)
+#'
+#' # Good: Use tidyeval to defer construction
+#' pillar_quo <- rlang::quo(pillar(1:3))
+#' expect_known_display(!!pillar_quo, "integer.txt", crayon = FALSE)
+#'
+#' \dontrun{
+#' # Bad: Options set in the active session may affect the display
+#' integer_pillar <- pillar(1:3)
+#' expect_known_display(integer_pillar, "integer.txt", crayon = FALSE)
+#' }
+expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) {
+
+  object <- enquo(object)
+
   if (crayon) {
-    old <- options(crayon.enabled = TRUE, crayon.colors = 16L, width = output_width)
+    old <- options(crayon.enabled = TRUE, crayon.colors = 16L, width = width)
     crayon::num_colors(forget = TRUE)
   } else {
-    old <- options(crayon.enabled = FALSE, width = output_width)
+    old <- options(crayon.enabled = FALSE, width = width)
   }
 
   on.exit({
@@ -28,21 +47,7 @@ expect_pillar_output <- function(x, ..., filename,
     crayon::num_colors(forget = TRUE)
   })
 
-  # FIXME: Pass output_width argument here with testthat >= 2.0.0
-  testthat::expect_output_file(
-    print(xf),
-    file.path("out", filename),
-    update = TRUE
-  )
-}
-
-#' `add_special()` is not exported, and used only for initializing default
-#' values to `expect_pillar_output()`.
-#' @rdname expect_pillar_output
-add_special <- function(x) {
-  x <- c(x, NA)
-  if (is.numeric(x) && is.double(x)) {
-    x <- c(x, -Inf, Inf)
-  }
-  x
+  # FIXME: Use expect_known_output() for testthat >= 2.0.0, and avoid
+  # setting the width in the options above
+  testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE)
 }
