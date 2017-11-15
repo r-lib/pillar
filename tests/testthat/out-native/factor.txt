@@ -1,0 +1,7 @@
+<fctr>
+a     
+b     
+c     
+d     
+e     
+<NA>  
