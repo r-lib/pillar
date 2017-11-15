@@ -19,6 +19,8 @@ new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
 
 \item{min_width}{The minimum allowed column width, \code{width} if omitted.}
 
+\item{subclass}{The name of the subclass.}
+
 \item{formatted}{An object coercible to \link{character}.}
 
 \item{align}{Alignment of the column.}

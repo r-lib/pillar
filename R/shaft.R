@@ -10,6 +10,7 @@
 #' @param ... Additional attributes
 #' @param width The maximum column width.
 #' @param min_width The minimum allowed column width, `width` if omitted.
+#' @param subclass The name of the subclass.
 #' @export
 new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
   stopifnot(is.character(subclass))
