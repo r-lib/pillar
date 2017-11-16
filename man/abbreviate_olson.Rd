@@ -28,6 +28,7 @@ Abbreviate an Olson timezone name
 abbreviate_olson("America/Chicago")
 abbreviate_olson("America/Chicago", minwidth = 20)
 abbreviate_olson("America/Chicago", dictionary = c(America = "USA"))
+abbreviate_olson(OlsonNames())
 }
 \seealso{
 OlsonNames()
