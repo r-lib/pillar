@@ -12,7 +12,7 @@
 #' * `rhs`: remainder of number
 #'
 #' @param x A numeric vector
-#' @param sigfig Number of signficiant figures to display.
+#' @param sigfig Number of significant figures to display.
 #' @param ... Ignored
 format_decimal <- function(x, sigfig = 3, ...) {
   split_decimal(x, sigfig)

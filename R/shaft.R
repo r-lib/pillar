@@ -77,7 +77,7 @@ pillar_shaft.logical <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 #' @param sigfig Minimum number of significant figures to display. Numbers
-#'   larger than 1 will potentially show more signficiant figures than this
+#'   larger than 1 will potentially show more significant figures than this
 #'   but they will be greyed out.
 pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
   dec <- format_decimal(x, ..., sigfig = sigfig)

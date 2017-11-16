@@ -30,7 +30,7 @@ with additional information about omitted columns.
 }
 \details{
 In a first pass, for each pillar it is decided in which tier it is shown,
-if at all, and how much horizontal space it may use (either its minumum
+if at all, and how much horizontal space it may use (either its minimum
 or its maximum width). More than one tier may be created if
 \code{width > getOption("width")}, in this case each tier is at most
 \code{getOption("width")} characters wide.

@@ -9,7 +9,7 @@ format_decimal(x, sigfig = 3, ...)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{sigfig}{Number of signficiant figures to display.}
+\item{sigfig}{Number of significant figures to display.}
 
 \item{...}{Ignored}
 }

@@ -159,7 +159,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
 
   #' @details
   #' In a first pass, for each pillar it is decided in which tier it is shown,
-  #' if at all, and how much horizontal space it may use (either its minumum
+  #' if at all, and how much horizontal space it may use (either its minimum
   #' or its maximum width). More than one tier may be created if
   #' `width > getOption("width")`, in this case each tier is at most
   #' `getOption("width")` characters wide.

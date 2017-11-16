@@ -9,7 +9,7 @@ format_scientific(x, sigfig = 3, superscript = TRUE)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{sigfig}{Number of signficiant figures to display.}
+\item{sigfig}{Number of significant figures to display.}
 
 \item{superscript}{If \code{TRUE}, will use superscript numbers in exponent.}
 }

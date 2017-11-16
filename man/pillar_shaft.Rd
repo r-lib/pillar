@@ -44,7 +44,7 @@ pillar_shaft(x, ...)
 \item{width}{Width for printing and formatting.}
 
 \item{sigfig}{Minimum number of significant figures to display. Numbers
-larger than 1 will potentially show more signficiant figures than this
+larger than 1 will potentially show more significant figures than this
 but they will be greyed out.}
 }
 \description{
