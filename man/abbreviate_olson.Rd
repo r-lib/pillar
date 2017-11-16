@@ -47,9 +47,7 @@ is no longer necessary to abbreviate.
 abbreviate_olson("America/Chicago")
 abbreviate_olson("America/Chicago", width = 20)
 abbreviate_olson("America/Chicago", dictionary = c(America = "USA"))
-\dontrun{
-  purrr::map_chr(OlsonNames(), abbreviate_olson)
-}
+abbreviate_olson(OlsonNames())
 }
 \seealso{
 OlsonNames()
