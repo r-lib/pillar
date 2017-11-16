@@ -71,5 +71,8 @@ test_that("output test", {
   expect_pillar_output("\u6210\u4ea4", title = "\u6210\u4ea4\u65e5", filename = "deal2.txt")
   expect_pillar_output(1L, title = "\u6210\u4ea4\u65e5", filename = "deal3.txt")
   expect_pillar_output(c("", " ", " a", "a ", "a b"), width = 5, filename = "spaces.txt")
-  expect_pillar_output(xf = colonnade(chartype_frame()), width = 50, filename = "utf8.txt")
+  # Output is not UTF-8 encoded
+  suppressWarnings(
+    expect_pillar_output(xf = colonnade(chartype_frame()), width = 50, filename = "utf8.txt")
+  )
 })
