@@ -7,7 +7,7 @@
   <chr> <fctr>
 1 a     a     
 2 b     b     
-3 [43m[30mNA[39m[49m    [43m[30mNA[39m[49m    
+3 <NA>  <NA>  
   f         
   <date>    
 1 2015-12-10
