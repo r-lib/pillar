@@ -52,6 +52,8 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
   if (utils::packageVersion("testthat") <= "1.0.2") {
     testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE)
   } else {
-    testthat::expect_known_output(eval_tidy(object), file, print = TRUE, width = width)
+    get("expect_known_output", asNamespace("testthat"))(
+      eval_tidy(object), file, print = TRUE, width = width
+    )
   }
 }
