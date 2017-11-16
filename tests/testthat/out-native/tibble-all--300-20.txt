@@ -1,10 +1,15 @@
-      a     b c     d     e      f          g                   h        
-  <dbl> <int> <lgl> <chr> <fctr> <date>     <dttm>              <list>   
-1  1.00     1 T     a     a      2015-12-10 2015-12-09 [90m10:51:35[39m [90m<int [1]>[39m
-2  2.50     2 F     b     b      2015-12-11 2015-12-09 [90m10:51:36[39m [90m<int [1]>[39m
-3 NA       NA NA    [43m[30mNA[39m[49m    [43m[30mNA[39m[49m     NA         NA                  [90m<int [1]>[39m
-  i         
-  <list>    
-1 [90m<list [2]>[39m
-2 [90m<list [1]>[39m
-3 [90m<list [1]>[39m
+      a     b c    
+  <dbl> <int> <lgl>
+1  1.00     1 T    
+2  2.50     2 F    
+3 NA       NA NA   
+  d     e     
+  <chr> <fctr>
+1 a     a     
+2 b     b     
+3 [43m[30mNA[39m[49m    [43m[30mNA[39m[49m    
+  f         
+  <date>    
+1 2015-12-10
+2 2015-12-11
+3 NA        

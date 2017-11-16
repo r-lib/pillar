@@ -49,5 +49,9 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
 
   # FIXME: Use expect_known_output() for testthat >= 2.0.0, and avoid
   # setting the width in the options above
-  testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE)
+  if (utils::packageVersion("testthat") <= "1.0.2") {
+    testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE)
+  } else {
+    testthat::expect_known_output(eval_tidy(object), file, print = TRUE, width = width)
+  }
 }
