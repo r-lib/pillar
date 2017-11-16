@@ -58,3 +58,7 @@ add_special <- function(x) {
   }
   x
 }
+
+continue <- function(x) {
+  paste0(x, cli::symbol$continue)
+}
