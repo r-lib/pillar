@@ -24,8 +24,6 @@ Suggests:
     testthat
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
 RoxygenNote: 6.0.1
-Remotes:
-    r-lib/crayon
 Collate: 
     'compat-purrr.R'
     'dim.R'
