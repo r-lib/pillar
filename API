@@ -52,7 +52,6 @@ type_sum.default(x)
 type_sum.difftime(x)
 type_sum.factor(x)
 type_sum.ordered(x)
-type_sum.tbl_df(x)
 
 ## Foreign S3 methods
 

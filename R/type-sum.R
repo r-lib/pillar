@@ -23,8 +23,6 @@ type_sum.Date <- function(x) "date"
 #' @export
 type_sum.data.frame <- function(x) class(x)[[1]]
 #' @export
-type_sum.tbl_df <- function(x) "tibble"
-#' @export
 type_sum.AsIs <- function(x) paste0("I(", type_sum(remove_as_is_class(x)), ")")
 #' @export
 type_sum.default <- function(x) {
