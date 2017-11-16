@@ -3,6 +3,7 @@ pillar_title <- function(title, ...) {
     width <- 0L
   } else {
     width <- get_extent(format_title(title, width = Inf))
+    stopifnot(!is.na(width))
   }
 
   ret <- structure(
