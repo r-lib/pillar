@@ -178,7 +178,7 @@ get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("wi
       width
     )
   } else {
-    pos <- seq(0, length.out = ncol, by = tier_width)
+    pos <- seq(0, length.out = ncol + 1L, by = tier_width)
   }
 
   widths <- diff(pos) - rowid_width
