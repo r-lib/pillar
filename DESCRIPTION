@@ -6,7 +6,7 @@ Authors@R: c(
     person("Hadley", "Wickham", role = "aut"),
     person("RStudio", role = "cph")
   )
-Description: Provides a `pillar` generic designed for formatting columns
+Description: Provides a 'pillar' generic designed for formatting columns
    of data using the full range of colours provided by modern terminals.
 License: GPL-3
 Encoding: UTF-8
