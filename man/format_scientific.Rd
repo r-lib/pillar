@@ -17,3 +17,10 @@ format_scientific(x, sigfig = 3, superscript = TRUE)
 Uses colour, careful alignment, and superscripts to display numbers
 in scientific notation.
 }
+\examples{
+format_scientific(1.5:3.5)
+format_scientific(1e9)
+}
+\seealso{
+\code{\link[=format_decimal]{format_decimal()}}
+}

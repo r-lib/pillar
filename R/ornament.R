@@ -12,6 +12,8 @@
 #' @param align Alignment, one of `"left"` or `"right"`
 #'
 #' @export
+#' @examples
+#' new_ornament(c("abc", "de"), align = "right")
 new_ornament <- function(x, width = NULL, align = NULL) {
   if (is.null(width)) width <- get_max_extent(x)
   ret <- structure(

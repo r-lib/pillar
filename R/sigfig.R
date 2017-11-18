@@ -6,14 +6,18 @@
 #' in paler gray.
 #'
 #' @return A list with at least the following elements:
-#' * `neg`: negative sign or space, if needed
+#' * `neg`: negative sign or space, `TRUE` if needed
 #' * `lhs`: whole number
-#' * `dec`: decimal point, if needed
+#' * `dec`: decimal point, `TRUE` if needed
 #' * `rhs`: remainder of number
 #'
 #' @param x A numeric vector
 #' @param sigfig Number of significant figures to display.
 #' @param ... Ignored
+#' @seealso [format_scientific()]
+#' @examples
+#' format_decimal(1.5:3.5)
+#' format_decimal(1e9)
 format_decimal <- function(x, sigfig = 3, ...) {
   split_decimal(x, sigfig)
 }
@@ -165,6 +169,16 @@ format_rhs <- function(s) {
 #' @param negative,significant Logical vector the same length as `x` that
 #'   indicate if the values are negative and significant, respectively
 #' @rdname style_subtle
+#' @examples
+#' style_num(
+#'   c("123", "456"),
+#'   negative = c(TRUE, FALSE)
+#' )
+#' style_num(
+#'   c("123", "456"),
+#'   negative = c(TRUE, FALSE),
+#'   significant = c(FALSE, FALSE)
+#' )
 style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
   ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle(x))
 }

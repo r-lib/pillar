@@ -5,6 +5,7 @@
 #' This is a virtual or abstract class, you must specify the `subclass`
 #' argument.
 #' By convention, this should be a string that starts with `"pillar_shaft_"`.
+#' See `vignette("extending", package = "tibble")` for usage examples.
 #'
 #' @param x An object
 #' @param ... Additional attributes
@@ -35,6 +36,11 @@ new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
 #' @param x A vector to format
 #' @param ... Unused, for extensibility.
 #' @export
+#' @examples
+#' pillar_shaft(1:3)
+#' pillar_shaft(1.5:3.5)
+#' pillar_shaft(NA)
+#' pillar_shaft(c(1:3, NA))
 pillar_shaft <- function(x, ...) {
   UseMethod("pillar_shaft")
 }

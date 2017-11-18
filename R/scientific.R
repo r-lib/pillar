@@ -3,8 +3,12 @@
 #' Uses colour, careful alignment, and superscripts to display numbers
 #' in scientific notation.
 #'
+#' @seealso [format_decimal()]
 #' @inheritParams format_decimal
 #' @param superscript If `TRUE`, will use superscript numbers in exponent.
+#' @examples
+#' format_scientific(1.5:3.5)
+#' format_scientific(1e9)
 format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
   split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 }

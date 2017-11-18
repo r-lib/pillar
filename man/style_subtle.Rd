@@ -25,3 +25,17 @@ indicate if the values are negative and significant, respectively}
 Functions that allow implementers of formatters for custom data types to
 maintain a consistent style with the default data types.
 }
+\examples{
+style_num(
+  c("123", "456"),
+  negative = c(TRUE, FALSE)
+)
+style_num(
+  c("123", "456"),
+  negative = c(TRUE, FALSE),
+  significant = c(FALSE, FALSE)
+)
+style_subtle("text")
+style_na("NA")
+style_neg("123")
+}

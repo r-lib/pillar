@@ -7,7 +7,7 @@
 extra_cols(x, ...)
 }
 \arguments{
-\item{x}{The result of \code{\link[=format]{format()}} on a \link{colonnade} object}
+\item{x}{The result of \code{\link[=squeeze]{squeeze()}} on a \link{colonnade} object}
 
 \item{...}{Unused}
 }
@@ -15,4 +15,7 @@ extra_cols(x, ...)
 Formatting a \link{colonnade} object may lead to some columns being omitted
 due to width restrictions. This method returns a character vector that
 describes each of the omitted columns.
+}
+\examples{
+extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
 }

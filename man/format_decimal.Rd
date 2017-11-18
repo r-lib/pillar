@@ -16,9 +16,9 @@ format_decimal(x, sigfig = 3, ...)
 \value{
 A list with at least the following elements:
 \itemize{
-\item \code{neg}: negative sign or space, if needed
+\item \code{neg}: negative sign or space, \code{TRUE} if needed
 \item \code{lhs}: whole number
-\item \code{dec}: decimal point, if needed
+\item \code{dec}: decimal point, \code{TRUE} if needed
 \item \code{rhs}: remainder of number
 }
 }
@@ -27,4 +27,11 @@ This formatting system is designed to make it as easy as possible to
 compare columns of numbers. Significant digits are coloured black or red
 (for positive and negative numbers) and non-significant digits are coloured
 in paler gray.
+}
+\examples{
+format_decimal(1.5:3.5)
+format_decimal(1e9)
+}
+\seealso{
+\code{\link[=format_scientific]{format_scientific()}}
 }

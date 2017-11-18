@@ -65,3 +65,9 @@ Your \code{format()} method can assume a valid value for the \code{width} argume
 The default method will currently coerce via \code{\link[=as.character]{as.character()}},
 but you should not rely on this behavior.
 }
+\examples{
+pillar_shaft(1:3)
+pillar_shaft(1.5:3.5)
+pillar_shaft(NA)
+pillar_shaft(c(1:3, NA))
+}

@@ -9,6 +9,18 @@
 #' @param width Default width of the entire output, optional
 #' @param ... Ignored
 #' @export
+#' @examples
+#' colonnade(list(a = 1:3, b = letters[1:3]))
+#'
+#' long_string <- list(paste(letters, collapse = " "))
+#' colonnade(long_string, width = 20)
+#' colonnade(long_string, has_row_id = FALSE, width = 20)
+#'
+#' # The width can also be overridden when calling format() or print():
+#' print(colonnade(long_string), width = 20)
+#'
+#' # If width is larger than getOption("width"), multiple tiers are created:
+#' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
   has_title <- is_named(x)
   if (has_title) {
@@ -39,6 +51,8 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
 #'
 #' @rdname colonnade
 #' @export
+#' @examples
+#' squeeze(colonnade(long_string), width = 20)
 squeeze <- function(x, width = NULL, ...) {
   # Hacky shortcut for zero-height corner case
   if (attr(x, "zero_height")) {
@@ -125,9 +139,11 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' Formatting a [colonnade] object may lead to some columns being omitted
 #' due to width restrictions. This method returns a character vector that
 #' describes each of the omitted columns.
-#' @param x The result of [format()] on a [colonnade] object
+#' @param x The result of [squeeze()] on a [colonnade] object
 #' @param ... Unused
 #' @export
+#' @examples
+#' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
 extra_cols <- function(x, ...) {
   UseMethod("extra_cols")
 }
