@@ -21,12 +21,9 @@
 #' is no longer necessary to abbreviate.
 #'
 #'
-#' @param tz             `character`, length-one, timezone-name to abbreviate
-#' @param width          `integer`, maximum number of characters
-#' @param consistent     `logical`, always abbvreviate first and second
-#'  level names, i.e. `Africa/Bissau` is abbreviated to `Afr/Bissau` regardless
-#'  of available space
-#' @param dictionary     `character`, named vector: values are abbreviated
+#' @param tz          `character`, length-one, timezone-name to abbreviate
+#' @param width       `integer`, maximum number of characters
+#' @param dictionary  `character`, named vector: values are abbreviated
 #'   components, names are unabbreviated components
 #'
 #' @return `character`, abbreviated name
@@ -39,159 +36,88 @@
 #' abbreviate_olson(OlsonNames())
 #' @export
 #'
-abbreviate_olson <- function(tz, width = 14L, consistent = TRUE,
-                             dictionary = NULL) {
+abbreviate_olson <- function(tz, width = 14L, dictionary = NULL) {
+
+  # ensure timezone is a character vector
+  if (!rlang::is_character(tz)) {
+    stop("tz must be a character vector", call. = FALSE)
+  }
 
   # if we cannot return at least one character, return empty string
   if (width < 1L) {
     return("")
   }
 
-  if (!rlang::is_character(tz)) {
-    stop("tz must be a character vector", call. = FALSE)
+  # ensure non-null dictionary is a character vector
+  if (!is.null(dictionary) && !rlang::is_character(dictionary)) {
+    stop("dictionary must be a character vector", call. = FALSE)
   }
-
-  #####
-  # dictionaries
-  #####
-
-  # tries to comport with standard ISO names where applicable
-  dictionary_first <- c(
-    Africa = "Afr",
-    America = "Amer",
-    Antarctica = "Ant",
-    Arctic = "Arc",
-    Asia = "Asia",
-    Atlantic = "Atl",
-    Australia = "Aus",
-    Brasil = "Bra",
-    Canada = "Can",
-    Chile = "Chl",
-    Etc = "Etc",
-    Europe = "Eur",
-    Indian = "Ind",
-    Mexico = "Mex",
-    Pacific = "Pac",
-    SystemV = "SysV",
-    US = "US"
-  )
-
-  # ISO name, or US postal abbreviations
-  dictionary_second <- c(
-    Argentina = "Ar",
-    Indiana = "IN",
-    Kentucky = "KY",
-    North_Dakota = "ND"
-  )
-
-  dictionary_default <- list(dictionary_first, dictionary_second, NULL)
 
   # merge dictionaries, favouring the user-supplied set of dictionaries
-  dictionary_merged <-
-    lapply(
-      dictionary_default,
-      function(x, y) {c(y, x)},
-      y = dictionary
-    )
+  dictionary_merged <- c(dictionary, .dict_default)
 
-  tz_components_list <- strsplit(tz, split = "/")
-  n_component <- max(map_int(tz_components_list, length))
-  tz_components_t <- transpose(map(tz_components_list, `length<-`, n_component))
-  tz_components <- map(tz_components_t, unlist)
+  # create data frame for abbreviations
+  df <- .abbreviate_olson_df(tz, width, dictionary = dictionary_merged)
 
-  tz_abbreviated <- tz
+  # recompose time zones
+  .recompose_tz <- function(x) {paste(x, collapse = "/")}
+  df_agg <- aggregate(df["abbv_final"], by = df["tz"], FUN = .recompose_tz)
 
-  # get a width-budget
-  width_budget <- .budget_initial(width, n_component)
+  # pull columns out of the data frame to form vector of abbreviations
+  tz_abbv <- df_agg[["abbv_final"]]
+  names(tz_abbv) <- df_agg[["tz"]]
 
-  # loop over our components, abbreviate as needed
-  for (i in seq_along(tz_components)) {
-
-    # have we abbreviated enough?
-    #  - needs be not in "consistent" mode and fit the specified width
-    if (!consistent && nchar(tz_abbreviated) <= width) {
-      return(tz_abbreviated)
-    }
-
-    # if this is our last component,
-    #   set component-width to satisfy overall-width
-    #   otherwise, set to 4
-    #
-    if (identical(i, length(tz_components))) {
-      width_component <-
-        max(
-          nchar(tz_components[[i]]) - (nchar(tz_abbreviated) - width),
-          0L,
-          na.rm = TRUE
-        )
-      # width of current component -
-      #   difference between (current) abbreviated timezone and budgeted width
-    } else {
-      width_component <- width_budget[i]
-    }
-
-    # abbreviate the component
-    tz_components[[i]] <-
-      abbreviate_olson_component(
-        tz_components[[i]],
-        width = width_component,
-        dictionary = dictionary_merged[[i]]
-      )
-
-    tz_abbreviated <- combine_olson_components(tz_components)
-  }
-
-  tz_abbreviated
+  tz_abbv
 }
 
-# abbreviate a component of the timezone
-abbreviate_olson_component <- function(tz_component, width = 4L,
-                                       dictionary = NULL) {
 
-  # tz_component  character   vector of
-  # width
-  # dictionary
+.abbreviate_olson_df <- function(tz, width = 14L, dictionary = NULL){
 
-  if (!is_null(dictionary)) {
-    tz_component_lookup <- dictionary[tz_component]
-    tz_component[!is.na(tz_component_lookup)] <- tz_component_lookup[!is.na(tz_component_lookup)]
-  }
+  # This function may be useful to call for debugging
+  #
+  # tz           `character`, one-or-more Olson time zones
+  # width        `integer`, width to which the time zones are to be abbreviated
+  # dictionary   `character`, named vector to insist on abbreviations
+  #
+  # returns `data.frame` with variables:
+  #
+  # index
+  # index_max
+  # tz
+  # component
+  # budget_initial
+  # abbv_dict
+  # budget_remaining
+  # budget_provisional
+  # budget_final
+  # abbv_final
 
-  abbreviate(tz_component, minlength = width)
-}
-
-combine_olson_components <- function(tz_components) {
-  reduce(
-    tz_components,
-    function(x, y) {
-      pos <- which(!is.na(y))
-      x[pos] <- paste0(x[pos], "/", y[pos])
-      x
-    }
-  )
-}
-
-# tz           `character`, one-or-more Olson time zones
-# width        `integer`, width to which the time zones are to be abbreviated
-# dictionary   `character`, named vector to insist on abbreviations
-#
-# `character` named vector - names are tz, values are abbreviations
-#
-abb_olson <- function(tz, width = 14L, dictionary = NULL){
-
+  # create data frame with one row for each component of each time zone,
+  # with variables:
+  #
+  # index
+  # index_max
+  # tz
+  # component
+  # budget_initial
+  #
   df <- .decompose_tz(tz, width)
 
-  # apply dictionary
+  # apply dictionary (adds variable abbbv_dict)
   df$abbv_dict <- .abbv_dict(df$component, dictionary)
 
+  # treat the one-, two-, and three-component time zones together
   df_by_index_max <- split(df, df$index_max)
 
-  df_new <-
-    map(
-      df_by_index_max,
-      .abbreviate_by_index,
-      width = width
-    )
+  # the function .abbrevaite by index loops through index and returns the
+  # additional variables:
+  #
+  # budget_remaining
+  # budget_provisional
+  # budget_final
+  # abbv_final
+  #
+  df_new <- map(df_by_index_max, .abbreviate_by_index, width = width)
 
   do.call(rbind, df_new)
 }
@@ -255,8 +181,8 @@ abb_olson <- function(tz, width = 14L, dictionary = NULL){
   )
 }
 
-# tmp <- component_create(OlsonNames())
-# aggregate(tmp["component"], by = tmp[c("tz")], FUN = function(x){paste(x, collapse = "/")})
+# tmp <- abb_olson(OlsonNames())
+# aggregate(tmp["abbv_final"], by = tmp["tz"], FUN = function(x){paste(x, collapse = "/")})
 
 .budget_initial <- function(width) {
 
@@ -354,7 +280,6 @@ abb_olson <- function(tz, width = 14L, dictionary = NULL){
       budget_remaining <-
         df_prev$budget_remaining - (map_int(df_prev$abbv_final, nchar) + 1)
 
-      print(budget_remaining)
       # using the names here is likely not necessary as I
       # expect the timezones to be in the same order in each
       # of the data frames - this is a bit of defensive coding
@@ -378,9 +303,7 @@ abb_olson <- function(tz, width = 14L, dictionary = NULL){
     df_by_index[[index]] <- df_index
   }
 
-  df <- do.call(rbind, df_by_index)
-
-  df
+  do.call(rbind, df_by_index)
 }
 
 .budget_final <- function(budget_provisional, component) {
