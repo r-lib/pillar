@@ -13,6 +13,7 @@
 #'
 #' @export
 new_ornament <- function(x, width = NULL, align = NULL) {
+  if (is.null(width)) width <- get_max_extent(x)
   ret <- structure(
     x,
     align = align,
