@@ -23,7 +23,6 @@ format.pillar_title <- function(x, width, ...) {
   title <- x$title
   if (is.null(title)) return(character())
 
-  desired_width <- get_width(x)
   title <- format_title(title, width)
 
   crayon::bold(title)
