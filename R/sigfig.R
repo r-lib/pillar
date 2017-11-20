@@ -1,23 +1,23 @@
-#' Format numbers in decimal notation
-#'
-#' This formatting system is designed to make it as easy as possible to
-#' compare columns of numbers. Significant digits are coloured black or red
-#' (for positive and negative numbers) and non-significant digits are coloured
-#' in paler gray.
-#'
-#' @return A list with at least the following elements:
-#' * `neg`: negative sign or space, `TRUE` if needed
-#' * `lhs`: whole number
-#' * `dec`: decimal point, `TRUE` if needed
-#' * `rhs`: remainder of number
-#'
-#' @param x A numeric vector
-#' @param sigfig Number of significant figures to display.
-#' @param ... Ignored
-#' @seealso [format_scientific()]
-#' @examples
-#' format_decimal(1.5:3.5)
-#' format_decimal(1e9)
+# Format numbers in decimal notation
+#
+# This formatting system is designed to make it as easy as possible to
+# compare columns of numbers. Significant digits are coloured black or red
+# (for positive and negative numbers) and non-significant digits are coloured
+# in paler gray.
+#
+# @return A list with at least the following elements:
+# * `neg`: negative sign or space, `TRUE` if needed
+# * `lhs`: whole number
+# * `dec`: decimal point, `TRUE` if needed
+# * `rhs`: remainder of number
+#
+# @param x A numeric vector
+# @param sigfig Number of significant figures to display.
+# @param ... Ignored
+# @seealso [format_scientific()]
+# @examples
+# format_decimal(1.5:3.5)
+# format_decimal(1e9)
 format_decimal <- function(x, sigfig = 3, ...) {
   split_decimal(x, sigfig)
 }
