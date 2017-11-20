@@ -14,6 +14,8 @@ keep_empty <- function(fun) {
 #'
 #' @param x The character vector to style.
 #' @export
+#' @examples
+#' style_subtle("text")
 style_subtle <- keep_empty(function(x) {
   style_grey(0.6, x)
 })
@@ -28,12 +30,16 @@ style_spark_na <- function(x) {
 
 #' @rdname style_subtle
 #' @export
+#' @examples
+#' style_na("NA")
 style_na <- function(x) {
   crayon::bgYellow(crayon::black(x))
 }
 
 #' @rdname style_subtle
 #' @export
+#' @examples
+#' style_neg("123")
 style_neg <- keep_empty(function(x) {
   crayon::red(x)
 })

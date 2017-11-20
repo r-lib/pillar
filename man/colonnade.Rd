@@ -30,7 +30,7 @@ with additional information about omitted columns.
 }
 \details{
 In a first pass, for each pillar it is decided in which tier it is shown,
-if at all, and how much horizontal space it may use (either its minumum
+if at all, and how much horizontal space it may use (either its minimum
 or its maximum width). More than one tier may be created if
 \code{width > getOption("width")}, in this case each tier is at most
 \code{getOption("width")} characters wide.
@@ -71,4 +71,18 @@ remaining space,
 rounded down.
 Any space remaining after rounding is distributed from left to right,
 one space per column.
+}
+\examples{
+colonnade(list(a = 1:3, b = letters[1:3]))
+
+long_string <- list(paste(letters, collapse = " "))
+colonnade(long_string, width = 20)
+colonnade(long_string, has_row_id = FALSE, width = 20)
+
+# The width can also be overridden when calling format() or print():
+print(colonnade(long_string), width = 20)
+
+# If width is larger than getOption("width"), multiple tiers are created:
+colonnade(rep(long_string, 4), width = Inf)
+squeeze(colonnade(long_string), width = 20)
 }

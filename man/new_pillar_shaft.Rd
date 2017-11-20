@@ -33,6 +33,7 @@ class.
 This is a virtual or abstract class, you must specify the \code{subclass}
 argument.
 By convention, this should be a string that starts with \code{"pillar_shaft_"}.
+See \code{vignette("extending", package = "tibble")} for usage examples.
 
 \code{new_pillar_shaft_simple()} provides an implementation of the \code{pillar_shaft}
 class suitable for output that has a fixed formatting, which will be

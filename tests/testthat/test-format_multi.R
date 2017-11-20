@@ -40,6 +40,15 @@ test_that("output test", {
   expect_pillar_output(xf = colonnade(x, width = 39), filename = "multi-39.txt")
   expect_pillar_output(xf = colonnade(x, width = Inf), filename = "multi-inf.txt")
 
+  skip_on_os("windows")
+  expect_pillar_output(
+    xf = colonnade(
+      rep(list(paste(letters, collapse = " ")), 4),
+      width = Inf
+    ),
+    filename = "letters-inf.txt"
+  )
+
   expect_pillar_output(
     xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 10))),
     filename = "multi-extra-10.txt"

@@ -1,3 +1,3 @@
-[1mcol_02[22m<U+00A0>[3m[90m<chr>[39m[23m
-[1mcol_03[22m<U+00A0>[3m[90m<fctr>[39m[23m
-[1mcol_04[22m<U+00A0>[3m[90m<ord>[39m[23m
+col_02 <chr>
+col_03 <fctr>
+col_04 <ord>

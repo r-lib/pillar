@@ -44,7 +44,7 @@ pillar_shaft(x, ...)
 \item{width}{Width for printing and formatting.}
 
 \item{sigfig}{Minimum number of significant figures to display. Numbers
-larger than 1 will potentially show more signficiant figures than this
+larger than 1 will potentially show more significant figures than this
 but they will be greyed out.}
 }
 \description{
@@ -64,4 +64,10 @@ Your \code{format()} method can assume a valid value for the \code{width} argume
 \details{
 The default method will currently coerce via \code{\link[=as.character]{as.character()}},
 but you should not rely on this behavior.
+}
+\examples{
+pillar_shaft(1:3)
+pillar_shaft(1.5:3.5)
+pillar_shaft(NA)
+pillar_shaft(c(1:3, NA))
 }

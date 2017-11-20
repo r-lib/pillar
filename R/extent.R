@@ -5,6 +5,9 @@
 #'
 #' @param x A character vector.
 #' @export
+#' @examples
+#' get_extent(c("abc", "de"))
+#' get_extent("\u904b\u6c23")
 get_extent <- function(x) {
   utf8::utf8_width(crayon::strip_style(x), encode = FALSE)
 }
@@ -14,6 +17,8 @@ get_extent <- function(x) {
 #' character vector, zero for empty vectors.
 #' @export
 #' @rdname get_extent
+#' @examples
+#' get_max_extent(c("abc", "de"))
 get_max_extent <- function(x) {
   max(get_extent(x), 0L, na.rm = TRUE)
 }

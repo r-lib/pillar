@@ -21,3 +21,6 @@ class to return a subclass of "pillar_shaft" and have the \code{\link[=format]{f
 for this subclass call \code{new_ornament()}. See the implementation of
 \code{pillar_shaft.numeric()} and \code{format.pillar_shaft_decimal()} for an example.
 }
+\examples{
+new_ornament(c("abc", "de"), align = "right")
+}

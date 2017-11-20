@@ -5,6 +5,7 @@
 #' This is a virtual or abstract class, you must specify the `subclass`
 #' argument.
 #' By convention, this should be a string that starts with `"pillar_shaft_"`.
+#' See `vignette("extending", package = "tibble")` for usage examples.
 #'
 #' @param x An object
 #' @param ... Additional attributes
@@ -35,6 +36,11 @@ new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
 #' @param x A vector to format
 #' @param ... Unused, for extensibility.
 #' @export
+#' @examples
+#' pillar_shaft(1:3)
+#' pillar_shaft(1.5:3.5)
+#' pillar_shaft(NA)
+#' pillar_shaft(c(1:3, NA))
 pillar_shaft <- function(x, ...) {
   UseMethod("pillar_shaft")
 }
@@ -77,7 +83,7 @@ pillar_shaft.logical <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 #' @param sigfig Minimum number of significant figures to display. Numbers
-#'   larger than 1 will potentially show more signficiant figures than this
+#'   larger than 1 will potentially show more significant figures than this
 #'   but they will be greyed out.
 pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
   dec <- format_decimal(x, ..., sigfig = sigfig)

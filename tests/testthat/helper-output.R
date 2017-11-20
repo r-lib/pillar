@@ -18,6 +18,11 @@ df_all <- list(
 expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
                                  crayon = TRUE, output_width = 80L) {
   object_quo <- rlang::quo(get_pillar_output_object(x, ..., xp = xp, xf = xf))
+  expect_pillar_output_utf8(object_quo, filename, output_width)
+  expect_pillar_output_latin1(object_quo, filename, output_width)
+}
+
+expect_pillar_output_utf8 <- function(object_quo, filename, output_width) {
   if (l10n_info()$`UTF-8`) {
     expect_known_display(
       object = !!object_quo,
@@ -26,15 +31,17 @@ expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
       width = output_width
     )
   }
-  withr::with_locale(
-    c(LC_CTYPE = "C"),
+}
+
+expect_pillar_output_latin1 <- function(object_quo, filename, output_width) {
+  if (!l10n_info()$`UTF-8`) {
     expect_known_display(
       object = !!object_quo,
       file = file.path("out-native", filename),
       crayon = FALSE,
       width = output_width
     )
-  )
+  }
 }
 
 get_pillar_output_object <- function(x = NULL, xp = NULL, xf = NULL, ...) {
@@ -57,4 +64,8 @@ add_special <- function(x) {
     x <- c(x, -Inf, Inf)
   }
   x
+}
+
+continue <- function(x) {
+  paste0(x, cli::symbol$continue)
 }
