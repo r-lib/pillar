@@ -1,12 +1,52 @@
-Package: colformat
+Package: pillar
 Title: Coloured Formatting for Columns
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
+    person("Kirill", "Müller", , "krlmlr+r@mailbox.org", role = c("aut", "cre")),
+    person("Hadley", "Wickham", role = "aut"),
     person("RStudio", role = "cph")
   )
-Description: Provides a `colformat` generic designed for formatting columns
+Description: Provides a 'pillar' generic designed for formatting columns
    of data using the full range of colours provided by modern terminals.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/hadley/pillar
+BugReports: https://github.com/hadley/pillar/issues
+Imports:
+    cli,
+    crayon (>= 1.3.4),
+    methods,
+    rlang,
+    utf8
+Suggests:
+    knitr,
+    testthat
+Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
+RoxygenNote: 6.0.1
+Collate: 
+    'compat-purrr.R'
+    'dim.R'
+    'extent.R'
+    'multi.R'
+    'ornament.R'
+    'pillar.R'
+    'rowid-data.R'
+    'rowid-title.R'
+    'rowid-type.R'
+    'scientific.R'
+    'shaft.R'
+    'shaft-simple.R'
+    'sigfig.R'
+    'spark-bar.R'
+    'spark-line.R'
+    'strrep.R'
+    'styles.R'
+    'testthat.R'
+    'tick.R'
+    'title.R'
+    'type-sum.R'
+    'type.R'
+    'utils.R'
+    'width.R'
+    'zzz.R'

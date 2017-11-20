@@ -1,0 +1,5 @@
+  column_ze~ col_02 col_~ col_~
+       <dbl> <chr>  <fct> <ord>
+1       1.23 a      a     a    
+2       2.23 b      b     b    
+3       3.23 c      c     c    

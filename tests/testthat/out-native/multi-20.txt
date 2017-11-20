@@ -1,0 +1,5 @@
+  colu~ col_~ col_~
+  <dbl> <chr> <fct>
+1  1.23 a     a    
+2  2.23 b     b    
+3  3.23 c     c    
