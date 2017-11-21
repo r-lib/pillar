@@ -223,7 +223,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   # until we don't need to anymore - then we expand the budget for the first
   # component until not needed, then for the middle component.
   #
-  # - the turning-points are based on the Olson names for the Mac, but it would
+  # - the turning-points are based on the Olson names for the Mac, but it might
   # be more robust to determine these on-the-fly for each system.
   #
 
