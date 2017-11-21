@@ -9,14 +9,14 @@
 #' to `abbreviate()`: if the abbreviation returned has this number of
 #' characters or fewer, the abbreviation is unique. If a longer abbreviation is
 #' returned, this is an indication that `abbrevaiate()` was not able to make it
-#' shorter.
+#' shorter and be unique.
 #'
 #' Some of the common components of timezone names are given default
 #' abbreviations, i.e. `"America"` becomes `"Amer"`. Use the `dictionary`
 #' argument to override defaults.
 #'
 #' @param tz          `character`, timezone names to abbreviate
-#' @param minwidth    `integer`, maximum number of characters
+#' @param minwidth    `integer`, desired length of abbreviation
 #' @param dictionary  `character`, named vector to override default dictionary:
 #'   values are abbreviated components, names are unabbreviated components
 #' @param ...         other arguments passed onto `abbreviate()`
@@ -216,22 +216,21 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   #
   # - our baseline budget for minwidth of 14 is 4/9 and 4/2/6
   #
-  # - the budget for the second component of three-component sytems is 2,
-  #   and remains 2 until minwidth gets very large
+  # - as minwidth gets shorter, the budget for the first compnonent decreases
+  #  to 3, then to 2
   #
-  # - the last component is elastic until no last-components need be
-  #   be abbreviated.
+  # - as minwidth gets larger, we expand the budget for the last component
+  # until we don't need to anymore - then we expand the budget for the first
+  # component until not needed, then for the middle component.
   #
-  # - the first component then becomes elastic until no first component need be
-  #   abbreviated.
-  #
-  # - lastly, the second component in three-component systems becomes elastic
+  # - the turning-points are based on the Olson names for the Mac, but it would
+  # be more robust to determine these on-the-fly for each system.
   #
 
   index_max <- as.integer(index_max)
   minwidth <- as.integer(minwidth)
 
-  # single-component
+  # one-component
   if (identical(index_max, 1L)) {
     result <- minwidth
   }
@@ -260,7 +259,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
       (minwidth > 25L) * (minwidth - 25L) * -1L # greater than 25, stop adding
 
     middle <-
-      2L +                                      # baseline is 4
+      2L +                                      # baseline is 2
       (minwidth > 25L) * (minwidth - 25L)       # greater than 25, keep adding
 
     last <- minwidth - (first + middle + 2L)    # last gets the leftovers
@@ -277,7 +276,8 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   # minwidth    `integer`, minimum width for the abbreviation (vector)
   # dictionary  `character`, named vector of standard abbreviations
   #
-  # returns `character` dictionary abbreviations of component
+  # returns `character` dictionary abbreviations of component for those
+  #  components that are longer than minwidth
 
   abbrev <- component
   index <-
