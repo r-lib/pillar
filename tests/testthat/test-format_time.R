@@ -63,8 +63,8 @@ test_that(".budget_initial works", {
   expect_identical(
     .budget_initial(14L),
     data.frame(
-      index = c(1L, 1L, 2L, 1L, 2L, 3L),
-      index_max = c(1L, 2L, 2L, 3L, 3L, 3L),
+      index =          c( 1L, 1L, 2L, 1L, 2L, 3L),
+      index_max =      c( 1L, 2L, 2L, 3L, 3L, 3L),
       budget_initial = c(14L, 4L, 9L, 4L, 2L, 6L)
     )
   )
