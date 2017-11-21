@@ -100,7 +100,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   df <- .decompose_tz(tz, minwidth)
 
   # apply dictionary (adds variable abbbv_dict)
-  df$abbv_dict <- .abbv_dict(df$component, dictionary)
+  df$abbv_dict <- .abbv_dict(df$component, df$budget_initial, dictionary)
 
   # treat the one-, two-, and three-component timezones together
   df_by_index_max <- split(df, df$index_max)
@@ -271,15 +271,18 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   result
 }
 
-.abbv_dict <- function(component, dictionary) {
+.abbv_dict <- function(component, minwidth, dictionary) {
 
   # component   `character`, timezone component (vector)
+  # minwidth    `integer`, minimum width for the abbreviation (vector)
   # dictionary  `character`, named vector of standard abbreviations
   #
   # returns `character` dictionary abbreviations of component
 
   abbrev <- component
-  index <- rlang::has_name(dictionary, component)
+  index <-
+    rlang::has_name(dictionary, component) &
+    nchar(component) > minwidth
 
   abbrev[index] <- dictionary[abbrev[index]]
 

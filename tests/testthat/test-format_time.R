@@ -102,12 +102,16 @@ test_that(".budget_final works", {
 
 test_that(".abbv_dict works", {
 
-  dict <- c(foo = "foo2", bar = "bar3")
+  dict <- c(foo2 = "foo", bar2 = "bar")
 
-  input <-  c("foo",  "notfoo", "bar")
-  result <- c("foo2", "notfoo", "bar3")
+  input <-    c("foo2",  "notfoo", "bar2")
+  minwidth <- c(    3L,        3L,     4L)
+  result <-   c( "foo",  "notfoo", "bar2")
 
-  expect_identical(.abbv_dict(input, dictionary = dict), result)
+  expect_identical(
+    .abbv_dict(input, minwidth, dictionary = dict),
+    result
+  )
 })
 
 test_that(".abbv_final works", {
