@@ -50,9 +50,13 @@ test_that(".budget_initial_vector works", {
   expect_identical(.budget_initial_vector(2L, minwidth = 14L), c(4L, 9L))
   expect_identical(.budget_initial_vector(3L, minwidth = 14L), c(4L, 2L, 6L))
   # minwidth 10
-  expect_identical(.budget_initial_vector(1L, minwidth = 10L), c(10L))
   expect_identical(.budget_initial_vector(2L, minwidth = 10L), c(3L, 6L))
   expect_identical(.budget_initial_vector(3L, minwidth = 10L), c(3L, 2L, 3L))
+  # minwidth 25
+  expect_identical(.budget_initial_vector(2L, minwidth = 25L), c(7L, 17L))
+  expect_identical(.budget_initial_vector(3L, minwidth = 25L), c(7L, 2L, 14L))
+  # minwidth 28
+  expect_identical(.budget_initial_vector(3L, minwidth = 28L), c(7L, 5L, 14L))
 })
 
 test_that(".budget_initial works", {
