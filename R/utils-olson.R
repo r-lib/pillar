@@ -56,7 +56,8 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
 
   # recompose timezones
   .recompose_tz <- function(x) {paste(x, collapse = "/")}
-  df_agg <- aggregate(df["abbv_final"], by = df["tz"], FUN = .recompose_tz)
+  df_agg <-
+    stats::aggregate(df["abbv_final"], by = df["tz"], FUN = .recompose_tz)
 
   # pull columns out of the data frame to form vector of abbreviations
   tz_abbv <- df_agg[["abbv_final"]]

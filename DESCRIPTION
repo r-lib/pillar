@@ -18,13 +18,15 @@ Imports:
     crayon (>= 1.3.4),
     methods,
     rlang,
-    utf8
+    utf8,
+    stats
 Suggests:
     knitr,
-    testthat
+    testthat,
+    tibble
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
 RoxygenNote: 6.0.1.9000
-Collate: 
+Collate:
     'compat-purrr.R'
     'dim.R'
     'extent.R'
