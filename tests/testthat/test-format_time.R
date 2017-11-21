@@ -7,13 +7,28 @@ test_that("output test", {
   expect_pillar_output(as.POSIXlt("2017-07-28 18:04:35 +0200"), filename = "time-posix.txt")
 })
 
-
 test_olson <- c(
   "EST5EDT",
   "America/Chicago",
   "Europe/Paris",
   "America/Kentucky/Louisville",
   "America/Indiana/Indianapolis"
+)
+
+result_olson_14 <- c(
+  `EST5EDT` = "EST5EDT",
+  `America/Chicago` = "Amer/Chicago",
+  `Europe/Paris` = "Eur/Paris",
+  `America/Kentucky/Louisville` = "Amer/KY/Losvll",
+  `America/Indiana/Indianapolis` = "Amer/IN/Indnpl"
+)
+
+result_olson_10 <- c(
+  `EST5EDT` = "EST5EDT",
+  `America/Chicago` = "Amr/Chicag",
+  `Europe/Paris` = "Eur/Paris",
+  `America/Kentucky/Louisville` = "Amr/KY/Lsv",
+  `America/Indiana/Indianapolis` = "Amr/IN/Ind"
 )
 
 test_that(".component works", {
@@ -30,14 +45,14 @@ test_that(".component works", {
 })
 
 test_that(".budget_initial_vector works", {
-  # width 14
-  expect_identical(.budget_initial_vector(1L, width = 14L), c(14L))
-  expect_identical(.budget_initial_vector(2L, width = 14L), c(6L, 7L))
-  expect_identical(.budget_initial_vector(3L, width = 14L), c(4L, 4L, 4L))
-  # width 10
-  expect_identical(.budget_initial_vector(1L, width = 10L), c(10L))
-  expect_identical(.budget_initial_vector(2L, width = 10L), c(4L, 5L))
-  expect_identical(.budget_initial_vector(3L, width = 10L), c(3L, 2L, 3L))
+  # minwidth 14
+  expect_identical(.budget_initial_vector(1L, minwidth = 14L), c(14L))
+  expect_identical(.budget_initial_vector(2L, minwidth = 14L), c(4L, 9L))
+  expect_identical(.budget_initial_vector(3L, minwidth = 14L), c(4L, 2L, 6L))
+  # minwidth 10
+  expect_identical(.budget_initial_vector(1L, minwidth = 10L), c(10L))
+  expect_identical(.budget_initial_vector(2L, minwidth = 10L), c(3L, 6L))
+  expect_identical(.budget_initial_vector(3L, minwidth = 10L), c(3L, 2L, 3L))
 })
 
 test_that(".budget_initial works", {
@@ -46,7 +61,7 @@ test_that(".budget_initial works", {
     data.frame(
       index = c(1L, 1L, 2L, 1L, 2L, 3L),
       index_max = c(1L, 2L, 2L, 3L, 3L, 3L),
-      budget_initial = c(14L, 6L, 7L, 4L, 4L, 4L)
+      budget_initial = c(14L, 4L, 9L, 4L, 2L, 6L)
     )
   )
 })
@@ -56,16 +71,16 @@ test_that(".decompose_tz works", {
   decompose_tz <- tribble(
     ~index, ~index_max, ~tz,                            ~component,     ~budget_initial,
     1L,      1L,        "EST5EDT",                      "EST5EDT",      14L,
-    1L,      2L,        "America/Chicago",              "America",      6L,
-    1L,      2L,        "Europe/Paris",                 "Europe",       6L,
+    1L,      2L,        "America/Chicago",              "America",      4L,
+    1L,      2L,        "Europe/Paris",                 "Europe",       4L,
     1L,      3L,        "America/Kentucky/Louisville",  "America",      4L,
     1L,      3L,        "America/Indiana/Indianapolis", "America",      4L,
-    2L,      2L,        "America/Chicago",              "Chicago",      7L,
-    2L,      2L,        "Europe/Paris",                 "Paris",        7L,
-    2L,      3L,        "America/Kentucky/Louisville",  "Kentucky",     4L,
-    2L,      3L,        "America/Indiana/Indianapolis", "Indiana",      4L,
-    3L,      3L,        "America/Kentucky/Louisville",  "Louisville",   4L,
-    3L,      3L,        "America/Indiana/Indianapolis", "Indianapolis", 4L
+    2L,      2L,        "America/Chicago",              "Chicago",      9L,
+    2L,      2L,        "Europe/Paris",                 "Paris",        9L,
+    2L,      3L,        "America/Kentucky/Louisville",  "Kentucky",     2L,
+    2L,      3L,        "America/Indiana/Indianapolis", "Indiana",      2L,
+    3L,      3L,        "America/Kentucky/Louisville",  "Louisville",   6L,
+    3L,      3L,        "America/Indiana/Indianapolis", "Indianapolis", 6L
   )
 
   expect_identical(.decompose_tz(test_olson, 14L), as.data.frame(decompose_tz))
@@ -112,6 +127,14 @@ test_that(".abbv_final works", {
     abbv_final
   )
 
+})
+
+test_that("abbreviate_olson works", {
+  expect_identical(abbreviate_olson(test_olson), result_olson_14)
+  expect_identical(
+    abbreviate_olson(test_olson, minwidth = 10L),
+    result_olson_10
+  )
 })
 
 
