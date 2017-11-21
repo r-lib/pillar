@@ -4,46 +4,37 @@
 \alias{abbreviate_olson}
 \title{Abbreviate an Olson timezone name}
 \usage{
-abbreviate_olson(tz, width = 14L, consistent = TRUE, dictionary = NULL)
+abbreviate_olson(tz, minwidth = 14L, dictionary = NULL, ...)
 }
 \arguments{
-\item{tz}{\code{character}, length-one, timezone-name to abbreviate}
+\item{tz}{\code{character}, timezone names to abbreviate}
 
-\item{width}{\code{integer}, maximum number of characters}
+\item{minwidth}{\code{integer}, desired length of abbreviation}
 
-\item{consistent}{\code{logical}, always abbvreviate first and second
-level names, i.e. \code{Africa/Bissau} is abbreviated to \code{Afr/Bissau} regardless
-of available space}
+\item{dictionary}{\code{character}, named vector to override default dictionary:
+values are abbreviated components, names are unabbreviated components}
 
-\item{dictionary}{\code{character}, named vector: values are abbreviated
-components, names are unabbreviated components}
+\item{...}{other arguments passed onto \code{abbreviate()}}
 }
 \value{
-\code{character}, abbreviated name
+\code{character}, abbreviated timezone names
 }
 \description{
-Abbreviate an Olson timezone name
-
 Within this package, a date-time column is given a heading according to its
 Olson-timezone name. Because some timezone names are too long to fit in the
 space allocated for the header, an abbreviation function is needed.
 }
 \details{
-The \code{minwidth} argument is used to specify the maximum width available to
-a timezone name. If the a name fits in the available width, the function
-does nothing. Otherwise it looks at each of the fields in succession, from
-left to right.
+The \code{minwidth} argument is used to specify the width to which you wish to
+abbreviate a timezone name. This argument works like the \code{minwidth} argument
+to \code{abbreviate()}: if the abbreviation returned has this number of
+characters or fewer, the abbreviation is unique. If a longer abbreviation is
+returned, this is an indication that \code{abbrevaiate()} was not able to make it
+shorter and be unique.
 
-Consider that \code{"America/Chicago"} has 15 characters, and let's say that you
-need to abbreviate to no more than 14 characters. The function will look at
-the first field, \code{"America"}, then abbreviate it to four characters.
-This function has a dictionary that, if \code{"America"} needs to be abbreviated,
-will make a "common" abbreviation: \code{"Amer"}. At this point, our
-abbreviated timezone is \code{"Amer/Chicago"}, which is 12 characters. The
-function returns this.
-
-The function will abbreviate each field, from left to right, until it
-is no longer necessary to abbreviate.
+Some of the common components of timezone names are given default
+abbreviations, i.e. \code{"America"} becomes \code{"Amer"}. Use the \code{dictionary}
+argument to override defaults.
 }
 \examples{
 abbreviate_olson("America/Chicago")
