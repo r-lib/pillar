@@ -19,7 +19,7 @@ Imports:
     methods,
     rlang,
     utf8
-Suggests:
+Suggests: 
     knitr,
     testthat
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))

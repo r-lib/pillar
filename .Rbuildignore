@@ -7,3 +7,4 @@
 ^tic\.R$
 ^cran-comments\.md$
 ^\.lib$
+^codecov\.yml$
