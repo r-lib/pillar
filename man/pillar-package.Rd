@@ -2,8 +2,6 @@
 % Please edit documentation in R/pillar-package.R
 \docType{package}
 \name{pillar-package}
-\alias{pillar}
-\alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
 Provides a 'pillar' generic designed for formatting columns
