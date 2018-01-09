@@ -1,3 +1,8 @@
+## pillar 1.0.1 (2017-11-27)
+
+- Work around failing CRAN tests on Windows.
+
+
 ## pillar 1.0.0 (2017-11-16)
 
 Initial release.

@@ -3,7 +3,7 @@
 pillar
 ======
 
-[![Travis-CI Build Status](https://travis-ci.org/hadley/pillar.svg?branch=master)](https://travis-ci.org/hadley/pillar)
+[![Travis-CI Build Status](https://travis-ci.org/r-lib/pillar.svg?branch=master)](https://travis-ci.org/r-lib/pillar)
 
 pillar provides tools for styling columns of data, artfully using colour and unicode characters to
 
@@ -12,7 +12,7 @@ Installation
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("hadley/pillar")
+devtools::install_github("r-lib/pillar")
 ```
 
 Usage
