@@ -25,7 +25,7 @@ pillar provides tools for styling columns of data, artfully using colour and uni
 
 ```{r, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("hadley/pillar")
+devtools::install_github("r-lib/pillar")
 ```
 
 ## Usage

@@ -9,6 +9,4 @@ Update as requested by CRAN:
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* Seven days since initial release.
+OK

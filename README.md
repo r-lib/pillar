@@ -15,7 +15,7 @@ and unicode characters to
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("hadley/pillar")
+devtools::install_github("r-lib/pillar")
 ```
 
 ## Usage
