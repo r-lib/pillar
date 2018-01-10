@@ -144,3 +144,20 @@ test_that("empty", {
     structure(character(), class = "pillar_vertical")
   )
 })
+
+test_that("without styling", {
+  withr::with_options(
+    list(),
+    expect_pillar_output(
+      xf = colonnade(list(x = (10 ^ (-3:4)) * c(-1, 1))),
+      filename = "style-regular.txt"
+    )
+  )
+  withr::with_options(
+    list(pillar.subtle = FALSE),
+    expect_pillar_output(
+      xf = colonnade(list(x = (10 ^ (-3:4)) * c(-1, 1))),
+      filename = "style-subtle-false.txt"
+    )
+  )
+})

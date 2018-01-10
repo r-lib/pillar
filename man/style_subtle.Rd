@@ -25,6 +25,9 @@ indicate if the values are negative and significant, respectively}
 Functions that allow implementers of formatters for custom data types to
 maintain a consistent style with the default data types.
 }
+\details{
+\code{style_subtle()} is affected by the \code{pillar.subtle} option.
+}
 \examples{
 style_num(
   c("123", "456"),

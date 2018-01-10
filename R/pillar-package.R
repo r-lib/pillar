@@ -1,11 +1,17 @@
 #' @aliases NULL pillar-package
-#' @section Package options:
+#' @section Options that control appearance:
 #'
-#' - `pillar.sigfig`: The number of significant digits that will be highlighted,
-#'     use `Inf` to show all digits in the same colour. Default: `3`.
 #' - `pillar.bold`: Use bold font, e.g. for column headers? This currently
 #'     defaults to `FALSE`, because many terminal fonts have poor support for
 #'     bold fonts.
+#' - `pillar.subtle`: Use subtle style, e.g. for insignificant digits? Default:
+#'     `TRUE`.
+#'
+#' @section Options that control behaviour:
+#'
+#' - `pillar.sigfig`: The number of significant digits that will be printed and
+#'     highlighted. Default: `3`. Set the `pillar.subtle` option to `FALSE` to
+#'     turn off highlighting of significant digits.
 #' - `pillar.colnames`: Controls the display of column names. The following
 #'     values are supported:
 #'     - `"full"` (default): Always print full column names
