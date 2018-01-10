@@ -1,5 +1,5 @@
-  [1mcolumn_z…[22m [1mcol_…[22m [1mcol_…[22m [1mcol_…[22m
-[3m[90m      <dbl> <chr> <fct> <ord>[39m[23m
-[90m1[39m      1.23 a     a     a    
-[90m2[39m      2.23 b     b     b    
-[90m3[39m      3.23 c     c     c    
+  [1mcolumn_zero_…[22m [1mcol_02[22m [1mcol_03[22m
+[3m[90m          <dbl> <chr>  <fctr>[39m[23m
+[90m1[39m          1.23 a      a     
+[90m2[39m          2.23 b      b     
+[90m3[39m          3.23 c      c     

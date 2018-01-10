@@ -8,7 +8,7 @@
 Provides a 'pillar' generic designed for formatting columns
 of data using the full range of colours provided by modern terminals.
 }
-\section{Options that control appearance}{
+\section{Package options}{
 
 \itemize{
 \item \code{pillar.bold}: Use bold font, e.g. for column headers? This currently
@@ -16,22 +16,12 @@ defaults to \code{FALSE}, because many terminal fonts have poor support for
 bold fonts.
 \item \code{pillar.subtle}: Use subtle style, e.g. for insignificant digits? Default:
 \code{TRUE}.
-}
-}
-
-\section{Options that control behaviour}{
-
-\itemize{
 \item \code{pillar.sigfig}: The number of significant digits that will be printed and
 highlighted. Default: \code{3}. Set the \code{pillar.subtle} option to \code{FALSE} to
 turn off highlighting of significant digits.
-\item \code{pillar.colnames}: Controls the display of column names. The following
-values are supported:
-\itemize{
-\item \code{"full"} (default): Always print full column names
-\item \code{"truncate"}: Allow truncation of column names, may lead to duplicate
-names in the header
-}
+\item \code{pillar.min_title_width}: The minimum width for the column title, default:
+\code{10}.  Column titles may be truncated up to that width to save horizontal
+space. Set to \code{Inf} to turn off truncation of column titles.
 }
 }
 
