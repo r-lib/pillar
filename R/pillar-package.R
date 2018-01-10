@@ -1,4 +1,4 @@
-#' @aliases NULL
+#' @aliases NULL pillar-package
 #' @section Package options:
 #'
 #' - `pillar.sigfig`: The number of significant digits that will be highlighted,
