@@ -32,6 +32,8 @@ maintain a consistent style with the default data types.
 \code{style_subtle()} is affected by the \code{pillar.subtle} option.
 
 \code{style_bold()} is affected by the \code{pillar.bold} option.
+
+\code{style_neg()} is affected by the \code{pillar.neg} option.
 }
 \examples{
 style_num(

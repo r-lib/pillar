@@ -6,6 +6,7 @@
 #'     bold fonts.
 #' - `pillar.subtle`: Use subtle style, e.g. for insignificant digits? Default:
 #'     `TRUE`.
+#' - `pillar.neg`: Highlight negative numbers? Default: `TRUE`.
 #' - `pillar.sigfig`: The number of significant digits that will be printed and
 #'     highlighted. Default: `3`. Set the `pillar.subtle` option to `FALSE` to
 #'     turn off highlighting of significant digits.

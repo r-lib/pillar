@@ -165,6 +165,20 @@ test_that("without styling", {
     )
   )
   withr::with_options(
+    list(pillar.neg = FALSE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-neg-false.txt"
+    )
+  )
+  withr::with_options(
+    list(pillar.subtle = FALSE, pillar.neg = FALSE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-subtle-neg-false.txt"
+    )
+  )
+  withr::with_options(
     list(pillar.bold = FALSE),
     expect_pillar_output(
       xf = xf,

@@ -14,8 +14,6 @@ keep_empty <- function(fun) {
 #'
 #' `style_subtle()` is affected by the `pillar.subtle` option.
 #'
-#' `style_bold()` is affected by the `pillar.bold` option.
-#'
 #' @param x The character vector to style.
 #' @export
 #' @seealso [pillar-package] for a list of options
@@ -41,6 +39,9 @@ style_spark_na <- function(x) {
   crayon::yellow(x)
 }
 
+#' @details
+#' `style_bold()` is affected by the `pillar.bold` option.
+#'
 #' @rdname style_subtle
 #' @export
 #' @examples
@@ -61,12 +62,19 @@ style_na <- function(x) {
   crayon::bgYellow(crayon::black(x))
 }
 
+#' @details
+#' `style_neg()` is affected by the `pillar.neg` option.
+#'
 #' @rdname style_subtle
 #' @export
 #' @examples
 #' style_neg("123")
 style_neg <- keep_empty(function(x) {
-  crayon::red(x)
+  if (isTRUE(getOption("pillar.neg", TRUE))) {
+    crayon::red(x)
+  } else {
+    x
+  }
 })
 
 
