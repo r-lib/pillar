@@ -1,5 +1,7 @@
 context("title")
 
+withr::with_options(list(pillar.bold = TRUE), {
+
 test_that("with and without title", {
   expect_pillar_output(10 ^ (1:6), filename = "title-none.txt", crayon = FALSE)
   expect_pillar_output(10 ^ (1:6), title = "crayon", filename = "title-crayon.txt")
@@ -7,3 +9,5 @@ test_that("with and without title", {
   expect_pillar_output(10 ^ (1:6), title = "somewhat_wider", filename = "title-longer.txt", crayon = FALSE)
   expect_pillar_output(10 ^ (1:6), title = "much_too_wide", width = 7, filename = "title-too-long.txt", crayon = FALSE)
 })
+
+}) # withr::with_options(list(pillar.bold = TRUE), {

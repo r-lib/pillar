@@ -25,5 +25,5 @@ format.pillar_title <- function(x, width, ...) {
 
   title <- format_title(title, width)
 
-  crayon::bold(title)
+  style_bold(title)
 }

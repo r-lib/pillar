@@ -1,5 +1,7 @@
 context("format_character")
 
+withr::with_options(list(pillar.bold = TRUE), {
+
 chartype_frame <- function()
 {
   chars <- character()
@@ -74,3 +76,5 @@ test_that("output test", {
   skip_on_os("windows")
   expect_pillar_output(xf = colonnade(chartype_frame()), width = 50, filename = "utf8.txt")
 })
+
+}) # withr::with_options(list(pillar.bold = TRUE), {

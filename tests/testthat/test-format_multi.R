@@ -1,5 +1,7 @@
 context("format_multi")
 
+withr::with_options(list(pillar.bold = TRUE), {
+
 test_that("output test", {
   x <- list(column_zero_one = 1:3 + 0.23, col_02 = letters[1:3], col_03 = factor(letters[1:3]), col_04 = ordered(letters[1:3]))
   expect_pillar_output(xf = colonnade(x, width = 4), filename = "multi-04.txt")
@@ -146,18 +148,29 @@ test_that("empty", {
 })
 
 test_that("without styling", {
+  xf <- colonnade(list(x = (10 ^ (-3:4)) * c(-1, 1)))
+
   withr::with_options(
     list(),
     expect_pillar_output(
-      xf = colonnade(list(x = (10 ^ (-3:4)) * c(-1, 1))),
+      xf = xf,
       filename = "style-regular.txt"
     )
   )
   withr::with_options(
     list(pillar.subtle = FALSE),
     expect_pillar_output(
-      xf = colonnade(list(x = (10 ^ (-3:4)) * c(-1, 1))),
+      xf = xf,
       filename = "style-subtle-false.txt"
     )
   )
+  withr::with_options(
+    list(pillar.bold = FALSE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-bold-false.txt"
+    )
+  )
 })
+
+}) # withr::with_options(list(pillar.bold = TRUE),
