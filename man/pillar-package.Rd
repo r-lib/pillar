@@ -15,12 +15,13 @@ of data using the full range of colours provided by modern terminals.
 use \code{Inf} to highlight all digits. Default: \code{3}.
 \item \code{pillar.bold}: Use bold font, e.g. for column headers? This currently
 defaults to \code{FALSE}, because many terminal fonts have poor support for
-bold fonts:
+bold fonts.
 \item \code{pillar.colnames}: Controls the display of column names. The following
 values are supported:
 \itemize{
 \item \code{"full"} (default): Always print full column names
-\item \code{"truncate"}: Allow truncation of column names
+\item \code{"truncate"}: Allow truncation of column names, may lead to duplicate
+names in the header
 }
 }
 }
