@@ -3,16 +3,16 @@
 pillar
 ======
 
-[![Travis-CI Build Status](https://travis-ci.org/hadley/pillar.svg?branch=master)](https://travis-ci.org/hadley/pillar)
+[![Travis-CI Build Status](https://travis-ci.org/r-lib/pillar.svg?branch=master)](https://travis-ci.org/r-lib/pillar) [![Coverage status](https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/pillar?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
 
-pillar provides tools for styling columns of data, artfully using colour and unicode characters to
+pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.
 
 Installation
 ------------
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("hadley/pillar")
+devtools::install_github("r-lib/pillar")
 ```
 
 Usage
