@@ -12,7 +12,7 @@ of data using the full range of colours provided by modern terminals.
 
 \itemize{
 \item \code{pillar.sigfig}: The number of significant digits that will be highlighted,
-use \code{Inf} to highlight all digits. Default: \code{3}.
+use \code{Inf} to show all digits in the same colour. Default: \code{3}.
 \item \code{pillar.bold}: Use bold font, e.g. for column headers? This currently
 defaults to \code{FALSE}, because many terminal fonts have poor support for
 bold fonts.
