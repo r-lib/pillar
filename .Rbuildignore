@@ -8,3 +8,6 @@
 ^cran-comments\.md$
 ^\.lib$
 ^codecov\.yml$
+^_pkgdown\.yml$
+^doc$
+^docs$
