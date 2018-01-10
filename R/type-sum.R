@@ -32,8 +32,8 @@ type_sum.default <- function(x) {
       integer = "int",
       double = "dbl",
       character = "chr",
-      complex = "cplx",
-      closure = "fun",
+      complex = "cpl",
+      closure = "fn",
       environment = "env",
       typeof(x)
     )
