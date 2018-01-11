@@ -20,9 +20,10 @@ bold fonts.
 \item \code{pillar.sigfig}: The number of significant digits that will be printed and
 highlighted, default: \code{3}. Set the \code{pillar.subtle} option to \code{FALSE} to
 turn off highlighting of significant digits.
-\item \code{pillar.min_title_width}: The minimum width for the column title, default:
-\code{15}.  Column titles may be truncated up to that width to save horizontal
-space. Set to \code{Inf} to turn off truncation of column titles.
+\item \code{pillar.min_title_chars}: The minimum number of characters for the column
+title, default: \code{15}.  Column titles may be truncated up to that width to
+save horizontal space. Set to \code{Inf} to turn off truncation of column
+titles.
 }
 }
 
