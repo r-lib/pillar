@@ -20,9 +20,10 @@ Imports:
     rlang,
     stats,
     utf8
-Suggests: 
+Suggests:
     knitr,
-    testthat
+    testthat,
+    memoise
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
 RoxygenNote: 6.0.1.9000
 Collate:
