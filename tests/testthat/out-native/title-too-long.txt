@@ -1,11 +1,11 @@
-much_too~
-    <dbl>
-   1.00e1
-   1.00e2
-   1.00e3
-   1.00e4
-   1.00e5
-   1.00e6
-  NA     
--Inf     
- Inf     
+absolutely_breaki~
+             <dbl>
+              10.0
+             100  
+            1000  
+           10000  
+          100000  
+         1000000  
+              NA  
+        -    Inf  
+             Inf  
