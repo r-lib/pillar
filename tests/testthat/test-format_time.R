@@ -1,7 +1,5 @@
 context("format_time")
 
-library("tibble")
-
 test_that("output test", {
   expect_pillar_output(as.POSIXct("2017-07-28 18:04:35 +0200"), filename = "time.txt")
   expect_pillar_output(as.POSIXlt("2017-07-28 18:04:35 +0200"), filename = "time-posix.txt")
@@ -72,20 +70,24 @@ test_that(".budget_initial works", {
 
 test_that(".decompose_tz works", {
 
-  decompose_tz <- tribble(
-    ~index, ~index_max, ~tz,                            ~component,     ~budget_initial,
-    1L,      1L,        "EST5EDT",                      "EST5EDT",      14L,
-    1L,      2L,        "America/Chicago",              "America",      4L,
-    1L,      2L,        "Europe/Paris",                 "Europe",       4L,
-    1L,      3L,        "America/Kentucky/Louisville",  "America",      4L,
-    1L,      3L,        "America/Indiana/Indianapolis", "America",      4L,
-    2L,      2L,        "America/Chicago",              "Chicago",      9L,
-    2L,      2L,        "Europe/Paris",                 "Paris",        9L,
-    2L,      3L,        "America/Kentucky/Louisville",  "Kentucky",     2L,
-    2L,      3L,        "America/Indiana/Indianapolis", "Indiana",      2L,
-    3L,      3L,        "America/Kentucky/Louisville",  "Louisville",   6L,
-    3L,      3L,        "America/Indiana/Indianapolis", "Indianapolis", 6L
+  text <- paste(
+    '"index","index_max","tz",                           "component",    "budget_initial"',
+    '1,      1,          "EST5EDT",                      "EST5EDT",      14',
+    '1,      2,          "America/Chicago",              "America",      4',
+    '1,      2,          "Europe/Paris",                 "Europe",       4',
+    '1,      3,          "America/Kentucky/Louisville",  "America",      4',
+    '1,      3,          "America/Indiana/Indianapolis", "America",      4',
+    '2,      2,          "America/Chicago",              "Chicago",      9',
+    '2,      2,          "Europe/Paris",                 "Paris",        9',
+    '2,      3,          "America/Kentucky/Louisville",  "Kentucky",     2',
+    '2,      3,          "America/Indiana/Indianapolis", "Indiana",      2',
+    '3,      3,          "America/Kentucky/Louisville",  "Louisville",   6',
+    '3,      3,          "America/Indiana/Indianapolis", "Indianapolis", 6',
+    sep = '\n'
   )
+
+  text <- gsub(" ", "", text) # get rid of "formatting" spaces
+  decompose_tz <- read.csv(text = text, stringsAsFactors = FALSE)
 
   expect_identical(.decompose_tz(test_olson, 14L), as.data.frame(decompose_tz))
 
