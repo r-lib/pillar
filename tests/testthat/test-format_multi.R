@@ -144,3 +144,15 @@ test_that("empty", {
     structure(character(), class = "pillar_vertical")
   )
 })
+
+
+test_that("option(digits.secs) (#74)", {
+  withr::with_options(
+    list(digits.secs = 5),
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(df_all["g"]),
+      filename = "tibble-all-digits-secs.txt"
+    )
+  )
+})
