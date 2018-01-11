@@ -67,11 +67,6 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   tz_abbv[tz]
 }
 
-# if memoise is available, use memoised version
-if (requireNamespace("memoise", quietly = TRUE)) {
-  abbreviate_olson <- memoise::memoise(abbreviate_olson)
-}
-
 abbreviate_olson_df <- function(tz, minwidth = 14L, dictionary = NULL, ...){
 
   # This function may be useful to call for debugging

@@ -8,6 +8,16 @@ NULL
 .onLoad <- function(libname, pkgname) {
   register_s3_method("knitr", "knit_print", "squeezed_colonnade")
 
+  # if memoise is available:
+  #   memoise abbreviate_olson, assign to package environment
+  if (requireNamespace("memoise", quietly = TRUE)) {
+    assign(
+      "abbreviate_olson",
+      value = memoise::memoise(abbreviate_olson),
+      envir = parent.env(as.environment(-1))
+    )
+  }
+
   invisible()
 }
 
