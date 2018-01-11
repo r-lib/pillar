@@ -111,7 +111,7 @@ pillar_shaft.Date <- function(x, ...) {
 #' @rdname pillar_shaft
 pillar_shaft.POSIXt <- function(x, ...) {
   date <- format(x, format = "%Y-%m-%d")
-  time <- format(x, format = "%H:%M:%S")
+  time <- format(x, format = "%H:%M:%OS")
 
   datetime <- paste0(date, " " , style_subtle(time))
   datetime[is.na(x)] <- NA
