@@ -15,7 +15,26 @@ type_sum.ordered <- function(x) "ord"
 #' @export
 type_sum.factor <- function(x) "fctr"
 #' @export
-type_sum.POSIXct <- function(x) "dttm"
+type_sum.POSIXct <- function(x) {
+
+  width <- 19 # hard-coding this for now; width may be variable in future
+  prefix <- "dttm"
+
+  # account for allocated chararacters
+  budget <- width - nchar(prefix) - nchar("<->")
+
+  # this call is memoised (if memoise is available)
+  abbreviations <- abbreviate_olson(OlsonNames(), minwidth = budget)
+
+  tz <- attr(x, "tzone")
+  if (identical(tz, "")) {
+    return(prefix)
+  }
+
+  tz_abbv <- abbreviations[[tz]]
+
+  paste0(prefix, "-", tz_abbv)
+}
 #' @export
 type_sum.difftime <- function(x) "time"
 #' @export
