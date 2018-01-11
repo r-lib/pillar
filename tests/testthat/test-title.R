@@ -7,7 +7,7 @@ test_that("with and without title", {
   expect_pillar_output(10 ^ (1:6), title = "crayon", filename = "title-crayon.txt")
   expect_pillar_output(10 ^ (1:6), title = "short", filename = "title-short.txt", crayon = FALSE)
   expect_pillar_output(10 ^ (1:6), title = "somewhat_wider", filename = "title-longer.txt", crayon = FALSE)
-  expect_pillar_output(10 ^ (1:6), title = "much_too_wide", width = 12, filename = "title-too-long.txt", crayon = FALSE)
+  expect_pillar_output(10 ^ (1:6), title = "absolutely_breaking_all_sensible_boundaries", width = 12, filename = "title-too-long.txt", crayon = FALSE)
 })
 
 }) # withr::with_options(list(pillar.bold = TRUE), {

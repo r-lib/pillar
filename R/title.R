@@ -19,7 +19,7 @@ pillar_title <- function(title, ...) {
 }
 
 get_min_title_width <- function(width) {
-  title_width <- getOption("pillar.min_title_width", 10)
+  title_width <- getOption("pillar.min_title_width", 15)
   if (!is.numeric(title_width) || length(title_width) != 1 || title_width < 0) {
     stop("Option pillar.min_title_width must be a nonnegative number", call. = FALSE)
   }

@@ -8,9 +8,9 @@
 #'     `TRUE`.
 #' - `pillar.neg`: Highlight negative numbers? Default: `TRUE`.
 #' - `pillar.sigfig`: The number of significant digits that will be printed and
-#'     highlighted. Default: `3`. Set the `pillar.subtle` option to `FALSE` to
+#'     highlighted, default: `3`. Set the `pillar.subtle` option to `FALSE` to
 #'     turn off highlighting of significant digits.
 #' - `pillar.min_title_width`: The minimum width for the column title, default:
-#'     `10`.  Column titles may be truncated up to that width to save horizontal
+#'     `15`.  Column titles may be truncated up to that width to save horizontal
 #'     space. Set to `Inf` to turn off truncation of column titles.
 "_PACKAGE"

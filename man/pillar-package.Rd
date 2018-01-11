@@ -18,10 +18,10 @@ bold fonts.
 \code{TRUE}.
 \item \code{pillar.neg}: Highlight negative numbers? Default: \code{TRUE}.
 \item \code{pillar.sigfig}: The number of significant digits that will be printed and
-highlighted. Default: \code{3}. Set the \code{pillar.subtle} option to \code{FALSE} to
+highlighted, default: \code{3}. Set the \code{pillar.subtle} option to \code{FALSE} to
 turn off highlighting of significant digits.
 \item \code{pillar.min_title_width}: The minimum width for the column title, default:
-\code{10}.  Column titles may be truncated up to that width to save horizontal
+\code{15}.  Column titles may be truncated up to that width to save horizontal
 space. Set to \code{Inf} to turn off truncation of column titles.
 }
 }
