@@ -85,7 +85,7 @@ pillar_shaft.logical <- function(x, ...) {
 #' @param sigfig Minimum number of significant figures to display. Numbers
 #'   larger than 1 will potentially show more significant figures than this
 #'   but they will be greyed out.
-pillar_shaft.numeric <- function(x, ..., sigfig = 3) {
+pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3)) {
   dec <- format_decimal(x, ..., sigfig = sigfig)
   sci <- format_scientific(x, ..., sigfig = sigfig)
 
@@ -111,7 +111,7 @@ pillar_shaft.Date <- function(x, ...) {
 #' @rdname pillar_shaft
 pillar_shaft.POSIXt <- function(x, ...) {
   date <- format(x, format = "%Y-%m-%d")
-  time <- format(x, format = "%H:%M:%S")
+  time <- format(x, format = "%H:%M:%OS")
 
   datetime <- paste0(date, " " , style_subtle(time))
   datetime[is.na(x)] <- NA

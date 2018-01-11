@@ -3,11 +3,11 @@
 1  1.00     1 T    
 2  2.50     2 F    
 3 NA       NA NA   
-  d     e     
-  <chr> <fctr>
-1 a     a     
-2 b     b     
-3 <NA>  <NA>  
+  d     e    
+  <chr> <fct>
+1 a     a    
+2 b     b    
+3 <NA>  <NA> 
   f         
   <date>    
 1 2015-12-10

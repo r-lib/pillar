@@ -1,3 +1,17 @@
+# pillar 1.0.99.9000 (2018-01-11)
+
+- `NA` values are now shown in plain red, without changing the background color (#70).
+- New options to control the output, with defaults that match the current behavior unless stated otherwise:
+    - `pillar.sigfig` to control the number of significant digits, for highlighting and truncation (#72),
+    - `pillar.subtle` to specify if insignificant digits should be printed in gray (#72),
+    - `pillar.neg` to specify if negative digits should be printed in red,
+    - `pillar.bold` to specify if column headers should be printed in bold (default: `FALSE`, #76),
+    - `pillar.min_title_chars` to specify the minimum number of characters to display for each column name (default: 15 characters, #75).
+- Shortened abbreviations for types: complex: cplx -> cpl, function: fun -> fn, factor: fctr -> fct (#71).
+- Date columns now show sub-seconds if the `digits.secs` option is set (#74).
+- Work around failing CRAN tests on Windows.
+
+
 # pillar 1.0.1 (2017-11-27)
 
 - Work around failing CRAN tests on Windows.
