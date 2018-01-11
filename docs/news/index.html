@@ -82,6 +82,31 @@
     </div>
 
     <div class="contents">
+    <div id="pillar-1-0-99-9000-2018-01-11" class="section level1">
+<h1 class="hasAnchor">
+<a href="#pillar-1-0-99-9000-2018-01-11" class="anchor"></a>pillar 1.0.99.9000 (2018-01-11)</h1>
+<ul>
+<li>
+<code>NA</code> values are now shown in plain red, without changing the background color (#70).</li>
+<li>New options to control the output, with defaults that match the current behavior unless stated otherwise:
+<ul>
+<li>
+<code>pillar.sigfig</code> to control the number of significant digits, for highlighting and truncation (#72),</li>
+<li>
+<code>pillar.subtle</code> to specify if insignificant digits should be printed in gray (#72),</li>
+<li>
+<code>pillar.neg</code> to specify if negative digits should be printed in red,</li>
+<li>
+<code>pillar.bold</code> to specify if column headers should be printed in bold (default: <code>FALSE</code>, #76),</li>
+<li>
+<code>pillar.min_title_chars</code> to specify the minimum number of characters to display for each column name (default: 15 characters, #75).</li>
+</ul>
+</li>
+<li>Shortened abbreviations for types: complex: cplx -&gt; cpl, function: fun -&gt; fn, factor: fctr -&gt; fct (#71).</li>
+<li>Date columns now show sub-seconds if the <code>digits.secs</code> option is set (#74).</li>
+<li>Work around failing CRAN tests on Windows.</li>
+</ul>
+</div>
     <div id="pillar-1-0-1-2017-11-27" class="section level1">
 <h1 class="hasAnchor">
 <a href="#pillar-1-0-1-2017-11-27" class="anchor"></a>pillar 1.0.1 (2017-11-27)</h1>
@@ -140,6 +165,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#pillar-1-0-99-9000-2018-01-11">1.0.99.9000</a></li>
         <li><a href="#pillar-1-0-1-2017-11-27">1.0.1</a></li>
         <li><a href="#pillar-1-0-0-2017-11-16">1.0.0</a></li>
       </ul>
