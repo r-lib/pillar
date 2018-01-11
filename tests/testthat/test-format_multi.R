@@ -1,5 +1,7 @@
 context("format_multi")
 
+withr::with_options(list(pillar.bold = TRUE), {
+
 test_that("output test", {
   x <- list(column_zero_one = 1:3 + 0.23, col_02 = letters[1:3], col_03 = factor(letters[1:3]), col_04 = ordered(letters[1:3]))
   expect_pillar_output(xf = colonnade(x, width = 4), filename = "multi-04.txt")
@@ -145,14 +147,44 @@ test_that("empty", {
   )
 })
 
+test_that("without styling", {
+  xf <- colonnade(list(x = (10 ^ (-3:4)) * c(-1, 1)))
 
-test_that("option(digits.secs) (#74)", {
   withr::with_options(
-    list(digits.secs = 5),
+    list(),
     expect_pillar_output(
-      crayon = FALSE,
-      xf = colonnade(df_all["g"]),
-      filename = "tibble-all-digits-secs.txt"
+      xf = xf,
+      filename = "style-regular.txt"
+    )
+  )
+  withr::with_options(
+    list(pillar.subtle = FALSE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-subtle-false.txt"
+    )
+  )
+  withr::with_options(
+    list(pillar.neg = FALSE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-neg-false.txt"
+    )
+  )
+  withr::with_options(
+    list(pillar.subtle = FALSE, pillar.neg = FALSE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-subtle-neg-false.txt"
+    )
+  )
+  withr::with_options(
+    list(pillar.bold = FALSE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-bold-false.txt"
     )
   )
 })
+
+}) # withr::with_options(list(pillar.bold = TRUE),

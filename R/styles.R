@@ -12,20 +12,46 @@ keep_empty <- function(fun) {
 #' Functions that allow implementers of formatters for custom data types to
 #' maintain a consistent style with the default data types.
 #'
+#' `style_subtle()` is affected by the `pillar.subtle` option.
+#'
 #' @param x The character vector to style.
 #' @export
+#' @seealso [pillar-package] for a list of options
 #' @examples
 #' style_subtle("text")
 style_subtle <- keep_empty(function(x) {
-  style_grey(0.6, x)
+  if (isTRUE(getOption("pillar.subtle", TRUE))) {
+    style_grey(0.6, x)
+  } else {
+    x
+  }
 })
 
 style_hint <- keep_empty(function(x) {
-  style_grey(0.8, x)
+  if (isTRUE(getOption("pillar.subtle", TRUE))) {
+    style_grey(0.8, x)
+  } else {
+    x
+  }
 })
 
 style_spark_na <- function(x) {
   crayon::yellow(x)
+}
+
+#' @details
+#' `style_bold()` is affected by the `pillar.bold` option.
+#'
+#' @rdname style_subtle
+#' @export
+#' @examples
+#' style_bold("Petal.Width")
+style_bold <- function(x) {
+  if (isTRUE(getOption("pillar.bold", FALSE))) {
+    crayon::bold(x)
+  } else {
+    x
+  }
 }
 
 #' @rdname style_subtle
@@ -36,12 +62,19 @@ style_na <- function(x) {
   crayon::bgYellow(crayon::black(x))
 }
 
+#' @details
+#' `style_neg()` is affected by the `pillar.neg` option.
+#'
 #' @rdname style_subtle
 #' @export
 #' @examples
 #' style_neg("123")
 style_neg <- keep_empty(function(x) {
-  crayon::red(x)
+  if (isTRUE(getOption("pillar.neg", TRUE))) {
+    crayon::red(x)
+  } else {
+    x
+  }
 })
 
 

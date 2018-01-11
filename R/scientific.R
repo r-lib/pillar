@@ -9,7 +9,7 @@
 # @examples
 # format_scientific(1.5:3.5)
 # format_scientific(1e9)
-format_scientific <- function(x, sigfig = 3, superscript = TRUE) {
+format_scientific <- function(x, sigfig, superscript = TRUE) {
   split_decimal(x, sigfig, scientific = TRUE, superscript = superscript)
 }
 

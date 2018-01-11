@@ -30,6 +30,7 @@ Collate:
     'extent.R'
     'multi.R'
     'ornament.R'
+    'pillar-package.R'
     'pillar.R'
     'rowid-data.R'
     'rowid-title.R'
