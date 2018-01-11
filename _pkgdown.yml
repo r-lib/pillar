@@ -5,6 +5,37 @@ template:
 home:
   strip_header: true
 
+reference:
+  - title: High-level interface
+    desc: >
+      These functions accept vectors or lists and create objects that format
+      nicely on the terminal.
+    contents:
+      - pillar
+      - colonnade
+      - squeeze
+      - extra_cols
+  - title: Hooks
+    desc: >
+      Override or use these methods if you want pillar support for your data type.
+    contents:
+      - pillar_shaft
+      - starts_with("new_pillar_shaft")
+      - new_ornament
+  - title: Styling
+    desc: >
+      For consistent output among different data types.
+    contents:
+      - starts_with("style_")
+  - title: Miscellaneous
+    contents:
+      - type_sum
+      - obj_sum
+      - dim_desc
+      - expect_known_display
+      - get_extent
+      - pillar-package
+
 navbar:
   type: default
   left:
