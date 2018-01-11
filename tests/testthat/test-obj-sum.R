@@ -21,7 +21,7 @@ test_that("data frame and tibbles include rows and cols", {
 })
 
 test_that("common data vectors treated as atomic", {
-  expect_equal(obj_sum(factor(1:3)), "fctr [3]")
+  expect_equal(obj_sum(factor(1:3)), "fct [3]")
   expect_equal(obj_sum(ordered(1:3)), "ord [3]")
   expect_equal(obj_sum(Sys.Date() + 1:3), "date [3]")
   expect_equal(obj_sum(Sys.time() + 1:3), "dttm [3]")
@@ -36,5 +36,6 @@ test_that("difftime is shown as time", {
 
 test_that("less common objects get abbreviations", {
   expect_equal(type_sum(environment()), "env")
-  expect_equal(type_sum(environment), "fun")
+  expect_equal(type_sum(environment), "fn")
+  expect_equal(type_sum(1i), "cpl")
 })

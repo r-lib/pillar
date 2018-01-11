@@ -7,8 +7,8 @@ without_color <- function(code) {
   code
 }
 
-format_decimal_bw <- function(x, ...) {
-  without_color(format_decimal(x, ...))
+format_decimal_bw <- function(x, sigfig = 3, ...) {
+  without_color(format_decimal(x, sigfig = sigfig, ...))
 }
 
 test_that("compute_rhs_digits() works", {
@@ -68,7 +68,7 @@ test_that("values rounded up as expect", {
 })
 
 test_that("values on LHS not rounded", {
-  f <- without_color(format_lhs(format_decimal(123456)))
+  f <- without_color(format_lhs(format_decimal(123456, 3)))
   expect_equal(f, "123456")
 })
 
@@ -80,4 +80,8 @@ test_that("corner cases", {
 test_that("output test", {
   expect_pillar_output((10 ^ (-3:4)) * c(-1, 1), filename = "basic.txt")
   expect_pillar_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
+  withr::with_options(
+    list(pillar.sigfig = 5),
+    expect_pillar_output((10 ^ (-3:4)) * c(-1, 1), filename = "basic-signif-5.txt")
+  )
 })

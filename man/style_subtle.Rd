@@ -3,6 +3,7 @@
 \name{style_num}
 \alias{style_num}
 \alias{style_subtle}
+\alias{style_bold}
 \alias{style_na}
 \alias{style_neg}
 \title{Styling helpers}
@@ -10,6 +11,8 @@
 style_num(x, negative, significant = rep_along(x, TRUE))
 
 style_subtle(x)
+
+style_bold(x)
 
 style_na(x)
 
@@ -25,6 +28,13 @@ indicate if the values are negative and significant, respectively}
 Functions that allow implementers of formatters for custom data types to
 maintain a consistent style with the default data types.
 }
+\details{
+\code{style_subtle()} is affected by the \code{pillar.subtle} option.
+
+\code{style_bold()} is affected by the \code{pillar.bold} option.
+
+\code{style_neg()} is affected by the \code{pillar.neg} option.
+}
 \examples{
 style_num(
   c("123", "456"),
@@ -36,6 +46,10 @@ style_num(
   significant = c(FALSE, FALSE)
 )
 style_subtle("text")
+style_bold("Petal.Width")
 style_na("NA")
 style_neg("123")
+}
+\seealso{
+\link{pillar-package} for a list of options
 }
