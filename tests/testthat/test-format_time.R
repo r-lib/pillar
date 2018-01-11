@@ -29,9 +29,9 @@ result_olson_10 <- c(
   `America/Indiana/Indianapolis` = "Amr/IN/Ind"
 )
 
-test_that(".component works", {
+test_that("component works", {
   expect_identical(
-    .component("America/Chicago"),
+    component("America/Chicago"),
     data.frame(
       tz = rep("America/Chicago", 2L),
       index = c(1L, 2L),
@@ -42,24 +42,24 @@ test_that(".component works", {
   )
 })
 
-test_that(".budget_initial_vector works", {
+test_that("budget_initial_vector works", {
   # minwidth 14
-  expect_identical(.budget_initial_vector(1L, minwidth = 14L), c(14L))
-  expect_identical(.budget_initial_vector(2L, minwidth = 14L), c(4L, 9L))
-  expect_identical(.budget_initial_vector(3L, minwidth = 14L), c(4L, 2L, 6L))
+  expect_identical(budget_initial_vector(1L, minwidth = 14L), c(14L))
+  expect_identical(budget_initial_vector(2L, minwidth = 14L), c(4L, 9L))
+  expect_identical(budget_initial_vector(3L, minwidth = 14L), c(4L, 2L, 6L))
   # minwidth 10
-  expect_identical(.budget_initial_vector(2L, minwidth = 10L), c(3L, 6L))
-  expect_identical(.budget_initial_vector(3L, minwidth = 10L), c(3L, 2L, 3L))
+  expect_identical(budget_initial_vector(2L, minwidth = 10L), c(3L, 6L))
+  expect_identical(budget_initial_vector(3L, minwidth = 10L), c(3L, 2L, 3L))
   # minwidth 25
-  expect_identical(.budget_initial_vector(2L, minwidth = 25L), c(7L, 17L))
-  expect_identical(.budget_initial_vector(3L, minwidth = 25L), c(7L, 2L, 14L))
+  expect_identical(budget_initial_vector(2L, minwidth = 25L), c(7L, 17L))
+  expect_identical(budget_initial_vector(3L, minwidth = 25L), c(7L, 2L, 14L))
   # minwidth 28
-  expect_identical(.budget_initial_vector(3L, minwidth = 28L), c(7L, 5L, 14L))
+  expect_identical(budget_initial_vector(3L, minwidth = 28L), c(7L, 5L, 14L))
 })
 
-test_that(".budget_initial works", {
+test_that("budget_initial works", {
   expect_identical(
-    .budget_initial(14L),
+    budget_initial(14L),
     data.frame(
       index =          c( 1L, 1L, 2L, 1L, 2L, 3L),
       index_max =      c( 1L, 2L, 2L, 3L, 3L, 3L),
@@ -68,7 +68,7 @@ test_that(".budget_initial works", {
   )
 })
 
-test_that(".decompose_tz works", {
+test_that("decompose_tz works", {
 
   text <- paste(
     '"index","index_max","tz",                           "component",    "budget_initial"',
@@ -87,13 +87,13 @@ test_that(".decompose_tz works", {
   )
 
   text <- gsub(" ", "", text) # get rid of "formatting" spaces
-  decompose_tz <- read.csv(text = text, stringsAsFactors = FALSE)
+  decomp_tz <- read.csv(text = text, stringsAsFactors = FALSE)
 
-  expect_identical(.decompose_tz(test_olson, 14L), as.data.frame(decompose_tz))
+  expect_identical(decompose_tz(test_olson, 14L), as.data.frame(decomp_tz))
 
 })
 
-test_that(".budget_final works", {
+test_that("budget_final works", {
 
   component <-          c("chicago", "chicago", "denver")
   budget_provisional <- c(       5L,        4L,       3L)
@@ -101,12 +101,12 @@ test_that(".budget_final works", {
   budget_final <-       c(       4L,        4L,       3L)
 
   expect_identical(
-    .budget_final(budget_provisional, component),
+    budget_final(budget_provisional, component),
     budget_final
   )
 })
 
-test_that(".abbv_dict works", {
+test_that("abbv_dict works", {
 
   dict <- c(foo2 = "foo", bar2 = "bar")
 
@@ -115,12 +115,12 @@ test_that(".abbv_dict works", {
   result <-   c( "foo",  "notfoo", "bar2")
 
   expect_identical(
-    .abbv_dict(input, minwidth, dictionary = dict),
+    abbv_dict(input, minwidth, dictionary = dict),
     result
   )
 })
 
-test_that(".abbv_final works", {
+test_that("abbv_final works", {
 
   # this test is a bit pathological as none of the strings
   # is abbreviated to the length we want - instead the point is
@@ -133,7 +133,7 @@ test_that(".abbv_final works", {
   abbv_final <-   c( "nw_yrks",    "new_yrk",    "chcgs",   "chicg")
 
   expect_identical(
-    .abbv_final(abbv_dict, budget_final),
+    abbv_final(abbv_dict, budget_final),
     abbv_final
   )
 

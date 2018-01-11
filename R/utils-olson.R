@@ -49,15 +49,15 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   }
 
   # merge dictionaries, favouring the user-supplied set of dictionaries
-  dictionary_merged <- c(dictionary, .dict_default)
+  dictionary_merged <- c(dictionary, dict_default)
 
   # create data frame for abbreviations
-  df <- .abbreviate_olson_df(tz, minwidth, dictionary = dictionary_merged, ...)
+  df <- abbreviate_olson_df(tz, minwidth, dictionary = dictionary_merged, ...)
 
   # recompose timezones
-  .recompose_tz <- function(x) {paste(x, collapse = "/")}
+  recompose_tz <- function(x) {paste(x, collapse = "/")}
   df_agg <-
-    stats::aggregate(df["abbv_final"], by = df["tz"], FUN = .recompose_tz)
+    stats::aggregate(df["abbv_final"], by = df["tz"], FUN = recompose_tz)
 
   # pull columns out of the data frame to form vector of abbreviations
   tz_abbv <- df_agg[["abbv_final"]]
@@ -67,7 +67,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   tz_abbv[tz]
 }
 
-.abbreviate_olson_df <- function(tz, minwidth = 14L, dictionary = NULL, ...){
+abbreviate_olson_df <- function(tz, minwidth = 14L, dictionary = NULL, ...){
 
   # This function may be useful to call for debugging
   #
@@ -98,10 +98,10 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   # component
   # budget_initial
   #
-  df <- .decompose_tz(tz, minwidth)
+  df <- decompose_tz(tz, minwidth)
 
   # apply dictionary (adds variable abbbv_dict)
-  df$abbv_dict <- .abbv_dict(df$component, df$budget_initial, dictionary)
+  df$abbv_dict <- abbv_dict(df$component, df$budget_initial, dictionary)
 
   # treat the one-, two-, and three-component timezones together
   df_by_index_max <- split(df, df$index_max)
@@ -115,7 +115,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   # abbv_final
   #
   list_df_new <-
-    map(df_by_index_max, .abbreviate_by_index, minwidth = minwidth, ...)
+    map(df_by_index_max, abbreviate_by_index, minwidth = minwidth, ...)
 
   # bind the data frames together
   df_new <- do.call(rbind, list_df_new)
@@ -123,7 +123,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   df_new
 }
 
-.decompose_tz <- function(tz, minwidth = 14L) {
+decompose_tz <- function(tz, minwidth = 14L) {
 
   # tz           `character`, one-or-more Olson timezones
   # minwidth        `integer`, width to which the timezones are to be abbreviated
@@ -140,8 +140,8 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   # left join the Olson components with the inital width-budget
   result <-
     merge(
-      .component(tz),
-      .budget_initial(minwidth),
+      component(tz),
+      budget_initial(minwidth),
       by = c("index", "index_max"),
       all.x = TRUE,
       all.y = FALSE
@@ -150,7 +150,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   result
 }
 
-.component <- function(tz) {
+component <- function(tz) {
 
   # tz           `character`, one-or-more Olson timezones
   #
@@ -182,7 +182,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   )
 }
 
-.budget_initial <- function(minwidth) {
+budget_initial <- function(minwidth) {
 
   # minwidth        `integer`, width to which the timezones are to be abbreviated
   #
@@ -195,7 +195,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
 
   index <- lapply(seq(3), seq)
   index_max <- lapply(seq(3), function(x) {rep(x, x)})
-  budget_initial <- lapply(seq(3), .budget_initial_vector, minwidth = minwidth)
+  budget_initial <- lapply(seq(3), budget_initial_vector, minwidth = minwidth)
 
   data.frame(
     index = unlist(index),
@@ -204,7 +204,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   )
 }
 
-.budget_initial_vector <- function(index_max, minwidth) {
+budget_initial_vector <- function(index_max, minwidth) {
 
   # index_max `integer`, maximum index of component within a timezone
   # minwidth  `integer`, width to which the timezones are to be abbreviated
@@ -271,7 +271,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   result
 }
 
-.abbv_dict <- function(component, minwidth, dictionary) {
+abbv_dict <- function(component, minwidth, dictionary) {
 
   # component   `character`, timezone component (vector)
   # minwidth    `integer`, minimum width for the abbreviation (vector)
@@ -290,7 +290,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   abbrev
 }
 
-.abbreviate_by_index <- function(df, minwidth, ...) {
+abbreviate_by_index <- function(df, minwidth, ...) {
 
   df_by_index <- split(df, df$index)
 
@@ -326,10 +326,10 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
     }
 
     df_index$budget_final <-
-      .budget_final(df_index$budget_provisional, df_index$component)
+      budget_final(df_index$budget_provisional, df_index$component)
 
     df_index$abbv_final <-
-      .abbv_final(df_index$abbv_dict, df_index$budget_final, ...)
+      abbv_final(df_index$abbv_dict, df_index$budget_final, ...)
 
     df_by_index[[index]] <- df_index
   }
@@ -337,7 +337,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   do.call(rbind, df_by_index)
 }
 
-.budget_final <- function(budget_provisional, component) {
+budget_final <- function(budget_provisional, component) {
 
   # budget_provisional  `integer`, vector of provisional width-budget
   # component           `character`, vector of components
@@ -359,7 +359,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
   budget_final
 }
 
-.abbv_final <- function(abbv_dict, budget_final, ...) {
+abbv_final <- function(abbv_dict, budget_final, ...) {
 
   # abbv_dict    `character` dictionary abbreviation
   # budget_final `integer`   length to which to abbreviate
@@ -385,7 +385,7 @@ abbreviate_olson <- function(tz, minwidth = 14L, dictionary = NULL, ...) {
 }
 
 # tries to comport with standard ISO names or or US postal abbreviations
-.dict_default <-
+dict_default <-
   c(
     # first element
     Africa = "Afr",
