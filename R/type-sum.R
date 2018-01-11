@@ -13,7 +13,7 @@ type_sum <- function(x) UseMethod("type_sum")
 #' @export
 type_sum.ordered <- function(x) "ord"
 #' @export
-type_sum.factor <- function(x) "fctr"
+type_sum.factor <- function(x) "fct"
 #' @export
 type_sum.POSIXct <- function(x) "dttm"
 #' @export
@@ -32,8 +32,8 @@ type_sum.default <- function(x) {
       integer = "int",
       double = "dbl",
       character = "chr",
-      complex = "cplx",
-      closure = "fun",
+      complex = "cpl",
+      closure = "fn",
       environment = "env",
       typeof(x)
     )
