@@ -59,7 +59,7 @@ style_bold <- function(x) {
 #' @examples
 #' style_na("NA")
 style_na <- function(x) {
-  crayon::bgYellow(crayon::black(x))
+  crayon::red(x)
 }
 
 #' @details
