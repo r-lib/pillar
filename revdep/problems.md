@@ -77,41 +77,35 @@ Version: 0.3.0
 
 Version: 0.2.0
 
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    ...
-    > ### Name: geocode_tbl
-    > ### Title: Geocode tbl
-    > ### Aliases: geocode_tbl
-    > 
-    > ### ** Examples
-    > 
-    > 
-    > table_test <- tibble::tibble(
-    + x = c("39 quai Andre Citroen", "64 Allee de Bercy", "20 avenue de Segur"), 
-    + y = c("75015", "75012", "75007"), 
-    + z = rnorm(3)
-    + )
-    > 
-    > geocode_tbl(tbl = table_test, adresse = x)
-    Writing tempfile to.../tmp/RtmpW8u4z5/filebbc77b932599.csv
-    If file is larger than 8 MB, it must be splitted
-    Size is : 61 bytes
-    Server errorService UnavailableServer error: (503) Service Unavailable
-    Error in geocode_tbl(tbl = table_test, adresse = x) : 
-      The API sent back an error 503
-    Execution halted
-    ```
-
 ## Newly fixed
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      ── 1. Error: Geocode tbl works  (@test_geocodetbl.R#16)  ───────────────────────
+      The API sent back an error 503
+      1: expect_is(object = banR::geocode_tbl(tbl = table_test, adresse = x, code_postal = y), 
+             class = "tbl_df") at testthat/test_geocodetbl.R:16
+      2: quasi_label(enquo(object), label)
+      3: eval_bare(get_expr(quo), get_env(quo))
+      4: banR::geocode_tbl(tbl = table_test, adresse = x, code_postal = y)
+      5: stop("The API sent back an error ", httr::status_code(query_results))
+      
+      ══ testthat results  ═══════════════════════════════════════════════════════════
+      OK: 6 SKIPPED: 0 FAILED: 1
+      1. Error: Geocode tbl works  (@test_geocodetbl.R#16) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
 
 *   checking re-building of vignette outputs ... WARNING
     ```
     Error in re-building vignettes:
       ...
-    Quitting from lines 52-54 (geocode.Rmd) 
+    Quitting from lines 57-66 (geocode.Rmd) 
     Error: processing vignette 'geocode.Rmd' failed with diagnostics:
     The API sent back an error 503
     Execution halted
@@ -540,15 +534,6 @@ Version: 1.2
       ‘DT’ ‘shinydashboard’
       All declared Imports should be used.
     ```
-
-# getTBinR
-
-Version: 0.5.0
-
-## Newly broken
-
-*   R CMD check timed out
-    
 
 # ggalt
 
@@ -1355,6 +1340,18 @@ Version: 0.1.1
     ```
     Namespaces in Imports field not imported from:
       ‘Rgraphviz’ ‘cluster’ ‘graph’
+      All declared Imports should be used.
+    ```
+
+# PKPDmisc
+
+Version: 2.1.1
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘purrr’
       All declared Imports should be used.
     ```
 

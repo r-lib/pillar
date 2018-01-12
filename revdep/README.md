@@ -24,19 +24,16 @@
 
 # Revdeps
 
-## Couldn't check (3)
+## Couldn't check (1)
 
-|package                              |version |error  |warning |note |
-|:------------------------------------|:-------|:------|:-------|:----|
-|[cdcfluview](problems.md#cdcfluview) |0.7.0   |1      |        |     |
-|[getTBinR](problems.md#gettbinr)     |0.5.0   |__+1__ |        |     |
-|PKPDmisc                             |?       |       |        |     |
+|package                              |version |error |warning |note |
+|:------------------------------------|:-------|:-----|:-------|:----|
+|[cdcfluview](problems.md#cdcfluview) |0.7.0   |1     |        |     |
 
-## Broken (5)
+## Broken (4)
 
 |package                          |version |error  |warning |note |
 |:--------------------------------|:-------|:------|:-------|:----|
-|[banR](problems.md#banr)         |0.2.0   |__+1__ |-1      |1    |
 |[GSODR](problems.md#gsodr)       |1.1.2   |       |__+1__  |     |
 |[hms](problems.md#hms)           |0.4.0   |__+1__ |        |     |
 |[tibble](problems.md#tibble)     |1.4.1   |__+1__ |        |     |
@@ -54,7 +51,7 @@
 |atlantistools                                      |0.4.3    |       |        |     |
 |[available](problems.md#available)                 |1.0.0    |       |        |1    |
 |[babynames](problems.md#babynames)                 |0.3.0    |       |        |1    |
-|[banR](problems.md#banr)                           |0.2.0    |__+1__ |-1      |1    |
+|[banR](problems.md#banr)                           |0.2.0    |-1     |-1      |1    |
 |[bcmaps](problems.md#bcmaps)                       |0.16.0   |       |        |2    |
 |[bikedata](problems.md#bikedata)                   |0.1.0    |       |        |1    |
 |[billboard](problems.md#billboard)                 |0.1.0    |       |        |2    |
@@ -135,7 +132,7 @@
 |GetDFPData                                         |0.5      |       |        |     |
 |GetITRData                                         |0.6      |       |        |     |
 |getlandsat                                         |0.1.0    |       |        |     |
-|[getTBinR](problems.md#gettbinr)                   |0.5.0    |__+1__ |        |     |
+|getTBinR                                           |0.5.0    |       |        |     |
 |[ggalt](problems.md#ggalt)                         |0.4.0    |       |        |1    |
 |[ggconf](problems.md#ggconf)                       |0.1      |       |        |1    |
 |[ggeffects](problems.md#ggeffects)                 |0.3.0    |       |        |1    |
@@ -225,7 +222,7 @@
 |phylopath                                          |1.0.0    |       |        |     |
 |pinnacle.data                                      |0.1.4    |       |        |     |
 |pkggraph                                           |0.2.2    |       |        |     |
-|PKPDmisc                                           |?        |       |        |     |
+|[PKPDmisc](problems.md#pkpdmisc)                   |2.1.1    |       |        |1    |
 |plotly                                             |4.7.1    |       |        |     |
 |[pointblank](problems.md#pointblank)               |0.1      |       |        |1    |
 |[poio](problems.md#poio)                           |0.0-3    |       |        |2    |
