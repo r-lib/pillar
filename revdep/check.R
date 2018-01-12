@@ -52,3 +52,7 @@ withr::with_output_sink(
   "revdep/cran.md",
   revdep_report_cran()
 )
+
+system("git add revdep/*.md")
+system("git commit -m 'update revdep results'")
+system("git push -u origin HEAD")
