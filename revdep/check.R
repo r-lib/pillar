@@ -23,6 +23,8 @@ if (length(revdep_todo()) == 0) {
     todo_import_revdeps <- setdiff(new_import_revdeps, import_revdeps)
     import_revdeps <- union(import_revdeps, new_import_revdeps)
     print(new_import_revdeps)
+
+    break # only one level for now
   }
 
   weak_revdeps <- revdepcheck:::cran_revdeps(package = package, dependencies = c("Suggests", "Enhances", "LinkingTo"), bioc = TRUE)
