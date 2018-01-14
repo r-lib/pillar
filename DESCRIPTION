@@ -19,7 +19,7 @@ Imports:
     methods,
     rlang,
     stats,
-    utf8
+    utf8 (>= 1.1.3)
 Suggests:
     knitr,
     memoise,
