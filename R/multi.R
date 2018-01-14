@@ -285,7 +285,7 @@ all_pillars_fit <- function(tier_df) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_col_widths_df <- function(col_df, width, tier_id = 1L) {
+colonnade_compute_col_widths_df <- function(col_df, width, tier_id) {
   col_widths <- colonnade_compute_col_widths(
     col_df$min_widths,
     col_df$max_widths,
