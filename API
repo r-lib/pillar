@@ -25,7 +25,7 @@ type_sum(x)
 
 ## Own S3 methods
 
-extra_cols.squeezed_colonnade(x, ...)
+extra_cols.squeezed_colonnade(x, ..., n = Inf)
 is_vector_s3.Date(x)
 is_vector_s3.POSIXct(x)
 is_vector_s3.data.frame(x)
@@ -58,6 +58,7 @@ type_sum.ordered(x)
 
 format.colonnade(x, ...)
 format.pillar(x, width = NULL, ...)
+format.pillar_capital(x, width, ...)
 format.pillar_shaft(x, width, ...)
 format.pillar_shaft_decimal(x, width, ...)
 format.pillar_shaft_simple(x, width, ...)

@@ -1,3 +1,8 @@
+### pillar 1.0.99.9001 (2018-01-14)
+
+- Very wide tibbles now print faster (#85).
+
+
 # pillar 1.0.99.9000 (2018-01-11)
 
 - `NA` values are now shown in plain red, without changing the background color (#70).
