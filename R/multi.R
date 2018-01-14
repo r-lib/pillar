@@ -57,14 +57,14 @@ squeeze <- function(x, width = NULL, ...) {
   if (is.null(rowid)) rowid_width <- 0
   else rowid_width <- max(get_widths(rowid)) + 1L
 
-  x <- mount_pillars(x)
+  pillars <- mount_pillars(x)
 
-  col_widths <- colonnade_get_width(x, width, rowid_width)
+  col_widths <- colonnade_get_width(pillars, width, rowid_width)
   col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
   col_widths_shown <- col_widths_show[["TRUE"]]
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
   out <- map(col_widths_tiers, function(tier) {
-    map2(x[tier$id], tier$width, pillar_format_parts)
+    map2(pillars[tier$id], tier$width, pillar_format_parts)
   })
 
   if (!is.null(rowid)) {
@@ -73,7 +73,7 @@ squeeze <- function(x, width = NULL, ...) {
   }
 
   col_widths_extra <- col_widths_show[["FALSE"]]
-  new_colonnade_sqeezed(out, x[col_widths_extra$id])
+  new_colonnade_sqeezed(out, pillars[col_widths_extra$id])
 }
 
 mount_pillars <- function(x) {
