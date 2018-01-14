@@ -109,7 +109,7 @@ get_rowid_from_colonnade <- function(x) {
 new_colonnade_sqeezed <- function(x, extra_cols) {
   structure(
     x,
-    extra_cols = map_chr(extra_cols, pillar_format_abbrev),
+    extra_cols = map_chr(map(extra_cols, `[[`, "capital"), capital_format_abbrev),
     class = "squeezed_colonnade"
   )
 }
@@ -122,14 +122,12 @@ format.squeezed_colonnade <- function(x, ...) {
 
 format_colonnade_tier <- function(x) {
   xt <- list(
-    title = map(x, `[[`, "title_format"),
-    type = map(x, `[[`, "type_format"),
+    capital = map(x, `[[`, "capital_format"),
     data = map(x, `[[`, "data_format")
   )
 
   c(
-    invoke(paste, xt$title),
-    invoke(paste, xt$type),
+    invoke(paste, xt$capital),
     invoke(paste, xt$data)
   )
 }
@@ -146,8 +144,9 @@ knit_print.squeezed_colonnade <- function(x, ...) {
 }
 
 knit_print_squeezed_colonnade_tier <- function(x) {
-  header <- map_chr(x, `[[`, "title_format")
-  col <- map(x, function(xx) c(xx[["type_format"]], xx[["data_format"]]))
+  # Hack
+  header <- map_chr(map(x, `[[`, "capital_format"), `[[`, "title_format")
+  col <- map(x, function(xx) c(xx[["capital_format"]][["type_format"]], xx[["data_format"]]))
 
   knitr::kable(as.data.frame(col), row.names = NA, col.names = header)
 }
