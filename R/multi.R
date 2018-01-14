@@ -23,7 +23,7 @@
 #' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
   proxy <- structure(x, has_row_id = has_row_id)
-  ret <- structure(mount_pillars(proxy), class = "colonnade")
+  ret <- structure(proxy, class = "colonnade")
   ret <- set_width(ret, width)
   ret
 }
@@ -39,9 +39,10 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
 #' @examples
 #' squeeze(colonnade(long_string), width = 20)
 squeeze <- function(x, width = NULL, ...) {
-  # Hacky shortcut for zero-height corner case
-  if (attr(x, "zero_height")) {
-    return(new_colonnade_sqeezed(list(), x))
+  # Shortcut for zero-height corner case
+  zero_height <- length(x) == 0L || length(x[[1]]) == 0L
+  if (zero_height) {
+    return(new_colonnade_sqeezed(list(), mount_pillars(x)))
   }
 
   if (is.null(width)) {
@@ -51,6 +52,8 @@ squeeze <- function(x, width = NULL, ...) {
   if (is.null(width)) {
     width <- getOption("width")
   }
+
+  x <- mount_pillars(x)
 
   rowid <- attr(x, "rowid")
   if (is.null(rowid)) rowid_width <- 0
@@ -91,9 +94,8 @@ mount_pillars <- function(x) {
   } else {
     rowid <- NULL
   }
-  zero_height <- length(x) == 0L || length(x[[1]]) == 0L
 
-  ret <- structure(ret, zero_height = zero_height, rowid = rowid, class = "colonnade_proxy")
+  ret <- structure(ret, rowid = rowid, class = "mounted_colonnade")
   ret
 }
 
