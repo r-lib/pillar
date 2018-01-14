@@ -29,11 +29,17 @@ It returns an object suitable for printing and formatting at a fixed width
 with additional information about omitted columns.
 }
 \details{
-In a first pass, for each pillar it is decided in which tier it is shown,
-if at all, and how much horizontal space it may use (either its minimum
-or its maximum width). More than one tier may be created if
-\code{width > getOption("width")}, in this case each tier is at most
-\code{getOption("width")} characters wide.
+Pillars may be distributed over multiple tiers if
+\code{width > getOption("width")}. In this case each tier is at most
+\code{getOption("width")} characters wide. The very first step of formatting
+is to determine how many tiers are shown at most, and the width of each
+tier.
+
+To avoid unnecessary computation for showing very wide colonnades, a first
+pass tries to fit all capitals into the tiers.
+For each pillar whose capital fits, it is then decided in which tier it is
+shown, if at all, and how much horizontal space it may use (either its
+minimum or its maximum width).
 Remaining space is then distributed proportionally to pillars that do not
 use their desired width.
 

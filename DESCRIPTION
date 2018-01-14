@@ -26,7 +26,8 @@ Suggests:
     testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
 RoxygenNote: 6.0.1
-Collate:
+Collate: 
+    'capital.R'
     'compat-purrr.R'
     'dim.R'
     'extent.R'
@@ -34,6 +35,7 @@ Collate:
     'ornament.R'
     'pillar-package.R'
     'pillar.R'
+    'rowid-capital.R'
     'rowid-data.R'
     'rowid-title.R'
     'rowid-type.R'
