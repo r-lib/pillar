@@ -195,9 +195,10 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #'
   #' To avoid unnecessary computation for showing very wide colonnades, a first
   #' pass tries to fit all capitals into the tiers.
-  capitals <- mount_pillars(x, pillar_fun = pillar_capital)
+  init_cols <- min(length(x), floor(sum(tier_widths) / (MIN_PILLAR_WIDTH + 1L)))
+  capitals <- mount_pillars(x[seq_len(init_cols)], pillar_fun = pillar_capital)
   init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths, refine = FALSE)
-  pillar_shown <- which(init_col_widths_df$tier != 0L)
+  pillar_shown <- init_col_widths_df$id[init_col_widths_df$tier != 0L]
   if (length(pillar_shown) < length(x)) {
     # (Include one more pillar to indicate that the data is too wide.)
     pillar_shown <- c(pillar_shown, pillar_shown[length(pillar_shown)] + 1L)
