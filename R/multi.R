@@ -111,7 +111,7 @@ format_colonnade_tier <- function(x) {
 
   c(
     invoke(paste, xt$title),
-    style_type_header(invoke(paste, xt$type)),
+    invoke(paste, xt$type),
     invoke(paste, xt$data)
   )
 }

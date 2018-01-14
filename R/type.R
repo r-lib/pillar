@@ -1,7 +1,3 @@
-style_type_header <- function(x) {
-  style_type(x)
-}
-
 style_type <- function(x) {
   crayon::italic(style_subtle(x))
 }
@@ -26,7 +22,5 @@ pillar_type <- function(x, ...) {
 format.pillar_type <- function(x, width = NULL, ...) {
   if (is.null(width) || width >= get_width(x)) type <- x$type
   else type <- crayon::col_substr(x$type, 1, width - 2)
-  # Style is applied later on because we want a continuous underline over the
-  # whole width and over all columns in colonnade()
-  paste0("<", type, ">")
+  style_type(paste0("<", type, ">"))
 }
