@@ -98,12 +98,12 @@ pillar_format_parts <- function(x, width, ...) {
   )
 }
 
-format_abbrev <- function(x, title = NULL, ...) {
-  type_format <- format(pillar_type(x), width = Inf, ...)
+format_abbrev <- function(x, title = NULL) {
+  type_format <- format_full_pillar_type(x)
   if (is.null(title)) {
     type_format
   } else {
-    title_format <- format(pillar_title(title), width = Inf, ...)
+    title_format <- format_full_pillar_title(title)
     paste0(title_format, "\u00a0", type_format)
   }
 }
