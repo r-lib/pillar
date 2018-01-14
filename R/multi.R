@@ -42,7 +42,7 @@ squeeze <- function(x, width = NULL, ...) {
   # Shortcut for zero-height corner case
   zero_height <- length(x) == 0L || length(x[[1]]) == 0L
   if (zero_height) {
-    return(new_colonnade_sqeezed(list(), mount_pillars(x, pillar_capital)))
+    return(new_colonnade_sqeezed(list(), colonnade = x, extra_cols = seq_along(x)))
   }
 
   if (is.null(width)) {
@@ -71,10 +71,8 @@ squeeze <- function(x, width = NULL, ...) {
     out <- map(out, function(x) c(list(rowid_formatted), x))
   }
 
-  extra_col_id <- seq2(nrow(col_widths_shown) + 1L, length(x))
-  extra_cols <- mount_pillars(x[extra_col_id], pillar_capital)
-
-  new_colonnade_sqeezed(out, extra_cols)
+  extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(x))
+  new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
 }
 
 mount_pillars <- function(x, pillar_fun = pillar) {
@@ -106,10 +104,12 @@ get_rowid_from_colonnade <- function(x) {
   rowid
 }
 
-new_colonnade_sqeezed <- function(x, extra_cols) {
+new_colonnade_sqeezed <- function(x, colonnade, extra_cols) {
+  extra_capitals <- mount_pillars(colonnade[extra_cols], pillar_capital)
+
   structure(
     x,
-    extra_cols = map(extra_cols, capital_format_abbrev),
+    extra_cols = map(extra_capitals, capital_format_abbrev),
     class = "squeezed_colonnade"
   )
 }
