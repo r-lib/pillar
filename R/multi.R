@@ -75,16 +75,22 @@ squeeze <- function(x, width = NULL, ...) {
   new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
 }
 
-mount_pillars <- function(x, pillar_fun = pillar) {
-  has_title <- is_named(x)
-  if (has_title) {
-    ret <- map2(x, names(x), pillar_fun)
+map_named <- function(.x, .f) {
+  names <- names(.x)
+  if (!is.null(names)) {
+    map2(.x, names, .f)
   } else {
-    ret <- map(x, pillar_fun)
+    map(.x, .f)
   }
+}
 
-  ret <- structure(ret, class = "mounted_colonnade")
-  ret
+map_chr_named <- function(.x, .f) {
+  names <- names(.x)
+  if (!is.null(names)) {
+    map2_chr(.x, names, .f)
+  } else {
+    map_chr(.x, .f)
+  }
 }
 
 get_rowid_from_colonnade <- function(x) {
@@ -165,8 +171,7 @@ extra_cols <- function(x, ...) {
 
 #' @export
 extra_cols.squeezed_colonnade <- function(x, ...) {
-  extra_capitals <- mount_pillars(attr(x, "extra_cols"), pillar_capital)
-  map_chr(extra_capitals, capital_format_abbrev)
+  map_chr_named(attr(x, "extra_cols"), format_abbrev)
 }
 
 #' @export
@@ -195,7 +200,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' To avoid unnecessary computation for showing very wide colonnades, a first
   #' pass tries to fit all capitals into the tiers.
   init_cols <- min(length(x), floor(sum(tier_widths) / (MIN_PILLAR_WIDTH + 1L)))
-  capitals <- mount_pillars(x[seq_len(init_cols)], pillar_fun = pillar_capital)
+  capitals <- map_named(x[seq_len(init_cols)], pillar_capital)
   init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths, refine = FALSE)
   pillar_shown <- init_col_widths_df$id[init_col_widths_df$tier != 0L]
   if (length(pillar_shown) < length(x)) {
@@ -206,7 +211,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' For each pillar whose capital fits, it is then decided in which tier it is
   #' shown, if at all, and how much horizontal space it may use (either its
   #' minimum or its maximum width).
-  pillars <- mount_pillars(x[pillar_shown])
+  pillars <- map_named(x[pillar_shown], pillar)
   col_widths_df <- colonnade_compute_tiered_col_widths(pillars, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not
