@@ -22,10 +22,10 @@ Imports:
     utf8
 Suggests:
     knitr,
-    testthat,
-    memoise
+    memoise,
+    testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
 Collate:
     'compat-purrr.R'
     'dim.R'

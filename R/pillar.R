@@ -61,7 +61,7 @@ format.pillar <- function(x, width = NULL, ...) {
   width <- pillar_get_width(x, width)
   out <- pillar_format_parts(x, width)
 
-  fmt <- c(out$title_format, style_type_header(out$type_format), out$data_format)
+  fmt <- c(out$title_format, out$type_format, out$data_format)
   new_vertical(fmt)
 }
 
@@ -105,6 +105,6 @@ pillar_format_parts <- function(x, width, ...) {
 
 pillar_format_abbrev <- function(x, ...) {
   title_format <- format(x$title, width = Inf, ...)
-  type_format <- style_type(format(x$type, width = Inf, ...))
+  type_format <- format(x$type, width = Inf, ...)
   paste0(title_format, "\u00a0", type_format)
 }
