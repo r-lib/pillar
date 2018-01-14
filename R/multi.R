@@ -22,12 +22,21 @@
 #' # If width is larger than getOption("width"), multiple tiers are created:
 #' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
+  proxy <- structure(x, has_row_id = has_row_id)
+  ret <- structure(mount_pillars(proxy), class = "colonnade")
+  ret <- set_width(ret, width)
+  ret
+}
+
+mount_pillars <- function(x) {
   has_title <- is_named(x)
   if (has_title) {
     ret <- map2(x, names(x), pillar)
   } else {
     ret <- map(x, pillar)
   }
+
+  has_row_id <- attr(x, "has_row_id")
   if (!is_false(has_row_id) && length(x) > 0) {
     rowid <- rowidformat(
       length(x[[1]]),
@@ -38,8 +47,8 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
     rowid <- NULL
   }
   zero_height <- length(x) == 0L || length(x[[1]]) == 0L
-  ret <- structure(ret, zero_height = zero_height, rowid = rowid, class = "colonnade")
-  ret <- set_width(ret, width)
+
+  ret <- structure(ret, zero_height = zero_height, rowid = rowid, class = "colonnade_proxy")
   ret
 }
 
