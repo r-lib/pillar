@@ -27,7 +27,9 @@ type_sum.POSIXct <- function(x) {
   abbreviations <- abbreviate_olson(OlsonNames(), minwidth = budget)
 
   tz <- attr(x, "tzone")
-  if (identical(tz, "")) {
+
+  # return if we do not have tz in OlsonNames()
+  if (!identical(tz %in% OlsonNames(), TRUE)) {
     return(prefix)
   }
 
