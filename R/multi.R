@@ -53,11 +53,11 @@ squeeze <- function(x, width = NULL, ...) {
     width <- getOption("width")
   }
 
-  x <- mount_pillars(x)
-
-  rowid <- attr(x, "rowid")
+  rowid <- get_rowid_from_colonnade(x)
   if (is.null(rowid)) rowid_width <- 0
   else rowid_width <- max(get_widths(rowid)) + 1L
+
+  x <- mount_pillars(x)
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
   col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
@@ -84,6 +84,13 @@ mount_pillars <- function(x) {
     ret <- map(x, pillar)
   }
 
+  ret <- structure(ret, class = "mounted_colonnade")
+  ret
+}
+
+get_rowid_from_colonnade <- function(x) {
+  has_title <- is_named(x)
+
   has_row_id <- attr(x, "has_row_id")
   if (!is_false(has_row_id) && length(x) > 0) {
     rowid <- rowidformat(
@@ -95,8 +102,7 @@ mount_pillars <- function(x) {
     rowid <- NULL
   }
 
-  ret <- structure(ret, rowid = rowid, class = "mounted_colonnade")
-  ret
+  rowid
 }
 
 new_colonnade_sqeezed <- function(x, extra_cols) {
