@@ -55,6 +55,26 @@ test_that("output test", {
     xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 10))),
     filename = "multi-extra-10.txt"
   )
+
+  expect_pillar_output(
+    xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 20))),
+    filename = "multi-extra-20.txt"
+  )
+
+  expect_pillar_output(
+    xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 30))),
+    filename = "multi-extra-30.txt"
+  )
+
+  expect_pillar_output(
+    xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 35))),
+    filename = "multi-extra-35.txt"
+  )
+
+  expect_pillar_output(
+    xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 40))),
+    filename = "multi-extra-40.txt"
+  )
 })
 
 test_that("tests from tibble", {
@@ -144,6 +164,16 @@ test_that("empty", {
   expect_equal(
     format(colonnade(iris[1:5, character()], width = 30)),
     structure(character(), class = "pillar_vertical")
+  )
+})
+
+test_that("NA names", {
+  x <- list(`NA` = 1:3, set_to_NA = 4:6)
+  names(x)[[2]] <- NA_character_
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(x, width = 30),
+    filename = "na-names.txt"
   )
 })
 

@@ -1,5 +1,5 @@
    [1mchars[22m          [1mdesc[22m              
-[3m[90m   <chr>          <chr>             [39m[23m
+   [3m[90m<chr>[39m[23m          [3m[90m<chr>[39m[23m             
 [90m 1[39m [90m"[39m\u0001\u001f[90m"[39m C0 control code   
 [90m 2[39m [90m"[39m\a\b\f\n\r\t[90m"[39m Named control code
 [90m 3[39m abcdefuvwxyz   ASCII             

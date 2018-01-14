@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.0.99.9000
+Version: 1.0.99.9001
 Authors@R: c(
     person("Kirill", "Müller", , "krlmlr+r@mailbox.org", role = c("aut", "cre")),
     person("Hadley", "Wickham", role = "aut"),
@@ -18,13 +18,14 @@ Imports:
     crayon (>= 1.3.4),
     methods,
     rlang,
-    utf8
+    utf8 (>= 1.1.3)
 Suggests: 
     knitr,
-    testthat
+    testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
 RoxygenNote: 6.0.1
 Collate: 
+    'capital.R'
     'compat-purrr.R'
     'dim.R'
     'extent.R'
@@ -32,6 +33,7 @@ Collate:
     'ornament.R'
     'pillar-package.R'
     'pillar.R'
+    'rowid-capital.R'
     'rowid-data.R'
     'rowid-title.R'
     'rowid-type.R'
