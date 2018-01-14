@@ -71,8 +71,8 @@ squeeze <- function(x, width = NULL, ...) {
     out <- map(out, function(x) c(list(rowid_formatted), x))
   }
 
-  col_widths_extra <- col_widths_show[["FALSE"]]
-  extra_cols <- mount_pillars(x[col_widths_extra$id], pillar_capital)
+  extra_col_id <- seq2(nrow(col_widths_shown) + 1L, length(x))
+  extra_cols <- mount_pillars(x[extra_col_id], pillar_capital)
 
   new_colonnade_sqeezed(out, extra_cols)
 }
@@ -193,10 +193,20 @@ colonnade_get_width <- function(x, width, rowid_width) {
   tier_widths <- get_tier_widths(width, length(x), rowid_width)
 
   #'
-  #' In a first pass, for each pillar it is decided in which tier it is shown,
-  #' if at all, and how much horizontal space it may use (either its minimum
-  #' or its maximum width).
-  pillars <- mount_pillars(x)
+  #' To avoid unnecessary computation for showing very wide colonnades, a first
+  #' pass tries to fit all capitals into the tiers.
+  capitals <- mount_pillars(x, pillar_fun = pillar_capital)
+  init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths, refine = FALSE)
+  pillar_shown <- which(init_col_widths_df$tier != 0L)
+  if (length(pillar_shown) < length(x)) {
+    # (Include one more pillar to indicate that the data is too wide.)
+    pillar_shown <- c(pillar_shown, pillar_shown[length(pillar_shown)] + 1L)
+  }
+
+  #' For each pillar whose capital fits, it is then decided in which tier it is
+  #' shown, if at all, and how much horizontal space it may use (either its
+  #' minimum or its maximum width).
+  pillars <- mount_pillars(x[pillar_shown])
   col_widths_df <- colonnade_compute_tiered_col_widths(pillars, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not
@@ -218,14 +228,14 @@ get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("wi
   widths[widths >= 1]
 }
 
-colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
+colonnade_compute_tiered_col_widths <- function(pillars, tier_widths, refine = TRUE) {
   col_df <- data.frame(
     id = seq_along(pillars),
     max_widths = map_int(map(pillars, get_widths), max),
     min_widths = map_int(map(pillars, get_min_widths), max)
   )
 
-  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame())
+  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, refine = refine, data.frame(tier = integer()))
   ret$pillar <- pillars
   ret
 }
@@ -233,8 +243,8 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_tier_df) {
-  if (nrow(col_df) == 0L) return(data.frame())
+colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, refine, fixed_tier_df) {
+  if (nrow(col_df) == 0L) return(fixed_tier_df)
 
   tier_id <- max(c(fixed_tier_df$tier), 0L) + 1L
   tier_df <- colonnade_compute_col_widths_df(col_df, tier_widths[[1]], tier_id)
@@ -253,11 +263,12 @@ colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_ti
   all_tier_df <- colonnade_compute_tiered_col_widths_df(
     col_df[tier_df$tier == 0, ],
     tier_widths[-1],
+    refine,
     rbind(fixed_tier_df, slice(tier_df, tier_df$tier != 0))
   )
 
   #' If there still are pillars that don't fit, the minimum-width fit is accepted.
-  if (!all_pillars_fit(all_tier_df)) return(all_tier_df)
+  if (!refine || !all_pillars_fit(all_tier_df)) return(all_tier_df)
 
   #'
   #' In case all remaining pillars fit all remaining tiers, a heuristic
@@ -272,6 +283,7 @@ colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_ti
     all_tier_try_df <- colonnade_compute_tiered_col_widths_df(
       slice(col_df, seq2(n_pillars_in_first_tier + 1L, nrow(col_df))),
       tier_widths[-1],
+      refine,
       rbind(fixed_tier_df, slice(tier_df, seq_len(n_pillars_in_first_tier)))
     )
 
@@ -337,6 +349,9 @@ colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
+  # Necessary, because rbind() is NULL
+  if (nrow(col_widths_df) == 0) return(col_widths_df)
+
   col_widths_split <- split(col_widths_df, col_widths_df$tier)
   if (any(col_widths_df$tier == 0)) tier_widths <- c(NA, tier_widths)
   tier_widths <- tier_widths[seq_along(col_widths_split)]
