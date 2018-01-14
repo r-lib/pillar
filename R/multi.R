@@ -169,9 +169,18 @@ extra_cols <- function(x, ...) {
   UseMethod("extra_cols")
 }
 
+#' @rdname extra_cols
+#' @param n The number of extra columns to return; the returned vector will
+#'   always contain as many elements as there are extra columns, but elements
+#'   beyond `n` will be `NA`.
 #' @export
-extra_cols.squeezed_colonnade <- function(x, ...) {
-  map_chr_named(attr(x, "extra_cols"), format_abbrev)
+extra_cols.squeezed_colonnade <- function(x, ..., n = Inf) {
+  extra_cols <- attr(x, "extra_cols")
+  ret <- rep(NA_character_, length(extra_cols))
+
+  idx <- seq_len(min(length(extra_cols), n))
+  ret[idx] <- map_chr_named(extra_cols[idx], format_abbrev)
+  ret
 }
 
 #' @export
