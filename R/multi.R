@@ -57,12 +57,13 @@ squeeze <- function(x, width = NULL, ...) {
   if (is.null(rowid)) rowid_width <- 0
   else rowid_width <- max(get_widths(rowid)) + 1L
 
-  pillars <- mount_pillars(x)
 
-  col_widths <- colonnade_get_width(pillars, width, rowid_width)
+  col_widths <- colonnade_get_width(x, width, rowid_width)
   col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
   col_widths_shown <- col_widths_show[["TRUE"]]
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
+
+  pillars <- col_widths$pillar
   out <- map(col_widths_tiers, function(tier) {
     map2(pillars[tier$id], tier$width, pillar_format_parts)
   })
@@ -184,10 +185,12 @@ print.colonnade <- function(x, ...) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_get_width <- function(x, width, rowid_width) {
+  pillars <- mount_pillars(x)
+
   col_df <- data.frame(
-    id = seq_along(x),
-    max_widths = map_int(map(x, get_widths), max),
-    min_widths = map_int(map(x, get_min_widths), max)
+    id = seq_along(pillars),
+    max_widths = map_int(map(pillars, get_widths), max),
+    min_widths = map_int(map(pillars, get_min_widths), max)
   )
 
   #' @details
@@ -201,7 +204,10 @@ colonnade_get_width <- function(x, width, rowid_width) {
 
   #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
-  colonnade_distribute_space_df(col_widths_df, tier_widths)
+  col_widths_df <- colonnade_distribute_space_df(col_widths_df, tier_widths)
+
+  col_widths_df$pillar <- pillars
+  col_widths_df
 }
 
 get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("width")) {
