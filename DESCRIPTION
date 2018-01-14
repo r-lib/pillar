@@ -18,9 +18,11 @@ Imports:
     crayon (>= 1.3.4),
     methods,
     rlang,
+    stats,
     utf8 (>= 1.1.3)
-Suggests: 
+Suggests:
     knitr,
+    memoise,
     testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
 RoxygenNote: 6.0.1
@@ -50,6 +52,7 @@ Collate:
     'title.R'
     'type-sum.R'
     'type.R'
+    'utils-olson.R'
     'utils.R'
     'width.R'
     'zzz.R'

@@ -2,6 +2,7 @@
 
 ## Exported functions
 
+abbreviate_olson(tz, minwidth = 14L, dictionary = NULL, ...)
 colonnade(x, has_row_id = TRUE, width = NULL, ...)
 dim_desc(x)
 expect_known_display(object, file, ..., width = 80L, crayon = TRUE)
@@ -23,9 +24,20 @@ style_num(x, negative, significant = rep_along(x, TRUE))
 style_subtle(x)
 type_sum(x)
 
-## Own S3 methods
+## S3 methods
 
 extra_cols.squeezed_colonnade(x, ...)
+format.colonnade(x, ...)
+format.pillar(x, width = NULL, ...)
+format.pillar_shaft(x, width, ...)
+format.pillar_shaft_decimal(x, width, ...)
+format.pillar_shaft_simple(x, width, ...)
+format.pillar_title(x, width, ...)
+format.pillar_type(x, width = NULL, ...)
+format.rif_data(x, width, ...)
+format.rif_title(x, width, ...)
+format.rif_type(x, width = NULL, ...)
+format.squeezed_colonnade(x, ...)
 is_vector_s3.Date(x)
 is_vector_s3.POSIXct(x)
 is_vector_s3.data.frame(x)
@@ -75,3 +87,11 @@ print.pillar_vertical(x, ...)
 print.rif_data(x, ...)
 print.spark(x, ...)
 print.squeezed_colonnade(x, ...)
+type_sum.AsIs(x)
+type_sum.Date(x)
+type_sum.POSIXct(x)
+type_sum.data.frame(x)
+type_sum.default(x)
+type_sum.difftime(x)
+type_sum.factor(x)
+type_sum.ordered(x)
