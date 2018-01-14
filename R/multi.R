@@ -246,7 +246,8 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths, refine = T
   col_df <- data.frame(
     id = seq_along(pillars),
     max_widths = map_int(map(pillars, get_widths), max),
-    min_widths = map_int(map(pillars, get_min_widths), max)
+    min_widths = map_int(map(pillars, get_min_widths), max),
+    row.names = NULL
   )
 
   ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, refine = refine, data.frame(tier = integer()))

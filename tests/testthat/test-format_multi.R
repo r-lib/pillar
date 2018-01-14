@@ -167,6 +167,16 @@ test_that("empty", {
   )
 })
 
+test_that("NA names", {
+  x <- list(`NA` = 1:3, set_to_NA = 4:6)
+  names(x)[[2]] <- NA_character_
+  expect_pillar_output(
+    crayon = FALSE,
+    xf = colonnade(x, width = 30),
+    filename = "na-names.txt"
+  )
+})
+
 test_that("without styling", {
   xf <- colonnade(list(x = (10 ^ (-3:4)) * c(-1, 1)))
 
