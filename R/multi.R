@@ -28,30 +28,6 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
   ret
 }
 
-mount_pillars <- function(x) {
-  has_title <- is_named(x)
-  if (has_title) {
-    ret <- map2(x, names(x), pillar)
-  } else {
-    ret <- map(x, pillar)
-  }
-
-  has_row_id <- attr(x, "has_row_id")
-  if (!is_false(has_row_id) && length(x) > 0) {
-    rowid <- rowidformat(
-      length(x[[1]]),
-      has_star = identical(has_row_id, "*"),
-      has_title_row = has_title
-    )
-  } else {
-    rowid <- NULL
-  }
-  zero_height <- length(x) == 0L || length(x[[1]]) == 0L
-
-  ret <- structure(ret, zero_height = zero_height, rowid = rowid, class = "colonnade_proxy")
-  ret
-}
-
 #' @description
 #' The `squeeze()` function is called by [format()]  and [print()] and usually
 #' doesn't need to be called manually.
@@ -95,6 +71,30 @@ squeeze <- function(x, width = NULL, ...) {
 
   col_widths_extra <- col_widths_show[["FALSE"]]
   new_colonnade_sqeezed(out, x[col_widths_extra$id])
+}
+
+mount_pillars <- function(x) {
+  has_title <- is_named(x)
+  if (has_title) {
+    ret <- map2(x, names(x), pillar)
+  } else {
+    ret <- map(x, pillar)
+  }
+
+  has_row_id <- attr(x, "has_row_id")
+  if (!is_false(has_row_id) && length(x) > 0) {
+    rowid <- rowidformat(
+      length(x[[1]]),
+      has_star = identical(has_row_id, "*"),
+      has_title_row = has_title
+    )
+  } else {
+    rowid <- NULL
+  }
+  zero_height <- length(x) == 0L || length(x[[1]]) == 0L
+
+  ret <- structure(ret, zero_height = zero_height, rowid = rowid, class = "colonnade_proxy")
+  ret
 }
 
 new_colonnade_sqeezed <- function(x, extra_cols) {
