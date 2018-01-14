@@ -105,11 +105,9 @@ get_rowid_from_colonnade <- function(x) {
 }
 
 new_colonnade_sqeezed <- function(x, colonnade, extra_cols) {
-  extra_capitals <- mount_pillars(colonnade[extra_cols], pillar_capital)
-
   structure(
     x,
-    extra_cols = map(extra_capitals, capital_format_abbrev),
+    extra_cols = colonnade[extra_cols],
     class = "squeezed_colonnade"
   )
 }
@@ -167,7 +165,8 @@ extra_cols <- function(x, ...) {
 
 #' @export
 extra_cols.squeezed_colonnade <- function(x, ...) {
-  attr(x, "extra_cols")
+  extra_capitals <- mount_pillars(attr(x, "extra_cols"), pillar_capital)
+  map_chr(extra_capitals, capital_format_abbrev)
 }
 
 #' @export
