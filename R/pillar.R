@@ -34,11 +34,10 @@
 #' pillar(date + c(1, NA, 3:5))
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
-  title <- pillar_title(title, ...)
-  type <- pillar_type(x, ...)
+  capital <- pillar_capital(x, title, ...)
   data <- pillar_shaft(x, ...)
   ret <- structure(
-    list(title = title, type = type, data = data),
+    list(capital = capital, data = data),
     class = "pillar"
   )
   ret <- set_width(ret, width)
@@ -46,11 +45,10 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
 }
 
 rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
-  title <- rif_title(has_title_row, ...)
-  type <- rif_type(has_star, ...)
+  capital <- rif_capital(has_title_row, has_star, ...)
   data <- rif_data(n, ...)
   ret <- structure(
-    list(title = title, type = type, data = data),
+    list(capital = capital, data = data),
     class = "pillar"
   )
   ret
@@ -61,7 +59,7 @@ format.pillar <- function(x, width = NULL, ...) {
   width <- pillar_get_width(x, width)
   out <- pillar_format_parts(x, width)
 
-  fmt <- c(out$title_format, out$type_format, out$data_format)
+  fmt <- c(out$capital_format, out$data_format)
   new_vertical(fmt)
 }
 
@@ -87,24 +85,25 @@ pillar_get_width <- function(x, width) {
 }
 
 pillar_format_parts <- function(x, width, ...) {
-  title_format <- format(x$title, width = width, ...)
-  type_format <- format(x$type, width = width, ...)
+  capital_format <- format(x$capital, width = width, ...)
   data_format <- format(x$data, width = width, ...)
   align <- attr(data_format, "align")
 
-  title_format <- align(title_format, width = width, align = align)
-  type_format <- align(type_format, width = width, align = align)
+  capital_format <- align(capital_format, width = width, align = align)
   data_format <- align(data_format, width = width, align = align)
 
   list(
-    title_format = title_format,
-    type_format = type_format,
+    capital_format = capital_format,
     data_format = data_format
   )
 }
 
-pillar_format_abbrev <- function(x, ...) {
-  title_format <- format(x$title, width = Inf, ...)
-  type_format <- format(x$type, width = Inf, ...)
-  paste0(title_format, "\u00a0", type_format)
+format_abbrev <- function(x, title = NULL) {
+  type_format <- format_full_pillar_type(x)
+  if (is.null(title)) {
+    type_format
+  } else {
+    title_format <- format_full_pillar_title(title)
+    paste0(title_format, "\u00a0", type_format)
+  }
 }

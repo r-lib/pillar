@@ -1,3 +1,5 @@
+style_title <- style_bold
+
 pillar_title <- function(title, ...) {
   if (is.null(title)) {
     width <- 0L
@@ -38,6 +40,10 @@ format.pillar_title <- function(x, width, ...) {
   if (is.null(title)) return(character())
 
   title <- format_title(title, width)
+  style_title(title)
+}
 
-  style_bold(title)
+format_full_pillar_title <- function(title) {
+  title <- format_title(title, Inf)
+  style_title(title)
 }
