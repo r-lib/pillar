@@ -1,9 +1,4 @@
-### pillar 1.0.99.9001 (2018-01-14)
-
-- Very wide tibbles now print faster (#85).
-
-
-# pillar 1.0.99.9000 (2018-01-11)
+## pillar 1.1.0 (2018-01-14)
 
 - `NA` values are now shown in plain red, without changing the background color (#70).
 - New options to control the output, with defaults that match the current behavior unless stated otherwise:
@@ -14,7 +9,7 @@
     - `pillar.min_title_chars` to specify the minimum number of characters to display for each column name (default: 15 characters, #75).
 - Shortened abbreviations for types: complex: cplx -> cpl, function: fun -> fn, factor: fctr -> fct (#71).
 - Date columns now show sub-seconds if the `digits.secs` option is set (#74).
-- Work around failing CRAN tests on Windows.
+- Very wide tibbles now print faster (#85).
 
 
 # pillar 1.0.1 (2017-11-27)
