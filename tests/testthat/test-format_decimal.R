@@ -14,7 +14,7 @@ format_decimal_bw <- function(x, sigfig = 3, ...) {
 test_that("compute_rhs_digits() works", {
   x <- c(NA, NaN, Inf, 0, 1, 100, 1e10, 0.001, 1e-20)
   expect_equal(compute_rhs_digits(x, 3), c(0, 0, 0, 0, 2, 0, 0, 5, 22))
-  expect_equal(compute_rhs_digits(x, 7), c(0, 0, 0, 0, 6, 3, 0, 9, 26))
+  expect_equal(compute_rhs_digits(x, 7), c(0, 0, 0, 0, 6, 4, 0, 9, 26))
 })
 
 test_that("compute_exp() returns NA if not relevant", {
@@ -82,6 +82,6 @@ test_that("output test", {
   expect_pillar_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
   withr::with_options(
     list(pillar.sigfig = 5),
-    expect_pillar_output((10 ^ (-3:4)) * c(-1, 1), filename = "basic-signif-5.txt")
+    expect_pillar_output((10 ^ (-2:4)) * c(-1, 1), filename = "basic-signif-5.txt")
   )
 })
