@@ -1,4 +1,4 @@
 [3m[90m<lgl>[39m[23m
-T    
-F    
+TRUE 
+FALSE
 [31mNA[39m   

@@ -74,10 +74,10 @@ format.pillar_shaft <- function(x, width, ...) {
 #' @rdname pillar_shaft
 pillar_shaft.logical <- function(x, ...) {
   out <- rep(NA, length(x))
-  out[x] <- "T"
-  out[!x] <- "F"
+  out[x] <- "TRUE"
+  out[!x] <- "FALSE"
 
-  new_pillar_shaft_simple(out, width = 1, align = "left")
+  new_pillar_shaft_simple(out, width = 5, align = "left")
 }
 
 #' @export
