@@ -3,6 +3,7 @@
 \name{style_num}
 \alias{style_num}
 \alias{style_subtle}
+\alias{style_subtle_num}
 \alias{style_bold}
 \alias{style_na}
 \alias{style_neg}
@@ -11,6 +12,8 @@
 style_num(x, negative, significant = rep_along(x, TRUE))
 
 style_subtle(x)
+
+style_subtle_num(x)
 
 style_bold(x)
 
@@ -31,6 +34,9 @@ maintain a consistent style with the default data types.
 \details{
 \code{style_subtle()} is affected by the \code{pillar.subtle} option.
 
+\code{style_subtle_num()} is affected by the \code{pillar.subtle_num} option, which is
+\code{FALSE} by default.
+
 \code{style_bold()} is affected by the \code{pillar.bold} option.
 
 \code{style_neg()} is affected by the \code{pillar.neg} option.
@@ -46,6 +52,7 @@ style_num(
   significant = c(FALSE, FALSE)
 )
 style_subtle("text")
+style_subtle_num(0.01)
 style_bold("Petal.Width")
 style_na("NA")
 style_neg("123")
