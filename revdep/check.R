@@ -33,6 +33,27 @@ if (length(revdep_todo()) == 0) {
   revdep_add(".", c(import_revdeps, weak_revdeps))
 }
 
+options(repos = revdepcheck:::get_repos(bioc = TRUE))
+
+todo <- revdep_todo()
+withr::with_temp_libpaths(action = "replace", {
+  crancache::install_packages(c(
+    todo,
+    "pillar"
+  ))
+
+  remotes::install_local(".")
+})
+
+repos <- paste0(
+  "file://",
+  file.path(crancache::get_cache_dir(), c("cran-bin", "bioc-bin", "other-bin"))
+)
+
+names(repos) <- c("CRAN", "Bioc", "other")
+
+options(repos = repos)
+
 N <- 100
 for (i in seq_len(N)) {
   try(
@@ -47,6 +68,8 @@ for (i in seq_len(N)) {
 
   if (length(revdep_todo()) == 0) break
 }
+
+options(repos = revdepcheck:::get_repos(bioc = TRUE))
 
 withr::with_output_sink(
   "revdep/cran.md",

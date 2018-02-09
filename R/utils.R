@@ -23,17 +23,6 @@ check_sigfig <- function(x) {
   x
 }
 
-ruler <- function(width = getOption("width")) {
-  x <- seq_len(width)
-  y <- rep("-", length(x))
-
-  y[x %% 10 == 0] <- as.character((x[x %% 10 == 0] %/% 10) %% 10)
-  y[x %% 5 == 0] <- "+"
-
-  cat(y, "\n", sep = "")
-  cat(x %% 10, "\n", sep = "")
-}
-
 slice <- function(df, index) {
   df[index, , drop = FALSE]
 }

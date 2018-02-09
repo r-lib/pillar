@@ -1,4 +1,18 @@
-## pillar 1.1.0 (2018-01-14)
+# pillar 1.1.0.9000 (2018-02-09)
+
+- New styling helper `style_subtle_num()`.
+- Very small numbers (like `1e-310`) are now printe corectly (tidyverse/tibble#377).
+- Fix representation of right-hand side for `getOption(pillar.sigfig) >= 6` (tidyverse/tibble#380).
+- The decimal dot is now always printed for numbers of type `numeric`. Trailing zeros are not displayed anymore if all displayed numbers are whole numbers.
+- The new option `pillar.subtle_num` (default: `FALSE`) decides if numbers use subtle highlighting for digits that are considered insignificant.
+- For decimal numbers, every third digit is underlined. This gives a better idea of the order of magnitude of the numbers. The first and last digit is never underlined.
+- Decimal values longer than 13 characters always print in
+  scientific notation.
+- Fix computation of significant figures for numbers with absolute value >= 1 (#98).
+- Logical columns are displayed as `TRUE` and `FALSE` again (#95).
+
+
+# pillar 1.1.0 (2018-01-14)
 
 - `NA` values are now shown in plain red, without changing the background color (#70).
 - New options to control the output, with defaults that match the current behavior unless stated otherwise:

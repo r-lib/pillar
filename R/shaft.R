@@ -74,10 +74,10 @@ format.pillar_shaft <- function(x, width, ...) {
 #' @rdname pillar_shaft
 pillar_shaft.logical <- function(x, ...) {
   out <- rep(NA, length(x))
-  out[x] <- "T"
-  out[!x] <- "F"
+  out[x] <- "TRUE"
+  out[!x] <- "FALSE"
 
-  new_pillar_shaft_simple(out, width = 1, align = "left")
+  new_pillar_shaft_simple(out, width = 5, align = "left")
 }
 
 #' @export
@@ -91,9 +91,15 @@ pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3))
 
   ret <- list(dec = dec, sci = sci)
 
+  MAX_DEC_WIDTH <- 13
+  dec_width <- get_width(ret$dec)
+  if (dec_width > MAX_DEC_WIDTH) {
+    dec_width <- get_width(ret$sci)
+  }
+
   new_pillar_shaft(
     ret,
-    width = get_width(ret$dec),
+    width = dec_width,
     min_width = min(get_min_widths(ret)),
     subclass = "pillar_shaft_decimal"
   )

@@ -4,8 +4,10 @@
 #' - `pillar.bold`: Use bold font, e.g. for column headers? This currently
 #'     defaults to `FALSE`, because many terminal fonts have poor support for
 #'     bold fonts.
-#' - `pillar.subtle`: Use subtle style, e.g. for insignificant digits? Default:
-#'     `TRUE`.
+#' - `pillar.subtle`: Use subtle style, e.g. for row numbers and data types?
+#'     Default: `TRUE`.
+#' - `pillar.subtle_num`: Use subtle style for insignificant digits? Default:
+#'     `FALSE`, is also affected by the `pillar.subtle` option.
 #' - `pillar.neg`: Highlight negative numbers? Default: `TRUE`.
 #' - `pillar.sigfig`: The number of significant digits that will be printed and
 #'     highlighted, default: `3`. Set the `pillar.subtle` option to `FALSE` to

@@ -37,7 +37,9 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   exp <- compute_exp(abs_x)
 
   if (scientific) {
-    mnt <- ifelse(num & abs_x != 0, abs_x * 10 ^ (-exp), abs_x)
+    # Must divide by 10^exp, because 10^-exp may not be representable
+    # for very large values of exp
+    mnt <- ifelse(num & abs_x != 0, abs_x / (10^exp), abs_x)
     round_x <- safe_signif(mnt, sigfig)
     rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
     exp_display <- exp
@@ -58,7 +60,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
-    dec = rhs_digits > 0,
+    dec = is.finite(x) & (!is.integer(x) || scientific),
     exp = exp_display,
     superscript = superscript
   )
@@ -77,11 +79,10 @@ compute_rhs_digits <- function(x, sigfig) {
   exp <- compute_exp(x)
   exp[is.na(exp)] <- Inf
   if (is.integer(x)) {
-    digits <- 0
+    rhs_digits <- 0
   } else {
-    digits <- ifelse(exp > sigfig, 0, sigfig - exp - ifelse(exp <= 0, 1, 0))
+    rhs_digits <- ifelse((exp > sigfig) | all(x == trunc(x), na.rm = TRUE), 0, sigfig - exp - 1)
   }
-  rhs_digits <- pmax(digits - pmax(exp, 0), 0)
   rhs_digits
 }
 
@@ -90,6 +91,14 @@ compute_exp <- function(x) {
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
   ret
+}
+
+format_mantissa <- function(x) {
+  neg <- format_neg(x)
+  lhs <- format_lhs(x)
+  dec <- format_dec(x)
+  rhs <- format_rhs(x)
+  paste0(neg, lhs, dec, rhs)
 }
 
 format_neg <- function(s) {
@@ -108,21 +117,40 @@ format_lhs <- function(s) {
   lhs_zero <- s$lhs_zero
 
   lhs_str <- sprintf("%.0f", s$lhs)
-  lhs_width <- get_max_extent(lhs_str)
-  lhs_sig <- crayon::col_substr(lhs_str, 1, s$sigfig)
-  lhs_non <- crayon::col_substr(lhs_str, s$sigfig + 1, get_extent(lhs_str))
+  lhs_split <- strsplit(lhs_str, "", fixed = TRUE)
+  lhs_split_underlined <- map(lhs_split, underline_3_back)
+
+  lhs_width <- max(0L, map_int(lhs_split, length))
+
+  lhs_split_sig <- map(lhs_split_underlined, utils::head, s$sigfig)
+  lhs_split_non <- map(lhs_split_underlined, neg_tail, s$sigfig)
+
+  lhs_sig <- map_chr(lhs_split_sig, paste, collapse = "")
+  lhs_non <- map_chr(lhs_split_non, paste, collapse = "")
 
   # as.character() to support corner case of length zero
   lhs_col <- as.character(ifelse(num,
     paste0(
       style_num(lhs_sig, neg, !lhs_zero),
-      style_subtle(lhs_non)
+      style_subtle_num(lhs_non)
     ),
     style_na(lhs_str)
   ))
 
   lhs_col <- align(lhs_col, width = lhs_width, align = "right")
   lhs_col
+}
+
+underline_3_back <- function(x) {
+  idx <- length(x) + 1L - seq.int(3, max(3, length(x)), by = 3)
+  idx <- idx[idx != 1]
+  x[idx] <- crayon::underline(x[idx])
+  x
+}
+
+neg_tail <- function(x, n) {
+  if (n == 0) x
+  else utils::tail(x, -n)
 }
 
 format_dec <- function(s) {
@@ -147,14 +175,25 @@ format_rhs <- function(s) {
   rhs_digits <- s$rhs_digits
 
   # Digits on RHS of .
-  rhs_num <- as.character(abs(round(s$rhs * 10 ^ s$rhs_digits)))
+  rhs_num <- sprintf("%.0f", abs(round(s$rhs * 10 ^ s$rhs_digits)))
+  rhs_num[rhs_num == "0"] <- ""
 
-  rhs_zero <- strrep("0", pmax(0, rhs_digits - get_extent(rhs_num)))
+  n_zeros <- pmax(0, rhs_digits - get_extent(rhs_num))
+  rhs_zero <- strrep("0", n_zeros)
+
+  rhs_split <- strsplit(paste0(rhs_zero, rhs_num), "", fixed = TRUE)
+  rhs_split_underlined <- map(rhs_split, underline_3)
+
+  rhs_split_underlined_zero <- map2(rhs_split_underlined, n_zeros, utils::head)
+  rhs_split_underlined_num <- map2(rhs_split_underlined, n_zeros, neg_tail)
+
+  rhs_underlined_zero <- map_chr(rhs_split_underlined_zero, paste, collapse = "")
+  rhs_underlined_num <- map_chr(rhs_split_underlined_num, paste, collapse = "")
 
   rhs_col <- ifelse(dec,
     paste0(
-      style_num(rhs_zero, neg, !lhs_zero),
-      style_num(rhs_num, neg)
+      style_num(rhs_underlined_zero, neg, !lhs_zero),
+      style_num(rhs_underlined_num, neg)
     ),
     ""
   )
@@ -163,6 +202,13 @@ format_rhs <- function(s) {
   rhs_col <- align(rhs_col, max(rhs_digits, 0L, na.rm = TRUE), "left")
 
   rhs_col
+}
+
+underline_3 <- function(x) {
+  idx <- seq.int(3, max(3, length(x) - 1), by = 3)
+  idx <- idx[idx < length(x)]
+  x[idx] <- crayon::underline(x[idx])
+  x
 }
 
 #' @export
@@ -180,17 +226,14 @@ format_rhs <- function(s) {
 #'   significant = c(FALSE, FALSE)
 #' )
 style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
-  ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle(x))
+  ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle_num(x))
 }
 
 assemble_decimal <- function(x) {
-  neg <- format_neg(x)
-  lhs <- format_lhs(x)
-  dec <- format_dec(x)
-  rhs <- format_rhs(x)
+  mantissa <- format_mantissa(x)
   exp <- format_exp(x)
 
-  paste0(neg, lhs, dec, rhs, exp)
+  paste0(mantissa, exp)
 }
 
 #' @export
