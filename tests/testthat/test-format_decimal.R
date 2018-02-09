@@ -82,6 +82,6 @@ test_that("output test", {
   expect_pillar_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
   withr::with_options(
     list(pillar.sigfig = 5),
-    expect_pillar_output((10 ^ (-2:4)) * c(-1, 1), filename = "basic-signif-5.txt")
+    expect_pillar_output((10 ^ (c(-2:4, 0L))) * c(-1, 1), filename = "basic-signif-5.txt")
   )
 })
