@@ -30,6 +30,7 @@ style_subtle <- keep_empty(function(x) {
 #' `style_subtle_num()` is affected by the `pillar.subtle_num` option, which is
 #' `FALSE` by default.
 #'
+#' @export
 #' @examples
 #' style_subtle_num(0.01)
 style_subtle_num <- function(x) {

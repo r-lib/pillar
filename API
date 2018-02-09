@@ -21,6 +21,7 @@ style_na(x)
 style_neg(x)
 style_num(x, negative, significant = rep_along(x, TRUE))
 style_subtle(x)
+style_subtle_num(x)
 type_sum(x)
 
 ## Own S3 methods
