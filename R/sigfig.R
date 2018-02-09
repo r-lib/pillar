@@ -37,7 +37,9 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
   exp <- compute_exp(abs_x)
 
   if (scientific) {
-    mnt <- ifelse(num & abs_x != 0, abs_x * 10 ^ (-exp), abs_x)
+    # Must divide by 10^exp, because 10^-exp may not be representable
+    # for very large values of exp
+    mnt <- ifelse(num & abs_x != 0, abs_x / (10^exp), abs_x)
     round_x <- safe_signif(mnt, sigfig)
     rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
     exp_display <- exp
