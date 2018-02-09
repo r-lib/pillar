@@ -91,6 +91,14 @@ compute_exp <- function(x) {
   ret
 }
 
+format_mantissa <- function(x) {
+  neg <- format_neg(x)
+  lhs <- format_lhs(x)
+  dec <- format_dec(x)
+  rhs <- format_rhs(x)
+  paste0(neg, lhs, dec, rhs)
+}
+
 format_neg <- function(s) {
   neg <- s$neg
   if (any(neg)) {
@@ -183,13 +191,10 @@ style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
 }
 
 assemble_decimal <- function(x) {
-  neg <- format_neg(x)
-  lhs <- format_lhs(x)
-  dec <- format_dec(x)
-  rhs <- format_rhs(x)
+  mantissa <- format_mantissa(x)
   exp <- format_exp(x)
 
-  paste0(neg, lhs, dec, rhs, exp)
+  paste0(mantissa, exp)
 }
 
 #' @export
