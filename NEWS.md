@@ -1,7 +1,7 @@
 # pillar 1.1.0.9000 (2018-02-09)
 
 - New styling helper `style_subtle_num()`.
-- Very small numbers (like `1e-310`) are now printe corectly (tidyverse/tibble#377).
+- Very small numbers (like `1e-310`) are now printed corectly (tidyverse/tibble#377).
 - Fix representation of right-hand side for `getOption(pillar.sigfig) >= 6` (tidyverse/tibble#380).
 - The decimal dot is now always printed for numbers of type `numeric`. Trailing zeros are not displayed anymore if all displayed numbers are whole numbers.
 - The new option `pillar.subtle_num` (default: `FALSE`) decides if numbers use subtle highlighting for digits that are considered insignificant.
