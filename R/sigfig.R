@@ -58,7 +58,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
-    dec = rhs_digits > 0,
+    dec = is.finite(x) & (!is.integer(x) || scientific),
     exp = exp_display,
     superscript = superscript
   )
@@ -79,7 +79,7 @@ compute_rhs_digits <- function(x, sigfig) {
   if (is.integer(x)) {
     rhs_digits <- 0
   } else {
-    rhs_digits <- ifelse(exp > sigfig, 0, sigfig - exp - 1)
+    rhs_digits <- ifelse((exp > sigfig) | all(x == trunc(x), na.rm = TRUE), 0, sigfig - exp - 1)
   }
   rhs_digits
 }
