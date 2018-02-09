@@ -188,6 +188,13 @@ test_that("without styling", {
     )
   )
   withr::with_options(
+    list(pillar.subtle_num = TRUE),
+    expect_pillar_output(
+      xf = xf,
+      filename = "style-subtle-num-true.txt"
+    )
+  )
+  withr::with_options(
     list(pillar.subtle = FALSE),
     expect_pillar_output(
       xf = xf,
