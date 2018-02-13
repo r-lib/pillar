@@ -142,8 +142,7 @@ format_lhs <- function(s) {
 }
 
 underline_3_back <- function(x) {
-  idx <- length(x) + 1L - seq.int(3, max(3, length(x)), by = 3)
-  idx <- idx[idx != 1]
+  idx <- which(trunc((seq_along(x) - length(x)) / 3) %% 2 == 1)
   x[idx] <- crayon::underline(x[idx])
   x
 }
@@ -205,8 +204,7 @@ format_rhs <- function(s) {
 }
 
 underline_3 <- function(x) {
-  idx <- seq.int(3, max(3, length(x) - 1), by = 3)
-  idx <- idx[idx < length(x)]
+  idx <- which(trunc((seq_along(x) - 1) / 3) %% 2 == 1)
   x[idx] <- crayon::underline(x[idx])
   x
 }
