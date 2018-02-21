@@ -1,7 +1,55 @@
 source("revdep/drake-base.R")
 
+# Avoid expensive and flaky check for build tools from pkgbuild
+# Leads to errors, need to check!
+#options(buildtools.check = identity)
+
+make_subset_available <- function(pkg) {
+  expr(subset_available(available, !!pkg))
+}
+
+subset_available <- function(available, pkg) {
+  available[pkg, , drop = FALSE]
+}
+
+plan_available <-
+  readd(deps) %>%
+  enframe() %>%
+  transmute(
+    target = glue("av_{name}"),
+    call = map(name, make_subset_available)
+  ) %>%
+  deframe() %>%
+  drake_plan(list = .)
+
+make_download <- function(pkg) {
+  av_pkg <- sym(glue("av_{pkg}"))
+  expr(download(!!pkg, available = !!av_pkg))
+}
+
+download <- function(pkg, available, dep_list) {
+  dir <- fs::dir_create("revdep/download")
+  dir <- fs::path_real(dir)
+
+  withr::with_options(
+    list(warn = 2),
+    download.packages(pkg, dir, available = available)[, 2]
+  )
+}
+
+plan_download <-
+  readd(deps) %>%
+  enframe() %>%
+  transmute(
+    target = glue("d_{name}"),
+    call = map(name, make_download)
+  ) %>%
+  deframe() %>%
+  drake_plan(list = .)
+
 make_install <- function(pkg, dep_list) {
-  expr(install(!!pkg, available = available, !!! dep_list))
+  d_pkg <- sym(glue("d_{pkg}"))
+  expr(install(!!pkg, path = !!d_pkg, !!! dep_list))
 }
 
 get_i_lib <- function() {
@@ -10,18 +58,22 @@ get_i_lib <- function() {
   fs::path_real(path)
 }
 
-install <- function(pkg, available, ...) {
+install <- function(pkg, path, ...) {
   dep_packages <- list(...)
-  paths <- map_chr(dep_packages, attr, "path")
-  stopifnot(all(fs::dir_exists(paths)))
+  dep_paths <- map_chr(dep_packages, attr, "path")
+  stopifnot(all(fs::dir_exists(dep_paths)))
 
   deps <- c(pkg, sort(as.character(unique(unlist(map(dep_packages, attr, "deps"))))))
 
   lib <- get_i_lib()
 
-  withr::with_options(
-    list(warn = 2),
-    install.packages(pkg, lib = lib, dependencies = c(), available = available)
+  # Avoid flaky check for compiler availability on mclapply()
+  pkgbuild:::cache_set("has_compiler", TRUE)
+
+  withr::with_libpaths(
+    lib, action = "replace",
+    # Suppress warnings about loaded packages
+    retry(suppressWarnings(pkginstall::install_source(path, vignettes = FALSE)))
   )
 
   structure(
@@ -83,34 +135,14 @@ create_new_lib <- function(old_lib, new_lib) {
   lib
 }
 
+get_pkg_and_deps <- function(i_pkg) {
+  get_deps(i_pkg)
+}
+
 plan_base_libs <- drake_plan(
-  old_lib = create_lib(c(i_pillar, get_deps(i_pillar)), get_old_lib()),
+  old_lib = create_lib(get_pkg_and_deps(!!sym(glue("i_{get_this_pkg()}"))), get_old_lib()),
   new_lib = create_new_lib(old_lib, get_new_lib())
 )
-
-make_download <- function(pkg) {
-  expr(download(!!pkg, available = available))
-}
-
-download <- function(pkg, available, dep_list) {
-  dir <- fs::dir_create("revdep/download")
-  dir <- fs::path_real(dir)
-
-  withr::with_options(
-    list(warn = 2),
-    download.packages(pkg, dir, available = available)[, 2]
-  )
-}
-
-plan_download <-
-  readd(revdeps) %>%
-  enframe() %>%
-  transmute(
-    target = glue("d_{value}"),
-    call = map(value, make_download)
-  ) %>%
-  deframe() %>%
-  drake_plan(list = .)
 
 make_check <- function(pkg, lib, deps, first_level_deps, base_pkgs) {
   lib <- enexpr(lib)
@@ -129,7 +161,7 @@ check <- function(tarball, lib, ...) {
   pkgs <- c(...)
   check_lib <- fs::file_temp("checklib")
   create_lib(pkgs, check_lib)
-  withr::with_libpaths(c(lib, check_lib), rcmdcheck::rcmdcheck(tarball))
+  withr::with_libpaths(c(lib, check_lib), rcmdcheck::rcmdcheck(tarball, quiet = TRUE))
 }
 
 plan_check <-
@@ -182,8 +214,26 @@ plan_compare_all <-
   deframe() %>%
   drake_plan(list = .)
 
+#future::plan(future.callr::callr)
+
+plan <-
+  bind_rows(
+    # Put first to give higher priority
+    plan_check,
+    plan_compare,
+    plan_compare_all,
+    plan_install,
+    plan_available,
+    plan_base_libs,
+    plan_download,
+    plan_deps
+  )
+
+
+#trace(conditionCall.condition, recover)
 make(
-  bind_rows(plan_check, plan_compare, plan_compare_all, plan_install, plan_base_libs, plan_download, plan_deps),
+  plan,
   "compare_all",
-  jobs = 8
+  #parallelism = "future"
+  , jobs = parallel::detectCores()
 )
