@@ -93,11 +93,10 @@ compute_exp <- function(x) {
 }
 
 format_mantissa <- function(x) {
-  neg <- format_neg(x)
   lhs <- format_lhs(x)
   dec <- format_dec(x)
   rhs <- format_rhs(x)
-  paste0(neg, lhs, dec, rhs)
+  paste0(lhs, dec, rhs)
 }
 
 format_neg <- function(s) {
@@ -136,6 +135,7 @@ format_lhs <- function(s) {
     style_na(lhs_str)
   ))
 
+  lhs_col <- paste0(format_neg(s), lhs_col)
   lhs_col <- align(lhs_col, width = lhs_width, align = "right")
   lhs_col
 }
