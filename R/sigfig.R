@@ -22,7 +22,7 @@ format_decimal <- function(x, sigfig, ...) {
   split_decimal(x, sigfig)
 }
 
-split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
+split_decimal <- function(x, sigfig, scientific = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -61,8 +61,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE, superscript = FALSE) {
     rhs = rhs,
     rhs_digits = rhs_digits,
     dec = is.finite(x) & (!is.integer(x) || scientific),
-    exp = exp_display,
-    superscript = superscript
+    exp = exp_display
   )
 
   set_width(ret, get_max_extent(assemble_decimal(ret)))
