@@ -1,3 +1,11 @@
+# pillar 1.1.0.9001 (2018-02-24)
+
+- The negation sign is printed next to the number again (#91).
+- Scientific notation uses regular digits again for exponents (#90).
+- Numeric values with a `"class"` attribute are now formatted using `format()` if the `pillar_shaft()` method is not implemented for that class (#88).
+- Groups of three digits are now underlined, starting with the fourth before/after the decimal point (#78).
+
+
 # pillar 1.1.0.9000 (2018-02-09)
 
 - New styling helper `style_subtle_num()`.
