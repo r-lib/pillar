@@ -86,7 +86,10 @@ due to width restrictions. This method returns a character vector that
 describes each of the omitted columns.</p>
     
 
-    <pre class="usage"><span class='fu'>extra_cols</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>extra_cols</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for squeezed_colonnade</span>
+<span class='fu'>extra_cols</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -99,12 +102,17 @@ describes each of the omitted columns.</p>
       <th>...</th>
       <td><p>Unused</p></td>
     </tr>
+    <tr>
+      <th>n</th>
+      <td><p>The number of extra columns to return; the returned vector will
+always contain as many elements as there are extra columns, but elements
+beyond <code>n</code> will be <code>NA</code>.</p></td>
+    </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>extra_cols</span>(<span class='fu'><a href='colonnade.html'>squeeze</a></span>(<span class='fu'><a href='colonnade.html'>colonnade</a></span>(<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>4</span>:<span class='fl'>6</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>8</span>)))</div><div class='output co'>#&gt;         b 
-#&gt; "b &lt;int&gt;" </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>extra_cols</span>(<span class='fu'><a href='colonnade.html'>squeeze</a></span>(<span class='fu'><a href='colonnade.html'>colonnade</a></span>(<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>4</span>:<span class='fl'>6</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>8</span>)))</div><div class='output co'>#&gt; [1] "b &lt;int&gt;"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -124,7 +132,7 @@ describes each of the omitted columns.</p>
 
 <div class="author">
   <p>Developed by Kirill Müller, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

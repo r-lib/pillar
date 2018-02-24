@@ -82,29 +82,44 @@
     </div>
 
     <div class="contents">
-    <div id="pillar-1-0-99-9000-2018-01-11" class="section level1">
+    <div id="pillar-1-1-0-9000-2018-02-09" class="section level1">
 <h1 class="hasAnchor">
-<a href="#pillar-1-0-99-9000-2018-01-11" class="anchor"></a>pillar 1.0.99.9000 (2018-01-11)</h1>
+<a href="#pillar-1-1-0-9000-2018-02-09" class="anchor"></a>pillar 1.1.0.9000 (2018-02-09)</h1>
+<ul>
+<li>New styling helper <code><a href="../reference/style_subtle.html">style_subtle_num()</a></code>.</li>
+<li>Very small numbers (like <code>1e-310</code>) are now printed corectly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
+<li>Fix representation of right-hand side for <code>getOption(pillar.sigfig) &gt;= 6</code> (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/380'>#380</a>).</li>
+<li>The decimal dot is now always printed for numbers of type <code>numeric</code>. Trailing zeros are not displayed anymore if all displayed numbers are whole numbers.</li>
+<li>The new option <code>pillar.subtle_num</code> (default: <code>FALSE</code>) decides if numbers use subtle highlighting for digits that are considered insignificant.</li>
+<li>For decimal numbers, every third digit is underlined. This gives a better idea of the order of magnitude of the numbers. The first and last digit is never underlined.</li>
+<li>Decimal values longer than 13 characters always print in scientific notation.</li>
+<li>Fix computation of significant figures for numbers with absolute value &gt;= 1 (<a href='https://github.com/r-lib/pillar/issues/98'>#98</a>).</li>
+<li>Logical columns are displayed as <code>TRUE</code> and <code>FALSE</code> again (<a href='https://github.com/r-lib/pillar/issues/95'>#95</a>).</li>
+</ul>
+</div>
+    <div id="pillar-1-1-0-2018-01-14" class="section level1">
+<h1 class="hasAnchor">
+<a href="#pillar-1-1-0-2018-01-14" class="anchor"></a>pillar 1.1.0 (2018-01-14)</h1>
 <ul>
 <li>
-<code>NA</code> values are now shown in plain red, without changing the background color (#70).</li>
+<code>NA</code> values are now shown in plain red, without changing the background color (<a href='https://github.com/r-lib/pillar/issues/70'>#70</a>).</li>
 <li>New options to control the output, with defaults that match the current behavior unless stated otherwise:
 <ul>
 <li>
-<code>pillar.sigfig</code> to control the number of significant digits, for highlighting and truncation (#72),</li>
+<code>pillar.sigfig</code> to control the number of significant digits, for highlighting and truncation (<a href='https://github.com/r-lib/pillar/issues/72'>#72</a>),</li>
 <li>
-<code>pillar.subtle</code> to specify if insignificant digits should be printed in gray (#72),</li>
+<code>pillar.subtle</code> to specify if insignificant digits should be printed in gray (<a href='https://github.com/r-lib/pillar/issues/72'>#72</a>),</li>
 <li>
 <code>pillar.neg</code> to specify if negative digits should be printed in red,</li>
 <li>
-<code>pillar.bold</code> to specify if column headers should be printed in bold (default: <code>FALSE</code>, #76),</li>
+<code>pillar.bold</code> to specify if column headers should be printed in bold (default: <code>FALSE</code>, <a href='https://github.com/r-lib/pillar/issues/76'>#76</a>),</li>
 <li>
-<code>pillar.min_title_chars</code> to specify the minimum number of characters to display for each column name (default: 15 characters, #75).</li>
+<code>pillar.min_title_chars</code> to specify the minimum number of characters to display for each column name (default: 15 characters, <a href='https://github.com/r-lib/pillar/issues/75'>#75</a>).</li>
 </ul>
 </li>
-<li>Shortened abbreviations for types: complex: cplx -&gt; cpl, function: fun -&gt; fn, factor: fctr -&gt; fct (#71).</li>
-<li>Date columns now show sub-seconds if the <code>digits.secs</code> option is set (#74).</li>
-<li>Work around failing CRAN tests on Windows.</li>
+<li>Shortened abbreviations for types: complex: cplx -&gt; cpl, function: fun -&gt; fn, factor: fctr -&gt; fct (<a href='https://github.com/r-lib/pillar/issues/71'>#71</a>).</li>
+<li>Date columns now show sub-seconds if the <code>digits.secs</code> option is set (<a href='https://github.com/r-lib/pillar/issues/74'>#74</a>).</li>
+<li>Very wide tibbles now print faster (<a href='https://github.com/r-lib/pillar/issues/85'>#85</a>).</li>
 </ul>
 </div>
     <div id="pillar-1-0-1-2017-11-27" class="section level1">
@@ -165,7 +180,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#pillar-1-0-99-9000-2018-01-11">1.0.99.9000</a></li>
+        <li><a href="#pillar-1-1-0-9000-2018-02-09">1.1.0.9000</a></li>
+        <li><a href="#pillar-1-1-0-2018-01-14">1.1.0</a></li>
         <li><a href="#pillar-1-0-1-2017-11-27">1.0.1</a></li>
         <li><a href="#pillar-1-0-0-2017-11-16">1.0.0</a></li>
       </ul>
@@ -181,7 +197,7 @@
 
 <div class="author">
   <p>Developed by Kirill Müller, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>

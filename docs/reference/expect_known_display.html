@@ -128,7 +128,7 @@ pillar, see examples for usage.</p>
 <span class='fu'>expect_known_display</span>(<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>file</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># Good: Use tidyeval to defer construction</span>
-<span class='no'>pillar_quo</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/rlang/topics/quosure'>quo</a></span>(<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>))
+<span class='no'>pillar_quo</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/rlang/topics/quotation'>quo</a></span>(<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>))
 <span class='fu'>expect_known_display</span>(!!<span class='no'>pillar_quo</span>, <span class='no'>file</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><span class='co'># NOT RUN {</span>
 <span class='co'># Bad: Options set in the active session may affect the display</span>
 <span class='no'>integer_pillar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>)
@@ -153,7 +153,7 @@ pillar, see examples for usage.</p>
 
 <div class="author">
   <p>Developed by Kirill Müller, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>
