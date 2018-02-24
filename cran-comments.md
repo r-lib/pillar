@@ -2,8 +2,8 @@ Update addressing user feedback.
 
 ## Test environments
 * local Ubuntu 17.10 install, R 3.4.3
-* Ubuntu 14.04 (on travis-ci), R 3.4.3
-* win-builder (devel and release)
+* Ubuntu 14.06 (on travis-ci), R devel, release, oldrel, 3.2 and 3.1
+* win-builder (devel, release, and oldrel)
 
 ## R CMD check results
 
