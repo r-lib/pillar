@@ -1,23 +1,28 @@
-# pillar 1.1.0.9001 (2018-02-24)
+# pillar 1.2.0 (2018-02-24)
 
+Display
+-------
+
+- Turned off using subtle style for digits that are considered insignificant.  Set the new option `pillar.subtle_num` to `TRUE` to turn it on again (default: `FALSE`).
 - The negation sign is printed next to the number again (#91).
 - Scientific notation uses regular digits again for exponents (#90).
-- Numeric values with a `"class"` attribute are now formatted using `format()` if the `pillar_shaft()` method is not implemented for that class (#88).
-- Groups of three digits are now underlined, starting with the fourth before/after the decimal point (#78).
+- Groups of three digits are now underlined, starting with the fourth before/after the decimal point. This gives a better idea of the order of magnitude of the numbers (#78).
+- Logical columns are displayed as `TRUE` and `FALSE` again (#95).
+- The decimal dot is now always printed for numbers of type `numeric`. Trailing zeros are not displayed anymore if all displayed numbers are whole numbers (#62).
+- Decimal values longer than 13 characters always print in scientific notation.
 
+Bug fixes
+---------
 
-# pillar 1.1.0.9000 (2018-02-09)
-
-- New styling helper `style_subtle_num()`.
+- Numeric values with a `"class"` attribute (e.g., `Duration` from lubridate) are now formatted using `format()` if the `pillar_shaft()` method is not implemented for that class (#88).
 - Very small numbers (like `1e-310`) are now printed corectly (tidyverse/tibble#377).
 - Fix representation of right-hand side for `getOption(pillar.sigfig) >= 6` (tidyverse/tibble#380).
-- The decimal dot is now always printed for numbers of type `numeric`. Trailing zeros are not displayed anymore if all displayed numbers are whole numbers.
-- The new option `pillar.subtle_num` (default: `FALSE`) decides if numbers use subtle highlighting for digits that are considered insignificant.
-- For decimal numbers, every third digit is underlined. This gives a better idea of the order of magnitude of the numbers. The first and last digit is never underlined.
-- Decimal values longer than 13 characters always print in
-  scientific notation.
 - Fix computation of significant figures for numbers with absolute value >= 1 (#98).
-- Logical columns are displayed as `TRUE` and `FALSE` again (#95).
+
+New functions
+-------------
+
+- New styling helper `style_subtle_num()`, formatting depends on the `pillar.subtle_num` option.
 
 
 # pillar 1.1.0 (2018-01-14)
