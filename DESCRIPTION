@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.1.0.9000
+Version: 1.1.0.9001
 Authors@R: c(
     person("Kirill", "Müller", , "krlmlr+r@mailbox.org", role = c("aut", "cre")),
     person("Hadley", "Wickham", role = "aut"),
@@ -23,7 +23,7 @@ Suggests:
     knitr (>= 1.19),
     testthat (>= 2.0.0)
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 Collate: 
     'capital.R'
     'compat-purrr.R'
