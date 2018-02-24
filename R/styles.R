@@ -27,6 +27,8 @@ style_subtle <- keep_empty(function(x) {
   }
 })
 
+#' @rdname style_subtle
+#' @details
 #' `style_subtle_num()` is affected by the `pillar.subtle_num` option, which is
 #' `FALSE` by default.
 #'

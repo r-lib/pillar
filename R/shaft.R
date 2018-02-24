@@ -86,6 +86,11 @@ pillar_shaft.logical <- function(x, ...) {
 #'   larger than 1 will potentially show more significant figures than this
 #'   but they will be greyed out.
 pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3)) {
+  if (!is.null(attr(x, "class"))) {
+    ret <- format(x)
+    return(new_pillar_shaft_simple(ret, width = get_extent(ret), align = "left"))
+  }
+
   dec <- format_decimal(x, ..., sigfig = sigfig)
   sci <- format_scientific(x, ..., sigfig = sigfig)
 

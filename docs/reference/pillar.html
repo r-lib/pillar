@@ -112,18 +112,18 @@ one row for the type, and <code>length(x)</code> rows for the data.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>123456789</span> * (<span class='fl'>10</span> ^ <span class='fu'>c</span>(-<span class='fl'>1</span>, -<span class='fl'>3</span>, -<span class='fl'>5</span>, <span class='fl'>NA</span>, -<span class='fl'>8</span>, -<span class='fl'>10</span>))
 <span class='fu'>pillar</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;         &lt;dbl&gt;
-#&gt; 12345679     
-#&gt;   123457     
-#&gt;     1235     
+#&gt; 12345679.    
+#&gt;   123457.    
+#&gt;     1235.    
 #&gt;       NA     
 #&gt;        1.23  
-#&gt;        0.0123</div><div class='input'><span class='fu'>pillar</span>(-<span class='no'>x</span>)</div><div class='output co'>#&gt;          &lt;dbl&gt;
-#&gt; -12345679     
-#&gt; -  123457     
-#&gt; -    1235     
-#&gt;        NA     
-#&gt; -       1.23  
-#&gt; -       0.0123</div><div class='input'><span class='fu'>pillar</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;   &lt;dbl&gt;
+#&gt;        0.0123</div><div class='input'><span class='fu'>pillar</span>(-<span class='no'>x</span>)</div><div class='output co'>#&gt;     &lt;dbl&gt;
+#&gt;  -1.23e+7
+#&gt;  -1.23e+5
+#&gt;  -1.23e+3
+#&gt;  NA      
+#&gt;  -1.23e+0
+#&gt;  -1.23e-2</div><div class='input'><span class='fu'>pillar</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;   &lt;dbl&gt;
 #&gt; 0.0808 
 #&gt; 0.834  
 #&gt; 0.601  
@@ -134,7 +134,7 @@ one row for the type, and <code>length(x)</code> rows for the data.</p>
 #&gt; 0.290  
 #&gt; 0.733  
 #&gt; 0.773  </div><div class='input'><span class='fu'>pillar</span>(<span class='fu'>rcauchy</span>(<span class='fl'>20</span>))</div><div class='output co'>#&gt;    &lt;dbl&gt;
-#&gt; - 0.416 
+#&gt;  -0.416 
 #&gt;   0.613 
 #&gt;   0.108 
 #&gt;   1.58  
@@ -143,17 +143,17 @@ one row for the type, and <code>length(x)</code> rows for the data.</p>
 #&gt;   3.20  
 #&gt;   0.203 
 #&gt;   2.74  
-#&gt; - 0.0770
+#&gt;  -0.0770
 #&gt;   1.29  
-#&gt; - 1.59  
-#&gt; - 1.10  
+#&gt;  -1.59  
+#&gt;  -1.10  
 #&gt;   0.707 
-#&gt; - 0.0612
-#&gt; - 1.05  
+#&gt;  -0.0612
+#&gt;  -1.05  
 #&gt;   0.163 
 #&gt; -10.5   
-#&gt; - 1.42  
-#&gt; - 1.49  </div><div class='input'>
+#&gt;  -1.42  
+#&gt;  -1.49  </div><div class='input'>
 <span class='co'># Special values are highlighted</span>
 <span class='fu'>pillar</span>(<span class='fu'>c</span>(<span class='fu'>runif</span>(<span class='fl'>5</span>), <span class='fl'>NA</span>, <span class='fl'>NaN</span>, <span class='fl'>Inf</span>, -<span class='fl'>Inf</span>))</div><div class='output co'>#&gt;     &lt;dbl&gt;
 #&gt;    0.0312
@@ -167,22 +167,22 @@ one row for the type, and <code>length(x)</code> rows for the data.</p>
 #&gt; -Inf     </div><div class='input'>
 <span class='co'># Very wide ranges will be displayed in scientific format</span>
 <span class='fu'>pillar</span>(<span class='fu'>c</span>(<span class='fl'>1e10</span>, <span class='fl'>1e-10</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt;                &lt;dbl&gt;
-#&gt;             1.00e⁺¹⁰
-#&gt;             1.00e⁻¹⁰</div><div class='input'><span class='fu'>pillar</span>(<span class='fu'>c</span>(<span class='fl'>1e10</span>, <span class='fl'>1e-10</span>))</div><div class='output co'>#&gt;                    &lt;dbl&gt;
-#&gt; 10000000000             
-#&gt;           0.000000000100</div><div class='input'>
+#&gt;             1.00e+10
+#&gt;             1.00e-10</div><div class='input'><span class='fu'>pillar</span>(<span class='fu'>c</span>(<span class='fl'>1e10</span>, <span class='fl'>1e-10</span>))</div><div class='output co'>#&gt;    &lt;dbl&gt;
+#&gt; 1.00e+10
+#&gt; 1.00e-10</div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>FALSE</span>, <span class='fl'>NA</span>, <span class='fl'>FALSE</span>, <span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>, <span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>)
 <span class='fu'>pillar</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; &lt;lgl&gt;
-#&gt; F    
+#&gt; FALSE
 #&gt; NA   
-#&gt; F    
-#&gt; F    
-#&gt; T    
-#&gt; F    
-#&gt; F    
-#&gt; T    
-#&gt; F    
-#&gt; T    </div><div class='input'>
+#&gt; FALSE
+#&gt; FALSE
+#&gt; TRUE 
+#&gt; FALSE
+#&gt; FALSE
+#&gt; TRUE 
+#&gt; FALSE
+#&gt; TRUE </div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"This is string is rather long"</span>, <span class='fl'>NA</span>, <span class='st'>"?"</span>, <span class='st'>"Short"</span>)
 <span class='fu'>pillar</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; &lt;chr&gt;                        
 #&gt; This is string is rather long
@@ -228,7 +228,7 @@ one row for the type, and <code>length(x)</code> rows for the data.</p>
 
 <div class="author">
   <p>Developed by Kirill Müller, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
-  <p>Site built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
 <script>
