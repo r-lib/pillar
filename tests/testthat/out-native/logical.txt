@@ -1,4 +1,4 @@
 <lgl>
-T    
-F    
+TRUE 
+FALSE
 NA   
