@@ -8,7 +8,7 @@ Display
 - Scientific notation uses regular digits again for exponents (#90).
 - Groups of three digits are now underlined, starting with the fourth before/after the decimal point. This gives a better idea of the order of magnitude of the numbers (#78).
 - Logical columns are displayed as `TRUE` and `FALSE` again (#95).
-- The decimal dot is now always printed for numbers of type `numeric`. Trailing zeros are not displayed anymore if all displayed numbers are whole numbers (#62).
+- The decimal dot is now always printed for numbers of type `numeric`. Trailing zeros are not shown anymore if all displayed numbers are whole numbers (#62).
 - Decimal values longer than 13 characters always print in scientific notation.
 
 Bug fixes
@@ -16,7 +16,7 @@ Bug fixes
 
 - Numeric values with a `"class"` attribute (e.g., `Duration` from lubridate) are now formatted using `format()` if the `pillar_shaft()` method is not implemented for that class (#88).
 - Very small numbers (like `1e-310`) are now printed corectly (tidyverse/tibble#377).
-- Fix representation of right-hand side for `getOption(pillar.sigfig) >= 6` (tidyverse/tibble#380).
+- Fix representation of right-hand side for `getOption("pillar.sigfig") >= 6` (tidyverse/tibble#380).
 - Fix computation of significant figures for numbers with absolute value >= 1 (#98).
 
 New functions
