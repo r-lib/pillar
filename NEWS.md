@@ -1,3 +1,11 @@
+# pillar 1.2.1 (2018-02-26)
+
+Bug fixes
+---------
+
+- Fix error when formatting numeric values with a `"class"` attribute with length != 1 (#88).
+
+
 # pillar 1.2.0 (2018-02-24)
 
 Display
