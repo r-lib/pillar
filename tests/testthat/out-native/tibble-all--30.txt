@@ -1,5 +1,5 @@
       a     b c     d    
   <dbl> <int> <lgl> <chr>
-1  1.00     1 T     a    
-2  2.50     2 F     b    
+1  1.00     1 TRUE  a    
+2  2.50     2 FALSE b    
 3 NA       NA NA    <NA> 
