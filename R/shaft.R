@@ -88,7 +88,7 @@ pillar_shaft.logical <- function(x, ...) {
 pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3)) {
   if (!is.null(attr(x, "class"))) {
     ret <- format(x)
-    return(new_pillar_shaft_simple(ret, width = get_extent(ret), align = "left"))
+    return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
   dec <- format_decimal(x, ..., sigfig = sigfig)

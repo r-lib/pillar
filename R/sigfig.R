@@ -130,7 +130,7 @@ format_lhs <- function(s) {
   lhs_col <- as.character(ifelse(num,
     paste0(
       style_num(lhs_sig, neg, !lhs_zero),
-      style_subtle_num(lhs_non)
+      style_subtle_num(lhs_non, neg)
     ),
     style_na(lhs_str)
   ))
@@ -223,7 +223,7 @@ underline_3 <- function(x) {
 #'   significant = c(FALSE, FALSE)
 #' )
 style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
-  ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle_num(x))
+  ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle_num(x, negative))
 }
 
 assemble_decimal <- function(x) {

@@ -1,4 +1,4 @@
-Update addressing user feedback.
+Update addressing bug fix that became apparent only when writing the blog post announcing the release. (Sorry, will write the blog post before submitting to CRAN from now on.)
 
 ## Test environments
 * local Ubuntu 17.10 install, R 3.4.3
@@ -7,8 +7,8 @@ Update addressing user feedback.
 
 ## R CMD check results
 
-OK
+NOTE for too frequent update (sorry again!)
 
 ## revdepcheck results
 
-We checked 6 direct and reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package. Only the hms package is now failing, this is due to the changed formatting. I will update hms after pillar 1.2.0 is accepted, not planning any more disruptive updates of pillar in the next months.
+Checked all 8 direct downstream packages, no regressions found.

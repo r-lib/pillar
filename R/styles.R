@@ -34,12 +34,12 @@ style_subtle <- keep_empty(function(x) {
 #'
 #' @export
 #' @examples
-#' style_subtle_num(0.01)
-style_subtle_num <- function(x) {
+#' style_subtle_num(0.01 * 1:3, c(TRUE, FALSE, TRUE))
+style_subtle_num <- function(x, negative) {
   if (isTRUE(getOption("pillar.subtle_num", FALSE))) {
     style_subtle(x)
   } else {
-    x
+    ifelse(negative, style_neg(x), x)
   }
 }
 
