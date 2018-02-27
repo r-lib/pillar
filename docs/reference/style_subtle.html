@@ -89,7 +89,7 @@ maintain a consistent style with the default data types.</p>
 
 <span class='fu'>style_subtle</span>(<span class='no'>x</span>)
 
-<span class='fu'>style_subtle_num</span>(<span class='no'>x</span>)
+<span class='fu'>style_subtle_num</span>(<span class='no'>x</span>, <span class='no'>negative</span>)
 
 <span class='fu'>style_bold</span>(<span class='no'>x</span>)
 
@@ -132,7 +132,7 @@ indicate if the values are negative and significant, respectively</p></td>
   <span class='fu'>c</span>(<span class='st'>"123"</span>, <span class='st'>"456"</span>),
   <span class='kw'>negative</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
   <span class='kw'>significant</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>FALSE</span>, <span class='fl'>FALSE</span>)
-)</div><div class='output co'>#&gt; [1] "123" "456"</div><div class='input'><span class='fu'>style_subtle</span>(<span class='st'>"text"</span>)</div><div class='output co'>#&gt; [1] "text"</div><div class='input'><span class='fu'>style_subtle_num</span>(<span class='fl'>0.01</span>)</div><div class='output co'>#&gt; [1] 0.01</div><div class='input'><span class='fu'>style_bold</span>(<span class='st'>"Petal.Width"</span>)</div><div class='output co'>#&gt; [1] "Petal.Width"</div><div class='input'><span class='fu'>style_na</span>(<span class='st'>"NA"</span>)</div><div class='output co'>#&gt; [1] "NA"</div><div class='input'><span class='fu'>style_neg</span>(<span class='st'>"123"</span>)</div><div class='output co'>#&gt; [1] "123"</div></pre>
+)</div><div class='output co'>#&gt; [1] "123" "456"</div><div class='input'><span class='fu'>style_subtle</span>(<span class='st'>"text"</span>)</div><div class='output co'>#&gt; [1] "text"</div><div class='input'><span class='fu'>style_subtle_num</span>(<span class='fl'>0.01</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ifelse(negative, style_neg(x), x): argument "negative" is missing, with no default</span></div><div class='input'><span class='fu'>style_bold</span>(<span class='st'>"Petal.Width"</span>)</div><div class='output co'>#&gt; [1] "Petal.Width"</div><div class='input'><span class='fu'>style_na</span>(<span class='st'>"NA"</span>)</div><div class='output co'>#&gt; [1] "NA"</div><div class='input'><span class='fu'>style_neg</span>(<span class='st'>"123"</span>)</div><div class='output co'>#&gt; [1] "123"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
