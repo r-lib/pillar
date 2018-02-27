@@ -11,4 +11,4 @@ NOTE for too frequent update (sorry again!)
 
 ## revdepcheck results
 
-Downstream packages not checked, the single change to pillar 1.2.0 affects a code path that would have errored otherwise.
+Checked all 8 direct downstream packages, no regressions found.
