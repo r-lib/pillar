@@ -13,7 +13,7 @@ style_num(x, negative, significant = rep_along(x, TRUE))
 
 style_subtle(x)
 
-style_subtle_num(x)
+style_subtle_num(x, negative)
 
 style_bold(x)
 

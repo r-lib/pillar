@@ -3,7 +3,7 @@
 Display
 -------
 
-- Turned off using subtle style for digits that are considered insignificant.  Set the new option `pillar.subtle_num` to `TRUE` to turn it on again (default: `FALSE`).
+- Turned off using subtle style for digits that are considered insignificant.  Negative numbers are shown all red.  Set the new option `pillar.subtle_num` to `TRUE` to turn it on again (default: `FALSE`).
 - The negation sign is printed next to the number again (#91).
 - Scientific notation uses regular digits again for exponents (#90).
 - Groups of three digits are now underlined, starting with the fourth before/after the decimal point. This gives a better idea of the order of magnitude of the numbers (#78).
