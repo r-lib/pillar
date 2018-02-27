@@ -52,7 +52,7 @@ style_num(
   significant = c(FALSE, FALSE)
 )
 style_subtle("text")
-style_subtle_num(0.01)
+style_subtle_num(0.01 * 1:3, c(TRUE, FALSE, TRUE))
 style_bold("Petal.Width")
 style_na("NA")
 style_neg("123")
