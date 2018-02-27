@@ -1,5 +1,8 @@
 if (Sys.getenv("DISPLAY") == "") stop("Run with xvfb-run")
 
+free <- system(paste0("df --output=avail ", tempdir(), " | tail -n 1"), intern = TRUE)
+if (as.numeric(free) < 1e8) stop("Set TMPDIR to a location with at least 100 GB free space")
+
 package <- basename(getwd())
 
 library(revdepcheck)
@@ -15,7 +18,7 @@ if (length(revdep_todo()) == 0) {
   import_revdeps <- setdiff(import_revdeps, package)
   todo_import_revdeps <- import_revdeps
 
-  while (length(todo_import_revdeps) > 0) {
+  while (FALSE && length(todo_import_revdeps) > 0) {
     print(length(todo_import_revdeps))
     print(todo_import_revdeps)
     print(Sys.time())
@@ -36,21 +39,21 @@ if (length(revdep_todo()) == 0) {
 options(repos = revdepcheck:::get_repos(bioc = TRUE))
 
 todo <- revdep_todo()
-withr::with_temp_libpaths(action = "replace", {
-  crancache::install_packages(c(
-    todo,
-    "pillar"
-  ))
+dir.create("revdep/warmup_lib", showWarnings = FALSE)
+withr::with_libpaths("revdep/warmup_lib", action = "replace", {
+  crancache::update_packages(ask = FALSE)
+  crancache::install_packages(setdiff(todo, rownames(installed.packages())))
 
   remotes::install_local(".")
+  crancache::download_packages(todo, destdir = tempdir())
 })
 
 repos <- paste0(
   "file://",
-  file.path(crancache::get_cache_dir(), c("cran-bin", "bioc-bin", "other-bin"))
+  file.path(crancache::get_cache_dir(), c("cran-bin", "cran", "bioc-bin", "bioc"))
 )
 
-names(repos) <- c("CRAN", "Bioc", "other")
+names(repos) <- c("CRAN", "CRAN-src", "Bioc", "Bioc-src")
 
 options(repos = repos)
 
@@ -61,7 +64,7 @@ for (i in seq_len(N)) {
       bioc = TRUE,
       dependencies = character(),
       quiet = FALSE,
-      num_workers = 24,
+      num_workers = 40,
       timeout = as.difftime(60, units = "mins")
     )
   )
