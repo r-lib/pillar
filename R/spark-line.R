@@ -29,10 +29,10 @@ braille <- function(x) {
   x <- c(7L, 3L, 2L, 1L, 8L, 6L, 5L, 4L)[x]
 
   raised <- 1:8 %in% x
-  binary <- raised * 2 ^ (0:7)
+  binary <- raised * 2^(0:7)
 
   # offset in hex is 2800
-  val <- 10240 + sum(raised * 2 ^ (0:7))
+  val <- 10240 + sum(raised * 2^(0:7))
 
   intToUtf8(val)
 }

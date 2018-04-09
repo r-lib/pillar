@@ -78,14 +78,14 @@ test_that("corner cases", {
 })
 
 test_that("output test", {
-  expect_pillar_output((10 ^ (-3:4)) * c(-1, 1), filename = "basic.txt")
-  expect_pillar_output(1.23456 * 10 ^ (-3:3), filename = "decimal-insignif.txt")
+  expect_pillar_output((10^(-3:4)) * c(-1, 1), filename = "basic.txt")
+  expect_pillar_output(1.23456 * 10^(-3:3), filename = "decimal-insignif.txt")
   withr::with_options(
     list(pillar.sigfig = 5),
-    expect_pillar_output((10 ^ (c(-2:4, 0L))) * c(-1, 1), filename = "basic-signif-5.txt")
+    expect_pillar_output((10^(c(-2:4, 0L))) * c(-1, 1), filename = "basic-signif-5.txt")
   )
   withr::with_options(
     list(pillar.sigfig = 7, warn = 2, error = recover),
-    expect_pillar_output((10 ^ (0:-5)) * c(-1, 1), width = 20, filename = "basic-signif-7.txt")
+    expect_pillar_output((10^(0:-5)) * c(-1, 1), width = 20, filename = "basic-signif-7.txt")
   )
 })

@@ -124,7 +124,7 @@ pillar_shaft.POSIXt <- function(x, ...) {
   date <- format(x, format = "%Y-%m-%d")
   time <- format(x, format = "%H:%M:%OS")
 
-  datetime <- paste0(date, " " , style_subtle(time))
+  datetime <- paste0(date, " ", style_subtle(time))
   datetime[is.na(x)] <- NA
 
   new_pillar_shaft_simple(datetime, width = 19, align = "left")

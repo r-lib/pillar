@@ -173,7 +173,7 @@ format_rhs <- function(s) {
   rhs_digits <- s$rhs_digits
 
   # Digits on RHS of .
-  rhs_num <- sprintf("%.0f", abs(round(s$rhs * 10 ^ s$rhs_digits)))
+  rhs_num <- sprintf("%.0f", abs(round(s$rhs * 10^(s$rhs_digits))))
   rhs_num[rhs_num == "0"] <- ""
 
   n_zeros <- pmax(0, rhs_digits - get_extent(rhs_num))
