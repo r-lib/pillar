@@ -147,8 +147,11 @@ underline_3_back <- function(x) {
 }
 
 neg_tail <- function(x, n) {
-  if (n == 0) x
-  else utils::tail(x, -n)
+  if (n == 0) {
+    x
+  } else {
+    utils::tail(x, -n)
+  }
 }
 
 format_dec <- function(s) {

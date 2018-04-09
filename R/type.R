@@ -26,8 +26,11 @@ get_pillar_type <- function(x) {
 
 #' @export
 format.pillar_type <- function(x, width = NULL, ...) {
-  if (is.null(width) || width >= get_width(x)) type <- x$type
-  else type <- crayon::col_substr(x$type, 1, width - 2)
+  if (is.null(width) || width >= get_width(x)) {
+    type <- x$type
+  } else {
+    type <- crayon::col_substr(x$type, 1, width - 2)
+  }
   format_full_type(type)
 }
 

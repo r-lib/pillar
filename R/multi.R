@@ -54,8 +54,11 @@ squeeze <- function(x, width = NULL, ...) {
   }
 
   rowid <- get_rowid_from_colonnade(x)
-  if (is.null(rowid)) rowid_width <- 0
-  else rowid_width <- max(get_widths(rowid)) + 1L
+  if (is.null(rowid)) {
+    rowid_width <- 0
+  } else {
+    rowid_width <- max(get_widths(rowid)) + 1L
+  }
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
   col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))

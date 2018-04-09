@@ -12,6 +12,9 @@ rif_title <- function(has_title, ...) {
 
 #' @export
 format.rif_title <- function(x, width, ...) {
-  if (!x$has_title) character()
-  else ""
+  if (!x$has_title) {
+    character()
+  } else {
+    ""
+  }
 }
