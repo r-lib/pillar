@@ -30,6 +30,13 @@ expect_pillar_output_utf8 <- function(object_quo, filename, output_width) {
       crayon = TRUE,
       width = output_width
     )
+
+    expect_known_display(
+      object = !!object_quo,
+      file = file.path("bw-out", filename),
+      crayon = FALSE,
+      width = output_width
+    )
   }
 }
 
