@@ -9,6 +9,9 @@ format_type_sum(x)
 
 \method{format_type_sum}{default}(x)
 }
+\arguments{
+\item{x}{A return value from \code{type_sum()}}
+}
 \description{
 Called on values returned from \code{\link[=type_sum]{type_sum()}} for defining the description
 in the capital.  Implement this method for a helper class for custom

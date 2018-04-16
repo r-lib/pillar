@@ -46,6 +46,8 @@ format_full_pillar_type <- function(x) {
 #' formatting, and return an object of this helper class from your
 #' `type_sum()` implementation.  See examples.
 #'
+#' @param x A return value from `type_sum()`
+#'
 #' @export
 #' @examples
 #' format_type_sum(1)
