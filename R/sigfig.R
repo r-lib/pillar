@@ -53,7 +53,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
   rhs <- round_x - lhs
   dec <- is.finite(x)
   if (!scientific) {
-    dec[(x - trunc(x)) == 0] <- FALSE
+    dec[diff_to_trunc(x) == 0] <- FALSE
   }
 
   ret <- list(
@@ -81,10 +81,10 @@ compute_rhs_digits <- function(x, sigfig) {
   # Otherwise ensure we have sigfig digits shown
   exp <- compute_exp(x)
   exp[is.na(exp)] <- Inf
-  if (is.integer(x)) {
-    rhs_digits <- 0
-  } else {
-    rhs_digits <- ifelse((exp > sigfig) | all(x == trunc(x), na.rm = TRUE), 0, sigfig - exp - 1)
+  rhs_digits <- rep_along(x, 0)
+  if (!is.integer(x) && !all(x == trunc(x), na.rm = TRUE)) {
+    has_rhs <- (exp <= sigfig)
+    rhs_digits[has_rhs] <- sigfig - 1 - exp[has_rhs]
   }
   rhs_digits
 }

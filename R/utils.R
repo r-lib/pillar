@@ -41,3 +41,7 @@ remove_as_is_class <- function(x) {
   class(x) <- setdiff(class(x), "AsIs")
   x
 }
+
+diff_to_trunc <- function(x) {
+  x - trunc(x)
+}
