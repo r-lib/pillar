@@ -1,2 +1,2 @@
-tests/testthat/out linguist-generated
-tests/testthat/out-native linguist-generated
+tests/testthat/out/*.txt linguist-generated
+tests/testthat/out-native/*.txt linguist-generated
