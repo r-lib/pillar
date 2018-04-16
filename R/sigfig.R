@@ -51,6 +51,10 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
 
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
+  dec <- is.finite(x)
+  if (!scientific) {
+    dec[(x - trunc(x)) == 0] <- FALSE
+  }
 
   ret <- list(
     sigfig = sigfig,
@@ -60,7 +64,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
-    dec = is.finite(x) & (!is.integer(x) || scientific),
+    dec = dec,
     exp = exp_display
   )
 
