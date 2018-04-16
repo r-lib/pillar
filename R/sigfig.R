@@ -76,6 +76,8 @@ safe_signif <- function(x, digits) {
   signif(x, digits)
 }
 
+sqrt_eps <- sqrt(.Machine$double.eps)
+
 compute_rhs_digits <- function(x, sigfig) {
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
@@ -85,6 +87,21 @@ compute_rhs_digits <- function(x, sigfig) {
   if (!is.integer(x) && !all(x == trunc(x), na.rm = TRUE)) {
     has_rhs <- (exp <= sigfig)
     rhs_digits[has_rhs] <- sigfig - 1 - exp[has_rhs]
+
+    to_check <- rhs_digits > 0
+    while (any(to_check, na.rm = TRUE)) {
+      which_to_check <- which(to_check)
+      val <- x[which_to_check] * 10^(rhs_digits[which_to_check] - 1)
+      resid <- diff_to_trunc(val)
+      resid_zero <- abs(resid) < sqrt_eps
+      resid_zero[is.na(resid_zero)] <- FALSE
+
+      rhs_digits[which_to_check][resid_zero] <-
+        rhs_digits[which_to_check][resid_zero] - 1
+
+      to_check[which_to_check][!resid_zero] <- FALSE
+      to_check[rhs_digits == 0] <- FALSE
+    }
   }
   rhs_digits
 }

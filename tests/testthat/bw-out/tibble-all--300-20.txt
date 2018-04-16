@@ -1,8 +1,8 @@
       a     b c    
   <dbl> <int> <lgl>
-1  1        1 TRUE 
-2  2.50     2 FALSE
-3 NA       NA NA   
+1   1       1 TRUE 
+2   2.5     2 FALSE
+3  NA      NA NA   
   d     e    
   <chr> <fct>
 1 a     a    
