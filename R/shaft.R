@@ -121,13 +121,19 @@ pillar_shaft.Date <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.POSIXt <- function(x, ...) {
+  width <- 19L
+  digits_secs <- getOption("digits.secs", 0L)
+  if (digits_secs > 0) {
+    width <- width + min(digits_secs, 6) + 1L
+  }
+
   date <- format(x, format = "%Y-%m-%d")
   time <- format(x, format = "%H:%M:%OS")
 
   datetime <- paste0(date, " ", style_subtle(time))
   datetime[is.na(x)] <- NA
 
-  new_pillar_shaft_simple(datetime, width = 19, align = "left")
+  new_pillar_shaft_simple(datetime, width = width, align = "left")
 }
 
 
