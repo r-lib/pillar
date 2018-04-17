@@ -110,5 +110,5 @@ pillar_na <- function(use_brackets_if_no_color = FALSE) {
 }
 
 style_list <- function(x) {
-  style_subtle(x)
+  crayon::green(x)
 }
