@@ -12,7 +12,8 @@ df_all <- list(
   f = as.Date("2015-12-09") + c(1:2, NA),
   g = as.POSIXct("2015-12-09 10:51:34.5678 UTC") + c(1:2, NA),
   h = as.list(c(1:2, NA)),
-  i = list(list(1, 2:3), list(4:6), list(NA))
+  i = list(list(1, 2:3), list(4:6), list(NULL)),
+  j = list(1, 2:3, letters[4:6])
 )
 
 expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,

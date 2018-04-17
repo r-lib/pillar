@@ -69,3 +69,8 @@ format_type_sum <- function(x) UseMethod("format_type_sum")
 format_type_sum.default <- function(x) {
   style_type(paste0("<", x, ">"))
 }
+
+#' @export
+format_type_sum.type_sum_list <- function(x) {
+  style_type(paste0("[", x, "]"))
+}

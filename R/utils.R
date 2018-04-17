@@ -23,6 +23,11 @@ check_sigfig <- function(x) {
   x
 }
 
+is_homogeneous <- function(x) {
+  types <- map(x, class)
+  length(unique(types)) == 1
+}
+
 slice <- function(df, index) {
   df[index, , drop = FALSE]
 }

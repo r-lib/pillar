@@ -23,7 +23,20 @@ type_sum.Date <- function(x) "date"
 #' @export
 type_sum.data.frame <- function(x) class(x)[[1]]
 #' @export
-type_sum.AsIs <- function(x) paste0("I(", type_sum(remove_as_is_class(x)), ")")
+type_sum.AsIs <- function(x) {
+  type <- type_sum(remove_as_is_class(x))
+  type[] <- paste0("I(", type, ")")
+  type
+}
+#' @export
+type_sum.list <- function(x) {
+  homogeneous <- is_homogeneous(x)
+  if (homogeneous) {
+    structure(type_sum(x[[1]]), class = "type_sum_list")
+  } else {
+    "list"
+  }
+}
 #' @export
 type_sum.default <- function(x) {
   if (!is.object(x)) {
@@ -66,7 +79,11 @@ obj_sum.default <- function(x) {
 
 #' @export
 obj_sum.list <- function(x) {
-  map_chr(x, obj_sum.default)
+  if (is_homogeneous(x)) {
+    map_chr(x, size_sum, open = "", close = "")
+  } else {
+    map_chr(x, obj_sum.default)
+  }
 }
 
 #' @export

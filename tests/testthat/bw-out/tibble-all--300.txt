@@ -1,10 +1,10 @@
-      a     b c     d     e     f          g                   h        
-  <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
-1  1.00     1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35 <int [1]>
-2  2.50     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36 <int [1]>
-3 NA       NA NA    <NA>  <NA>  NA         NA                  <int [1]>
-  i         
-  <list>    
-1 <list [2]>
-2 <list [1]>
-3 <list [1]>
+      a     b c     d     e     f          g                   h     i     
+  <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              [int] [list]
+1  1.00     1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35 <1>   <2>   
+2  2.50     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36 <1>   <1>   
+3 NA       NA NA    <NA>  <NA>  NA         NA                  <1>   <1>   
+  j        
+  <list>   
+1 <dbl [1]>
+2 <int [2]>
+3 <chr [3]>

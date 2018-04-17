@@ -16,10 +16,10 @@ dim_desc <- function(x) {
   paste0(format_dim, collapse = spaces_around(mult_sign()))
 }
 
-size_sum <- function(x) {
+size_sum <- function(x, open = " [", close = "]") {
   if (!is_vector_s3(x)) return("")
 
-  paste0(" [", dim_desc(x), "]")
+  paste0(open, dim_desc(x), close)
 }
 
 mult_sign <- function() {
