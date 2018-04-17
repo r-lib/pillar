@@ -1,6 +1,6 @@
 pillar_capital <- function(x, title = NULL, ...) {
-  title <- pillar_title(title, ...)
-  type <- pillar_type(x, ...)
+  title <- new_pillar_title(title, ...)
+  type <- new_pillar_type(x, ...)
   new_pillar_capital(title, type)
 }
 

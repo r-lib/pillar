@@ -1,16 +1,24 @@
 style_title <- style_bold
 
-pillar_title <- function(title, ...) {
-  if (is.null(title)) {
+#' Prepare a column title for formatting
+#'
+#' Call [format()] on the result to render column titles.
+#'
+#' @param x A character vector of column titles.
+#' @export
+#' @examples
+#' format(new_pillar_title(names(iris)))
+new_pillar_title <- function(x, ...) {
+  if (is.null(x)) {
     width <- 0L
   } else {
-    width <- get_extent(format_title(title, width = Inf))
+    width <- get_max_extent(format_title(x, width = Inf))
     stopifnot(!is.na(width))
   }
 
   ret <- structure(
     list(
-      title = title
+      title = x
     ),
     class = "pillar_title"
   )
@@ -35,9 +43,13 @@ get_min_title_width <- function(width) {
 }
 
 #' @export
-format.pillar_title <- function(x, width, ...) {
+format.pillar_title <- function(x, width = NULL, ...) {
   title <- x$title
   if (is.null(title)) return(character())
+
+  if (is.null(width)) {
+    width <- get_width(x)
+  }
 
   title <- format_title(title, width)
   style_title(title)
