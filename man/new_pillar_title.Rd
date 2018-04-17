@@ -8,6 +8,8 @@ new_pillar_title(x, ...)
 }
 \arguments{
 \item{x}{A character vector of column titles.}
+
+\item{...}{Unused.}
 }
 \description{
 Call \code{\link[=format]{format()}} on the result to render column titles.

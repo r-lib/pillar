@@ -9,6 +9,7 @@ style_type <- function(x) {
 #' Call [format()] on the result to render column types.
 #'
 #' @param x A vector for which the type is to be retrieved.
+#' @param ... Unused.
 #' @export
 #' @examples
 #' format(new_pillar_type(iris$Species))
