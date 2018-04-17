@@ -13,7 +13,8 @@ pillar_type <- function(x, ...) {
     ),
     class = "pillar_type"
   )
-  ret <- set_width(ret, width = max(get_extent(type) + 2L, MIN_PILLAR_WIDTH))
+  extent <- get_extent(format_type_sum(type))
+  ret <- set_width(ret, width = max(extent, MIN_PILLAR_WIDTH))
   ret <- set_min_width(ret, MIN_PILLAR_WIDTH)
   ret
 }
