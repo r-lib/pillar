@@ -13,8 +13,22 @@ format_decimal_bw <- function(x, sigfig = 3, ...) {
 
 test_that("compute_rhs_digits() works", {
   x <- c(NA, NaN, Inf, 0, 1, 100, 1e10, 0.001, 1e-20)
-  expect_equal(compute_rhs_digits(x, 3), c(0, 0, 0, 0, 2, 0, 0, 5, 22))
-  expect_equal(compute_rhs_digits(x, 7), c(0, 0, 0, 0, 6, 4, 0, 9, 26))
+  expect_equal(
+    compute_rhs_digits(x, 3),
+    c(0, 0, 0, 0, 0, 0, 0, 3, 20)
+  )
+  expect_equal(
+    compute_rhs_digits(x + 1e-8, 3),
+    c(0, 0, 0, 8, 2, 0, 0, 5, 8)
+  )
+  expect_equal(
+    compute_rhs_digits(x, 7),
+    c(0, 0, 0, 0, 0, 0, 0, 3, 24)
+  )
+  expect_equal(
+    compute_rhs_digits(x, 7 + 1e-8),
+    c(0, 0, 0, 0, 6, 4, 0, 9, 26)
+  )
 })
 
 test_that("compute_exp() returns NA if not relevant", {
@@ -39,18 +53,24 @@ test_that("negative values get - in neg", {
   expect_equal(format_neg(f), c("-", " "))
 })
 
-test_that("trailing zeros pad to sigfigs", {
+test_that("trailing zeros removed if whole decimal fraction", {
   f <- format_decimal_bw(c(1.5, 0.5))
+  expect_equal(without_color(format_lhs(f)), c("1", "0"))
+  expect_equal(format_rhs(f), c("5", "5"))
+})
+
+test_that("trailing zeros pad to sigfigs if data not shown", {
+  f <- format_decimal_bw(c(1.5, 0.5) + 1e-6)
   expect_equal(without_color(format_lhs(f)), c("1", "0"))
   expect_equal(format_rhs(f), c("50 ", "500"))
 })
 
 test_that("sigfigs split between lhs and rhs", {
-  x <- c(1.50, 10.50, 100.50)
+  x <- c(1.43, 10.43, 100.43)
   f <- format_decimal_bw(x)
 
   expect_equal(format_lhs(f), format(trunc(x)))
-  expect_equal(format_rhs(f), c("50", "5 ", "  "))
+  expect_equal(format_rhs(f), c("43", "4 ", "  "))
 })
 
 test_that("leading 0 added to rhs", {
@@ -85,7 +105,8 @@ test_that("output test", {
     expect_pillar_output((10^(c(-2:4, 0L))) * c(-1, 1), filename = "basic-signif-5.txt")
   )
   withr::with_options(
-    list(pillar.sigfig = 7, warn = 2, error = recover),
+    list(pillar.sigfig = 7),
     expect_pillar_output((10^(0:-5)) * c(-1, 1), width = 20, filename = "basic-signif-7.txt")
   )
+  expect_pillar_output((10^(5:-5)) + 1e-7, width = 20, filename = "basic-slightly-nonint.txt")
 })

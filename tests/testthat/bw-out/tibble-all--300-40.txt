@@ -1,8 +1,8 @@
       a     b c     d     e    
   <dbl> <int> <lgl> <chr> <fct>
-1  1.00     1 TRUE  a     a    
-2  2.50     2 FALSE b     b    
-3 NA       NA NA    <NA>  <NA> 
+1   1       1 TRUE  a     a    
+2   2.5     2 FALSE b     b    
+3  NA      NA NA    <NA>  <NA> 
   f          g                   h    
   <date>     <dttm>              [int]
 1 2015-12-10 2015-12-09 10:51:35 <1>  

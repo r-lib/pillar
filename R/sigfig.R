@@ -51,6 +51,10 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
 
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
+  dec <- is.finite(x)
+  if (!scientific) {
+    dec[diff_to_trunc(x) == 0] <- FALSE
+  }
 
   ret <- list(
     sigfig = sigfig,
@@ -60,7 +64,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
-    dec = is.finite(x) & (!is.integer(x) || scientific),
+    dec = dec,
     exp = exp_display
   )
 
@@ -72,15 +76,32 @@ safe_signif <- function(x, digits) {
   signif(x, digits)
 }
 
+sqrt_eps <- sqrt(.Machine$double.eps)
+
 compute_rhs_digits <- function(x, sigfig) {
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
   exp <- compute_exp(x)
   exp[is.na(exp)] <- Inf
-  if (is.integer(x)) {
-    rhs_digits <- 0
-  } else {
-    rhs_digits <- ifelse((exp > sigfig) | all(x == trunc(x), na.rm = TRUE), 0, sigfig - exp - 1)
+  rhs_digits <- rep_along(x, 0)
+  if (!is.integer(x) && !all(x == trunc(x), na.rm = TRUE)) {
+    has_rhs <- (exp <= sigfig)
+    rhs_digits[has_rhs] <- sigfig - 1 - exp[has_rhs]
+
+    to_check <- rhs_digits > 0
+    while (any(to_check, na.rm = TRUE)) {
+      which_to_check <- which(to_check)
+      val <- x[which_to_check] * 10^(rhs_digits[which_to_check] - 1)
+      resid <- diff_to_trunc(val)
+      resid_zero <- abs(resid) < sqrt_eps
+      resid_zero[is.na(resid_zero)] <- FALSE
+
+      rhs_digits[which_to_check][resid_zero] <-
+        rhs_digits[which_to_check][resid_zero] - 1
+
+      to_check[which_to_check][!resid_zero] <- FALSE
+      to_check[rhs_digits == 0] <- FALSE
+    }
   }
   rhs_digits
 }

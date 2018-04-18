@@ -1,7 +1,7 @@
 format_title <- function(x, width) {
   needs_ticks <- !is_syntactic(x)
   x[needs_ticks] <- tick(x[needs_ticks])
-  str_trunc(x, width)
+  align(str_trunc(x, width))
 }
 
 is_syntactic <- function(x) {

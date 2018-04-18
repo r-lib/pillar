@@ -4,7 +4,16 @@ style_type <- function(x) {
   crayon::italic(style_subtle(x))
 }
 
-pillar_type <- function(x, ...) {
+#' Prepare a column type for formatting
+#'
+#' Call [format()] on the result to render column types.
+#'
+#' @param x A vector for which the type is to be retrieved.
+#' @param ... Unused.
+#' @export
+#' @examples
+#' format(new_pillar_type(iris$Species))
+new_pillar_type <- function(x, ...) {
   type <- get_pillar_type(x)
 
   ret <- structure(

@@ -27,9 +27,12 @@ get_max_extent <- function(x) {
   max(get_extent(x), 0L, na.rm = TRUE)
 }
 
-align <- function(x, width, align = c("left", "right")) {
+align <- function(x, width = NULL, align = c("left", "right")) {
   align <- match.arg(align)
   extent <- get_extent(x)
+  if (is.null(width)) {
+    width <- max(extent)
+  }
   spaces <- pmax(width - extent, 0L)
   if (align == "left") {
     paste0(x, strrep(" ", spaces))
