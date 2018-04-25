@@ -1,18 +1,9 @@
-# pillar 1.2.1.9002 (2018-04-18)
+# pillar 1.2.2 (2018-04-25)
 
 - Whole numbers are printed without a decimal dot again. Numbers that are the result of a whole number divided by a power of 10 (subject to a tolerance to account for floating-point imprecision) are shown without trailing decimal zeros, even if these zeros are significant according to the `pillar.sigfig` option (#105).
-
-
-# pillar 1.2.1.9001 (2018-04-17)
-
 - New `new_pillar_title()` and `new_pillar_type()` to support consistent output in `glimpse()` (#31).
 - New `format_type_sum()` generic that allows overriding the formatting of the type summary in the capital (#73).
 - The `digits.secs` option is respected when computing the width for date-time values (#102).
-
-
-# pillar 1.2.1.9000 (2018-04-16)
-
-- Internal changes only.
 
 
 # pillar 1.2.1 (2018-02-26)
