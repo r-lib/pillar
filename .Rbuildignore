@@ -13,3 +13,4 @@
 ^docs$
 ^revdep$
 ^\.drake$
+^\.github$
