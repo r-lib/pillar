@@ -1,3 +1,8 @@
+# pillar 1.2.2.9000 (2018-05-23)
+
+- Internal changes only.
+
+
 # pillar 1.2.2 (2018-04-25)
 
 - Whole numbers are printed without a decimal dot again. Numbers that are the result of a whole number divided by a power of 10 (subject to a tolerance to account for floating-point imprecision) are shown without trailing decimal zeros, even if these zeros are significant according to the `pillar.sigfig` option (#105).
