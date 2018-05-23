@@ -28,7 +28,7 @@ pillar_shaft(x, ...)
 
 \method{pillar_shaft}{POSIXt}(x, ...)
 
-\method{pillar_shaft}{character}(x, ...)
+\method{pillar_shaft}{character}(x, ..., min_width = 3L)
 
 \method{pillar_shaft}{list}(x, ...)
 
@@ -46,6 +46,9 @@ pillar_shaft(x, ...)
 \item{sigfig}{Minimum number of significant figures to display. Numbers
 larger than 1 will potentially show more significant figures than this
 but they will be greyed out.}
+
+\item{min_width}{Minimum number of characters to display,
+unless the string fits a shorter width.}
 }
 \description{
 Internal class for formatting the data for a column.

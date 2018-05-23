@@ -139,7 +139,9 @@ pillar_shaft.POSIXt <- function(x, ...) {
 
 #' @export
 #' @rdname pillar_shaft
-pillar_shaft.character <- function(x, ...) {
+#' @param min_width Minimum number of characters to display,
+#'   unless the string fits a shorter width.
+pillar_shaft.character <- function(x, ..., min_width = 3L) {
   x <- utf8::utf8_encode(x)
   out <- x
 
@@ -159,7 +161,7 @@ pillar_shaft.character <- function(x, ...) {
   }
 
   width <- get_max_extent(out)
-  new_pillar_shaft_simple(out, width = width, align = "left", min_width = min(width, 3L))
+  new_pillar_shaft_simple(out, width = width, align = "left", min_width = min(width, min_width))
 }
 
 #' @export
