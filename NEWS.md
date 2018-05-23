@@ -1,3 +1,8 @@
+# pillar 1.2.2.9001 (2018-05-23)
+
+- `pillar_shaft.character()` gains `min_width` argument.
+
+
 # pillar 1.2.2.9000 (2018-05-23)
 
 - Internal changes only.
