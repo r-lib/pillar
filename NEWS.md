@@ -1,3 +1,8 @@
+# pillar 1.2.2.9003 (2018-05-24)
+
+- Fix broken tests.
+
+
 # pillar 1.2.2.9002 (2018-05-24)
 
 - More defensive test to address CRAN check failures on Solaris.
