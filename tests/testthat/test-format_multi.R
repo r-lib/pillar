@@ -41,7 +41,6 @@ withr::with_options(list(pillar.bold = TRUE), {
     expect_pillar_output(xf = colonnade(x, width = 39), filename = "multi-39.txt")
     expect_pillar_output(xf = colonnade(x, width = Inf), filename = "multi-inf.txt")
 
-    skip_on_os("windows")
     expect_pillar_output(
       xf = colonnade(
         rep(list(paste(letters, collapse = " ")), 4),
