@@ -12,22 +12,22 @@ format_decimal_bw <- function(x, sigfig = 3, ...) {
 }
 
 test_that("compute_rhs_digits() works", {
-  x <- c(NA, NaN, Inf, 0, 1, 100, 1e10, 0.001, 1e-10)
+  x <- c(NA, NaN, Inf, 0, 1, 100, 1e10, 0.001, 1e-14)
   expect_equal(
     compute_rhs_digits(x, 3),
-    c(0, 0, 0, 0, 0, 0, 0, 3, 10)
+    c(0, 0, 0, 0, 0, 0, 0, 3, 14)
   )
   expect_equal(
     compute_rhs_digits(x + 1e-8, 3),
-    c(0, 0, 0, 8, 2, 0, 0, 5, 8)
+    c(0, 0, 0, 8, 2, 0, 0, 5, 10)
   )
   expect_equal(
     compute_rhs_digits(x, 7),
-    c(0, 0, 0, 0, 0, 0, 0, 3, 24)
+    c(0, 0, 0, 0, 0, 0, 0, 3, 14)
   )
   expect_equal(
     compute_rhs_digits(x, 7 + 1e-8),
-    c(0, 0, 0, 0, 6, 4, 0, 9, 26)
+    c(0, 0, 0, 0, 6, 4, 0, 9, 20)
   )
 })
 
