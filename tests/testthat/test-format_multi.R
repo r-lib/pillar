@@ -176,6 +176,15 @@ withr::with_options(list(pillar.bold = TRUE), {
     )
   })
 
+  test_that("sep argument", {
+    x <- list(sep = 1:3)
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(x, width = 30),
+      filename = "sep.txt"
+    )
+  })
+
   test_that("without styling", {
     xf <- colonnade(list(x = (10^(-3:4)) * c(-1, 1)))
 
