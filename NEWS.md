@@ -1,28 +1,9 @@
 # pillar 1.2.3 (2018-05-25)
 
-- Same as previous version.
-
-
-# pillar 1.2.2.9003 (2018-05-24)
-
-- Fix broken tests.
-
-
-# pillar 1.2.2.9002 (2018-05-24)
-
-- More defensive test to address CRAN check failures on Solaris.
 - Eliminate CRAN check warning about undeclared withr dependency.
+- More defensive test to address CRAN check failures on Solaris.
 - `colonnade()` now handles pillars named `"sep"` (#115).
-
-
-# pillar 1.2.2.9001 (2018-05-23)
-
 - `pillar_shaft.character()` gains `min_width` argument.
-
-
-# pillar 1.2.2.9000 (2018-05-23)
-
-- Internal changes only.
 
 
 # pillar 1.2.2 (2018-04-25)
