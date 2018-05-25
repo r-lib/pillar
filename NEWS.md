@@ -1,3 +1,8 @@
+# pillar 1.2.3 (2018-05-25)
+
+- Same as previous version.
+
+
 # pillar 1.2.2.9003 (2018-05-24)
 
 - Fix broken tests.
