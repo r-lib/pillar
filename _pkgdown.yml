@@ -45,3 +45,7 @@ navbar:
     href: reference/index.html
   - text: News
     href: news/index.html
+
+development:
+  mode: auto
+  destination: ../docs-dev
