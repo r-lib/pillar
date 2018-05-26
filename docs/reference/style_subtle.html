@@ -46,7 +46,7 @@
 
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">pillar</a>
-        <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
+        <small class="tidyverse">part of the <a href="https://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -67,6 +67,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,16 +75,20 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Styling helpers</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/sigfig.R'><code>R/sigfig.R</code></a>, <a href='https://github.com/r-lib/pillar/blob/master/R/styles.R'><code>R/styles.R</code></a></small>
+    <div class="hidden name"><code>style_subtle.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Functions that allow implementers of formatters for custom data types to
 maintain a consistent style with the default data types.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>style_num</span>(<span class='no'>x</span>, <span class='no'>negative</span>, <span class='kw'>significant</span> <span class='kw'>=</span> <span class='fu'>rep_along</span>(<span class='no'>x</span>, <span class='fl'>TRUE</span>))
 
@@ -97,7 +102,7 @@ maintain a consistent style with the default data types.</p>
 
 <span class='fu'>style_neg</span>(<span class='no'>x</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -113,15 +118,15 @@ indicate if the values are negative and significant, respectively</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>style_subtle()</code> is affected by the <code>pillar.subtle</code> option.
-    <code>style_subtle_num()</code> is affected by the <code>pillar.subtle_num</code> option, which is
-<code>FALSE</code> by default.
-    <code>style_bold()</code> is affected by the <code>pillar.bold</code> option.
-    <code>style_neg()</code> is affected by the <code>pillar.neg</code> option.</p>
+    <p><code>style_subtle()</code> is affected by the <code>pillar.subtle</code> option.</p>
+<p><code>style_subtle_num()</code> is affected by the <code>pillar.subtle_num</code> option, which is
+<code>FALSE</code> by default.</p>
+<p><code>style_bold()</code> is affected by the <code>pillar.bold</code> option.</p>
+<p><code>style_neg()</code> is affected by the <code>pillar.neg</code> option.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='pillar-package.html'>pillar-package</a> for a list of options</p>
+    <div class='dont-index'><p><a href='pillar-package.html'>pillar-package</a> for a list of options</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -151,25 +156,27 @@ indicate if the values are negative and significant, respectively</p></td>
 
       <footer>
       <div class="tidyverse">
-  <p>pillar is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="http://tidyverse.org">tidyverse.org</a>.</p>
+  <p>pillar is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
 </div>
 
 <div class="author">
   <p>Developed by Kirill Müller, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
-  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
+  <p>Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  ga('create', 'UA-67989-18', 'auto');
-  ga('send', 'pageview');
+ gtag('config', 'UA-115082821-1');
 </script>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

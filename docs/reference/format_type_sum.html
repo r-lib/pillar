@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Provide a succinct summary of an object — type_sum • pillar</title>
+<title>Format a type summary — format_type_sum • pillar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -78,39 +78,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Provide a succinct summary of an object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/type-sum.R'><code>R/type-sum.R</code></a></small>
-    <div class="hidden name"><code>type_sum.Rd</code></div>
+    <h1>Format a type summary</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/type.R'><code>R/type.R</code></a></small>
+    <div class="hidden name"><code>format_type_sum.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
-occur in a data frame should return a string with four or less characters.</p>
-<p><code>obj_sum()</code> also includes the size of the object if <code>is_vector_s3()</code>
-is <code>TRUE</code>.</p>
+    <p>Called on values returned from <code><a href='type_sum.html'>type_sum()</a></code> for defining the description
+in the capital.  Implement this method for a helper class for custom
+formatting, and return an object of this helper class from your
+<code><a href='type_sum.html'>type_sum()</a></code> implementation.  See examples.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>type_sum</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>format_type_sum</span>(<span class='no'>x</span>)
 
-<span class='fu'>obj_sum</span>(<span class='no'>x</span>)
-
-<span class='fu'>is_vector_s3</span>(<span class='no'>x</span>)</pre>
+<span class='co'># S3 method for default</span>
+<span class='fu'>format_type_sum</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an object to summarise. Generally only methods of atomic vectors
-and variants have been implemented.</p></td>
+      <td><p>A return value from <code><a href='type_sum.html'>type_sum()</a></code></p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>obj_sum</span>(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; [1] "int [10]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'>matrix</span>(<span class='fl'>1</span>:<span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] "int [10 × 1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'>Sys.Date</span>())</div><div class='output co'>#&gt; [1] "date [1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'>Sys.time</span>())</div><div class='output co'>#&gt; [1] "dttm [1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='no'>mean</span>)</div><div class='output co'>#&gt; [1] "fn"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>format_type_sum</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] "&lt;1&gt;"</div><div class='input'><span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; &lt;dbl&gt;
+#&gt;     1</div><div class='input'>
+<span class='no'>type_sum.accel</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
+  <span class='fu'>structure</span>(<span class='st'>"kg m/s^2"</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"type_sum_accel"</span>)
+}
+<span class='no'>format_type_sum.type_sum_accel</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
+  <span class='fu'><a href='style_subtle.html'>style_subtle</a></span>(<span class='no'>x</span>)
+}
+<span class='no'>accel</span> <span class='kw'>&lt;-</span> <span class='fu'>structure</span>(<span class='fl'>9.81</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"accel"</span>)
+<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='no'>accel</span>)</div><div class='output co'>#&gt; &lt;S3: accel&gt;
+#&gt; 9.81       </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -1,4 +1,4 @@
-# pillar 1.2.3 (2018-05-25)
+# pillar 1.2.3
 
 - Eliminate CRAN check warning about undeclared withr dependency.
 - More defensive test to address CRAN check failures on Solaris.
@@ -6,7 +6,7 @@
 - `pillar_shaft.character()` gains `min_width` argument.
 
 
-# pillar 1.2.2 (2018-04-25)
+# pillar 1.2.2
 
 - Whole numbers are printed without a decimal dot again. Numbers that are the result of a whole number divided by a power of 10 (subject to a tolerance to account for floating-point imprecision) are shown without trailing decimal zeros, even if these zeros are significant according to the `pillar.sigfig` option (#105).
 - New `new_pillar_title()` and `new_pillar_type()` to support consistent output in `glimpse()` (#31).
@@ -14,7 +14,7 @@
 - The `digits.secs` option is respected when computing the width for date-time values (#102).
 
 
-# pillar 1.2.1 (2018-02-26)
+# pillar 1.2.1
 
 Display
 -------
@@ -41,7 +41,7 @@ New functions
 - New styling helper `style_subtle_num()`, formatting depends on the `pillar.subtle_num` option.
 
 
-# pillar 1.1.0 (2018-01-14)
+# pillar 1.1.0
 
 - `NA` values are now shown in plain red, without changing the background color (#70).
 - New options to control the output, with defaults that match the current behavior unless stated otherwise:
@@ -55,12 +55,12 @@ New functions
 - Very wide tibbles now print faster (#85).
 
 
-# pillar 1.0.1 (2017-11-27)
+# pillar 1.0.1
 
 - Work around failing CRAN tests on Windows.
 
 
-# pillar 1.0.0 (2017-11-16)
+# pillar 1.0.0
 
 Initial release.
 

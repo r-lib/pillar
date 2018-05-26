@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • pillar</title>
+<title>Changelog • pillar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -46,7 +46,7 @@
 
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">pillar</a>
-        <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
+        <small class="tidyverse">part of the <a href="https://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -67,6 +67,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,17 +75,41 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="contents">
-    <div id="pillar-1-2-1-2018-02-26" class="section level1">
-<h1 class="hasAnchor">
-<a href="#pillar-1-2-1-2018-02-26" class="anchor"></a>pillar 1.2.1 (2018-02-26)</h1>
+    <div id="pillar-1-2-3" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-2-3" class="anchor"></a>pillar 1.2.3<small> 2018-05-25 </small>
+</h1>
+<ul>
+<li>Eliminate CRAN check warning about undeclared withr dependency.</li>
+<li>More defensive test to address CRAN check failures on Solaris.</li>
+<li>
+<code><a href="../reference/colonnade.html">colonnade()</a></code> now handles pillars named <code>"sep"</code> (<a href='https://github.com/r-lib/pillar/issues/115'>#115</a>).</li>
+<li>
+<code><a href="../reference/pillar_shaft.html">pillar_shaft.character()</a></code> gains <code>min_width</code> argument.</li>
+</ul>
+</div>
+    <div id="pillar-1-2-2" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-2-2" class="anchor"></a>pillar 1.2.2<small> 2018-04-26 </small>
+</h1>
+<ul>
+<li>Whole numbers are printed without a decimal dot again. Numbers that are the result of a whole number divided by a power of 10 (subject to a tolerance to account for floating-point imprecision) are shown without trailing decimal zeros, even if these zeros are significant according to the <code>pillar.sigfig</code> option (<a href='https://github.com/r-lib/pillar/issues/105'>#105</a>).</li>
+<li>New <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> to support consistent output in <code>glimpse()</code> (<a href='https://github.com/r-lib/pillar/issues/31'>#31</a>).</li>
+<li>New <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> generic that allows overriding the formatting of the type summary in the capital (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
+<li>The <code>digits.secs</code> option is respected when computing the width for date-time values (<a href='https://github.com/r-lib/pillar/issues/102'>#102</a>).</li>
+</ul>
+</div>
+    <div id="pillar-1-2-1" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-2-1" class="anchor"></a>pillar 1.2.1<small> 2018-02-27 </small>
+</h1>
 <div id="display" class="section level2">
 <h2 class="hasAnchor">
 <a href="#display" class="anchor"></a>Display</h2>
@@ -116,9 +141,10 @@
 </ul>
 </div>
 </div>
-    <div id="pillar-1-1-0-2018-01-14" class="section level1">
-<h1 class="hasAnchor">
-<a href="#pillar-1-1-0-2018-01-14" class="anchor"></a>pillar 1.1.0 (2018-01-14)</h1>
+    <div id="pillar-1-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-1-0" class="anchor"></a>pillar 1.1.0<small> 2018-01-14 </small>
+</h1>
 <ul>
 <li>
 <code>NA</code> values are now shown in plain red, without changing the background color (<a href='https://github.com/r-lib/pillar/issues/70'>#70</a>).</li>
@@ -141,16 +167,18 @@
 <li>Very wide tibbles now print faster (<a href='https://github.com/r-lib/pillar/issues/85'>#85</a>).</li>
 </ul>
 </div>
-    <div id="pillar-1-0-1-2017-11-27" class="section level1">
-<h1 class="hasAnchor">
-<a href="#pillar-1-0-1-2017-11-27" class="anchor"></a>pillar 1.0.1 (2017-11-27)</h1>
+    <div id="pillar-1-0-1" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-0-1" class="anchor"></a>pillar 1.0.1<small> 2017-11-27 </small>
+</h1>
 <ul>
 <li>Work around failing CRAN tests on Windows.</li>
 </ul>
 </div>
-    <div id="pillar-1-0-0-2017-11-16" class="section level1">
-<h1 class="hasAnchor">
-<a href="#pillar-1-0-0-2017-11-16" class="anchor"></a>pillar 1.0.0 (2017-11-16)</h1>
+    <div id="pillar-1-0-0" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-0-0" class="anchor"></a>pillar 1.0.0<small> 2017-11-20 </small>
+</h1>
 <p>Initial release.</p>
 <div id="user-functions" class="section level2">
 <h2 class="hasAnchor">
@@ -192,17 +220,18 @@
 <span class="kw"><a href="../reference/extra_cols.html">extra_cols</a></span>(x, ...) <span class="co"># squeezed_colonnade</span></code></pre></div>
 </div>
 </div>
-    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#pillar-1-2-1-2018-02-26">1.2.1</a></li>
-        <li><a href="#pillar-1-1-0-2018-01-14">1.1.0</a></li>
-        <li><a href="#pillar-1-0-1-2017-11-27">1.0.1</a></li>
-        <li><a href="#pillar-1-0-0-2017-11-16">1.0.0</a></li>
+        <li><a href="#pillar-1-2-3">1.2.3</a></li>
+        <li><a href="#pillar-1-2-2">1.2.2</a></li>
+        <li><a href="#pillar-1-2-1">1.2.1</a></li>
+        <li><a href="#pillar-1-1-0">1.1.0</a></li>
+        <li><a href="#pillar-1-0-1">1.0.1</a></li>
+        <li><a href="#pillar-1-0-0">1.0.0</a></li>
       </ul>
     </div>
   </div>
@@ -211,25 +240,27 @@
 
       <footer>
       <div class="tidyverse">
-  <p>pillar is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="http://tidyverse.org">tidyverse.org</a>.</p>
+  <p>pillar is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
 </div>
 
 <div class="author">
   <p>Developed by Kirill Müller, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
-  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
+  <p>Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  ga('create', 'UA-67989-18', 'auto');
-  ga('send', 'pageview');
+ gtag('config', 'UA-115082821-1');
 </script>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

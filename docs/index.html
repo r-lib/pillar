@@ -15,7 +15,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,7 +27,7 @@
 
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="index.html">pillar</a>
-        <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
+        <small class="tidyverse">part of the <a href="https://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -57,12 +57,11 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     
 
     
     
-<div class="contents">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="pillar" class="section level1">
 
@@ -80,7 +79,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <p>pillar is not designed for end-users but will eventually be incorporated in packages like <a href="http://tibble.tidyverse.org">tibble</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pillar)
 
-x &lt;-<span class="st"> </span><span class="dv">123456789</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span> <span class="op">^</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">-5</span>, <span class="ot">NA</span>, <span class="dv">-8</span>, <span class="dv">-10</span>))
+x &lt;-<span class="st"> </span><span class="dv">123456789</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span> <span class="op">^</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">5</span>, <span class="ot">NA</span>, <span class="op">-</span><span class="dv">8</span>, <span class="op">-</span><span class="dv">10</span>))
 <span class="kw"><a href="reference/pillar.html">pillar</a></span>(x)
 <span class="co">#&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 123457.    </span>
@@ -162,22 +161,27 @@ x &lt;-<span class="st"> </span><span class="dv">123456789</span> <span class="o
 <p>Exercising these ideas to their fullest requires a font with good support for block drawing characters. <a href="https://www.fsd.it/shop/fonts/pragmatapro/">PragamataPro</a> is one such font.</p>
 </div>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>Links</h2>
+    <div class="links">
+<h2>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=pillar">https://​cran.r-project.org/​package=pillar</a>
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=pillar">https://​cloud.r-project.org/​package=pillar</a>
 </li>
 <li>Browse source code at <br><a href="https://github.com/r-lib/pillar">https://​github.com/​r-lib/​pillar</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/r-lib/pillar/issues">https://​github.com/​r-lib/​pillar/​issues</a>
 </li>
 </ul>
+</div>
+<div class="license">
 <h2>License</h2>
-<p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
+<ul class="list-unstyled">
+<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+</ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Kirill Müller <br><small class="roles"> Author, maintainer </small>  </li>
@@ -185,6 +189,9 @@ x &lt;-<span class="st"> </span><span class="dv">123456789</span> <span class="o
 <a href="http://hadley.nz">Hadley Wickham</a> <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
+</div>
+
+      <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/r-lib/pillar"><img src="https://travis-ci.org/r-lib/pillar.svg?branch=master" alt="Travis-CI Build Status"></a></li>
@@ -192,29 +199,30 @@ x &lt;-<span class="st"> </span><span class="dv">123456789</span> <span class="o
 <li><a href="https://cran.r-project.org/package=pillar"><img src="http://www.r-pkg.org/badges/version/pillar" alt="CRAN status"></a></li>
 </ul>
 </div>
+</div>
 
 </div>
 
 
       <footer><div class="tidyverse">
-  <p>pillar is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="http://tidyverse.org">tidyverse.org</a>.</p>
+  <p>pillar is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
 </div>
 
 <div class="author">
   <p>Developed by Kirill Müller, <a href="http://hadley.nz">Hadley Wickham</a>.</p>
-  <p>Site built by <a href="http://pkgdown.r-lib.org">pkgdown</a>.</p>
+  <p>Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115082821-1"></script><script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  ga('create', 'UA-67989-18', 'auto');
-  ga('send', 'pageview');
+ gtag('config', 'UA-115082821-1');
 </script></footer>
 </div>
+
+  
 
   </body>
 </html>

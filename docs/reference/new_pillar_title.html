@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Provide a succinct summary of an object — type_sum • pillar</title>
+<title>Prepare a column title for formatting — new_pillar_title • pillar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -78,39 +78,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Provide a succinct summary of an object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/type-sum.R'><code>R/type-sum.R</code></a></small>
-    <div class="hidden name"><code>type_sum.Rd</code></div>
+    <h1>Prepare a column title for formatting</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/title.R'><code>R/title.R</code></a></small>
+    <div class="hidden name"><code>new_pillar_title.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
-occur in a data frame should return a string with four or less characters.</p>
-<p><code>obj_sum()</code> also includes the size of the object if <code>is_vector_s3()</code>
-is <code>TRUE</code>.</p>
+    <p>Call <code>format()</code> on the result to render column titles.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>type_sum</span>(<span class='no'>x</span>)
-
-<span class='fu'>obj_sum</span>(<span class='no'>x</span>)
-
-<span class='fu'>is_vector_s3</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>new_pillar_title</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an object to summarise. Generally only methods of atomic vectors
-and variants have been implemented.</p></td>
+      <td><p>A character vector of column titles.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Unused.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>obj_sum</span>(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; [1] "int [10]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'>matrix</span>(<span class='fl'>1</span>:<span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] "int [10 × 1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'>Sys.Date</span>())</div><div class='output co'>#&gt; [1] "date [1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'>Sys.time</span>())</div><div class='output co'>#&gt; [1] "dttm [1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='no'>mean</span>)</div><div class='output co'>#&gt; [1] "fn"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>format</span>(<span class='fu'>new_pillar_title</span>(<span class='fu'>names</span>(<span class='no'>iris</span>)))</div><div class='output co'>#&gt; [1] "Sepal.Length" "Sepal.Width " "Petal.Length" "Petal.Width " "Species     "</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
