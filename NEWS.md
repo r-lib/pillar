@@ -1,3 +1,8 @@
+# pillar 1.2.3.9000
+
+- Internal changes only.
+
+
 # pillar 1.2.3
 
 - Eliminate CRAN check warning about undeclared withr dependency.
