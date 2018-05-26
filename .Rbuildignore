@@ -14,3 +14,4 @@
 ^revdep$
 ^\.drake$
 ^\.github$
+^CRAN-RELEASE$
