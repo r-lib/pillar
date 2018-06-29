@@ -230,4 +230,31 @@ withr::with_options(list(pillar.bold = TRUE), {
       )
     )
   })
+
+  test_that("tibble columns", {
+    x <- list(a = 1:3, b = data.frame(c = 4:6, d = 7:9))
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(x, width = 30),
+      filename = "tibble-col.txt"
+    )
+  })
+
+  test_that("matrix columns (unnamed)", {
+    x <- list(a = 1:3, b = matrix(4:9, ncol = 2))
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(x, width = 30),
+      filename = "matrix-col.txt"
+    )
+  })
+
+  test_that("matrix columns (named)", {
+    x <- list(a = 1:3, b = matrix(4:9, ncol = 2, dimnames = list(NULL, c("c", "d"))))
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(x, width = 30),
+      filename = "matrix-col-named.txt"
+    )
+  })
 }) # withr::with_options(list(pillar.bold = TRUE),

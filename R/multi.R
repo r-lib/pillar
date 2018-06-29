@@ -22,11 +22,69 @@
 #' # If width is larger than getOption("width"), multiple tiers are created:
 #' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
-  names(x) <- tick_if_needed(names(x))
+  x <- flatten_colonnade(x)
   proxy <- structure(x, has_row_id = has_row_id)
   ret <- structure(proxy, class = "colonnade")
   ret <- set_width(ret, width)
   ret
+}
+
+flatten_colonnade <- function(x) {
+  if (length(x) == 0) return(list())
+
+  unlist(
+    map2(
+      unname(x),
+      names(x) %||% rep_along(x, list(NULL)),
+      flatten_column
+    ),
+    recursive = FALSE
+  )
+}
+
+flatten_column <- function(x, name) {
+  name <- tick_if_needed(name)
+
+  if (is.data.frame(x)) {
+    flatten_df_column(x, name)
+  } else if (is.matrix(x)) {
+    flatten_matrix_column(x, name)
+  } else {
+    # Length-one list, will be unlist()ed afterwards
+    set_names(list(x), name)
+  }
+}
+
+flatten_df_column <- function(x, name) {
+  if (length(x) == 0) {
+    # FIXME: Better display for 0-col data frames
+    set_names(list(rep(NA, nrow(x))), name)
+  } else {
+    x <- unclass(x)
+    names(x) <- paste0("$", names(x))
+    names(x)[[1]] <- paste0(name, names(x)[[1]])
+    x
+  }
+}
+
+flatten_matrix_column <- function(x, name) {
+  if (ncol(x) == 0) {
+    # FIXME: Better display for 0-col matrices
+    x <- cbind(x, NA)
+    set_names(list(x[,1]), name)
+  } else {
+    x_list <- map(seq_len(ncol(x)), function(i) x[,i])
+
+    idx <- colnames(x)
+    if (is.null(idx)) {
+      idx <- seq_along(x_list)
+    } else {
+      idx <- encodeString(idx, quote = '"')
+    }
+    names(x_list) <- paste0("[,", idx, "]")
+    names(x_list)[[1]] <- paste0(name, names(x_list)[[1]])
+    x_list
+  }
 }
 
 #' @description
