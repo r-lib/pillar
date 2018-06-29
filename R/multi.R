@@ -3,10 +3,12 @@
 #' The vectors are formatted to fit horizontally into a user-supplied number of
 #' characters per row.
 #'
-#' @param x A list of vectors to format
+#' @param x A list of vectors to format. Can contain matrices or data frames.
+#'   If named, the names will be used as title for the pillars. Non-syntactic names
+#'   will be escaped.
 #' @param has_row_id Include a column indicating row IDs? Pass `"*"` to mark
 #'   the row ID column with a star.
-#' @param width Default width of the entire output, optional
+#' @param width Default width of the entire output, optional.
 #' @param ... Ignored
 #' @export
 #' @examples

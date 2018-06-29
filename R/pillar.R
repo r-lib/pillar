@@ -4,7 +4,8 @@
 #' one row for the type, and `length(x)` rows for the data.
 #'
 #' @param x A vector to format
-#' @param title An optional title for the column
+#' @param title An optional title for the column. The title will be
+#'   used "as is", no quoting will be applied.
 #' @param width Default width, optional
 #' @param ... Other arguments passed to methods
 #' @export

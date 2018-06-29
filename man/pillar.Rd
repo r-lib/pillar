@@ -9,7 +9,8 @@ pillar(x, title = NULL, width = NULL, ...)
 \arguments{
 \item{x}{A vector to format}
 
-\item{title}{An optional title for the column}
+\item{title}{An optional title for the column. The title will be
+used "as is", no quoting will be applied.}
 
 \item{width}{Default width, optional}
 

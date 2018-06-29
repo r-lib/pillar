@@ -10,12 +10,14 @@ colonnade(x, has_row_id = TRUE, width = NULL, ...)
 squeeze(x, width = NULL, ...)
 }
 \arguments{
-\item{x}{A list of vectors to format}
+\item{x}{A list of vectors to format. Can contain matrices or data frames.
+If named, the names will be used as title for the pillars. Non-syntactic names
+will be escaped.}
 
 \item{has_row_id}{Include a column indicating row IDs? Pass \code{"*"} to mark
 the row ID column with a star.}
 
-\item{width}{Default width of the entire output, optional}
+\item{width}{Default width of the entire output, optional.}
 
 \item{...}{Ignored}
 }
