@@ -82,6 +82,9 @@ withr::with_options(list(pillar.bold = TRUE), {
     expect_pillar_output(1L, title = "\u6210\u4ea4\u65e5", filename = "deal3.txt")
     expect_pillar_output(c("", " ", " a", "a ", "a b"), width = 5, filename = "spaces.txt")
 
-    expect_pillar_output(xf = colonnade(chartype_frame()), width = 50, filename = "utf8.txt")
+    # Spurious warnings on Windows
+    suppressWarnings(
+      expect_pillar_output(xf = colonnade(chartype_frame()), width = 50, filename = "utf8.txt")
+    )
   })
 }) # withr::with_options(list(pillar.bold = TRUE), {

@@ -49,24 +49,33 @@ withr::with_options(list(pillar.bold = TRUE), {
       filename = "letters-inf.txt"
     )
 
-    expect_pillar_output(
-      xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 10))),
-      filename = "multi-extra-10.txt"
+    # Spurious warnings on Windows
+    suppressWarnings(
+      expect_pillar_output(
+        xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 10))),
+        filename = "multi-extra-10.txt"
+      )
     )
 
-    expect_pillar_output(
-      xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 20))),
-      filename = "multi-extra-20.txt"
+    suppressWarnings(
+      expect_pillar_output(
+        xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 20))),
+        filename = "multi-extra-20.txt"
+      )
     )
 
-    expect_pillar_output(
-      xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 30))),
-      filename = "multi-extra-30.txt"
+    suppressWarnings(
+      expect_pillar_output(
+        xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 30))),
+        filename = "multi-extra-30.txt"
+      )
     )
 
-    expect_pillar_output(
-      xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 35))),
-      filename = "multi-extra-35.txt"
+    suppressWarnings(
+      expect_pillar_output(
+        xf = new_vertical(extra_cols(squeeze(colonnade(x), width = 35))),
+        filename = "multi-extra-35.txt"
+      )
     )
 
     expect_pillar_output(
