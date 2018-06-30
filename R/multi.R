@@ -62,7 +62,7 @@ flatten_df_column <- function(x, name) {
     # FIXME: Better display for 0-col data frames
     set_names(list(rep(NA, nrow(x))), name)
   } else {
-    x <- unclass(x)
+    x <- flatten_colonnade(unclass(x))
     names(x) <- paste0("$", names(x))
     names(x)[[1]] <- paste0(name, names(x)[[1]])
     x

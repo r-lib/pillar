@@ -249,6 +249,24 @@ withr::with_options(list(pillar.bold = TRUE), {
     )
   })
 
+  test_that("tibble columns (nested)", {
+    x <- list(
+      a = 1:3,
+      b = structure(
+        list(
+          c = 4:6, d = 7:9,
+          e = data.frame(f = 10:12, g = 13:15)
+        ),
+        class = "data.frame"
+      )
+    )
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(x, width = 40),
+      filename = "tibble-col-nested.txt"
+    )
+  })
+
   test_that("matrix columns (unnamed)", {
     x <- list(a = 1:3, b = matrix(4:9, ncol = 2))
     expect_pillar_output(
