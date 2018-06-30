@@ -1,3 +1,8 @@
+# pillar 1.2.3.9002
+
+- Support recursively nested data frames.
+
+
 # pillar 1.2.3.9001
 
 - `colonnade()` supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. `pillar()` no longer adds backticks if `title` is non-syntactic.
