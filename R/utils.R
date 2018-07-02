@@ -27,6 +27,11 @@ slice <- function(df, index) {
   df[index, , drop = FALSE]
 }
 
+bind_rows <- function(x) {
+  if (length(x) == 0) return(data.frame())
+  invoke(rbind, x)
+}
+
 get_ellipsis <- function() {
   cli::symbol$continue
 }

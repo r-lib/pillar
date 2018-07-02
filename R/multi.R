@@ -428,9 +428,6 @@ colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
-  # Necessary, because rbind() is NULL
-  if (nrow(col_widths_df) == 0) return(col_widths_df)
-
   col_widths_split <- split(col_widths_df, col_widths_df$tier)
   if (any(col_widths_df$tier == 0)) tier_widths <- c(NA, tier_widths)
   tier_widths <- tier_widths[seq_along(col_widths_split)]
@@ -438,7 +435,8 @@ colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
     x$width <- x$width + colonnade_distribute_space(x$width, x$max_widths, width)
     x
   })
-  invoke(rbind, unname(col_widths_apply))
+
+  bind_rows(unname(col_widths_apply))
 }
 
 #' @rdname colonnade
