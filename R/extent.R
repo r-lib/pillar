@@ -9,7 +9,7 @@
 #' get_extent(c("abc", "de"))
 #' get_extent("\u904b\u6c23")
 get_extent <- function(x) {
-  x <- crayon::strip_style(x)
+  x <- fansi::strip_sgr(x, warn = FALSE)
   width <- utf8::utf8_width(x, encode = FALSE, utf8 = TRUE)
   is_na <- which(is.na(width))
   width[is_na] <- nchar(x[is_na], type = "width")
