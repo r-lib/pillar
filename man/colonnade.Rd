@@ -45,22 +45,26 @@ minimum or its maximum width).
 Remaining space is then distributed proportionally to pillars that do not
 use their desired width.
 
-For fitting pillars in one or more tiers, it is first attempted to fit all
-of them in the first tier.
-If this succeeds (or if no more tiers are available), this fit is
-accepted.
-Otherwise, an attempt is made to fit all remaining pillars in the remaining
-tiers (with a recursive call).
-If there still are pillars that don't fit, the minimum-width fit is accepted.
+For fitting pillars in one or more tiers, first a check is made
+if all pillars fit with their maximum width (e.g.,
+\code{option(tibble.width = Inf)} or narrow colonnade).
+If yes, this is the resulting fit, no more work needs to be done.
+Otherwise, if the maximum width is too wide, the same test
+is carried out with the minimum width.
+If this is still too wide, this is the resulting fit.
+Otherwise, some tiers from the start
+will contain pillars with their maximum width, and the remaining tiers
+contain pillars with their minimum width.
+We determine the cut point where minimum and maximum assignment
+agree.
 
-In case all remaining pillars fit all remaining tiers, a heuristic
-selects the optimal number of pillars in the first tier.
-The tier is grown starting with all pillars that are fitting with their
-desired width (at least one pillar will be used), and
-attempts are made to fit the remaining pillars in the remaining tiers
-(with a recursive call for each attempt).
-The first successful fit
-(or otherwise the initial minimum-width fit) is accepted.
+Fitting pillars into tiers is very similar to a word-wrapping algorithm.
+In a loop, new tiers are opened if the current tier overflows.
+If a column is too wide to fit a single tier, it will never be
+displayed, and the colonnade will be truncated there.
+This case should never occur with reasonable display widths larger than
+30 characters.
+Truncation also happens if all available tiers are filled.
 
 For computing the pillar widths in a single tier, two cases are distinguished:
 \enumerate{
