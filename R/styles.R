@@ -20,6 +20,7 @@ keep_empty <- function(fun) {
 #' @examples
 #' style_subtle("text")
 style_subtle <- keep_empty(function(x) {
+  force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
     style_grey(0.6, x)
   } else {
@@ -44,6 +45,7 @@ style_subtle_num <- function(x, negative) {
 }
 
 style_hint <- keep_empty(function(x) {
+  force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
     style_grey(0.8, x)
   } else {
