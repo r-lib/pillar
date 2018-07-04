@@ -22,7 +22,7 @@ keep_empty <- function(fun) {
 style_subtle <- keep_empty(function(x) {
   force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
-    style_grey(0.6, x)
+    style_grey_0.6(x)
   } else {
     x
   }
@@ -47,7 +47,7 @@ style_subtle_num <- function(x, negative) {
 style_hint <- keep_empty(function(x) {
   force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
-    style_grey(0.8, x)
+    style_grey_0.8(x)
   } else {
     x
   }
@@ -95,13 +95,19 @@ style_neg <- keep_empty(function(x) {
   }
 })
 
+make_style_grey <- function(level) {
+  style <- crayon::make_style(grDevices::grey(level), grey = TRUE)
 
-style_grey <- function(level, ...) {
-  crayon::style(
-    paste0(...),
-    crayon::make_style(grDevices::grey(level), grey = TRUE)
-  )
+  function(...) {
+    x <- paste0(...)
+    crayon::style(x, style)
+  }
 }
+
+# Placeholders, assigned in .onLoad()
+style_grey_0.6 <- function(...) {}
+
+style_grey_0.8 <- function(...) {}
 
 pillar_na <- function(use_brackets_if_no_color = FALSE) {
   if (use_brackets_if_no_color && !crayon::has_color()) {

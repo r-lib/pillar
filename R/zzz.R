@@ -8,6 +8,10 @@ NULL
 .onLoad <- function(libname, pkgname) {
   register_s3_method("knitr", "knit_print", "squeezed_colonnade")
 
+  style_grey_0.6 <<- make_style_grey(0.6)
+
+  style_grey_0.8 <<- make_style_grey(0.8)
+
   invisible()
 }
 
