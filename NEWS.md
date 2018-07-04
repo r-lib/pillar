@@ -1,3 +1,12 @@
+# pillar 1.2.3.9003
+
+- Add fuzz tests for character colonnades of varying widths.
+- Multi-tier colonnades can always fill the last tier, even if the width isn't a proper multiple of `getOption("width")`.
+- Fix mixed formatting (maximum and minimum width). If a pillar's minimum width is smaller than `getOption("width")`, it is shown nevertheless, abbreviated with dots if necessary.
+- Printing is now faster because less work is done for formatting in "subtle" style (gray of a fixed level), and because `fansi::strip_sgr()` is used instead of `crayon::strip_style()`.
+- Printing large multi-tier colonnades is much faster, the code that distributes pillars over tiers uses a much simpler and much faster algorithm (tidyverse/tibble#422).
+
+
 # pillar 1.2.3.9002
 
 - Support recursively nested data frames.
