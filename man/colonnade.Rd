@@ -66,17 +66,6 @@ This case should never occur with reasonable display widths larger than
 30 characters.
 Truncation also happens if all available tiers are filled.
 
-For computing the pillar widths in a single tier, two cases are distinguished:
-\enumerate{
-\item When taking the minimum width for each pillar (plus one inter-pillar
-space), at least one pillar does not fit.
-In this case, the minimum width is assigned to all pillars that do fit,
-the non-fitting pillars are stripped.
-\item All pillars fit with their minimum width. In this case, starting at
-the leftmost pillar, the maximum width is allocated to the pillars
-until all available space is used.
-}
-
 The remaining space is distributed from left to right.
 Each column gains space proportional to the fraction of missing and
 remaining space,

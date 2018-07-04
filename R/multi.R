@@ -396,51 +396,6 @@ all_pillars_fit <- function(tier_df) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_col_widths_df <- function(col_df, width, tier_id) {
-  col_widths <- colonnade_compute_col_widths(
-    col_df$min_widths,
-    col_df$max_widths,
-    width
-  )
-  n_fitting_cols <- length(col_widths)
-  col_widths <- c(col_widths, rep(0L, nrow(col_df) - length(col_widths)))
-
-  col_df$width <- col_widths
-  col_df$tier <- ifelse(seq_along(col_widths) > n_fitting_cols, 0L, tier_id)
-  col_df
-}
-
-#' @rdname colonnade
-#' @usage NULL
-#' @aliases NULL
-colonnade_compute_col_widths <- function(min_widths, max_widths, width) {
-  #' @details
-  #' For computing the pillar widths in a single tier, two cases are distinguished:
-  #' 1. When taking the minimum width for each pillar (plus one inter-pillar
-  #'    space), at least one pillar does not fit.
-  cum_min_widths <- cumsum(min_widths + 1L)
-  allowed_min <- which(cum_min_widths <= width)
-  if (length(allowed_min) < length(min_widths)) {
-    #'    In this case, the minimum width is assigned to all pillars that do fit,
-    #'    the non-fitting pillars are stripped.
-    col_widths <- min_widths[allowed_min]
-  } else {
-    #' 1. All pillars fit with their minimum width. In this case, starting at
-    #'    the leftmost pillar, the maximum width is allocated to the pillars
-    #'    until all available space is used.
-    cum_max_widths <- cumsum(max_widths + 1L)
-    rev_cum_rev_min_widths <- rev(cumsum(rev(min_widths) + 1L))
-
-    allowed_max <- (cum_max_widths + c(rev_cum_rev_min_widths[-1L], 0L)) <= width
-    col_widths <- ifelse(allowed_max, max_widths, min_widths)
-  }
-
-  col_widths
-}
-
-#' @rdname colonnade
-#' @usage NULL
-#' @aliases NULL
 colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
   col_widths_split <- split(col_widths_df, col_widths_df$tier)
   if (any(col_widths_df$tier == 0)) tier_widths <- c(NA, tier_widths)
