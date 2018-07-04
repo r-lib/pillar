@@ -274,7 +274,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' pass tries to fit all capitals into the tiers.
   init_cols <- min(length(x), floor(sum(tier_widths) / (MIN_PILLAR_WIDTH + 1L)))
   capitals <- map_named(x[seq_len(init_cols)], pillar_capital)
-  init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths, refine = FALSE)
+  init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths)
   pillar_shown <- init_col_widths_df$id[init_col_widths_df$tier != 0L]
   if (length(pillar_shown) < length(x)) {
     # (Include one more pillar to indicate that the data is too wide.)
@@ -305,7 +305,7 @@ get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("wi
   widths[widths >= 1L]
 }
 
-colonnade_compute_tiered_col_widths <- function(pillars, tier_widths, refine = TRUE) {
+colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
   max_tier_width <- max(tier_widths)
 
   col_df <- data.frame(
@@ -315,7 +315,7 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths, refine = T
     row.names = NULL
   )
 
-  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, refine = refine, data.frame(tier = integer()))
+  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
   ret$pillar <- pillars
   ret
 }
@@ -323,7 +323,7 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths, refine = T
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, refine, fixed_tier_df) {
+colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_tier_df) {
   #' @details
   #' For fitting pillars in one or more tiers, first a check is made
   #' if all pillars fit with their maximum width (e.g.,
