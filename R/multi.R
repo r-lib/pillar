@@ -307,9 +307,11 @@ get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("wi
 }
 
 colonnade_compute_tiered_col_widths <- function(pillars, tier_widths, refine = TRUE) {
+  max_tier_width <- max(tier_widths)
+
   col_df <- data.frame(
     id = seq_along(pillars),
-    max_widths = map_int(map(pillars, get_widths), max),
+    max_widths = pmin(map_int(map(pillars, get_widths), max), max_tier_width),
     min_widths = map_int(map(pillars, get_min_widths), max),
     row.names = NULL
   )
@@ -343,11 +345,23 @@ colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, refine, 
   #' We determine the cut point where minimum and maximum assignment
   #' agree.
   min_fit_rev <- distribute_pillars_rev(col_df$min_widths, tier_widths)
-  cut_point <- min(which(c(max_fit$tier == min_fit_rev$tier, TRUE)))
-  combined_fit <- rbind(
-    max_fit[seq_len(cut_point), ],
-    min_fit[seq2(cut_point, nrow(min_fit)), ]
+
+  cut_point <- max(min(which(c(max_fit$tier == min_fit_rev$tier))), 1L)
+  cut_point_tier <- max_fit$tier[[cut_point]]
+
+  min_fit_cut <- distribute_pillars_offset(
+    col_df$min_widths,
+    tier_widths,
+    cut_point,
+    cut_point_tier
   )
+
+  combined_fit <- rbind(
+    max_fit[seq_len(cut_point - 1L), ],
+    min_fit_cut
+  )
+
+  combined_fit
 }
 
 #' @rdname colonnade
@@ -384,8 +398,20 @@ distribute_pillars <- function(widths, tier_widths) {
 
 distribute_pillars_rev <- function(widths, tier_widths) {
   ret <- distribute_pillars(rev(widths), rev(tier_widths))
+  ret[2:3] <- ret[rev(seq_along(widths)), 2:3]
   ret$tier <- length(tier_widths) + 1L - ret$tier
   ret
+}
+
+distribute_pillars_offset <- function(widths, tier_widths,
+                                      widths_offset, tier_widths_offset) {
+  fit_cut <- distribute_pillars(
+    widths[seq2(widths_offset, length(widths))],
+    tier_widths[seq2(tier_widths_offset, length(tier_widths))]
+  )
+  fit_cut$id <- fit_cut$id + (widths_offset - 1L)
+  fit_cut$tier <- fit_cut$tier + (tier_widths_offset - 1L)
+  fit_cut
 }
 
 all_pillars_fit <- function(tier_df) {
