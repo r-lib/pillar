@@ -1,0 +1,117 @@
+  [1m`23`[22m                   
+  [3m[90m<chr>[39m[23m                  
+[90m1[39m AbcdefghijAbcdefghijAbc
+  [1m`49`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`13`[22m         
+  [3m[90m<chr>[39m[23m        
+[90m1[39m AbcdefghijAbc
+  [1m`37`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdefg
+  [1m`3`[22m   [1m`25`[22m                     
+  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m                    
+[90m1[39m Abc   AbcdefghijAbcdefghijAbcde
+  [1m`36`[22m                                
+  [3m[90m<chr>[39m[23m                               
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef
+  [1m`4`[22m   [1m`9`[22m       [1m`7`[22m    
+  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m  
+[90m1[39m Abcd  Abcdefghi Abcdefg
+  [1m`27`[22m                       
+  [3m[90m<chr>[39m[23m                      
+[90m1[39m AbcdefghijAbcdefghijAbcdefg
+  [1m`48`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`12`[22m         [1m`10`[22m      
+  [3m[90m<chr>[39m[23m        [3m[90m<chr>[39m[23m     
+[90m1[39m AbcdefghijAb Abcdefghij
+  [1m`50`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`14`[22m          
+  [3m[90m<chr>[39m[23m         
+[90m1[39m AbcdefghijAbcd
+  [1m`38`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`39`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`46`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`22`[22m                  
+  [3m[90m<chr>[39m[23m                 
+[90m1[39m AbcdefghijAbcdefghijAb
+  [1m`28`[22m                         [1m`8`[22m     
+  [3m[90m<chr>[39m[23m                        [3m[90m<chr>[39m[23m   
+[90m1[39m AbcdefghijAbcdefghijAbcdefgh Abcdefgh
+  [1m`21`[22m                 
+  [3m[90m<chr>[39m[23m                
+[90m1[39m AbcdefghijAbcdefghijA
+  [1m`44`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`32`[22m                            
+  [3m[90m<chr>[39m[23m                           
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAb
+  [1m`40`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`31`[22m                            [1m`1`[22m  
+  [3m[90m<chr>[39m[23m                           [3m[90m<chr>[39m[23m
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijA A    
+  [1m`29`[22m                         
+  [3m[90m<chr>[39m[23m                        
+[90m1[39m AbcdefghijAbcdefghijAbcdefghi
+  [1m`34`[22m                              
+  [3m[90m<chr>[39m[23m                             
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcd
+  [1m`35`[22m                               
+  [3m[90m<chr>[39m[23m                              
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcde
+  [1m`33`[22m                             
+  [3m[90m<chr>[39m[23m                            
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbc
+  [1m`19`[22m                [1m`15`[22m           
+  [3m[90m<chr>[39m[23m               [3m[90m<chr>[39m[23m          
+[90m1[39m AbcdefghijAbcdefghi AbcdefghijAbcde
+  [1m`41`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`20`[22m                
+  [3m[90m<chr>[39m[23m               
+[90m1[39m AbcdefghijAbcdefghij
+  [1m`47`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`18`[22m               [1m`16`[22m            
+  [3m[90m<chr>[39m[23m              [3m[90m<chr>[39m[23m           
+[90m1[39m AbcdefghijAbcdefgh AbcdefghijAbcdef
+  [1m`45`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`6`[22m    [1m`5`[22m   [1m`24`[22m                    
+  [3m[90m<chr>[39m[23m  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m                   
+[90m1[39m Abcdef Abcde AbcdefghijAbcdefghijAbcd
+  [1m`26`[22m                      
+  [3m[90m<chr>[39m[23m                     
+[90m1[39m AbcdefghijAbcdefghijAbcdef
+  [1m`43`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`11`[22m       
+  [3m[90m<chr>[39m[23m      
+[90m1[39m AbcdefghijA
+  [1m`42`[22m                                 
+  [3m[90m<chr>[39m[23m                                
+[90m1[39m AbcdefghijAbcdefghijAbcdefghijAbcdef…
+  [1m`30`[22m                          
+  [3m[90m<chr>[39m[23m                         
+[90m1[39m AbcdefghijAbcdefghijAbcdefghij
+  [1m`17`[22m              [1m`2`[22m  
+  [3m[90m<chr>[39m[23m             [3m[90m<chr>[39m[23m
+[90m1[39m AbcdefghijAbcdefg Ab   
