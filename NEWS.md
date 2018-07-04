@@ -1,3 +1,8 @@
+# pillar 1.2.3.9004
+
+- Slightly faster printing of colonnades by reusing an intermediate result.
+
+
 # pillar 1.2.3.9003
 
 - Add fuzz tests for character colonnades of varying widths.
