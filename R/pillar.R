@@ -36,22 +36,22 @@
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
   capital <- pillar_capital(x, title, ...)
-  data <- pillar_shaft(x, ...)
-  ret <- structure(
-    list(capital = capital, data = data),
-    class = "pillar"
-  )
-  ret <- set_width(ret, width)
-  ret
+  shaft <- pillar_shaft(x, ...)
+  new_pillar(capital, shaft, width)
 }
 
 rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
   capital <- rif_capital(has_title_row, has_star, ...)
-  data <- rif_data(n, ...)
+  shaft <- rif_data(n, ...)
+  new_pillar(capital, shaft)
+}
+
+new_pillar <- function(capital, shaft, width = NULL) {
   ret <- structure(
-    list(capital = capital, data = data),
+    list(capital = capital, data = shaft),
     class = "pillar"
   )
+  ret <- set_width(ret, width)
   ret
 }
 
