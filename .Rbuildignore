@@ -16,3 +16,4 @@
 ^\.drake$
 ^\.github$
 ^CRAN-RELEASE$
+^data-raw$

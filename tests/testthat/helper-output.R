@@ -15,6 +15,10 @@ df_all <- list(
   i = list(list(1, 2:3), list(4:6), list(NA))
 )
 
+# A data frame with strings of varying lengths
+long_str <- strrep("Abcdefghij", 5)
+df_str <- map(set_names(1:50), function(i) substr(long_str, 1, i))
+
 expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
                                  crayon = TRUE, output_width = 80L) {
   object_quo <- rlang::quo(get_pillar_output_object(x, ..., xp = xp, xf = xf))
