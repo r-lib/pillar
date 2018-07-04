@@ -2,17 +2,17 @@ style_rowid <- function(x) {
   style_hint(x)
 }
 
-rif_data <- function(n, ...) {
+rif_shaft <- function(n, ...) {
   ret <- structure(
     list(n = n),
-    class = "rif_data"
+    class = "rif_shaft"
   )
   ret <- set_width(ret, as.integer(floor(log10(max(n, 1))) + 1))
   ret
 }
 
 #' @export
-format.rif_data <- function(x, width, ...) {
+format.rif_shaft <- function(x, width, ...) {
   new_ornament(
     style_rowid(format(seq_len(x$n), width = width)),
     width = width,
@@ -21,6 +21,6 @@ format.rif_data <- function(x, width, ...) {
 }
 
 #' @export
-print.rif_data <- function(x, ...) {
+print.rif_shaft <- function(x, ...) {
   print(format(x, ...))
 }

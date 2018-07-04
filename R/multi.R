@@ -191,12 +191,12 @@ format.squeezed_colonnade <- function(x, ...) {
 format_colonnade_tier <- function(x) {
   xt <- list(
     capital = map(x, `[[`, "capital_format"),
-    data = map(x, `[[`, "data_format")
+    shaft = map(x, `[[`, "shaft_format")
   )
 
   c(
     eval_tidy(quo(paste(!!!unname(xt$capital)))),
-    eval_tidy(quo(paste(!!!unname(xt$data))))
+    eval_tidy(quo(paste(!!!unname(xt$shaft))))
   )
 }
 
@@ -214,7 +214,7 @@ knit_print.squeezed_colonnade <- function(x, ...) {
 knit_print_squeezed_colonnade_tier <- function(x) {
   # Hack
   header <- map_chr(map(x, `[[`, "capital_format"), `[[`, "title_format")
-  col <- map(x, function(xx) c(xx[["capital_format"]][["type_format"]], xx[["data_format"]]))
+  col <- map(x, function(xx) c(xx[["capital_format"]][["type_format"]], xx[["shaft_format"]]))
 
   knitr::kable(as.data.frame(col), row.names = NA, col.names = header)
 }

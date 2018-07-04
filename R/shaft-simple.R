@@ -37,11 +37,11 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
 format.pillar_shaft_simple <- function(x, width, ...) {
   align <- attr(x, "align")
   desired_width <- get_width(x)
-  data <- as.character(x[[1]])
+  shaft <- as.character(x[[1]])
   if (width < desired_width) {
-    data <- str_trunc(data, width)
+    shaft <- str_trunc(shaft, width)
   }
-  data[is.na(data)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
+  shaft[is.na(shaft)] <- paste0(strrep(" ", attr(x, "na_indent")), pillar_na())
 
-  new_ornament(data, width = width, align = align)
+  new_ornament(shaft, width = width, align = align)
 }
