@@ -293,17 +293,16 @@ colonnade_get_width <- function(x, width, rowid_width) {
 }
 
 get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("width")) {
-  if (is.finite(width)) {
-    pos <- c(
-      seq(0, width - 1, by = tier_width),
-      width
-    )
-  } else {
+  if (!is.finite(width)) {
     pos <- seq(0, length.out = ncol + 1L, by = tier_width)
+  } else if (width < tier_width) {
+    pos <- c(0L, width)
+  } else {
+    pos <- seq(0, width + tier_width - 1, by = tier_width)
   }
 
   widths <- diff(pos) - rowid_width
-  widths[widths >= 1]
+  widths[widths >= 1L]
 }
 
 colonnade_compute_tiered_col_widths <- function(pillars, tier_widths, refine = TRUE) {
