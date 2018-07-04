@@ -29,7 +29,7 @@ slice <- function(df, index) {
 
 bind_rows <- function(x) {
   if (length(x) == 0) return(data.frame())
-  invoke(rbind, x)
+  eval_tidy(quo(rbind(!!!x)))
 }
 
 get_ellipsis <- function() {

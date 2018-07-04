@@ -195,8 +195,8 @@ format_colonnade_tier <- function(x) {
   )
 
   c(
-    invoke(paste, unname(xt$capital)),
-    invoke(paste, unname(xt$data))
+    eval_tidy(quo(paste(!!!unname(xt$capital)))),
+    eval_tidy(quo(paste(!!!unname(xt$data))))
   )
 }
 
