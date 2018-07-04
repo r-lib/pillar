@@ -17,7 +17,7 @@ df_all <- list(
 
 # A data frame with strings of varying lengths
 long_str <- strrep("Abcdefghij", 5)
-df_str <- map(set_names(1:50), function(i) substr(long_str, 1, i))
+df_str <- map(rlang::set_names(1:50), function(i) substr(long_str, 1, i))
 
 expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
                                  crayon = TRUE, output_width = 80L) {
