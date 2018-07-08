@@ -1,30 +1,26 @@
-# pillar 1.2.3.9004
+# pillar 1.2.4
+
+## Visible changes
+
+- Multi-tier colonnades can always fill the last tier, even if the width isn't a proper multiple of `getOption("width")`. (Example: `options(width = 80, tibble.width = 200)` will print a wide tibble in three tiers, each 80 characters wide, with a total width of 240 characters.)
+
+- Fixed mixed formatting (showing some pillars with maximum, and some with minimum width). If a pillar's minimum width is smaller than `getOption("width")`, it is shown nevertheless, abbreviated with dots if necessary.
+
+## Performance improvements
+
+- Printing large multi-tier colonnades is much faster, the code that distributes pillars over tiers uses a much simpler and much faster algorithm (tidyverse/tibble#422).
+
+- Printing is now faster overall, because less work is done for formatting in "subtle" style (gray of a fixed level), and because `fansi::strip_sgr()` is used instead of `crayon::strip_style()`.
 
 - Slightly faster printing of colonnades by reusing an intermediate result.
 
+## Internal
 
-# pillar 1.2.3.9003
+- `pillar()` no longer adds backticks if `title` is non-syntactic.
 
-- Add fuzz tests for character colonnades of varying widths.
-- Multi-tier colonnades can always fill the last tier, even if the width isn't a proper multiple of `getOption("width")`.
-- Fix mixed formatting (maximum and minimum width). If a pillar's minimum width is smaller than `getOption("width")`, it is shown nevertheless, abbreviated with dots if necessary.
-- Printing is now faster because less work is done for formatting in "subtle" style (gray of a fixed level), and because `fansi::strip_sgr()` is used instead of `crayon::strip_style()`.
-- Printing large multi-tier colonnades is much faster, the code that distributes pillars over tiers uses a much simpler and much faster algorithm (tidyverse/tibble#422).
+- `colonnade()` supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).
 
-
-# pillar 1.2.3.9002
-
-- Support recursively nested data frames.
-
-
-# pillar 1.2.3.9001
-
-- `colonnade()` supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. `pillar()` no longer adds backticks if `title` is non-syntactic.
-
-
-# pillar 1.2.3.9000
-
-- Internal changes only.
+- Added fuzz tests for character colonnades of varying widths.
 
 
 # pillar 1.2.3
