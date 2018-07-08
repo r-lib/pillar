@@ -31,6 +31,6 @@
   [1m`14`[22m  [1m`24`[22m  [1m`27`[22m  [1m`45`[22m  [1m`41`[22m  [1m`38`[22m 
   [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m
 [90m1[39m Abcd… Abcd… Abcd… Abcd… Abcd… Abcd…
-  [1m`3`[22m   [1m`13`[22m  [1m`48`[22m 
-  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m
-[90m1[39m Abc   Abcd… Abcd…
+  [1m`3`[22m   [1m`13`[22m      [1m`48`[22m               
+  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m     [3m[90m<chr>[39m[23m              
+[90m1[39m Abc   Abcdefgh… AbcdefghijAbcdefgh…

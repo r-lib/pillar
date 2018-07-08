@@ -361,6 +361,7 @@ colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_ti
     min_fit_cut
   )
 
+  combined_fit$max_widths <- col_df$max_widths
   combined_fit
 }
 
