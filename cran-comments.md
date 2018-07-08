@@ -1,8 +1,8 @@
-Patch update.
+Minor update to support upcoming extensions in tibble, and performance improvements.
 
 ## Test environments
 
-* local Ubuntu 17.10 install, R 3.4.4
+* local Ubuntu 18.04 install, R 3.5.0
 * Ubuntu 14.04 (on travis-ci), R devel, release, oldrel, 3.2 and 3.1
 * win-builder (devel, release, and oldrel)
 
@@ -12,4 +12,4 @@ OK
 
 ## revdepcheck results
 
-Checked all first- and second-level downstream packages, no regressions found.
+Checked all first- and second-level downstream packages from CRAN, found one regression in banR (likely due to access to external resources) and a segmentation fault in dexter (unlikely to be attributable to the most recent changes in pillar).
