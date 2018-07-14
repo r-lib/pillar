@@ -26,6 +26,8 @@
 
 - Added fuzz tests for character colonnades of varying widths.
 
+- Use `fansi::substr_ctl()` in favor of `crayon::col_substr()`.
+
 
 # pillar 1.2.3
 
