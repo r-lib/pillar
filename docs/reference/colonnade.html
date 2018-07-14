@@ -67,7 +67,6 @@
   </a>
 </li>
       </ul>
-      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -103,7 +102,9 @@ with additional information about omitted columns.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A list of vectors to format</p></td>
+      <td><p>A list of vectors to format. Can contain matrices or data frames.
+If named, the names will be used as title for the pillars. Non-syntactic names
+will be escaped.</p></td>
     </tr>
     <tr>
       <th>has_row_id</th>
@@ -112,7 +113,7 @@ the row ID column with a star.</p></td>
     </tr>
     <tr>
       <th>width</th>
-      <td><p>Default width of the entire output, optional</p></td>
+      <td><p>Default width of the entire output, optional.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -134,31 +135,26 @@ shown, if at all, and how much horizontal space it may use (either its
 minimum or its maximum width).
 Remaining space is then distributed proportionally to pillars that do not
 use their desired width.</p>
-<p>For fitting pillars in one or more tiers, it is first attempted to fit all
-of them in the first tier.
-If this succeeds (or if no more tiers are available), this fit is
-accepted.
-Otherwise, an attempt is made to fit all remaining pillars in the remaining
-tiers (with a recursive call).
-If there still are pillars that don't fit, the minimum-width fit is accepted.</p>
-<p>In case all remaining pillars fit all remaining tiers, a heuristic
-selects the optimal number of pillars in the first tier.
-The tier is grown starting with all pillars that are fitting with their
-desired width (at least one pillar will be used), and
-attempts are made to fit the remaining pillars in the remaining tiers
-(with a recursive call for each attempt).
-The first successful fit
-(or otherwise the initial minimum-width fit) is accepted.</p>
-<p>For computing the pillar widths in a single tier, two cases are distinguished:</p><ol>
-<li><p>When taking the minimum width for each pillar (plus one inter-pillar
-space), at least one pillar does not fit.
-In this case, the minimum width is assigned to all pillars that do fit,
-the non-fitting pillars are stripped.</p></li>
-<li><p>All pillars fit with their minimum width. In this case, starting at
-the leftmost pillar, the maximum width is allocated to the pillars
-until all available space is used.</p></li>
-</ol>
-    <p>The remaining space is distributed from left to right.
+<p>For fitting pillars in one or more tiers, first a check is made
+if all pillars fit with their maximum width (e.g.,
+<code>option(tibble.width = Inf)</code> or narrow colonnade).
+If yes, this is the resulting fit, no more work needs to be done.
+Otherwise, if the maximum width is too wide, the same test
+is carried out with the minimum width.
+If this is still too wide, this is the resulting fit.
+Otherwise, some tiers from the start
+will contain pillars with their maximum width, and the remaining tiers
+contain pillars with their minimum width.
+We determine the cut point where minimum and maximum assignment
+agree.</p>
+<p>Fitting pillars into tiers is very similar to a word-wrapping algorithm.
+In a loop, new tiers are opened if the current tier overflows.
+If a column is too wide to fit a single tier, it will never be
+displayed, and the colonnade will be truncated there.
+This case should never occur with reasonable display widths larger than
+30 characters.
+Truncation also happens if all available tiers are filled.</p>
+<p>The remaining space is distributed from left to right.
 Each column gains space proportional to the fraction of missing and
 remaining space,
 rounded down.
@@ -173,12 +169,12 @@ one space per column.</p>
 #&gt; 2     2 b    
 #&gt; 3     3 c    </div><div class='input'>
 <span class='no'>long_string</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='fu'>paste</span>(<span class='no'>letters</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>" "</span>))
-<span class='fu'>colonnade</span>(<span class='no'>long_string</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt;   &lt;chr&gt;            
-#&gt; 1 a b c d e f g h …</div><div class='input'><span class='fu'>colonnade</span>(<span class='no'>long_string</span>, <span class='kw'>has_row_id</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; &lt;chr&gt;              
-#&gt; a b c d e f g h i …</div><div class='input'>
+<span class='fu'>colonnade</span>(<span class='no'>long_string</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt;   &lt;chr&gt;             
+#&gt; 1 a b c d e f g h i…</div><div class='input'><span class='fu'>colonnade</span>(<span class='no'>long_string</span>, <span class='kw'>has_row_id</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; &lt;chr&gt;               
+#&gt; a b c d e f g h i j…</div><div class='input'>
 <span class='co'># The width can also be overridden when calling format() or print():</span>
-<span class='fu'>print</span>(<span class='fu'>colonnade</span>(<span class='no'>long_string</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt;   &lt;chr&gt;            
-#&gt; 1 a b c d e f g h …</div><div class='input'>
+<span class='fu'>print</span>(<span class='fu'>colonnade</span>(<span class='no'>long_string</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt;   &lt;chr&gt;             
+#&gt; 1 a b c d e f g h i…</div><div class='input'>
 <span class='co'># If width is larger than getOption("width"), multiple tiers are created:</span>
 <span class='fu'>colonnade</span>(<span class='fu'>rep</span>(<span class='no'>long_string</span>, <span class='fl'>4</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>Inf</span>)</div><div class='output co'>#&gt;   &lt;chr&gt;                                              
 #&gt; 1 a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -187,8 +183,8 @@ one space per column.</p>
 #&gt;   &lt;chr&gt;                                              
 #&gt; 1 a b c d e f g h i j k l m n o p q r s t u v w x y z
 #&gt;   &lt;chr&gt;                                              
-#&gt; 1 a b c d e f g h i j k l m n o p q r s t u v w x y z</div><div class='input'><span class='fu'>squeeze</span>(<span class='fu'>colonnade</span>(<span class='no'>long_string</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt;   &lt;chr&gt;            
-#&gt; 1 a b c d e f g h …</div></pre>
+#&gt; 1 a b c d e f g h i j k l m n o p q r s t u v w x y z</div><div class='input'><span class='fu'>squeeze</span>(<span class='fu'>colonnade</span>(<span class='no'>long_string</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt;   &lt;chr&gt;             
+#&gt; 1 a b c d e f g h i…</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

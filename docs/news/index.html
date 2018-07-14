@@ -67,7 +67,6 @@
   </a>
 </li>
       </ul>
-      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -82,6 +81,47 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="pillar-1-3-0" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-3-0" class="anchor"></a>pillar 1.3.0<small> Unreleased </small>
+</h1>
+<div id="visible-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#visible-changes" class="anchor"></a>Visible changes</h2>
+<ul>
+<li><p>Unknown data types are formatted using <code>format()</code>, not <code>as.character()</code> (<a href='https://github.com/r-lib/pillar/issues/120'>#120</a>).</p></li>
+<li><p>Multi-tier colonnades can always fill the last tier, even if the width isn’t a proper multiple of <code>getOption("width")</code>. (Example: <code>options(width = 80, tibble.width = 200)</code> will print a wide tibble in three tiers, each 80 characters wide, with a total width of 240 characters.)</p></li>
+<li><p>Fixed mixed formatting (showing some pillars with maximum, and some with minimum width). If a pillar’s minimum width is smaller than <code>getOption("width")</code>, it is shown nevertheless, abbreviated with dots if necessary.</p></li>
+</ul>
+</div>
+<div id="interface-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#interface-changes" class="anchor"></a>Interface changes</h2>
+<ul>
+<li>
+<code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> gains <code>width</code> argument (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
+</ul>
+</div>
+<div id="performance-improvements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#performance-improvements" class="anchor"></a>Performance improvements</h2>
+<ul>
+<li><p>Printing large multi-tier colonnades is much faster, the code that distributes pillars over tiers uses a much simpler and much faster algorithm (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/422'>#422</a>).</p></li>
+<li><p>Printing is now faster overall, because less work is done for formatting in “subtle” style (gray of a fixed level), and because <code><a href="http://www.rdocumentation.org/packages/fansi/topics/strip_ctl">fansi::strip_sgr()</a></code> is used instead of <code><a href="http://www.rdocumentation.org/packages/crayon/topics/strip_style">crayon::strip_style()</a></code>.</p></li>
+<li><p>Slightly faster printing of colonnades by reusing an intermediate result.</p></li>
+</ul>
+</div>
+<div id="internal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#internal" class="anchor"></a>Internal</h2>
+<ul>
+<li><p><code><a href="../reference/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
+<li><p><code><a href="../reference/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
+<li><p>Added fuzz tests for character colonnades of varying widths.</p></li>
+<li><p>Use <code><a href="http://www.rdocumentation.org/packages/fansi/topics/substr_ctl">fansi::substr_ctl()</a></code> in favor of <code><a href="http://www.rdocumentation.org/packages/crayon/topics/col_substr">crayon::col_substr()</a></code>.</p></li>
+</ul>
+</div>
+</div>
     <div id="pillar-1-2-3" class="section level1">
 <h1 class="page-header">
 <a href="#pillar-1-2-3" class="anchor"></a>pillar 1.2.3<small> 2018-05-25 </small>
@@ -183,41 +223,41 @@
 <div id="user-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#user-functions" class="anchor"></a>User functions</h2>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw"><a href="../reference/pillar.html">pillar</a></span>(x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)
-<span class="kw"><a href="../reference/colonnade.html">colonnade</a></span>(x, <span class="dt">has_row_id =</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)
-<span class="kw"><a href="../reference/colonnade.html">squeeze</a></span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="../reference/pillar.html">pillar</a></span>(x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="../reference/colonnade.html">colonnade</a></span>(x, <span class="dt">has_row_id =</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="../reference/colonnade.html">squeeze</a></span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a></code></pre></div>
 </div>
 <div id="functions-for-implementers-of-data-types" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functions-for-implementers-of-data-types" class="anchor"></a>Functions for implementers of data types</h2>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple</a></span>(formatted, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="st">"left"</span>, <span class="dt">min_width =</span> <span class="ot">NULL</span>, <span class="dt">na_indent =</span> 0L)
-<span class="kw"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft</a></span>(x, ..., width, <span class="dt">min_width =</span> width, subclass)
-<span class="kw"><a href="../reference/new_ornament.html">new_ornament</a></span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="ot">NULL</span>)
-<span class="kw"><a href="../reference/get_extent.html">get_extent</a></span>(x)
-<span class="kw"><a href="../reference/get_extent.html">get_max_extent</a></span>(x)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple</a></span>(formatted, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="st">"left"</span>, <span class="dt">min_width =</span> <span class="ot">NULL</span>, <span class="dt">na_indent =</span> 0L)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft</a></span>(x, ..., width, <span class="dt">min_width =</span> width, subclass)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="../reference/new_ornament.html">new_ornament</a></span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="../reference/get_extent.html">get_extent</a></span>(x)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="../reference/get_extent.html">get_max_extent</a></span>(x)</a></code></pre></div>
 </div>
 <div id="utilities" class="section level2">
 <h2 class="hasAnchor">
 <a href="#utilities" class="anchor"></a>Utilities</h2>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw"><a href="../reference/dim_desc.html">dim_desc</a></span>(x)
-<span class="kw"><a href="../reference/style_subtle.html">style_na</a></span>(x)
-<span class="kw"><a href="../reference/style_subtle.html">style_neg</a></span>(x)
-<span class="kw"><a href="../reference/style_subtle.html">style_num</a></span>(x, negative, <span class="dt">significant =</span> <span class="kw">rep_along</span>(x, <span class="ot">TRUE</span>))
-<span class="kw"><a href="../reference/style_subtle.html">style_subtle</a></span>(x)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/dim_desc.html">dim_desc</a></span>(x)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/style_subtle.html">style_na</a></span>(x)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="../reference/style_subtle.html">style_neg</a></span>(x)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="../reference/style_subtle.html">style_num</a></span>(x, negative, <span class="dt">significant =</span> <span class="kw">rep_along</span>(x, <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw"><a href="../reference/style_subtle.html">style_subtle</a></span>(x)</a></code></pre></div>
 </div>
 <div id="testing-helper" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing-helper" class="anchor"></a>Testing helper</h2>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw"><a href="../reference/expect_known_display.html">expect_known_display</a></span>(object, file, ..., <span class="dt">width =</span> 80L, <span class="dt">crayon =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/expect_known_display.html">expect_known_display</a></span>(object, file, ..., <span class="dt">width =</span> 80L, <span class="dt">crayon =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="own-s3-methods" class="section level2">
 <h2 class="hasAnchor">
 <a href="#own-s3-methods" class="anchor"></a>Own S3 methods</h2>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span>
-<span class="kw"><a href="../reference/type_sum.html">type_sum</a></span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span>
-<span class="kw"><a href="../reference/type_sum.html">is_vector_s3</a></span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span>
-<span class="kw"><a href="../reference/type_sum.html">obj_sum</a></span>(x) <span class="co"># AsIs, POSIXlt, default, list</span>
-<span class="kw"><a href="../reference/extra_cols.html">extra_cols</a></span>(x, ...) <span class="co"># squeezed_colonnade</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/type_sum.html">type_sum</a></span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="../reference/type_sum.html">is_vector_s3</a></span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw"><a href="../reference/type_sum.html">obj_sum</a></span>(x) <span class="co"># AsIs, POSIXlt, default, list</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw"><a href="../reference/extra_cols.html">extra_cols</a></span>(x, ...) <span class="co"># squeezed_colonnade</span></a></code></pre></div>
 </div>
 </div>
   </div>
@@ -226,6 +266,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#pillar-1-3-0">1.3.0</a></li>
         <li><a href="#pillar-1-2-3">1.2.3</a></li>
         <li><a href="#pillar-1-2-2">1.2.2</a></li>
         <li><a href="#pillar-1-2-1">1.2.1</a></li>

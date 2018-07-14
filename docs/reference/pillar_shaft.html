@@ -67,7 +67,6 @@
   </a>
 </li>
       </ul>
-      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -124,6 +123,9 @@ Your <code>format()</code> method can assume a valid value for the <code>width</
 <span class='co'># S3 method for list</span>
 <span class='fu'>pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
+<span class='co'># S3 method for factor</span>
+<span class='fu'>pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
 <span class='co'># S3 method for AsIs</span>
 <span class='fu'>pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
@@ -160,7 +162,7 @@ unless the string fits a shorter width.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The default method will currently coerce via <code>as.character()</code>,
+    <p>The default method will currently format via <code>format()</code>,
 but you should not rely on this behavior.</p>
     
 
