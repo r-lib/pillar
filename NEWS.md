@@ -1,6 +1,10 @@
+
+
 # pillar 1.2.4
 
 ## Visible changes
+
+- Unknown data types are formatted using `format()`, not `as.character()` (#120).
 
 - Multi-tier colonnades can always fill the last tier, even if the width isn't a proper multiple of `getOption("width")`. (Example: `options(width = 80, tibble.width = 200)` will print a wide tibble in three tiers, each 80 characters wide, with a total width of 240 characters.)
 

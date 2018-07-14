@@ -176,6 +176,12 @@ pillar_shaft.list <- function(x, ...) {
 
 #' @export
 #' @rdname pillar_shaft
+pillar_shaft.factor <- function(x, ...) {
+  pillar_shaft(as.character(x), ...)
+}
+
+#' @export
+#' @rdname pillar_shaft
 pillar_shaft.AsIs <- function(x, ...) {
   pillar_shaft(remove_as_is_class(x))
 }
@@ -184,7 +190,7 @@ pillar_shaft.AsIs <- function(x, ...) {
 #' @rdname pillar_shaft
 pillar_shaft.default <- function(x, ...) {
   #' @details
-  #' The default method will currently coerce via [as.character()],
+  #' The default method will currently format via [format()],
   #' but you should not rely on this behavior.
-  pillar_shaft(as.character(x), ...)
+  pillar_shaft(format(x), ...)
 }

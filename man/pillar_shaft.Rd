@@ -10,6 +10,7 @@
 \alias{pillar_shaft.POSIXt}
 \alias{pillar_shaft.character}
 \alias{pillar_shaft.list}
+\alias{pillar_shaft.factor}
 \alias{pillar_shaft.AsIs}
 \alias{pillar_shaft.default}
 \title{Column data}
@@ -31,6 +32,8 @@ pillar_shaft(x, ...)
 \method{pillar_shaft}{character}(x, ..., min_width = 3L)
 
 \method{pillar_shaft}{list}(x, ...)
+
+\method{pillar_shaft}{factor}(x, ...)
 
 \method{pillar_shaft}{AsIs}(x, ...)
 
@@ -65,7 +68,7 @@ raises an error.
 Your \code{format()} method can assume a valid value for the \code{width} argument.
 }
 \details{
-The default method will currently coerce via \code{\link[=as.character]{as.character()}},
+The default method will currently format via \code{\link[=format]{format()}},
 but you should not rely on this behavior.
 }
 \examples{
