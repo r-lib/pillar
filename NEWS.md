@@ -6,6 +6,10 @@
 
 - Fixed mixed formatting (showing some pillars with maximum, and some with minimum width). If a pillar's minimum width is smaller than `getOption("width")`, it is shown nevertheless, abbreviated with dots if necessary.
 
+## Interface changes
+
+- `format_type_sum()` gains `width` argument (#73).
+
 ## Performance improvements
 
 - Printing large multi-tier colonnades is much faster, the code that distributes pillars over tiers uses a much simpler and much faster algorithm (tidyverse/tibble#422).

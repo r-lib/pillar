@@ -5,12 +5,17 @@
 \alias{format_type_sum.default}
 \title{Format a type summary}
 \usage{
-format_type_sum(x)
+format_type_sum(x, width, ...)
 
-\method{format_type_sum}{default}(x)
+\method{format_type_sum}{default}(x, width, ...)
 }
 \arguments{
 \item{x}{A return value from \code{type_sum()}}
+
+\item{width}{The desired total width. If the returned string still is
+wider, it will be trimmed. Can be \code{NULL}.}
+
+\item{...}{Unused, for extensibility.}
 }
 \description{
 Called on values returned from \code{\link[=type_sum]{type_sum()}} for defining the description
@@ -23,9 +28,12 @@ format_type_sum(1)
 pillar(1)
 
 type_sum.accel <- function(x) {
-  structure("kg m/s^2", class = "type_sum_accel")
+  structure("kg m/s^2", width = 8, class = "type_sum_accel")
 }
-format_type_sum.type_sum_accel <- function(x) {
+format_type_sum.type_sum_accel <- function(x, width, ...) {
+  if (!is.null(width) && width < attr(x, "width")) {
+    x <- substr(x, 1, width)
+  }
   style_subtle(x)
 }
 accel <- structure(9.81, class = "accel")
