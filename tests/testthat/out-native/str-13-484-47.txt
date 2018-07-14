@@ -10,24 +10,24 @@
   `16`             `24`                    
   <chr>            <chr>                   
 1 AbcdefghijAbcdef AbcdefghijAbcdefghijAbcd
-  `4`   `15`  `47`  `8`   `11`  `14`  `50` 
-  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-1 Abcd  Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-  `17`  `2`   `44`  `30`  `36`  `45`  `25` 
-  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-1 Abcd~ Ab    Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-  `38`  `18`  `29`  `5`   `13`  `3`   `23` 
-  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-1 Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abc   Abcd~
-  `48`  `40`  `34`  `22`  `39`  `33`  `27` 
-  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-  `7`   `19`  `10`  `37`  `6`   `35`  `46` 
-  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-  `31`  `41`  `43`  `28`  `42`  `32`  `21` 
-  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-  `9`  
-  <chr>
-1 Abcd~
+  `4`   `15`   `47`   `8`   `11`  `14`  `50`  
+  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr> 
+1 Abcd  Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcde~
+  `17`   `2`   `44`   `30`   `36`  `45`  `25` 
+  <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr>
+1 Abcde~ Ab    Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
+  `38`    `18`   `29`  `5`   `13`  `3`   `23` 
+  <chr>   <chr>  <chr> <chr> <chr> <chr> <chr>
+1 Abcdef~ Abcde~ Abcd~ Abcde Abcd~ Abc   Abcd~
+  `48`   `40`   `34`   `22`  `39`  `33`  `27` 
+  <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
+1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+  `7`    `19`   `10`   `37`  `6`   `35`  `46` 
+  <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
+1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+  `31`   `41`   `43`   `28`  `42`  `32`  `21` 
+  <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
+1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+  `9`      
+  <chr>    
+1 Abcdefghi

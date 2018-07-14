@@ -40,6 +40,6 @@
   `26`  `48`  `37`  `49`  `1`  
   <chr> <chr> <chr> <chr> <chr>
 1 Abcd~ Abcd~ Abcd~ Abcd~ A    
-  `18`  `21`  `44`  `20` 
-  <chr> <chr> <chr> <chr>
-1 Abcd~ Abcd~ Abcd~ Abcd~
+  `18`    `21`   `44`    `20`  
+  <chr>   <chr>  <chr>   <chr> 
+1 Abcdef~ Abcde~ Abcdef~ Abcde~

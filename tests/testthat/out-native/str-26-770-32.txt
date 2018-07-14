@@ -70,6 +70,6 @@
   `18`  `38`  `3`   `1`   `34` 
   <chr> <chr> <chr> <chr> <chr>
 1 Abcd~ Abcd~ Abc   A     Abcd~
-  `16`  `9`  
-  <chr> <chr>
-1 Abcd~ Abcd~
+  `16`             `9`      
+  <chr>            <chr>    
+1 AbcdefghijAbcdef Abcdefghi
