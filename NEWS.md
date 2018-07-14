@@ -1,6 +1,4 @@
-
-
-# pillar 1.2.4
+# pillar 1.3.0
 
 ## Visible changes
 
