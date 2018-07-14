@@ -65,7 +65,7 @@ format_full_pillar_type <- function(x) {
 #'
 #' @export
 #' @examples
-#' format_type_sum(1)
+#' format_type_sum(1, NULL)
 #' pillar(1)
 #'
 #' type_sum.accel <- function(x) {

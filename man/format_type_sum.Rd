@@ -24,7 +24,7 @@ formatting, and return an object of this helper class from your
 \code{type_sum()} implementation.  See examples.
 }
 \examples{
-format_type_sum(1)
+format_type_sum(1, NULL)
 pillar(1)
 
 type_sum.accel <- function(x) {
