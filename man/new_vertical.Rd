@@ -9,6 +9,13 @@ new_vertical(x, ..., subclass = NULL)
 
 \method{print}{pillar_vertical}(x, ...)
 }
+\arguments{
+\item{x}{An object}
+
+\item{...}{Additional attributes}
+
+\item{subclass}{The name of the subclass.}
+}
 \description{
 This class implements a \code{\link[=print]{print()}} method which outputs the contents
 (usually a character vector) to the console using \code{\link[=cat]{cat()}},

@@ -42,6 +42,7 @@ print.pillar_ornament <- function(x, ...) {
 #' (usually a character vector) to the console using [cat()],
 #' without any extra marks and ignoring width or length restrictions.
 #'
+#' @inheritParams new_pillar_shaft
 #' @export
 #' @examples
 #' x <- new_vertical(letters[1:3])
