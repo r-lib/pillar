@@ -7,4 +7,5 @@ test_that("output test", {
     list(digits.secs = 4),
     expect_pillar_output(as.POSIXlt("2017-07-28 18:04:35 +0200"), filename = "time-digits-secs.txt")
   )
+  expect_pillar_output(as.difftime(8:11, units = "secs"), filename = "difftime.txt")
 })

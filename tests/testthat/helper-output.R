@@ -70,7 +70,7 @@ get_pillar_output_object <- function(x = NULL, xp = NULL, xf = NULL, ...) {
 #' values to `expect_pillar_output()`.
 #' @rdname expect_pillar_output
 add_special <- function(x) {
-  x <- c(x, NA)
+  x <- c(x, x[length(x) + 1])
   if (is.numeric(x) && is.double(x)) {
     x <- c(x, -Inf, Inf)
   }
