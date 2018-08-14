@@ -36,6 +36,18 @@ print.pillar_ornament <- function(x, ...) {
   invisible(x)
 }
 
+#' Vertical text
+#'
+#' This class implements a [print()] method which outputs the contents
+#' (usually a character vector) to the console using [cat()],
+#' without any extra marks and ignoring width or length restrictions.
+#'
+#' @inheritParams new_pillar_shaft
+#' @export
+#' @examples
+#' x <- new_vertical(letters[1:3])
+#' str(x)
+#' x
 new_vertical <- function(x, ..., subclass = NULL) {
   ret <- structure(
     x,
@@ -46,6 +58,7 @@ new_vertical <- function(x, ..., subclass = NULL) {
 }
 
 #' @export
+#' @rdname new_vertical
 print.pillar_vertical <- function(x, ...) {
   if (length(x) > 0) {
     cat_line(paste(x, collapse = "\n"))
