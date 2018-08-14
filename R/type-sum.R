@@ -11,6 +11,10 @@
 type_sum <- function(x) UseMethod("type_sum")
 
 #' @export
+type_sum.array <- function(x) {
+  paste0(type_sum(as.vector(x)), "[]")
+}
+#' @export
 type_sum.ordered <- function(x) "ord"
 #' @export
 type_sum.factor <- function(x) "fct"
