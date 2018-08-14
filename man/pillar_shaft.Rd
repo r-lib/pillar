@@ -9,6 +9,7 @@
 \alias{pillar_shaft.Date}
 \alias{pillar_shaft.POSIXt}
 \alias{pillar_shaft.character}
+\alias{pillar_shaft.pillar_vertical}
 \alias{pillar_shaft.list}
 \alias{pillar_shaft.factor}
 \alias{pillar_shaft.AsIs}
@@ -31,6 +32,8 @@ pillar_shaft(x, ...)
 \method{pillar_shaft}{POSIXt}(x, ...)
 
 \method{pillar_shaft}{character}(x, ..., min_width = 3L)
+
+\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = 3L)
 
 \method{pillar_shaft}{list}(x, ...)
 

@@ -153,15 +153,21 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
     out[needs_quotes] <- quoted
   }
 
+  pillar_shaft(new_vertical(out), ..., min_width = min_width)
+}
+
+#' @export
+#' @rdname pillar_shaft
+pillar_shaft.pillar_vertical <- function(x, ..., min_width = 3L) {
   # Format NA values separately
   is_na <- which(is.na(x))
   if (length(is_na) > 0) {
     na_contents <- pillar_na(use_brackets_if_no_color = TRUE)
-    out[is_na] <- na_contents
+    x[is_na] <- na_contents
   }
 
-  width <- get_max_extent(out)
-  new_pillar_shaft_simple(out, width = width, align = "left", min_width = min(width, min_width))
+  width <- get_max_extent(x)
+  new_pillar_shaft_simple(x, width = width, align = "left", min_width = min(width, min_width))
 }
 
 #' @export
@@ -192,5 +198,5 @@ pillar_shaft.default <- function(x, ...) {
   #' @details
   #' The default method will currently format via [format()],
   #' but you should not rely on this behavior.
-  pillar_shaft(format(x), ...)
+  pillar_shaft(new_vertical(format(x)), ...)
 }
