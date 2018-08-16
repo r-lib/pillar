@@ -19,6 +19,5 @@ is_ambiguous_string <- function(x) {
 }
 
 tick <- function(x) {
-  x[is.na(x)] <- "NA"
-  encodeString(x, quote = "`")
+  ifelse(is.na(x), "NA", encodeString(x, quote = "`"))
 }
