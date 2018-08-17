@@ -65,12 +65,11 @@ has_color <- local({
 # Crayon functions call crayon::has_color() every call
 make_fast_style <- function(...) {
   style <- crayon::make_style(...)
-  styles <- attr(style, "_styles")[[1]]
-  open <- styles$open
-  close <- styles$close
+  start <- stats::start(style)
+  finish <- crayon::finish(style)
   function(...) {
     if (has_color()) {
-      paste0(open, ..., close)
+      paste0(start, ..., finish)
     } else {
       paste0(...)
     }
