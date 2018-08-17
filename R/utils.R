@@ -50,3 +50,37 @@ remove_as_is_class <- function(x) {
 diff_to_trunc <- function(x) {
   x - trunc(x)
 }
+
+# Only check if we have color support once per session
+has_color <- local({
+  has_color <- NULL
+  function(forget = FALSE) {
+    if (is.null(has_color) || forget) {
+      has_color <<- crayon::has_color()
+    }
+    has_color
+  }
+})
+
+# Crayon functions call crayon::has_color() every call
+make_fast_style <- function(...) {
+  style <- crayon::make_style(...)
+  styles <- attr(style, "_styles")[[1]]
+  open <- styles$open
+  close <- styles$close
+  function(...) {
+    if (has_color()) {
+      paste0(open, ..., close)
+    } else {
+      paste0(...)
+    }
+  }
+}
+
+underline <- make_fast_style("underline")
+
+italic <- make_fast_style("italic")
+
+red <- make_fast_style("red")
+yellow <- make_fast_style("yellow")
+bold <- make_fast_style("bold")

@@ -54,7 +54,7 @@ style_hint <- keep_empty(function(x) {
 })
 
 style_spark_na <- function(x) {
-  crayon::yellow(x)
+  yellow(x)
 }
 
 #' @details
@@ -66,7 +66,7 @@ style_spark_na <- function(x) {
 #' style_bold("Petal.Width")
 style_bold <- function(x) {
   if (isTRUE(getOption("pillar.bold", FALSE))) {
-    crayon::bold(x)
+    bold(x)
   } else {
     x
   }
@@ -77,7 +77,7 @@ style_bold <- function(x) {
 #' @examples
 #' style_na("NA")
 style_na <- function(x) {
-  crayon::red(x)
+  red(x)
 }
 
 #' @details
@@ -89,18 +89,17 @@ style_na <- function(x) {
 #' style_neg("123")
 style_neg <- keep_empty(function(x) {
   if (isTRUE(getOption("pillar.neg", TRUE))) {
-    crayon::red(x)
+    red(x)
   } else {
     x
   }
 })
 
 make_style_grey <- function(level) {
-  style <- crayon::make_style(grDevices::grey(level), grey = TRUE)
+  style <- make_fast_style(grDevices::grey(level), grey = TRUE)
 
   function(...) {
-    x <- paste0(...)
-    crayon::style(x, style)
+    style(...)
   }
 }
 
@@ -113,7 +112,7 @@ assign_style_grey <- function() {
 }
 
 pillar_na <- function(use_brackets_if_no_color = FALSE) {
-  if (use_brackets_if_no_color && !crayon::has_color()) {
+  if (use_brackets_if_no_color && !has_color()) {
     "<NA>"
   } else {
     style_na("NA")

@@ -163,7 +163,7 @@ format_lhs <- function(s) {
 
 underline_3_back <- function(x) {
   idx <- which(trunc((seq_along(x) - length(x)) / 3) %% 2 == 1)
-  x[idx] <- crayon::underline(x[idx])
+  x[idx] <- underline(x[idx])
   x
 }
 
@@ -228,7 +228,7 @@ format_rhs <- function(s) {
 
 underline_3 <- function(x) {
   idx <- which(trunc((seq_along(x) - 1) / 3) %% 2 == 1)
-  x[idx] <- crayon::underline(x[idx])
+  x[idx] <- underline(x[idx])
   x
 }
 
