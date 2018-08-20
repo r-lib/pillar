@@ -95,20 +95,12 @@ style_neg <- keep_empty(function(x) {
   }
 })
 
-make_style_grey <- function(level) {
-  style <- make_fast_style(grDevices::grey(level), grey = TRUE)
-
-  function(...) {
-    style(...)
-  }
-}
-
 # Placeholders, assigned in .onLoad()
 style_grey <- new.env(parent = emptyenv())
 
 assign_style_grey <- function() {
-  style_grey$"0.6" <- make_style_grey(0.6)
-  style_grey$"0.8" <- make_style_grey(0.8)
+  style_grey$"0.6" <- make_style_fast(grDevices::grey(0.6), grey = TRUE)
+  style_grey$"0.8" <- make_style_fast(grDevices::grey(0.8), grey = TRUE)
 }
 
 pillar_na <- function(use_brackets_if_no_color = FALSE) {
