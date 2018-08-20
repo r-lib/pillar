@@ -63,10 +63,15 @@ has_color <- local({
 })
 
 # Crayon functions call crayon::has_color() every call
-make_fast_style <- function(...) {
+make_style_fast <- function(...) {
+  # Force has_color to be true when making styles
+  old <- options(crayon.enabled = TRUE)
+  on.exit(options(old))
+
   style <- crayon::make_style(...)
   start <- stats::start(style)
   finish <- crayon::finish(style)
+
   function(...) {
     if (has_color()) {
       paste0(start, ..., finish)
@@ -76,10 +81,8 @@ make_fast_style <- function(...) {
   }
 }
 
-underline <- make_fast_style("underline")
-
-italic <- make_fast_style("italic")
-
-red <- make_fast_style("red")
-yellow <- make_fast_style("yellow")
-bold <- make_fast_style("bold")
+underline <- make_style_fast("underline")
+italic <- make_style_fast("italic")
+red <- make_style_fast("red")
+yellow <- make_style_fast("yellow")
+bold <- make_style_fast("bold")
