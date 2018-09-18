@@ -48,4 +48,7 @@ navbar:
 
 development:
   mode: auto
-  destination: ../docs-dev
+
+authors:
+  Kirill Müller:
+    href: http://krlmlr.info
