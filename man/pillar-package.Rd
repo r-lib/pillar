@@ -6,7 +6,7 @@
 \title{pillar: Coloured Formatting for Columns}
 \description{
 Provides a 'pillar' generic designed for formatting columns
-of data using the full range of colours provided by modern terminals.
+   of data using the full range of colours provided by modern terminals.
 }
 \section{Package options}{
 
