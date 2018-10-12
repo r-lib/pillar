@@ -37,5 +37,8 @@ test_that("difftime is shown as time", {
 test_that("less common objects get abbreviations", {
   expect_equal(type_sum(environment()), "env")
   expect_equal(type_sum(environment), "fn")
+  expect_equal(type_sum(list), "fn")
   expect_equal(type_sum(1i), "cpl")
+  expect_equal(type_sum(quote(foo)), "sym")
+  expect_equal(type_sum(expr()), "missing")
 })
