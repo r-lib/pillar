@@ -449,7 +449,8 @@ colonnade_distribute_space <- function(col_widths, max_widths, width) {
   #' The remaining space is distributed from left to right.
   #' Each column gains space proportional to the fraction of missing and
   #' remaining space,
-  remaining_width <- min(width - sum(col_widths + 1L), sum(missing_space))
+  occupied_width <- sum(col_widths + 1L) - 1L
+  remaining_width <- max(min(width - occupied_width, sum(missing_space)), 0L)
   added_space_prop <- missing_space / sum(missing_space) * remaining_width
 
   #' rounded down.

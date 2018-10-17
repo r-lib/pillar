@@ -263,8 +263,8 @@ format.pillar_shaft_decimal <- function(x, width, ...) {
 
   if (width < get_min_width(x)) {
     stop(
-      "Need at least width ", get_min_width(x), " requested ", width, ".",
-      call = FALSE
+      "Need at least width ", get_min_width(x), ", requested ", width, ".",
+      call. = FALSE
     )
   }
 
