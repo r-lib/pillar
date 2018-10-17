@@ -1,3 +1,11 @@
+# pillar 1.3.0.9001
+
+- Fix off-by-one error in distribution of empty space (#141).
+- `NA` in names is no longer escaped with backticks.
+- Tests work again in a 256-color terminal (#129).
+- Don't add quotes for pillars formatted with their `format()` method (tidyverse/tibble#448).
+
+
 # pillar 1.3.0.9000
 
 - Same as previous version.
