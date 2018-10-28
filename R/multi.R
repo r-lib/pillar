@@ -49,7 +49,7 @@ flatten_column <- function(x, name) {
 
   if (is.data.frame(x)) {
     flatten_df_column(x, name)
-  } else if (is.matrix(x)) {
+  } else if (inherits(x, "matrix")) {
     flatten_matrix_column(x, name)
   } else {
     # Length-one list, will be unlist()ed afterwards
