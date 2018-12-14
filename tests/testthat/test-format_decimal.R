@@ -1,12 +1,5 @@
 context("format_decimal")
 
-without_color <- function(code) {
-  old <- options(crayon.enabled = FALSE)
-  on.exit(options(old))
-
-  code
-}
-
 format_decimal_bw <- function(x, sigfig = 3, ...) {
   without_color(format_decimal(x, sigfig = sigfig, ...))
 }
