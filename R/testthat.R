@@ -38,19 +38,16 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
   if (crayon) {
     old <- options(crayon.enabled = TRUE, crayon.colors = 16L, width = width)
     crayon::num_colors(forget = TRUE)
-    assign_style_grey()
     has_color(forget = TRUE)
   } else {
     old <- options(crayon.enabled = FALSE, width = width)
     crayon::num_colors(forget = TRUE)
-    assign_style_grey()
     has_color(forget = TRUE)
   }
 
   on.exit({
     options(old)
     crayon::num_colors(forget = TRUE)
-    assign_style_grey()
     has_color(forget = TRUE)
   })
 

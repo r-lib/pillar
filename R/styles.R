@@ -22,7 +22,7 @@ keep_empty <- function(fun) {
 style_subtle <- keep_empty(function(x) {
   force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
-    style_grey$"0.6"(x)
+    crayon_grey_0.6(x)
   } else {
     x
   }
@@ -47,7 +47,7 @@ style_subtle_num <- function(x, negative) {
 style_hint <- keep_empty(function(x) {
   force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
-    style_grey$"0.8"(x)
+    crayon_grey_0.8(x)
   } else {
     x
   }
@@ -95,14 +95,6 @@ style_neg <- keep_empty(function(x) {
   }
 })
 
-# Placeholders, assigned in .onLoad()
-style_grey <- new.env(parent = emptyenv())
-
-assign_style_grey <- function() {
-  style_grey$"0.6" <- make_style_fast(grDevices::grey(0.6), grey = TRUE)
-  style_grey$"0.8" <- make_style_fast(grDevices::grey(0.8), grey = TRUE)
-}
-
 pillar_na <- function(use_brackets_if_no_color = FALSE) {
   if (use_brackets_if_no_color && !has_color()) {
     "<NA>"
@@ -126,6 +118,17 @@ has_color <- local({
   }
 })
 
+# Important to use 16-color palette for consistent testing
+is_testing <- local({
+  is_testing <- FALSE
+  function(set = NA) {
+    if (!is.na(set)) {
+      is_testing <<- set
+    }
+    is_testing
+  }
+})
+
 # Crayon functions call crayon::has_color() every call
 make_style_fast <- function(...) {
   # Force has_color to be true when making styles
@@ -145,12 +148,50 @@ make_style_fast <- function(...) {
   }
 }
 
+make_style_fast_16 <- function(...) {
+  # Force has_color to be true when making styles
+  old <- options(crayon.enabled = TRUE)
+  on.exit(options(old))
+
+  style <- crayon::make_style(...)
+  start <- stats::start(style)
+  finish <- crayon::finish(style)
+
+  old_16 <- options(crayon.colors = 16)
+  crayon::num_colors(forget = TRUE)
+  on.exit(
+    {
+      options(old_16)
+      crayon::num_colors(forget = TRUE)
+    },
+    add = TRUE
+  )
+
+  style_16 <- crayon::make_style(...)
+  start_16 <- stats::start(style_16)
+  finish_16 <- crayon::finish(style_16)
+
+  function(...) {
+    if (has_color()) {
+      if (is_testing()) {
+        paste0(start_16, ..., finish_16)
+      } else {
+        paste0(start, ..., finish)
+      }
+    } else {
+      paste0(...)
+    }
+  }
+}
+
 # Placeholders, assigned in .onLoad()
 crayon_underline <- function(...) {}
 crayon_italic <- function(...) {}
 crayon_red <- function(...) {}
 crayon_yellow <- function(...) {}
 crayon_bold <- function(...) {}
+crayon_grey_0.6 <- function(...) {}
+crayon_grey_0.8 <- function(...) {}
 
 assign_crayon_styles <- function() {
   crayon_underline <<- make_style_fast("underline")
@@ -158,4 +199,6 @@ assign_crayon_styles <- function() {
   crayon_red <<- make_style_fast("red")
   crayon_yellow <<- make_style_fast("yellow")
   crayon_bold <<- make_style_fast("bold")
+  crayon_grey_0.6 <<- make_style_fast_16(grDevices::grey(0.6), grey = TRUE)
+  crayon_grey_0.8 <<- make_style_fast_16(grDevices::grey(0.8), grey = TRUE)
 }
