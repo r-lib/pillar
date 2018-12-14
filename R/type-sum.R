@@ -33,8 +33,16 @@ type_sum.default <- function(x) {
       double = "dbl",
       character = "chr",
       complex = "cpl",
+      builtin = ,
+      special = ,
       closure = "fn",
       environment = "env",
+      symbol =
+        if (is_missing(x)) {
+          "missing"
+        } else {
+          "sym"
+        },
       typeof(x)
     )
   } else if (!isS4(x)) {
