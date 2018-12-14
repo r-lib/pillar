@@ -3,7 +3,7 @@ MIN_PILLAR_WIDTH <- 5L
 style_type <- function(x) {
   force(x)
   x <- style_subtle(x)
-  italic(x)
+  crayon_italic(x)
 }
 
 #' Prepare a column type for formatting

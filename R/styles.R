@@ -54,7 +54,7 @@ style_hint <- keep_empty(function(x) {
 })
 
 style_spark_na <- function(x) {
-  yellow(x)
+  crayon_yellow(x)
 }
 
 #' @details
@@ -66,7 +66,7 @@ style_spark_na <- function(x) {
 #' style_bold("Petal.Width")
 style_bold <- function(x) {
   if (isTRUE(getOption("pillar.bold", FALSE))) {
-    bold(x)
+    crayon_bold(x)
   } else {
     x
   }
@@ -77,7 +77,7 @@ style_bold <- function(x) {
 #' @examples
 #' style_na("NA")
 style_na <- function(x) {
-  red(x)
+  crayon_red(x)
 }
 
 #' @details
@@ -89,7 +89,7 @@ style_na <- function(x) {
 #' style_neg("123")
 style_neg <- keep_empty(function(x) {
   if (isTRUE(getOption("pillar.neg", TRUE))) {
-    red(x)
+    crayon_red(x)
   } else {
     x
   }

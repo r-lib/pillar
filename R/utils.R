@@ -81,8 +81,8 @@ make_style_fast <- function(...) {
   }
 }
 
-underline <- make_style_fast("underline")
-italic <- make_style_fast("italic")
-red <- make_style_fast("red")
-yellow <- make_style_fast("yellow")
-bold <- make_style_fast("bold")
+crayon_underline <- make_style_fast("underline")
+crayon_italic <- make_style_fast("italic")
+crayon_red <- make_style_fast("red")
+crayon_yellow <- make_style_fast("yellow")
+crayon_bold <- make_style_fast("bold")
