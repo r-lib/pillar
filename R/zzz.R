@@ -8,7 +8,6 @@ NULL
 .onLoad <- function(libname, pkgname) {
   register_s3_method("knitr", "knit_print", "squeezed_colonnade")
 
-  assign_style_grey()
   assign_crayon_styles()
 
   invisible()
