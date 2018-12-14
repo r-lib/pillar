@@ -114,3 +114,48 @@ pillar_na <- function(use_brackets_if_no_color = FALSE) {
 style_list <- function(x) {
   style_subtle(x)
 }
+
+# Only check if we have color support once per session
+has_color <- local({
+  has_color <- NULL
+  function(forget = FALSE) {
+    if (is.null(has_color) || forget) {
+      has_color <<- crayon::has_color()
+    }
+    has_color
+  }
+})
+
+# Crayon functions call crayon::has_color() every call
+make_style_fast <- function(...) {
+  # Force has_color to be true when making styles
+  old <- options(crayon.enabled = TRUE)
+  on.exit(options(old))
+
+  style <- crayon::make_style(...)
+  start <- stats::start(style)
+  finish <- crayon::finish(style)
+
+  function(...) {
+    if (has_color()) {
+      paste0(start, ..., finish)
+    } else {
+      paste0(...)
+    }
+  }
+}
+
+# Placeholders, assigned in .onLoad()
+crayon_underline <- function(...) {}
+crayon_italic <- function(...) {}
+crayon_red <- function(...) {}
+crayon_yellow <- function(...) {}
+crayon_bold <- function(...) {}
+
+assign_crayon_styles <- function() {
+  crayon_underline <<- make_style_fast("underline")
+  crayon_italic <<- make_style_fast("italic")
+  crayon_red <<- make_style_fast("red")
+  crayon_yellow <<- make_style_fast("yellow")
+  crayon_bold <<- make_style_fast("bold")
+}
