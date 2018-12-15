@@ -1,9 +1,9 @@
 add_package_checks()
 
-get_stage("deploy") %>%
-  add_step(step_build_pkgdown())
-
 if (Sys.getenv("BUILD_PKGDOWN") != "") {
+  get_stage("deploy") %>%
+    add_step(step_build_pkgdown())
+
   get_stage("before_deploy") %>%
     add_step(step_setup_ssh())
 
