@@ -32,7 +32,6 @@ reference:
       - new_pillar_type
   - title: Miscellaneous
     contents:
-      - obj_sum
       - dim_desc
       - expect_known_display
       - get_extent
