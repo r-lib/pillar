@@ -60,7 +60,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     sigfig = sigfig,
     num = num,
     neg = neg,
-    lhs = lhs,
+    lhs = sprintf("%.0f", lhs),
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
@@ -135,7 +135,7 @@ format_lhs <- function(s) {
   num <- s$num
   lhs_zero <- s$lhs_zero
 
-  lhs_str <- sprintf("%.0f", s$lhs)
+  lhs_str <- s$lhs
   lhs_split <- strsplit(lhs_str, "", fixed = TRUE)
   lhs_width <- max(0L, map_int(lhs_split, length))
 
