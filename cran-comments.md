@@ -1,4 +1,4 @@
-Minor update to support upcoming extensions in tibble, and performance improvements.
+Fixes a rare problem that occurs only with specific settings of options(width = ...).
 
 ## Test environments
 
@@ -12,4 +12,4 @@ OK
 
 ## revdepcheck results
 
-Checked all first- and second-level downstream packages from CRAN, found regressions in banR and rdefra (likely due to access to external resources) and a segmentation fault in dexter (unlikely to be attributable to the most recent changes in pillar).
+Checked all first-level downstream packages from CRAN, no regressions found.
