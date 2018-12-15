@@ -133,9 +133,9 @@ format_lhs <- function(s) {
 
   lhs_str <- sprintf("%.0f", s$lhs)
   lhs_split <- strsplit(lhs_str, "", fixed = TRUE)
-  lhs_split_underlined <- map(lhs_split, underline_3_back)
-
   lhs_width <- max(0L, map_int(lhs_split, length))
+
+  lhs_split_underlined <- map(lhs_split, underline_3_back)
 
   lhs_split_sig <- map(lhs_split_underlined, utils::head, s$sigfig)
   lhs_split_non <- map(lhs_split_underlined, neg_tail, s$sigfig)
