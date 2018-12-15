@@ -81,7 +81,7 @@ Your format() method can assume a valid value for the width argument." />
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.1.9000</span>
         </div>
       </div>
     </div>
@@ -124,30 +124,30 @@ Your format() method can assume a valid value for the width argument." />
     <p>Internal class for formatting the data for a column.
 <code>pillar_shaft()</code> is a coercion method that must be implemented
 for your data type to display it in a tibble.</p>
-<p>This class comes with a default method for <code>print()</code> that calls <code>format()</code>.
-If <code>print()</code> is called without <code>width</code> argument, the natural width will be
-used when calling <code>format()</code>.
+<p>This class comes with a default method for <code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print()</a></code> that calls <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code>.
+If <code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print()</a></code> is called without <code>width</code> argument, the natural width will be
+used when calling <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code>.
 Usually there's no need to implement this method for your subclass.</p>
-<p>Your subclass must implement <code>format()</code>, the default implementation just
+<p>Your subclass must implement <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code>, the default implementation just
 raises an error.
-Your <code>format()</code> method can assume a valid value for the <code>width</code> argument.</p>
+Your <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code> method can assume a valid value for the <code>width</code> argument.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for pillar_shaft</span>
-<span class='fu'>print</span>(<span class='no'>x</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for pillar_shaft</span>
-<span class='fu'>format</span>(<span class='no'>x</span>, <span class='no'>width</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/format'>format</a></span>(<span class='no'>x</span>, <span class='no'>width</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for logical</span>
 <span class='fu'>pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for numeric</span>
 <span class='fu'>pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>,
-  <span class='kw'>sigfig</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"pillar.sigfig"</span>, <span class='fl'>3</span>))
+  <span class='kw'>sigfig</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"pillar.sigfig"</span>, <span class='fl'>3</span>))
 
 <span class='co'># S3 method for Date</span>
 <span class='fu'>pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -203,7 +203,7 @@ unless the string fits a shorter width.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The default method will currently format via <code>format()</code>,
+    <p>The default method will currently format via <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code>,
 but you should not rely on this behavior.</p>
     
 
@@ -212,10 +212,10 @@ but you should not rely on this behavior.</p>
 #&gt; 2
 #&gt; 3</div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fl'>1.5</span>:<span class='fl'>3.5</span>)</div><div class='output co'>#&gt; 1.5
 #&gt; 2.5
-#&gt; 3.5</div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fl'>NA</span>)</div><div class='output co'>#&gt; NA   </div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt;  1
+#&gt; 3.5</div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fl'>NA</span>)</div><div class='output co'>#&gt; <span style='color: #BB0000;'>NA</span><span>   </div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt;  1
 #&gt;  2
 #&gt;  3
-#&gt; NA</div></pre>
+#&gt; </span><span style='color: #BB0000;'>NA</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
