@@ -33,7 +33,7 @@ test_that("special values appear in LHS", {
   x <- c(NA, NaN, Inf)
   f <- format_decimal_bw(x)
 
-  expect_equal(without_color(format_lhs(f)), format(x))
+  expect_equal(without_color(format_lhs(f)), format(x, trim = TRUE))
 })
 
 test_that("all-positive values get nothing in neg", {
@@ -62,7 +62,7 @@ test_that("sigfigs split between lhs and rhs", {
   x <- c(1.43, 10.43, 100.43)
   f <- format_decimal_bw(x)
 
-  expect_equal(format_lhs(f), format(trunc(x)))
+  expect_equal(format_lhs(f), as.character(trunc(x)))
   expect_equal(format_rhs(f), c("43", "4 ", "  "))
 })
 

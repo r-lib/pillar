@@ -157,7 +157,7 @@ format_lhs <- function(s) {
   ))
 
   lhs_col <- paste0(format_neg(s), lhs_col)
-  lhs_col <- align(lhs_col, width = lhs_width, align = "right")
+  # No alignment here, result needs to be right-aligned
   lhs_col
 }
 
