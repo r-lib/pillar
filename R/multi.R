@@ -24,6 +24,8 @@
 #' # If width is larger than getOption("width"), multiple tiers are created:
 #' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
+  has_color(forget = TRUE)
+
   x <- flatten_colonnade(x)
   proxy <- structure(x, has_row_id = has_row_id)
   ret <- structure(proxy, class = "colonnade")
