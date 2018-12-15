@@ -1,3 +1,8 @@
+# pillar 1.3.0.9002
+
+- Update base type abbrevs to rlang 0.3.0 (#140, @lionel-).
+
+
 # pillar 1.3.0.9001
 
 - Fix off-by-one error in distribution of empty space (#141).
