@@ -7,7 +7,7 @@ if (Sys.getenv("BUILD_PKGDOWN") != "") {
   # - `Sys.getenv("BUILD_PKGDOWN") != ""`: If the env var "BUILD_PKGDOWN" is set
   # - `Sys.getenv("TRAVIS_EVENT_TYPE") == "cron"`: Only for Travis cron jobs
   get_stage("install") %>%
-    add_step(step_install_github("tidyverse/tidytemplate")) %>%
+    add_step(step_install_github("tidyverse/tidytemplate"))
 
   get_stage("before_deploy") %>%
     add_step(step_setup_ssh())
