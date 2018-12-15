@@ -1,19 +1,18 @@
-# pillar 1.3.0.9002
+# pillar 1.3.1
 
-- Update base type abbrevs to rlang 0.3.0 (#140, @lionel-).
-
-
-# pillar 1.3.0.9001
+## Bug fixes
 
 - Fix off-by-one error in distribution of empty space (#141).
+
+## Visible changes
+
 - `NA` in names is no longer escaped with backticks.
-- Tests work again in a 256-color terminal (#129).
 - Don't add quotes for pillars formatted with their `format()` method (tidyverse/tibble#448).
 
+## Internal changes
 
-# pillar 1.3.0.9000
-
-- Same as previous version.
+- Update base type abbrevs to rlang 0.3.0 (#140, @lionel-).
+- Tests work again in a 256-color terminal (#129).
 
 
 # pillar 1.3.0
