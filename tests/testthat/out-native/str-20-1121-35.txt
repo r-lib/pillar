@@ -85,15 +85,15 @@
   `34`                             
   <chr>                            
 1 AbcdefghijAbcdefghijAbcdefghijAb~
-  `8`    `24`   `29`   `1`   `12` 
-  <chr>  <chr>  <chr>  <chr> <chr>
-1 Abcde~ Abcde~ Abcde~ A     Abcd~
-  `2`   `20`   `17`   `35`   `5`  
-  <chr> <chr>  <chr>  <chr>  <chr>
-1 Ab    Abcde~ Abcde~ Abcde~ Abcde
-  `19`   `30`   `7`    `26`  `42` 
-  <chr>  <chr>  <chr>  <chr> <chr>
-1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~
-  `41`         `39`         `10`  
-  <chr>        <chr>        <chr> 
-1 AbcdefghijA~ AbcdefghijA~ Abcde~
+  `8`    `24`    `29`   `1`   `12` 
+  <chr>  <chr>   <chr>  <chr> <chr>
+1 Abcde~ Abcdef~ Abcde~ A     Abcd~
+  `2`   `20`    `17`  `35`    `5`  
+  <chr> <chr>   <chr> <chr>   <chr>
+1 Ab    Abcdef~ Abcd~ Abcdef~ Abcde
+  `19`   `30`    `7`   `26`  `42`  
+  <chr>  <chr>   <chr> <chr> <chr> 
+1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
+  `41`          `39`         `10`  
+  <chr>         <chr>        <chr> 
+1 AbcdefghijAb~ AbcdefghijA~ Abcde~

@@ -91,9 +91,9 @@
   `16`             `19`               
   <chr>            <chr>              
 1 AbcdefghijAbcdef AbcdefghijAbcdefghi
-  `15`   `22`   `39`   `10`  `46`   `5`  
-  <chr>  <chr>  <chr>  <chr> <chr>  <chr>
-1 Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcde
-  `30`       `8`    `26`      `37`       
-  <chr>      <chr>  <chr>     <chr>      
-1 Abcdefghi~ Abcde~ Abcdefgh~ Abcdefghij~
+  `15`   `22`   `39`    `10`  `46`   `5`  
+  <chr>  <chr>  <chr>   <chr> <chr>  <chr>
+1 Abcde~ Abcde~ Abcdef~ Abcd~ Abcde~ Abcde
+  `30`        `8`    `26`      `37`       
+  <chr>       <chr>  <chr>     <chr>      
+1 Abcdefghij~ Abcde~ Abcdefgh~ Abcdefghij~

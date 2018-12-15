@@ -61,15 +61,15 @@
   `38`                                  
   <chr>                                 
 1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh
-  `36`   `48`    `34`  `3`   `8`   `4`  
-  <chr>  <chr>   <chr> <chr> <chr> <chr>
-1 Abcde~ Abcdef~ Abcd~ Abc   Abcd~ Abcd 
-  `27`   `42`   `44`   `33`  `45`  `18` 
-  <chr>  <chr>  <chr>  <chr> <chr> <chr>
-1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-  `5`   `2`   `13`   `47`    `28`  `17` 
-  <chr> <chr> <chr>  <chr>   <chr> <chr>
-1 Abcde Ab    Abcde~ Abcdef~ Abcd~ Abcd~
-  `37`        `14`    `41`       `23`   
-  <chr>       <chr>   <chr>      <chr>  
-1 Abcdefghij~ Abcdef~ Abcdefghi~ Abcdef~
+  `36`    `48`   `34`   `3`   `8`   `4`  
+  <chr>   <chr>  <chr>  <chr> <chr> <chr>
+1 Abcdef~ Abcde~ Abcde~ Abc   Abcd~ Abcd 
+  `27`   `42`   `44`   `33`   `45`  `18` 
+  <chr>  <chr>  <chr>  <chr>  <chr> <chr>
+1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcd~
+  `5`   `2`   `13`   `47`    `28`   `17` 
+  <chr> <chr> <chr>  <chr>   <chr>  <chr>
+1 Abcde Ab    Abcde~ Abcdef~ Abcde~ Abcd~
+  `37`        `14`    `41`       `23`    
+  <chr>       <chr>   <chr>      <chr>   
+1 Abcdefghij~ Abcdef~ Abcdefghi~ Abcdefg~
