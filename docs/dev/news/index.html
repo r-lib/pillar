@@ -69,7 +69,7 @@
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.9002</span>
         </div>
       </div>
     </div>
@@ -106,6 +106,26 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="pillar-1-3-0-9002" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-3-0-9002" class="anchor"></a>pillar 1.3.0.9002<small> Unreleased </small>
+</h1>
+<ul>
+<li>Update base type abbrevs to rlang 0.3.0 (<a href='https://github.com/r-lib/pillar/issues/140'>#140</a>, <a href='https://github.com/lionel-'>@lionel-</a>).</li>
+</ul>
+</div>
+    <div id="pillar-1-3-0-9001" class="section level1">
+<h1 class="page-header">
+<a href="#pillar-1-3-0-9001" class="anchor"></a>pillar 1.3.0.9001<small> Unreleased </small>
+</h1>
+<ul>
+<li>Fix off-by-one error in distribution of empty space (<a href='https://github.com/r-lib/pillar/issues/141'>#141</a>).</li>
+<li>
+<code>NA</code> in names is no longer escaped with backticks.</li>
+<li>Tests work again in a 256-color terminal (<a href='https://github.com/r-lib/pillar/issues/129'>#129</a>).</li>
+<li>Don’t add quotes for pillars formatted with their <code><a href="https://www.rdocumentation.org/packages/base/topics/format">format()</a></code> method (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/448'>#448</a>).</li>
+</ul>
+</div>
     <div id="pillar-1-3-0-9000" class="section level1">
 <h1 class="page-header">
 <a href="#pillar-1-3-0-9000" class="anchor"></a>pillar 1.3.0.9000<small> Unreleased </small>
@@ -122,9 +142,9 @@
 <h2 class="hasAnchor">
 <a href="#visible-changes" class="anchor"></a>Visible changes</h2>
 <ul>
-<li><p>Unknown data types are formatted using <code>format()</code>, not <code>as.character()</code> (<a href='https://github.com/r-lib/pillar/issues/120'>#120</a>).</p></li>
-<li><p>Multi-tier colonnades can always fill the last tier, even if the width isn’t a proper multiple of <code>getOption("width")</code>. (Example: <code>options(width = 80, tibble.width = 200)</code> will print a wide tibble in three tiers, each 80 characters wide, with a total width of 240 characters.)</p></li>
-<li><p>Fixed mixed formatting (showing some pillars with maximum, and some with minimum width). If a pillar’s minimum width is smaller than <code>getOption("width")</code>, it is shown nevertheless, abbreviated with dots if necessary.</p></li>
+<li><p>Unknown data types are formatted using <code><a href="https://www.rdocumentation.org/packages/base/topics/format">format()</a></code>, not <code><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character()</a></code> (<a href='https://github.com/r-lib/pillar/issues/120'>#120</a>).</p></li>
+<li><p>Multi-tier colonnades can always fill the last tier, even if the width isn’t a proper multiple of <code><a href="https://www.rdocumentation.org/packages/base/topics/options">getOption("width")</a></code>. (Example: <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(width = 80, tibble.width = 200)</a></code> will print a wide tibble in three tiers, each 80 characters wide, with a total width of 240 characters.)</p></li>
+<li><p>Fixed mixed formatting (showing some pillars with maximum, and some with minimum width). If a pillar’s minimum width is smaller than <code><a href="https://www.rdocumentation.org/packages/base/topics/options">getOption("width")</a></code>, it is shown nevertheless, abbreviated with dots if necessary.</p></li>
 </ul>
 </div>
 <div id="interface-changes" class="section level2">
@@ -140,7 +160,7 @@
 <a href="#performance-improvements" class="anchor"></a>Performance improvements</h2>
 <ul>
 <li><p>Printing large multi-tier colonnades is much faster, the code that distributes pillars over tiers uses a much simpler and much faster algorithm (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/422'>#422</a>).</p></li>
-<li><p>Printing is now faster overall, because less work is done for formatting in “subtle” style (gray of a fixed level), and because <code><a href="http://www.rdocumentation.org/packages/fansi/topics/strip_ctl">fansi::strip_sgr()</a></code> is used instead of <code><a href="http://www.rdocumentation.org/packages/crayon/topics/strip_style">crayon::strip_style()</a></code>.</p></li>
+<li><p>Printing is now faster overall, because less work is done for formatting in “subtle” style (gray of a fixed level), and because <code><a href="https://www.rdocumentation.org/packages/fansi/topics/strip_ctl">fansi::strip_sgr()</a></code> is used instead of <code><a href="https://www.rdocumentation.org/packages/crayon/topics/strip_style">crayon::strip_style()</a></code>.</p></li>
 <li><p>Slightly faster printing of colonnades by reusing an intermediate result.</p></li>
 </ul>
 </div>
@@ -151,7 +171,7 @@
 <li><p><code><a href="../reference/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
 <li><p><code><a href="../reference/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
 <li><p>Added fuzz tests for character colonnades of varying widths.</p></li>
-<li><p>Use <code><a href="http://www.rdocumentation.org/packages/fansi/topics/substr_ctl">fansi::substr_ctl()</a></code> in favor of <code><a href="http://www.rdocumentation.org/packages/crayon/topics/col_substr">crayon::col_substr()</a></code>.</p></li>
+<li><p>Use <code><a href="https://www.rdocumentation.org/packages/fansi/topics/substr_ctl">fansi::substr_ctl()</a></code> in favor of <code><a href="https://www.rdocumentation.org/packages/crayon/topics/col_substr">crayon::col_substr()</a></code>.</p></li>
 </ul>
 </div>
 </div>
@@ -200,7 +220,7 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code>format()</code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
+<li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://www.rdocumentation.org/packages/base/topics/format">format()</a></code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
 <li>Very small numbers (like <code>1e-310</code>) are now printed corectly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
 <li>Fix representation of right-hand side for <code>getOption("pillar.sigfig") &gt;= 6</code> (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/380'>#380</a>).</li>
 <li>Fix computation of significant figures for numbers with absolute value &gt;= 1 (<a href='https://github.com/r-lib/pillar/issues/98'>#98</a>).</li>
@@ -299,6 +319,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#pillar-1-3-0-9002">1.3.0.9002</a></li>
+        <li><a href="#pillar-1-3-0-9001">1.3.0.9001</a></li>
         <li><a href="#pillar-1-3-0-9000">1.3.0.9000</a></li>
         <li><a href="#pillar-1-3-0">1.3.0</a></li>
         <li><a href="#pillar-1-2-3">1.2.3</a></li>

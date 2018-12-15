@@ -42,7 +42,7 @@
         <a class="navbar-brand" href="index.html">pillar</a>
         <div class="info">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.9002</span>
         </div>
       </div>
     </div>
@@ -87,15 +87,15 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"r-lib/pillar"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"r-lib/pillar"</span>)</a></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>pillar is not designed for end-users but will eventually be incorporated in packages like <a href="http://tibble.tidyverse.org">tibble</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(pillar)</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pillar)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="dv">123456789</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span> <span class="op">^</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">-5</span>, <span class="ot">NA</span>, <span class="dv">-8</span>, <span class="dv">-10</span>))</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="dv">123456789</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">10</span> <span class="op">^</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">-5</span>, <span class="ot">NA</span>, <span class="dv">-8</span>, <span class="dv">-10</span>))</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="reference/pillar.html">pillar</a></span>(x)</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;       &lt;dbl&gt;</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 123457.    </span></a>
@@ -137,7 +137,7 @@
 <li>It has an attribute <code>"width"</code>
 </li>
 <li>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</li>
-<li>It must implement a method <code>format(x, width, ...)</code> that can be called with any value between <code>min_width</code> and <code>width</code>
+<li>It must implement a method <code><a href="https://www.rdocumentation.org/packages/base/topics/format">format(x, width, ...)</a></code> that can be called with any value between <code>min_width</code> and <code>width</code>
 <ul>
 <li>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code>
 </li>
@@ -161,7 +161,7 @@
 <div id="dynamic-method-registration" class="section level3">
 <h3 class="hasAnchor">
 <a href="#dynamic-method-registration" class="anchor"></a>Dynamic method registration</h3>
-<p>If you avoid the strong dependency on pillar, you need a helper, <code>register_s3_method()</code>, which you can borrow e.g. from hms. In <code>.onLoad()</code>, call this helper as follows:</p>
+<p>If you avoid the strong dependency on pillar, you need a helper, <code>register_s3_method()</code>, which you can borrow e.g. from hms. In <code><a href="https://www.rdocumentation.org/packages/base/topics/ns-hooks">.onLoad()</a></code>, call this helper as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">register_s3_method</span>(<span class="st">"pillar"</span>, <span class="st">"pillar_shaft"</span>, <span class="st">"your_class_name"</span>)</a></code></pre></div>
 <p>Replace <code>"your_class_name"</code> with the name of the S3 class of your data type.</p>
 </div>
