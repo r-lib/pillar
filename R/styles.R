@@ -157,17 +157,7 @@ make_style_fast_16 <- function(...) {
   start <- stats::start(style)
   finish <- crayon::finish(style)
 
-  old_16 <- options(crayon.colors = 16)
-  crayon::num_colors(forget = TRUE)
-  on.exit(
-    {
-      options(old_16)
-      crayon::num_colors(forget = TRUE)
-    },
-    add = TRUE
-  )
-
-  style_16 <- crayon::make_style(...)
+  style_16 <- crayon::make_style(..., colors = 16)
   start_16 <- stats::start(style_16)
   finish_16 <- crayon::finish(style_16)
 
