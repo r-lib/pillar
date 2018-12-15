@@ -21,14 +21,17 @@ reference:
       - pillar_shaft
       - starts_with("new_pillar_shaft")
       - new_ornament
+      - type_sum
+      - format_type_sum
   - title: Styling
     desc: >
       For consistent output among different data types.
     contents:
       - starts_with("style_")
+      - new_pillar_title
+      - new_pillar_type
   - title: Miscellaneous
     contents:
-      - type_sum
       - obj_sum
       - dim_desc
       - expect_known_display
