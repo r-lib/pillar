@@ -1,15 +1,14 @@
 context("format_scientific")
 
 format_scientific_bw <- function(x, ...) {
-  old <- options(crayon.enabled = FALSE)
-  on.exit(options(old))
-
-  ret <- pillar_shaft(x, ...)
-  # Hack: Pretend decimal format requires 100 characters
-  ret$dec <- set_width(ret$dec, 100)
-  ret <- set_width(ret, 100)
-  ret <- set_min_width(ret, min(get_min_widths(ret)))
-  format(ret, width = get_min_width(ret))
+  without_color({
+    ret <- pillar_shaft(x, ...)
+    # Hack: Pretend decimal format requires 100 characters
+    ret$dec <- set_width(ret$dec, 100)
+    ret <- set_width(ret, 100)
+    ret <- set_min_width(ret, min(get_min_widths(ret)))
+    format(ret, width = get_min_width(ret))
+  })
 }
 
 test_that("negative values displayed correct", {

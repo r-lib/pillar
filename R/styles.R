@@ -22,7 +22,7 @@ keep_empty <- function(fun) {
 style_subtle <- keep_empty(function(x) {
   force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
-    style_grey$"0.6"(x)
+    crayon_grey_0.6(x)
   } else {
     x
   }
@@ -47,14 +47,14 @@ style_subtle_num <- function(x, negative) {
 style_hint <- keep_empty(function(x) {
   force(x)
   if (isTRUE(getOption("pillar.subtle", TRUE))) {
-    style_grey$"0.8"(x)
+    crayon_grey_0.8(x)
   } else {
     x
   }
 })
 
 style_spark_na <- function(x) {
-  crayon::yellow(x)
+  crayon_yellow(x)
 }
 
 #' @details
@@ -66,7 +66,7 @@ style_spark_na <- function(x) {
 #' style_bold("Petal.Width")
 style_bold <- function(x) {
   if (isTRUE(getOption("pillar.bold", FALSE))) {
-    crayon::bold(x)
+    crayon_bold(x)
   } else {
     x
   }
@@ -77,7 +77,7 @@ style_bold <- function(x) {
 #' @examples
 #' style_na("NA")
 style_na <- function(x) {
-  crayon::red(x)
+  crayon_red(x)
 }
 
 #' @details
@@ -89,31 +89,14 @@ style_na <- function(x) {
 #' style_neg("123")
 style_neg <- keep_empty(function(x) {
   if (isTRUE(getOption("pillar.neg", TRUE))) {
-    crayon::red(x)
+    crayon_red(x)
   } else {
     x
   }
 })
 
-make_style_grey <- function(level) {
-  style <- crayon::make_style(grDevices::grey(level), grey = TRUE)
-
-  function(...) {
-    x <- paste0(...)
-    crayon::style(x, style)
-  }
-}
-
-# Placeholders, assigned in .onLoad()
-style_grey <- new.env(parent = emptyenv())
-
-assign_style_grey <- function() {
-  style_grey$"0.6" <- make_style_grey(0.6)
-  style_grey$"0.8" <- make_style_grey(0.8)
-}
-
 pillar_na <- function(use_brackets_if_no_color = FALSE) {
-  if (use_brackets_if_no_color && !crayon::has_color()) {
+  if (use_brackets_if_no_color && !has_color()) {
     "<NA>"
   } else {
     style_na("NA")
@@ -122,4 +105,100 @@ pillar_na <- function(use_brackets_if_no_color = FALSE) {
 
 style_list <- function(x) {
   style_subtle(x)
+}
+
+# Only check if we have color support once per session
+has_color <- local({
+  has_color <- NULL
+  function(forget = FALSE) {
+    if (is.null(has_color) || forget) {
+      has_color <<- crayon::has_color()
+    }
+    has_color
+  }
+})
+
+# Important to use 16-color palette for consistent testing
+is_testing <- local({
+  is_testing <- FALSE
+  function(set = NA) {
+    if (!is.na(set)) {
+      is_testing <<- set
+    }
+    is_testing
+  }
+})
+
+# Crayon functions call crayon::has_color() every call
+make_style_fast <- function(...) {
+  # Force has_color to be true when making styles
+  old <- options(crayon.enabled = TRUE)
+  on.exit(options(old))
+
+  style <- crayon::make_style(...)
+  start <- stats::start(style)
+  finish <- crayon::finish(style)
+
+  function(...) {
+    if (has_color()) {
+      paste0(start, ..., finish)
+    } else {
+      paste0(...)
+    }
+  }
+}
+
+make_style_fast_16 <- function(...) {
+  # Force has_color to be true when making styles
+  old <- options(crayon.enabled = TRUE)
+  on.exit(options(old))
+
+  style <- crayon::make_style(...)
+  start <- stats::start(style)
+  finish <- crayon::finish(style)
+
+  old_16 <- options(crayon.colors = 16)
+  crayon::num_colors(forget = TRUE)
+  on.exit(
+    {
+      options(old_16)
+      crayon::num_colors(forget = TRUE)
+    },
+    add = TRUE
+  )
+
+  style_16 <- crayon::make_style(...)
+  start_16 <- stats::start(style_16)
+  finish_16 <- crayon::finish(style_16)
+
+  function(...) {
+    if (has_color()) {
+      if (is_testing()) {
+        paste0(start_16, gsub(finish_16, start_16, ..., fixed = TRUE), finish_16)
+      } else {
+        paste0(start, gsub(finish, start, ..., fixed = TRUE), finish)
+      }
+    } else {
+      paste0(...)
+    }
+  }
+}
+
+# Placeholders, assigned in .onLoad()
+crayon_underline <- function(...) {}
+crayon_italic <- function(...) {}
+crayon_red <- function(...) {}
+crayon_yellow <- function(...) {}
+crayon_bold <- function(...) {}
+crayon_grey_0.6 <- function(...) {}
+crayon_grey_0.8 <- function(...) {}
+
+assign_crayon_styles <- function() {
+  crayon_underline <<- make_style_fast("underline")
+  crayon_italic <<- make_style_fast("italic")
+  crayon_red <<- make_style_fast("red")
+  crayon_yellow <<- make_style_fast("yellow")
+  crayon_bold <<- make_style_fast("bold")
+  crayon_grey_0.6 <<- make_style_fast_16(grDevices::grey(0.6), grey = TRUE)
+  crayon_grey_0.8 <<- make_style_fast_16(grDevices::grey(0.8), grey = TRUE)
 }
