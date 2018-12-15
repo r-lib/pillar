@@ -174,9 +174,9 @@ make_style_fast_16 <- function(...) {
   function(...) {
     if (has_color()) {
       if (is_testing()) {
-        paste0(start_16, ..., finish_16)
+        paste0(start_16, gsub(finish_16, start_16, ..., fixed = TRUE), finish_16)
       } else {
-        paste0(start, ..., finish)
+        paste0(start, gsub(finish, start, ..., fixed = TRUE), finish)
       }
     } else {
       paste0(...)
