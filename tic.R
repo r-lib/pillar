@@ -5,6 +5,7 @@ if (Sys.getenv("BUILD_PKGDOWN") != "") {
     add_step(step_build_pkgdown())
 
   get_stage("before_deploy") %>%
+    add_step(step_install_github("tidyverse/tidytemplate")) %>%
     add_step(step_setup_ssh())
 
   # pkgdown documentation can be built optionally. Other example criteria:
