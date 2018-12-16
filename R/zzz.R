@@ -10,6 +10,18 @@ NULL
 
   assign_crayon_styles()
 
+  if (getRversion() < "3.3.0") {
+    strrep <<- strrep_compat
+  } else {
+    strep <<- base::strrep
+  }
+
+  if (getRversion() < "3.2.0") {
+    strrep <<- lengths_compat
+  } else {
+    lengths <<- base::lengths
+  }
+
   invisible()
 }
 
