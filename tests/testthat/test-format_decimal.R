@@ -43,7 +43,7 @@ test_that("all-positive values get nothing in neg", {
 
 test_that("negative values get - in neg", {
   f <- format_decimal_bw(c(-Inf, Inf))
-  expect_equal(format_neg(f), c("-", " "))
+  expect_equal(format_neg(f), c("-", ""))
 })
 
 test_that("trailing zeros removed if whole decimal fraction", {

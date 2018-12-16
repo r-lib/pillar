@@ -122,11 +122,7 @@ format_mantissa <- function(x) {
 
 format_neg <- function(s) {
   neg <- s$neg
-  if (any(neg)) {
-    neg_col <- ifelse(neg, "-", " ")
-  } else {
-    neg_col <- rep_along(neg, "")
-  }
+  neg_col <- ifelse(neg, "-", "")
   neg_col
 }
 
