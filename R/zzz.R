@@ -13,13 +13,13 @@ NULL
   if (getRversion() < "3.3.0") {
     strrep <<- strrep_compat
   } else {
-    strrep <<- base::strrep
+    rm("strrep", inherits = TRUE)
   }
 
   if (getRversion() < "3.2.0") {
     lengths <<- lengths_compat
   } else {
-    lengths <<- lengths_wrap
+    rm("lengths", inherits = TRUE)
   }
 
   invisible()
