@@ -143,7 +143,7 @@ format_lhs <- function(s) {
 
   lhs_str <- s$lhs
   lhs_split <- strsplit(lhs_str, "", fixed = TRUE)
-  lhs_width <- map_int(lhs_split, length)
+  lhs_width <- lengths(lhs_split)
 
   lhs_split_underlined <- map(lhs_split, underline_3_back)
 
