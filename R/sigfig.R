@@ -68,7 +68,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     exp = exp_display
   )
 
-  set_width(ret, get_max_extent(assemble_decimal(ret)))
+  set_width(ret, get_decimal_width(ret))
 }
 
 safe_signif <- function(x, digits) {
@@ -111,6 +111,10 @@ compute_exp <- function(x) {
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
   ret
+}
+
+get_decimal_width <- function(x) {
+  get_max_extent(assemble_decimal(x))
 }
 
 format_mantissa <- function(x) {
