@@ -60,7 +60,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     sigfig = sigfig,
     num = num,
     neg = neg,
-    lhs = lhs,
+    lhs = sprintf("%.0f", lhs),
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
@@ -68,7 +68,17 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     exp = exp_display
   )
 
-  set_width(ret, get_max_extent(assemble_decimal(ret)))
+  set_width(ret, get_decimal_width(ret))
+}
+
+get_decimal_width <- function(x) {
+  exp <- x$exp[!is.na(x$exp)]
+
+  max(x$neg + nchar(x$lhs), 0) +
+    any(x$dec, na.rm = TRUE) +
+    max(x$rhs_digits, 0) +
+    any(exp < 0) +
+    max(2 + trunc(log10(abs(exp) + 0.5)), 0)
 }
 
 safe_signif <- function(x, digits) {
@@ -131,14 +141,17 @@ format_lhs <- function(s) {
   num <- s$num
   lhs_zero <- s$lhs_zero
 
-  lhs_str <- sprintf("%.0f", s$lhs)
+  lhs_str <- s$lhs
   lhs_split <- strsplit(lhs_str, "", fixed = TRUE)
+  lhs_width <- lengths(lhs_split)
+
   lhs_split_underlined <- map(lhs_split, underline_3_back)
 
-  lhs_width <- max(0L, map_int(lhs_split, length))
+  lhs_sig <- map(pmin(lhs_width, s$sigfig), seq_len)
+  lhs_insig <- map(lhs_sig, `-`)
 
-  lhs_split_sig <- map(lhs_split_underlined, utils::head, s$sigfig)
-  lhs_split_non <- map(lhs_split_underlined, neg_tail, s$sigfig)
+  lhs_split_sig <- map2(lhs_split_underlined, lhs_sig, `[`)
+  lhs_split_non <- map2(lhs_split_underlined, lhs_insig, `[`)
 
   lhs_sig <- map_chr(lhs_split_sig, paste, collapse = "")
   lhs_non <- map_chr(lhs_split_non, paste, collapse = "")
@@ -161,14 +174,6 @@ underline_3_back <- function(x) {
   idx <- which(trunc((seq_along(x) - length(x)) / 3) %% 2 == 1)
   x[idx] <- crayon_underline(x[idx])
   x
-}
-
-neg_tail <- function(x, n) {
-  if (n == 0) {
-    x
-  } else {
-    utils::tail(x, -n)
-  }
 }
 
 format_dec <- function(s) {
@@ -202,8 +207,11 @@ format_rhs <- function(s) {
   rhs_split <- strsplit(paste0(rhs_zero, rhs_num), "", fixed = TRUE)
   rhs_split_underlined <- map(rhs_split, underline_3)
 
-  rhs_split_underlined_zero <- map2(rhs_split_underlined, n_zeros, utils::head)
-  rhs_split_underlined_num <- map2(rhs_split_underlined, n_zeros, neg_tail)
+  rhs_is_zero <- map(n_zeros, seq_len)
+  rhs_is_nonzero <- map2(n_zeros + 1L, rhs_digits, seq2)
+
+  rhs_split_underlined_zero <- map2(rhs_split_underlined, rhs_is_zero, `[`)
+  rhs_split_underlined_num <- map2(rhs_split_underlined, rhs_is_nonzero, `[`)
 
   rhs_underlined_zero <- map_chr(rhs_split_underlined_zero, paste, collapse = "")
   rhs_underlined_num <- map_chr(rhs_split_underlined_num, paste, collapse = "")

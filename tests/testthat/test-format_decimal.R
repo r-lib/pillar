@@ -103,3 +103,28 @@ test_that("output test", {
   )
   expect_pillar_output((10^(5:-5)) + 1e-7, width = 20, filename = "basic-slightly-nonint.txt")
 })
+
+expect_decimal_width <- function(x) {
+  get_formatted_width <- function(x) {
+    get_max_extent(assemble_decimal(x))
+  }
+
+  expect_equal(
+    get_formatted_width(format_decimal(!!x, 3)),
+    !!get_width(format_decimal(x, 3))
+  )
+}
+
+test_that("width computation", {
+  expect_decimal_width(c(1, 10, 100))
+  expect_decimal_width(c(0, NA))
+  expect_decimal_width(c(1, NaN))
+  expect_decimal_width(c(-12, 3))
+  expect_decimal_width(c(-1, 23))
+  expect_decimal_width(c(1.01, 10.1))
+  expect_decimal_width(c(1.01, -10.1))
+  expect_decimal_width(c(NA_integer_, NA_integer_))
+  expect_decimal_width(c(1.234, 1.2345))
+  expect_decimal_width(c(1.2, -Inf))
+  expect_decimal_width(c(1, Inf))
+})
