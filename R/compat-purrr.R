@@ -69,7 +69,7 @@ map2_cpl <- function(.x, .y, .f, ...) {
 }
 
 args_recycle <- function(args) {
-  lengths <- map_int(args, length)
+  lengths <- lengths(args)
   n <- max(lengths)
 
   stopifnot(all(lengths == 1L | lengths == n))

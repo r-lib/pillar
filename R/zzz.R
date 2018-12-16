@@ -16,6 +16,12 @@ NULL
     strep <<- base::strrep
   }
 
+  if (getRversion() < "3.2.0") {
+    strrep <<- lengths_compat
+  } else {
+    lengths <<- base::lengths
+  }
+
   invisible()
 }
 
