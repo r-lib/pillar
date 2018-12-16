@@ -71,6 +71,16 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
   set_width(ret, get_decimal_width(ret))
 }
 
+get_decimal_width <- function(x) {
+  exp <- x$exp[!is.na(x$exp)]
+
+  max(x$neg + nchar(x$lhs), 0) +
+    any(x$dec, na.rm = TRUE) +
+    max(x$rhs_digits, 0) +
+    any(exp < 0) +
+    max(2 + trunc(log10(abs(exp) + 0.5)), 0)
+}
+
 safe_signif <- function(x, digits) {
   if (length(x) == 0L) return(numeric())
   signif(x, digits)
@@ -111,10 +121,6 @@ compute_exp <- function(x) {
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
   ret
-}
-
-get_decimal_width <- function(x) {
-  get_max_extent(assemble_decimal(x))
 }
 
 format_mantissa <- function(x) {
