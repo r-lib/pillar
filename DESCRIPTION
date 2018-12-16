@@ -32,6 +32,7 @@ Collate:
     'compat-purrr.R'
     'dim.R'
     'extent.R'
+    'lengths.R'
     'multi.R'
     'ornament.R'
     'pillar-package.R'
