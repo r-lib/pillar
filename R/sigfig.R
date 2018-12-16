@@ -143,12 +143,15 @@ format_lhs <- function(s) {
 
   lhs_str <- s$lhs
   lhs_split <- strsplit(lhs_str, "", fixed = TRUE)
-  lhs_width <- max(0L, map_int(lhs_split, length))
+  lhs_width <- map_int(lhs_split, length)
 
   lhs_split_underlined <- map(lhs_split, underline_3_back)
 
-  lhs_split_sig <- map(lhs_split_underlined, utils::head, s$sigfig)
-  lhs_split_non <- map(lhs_split_underlined, neg_tail, s$sigfig)
+  lhs_sig <- map(pmin(lhs_width, s$sigfig), seq_len)
+  lhs_insig <- map(lhs_sig, `-`)
+
+  lhs_split_sig <- map2(lhs_split_underlined, lhs_sig, `[`)
+  lhs_split_non <- map2(lhs_split_underlined, lhs_insig, `[`)
 
   lhs_sig <- map_chr(lhs_split_sig, paste, collapse = "")
   lhs_non <- map_chr(lhs_split_non, paste, collapse = "")
@@ -171,14 +174,6 @@ underline_3_back <- function(x) {
   idx <- which(trunc((seq_along(x) - length(x)) / 3) %% 2 == 1)
   x[idx] <- crayon_underline(x[idx])
   x
-}
-
-neg_tail <- function(x, n) {
-  if (n == 0) {
-    x
-  } else {
-    utils::tail(x, -n)
-  }
 }
 
 format_dec <- function(s) {
@@ -212,8 +207,11 @@ format_rhs <- function(s) {
   rhs_split <- strsplit(paste0(rhs_zero, rhs_num), "", fixed = TRUE)
   rhs_split_underlined <- map(rhs_split, underline_3)
 
-  rhs_split_underlined_zero <- map2(rhs_split_underlined, n_zeros, utils::head)
-  rhs_split_underlined_num <- map2(rhs_split_underlined, n_zeros, neg_tail)
+  rhs_is_zero <- map(n_zeros, seq_len)
+  rhs_is_nonzero <- map2(n_zeros + 1L, rhs_digits, seq2)
+
+  rhs_split_underlined_zero <- map2(rhs_split_underlined, rhs_is_zero, `[`)
+  rhs_split_underlined_num <- map2(rhs_split_underlined, rhs_is_nonzero, `[`)
 
   rhs_underlined_zero <- map_chr(rhs_split_underlined_zero, paste, collapse = "")
   rhs_underlined_num <- map_chr(rhs_split_underlined_num, paste, collapse = "")
