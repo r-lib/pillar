@@ -16,11 +16,7 @@ NULL
     rm("strrep", inherits = TRUE)
   }
 
-  if (getRversion() < "3.2.0") {
-    lengths <<- lengths_compat
-  } else {
-    rm("lengths", inherits = TRUE)
-  }
+  compat_lengths()
 
   invisible()
 }
