@@ -29,6 +29,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Collate: 
     'capital.R'
+    'compat-lifecycle.R'
     'compat-purrr.R'
     'dim.R'
     'extent.R'
