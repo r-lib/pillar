@@ -421,6 +421,24 @@ withr::with_options(list(pillar.bold = TRUE), {
     )
   })
 
+  test_that("tibble columns (empty)", {
+    x <- list(
+      a = 1:3,
+      b = structure(
+        list(
+          c = 4:6, d = 7:9,
+          e = data.frame(f = 10:12)[, 0]
+        ),
+        class = "data.frame"
+      )
+    )
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(x, width = 40),
+      filename = "tibble-col-empty.txt"
+    )
+  })
+
   test_that("matrix columns (unnamed)", {
     x <- list(a = 1:3, b = matrix(4:9, ncol = 2))
     expect_pillar_output(
@@ -436,6 +454,15 @@ withr::with_options(list(pillar.bold = TRUE), {
       crayon = FALSE,
       xf = colonnade(x, width = 30),
       filename = "matrix-col-named.txt"
+    )
+  })
+
+  test_that("matrix columns (empty)", {
+    x <- list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0])
+    expect_pillar_output(
+      crayon = FALSE,
+      xf = colonnade(x, width = 30),
+      filename = "matrix-col-empty.txt"
     )
   })
 }) # withr::with_options(list(pillar.bold = TRUE),
