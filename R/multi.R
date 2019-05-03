@@ -89,7 +89,7 @@ flatten_matrix_column <- function(x, name) {
 }
 
 new_empty_col_sentinel <- function() {
-  list(NULL)
+  structure(list(), class = "pillar_empty_col")
 }
 
 #' @description

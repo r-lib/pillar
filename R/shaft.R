@@ -46,7 +46,7 @@ pillar_shaft <- function(x, ...) {
 }
 
 #' @export
-pillar_shaft.NULL <- function(x, ...) {
+pillar_shaft.pillar_empty_col <- function(x, ...) {
   new_empty_shaft()
 }
 
