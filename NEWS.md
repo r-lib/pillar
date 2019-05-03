@@ -1,3 +1,11 @@
+# pillar 1.3.1.9001
+
+- Only check native output on Windows, due to subtle differences when running on Linux in a latin1 locale.
+- `squeeze()` is now faster (because the width computation in `pillar_shaft.numeric()` now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (#147).
+- Removed extra space for pillars with a negative value of lower magnitude than the largest positive value (example: -1 and 23).
+- Styling output is faster: an expensive check for availability of colored output is carried out only once per call to `colonnade()`, and styling is implemented manually (#133, @jimhester).
+
+
 # pillar 1.3.1.9000
 
 - No changes.
