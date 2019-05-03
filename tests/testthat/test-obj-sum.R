@@ -21,14 +21,18 @@ test_that("data frame and tibbles include rows and cols", {
 })
 
 test_that("common data vectors treated as atomic", {
-  expect_equal(obj_sum(factor(1:3)), "fct [3]")
-  expect_equal(obj_sum(ordered(1:3)), "ord [3]")
-  expect_equal(obj_sum(Sys.Date() + 1:3), "date [3]")
-  expect_equal(obj_sum(Sys.time() + 1:3), "dttm [3]")
-})
+  expect_obj_sum_is_ptype <- function(x) {
+    obj_sum <- obj_sum(x)
+    ptype <- vec_ptype_abbr(x)
 
-test_that("difftime is shown as time", {
-  expect_equal(obj_sum(Sys.time() - Sys.time() + 1:3), "time [3]")
+    expect_equal(obj_sum, !! paste0(ptype, size_sum(x)))
+  }
+
+  expect_obj_sum_is_ptype(factor(1:3))
+  expect_obj_sum_is_ptype(ordered(1:3))
+  expect_obj_sum_is_ptype(Sys.Date() + 1:3)
+  expect_obj_sum_is_ptype(Sys.time() + 1:3)
+  expect_obj_sum_is_ptype(Sys.time() - Sys.time() + 1:3)
 })
 
 

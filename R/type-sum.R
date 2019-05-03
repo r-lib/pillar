@@ -13,11 +13,11 @@ type_sum <- function(x) UseMethod("type_sum")
 #' @export
 type_sum.ordered <- function(x) "ord"
 #' @export
-type_sum.factor <- function(x) "fct"
+type_sum.factor <- function(x) "fctr"
 #' @export
 type_sum.POSIXct <- function(x) "dttm"
 #' @export
-type_sum.difftime <- function(x) "time"
+type_sum.difftime <- function(x) "drtn"
 #' @export
 type_sum.Date <- function(x) "date"
 #' @export
