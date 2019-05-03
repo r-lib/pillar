@@ -28,7 +28,6 @@ type_sum.AsIs <- function(x) paste0("I(", type_sum(remove_as_is_class(x)), ")")
 type_sum.default <- function(x) {
   if (!is.object(x)) {
     switch(typeof(x),
-      "NULL" = "===", # Should be three spaces wide
       logical = "lgl",
       integer = "int",
       double = "dbl",
