@@ -10,7 +10,7 @@
 #' dim_desc(1:10)
 #' dim_desc(Titanic)
 dim_desc <- function(x) {
-  dim <- dim(x) %||% length(x)
+  dim <- vctrs::vec_dim(x)
   format_dim <- map_chr(dim, big_mark)
   format_dim[is.na(dim)] <- "??"
   paste0(format_dim, collapse = spaces_around(mult_sign()))
