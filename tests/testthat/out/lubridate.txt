@@ -1,4 +1,4 @@
-[3m[90m<S4: Duration>[39m[23m
-1s            
-2s            
-3s            
+[3m[90m<Duration>[39m[23m
+1s        
+2s        
+3s        
