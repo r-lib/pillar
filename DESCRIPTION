@@ -25,7 +25,7 @@ Suggests:
     lubridate (>= 1.7.4),
     testthat (>= 2.0.0),
     withr (>= 2.1.2)
-Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Collate: 
     'capital.R'
