@@ -7,11 +7,7 @@
 expect_known_display(object, file, ..., width = 80L, crayon = TRUE)
 }
 \arguments{
-\item{object}{Computation and value to compare it to.
-
-Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See \link{quasi_label} for
-more details.}
+\item{object}{An object to check.}
 
 \item{file}{File path where known value/output will be stored.}
 
