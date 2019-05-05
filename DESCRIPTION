@@ -33,6 +33,7 @@ Collate:
     'compat-lifecycle.R'
     'compat-purrr.R'
     'dim.R'
+    'empty-data.R'
     'extent.R'
     'lengths.R'
     'multi.R'

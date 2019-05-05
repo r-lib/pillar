@@ -38,6 +38,10 @@ compat_vec_is <- function(x) {
   is_vector(x)
 }
 
+vec_ptype_abbr.pillar_empty_col <- function(x) {
+  vctrs::vec_ptype_abbr(x[[1]])
+}
+
 #' @description
 #' `obj_sum()` also includes the size of the object if `is_vector_s3()`
 #' is `TRUE`.
