@@ -61,7 +61,7 @@ flatten_column <- function(x, name) {
 
 flatten_df_column <- function(x, name) {
   if (length(x) == 0) {
-    set_names(list(new_empty_col_sentinel()), name)
+    set_names(list(new_empty_col_sentinel(x)), name)
   } else {
     x <- flatten_colonnade(unclass(x))
     names(x) <- paste0("$", names(x))
@@ -72,7 +72,7 @@ flatten_df_column <- function(x, name) {
 
 flatten_matrix_column <- function(x, name) {
   if (ncol(x) == 0) {
-    set_names(list(new_empty_col_sentinel()), name)
+    set_names(list(new_empty_col_sentinel(x)), name)
   } else {
     x_list <- map(seq_len(ncol(x)), function(i) x[,i])
 
@@ -88,8 +88,8 @@ flatten_matrix_column <- function(x, name) {
   }
 }
 
-new_empty_col_sentinel <- function() {
-  structure(list(NULL), class = "pillar_empty_col")
+new_empty_col_sentinel <- function(type) {
+  structure(list(type), class = c("pillar_empty_col"))
 }
 
 #' @description
