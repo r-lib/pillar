@@ -7,6 +7,7 @@
 #' pillar, see examples for usage.
 #'
 #' @inheritParams testthat::expect_output_file
+#' @param object An object to check.
 #' @param ... Unused.
 #' @param width The width of the output.
 #' @param crayon Color the output?

@@ -11,47 +11,31 @@
 type_sum <- function(x) UseMethod("type_sum")
 
 #' @export
-type_sum.pillar_empty_col <- function(x) "==="
-#' @export
-type_sum.ordered <- function(x) "ord"
-#' @export
-type_sum.factor <- function(x) "fct"
-#' @export
-type_sum.POSIXct <- function(x) "dttm"
-#' @export
-type_sum.difftime <- function(x) "time"
-#' @export
-type_sum.Date <- function(x) "date"
-#' @export
-type_sum.data.frame <- function(x) class(x)[[1]]
-#' @export
-type_sum.AsIs <- function(x) paste0("I(", type_sum(remove_as_is_class(x)), ")")
-#' @export
 type_sum.default <- function(x) {
-  if (!is.object(x)) {
-    switch(typeof(x),
-      logical = "lgl",
-      integer = "int",
-      double = "dbl",
-      character = "chr",
-      complex = "cpl",
-      builtin = ,
-      special = ,
-      closure = "fn",
-      environment = "env",
-      symbol =
-        if (is_missing(x)) {
-          "missing"
-        } else {
-          "sym"
-        },
-      typeof(x)
-    )
-  } else if (!isS4(x)) {
-    paste0("S3: ", class(x)[[1]])
-  } else {
-    paste0("S4: ", methods::is(x)[[1]])
-  }
+  if (is.object(x) || vec_is(x)) return(vctrs::vec_ptype_abbr(x))
+
+  switch(typeof(x),
+    builtin = ,
+    special = ,
+    closure = "fn",
+    environment = "env",
+    symbol =
+      if (is_missing(x)) {
+        "missing"
+      } else {
+        "sym"
+      },
+
+    typeof(x)
+  )
+}
+
+# vec_is() needs vctrs > 0.1.0
+# Defined in .onLoad()
+vec_is <- NULL
+
+compat_vec_is <- function(x) {
+  is_vector(x)
 }
 
 #' @description

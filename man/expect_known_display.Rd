@@ -7,7 +7,7 @@
 expect_known_display(object, file, ..., width = 80L, crayon = TRUE)
 }
 \arguments{
-\item{object}{object to test}
+\item{object}{An object to check.}
 
 \item{file}{File path where known value/output will be stored.}
 
