@@ -2,7 +2,7 @@ do_package_checks()
 
 if (Sys.getenv("DEV_VERSIONS") != "") {
   get_stage("install") %>%
-    add_step(step_install_github(c("r-lib/rlang", "r-lib/cli", "r-lib/crayon", "brodieG/fansi", "patperry/r-utf8")))
+    add_step(step_install_github(c("r-lib/rlang", "r-lib/cli", "r-lib/crayon", "brodieG/fansi", "patperry/r-utf8", "r-lib/vctrs")))
 }
 
 if (ci_has_env("BUILD_PKGDOWN") && ci_get_branch() == "master") {
