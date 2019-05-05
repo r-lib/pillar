@@ -1,3 +1,9 @@
+# pillar 1.3.1.9002
+
+- 0-col tibble and matrix columns are now formatted with a capital containing `[,0]` and an empty shaft (#149).
+- `type_sum()` forwards to `vctrs::vec_ptype_abbr()` (#134). This makes sure that `list_of` columns (for values of the same type) are properly displayed (#34).
+
+
 # pillar 1.3.1.9001
 
 - Only check native output on Windows, due to subtle differences when running on Linux in a latin1 locale.
