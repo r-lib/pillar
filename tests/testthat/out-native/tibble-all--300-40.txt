@@ -1,8 +1,8 @@
-      a     b c     d     e    
-  <dbl> <int> <lgl> <chr> <fct>
-1   1       1 TRUE  a     a    
-2   2.5     2 FALSE b     b    
-3  NA      NA NA    <NA>  <NA> 
+      a     b c     d     e     
+  <dbl> <int> <lgl> <chr> <fctr>
+1   1       1 TRUE  a     a     
+2   2.5     2 FALSE b     b     
+3  NA      NA NA    <NA>  <NA>  
   f          g                  
   <date>     <dttm>             
 1 2015-12-10 2015-12-09 10:51:35

@@ -1,4 +1,4 @@
-<I(list)>
+<I<list>>
 <dbl [1]>
 <int [2]>
 <int [3]>
