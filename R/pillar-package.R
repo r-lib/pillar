@@ -1,4 +1,8 @@
 #' @aliases NULL pillar-package
+#' @details
+#' See [pillar()] for formatting a single column,
+#' and [colonnade()] for formatting multiple columns passed as a data frame.
+#'
 #' @section Package options:
 #'
 #' - `pillar.bold`: Use bold font, e.g. for column headers? This currently
@@ -16,4 +20,10 @@
 #'     title, default: `15`.  Column titles may be truncated up to that width to
 #'     save horizontal space. Set to `Inf` to turn off truncation of column
 #'     titles.
+#'
+#' @examples
+#' pillar(1:3)
+#' pillar(c(1, 2, 3))
+#' pillar(factor(letters[1:3]), title = "letters")
+#' colonnade(iris[1:3, ])
 "_PACKAGE"
