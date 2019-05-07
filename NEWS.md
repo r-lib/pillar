@@ -1,32 +1,24 @@
-# pillar 1.3.1.9004
+# pillar 1.4.0
 
-- Don't load {vctrs} in `.onLoad()` to avoid cyclic dependency (#155).
+## Breaking changes
 
-
-# pillar 1.3.1.9003
-
-- All internal S3 classes have the `pillar_` prefix (#156).
-- The `class` argument to `new_pillar_shaft()` deprecates the existing `subclass` argument. Passing a `subclass` argument leads to a warning once per session (#157).
-- Use `vctrs::s3_register()` (#155).
-
-
-# pillar 1.3.1.9002
-
-- 0-col tibble and matrix columns are now formatted with a capital containing `[,0]` and an empty shaft (#149).
 - `type_sum()` forwards to `vctrs::vec_ptype_abbr()` (#134). This makes sure that `list_of` columns (for values of the same type) are properly displayed (#34).
+- The `class` argument to `new_pillar_shaft()` deprecates the existing `subclass` argument. Passing a `subclass` argument leads to a warning once per session (#157).
 
+## Output
 
-# pillar 1.3.1.9001
-
-- Only check native output on Windows, due to subtle differences when running on Linux in a latin1 locale.
-- `squeeze()` is now faster (because the width computation in `pillar_shaft.numeric()` now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (#147).
 - Removed extra space for pillars with a negative value of lower magnitude than the largest positive value (example: -1 and 23).
+- 0-col tibble and matrix columns are now formatted with a capital containing `[,0]` and an empty shaft (#149).
+
+## Performance
+
+- `squeeze()` is now faster (because the width computation in `pillar_shaft.numeric()` now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (#147).
 - Styling output is faster: an expensive check for availability of colored output is carried out only once per call to `colonnade()`, and styling is implemented manually (#133, @jimhester).
 
+## Internal
 
-# pillar 1.3.1.9000
-
-- No changes.
+- All internal S3 classes have the `pillar_` prefix (#156).
+- Only check native output on Windows, due to subtle differences when running on Linux in a latin1 locale.
 
 
 # pillar 1.3.1
