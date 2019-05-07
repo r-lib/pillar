@@ -46,9 +46,10 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   #' The returned value is stored and processed with [format()] when displaying the pillar.
   #' The call to `format()` has a valid `width` argument.
   #' Depending on the implementation,
-  #' the output representation can be computed eagerly right away, or only when `format()` is called.
-  #' This allows for adaptive shortening of the output depending on the available width.
-  #' See `pillar:::pillar_shaft.numeric` for an example.
+  #' the output representation can be computed eagerly right away (as done with [new_pillar_shaft_simple()]),
+  #' or only when `format()` is called.
+  #' The latter allows for adaptive shortening of the output depending on the available width,
+  #' see `pillar:::pillar_shaft.numeric` for an example.
   capital <- pillar_capital(x, title, ...)
   shaft <- pillar_shaft(x, ...)
   new_pillar(capital, shaft, width)

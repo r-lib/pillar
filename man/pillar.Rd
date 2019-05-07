@@ -31,9 +31,10 @@ For the shaft, the \code{\link[=pillar_shaft]{pillar_shaft()}} generic is called
 The returned value is stored and processed with \code{\link[=format]{format()}} when displaying the pillar.
 The call to \code{format()} has a valid \code{width} argument.
 Depending on the implementation,
-the output representation can be computed eagerly right away, or only when \code{format()} is called.
-This allows for adaptive shortening of the output depending on the available width.
-See \code{pillar:::pillar_shaft.numeric} for an example.
+the output representation can be computed eagerly right away (as done with \code{\link[=new_pillar_shaft_simple]{new_pillar_shaft_simple()}}),
+or only when \code{format()} is called.
+The latter allows for adaptive shortening of the output depending on the available width,
+see \code{pillar:::pillar_shaft.numeric} for an example.
 }
 \examples{
 x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
