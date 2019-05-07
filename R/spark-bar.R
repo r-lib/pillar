@@ -36,5 +36,5 @@ spark_bar <- function(x, safe = TRUE) {
   chars <- as.character(factor)
   chars[is.na(chars)] <- style_spark_na(bars[length(bars)])
 
-  new_vertical(paste0(chars, collapse = ""), subclass = c("pillar_spark_bar", "pillar_spark"))
+  new_vertical(paste0(chars, collapse = ""), class = c("pillar_spark_bar", "pillar_spark"))
 }

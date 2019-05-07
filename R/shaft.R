@@ -2,7 +2,7 @@
 #'
 #' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
 #' class.
-#' This is a virtual or abstract class, you must specify the `subclass`
+#' This is a virtual or abstract class, you must specify the `class`
 #' argument.
 #' By convention, this should be a string that starts with `"pillar_shaft_"`.
 #' See `vignette("extending", package = "tibble")` for usage examples.
@@ -11,16 +11,22 @@
 #' @param ... Additional attributes
 #' @param width The maximum column width.
 #' @param min_width The minimum allowed column width, `width` if omitted.
-#' @param subclass The name of the subclass.
+#' @param class The name of the subclass.
+#' @param subclass Deprecated, pass the `class` argument instead.
 #' @export
-new_pillar_shaft <- function(x, ..., width, min_width = width, subclass) {
-  stopifnot(is.character(subclass))
-  stopifnot(length(subclass) > 0)
+new_pillar_shaft <- function(x, ..., width, min_width = width, class = NULL, subclass = NULL) {
+  if (!is.null(subclass)) {
+    signal_soft_deprecated("The `subclass` argument to `new_pillar_shaft()` is deprecated, please use the `class` argument.")
+    class <- subclass
+  }
+
+  stopifnot(is.character(class))
+  stopifnot(length(class) > 0)
 
   ret <- structure(
     x,
     ...,
-    class = c(subclass, "pillar_shaft")
+    class = c(class, "pillar_shaft")
   )
   ret <- set_width(ret, width)
   ret <- set_min_width(ret, min_width)
@@ -111,7 +117,7 @@ pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3))
     ret,
     width = dec_width,
     min_width = min(get_min_widths(ret)),
-    subclass = "pillar_shaft_decimal"
+    class = "pillar_shaft_decimal"
   )
 }
 

@@ -29,7 +29,7 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
     min_width = min_width,
     align = align,
     na_indent = na_indent,
-    subclass = "pillar_shaft_simple"
+    class = "pillar_shaft_simple"
   )
 }
 

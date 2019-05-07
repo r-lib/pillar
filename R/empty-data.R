@@ -3,7 +3,7 @@ style_empty <- function(n) {
 }
 
 new_empty_shaft <- function() {
-  new_pillar_shaft(list(), subclass = "pillar_empty_shaft", width = 0)
+  new_pillar_shaft(list(), class = "pillar_empty_shaft", width = 0)
 }
 
 #' @export
