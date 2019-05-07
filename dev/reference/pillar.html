@@ -144,6 +144,21 @@ used "as is", no quoting will be applied.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>A pillar consists of a <em>capital</em> and a <em>shaft</em>.</p>
+<p>The capital is constructed using the (currently internal)
+<code>pillar_capital()</code> function, which uses the <code>title</code> argument
+and calls <code><a href='type_sum.html'>type_sum()</a></code> to format the type.</p>
+<p>For the shaft, the <code><a href='pillar_shaft.html'>pillar_shaft()</a></code> generic is called with the object.
+The returned value is stored and processed with <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code> when displaying the pillar.
+The call to <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code> has a valid <code>width</code> argument.
+Depending on the implementation,
+the output representation can be computed eagerly right away (as done with <code><a href='new_pillar_shaft.html'>new_pillar_shaft_simple()</a></code>),
+or only when <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code> is called.
+The latter allows for adaptive shortening of the output depending on the available width,
+see <code>pillar:::pillar_shaft.numeric</code> for an example.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fl'>123456789</span> * (<span class='fl'>10</span> ^ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>1</span>, -<span class='fl'>3</span>, -<span class='fl'>5</span>, <span class='fl'>NA</span>, -<span class='fl'>8</span>, -<span class='fl'>10</span>))
@@ -250,7 +265,9 @@ used "as is", no quoting will be applied.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#details">Details</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

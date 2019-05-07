@@ -189,7 +189,16 @@ By default, the required width is computed from the natural width of the
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The <code>formatted</code> argument may also contain ANSI escapes to change color
+    <p>This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:</p><ul>
+<li><p>It has an attribute <code>"width"</code></p></li>
+<li><p>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</p></li>
+<li><p>It must implement a method <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format(x, width, ...)</a></code> that can be called with any value between <code>min_width</code> and <code>width</code></p></li>
+<li><p>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code></p></li>
+</ul>
+    <p>The function <code>new_pillar_shaft()</code> returns such an object, and also correctly formats <code>NA</code> values.
+In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <code>new_pillar_shaft()</code>.
+See <code>pillar:::pillar_shaft.numeric</code> for a code that allows changing the display depending on the available width.</p>
+<p>The <code>formatted</code> argument may also contain ANSI escapes to change color
 or other attributes of the text, see crayon.</p>
     
 

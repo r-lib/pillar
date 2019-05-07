@@ -35,10 +35,13 @@
 
 <meta property="og:description" content="The vectors are formatted to fit horizontally into a user-supplied number of
 characters per row.
-The squeeze() function is called by format()  and print() and usually
-doesn't need to be called manually.
+The colonnade() function doesn't process the input but returns an object
+with a format() and a print() method.
+The implementations call squeeze() to create pillar objects and fit them to a given width.
+The squeeze() function usually doesn't need to be called manually.
 It returns an object suitable for printing and formatting at a fixed width
-with additional information about omitted columns." />
+with additional information about omitted columns, which can be retrieved
+via extra_cols()." />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -121,10 +124,13 @@ with additional information about omitted columns." />
     
     <p>The vectors are formatted to fit horizontally into a user-supplied number of
 characters per row.</p>
-<p>The <code>squeeze()</code> function is called by <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code>  and <code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print()</a></code> and usually
-doesn't need to be called manually.
+<p>The <code>colonnade()</code> function doesn't process the input but returns an object
+with a <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format()</a></code> and a <code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print()</a></code> method.
+The implementations call <code>squeeze()</code> to create <a href='pillar.html'>pillar</a> objects and fit them to a given width.</p>
+<p>The <code>squeeze()</code> function usually doesn't need to be called manually.
 It returns an object suitable for printing and formatting at a fixed width
-with additional information about omitted columns.</p>
+with additional information about omitted columns, which can be retrieved
+via <code><a href='extra_cols.html'>extra_cols()</a></code>.</p>
     
     </div>
 
@@ -137,7 +143,7 @@ with additional information about omitted columns.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A list of vectors to format. Can contain matrices or data frames.
+      <td><p>A list, which can contain matrices or data frames.
 If named, the names will be used as title for the pillars. Non-syntactic names
 will be escaped.</p></td>
     </tr>
