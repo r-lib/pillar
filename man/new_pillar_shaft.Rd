@@ -5,7 +5,8 @@
 \alias{new_pillar_shaft_simple}
 \title{Constructor for column data}
 \usage{
-new_pillar_shaft(x, ..., width, min_width = width, subclass)
+new_pillar_shaft(x, ..., width = NULL, min_width = width,
+  class = NULL, subclass = NULL)
 
 new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
   min_width = NULL, na_indent = 0L)
@@ -19,7 +20,9 @@ new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
 
 \item{min_width}{The minimum allowed column width, \code{width} if omitted.}
 
-\item{subclass}{The name of the subclass.}
+\item{class}{The name of the subclass.}
+
+\item{subclass}{Deprecated, pass the \code{class} argument instead.}
 
 \item{formatted}{An object coercible to \link{character}.}
 
@@ -30,7 +33,7 @@ new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
 \description{
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}
 class.
-This is a virtual or abstract class, you must specify the \code{subclass}
+This is a virtual or abstract class, you must specify the \code{class}
 argument.
 By convention, this should be a string that starts with \code{"pillar_shaft_"}.
 See \code{vignette("extending", package = "tibble")} for usage examples.

@@ -36,11 +36,11 @@ print.pillar_ornament <- function(x, ...) {
   invisible(x)
 }
 
-new_vertical <- function(x, ..., subclass = NULL) {
+new_vertical <- function(x, ..., class = NULL) {
   ret <- structure(
     x,
     ...,
-    class = c(subclass, "pillar_vertical")
+    class = c(class, "pillar_vertical")
   )
   ret
 }

@@ -28,7 +28,7 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
 
   x <- flatten_colonnade(x)
   proxy <- structure(x, has_row_id = has_row_id)
-  ret <- structure(proxy, class = "colonnade")
+  ret <- structure(proxy, class = "pillar_colonnade")
   ret <- set_width(ret, width)
   ret
 }
@@ -181,12 +181,12 @@ new_colonnade_sqeezed <- function(x, colonnade, extra_cols) {
   structure(
     x,
     extra_cols = colonnade[extra_cols],
-    class = "squeezed_colonnade"
+    class = "pillar_squeezed_colonnade"
   )
 }
 
 #' @export
-format.squeezed_colonnade <- function(x, ...) {
+format.pillar_squeezed_colonnade <- function(x, ...) {
   formatted <- map(x, format_colonnade_tier)
   new_vertical(as.character(unlist(formatted)))
 }
@@ -204,13 +204,13 @@ format_colonnade_tier <- function(x) {
 }
 
 #' @export
-print.squeezed_colonnade <- function(x, ...) {
+print.pillar_squeezed_colonnade <- function(x, ...) {
   print(format(x, ...), ...)
   invisible(x)
 }
 
 # Method registration happens in .onLoad()
-knit_print.squeezed_colonnade <- function(x, ...) {
+knit_print.pillar_squeezed_colonnade <- function(x, ...) {
   unlist(map(x, knit_print_squeezed_colonnade_tier))
 }
 
@@ -241,7 +241,7 @@ extra_cols <- function(x, ...) {
 #'   always contain as many elements as there are extra columns, but elements
 #'   beyond `n` will be `NA`.
 #' @export
-extra_cols.squeezed_colonnade <- function(x, ..., n = Inf) {
+extra_cols.pillar_squeezed_colonnade <- function(x, ..., n = Inf) {
   extra_cols <- attr(x, "extra_cols")
   ret <- rep(NA_character_, length(extra_cols))
 
@@ -251,12 +251,12 @@ extra_cols.squeezed_colonnade <- function(x, ..., n = Inf) {
 }
 
 #' @export
-format.colonnade <- function(x, ...) {
+format.pillar_colonnade <- function(x, ...) {
   format(squeeze(x, ...))
 }
 
 #' @export
-print.colonnade <- function(x, ...) {
+print.pillar_colonnade <- function(x, ...) {
   print(format(x, ...))
 }
 

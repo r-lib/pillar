@@ -36,10 +36,5 @@ spark_bar <- function(x, safe = TRUE) {
   chars <- as.character(factor)
   chars[is.na(chars)] <- style_spark_na(bars[length(bars)])
 
-  structure(paste0(chars, collapse = ""), class = "spark")
-}
-
-#' @export
-print.spark <- function(x, ...) {
-  cat(x, "\n", sep = "")
+  new_vertical(paste0(chars, collapse = ""), class = c("pillar_spark_bar", "pillar_spark"))
 }
