@@ -1,3 +1,8 @@
+# pillar 1.3.1.9004
+
+- Don't load {vctrs} in `.onLoad()` to avoid cyclic dependency (#155).
+
+
 # pillar 1.3.1.9003
 
 - All internal S3 classes have the `pillar_` prefix (#156).
