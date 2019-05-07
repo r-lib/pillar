@@ -15,12 +15,7 @@ spark_line <- function(x) {
   ind[, 2] <- ind[, 2] + 4
 
   chars <- apply(ind, 1, braille)
-  structure(paste0(chars, collapse = ""), class = "spark")
-}
-
-#' @export
-print.spark <- function(x, ...) {
-  cat(x, "\n", sep = "")
+  new_vertical(paste0(chars, collapse = ""), subclass = c("pillar_spark_line", "pillar_spark"))
 }
 
 # https://en.wikipedia.org/wiki/Braille_Patterns

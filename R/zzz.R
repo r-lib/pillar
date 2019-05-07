@@ -6,7 +6,7 @@ NULL
 }
 
 .onLoad <- function(libname, pkgname) {
-  vctrs::s3_register("knitr::knit_print", "squeezed_colonnade")
+  vctrs::s3_register("knitr::knit_print", "pillar_squeezed_colonnade")
   vctrs::s3_register("vctrs::vec_ptype_abbr", "pillar_empty_col")
 
   assign_crayon_styles()

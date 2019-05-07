@@ -8,13 +8,13 @@ rif_type <- function(has_star, ...) {
     list(
       star = star
     ),
-    class = "rif_type"
+    class = "pillar_rif_type"
   )
   ret <- set_width(ret, 1L)
   ret
 }
 
 #' @export
-format.rif_type <- function(x, width = NULL, ...) {
+format.pillar_rif_type <- function(x, width = NULL, ...) {
   style_star(x$star)
 }

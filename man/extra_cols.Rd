@@ -2,12 +2,12 @@
 % Please edit documentation in R/multi.R
 \name{extra_cols}
 \alias{extra_cols}
-\alias{extra_cols.squeezed_colonnade}
+\alias{extra_cols.pillar_squeezed_colonnade}
 \title{Retrieve information about columns that didn't fit the available width}
 \usage{
 extra_cols(x, ...)
 
-\method{extra_cols}{squeezed_colonnade}(x, ..., n = Inf)
+\method{extra_cols}{pillar_squeezed_colonnade}(x, ..., n = Inf)
 }
 \arguments{
 \item{x}{The result of \code{\link[=squeeze]{squeeze()}} on a \link{colonnade} object}

@@ -3,7 +3,7 @@ rif_title <- function(has_title, ...) {
     list(
       has_title = has_title
     ),
-    class = "rif_title"
+    class = "pillar_rif_title"
   )
 
   ret <- set_width(ret, 0L)
@@ -11,7 +11,7 @@ rif_title <- function(has_title, ...) {
 }
 
 #' @export
-format.rif_title <- function(x, width, ...) {
+format.pillar_rif_title <- function(x, width, ...) {
   if (!x$has_title) {
     character()
   } else {
