@@ -20,6 +20,21 @@ used "as is", no quoting will be applied.}
 \code{pillar()} formats a vector using one row for a title (if given),
 one row for the type, and \code{length(x)} rows for the data.
 }
+\details{
+A pillar consists of a \emph{capital} and a \emph{shaft}.
+
+The capital is constructed using the (currently internal)
+\code{pillar_capital()} function, which uses the \code{title} argument
+and calls \code{\link[=type_sum]{type_sum()}} to format the type.
+
+For the shaft, the \code{\link[=pillar_shaft]{pillar_shaft()}} generic is called with the object.
+The returned value is stored and processed with \code{\link[=format]{format()}} when displaying the pillar.
+The call to \code{format()} has a valid \code{width} argument.
+Depending on the implementation,
+the output representation can be computed eagerly right away, or only when \code{format()} is called.
+This allows for adaptive shortening of the output depending on the available width.
+See \code{pillar:::pillar_shaft.numeric} for an example.
+}
 \examples{
 x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
 pillar(x)
