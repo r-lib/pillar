@@ -12,4 +12,22 @@ OK
 
 ## revdepcheck results
 
-Checked all first-level downstream packages from CRAN, no regressions found.
+We checked 24 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 3 new problems
+ * We failed to check 0 packages
+
+Issues with CRAN packages are summarised below. We notified the maintainers.
+
+### New problems
+(This reports the first line of each new failure)
+
+* repr
+  checking tests ...
+
+* tibble
+  checking tests ...
+
+* unpivotr
+  checking tests ...
+
