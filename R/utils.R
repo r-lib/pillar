@@ -1,7 +1,3 @@
-cat_line <- function(...) {
-  cat(..., "\n", sep = "")
-}
-
 str_trunc <- function(x, width) {
   if (is.infinite(width)) return(x)
 
@@ -23,17 +19,13 @@ check_sigfig <- function(x) {
   x
 }
 
-slice <- function(df, index) {
-  df[index, , drop = FALSE]
-}
-
 bind_rows <- function(x) {
   if (length(x) == 0) return(data.frame())
   eval_tidy(quo(rbind(!!!x)))
 }
 
 get_ellipsis <- function() {
-  cli::symbol$continue
+  symbol$continue
 }
 
 is_latex_output <- function() {

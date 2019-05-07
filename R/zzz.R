@@ -1,3 +1,4 @@
+#' @import cli
 #' @import rlang
 NULL
 
