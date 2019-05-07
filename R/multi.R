@@ -1,9 +1,14 @@
 #' Format multiple vectors in a tabular display
 #'
+#' @description
 #' The vectors are formatted to fit horizontally into a user-supplied number of
 #' characters per row.
 #'
-#' @param x A list of vectors to format. Can contain matrices or data frames.
+#' The `colonnade()` function doesn't process the input but returns an object
+#' with a [format()] and a [print()] method.
+#' The implementations call `squeeze()` to create [pillar] objects and fit them to a given width.
+#'
+#' @param x A list, which can contain matrices or data frames.
 #'   If named, the names will be used as title for the pillars. Non-syntactic names
 #'   will be escaped.
 #' @param has_row_id Include a column indicating row IDs? Pass `"*"` to mark
@@ -93,10 +98,10 @@ new_empty_col_sentinel <- function(type) {
 }
 
 #' @description
-#' The `squeeze()` function is called by [format()]  and [print()] and usually
-#' doesn't need to be called manually.
+#' The `squeeze()` function usually doesn't need to be called manually.
 #' It returns an object suitable for printing and formatting at a fixed width
-#' with additional information about omitted columns.
+#' with additional information about omitted columns, which can be retrieved
+#' via [extra_cols()].
 #'
 #' @rdname colonnade
 #' @export

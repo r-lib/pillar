@@ -10,7 +10,7 @@ colonnade(x, has_row_id = TRUE, width = NULL, ...)
 squeeze(x, width = NULL, ...)
 }
 \arguments{
-\item{x}{A list of vectors to format. Can contain matrices or data frames.
+\item{x}{A list, which can contain matrices or data frames.
 If named, the names will be used as title for the pillars. Non-syntactic names
 will be escaped.}
 
@@ -25,10 +25,14 @@ the row ID column with a star.}
 The vectors are formatted to fit horizontally into a user-supplied number of
 characters per row.
 
-The \code{squeeze()} function is called by \code{\link[=format]{format()}}  and \code{\link[=print]{print()}} and usually
-doesn't need to be called manually.
+The \code{colonnade()} function doesn't process the input but returns an object
+with a \code{\link[=format]{format()}} and a \code{\link[=print]{print()}} method.
+The implementations call \code{squeeze()} to create \link{pillar} objects and fit them to a given width.
+
+The \code{squeeze()} function usually doesn't need to be called manually.
 It returns an object suitable for printing and formatting at a fixed width
-with additional information about omitted columns.
+with additional information about omitted columns, which can be retrieved
+via \code{\link[=extra_cols]{extra_cols()}}.
 }
 \details{
 Pillars may be distributed over multiple tiers if

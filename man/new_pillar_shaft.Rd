@@ -46,6 +46,18 @@ By default, the required width is computed from the natural width of the
 \code{formatted} argument.
 }
 \details{
+This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:
+\itemize{
+\item It has an attribute \code{"width"}
+\item It can have an attribute \code{"min_width"}, if missing, \code{"width"} is used
+\item It must implement a method \code{format(x, width, ...)} that can be called with any value between \code{min_width} and \code{width}
+\item This method must return an object that inherits from \code{character} and has attributes \code{"align"} (with supported values \code{"left"}, \code{"right"}, and \code{"center"}) and \code{"width"}
+}
+
+The function \code{\link[=new_pillar_shaft]{new_pillar_shaft()}} returns such an object, and also correctly formats \code{NA} values.
+In many cases, the implementation of \code{pillar_shaft.your_class_name()} will format the data as a character vector (using color for emphasis) and simply call \code{new_pillar_shaft()}.
+See \code{pillar:::pillar_shaft.numeric} for a code that allows changing the display depending on the available width.
+
 The \code{formatted} argument may also contain ANSI escapes to change color
 or other attributes of the text, see \link{crayon}.
 }

@@ -7,6 +7,17 @@
 #' By convention, this should be a string that starts with `"pillar_shaft_"`.
 #' See `vignette("extending", package = "tibble")` for usage examples.
 #'
+#' This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:
+#'
+#' - It has an attribute `"width"`
+#' - It can have an attribute `"min_width"`, if missing, `"width"` is used
+#' - It must implement a method `format(x, width, ...)` that can be called with any value between `min_width` and `width`
+#' - This method must return an object that inherits from `character` and has attributes `"align"` (with supported values `"left"`, `"right"`, and `"center"`) and `"width"`
+#'
+#' The function [new_pillar_shaft()] returns such an object, and also correctly formats `NA` values.
+#' In many cases, the implementation of `pillar_shaft.your_class_name()` will format the data as a character vector (using color for emphasis) and simply call `new_pillar_shaft()`.
+#' See `pillar:::pillar_shaft.numeric` for a code that allows changing the display depending on the available width.
+#'
 #' @param x An object
 #' @param ... Additional attributes
 #' @param width The maximum column width.

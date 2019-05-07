@@ -5,8 +5,12 @@
 \alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
-Provides a 'pillar' generic designed for formatting columns
+Provides 'pillar' and 'colonnade' generics designed for formatting columns
    of data using the full range of colours provided by modern terminals.
+}
+\details{
+See \code{\link[=pillar]{pillar()}} for formatting a single column,
+and \code{\link[=colonnade]{colonnade()}} for formatting multiple columns passed as a data frame.
 }
 \section{Package options}{
 
@@ -29,6 +33,12 @@ titles.
 }
 }
 
+\examples{
+pillar(1:3)
+pillar(c(1, 2, 3))
+pillar(factor(letters[1:3]), title = "letters")
+colonnade(iris[1:3, ])
+}
 \seealso{
 Useful links:
 \itemize{
