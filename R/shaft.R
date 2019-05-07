@@ -14,7 +14,7 @@
 #' @param class The name of the subclass.
 #' @param subclass Deprecated, pass the `class` argument instead.
 #' @export
-new_pillar_shaft <- function(x, ..., width, min_width = width, class = NULL, subclass = NULL) {
+new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
     signal_soft_deprecated("The `subclass` argument to `new_pillar_shaft()` is deprecated, please use the `class` argument.")
     class <- subclass
@@ -22,6 +22,7 @@ new_pillar_shaft <- function(x, ..., width, min_width = width, class = NULL, sub
 
   stopifnot(is.character(class))
   stopifnot(length(class) > 0)
+  stopifnot(is_bare_numeric(width, 1))
 
   ret <- structure(
     x,
