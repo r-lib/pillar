@@ -1,3 +1,10 @@
+# pillar 1.3.1.9003
+
+- All internal S3 classes have the `pillar_` prefix (#156).
+- The `class` argument to `new_pillar_shaft()` deprecates the existing `subclass` argument. Passing a `subclass` argument leads to a warning once per session (#157).
+- Use `vctrs::s3_register()` (#155).
+
+
 # pillar 1.3.1.9002
 
 - 0-col tibble and matrix columns are now formatted with a capital containing `[,0]` and an empty shaft (#149).
