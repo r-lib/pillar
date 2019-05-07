@@ -8,7 +8,7 @@
 #' with a [format()] and a [print()] method.
 #' The implementations call `squeeze()` to create [pillar] objects and fit them to a given width.
 #'
-#' @param x A data frame, which can contain matrices or data frames.
+#' @param x A list, which can contain matrices or data frames.
 #'   If named, the names will be used as title for the pillars. Non-syntactic names
 #'   will be escaped.
 #' @param has_row_id Include a column indicating row IDs? Pass `"*"` to mark
@@ -29,11 +29,6 @@
 #' # If width is larger than getOption("width"), multiple tiers are created:
 #' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
-  if (!is.data.frame(x)) {
-    signal_soft_deprecated("`colonnade()` should be called with a data frame.")
-    x <- as.data.frame(x)
-  }
-
   has_color(forget = TRUE)
 
   x <- flatten_colonnade(x)

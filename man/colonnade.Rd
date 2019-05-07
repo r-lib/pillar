@@ -10,7 +10,7 @@ colonnade(x, has_row_id = TRUE, width = NULL, ...)
 squeeze(x, width = NULL, ...)
 }
 \arguments{
-\item{x}{A data frame, which can contain matrices or data frames.
+\item{x}{A list, which can contain matrices or data frames.
 If named, the names will be used as title for the pillars. Non-syntactic names
 will be escaped.}
 
