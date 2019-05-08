@@ -3,11 +3,11 @@
 1   1       1 TRUE  a    
 2   2.5     2 FALSE b    
 3  NA      NA NA    <NA> 
-  e      f         
-  <fctr> <date>    
-1 a      2015-12-10
-2 b      2015-12-11
-3 <NA>   NA        
+  e     f         
+  <fct> <date>    
+1 a     2015-12-10
+2 b     2015-12-11
+3 <NA>  NA        
   g                  
   <dttm>             
 1 2015-12-09 10:51:35

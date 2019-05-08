@@ -11,8 +11,23 @@
 type_sum <- function(x) UseMethod("type_sum")
 
 #' @export
+type_sum.ordered <- function(x) {
+  # r-lib/vctrs#323:
+  type_sum.default(x)
+}
+
+#' @export
+type_sum.factor <- function(x) {
+  # r-lib/vctrs#323:
+  "fct"
+}
+
+#' @export
 type_sum.default <- function(x) {
-  if (is.object(x) || vec_is(x)) return(vctrs::vec_ptype_abbr(x))
+  if (is.object(x)) return(vctrs::vec_ptype_abbr(x))
+  # r-lib/vctrs#323:
+  if (typeof(x) == "complex") return("cpl")
+  if (vec_is(x)) return(vctrs::vec_ptype_abbr(x))
 
   switch(typeof(x),
     builtin = ,
