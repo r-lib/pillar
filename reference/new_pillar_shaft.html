@@ -19,7 +19,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -29,11 +29,13 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+
+
 <meta property="og:title" content="Constructor for column data — new_pillar_shaft" />
 
 <meta property="og:description" content="The new_pillar_shaft() constructor creates objects of the &quot;pillar_shaft&quot;
 class.
-This is a virtual or abstract class, you must specify the subclass
+This is a virtual or abstract class, you must specify the class
 argument.
 By convention, this should be a string that starts with &quot;pillar_shaft_&quot;.
 See vignette(&quot;extending&quot;, package = &quot;tibble&quot;) for usage examples.
@@ -83,7 +85,7 @@ formatted argument." />
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.1</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
         </div>
       </div>
     </div>
@@ -125,10 +127,10 @@ formatted argument." />
     
     <p>The <code>new_pillar_shaft()</code> constructor creates objects of the <code>"pillar_shaft"</code>
 class.
-This is a virtual or abstract class, you must specify the <code>subclass</code>
+This is a virtual or abstract class, you must specify the <code>class</code>
 argument.
 By convention, this should be a string that starts with <code>"pillar_shaft_"</code>.
-See <code><a href='https://cran.rstudio.com/web/packages/tibble/vignettes/extending.html'>vignette("extending", package = "tibble")</a></code> for usage examples.</p>
+See <code><a href='https://tibble.tidyverse.org/articles/extending.html'>vignette("extending", package = "tibble")</a></code> for usage examples.</p>
 <p><code>new_pillar_shaft_simple()</code> provides an implementation of the <code>pillar_shaft</code>
 class suitable for output that has a fixed formatting, which will be
 truncated with a continuation character (ellipsis or <code>~</code>) if it doesn't fit
@@ -138,7 +140,8 @@ By default, the required width is computed from the natural width of the
     
     </div>
 
-    <pre class="usage"><span class='fu'>new_pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='no'>width</span>, <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='no'>width</span>, <span class='no'>subclass</span>)
+    <pre class="usage"><span class='fu'>new_pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='no'>width</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>subclass</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>new_pillar_shaft_simple</span>(<span class='no'>formatted</span>, <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='st'>"left"</span>,
   <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na_indent</span> <span class='kw'>=</span> <span class='fl'>0L</span>)</pre>
@@ -163,8 +166,12 @@ By default, the required width is computed from the natural width of the
       <td><p>The minimum allowed column width, <code>width</code> if omitted.</p></td>
     </tr>
     <tr>
-      <th>subclass</th>
+      <th>class</th>
       <td><p>The name of the subclass.</p></td>
+    </tr>
+    <tr>
+      <th>subclass</th>
+      <td><p>Deprecated, pass the <code>class</code> argument instead.</p></td>
     </tr>
     <tr>
       <th>formatted</th>
@@ -182,7 +189,16 @@ By default, the required width is computed from the natural width of the
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The <code>formatted</code> argument may also contain ANSI escapes to change color
+    <p>This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:</p><ul>
+<li><p>It has an attribute <code>"width"</code></p></li>
+<li><p>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</p></li>
+<li><p>It must implement a method <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format(x, width, ...)</a></code> that can be called with any value between <code>min_width</code> and <code>width</code></p></li>
+<li><p>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code></p></li>
+</ul>
+    <p>The function <code>new_pillar_shaft()</code> returns such an object, and also correctly formats <code>NA</code> values.
+In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <code>new_pillar_shaft()</code>.
+See <code>pillar:::pillar_shaft.numeric</code> for a code that allows changing the display depending on the available width.</p>
+<p>The <code>formatted</code> argument may also contain ANSI escapes to change color
 or other attributes of the text, see crayon.</p>
     
 
