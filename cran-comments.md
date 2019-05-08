@@ -1,10 +1,10 @@
-Fixes a rare problem that occurs only with specific settings of options(width = ...).
+Update as requested by CRAN, to fix package checks on R-devel on Linux with latin1 encoding.
 
 ## Test environments
 
-* local Ubuntu 18.04 install, R 3.5.1
-* Ubuntu 14.04 (on travis-ci), R devel, release, 3.4-3.1
-* win-builder (devel, release, and oldrel)
+* local Ubuntu 18.04 install, R 3.6.0
+* Ubuntu 14.04 (on travis-ci), R devel, release, 3.5-3.2
+* win-builder (devel)
 
 ## R CMD check results
 
@@ -30,4 +30,3 @@ Issues with CRAN packages are summarised below. We notified the maintainers.
 
 * unpivotr
   checking tests ...
-
