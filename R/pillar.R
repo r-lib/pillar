@@ -1,5 +1,8 @@
 #' Format a vector suitable for tabular display
 #'
+#' @description
+#' \Sexpr[results=rd, stage=render]{tibble:::lifecycle("stable")}
+#'
 #' `pillar()` formats a vector using one row for a title (if given),
 #' one row for the type, and `length(x)` rows for the data.
 #'

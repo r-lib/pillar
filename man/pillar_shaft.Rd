@@ -58,6 +58,8 @@ but they will be greyed out.}
 unless the string fits a shorter width.}
 }
 \description{
+\Sexpr[results=rd, stage=render]{tibble:::lifecycle("stable")}
+
 Internal class for formatting the data for a column.
 \code{pillar_shaft()} is a coercion method that must be implemented
 for your data type to display it in a tibble.

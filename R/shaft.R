@@ -1,5 +1,8 @@
 #' Constructor for column data
 #'
+#' @description
+#' \Sexpr[results=rd, stage=render]{tibble:::lifecycle("stable")}
+#'
 #' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
 #' class.
 #' This is a virtual or abstract class, you must specify the `class`
@@ -46,6 +49,9 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 }
 
 #' Column data
+#'
+#' @description
+#' \Sexpr[results=rd, stage=render]{tibble:::lifecycle("stable")}
 #'
 #' Internal class for formatting the data for a column.
 #' `pillar_shaft()` is a coercion method that must be implemented
