@@ -6,11 +6,12 @@
 #' @description
 #' `type_sum()` gives a brief summary of object type. Objects that commonly
 #' occur in a data frame should return a string with four or less characters.
+#' For most inputs, the argument is forwarded to [vctrs::vec_ptype_abbr()].
 #'
 #' @section Lifecycle:
 #' `type_sum()` is in the "questioning" stage, because [vctrs::vec_ptype_abbr()]
 #' provides essentially the same functionality based on a robust framework.
-#' It will remain available for a while.
+#' The generic will remain available for a while.
 #' Users and implementers are encouraged to consider `vctrs::vec_ptype_abbr()`
 #' once it becomes stable.
 #'
