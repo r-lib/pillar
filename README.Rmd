@@ -28,6 +28,13 @@ pillar provides tools for styling columns of data, artfully using colour and uni
 ## Installation
 
 ```{r, eval = FALSE}
+# pillar is installed if you install the tidyverse package:
+install.packages("tidyverse")
+
+# Alternatively, install just pillar:
+install.packages("pillar")
+
+# Or the the development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("r-lib/pillar")
 ```

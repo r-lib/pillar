@@ -21,6 +21,13 @@ and unicode characters to guide the eye.
 ## Installation
 
 ``` r
+# pillar is installed if you install the tidyverse package:
+install.packages("tidyverse")
+
+# Alternatively, install just pillar:
+install.packages("pillar")
+
+# Or the the development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("r-lib/pillar")
 ```
