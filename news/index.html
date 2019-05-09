@@ -117,7 +117,7 @@
 <a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>
-<code><a href="../reference/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://www.rdocumentation.org/packages/vctrs/topics/vec_ptype_full">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed (<a href='https://github.com/r-lib/pillar/issues/34'>#34</a>).</li>
+<code><a href="../reference/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://www.rdocumentation.org/packages/vctrs/topics/vec_ptype_full">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
 <li>The <code>class</code> argument to <code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft()</a></code> deprecates the existing <code>subclass</code> argument. Passing a <code>subclass</code> argument leads to a warning once per session (<a href='https://github.com/r-lib/pillar/issues/157'>#157</a>).</li>
 </ul>
 </div>
