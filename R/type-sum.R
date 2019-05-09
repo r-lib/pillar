@@ -1,8 +1,18 @@
 #' Provide a succinct summary of an object
 #'
 #' @description
+#' \Sexpr[results=rd, stage=render]{tibble:::lifecycle("questioning")}
+#'
+#' @description
 #' `type_sum()` gives a brief summary of object type. Objects that commonly
 #' occur in a data frame should return a string with four or less characters.
+#'
+#' @section Lifecycle:
+#' `type_sum()` is in the "questioning" stage, because [vctrs::vec_ptype_abbr()]
+#' provides essentially the same functionality based on a robust framework.
+#' It will remain available for a while.
+#' Users and implementers are encouraged to consider `vctrs::vec_ptype_abbr()`
+#' once it becomes stable.
 #'
 #' @param x an object to summarise. Generally only methods of atomic vectors
 #'   and variants have been implemented.

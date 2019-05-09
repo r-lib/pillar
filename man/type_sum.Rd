@@ -17,12 +17,23 @@ is_vector_s3(x)
 and variants have been implemented.}
 }
 \description{
+\Sexpr[results=rd, stage=render]{tibble:::lifecycle("questioning")}
+
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 
 \code{obj_sum()} also includes the size of the object if \code{is_vector_s3()}
 is \code{TRUE}.
 }
+\section{Lifecycle}{
+
+\code{type_sum()} is in the "questioning" stage, because \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}
+provides essentially the same functionality based on a robust framework.
+It will remain available for a while.
+Users and implementers are encouraged to consider \code{vctrs::vec_ptype_abbr()}
+once it becomes stable.
+}
+
 \examples{
 obj_sum(1:10)
 obj_sum(matrix(1:10))
