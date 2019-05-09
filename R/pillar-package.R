@@ -1,4 +1,10 @@
 #' @aliases NULL pillar-package
+#'
+#' @description
+#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("maturing")}
+#' Provides [pillar] and [colonnade] generics designed for formatting columns
+#' of data using the full range of colours provided by modern terminals.
+
 #' @details
 #' See [pillar()] for formatting a single column,
 #' and [colonnade()] for formatting multiple columns passed as a data frame.

@@ -16,22 +16,32 @@ knitr::opts_chunk$set(
 
 # pillar
 
+<!-- badges: start -->
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis-CI Build Status](https://travis-ci.org/r-lib/pillar.svg?branch=master)](https://travis-ci.org/r-lib/pillar)
 [![Coverage status](https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/pillar?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
+<!-- badges: end -->
 
 pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.
 
 ## Installation
 
 ```{r, eval = FALSE}
+# pillar is installed if you install the tidyverse package:
+install.packages("tidyverse")
+
+# Alternatively, install just pillar:
+install.packages("pillar")
+
+# Or the the development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("r-lib/pillar")
 ```
 
 ## Usage
 
-pillar is not designed for end-users but will eventually be incorporated in packages like [tibble](http://tibble.tidyverse.org).
+pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like [tibble](http://tibble.tidyverse.org).
 
 ```{r}
 library(pillar)
@@ -49,10 +59,10 @@ knitr::include_graphics("man/figures/colours.png")
 
 ## Extending
 
-The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which in the current development version already lets pillar do all the formatting work.  Packages that implement a data type to be used in a tibble column can add color with only a few changes:
+The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which lets pillar do all the formatting work.  Packages that implement a data type to be used in a tibble column can add color with only a few changes:
 
 1. Implement the `pillar_shaft()` method for your data type.
-1. Add pillar to `Suggests` and implement dynamic method registration
+1. Add pillar to `Suggests` and implement dynamic method registration using `vctrs::s3_register()`.
     - If you don't mind the dependency, you can also add it to `Imports`, and import the methods you override with a regular `NAMESPACE` import.
 
 [tidyverse/hms#43](https://github.com/tidyverse/hms/pull/43) shows the changes that were necessary to add colored output for the hms package:
@@ -79,19 +89,6 @@ The function `new_pillar_shaft()` returns such an object, and also correctly for
 - `style_neg()` to format negative values
 - `style_num()` to format numbers
 - `style_subtle()` to de-emphasize
-
-
-### Dynamic method registration
-
-If you avoid the strong dependency on pillar, you need a helper, `register_s3_method()`, which you can borrow e.g. from hms. In `.onLoad()`, call this helper as follows:
-
-```r
-register_s3_method("pillar", "pillar_shaft", "your_class_name")
-```
-
-Replace `"your_class_name"` with the name of the S3 class of your data type.
-
-
 
 
 ## Inspirations

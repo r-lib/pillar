@@ -5,8 +5,9 @@
 \alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
-Provides 'pillar' and 'colonnade' generics designed for formatting columns
-   of data using the full range of colours provided by modern terminals.
+\Sexpr[results=rd, stage=render]{pillar:::lifecycle("maturing")}
+Provides \link{pillar} and \link{colonnade} generics designed for formatting columns
+of data using the full range of colours provided by modern terminals.
 }
 \details{
 See \code{\link[=pillar]{pillar()}} for formatting a single column,
