@@ -5,7 +5,7 @@
 \alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
-\Sexpr[results=rd, stage=render]{tibble:::lifecycle("maturing")}
+\Sexpr[results=rd, stage=render]{pillar:::lifecycle("maturing")}
 Provides \link{pillar} and \link{colonnade} generics designed for formatting columns
 of data using the full range of colours provided by modern terminals.
 }

@@ -1,7 +1,7 @@
 #' @aliases NULL pillar-package
 #'
 #' @description
-#' \Sexpr[results=rd, stage=render]{tibble:::lifecycle("maturing")}
+#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("maturing")}
 #' Provides [pillar] and [colonnade] generics designed for formatting columns
 #' of data using the full range of colours provided by modern terminals.
 

@@ -1,7 +1,7 @@
 #' Provide a succinct summary of an object
 #'
 #' @description
-#' \Sexpr[results=rd, stage=render]{tibble:::lifecycle("questioning")}
+#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("questioning")}
 #'
 #' @description
 #' `type_sum()` gives a brief summary of object type. Objects that commonly

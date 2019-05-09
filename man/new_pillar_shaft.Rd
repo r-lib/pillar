@@ -31,7 +31,7 @@ new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
 \item{na_indent}{Indention of \code{NA} values.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{tibble:::lifecycle("stable")}
+\Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
 
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}
 class.

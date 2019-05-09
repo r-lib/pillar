@@ -17,7 +17,7 @@ is_vector_s3(x)
 and variants have been implemented.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{tibble:::lifecycle("questioning")}
+\Sexpr[results=rd, stage=render]{pillar:::lifecycle("questioning")}
 
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
