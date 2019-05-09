@@ -1,2 +1,2 @@
-<fctr>
+<fct> 
 "a\nb"

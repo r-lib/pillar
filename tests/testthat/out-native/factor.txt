@@ -1,7 +1,7 @@
-<fctr>
-a     
-b     
-c     
-d     
-e     
-<NA>  
+<fct>
+a    
+b    
+c    
+d    
+e    
+<NA> 

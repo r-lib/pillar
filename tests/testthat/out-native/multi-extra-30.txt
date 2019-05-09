@@ -1,2 +1,2 @@
-col_03 <fctr>
+col_03 <fct>
 col_04 <ord>
