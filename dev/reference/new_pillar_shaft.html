@@ -33,12 +33,23 @@
 
 <meta property="og:title" content="Constructor for column data — new_pillar_shaft" />
 
-<meta property="og:description" content="The new_pillar_shaft() constructor creates objects of the &quot;pillar_shaft&quot;
+<meta property="og:description" content="
+The new_pillar_shaft() constructor creates objects of the &quot;pillar_shaft&quot;
 class.
 This is a virtual or abstract class, you must specify the class
 argument.
 By convention, this should be a string that starts with &quot;pillar_shaft_&quot;.
 See vignette(&quot;extending&quot;, package = &quot;tibble&quot;) for usage examples.
+This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:
+It has an attribute &quot;width&quot;
+It can have an attribute &quot;min_width&quot;, if missing, &quot;width&quot; is used
+It must implement a method format(x, width, ...) that can be called with any value between min_width and width
+This method must return an object that inherits from character and has attributes &quot;align&quot; (with supported values &quot;left&quot;, &quot;right&quot;, and &quot;center&quot;) and &quot;width&quot;
+" />
+
+<meta property="og:description" content="The function new_pillar_shaft() returns such an object, and also correctly formats NA values.
+In many cases, the implementation of pillar_shaft.your_class_name() will format the data as a character vector (using color for emphasis) and simply call new_pillar_shaft().
+See pillar:::pillar_shaft.numeric for a code that allows changing the display depending on the available width.
 new_pillar_shaft_simple() provides an implementation of the pillar_shaft
 class suitable for output that has a fixed formatting, which will be
 truncated with a continuation character (ellipsis or ~) if it doesn't fit
@@ -85,7 +96,7 @@ formatted argument." />
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.1.9004</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.0.9000</span>
         </div>
       </div>
     </div>
@@ -125,12 +136,23 @@ formatted argument." />
 
     <div class="ref-description">
     
-    <p>The <code>new_pillar_shaft()</code> constructor creates objects of the <code>"pillar_shaft"</code>
+    <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a></p>
+<p>The <code>new_pillar_shaft()</code> constructor creates objects of the <code>"pillar_shaft"</code>
 class.
 This is a virtual or abstract class, you must specify the <code>class</code>
 argument.
 By convention, this should be a string that starts with <code>"pillar_shaft_"</code>.
 See <code><a href='https://tibble.tidyverse.org/articles/extending.html'>vignette("extending", package = "tibble")</a></code> for usage examples.</p>
+<p>This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:</p><ul>
+<li><p>It has an attribute <code>"width"</code></p></li>
+<li><p>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</p></li>
+<li><p>It must implement a method <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format(x, width, ...)</a></code> that can be called with any value between <code>min_width</code> and <code>width</code></p></li>
+<li><p>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code></p></li>
+</ul>
+
+    <p>The function <code>new_pillar_shaft()</code> returns such an object, and also correctly formats <code>NA</code> values.
+In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <code>new_pillar_shaft()</code>.
+See <code>pillar:::pillar_shaft.numeric</code> for a code that allows changing the display depending on the available width.</p>
 <p><code>new_pillar_shaft_simple()</code> provides an implementation of the <code>pillar_shaft</code>
 class suitable for output that has a fixed formatting, which will be
 truncated with a continuation character (ellipsis or <code>~</code>) if it doesn't fit
@@ -189,16 +211,7 @@ By default, the required width is computed from the natural width of the
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:</p><ul>
-<li><p>It has an attribute <code>"width"</code></p></li>
-<li><p>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</p></li>
-<li><p>It must implement a method <code><a href='https://www.rdocumentation.org/packages/base/topics/format'>format(x, width, ...)</a></code> that can be called with any value between <code>min_width</code> and <code>width</code></p></li>
-<li><p>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code></p></li>
-</ul>
-    <p>The function <code>new_pillar_shaft()</code> returns such an object, and also correctly formats <code>NA</code> values.
-In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <code>new_pillar_shaft()</code>.
-See <code>pillar:::pillar_shaft.numeric</code> for a code that allows changing the display depending on the available width.</p>
-<p>The <code>formatted</code> argument may also contain ANSI escapes to change color
+    <p>The <code>formatted</code> argument may also contain ANSI escapes to change color
 or other attributes of the text, see crayon.</p>
     
 
