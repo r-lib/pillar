@@ -1,3 +1,8 @@
+# pillar 1.4.0.9000
+
+- Same as previous version.
+
+
 # pillar 1.4.0
 
 ## Breaking changes
