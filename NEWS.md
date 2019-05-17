@@ -1,3 +1,8 @@
+# pillar 1.4.0.9002
+
+- Resolve `vec_is()` at runtime instead of during `.onLoad()` (#163, @lionel-).
+
+
 # pillar 1.4.0.9001
 
 - Implement methods for vctrs objects.
