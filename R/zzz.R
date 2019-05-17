@@ -20,7 +20,10 @@ NULL
   }
 
   if (utils::packageVersion("vctrs") > "0.1.0") {
-    vec_is <<- get("vec_is", asNamespace("vctrs"))
+    vec_is <<- function(...) {
+      vec_is <- get("vec_is", asNamespace("vctrs"))
+      vec_is(...)
+    }
   } else {
     vec_is <<- compat_vec_is
   }
