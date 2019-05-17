@@ -19,9 +19,7 @@ NULL
     rm("strrep", inherits = TRUE)
   }
 
-  if (utils::packageVersion("vctrs") > "0.1.0") {
-    vec_is <<- get("vec_is", asNamespace("vctrs"))
-  } else {
+  if (utils::packageVersion("vctrs") <= "0.1.0") {
     vec_is <<- compat_vec_is
   }
 

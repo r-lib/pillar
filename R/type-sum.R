@@ -58,7 +58,9 @@ type_sum.default <- function(x) {
 
 # vec_is() needs vctrs > 0.1.0
 # Defined in .onLoad()
-vec_is <- NULL
+vec_is <- function(...) {
+  vctrs::vec_is(...)
+}
 
 compat_vec_is <- function(x) {
   is_vector(x)
