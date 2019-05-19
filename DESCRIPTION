@@ -20,14 +20,12 @@ Imports:
     methods,
     rlang (>= 0.3.4),
     utf8 (>= 1.1.4),
-    vctrs (>= 0.1.0.9003)
+    vctrs (>= 0.1.0)
 Suggests: 
     knitr (>= 1.22),
     lubridate (>= 1.7.4),
     testthat (>= 2.1.1),
     withr (>= 2.1.2)
-Remotes: 
-    r-lib/vctrs
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Collate: 
