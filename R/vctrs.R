@@ -12,7 +12,7 @@ pillar_shaft.vctrs_vctr <- function(x, ...) {
 
 #' @export
 type_sum.vctrs_vctr <- function(x) {
-  vec_ptype_abbr(x)
+  vctrs::vec_ptype_abbr(x)
 }
 
 #' @export
