@@ -48,12 +48,12 @@ jobs:
   - r: release
     env:
     - BUILD_PKGDOWN=true
-  - r: 3.5
-  - r: 3.4
-  - r: 3.3
   - r: 3.2
     env:
     - MIN_VERSIONS=TRUE
+  - r: 3.5
+  - r: 3.4
+  - r: 3.3
   fast_finish: true
 
 #env
