@@ -9,6 +9,10 @@ if (ci_has_env("DEV_VERSIONS")) {
       {
         deps <- desc::desc_get_deps()
         deps <- deps[deps$type == "Imports", ]
+
+        # revdepcheck needs recent cli, installing in the same library
+        deps <- deps[deps$package != "cli", ]
+
         is_first <- (deps$version == "*")
         all_first_packages <- lapply(deps$package[is_first], crandb::package, version = "all")
         all_first_version_details <- lapply(all_first_packages, `[[`, "versions")
