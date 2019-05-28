@@ -4,7 +4,8 @@ if (ci_has_env("DEV_VERSIONS")) {
   get_stage("install") %>%
     add_step(step_install_github(c("r-lib/rlang", "r-lib/cli", "r-lib/crayon", "brodieG/fansi", "patperry/r-utf8", "r-lib/vctrs")))
 } else if (ci_has_env("MIN_VERSIONS")) {
-  get_stage("install") %>%
+  # Make sure all other packages are installed when we downgrade
+  get_stage("before_script") %>%
     add_code_step(
       {
         deps <- desc::desc_get_deps()
