@@ -15,7 +15,7 @@ if (ci_has_env("DEV_VERSIONS")) {
         all_first_versions <- lapply(all_first_version_details, names)
         first_versions <- vapply(all_first_versions, `[[`, 1, FUN.VALUE = character(1))
 
-        version <- rep_along(NA_character_, is_first)
+        version <- rlang::rep_along(NA_character_, is_first)
         version[is_first] <- first_versions
         version[!is_first] <- gsub(">= ", "", deps$version[!is_first])
 
