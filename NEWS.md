@@ -1,3 +1,9 @@
+# pillar 1.4.0.9003
+
+- More careful specification of minimum package versions for the dependencies (#165).
+- Fix `type_sum.vctrs_vctr()` that also led to a NOTE in `R CMD check`.
+
+
 # pillar 1.4.0.9002
 
 - Resolve `vec_is()` at runtime instead of during `.onLoad()` (#163, @lionel-).
