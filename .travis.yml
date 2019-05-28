@@ -49,6 +49,7 @@ jobs:
     env:
     - BUILD_PKGDOWN=true
   - r: 3.2
+  # old fansi needs R 3.3
   - r: 3.3
     env:
     - MIN_VERSIONS=TRUE
