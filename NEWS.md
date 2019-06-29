@@ -1,3 +1,8 @@
+# pillar 1.4.1.9002
+
+- List columns are shown with their perceived dimensions, which may be different from those stored in the `"dim"` attribute. Regression introduced in 1.4.0 (#167).
+
+
 # pillar 1.4.1.9001
 
 - Add ellipsis to `vec_ptype_abbr()` method.
