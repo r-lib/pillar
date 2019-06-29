@@ -10,10 +10,15 @@
 #' dim_desc(1:10)
 #' dim_desc(Titanic)
 dim_desc <- function(x) {
-  dim <- vctrs::vec_dim(x)
-  format_dim <- map_chr(dim, big_mark)
+  dim <- dim2(x)
+  format_dim <- big_mark(dim)
   format_dim[is.na(dim)] <- "??"
   paste0(format_dim, collapse = spaces_around(mult_sign()))
+}
+
+# https://github.com/r-lib/vctrs/pull/467
+dim2 <- function(x) {
+  dim(x) %||% length(x)
 }
 
 size_sum <- function(x) {
