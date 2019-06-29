@@ -1,3 +1,8 @@
+# pillar 1.4.1.9001
+
+- Add ellipsis to `vec_ptype_abbr()` method.
+
+
 # pillar 1.4.1.9000
 
 - Same as previous version.
