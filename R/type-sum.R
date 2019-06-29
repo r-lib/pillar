@@ -66,7 +66,8 @@ compat_vec_is <- function(x) {
   is_vector(x)
 }
 
-vec_ptype_abbr.pillar_empty_col <- function(x) {
+# Registered in .onLoad()
+vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
   vctrs::vec_ptype_abbr(x[[1]])
 }
 
