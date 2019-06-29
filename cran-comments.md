@@ -1,4 +1,6 @@
-Update to fix compatibility with the upcoming vctrs release and warnings on Solaris.
+Update to fix compatibility with the upcoming vctrs release.
+
+I believe the warnings on Solaris are triggered by the "\u904b\u6c23" string literal in one of the examples. It seems that `tools/R/QC.R` scans the code for problematic expressions in `find_bad_exprs()` and that `deparse()` then chokes, combined with `__STDC_ISO_10646__` undefined for the compiler with which R has been compiled. I couldn't reproduce this error on r-hub's Solaris machine.
 
 ## Test environments
 
