@@ -1,4 +1,4 @@
-Update to fix NOTE on some flavors of R.
+Update to fix compatibility with the upcoming vctrs release and warnings on Solaris.
 
 ## Test environments
 
