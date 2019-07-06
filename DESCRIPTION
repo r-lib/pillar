@@ -23,7 +23,7 @@ Imports:
 Suggests: 
     knitr,
     lubridate,
-    testthat,
+    testthat (>= 2.0.0),
     withr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1

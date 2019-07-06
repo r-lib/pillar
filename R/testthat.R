@@ -37,11 +37,11 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
   object <- enquo(object)
 
   if (crayon) {
-    old <- options(crayon.enabled = TRUE, crayon.colors = 16L, width = width)
+    old <- options(crayon.enabled = TRUE, crayon.colors = 16L)
     crayon::num_colors(forget = TRUE)
     has_color(forget = TRUE)
   } else {
-    old <- options(crayon.enabled = FALSE, width = width)
+    old <- options(crayon.enabled = FALSE)
     crayon::num_colors(forget = TRUE)
     has_color(forget = TRUE)
   }
@@ -54,9 +54,5 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
 
   # FIXME: Use expect_known_output() for testthat >= 2.0.0, and avoid
   # setting the width in the options above
-  if (utils::packageVersion("testthat") <= "1.0.2") {
-    testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE)
-  } else {
-    testthat::expect_output_file(print(eval_tidy(object)), file, update = TRUE, width = width)
-  }
+  testthat::expect_known_output(print(eval_tidy(object)), file, update = TRUE, width = width)
 }
