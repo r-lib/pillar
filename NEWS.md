@@ -1,3 +1,8 @@
+# pillar 1.4.2.9000
+
+- Same as previous version.
+
+
 # pillar 1.4.2
 
 - List columns are shown with their perceived dimensions, which may be different from those stored in the `"dim"` attribute. Regression introduced in 1.4.0 (#167).
