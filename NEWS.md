@@ -1,3 +1,9 @@
+# pillar 1.4.2.9001
+
+- Use `vec_cast()` instead of `as_character()`.
+- Remove compatibility with testthat < 2.0.0.
+
+
 # pillar 1.4.2.9000
 
 - Same as previous version.
