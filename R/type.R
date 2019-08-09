@@ -33,7 +33,7 @@ new_pillar_type <- function(x, ...) {
 get_pillar_type <- function(x) {
   type <- type_sum(x)
   if (length(type) == 0L) type <- "?"
-  type[] <- as_character(type[[1L]])
+  type[] <- vctrs::vec_cast(type[[1L]], character())
   type
 }
 
