@@ -117,6 +117,13 @@ compute_rhs_digits <- function(x, sigfig) {
 }
 
 compute_exp <- function(x, sigfig) {
+  # With 3 significant digits:
+  # 0.9994 -> 0.999 -> exp == -1
+  # 0.9995 -> 1.00 -> exp == 0
+  # This means that x is divided by 0.9995 in this example
+  # before computing log10().
+  # Division before log is the same as subtraction after log.
+  # Using log1p for numerical stability.
   offset <- log1p(-5 * 10^(-sigfig - 1)) / log(10)
 
   ret <- rep_along(x, NA_integer_)
