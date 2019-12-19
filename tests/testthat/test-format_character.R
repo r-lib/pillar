@@ -77,7 +77,11 @@ withr::with_options(list(pillar.bold = TRUE), {
     expect_pillar_output(paste(letters, collapse = ""), filename = "letters-long.txt")
     expect_pillar_output(paste(letters, collapse = ""), width = 10, filename = "letters-long-10.txt")
     expect_pillar_output(paste(letters, collapse = ""), width = 3, filename = "letters-long-03.txt")
-    expect_pillar_output(c("", " ", " a", "a ", "a b"), width = 5, filename = "spaces.txt")
+    expect_pillar_output(c(""), width = 5, filename = "spaces0.txt")
+    expect_pillar_output(c(" "), width = 5, filename = "spaces.txt")
+    expect_pillar_output(c(" a"), width = 5, filename = "spaces2.txt")
+    expect_pillar_output(c("a "), width = 5, filename = "spaces3.txt")
+    expect_pillar_output(c("a b"), width = 5, filename = "spaces4.txt")
 
     skip_on_os("windows")
     expect_pillar_output("\u6210\u4ea4\u65e5", title = "\u6210\u4ea4", filename = "deal1.txt")
