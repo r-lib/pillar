@@ -34,10 +34,6 @@ if (ci_has_env("DEV_VERSIONS")) {
 }
 
 if (ci_has_env("BUILD_PKGDOWN") && ci_get_branch() == "master") {
-  # Need dev version of {vctrs}: https://github.com/r-lib/vctrs/pull/314
-  get_stage("install") %>%
-    add_step(step_install_github("r-lib/vctrs"))
-
   # pkgdown documentation can be built optionally. Other example criteria:
   # - `inherits(ci(), "TravisCI")`: Only for Travis CI
   # - `ci()$is_tag()`: Only for tags, not for branches
