@@ -175,11 +175,12 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
   out <- x
 
   # Add subtle quotes if necessary
-  needs_quotes <- which(is_ambiguous_string(x))
-  if (length(needs_quotes) > 0) {
+  needs_quotes <- is_ambiguous_string(x)
+  if (any(needs_quotes) > 0) {
     quoted <- gsub('"', '\\"', x[needs_quotes], fixed = TRUE)
     quoted <- paste0(style_subtle('"'), quoted, style_subtle('"'))
     out[needs_quotes] <- quoted
+    out[!needs_quotes] <- paste0(" ", x[!needs_quotes], " ")
   }
 
   pillar_shaft(new_vertical(out), ..., min_width = min_width)
