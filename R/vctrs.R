@@ -17,7 +17,7 @@ type_sum.vctrs_vctr <- function(x) {
 
 #' @export
 pillar_shaft.vctrs_list_of <- function(x, ...) {
-  out <- paste0("[", map_chr(x, pillar::dim_desc), "]")
+  out <- style_subtle(paste0("[", map_chr(x, pillar::dim_desc), "]"))
 
   new_pillar_shaft_simple(out, align = "right")
 }
