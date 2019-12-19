@@ -121,7 +121,7 @@
 </h1>
 <ul>
 <li><p><code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple()</a></code> gains <code>na</code> argument to control appearance of <code>NA</code> values.</p></li>
-<li><p>String columns where some but not all values need quotes are left-aligned visually. The values that don’t require quotes gain an additional space for alignment (<a href='https://github.com/r-lib/pillar/issues/171'>#171</a>).</p></li>
+<li><p>String columns are quoted if at least one value needs quotes (<a href='https://github.com/r-lib/pillar/issues/171'>#171</a>).</p></li>
 <li><p>Apply subtle style to <code>list_of</code> columns (<a href='https://github.com/r-lib/pillar/issues/172'>#172</a>).</p></li>
 <li><p>Fix formatting if mantissa is very close to 1 (<a href='https://github.com/r-lib/pillar/issues/174'>#174</a>).</p></li>
 <li><p>Use <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code> instead of <code>as_character()</code>.</p></li>
