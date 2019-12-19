@@ -1,19 +1,13 @@
 # pillar 1.4.3
 
-- Internal changes only.
-
-
-# pillar 1.4.2.9002
-
 - String columns where some but not all values need quotes are left-aligned visually. The values that don't require quotes gain an additional space for alignment (#171).
+
 - Apply subtle style to `list_of` columns (#172).
+
 - Fix formatting if mantissa is very close to 1 (#174).
-- Use `as.character()` instead of `vec_cast()` .
 
+- Use `as.character()` instead of `as_character()`.
 
-# pillar 1.4.2.9001
-
-- Use `vec_cast()` instead of `as_character()`.
 - Remove compatibility with testthat < 2.0.0.
 
 
