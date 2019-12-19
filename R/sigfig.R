@@ -34,7 +34,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
   neg <- !is.na(x) & x < 0
 
   # Compute exponent and mantissa
-  exp <- compute_exp(abs_x)
+  exp <- compute_exp(abs_x, sigfig)
 
   if (scientific) {
     # Must divide by 10^exp, because 10^-exp may not be representable
@@ -91,7 +91,7 @@ sqrt_eps <- sqrt(.Machine$double.eps)
 compute_rhs_digits <- function(x, sigfig) {
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
-  exp <- compute_exp(x)
+  exp <- compute_exp(x, sigfig)
   exp[is.na(exp)] <- Inf
   rhs_digits <- rep_along(x, 0)
   if (!is.integer(x) && !all(x == trunc(x), na.rm = TRUE)) {
@@ -116,10 +116,12 @@ compute_rhs_digits <- function(x, sigfig) {
   rhs_digits
 }
 
-compute_exp <- function(x) {
+compute_exp <- function(x, sigfig) {
+  offset <- log1p(-5 * 10^(-sigfig - 1)) / log(10)
+
   ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
-  ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
+  ret[nonzero] <- as.integer(floor(log10(x[nonzero]) - offset))
   ret
 }
 
