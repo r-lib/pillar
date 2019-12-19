@@ -21,6 +21,6 @@ character vector, zero for empty vectors.
 }
 \examples{
 get_extent(c("abc", "de"))
-get_extent("\\u904b\\u6c23")
+get_extent("\u904b\u6c23")
 get_max_extent(c("abc", "de"))
 }

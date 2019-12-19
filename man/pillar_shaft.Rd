@@ -24,8 +24,7 @@ pillar_shaft(x, ...)
 
 \method{pillar_shaft}{logical}(x, ...)
 
-\method{pillar_shaft}{numeric}(x, ...,
-  sigfig = getOption("pillar.sigfig", 3))
+\method{pillar_shaft}{numeric}(x, ..., sigfig = getOption("pillar.sigfig", 3))
 
 \method{pillar_shaft}{Date}(x, ...)
 

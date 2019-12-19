@@ -5,11 +5,23 @@
 \alias{new_pillar_shaft_simple}
 \title{Constructor for column data}
 \usage{
-new_pillar_shaft(x, ..., width = NULL, min_width = width,
-  class = NULL, subclass = NULL)
+new_pillar_shaft(
+  x,
+  ...,
+  width = NULL,
+  min_width = width,
+  class = NULL,
+  subclass = NULL
+)
 
-new_pillar_shaft_simple(formatted, ..., width = NULL, align = "left",
-  min_width = NULL, na_indent = 0L)
+new_pillar_shaft_simple(
+  formatted,
+  ...,
+  width = NULL,
+  align = "left",
+  min_width = NULL,
+  na_indent = 0L
+)
 }
 \arguments{
 \item{x}{An object}
