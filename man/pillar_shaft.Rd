@@ -32,7 +32,7 @@ pillar_shaft(x, ...)
 
 \method{pillar_shaft}{character}(x, ..., min_width = 3L)
 
-\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = 3L)
+\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = 3L, na_indent = "")
 
 \method{pillar_shaft}{list}(x, ...)
 
