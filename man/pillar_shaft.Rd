@@ -32,7 +32,7 @@ pillar_shaft(x, ...)
 
 \method{pillar_shaft}{character}(x, ..., min_width = 3L)
 
-\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = 3L, na_indent = "")
+\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = 3L, na_indent = 0L)
 
 \method{pillar_shaft}{list}(x, ...)
 
@@ -55,6 +55,8 @@ but they will be greyed out.}
 
 \item{min_width}{Minimum number of characters to display,
 unless the string fits a shorter width.}
+
+\item{na_indent}{Indentation of \code{NA} values.}
 }
 \description{
 \Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}

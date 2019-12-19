@@ -183,26 +183,24 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
 
     needs_indent <- which(!needs_quotes & !is.na(x))
     out[needs_indent] <- paste0(" ", x[needs_indent], " ")
-    na_indent <- " "
+    na_indent <- 1
   } else {
-    na_indent <- ""
+    na_indent <- 0
   }
 
   pillar_shaft(new_vertical(out), ..., min_width = min_width, na_indent = na_indent)
 }
 
 #' @export
+#' @inheritParams new_pillar_shaft_simple
 #' @rdname pillar_shaft
-pillar_shaft.pillar_vertical <- function(x, ..., min_width = 3L, na_indent = "") {
-  # Format NA values separately
-  is_na <- which(is.na(x))
-  if (length(is_na) > 0) {
-    na_contents <- pillar_na(use_brackets_if_no_color = TRUE)
-    x[is_na] <- paste0(na_indent, na_contents)
-  }
-
+pillar_shaft.pillar_vertical <- function(x, ..., min_width = 3L, na_indent = 0L) {
   width <- get_max_extent(x)
-  new_pillar_shaft_simple(x, width = width, align = "left", min_width = min(width, min_width))
+  new_pillar_shaft_simple(
+    x, width = width, align = "left", min_width = min(width, min_width),
+    na = pillar_na(use_brackets_if_no_color = TRUE),
+    na_indent = na_indent
+  )
 }
 
 #' @export

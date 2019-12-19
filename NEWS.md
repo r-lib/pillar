@@ -1,5 +1,7 @@
 # pillar 1.4.3
 
+- `new_pillar_shaft_simple()` gains `na` argument to control appearance of `NA` values.
+
 - String columns where some but not all values need quotes are left-aligned visually. The values that don't require quotes gain an additional space for alignment (#171).
 
 - Apply subtle style to `list_of` columns (#172).

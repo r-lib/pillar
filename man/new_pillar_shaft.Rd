@@ -20,6 +20,7 @@ new_pillar_shaft_simple(
   width = NULL,
   align = "left",
   min_width = NULL,
+  na = NULL,
   na_indent = 0L
 )
 }
@@ -40,7 +41,10 @@ new_pillar_shaft_simple(
 
 \item{align}{Alignment of the column.}
 
-\item{na_indent}{Indention of \code{NA} values.}
+\item{na}{String to use as \code{NA} value, defaults to \code{"NA"} styled with
+\code{\link[=style_na]{style_na()}} with fallback if color is not available.}
+
+\item{na_indent}{Indentation of \code{NA} values.}
 }
 \description{
 \Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
