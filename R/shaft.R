@@ -180,20 +180,25 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
     quoted <- gsub('"', '\\"', x[needs_quotes], fixed = TRUE)
     quoted <- paste0(style_subtle('"'), quoted, style_subtle('"'))
     out[needs_quotes] <- quoted
-    out[!needs_quotes] <- paste0(" ", x[!needs_quotes], " ")
+
+    needs_indent <- which(!needs_quotes & !is.na(x))
+    out[needs_indent] <- paste0(" ", x[needs_indent], " ")
+    na_indent <- " "
+  } else {
+    na_indent <- ""
   }
 
-  pillar_shaft(new_vertical(out), ..., min_width = min_width)
+  pillar_shaft(new_vertical(out), ..., min_width = min_width, na_indent = na_indent)
 }
 
 #' @export
 #' @rdname pillar_shaft
-pillar_shaft.pillar_vertical <- function(x, ..., min_width = 3L) {
+pillar_shaft.pillar_vertical <- function(x, ..., min_width = 3L, na_indent = "") {
   # Format NA values separately
   is_na <- which(is.na(x))
   if (length(is_na) > 0) {
     na_contents <- pillar_na(use_brackets_if_no_color = TRUE)
-    x[is_na] <- na_contents
+    x[is_na] <- paste0(na_indent, na_contents)
   }
 
   width <- get_max_extent(x)
