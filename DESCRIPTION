@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.4.2.9002
+Version: 1.4.3
 Authors@R: c(
     person("Kirill", "Müller", , "krlmlr+r@mailbox.org", role = c("aut", "cre")),
     person("Hadley", "Wickham", role = "aut"),

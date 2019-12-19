@@ -1,3 +1,8 @@
+# pillar 1.4.3
+
+- Internal changes only.
+
+
 # pillar 1.4.2.9002
 
 - String columns where some but not all values need quotes are left-aligned visually. The values that don't require quotes gain an additional space for alignment (#171).
