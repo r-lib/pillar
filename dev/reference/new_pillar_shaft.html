@@ -101,7 +101,7 @@ formatted argument." />
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.9002</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.9000</span>
         </div>
       </div>
     </div>
@@ -166,11 +166,24 @@ By default, the required width is computed from the natural width of the
 <code>formatted</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_pillar_shaft</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='no'>width</span>,
-  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>subclass</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>new_pillar_shaft</span>(
+  <span class='no'>x</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='no'>width</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>subclass</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>new_pillar_shaft_simple</span>(<span class='no'>formatted</span>, <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='st'>"left"</span>,
-  <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na_indent</span> <span class='kw'>=</span> <span class='fl'>0L</span>)</pre>
+<span class='fu'>new_pillar_shaft_simple</span>(
+  <span class='no'>formatted</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>align</span> <span class='kw'>=</span> <span class='st'>"left"</span>,
+  <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>na</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>na_indent</span> <span class='kw'>=</span> <span class='fl'>0L</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,8 +221,13 @@ By default, the required width is computed from the natural width of the
       <td><p>Alignment of the column.</p></td>
     </tr>
     <tr>
+      <th>na</th>
+      <td><p>String to use as <code>NA</code> value, defaults to <code>"NA"</code> styled with
+<code><a href='style_subtle.html'>style_na()</a></code> with fallback if color is not available.</p></td>
+    </tr>
+    <tr>
       <th>na_indent</th>
-      <td><p>Indention of <code>NA</code> values.</p></td>
+      <td><p>Indentation of <code>NA</code> values.</p></td>
     </tr>
     </table>
 
