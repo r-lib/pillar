@@ -1,3 +1,8 @@
+# pillar 1.4.3.9000
+
+- Same as previous version.
+
+
 # pillar 1.4.3
 
 - `new_pillar_shaft_simple()` gains `na` argument to control appearance of `NA` values.
