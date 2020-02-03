@@ -184,6 +184,13 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
     na_indent <- 0
   }
 
+  # determine width based on width of characters in the vector
+  character_chars <- getOption("pillar.min_character_chars", 0)
+  if (!is.numeric(character_chars) || length(character_chars) != 1 || character_chars < 0) {
+    stop("Option pillar.min_character_chars must be a nonnegative number", call. = FALSE)
+  }
+  min_width <- max(min_width, min(character_chars, get_max_extent(x)))
+
   pillar_shaft(new_vertical(out), ..., min_width = min_width, na_indent = na_indent)
 }
 

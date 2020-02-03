@@ -26,6 +26,10 @@
 #'     title, default: `15`.  Column titles may be truncated up to that width to
 #'     save horizontal space. Set to `Inf` to turn off truncation of column
 #'     titles.
+#' - `pillar.min_character_chars`: The minimum number of characters wide to
+#'     display character columns, default: `0`.  Character columns may be
+#'     truncated up to that width to save horizontal space. Set to `Inf` to
+#'     turn off truncation of column titles.
 #'
 #' @examples
 #' pillar(1:3)
