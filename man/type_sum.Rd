@@ -20,7 +20,7 @@ and variants have been implemented.}
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}.
 
-\code{obj_sum()} also includes the size of the object if \code{is_vector_s3()}
+\code{obj_sum()} also includes the size of the object if \code{vctrs::vec_is()}
 is \code{TRUE}.
 }
 \section{Lifecycle}{

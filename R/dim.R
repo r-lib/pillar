@@ -18,7 +18,7 @@ dim_desc <- function(x) {
 
 # https://github.com/r-lib/vctrs/pull/467
 dim2 <- function(x) {
-  dim(x) %||% length(x)
+  dim(x) %||% vctrs::vec_size(x)
 }
 
 size_sum <- function(x) {

@@ -69,7 +69,7 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 }
 
 #' @description
-#' `obj_sum()` also includes the size of the object if `is_vector_s3()`
+#' `obj_sum()` also includes the size of the object if `vctrs::vec_is()`
 #' is `TRUE`.
 #'
 #' @keywords internal
