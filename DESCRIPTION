@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.4.3.9000
+Version: 1.4.3.9001
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",

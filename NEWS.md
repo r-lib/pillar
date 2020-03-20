@@ -1,3 +1,10 @@
+# pillar 1.4.3.9001
+
+- `obj_sum()` uses `vec_size()` internally.
+- `is_vector_s3.default()` is soft-deprecated and no longer used. Please ensure that `vec_is()` is `TRUE` for your class.
+- Rely on vctrs for type abbreviations.
+
+
 # pillar 1.4.3.9000
 
 - Same as previous version.
