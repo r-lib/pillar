@@ -37,6 +37,7 @@ Collate:
     'capital.R'
     'compat-lifecycle.R'
     'compat-purrr.R'
+    'deprecated.R'
     'dim.R'
     'empty-data.R'
     'extent.R'

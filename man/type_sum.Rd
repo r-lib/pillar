@@ -3,14 +3,11 @@
 \name{type_sum}
 \alias{type_sum}
 \alias{obj_sum}
-\alias{is_vector_s3}
 \title{Provide a succinct summary of an object}
 \usage{
 type_sum(x)
 
 obj_sum(x)
-
-is_vector_s3(x)
 }
 \arguments{
 \item{x}{an object to summarise. Generally only methods of atomic vectors

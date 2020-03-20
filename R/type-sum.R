@@ -102,21 +102,3 @@ obj_sum.POSIXlt <- function(x) {
 obj_sum.AsIs <- function(x) {
   paste0("I(", obj_sum(remove_as_is_class(x)), ")")
 }
-
-#' @export
-#' @rdname type_sum
-is_vector_s3 <- function(x) UseMethod("is_vector_s3")
-#' @export
-is_vector_s3.ordered <- function(x) TRUE
-#' @export
-is_vector_s3.factor <- function(x) TRUE
-#' @export
-is_vector_s3.Date <- function(x) TRUE
-#' @export
-is_vector_s3.POSIXct <- function(x) TRUE
-#' @export
-is_vector_s3.difftime <- function(x) TRUE
-#' @export
-is_vector_s3.data.frame <- function(x) TRUE
-#' @export
-is_vector_s3.default <- function(x) !is.object(x) && is_vector(x)
