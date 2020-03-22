@@ -1,0 +1,61 @@
+---
+title: "Customization"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Customization}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pillar)
+```
+
+This draft describes a new backward-compatible design for making the appearance of a pillar more extensible.
+
+## Constraints and design goals
+
+- A pillar is rarely shown individually, most often it is part of a colonnade.
+- A colonnade also is rarely shown individually, most often it is part of a larger structure like a tibble.
+- All pillars in a colonnade are shown in a similar way, a single controller can decide the appearance of all pillars.
+- Pillars can adapt their width to the available space. Computation of minimum and maximum width can happen before formatting the actual data. For performance reasons, `colonnade()` will not construct pillar objects it doesn't need.
+- A pillar has a header (=capital), body (=shaft), footer (=basis, currently not used). Design should follow `cnd_header()`, `cnd_body()` and `cnd_footer()`
+- Pillars are always shown from left to right, no "holes" in the colonnade. If the first column consumes all available space, the remaining columns are not shown, even if they all would fit.
+- Printing pillars should take time proportional to the number of characters printed, and be "fast enough".
+- Customizing parts of the display (e.g. omit type, add more information) should be easy.
+- Existing infrastructure should be supported.
+
+
+## Ideas
+
+- `colonnade()` gains a `controller` argument. The default controller mimics current behavior.
+- The controller implements a `pillar_hooks()` method, to minimize S3 dispatch.
+- The new `pillar::new_pillar_hooks()` provides a structured way to construct hooks.
+
+    ```r
+    new_pillar_hooks <- function(new_pillar_capital = tbd,
+                                 new_pillar_shaft = pillar_shaft,
+                                 new_pillar_basis = NULL,
+                                 ...) {
+      structure(
+        list(
+          new_pillar_capital = new_pillar_capital,
+          new_pillar_shaft = new_pillar_shaft,
+          new_pillar_basis = new_pillar_basis
+        ),
+        class = "pillar_hooks"
+      )
+    }
+    ```
+
+- We start with the assumption that each column consumes at least one character, with the space between the columns. This is for pre-allocating space.
+- For each column we could possibly fit, we call the `new_pillar_capital()` hook and query the minimum width, until maximum width is reached.
+- For each column where the capital fits, we call the `new_pillar_shaft()` hook and query the minimum width, until maximum width is reached.
+- Pillars are distributed using the existing algorithm.
