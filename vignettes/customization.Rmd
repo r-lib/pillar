@@ -55,7 +55,7 @@ This draft describes a new backward-compatible design for making the appearance 
     }
     ```
 
-- We start with the assumption that each column consumes at least one character, with the space between the columns. This is for pre-allocating space.
+- We start with the assumption that each column consumes at least one character, with the space between the columns. This is for pre-allocating memory.
 - For each column we could possibly fit, we call the `new_pillar_capital()` hook and query the minimum width, until maximum width is reached.
 - For each column where the capital fits, we call the `new_pillar_shaft()` hook and query the minimum width, until maximum width is reached.
 - Pillars are distributed using the existing algorithm.
