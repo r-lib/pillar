@@ -20,42 +20,166 @@ library(pillar)
 
 This draft describes a new backward-compatible design for making the appearance of a pillar more extensible.
 
-## Constraints and design goals
+The design consists of two parts:
+
+1. Moving all formatting code into pillar
+1. Adding extension points for formatting individual pillars
+
+
+## Moving all formatting code into pillar
+
+### Advantages
+
+- Code that implements formatting for tables no longer needs tibble
+- All formatting code in one package
+- Simplify and document formatting code along the way
+- New `as_tbl()` for attaching the `"tbl"` class to arbitrary objects (e.g. data frames or data tables) for printing
+
+### Implementation
+
+`format.tbl()` retains its semantics.
+For compatibility it returns a character vector with one element per line.
+
+```{r}
+#' @export
+format.tbl <- function(x, ...) {
+  setup <- tbl_format_setup(x, width = width, n = n, n_extra = n_extra)
+  header <- tbl_format_header(x, setup)
+  body <- tbl_format_body(x, setup)
+  footer <- tbl_format_footer(x, setup)
+  c(header, body, footer)
+}
+```
+
+### New generics
+
+`tbl_format_setup()` takes the role of the (then superseded) `trunc_mat()`.
+The default mimics `trunc_mat()` but returns a stable data structure that is well documented.
+Classes that need to do more when setting up the printing implement a method.
+
+Contrary to the existing logic, the width would be baked into the `setup` object.
+I haven't seen a use case for formatting the same prepared object with multiple widths.
+
+```{r}
+tbl_format_setup.default <- function(x, ...) {
+  trunc_mat(x, ...)
+}
+```
+
+`tbl_format_header()` in the default implementation formats the output of `tbl_sum()`.
+The implementer is expected to apply `style_subtle()` in case the class wants to add color or other styling.
+
+```{r}
+tbl_format_header.default <- function(x, ...) {
+  sum <- tbl_sum(x)
+  style_subtle(
+    paste0(names(sum), ": ", sum)
+  )
+}
+```
+
+`tbl_format_body()` formats the colonnade prepared in the setup.
+The implementation is shown further below.
+
+`tbl_format_footer()` is copied from tibble.
+The implementer is expected to apply `style_subtle()` in case the class wants to add color or other styling.
+
+```{r}
+tbl_format_footer.default <- function(x, ...) {
+  style_subtle(format_footer(x, ...))
+}
+```
+
+## Adding extension points for formatting individual pillars
+
+### Constraints and design goals
 
 - A pillar is rarely shown individually, most often it is part of a colonnade.
 - A colonnade also is rarely shown individually, most often it is part of a larger structure like a tibble.
 - All pillars in a colonnade are shown in a similar way, a single controller can decide the appearance of all pillars.
+- Pillars in a colonnade are either all named or all unnamed
 - Pillars can adapt their width to the available space. Computation of minimum and maximum width can happen before formatting the actual data. For performance reasons, `colonnade()` will not construct pillar objects it doesn't need.
-- A pillar has a header (=capital), body (=shaft), footer (=basis, currently not used). Design should follow `cnd_header()`, `cnd_body()` and `cnd_footer()`
+- A pillar has a header (=capital), body (=shaft), footer (=basis, currently not used). Design should follow `cnd_header()`, `cnd_body()` and `cnd_footer()`. These components can be of different height, will be top-aligned when printing.
 - Pillars are always shown from left to right, no "holes" in the colonnade. If the first column consumes all available space, the remaining columns are not shown, even if they all would fit.
 - Printing pillars should take time proportional to the number of characters printed, and be "fast enough".
 - Customizing parts of the display (e.g. omit type, add more information) should be easy.
 - Existing infrastructure should be supported.
 
 
-## Ideas
+### New generics
 
-- `colonnade()` gains a `controller` argument. The default controller mimics current behavior.
-- The controller implements a `pillar_hooks()` method, to minimize S3 dispatch.
-- The new `pillar::new_pillar_hooks()` provides a structured way to construct hooks.
+`colonnade()` gains a `controller` argument. The default controller mimics current behavior.
+All new methods dispatch on that controller.
+S3 dispatch is feasible because we're only dispatching a few times for each pillar actually constructed.
 
-    ```r
-    new_pillar_hooks <- function(new_pillar_capital = tbd,
-                                 new_pillar_shaft = pillar_shaft,
-                                 new_pillar_basis = NULL,
-                                 ...) {
-      structure(
-        list(
-          new_pillar_capital = new_pillar_capital,
-          new_pillar_shaft = new_pillar_shaft,
-          new_pillar_basis = new_pillar_basis
-        ),
-        class = "pillar_hooks"
-      )
-    }
-    ```
+`ctl_pillar_capital()` (alias: `ctl_pillar_header()`) dispatches on the controller and has the data as second and the name as third argument.
+It returns an object that has a `"width"` attribute and possibly a `"min_width"` attribute.
+The object implements a `format()` method that returns a character vector with one element per line.
+
+```{r}
+ctl_pillar_capital <- function(controller, x, ..., name = NULL) {
+  out <- UseMethod("ctl_pillar_capital")
+  stopifnot(rlang::is_scalar_integerish(attr(out, "width")))
+  out
+}
+
+ctl_pillar_capital.default <- function(controller, x, ..., name = NULL) {
+  new_pillar_capital(c(name, vec_ptype_abbr(x)))
+}
+
+new_pillar_capital <- function(x, ..., class = NULL) {
+  structure(x, ..., class = c(class, "pillar_capital"))
+}
+
+format.pillar_capital <- function(x, ..., width) {
+  strtrim(x, width)
+}
+```
+
+`ctl_pillar_shaft()` (alias: `ctl_pillar_body()`) dispatches on the controller and has the data as second argument.
+It returns an object that has a `"width"` attribute and possibly a `"min_width"` attribute.
+The object implements a `format()` method that returns a character vector with one element per line.
+The default implementation calls `pillar_shaft()` on the vector.
+
+```{r}
+ctl_pillar_shaft <- function(controller, x, ..., name = NULL) {
+  out <- UseMethod("ctl_pillar_shaft")
+  stopifnot(rlang::is_scalar_integerish(attr(out, "width")))
+  out
+}
+
+ctl_pillar_shaft.default <- function(controller, x, ...) {
+  pillar_shaft(x)
+}
+
+format.pillar_shaft <- function(x, ..., width) {
+  # unchanged
+}
+```
+
+`ctl_pillar_basis()` (alias: `ctl_pillar_footer()`) dispatches on the controller and has the data as second argument.
+It returns an object that has a `"width"` attribute and possibly a `"min_width"` attribute.
+The object implements a `format()` method that returns a character vector with one element per line.
+The default implementation returns `character()`.
+
+```{r}
+ctl_pillar_basis.default <- function(controller, x, ...) {
+  new_pillar_basis(x)
+}
+
+new_pillar_basis <- function(x, ..., class = NULL) {
+  structure(x, ..., class = c(class, "pillar_basis"))
+}
+
+format.pillar_basis <- function(x, ..., width) {
+  character()
+}
+```
+
+
+### Implementation sketch
 
 - We start with the assumption that each column consumes at least one character, with the space between the columns. This is for pre-allocating memory.
-- For each column we could possibly fit, we call the `new_pillar_capital()` hook and query the minimum width, until maximum width is reached.
-- For each column where the capital fits, we call the `new_pillar_shaft()` hook and query the minimum width, until maximum width is reached.
+- For each column we could possibly fit, we call the `new_pillar_capital()` method and query the minimum width, until maximum width is reached.
+- For each column where the capital fits, we call the `new_pillar_shaft()` method and query the minimum width, until maximum width is reached.
 - Pillars are distributed using the existing algorithm.
