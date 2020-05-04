@@ -1,10 +1,11 @@
-Minor update
+Minor update, vctrs compatibility
 
-## Test environments
+## Due diligence
 
-* local Ubuntu 18.04 install, R 3.6.1
-* Ubuntu 16.04 (on travis-ci), R devel, release, 3.5-3.2
-* win-builder (devel)
+- [x] Checked CRP, last edited 2020-03-24
+- [x] Checked locally on Ubuntu 18.04 install, R 3.6.3
+- [x] Checked on CI system
+- [x] Checked on win-builder (devel)
 
 ## R CMD check results
 
