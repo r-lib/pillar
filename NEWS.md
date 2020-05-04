@@ -1,3 +1,8 @@
+# pillar 1.4.4
+
+- Same as previous version.
+
+
 # pillar 1.4.3.9001
 
 - `obj_sum()` uses `vec_size()` internally.
