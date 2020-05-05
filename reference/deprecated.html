@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Helper to define the contents of a pillar — new_ornament • pillar</title>
+<title>Deprecated functions — deprecated • pillar</title>
 
 
 <!-- jquery -->
@@ -38,12 +38,9 @@
 
 
 
-<meta property="og:title" content="Helper to define the contents of a pillar — new_ornament" />
-<meta property="og:description" content="This function is useful if your data renders differently depending on the
-available width. In this case, implement the pillar_shaft() method for your
-class to return a subclass of &quot;pillar_shaft&quot; and have the format() method
-for this subclass call new_ornament(). See the implementation of
-pillar_shaft.numeric() and format.pillar_shaft_decimal() for an example." />
+<meta property="og:title" content="Deprecated functions — deprecated" />
+<meta property="og:description" content="is_vector_s3() returns TRUE if an object represents an S3 vector.
+The default implementation forwards to vctrs::vec_is()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,43 +118,29 @@ pillar_shaft.numeric() and format.pillar_shaft_decimal() for an example." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Helper to define the contents of a pillar</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/ornament.R'><code>R/ornament.R</code></a></small>
-    <div class="hidden name"><code>new_ornament.Rd</code></div>
+    <h1>Deprecated functions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
+    <div class="hidden name"><code>deprecated.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function is useful if your data renders differently depending on the
-available width. In this case, implement the <code><a href='pillar_shaft.html'>pillar_shaft()</a></code> method for your
-class to return a subclass of "pillar_shaft" and have the <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> method
-for this subclass call <code>new_ornament()</code>. See the implementation of
-<code><a href='pillar_shaft.html'>pillar_shaft.numeric()</a></code> and <code>format.pillar_shaft_decimal()</code> for an example.</p>
+    <p><code>is_vector_s3()</code> returns <code>TRUE</code> if an object represents an S3 vector.
+The default implementation forwards to <code><a href='https://rdrr.io/pkg/vctrs/man/vec_assert.html'>vctrs::vec_is()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_ornament</span>(<span class='no'>x</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A character vector with formatting, see crayon</p></td>
-    </tr>
-    <tr>
-      <th>width</th>
-      <td><p>An optional width of the resulting pillar, computed from <code>x</code> if
-missing</p></td>
-    </tr>
-    <tr>
-      <th>align</th>
-      <td><p>Alignment, one of <code>"left"</code> or <code>"right"</code></p></td>
-    </tr>
-    </table>
+    <pre class="usage"><span class='fu'>is_vector_s3</span>(<span class='no'>x</span>)</pre>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>new_ornament</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"abc"</span>, <span class='st'>"de"</span>), <span class='kw'>align</span> <span class='kw'>=</span> <span class='st'>"right"</span>)</div><div class='output co'>#&gt; abc
-#&gt;  de</div></pre>
+    <h2 class="hasAnchor" id="lifecycle"><a class="anchor" href="#lifecycle"></a>Lifecycle</h2>
+
+    
+
+<p><code>is_vector_s3()</code> is soft-deprecated, because <code><a href='https://rdrr.io/pkg/vctrs/man/vec_assert.html'>vctrs::vec_is()</a></code>
+provides the same functionality based on a robust framework.
+The generic will remain available for a while but is no longer used.
+Users and implementers are encouraged to ensure that <code><a href='https://rdrr.io/pkg/vctrs/man/vec_assert.html'>vctrs::vec_is()</a></code>
+is <code>TRUE</code> for their class.</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
