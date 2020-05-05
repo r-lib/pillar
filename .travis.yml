@@ -55,6 +55,10 @@ jobs:
     - MIN_VERSIONS=TRUE
   - r: 3.4
   - r: 3.5
+  allow_failures:
+  - r: devel
+    env:
+    - DEV_VERSIONS=TRUE
   fast_finish: true
 
 #env
