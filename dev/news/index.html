@@ -10,22 +10,26 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
 <link href="../tidyverse.css" rel="stylesheet">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -60,7 +64,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,9 +79,9 @@
 
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">pillar</a>
-        <div class="info">
+        <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.9000</span>
         </div>
       </div>
     </div>
@@ -93,7 +97,7 @@
   <a href="../news/index.html">News</a>
 </li>
         <li>
-  <a href="https://github.com/r-lib/pillar">
+  <a href="https://github.com/r-lib/pillar/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -111,20 +115,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="pillar-1-4-3-9000" class="section level1">
-<h1 class="page-header">
-<a href="#pillar-1-4-3-9000" class="anchor"></a>pillar 1.4.3.9000<small> Unreleased </small>
+    <div id="pillar-1-4-4-9000" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4.9000">
+<a href="#pillar-1-4-4-9000" class="anchor"></a>pillar 1.4.4.9000<small> Unreleased </small>
 </h1>
 <ul>
 <li>Same as previous version.</li>
 </ul>
 </div>
+    <div id="pillar-1-4-4" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4">
+<a href="#pillar-1-4-4" class="anchor"></a>pillar 1.4.4<small> 2020-05-05 </small>
+</h1>
+<ul>
+<li><p><code><a href="../reference/type_sum.html">obj_sum()</a></code> uses <code><a href="https://vctrs.r-lib.org/reference/vec_size.html">vctrs::vec_size()</a></code> internally.</p></li>
+<li><p><code>is_vector_s3.default()</code> is soft-deprecated and no longer used. Please ensure that <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html">vctrs::vec_is()</a></code> is <code>TRUE</code> for your class.</p></li>
+<li><p>Rely on vctrs for type abbreviations.</p></li>
+</ul>
+</div>
     <div id="pillar-1-4-3" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.3">
 <a href="#pillar-1-4-3" class="anchor"></a>pillar 1.4.3<small> 2019-12-20 </small>
 </h1>
 <ul>
@@ -137,7 +151,7 @@
 </ul>
 </div>
     <div id="pillar-1-4-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.2">
 <a href="#pillar-1-4-2" class="anchor"></a>pillar 1.4.2<small> 2019-06-29 </small>
 </h1>
 <ul>
@@ -146,7 +160,7 @@
 </ul>
 </div>
     <div id="pillar-1-4-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.1">
 <a href="#pillar-1-4-1" class="anchor"></a>pillar 1.4.1<small> 2019-05-28 </small>
 </h1>
 <ul>
@@ -157,7 +171,7 @@
 </ul>
 </div>
     <div id="pillar-1-4-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.0">
 <a href="#pillar-1-4-0" class="anchor"></a>pillar 1.4.0<small> 2019-05-11 </small>
 </h1>
 <div id="breaking-changes" class="section level2">
@@ -165,7 +179,7 @@
 <a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>
-<code><a href="../reference/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://rdrr.io/pkg/vctrs/man/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
+<code><a href="../reference/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
 <li>The <code>class</code> argument to <code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft()</a></code> deprecates the existing <code>subclass</code> argument. Passing a <code>subclass</code> argument leads to a warning once per session (<a href='https://github.com/r-lib/pillar/issues/157'>#157</a>).</li>
 </ul>
 </div>
@@ -196,7 +210,7 @@
 </div>
 </div>
     <div id="pillar-1-3-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.3.1">
 <a href="#pillar-1-3-1" class="anchor"></a>pillar 1.3.1<small> 2018-12-15 </small>
 </h1>
 <div id="bug-fixes" class="section level2">
@@ -225,7 +239,7 @@
 </div>
 </div>
     <div id="pillar-1-3-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.3.0">
 <a href="#pillar-1-3-0" class="anchor"></a>pillar 1.3.0<small> 2018-07-14 </small>
 </h1>
 <div id="visible-changes-1" class="section level2">
@@ -266,7 +280,7 @@
 </div>
 </div>
     <div id="pillar-1-2-3" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.2.3">
 <a href="#pillar-1-2-3" class="anchor"></a>pillar 1.2.3<small> 2018-05-25 </small>
 </h1>
 <ul>
@@ -279,7 +293,7 @@
 </ul>
 </div>
     <div id="pillar-1-2-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.2.2">
 <a href="#pillar-1-2-2" class="anchor"></a>pillar 1.2.2<small> 2018-04-26 </small>
 </h1>
 <ul>
@@ -290,7 +304,7 @@
 </ul>
 </div>
     <div id="pillar-1-2-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.2.1">
 <a href="#pillar-1-2-1" class="anchor"></a>pillar 1.2.1<small> 2018-02-27 </small>
 </h1>
 <div id="display" class="section level2">
@@ -325,7 +339,7 @@
 </div>
 </div>
     <div id="pillar-1-1-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.1.0">
 <a href="#pillar-1-1-0" class="anchor"></a>pillar 1.1.0<small> 2018-01-14 </small>
 </h1>
 <ul>
@@ -351,7 +365,7 @@
 </ul>
 </div>
     <div id="pillar-1-0-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.1">
 <a href="#pillar-1-0-1" class="anchor"></a>pillar 1.0.1<small> 2017-11-27 </small>
 </h1>
 <ul>
@@ -359,71 +373,56 @@
 </ul>
 </div>
     <div id="pillar-1-0-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.0">
 <a href="#pillar-1-0-0" class="anchor"></a>pillar 1.0.0<small> 2017-11-20 </small>
 </h1>
 <p>Initial release.</p>
 <div id="user-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#user-functions" class="anchor"></a>User functions</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="../reference/pillar.html">pillar</a></span>(x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="../reference/colonnade.html">colonnade</a></span>(x, <span class="dt">has_row_id =</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="../reference/colonnade.html">squeeze</a></span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">pillar</span>(x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">colonnade</span>(x, <span class="dt">has_row_id =</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">squeeze</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a></code></pre></div>
 </div>
 <div id="functions-for-implementers-of-data-types" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functions-for-implementers-of-data-types" class="anchor"></a>Functions for implementers of data types</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple</a></span>(formatted, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="st">"left"</span>, <span class="dt">min_width =</span> <span class="ot">NULL</span>, <span class="dt">na_indent =</span> 0L)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft</a></span>(x, ..., width, <span class="dt">min_width =</span> width, subclass)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="../reference/new_ornament.html">new_ornament</a></span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="../reference/get_extent.html">get_extent</a></span>(x)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="../reference/get_extent.html">get_max_extent</a></span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">new_pillar_shaft_simple</span>(formatted, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="st">"left"</span>, <span class="dt">min_width =</span> <span class="ot">NULL</span>, <span class="dt">na_indent =</span> 0L)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">new_pillar_shaft</span>(x, ..., width, <span class="dt">min_width =</span> width, subclass)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">new_ornament</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw">get_extent</span>(x)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">get_max_extent</span>(x)</a></code></pre></div>
 </div>
 <div id="utilities" class="section level2">
 <h2 class="hasAnchor">
 <a href="#utilities" class="anchor"></a>Utilities</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/dim_desc.html">dim_desc</a></span>(x)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/style_subtle.html">style_na</a></span>(x)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="../reference/style_subtle.html">style_neg</a></span>(x)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="../reference/style_subtle.html">style_num</a></span>(x, negative, <span class="dt">significant =</span> <span class="kw">rep_along</span>(x, <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw"><a href="../reference/style_subtle.html">style_subtle</a></span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">dim_desc</span>(x)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">style_na</span>(x)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">style_neg</span>(x)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">style_num</span>(x, negative, <span class="dt">significant =</span> <span class="kw">rep_along</span>(x, <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">style_subtle</span>(x)</a></code></pre></div>
 </div>
 <div id="testing-helper" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing-helper" class="anchor"></a>Testing helper</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/expect_known_display.html">expect_known_display</a></span>(object, file, ..., <span class="dt">width =</span> 80L, <span class="dt">crayon =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">expect_known_display</span>(object, file, ..., <span class="dt">width =</span> 80L, <span class="dt">crayon =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="own-s3-methods" class="section level2">
 <h2 class="hasAnchor">
 <a href="#own-s3-methods" class="anchor"></a>Own S3 methods</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/type_sum.html">type_sum</a></span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="../reference/type_sum.html">is_vector_s3</a></span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw"><a href="../reference/type_sum.html">obj_sum</a></span>(x) <span class="co"># AsIs, POSIXlt, default, list</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw"><a href="../reference/extra_cols.html">extra_cols</a></span>(x, ...) <span class="co"># squeezed_colonnade</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">pillar_shaft</span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">type_sum</span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">is_vector_s3</span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">obj_sum</span>(x) <span class="co"># AsIs, POSIXlt, default, list</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">extra_cols</span>(x, ...) <span class="co"># squeezed_colonnade</span></a></code></pre></div>
 </div>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#pillar-1-4-3-9000">1.4.3.9000</a></li>
-        <li><a href="#pillar-1-4-3">1.4.3</a></li>
-        <li><a href="#pillar-1-4-2">1.4.2</a></li>
-        <li><a href="#pillar-1-4-1">1.4.1</a></li>
-        <li><a href="#pillar-1-4-0">1.4.0</a></li>
-        <li><a href="#pillar-1-3-1">1.3.1</a></li>
-        <li><a href="#pillar-1-3-0">1.3.0</a></li>
-        <li><a href="#pillar-1-2-3">1.2.3</a></li>
-        <li><a href="#pillar-1-2-2">1.2.2</a></li>
-        <li><a href="#pillar-1-2-1">1.2.1</a></li>
-        <li><a href="#pillar-1-1-0">1.1.0</a></li>
-        <li><a href="#pillar-1-0-1">1.0.1</a></li>
-        <li><a href="#pillar-1-0-0">1.0.0</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
