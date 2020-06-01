@@ -3,7 +3,6 @@
 - `obj_sum()` uses `vec_size()` internally.
 - `is_vector_s3.default()` is soft-deprecated and no longer used. Please ensure that `vec_is()` is `TRUE` for your class.
 - Rely on vctrs for type abbreviations.
-- New `align()` to support easy alignment of strings within a character vector (existing function exported by @davidchall, #185).
 
 
 # pillar 1.4.3.9000
