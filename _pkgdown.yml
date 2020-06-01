@@ -28,6 +28,7 @@ reference:
       For consistent output among different data types.
     contents:
       - starts_with("style_")
+      - align
       - new_pillar_title
       - new_pillar_type
   - title: Miscellaneous

@@ -28,6 +28,20 @@ get_max_extent <- function(x) {
   max(get_extent(x), 0L, na.rm = TRUE)
 }
 
+#' Alignment helper
+#'
+#' Facilitates easy alignment of strings within a character vector. Designed to
+#' help implementers of formatters for custom data types.
+#'
+#' @param x A character vector
+#' @param width The width that each string is padded to. If `NULL`, the maximum
+#'   display width of the character vector is used (see [get_max_extent()]).
+#' @param align How should strings be aligned? If `align = left` then padding
+#'   appears on the `right`, and vice versa.
+#' @export
+#' @examples
+#' align(c("abc", "de"), align = "left")
+#' align(c("abc", "de"), align = "right")
 align <- function(x, width = NULL, align = c("left", "right")) {
   align <- match.arg(align)
   extent <- get_extent(x)
