@@ -13,7 +13,7 @@ The default implementation forwards to \code{vctrs::vec_is()}.
 }
 \section{Lifecycle}{
 
-\code{is_vector_s3()} is soft-deprecated, because \code{\link[vctrs:vec_is]{vctrs::vec_is()}}
+\code{is_vector_s3()} is soft-deprecated, because \code{\link[vctrs:vec_assert]{vctrs::vec_is()}}
 provides the same functionality based on a robust framework.
 The generic will remain available for a while but is no longer used.
 Users and implementers are encouraged to ensure that \code{vctrs::vec_is()}
