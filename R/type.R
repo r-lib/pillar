@@ -81,7 +81,11 @@ format_full_pillar_type <- function(x) {
 #' }
 #' accel <- structure(9.81, class = "accel")
 #' pillar(accel)
-format_type_sum <- function(x, width, ...) UseMethod("format_type_sum")
+format_type_sum <- function(x, width, ...) {
+  check_dots_used(action = warn)
+
+  UseMethod("format_type_sum")
+}
 
 #' @export
 #' @rdname format_type_sum
