@@ -25,6 +25,7 @@ pkgload::load_all()
 [![CRAN status](https://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
 <!-- badges: end -->
 
+
 pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.
 
 ## Installation
