@@ -1,9 +1,18 @@
-# installs dependencies, runs R CMD check, runs covr::codecov()
-do_package_checks()
-
 if (ci_has_env("TIC_DEV_VERSIONS")) {
   get_stage("install") %>%
     add_step(step_install_github(c("r-lib/rlang", "r-lib/cli", "r-lib/crayon", "brodieG/fansi", "patperry/r-utf8", "r-lib/vctrs")))
+
+  get_stage("script") %>%
+    add_code_step(devtools::test(reporter = c("summary")))
+} else if (ci_has_env("TIC_ONLY_TESTS")) {
+  get_stage("script") %>%
+    add_code_step(devtools::test(reporter = c("summary", "fail")))
+} else if (ci_has_env("TIC_BUILD_PKGDOWN")) {
+  get_stage("install") %>%
+    add_step(step_install_github("tidyverse/tidytemplate"))
+
+  do_package_checks()
+  do_pkgdown()
 } else if (ci_has_env("TIC_MIN_VERSIONS")) {
   # Make sure all other packages are installed when we downgrade
   get_stage("before_script") %>%
@@ -32,13 +41,23 @@ if (ci_has_env("TIC_DEV_VERSIONS")) {
         remotes::install_github("r-hub/crandb")
       }
     )
-}
+} else {
+  get_stage("before_script") %>%
+    add_code_step({
+      pkgload::load_all()
+      print(sessioninfo::session_info())
+    })
 
-if (ci_on_ghactions() && ci_has_env("BUILD_PKGDOWN")) {
-  # creates pkgdown site and pushes to gh-pages branch
-  # only for the runner with the "BUILD_PKGDOWN" env var set
-  get_stage("install") %>%
-    add_step(step_install_github("tidyverse/tidytemplate"))
+  if (ci_has_env("TIC_ONLY_IMPORTS")) {
+    # VignetteBuilder not installed?
+    get_stage("install") %>%
+      add_step(step_install_cran("rmarkdown")) %>%
+      add_step(step_install_cran("testthat"))
 
-  do_pkgdown()
+    do_package_checks(dependencies = c("Depends", "Imports"))
+  } else {
+    do_package_checks(
+      error_on = if (getRversion() >= "3.4") "note" else "warning"
+    )
+  }
 }

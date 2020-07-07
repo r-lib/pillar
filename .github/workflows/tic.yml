@@ -1,5 +1,5 @@
-## tic GitHub Actions template: linux-macos-windows-deploy
-## revision date: 2020-06-14
+## tic GitHub Actions template: custom-deploy
+## revision date: 2020-05-21
 on:
   push:
   pull_request:
@@ -11,22 +11,55 @@ on:
 name: tic
 
 jobs:
-  all:
+  R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    # [Custom matrix name]
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.config.id }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          # use a different tic template type if you do not want to build on all listed platforms
-          - { os: windows-latest, r: "release" }
-          - { os: macOS-latest, r: "release", pkgdown: "true", latex: "true" }
-          - { os: macOS-latest, r: "devel" }
-          - { os: ubuntu-latest, r: "release" }
+          # Custom configs
+          # [Custom matrix env var]
+          - { os: macOS-latest, r: "devel", TIC_ONLY_TESTS: true, TIC_DEV_VERSIONS: true, id: "TIC_ONLY_TESTS & TIC_DEV_VERSIONS", cache: "dev" }
+          # [Custom matrix env var]
+          - { os: macOS-latest, r: "devel", id: "default" }
+          # [Custom matrix env var]
+          - { os: macOS-latest, r: "release", pkgdown: true, id: "pkgdown"}
+          # [Custom matrix env var]
+          - { os: windows-latest, r: "release", id: "default" }
+          # [Custom matrix env var]
+          - { os: ubuntu-latest, r: 3.6, id: "default" }
+          # [Custom matrix env var]
+          - { os: ubuntu-latest, r: 3.5, id: "default" }
+          # [Custom matrix env var]
+          - { os: ubuntu-latest, r: 3.4, id: "default" }
+          # [Custom matrix env var]
+          - { os: ubuntu-latest, r: 3.3, id: "default" }
+          # [Custom matrix env var]
+          - { os: ubuntu-latest, r: "release", TIC_ONLY_IMPORTS: true, id: "TIC_ONLY_IMPORTS", cache: "imports" }
+          # [Custom matrix env var]
+          - { os: ubuntu-latest, r: "release", TIC_MIN_VERSIONS: true, id: "TIC_MIN_VERSIONS", cache: "min_versions" }
 
     env:
+      # [Custom env var]
+      _R_CHECK_FORCE_SUGGESTS_: false
+      # [Custom env var]
+      _R_CHECK_SYSTEM_CLOCK_: false
+      # [Custom env var]
+      _R_CHECK_PACKAGE_DEPENDS_IGNORE_MISSING_ENHANCES: true
+      # [Custom env var]
+      TIC_DEV_VERSIONS: ${{ matrix.config.TIC_DEV_VERSIONS }}
+      # [Custom env var]
+      TIC_ONLY_IMPORTS: ${{ matrix.config.TIC_ONLY_IMPORTS }}
+      # [Custom env var]
+      TIC_ONLY_TESTS: ${{ matrix.config.TIC_ONLY_TESTS }}
+      # [Custom env var]
+      TIC_ONLY_STYLER: ${{ matrix.config.TIC_ONLY_STYLER }}
+      # [Custom env var]
+      TIC_MIN_VERSIONS: ${{ matrix.config.TIC_MIN_VERSIONS }}
       # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       CRAN: ${{ matrix.config.cran }}
@@ -36,10 +69,10 @@ jobs:
       RGL_USE_NULL: true
       # if you use bookdown or blogdown, replace "PKGDOWN" by the respective
       # capitalized term. This also might need to be done in tic.R
-      BUILD_PKGDOWN: ${{ matrix.config.pkgdown }}
+      TIC_BUILD_PKGDOWN: ${{ matrix.config.pkgdown }}
       # macOS >= 10.15.4 linking
       SDKROOT: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
-      # use GITHUB_TOKEN from GitHub to workaround rate limits in {remotes}
+      # [Custom env var] use GITHUB_TOKEN from GitHub to workaround rate limits in {remotes}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
@@ -54,14 +87,15 @@ jobs:
       # Linux: ~ 1 min
       # macOS: ~ 1 min 30s
       # Windows: never finishes
-      - uses: r-lib/actions/setup-tinytex@master
-        if: matrix.config.latex == 'true'
+      - uses: r-lib/actions/setup-tinytex@v1
+        if: runner.id == 'pkgdown'
 
       - uses: r-lib/actions/setup-pandoc@master
 
       # set date/week for use in cache creation
       # https://github.community/t5/GitHub-Actions/How-to-set-and-access-a-Workflow-variable/m-p/42970
       # - cache R packages daily
+      # - cache ccache weekly -> 'ccache' helps rebuilding the package cache faster
       - name: "[Cache] Prepare daily timestamp for cache"
         if: runner.os != 'Windows'
         id: date
@@ -72,8 +106,8 @@ jobs:
         uses: pat-s/always-upload-cache@v2.0.0
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ steps.date.outputs.date }}-${{ matrix.config.cache }}-${{ matrix.config.id }}
+          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ steps.date.outputs.date }}-${{ matrix.config.cache }}-${{ matrix.config.id }}
 
       # for some strange Windows reason this step and the next one need to be decoupled
       - name: "[Stage] Prepare"
