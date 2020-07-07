@@ -87,7 +87,8 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># pillar is installed if you install the tidyverse package:</span>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># pillar is installed if you install the tidyverse package:</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"tidyverse"</span>)
 
 <span class="co"># Alternatively, install just pillar:</span>
@@ -95,22 +96,25 @@
 
 <span class="co"># Or the the development version from GitHub:</span>
 <span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"r-lib/pillar"</span>)</pre></div>
+<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"r-lib/pillar"</span>)
+</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="http://tibble.tidyverse.org">tibble</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pillar</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/r-lib/pillar">pillar</a></span>)
 
-<span class="no">x</span> <span class="kw">&lt;-</span> <span class="fl">123456789</span> * (<span class="fl">10</span> ^ <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(-<span class="fl">3</span>, -<span class="fl">5</span>, <span class="fl">NA</span>, -<span class="fl">8</span>, -<span class="fl">10</span>))
-<span class="fu"><a href="reference/pillar.html">pillar</a></span>(<span class="no">x</span>)
+<span class="kw">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> (<span class="fl">10</span> <span class="op">^</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span>))
+<span class="fu"><a href="reference/pillar.html">pillar</a></span>(<span class="kw">x</span>)
 <span class="co">#&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 123457.    </span>
 <span class="co">#&gt;   1235.    </span>
 <span class="co">#&gt;     NA     </span>
 <span class="co">#&gt;      1.23  </span>
-<span class="co">#&gt;      0.0123</span></pre></div>
+<span class="co">#&gt;      0.0123</span>
+</pre></div>
 <p>If you render this in a console that supports colour, you’ll see something that looks like this:</p>
 <p><img src="reference/figures/colours.png" width="200px"></p>
 </div>
@@ -159,11 +163,11 @@
 <a href="#useful-helpers" class="anchor"></a>Useful helpers</h3>
 <ul>
 <li>
-<code><a href="reference/style_subtle.html">style_neg()</a></code> to format negative values</li>
+<code><a href="reference/style_num.html">style_neg()</a></code> to format negative values</li>
 <li>
-<code><a href="reference/style_subtle.html">style_num()</a></code> to format numbers</li>
+<code><a href="reference/style_num.html">style_num()</a></code> to format numbers</li>
 <li>
-<code><a href="reference/style_subtle.html">style_subtle()</a></code> to de-emphasize</li>
+<code><a href="reference/style_num.html">style_subtle()</a></code> to de-emphasize</li>
 </ul>
 </div>
 </div>
@@ -213,7 +217,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://travis-ci.org/r-lib/pillar"><img src="https://travis-ci.org/r-lib/pillar.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://github.com/r-lib/pillar/actions"><img src="https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/github/r-lib/pillar?branch=master"><img src="https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://cran.r-project.org/package=pillar"><img src="https://www.r-pkg.org/badges/version/pillar" alt="CRAN status"></a></li>
 </ul>

@@ -133,16 +133,16 @@ is TRUE." />
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a></p>
-<p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
+<p><code><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>type_sum()</a></code> gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>.</p>
-<p><code>obj_sum()</code> also includes the size of the object if <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>
+<p><code><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>obj_sum()</a></code> also includes the size of the object if <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>
 is <code>TRUE</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>type_sum</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>type_sum</a></span>(<span class='kw'>x</span>)
 
-<span class='fu'>obj_sum</span>(<span class='no'>x</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>obj_sum</a></span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,14 +158,14 @@ and variants have been implemented.</p></td>
 
     
 
-<p><code>type_sum()</code> is in the "questioning" stage, because <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>
+<p><code><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>type_sum()</a></code> is in the "questioning" stage, because <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>
 provides essentially the same functionality based on a robust framework.
 The generic will remain available for a while.
 Users and implementers are encouraged to consider <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>
 once it becomes stable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>obj_sum</span>(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; [1] "int [10]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] "int[,1] [10 × 1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())</div><div class='output co'>#&gt; [1] "date [1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span>())</div><div class='output co'>#&gt; [1] "dttm [1]"</div><div class='input'><span class='fu'>obj_sum</span>(<span class='no'>mean</span>)</div><div class='output co'>#&gt; [1] "fn"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>obj_sum</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>)</div><div class='output co'>#&gt; [1] "int [10]"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>obj_sum</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] "int[,1] [10 × 1]"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>obj_sum</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())</div><div class='output co'>#&gt; [1] "date [1]"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>obj_sum</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span>())</div><div class='output co'>#&gt; [1] "dttm [1]"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/type_sum.html'>obj_sum</a></span>(<span class='kw'>mean</span>)</div><div class='output co'>#&gt; [1] "fn"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

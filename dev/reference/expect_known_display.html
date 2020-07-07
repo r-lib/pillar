@@ -138,7 +138,7 @@ Note that this expectation sets options that affect the formatting of the
 pillar, see examples for usage.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expect_known_display</span>(<span class='no'>object</span>, <span class='no'>file</span>, <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>80L</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='kw'>object</span>, <span class='kw'>file</span>, <span class='kw'>...</span>, width = <span class='fl'>80L</span>, crayon = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,24 +167,24 @@ pillar, see examples for usage.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='st'>"pillar"</span>, <span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".txt"</span>)
+    <pre class="examples"><div class='input'><span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='st'>"pillar"</span>, fileext = <span class='st'>".txt"</span>)
 
 <span class='co'># The pillar is constructed after options have been set</span>
 <span class='co'># (need two runs because reference file doesn't exist during the first run)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
-  <span class='fu'>expect_known_display</span>(<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>file</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
-  <span class='kw'>expectation_failure</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) {}
+  <span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>), <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>),
+  expectation_failure = <span class='fu'>function</span>(<span class='kw'>e</span>) {}
 ))
-<span class='fu'>expect_known_display</span>(<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>file</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>), <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>)
 
 <span class='co'># Good: Use tidyeval to defer construction</span>
-<span class='no'>pillar_quo</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>quo</a></span>(<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>))
-<span class='fu'>expect_known_display</span>(!!<span class='no'>pillar_quo</span>, <span class='no'>file</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='kw'>pillar_quo</span> <span class='op'>&lt;-</span> <span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>quo</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>))
+<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>pillar_quo</span>, <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>)
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Bad: Options set in the active session may affect the display</span>
-<span class='no'>integer_pillar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>)
-<span class='fu'>expect_known_display</span>(<span class='no'>integer_pillar</span>, <span class='no'>file</span>, <span class='kw'>crayon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='kw'>integer_pillar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='kw'>integer_pillar</span>, <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

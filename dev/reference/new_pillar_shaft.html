@@ -150,7 +150,7 @@ formatted argument." />
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a></p>
-<p>The <code>new_pillar_shaft()</code> constructor creates objects of the <code>"pillar_shaft"</code>
+<p>The <code><a href='https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html'>new_pillar_shaft()</a></code> constructor creates objects of the <code>"pillar_shaft"</code>
 class.
 This is a virtual or abstract class, you must specify the <code>class</code>
 argument.
@@ -163,34 +163,34 @@ See <code><a href='https://tibble.tidyverse.org/articles/extending.html'>vignett
 <li><p>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code></p></li>
 </ul>
 
-<p>The function <code>new_pillar_shaft()</code> returns such an object, and also correctly formats <code>NA</code> values.
-In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <code>new_pillar_shaft()</code>.
+<p>The function <code><a href='https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html'>new_pillar_shaft()</a></code> returns such an object, and also correctly formats <code>NA</code> values.
+In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <code><a href='https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html'>new_pillar_shaft()</a></code>.
 See <code>pillar:::pillar_shaft.numeric</code> for a code that allows changing the display depending on the available width.</p>
-<p><code>new_pillar_shaft_simple()</code> provides an implementation of the <code>pillar_shaft</code>
+<p><code><a href='https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html'>new_pillar_shaft_simple()</a></code> provides an implementation of the <code>pillar_shaft</code>
 class suitable for output that has a fixed formatting, which will be
-truncated with a continuation character (ellipsis or <code>~</code>) if it doesn't fit
+truncated with a continuation character (ellipsis or <code><a href='https://rdrr.io/r/base/tilde.html'>~</a></code>) if it doesn't fit
 the available width.
 By default, the required width is computed from the natural width of the
 <code>formatted</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_pillar_shaft</span>(
-  <span class='no'>x</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='no'>width</span>,
-  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>subclass</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html'>new_pillar_shaft</a></span>(
+  <span class='kw'>x</span>,
+  <span class='kw'>...</span>,
+  width = <span class='kw'>NULL</span>,
+  min_width = <span class='kw'>width</span>,
+  class = <span class='kw'>NULL</span>,
+  subclass = <span class='kw'>NULL</span>
 )
 
-<span class='fu'>new_pillar_shaft_simple</span>(
-  <span class='no'>formatted</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>align</span> <span class='kw'>=</span> <span class='st'>"left"</span>,
-  <span class='kw'>min_width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>na</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>na_indent</span> <span class='kw'>=</span> <span class='fl'>0L</span>
+<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html'>new_pillar_shaft_simple</a></span>(
+  <span class='kw'>formatted</span>,
+  <span class='kw'>...</span>,
+  width = <span class='kw'>NULL</span>,
+  align = <span class='st'>"left"</span>,
+  min_width = <span class='kw'>NULL</span>,
+  na = <span class='kw'>NULL</span>,
+  na_indent = <span class='fl'>0L</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -231,7 +231,7 @@ By default, the required width is computed from the natural width of the
     <tr>
       <th>na</th>
       <td><p>String to use as <code>NA</code> value, defaults to <code>"NA"</code> styled with
-<code><a href='style_subtle.html'>style_na()</a></code> with fallback if color is not available.</p></td>
+<code><a href='https://rdrr.io/pkg/pillar/man/style_subtle.html'>style_na()</a></code> with fallback if color is not available.</p></td>
     </tr>
     <tr>
       <th>na_indent</th>

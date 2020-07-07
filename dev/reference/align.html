@@ -132,7 +132,7 @@ help implementers of formatters for custom data types." />
 help implementers of formatters for custom data types.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>align</span>(<span class='no'>x</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>align</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"left"</span>, <span class='st'>"right"</span>))</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/align.html'>align</a></span>(<span class='kw'>x</span>, width = <span class='kw'>NULL</span>, align = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"left"</span>, <span class='st'>"right"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,7 +144,7 @@ help implementers of formatters for custom data types.</p>
     <tr>
       <th>width</th>
       <td><p>The width that each string is padded to. If <code>NULL</code>, the maximum
-display width of the character vector is used (see <code><a href='get_extent.html'>get_max_extent()</a></code>).</p></td>
+display width of the character vector is used (see <code><a href='https://rdrr.io/pkg/pillar/man/get_extent.html'>get_max_extent()</a></code>).</p></td>
     </tr>
     <tr>
       <th>align</th>
@@ -155,7 +155,7 @@ appears on the <code>right</code>, and vice versa.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>align</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"abc"</span>, <span class='st'>"de"</span>), <span class='kw'>align</span> <span class='kw'>=</span> <span class='st'>"left"</span>)</div><div class='output co'>#&gt; [1] "abc" "de "</div><div class='input'><span class='fu'>align</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"abc"</span>, <span class='st'>"de"</span>), <span class='kw'>align</span> <span class='kw'>=</span> <span class='st'>"right"</span>)</div><div class='output co'>#&gt; [1] "abc" " de"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/align.html'>align</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"abc"</span>, <span class='st'>"de"</span>), align = <span class='st'>"left"</span>)</div><div class='output co'>#&gt; [1] "abc" "de "</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/align.html'>align</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"abc"</span>, <span class='st'>"de"</span>), align = <span class='st'>"right"</span>)</div><div class='output co'>#&gt; [1] "abc" " de"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
