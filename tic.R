@@ -1,9 +1,10 @@
+# installs dependencies, runs R CMD check, runs covr::codecov()
 do_package_checks()
 
-if (ci_has_env("DEV_VERSIONS")) {
+if (ci_has_env("TIC_DEV_VERSIONS")) {
   get_stage("install") %>%
     add_step(step_install_github(c("r-lib/rlang", "r-lib/cli", "r-lib/crayon", "brodieG/fansi", "patperry/r-utf8", "r-lib/vctrs")))
-} else if (ci_has_env("MIN_VERSIONS")) {
+} else if (ci_has_env("TIC_MIN_VERSIONS")) {
   # Make sure all other packages are installed when we downgrade
   get_stage("before_script") %>%
     add_code_step(
@@ -33,12 +34,9 @@ if (ci_has_env("DEV_VERSIONS")) {
     )
 }
 
-if (ci_has_env("BUILD_PKGDOWN") && ci_get_branch() == "master") {
-  # pkgdown documentation can be built optionally. Other example criteria:
-  # - `inherits(ci(), "TravisCI")`: Only for Travis CI
-  # - `ci()$is_tag()`: Only for tags, not for branches
-  # - `Sys.getenv("BUILD_PKGDOWN") != ""`: If the env var "BUILD_PKGDOWN" is set
-  # - `Sys.getenv("TRAVIS_EVENT_TYPE") == "cron"`: Only for Travis cron jobs
+if (ci_on_ghactions() && ci_has_env("BUILD_PKGDOWN")) {
+  # creates pkgdown site and pushes to gh-pages branch
+  # only for the runner with the "BUILD_PKGDOWN" env var set
   get_stage("install") %>%
     add_step(step_install_github("tidyverse/tidytemplate"))
 
