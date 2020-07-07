@@ -58,7 +58,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
-#' @param ... Unused, for extensibility.
+#' @param ... For extensibility.
 #' @export
 #' @examples
 #' pillar_shaft(1:3)

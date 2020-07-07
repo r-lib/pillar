@@ -53,7 +53,7 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   #' or only when `format()` is called.
   #' The latter allows for adaptive shortening of the output depending on the available width,
   #' see `pillar:::pillar_shaft.numeric` for an example.
-  capital <- pillar_capital(x, title, ...)
+  capital <- pillar_capital(x, title)
   shaft <- pillar_shaft(x, ...)
   new_pillar(capital, shaft, width)
 }
