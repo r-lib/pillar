@@ -22,6 +22,11 @@ jobs:
           git config -l
         shell: pwsh
 
+      - name: List env var
+        run: |
+          env
+        shell: bash
+
       - name: Deploy package
         run: |
           git add tests/testthat/out-native
