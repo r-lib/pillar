@@ -53,6 +53,9 @@ jobs:
 
       - name: Commit and push
         run: |
+          git status
+          git status tests/testthat/out-native
+          git status --porcelain tests/testthat/out-native
           if [[ $(git status --porcelain tests/testthat/out-native) == "" ]]
           then
             echo "No changes to commit"
