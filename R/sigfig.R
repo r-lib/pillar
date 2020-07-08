@@ -18,7 +18,7 @@
 # @examples
 # format_decimal(1.5:3.5)
 # format_decimal(1e9)
-format_decimal <- function(x, sigfig, ...) {
+format_decimal <- function(x, sigfig) {
   split_decimal(x, sigfig)
 }
 
@@ -29,6 +29,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
   abs_x <- abs(x)
 
   num <- is.finite(x)
+  dec <- num
 
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
@@ -39,7 +40,9 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
   if (scientific) {
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
-    mnt <- ifelse(num & abs_x != 0, abs_x / (10^exp), abs_x)
+    mnt <- abs_x
+    mnt_idx <- which(num & abs_x != 0)
+    mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
     round_x <- safe_signif(mnt, sigfig)
     rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
     exp_display <- exp
@@ -51,7 +54,6 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
 
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
-  dec <- is.finite(x)
   if (!scientific) {
     dec[diff_to_trunc(x) == 0] <- FALSE
   }
@@ -60,7 +62,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     sigfig = sigfig,
     num = num,
     neg = neg,
-    lhs = sprintf("%.0f", lhs),
+    lhs = format(lhs, scientific = FALSE, trim = TRUE),
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,

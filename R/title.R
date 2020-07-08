@@ -5,12 +5,14 @@ style_title <- style_bold
 #' Call [format()] on the result to render column titles.
 #'
 #' @param x A character vector of column titles.
-#' @param ... Unused.
+#' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples
 #' format(new_pillar_title(names(iris)))
 new_pillar_title <- function(x, ...) {
-  check_dots_empty(action = warn)
+  if (!missing(...)) {
+    check_dots_empty(action = warn)
+  }
 
   if (is.null(x)) {
     width <- 0L

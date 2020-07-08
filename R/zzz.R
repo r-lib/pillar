@@ -1,5 +1,6 @@
 #' @import rlang
 #' @import ellipsis
+#' @import lifecycle
 NULL
 
 .onAttach <- function(...) {
@@ -11,25 +12,14 @@ NULL
   # https://github.com/r-lib/vctrs/pull/314
   register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
   register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
+  register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
 
   assign_crayon_styles()
-
-  if (getRversion() < "3.3.0") {
-    strrep <<- strrep_compat
-  } else {
-    rm("strrep", inherits = TRUE)
-  }
-
-  if (utils::packageVersion("vctrs") <= "0.1.0") {
-    vec_is <<- compat_vec_is
-  }
-
-  compat_lengths()
 
   invisible()
 }
 
-register_s3_method <- function(pkg, generic, class, fun = NULL) {
+register_s3_method <- function(pkg, generic, class, fun = NULL, gen_pkg = pkg) {
   stopifnot(is.character(pkg), length(pkg) == 1)
   stopifnot(is.character(generic), length(generic) == 1)
   stopifnot(is.character(class), length(class) == 1)
@@ -38,9 +28,8 @@ register_s3_method <- function(pkg, generic, class, fun = NULL) {
   }
   stopifnot(is.function(fun))
 
-
   if (pkg %in% loadedNamespaces()) {
-    envir <- asNamespace(pkg)
+    envir <- asNamespace(gen_pkg)
     registerS3method(generic, class, fun, envir = envir)
   }
 
@@ -48,7 +37,8 @@ register_s3_method <- function(pkg, generic, class, fun = NULL) {
   setHook(
     packageEvent(pkg, "onLoad"),
     function(...) {
-      envir <- asNamespace(pkg)
+      message("Registering ", generic)
+      envir <- asNamespace(gen_pkg)
       registerS3method(generic, class, fun, envir = envir)
     }
   )

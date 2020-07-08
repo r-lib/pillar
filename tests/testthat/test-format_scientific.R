@@ -21,6 +21,10 @@ test_that("exponents correct in presence of NA", {
   expect_equal(unname(format(f, justify = "right")), c("NA      ", " 1.00e-5"))
 })
 
+test_that("corner cases", {
+  expect_equal(format_scientific_bw(numeric()), character())
+})
+
 test_that("output test", {
   expect_pillar_output(10^c(-9, -6, 3, 9), width = 10, filename = "scientific.txt")
   expect_pillar_output((10^c(3, 9, 15, 22)) * c(-1, 1), width = 10, filename = "scientific-short-neg.txt")

@@ -1,4 +1,3 @@
-#' @include shaft.R
 #' @description
 #' `new_pillar_shaft_simple()` provides an implementation of the `pillar_shaft`
 #' class suitable for output that has a fixed formatting, which will be

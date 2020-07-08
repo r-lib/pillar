@@ -6,11 +6,11 @@
 #' `pillar()` formats a vector using one row for a title (if given),
 #' one row for the type, and `length(x)` rows for the data.
 #'
-#' @param x A vector to format
+#' @param x A vector to format.
 #' @param title An optional title for the column. The title will be
 #'   used "as is", no quoting will be applied.
-#' @param width Default width, optional
-#' @param ... Other arguments passed to methods
+#' @param width Default width, optional.
+#' @param ... Passed on to [pillar_shaft()].
 #' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))

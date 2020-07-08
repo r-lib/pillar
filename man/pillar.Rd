@@ -7,14 +7,14 @@
 pillar(x, title = NULL, width = NULL, ...)
 }
 \arguments{
-\item{x}{A vector to format}
+\item{x}{A vector to format.}
 
 \item{title}{An optional title for the column. The title will be
 used "as is", no quoting will be applied.}
 
-\item{width}{Default width, optional}
+\item{width}{Default width, optional.}
 
-\item{...}{Other arguments passed to methods}
+\item{...}{Passed on to \code{\link[=pillar_shaft]{pillar_shaft()}}.}
 }
 \description{
 \Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
