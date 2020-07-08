@@ -1,4 +1,5 @@
 #' @import rlang
+#' @import ellipsis
 NULL
 
 .onAttach <- function(...) {
@@ -12,12 +13,6 @@ NULL
   register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
 
   assign_crayon_styles()
-
-  if (getRversion() < "3.3.0") {
-    strrep <<- strrep_compat
-  } else {
-    rm("strrep", inherits = TRUE)
-  }
 
   if (utils::packageVersion("vctrs") <= "0.1.0") {
     vec_is <<- compat_vec_is

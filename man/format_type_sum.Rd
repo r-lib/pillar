@@ -15,7 +15,7 @@ format_type_sum(x, width, ...)
 \item{width}{The desired total width. If the returned string still is
 wider, it will be trimmed. Can be \code{NULL}.}
 
-\item{...}{Unused, for extensibility.}
+\item{...}{For extensibility.}
 }
 \description{
 Called on values returned from \code{\link[=type_sum]{type_sum()}} for defining the description

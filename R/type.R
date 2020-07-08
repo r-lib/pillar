@@ -16,6 +16,8 @@ style_type <- function(x) {
 #' @examples
 #' format(new_pillar_type(iris$Species))
 new_pillar_type <- function(x, ...) {
+  check_dots_empty(action = "warn")
+
   type <- get_pillar_type(x)
 
   ret <- structure(
@@ -61,7 +63,7 @@ format_full_pillar_type <- function(x) {
 #' @param x A return value from `type_sum()`
 #' @param width The desired total width. If the returned string still is
 #'   wider, it will be trimmed. Can be `NULL`.
-#' @param ... Unused, for extensibility.
+#' @param ... For extensibility.
 #'
 #' @export
 #' @examples
@@ -79,7 +81,11 @@ format_full_pillar_type <- function(x) {
 #' }
 #' accel <- structure(9.81, class = "accel")
 #' pillar(accel)
-format_type_sum <- function(x, width, ...) UseMethod("format_type_sum")
+format_type_sum <- function(x, width, ...) {
+  check_dots_used(action = warn)
+
+  UseMethod("format_type_sum")
+}
 
 #' @export
 #' @rdname format_type_sum

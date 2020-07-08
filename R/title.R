@@ -10,6 +10,8 @@ style_title <- style_bold
 #' @examples
 #' format(new_pillar_title(names(iris)))
 new_pillar_title <- function(x, ...) {
+  check_dots_empty(action = warn)
+
   if (is.null(x)) {
     width <- 0L
   } else {

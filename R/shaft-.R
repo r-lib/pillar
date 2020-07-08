@@ -27,6 +27,7 @@
 #' @param min_width The minimum allowed column width, `width` if omitted.
 #' @param class The name of the subclass.
 #' @param subclass Deprecated, pass the `class` argument instead.
+#' @name new_pillar_shaft
 #' @export
 new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
@@ -58,7 +59,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
-#' @param ... Unused, for extensibility.
+#' @param ... For extensibility.
 #' @export
 #' @examples
 #' pillar_shaft(1:3)
@@ -66,6 +67,8 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' pillar_shaft(NA)
 #' pillar_shaft(c(1:3, NA))
 pillar_shaft <- function(x, ...) {
+  check_dots_used(action = warn)
+
   UseMethod("pillar_shaft")
 }
 

@@ -18,11 +18,11 @@ dim_desc <- function(x) {
 
 # https://github.com/r-lib/vctrs/pull/467
 dim2 <- function(x) {
-  dim(x) %||% length(x)
+  dim(x) %||% vctrs::vec_size(x)
 }
 
 size_sum <- function(x) {
-  if (!is_vector_s3(x)) return("")
+  if (!vctrs::vec_is(x)) return("")
 
   paste0(" [", dim_desc(x), "]")
 }

@@ -233,11 +233,13 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' due to width restrictions. This method returns a character vector that
 #' describes each of the omitted columns.
 #' @param x The result of [squeeze()] on a [colonnade] object
-#' @param ... Unused
+#' @param ... For extensibility.
 #' @export
 #' @examples
 #' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
 extra_cols <- function(x, ...) {
+  check_dots_used(action = warn)
+
   UseMethod("extra_cols")
 }
 

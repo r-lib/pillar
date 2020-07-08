@@ -35,10 +35,7 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
-  if (is.object(x)) return(vctrs::vec_ptype_abbr(x))
-  # r-lib/vctrs#323:
-  if (typeof(x) == "complex") return("cpl")
-  if (vec_is(x)) return(vctrs::vec_ptype_abbr(x))
+  if (is.object(x) || vec_is(x)) return(vctrs::vec_ptype_abbr(x))
 
   switch(typeof(x),
     builtin = ,
@@ -72,7 +69,7 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 }
 
 #' @description
-#' `obj_sum()` also includes the size of the object if `is_vector_s3()`
+#' `obj_sum()` also includes the size of the object if `vctrs::vec_is()`
 #' is `TRUE`.
 #'
 #' @keywords internal
@@ -105,21 +102,3 @@ obj_sum.POSIXlt <- function(x) {
 obj_sum.AsIs <- function(x) {
   paste0("I(", obj_sum(remove_as_is_class(x)), ")")
 }
-
-#' @export
-#' @rdname type_sum
-is_vector_s3 <- function(x) UseMethod("is_vector_s3")
-#' @export
-is_vector_s3.ordered <- function(x) TRUE
-#' @export
-is_vector_s3.factor <- function(x) TRUE
-#' @export
-is_vector_s3.Date <- function(x) TRUE
-#' @export
-is_vector_s3.POSIXct <- function(x) TRUE
-#' @export
-is_vector_s3.difftime <- function(x) TRUE
-#' @export
-is_vector_s3.data.frame <- function(x) TRUE
-#' @export
-is_vector_s3.default <- function(x) !is.object(x) && is_vector(x)
