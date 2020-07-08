@@ -27,6 +27,7 @@
 #' @param min_width The minimum allowed column width, `width` if omitted.
 #' @param class The name of the subclass.
 #' @param subclass Deprecated, pass the `class` argument instead.
+#' @name new_pillar_shaft
 #' @export
 new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
