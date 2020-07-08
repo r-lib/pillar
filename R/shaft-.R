@@ -31,7 +31,7 @@
 #' @export
 new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
-    signal_soft_deprecated("The `subclass` argument to `new_pillar_shaft()` is deprecated, please use the `class` argument.")
+    deprecate_soft("1.4.0", "new_pillar_shaft(subclass = )", "new_pillar_shaft(class = )")
     class <- subclass
   }
 
