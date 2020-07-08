@@ -1,5 +1,5 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
 # pillar
 
@@ -43,12 +43,12 @@ library(pillar)
 
 x <- 123456789 * (10 ^ c(-3, -5, NA, -8, -10))
 pillar(x)
-#>       <dbl>
-#> 123457.    
-#>   1235.    
-#>     NA     
+#>       [3m[90m<dbl>[39m[23m
+#> [4m1[24m[4m2[24m[4m3[24m457.    
+#>   [4m1[24m235.    
+#>     [31mNA[39m     
 #>      1.23  
-#>      0.0123
+#>      0.012[4m3[24m
 ```
 
 If you render this in a console that supports colour, you’ll see
