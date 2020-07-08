@@ -1,0 +1,67 @@
+on:
+  push:
+    branches: master
+    paths:
+      - tests/testthat/out
+
+name: windows-tests
+
+jobs:
+  tests:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: Rscript {0}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+
+      - name: Edit Git config
+        run: |
+          git log -n 1 --pretty=format:"git config user.name '%an'; git config user.email '%ae'" | sh
+        shell: bash
+
+      - name: Query dependencies
+        run: |
+          install.packages("remotes")
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+
+      - name: Cache R packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Install dependencies
+        run: |
+          install.packages("devtools")
+          remotes::install_deps(dependencies = TRUE)
+
+      - name: Purge existing output
+        run: |
+          rm -rf tests/testthat/out-native
+          mkdir -p tests/testthat/out-native
+        shell: bash
+
+      - name: Run tests, allow failures
+        run: |
+          devtools::test(reporter = "summary")
+
+      - name: Commit and push
+        run: |
+          git status
+          git status tests/testthat/out-native
+          git status --porcelain tests/testthat/out-native
+          if [[ $(git status --porcelain tests/testthat/out-native) == "" ]]
+          then
+            echo "No changes to commit"
+          else
+            git add tests/testthat/out-native
+            git commit -m "Add Windows output"
+            git push origin
+          fi
+        shell: bash
