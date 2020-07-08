@@ -35,7 +35,7 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
-  if (is.object(x) || vec_is(x)) return(vctrs::vec_ptype_abbr(x))
+  if (is.object(x) || vctrs::vec_is(x)) return(vctrs::vec_ptype_abbr(x))
 
   switch(typeof(x),
     builtin = ,
