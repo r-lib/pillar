@@ -4,5 +4,4 @@ test_that("integer output will use scientific if necessary", {
   expect_pillar_output(x, width = 7, filename = "integer-07.txt")
   expect_pillar_output(x, width = 8, filename = "integer-08.txt")
   expect_pillar_output(x, width = 9, filename = "integer-09.txt")
-  expect_pillar_output(x, width = 10, filename = "integer-10.txt")
 })
