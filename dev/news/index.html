@@ -85,7 +85,7 @@
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.9001</span>
         </div>
       </div>
     </div>
@@ -123,6 +123,20 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="pillar-1449001" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4.9001">
+<a href="#pillar-1449001" class="anchor"></a>pillar 1.4.4.9001<small> Unreleased </small>
+</h1>
+<ul>
+<li>New <code>pillar.min_chars</code> option allows controlling the minimum number of characters shown for a character column (<a href='https://github.com/r-lib/pillar/issues/178'>#178</a>, <a href='https://github.com/statsmaths'>@statsmaths</a>).</li>
+<li>Remove compatibility code for R &lt; 3.3.</li>
+<li>
+<code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft()</a></code>, <code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/extra_cols.html">extra_cols()</a></code> issue a warning if dots are unused.</li>
+<li>
+<code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</li>
+<li>New <code><a href="https://rdrr.io/pkg/pillar/man/align.html">align()</a></code> to support easy alignment of strings within a character vector (existing function exported by <a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/pillar/issues/185'>#185</a>).</li>
+</ul>
+</div>
     <div id="pillar-1449000" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.4.9000">
 <a href="#pillar-1449000" class="anchor"></a>pillar 1.4.4.9000<small> Unreleased </small>
