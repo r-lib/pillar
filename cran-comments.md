@@ -1,19 +1,22 @@
-pillar 1.4.4: Minor update, vctrs compatibility
+pillar 1.4.5
 
-## CRP
+## Cran Repository Policy
 
-- [x] Last edited 2020-03-24.
+- [x] Reviewed CRP last edited 2020-05-21.
 
 ## R CMD check results
 
-- [x] Checked locally on Ubuntu 18.04 install, R 3.6.3
-- [x] Checked on CI system
-- [x] Checked on win-builder (devel)
+- [x] Checked locally, R 4.0.1
+- [ ] Checked on CI system, R 4.0.2
+- [ ] Checked on win-builder, R devel
 
 OK
 
+- [ ] Explain R CMD check failures or remove this line.
+
 ## CRAN failures
 
-- [x] Checked.
+- [x] Checked on 2020-07-08, errors found: https://cran.r-project.org/web/checks/check_results_pillar.html
+- [ ] WARN: r-patched-solaris-x86
 
-The Solaris failures are likely triggered by "\uxxxx" literals in `tests/testthat/test-format_character.R`: https://bugs.r-project.org/bugzilla/show_bug.cgi?id=17783.
+Check results at: https://cran.r-project.org/web/checks/check_results_pillar.html
