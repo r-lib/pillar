@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
 ```
 
 
-
 # pillar
 
 <!-- badges: start -->

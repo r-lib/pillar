@@ -37,7 +37,6 @@ register_s3_method <- function(pkg, generic, class, fun = NULL, gen_pkg = pkg) {
   setHook(
     packageEvent(pkg, "onLoad"),
     function(...) {
-      message("Registering ", generic)
       envir <- asNamespace(gen_pkg)
       registerS3method(generic, class, fun, envir = envir)
     }
