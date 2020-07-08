@@ -1,3 +1,9 @@
+# pillar 1.4.4.9002
+
+- Use lifecycle package.
+- `bit64::integer64()` columns are now formatted the same way as numeric columns (#175).
+
+
 # pillar 1.4.4.9001
 
 - New `pillar.min_chars` option allows controlling the minimum number of characters shown for a character column (#178, @statsmaths).
