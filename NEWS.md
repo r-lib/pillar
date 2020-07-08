@@ -1,3 +1,12 @@
+# pillar 1.4.4.9001
+
+- New `pillar.min_chars` option allows controlling the minimum number of characters shown for a character column (#178, @statsmaths).
+- Remove compatibility code for R < 3.3.
+- `pillar_shaft()`, `format_type_sum()` and `extra_cols()` issue a warning if dots are unused.
+- `new_pillar_title()` and `new_pillar_type()` warn if `...` is not empty.
+- New `align()` to support easy alignment of strings within a character vector (existing function exported by @davidchall, #185).
+
+
 # pillar 1.4.4.9000
 
 - Same as previous version.
