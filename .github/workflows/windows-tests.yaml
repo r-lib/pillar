@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
 
-      - name: Edit config
+      - name: Edit Git config
         run: |
           git log -n 1 --pretty=format:"git config user.name '%an'; git config user.email '%ae'" | sh
         shell: bash
@@ -41,7 +41,7 @@ jobs:
           install.packages("devtools")
           remotes::install_deps(dependencies = TRUE)
 
-      - name: Purge existing
+      - name: Purge existing output
         run: |
           rm -rf tests/testthat/out-native
           mkdir -p tests/testthat/out-native
@@ -51,7 +51,7 @@ jobs:
         run: |
           devtools::test(reporter = "summary")
 
-      - name: Commit
+      - name: Commit and push
         run: |
           if [[ $(git status --porcelain tests/testthat/out-native) == "" ]]
           then
