@@ -14,12 +14,6 @@ NULL
 
   assign_crayon_styles()
 
-  if (utils::packageVersion("vctrs") <= "0.1.0") {
-    vec_is <<- compat_vec_is
-  }
-
-  compat_lengths()
-
   invisible()
 }
 
