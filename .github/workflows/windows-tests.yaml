@@ -17,6 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: List config
+        run: |
+          git config -l
+        shell: pwsh
+
       - name: Deploy package
         run: |
           git add tests/testthat/out-native
