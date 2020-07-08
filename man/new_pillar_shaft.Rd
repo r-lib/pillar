@@ -27,7 +27,7 @@ new_pillar_shaft_simple(
 \arguments{
 \item{x}{An object}
 
-\item{...}{Additional attributes}
+\item{...}{Additional attributes.}
 
 \item{width}{The maximum column width.}
 

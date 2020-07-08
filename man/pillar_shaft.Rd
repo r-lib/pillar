@@ -45,7 +45,7 @@ pillar_shaft(x, ...)
 \arguments{
 \item{x}{A vector to format}
 
-\item{...}{For extensibility.}
+\item{...}{Arguments passed to methods.}
 
 \item{width}{Width for printing and formatting.}
 

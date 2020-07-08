@@ -19,7 +19,7 @@ the row ID column with a star.}
 
 \item{width}{Default width of the entire output, optional.}
 
-\item{...}{Ignored}
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
 The vectors are formatted to fit horizontally into a user-supplied number of

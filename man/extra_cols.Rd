@@ -12,7 +12,7 @@ extra_cols(x, ...)
 \arguments{
 \item{x}{The result of \code{\link[=squeeze]{squeeze()}} on a \link{colonnade} object}
 
-\item{...}{For extensibility.}
+\item{...}{Arguments passed to methods.}
 
 \item{n}{The number of extra columns to return; the returned vector will
 always contain as many elements as there are extra columns, but elements

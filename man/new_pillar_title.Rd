@@ -9,7 +9,7 @@ new_pillar_title(x, ...)
 \arguments{
 \item{x}{A character vector of column titles.}
 
-\item{...}{Unused.}
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
 Call \code{\link[=format]{format()}} on the result to render column titles.

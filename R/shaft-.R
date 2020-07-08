@@ -22,7 +22,7 @@
 #' See `pillar:::pillar_shaft.numeric` for a code that allows changing the display depending on the available width.
 #'
 #' @param x An object
-#' @param ... Additional attributes
+#' @param ... Additional attributes.
 #' @param width The maximum column width.
 #' @param min_width The minimum allowed column width, `width` if omitted.
 #' @param class The name of the subclass.
@@ -59,7 +59,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
-#' @param ... For extensibility.
+#' @inheritParams ellipsis::dots_used
 #' @export
 #' @examples
 #' pillar_shaft(1:3)
@@ -67,7 +67,9 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' pillar_shaft(NA)
 #' pillar_shaft(c(1:3, NA))
 pillar_shaft <- function(x, ...) {
-  check_dots_used(action = warn)
+  if (!missing(...)) {
+    check_dots_used(action = warn)
+  }
 
   UseMethod("pillar_shaft")
 }
