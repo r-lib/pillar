@@ -2,7 +2,7 @@ on:
   push:
     branches: master
     paths:
-      - tests/testthat/out
+      - tests/testthat/out/*
 
 name: windows-tests
 
