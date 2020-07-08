@@ -52,6 +52,7 @@ jobs:
           then
             echo "No changes to commit"
           else
+            git add tests/testthat/out-native
             git push origin
           fi
         shell: bash
