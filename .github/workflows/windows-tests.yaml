@@ -22,4 +22,4 @@ jobs:
           git add tests/testthat/out-native
           git commit -m "Add Windows test results" || echo "No changes to commit"
           git push origin
-        shell: bash
+        shell: pwsh
