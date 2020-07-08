@@ -43,6 +43,7 @@ library(pillar)
 
 x <- 123456789 * (10 ^ c(-3, -5, NA, -8, -10))
 pillar(x)
+#> Registering vec_ptype_abbr
 #>       [3m[90m<dbl>[39m[23m
 #> [4m1[24m[4m2[24m[4m3[24m457.    
 #>   [4m1[24m235.    
