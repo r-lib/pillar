@@ -61,6 +61,7 @@ jobs:
             echo "No changes to commit"
           else
             git add tests/testthat/out-native
+            git commit -m "Add Windows output"
             git push origin
           fi
         shell: bash
