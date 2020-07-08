@@ -1,8 +1,8 @@
 on:
   push:
-    branches: master
-    paths:
-      - tests/testthat/out
+    #branches: master
+    #paths:
+    #  - tests/testthat/out
 
 name: windows-tests
 
