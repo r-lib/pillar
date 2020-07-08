@@ -1,5 +1,6 @@
 #' @import rlang
 #' @import ellipsis
+#' @import lifecycle
 NULL
 
 .onAttach <- function(...) {
