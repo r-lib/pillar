@@ -1,9 +1,9 @@
-<!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 ---
 output:
   github_document:
     html_preview: false
 ---
+<!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
