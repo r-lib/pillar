@@ -3,8 +3,7 @@ output:
   github_document:
     html_preview: false
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -12,8 +11,6 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "README-"
 )
-
-pkgload::load_all()
 ```
 
 # pillar
