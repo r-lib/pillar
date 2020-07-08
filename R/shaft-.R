@@ -156,6 +156,10 @@ pillar_shaft_number <- function(x, sigfig) {
   )
 }
 
+pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
+  pillar_shaft_number(x, sigfig)
+}
+
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.Date <- function(x, ...) {
