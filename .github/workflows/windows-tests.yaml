@@ -41,7 +41,6 @@ jobs:
           devtools::test(reporter = "summary")
 
       - name: Deploy package
-        run: pkgdown::deploy_to_branch(new_process = FALSE)
         run: |
           git add tests/testthat/out-native
           git commit -m "Add Windows test results" || echo "No changes to commit"
