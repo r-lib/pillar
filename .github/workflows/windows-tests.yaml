@@ -22,19 +22,13 @@ jobs:
           git log -n 1 --pretty=format:"git config user.name '%an'; git config user.email '%ae'" | sh
         shell: bash
 
-      - name: List config
-        run: |
-          git config -l
-        shell: pwsh
-
-      - name: List env var
-        run: |
-          env | sort
-        shell: bash
-
       - name: Deploy package
         run: |
           git add tests/testthat/out-native
-          git commit -m "Add Windows test results" || echo "No changes to commit"
-          git push origin
-        shell: pwsh
+          if [[ $(git status --porcelain tests/testthat/out-native) == "" ]]
+          then
+            echo "No changes to commit"
+          else
+            git push origin
+          fi
+        shell: bash
