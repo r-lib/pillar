@@ -52,7 +52,5 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
     has_color(forget = TRUE)
   })
 
-  # FIXME: Use expect_known_output() for testthat >= 2.0.0, and avoid
-  # setting the width in the options above
   testthat::expect_known_output(print(eval_tidy(object)), file, update = TRUE, width = width)
 }
