@@ -9,7 +9,7 @@ jobs:
   render:
     name: Render README
     runs-on: macOS-latest
-    default:
+    defaults:
       shell: Rscript {0}
     steps:
       - uses: actions/checkout@v2
