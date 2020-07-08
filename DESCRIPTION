@@ -57,7 +57,6 @@ Collate:
     'sigfig.R'
     'spark-bar.R'
     'spark-line.R'
-    'strrep.R'
     'styles.R'
     'testthat.R'
     'tick.R'

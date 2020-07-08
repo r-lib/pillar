@@ -14,12 +14,6 @@ NULL
 
   assign_crayon_styles()
 
-  if (getRversion() < "3.3.0") {
-    strrep <<- strrep_compat
-  } else {
-    rm("strrep", inherits = TRUE)
-  }
-
   if (utils::packageVersion("vctrs") <= "0.1.0") {
     vec_is <<- compat_vec_is
   }
