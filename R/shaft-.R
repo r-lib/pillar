@@ -124,6 +124,10 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
+  pillar_shaft_number(x, sigfig)
+}
+
+pillar_shaft_number <- function(x, sigfig) {
   if (is.null(sigfig)) {
     sigfig <- getOption("pillar.sigfig", 3)
     if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
@@ -133,8 +137,8 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     }
   }
 
-  dec <- format_decimal(x, ..., sigfig = sigfig)
-  sci <- format_scientific(x, ..., sigfig = sigfig)
+  dec <- format_decimal(x, sigfig = sigfig)
+  sci <- format_scientific(x, sigfig = sigfig)
 
   ret <- list(dec = dec, sci = sci)
 
@@ -150,6 +154,10 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     min_width = min(get_min_widths(ret)),
     class = "pillar_shaft_decimal"
   )
+}
+
+pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
+  pillar_shaft_number(x, sigfig)
 }
 
 #' @export

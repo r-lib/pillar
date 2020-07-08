@@ -92,7 +92,6 @@ test_that("values on LHS not rounded", {
 
 test_that("corner cases", {
   expect_equal(format_lhs(format_decimal_bw(numeric())), character())
-  expect_equal(format_lhs(format_decimal_bw(numeric(), scientific = TRUE)), character())
 })
 
 test_that("output test", {
