@@ -41,13 +41,17 @@ jobs:
           install.packages("devtools")
           remotes::install_deps(dependencies = TRUE)
 
+      - name: Purge existing
+        run: |
+          rm -rf tests/testthat/out-native
+        shell: bash
+
       - name: Run tests, allow failures
         run: |
           devtools::test(reporter = "summary")
 
       - name: Commit
         run: |
-          git add tests/testthat/out-native
           if [[ $(git status --porcelain tests/testthat/out-native) == "" ]]
           then
             echo "No changes to commit"
