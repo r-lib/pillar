@@ -114,13 +114,21 @@ pillar_shaft.logical <- function(x, ...) {
 
 #' @export
 #' @rdname pillar_shaft
-#' @param sigfig Minimum number of significant figures to display. Numbers
-#'   larger than 1 will potentially show more significant figures than this
-#'   but they will be greyed out.
-pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3)) {
+#' @param sigfig Minimum number of significant figures to display, default: 3.
+#'   Numbers larger than 1 will potentially show more significant figures than this.
+pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
   if (!is.null(attr(x, "class"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
+  }
+
+  if (is.null(sigfig)) {
+    sigfig <- getOption("pillar.sigfig", 3)
+    if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
+      inform("Option pillar.min_chars must be a nonnegative number greater or equal 1. Resetting to 1.")
+      sigfig <- 1L
+      options(pillar.sigfig = sigfig)
+    }
   }
 
   dec <- format_decimal(x, ..., sigfig = sigfig)
@@ -173,7 +181,7 @@ pillar_shaft.POSIXt <- function(x, ...) {
 #' @rdname pillar_shaft
 #' @param min_width Minimum number of characters to display,
 #'   unless the string fits a shorter width.
-pillar_shaft.character <- function(x, ..., min_width = 3L) {
+pillar_shaft.character <- function(x, ..., min_width = NULL) {
   x <- utf8::utf8_encode(x)
   out <- x
 
@@ -188,12 +196,14 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
   }
 
   # determine width based on width of characters in the vector
-  character_chars <- getOption("pillar.min_chars", 0L)
-  if (!is.numeric(character_chars) || length(character_chars) != 1 || character_chars < 0) {
-    inform("Option pillar.min_chars must be a nonnegative number. Resetting to zero.")
-    options(pillar.min_chars = 0L)
+  if (is.null(min_width)) {
+    min_width <- getOption("pillar.min_chars", 3L)
+    if (!is.numeric(min_width) || length(min_width) != 1 || min_width < 3L) {
+      inform("Option pillar.min_chars must be a nonnegative number greater or equal 3. Resetting to 3.")
+      min_width <- 3L
+      options(pillar.min_chars = min_width)
+    }
   }
-  min_width <- max(min_width, min(character_chars, get_max_extent(x)))
 
   pillar_shaft(new_vertical(out), ..., min_width = min_width, na_indent = na_indent)
 }
@@ -201,8 +211,10 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
 #' @export
 #' @inheritParams new_pillar_shaft_simple
 #' @rdname pillar_shaft
-pillar_shaft.pillar_vertical <- function(x, ..., min_width = 3L, na_indent = 0L) {
+pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0L) {
+  min_width <- max(min_width, 3L)
   width <- get_max_extent(x)
+
   new_pillar_shaft_simple(
     x, width = width, align = "left", min_width = min(width, min_width),
     na = pillar_na(use_brackets_if_no_color = TRUE),

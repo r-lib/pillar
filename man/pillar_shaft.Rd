@@ -24,15 +24,15 @@ pillar_shaft(x, ...)
 
 \method{pillar_shaft}{logical}(x, ...)
 
-\method{pillar_shaft}{numeric}(x, ..., sigfig = getOption("pillar.sigfig", 3))
+\method{pillar_shaft}{numeric}(x, ..., sigfig = NULL)
 
 \method{pillar_shaft}{Date}(x, ...)
 
 \method{pillar_shaft}{POSIXt}(x, ...)
 
-\method{pillar_shaft}{character}(x, ..., min_width = 3L)
+\method{pillar_shaft}{character}(x, ..., min_width = NULL)
 
-\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = 3L, na_indent = 0L)
+\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = NULL, na_indent = 0L)
 
 \method{pillar_shaft}{list}(x, ...)
 
@@ -49,9 +49,8 @@ pillar_shaft(x, ...)
 
 \item{width}{Width for printing and formatting.}
 
-\item{sigfig}{Minimum number of significant figures to display. Numbers
-larger than 1 will potentially show more significant figures than this
-but they will be greyed out.}
+\item{sigfig}{Minimum number of significant figures to display, default: 3.
+Numbers larger than 1 will potentially show more significant figures than this.}
 
 \item{min_width}{Minimum number of characters to display,
 unless the string fits a shorter width.}
