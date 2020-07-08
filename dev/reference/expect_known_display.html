@@ -174,13 +174,10 @@ pillar, see examples for usage.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>), <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>),
   expectation_failure = <span class='fu'>function</span>(<span class='kw'>e</span>) {}
-))
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>), <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>)
-
+))</div><div class='output co'>#&gt; <span class='error'>Error in vec_is(x): could not find function "vec_is"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>), <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in vec_is(x): could not find function "vec_is"</span></div><div class='input'>
 <span class='co'># Good: Use tidyeval to defer construction</span>
 <span class='kw'>pillar_quo</span> <span class='op'>&lt;-</span> <span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>quo</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>))
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>pillar_quo</span>, <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>)
-
+<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/expect_known_display.html'>expect_known_display</a></span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>pillar_quo</span>, <span class='kw'>file</span>, crayon = <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in vec_is(x): could not find function "vec_is"</span></div><div class='input'>
 <span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Bad: Options set in the active session may affect the display</span>
 <span class='kw'>integer_pillar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)

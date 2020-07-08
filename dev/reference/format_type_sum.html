@@ -161,8 +161,7 @@ wider, it will be trimmed. Can be <code>NULL</code>.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/format_type_sum.html'>format_type_sum</a></span>(<span class='fl'>1</span>, <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; [1] "\033[3m\033[90m&lt;1&gt;\033[39m\033[23m"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; <span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt;     1</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/format_type_sum.html'>format_type_sum</a></span>(<span class='fl'>1</span>, <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; [1] "\033[3m\033[90m&lt;1&gt;\033[39m\033[23m"</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='error'>Error in vec_is(x): could not find function "vec_is"</span></div><div class='input'>
 <span class='kw'>type_sum.accel</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
   <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='st'>"kg m/s^2"</span>, width = <span class='fl'>8</span>, class = <span class='st'>"type_sum_accel"</span>)
 }
@@ -173,7 +172,7 @@ wider, it will be trimmed. Can be <code>NULL</code>.</p></td>
   <span class='fu'><a href='https://rdrr.io/pkg/pillar/man/style_subtle.html'>style_subtle</a></span>(<span class='kw'>x</span>)
 }
 <span class='kw'>accel</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fl'>9.81</span>, class = <span class='st'>"accel"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='kw'>accel</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;accel&gt;</span><span>
+<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span>(<span class='kw'>accel</span>)</div><div class='output co'>#&gt; <span style='color: #555555;font-style: italic;'>&lt;accel&gt;</span><span>
 #&gt; 9.81   </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
