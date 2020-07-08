@@ -9,8 +9,9 @@ name: windows-tests
 jobs:
   tests:
     runs-on: windows-latest
-    default:
-      shell: Rscript {0}
+    defaults:
+      run:
+        shell: Rscript {0}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
