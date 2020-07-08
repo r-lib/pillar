@@ -62,7 +62,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     sigfig = sigfig,
     num = num,
     neg = neg,
-    lhs = sprintf("%.0f", lhs),
+    lhs = format(lhs, scientific = FALSE, trim = TRUE),
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,
