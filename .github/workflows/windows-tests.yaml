@@ -17,6 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Edit config
+        run: |
+          git log -n 1 --pretty=format:"git config user.name '%an'; git config user.email '%ae'" | sh
+        shell: bash
+
       - name: List config
         run: |
           git config -l
