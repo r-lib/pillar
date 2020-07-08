@@ -24,7 +24,7 @@ jobs:
 
       - name: List env var
         run: |
-          env
+          env | sort
         shell: bash
 
       - name: Deploy package
