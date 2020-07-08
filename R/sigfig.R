@@ -29,6 +29,7 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
   abs_x <- abs(x)
 
   num <- is.finite(x)
+  dec <- num
 
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
@@ -53,7 +54,6 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
 
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
-  dec <- is.finite(x)
   if (!scientific) {
     dec[diff_to_trunc(x) == 0] <- FALSE
   }
