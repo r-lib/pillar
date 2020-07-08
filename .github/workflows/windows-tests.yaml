@@ -37,7 +37,7 @@ jobs:
           install.packages("devtools")
           remotes::install_deps(dependencies = TRUE)
 
-      - name: Run tests
+      - name: Run tests, allow failures
         run: |
           devtools::test(reporter = "summary")
 
