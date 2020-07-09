@@ -58,7 +58,7 @@ unless the string fits a shorter width.}
 \item{na_indent}{Indentation of \code{NA} values.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a>}}{\strong{Stable}}
 
 Internal class for formatting the data for a column.
 \code{pillar_shaft()} is a coercion method that must be implemented

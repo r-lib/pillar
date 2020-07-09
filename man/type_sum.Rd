@@ -14,7 +14,7 @@ obj_sum(x)
 and variants have been implemented.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{pillar:::lifecycle("questioning")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a>}}{\strong{Questioning}}
 
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.

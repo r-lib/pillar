@@ -5,7 +5,7 @@
 \alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
-\Sexpr[results=rd, stage=render]{pillar:::lifecycle("maturing")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a>}}{\strong{Maturing}}
 Provides \link{pillar} and \link{colonnade} generics designed for formatting columns
 of data using the full range of colours provided by modern terminals.
 }
