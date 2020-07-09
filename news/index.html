@@ -127,41 +127,31 @@
 <h1 class="page-header" data-toc-text="1.4.5">
 <a href="#pillar-145" class="anchor"></a>pillar 1.4.5<small> Unreleased </small>
 </h1>
+<div id="features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#features" class="anchor"></a>Features</h2>
 <ul>
-<li>Internal changes only.</li>
+<li><p>New <code>pillar.min_chars</code> option allows controlling the minimum number of characters shown for a character column (<a href='https://github.com/r-lib/pillar/issues/178'>#178</a>, <a href='https://github.com/statsmaths'>@statsmaths</a>).</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html">bit64::integer64()</a></code> columns are now formatted the same way as numeric columns (<a href='https://github.com/r-lib/pillar/issues/175'>#175</a>).</p></li>
+<li><p>New <code><a href="https://rdrr.io/pkg/pillar/man/align.html">align()</a></code> to support easy alignment of strings within a character vector (existing function exported by <a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/pillar/issues/185'>#185</a>).</p></li>
 </ul>
 </div>
-    <div id="pillar-1449002" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.4.9002">
-<a href="#pillar-1449002" class="anchor"></a>pillar 1.4.4.9002<small> Unreleased </small>
-</h1>
+<div id="technical" class="section level2">
+<h2 class="hasAnchor">
+<a href="#technical" class="anchor"></a>Technical</h2>
 <ul>
-<li>Use lifecycle package.</li>
-<li>
-<code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html">bit64::integer64()</a></code> columns are now formatted the same way as numeric columns (<a href='https://github.com/r-lib/pillar/issues/175'>#175</a>).</li>
+<li><p><code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft()</a></code>, <code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/extra_cols.html">extra_cols()</a></code> issue a warning if dots are unused.</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</p></li>
 </ul>
 </div>
-    <div id="pillar-1449001" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.4.9001">
-<a href="#pillar-1449001" class="anchor"></a>pillar 1.4.4.9001<small> Unreleased </small>
-</h1>
+<div id="internal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#internal" class="anchor"></a>Internal</h2>
 <ul>
-<li>New <code>pillar.min_chars</code> option allows controlling the minimum number of characters shown for a character column (<a href='https://github.com/r-lib/pillar/issues/178'>#178</a>, <a href='https://github.com/statsmaths'>@statsmaths</a>).</li>
-<li>Remove compatibility code for R &lt; 3.3.</li>
-<li>
-<code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft()</a></code>, <code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/extra_cols.html">extra_cols()</a></code> issue a warning if dots are unused.</li>
-<li>
-<code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</li>
-<li>New <code><a href="https://rdrr.io/pkg/pillar/man/align.html">align()</a></code> to support easy alignment of strings within a character vector (existing function exported by <a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/pillar/issues/185'>#185</a>).</li>
+<li><p>Use lifecycle package.</p></li>
+<li><p>Remove compatibility code for R &lt; 3.3.</p></li>
 </ul>
 </div>
-    <div id="pillar-1449000" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.4.9000">
-<a href="#pillar-1449000" class="anchor"></a>pillar 1.4.4.9000<small> Unreleased </small>
-</h1>
-<ul>
-<li>Same as previous version.</li>
-</ul>
 </div>
     <div id="pillar-144" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.4">
@@ -236,9 +226,9 @@
 <li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
 </ul>
 </div>
-<div id="internal" class="section level2">
+<div id="internal-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal" class="anchor"></a>Internal</h2>
+<a href="#internal-1" class="anchor"></a>Internal</h2>
 <ul>
 <li>All internal S3 classes have the <code>pillar_</code> prefix (<a href='https://github.com/r-lib/pillar/issues/156'>#156</a>).</li>
 <li>Only check native output on Windows, due to subtle differences when running on Linux in a latin1 locale.</li>
@@ -304,9 +294,9 @@
 <li><p>Slightly faster printing of colonnades by reusing an intermediate result.</p></li>
 </ul>
 </div>
-<div id="internal-1" class="section level2">
+<div id="internal-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal-1" class="anchor"></a>Internal</h2>
+<a href="#internal-2" class="anchor"></a>Internal</h2>
 <ul>
 <li><p><code><a href="https://rdrr.io/pkg/pillar/man/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
