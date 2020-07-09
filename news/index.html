@@ -36,6 +36,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 
 <meta property="og:title" content="Changelog" />
@@ -81,7 +85,7 @@
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
         </div>
       </div>
     </div>
@@ -119,22 +123,62 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="pillar-1-4-4" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.4">
-<a href="#pillar-1-4-4" class="anchor"></a>pillar 1.4.4<small> 2020-05-05 </small>
+    <div id="pillar-145" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.5">
+<a href="#pillar-145" class="anchor"></a>pillar 1.4.5<small> Unreleased </small>
 </h1>
 <ul>
-<li><p><code><a href="../reference/type_sum.html">obj_sum()</a></code> uses <code><a href="https://vctrs.r-lib.org/reference/vec_size.html">vctrs::vec_size()</a></code> internally.</p></li>
+<li>Internal changes only.</li>
+</ul>
+</div>
+    <div id="pillar-1449002" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4.9002">
+<a href="#pillar-1449002" class="anchor"></a>pillar 1.4.4.9002<small> Unreleased </small>
+</h1>
+<ul>
+<li>Use lifecycle package.</li>
+<li>
+<code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html">bit64::integer64()</a></code> columns are now formatted the same way as numeric columns (<a href='https://github.com/r-lib/pillar/issues/175'>#175</a>).</li>
+</ul>
+</div>
+    <div id="pillar-1449001" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4.9001">
+<a href="#pillar-1449001" class="anchor"></a>pillar 1.4.4.9001<small> Unreleased </small>
+</h1>
+<ul>
+<li>New <code>pillar.min_chars</code> option allows controlling the minimum number of characters shown for a character column (<a href='https://github.com/r-lib/pillar/issues/178'>#178</a>, <a href='https://github.com/statsmaths'>@statsmaths</a>).</li>
+<li>Remove compatibility code for R &lt; 3.3.</li>
+<li>
+<code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft()</a></code>, <code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/extra_cols.html">extra_cols()</a></code> issue a warning if dots are unused.</li>
+<li>
+<code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</li>
+<li>New <code><a href="https://rdrr.io/pkg/pillar/man/align.html">align()</a></code> to support easy alignment of strings within a character vector (existing function exported by <a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/pillar/issues/185'>#185</a>).</li>
+</ul>
+</div>
+    <div id="pillar-1449000" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4.9000">
+<a href="#pillar-1449000" class="anchor"></a>pillar 1.4.4.9000<small> Unreleased </small>
+</h1>
+<ul>
+<li>Same as previous version.</li>
+</ul>
+</div>
+    <div id="pillar-144" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4">
+<a href="#pillar-144" class="anchor"></a>pillar 1.4.4<small> 2020-05-05 </small>
+</h1>
+<ul>
+<li><p><code><a href="https://rdrr.io/pkg/pillar/man/type_sum.html">obj_sum()</a></code> uses <code><a href="https://vctrs.r-lib.org/reference/vec_size.html">vctrs::vec_size()</a></code> internally.</p></li>
 <li><p><code>is_vector_s3.default()</code> is soft-deprecated and no longer used. Please ensure that <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html">vctrs::vec_is()</a></code> is <code>TRUE</code> for your class.</p></li>
 <li><p>Rely on vctrs for type abbreviations.</p></li>
 </ul>
 </div>
-    <div id="pillar-1-4-3" class="section level1">
+    <div id="pillar-143" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.3">
-<a href="#pillar-1-4-3" class="anchor"></a>pillar 1.4.3<small> 2019-12-20 </small>
+<a href="#pillar-143" class="anchor"></a>pillar 1.4.3<small> 2019-12-20 </small>
 </h1>
 <ul>
-<li><p><code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple()</a></code> gains <code>na</code> argument to control appearance of <code>NA</code> values.</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html">new_pillar_shaft_simple()</a></code> gains <code>na</code> argument to control appearance of <code>NA</code> values.</p></li>
 <li><p>String columns are quoted if at least one value needs quotes (<a href='https://github.com/r-lib/pillar/issues/171'>#171</a>).</p></li>
 <li><p>Apply subtle style to <code>list_of</code> columns (<a href='https://github.com/r-lib/pillar/issues/172'>#172</a>).</p></li>
 <li><p>Fix formatting if mantissa is very close to 1 (<a href='https://github.com/r-lib/pillar/issues/174'>#174</a>).</p></li>
@@ -142,18 +186,18 @@
 <li><p>Remove compatibility with testthat &lt; 2.0.0.</p></li>
 </ul>
 </div>
-    <div id="pillar-1-4-2" class="section level1">
+    <div id="pillar-142" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.2">
-<a href="#pillar-1-4-2" class="anchor"></a>pillar 1.4.2<small> 2019-06-29 </small>
+<a href="#pillar-142" class="anchor"></a>pillar 1.4.2<small> 2019-06-29 </small>
 </h1>
 <ul>
 <li><p>List columns are shown with their perceived dimensions, which may be different from those stored in the <code>"dim"</code> attribute. Regression introduced in 1.4.0 (<a href='https://github.com/r-lib/pillar/issues/167'>#167</a>).</p></li>
 <li><p>Add ellipsis to <code>vec_ptype_abbr()</code> method.</p></li>
 </ul>
 </div>
-    <div id="pillar-1-4-1" class="section level1">
+    <div id="pillar-141" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.1">
-<a href="#pillar-1-4-1" class="anchor"></a>pillar 1.4.1<small> 2019-05-28 </small>
+<a href="#pillar-141" class="anchor"></a>pillar 1.4.1<small> 2019-05-28 </small>
 </h1>
 <ul>
 <li>More careful specification of minimum package versions for the dependencies (<a href='https://github.com/r-lib/pillar/issues/165'>#165</a>).</li>
@@ -162,17 +206,17 @@
 <li>Implement methods for vctrs objects.</li>
 </ul>
 </div>
-    <div id="pillar-1-4-0" class="section level1">
+    <div id="pillar-140" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.0">
-<a href="#pillar-1-4-0" class="anchor"></a>pillar 1.4.0<small> 2019-05-11 </small>
+<a href="#pillar-140" class="anchor"></a>pillar 1.4.0<small> 2019-05-11 </small>
 </h1>
 <div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>
-<code><a href="../reference/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
-<li>The <code>class</code> argument to <code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft()</a></code> deprecates the existing <code>subclass</code> argument. Passing a <code>subclass</code> argument leads to a warning once per session (<a href='https://github.com/r-lib/pillar/issues/157'>#157</a>).</li>
+<code><a href="https://rdrr.io/pkg/pillar/man/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
+<li>The <code>class</code> argument to <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html">new_pillar_shaft()</a></code> deprecates the existing <code>subclass</code> argument. Passing a <code>subclass</code> argument leads to a warning once per session (<a href='https://github.com/r-lib/pillar/issues/157'>#157</a>).</li>
 </ul>
 </div>
 <div id="output" class="section level2">
@@ -188,8 +232,8 @@
 <a href="#performance" class="anchor"></a>Performance</h2>
 <ul>
 <li>
-<code><a href="../reference/colonnade.html">squeeze()</a></code> is now faster (because the width computation in <code><a href="../reference/pillar_shaft.html">pillar_shaft.numeric()</a></code> now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (<a href='https://github.com/r-lib/pillar/issues/147'>#147</a>).</li>
-<li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="../reference/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
+<code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">squeeze()</a></code> is now faster (because the width computation in <code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft.numeric()</a></code> now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (<a href='https://github.com/r-lib/pillar/issues/147'>#147</a>).</li>
+<li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
 </ul>
 </div>
 <div id="internal" class="section level2">
@@ -201,9 +245,9 @@
 </ul>
 </div>
 </div>
-    <div id="pillar-1-3-1" class="section level1">
+    <div id="pillar-131" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.1">
-<a href="#pillar-1-3-1" class="anchor"></a>pillar 1.3.1<small> 2018-12-15 </small>
+<a href="#pillar-131" class="anchor"></a>pillar 1.3.1<small> 2018-12-15 </small>
 </h1>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
@@ -230,9 +274,9 @@
 </ul>
 </div>
 </div>
-    <div id="pillar-1-3-0" class="section level1">
+    <div id="pillar-130" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.0">
-<a href="#pillar-1-3-0" class="anchor"></a>pillar 1.3.0<small> 2018-07-14 </small>
+<a href="#pillar-130" class="anchor"></a>pillar 1.3.0<small> 2018-07-14 </small>
 </h1>
 <div id="visible-changes-1" class="section level2">
 <h2 class="hasAnchor">
@@ -248,7 +292,7 @@
 <a href="#interface-changes" class="anchor"></a>Interface changes</h2>
 <ul>
 <li>
-<code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> gains <code>width</code> argument (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
+<code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> gains <code>width</code> argument (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
 </ul>
 </div>
 <div id="performance-improvements" class="section level2">
@@ -264,40 +308,40 @@
 <h2 class="hasAnchor">
 <a href="#internal-1" class="anchor"></a>Internal</h2>
 <ul>
-<li><p><code><a href="../reference/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
-<li><p><code><a href="../reference/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pillar/man/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
 <li><p>Added fuzz tests for character colonnades of varying widths.</p></li>
 <li><p>Use <code><a href="https://rdrr.io/pkg/fansi/man/substr_ctl.html">fansi::substr_ctl()</a></code> in favor of <code><a href="https://rdrr.io/pkg/crayon/man/col_substr.html">crayon::col_substr()</a></code>.</p></li>
 </ul>
 </div>
 </div>
-    <div id="pillar-1-2-3" class="section level1">
+    <div id="pillar-123" class="section level1">
 <h1 class="page-header" data-toc-text="1.2.3">
-<a href="#pillar-1-2-3" class="anchor"></a>pillar 1.2.3<small> 2018-05-25 </small>
+<a href="#pillar-123" class="anchor"></a>pillar 1.2.3<small> 2018-05-25 </small>
 </h1>
 <ul>
 <li>Eliminate CRAN check warning about undeclared withr dependency.</li>
 <li>More defensive test to address CRAN check failures on Solaris.</li>
 <li>
-<code><a href="../reference/colonnade.html">colonnade()</a></code> now handles pillars named <code>"sep"</code> (<a href='https://github.com/r-lib/pillar/issues/115'>#115</a>).</li>
+<code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code> now handles pillars named <code>"sep"</code> (<a href='https://github.com/r-lib/pillar/issues/115'>#115</a>).</li>
 <li>
-<code><a href="../reference/pillar_shaft.html">pillar_shaft.character()</a></code> gains <code>min_width</code> argument.</li>
+<code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft.character()</a></code> gains <code>min_width</code> argument.</li>
 </ul>
 </div>
-    <div id="pillar-1-2-2" class="section level1">
+    <div id="pillar-122" class="section level1">
 <h1 class="page-header" data-toc-text="1.2.2">
-<a href="#pillar-1-2-2" class="anchor"></a>pillar 1.2.2<small> 2018-04-26 </small>
+<a href="#pillar-122" class="anchor"></a>pillar 1.2.2<small> 2018-04-26 </small>
 </h1>
 <ul>
 <li>Whole numbers are printed without a decimal dot again. Numbers that are the result of a whole number divided by a power of 10 (subject to a tolerance to account for floating-point imprecision) are shown without trailing decimal zeros, even if these zeros are significant according to the <code>pillar.sigfig</code> option (<a href='https://github.com/r-lib/pillar/issues/105'>#105</a>).</li>
-<li>New <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> to support consistent output in <code>glimpse()</code> (<a href='https://github.com/r-lib/pillar/issues/31'>#31</a>).</li>
-<li>New <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> generic that allows overriding the formatting of the type summary in the capital (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
+<li>New <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_type.html">new_pillar_type()</a></code> to support consistent output in <code>glimpse()</code> (<a href='https://github.com/r-lib/pillar/issues/31'>#31</a>).</li>
+<li>New <code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> generic that allows overriding the formatting of the type summary in the capital (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
 <li>The <code>digits.secs</code> option is respected when computing the width for date-time values (<a href='https://github.com/r-lib/pillar/issues/102'>#102</a>).</li>
 </ul>
 </div>
-    <div id="pillar-1-2-1" class="section level1">
+    <div id="pillar-121" class="section level1">
 <h1 class="page-header" data-toc-text="1.2.1">
-<a href="#pillar-1-2-1" class="anchor"></a>pillar 1.2.1<small> 2018-02-27 </small>
+<a href="#pillar-121" class="anchor"></a>pillar 1.2.1<small> 2018-02-27 </small>
 </h1>
 <div id="display" class="section level2">
 <h2 class="hasAnchor">
@@ -316,7 +360,7 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
+<li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> if the <code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
 <li>Very small numbers (like <code>1e-310</code>) are now printed corectly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
 <li>Fix representation of right-hand side for <code>getOption("pillar.sigfig") &gt;= 6</code> (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/380'>#380</a>).</li>
 <li>Fix computation of significant figures for numbers with absolute value &gt;= 1 (<a href='https://github.com/r-lib/pillar/issues/98'>#98</a>).</li>
@@ -326,13 +370,13 @@
 <h2 class="hasAnchor">
 <a href="#new-functions" class="anchor"></a>New functions</h2>
 <ul>
-<li>New styling helper <code><a href="../reference/style_subtle.html">style_subtle_num()</a></code>, formatting depends on the <code>pillar.subtle_num</code> option.</li>
+<li>New styling helper <code><a href="https://rdrr.io/pkg/pillar/man/style_subtle.html">style_subtle_num()</a></code>, formatting depends on the <code>pillar.subtle_num</code> option.</li>
 </ul>
 </div>
 </div>
-    <div id="pillar-1-1-0" class="section level1">
+    <div id="pillar-110" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.0">
-<a href="#pillar-1-1-0" class="anchor"></a>pillar 1.1.0<small> 2018-01-14 </small>
+<a href="#pillar-110" class="anchor"></a>pillar 1.1.0<small> 2018-01-14 </small>
 </h1>
 <ul>
 <li>
@@ -356,57 +400,57 @@
 <li>Very wide tibbles now print faster (<a href='https://github.com/r-lib/pillar/issues/85'>#85</a>).</li>
 </ul>
 </div>
-    <div id="pillar-1-0-1" class="section level1">
+    <div id="pillar-101" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.1">
-<a href="#pillar-1-0-1" class="anchor"></a>pillar 1.0.1<small> 2017-11-27 </small>
+<a href="#pillar-101" class="anchor"></a>pillar 1.0.1<small> 2017-11-27 </small>
 </h1>
 <ul>
 <li>Work around failing CRAN tests on Windows.</li>
 </ul>
 </div>
-    <div id="pillar-1-0-0" class="section level1">
+    <div id="pillar-100" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.0">
-<a href="#pillar-1-0-0" class="anchor"></a>pillar 1.0.0<small> 2017-11-20 </small>
+<a href="#pillar-100" class="anchor"></a>pillar 1.0.0<small> 2017-11-20 </small>
 </h1>
 <p>Initial release.</p>
 <div id="user-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#user-functions" class="anchor"></a>User functions</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">pillar</span>(x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">colonnade</span>(x, <span class="dt">has_row_id =</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">squeeze</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">pillar</span>(x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">colonnade</span>(x, <span class="dt">has_row_id =</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">squeeze</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</span></code></pre></div>
 </div>
 <div id="functions-for-implementers-of-data-types" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functions-for-implementers-of-data-types" class="anchor"></a>Functions for implementers of data types</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">new_pillar_shaft_simple</span>(formatted, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="st">"left"</span>, <span class="dt">min_width =</span> <span class="ot">NULL</span>, <span class="dt">na_indent =</span> 0L)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">new_pillar_shaft</span>(x, ..., width, <span class="dt">min_width =</span> width, subclass)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">new_ornament</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw">get_extent</span>(x)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">get_max_extent</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">new_pillar_shaft_simple</span>(formatted, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="st">"left"</span>, <span class="dt">min_width =</span> <span class="ot">NULL</span>, <span class="dt">na_indent =</span> 0L)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">new_pillar_shaft</span>(x, ..., width, <span class="dt">min_width =</span> width, subclass)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">new_ornament</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="ot">NULL</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">get_extent</span>(x)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">get_max_extent</span>(x)</span></code></pre></div>
 </div>
 <div id="utilities" class="section level2">
 <h2 class="hasAnchor">
 <a href="#utilities" class="anchor"></a>Utilities</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">dim_desc</span>(x)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">style_na</span>(x)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">style_neg</span>(x)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">style_num</span>(x, negative, <span class="dt">significant =</span> <span class="kw">rep_along</span>(x, <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">style_subtle</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">dim_desc</span>(x)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">style_na</span>(x)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">style_neg</span>(x)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">style_num</span>(x, negative, <span class="dt">significant =</span> <span class="kw">rep_along</span>(x, <span class="ot">TRUE</span>))</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">style_subtle</span>(x)</span></code></pre></div>
 </div>
 <div id="testing-helper" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing-helper" class="anchor"></a>Testing helper</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">expect_known_display</span>(object, file, ..., <span class="dt">width =</span> 80L, <span class="dt">crayon =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">expect_known_display</span>(object, file, ..., <span class="dt">width =</span> 80L, <span class="dt">crayon =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="own-s3-methods" class="section level2">
 <h2 class="hasAnchor">
 <a href="#own-s3-methods" class="anchor"></a>Own S3 methods</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">pillar_shaft</span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">type_sum</span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">is_vector_s3</span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">obj_sum</span>(x) <span class="co"># AsIs, POSIXlt, default, list</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">extra_cols</span>(x, ...) <span class="co"># squeezed_colonnade</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">pillar_shaft</span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">type_sum</span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">is_vector_s3</span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">obj_sum</span>(x) <span class="co"># AsIs, POSIXlt, default, list</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">extra_cols</span>(x, ...) <span class="co"># squeezed_colonnade</span></span></code></pre></div>
 </div>
 </div>
   </div>

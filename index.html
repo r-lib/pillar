@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="tidyverse-2.css" rel="stylesheet">
+<!--optional theme--><link href=".css" rel="stylesheet">
 <meta property="og:title" content="Coloured Formatting for Columns">
 <meta property="og:description" content="Provides pillar and colonnade generics designed
     for formatting columns of data using the full range of colours
@@ -44,7 +45,7 @@
         <a class="navbar-brand" href="index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
         </div>
       </div>
     </div>
@@ -85,7 +86,8 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># pillar is installed if you install the tidyverse package:</span>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># pillar is installed if you install the tidyverse package:</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"tidyverse"</span>)
 
 <span class="co"># Alternatively, install just pillar:</span>
@@ -93,22 +95,25 @@
 
 <span class="co"># Or the the development version from GitHub:</span>
 <span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"r-lib/pillar"</span>)</pre></div>
+<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"r-lib/pillar"</span>)
+</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="http://tibble.tidyverse.org">tibble</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pillar</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/r-lib/pillar">pillar</a></span>)
 
-<span class="no">x</span> <span class="kw">&lt;-</span> <span class="fl">123456789</span> * (<span class="fl">10</span> ^ <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(-<span class="fl">3</span>, -<span class="fl">5</span>, <span class="fl">NA</span>, -<span class="fl">8</span>, -<span class="fl">10</span>))
-<span class="fu"><a href="reference/pillar.html">pillar</a></span>(<span class="no">x</span>)
-<span class="co">#&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 123457.    </span>
-<span class="co">#&gt;   1235.    </span>
-<span class="co">#&gt;     NA     </span>
+<span class="kw">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> (<span class="fl">10</span> <span class="op">^</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span>))
+<span class="fu"><a href="reference/pillar.html">pillar</a></span>(<span class="kw">x</span>)
+<span class="co">#&gt;       [3m[90m&lt;dbl&gt;[39m[23m</span>
+<span class="co">#&gt; [4m1[24m[4m2[24m[4m3[24m457.    </span>
+<span class="co">#&gt;   [4m1[24m235.    </span>
+<span class="co">#&gt;     [31mNA[39m     </span>
 <span class="co">#&gt;      1.23  </span>
-<span class="co">#&gt;      0.0123</span></pre></div>
+<span class="co">#&gt;      0.012[4m3[24m</span>
+</pre></div>
 <p>If you render this in a console that supports colour, you’ll see something that looks like this:</p>
 <p><img src="reference/figures/colours.png" width="200px"></p>
 </div>
@@ -134,9 +139,9 @@
 <a href="https://github.com/tidyverse/hms/pull/43/files#diff-e549505eb95036528ca3b125f62915a6"><code>zzz.R</code></a> for the dynamic method registration</li>
 </ul>
 <p>Some more detail is given below.</p>
-<div id="implementing-pillar_shaft-your_class_name" class="section level3">
+<div id="implementing-pillar_shaftyour_class_name" class="section level3">
 <h3 class="hasAnchor">
-<a href="#implementing-pillar_shaft-your_class_name" class="anchor"></a>Implementing <code>pillar_shaft.your_class_name()</code>
+<a href="#implementing-pillar_shaftyour_class_name" class="anchor"></a>Implementing <code>pillar_shaft.your_class_name()</code>
 </h3>
 <p>This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:</p>
 <ul>
@@ -157,11 +162,11 @@
 <a href="#useful-helpers" class="anchor"></a>Useful helpers</h3>
 <ul>
 <li>
-<code><a href="reference/style_subtle.html">style_neg()</a></code> to format negative values</li>
+<code><a href="reference/style_num.html">style_neg()</a></code> to format negative values</li>
 <li>
-<code><a href="reference/style_subtle.html">style_num()</a></code> to format numbers</li>
+<code><a href="reference/style_num.html">style_num()</a></code> to format numbers</li>
 <li>
-<code><a href="reference/style_subtle.html">style_subtle()</a></code> to de-emphasize</li>
+<code><a href="reference/style_num.html">style_subtle()</a></code> to de-emphasize</li>
 </ul>
 </div>
 </div>
@@ -211,7 +216,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://travis-ci.org/r-lib/pillar"><img src="https://travis-ci.org/r-lib/pillar.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://github.com/r-lib/pillar/actions"><img src="https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/github/r-lib/pillar?branch=master"><img src="https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://cran.r-project.org/package=pillar"><img src="https://www.r-pkg.org/badges/version/pillar" alt="CRAN status"></a></li>
 </ul>
