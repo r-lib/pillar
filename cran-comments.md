@@ -7,16 +7,14 @@ pillar 1.4.5
 ## R CMD check results
 
 - [x] Checked locally, R 4.0.1
-- [ ] Checked on CI system, R 4.0.2
-- [ ] Checked on win-builder, R devel
+- [x] Checked on CI system, R 4.0.2
+- [x] Checked on win-builder, R devel
 
 OK
-
-- [ ] Explain R CMD check failures or remove this line.
 
 ## CRAN failures
 
 - [x] Checked on 2020-07-08, errors found: https://cran.r-project.org/web/checks/check_results_pillar.html
-- [ ] WARN: r-patched-solaris-x86
+- [x] WARN: r-patched-solaris-x86
 
-Check results at: https://cran.r-project.org/web/checks/check_results_pillar.html
+The Solaris failures are likely triggered by "\uxxxx" literals in `tests/testthat/test-format_character.R`: https://bugs.r-project.org/bugzilla/show_bug.cgi?id=17783.
