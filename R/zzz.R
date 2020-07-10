@@ -16,6 +16,12 @@ NULL
 
   assign_crayon_styles()
 
+  if (getRversion() < "3.3.0") {
+    strrep <<- strrep_compat
+  } else {
+    rm("strrep", inherits = TRUE)
+  }
+
   invisible()
 }
 
