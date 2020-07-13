@@ -1,7 +1,7 @@
 #' @aliases NULL pillar-package
 #'
 #' @description
-#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("maturing")}
+#' `r lifecycle::badge("maturing")`
 #' Provides [pillar] and [colonnade] generics designed for formatting columns
 #' of data using the full range of colours provided by modern terminals.
 
@@ -26,6 +26,10 @@
 #'     title, default: `15`.  Column titles may be truncated up to that width to
 #'     save horizontal space. Set to `Inf` to turn off truncation of column
 #'     titles.
+#' - `pillar.min_chars`: The minimum number of characters wide to
+#'     display character columns, default: `0`.  Character columns may be
+#'     truncated up to that width to save horizontal space. Set to `Inf` to
+#'     turn off truncation of character columns.
 #'
 #' @examples
 #' pillar(1:3)

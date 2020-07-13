@@ -14,18 +14,18 @@ obj_sum(x)
 and variants have been implemented.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{pillar:::lifecycle("questioning")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a>}}{\strong{Questioning}}
 
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
-For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}.
+For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}.
 
 \code{obj_sum()} also includes the size of the object if \code{vctrs::vec_is()}
 is \code{TRUE}.
 }
 \section{Lifecycle}{
 
-\code{type_sum()} is in the "questioning" stage, because \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}
+\code{type_sum()} is in the "questioning" stage, because \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}
 provides essentially the same functionality based on a robust framework.
 The generic will remain available for a while.
 Users and implementers are encouraged to consider \code{vctrs::vec_ptype_abbr()}

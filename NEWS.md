@@ -1,13 +1,43 @@
-# pillar 1.4.3.9001
+# pillar 1.4.6.9000
 
-- `obj_sum()` uses `vec_size()` internally.
-- `is_vector_s3.default()` is soft-deprecated and no longer used. Please ensure that `vec_is()` is `TRUE` for your class.
+- Internal changes only.
+
+
+# pillar 1.4.6
+
+- Restore compatibility with R 3.2.
+
+
+# pillar 1.4.5
+
+## Features
+
+- New `pillar.min_chars` option allows controlling the minimum number of characters shown for a character column (#178, @statsmaths).
+
+- `bit64::integer64()` columns are now formatted the same way as numeric columns (#175).
+
+- New `align()` to support easy alignment of strings within a character vector (existing function exported by @davidchall, #185).
+
+## Technical
+
+- `pillar_shaft()`, `format_type_sum()` and `extra_cols()` issue a warning if dots are unused.
+
+- `new_pillar_title()` and `new_pillar_type()` warn if `...` is not empty.
+
+## Internal
+
+- Use lifecycle package.
+
+- Remove compatibility code for R < 3.3.
+
+
+# pillar 1.4.4
+
+- `obj_sum()` uses `vctrs::vec_size()` internally.
+
+- `is_vector_s3.default()` is soft-deprecated and no longer used. Please ensure that `vctrs::vec_is()` is `TRUE` for your class.
+
 - Rely on vctrs for type abbreviations.
-
-
-# pillar 1.4.3.9000
-
-- Same as previous version.
 
 
 # pillar 1.4.3

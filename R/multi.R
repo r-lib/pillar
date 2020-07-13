@@ -14,7 +14,7 @@
 #' @param has_row_id Include a column indicating row IDs? Pass `"*"` to mark
 #'   the row ID column with a star.
 #' @param width Default width of the entire output, optional.
-#' @param ... Ignored
+#' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples
 #' colonnade(list(a = 1:3, b = letters[1:3]))
@@ -29,6 +29,10 @@
 #' # If width is larger than getOption("width"), multiple tiers are created:
 #' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
+  if (!missing(...)) {
+    check_dots_empty(action = warn)
+  }
+
   has_color(forget = TRUE)
 
   x <- flatten_colonnade(x)
@@ -233,11 +237,15 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' due to width restrictions. This method returns a character vector that
 #' describes each of the omitted columns.
 #' @param x The result of [squeeze()] on a [colonnade] object
-#' @param ... Unused
+#' @inheritParams ellipsis::dots_used
 #' @export
 #' @examples
 #' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
 extra_cols <- function(x, ...) {
+  if (!missing(...)) {
+    check_dots_used(action = warn)
+  }
+
   UseMethod("extra_cols")
 }
 

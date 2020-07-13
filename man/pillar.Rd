@@ -7,17 +7,17 @@
 pillar(x, title = NULL, width = NULL, ...)
 }
 \arguments{
-\item{x}{A vector to format}
+\item{x}{A vector to format.}
 
 \item{title}{An optional title for the column. The title will be
 used "as is", no quoting will be applied.}
 
-\item{width}{Default width, optional}
+\item{width}{Default width, optional.}
 
-\item{...}{Other arguments passed to methods}
+\item{...}{Passed on to \code{\link[=pillar_shaft]{pillar_shaft()}}.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a>}}{\strong{Stable}}
 
 \code{pillar()} formats a vector using one row for a title (if given),
 one row for the type, and \code{length(x)} rows for the data.

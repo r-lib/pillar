@@ -9,7 +9,7 @@ new_pillar_type(x, ...)
 \arguments{
 \item{x}{A vector for which the type is to be retrieved.}
 
-\item{...}{Unused.}
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
 Call \code{\link[=format]{format()}} on the result to render column types.

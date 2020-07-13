@@ -11,11 +11,15 @@ style_type <- function(x) {
 #' Call [format()] on the result to render column types.
 #'
 #' @param x A vector for which the type is to be retrieved.
-#' @param ... Unused.
+#' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples
 #' format(new_pillar_type(iris$Species))
 new_pillar_type <- function(x, ...) {
+  if (!missing(...)) {
+    check_dots_empty(action = warn)
+  }
+
   type <- get_pillar_type(x)
 
   ret <- structure(
@@ -61,7 +65,7 @@ format_full_pillar_type <- function(x) {
 #' @param x A return value from `type_sum()`
 #' @param width The desired total width. If the returned string still is
 #'   wider, it will be trimmed. Can be `NULL`.
-#' @param ... Unused, for extensibility.
+#' @inheritParams ellipsis::dots_used
 #'
 #' @export
 #' @examples
@@ -79,7 +83,13 @@ format_full_pillar_type <- function(x) {
 #' }
 #' accel <- structure(9.81, class = "accel")
 #' pillar(accel)
-format_type_sum <- function(x, width, ...) UseMethod("format_type_sum")
+format_type_sum <- function(x, width, ...) {
+  if (!missing(...)) {
+    check_dots_used(action = warn)
+  }
+
+  UseMethod("format_type_sum")
+}
 
 #' @export
 #' @rdname format_type_sum

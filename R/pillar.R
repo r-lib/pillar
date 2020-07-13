@@ -1,16 +1,16 @@
 #' Format a vector suitable for tabular display
 #'
 #' @description
-#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
+#' `r lifecycle::badge("stable")`
 #'
 #' `pillar()` formats a vector using one row for a title (if given),
 #' one row for the type, and `length(x)` rows for the data.
 #'
-#' @param x A vector to format
+#' @param x A vector to format.
 #' @param title An optional title for the column. The title will be
 #'   used "as is", no quoting will be applied.
-#' @param width Default width, optional
-#' @param ... Other arguments passed to methods
+#' @param width Default width, optional.
+#' @param ... Passed on to [pillar_shaft()].
 #' @export
 #' @examples
 #' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
@@ -53,7 +53,7 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   #' or only when `format()` is called.
   #' The latter allows for adaptive shortening of the output depending on the available width,
   #' see `pillar:::pillar_shaft.numeric` for an example.
-  capital <- pillar_capital(x, title, ...)
+  capital <- pillar_capital(x, title)
   shaft <- pillar_shaft(x, ...)
   new_pillar(capital, shaft, width)
 }

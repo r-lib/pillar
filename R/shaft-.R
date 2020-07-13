@@ -1,7 +1,7 @@
 #' Constructor for column data
 #'
 #' @description
-#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
+#' `r lifecycle::badge("stable")`
 #'
 #' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
 #' class.
@@ -22,15 +22,16 @@
 #' See `pillar:::pillar_shaft.numeric` for a code that allows changing the display depending on the available width.
 #'
 #' @param x An object
-#' @param ... Additional attributes
+#' @param ... Additional attributes.
 #' @param width The maximum column width.
 #' @param min_width The minimum allowed column width, `width` if omitted.
 #' @param class The name of the subclass.
 #' @param subclass Deprecated, pass the `class` argument instead.
+#' @name new_pillar_shaft
 #' @export
 new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
-    signal_soft_deprecated("The `subclass` argument to `new_pillar_shaft()` is deprecated, please use the `class` argument.")
+    deprecate_soft("1.4.0", "new_pillar_shaft(subclass = )", "new_pillar_shaft(class = )")
     class <- subclass
   }
 
@@ -51,14 +52,14 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' Column data
 #'
 #' @description
-#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("stable")}
+#' `r lifecycle::badge("stable")`
 #'
 #' Internal class for formatting the data for a column.
 #' `pillar_shaft()` is a coercion method that must be implemented
 #' for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
-#' @param ... Unused, for extensibility.
+#' @inheritParams ellipsis::dots_used
 #' @export
 #' @examples
 #' pillar_shaft(1:3)
@@ -66,6 +67,10 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' pillar_shaft(NA)
 #' pillar_shaft(c(1:3, NA))
 pillar_shaft <- function(x, ...) {
+  if (!missing(...)) {
+    check_dots_used(action = warn)
+  }
+
   UseMethod("pillar_shaft")
 }
 
@@ -111,17 +116,29 @@ pillar_shaft.logical <- function(x, ...) {
 
 #' @export
 #' @rdname pillar_shaft
-#' @param sigfig Minimum number of significant figures to display. Numbers
-#'   larger than 1 will potentially show more significant figures than this
-#'   but they will be greyed out.
-pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3)) {
+#' @param sigfig Minimum number of significant figures to display, default: 3.
+#'   Numbers larger than 1 will potentially show more significant figures than this.
+pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
   if (!is.null(attr(x, "class"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
-  dec <- format_decimal(x, ..., sigfig = sigfig)
-  sci <- format_scientific(x, ..., sigfig = sigfig)
+  pillar_shaft_number(x, sigfig)
+}
+
+pillar_shaft_number <- function(x, sigfig) {
+  if (is.null(sigfig)) {
+    sigfig <- getOption("pillar.sigfig", 3)
+    if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
+      inform("Option pillar.min_chars must be a nonnegative number greater or equal 1. Resetting to 1.")
+      sigfig <- 1L
+      options(pillar.sigfig = sigfig)
+    }
+  }
+
+  dec <- format_decimal(x, sigfig = sigfig)
+  sci <- format_scientific(x, sigfig = sigfig)
 
   ret <- list(dec = dec, sci = sci)
 
@@ -137,6 +154,10 @@ pillar_shaft.numeric <- function(x, ..., sigfig = getOption("pillar.sigfig", 3))
     min_width = min(get_min_widths(ret)),
     class = "pillar_shaft_decimal"
   )
+}
+
+pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
+  pillar_shaft_number(x, sigfig)
 }
 
 #' @export
@@ -170,7 +191,7 @@ pillar_shaft.POSIXt <- function(x, ...) {
 #' @rdname pillar_shaft
 #' @param min_width Minimum number of characters to display,
 #'   unless the string fits a shorter width.
-pillar_shaft.character <- function(x, ..., min_width = 3L) {
+pillar_shaft.character <- function(x, ..., min_width = NULL) {
   x <- utf8::utf8_encode(x)
   out <- x
 
@@ -184,14 +205,26 @@ pillar_shaft.character <- function(x, ..., min_width = 3L) {
     na_indent <- 0
   }
 
+  # determine width based on width of characters in the vector
+  if (is.null(min_width)) {
+    min_width <- getOption("pillar.min_chars", 3L)
+    if (!is.numeric(min_width) || length(min_width) != 1 || min_width < 3L) {
+      inform("Option pillar.min_chars must be a nonnegative number greater or equal 3. Resetting to 3.")
+      min_width <- 3L
+      options(pillar.min_chars = min_width)
+    }
+  }
+
   pillar_shaft(new_vertical(out), ..., min_width = min_width, na_indent = na_indent)
 }
 
 #' @export
 #' @inheritParams new_pillar_shaft_simple
 #' @rdname pillar_shaft
-pillar_shaft.pillar_vertical <- function(x, ..., min_width = 3L, na_indent = 0L) {
+pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0L) {
+  min_width <- max(min_width, 3L)
   width <- get_max_extent(x)
+
   new_pillar_shaft_simple(
     x, width = width, align = "left", min_width = min(width, min_width),
     na = pillar_na(use_brackets_if_no_color = TRUE),

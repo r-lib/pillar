@@ -5,7 +5,7 @@
 \alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
-\Sexpr[results=rd, stage=render]{pillar:::lifecycle("maturing")}
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a>}}{\strong{Maturing}}
 Provides \link{pillar} and \link{colonnade} generics designed for formatting columns
 of data using the full range of colours provided by modern terminals.
 }
@@ -31,6 +31,10 @@ turn off highlighting of significant digits.
 title, default: \code{15}.  Column titles may be truncated up to that width to
 save horizontal space. Set to \code{Inf} to turn off truncation of column
 titles.
+\item \code{pillar.min_chars}: The minimum number of characters wide to
+display character columns, default: \code{0}.  Character columns may be
+truncated up to that width to save horizontal space. Set to \code{Inf} to
+turn off truncation of character columns.
 }
 }
 

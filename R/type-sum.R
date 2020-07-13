@@ -1,7 +1,7 @@
 #' Provide a succinct summary of an object
 #'
 #' @description
-#' \Sexpr[results=rd, stage=render]{pillar:::lifecycle("questioning")}
+#' `r lifecycle::badge("questioning")`
 #'
 #' @description
 #' `type_sum()` gives a brief summary of object type. Objects that commonly
@@ -35,7 +35,7 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
-  if (is.object(x) || vec_is(x)) return(vctrs::vec_ptype_abbr(x))
+  if (is.object(x) || vctrs::vec_is(x)) return(vctrs::vec_ptype_abbr(x))
 
   switch(typeof(x),
     builtin = ,
@@ -51,16 +51,6 @@ type_sum.default <- function(x) {
 
     typeof(x)
   )
-}
-
-# vec_is() needs vctrs > 0.1.0
-# Defined in .onLoad()
-vec_is <- function(...) {
-  vctrs::vec_is(...)
-}
-
-compat_vec_is <- function(x) {
-  is_vector(x)
 }
 
 # Registered in .onLoad()

@@ -1,5 +1,5 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
 # pillar
 
@@ -7,8 +7,8 @@
 
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![Travis-CI Build
-Status](https://travis-ci.org/r-lib/pillar.svg?branch=master)](https://travis-ci.org/r-lib/pillar)
+[![R build
+status](https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/pillar/actions)
 [![Coverage
 status](https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/pillar?branch=master)
 [![CRAN
@@ -43,12 +43,12 @@ library(pillar)
 
 x <- 123456789 * (10 ^ c(-3, -5, NA, -8, -10))
 pillar(x)
-#>       <dbl>
-#> 123457.    
-#>   1235.    
-#>     NA     
+#>       [3m[90m<dbl>[39m[23m
+#> [4m1[24m[4m2[24m[4m3[24m457.    
+#>   [4m1[24m235.    
+#>     [31mNA[39m     
 #>      1.23  
-#>      0.0123
+#>      0.012[4m3[24m
 ```
 
 If you render this in a console that supports colour, you’ll see
@@ -71,15 +71,12 @@ tibble column can add color with only a few changes:
         `NAMESPACE` import.
 
 [tidyverse/hms\#43](https://github.com/tidyverse/hms/pull/43) shows the
-changes that were necessary to add colored output for the hms
-    package:
+changes that were necessary to add colored output for the hms package:
 
   - [`pillar.R`](https://github.com/tidyverse/hms/pull/43/files#diff-a63dd6b1da682a8549d03475ac91cdcf)
-    for the actual implementation (old name
-    `colformat.R`)
+    for the actual implementation (old name `colformat.R`)
   - [`DESCRIPTION`](https://github.com/tidyverse/hms/pull/43/files#diff-35ba4a2677442e210c23a00a5601aba3)
-    for the
-    dependency
+    for the dependency
   - [`zzz.R`](https://github.com/tidyverse/hms/pull/43/files#diff-e549505eb95036528ca3b125f62915a6)
     for the dynamic method registration
 

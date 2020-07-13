@@ -75,9 +75,13 @@ get_pillar_output_object <- function(x = NULL, xp = NULL, xf = NULL, ...) {
 #' values to `expect_pillar_output()`.
 #' @rdname expect_pillar_output
 add_special <- function(x) {
-  x <- c(x, x[length(x) + 1])
-  if (is.numeric(x) && is.double(x)) {
-    x <- c(x, -Inf, Inf)
+  if (inherits(x, "integer64")) {
+    x <- c(x, bit64::NA_integer64_)
+  } else {
+    x <- x[seq2(1, length(x) + 1)]
+    if (is.numeric(x) && is.double(x)) {
+      x <- c(x, -Inf, Inf)
+    }
   }
   x
 }
