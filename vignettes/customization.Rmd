@@ -184,6 +184,6 @@ format.pillar_basis <- function(x, ..., width) {
 ### Implementation sketch
 
 - We start with the assumption that each column consumes at least one character, with the space between the columns. This gives an upper bound on the number of columns and allows pre-allocating memory.
-- For each column we could possibly fit, we call the `new_pillar_capital()` method and query the minimum width, until maximum width is reached.
-- For each column where the capital fits, we call the `new_pillar_shaft()` method and query the minimum width, until maximum width is reached.
+- For each column we could possibly fit, we call the `ctl_pillar_capital()` method and query the minimum width, until maximum width is reached.
+- For each column where the capital fits, we call the `ctl_pillar_shaft()` method and query the minimum width, until maximum width is reached.
 - Pillars are distributed using the existing algorithm.
