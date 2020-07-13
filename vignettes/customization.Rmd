@@ -88,6 +88,10 @@ The implementer is expected to apply `style_subtle()` in case the class wants to
 tbl_format_footer.default <- function(x, ...) {
   style_subtle(format_footer(x, ...))
 }
+
+format_footer <- function(x, ...) {
+  # Copy implementation from tibble
+}
 ```
 
 ## Adding extension points for formatting individual pillars
@@ -97,10 +101,10 @@ tbl_format_footer.default <- function(x, ...) {
 - A pillar is rarely shown individually, most often it is part of a colonnade.
 - A colonnade also is rarely shown individually, most often it is part of a larger structure like a tibble.
 - All pillars in a colonnade are shown in a similar way, a single controller can decide the appearance of all pillars.
-- Pillars in a colonnade are either all named or all unnamed
+- Pillars in a colonnade are either all named or all unnamed.
 - Pillars can adapt their width to the available space. Computation of minimum and maximum width can happen before formatting the actual data. For performance reasons, `colonnade()` will not construct pillar objects it doesn't need.
 - A pillar has a header (=capital), body (=shaft), footer (=basis, currently not used). Design should follow `cnd_header()`, `cnd_body()` and `cnd_footer()`. These components can be of different height, will be top-aligned when printing.
-- Pillars are always shown from left to right, no "holes" in the colonnade. If the first column consumes all available space, the remaining columns are not shown, even if they all would fit.
+- Pillars are always shown from left to right, no "holes" in the colonnade. If the first column consumes all available space, the remaining columns are not shown, even if they all would fit if the first column is omitted.
 - Printing pillars should take time proportional to the number of characters printed, and be "fast enough".
 - Customizing parts of the display (e.g. omit type, add more information) should be easy.
 - Existing infrastructure should be supported.
@@ -179,7 +183,7 @@ format.pillar_basis <- function(x, ..., width) {
 
 ### Implementation sketch
 
-- We start with the assumption that each column consumes at least one character, with the space between the columns. This is for pre-allocating memory.
+- We start with the assumption that each column consumes at least one character, with the space between the columns. This gives an upper bound on the number of columns and allows pre-allocating memory.
 - For each column we could possibly fit, we call the `new_pillar_capital()` method and query the minimum width, until maximum width is reached.
 - For each column where the capital fits, we call the `new_pillar_shaft()` method and query the minimum width, until maximum width is reached.
 - Pillars are distributed using the existing algorithm.
