@@ -112,6 +112,12 @@ new_empty_col_sentinel <- function(type) {
 #' @examples
 #' squeeze(colonnade(long_string), width = 20)
 squeeze <- function(x, width = NULL, ...) {
+  deprecate_soft("1.5.0", "squeeze()")
+
+  squeeze_impl(x, width, ...)
+}
+
+squeeze_impl <- function(x, width = NULL, ...) {
   # Shortcut for zero-height corner case
   zero_height <- length(x) == 0L || length(x[[1]]) == 0L
   if (zero_height) {
@@ -242,6 +248,8 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' @examples
 #' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
 extra_cols <- function(x, ...) {
+  deprecate_soft("1.5.0", "extra_cols()")
+
   if (!missing(...)) {
     check_dots_used(action = warn)
   }
@@ -265,7 +273,7 @@ extra_cols.pillar_squeezed_colonnade <- function(x, ..., n = Inf) {
 
 #' @export
 format.pillar_colonnade <- function(x, ...) {
-  format(squeeze(x, ...))
+  format(squeeze_impl(x, ...))
 }
 
 #' @export
