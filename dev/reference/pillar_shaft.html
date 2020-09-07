@@ -139,7 +139,7 @@ Your format() method can assume a valid value for the width argument." />
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a></p>
 <p>Internal class for formatting the data for a column.
-<code><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft()</a></code> is a coercion method that must be implemented
+<code>pillar_shaft()</code> is a coercion method that must be implemented
 for your data type to display it in a tibble.</p>
 <p>This class comes with a default method for <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code> that calls <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code>.
 If <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code> is called without <code>width</code> argument, the natural width will be
@@ -150,7 +150,7 @@ raises an error.
 Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> method can assume a valid value for the <code>width</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for pillar_shaft</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>, width = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
@@ -159,34 +159,34 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
 <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>(<span class='kw'>x</span>, <span class='kw'>width</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for logical</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for numeric</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>, sigfig = <span class='kw'>NULL</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>, sigfig = <span class='kw'>NULL</span>)
 
 <span class='co'># S3 method for Date</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for POSIXt</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for character</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>, min_width = <span class='kw'>NULL</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>, min_width = <span class='kw'>NULL</span>)
 
 <span class='co'># S3 method for pillar_vertical</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>, min_width = <span class='kw'>NULL</span>, na_indent = <span class='fl'>0L</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>, min_width = <span class='kw'>NULL</span>, na_indent = <span class='fl'>0L</span>)
 
 <span class='co'># S3 method for list</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for factor</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for AsIs</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for default</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>pillar_shaft</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -225,11 +225,15 @@ unless the string fits a shorter width.</p></td>
 but you should not rely on this behavior.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; 1
+    <pre class="examples"><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)
+</div><div class='output co'>#&gt; 1
 #&gt; 2
-#&gt; 3</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='fl'>1.5</span><span class='op'>:</span><span class='fl'>3.5</span>)</div><div class='output co'>#&gt; 1.5
+#&gt; 3</div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fl'>1.5</span><span class='op'>:</span><span class='fl'>3.5</span>)
+</div><div class='output co'>#&gt; 1.5
 #&gt; 2.5
-#&gt; 3.5</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='fl'>NA</span>)</div><div class='output co'>#&gt; <span style='color: #BB0000;'>NA</span><span>   </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/pillar_shaft.html'>pillar_shaft</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt;  1
+#&gt; 3.5</div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fl'>NA</span>)
+</div><div class='output co'>#&gt; <span style='color: #BB0000;'>NA</span><span>   </div><div class='input'><span class='fu'>pillar_shaft</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>NA</span>))
+</div><div class='output co'>#&gt;  1
 #&gt;  2
 #&gt;  3
 #&gt; </span><span style='color: #BB0000;'>NA</span><span></div></span></pre>
