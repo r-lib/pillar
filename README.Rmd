@@ -1,7 +1,5 @@
 ---
-output:
-  github_document:
-    html_preview: false
+output: downlit::readme_document
 ---
 <!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
