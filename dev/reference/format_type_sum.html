@@ -136,10 +136,10 @@ formatting, and return an object of this helper class from your
 <code><a href='type_sum.html'>type_sum()</a></code> implementation.  See examples.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>format_type_sum</span>(<span class='kw'>x</span>, <span class='kw'>width</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>format_type_sum</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>format_type_sum</span>(<span class='kw'>x</span>, <span class='kw'>width</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>format_type_sum</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,21 +161,21 @@ wider, it will be trimmed. Can be <code>NULL</code>.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>format_type_sum</span>(<span class='fl'>1</span>, <span class='kw'>NULL</span>)
-</div><div class='output co'>#&gt; [1] "\033[3m\033[90m&lt;1&gt;\033[39m\033[23m"</div><div class='input'><span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='fl'>1</span>)
+    <pre class="examples"><div class='input'><span class='fu'>format_type_sum</span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>NULL</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "\033[3m\033[90m&lt;1&gt;\033[39m\033[23m"</div><div class='input'><span class='fu'><a href='pillar.html'>pillar</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt;     1</div><div class='input'>
-<span class='kw'>type_sum.accel</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='st'>"kg m/s^2"</span>, width = <span class='fl'>8</span>, class = <span class='st'>"type_sum_accel"</span>)
-}
-<span class='kw'>format_type_sum.type_sum_accel</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>, <span class='kw'>width</span>, <span class='kw'>...</span>) {
-  <span class='co'>if</span> (<span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span>(<span class='kw'>width</span>) <span class='op'>&amp;&amp;</span> <span class='kw'>width</span> <span class='op'>&lt;</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='kw'>x</span>, <span class='st'>"width"</span>)) {
-    <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>, <span class='kw'>width</span>)
-  }
-  <span class='fu'><a href='style_num.html'>style_subtle</a></span>(<span class='kw'>x</span>)
-}
-<span class='kw'>accel</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fl'>9.81</span>, class = <span class='st'>"accel"</span>)
-<span class='fu'><a href='pillar.html'>pillar</a></span>(<span class='kw'>accel</span>)
+<span class='va'>type_sum.accel</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='st'>"kg m/s^2"</span>, width <span class='op'>=</span> <span class='fl'>8</span>, class <span class='op'>=</span> <span class='st'>"type_sum_accel"</span><span class='op'>)</span>
+<span class='op'>}</span>
+<span class='va'>format_type_sum.type_sum_accel</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>width</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='va'>width</span> <span class='op'>&lt;</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"width"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span>, <span class='va'>width</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='fu'><a href='style_num.html'>style_subtle</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='op'>}</span>
+<span class='va'>accel</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fl'>9.81</span>, class <span class='op'>=</span> <span class='st'>"accel"</span><span class='op'>)</span>
+<span class='fu'><a href='pillar.html'>pillar</a></span><span class='op'>(</span><span class='va'>accel</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;accel&gt;</span><span>
 #&gt; 9.81   </div></span></pre>
   </div>

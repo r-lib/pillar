@@ -155,7 +155,7 @@ class.
 This is a virtual or abstract class, you must specify the <code>class</code>
 argument.
 By convention, this should be a string that starts with <code>"pillar_shaft_"</code>.
-See <code>vignette("extending", package = "tibble")</code> for usage examples.</p>
+See <code><a href='https://tibble.tidyverse.org/articles/extending.html'>vignette("extending", package = "tibble")</a></code> for usage examples.</p>
 <p>This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:</p><ul>
 <li><p>It has an attribute <code>"width"</code></p></li>
 <li><p>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</p></li>
@@ -174,24 +174,24 @@ By default, the required width is computed from the natural width of the
 <code>formatted</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_pillar_shaft</span>(
-  <span class='kw'>x</span>,
-  <span class='kw'>...</span>,
-  width = <span class='kw'>NULL</span>,
-  min_width = <span class='kw'>width</span>,
-  class = <span class='kw'>NULL</span>,
-  subclass = <span class='kw'>NULL</span>
-)
+    <pre class="usage"><span class='fu'>new_pillar_shaft</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>...</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min_width <span class='op'>=</span> <span class='va'>width</span>,
+  class <span class='op'>=</span> <span class='cn'>NULL</span>,
+  subclass <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>new_pillar_shaft_simple</span>(
-  <span class='kw'>formatted</span>,
-  <span class='kw'>...</span>,
-  width = <span class='kw'>NULL</span>,
-  align = <span class='st'>"left"</span>,
-  min_width = <span class='kw'>NULL</span>,
-  na = <span class='kw'>NULL</span>,
-  na_indent = <span class='fl'>0L</span>
-)</pre>
+<span class='fu'>new_pillar_shaft_simple</span><span class='op'>(</span>
+  <span class='va'>formatted</span>,
+  <span class='va'>...</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  align <span class='op'>=</span> <span class='st'>"left"</span>,
+  min_width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  na <span class='op'>=</span> <span class='cn'>NULL</span>,
+  na_indent <span class='op'>=</span> <span class='fl'>0L</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

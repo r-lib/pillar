@@ -146,9 +146,9 @@ with additional information about omitted columns, which can be retrieved
 via <code><a href='extra_cols.html'>extra_cols()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>colonnade</span>(<span class='kw'>x</span>, has_row_id = <span class='fl'>TRUE</span>, width = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>x</span>, has_row_id <span class='op'>=</span> <span class='cn'>TRUE</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>squeeze</span>(<span class='kw'>x</span>, width = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>squeeze</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -215,24 +215,24 @@ Any space remaining after rounding is distributed from left to right,
 one space per column.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>colonnade</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b = <span class='kw'>letters</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>]))
+    <pre class="examples"><div class='input'><span class='fu'>colonnade</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;       a b    
 #&gt;   <span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     1 a    
 #&gt; </span><span style='color: #555555;'>2</span><span>     2 b    
 #&gt; </span><span style='color: #555555;'>3</span><span>     3 c    </div><div class='input'>
-<span class='kw'>long_string</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='kw'>letters</span>, collapse = <span class='st'>" "</span>))
-<span class='fu'>colonnade</span>(<span class='kw'>long_string</span>, width = <span class='fl'>20</span>)
+<span class='va'>long_string</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>letters</span>, collapse <span class='op'>=</span> <span class='st'>" "</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>long_string</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i…</div><div class='input'><span class='fu'>colonnade</span>(<span class='kw'>long_string</span>, has_row_id = <span class='fl'>FALSE</span>, width = <span class='fl'>20</span>)
+#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i…</div><div class='input'><span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>long_string</span>, has_row_id <span class='op'>=</span> <span class='cn'>FALSE</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               
 #&gt; a b c d e f g h i j…</div><div class='input'>
 <span class='co'># The width can also be overridden when calling format() or print():</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'>colonnade</span>(<span class='kw'>long_string</span>), width = <span class='fl'>20</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>long_string</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             
 #&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i…</div><div class='input'>
 <span class='co'># If width is larger than getOption("width"), multiple tiers are created:</span>
-<span class='fu'>colonnade</span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>long_string</span>, <span class='fl'>4</span>), width = <span class='fl'>Inf</span>)
+<span class='fu'>colonnade</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>long_string</span>, <span class='fl'>4</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              
 #&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s t u v w x y z
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              
@@ -240,7 +240,7 @@ one space per column.</p>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              
 #&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s t u v w x y z
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              
-#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s t u v w x y z</div><div class='input'><span class='fu'>squeeze</span>(<span class='fu'>colonnade</span>(<span class='kw'>long_string</span>), width = <span class='fl'>20</span>)
+#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s t u v w x y z</div><div class='input'><span class='fu'>squeeze</span><span class='op'>(</span><span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>long_string</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             
 #&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i…</div></span></pre>
   </div>
