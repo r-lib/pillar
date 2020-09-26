@@ -85,7 +85,7 @@
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
         </div>
       </div>
     </div>
@@ -123,6 +123,14 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="pillar-146" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.6">
+<a href="#pillar-146" class="anchor"></a>pillar 1.4.6<small> 2020-07-10 </small>
+</h1>
+<ul>
+<li>Restore compatibility with R 3.2.</li>
+</ul>
+</div>
     <div id="pillar-145" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.5">
 <a href="#pillar-145" class="anchor"></a>pillar 1.4.5<small> 2020-07-09 </small>
@@ -133,15 +141,15 @@
 <ul>
 <li><p>New <code>pillar.min_chars</code> option allows controlling the minimum number of characters shown for a character column (<a href='https://github.com/r-lib/pillar/issues/178'>#178</a>, <a href='https://github.com/statsmaths'>@statsmaths</a>).</p></li>
 <li><p><code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html">bit64::integer64()</a></code> columns are now formatted the same way as numeric columns (<a href='https://github.com/r-lib/pillar/issues/175'>#175</a>).</p></li>
-<li><p>New <code><a href="https://rdrr.io/pkg/pillar/man/align.html">align()</a></code> to support easy alignment of strings within a character vector (existing function exported by <a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/pillar/issues/185'>#185</a>).</p></li>
+<li><p>New <code><a href="../reference/align.html">align()</a></code> to support easy alignment of strings within a character vector (existing function exported by <a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/pillar/issues/185'>#185</a>).</p></li>
 </ul>
 </div>
 <div id="technical" class="section level2">
 <h2 class="hasAnchor">
 <a href="#technical" class="anchor"></a>Technical</h2>
 <ul>
-<li><p><code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft()</a></code>, <code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/extra_cols.html">extra_cols()</a></code> issue a warning if dots are unused.</p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</p></li>
+<li><p><code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code>, <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> issue a warning if dots are unused.</p></li>
+<li><p><code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</p></li>
 </ul>
 </div>
 <div id="internal" class="section level2">
@@ -158,7 +166,7 @@
 <a href="#pillar-144" class="anchor"></a>pillar 1.4.4<small> 2020-05-05 </small>
 </h1>
 <ul>
-<li><p><code><a href="https://rdrr.io/pkg/pillar/man/type_sum.html">obj_sum()</a></code> uses <code><a href="https://vctrs.r-lib.org/reference/vec_size.html">vctrs::vec_size()</a></code> internally.</p></li>
+<li><p><code><a href="../reference/type_sum.html">obj_sum()</a></code> uses <code><a href="https://vctrs.r-lib.org/reference/vec_size.html">vctrs::vec_size()</a></code> internally.</p></li>
 <li><p><code>is_vector_s3.default()</code> is soft-deprecated and no longer used. Please ensure that <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html">vctrs::vec_is()</a></code> is <code>TRUE</code> for your class.</p></li>
 <li><p>Rely on vctrs for type abbreviations.</p></li>
 </ul>
@@ -168,7 +176,7 @@
 <a href="#pillar-143" class="anchor"></a>pillar 1.4.3<small> 2019-12-20 </small>
 </h1>
 <ul>
-<li><p><code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html">new_pillar_shaft_simple()</a></code> gains <code>na</code> argument to control appearance of <code>NA</code> values.</p></li>
+<li><p><code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple()</a></code> gains <code>na</code> argument to control appearance of <code>NA</code> values.</p></li>
 <li><p>String columns are quoted if at least one value needs quotes (<a href='https://github.com/r-lib/pillar/issues/171'>#171</a>).</p></li>
 <li><p>Apply subtle style to <code>list_of</code> columns (<a href='https://github.com/r-lib/pillar/issues/172'>#172</a>).</p></li>
 <li><p>Fix formatting if mantissa is very close to 1 (<a href='https://github.com/r-lib/pillar/issues/174'>#174</a>).</p></li>
@@ -205,8 +213,8 @@
 <a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>
-<code><a href="https://rdrr.io/pkg/pillar/man/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
-<li>The <code>class</code> argument to <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html">new_pillar_shaft()</a></code> deprecates the existing <code>subclass</code> argument. Passing a <code>subclass</code> argument leads to a warning once per session (<a href='https://github.com/r-lib/pillar/issues/157'>#157</a>).</li>
+<code><a href="../reference/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
+<li>The <code>class</code> argument to <code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft()</a></code> deprecates the existing <code>subclass</code> argument. Passing a <code>subclass</code> argument leads to a warning once per session (<a href='https://github.com/r-lib/pillar/issues/157'>#157</a>).</li>
 </ul>
 </div>
 <div id="output" class="section level2">
@@ -222,8 +230,8 @@
 <a href="#performance" class="anchor"></a>Performance</h2>
 <ul>
 <li>
-<code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">squeeze()</a></code> is now faster (because the width computation in <code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft.numeric()</a></code> now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (<a href='https://github.com/r-lib/pillar/issues/147'>#147</a>).</li>
-<li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
+<code><a href="../reference/colonnade.html">squeeze()</a></code> is now faster (because the width computation in <code><a href="../reference/pillar_shaft.html">pillar_shaft.numeric()</a></code> now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (<a href='https://github.com/r-lib/pillar/issues/147'>#147</a>).</li>
+<li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="../reference/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
 </ul>
 </div>
 <div id="internal-1" class="section level2">
@@ -282,7 +290,7 @@
 <a href="#interface-changes" class="anchor"></a>Interface changes</h2>
 <ul>
 <li>
-<code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> gains <code>width</code> argument (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
+<code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> gains <code>width</code> argument (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
 </ul>
 </div>
 <div id="performance-improvements" class="section level2">
@@ -298,8 +306,8 @@
 <h2 class="hasAnchor">
 <a href="#internal-2" class="anchor"></a>Internal</h2>
 <ul>
-<li><p><code><a href="https://rdrr.io/pkg/pillar/man/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
+<li><p><code><a href="../reference/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
+<li><p><code><a href="../reference/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
 <li><p>Added fuzz tests for character colonnades of varying widths.</p></li>
 <li><p>Use <code><a href="https://rdrr.io/pkg/fansi/man/substr_ctl.html">fansi::substr_ctl()</a></code> in favor of <code><a href="https://rdrr.io/pkg/crayon/man/col_substr.html">crayon::col_substr()</a></code>.</p></li>
 </ul>
@@ -313,9 +321,9 @@
 <li>Eliminate CRAN check warning about undeclared withr dependency.</li>
 <li>More defensive test to address CRAN check failures on Solaris.</li>
 <li>
-<code><a href="https://rdrr.io/pkg/pillar/man/colonnade.html">colonnade()</a></code> now handles pillars named <code>"sep"</code> (<a href='https://github.com/r-lib/pillar/issues/115'>#115</a>).</li>
+<code><a href="../reference/colonnade.html">colonnade()</a></code> now handles pillars named <code>"sep"</code> (<a href='https://github.com/r-lib/pillar/issues/115'>#115</a>).</li>
 <li>
-<code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft.character()</a></code> gains <code>min_width</code> argument.</li>
+<code><a href="../reference/pillar_shaft.html">pillar_shaft.character()</a></code> gains <code>min_width</code> argument.</li>
 </ul>
 </div>
     <div id="pillar-122" class="section level1">
@@ -324,8 +332,8 @@
 </h1>
 <ul>
 <li>Whole numbers are printed without a decimal dot again. Numbers that are the result of a whole number divided by a power of 10 (subject to a tolerance to account for floating-point imprecision) are shown without trailing decimal zeros, even if these zeros are significant according to the <code>pillar.sigfig</code> option (<a href='https://github.com/r-lib/pillar/issues/105'>#105</a>).</li>
-<li>New <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="https://rdrr.io/pkg/pillar/man/new_pillar_type.html">new_pillar_type()</a></code> to support consistent output in <code>glimpse()</code> (<a href='https://github.com/r-lib/pillar/issues/31'>#31</a>).</li>
-<li>New <code><a href="https://rdrr.io/pkg/pillar/man/format_type_sum.html">format_type_sum()</a></code> generic that allows overriding the formatting of the type summary in the capital (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
+<li>New <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> to support consistent output in <code>glimpse()</code> (<a href='https://github.com/r-lib/pillar/issues/31'>#31</a>).</li>
+<li>New <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> generic that allows overriding the formatting of the type summary in the capital (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
 <li>The <code>digits.secs</code> option is respected when computing the width for date-time values (<a href='https://github.com/r-lib/pillar/issues/102'>#102</a>).</li>
 </ul>
 </div>
@@ -350,7 +358,7 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> if the <code><a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
+<li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
 <li>Very small numbers (like <code>1e-310</code>) are now printed corectly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
 <li>Fix representation of right-hand side for <code>getOption("pillar.sigfig") &gt;= 6</code> (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/380'>#380</a>).</li>
 <li>Fix computation of significant figures for numbers with absolute value &gt;= 1 (<a href='https://github.com/r-lib/pillar/issues/98'>#98</a>).</li>
@@ -360,7 +368,7 @@
 <h2 class="hasAnchor">
 <a href="#new-functions" class="anchor"></a>New functions</h2>
 <ul>
-<li>New styling helper <code><a href="https://rdrr.io/pkg/pillar/man/style_subtle.html">style_subtle_num()</a></code>, formatting depends on the <code>pillar.subtle_num</code> option.</li>
+<li>New styling helper <code><a href="../reference/style_num.html">style_subtle_num()</a></code>, formatting depends on the <code>pillar.subtle_num</code> option.</li>
 </ul>
 </div>
 </div>

@@ -89,7 +89,7 @@ describes each of the omitted columns." />
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
         </div>
       </div>
     </div>
@@ -129,22 +129,22 @@ describes each of the omitted columns." />
     </div>
 
     <div class="ref-description">
-    <p>Formatting a <a href='https://rdrr.io/pkg/pillar/man/colonnade.html'>colonnade</a> object may lead to some columns being omitted
+    <p>Formatting a <a href='colonnade.html'>colonnade</a> object may lead to some columns being omitted
 due to width restrictions. This method returns a character vector that
 describes each of the omitted columns.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/extra_cols.html'>extra_cols</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>extra_cols</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for pillar_squeezed_colonnade</span>
-<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/extra_cols.html'>extra_cols</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>, n = <span class='fl'>Inf</span>)</pre>
+<span class='fu'>extra_cols</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>The result of <code><a href='https://rdrr.io/pkg/pillar/man/colonnade.html'>squeeze()</a></code> on a <a href='https://rdrr.io/pkg/pillar/man/colonnade.html'>colonnade</a> object</p></td>
+      <td><p>The result of <code><a href='colonnade.html'>squeeze()</a></code> on a <a href='colonnade.html'>colonnade</a> object</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -160,7 +160,8 @@ beyond <code>n</code> will be <code>NA</code>.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/pillar/man/extra_cols.html'>extra_cols</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/colonnade.html'>squeeze</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/pillar/man/colonnade.html'>colonnade</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b = <span class='fl'>4</span><span class='op'>:</span><span class='fl'>6</span>), width = <span class='fl'>8</span>)))</div><div class='output co'>#&gt; [1] "b \033[3m\033[90m&lt;int&gt;\033[39m\033[23m"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>extra_cols</span><span class='op'>(</span><span class='fu'><a href='colonnade.html'>squeeze</a></span><span class='op'>(</span><span class='fu'><a href='colonnade.html'>colonnade</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='fl'>4</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "b \033[3m\033[90m&lt;int&gt;\033[39m\033[23m"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

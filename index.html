@@ -45,7 +45,7 @@
         <a class="navbar-brand" href="index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
         </div>
       </div>
     </div>
@@ -88,32 +88,30 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="co"># pillar is installed if you install the tidyverse package:</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"tidyverse"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span>
 
 <span class="co"># Alternatively, install just pillar:</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"pillar"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pillar"</span><span class="op">)</span>
 
 <span class="co"># Or the the development version from GitHub:</span>
 <span class="co"># install.packages("devtools")</span>
-<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"r-lib/pillar"</span>)
-</pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r-lib/pillar"</span><span class="op">)</span></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="http://tibble.tidyverse.org">tibble</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/r-lib/pillar">pillar</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/pillar">pillar</a></span><span class="op">)</span>
 
-<span class="kw">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> (<span class="fl">10</span> <span class="op">^</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span>))
-<span class="fu"><a href="reference/pillar.html">pillar</a></span>(<span class="kw">x</span>)
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> <span class="op">(</span><span class="fl">10</span> <span class="op">^</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt;       [3m[90m&lt;dbl&gt;[39m[23m</span>
 <span class="co">#&gt; [4m1[24m[4m2[24m[4m3[24m457.    </span>
 <span class="co">#&gt;   [4m1[24m235.    </span>
 <span class="co">#&gt;     [31mNA[39m     </span>
 <span class="co">#&gt;      1.23  </span>
-<span class="co">#&gt;      0.012[4m3[24m</span>
-</pre></div>
+<span class="co">#&gt;      0.012[4m3[24m</span></pre></div>
 <p>If you render this in a console that supports colour, you’ll see something that looks like this:</p>
 <p><img src="reference/figures/colours.png" width="200px"></p>
 </div>
