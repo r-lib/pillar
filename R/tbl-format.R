@@ -1,10 +1,47 @@
+#' Formatting of tbl objects
+#'
+#' These functions and methods are responsible for printing objects
+#' of the `tbl` class, which includes [tibble]s and dbplyr lazy
+#' data frames.
+#' See [tibble::formatting] for user level documentation,
+#' and `vignette("customization")` for details.
+#'
+#' @param x Object to format or print.
+#' @param ... Other arguments passed on to individual methods.
+#' @param n Number of rows to show. If `NULL`, the default, will print all rows
+#'   if less than option `tibble.print_max`. Otherwise, will print
+#'   `tibble.print_min` rows.
+#' @param width Width of text output to generate. This defaults to `NULL`, which
+#'   means use `getOption("tibble.width")` or (if also `NULL`)
+#'   `getOption("width")`; the latter displays only the columns that fit on one
+#'   screen. You can also set `options(tibble.width = Inf)` to override this
+#'   default and always print all columns.
+#' @param n_extra Number of extra columns to print abbreviated information for,
+#'   if the width is too small for the entire tibble. If `NULL`, the default,
+#'   will print information about at most `tibble.max_extra_cols` extra columns.
+#' @param min_rows,max_rows
+#'   If the total number of rows is greater than `max_rows`,
+#'   only `min_rows` should be printed.
+#'   Otherwise, all rows should be printed.
+#'   Currently initialized with the value of the
+#'   `tibble.print_min` and  `tibble.print_max` options, do not rely on this.
+#' @param max_extra_cols
+#'   Number of columns to print abbreviated information for,
+#'   if the width is too small for the entire tibble.
+#'   Currently initialized with the value of `n_extra`
+#'   or the `tibble.max_extra_cols` options, do not rely on this.
+#'
+#' @name format_tbl
 #' @export
+#' @examples
+#' print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
 print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   cli::cat_line(format(x, width = width, ..., n = n, n_extra = n_extra))
   invisible(x)
 }
 
 #' @export
+#' @rdname format_tbl
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   check_dots_empty()
 
@@ -13,10 +50,10 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   }
 
   setup <- tbl_format_setup(x, width = width, ...,
-    n = n, n_extra = n_extra,
+    n = n,
     min_rows = tibble_opt("print_min"),
     max_rows = tibble_opt("print_max"),
-    max_extra_cols = tibble_opt("max_extra_cols")
+    max_extra_cols = n_extra %||% tibble_opt("max_extra_cols")
   )
   header <- tbl_format_header(x, setup)
   body <- tbl_format_body(x, setup)
@@ -25,13 +62,14 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 }
 
 #' @export
-tbl_format_setup <- function(x, width, ..., n, n_extra, min_rows, max_rows, max_extra_cols) {
+#' @rdname format_tbl
+tbl_format_setup <- function(x, width, ..., n, min_rows, max_rows, max_extra_cols) {
   check_dots_empty()
 
   UseMethod("tbl_format_setup")
 }
 
-tbl_format_setup.default <- function(x, width, ..., n, n_extra, min_rows, max_rows, max_extra_cols) {
+tbl_format_setup.default <- function(x, width, ..., n, min_rows, max_rows, max_extra_cols) {
   rows <- nrow(x)
 
   if (is.null(n) || n < 0) {
@@ -41,7 +79,6 @@ tbl_format_setup.default <- function(x, width, ..., n, n_extra, min_rows, max_ro
       n <- rows
     }
   }
-  n_extra <- n_extra %||% max_extra_cols
 
   if (is.na(rows)) {
     df <- as.data.frame(head(x, n + 1))
@@ -75,7 +112,7 @@ tbl_format_setup.default <- function(x, width, ..., n, n_extra, min_rows, max_ro
 
   squeezed <- squeeze_impl(colonnade)
 
-  extra_cols <- extra_cols_impl(squeezed, n = n_extra)
+  extra_cols <- extra_cols_impl(squeezed, n = max_extra_cols)
 
   trunc_info <- list(
     width = width,
@@ -88,6 +125,7 @@ tbl_format_setup.default <- function(x, width, ..., n, n_extra, min_rows, max_ro
 }
 
 #' @export
+#' @rdname format_tbl
 tbl_format_header <- function(x, setup, ...) {
   check_dots_empty()
 
@@ -116,6 +154,7 @@ tbl_format_header.default <- function(x, setup, ...) {
 }
 
 #' @export
+#' @rdname format_tbl
 tbl_format_body <- function(x, setup, ...) {
   check_dots_empty()
 
@@ -135,6 +174,7 @@ tbl_format_footer <- function(x, setup, ...) {
 }
 
 #' @export
+#' @rdname format_tbl
 tbl_format_footer.default <- function(x, setup, ...) {
   footer <- pre_dots(format_footer(x, setup))
   footer_comment <- split_lines(format_comment(footer, width = setup$width))
