@@ -75,7 +75,7 @@ tbl_format_setup.default <- function(x, width, ..., n, n_extra, min_rows, max_ro
 
   squeezed <- squeeze_impl(colonnade)
 
-  extra_cols <- extra_cols(squeezed, n = n_extra)
+  extra_cols <- extra_cols_impl(squeezed, n = n_extra)
 
   trunc_info <- list(
     width = width,

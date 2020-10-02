@@ -263,6 +263,10 @@ extra_cols <- function(x, ...) {
 #'   beyond `n` will be `NA`.
 #' @export
 extra_cols.pillar_squeezed_colonnade <- function(x, ..., n = Inf) {
+  extra_cols_impl(x, n)
+}
+
+extra_cols_impl <- function(x, n = Inf) {
   extra_cols <- attr(x, "extra_cols")
   ret <- rep(NA_character_, length(extra_cols))
 

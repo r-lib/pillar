@@ -52,34 +52,34 @@ withr::with_options(list(pillar.bold = TRUE), {
     # Spurious warnings on Windows
     suppressWarnings(
       expect_pillar_output(
-        xf = new_vertical(extra_cols(squeeze_impl(colonnade(x), width = 10))),
+        xf = new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 10))),
         filename = "multi-extra-10.txt"
       )
     )
 
     suppressWarnings(
       expect_pillar_output(
-        xf = new_vertical(extra_cols(squeeze_impl(colonnade(x), width = 20))),
+        xf = new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 20))),
         filename = "multi-extra-20.txt"
       )
     )
 
     suppressWarnings(
       expect_pillar_output(
-        xf = new_vertical(extra_cols(squeeze_impl(colonnade(x), width = 30))),
+        xf = new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 30))),
         filename = "multi-extra-30.txt"
       )
     )
 
     suppressWarnings(
       expect_pillar_output(
-        xf = new_vertical(extra_cols(squeeze_impl(colonnade(x), width = 35))),
+        xf = new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 35))),
         filename = "multi-extra-35.txt"
       )
     )
 
     expect_pillar_output(
-      xf = new_vertical(extra_cols(squeeze_impl(colonnade(x), width = 40))),
+      xf = new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 40))),
       filename = "multi-extra-40.txt"
     )
   })
