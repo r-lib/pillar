@@ -94,6 +94,17 @@ format_footer <- function(x, ...) {
 }
 ```
 
+### Data flow
+
+Boxes are functions and methods.
+Solid lines are function calls.
+Dotted lines are inputs to function calls.
+
+```{r echo = FALSE}
+DiagrammeR::mermaid("format.mmd")
+```
+
+
 ## Adding extension points for formatting individual pillars
 
 ### Constraints and design goals
