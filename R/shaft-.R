@@ -31,7 +31,7 @@
 #' @export
 new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
-    deprecate_soft("1.4.0", "new_pillar_shaft(subclass = )", "new_pillar_shaft(class = )")
+    deprecate_soft("1.4.0", "pillar::new_pillar_shaft(subclass = )", "new_pillar_shaft(class = )")
     class <- subclass
   }
 
