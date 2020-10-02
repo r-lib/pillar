@@ -1,6 +1,8 @@
 graph TD
   print.tbl --> format.tbl
-  format.tbl --> tbl_format_setup
+  format.tbl --> opts["tibble_opt(c('print_min', 'print_max', 'max_extra_cols')"]
+  format.tbl -- "n, n_extra" --> tbl_format_setup
+  opts -.-> tbl_format_setup
   format.tbl --> tbl_format_header
   format.tbl --> tbl_format_body
   format.tbl --> tbl_format_footer
