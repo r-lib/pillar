@@ -60,7 +60,7 @@ or the \code{tibble.max_extra_cols} options, do not rely on this.}
 }
 \description{
 These functions and methods are responsible for printing objects
-of the \code{tbl} class, which includes \link{tibble}s and dbplyr lazy
+of the \code{tbl} class, which includes \link[tibble:tibble]{tibble}s and dbplyr lazy
 data frames.
 See \link[tibble:formatting]{tibble::formatting} for user level documentation,
 and \code{vignette("customization")} for details.

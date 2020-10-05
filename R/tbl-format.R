@@ -1,7 +1,7 @@
 #' Formatting of tbl objects
 #'
 #' These functions and methods are responsible for printing objects
-#' of the `tbl` class, which includes [tibble]s and dbplyr lazy
+#' of the `tbl` class, which includes [tibble][tibble::tibble]s and dbplyr lazy
 #' data frames.
 #' See [tibble::formatting] for user level documentation,
 #' and `vignette("customization")` for details.
