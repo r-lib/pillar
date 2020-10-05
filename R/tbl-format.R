@@ -7,7 +7,8 @@
 #' and `vignette("customization")` for details.
 #'
 #' @param x Object to format or print.
-#' @param ... Other arguments passed on to individual methods.
+#' @param ... Passed on to `tbl_format_setup()` from `print()` and `format()`,
+#'   must be empty for other methods.
 #' @param n Number of rows to show. If `NULL`, the default, will print all rows
 #'   if less than option `tibble.print_max`. Otherwise, will print
 #'   `tibble.print_min` rows.
@@ -125,6 +126,7 @@ tbl_format_setup.default <- function(x, width, ..., n, min_rows, max_rows, max_e
 }
 
 #' @export
+#' @param setup Printing setup object created by `tbl_format_setup()`.
 #' @rdname format_tbl
 tbl_format_header <- function(x, setup, ...) {
   check_dots_empty()

@@ -34,7 +34,8 @@ means use \code{getOption("tibble.width")} or (if also \code{NULL})
 screen. You can also set \code{options(tibble.width = Inf)} to override this
 default and always print all columns.}
 
-\item{...}{Other arguments passed on to individual methods.}
+\item{...}{Passed on to \code{tbl_format_setup()} from \code{print()} and \code{format()},
+must be empty for other methods.}
 
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print all rows
 if less than option \code{tibble.print_max}. Otherwise, will print
@@ -54,6 +55,8 @@ Currently initialized with the value of the
 if the width is too small for the entire tibble.
 Currently initialized with the value of \code{n_extra}
 or the \code{tibble.max_extra_cols} options, do not rely on this.}
+
+\item{setup}{Printing setup object created by \code{tbl_format_setup()}.}
 }
 \description{
 These functions and methods are responsible for printing objects
