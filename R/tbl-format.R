@@ -82,7 +82,7 @@ tbl_format_setup.default <- function(x, width, ..., n, min_rows, max_rows, max_e
   }
 
   if (is.na(rows)) {
-    df <- as.data.frame(head(x, n + 1))
+    df <- as.data.frame(utils::head(x, n + 1))
     if (nrow(df) <= n) {
       rows <- nrow(df)
     } else {

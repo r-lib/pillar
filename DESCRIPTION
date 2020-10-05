@@ -25,6 +25,7 @@ Imports:
     lifecycle,
     rlang (>= 0.3.0),
     utf8 (>= 1.1.0),
+    utils,
     vctrs (>= 0.2.0)
 Suggests: 
     bit64,
