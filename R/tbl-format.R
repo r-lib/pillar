@@ -89,7 +89,7 @@ tbl_format_setup.default <- function(x, width, ..., n, min_rows, max_rows, max_e
       df <- df[seq_len(n), , drop = FALSE]
     }
   } else {
-    df <- as.data.frame(head(x, n))
+    df <- as.data.frame(utils::head(x, n))
   }
 
   if (is.na(rows)) {
