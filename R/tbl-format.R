@@ -167,6 +167,7 @@ tbl_format_body.default <- function(x, setup, ...) {
 }
 
 #' @export
+#' @rdname format_tbl
 tbl_format_footer <- function(x, setup, ...) {
   check_dots_empty()
 
