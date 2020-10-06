@@ -121,7 +121,6 @@ tbl_format_setup.default <- function(x, width, ...,
   extra_cols <- extra_cols_impl(squeezed, n = max_extra_cols)
 
   trunc_info <- list(
-    x = x,
     width = width,
     squeezed = squeezed, rows_missing = rows_missing,
     rows_total = rows, rows_min = nrow(df),
@@ -138,14 +137,6 @@ tbl_format_header <- function(x, setup, ...) {
   check_dots_empty()
 
   UseMethod("tbl_format_header")
-}
-
-#' @export
-tbl_format_header.pillar_tbl_format_setup <- function(x, setup, ...) {
-  # For testing: x is a setup object
-  # and has a member x that contains the input data.
-  # Allows writing tests as tbl_format_header(tbl_format_setup(...))
-  tbl_format_header(x$x, x)
 }
 
 #' @export
@@ -166,7 +157,7 @@ tbl_format_header.default <- function(x, setup, ...) {
     )
   }
 
-  new_vertical(style_subtle(format_comment(header, width = setup$width)))
+  style_subtle(format_comment(header, width = setup$width))
 }
 
 #' @export
