@@ -50,6 +50,8 @@ test_that("print() output", {
     df$y <- as.POSIXlt(df$x)
 
     print(df, n = 8L, width = 60L)
+
+    colonnade(list(a = 1:3), has_row_id = FALSE)
   })
 })
 
