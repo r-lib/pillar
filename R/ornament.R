@@ -36,6 +36,7 @@ print.pillar_ornament <- function(x, ...) {
   invisible(x)
 }
 
+# FIXME: Replace with as_glue()
 new_vertical <- function(x, ..., class = NULL) {
   ret <- structure(
     x,
