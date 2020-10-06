@@ -1,0 +1,258 @@
+> print(as_tbl(mtcars), n = 8L, width = 30L)
+# A data frame: 32 x 11
+    mpg   cyl  disp    hp
+* <dbl> <dbl> <dbl> <dbl>
+1  21       6  160    110
+2  21       6  160    110
+3  22.8     4  108     93
+4  21.4     6  258    110
+5  18.7     8  360    175
+6  18.1     6  225    105
+7  14.3     8  360    245
+8  24.4     4  147.    62
+# ... with 24 more rows, and
+#   7 more variables:
+#   drat <dbl>, wt <dbl>,
+#   qsec <dbl>, vs <dbl>,
+#   am <dbl>, gear <dbl>,
+#   carb <dbl>
+
+> print(as_tbl(trees), n = 5L, width = 30L)
+# A data frame: 31 x 3
+  Girth Height Volume
+  <dbl>  <dbl>  <dbl>
+1   8.3     70   10.3
+2   8.6     65   10.3
+3   8.8     63   10.2
+4  10.5     72   16.4
+5  10.7     81   18.8
+# ... with 26 more rows
+
+> print(as_tbl(trees), n = -1L, width = 30L)
+# A data frame: 31 x 3
+   Girth Height Volume
+   <dbl>  <dbl>  <dbl>
+ 1   8.3     70   10.3
+ 2   8.6     65   10.3
+ 3   8.8     63   10.2
+ 4  10.5     72   16.4
+ 5  10.7     81   18.8
+ 6  10.8     83   19.7
+ 7  11       66   15.6
+ 8  11       75   18.2
+ 9  11.1     80   22.6
+10  11.2     75   19.9
+# ... with 21 more rows
+
+> print(as_tbl(trees), n = Inf, width = 30L)
+# A data frame: 31 x 3
+   Girth Height Volume
+   <dbl>  <dbl>  <dbl>
+ 1   8.3     70   10.3
+ 2   8.6     65   10.3
+ 3   8.8     63   10.2
+ 4  10.5     72   16.4
+ 5  10.7     81   18.8
+ 6  10.8     83   19.7
+ 7  11       66   15.6
+ 8  11       75   18.2
+ 9  11.1     80   22.6
+10  11.2     75   19.9
+11  11.3     79   24.2
+12  11.4     76   21  
+13  11.4     76   21.4
+14  11.7     69   21.3
+15  12       75   19.1
+16  12.9     74   22.2
+17  12.9     85   33.8
+18  13.3     86   27.4
+19  13.7     71   25.7
+20  13.8     64   24.9
+21  14       78   34.5
+22  14.2     80   31.7
+23  14.5     74   36.3
+24  16       72   38.3
+25  16.3     77   42.6
+26  17.3     81   55.4
+27  17.5     82   55.7
+28  17.9     80   58.3
+29  18       80   51.5
+30  18       80   51  
+31  20.6     87   77  
+
+> print(as_tbl(trees), n = 3L, width = 5L)
+# A
+#   data
+#   frame:
+#   31
+#   x
+#   3
+# ...
+#   with
+#   3
+#   more
+#   variables:
+#   Girth <dbl>,
+#   Height <dbl>,
+#   Volume <dbl>
+
+> print(as_tbl(trees), n = NULL, width = 70L)
+# A data frame: 31 x 3
+   Girth Height Volume
+   <dbl>  <dbl>  <dbl>
+ 1   8.3     70   10.3
+ 2   8.6     65   10.3
+ 3   8.8     63   10.2
+ 4  10.5     72   16.4
+ 5  10.7     81   18.8
+ 6  10.8     83   19.7
+ 7  11       66   15.6
+ 8  11       75   18.2
+ 9  11.1     80   22.6
+10  11.2     75   19.9
+# ... with 21 more rows
+
+> print(as_unknown_rows(trees), n = 10, width = 70L)
+# A data frame: ?? x 3
+   Girth Height Volume
+   <dbl>  <dbl>  <dbl>
+ 1   8.3     70   10.3
+ 2   8.6     65   10.3
+ 3   8.8     63   10.2
+ 4  10.5     72   16.4
+ 5  10.7     81   18.8
+ 6  10.8     83   19.7
+ 7  11       66   15.6
+ 8  11       75   18.2
+ 9  11.1     80   22.6
+10  11.2     75   19.9
+# ... with more rows
+
+> print(as_unknown_rows(trees[1:9, ]), n = 10, width = 70L)
+# A data frame: ?? x 3
+  Girth Height Volume
+* <dbl>  <dbl>  <dbl>
+1   8.3     70   10.3
+2   8.6     65   10.3
+3   8.8     63   10.2
+4  10.5     72   16.4
+5  10.7     81   18.8
+6  10.8     83   19.7
+7  11       66   15.6
+8  11       75   18.2
+9  11.1     80   22.6
+
+> print(as_unknown_rows(trees[1:10, ]), n = 10, width = 70L)
+# A data frame: ?? x 3
+   Girth Height Volume
+ * <dbl>  <dbl>  <dbl>
+ 1   8.3     70   10.3
+ 2   8.6     65   10.3
+ 3   8.8     63   10.2
+ 4  10.5     72   16.4
+ 5  10.7     81   18.8
+ 6  10.8     83   19.7
+ 7  11       66   15.6
+ 8  11       75   18.2
+ 9  11.1     80   22.6
+10  11.2     75   19.9
+
+> print(as_unknown_rows(trees[1:11, ]), n = 10, width = 70L)
+# A data frame: ?? x 3
+   Girth Height Volume
+ * <dbl>  <dbl>  <dbl>
+ 1   8.3     70   10.3
+ 2   8.6     65   10.3
+ 3   8.8     63   10.2
+ 4  10.5     72   16.4
+ 5  10.7     81   18.8
+ 6  10.8     83   19.7
+ 7  11       66   15.6
+ 8  11       75   18.2
+ 9  11.1     80   22.6
+10  11.2     75   19.9
+# ... with more rows
+
+> print(df_all, n = NULL, width = 30L)
+# A data frame: 3 x 9
+      a     b c     d    
+  <dbl> <int> <lgl> <chr>
+1   1       1 TRUE  a    
+2   2.5     2 FALSE b    
+3  NA      NA NA    <NA> 
+# ... with 5 more variables:
+#   e <fct>, f <date>,
+#   g <dttm>, h <list>,
+#   i <list>
+
+> print(df_all, n = NULL, width = 300L)
+# A data frame: 3 x 9
+      a     b c     d     e     f          g                   h        
+  <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
+1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35 <int [1]>
+2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36 <int [1]>
+3  NA      NA NA    <NA>  <NA>  NA         NA                  <int [1]>
+  i         
+  <list>    
+1 <list [2]>
+2 <list [1]>
+3 <list [1]>
+
+> print(new_tbl(list(a = seq.int(10000))), n = 5L, width = 30L)
+# A data frame: 10,000 x 1
+      a
+  <int>
+1     1
+2     2
+3     3
+4     4
+5     5
+# ... with 9,995 more rows
+
+> print(new_tbl(list(a = character(), b = logical())), width = 30L)
+# A data frame: 0 x 2
+# ... with 2 variables:
+#   a <chr>, b <lgl>
+
+> print(as_tbl(trees[character()]), n = 5L, width = 30L)
+# A data frame: 31 x 0
+
+> print(as_unknown_rows(trees[integer(), ]), n = 5L, width = 30L)
+# A data frame: ?? x 3
+# ... with 3 variables:
+#   Girth <dbl>,
+#   Height <dbl>,
+#   Volume <dbl>
+
+> print(as_unknown_rows(trees[, character()]), n = 5L, width = 30L)
+# A data frame: ?? x 0
+# ... with at least 5 rows
+#   total
+
+> print(as_unknown_rows(new_tbl(list(a = seq.int(10000)))), n = 5L, width = 30L)
+# A data frame: ?? x 1
+      a
+  <int>
+1     1
+2     2
+3     3
+4     4
+5     5
+# ... with more rows
+
+> df <- new_tbl(list(x = as.POSIXct("2016-01-01 12:34:56 GMT") + 1:12))
+> df$y <- as.POSIXlt(df$x)
+> print(df, n = 8L, width = 60L)
+# A data frame: 12 x 2
+  x                   y                  
+  <dttm>              <dttm>             
+1 2016-01-01 12:34:57 2016-01-01 12:34:57
+2 2016-01-01 12:34:58 2016-01-01 12:34:58
+3 2016-01-01 12:34:59 2016-01-01 12:34:59
+4 2016-01-01 12:35:00 2016-01-01 12:35:00
+5 2016-01-01 12:35:01 2016-01-01 12:35:01
+6 2016-01-01 12:35:02 2016-01-01 12:35:02
+7 2016-01-01 12:35:03 2016-01-01 12:35:03
+8 2016-01-01 12:35:04 2016-01-01 12:35:04
+# ... with 4 more rows
+
