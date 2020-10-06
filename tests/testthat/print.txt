@@ -256,3 +256,10 @@
 8 2016-01-01 12:35:04 2016-01-01 12:35:04
 # ... with 4 more rows
 
+> colonnade(list(a = 1:3), has_row_id = FALSE)
+    a
+<int>
+    1
+    2
+    3
+
