@@ -6,6 +6,8 @@ test_that("print() returns output invisibly", {
 
 test_that("print() output", {
   verify_output("print.txt", {
+    as_tbl(mtcars)
+
     print(as_tbl(mtcars), n = 8L, width = 30L)
 
     print(as_tbl(trees), n = 5L, width = 30L)
