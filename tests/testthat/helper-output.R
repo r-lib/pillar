@@ -3,7 +3,7 @@ show_output_in_terminal <- function() {
 }
 
 # A data frame with all major types
-df_all <- list(
+df_all <- new_tbl(list(
   a = c(1, 2.5, NA),
   b = c(1:2, NA),
   c = c(T, F, NA),
@@ -13,7 +13,7 @@ df_all <- list(
   g = as.POSIXct("2015-12-09 10:51:34.5678 UTC") + c(1:2, NA),
   h = as.list(c(1:2, NA)),
   i = list(list(1, 2:3), list(4:6), list(NA))
-)
+))
 
 # A data frame with strings of varying lengths
 long_str <- strrep("Abcdefghij", 5)
