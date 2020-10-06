@@ -215,7 +215,7 @@ format_footer <- function(x, setup) {
 }
 
 format_footer_rows <- function(x, setup) {
-  if (length(setup$squeezed) != 0) {
+  if (length(setup$x) != 0) {
     if (is.na(setup$rows_missing)) {
       "more rows"
     } else if (setup$rows_missing > 0) {
