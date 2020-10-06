@@ -121,6 +121,7 @@ tbl_format_setup.default <- function(x, width, ...,
   extra_cols <- extra_cols_impl(squeezed, n = max_extra_cols)
 
   trunc_info <- list(
+    x = x,
     width = width,
     squeezed = squeezed, rows_missing = rows_missing,
     rows_total = rows, rows_min = nrow(df),
