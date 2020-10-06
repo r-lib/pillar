@@ -1,6 +1,6 @@
 graph TD
   print.tbl --> format.tbl
-  format.tbl -- "n, n_extra, options" --> tbl_format_setup
+  format.tbl -- "options -> n; n_extra" --> tbl_format_setup
   format.tbl --> tbl_format_header
   format.tbl --> tbl_format_body
   format.tbl --> tbl_format_footer

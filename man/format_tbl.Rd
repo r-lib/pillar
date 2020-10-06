@@ -15,7 +15,7 @@
 
 \method{format}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
 
-tbl_format_setup(x, width, ..., n, min_rows, max_rows, max_extra_cols)
+tbl_format_setup(x, width, ..., n, max_extra_cols)
 
 tbl_format_header(x, setup, ...)
 
@@ -44,12 +44,6 @@ if less than option \code{tibble.print_max}. Otherwise, will print
 \item{n_extra}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL}, the default,
 will print information about at most \code{tibble.max_extra_cols} extra columns.}
-
-\item{min_rows, max_rows}{If the total number of rows is greater than \code{max_rows},
-only \code{min_rows} should be printed.
-Otherwise, all rows should be printed.
-Currently initialized with the value of the
-\code{tibble.print_min} and  \code{tibble.print_max} options, do not rely on this.}
 
 \item{max_extra_cols}{Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.

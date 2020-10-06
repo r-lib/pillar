@@ -20,12 +20,6 @@
 #' @param n_extra Number of extra columns to print abbreviated information for,
 #'   if the width is too small for the entire tibble. If `NULL`, the default,
 #'   will print information about at most `tibble.max_extra_cols` extra columns.
-#' @param min_rows,max_rows
-#'   If the total number of rows is greater than `max_rows`,
-#'   only `min_rows` should be printed.
-#'   Otherwise, all rows should be printed.
-#'   Currently initialized with the value of the
-#'   `tibble.print_min` and  `tibble.print_max` options, do not rely on this.
 #' @param max_extra_cols
 #'   Number of columns to print abbreviated information for,
 #'   if the width is too small for the entire tibble.
@@ -50,10 +44,11 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
     width <- cli::console_width()
   }
 
+  n <- get_n(n, nrow(x))
+
   setup <- tbl_format_setup(x, width = width, ...,
     n = n,
-    min_rows = tibble_opt("print_min"),
-    max_rows = tibble_opt("print_max"),
+    # FIXME: Don't repeat in default method
     max_extra_cols = n_extra %||% tibble_opt("max_extra_cols")
   )
   header <- tbl_format_header(x, setup)
@@ -62,24 +57,35 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   c(header, body, footer)
 }
 
+get_n <- function(n, rows) {
+  if (!is.null(n) && n >= 0) {
+    return(n)
+  }
+
+  if (is.na(rows) || rows > tibble_opt("print_max")) {
+    tibble_opt("print_min")
+  } else {
+    rows
+  }
+}
+
 #' @export
 #' @rdname format_tbl
-tbl_format_setup <- function(x, width, ..., n, min_rows, max_rows, max_extra_cols) {
+tbl_format_setup <- function(x, width, ...,
+                             n, max_extra_cols) {
   check_dots_empty()
 
   UseMethod("tbl_format_setup")
 }
 
 #' @export
-tbl_format_setup.default <- function(x, width, ..., n, min_rows, max_rows, max_extra_cols) {
+tbl_format_setup.default <- function(x, width, ...,
+                                     n = NULL, max_extra_cols = NULL) {
   rows <- nrow(x)
-
-  if (is.null(n) || n < 0) {
-    if (is.na(rows) || rows > max_rows) {
-      n <- min_rows
-    } else {
-      n <- rows
-    }
+  if (is.null(n)) {
+    # For testing
+    n <- rows
+    stopifnot(!is.na(n))
   }
 
   if (is.na(rows)) {
