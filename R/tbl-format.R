@@ -70,6 +70,7 @@ tbl_format_setup <- function(x, width, ..., n, min_rows, max_rows, max_extra_col
   UseMethod("tbl_format_setup")
 }
 
+#' @export
 tbl_format_setup.default <- function(x, width, ..., n, min_rows, max_rows, max_extra_cols) {
   rows <- nrow(x)
 
