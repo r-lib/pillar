@@ -40,9 +40,7 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   check_dots_empty()
 
-  if (is.null(width)) {
-    width <- cli::console_width()
-  }
+  width <- tibble_width(width)
 
   n <- get_n(n, nrow(x))
 
