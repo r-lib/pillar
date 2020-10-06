@@ -266,9 +266,13 @@ extra_cols.pillar_squeezed_colonnade <- function(x, ..., n = Inf) {
   extra_cols_impl(x, n)
 }
 
-extra_cols_impl <- function(x, n = Inf) {
+extra_cols_impl <- function(x, n = NULL) {
   extra_cols <- attr(x, "extra_cols")
   ret <- rep(NA_character_, length(extra_cols))
+
+  if (is.null(n)) {
+    n <- Inf
+  }
 
   idx <- seq_len(min(length(extra_cols), n))
   ret[idx] <- map_chr_named(extra_cols[idx], format_abbrev)
