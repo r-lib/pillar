@@ -53,7 +53,7 @@ test_that("print() output", {
   })
 })
 
-test_that("trunc_mat output matches known output", {
+test_that("output for wide characters", {
   skip_if(!cli::is_utf8_output())
 
   verify_output("wide.txt", {
