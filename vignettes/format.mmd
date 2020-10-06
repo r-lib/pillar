@@ -1,0 +1,13 @@
+graph TD
+  print.tbl --> format.tbl
+  format.tbl -- "options -> n; n_extra" --> tbl_format_setup
+  format.tbl --> tbl_format_header
+  format.tbl --> tbl_format_body
+  format.tbl --> tbl_format_footer
+  tbl_format_setup -.-> tbl_format_header
+  tbl_format_setup -.-> tbl_format_body
+  tbl_format_setup -.-> tbl_format_footer
+  format.tbl --> c
+  tbl_format_header -.-> c
+  tbl_format_body -.-> c
+  tbl_format_footer -.-> c

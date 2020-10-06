@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.4.6.9000
+Version: 1.4.99.9000
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -25,13 +25,19 @@ Imports:
     lifecycle,
     rlang (>= 0.3.0),
     utf8 (>= 1.1.0),
+    utils,
     vctrs (>= 0.2.0)
 Suggests: 
     bit64,
+    DiagrammeR,
     knitr,
     lubridate,
+    rmarkdown,
     testthat (>= 2.0.0),
+    tibble,
     withr
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
