@@ -141,14 +141,6 @@ tbl_format_header <- function(x, setup, ...) {
 }
 
 #' @export
-tbl_format_header.pillar_tbl_format_setup <- function(x, setup, ...) {
-  # For testing: x is a setup object
-  # and has a member x that contains the input data.
-  # Allows writing tests as tbl_format_header(tbl_format_setup(...))
-  tbl_format_header(x$x, x)
-}
-
-#' @export
 tbl_format_header.default <- function(x, setup, ...) {
   named_header <- tbl_sum(x)
   if (all(names2(named_header) == "")) {
@@ -166,7 +158,7 @@ tbl_format_header.default <- function(x, setup, ...) {
     )
   }
 
-  new_vertical(style_subtle(format_comment(header, width = setup$width)))
+  style_subtle(format_comment(header, width = setup$width))
 }
 
 #' @export
