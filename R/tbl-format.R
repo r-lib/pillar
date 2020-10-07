@@ -55,18 +55,6 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   c(header, body, footer)
 }
 
-get_n_print <- function(n, rows) {
-  if (!is.null(n) && n >= 0) {
-    return(n)
-  }
-
-  if (is.na(rows) || rows > tibble_opt("print_max")) {
-    tibble_opt("print_min")
-  } else {
-    rows
-  }
-}
-
 #' @export
 #' @rdname format_tbl
 tbl_format_setup <- function(x, width, ...,

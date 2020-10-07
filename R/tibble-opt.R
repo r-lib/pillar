@@ -37,3 +37,15 @@ get_width_print <- function(width) {
 
   getOption("width")
 }
+
+get_n_print <- function(n, rows) {
+  if (!is.null(n) && n >= 0) {
+    return(n)
+  }
+
+  if (is.na(rows) || rows > tibble_opt("print_max")) {
+    tibble_opt("print_min")
+  } else {
+    rows
+  }
+}
