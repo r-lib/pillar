@@ -40,9 +40,9 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   check_dots_empty()
 
-  width <- tibble_width(width)
+  width <- get_width_print(width)
 
-  n <- get_n(n, nrow(x))
+  n <- get_n_print(n, nrow(x))
 
   setup <- tbl_format_setup(x, width = width, ...,
     n = n,
@@ -55,7 +55,7 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   c(header, body, footer)
 }
 
-get_n <- function(n, rows) {
+get_n_print <- function(n, rows) {
   if (!is.null(n) && n >= 0) {
     return(n)
   }

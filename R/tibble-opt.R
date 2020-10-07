@@ -25,7 +25,7 @@ tibble_opt <- function(x, dplyr = TRUE) {
   op.tibble[[x_tibble]]
 }
 
-tibble_width <- function(width) {
+get_width_print <- function(width) {
   if (!is.null(width)) {
     return(width)
   }
