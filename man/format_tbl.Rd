@@ -8,7 +8,6 @@
 \alias{tbl_format_header}
 \alias{tbl_format_body}
 \alias{tbl_format_footer}
-\alias{tbl_format_footer.default}
 \title{Formatting of tbl objects}
 \usage{
 \method{print}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
@@ -22,8 +21,6 @@ tbl_format_header(x, setup, ...)
 tbl_format_body(x, setup, ...)
 
 tbl_format_footer(x, setup, ...)
-
-\method{tbl_format_footer}{default}(x, setup, ...)
 }
 \arguments{
 \item{x}{Object to format or print.}
