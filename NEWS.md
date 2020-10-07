@@ -1,3 +1,8 @@
+# pillar 1.4.99.9001
+
+- Move printing code from tibble to pillar (#179).
+
+
 # pillar 1.4.6.9000
 
 - Internal changes only.
