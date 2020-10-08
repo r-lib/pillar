@@ -41,7 +41,8 @@ The result is passed on to the
 methods.
 If you need to customize parts of the printed output independently,
 override these methods instead.
-
+}
+\details{
 Extend this method to prepare information that is used
 in several parts of the printed output of a tibble-like object,
 or to collect additional arguments passed via \code{...} to

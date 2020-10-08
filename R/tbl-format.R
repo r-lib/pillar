@@ -1,13 +1,17 @@
 #' Formatting of tbl objects
 #'
 #' These functions and methods are responsible for printing objects
-#' of the `tbl` class, which includes [tibble][tibble::tibble]s and dbplyr lazy
+#' of the `"tbl"` class, which includes [tibble][tibble::tibble]s and dbplyr lazy
 #' data frames.
 #' See [tibble::formatting] for user level documentation,
 #' and `vignette("customization")` for details.
 #'
+#' @seealso
+#'
+#' - [tbl_format_setup()] for preparing an object for formatting
+#'
 #' @param x Object to format or print.
-#' @param ... Passed on to `tbl_format_setup()` from `print()` and `format()`,
+#' @param ... Passed on to [tbl_format_setup()] from `print()` and `format()`,
 #'   must be empty for other methods.
 #' @param n Number of rows to show. If `NULL`, the default, will print all rows
 #'   if less than option `tibble.print_max`. Otherwise, will print

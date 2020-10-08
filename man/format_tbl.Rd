@@ -28,7 +28,7 @@ means use \code{getOption("tibble.width")} or (if also \code{NULL})
 screen. You can also set \code{options(tibble.width = Inf)} to override this
 default and always print all columns.}
 
-\item{...}{Passed on to \code{tbl_format_setup()} from \code{print()} and \code{format()},
+\item{...}{Passed on to \code{\link[=tbl_format_setup]{tbl_format_setup()}} from \code{print()} and \code{format()},
 must be empty for other methods.}
 
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print all rows
@@ -43,11 +43,16 @@ will print information about at most \code{tibble.max_extra_cols} extra columns.
 }
 \description{
 These functions and methods are responsible for printing objects
-of the \code{tbl} class, which includes \link[tibble:tibble]{tibble}s and dbplyr lazy
+of the \code{"tbl"} class, which includes \link[tibble:tibble]{tibble}s and dbplyr lazy
 data frames.
 See \link[tibble:formatting]{tibble::formatting} for user level documentation,
 and \code{vignette("customization")} for details.
 }
 \examples{
 print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
+}
+\seealso{
+\itemize{
+\item \code{\link[=tbl_format_setup]{tbl_format_setup()}} for preparing an object for formatting
+}
 }
