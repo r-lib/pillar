@@ -40,7 +40,7 @@
 #'   Actual width for printing, a numeric greater than zero.
 #'   This argument is mandatory for all implementations of this method.
 #' @param ...
-#'   Extra arguments passed to [print.tbl()] or [format.tbl()].
+#'   Extra arguments to [print.tbl()] or [format.tbl()].
 #' @param n
 #'   Actual number of rows to print.
 #'   No [option]s should be considered by implementations of this method.

@@ -15,7 +15,7 @@ tbl_format_setup(x, width, ..., n, max_extra_cols)
 \item{width}{Actual width for printing, a numeric greater than zero.
 This argument is mandatory for all implementations of this method.}
 
-\item{...}{Extra arguments passed to \code{\link[=print.tbl]{print.tbl()}} or \code{\link[=format.tbl]{format.tbl()}}.}
+\item{...}{Extra arguments to \code{\link[=print.tbl]{print.tbl()}} or \code{\link[=format.tbl]{format.tbl()}}.}
 
 \item{n}{Actual number of rows to print.
 No \link{option}s should be considered by implementations of this method.}
