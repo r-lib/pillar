@@ -138,5 +138,8 @@ print.pillar_tbl_format_setup <- function(x, ...) {
 #' @export
 format.pillar_tbl_format_setup <- function(x, ...) {
   check_dots_empty()
-  format_setup(x$x, setup = x)
+  c(
+    cli::style_bold("<pillar_tbl_format_setup>"),
+    format_setup(x$x, setup = x)
+  )
 }
