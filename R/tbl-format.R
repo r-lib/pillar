@@ -20,18 +20,13 @@
 #' @param n_extra Number of extra columns to print abbreviated information for,
 #'   if the width is too small for the entire tibble. If `NULL`, the default,
 #'   will print information about at most `tibble.max_extra_cols` extra columns.
-#' @param max_extra_cols
-#'   Number of columns to print abbreviated information for,
-#'   if the width is too small for the entire tibble.
-#'   Currently initialized with the value of `n_extra`
-#'   or the `tibble.max_extra_cols` options, do not rely on this.
 #'
 #' @name format_tbl
 #' @export
 #' @examples
 #' print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
 print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
-  cli::cat_line(format(x, width = width, ..., n = n, n_extra = n_extra))
+  writeLines(format(x, width = width, ..., n = n, n_extra = n_extra))
   invisible(x)
 }
 
@@ -49,19 +44,15 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
     # FIXME: Don't repeat in default method
     max_extra_cols = n_extra %||% tibble_opt("max_extra_cols")
   )
+
+  format_setup(x, setup)
+}
+
+format_setup <- function(x, setup) {
   header <- tbl_format_header(x, setup)
   body <- tbl_format_body(x, setup)
   footer <- tbl_format_footer(x, setup)
   c(header, body, footer)
-}
-
-#' @export
-#' @rdname format_tbl
-tbl_format_setup <- function(x, width, ...,
-                             n, max_extra_cols) {
-  check_dots_empty()
-
-  UseMethod("tbl_format_setup")
 }
 
 #' @export

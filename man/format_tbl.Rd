@@ -4,7 +4,6 @@
 \alias{format_tbl}
 \alias{print.tbl}
 \alias{format.tbl}
-\alias{tbl_format_setup}
 \alias{tbl_format_header}
 \alias{tbl_format_body}
 \alias{tbl_format_footer}
@@ -13,8 +12,6 @@
 \method{print}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
 
 \method{format}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
-
-tbl_format_setup(x, width, ..., n, max_extra_cols)
 
 tbl_format_header(x, setup, ...)
 
@@ -41,11 +38,6 @@ if less than option \code{tibble.print_max}. Otherwise, will print
 \item{n_extra}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL}, the default,
 will print information about at most \code{tibble.max_extra_cols} extra columns.}
-
-\item{max_extra_cols}{Number of columns to print abbreviated information for,
-if the width is too small for the entire tibble.
-Currently initialized with the value of \code{n_extra}
-or the \code{tibble.max_extra_cols} options, do not rely on this.}
 
 \item{setup}{Printing setup object created by \code{tbl_format_setup()}.}
 }
