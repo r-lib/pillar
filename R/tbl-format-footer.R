@@ -20,14 +20,14 @@ format_footer <- function(x, setup) {
 }
 
 format_footer_rows <- function(x, setup) {
-  if (length(setup$x) != 0) {
+  if (ncol(setup$x) != 0) {
     if (is.na(setup$rows_missing)) {
       "more rows"
     } else if (setup$rows_missing > 0) {
       paste0(big_mark(setup$rows_missing), pluralise_n(" more row(s)", setup$rows_missing))
     }
-  } else if (is.na(setup$rows_total) && setup$rows_min > 0) {
-    paste0("at least ", big_mark(setup$rows_min), pluralise_n(" row(s) total", setup$rows_min))
+  } else if (is.na(setup$rows_total) && setup$rows_body > 0) {
+    paste0("at least ", big_mark(setup$rows_body), pluralise_n(" row(s) total", setup$rows_body))
   }
 }
 
@@ -38,7 +38,7 @@ format_footer_cols <- function(x, setup) {
   vars <- format_extra_vars(extra_cols)
   paste0(
     big_mark(length(extra_cols)), " ",
-    if (!identical(setup$rows_total, 0L) && setup$rows_min > 0) "more ",
+    if (!identical(setup$rows_total, 0L) && setup$rows_body > 0) "more ",
     pluralise("variable(s)", extra_cols), vars
   )
 }

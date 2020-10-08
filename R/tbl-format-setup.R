@@ -64,9 +64,8 @@ tbl_format_setup <- function(x, width, ...,
 #' @details
 #' The default method for the `"tbl"` class collects information for
 #' standard printing for tibbles.
-#' Objects returned by the default method are lists with a `"class"` attribute.
-#' Named elements can be added to such objects without affecting the behavior.
-#' Do not modify existing elements.
+#' The object returned from the default method is a list
+#' with a `"class"` attribute and the following elements:
 #'
 #' @rdname tbl_format_setup
 #' @export
@@ -113,13 +112,37 @@ tbl_format_setup.tbl <- function(x, width, ...,
 
   extra_cols <- extra_cols_impl(squeezed, n = max_extra_cols)
 
+  # FIXME: Implement constructor with arguments and document there,
+  #        with "@keywords internal"
   trunc_info <- list(
+    #' @details
+    #' - `x`: The input object unchanged,
     x = x,
+
+    #' - `width`: The `width` argument unchanged,
     width = width,
-    squeezed = squeezed, rows_missing = rows_missing,
-    rows_total = rows, rows_min = nrow(df),
+
+    #' - TBD
+    squeezed = squeezed,
+
+    #' - `rows_body`: The number of rows shown in the body,
+    #'   even if the body does not have any columns.
+    rows_body = nrow(df),
+
+    #' - `rows_missing`: The number of rows not shown from the body,
+    #'   `NA` if unknown.
+    rows_missing = rows_missing,
+    #' - `rows_total`: The total number of rows in the data,
+    #'   `NA` if unknown.
+    rows_total = rows,
+
+    #' - TBD
     extra_cols = extra_cols
   )
+
+  #'
+  #' Named elements can be added to such objects without affecting the behavior.
+  #' Do not modify existing elements.
 
   new_tbl_format_setup(trunc_info)
 }
