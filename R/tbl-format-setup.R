@@ -12,7 +12,7 @@
 #'
 #' This information is computed once in `tbl_format_setup()`.
 #' The result is passed on to the
-#' [tbl_format_header()], [tbl_format_body()] and [tbl_format_footer()]
+#' [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()]
 #' methods.
 #' If you need to customize parts of the printed output independently,
 #' override these methods instead.
@@ -26,7 +26,7 @@
 #' We expect that `tbl_format_setup()` is extended only rarely,
 #' and overridden only in exceptional circumstances, if at all.
 #' If you override this method, you must also implement
-#' [tbl_format_header()], [tbl_format_body()] and [tbl_format_footer()]
+#' [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()]
 #' for your class.
 #'
 #' Implementing a method
@@ -50,6 +50,9 @@
 #'   Currently initialized with the value of `n_extra`
 #'   or the `tibble.max_extra_cols` options, do not rely on this.
 #'
+#' @return
+#'   An object that will be passed as `setup` argument to
+#'   [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()].
 #' @export
 tbl_format_setup <- function(x, width, ...,
                              n, max_extra_cols) {

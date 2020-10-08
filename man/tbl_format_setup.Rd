@@ -25,6 +25,10 @@ if the width is too small for the entire tibble.
 Currently initialized with the value of \code{n_extra}
 or the \code{tibble.max_extra_cols} options, do not rely on this.}
 }
+\value{
+An object that will be passed as \code{setup} argument to
+\code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}}.
+}
 \description{
 \code{tbl_format_setup()} is called by \code{\link[=format.tbl]{format.tbl()}}.
 This method collects information that is common to the header, body,
@@ -38,7 +42,7 @@ and (implicitly) in the footer of a tibble;
 
 This information is computed once in \code{tbl_format_setup()}.
 The result is passed on to the
-\code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}} and \code{\link[=tbl_format_footer]{tbl_format_footer()}}
+\code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}}
 methods.
 If you need to customize parts of the printed output independently,
 override these methods instead.
@@ -52,7 +56,7 @@ or to collect additional arguments passed via \code{...} to
 We expect that \code{tbl_format_setup()} is extended only rarely,
 and overridden only in exceptional circumstances, if at all.
 If you override this method, you must also implement
-\code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}} and \code{\link[=tbl_format_footer]{tbl_format_footer()}}
+\code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}}
 for your class.
 
 Implementing a method
