@@ -12,8 +12,8 @@
 #'   and the data source in the name of the first element.
 #'
 #' @seealso [pillar::type_sum()]
+#' @inheritParams ellipsis::dots_empty
 #' @param x Object to summarise.
-#' @param ... Must be empty.
 #' @export
 tbl_sum <- function(x, ...) {
   check_dots_empty()
