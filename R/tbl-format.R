@@ -70,14 +70,6 @@ tbl_format_header <- function(x, setup, ...) {
 
 #' @export
 #' @rdname format_tbl
-tbl_format_body <- function(x, setup, ...) {
-  check_dots_empty()
-
-  UseMethod("tbl_format_body")
-}
-
-#' @export
-#' @rdname format_tbl
 tbl_format_footer <- function(x, setup, ...) {
   check_dots_empty()
 
