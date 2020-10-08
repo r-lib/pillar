@@ -37,7 +37,8 @@
 #' @param x
 #'   An object.
 #' @param width
-#'   Actual width for printing.
+#'   Actual width for printing, a numeric greater than zero.
+#'   This argument is mandatory for all implementations of this method.
 #' @param ...
 #'   Extra arguments passed to [print.tbl()] or [format.tbl()].
 #' @param n
@@ -52,11 +53,11 @@
 #' @export
 tbl_format_setup <- function(x, width, ...,
                              n, max_extra_cols) {
+  stopifnot(is.numeric(width), width > 0)
+
   UseMethod("tbl_format_setup")
 }
 
-#' tbl_format_setup.tbl()
-#'
 #' @details
 #' The default method for the `"tbl"` class collects information for
 #' standard printing for tibbles.

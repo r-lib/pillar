@@ -12,7 +12,8 @@ tbl_format_setup(x, width, ..., n, max_extra_cols)
 \arguments{
 \item{x}{An object.}
 
-\item{width}{Actual width for printing.}
+\item{width}{Actual width for printing, a numeric greater than zero.
+This argument is mandatory for all implementations of this method.}
 
 \item{...}{Extra arguments passed to \code{\link[=print.tbl]{print.tbl()}} or \code{\link[=format.tbl]{format.tbl()}}.}
 
