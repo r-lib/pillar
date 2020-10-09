@@ -31,11 +31,5 @@ test_that("tbl_format_setup() results", {
       n = 5L,
       width = 30L
     )
-
-    "POSIXct and POSIXlt"
-    df <- new_tbl(list(x = as.POSIXct("2016-01-01 12:34:56 GMT") + 1:12))
-    df$y <- as.POSIXlt(df$x)
-
-    tbl_format_setup(df, n = 8L, width = 60L)
   })
 })
