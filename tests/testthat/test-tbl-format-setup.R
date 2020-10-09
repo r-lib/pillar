@@ -37,11 +37,5 @@ test_that("tbl_format_setup() results", {
     df$y <- as.POSIXlt(df$x)
 
     tbl_format_setup(df, n = 8L, width = 60L)
-
-    "Body"
-    colonnade(list(a = 1:3), has_row_id = FALSE)
-
-    # For coverage tests
-    squeeze_impl(colonnade(list(a = 1:3)))
   })
 })
