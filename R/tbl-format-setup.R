@@ -47,8 +47,7 @@
 #' @param max_extra_cols
 #'   Number of columns to print abbreviated information for,
 #'   if the width is too small for the entire tibble.
-#'   Currently initialized with the value of `n_extra`
-#'   or the `tibble.max_extra_cols` options, do not rely on this.
+#'   No [option]s should be considered by implementations of this method.
 #'
 #' @return
 #'   An object that will be passed as `setup` argument to
