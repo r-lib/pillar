@@ -142,34 +142,6 @@
 10  11.2     75   19.9
 # ... with more rows
 
-> # Various column types
-> tbl_format_setup(df_all, width = 30)
-<pillar_tbl_format_setup>
-# A data frame: 3 x 9
-      a     b c     d    
-  <dbl> <int> <lgl> <chr>
-1   1       1 TRUE  a    
-2   2.5     2 FALSE b    
-3  NA      NA NA    <NA> 
-# ... with 5 more variables:
-#   e <fct>, f <date>,
-#   g <dttm>, h <list>,
-#   i <list>
-
-> tbl_format_setup(df_all, width = 300)
-<pillar_tbl_format_setup>
-# A data frame: 3 x 9
-      a     b c     d     e     f          g                   h        
-  <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
-1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35 <int [1]>
-2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36 <int [1]>
-3  NA      NA NA    <NA>  <NA>  NA         NA                  <int [1]>
-  i         
-  <list>    
-1 <list [2]>
-2 <list [1]>
-3 <list [1]>
-
 > # No rows
 > tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
 <pillar_tbl_format_setup>

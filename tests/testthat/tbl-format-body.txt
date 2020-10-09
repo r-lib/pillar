@@ -1,0 +1,37 @@
+> # Various column types
+> tbl_format_body(tbl_format_setup(df_all, width = 30))
+<tbl_format_body(setup)>
+      a     b c     d    
+  <dbl> <int> <lgl> <chr>
+1   1       1 TRUE  a    
+2   2.5     2 FALSE b    
+3  NA      NA NA    <NA> 
+
+> tbl_format_body(tbl_format_setup(df_all, width = 300))
+<tbl_format_body(setup)>
+      a     b c     d     e     f          g                   h        
+  <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
+1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35 <int [1]>
+2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36 <int [1]>
+3  NA      NA NA    <NA>  <NA>  NA         NA                  <int [1]>
+  i         
+  <list>    
+1 <list [2]>
+2 <list [1]>
+3 <list [1]>
+
+> # Colonnade
+> colonnade(list(a = 1:3), has_row_id = FALSE)
+    a
+<int>
+    1
+    2
+    3
+
+> squeeze_impl(colonnade(list(a = 1:3)))
+      a
+  <int>
+1     1
+2     2
+3     3
+

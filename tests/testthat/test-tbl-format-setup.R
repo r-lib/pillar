@@ -13,11 +13,6 @@ test_that("tbl_format_setup() results", {
 
     tbl_format_setup(as_unknown_rows(trees[1:11, ]), width = 30, n = 10)
 
-    "Various column types"
-    tbl_format_setup(df_all, width = 30)
-
-    tbl_format_setup(df_all, width = 300)
-
     "No rows"
     tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
 
@@ -48,15 +43,5 @@ test_that("tbl_format_setup() results", {
 
     # For coverage tests
     squeeze_impl(colonnade(list(a = 1:3)))
-  })
-})
-
-test_that("body: output for wide characters", {
-  skip_if(!cli::is_utf8_output())
-
-  verify_output("wide.txt", {
-    x <- c("\u6210\u4ea4\u65e5\u671f", "\u5408\u540c\u5f55\u5165\u65e5\u671f")
-    df <- new_tbl(setNames(list(1:3, 4:6), x))
-    print(df, n = 8L, width = 60L)
   })
 })

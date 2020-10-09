@@ -28,15 +28,17 @@ tbl_format_body <- function(x, setup, ...) {
 #' @export
 tbl_format_body.tbl <- function(x, setup, ...) {
   force(setup)
-  new_vertical(format(setup$squeezed))
+  format(setup$squeezed)
 }
 
 #' @export
 tbl_format_body.pillar_tbl_format_setup <- function(x, ...) {
-  tbl_format_body(x$x, setup = x)
+  new_vertical(c(
+    cli::style_bold("<tbl_format_body(setup)>"),
+    tbl_format_body(x$x, setup = x)
+  ))
 }
 
 # FIXME NEXT:
-# - Move body tests to dedicated test file here
 # - Move parts of the existing implementation here
 # - Proceed with header and footer
