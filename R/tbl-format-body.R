@@ -28,11 +28,15 @@ tbl_format_body <- function(x, setup, ...) {
 #' @export
 tbl_format_body.tbl <- function(x, setup, ...) {
   force(setup)
-  format(setup$squeezed)
+  new_vertical(format(setup$squeezed))
+}
+
+#' @export
+tbl_format_body.pillar_tbl_format_setup <- function(x, ...) {
+  tbl_format_body(x$x, setup = x)
 }
 
 # FIXME NEXT:
-# - Add method for setup object for testing
 # - Move body tests to dedicated test file here
 # - Move parts of the existing implementation here
 # - Proceed with header and footer
