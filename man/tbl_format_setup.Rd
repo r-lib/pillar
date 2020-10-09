@@ -66,22 +66,5 @@ This allows to keep the logic of the \code{width} and \code{n} arguments.
 
 The default method for the \code{"tbl"} class collects information for
 standard printing for tibbles.
-The object returned from the default method is a list
-with a \code{"class"} attribute and the following elements:
-
-\itemize{
-\item \code{x}: The input object unchanged,
-\item \code{width}: The \code{width} argument unchanged,
-\item TBD
-\item \code{rows_body}: The number of rows shown in the body,
-even if the body does not have any columns.
-\item \code{rows_missing}: The number of rows not shown from the body,
-\code{NA} if unknown.
-\item \code{rows_total}: The total number of rows in the data,
-\code{NA} if unknown.
-\item TBD
-}
-
-Named elements can be added to such objects without affecting the behavior.
-Do not modify existing elements.
+See \code{\link[=new_tbl_format_setup]{new_tbl_format_setup()}} for details on the returned object.
 }
