@@ -60,15 +60,6 @@ format_setup <- function(x, setup) {
 }
 
 #' @export
-#' @param setup Printing setup object created by `tbl_format_setup()`.
-#' @rdname format_tbl
-tbl_format_header <- function(x, setup, ...) {
-  check_dots_empty()
-
-  UseMethod("tbl_format_header")
-}
-
-#' @export
 #' @rdname format_tbl
 tbl_format_footer <- function(x, setup, ...) {
   check_dots_empty()

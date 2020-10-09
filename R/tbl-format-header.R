@@ -1,5 +1,29 @@
+#' Format the header of a tibble
+#'
+#' @description
+#' For easier customization, the formatting of a tibble is split
+#' into three components: header, body, and footer.
+#' The `tbl_format_header()` method is responsible for formatting the header
+#' of a tibble.
+#'
+#' Override this method if you need to change the appearance
+#' of the entire header.
+#' If you only need to change or extend the components shown in the header,
+#' override or extend [tbl_sum()] for your class which is called by the
+#' default method.
+#'
+#' @inheritParams tbl_format_body
+#' @inherit tbl_format_body return
+#'
 #' @export
-tbl_format_header.default <- function(x, setup, ...) {
+tbl_format_header <- function(x, setup, ...) {
+  check_dots_empty()
+
+  UseMethod("tbl_format_header")
+}
+
+#' @export
+tbl_format_header.tbl <- function(x, setup, ...) {
   # FIXME: Can we somehow pass the actual number of rows here,
   # perhaps as an attribute?
   named_header <- tbl_sum(x)
@@ -19,6 +43,14 @@ tbl_format_header.default <- function(x, setup, ...) {
   }
 
   style_subtle(format_comment(header, width = setup$width))
+}
+
+#' @export
+tbl_format_header.pillar_tbl_format_setup <- function(x, ...) {
+  new_vertical(c(
+    cli::style_bold("<tbl_format_header(setup)>"),
+    tbl_format_header(x$x, setup = x)
+  ))
 }
 
 justify <- function(x, right = TRUE, space = " ") {

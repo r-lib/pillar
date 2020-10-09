@@ -4,15 +4,12 @@
 \alias{format_tbl}
 \alias{print.tbl}
 \alias{format.tbl}
-\alias{tbl_format_header}
 \alias{tbl_format_footer}
 \title{Formatting of tbl objects}
 \usage{
 \method{print}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
 
 \method{format}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
-
-tbl_format_header(x, setup, ...)
 
 tbl_format_footer(x, setup, ...)
 }
