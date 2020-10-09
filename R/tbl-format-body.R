@@ -38,7 +38,3 @@ tbl_format_body.pillar_tbl_format_setup <- function(x, ...) {
     tbl_format_body(x$x, setup = x)
   ))
 }
-
-# FIXME NEXT:
-# - Move parts of the existing implementation here
-# - Proceed with header and footer
