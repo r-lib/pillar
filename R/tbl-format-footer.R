@@ -1,3 +1,26 @@
+#' Format the footer of a tibble
+#'
+#' @description
+#' For easier customization, the formatting of a tibble is split
+#' into three components: header, body, and footer.
+#' The `tbl_format_footer()` method is responsible for formatting the footer
+#' of a tibble.
+#'
+#' Override or extend this method if you need to change the appearance
+#' of the footer.
+#' The default implementation adds information about rows and columns
+#' that are not shown in the body.
+#'
+#' @inheritParams tbl_format_body
+#' @inherit tbl_format_body return
+#'
+#' @export
+tbl_format_footer <- function(x, setup, ...) {
+  check_dots_empty()
+
+  UseMethod("tbl_format_footer")
+}
+
 #' @export
 tbl_format_footer.default <- function(x, setup, ...) {
   footer <- pre_dots(format_footer(x, setup))

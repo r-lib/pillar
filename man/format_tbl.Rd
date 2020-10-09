@@ -4,14 +4,11 @@
 \alias{format_tbl}
 \alias{print.tbl}
 \alias{format.tbl}
-\alias{tbl_format_footer}
 \title{Formatting of tbl objects}
 \usage{
 \method{print}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
 
 \method{format}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
-
-tbl_format_footer(x, setup, ...)
 }
 \arguments{
 \item{x}{Object to format or print.}
@@ -32,8 +29,6 @@ if less than option \code{tibble.print_max}. Otherwise, will print
 \item{n_extra}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL}, the default,
 will print information about at most \code{tibble.max_extra_cols} extra columns.}
-
-\item{setup}{Printing setup object created by \code{tbl_format_setup()}.}
 }
 \description{
 These functions and methods are responsible for printing objects

@@ -59,14 +59,6 @@ format_setup <- function(x, setup) {
   c(header, body, footer)
 }
 
-#' @export
-#' @rdname format_tbl
-tbl_format_footer <- function(x, setup, ...) {
-  check_dots_empty()
-
-  UseMethod("tbl_format_footer")
-}
-
 format_comment <- function(x, width) {
   if (length(x) == 0L) return(character())
   map_chr(x, wrap, prefix = "# ", width = min(width, cli::console_width()))
