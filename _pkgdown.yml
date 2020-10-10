@@ -5,13 +5,6 @@ home:
   strip_header: true
 
 reference:
-  - title: High-level interface
-    desc: >
-      These functions accept vectors or lists and create objects that format
-      nicely on the terminal.
-    contents:
-      - pillar
-      - colonnade
   - title: Formatting tables
     desc: >
       Override or extend these methods if you want to customize the appearance
@@ -25,8 +18,9 @@ reference:
       - tbl_sum
   - title: Formatting pillars
     desc: >
-      Override or extend these methods if you want pillar support for your data type.
+      Functions and methods to implement pillar support for your data type.
     contents:
+      - pillar
       - pillar_shaft
       - starts_with("new_pillar_shaft")
       - new_ornament

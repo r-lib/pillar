@@ -24,7 +24,7 @@ characters per row.
 
 The \code{colonnade()} function doesn't process the input but returns an object
 with a \code{\link[=format]{format()}} and a \code{\link[=print]{print()}} method.
-The implementations call \code{squeeze()} to create \link{pillar} objects and fit them to a given width.
+The implementations call \code{\link[=squeeze]{squeeze()}} to create \link{pillar} objects and fit them to a given width.
 }
 \details{
 Pillars may be distributed over multiple tiers if
@@ -82,3 +82,4 @@ print(colonnade(long_string), width = 20)
 # If width is larger than getOption("width"), multiple tiers are created:
 colonnade(rep(long_string, 4), width = Inf)
 }
+\keyword{internal}

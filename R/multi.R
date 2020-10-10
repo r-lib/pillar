@@ -6,7 +6,7 @@
 #'
 #' The `colonnade()` function doesn't process the input but returns an object
 #' with a [format()] and a [print()] method.
-#' The implementations call `squeeze()` to create [pillar] objects and fit them to a given width.
+#' The implementations call [squeeze()] to create [pillar] objects and fit them to a given width.
 #'
 #' @param x A list, which can contain matrices or data frames.
 #'   If named, the names will be used as title for the pillars. Non-syntactic names
@@ -15,6 +15,7 @@
 #'   the row ID column with a star.
 #' @param width Default width of the entire output, optional.
 #' @inheritParams ellipsis::dots_empty
+#' @keywords internal
 #' @export
 #' @examples
 #' colonnade(list(a = 1:3, b = letters[1:3]))
