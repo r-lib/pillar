@@ -1,3 +1,8 @@
+# pillar 1.4.99.9002
+
+- Documentation and tests (#202).
+
+
 # pillar 1.4.99.9001
 
 - Move printing code from tibble to pillar (#179).
