@@ -112,6 +112,8 @@ new_empty_col_sentinel <- function(type) {
 #' @keywords internal
 #' @export
 #' @examples
+#' long_string <- list(paste(letters, collapse = " "))
+#' squeeze(colonnade(long_string), width = 40)
 #' squeeze(colonnade(long_string), width = 20)
 squeeze <- function(x, width = NULL, ...) {
   deprecate_soft("1.5.0", "pillar::squeeze()")
