@@ -44,7 +44,7 @@
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9001</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9002</span>
         </div>
       </div>
     </div>
@@ -118,23 +118,23 @@
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="co">#' @export</span>
 <span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/format_tbl.html">tbl_format_setup</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="va">width</span>, n <span class="op">=</span> <span class="va">n</span>, n_extra <span class="op">=</span> <span class="va">n_extra</span><span class="op">)</span>
-  <span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/format_tbl.html">tbl_format_header</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
-  <span class="va">body</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/format_tbl.html">tbl_format_body</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
-  <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/format_tbl.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
+  <span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="va">width</span>, n <span class="op">=</span> <span class="va">n</span>, n_extra <span class="op">=</span> <span class="va">n_extra</span><span class="op">)</span>
+  <span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_header.html">tbl_format_header</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
+  <span class="va">body</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
+  <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_footer.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></pre></div>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-generics" class="anchor"></a>New generics</h3>
-<p><code><a href="../reference/format_tbl.html">tbl_format_setup()</a></code> takes the role of the (then superseded) <code>trunc_mat()</code>. The default mimics <code>trunc_mat()</code> but returns a stable data structure that is well documented. Classes that need to do more when setting up the printing implement a method.</p>
+<p><code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> takes the role of the (then superseded) <code>trunc_mat()</code>. The default mimics <code>trunc_mat()</code> but returns a stable data structure that is well documented. Classes that need to do more when setting up the printing implement a method.</p>
 <p>Contrary to the existing logic, the width would be baked into the <code>setup</code> object. I haven’t seen a use case for formatting the same prepared object with multiple widths.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="va">tbl_format_setup.default</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">trunc_mat</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
 <span class="op">}</span></pre></div>
-<p><code><a href="../reference/format_tbl.html">tbl_format_header()</a></code> in the default implementation formats the output of <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code>. The implementer is expected to apply <code><a href="../reference/style_num.html">style_subtle()</a></code> in case the class wants to add color or other styling.</p>
+<p><code><a href="../reference/tbl_format_header.html">tbl_format_header()</a></code> in the default implementation formats the output of <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code>. The implementer is expected to apply <code><a href="../reference/style_num.html">style_subtle()</a></code> in case the class wants to add color or other styling.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="va">tbl_format_header.default</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -142,8 +142,8 @@
     <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span>, <span class="st">": "</span>, <span class="va">sum</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">}</span></pre></div>
-<p><code><a href="../reference/format_tbl.html">tbl_format_body()</a></code> formats the colonnade prepared in the setup. The implementation is shown further below.</p>
-<p><code><a href="../reference/format_tbl.html">tbl_format_footer()</a></code> is copied from tibble. The implementer is expected to apply <code><a href="../reference/style_num.html">style_subtle()</a></code> in case the class wants to add color or other styling.</p>
+<p><code><a href="../reference/tbl_format_body.html">tbl_format_body()</a></code> formats the colonnade prepared in the setup. The implementation is shown further below.</p>
+<p><code><a href="../reference/tbl_format_footer.html">tbl_format_footer()</a></code> is copied from tibble. The implementer is expected to apply <code><a href="../reference/style_num.html">style_subtle()</a></code> in case the class wants to add color or other styling.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="va">tbl_format_footer.default</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/style_num.html">style_subtle</a></span><span class="op">(</span><span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span><span class="op">)</span>
@@ -157,8 +157,8 @@
 <h3 class="hasAnchor">
 <a href="#data-flow" class="anchor"></a>Data flow</h3>
 <p>Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-826ce5ef353088f992be" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-826ce5ef353088f992be">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer\n  format.tbl --> c\n  tbl_format_header -.-> c\n  tbl_format_body -.-> c\n  tbl_format_footer -.-> c"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1b09ef3087fc370f20fb" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b09ef3087fc370f20fb">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer\n  format.tbl --> c\n  tbl_format_header -.-> c\n  tbl_format_body -.-> c\n  tbl_format_footer -.-> c"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="adding-extension-points-for-formatting-individual-pillars" class="section level2">

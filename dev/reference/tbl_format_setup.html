@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Provide a succinct summary of an object — tbl_sum • pillar</title>
+<title>Set up formatting — tbl_format_setup • pillar</title>
 
 
 <!-- jquery -->
@@ -42,11 +42,22 @@
 
 
 
-<meta property="og:title" content="Provide a succinct summary of an object — tbl_sum" />
-<meta property="og:description" content="tbl_sum() gives a brief textual description of a table-like object,
-which should include the dimensions and the data source in the first element,
-and additional information in the other elements (such as grouping for dplyr).
-The default implementation forwards to obj_sum()." />
+<meta property="og:title" content="Set up formatting — tbl_format_setup" />
+<meta property="og:description" content="tbl_format_setup() is called by format.tbl().
+This method collects information that is common to the header, body,
+and footer parts of a tibble.
+Examples:
+the dimensions sometimes are reported both in the header
+and (implicitly) in the footer of a tibble;
+the columns shown in the body decide which columns are shown in the footer.
+
+
+This information is computed once in tbl_format_setup().
+The result is passed on to the
+tbl_format_header(), tbl_format_body(), and tbl_format_footer()
+methods.
+If you need to customize parts of the printed output independently,
+override these methods instead." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -124,44 +135,85 @@ The default implementation forwards to obj_sum()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Provide a succinct summary of an object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/tbl-sum.R'><code>R/tbl-sum.R</code></a></small>
-    <div class="hidden name"><code>tbl_sum.Rd</code></div>
+    <h1>Set up formatting</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/tbl-format-setup.R'><code>R/tbl-format-setup.R</code></a></small>
+    <div class="hidden name"><code>tbl_format_setup.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>tbl_sum()</code> gives a brief textual description of a table-like object,
-which should include the dimensions and the data source in the first element,
-and additional information in the other elements (such as grouping for <span class="pkg">dplyr</span>).
-The default implementation forwards to <code><a href='type_sum.html'>obj_sum()</a></code>.</p>
+    <p><code>tbl_format_setup()</code> is called by <code><a href='format_tbl.html'>format.tbl()</a></code>.
+This method collects information that is common to the header, body,
+and footer parts of a tibble.
+Examples:</p><ul>
+<li><p>the dimensions sometimes are reported both in the header
+and (implicitly) in the footer of a tibble;</p></li>
+<li><p>the columns shown in the body decide which columns are shown in the footer.</p></li>
+</ul>
+
+<p>This information is computed once in <code>tbl_format_setup()</code>.
+The result is passed on to the
+<code><a href='tbl_format_header.html'>tbl_format_header()</a></code>, <code><a href='tbl_format_body.html'>tbl_format_body()</a></code>, and <code><a href='tbl_format_footer.html'>tbl_format_footer()</a></code>
+methods.
+If you need to customize parts of the printed output independently,
+override these methods instead.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tbl_sum</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tbl_format_setup</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span>, <span class='va'>n</span>, <span class='va'>max_extra_cols</span><span class='op'>)</span>
+
+<span class='co'># S3 method for tbl</span>
+<span class='fu'>tbl_format_setup</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>NULL</span>, max_extra_cols <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Object to summarise.</p></td>
+      <td><p>An object.</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>Actual width for printing, a numeric greater than zero.
+This argument is mandatory for all implementations of this method.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
+      <td><p>Extra arguments to <code><a href='format_tbl.html'>print.tbl()</a></code> or <code><a href='format_tbl.html'>format.tbl()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>Actual number of rows to print.
+No <a href='https://rdrr.io/r/base/options.html'>option</a>s should be considered by implementations of this method.</p></td>
+    </tr>
+    <tr>
+      <th>max_extra_cols</th>
+      <td><p>Number of columns to print abbreviated information for,
+if the width is too small for the entire tibble.
+No <a href='https://rdrr.io/r/base/options.html'>option</a>s should be considered by implementations of this method.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named character vector, describing the dimensions in the first element
-and the data source in the name of the first element.</p>
+    <p>An object that will be passed as <code>setup</code> argument to
+<code><a href='tbl_format_header.html'>tbl_format_header()</a></code>, <code><a href='tbl_format_body.html'>tbl_format_body()</a></code>, and <code><a href='tbl_format_footer.html'>tbl_format_footer()</a></code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This generic will be moved to <span class="pkg">pillar</span>, and reexported from there
-as soon as it becomes available.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='type_sum.html'>type_sum()</a></code></p></div>
+    <p>Extend this method to prepare information that is used
+in several parts of the printed output of a tibble-like object,
+or to collect additional arguments passed via <code>...</code> to
+<code><a href='format_tbl.html'>print.tbl()</a></code> or <code><a href='format_tbl.html'>format.tbl()</a></code>.</p>
+<p>We expect that <code>tbl_format_setup()</code> is extended only rarely,
+and overridden only in exceptional circumstances, if at all.
+If you override this method, you must also implement
+<code><a href='tbl_format_header.html'>tbl_format_header()</a></code>, <code><a href='tbl_format_body.html'>tbl_format_body()</a></code>, and <code><a href='tbl_format_footer.html'>tbl_format_footer()</a></code>
+for your class.</p>
+<p>Implementing a method
+allows to override printing and formatting of the entire object
+without overriding the <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code> and <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> methods directly.
+This allows to keep the logic of the <code>width</code> and <code>n</code> arguments.</p>
+<p>The default method for the <code>"tbl"</code> class collects information for
+standard printing for tibbles.
+See <code><a href='new_tbl_format_setup.html'>new_tbl_format_setup()</a></code> for details on the returned object.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

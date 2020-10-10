@@ -44,10 +44,17 @@
 
 <meta property="og:title" content="Formatting of tbl objects — format_tbl" />
 <meta property="og:description" content="These functions and methods are responsible for printing objects
-of the tbl class, which includes tibbles and dbplyr lazy
-data frames.
+of the &quot;tbl&quot; class, which includes tibbles
+and dbplyr lazy tables.
 See tibble::formatting for user level documentation,
-and vignette(&quot;customization&quot;) for details." />
+and vignette(&quot;customization&quot;) for details.
+While it is possible to implement a custom format() or print() method
+for your tibble-like objects, it should never be necessary
+if your class inherits from &quot;tbl&quot;.
+In this case, the default methods offer many customization options
+at every level of detail.
+This means you only need to override or extend implementations for the parts
+that need change." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -91,7 +98,7 @@ and vignette(&quot;customization&quot;) for details." />
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9001</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9002</span>
         </div>
       </div>
     </div>
@@ -132,28 +139,24 @@ and vignette(&quot;customization&quot;) for details." />
 
     <div class="ref-description">
     <p>These functions and methods are responsible for printing objects
-of the <code>tbl</code> class, which includes <a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a>s and dbplyr lazy
-data frames.
+of the <code>"tbl"</code> class, which includes <a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a>s
+and dbplyr lazy tables.
 See <a href='https://tibble.tidyverse.org/reference/formatting.html'>tibble::formatting</a> for user level documentation,
 and <code><a href='../articles/customization.html'>vignette("customization")</a></code> for details.</p>
+<p>While it is possible to implement a custom <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> or <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code> method
+for your tibble-like objects, it should never be necessary
+if your class inherits from <code>"tbl"</code>.
+In this case, the default methods offer many customization options
+at every level of detail.
+This means you only need to override or extend implementations for the parts
+that need change.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for tbl</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>NULL</span>, n_extra <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for tbl</span>
-<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>NULL</span>, n_extra <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>tbl_format_setup</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span>, <span class='va'>n</span>, <span class='va'>max_extra_cols</span><span class='op'>)</span>
-
-<span class='fu'>tbl_format_header</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>setup</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>tbl_format_body</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>setup</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>tbl_format_footer</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>setup</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='co'># S3 method for default</span>
-<span class='fu'>tbl_format_footer</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>setup</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>NULL</span>, n_extra <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,8 +175,7 @@ default and always print all columns.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passed on to <code>tbl_format_setup()</code> from <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code> and <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code>,
-must be empty for other methods.</p></td>
+      <td><p>Passed on to <code><a href='tbl_format_setup.html'>tbl_format_setup()</a></code>.</p></td>
     </tr>
     <tr>
       <th>n</th>
@@ -185,21 +187,17 @@ if less than option <code>tibble.print_max</code>. Otherwise, will print
       <th>n_extra</th>
       <td><p>Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If <code>NULL</code>, the default,
-will print information about at most <code>tibble.max_extra_cols</code> extra columns.</p></td>
-    </tr>
-    <tr>
-      <th>max_extra_cols</th>
-      <td><p>Number of columns to print abbreviated information for,
-if the width is too small for the entire tibble.
-Currently initialized with the value of <code>n_extra</code>
-or the <code>tibble.max_extra_cols</code> options, do not rely on this.</p></td>
-    </tr>
-    <tr>
-      <th>setup</th>
-      <td><p>Printing setup object created by <code>tbl_format_setup()</code>.</p></td>
+the value of the <code><a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble.max_extra_cols</a></code> option is used.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'>
+<ul>
+<li><p><code><a href='tbl_format_setup.html'>tbl_format_setup()</a></code> for preparing an object for formatting</p></li>
+</ul>
+</div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>vctrs</span><span class='fu'>::</span><span class='fu'><a href='https://vctrs.r-lib.org/reference/new_data_frame.html'>new_data_frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"tbl"</span><span class='op'>)</span><span class='op'>)</span>

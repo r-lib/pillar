@@ -85,7 +85,7 @@
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9001</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9002</span>
         </div>
       </div>
     </div>
@@ -133,8 +133,57 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-high-level-interface" class="hasAnchor"><a href="#section-high-level-interface" class="anchor"></a>High-level interface</h2>
-          <p class="section-desc"><p>These functions accept vectors or lists and create objects that format nicely on the terminal.</p></p>
+          <h2 id="section-formatting-tables" class="hasAnchor"><a href="#section-formatting-tables" class="anchor"></a>Formatting tables</h2>
+          <p class="section-desc"><p>Override or extend these methods if you want to customize the appearance of your tibble-like object.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="format_tbl.html">print(<i>&lt;tbl&gt;</i>)</a></code> <code><a href="format_tbl.html">format(<i>&lt;tbl&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Formatting of tbl objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tbl_format_setup.html">tbl_format_setup()</a></code> </p>
+        </td>
+        <td><p>Set up formatting</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tbl_format_header.html">tbl_format_header()</a></code> </p>
+        </td>
+        <td><p>Format the header of a tibble</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tbl_format_body.html">tbl_format_body()</a></code> </p>
+        </td>
+        <td><p>Format the body of a tibble</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tbl_format_footer.html">tbl_format_footer()</a></code> </p>
+        </td>
+        <td><p>Format the footer of a tibble</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tbl_sum.html">tbl_sum()</a></code> </p>
+        </td>
+        <td><p>Provide a succinct summary of an object</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-formatting-pillars" class="hasAnchor"><a href="#section-formatting-pillars" class="anchor"></a>Formatting pillars</h2>
+          <p class="section-desc"><p>Functions and methods to implement pillar support for your data type.</p></p>
         </th>
       </tr>
       
@@ -149,31 +198,6 @@
         </td>
         <td><p>Format a vector suitable for tabular display</p></td>
       </tr><tr>
-        
-        <td>
-          <p><code><a href="colonnade.html">colonnade()</a></code> <code><a href="colonnade.html">squeeze()</a></code> </p>
-        </td>
-        <td><p>Format multiple vectors in a tabular display</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extra_cols.html">extra_cols()</a></code> </p>
-        </td>
-        <td><p>Retrieve information about columns that didn't fit the available width</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-hooks" class="hasAnchor"><a href="#section-hooks" class="anchor"></a>Hooks</h2>
-          <p class="section-desc"><p>Override or use these methods if you want pillar support for your data type.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
         
         <td>
           <p><code><a href="pillar_shaft.html">pillar_shaft()</a></code> <code><a href="pillar_shaft.html">print(<i>&lt;pillar_shaft&gt;</i>)</a></code> <code><a href="pillar_shaft.html">format(<i>&lt;pillar_shaft&gt;</i>)</a></code> </p>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Provide a succinct summary of an object — tbl_sum • pillar</title>
+<title>Squeeze a colonnade to a fixed width — squeeze • pillar</title>
 
 
 <!-- jquery -->
@@ -42,11 +42,11 @@
 
 
 
-<meta property="og:title" content="Provide a succinct summary of an object — tbl_sum" />
-<meta property="og:description" content="tbl_sum() gives a brief textual description of a table-like object,
-which should include the dimensions and the data source in the first element,
-and additional information in the other elements (such as grouping for dplyr).
-The default implementation forwards to obj_sum()." />
+<meta property="og:title" content="Squeeze a colonnade to a fixed width — squeeze" />
+<meta property="og:description" content="The squeeze() function usually doesn't need to be called manually.
+It returns an object suitable for printing and formatting at a fixed width
+with additional information about omitted columns, which can be retrieved
+via extra_cols()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -124,45 +124,29 @@ The default implementation forwards to obj_sum()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Provide a succinct summary of an object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/tbl-sum.R'><code>R/tbl-sum.R</code></a></small>
-    <div class="hidden name"><code>tbl_sum.Rd</code></div>
+    <h1>Squeeze a colonnade to a fixed width</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/multi.R'><code>R/multi.R</code></a></small>
+    <div class="hidden name"><code>squeeze.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>tbl_sum()</code> gives a brief textual description of a table-like object,
-which should include the dimensions and the data source in the first element,
-and additional information in the other elements (such as grouping for <span class="pkg">dplyr</span>).
-The default implementation forwards to <code><a href='type_sum.html'>obj_sum()</a></code>.</p>
+    <p>The <code>squeeze()</code> function usually doesn't need to be called manually.
+It returns an object suitable for printing and formatting at a fixed width
+with additional information about omitted columns, which can be retrieved
+via <code><a href='extra_cols.html'>extra_cols()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tbl_sum</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>squeeze</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>Object to summarise.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named character vector, describing the dimensions in the first element
-and the data source in the name of the first element.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This generic will be moved to <span class="pkg">pillar</span>, and reexported from there
-as soon as it becomes available.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='type_sum.html'>type_sum()</a></code></p></div>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>long_string</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>letters</span>, collapse <span class='op'>=</span> <span class='st'>" "</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>squeeze</span><span class='op'>(</span><span class='fu'><a href='colonnade.html'>colonnade</a></span><span class='op'>(</span><span class='va'>long_string</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>40</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                 
+#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s…</div><div class='input'><span class='fu'>squeeze</span><span class='op'>(</span><span class='fu'><a href='colonnade.html'>colonnade</a></span><span class='op'>(</span><span class='va'>long_string</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             
+#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i…</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Provide a succinct summary of an object — tbl_sum • pillar</title>
+<title>Construct a setup object for formatting — new_tbl_format_setup • pillar</title>
 
 
 <!-- jquery -->
@@ -42,11 +42,12 @@
 
 
 
-<meta property="og:title" content="Provide a succinct summary of an object — tbl_sum" />
-<meta property="og:description" content="tbl_sum() gives a brief textual description of a table-like object,
-which should include the dimensions and the data source in the first element,
-and additional information in the other elements (such as grouping for dplyr).
-The default implementation forwards to obj_sum()." />
+<meta property="og:title" content="Construct a setup object for formatting — new_tbl_format_setup" />
+<meta property="og:description" content="The object returned from the default method of tbl_format_setup()
+is a list with a &quot;class&quot; attribute and the elements described in the
+&quot;Parameters&quot; section.
+Named elements can be added to such objects without affecting the behavior.
+Do not modify existing elements." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -124,44 +125,65 @@ The default implementation forwards to obj_sum()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Provide a succinct summary of an object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/tbl-sum.R'><code>R/tbl-sum.R</code></a></small>
-    <div class="hidden name"><code>tbl_sum.Rd</code></div>
+    <h1>Construct a setup object for formatting</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/tbl-format-setup.R'><code>R/tbl-format-setup.R</code></a></small>
+    <div class="hidden name"><code>new_tbl_format_setup.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>tbl_sum()</code> gives a brief textual description of a table-like object,
-which should include the dimensions and the data source in the first element,
-and additional information in the other elements (such as grouping for <span class="pkg">dplyr</span>).
-The default implementation forwards to <code><a href='type_sum.html'>obj_sum()</a></code>.</p>
+    <p>The object returned from the default method of <code><a href='tbl_format_setup.html'>tbl_format_setup()</a></code>
+is a list with a <code>"class"</code> attribute and the elements described in the
+"Parameters" section.</p>
+<p>Named elements can be added to such objects without affecting the behavior.
+Do not modify existing elements.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tbl_sum</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>new_tbl_format_setup</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>width</span>,
+  <span class='va'>squeezed</span>,
+  <span class='va'>rows_body</span>,
+  <span class='va'>rows_missing</span>,
+  <span class='va'>rows_total</span>,
+  <span class='va'>extra_cols</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Object to summarise.</p></td>
+      <td><p>The input object unchanged,</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
+      <th>width</th>
+      <td><p>The <code>width</code> argument unchanged,</p></td>
+    </tr>
+    <tr>
+      <th>squeezed</th>
+      <td><p>TBD</p></td>
+    </tr>
+    <tr>
+      <th>rows_body</th>
+      <td><p>The number of rows shown in the body,
+even if the body does not have any columns.</p></td>
+    </tr>
+    <tr>
+      <th>rows_missing</th>
+      <td><p>The number of rows not shown from the body,
+<code>NA</code> if unknown.</p></td>
+    </tr>
+    <tr>
+      <th>rows_total</th>
+      <td><p>The total number of rows in the data,
+<code>NA</code> if unknown.</p></td>
+    </tr>
+    <tr>
+      <th>extra_cols</th>
+      <td><p>TBD</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A named character vector, describing the dimensions in the first element
-and the data source in the name of the first element.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This generic will be moved to <span class="pkg">pillar</span>, and reexported from there
-as soon as it becomes available.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='type_sum.html'>type_sum()</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

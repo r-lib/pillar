@@ -47,11 +47,7 @@
 characters per row.
 The colonnade() function doesn't process the input but returns an object
 with a format() and a print() method.
-The implementations call squeeze() to create pillar objects and fit them to a given width.
-The squeeze() function usually doesn't need to be called manually.
-It returns an object suitable for printing and formatting at a fixed width
-with additional information about omitted columns, which can be retrieved
-via extra_cols()." />
+The implementations call squeeze() to create pillar objects and fit them to a given width." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -95,7 +91,7 @@ via extra_cols()." />
         <a class="navbar-brand" href="../index.html">pillar</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9001</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9002</span>
         </div>
       </div>
     </div>
@@ -139,16 +135,10 @@ via extra_cols()." />
 characters per row.</p>
 <p>The <code>colonnade()</code> function doesn't process the input but returns an object
 with a <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> and a <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code> method.
-The implementations call <code>squeeze()</code> to create <a href='pillar.html'>pillar</a> objects and fit them to a given width.</p>
-<p>The <code>squeeze()</code> function usually doesn't need to be called manually.
-It returns an object suitable for printing and formatting at a fixed width
-with additional information about omitted columns, which can be retrieved
-via <code><a href='extra_cols.html'>extra_cols()</a></code>.</p>
+The implementations call <code><a href='squeeze.html'>squeeze()</a></code> to create <a href='pillar.html'>pillar</a> objects and fit them to a given width.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>x</span>, has_row_id <span class='op'>=</span> <span class='cn'>TRUE</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>squeeze</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>x</span>, has_row_id <span class='op'>=</span> <span class='cn'>TRUE</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -240,11 +230,7 @@ one space per column.</p>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              
 #&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s t u v w x y z
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              
-#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s t u v w x y z</div><div class='input'><span class='fu'>squeeze</span><span class='op'>(</span><span class='fu'>colonnade</span><span class='op'>(</span><span class='va'>long_string</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: `squeeze()` is deprecated as of pillar 1.5.0.</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='output co'>#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i…</div></span></pre>
+#&gt; </span><span style='color: #555555;'>1</span><span> a b c d e f g h i j k l m n o p q r s t u v w x y z</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
