@@ -6,7 +6,7 @@
 #'
 #' The `colonnade()` function doesn't process the input but returns an object
 #' with a [format()] and a [print()] method.
-#' The implementations call `squeeze()` to create [pillar] objects and fit them to a given width.
+#' The implementations call [squeeze()] to create [pillar] objects and fit them to a given width.
 #'
 #' @param x A list, which can contain matrices or data frames.
 #'   If named, the names will be used as title for the pillars. Non-syntactic names
@@ -15,6 +15,7 @@
 #'   the row ID column with a star.
 #' @param width Default width of the entire output, optional.
 #' @inheritParams ellipsis::dots_empty
+#' @keywords internal
 #' @export
 #' @examples
 #' colonnade(list(a = 1:3, b = letters[1:3]))
@@ -101,15 +102,18 @@ new_empty_col_sentinel <- function(type) {
   structure(list(type), class = c("pillar_empty_col"))
 }
 
-#' @description
+#' Squeeze a colonnade to a fixed width
+#'
 #' The `squeeze()` function usually doesn't need to be called manually.
 #' It returns an object suitable for printing and formatting at a fixed width
 #' with additional information about omitted columns, which can be retrieved
 #' via [extra_cols()].
 #'
-#' @rdname colonnade
+#' @keywords internal
 #' @export
 #' @examples
+#' long_string <- list(paste(letters, collapse = " "))
+#' squeeze(colonnade(long_string), width = 40)
 #' squeeze(colonnade(long_string), width = 20)
 squeeze <- function(x, width = NULL, ...) {
   deprecate_soft("1.5.0", "pillar::squeeze()")
@@ -242,8 +246,10 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' Formatting a [colonnade] object may lead to some columns being omitted
 #' due to width restrictions. This method returns a character vector that
 #' describes each of the omitted columns.
+#'
 #' @param x The result of [squeeze()] on a [colonnade] object
 #' @inheritParams ellipsis::dots_used
+#' @keywords internal
 #' @export
 #' @examples
 #' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))

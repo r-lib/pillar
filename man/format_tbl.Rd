@@ -4,26 +4,11 @@
 \alias{format_tbl}
 \alias{print.tbl}
 \alias{format.tbl}
-\alias{tbl_format_setup}
-\alias{tbl_format_header}
-\alias{tbl_format_body}
-\alias{tbl_format_footer}
-\alias{tbl_format_footer.default}
 \title{Formatting of tbl objects}
 \usage{
 \method{print}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
 
 \method{format}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
-
-tbl_format_setup(x, width, ..., n, max_extra_cols)
-
-tbl_format_header(x, setup, ...)
-
-tbl_format_body(x, setup, ...)
-
-tbl_format_footer(x, setup, ...)
-
-\method{tbl_format_footer}{default}(x, setup, ...)
 }
 \arguments{
 \item{x}{Object to format or print.}
@@ -34,8 +19,7 @@ means use \code{getOption("tibble.width")} or (if also \code{NULL})
 screen. You can also set \code{options(tibble.width = Inf)} to override this
 default and always print all columns.}
 
-\item{...}{Passed on to \code{tbl_format_setup()} from \code{print()} and \code{format()},
-must be empty for other methods.}
+\item{...}{Passed on to \code{\link[=tbl_format_setup]{tbl_format_setup()}}.}
 
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print all rows
 if less than option \code{tibble.print_max}. Otherwise, will print
@@ -43,22 +27,28 @@ if less than option \code{tibble.print_max}. Otherwise, will print
 
 \item{n_extra}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL}, the default,
-will print information about at most \code{tibble.max_extra_cols} extra columns.}
-
-\item{max_extra_cols}{Number of columns to print abbreviated information for,
-if the width is too small for the entire tibble.
-Currently initialized with the value of \code{n_extra}
-or the \code{tibble.max_extra_cols} options, do not rely on this.}
-
-\item{setup}{Printing setup object created by \code{tbl_format_setup()}.}
+the value of the \code{\link[tibble:tibble-package]{tibble.max_extra_cols}} option is used.}
 }
 \description{
 These functions and methods are responsible for printing objects
-of the \code{tbl} class, which includes \link[tibble:tibble]{tibble}s and dbplyr lazy
-data frames.
+of the \code{"tbl"} class, which includes \link[tibble:tibble]{tibble}s
+and dbplyr lazy tables.
 See \link[tibble:formatting]{tibble::formatting} for user level documentation,
 and \code{vignette("customization")} for details.
+
+While it is possible to implement a custom \code{\link[=format]{format()}} or \code{\link[=print]{print()}} method
+for your tibble-like objects, it should never be necessary
+if your class inherits from \code{"tbl"}.
+In this case, the default methods offer many customization options
+at every level of detail.
+This means you only need to override or extend implementations for the parts
+that need change.
 }
 \examples{
 print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
+}
+\seealso{
+\itemize{
+\item \code{\link[=tbl_format_setup]{tbl_format_setup()}} for preparing an object for formatting
+}
 }

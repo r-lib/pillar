@@ -25,7 +25,7 @@ tibble_opt <- function(x, dplyr = TRUE) {
   op.tibble[[x_tibble]]
 }
 
-tibble_width <- function(width) {
+get_width_print <- function(width) {
   if (!is.null(width)) {
     return(width)
   }
@@ -36,4 +36,16 @@ tibble_width <- function(width) {
   }
 
   getOption("width")
+}
+
+get_n_print <- function(n, rows) {
+  if (!is.null(n) && n >= 0) {
+    return(n)
+  }
+
+  if (is.na(rows) || rows > tibble_opt("print_max")) {
+    tibble_opt("print_min")
+  } else {
+    rows
+  }
 }
