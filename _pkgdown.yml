@@ -12,8 +12,6 @@ reference:
     contents:
       - pillar
       - colonnade
-      - squeeze
-      - extra_cols
   - title: Formatting tables
     desc: >
       Override or extend these methods if you want to customize the appearance

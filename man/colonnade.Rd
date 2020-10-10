@@ -2,12 +2,9 @@
 % Please edit documentation in R/multi.R
 \name{colonnade}
 \alias{colonnade}
-\alias{squeeze}
 \title{Format multiple vectors in a tabular display}
 \usage{
 colonnade(x, has_row_id = TRUE, width = NULL, ...)
-
-squeeze(x, width = NULL, ...)
 }
 \arguments{
 \item{x}{A list, which can contain matrices or data frames.
@@ -28,11 +25,6 @@ characters per row.
 The \code{colonnade()} function doesn't process the input but returns an object
 with a \code{\link[=format]{format()}} and a \code{\link[=print]{print()}} method.
 The implementations call \code{squeeze()} to create \link{pillar} objects and fit them to a given width.
-
-The \code{squeeze()} function usually doesn't need to be called manually.
-It returns an object suitable for printing and formatting at a fixed width
-with additional information about omitted columns, which can be retrieved
-via \code{\link[=extra_cols]{extra_cols()}}.
 }
 \details{
 Pillars may be distributed over multiple tiers if
@@ -89,5 +81,4 @@ print(colonnade(long_string), width = 20)
 
 # If width is larger than getOption("width"), multiple tiers are created:
 colonnade(rep(long_string, 4), width = Inf)
-squeeze(colonnade(long_string), width = 20)
 }

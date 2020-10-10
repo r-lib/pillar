@@ -101,13 +101,14 @@ new_empty_col_sentinel <- function(type) {
   structure(list(type), class = c("pillar_empty_col"))
 }
 
-#' @description
+#' Squeeze a colonnade to a fixed width
+#'
 #' The `squeeze()` function usually doesn't need to be called manually.
 #' It returns an object suitable for printing and formatting at a fixed width
 #' with additional information about omitted columns, which can be retrieved
 #' via [extra_cols()].
 #'
-#' @rdname colonnade
+#' @keywords internal
 #' @export
 #' @examples
 #' squeeze(colonnade(long_string), width = 20)
@@ -242,8 +243,10 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' Formatting a [colonnade] object may lead to some columns being omitted
 #' due to width restrictions. This method returns a character vector that
 #' describes each of the omitted columns.
+#'
 #' @param x The result of [squeeze()] on a [colonnade] object
 #' @inheritParams ellipsis::dots_used
+#' @keywords internal
 #' @export
 #' @examples
 #' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
