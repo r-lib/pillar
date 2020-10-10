@@ -121,10 +121,38 @@ DiagrammeR::mermaid("format.mmd")
 - Existing infrastructure should be supported.
 
 
+### Packed data frames and matrices
+
+FIXME NEXT:
+
+- Pillars are always constructed unnamed, do name separately (as a list of character vectors)
+- Define ctl_* generics
+- Implement and use replacement for colonnade(), internal, using the new generics
+- Test coverage per file
+- Improve output:
+    - Tibble-local options for precision
+    - Classes for numeric and string, use {formattable}
+    - Multi-stage output for packed data frames
+        - Reuse names/indices from left-hand side pillar if available
+    - Arrays!
+    - Show number of rows if known
+    - Show columns that are abbreviated in full
+- Look for FIXMEs
+
+
+- Subdivide into name (perhaps multipart, shown in multiple rows and perhaps spanning multiple columns), and rest (type + data)
+- Implement multipart pillars
+- Enhance width attribute of pillar to support a vector
+- Support subsetting of pillars
+
+- Construct pillar objects while there still is space
+
+
 ### New generic
 
 `colonnade()` gains a `controller` argument.
 The default controller mimics current behavior.
+
 A new method, `new_pillars()`, dispatch on that controller.
 Apart from that, it receives the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if `getOption("width") < getOption("tibble.width")`).
 It returns a list of `pillar` objects.
