@@ -166,7 +166,7 @@ squeeze_impl <- function(x, width = NULL, ...) {
 
   if (!is.null(rowid)) {
     rowid_formatted <- pillar_format_parts(rowid, rowid_width - 1L)
-    out <- map(out, function(x) c(list(rowid_formatted), x))
+    out <- map(out, function(.x) c(list(rowid_formatted), .x))
   }
 
   extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(x$data))
