@@ -27,7 +27,7 @@ if less than option \code{tibble.print_max}. Otherwise, will print
 
 \item{n_extra}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL}, the default,
-the value of the \code{\link[=tibble_opts]{tibble.max_extra_cols}} option is used.}
+the value of the \code{\link[tibble:tibble-package]{tibble.max_extra_cols}} option is used.}
 }
 \description{
 These functions and methods are responsible for printing objects

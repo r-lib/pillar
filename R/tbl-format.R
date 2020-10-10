@@ -31,7 +31,7 @@
 #'   default and always print all columns.
 #' @param n_extra Number of extra columns to print abbreviated information for,
 #'   if the width is too small for the entire tibble. If `NULL`, the default,
-#'   the value of the [`tibble.max_extra_cols`][tibble_opts] option is used.
+#'   the value of the [`tibble.max_extra_cols`][tibble::tibble-package] option is used.
 #'
 #' @name format_tbl
 #' @export
