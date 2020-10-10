@@ -19,8 +19,7 @@ means use \code{getOption("tibble.width")} or (if also \code{NULL})
 screen. You can also set \code{options(tibble.width = Inf)} to override this
 default and always print all columns.}
 
-\item{...}{Passed on to \code{\link[=tbl_format_setup]{tbl_format_setup()}} from \code{print()} and \code{format()},
-must be empty for other methods.}
+\item{...}{Passed on to \code{\link[=tbl_format_setup]{tbl_format_setup()}}.}
 
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print all rows
 if less than option \code{tibble.print_max}. Otherwise, will print
@@ -32,10 +31,18 @@ the value of the \code{\link[=tibble_opts]{tibble.max_extra_cols}} option is use
 }
 \description{
 These functions and methods are responsible for printing objects
-of the \code{"tbl"} class, which includes \link[tibble:tibble]{tibble}s and dbplyr lazy
-data frames.
+of the \code{"tbl"} class, which includes \link[tibble:tibble]{tibble}s
+and dbplyr lazy tables.
 See \link[tibble:formatting]{tibble::formatting} for user level documentation,
 and \code{vignette("customization")} for details.
+
+While it is possible to implement a custom \code{\link[=format]{format()}} or \code{\link[=print]{print()}} method
+for your tibble-like objects, it should never be necessary
+if your class inherits from \code{"tbl"}.
+In this case, the default methods offer many customization options
+at every level of detail.
+This means you only need to override or extend implementations for the parts
+that need change.
 }
 \examples{
 print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
