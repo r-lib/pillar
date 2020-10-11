@@ -121,58 +121,73 @@ DiagrammeR::mermaid("format.mmd")
 - Existing infrastructure should be supported.
 
 
-### Packed data frames and matrices
+### New generics
 
-FIXME NEXT:
+`colonnade()` gains a `controller` argument. The default controller mimics current behavior.
+All new methods dispatch on that controller.
+S3 dispatch is feasible because we're only dispatching a few times for each pillar actually constructed.
 
-- Pillars are always constructed unnamed, do name separately (as a list of character vectors)
-- Define ctl_* generics
-- Implement and use replacement for colonnade(), internal, using the new generics
-- Test coverage per file
-- Improve output:
-    - Tibble-local options for precision
-    - Classes for numeric and string, use {formattable}
-    - Multi-stage output for packed data frames
-        - Reuse names/indices from left-hand side pillar if available
-    - Arrays!
-    - Show number of rows if known
-    - Show columns that are abbreviated in full
-- Look for FIXMEs
-
-
-- Subdivide into name (perhaps multipart, shown in multiple rows and perhaps spanning multiple columns), and rest (type + data)
-- Implement multipart pillars
-- Enhance width attribute of pillar to support a vector
-- Support subsetting of pillars
-
-- Construct pillar objects while there still is space
-
-
-### New generic
-
-`colonnade()` gains a `controller` argument.
-The default controller mimics current behavior.
-
-A new method, `new_pillars()`, dispatch on that controller.
-Apart from that, it receives the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if `getOption("width") < getOption("tibble.width")`).
-It returns a list of `pillar` objects.
+`ctl_pillar_capital()` (alias: `ctl_pillar_header()`) dispatches on the controller and has the data as second and the name as third argument.
+It returns an object that has a `"width"` attribute and possibly a `"min_width"` attribute.
+The object implements a `format()` method that returns a character vector with one element per line.
 
 ```{r}
-new_pillars <- function(controller, x, width, ..., name = NULL) {
-  UseMethod("new_pillars")
+ctl_pillar_capital <- function(controller, x, ..., name = NULL) {
+  out <- UseMethod("ctl_pillar_capital")
+  stopifnot(rlang::is_scalar_integerish(attr(out, "width")))
+  out
 }
 
-#' @export
-new_pillars.tbl <- function(controller, x, width, ..., title = NULL) {
-  if (is.data.frame(x)) {
-    ...
-  } else if (is.matrix(x)) {
-    ...
-  } else if (is.array(x)) {
-    ...
-  } else {
-    list(pillar(x, title, width))
-  }
+ctl_pillar_capital.default <- function(controller, x, ..., name = NULL) {
+  new_pillar_capital(c(name, vec_ptype_abbr(x)))
+}
+
+new_pillar_capital <- function(x, ..., class = NULL) {
+  structure(x, ..., class = c(class, "pillar_capital"))
+}
+
+format.pillar_capital <- function(x, ..., width) {
+  strtrim(x, width)
+}
+```
+
+`ctl_pillar_shaft()` (alias: `ctl_pillar_body()`) dispatches on the controller and has the data as second argument.
+It returns an object that has a `"width"` attribute and possibly a `"min_width"` attribute.
+The object implements a `format()` method that returns a character vector with one element per line.
+The default implementation calls `pillar_shaft()` on the vector.
+
+```{r}
+ctl_pillar_shaft <- function(controller, x, ..., name = NULL) {
+  out <- UseMethod("ctl_pillar_shaft")
+  stopifnot(rlang::is_scalar_integerish(attr(out, "width")))
+  out
+}
+
+ctl_pillar_shaft.default <- function(controller, x, ...) {
+  pillar_shaft(x)
+}
+
+format.pillar_shaft <- function(x, ..., width) {
+  # unchanged
+}
+```
+
+`ctl_pillar_basis()` (alias: `ctl_pillar_footer()`) dispatches on the controller and has the data as second argument.
+It returns an object that has a `"width"` attribute and possibly a `"min_width"` attribute.
+The object implements a `format()` method that returns a character vector with one element per line.
+The default implementation returns `character()`.
+
+```{r}
+ctl_pillar_basis.default <- function(controller, x, ...) {
+  new_pillar_basis(x)
+}
+
+new_pillar_basis <- function(x, ..., class = NULL) {
+  structure(x, ..., class = c(class, "pillar_basis"))
+}
+
+format.pillar_basis <- function(x, ..., width) {
+  character()
 }
 ```
 

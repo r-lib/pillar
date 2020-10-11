@@ -16,9 +16,6 @@ new_pillar_title <- function(x, ...) {
 
   if (is.null(x)) {
     width <- 0L
-  } else if (all(is.na(x) | x == "")) {
-    width <- 0L
-    x <- NULL
   } else {
     width <- get_max_extent(format_title(x, width = Inf))
     stopifnot(!is.na(width))
