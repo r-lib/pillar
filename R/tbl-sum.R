@@ -15,7 +15,6 @@
 #' @param x Object to summarise.
 #' @export
 tbl_sum <- function(x) {
-  check_dots_empty()
   UseMethod("tbl_sum", x)
 }
 
