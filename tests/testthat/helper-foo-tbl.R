@@ -3,7 +3,7 @@ new_foo_tbl <- function(..., class = NULL) {
   new_tbl(..., class = "foo_tbl")
 }
 
-tbl_sum.foo_tbl <- function(x, ...) {
+tbl_sum.foo_tbl <- function(x) {
   c(NextMethod(), foo = "bar")
 }
 

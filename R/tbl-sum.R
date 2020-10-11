@@ -12,21 +12,19 @@
 #'   and the data source in the name of the first element.
 #'
 #' @seealso [pillar::type_sum()]
-#' @inheritParams ellipsis::dots_empty
 #' @param x Object to summarise.
 #' @export
-tbl_sum <- function(x, ...) {
-  check_dots_empty()
+tbl_sum <- function(x) {
   UseMethod("tbl_sum", x)
 }
 
 #' @export
-tbl_sum.default <- function(x, ...) {
+tbl_sum.default <- function(x) {
   c("Description" = obj_sum(x))
 }
 
 #' @export
-tbl_sum.tbl <- function(x, ...) {
+tbl_sum.tbl <- function(x) {
   c("A data frame" = dim_desc(x))
 }
 
