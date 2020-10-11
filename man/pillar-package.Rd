@@ -47,6 +47,7 @@ colonnade(iris[1:3, ])
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://pillar.r-lib.org/}
   \item \url{https://github.com/r-lib/pillar}
   \item Report bugs at \url{https://github.com/r-lib/pillar/issues}
 }
