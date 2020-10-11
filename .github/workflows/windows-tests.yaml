@@ -1,9 +1,5 @@
 on:
   push:
-    branches: master
-    paths:
-      - tests/testthat/out/*
-  pull_request:
     paths:
       - tests/testthat/out/*
 
