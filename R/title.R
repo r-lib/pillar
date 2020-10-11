@@ -16,7 +16,7 @@ new_pillar_title <- function(x, ...) {
 
   if (is.null(x)) {
     width <- 0L
-  } else if (is.na(x) || x == "") {
+  } else if (all(is.na(x) | x == "")) {
     width <- 0L
     x <- NULL
   } else {
