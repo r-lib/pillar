@@ -163,12 +163,12 @@ pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
 
 # registered in .onLoad()
 pillar_shaft.Surv <- function(x, ...) {
-  new_pillar_shaft_simple(format(x))
+  new_pillar_shaft_simple(format(x), align = "right")
 }
 
 # registered in .onLoad()
 pillar_shaft.Surv2 <- function(x, ...) {
-  new_pillar_shaft_simple(format(x))
+  new_pillar_shaft_simple(format(x), align = "right")
 }
 
 #' @export
