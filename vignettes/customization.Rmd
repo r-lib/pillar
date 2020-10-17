@@ -262,6 +262,11 @@ pillar_get_min_widths <- function(x) {
 Alternatively, widths can be computed once when constructing the pillar object and stored in an attribute.
 
 
+### Object layout
+
+![Layout of the objects contained in a pillar](pillar-objects.png)
+
+
 ### Implementation sketch
 
 - The width of the tier(s) for printing is computed from `getOption("tibble.width")` and `getOption("width")`.
