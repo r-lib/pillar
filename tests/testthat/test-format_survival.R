@@ -4,6 +4,8 @@ test_that("survival output", {
   x <- head(survival::Surv(survival::lung$time, survival::lung$status))
   expect_pillar_output(xp = pillar(x), width = 20, filename = "survival.txt")
 
+  skip_if_not(exists("Surv2", asNamespace("survival"), mode = "function"))
+
   x <- head(survival::Surv2(survival::lung$time, survival::lung$status))
   expect_pillar_output(xp = pillar(x), width = 20, filename = "survival2.txt")
 })
