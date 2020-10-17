@@ -123,9 +123,24 @@ DiagrammeR::mermaid("format.mmd")
 
 ### Packed data frames and matrices
 
+How to format? Do we need to unpack for printing? Is this a decision made by the container, or when printing?
+
+Alternative: show only first column, with dots at end. (Never discussed, this is not how data frames print.)
+
+Current situation: names become too wide and are hard to parse, especially when wrapping. Multistage names?
+
+Unclear: is the name part of the pillar? Perhaps yes, then for packed data frames and matrix columns we need a vectorized object that knows how to split itself.
+
+Design of new generics should be flexible enough to allow for future changes.
+
+
+
+
 FIXME NEXT:
 
 - Pillars are always constructed unnamed, do name separately (as a list of character vectors)
+
+
 - Define ctl_* generics
 - Implement and use replacement for colonnade(), internal, using the new generics
 - Test coverage per file
@@ -148,38 +163,202 @@ FIXME NEXT:
 - Construct pillar objects while there still is space
 
 
-### New generic
+### New generics
 
-`colonnade()` gains a `controller` argument.
+Because printing is now internal to pillar, there's no need to touch `colonnade()`.
+Internally, the object to be printed is used as `controller` argument.
 The default controller mimics current behavior.
 
-A new method, `new_pillars()`, dispatch on that controller.
-Apart from that, it receives the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if `getOption("width") < getOption("tibble.width")`).
-It returns a list of `pillar` objects.
+Two new generics, `ctl_new_pillar()` and `ctl_new_single_pillar()`, dispatch on that controller.
+The first method needs to be aware of packed columns (matrices and data frames), the second will be called only for 1D objects.
+
+Apart from the controller, these generics receive the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if `getOption("width") < getOption("tibble.width")`).
+Both generics return a `"pillar"` object, or `NULL` if the minimum width of the pillar doesn't fit the remaining width.
 
 ```{r}
-new_pillars <- function(controller, x, width, ..., name = NULL) {
-  UseMethod("new_pillars")
+ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
+  check_dots_empty()
+  
+  if (length(width) == 0) {
+    return(NULL)
+  }
+  
+  UseMethod("ctl_new_pillar")
 }
 
 #' @export
-new_pillars.tbl <- function(controller, x, width, ..., title = NULL) {
+ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   if (is.data.frame(x)) {
-    ...
+    new_data_frame_pillar(x, controller, width, title = title)
   } else if (is.matrix(x)) {
-    ...
+    new_matrix_pillar(x, controller, width, title = title)
   } else if (is.array(x)) {
     ...
   } else {
-    list(pillar(x, title, width))
+    ctl_new_single_pillar(controller, x, width, ..., title = title)
   }
+}
+
+ctl_new_single_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
+  pillar(x, title, width)
+}
+```
+
+### The `"pillar"` class
+
+Objects of class `"pillar"` are internally a named lists of their components.
+The default components are `title` (may be missing), `type`, and `data`.
+Each component is a `"pillar_box"`, as described below.
+Implementations may add new components or modify existing components.
+
+```{r}
+new_pillar <- function(base = list(), ..., class = NULL) {
+  structure(
+    modifyList(base, list(...)),
+    class = c(class, "pillar")
+  )
+}
+```
+
+This allows e.g.:
+
+```{r}
+ctl_new_single_pillar.foo_controller <- function(controller, x, width, ..., title = NULL) {
+  out <- NextMethod()
+  new_pillar(out, capital = NULL, footer = ..., class = "foo_pillar")
 }
 ```
 
 
+### The `"pillar_box"` class
+
+An object of the `"pillar_box"` class captures contents that can be fitted in a rectangle.
+Each box consists of one or multiple cells that are aligned horizontally (with one space inbetween) when printed.
+Each cell has a maximum (=desired) width and may have a minimum width if the contents are compressible.
+The box object stores the width of the cells as an attribute.
+
+```{r}
+new_pillar_box <- function(x, width, min_width = NULL) {
+  structure(
+    x,
+    width = width,
+    min_width = min_width
+    # keep class attribute from x
+  )
+}
+
+get_cell_widths <- function(x) {
+  attr(x, "width")
+}
+
+get_cell_min_widths <- function(x) {
+  attr(x, "min_width") %||% attr(x, "width")
+}
+```
+
+The cells may be stored as a list with one element per cell (for `type` and `data` components), or as a hierarchy of boxes (for the `name` component).
+In the latter case, `length(x) < length(get_cell_widths(x))`, and each element must be a box.
+
+Extraction of a contiguous range of cells is supported.
+
+```{r}
+get_cells(x, from, to) {
+  stopifnot(from <= to)
+  
+  if (length(x) < length(get_cell_widths(x))) {
+    get_cells_for_hierarchy(x, from, to)
+  } else {
+    idx <- seq2(from, to)
+    new_pillar_box(x[idx], get_cell_widths(x)[idx], get_cell_min_widths(x)[idx])
+  }
+}
+
+get_cells_for_hierarchy <- function(x, from, to) {
+  lengths <- map_int(x, function(.x) length(get_cell_widths(.x)))
+  
+  idx <- .bincode(c(from, to), lengths)
+  from_idx <- idx[[1]]
+  to_idx <- idx[[2]]
+  
+  ...
+}
+```
+
+### Sub-pillars and their widths
+
+If the components of a pillar are boxes with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component box.
+For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual boxes.
+
+```{r}
+pillar_get_widths <- function(x) {
+  exec(pmax, !!!map(x, get_cell_widths))
+}
+
+pillar_get_min_widths <- function(x) {
+  exec(pmax, !!!map(x, get_cell_min_widths))
+}
+```
+
+Alternatively, widths can be computed once when constructing the pillar object and stored in an attribute.
+
+
 ### Implementation sketch
 
-- We start with the assumption that each column consumes at least one character, with the space between the columns. This gives an upper bound on the number of columns and allows pre-allocating memory.
-- For each column we could possibly fit, we call the `ctl_pillar_capital()` method and query the minimum width, until maximum width is reached.
-- For each column where the capital fits, we call the `ctl_pillar_shaft()` method and query the minimum width, until maximum width is reached.
-- Pillars are distributed using the existing algorithm.
+- The width of the tier(s) for printing is computed from `getOption("tibble.width")` and `getOption("width")`.
+- We start with the assumption that each column consumes at least one character, with the space between the columns. This gives an upper bound for the number of columns and allows preallocating memory.
+- The call `new_data_frame_pillar(as.data.frame(x), x, width, title = NULL)` gives us the representation of the entire data frame. A similar call is used for packed data frames.
+- The new implementation seamlessly supports display of matrices via `new_matrix_pillar()`.
+- After the final list of pillars is known, they are distributed using the existing implementation to make use of excess space (not shown here).
+
+```{r}
+new_data_frame_pillar <- function(x, controller, width, title) {
+  max_n_pillars <- sum(width %/% 2)
+  pillars <- vector("list", max_n_pillars)
+  
+  for (i in seq_along(x)) {
+    # Call ctl_new_pillar() only for objects that can fit
+    pillar <- ctl_new_pillar(
+      controller, x[[i]], width, 
+      title = c(title, names(x)[[i]])
+    )
+    if (is.null(pillar)) {
+      # NULL return: doesn't fit
+      break
+    }
+    
+    # Compute remaining width
+    width <- deduct_width(width, pillar_get_min_widths(pillar))
+    if (is.null(width)) {
+      # NULL return: current pillar doesn't fit
+      break
+    }
+
+    pillars[[i]] <- pillar
+  }
+  
+  pillars <- compact(pillars)
+  
+  widths <- reduce(pillars, pillar_get_widths)
+  min_widths <- reduce(pillars, pillar_get_min_widths)
+}
+
+# Can be rewritten with a repeat loop
+deduct_width <- function(width, consumed_widths) {
+  if (length(consumed_widths) == 0) {
+    # All sub-pillars distributed
+    width
+  } else if (length(width) == 0) {
+    # Doesn't fit
+    NULL
+  } else if (width[[1]] >= consumed_widths[[1]]) {
+    # Fits first tier
+    deduct_width(
+      c(width[[1]] - consumed_widths[[1]], width[-1]),
+      consumed_widths[-1]
+    )
+  } else {
+    # Doesn't fit first tier: try next tier
+    deduct_width(width[-1], consumed_widths)
+  }
+}
+```
