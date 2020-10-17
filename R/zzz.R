@@ -1,3 +1,5 @@
+# nocov start - zzz.R
+
 #' @import rlang
 #' @import ellipsis
 #' @import lifecycle
@@ -50,3 +52,5 @@ register_s3_method <- function(pkg, generic, class, fun = NULL, gen_pkg = pkg) {
     }
   )
 }
+
+# nocov end
