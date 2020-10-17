@@ -119,48 +119,8 @@ DiagrammeR::mermaid("format.mmd")
 - Printing pillars should take time proportional to the number of characters printed, and be "fast enough".
 - Customizing parts of the display (e.g. omit type, add more information) should be easy.
 - Existing infrastructure should be supported.
-
-
-### Packed data frames and matrices
-
-How to format? Do we need to unpack for printing? Is this a decision made by the container, or when printing?
-
-Alternative: show only first column, with dots at end. (Never discussed, this is not how data frames print.)
-
-Current situation: names become too wide and are hard to parse, especially when wrapping. Multistage names?
-
-Unclear: is the name part of the pillar? Perhaps yes, then for packed data frames and matrix columns we need a vectorized object that knows how to split itself.
-
-Design of new generics should be flexible enough to allow for future changes.
-
-
-
-
-FIXME NEXT:
-
-- Pillars are always constructed unnamed, do name separately (as a list of character vectors)
-
-
-- Define ctl_* generics
-- Implement and use replacement for colonnade(), internal, using the new generics
-- Test coverage per file
-- Improve output:
-    - Tibble-local options for precision
-    - Classes for numeric and string, use {formattable}
-    - Multi-stage output for packed data frames
-        - Reuse names/indices from left-hand side pillar if available
-    - Arrays!
-    - Show number of rows if known
-    - Show columns that are abbreviated in full
-- Look for FIXMEs
-
-
-- Subdivide into name (perhaps multipart, shown in multiple rows and perhaps spanning multiple columns), and rest (type + data)
-- Implement multipart pillars
-- Enhance width attribute of pillar to support a vector
-- Support subsetting of pillars
-
-- Construct pillar objects while there still is space
+- *NEW*: Support arbitrary components of a pillar, title, type, data, ... .
+- *NEW*: Columns containing data frames and matrices remain supported.
 
 
 ### New generics
@@ -306,11 +266,27 @@ Alternatively, widths can be computed once when constructing the pillar object a
 
 - The width of the tier(s) for printing is computed from `getOption("tibble.width")` and `getOption("width")`.
 - We start with the assumption that each column consumes at least one character, with the space between the columns. This gives an upper bound for the number of columns and allows preallocating memory.
-- The call `new_data_frame_pillar(as.data.frame(x), x, width, title = NULL)` gives us the representation of the entire data frame. A similar call is used for packed data frames.
+- The new `colonnade2()` gives us the representation of the entire data frame.
 - The new implementation seamlessly supports display of matrices via `new_matrix_pillar()`.
 - After the final list of pillars is known, they are distributed using the existing implementation to make use of excess space (not shown here).
 
 ```{r}
+colonnade2 <- function(x, controller, has_row_id, width) {
+  if (nrow(x) == 0) {
+    return(NULL)
+  }
+  
+  # Reserve space for rowid column in each tier
+  if (!is_false(has_row_id)) {
+    rowid_width <- trunc(log10(nrow(x)) + 1)
+    width <- width - rowid_width - 1
+    width <- width[width > 0]
+  }
+  
+  new_data_frame_pillar(x, controller, width, title = NULL)
+}
+
+
 new_data_frame_pillar <- function(x, controller, width, title) {
   max_n_pillars <- sum(width %/% 2)
   pillars <- vector("list", max_n_pillars)
@@ -362,3 +338,18 @@ deduct_width <- function(width, consumed_widths) {
   }
 }
 ```
+
+
+### Next steps
+
+- Implement `colonnade2()`
+- Test coverage per file
+- Improve output:
+    - Tibble-local options for precision
+    - Classes for numeric and string, use {formattable}
+    - Multi-stage output for packed data frames
+        - Reuse names/indices from left-hand side pillar if available
+    - Arrays!
+    - Show number of rows if known
+    - Show columns that are abbreviated in full
+- Look for FIXMEs
