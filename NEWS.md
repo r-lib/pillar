@@ -94,7 +94,7 @@
 
 ## Performance
 
-- `squeeze()` is now faster (because the width computation in `pillar_shaft.numeric()` now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (#147).
+- `squeeze()` is now faster (because the width computation in `pillar_shaft.numeric()` now uses more arithmetics instead of string concatenation). Further speedups may require implementation of crucial parts in C (#147).
 - Styling output is faster: an expensive check for availability of colored output is carried out only once per call to `colonnade()`, and styling is implemented manually (#133, @jimhester).
 
 ## Internal
@@ -186,7 +186,7 @@ Bug fixes
 ---------
 
 - Numeric values with a `"class"` attribute (e.g., `Duration` from lubridate) are now formatted using `format()` if the `pillar_shaft()` method is not implemented for that class (#88).
-- Very small numbers (like `1e-310`) are now printed corectly (tidyverse/tibble#377).
+- Very small numbers (like `1e-310`) are now printed correctly (tidyverse/tibble#377).
 - Fix representation of right-hand side for `getOption("pillar.sigfig") >= 6` (tidyverse/tibble#380).
 - Fix computation of significant figures for numbers with absolute value >= 1 (#98).
 
