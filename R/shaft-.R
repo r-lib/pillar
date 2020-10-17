@@ -156,8 +156,19 @@ pillar_shaft_number <- function(x, sigfig) {
   )
 }
 
+# registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
   pillar_shaft_number(x, sigfig)
+}
+
+# registered in .onLoad()
+pillar_shaft.Surv <- function(x, ...) {
+  new_pillar_shaft_simple(format(x))
+}
+
+# registered in .onLoad()
+pillar_shaft.Surv2 <- function(x, ...) {
+  new_pillar_shaft_simple(format(x))
 }
 
 #' @export
