@@ -222,7 +222,7 @@ In the latter case, `length(x) < length(get_cell_widths(x))`, and each element m
 Extraction of a contiguous range of cells is supported.
 
 ```{r}
-get_cells(x, from, to) {
+get_cells <- function(x, from, to) {
   stopifnot(from <= to)
   
   if (length(x) < length(get_cell_widths(x))) {
