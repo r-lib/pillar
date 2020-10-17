@@ -45,7 +45,7 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 #' @export
 #' @rdname format_tbl
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
-  check_dots_empty()
+  check_dots_empty(action = signal)
 
   width <- get_width_print(width)
 
