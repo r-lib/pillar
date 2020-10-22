@@ -214,6 +214,9 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
       options(pillar.min_chars = min_width)
     }
   }
+  
+  # do not print line breaks, but instead format them in a readable way
+  out <- gsub("\n", style_na("\\n"), out, fixed = TRUE)
 
   pillar_shaft(new_vertical(out), ..., min_width = min_width, na_indent = na_indent)
 }
