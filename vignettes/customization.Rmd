@@ -360,8 +360,39 @@ deduct_width <- function(width, consumed_widths) {
 }
 ```
 
+## Avoiding fetching too many columns
 
-### Next steps
+For `tbl_lazy`, the `[` operator doesn't work.
+A new `pillar_select_cols()` generic supports querying a column subset, this speeds up the preview of queries that return too many columns.
+
+```{r}
+#' @export
+pillar_select_cols <- function(x, n, ...) {
+  check_dots_empty()
+
+  UseMethod("pillar_select_cols")
+}
+
+#' @export
+pillar_select_cols.default <- function(x, n, ...) {
+  x
+}
+
+#' @export
+pillar_select_cols.data.frame <- function(x, n, ...) {
+  x[seq_len(n)]
+}
+
+# in dbplyr
+#' @export
+pillar_select_cols.tbl_lazy <- function(x, n, ...) {
+  select(x, !!seq_len(n))
+}
+```
+
+
+
+## Next steps
 
 - Implement `colonnade2()`
 - Test coverage per file
