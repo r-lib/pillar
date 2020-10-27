@@ -1,3 +1,5 @@
+# nocov start - zzz.R
+
 #' @import rlang
 #' @import ellipsis
 #' @import lifecycle
@@ -13,6 +15,8 @@ NULL
   register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
   register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
   register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
+  register_s3_method("survival", "pillar_shaft", "Surv", gen_pkg = "pillar")
+  register_s3_method("survival", "pillar_shaft", "Surv2", gen_pkg = "pillar")
 
   assign_crayon_styles()
 
@@ -48,3 +52,5 @@ register_s3_method <- function(pkg, generic, class, fun = NULL, gen_pkg = pkg) {
     }
   )
 }
+
+# nocov end
