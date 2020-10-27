@@ -129,25 +129,25 @@ Because printing is now internal to pillar, there's no need to touch `colonnade(
 Internally, the object to be printed is used as `controller` argument.
 The default controller mimics current behavior.
 
-Two new generics, `ctl_new_pillar()` and `ctl_new_single_pillar()`, dispatch on that controller.
+Two new generics, `ctl_new_compound_pillar()` and `ctl_new_pillar()`, dispatch on that controller.
 The first method needs to be aware of packed columns (matrices and data frames), the second will be called only for 1D objects.
 
 Apart from the controller, these generics receive the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if `getOption("width") < getOption("tibble.width")`).
 Both generics return a `"pillar"` object, or `NULL` if the minimum width of the pillar doesn't fit the remaining width.
 
 ```{r}
-ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
+ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
   check_dots_empty()
   
   if (length(width) == 0) {
     return(NULL)
   }
   
-  UseMethod("ctl_new_pillar")
+  UseMethod("ctl_new_compound_pillar")
 }
 
 #' @export
-ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
+ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   if (is.data.frame(x)) {
     new_data_frame_pillar(x, controller, width, title = title)
   } else if (is.matrix(x)) {
@@ -155,11 +155,11 @@ ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   } else if (is.array(x)) {
     ...
   } else {
-    ctl_new_single_pillar(controller, x, width, ..., title = title)
+    ctl_new_pillar(controller, x, width, ..., title = title)
   }
 }
 
-ctl_new_single_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
+ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   pillar(x, title, width)
 }
 ```
@@ -183,7 +183,7 @@ new_pillar <- function(base = list(), ..., class = NULL) {
 This allows e.g.:
 
 ```{r}
-ctl_new_single_pillar.foo_controller <- function(controller, x, width, ..., title = NULL) {
+ctl_new_pillar.foo_controller <- function(controller, x, width, ..., title = NULL) {
   out <- NextMethod()
   new_pillar(out, capital = NULL, footer = ..., class = "foo_pillar")
 }
@@ -297,8 +297,8 @@ new_data_frame_pillar <- function(x, controller, width, title) {
   pillars <- vector("list", max_n_pillars)
   
   for (i in seq_along(x)) {
-    # Call ctl_new_pillar() only for objects that can fit
-    pillar <- ctl_new_pillar(
+    # Call ctl_new_compound_pillar() only for objects that can fit
+    pillar <- ctl_new_compound_pillar(
       controller, x[[i]], width, 
       title = c(title, names(x)[[i]])
     )
