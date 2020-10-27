@@ -353,7 +353,6 @@ deduct_width <- function(width, consumed_widths) {
     - Tibble-local options for precision
     - Classes for numeric and string, use {formattable}
     - Multi-stage output for packed data frames
-        - Reuse names/indices from left-hand side pillar if available
     - Arrays!
     - Show number of rows if known
     - Show columns that are abbreviated in full
