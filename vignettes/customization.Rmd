@@ -51,6 +51,17 @@ format.tbl <- function(x, ...) {
 }
 ```
 
+Code and data flow are illustrated in the diagram below.
+Boxes are functions and methods.
+Solid lines are function calls.
+Dotted lines are inputs to function calls.
+
+```{r echo = FALSE}
+DiagrammeR::mermaid("format.mmd")
+```
+
+
+
 ### New generics
 
 `tbl_format_setup()` takes the role of the (then superseded) `trunc_mat()`.
@@ -93,17 +104,6 @@ format_footer <- function(x, ...) {
   # Copy implementation from tibble
 }
 ```
-
-### Data flow
-
-Boxes are functions and methods.
-Solid lines are function calls.
-Dotted lines are inputs to function calls.
-
-```{r echo = FALSE}
-DiagrammeR::mermaid("format.mmd")
-```
-
 
 ## Adding extension points for formatting individual pillars
 
