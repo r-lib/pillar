@@ -65,7 +65,8 @@
 
       
 
-      </header><script src="customization_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="customization_files/htmlwidgets-1.5.2/htmlwidgets.js"></script><script src="customization_files/d3-3.3.8/d3.min.js"></script><script src="customization_files/dagre-0.4.0/dagre-d3.min.js"></script><link href="customization_files/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
+      </header><script src="customization_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="customization_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="customization_files/anchor-sections-1.0/anchor-sections.js"></script><script src="customization_files/htmlwidgets-1.5.2/htmlwidgets.js"></script><script src="customization_files/d3-3.3.8/d3.min.js"></script><script src="customization_files/dagre-0.4.0/dagre-d3.min.js"></script><link href="customization_files/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
 <script src="customization_files/mermaid-0.3.0/dist/mermaid.slim.min.js"></script><link href="customization_files/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
 <script src="customization_files/chromatography-0.1/chromatography.js"></script><script src="customization_files/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script><div class="row">
   <div class="col-md-9 contents">
@@ -114,6 +115,9 @@
   <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_footer.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></pre></div>
+<p>Code and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
+<div id="htmlwidget-38fad3223cff003826fa" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-38fad3223cff003826fa">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
@@ -143,13 +147,6 @@
   <span class="co"># Copy implementation from tibble</span>
 <span class="op">}</span></pre></div>
 </div>
-<div id="data-flow" class="section level3">
-<h3 class="hasAnchor">
-<a href="#data-flow" class="anchor"></a>Data flow</h3>
-<p>Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-0ee5f8c1cb4df17bbe16" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0ee5f8c1cb4df17bbe16">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer\n  format.tbl -- \"     \" --> c\n  tbl_format_header -.-> c\n  tbl_format_body -.-> c\n  tbl_format_footer -.-> c"},"evals":[],"jsHooks":[]}</script>
-</div>
 </div>
 <div id="adding-extension-points-for-formatting-individual-pillars" class="section level2">
 <h2 class="hasAnchor">
@@ -178,9 +175,34 @@
 <h3 class="hasAnchor">
 <a href="#new-generics-1" class="anchor"></a>New generics</h3>
 <p>Because printing is now internal to pillar, there’s no need to touch <code><a href="../reference/colonnade.html">colonnade()</a></code>. Internally, the object to be printed is used as <code>controller</code> argument. The default controller mimics current behavior.</p>
-<p>Two new generics, <code>ctl_new_pillar()</code> and <code>ctl_new_single_pillar()</code>, dispatch on that controller. The first method needs to be aware of packed columns (matrices and data frames), the second will be called only for 1D objects.</p>
+<p>Two new generics, <code>ctl_new_compound_pillar()</code> and <code>ctl_new_pillar()</code>, dispatch on that controller. The first method needs to be aware of packed columns (matrices and data frames), the second will be called only for 1D objects. We mostly expect overrides for <code>ctl_new_pillar()</code>, much rarer if at all for <code>ctl_new_compound_pillar()</code>.</p>
 <p>Apart from the controller, these generics receive the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if <code>getOption("width") &lt; getOption("tibble.width")</code>). Both generics return a <code>"pillar"</code> object, or <code>NULL</code> if the minimum width of the pillar doesn’t fit the remaining width.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="co">#' @export</span>
+<span class="va">ctl_new_compound_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">UseMethod</a></span><span class="op">(</span><span class="st">"ctl_new_compound_pillar"</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="co">#' @export</span>
+<span class="va">ctl_new_compound_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu">new_data_frame_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu">new_matrix_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">...</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="fu">ctl_new_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">#' @export</span>
 <span class="va">ctl_new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
   
@@ -193,18 +215,6 @@
 
 <span class="co">#' @export</span>
 <span class="va">ctl_new_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu">new_data_frame_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu">new_matrix_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">...</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="fu">ctl_new_single_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
-  <span class="op">}</span>
-<span class="op">}</span>
-
-<span class="va">ctl_new_single_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span>, <span class="va">width</span><span class="op">)</span>
 <span class="op">}</span></pre></div>
 </div>
@@ -213,6 +223,7 @@
 <a href="#the-pillar-class" class="anchor"></a>The <code>"pillar"</code> class</h3>
 <p>Objects of class <code>"pillar"</code> are internally a named lists of their components. The default components are <code>title</code> (may be missing), <code>type</code>, and <code>data</code>. Each component is a <code>"pillar_box"</code>, as described below. Implementations may add new components or modify existing components.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="co">#' @export</span>
 <span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html">modifyList</a></span><span class="op">(</span><span class="va">base</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span>,
@@ -221,7 +232,8 @@
 <span class="op">}</span></pre></div>
 <p>This allows e.g.:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="va">ctl_new_single_pillar.foo_controller</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+<span class="co">#' @export</span>
+<span class="va">ctl_new_pillar.foo_controller</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">out</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">NextMethod</a></span><span class="op">(</span><span class="op">)</span>
   <span class="fu">new_pillar</span><span class="op">(</span><span class="va">out</span>, capital <span class="op">=</span> <span class="cn">NULL</span>, footer <span class="op">=</span> <span class="va">...</span>, class <span class="op">=</span> <span class="st">"foo_pillar"</span><span class="op">)</span>
 <span class="op">}</span></pre></div>
@@ -324,8 +336,8 @@
   <span class="va">pillars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="va">max_n_pillars</span><span class="op">)</span>
   
   <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="co"># Call ctl_new_pillar() only for objects that can fit</span>
-    <span class="va">pillar</span> <span class="op">&lt;-</span> <span class="fu">ctl_new_pillar</span><span class="op">(</span>
+    <span class="co"># Call ctl_new_compound_pillar() only for objects that can fit</span>
+    <span class="va">pillar</span> <span class="op">&lt;-</span> <span class="fu">ctl_new_compound_pillar</span><span class="op">(</span>
       <span class="va">controller</span>, <span class="va">x</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">width</span>, 
       title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">title</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
     <span class="op">)</span>
@@ -370,9 +382,38 @@
   <span class="op">}</span>
 <span class="op">}</span></pre></div>
 </div>
-<div id="next-steps" class="section level3">
-<h3 class="hasAnchor">
-<a href="#next-steps" class="anchor"></a>Next steps</h3>
+</div>
+<div id="avoiding-fetching-too-many-columns" class="section level2">
+<h2 class="hasAnchor">
+<a href="#avoiding-fetching-too-many-columns" class="anchor"></a>Avoiding fetching too many columns</h2>
+<p>For <code>tbl_lazy</code>, the <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code> operator doesn’t work. A new <code>pillar_select_cols()</code> generic supports querying a column subset, this speeds up the preview of queries that return too many columns.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="co">#' @export</span>
+<span class="va">pillar_select_cols</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
+
+  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">UseMethod</a></span><span class="op">(</span><span class="st">"pillar_select_cols"</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="co">#' @export</span>
+<span class="va">pillar_select_cols.default</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">x</span>
+<span class="op">}</span>
+
+<span class="co">#' @export</span>
+<span class="va">pillar_select_cols.data.frame</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">]</span>
+<span class="op">}</span>
+
+<span class="co"># in dbplyr</span>
+<span class="co">#' @export</span>
+<span class="va">pillar_select_cols.tbl_lazy</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">x</span>, <span class="op">!</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></pre></div>
+</div>
+<div id="next-steps" class="section level2">
+<h2 class="hasAnchor">
+<a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
 <li>Implement <code>colonnade2()</code>
 </li>
@@ -381,11 +422,7 @@
 <ul>
 <li>Tibble-local options for precision</li>
 <li>Classes for numeric and string, use {formattable}</li>
-<li>Multi-stage output for packed data frames
-<ul>
-<li>Reuse names/indices from left-hand side pillar if available</li>
-</ul>
-</li>
+<li>Multi-stage output for packed data frames</li>
 <li>Arrays!</li>
 <li>Show number of rows if known</li>
 <li>Show columns that are abbreviated in full</li>
@@ -393,7 +430,6 @@
 </li>
 <li>Look for FIXMEs</li>
 </ul>
-</div>
 </div>
   </div>
 
