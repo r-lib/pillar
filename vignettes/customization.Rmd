@@ -131,11 +131,13 @@ The default controller mimics current behavior.
 
 Two new generics, `ctl_new_compound_pillar()` and `ctl_new_pillar()`, dispatch on that controller.
 The first method needs to be aware of packed columns (matrices and data frames), the second will be called only for 1D objects.
+We mostly expect overrides for `ctl_new_pillar()`, much rarer if at all for `ctl_new_compound_pillar()`.
 
 Apart from the controller, these generics receive the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if `getOption("width") < getOption("tibble.width")`).
 Both generics return a `"pillar"` object, or `NULL` if the minimum width of the pillar doesn't fit the remaining width.
 
 ```{r}
+#' @export
 ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
   check_dots_empty()
   
@@ -159,6 +161,18 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
   }
 }
 
+#' @export
+ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
+  check_dots_empty()
+  
+  if (length(width) == 0) {
+    return(NULL)
+  }
+  
+  UseMethod("ctl_new_pillar")
+}
+
+#' @export
 ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   pillar(x, title, width)
 }
@@ -172,6 +186,7 @@ Each component is a `"pillar_box"`, as described below.
 Implementations may add new components or modify existing components.
 
 ```{r}
+#' @export
 new_pillar <- function(base = list(), ..., class = NULL) {
   structure(
     modifyList(base, list(...)),
@@ -183,6 +198,7 @@ new_pillar <- function(base = list(), ..., class = NULL) {
 This allows e.g.:
 
 ```{r}
+#' @export
 ctl_new_pillar.foo_controller <- function(controller, x, width, ..., title = NULL) {
   out <- NextMethod()
   new_pillar(out, capital = NULL, footer = ..., class = "foo_pillar")
