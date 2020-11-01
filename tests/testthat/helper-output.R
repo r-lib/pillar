@@ -27,8 +27,10 @@ expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
   xf <- rlang::enquo(xf)
   object_quo <- rlang::quo(get_pillar_output_object(!!x, !!!dots, xp = !!xp, xf = !!xf))
 
-  expect_pillar_output_utf8(object_quo, filename, output_width)
-  expect_pillar_output_latin1(object_quo, filename, output_width)
+  suppressWarnings({
+    expect_pillar_output_utf8(object_quo, filename, output_width)
+    expect_pillar_output_latin1(object_quo, filename, output_width)
+  })
 }
 
 expect_pillar_output_utf8 <- function(object_quo, filename, output_width) {
