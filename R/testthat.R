@@ -1,16 +1,24 @@
 #' Test helpers
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' Expectation for packages that implement a data type with pillar support.
 #' Allows storing the desired result in a file,
 #' and comparing the output with the file contents.
 #' Note that this expectation sets options that affect the formatting of the
 #' pillar, see examples for usage.
 #'
+#' @section Life cycle:
+#' This function is deprecated in favor of [testthat::expect_snapshot()].
+#' If your package uses the third edition of testthat, do not use this function.
+#'
 #' @inheritParams testthat::expect_output_file
 #' @param object An object to check.
 #' @param ... Unused.
 #' @param width The width of the output.
 #' @param crayon Color the output?
+#' @keywords internal
 #' @export
 #' @examples
 #' file <- tempfile("pillar", fileext = ".txt")
