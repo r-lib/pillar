@@ -1,5 +1,3 @@
-context("format_numeric")
-
 test_that("same pillar at different widths", {
   v <- 10^c(-9, -6, 3, 9)
   x <- pillar(v)

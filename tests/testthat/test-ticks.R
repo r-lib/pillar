@@ -1,5 +1,3 @@
-context("ticks")
-
 test_that("title ticks without width restriction", {
   expect_equal(tick_if_needed("proper_title"), "proper_title")
   expect_equal(tick_if_needed("needs ticks"), "`needs ticks`")

@@ -1,5 +1,3 @@
-context("obj_sum")
-
 # obj_sum ----------------------------------------------------------------
 
 test_that("forwards to vec_ptype_abbr() for S4", {

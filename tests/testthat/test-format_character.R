@@ -1,5 +1,3 @@
-context("format_character")
-
 withr::with_options(list(pillar.bold = TRUE), {
   chartype_frame <- function() {
     chars <- character()

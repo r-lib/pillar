@@ -1,5 +1,3 @@
-context("test-distribute")
-
 test_that("space distribution never removes space, and distributes space from left to right based on need", {
   expect_equal(
     colonnade_distribute_space(c(5, 6, 6), c(11, 8, 8), 18),

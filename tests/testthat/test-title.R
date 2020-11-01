@@ -1,5 +1,3 @@
-context("title")
-
 withr::with_options(list(pillar.bold = TRUE), {
 
   test_that("with and without title", {

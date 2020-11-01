@@ -1,5 +1,3 @@
-context("format_scientific")
-
 format_scientific_bw <- function(x, ...) {
   without_color({
     ret <- pillar_shaft(x, ...)

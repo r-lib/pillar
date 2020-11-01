@@ -1,5 +1,3 @@
-context("format_rowid")
-
 test_that("output test", {
   expect_pillar_output(
     xf = rowidformat(3),
