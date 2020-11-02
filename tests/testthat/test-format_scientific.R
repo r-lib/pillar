@@ -24,9 +24,9 @@ test_that("corner cases", {
 })
 
 test_that("output test", {
-  expect_pillar_output(xp = add_special(10^c(-9, -6, 3, 9)), width = 10, filename = "scientific.txt")
-  expect_pillar_output(xp = add_special((10^c(3, 9, 15, 22)) * c(-1, 1)), width = 10, filename = "scientific-short-neg.txt")
-  expect_pillar_output(xp = add_special(1.25 * 10^(-309:-319)), width = 10, filename = "scientific-tiny.txt")
+  expect_pillar_output(xf = pillar(add_special(10^c(-9, -6, 3, 9)), width = 10), filename = "scientific.txt")
+  expect_pillar_output(xf = pillar(add_special((10^c(3, 9, 15, 22)) * c(-1, 1)), width = 10), filename = "scientific-short-neg.txt")
+  expect_pillar_output(xf = pillar(add_special(1.25 * 10^(-309:-319)), width = 10), filename = "scientific-tiny.txt")
 })
 
 expect_scientific_width <- function(x) {

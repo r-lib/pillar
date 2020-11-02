@@ -70,20 +70,20 @@ chartype_frame <- function() {
 }
 
 test_that("output test", {
-  expect_pillar_output(xp = add_special(letters[1:5]), filename = "letters.txt")
-  expect_pillar_output(xp = add_special(paste(letters, collapse = "")), filename = "letters-long.txt")
-  expect_pillar_output(xp = add_special(paste(letters, collapse = "")), width = 10, filename = "letters-long-10.txt")
-  expect_pillar_output(xp = add_special(paste(letters, collapse = "")), width = 3, filename = "letters-long-03.txt")
-  expect_pillar_output(xp = add_special(c("")), width = 5, filename = "spaces0.txt")
-  expect_pillar_output(xp = add_special(c(" ")), width = 5, filename = "spaces.txt")
-  expect_pillar_output(xp = add_special(c(" a")), width = 5, filename = "spaces2.txt")
-  expect_pillar_output(xp = add_special(c("a ")), width = 5, filename = "spaces3.txt")
-  expect_pillar_output(xp = add_special(c("a b")), width = 5, filename = "spaces4.txt")
+  expect_pillar_output(xf = pillar(add_special(letters[1:5])), filename = "letters.txt")
+  expect_pillar_output(xf = pillar(add_special(paste(letters, collapse = ""))), filename = "letters-long.txt")
+  expect_pillar_output(xf = pillar(add_special(paste(letters, collapse = "")), width = 10), filename = "letters-long-10.txt")
+  expect_pillar_output(xf = pillar(add_special(paste(letters, collapse = "")), width = 3), filename = "letters-long-03.txt")
+  expect_pillar_output(xf = pillar(add_special(c("")), width = 5), filename = "spaces0.txt")
+  expect_pillar_output(xf = pillar(add_special(c(" ")), width = 5), filename = "spaces.txt")
+  expect_pillar_output(xf = pillar(add_special(c(" a")), width = 5), filename = "spaces2.txt")
+  expect_pillar_output(xf = pillar(add_special(c("a ")), width = 5), filename = "spaces3.txt")
+  expect_pillar_output(xf = pillar(add_special(c("a b")), width = 5), filename = "spaces4.txt")
 
   skip_on_os("windows")
-  expect_pillar_output(xp = add_special("\u6210\u4ea4\u65e5"), title = "\u6210\u4ea4", filename = "deal1.txt")
-  expect_pillar_output(xp = add_special("\u6210\u4ea4"), title = "\u6210\u4ea4\u65e5", filename = "deal2.txt")
-  expect_pillar_output(xp = add_special(1L), title = "\u6210\u4ea4\u65e5", filename = "deal3.txt")
+  expect_pillar_output(xf = pillar(add_special("\u6210\u4ea4\u65e5"), title = "\u6210\u4ea4"), filename = "deal1.txt")
+  expect_pillar_output(xf = pillar(add_special("\u6210\u4ea4"), title = "\u6210\u4ea4\u65e5"), filename = "deal2.txt")
+  expect_pillar_output(xf = pillar(add_special(1L), title = "\u6210\u4ea4\u65e5"), filename = "deal3.txt")
 
   # Spurious warnings on Windows
   suppressWarnings(
