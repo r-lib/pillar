@@ -20,7 +20,7 @@ long_str <- strrep("Abcdefghij", 5)
 df_str <- map(rlang::set_names(1:50), function(i) substr(long_str, 1, i))
 
 expect_pillar_output <- function(..., filename, xf = NULL,
-                                 crayon = TRUE, output_width = 80L) {
+                                 output_width = 80L) {
   check_dots_empty()
   object_quo <- rlang::enquo(xf)
 

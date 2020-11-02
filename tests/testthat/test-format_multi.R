@@ -83,78 +83,64 @@ test_that("output test", {
 
 test_that("tests from tibble", {
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(mtcars[1:8, ], has_row_id = "*", width = 30),
     filename = "tibble-mtcars-8-30.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(iris[1:5, ], width = 30),
     filename = "tibble-iris-5-30.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(iris[1:3, ], width = 20),
     filename = "tibble-iris-3-20.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 30),
     filename = "tibble-all--30.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     filename = "tibble-all--300.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     output_width = 70L,
     filename = "tibble-all--300-70.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     output_width = 60L,
     filename = "tibble-all--300-60.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     output_width = 50L,
     filename = "tibble-all--300-50.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     output_width = 40L,
     filename = "tibble-all--300-40.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     output_width = 30L,
     filename = "tibble-all--300-30.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(df_all, width = 300),
     output_width = 20L,
     filename = "tibble-all--300-20.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(list(`\n` = c("\n", '"'), `\r` = factor("\n")), width = 30),
     filename = "tibble-newline.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(list(a = c("", " ", "a ", " a")), width = 30),
     filename = "tibble-space.txt"
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(list("mean(x)" = 5, "var(x)" = 3), width = 30),
     filename = "tibble-non-syntactic.txt"
   )
@@ -329,7 +315,6 @@ test_that("NA names", {
   x <- list(`NA` = 1:3, set_to_NA = 4:6)
   names(x)[[2]] <- NA_character_
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 30),
     filename = "na-names.txt"
   )
@@ -338,7 +323,6 @@ test_that("NA names", {
 test_that("sep argument", {
   x <- list(sep = 1:3)
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 30),
     filename = "sep.txt"
   )
@@ -394,7 +378,6 @@ test_that("without styling", {
 test_that("tibble columns", {
   x <- list(a = 1:3, b = data.frame(c = 4:6, d = 7:9))
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 30),
     filename = "tibble-col.txt"
   )
@@ -412,7 +395,6 @@ test_that("tibble columns (nested)", {
     )
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 40),
     filename = "tibble-col-nested.txt"
   )
@@ -430,7 +412,6 @@ test_that("tibble columns (empty)", {
     )
   )
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 40),
     filename = "tibble-col-empty.txt"
   )
@@ -439,7 +420,6 @@ test_that("tibble columns (empty)", {
 test_that("matrix columns (unnamed)", {
   x <- list(a = 1:3, b = matrix(4:9, ncol = 2))
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 30),
     filename = "matrix-col.txt"
   )
@@ -448,7 +428,6 @@ test_that("matrix columns (unnamed)", {
 test_that("matrix columns (named)", {
   x <- list(a = 1:3, b = matrix(4:9, ncol = 2, dimnames = list(NULL, c("c", "d"))))
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 30),
     filename = "matrix-col-named.txt"
   )
@@ -457,7 +436,6 @@ test_that("matrix columns (named)", {
 test_that("matrix columns (empty)", {
   x <- list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0])
   expect_pillar_output(
-    crayon = FALSE,
     xf = colonnade(x, width = 30),
     filename = "matrix-col-empty.txt"
   )
