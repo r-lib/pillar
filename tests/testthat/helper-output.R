@@ -19,18 +19,17 @@ df_all <- new_tbl(list(
 long_str <- strrep("Abcdefghij", 5)
 df_str <- map(rlang::set_names(1:50), function(i) substr(long_str, 1, i))
 
-expect_pillar_output <- function(..., filename, xf = NULL,
-                                 output_width = 80L) {
+expect_pillar_output <- function(..., filename, xf = NULL) {
   check_dots_empty()
   object_quo <- rlang::enquo(xf)
 
   suppressWarnings({
-    expect_pillar_output_utf8(object_quo, filename, output_width)
-    expect_pillar_output_latin1(object_quo, filename, output_width)
+    expect_pillar_output_utf8(object_quo, filename)
+    expect_pillar_output_latin1(object_quo, filename)
   })
 }
 
-expect_pillar_output_utf8 <- function(object_quo, filename, output_width) {
+expect_pillar_output_utf8 <- function(object_quo, filename, output_width = 80L) {
   if (l10n_info()$`UTF-8`) {
     expect_known_display(
       object = !!object_quo,
