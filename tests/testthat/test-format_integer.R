@@ -1,7 +1,7 @@
 test_that("integer output will use scientific if necessary", {
   x <- 10000000L + 1:3
-  expect_pillar_output(xf = pillar(add_special(x), width = 6), filename = "integer-06.txt")
-  expect_pillar_output(xf = pillar(add_special(x), width = 7), filename = "integer-07.txt")
-  expect_pillar_output(xf = pillar(add_special(x), width = 8), filename = "integer-08.txt")
-  expect_pillar_output(xf = pillar(add_special(x), width = 9), filename = "integer-09.txt")
+  expect_snapshot(pillar(add_special(x), width = 6))
+  expect_snapshot(pillar(add_special(x), width = 7))
+  expect_snapshot(pillar(add_special(x), width = 8))
+  expect_snapshot(pillar(add_special(x), width = 9))
 })

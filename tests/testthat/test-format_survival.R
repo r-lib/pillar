@@ -2,10 +2,10 @@ test_that("survival output", {
   skip_if_not_installed("survival")
 
   x <- head(survival::Surv(survival::lung$time, survival::lung$status))
-  expect_pillar_output(xf = pillar(pillar(x), width = 20), filename = "survival.txt")
+  expect_snapshot(pillar(pillar(x), width = 20))
 
   skip_if_not(exists("Surv2", asNamespace("survival"), mode = "function"))
 
   x <- head(survival::Surv2(survival::lung$time, survival::lung$status))
-  expect_pillar_output(xf = pillar(pillar(x), width = 20), filename = "survival2.txt")
+  expect_snapshot(pillar(pillar(x), width = 20))
 })
