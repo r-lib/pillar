@@ -87,6 +87,6 @@ test_that("output test", {
 
   # Spurious warnings on Windows
   suppressWarnings(
-    expect_pillar_output(xf = colonnade(chartype_frame()), width = 50, filename = "utf8.txt")
+    expect_pillar_output(xf = colonnade(chartype_frame(), width = 50), filename = "utf8.txt")
   )
 })
