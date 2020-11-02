@@ -39,10 +39,7 @@ test_that("output test", {
   expect_pillar_output(xf = colonnade(x, width = Inf), filename = "multi-inf.txt")
 
   expect_pillar_output(
-    xf = colonnade(
-      rep(list(paste(letters, collapse = " ")), 4),
-      width = Inf
-    ),
+    xf = colonnade(rep(list(paste(letters, collapse = " ")), 4), width = Inf),
     filename = "letters-inf.txt"
   )
 
