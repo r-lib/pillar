@@ -37,11 +37,3 @@ add_special <- function(x) {
 continue <- function(x) {
   paste0(x, cli::symbol$continue)
 }
-
-without_color <- function(code) {
-  old <- options(crayon.enabled = FALSE)
-  has_color(forget = TRUE)
-  on.exit({ options(old); has_color(forget = TRUE) })
-
-  code
-}

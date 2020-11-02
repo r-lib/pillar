@@ -1,5 +1,5 @@
-format_decimal_bw <- function(x, sigfig = 3, ...) {
-  without_color(format_decimal(x, sigfig = sigfig, ...))
+format_decimal_3 <- function(x, sigfig = 3, ...) {
+  format_decimal(x, sigfig = sigfig, ...)
 }
 
 test_that("compute_rhs_digits() works", {
@@ -34,62 +34,62 @@ test_that("compute_exp() respectis significant digits", {
 
 test_that("special values appear in LHS", {
   x <- c(NA, NaN, Inf)
-  f <- format_decimal_bw(x)
+  f <- format_decimal_3(x)
 
-  expect_equal(without_color(format_lhs(f)), format(x, trim = TRUE))
+  expect_equal(format_lhs(f), format(x, trim = TRUE))
 })
 
 test_that("all-positive values get nothing in neg", {
-  f <- format_decimal_bw(c(0, Inf))
+  f <- format_decimal_3(c(0, Inf))
   expect_equal(format_neg(f), c("", ""))
 })
 
 test_that("negative values get - in neg", {
-  f <- format_decimal_bw(c(-Inf, Inf))
+  f <- format_decimal_3(c(-Inf, Inf))
   expect_equal(format_neg(f), c("-", ""))
 })
 
 test_that("trailing zeros removed if whole decimal fraction", {
-  f <- format_decimal_bw(c(1.5, 0.5))
-  expect_equal(without_color(format_lhs(f)), c("1", "0"))
+  f <- format_decimal_3(c(1.5, 0.5))
+  expect_equal(format_lhs(f), c("1", "0"))
   expect_equal(format_rhs(f), c("5", "5"))
 })
 
 test_that("trailing zeros pad to sigfigs if data not shown", {
-  f <- format_decimal_bw(c(1.5, 0.5) + 1e-6)
-  expect_equal(without_color(format_lhs(f)), c("1", "0"))
+  f <- format_decimal_3(c(1.5, 0.5) + 1e-6)
+  expect_equal(format_lhs(f), c("1", "0"))
   expect_equal(format_rhs(f), c("50 ", "500"))
 })
 
 test_that("sigfigs split between lhs and rhs", {
   x <- c(1.43, 10.43, 100.43)
-  f <- format_decimal_bw(x)
+  f <- format_decimal_3(x)
 
   expect_equal(format_lhs(f), as.character(trunc(x)))
   expect_equal(format_rhs(f), c("43", "4 ", "  "))
 })
 
 test_that("leading 0 added to rhs", {
-  f <- format_decimal_bw(1.01)
+  f <- format_decimal_3(1.01)
 
   expect_equal(format_lhs(f), "1")
   expect_equal(format_rhs(f), "01")
 })
 
 test_that("values rounded up as expect", {
-  f <- format_decimal_bw(c(18.9, 18.99))
+  f <- format_decimal_3(c(18.9, 18.99))
 
   expect_equal(format_lhs(f), c("18", "19"))
   expect_equal(format_rhs(f), c("9", "0"))
 })
 
 test_that("values on LHS not rounded", {
-  f <- without_color(format_lhs(format_decimal(123456, 3)))
+  f <- format_lhs(format_decimal(123456, 3))
   expect_equal(f, "123456")
 })
 
 test_that("corner cases", {
-  expect_equal(format_lhs(format_decimal_bw(numeric())), character())
+  expect_equal(format_lhs(format_decimal_3(numeric())), character())
 })
 
 test_that("output test", {
