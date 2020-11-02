@@ -19,3 +19,4 @@
 ^CRAN-RELEASE$
 ^data-raw$
 ^\.ccache$
+^LICENSE\.md$
