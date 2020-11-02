@@ -19,13 +19,12 @@ df_all <- new_tbl(list(
 long_str <- strrep("Abcdefghij", 5)
 df_str <- map(rlang::set_names(1:50), function(i) substr(long_str, 1, i))
 
-expect_pillar_output <- function(x = NULL, ..., filename, xp = NULL, xf = NULL,
+expect_pillar_output <- function(..., filename, xp = NULL, xf = NULL,
                                  crayon = TRUE, output_width = 80L) {
-  x <- rlang::enquo(x)
   dots <- rlang::enquos(...)
   xp <- rlang::enquo(xp)
   xf <- rlang::enquo(xf)
-  object_quo <- rlang::quo(get_pillar_output_object(!!x, !!!dots, xp = !!xp, xf = !!xf))
+  object_quo <- rlang::quo(get_pillar_output_object(xp = !!xp, xf = !!xf, !!!dots))
 
   suppressWarnings({
     expect_pillar_output_utf8(object_quo, filename, output_width)
@@ -62,11 +61,8 @@ expect_pillar_output_latin1 <- function(object_quo, filename, output_width) {
   }
 }
 
-get_pillar_output_object <- function(x = NULL, xp = NULL, xf = NULL, ...) {
+get_pillar_output_object <- function(xp = NULL, xf = NULL, ...) {
   if (is.null(xf)) {
-    if (is.null(xp)) {
-      xp <- add_special(x)
-    }
     xf <- pillar(xp, ...)
   }
 

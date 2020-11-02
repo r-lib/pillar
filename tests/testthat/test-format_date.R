@@ -1,3 +1,3 @@
 test_that("output test", {
-  expect_pillar_output(as.Date("2017-07-28"), filename = "date.txt")
+  expect_pillar_output(xp = add_special(as.Date("2017-07-28")), filename = "date.txt")
 })
