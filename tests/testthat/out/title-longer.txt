@@ -1,4 +1,4 @@
-[1msomewhat_wider[22m
+somewhat_wider
          [3m[90m<dbl>[39m[23m
             10
            100
