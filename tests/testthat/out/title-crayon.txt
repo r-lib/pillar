@@ -1,4 +1,4 @@
- [1mcrayon[22m
+ crayon
   [3m[90m<dbl>[39m[23m
      10
     100

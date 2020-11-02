@@ -1,4 +1,4 @@
-[1mexactly_fifteen[22m
+exactly_fifteen
           [3m[90m<dbl>[39m[23m
              10
             100

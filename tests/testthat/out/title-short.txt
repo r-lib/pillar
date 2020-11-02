@@ -1,4 +1,4 @@
-  [1mshort[22m
+  short
   [3m[90m<dbl>[39m[23m
      10
     100
