@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - tests/testthat/out/*
+      - tests/testthat/_snaps/*
 
 name: windows-tests
 
