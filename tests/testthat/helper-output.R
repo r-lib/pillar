@@ -40,6 +40,10 @@ continue <- function(x) {
 
 # from pkgdepends
 local_colors <- function(.local_envir = parent.frame()) {
+  # Fetch original settings to restore cache
+  oldsta <- crayon::has_color()
+  oldcol <- crayon::num_colors()
+
   # We run this first, so this will run last by withr, to restore the
   # original options.
   withr::local_options(
@@ -49,8 +53,6 @@ local_colors <- function(.local_envir = parent.frame()) {
 
   # This is to restore crayon's cache. This runs first on exit,
   # before restoring the options.
-  oldsta <- crayon::has_color()
-  oldcol <- crayon::num_colors()
   withr::defer(envir = .local_envir, {
     # These will be reset by exit handler that was set up above.
     options(crayon.enabled = oldsta, crayon.colors = oldcol)
