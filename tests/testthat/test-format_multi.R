@@ -152,30 +152,12 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
 
   xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
 
-  withr::with_options(
-    list(),
-    expect_snapshot(xf)
-  )
-  withr::with_options(
-    list(pillar.subtle_num = TRUE),
-    expect_snapshot(xf)
-  )
-  withr::with_options(
-    list(pillar.subtle = FALSE),
-    expect_snapshot(xf)
-  )
-  withr::with_options(
-    list(pillar.neg = FALSE),
-    expect_snapshot(xf)
-  )
-  withr::with_options(
-    list(pillar.subtle = FALSE, pillar.neg = FALSE),
-    expect_snapshot(xf)
-  )
-  withr::with_options(
-    list(pillar.bold = TRUE),
-    expect_snapshot(xf)
-  )
+  expect_snapshot(print(xf))
+  expect_snapshot(with_options(pillar.subtle_num = TRUE, print(xf)))
+  expect_snapshot(with_options(pillar.subtle = FALSE, print(xf)))
+  expect_snapshot(with_options(pillar.neg = FALSE, print(xf)))
+  expect_snapshot(with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf)))
+  expect_snapshot(with_options(pillar.bold = TRUE, print(xf)))
 
   expect_snapshot(colonnade(list(a_very_long_column_name = 0), width = 15))
 })

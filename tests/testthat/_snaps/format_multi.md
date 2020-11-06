@@ -2978,7 +2978,7 @@
 # color, options: UTF-8 is TRUE
 
     Code
-      xf
+      print(xf)
     Output
                 x
             [3m[38;5;246m<dbl>[39m[23m
@@ -2995,7 +2995,7 @@
 ---
 
     Code
-      xf
+      with_options(pillar.subtle_num = TRUE, print(xf))
     Output
                 x
             [3m[38;5;246m<dbl>[39m[23m
@@ -3012,7 +3012,7 @@
 ---
 
     Code
-      xf
+      with_options(pillar.subtle = FALSE, print(xf))
     Output
                 x
             [3m<dbl>[23m
@@ -3029,7 +3029,7 @@
 ---
 
     Code
-      xf
+      with_options(pillar.neg = FALSE, print(xf))
     Output
                 x
             [3m[38;5;246m<dbl>[39m[23m
@@ -3046,7 +3046,7 @@
 ---
 
     Code
-      xf
+      with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf))
     Output
                 x
             [3m<dbl>[23m
@@ -3063,7 +3063,7 @@
 ---
 
     Code
-      xf
+      with_options(pillar.bold = TRUE, print(xf))
     Output
                 [1mx[22m
             [3m[38;5;246m<dbl>[39m[23m
