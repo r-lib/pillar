@@ -44,6 +44,9 @@ local_colors <- function(.local_envir = parent.frame()) {
   oldsta <- crayon::has_color()
   oldcol <- crayon::num_colors()
 
+  # Work around crayon problem
+  withr::local_envvar(list(RSTUDIO = ""), .local_envir = .local_envir)
+
   # We run this first, so this will run last by withr, to restore the
   # original options.
   withr::local_options(
@@ -61,6 +64,7 @@ local_colors <- function(.local_envir = parent.frame()) {
 
   # Reset color cache
   crayon::num_colors(forget = TRUE)
+  stopifnot(identical(crayon::num_colors(), 256L))
 }
 
 local_utf8 <- function(enable = TRUE, .local_envir = parent.frame()) {
