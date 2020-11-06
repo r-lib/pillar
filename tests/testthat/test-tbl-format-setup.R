@@ -1,5 +1,5 @@
 test_that("tbl_format_setup() results", {
-  verify_output("tbl-format-setup.txt", {
+  expect_snapshot({
     tbl_format_setup(as_tbl(mtcars), width = 80)
 
     tbl_format_setup(as_tbl(mtcars), width = 30, n = 8)

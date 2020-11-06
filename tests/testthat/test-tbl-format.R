@@ -5,7 +5,7 @@ test_that("print() returns output invisibly", {
 })
 
 test_that("print() output", {
-  verify_output("print.txt", {
+  expect_snapshot({
     as_tbl(mtcars)
 
     print(as_tbl(mtcars), n = 8, width = 30)
