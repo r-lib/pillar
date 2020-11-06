@@ -67,6 +67,7 @@ tbl_format_setup <- function(x, width, ...,
 #'
 #' @rdname tbl_format_setup
 #' @export
+#' @importFrom utils head
 tbl_format_setup.tbl <- function(x, width, ...,
                                  n = NULL, max_extra_cols = NULL) {
   rows <- nrow(x)
@@ -77,14 +78,14 @@ tbl_format_setup.tbl <- function(x, width, ...,
   }
 
   if (is.na(rows)) {
-    df <- as.data.frame(utils::head(x, n + 1))
+    df <- as.data.frame(head(x, n + 1))
     if (nrow(df) <= n) {
       rows <- nrow(df)
     } else {
       df <- df[seq_len(n), , drop = FALSE]
     }
   } else {
-    df <- as.data.frame(utils::head(x, n))
+    df <- as.data.frame(head(x, n))
   }
 
   if (is.na(rows)) {

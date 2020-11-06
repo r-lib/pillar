@@ -1,2 +1,2 @@
 options(testthat.progress.verbose_skips = FALSE)
-options(Ncpus = parallel::detectCores())
+options(Ncpus = min(parallel::detectCores(), 4))
