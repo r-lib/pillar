@@ -40,12 +40,6 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
 
-      - name: Purge existing output
-        run: |
-          rm -rf tests/testthat/out-native
-          mkdir -p tests/testthat/out-native
-        shell: bash
-
       - name: Run tests, allow failures
         run: |
           testthat::test_local(reporter = "summary", stop_on_failure = FALSE)
