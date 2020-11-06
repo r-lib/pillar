@@ -37,7 +37,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("devtools")
           remotes::install_deps(dependencies = TRUE)
 
       - name: Purge existing output
@@ -48,19 +47,23 @@ jobs:
 
       - name: Run tests, allow failures
         run: |
-          devtools::test(reporter = "summary")
+          testthat::test_local(reporter = "summary", stop_on_failure = FALSE)
+
+      - name: Accept snapshots
+        run: |
+          testthat::snapshot_accept()
 
       - name: Commit and push
         run: |
           git status
-          git status tests/testthat/out-native
-          git status --porcelain tests/testthat/out-native
-          if [[ $(git status --porcelain tests/testthat/out-native) == "" ]]
+          git status tests/testthat/_snaps
+          git status --porcelain tests/testthat/_snaps
+          if [[ $(git status --porcelain tests/testthat/_snaps) == "" ]]
           then
             echo "No changes to commit"
           else
-            git add tests/testthat/out-native
-            git commit -m "Add Windows output"
+            git add tests/testthat/_snaps
+            git commit -m "Add Windows snapshot output"
             git push origin
           fi
         shell: bash
