@@ -1,3 +1,4 @@
+# nocov start - expect_known_display()
 #' Test helpers
 #'
 #' @description
@@ -65,3 +66,4 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
 
   testthat::expect_known_output(print(eval_tidy(object)), file, update = TRUE, width = width)
 }
+# nocov end
