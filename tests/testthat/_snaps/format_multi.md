@@ -698,7 +698,7 @@
     Code
       crayon::num_colors()
     Output
-      [1] 256
+      [1] 16
 
 ---
 

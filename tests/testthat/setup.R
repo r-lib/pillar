@@ -1,4 +1,4 @@
 is_testing(set = TRUE)
 
 # Initialize crayon cache
-local_options(crayon.enabled = TRUE, crayon::num_colors())
+withr::with_options(list(crayon.enabled = TRUE), crayon::num_colors())
