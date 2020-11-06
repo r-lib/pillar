@@ -137,8 +137,20 @@ test_that("sep argument", {
   expect_snapshot(colonnade(x, width = 30))
 })
 
-test_that("without styling", {
-  xf <- colonnade(list(x = (10^(-3:4)) * c(-1, 1)))
+test_that("color, options: UTF-8 is TRUE", {
+  skip_if(!l10n_info()$`UTF-8`)
+  expect_true(TRUE)
+})
+
+test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
+  local_colors()
+
+  if (l10n_info()$`UTF-8`) {
+    local_utf8()
+    expect_true(cli::is_utf8_output())
+  }
+
+  xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
 
   withr::with_options(
     list(),
@@ -161,9 +173,16 @@ test_that("without styling", {
     expect_snapshot(xf)
   )
   withr::with_options(
-    list(pillar.bold = FALSE),
+    list(pillar.bold = TRUE),
     expect_snapshot(xf)
   )
+
+  expect_snapshot(colonnade(list(a_very_long_column_name = 0), width = 15))
+})
+
+test_that("color, options: UTF-8 is FALSE", {
+  skip_if(l10n_info()$`UTF-8`)
+  expect_true(TRUE)
 })
 
 test_that("tibble columns", {

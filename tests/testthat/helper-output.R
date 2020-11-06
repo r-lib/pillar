@@ -37,3 +37,33 @@ add_special <- function(x) {
 continue <- function(x) {
   paste0(x, cli::symbol$continue)
 }
+
+# from pkgdepends
+local_colors <- function(.local_envir = parent.frame()) {
+  # We run this first, so this will run last by withr, to restore the
+  # original options.
+  withr::local_options(
+    list(crayon.enabled = TRUE, crayon.colors = 256L),
+    .local_envir = .local_envir
+  )
+
+  # This is to restore crayon's cache. This runs first on exit,
+  # before restoring the options.
+  oldsta <- crayon::has_color()
+  oldcol <- crayon::num_colors()
+  withr::defer(envir = .local_envir, {
+    # These will be reset by exit handler that was set up above.
+    options(crayon.enabled = oldsta, crayon.colors = oldcol)
+    crayon::num_colors(forget = TRUE)
+  })
+
+  # Reset color cache
+  crayon::num_colors(forget = TRUE)
+}
+
+local_utf8 <- function(enable = TRUE, .local_envir = parent.frame()) {
+  withr::local_options(
+    list(cli.unicode = enable),
+    .local_envir = .local_envir
+  )
+}
