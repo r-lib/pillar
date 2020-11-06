@@ -1,6 +1,7 @@
 on:
   push:
     paths:
+      - .github/workflows/windows-tests.yaml
       - tests/testthat/_snaps/*
 
 name: windows-tests
