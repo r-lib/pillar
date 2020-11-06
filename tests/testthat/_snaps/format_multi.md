@@ -2978,6 +2978,27 @@
 # color, options: UTF-8 is TRUE
 
     Code
+      crayon::has_color()
+    Output
+      [1] TRUE
+
+---
+
+    Code
+      crayon::num_colors()
+    Output
+      [1] 256
+
+---
+
+    Code
+      cli::is_utf8_output()
+    Output
+      [1] TRUE
+
+---
+
+    Code
       print(xf)
     Output
                 x
