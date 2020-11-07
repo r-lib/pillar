@@ -119,10 +119,6 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
 
   xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
 
-  expect_snapshot(crayon::has_color())
-  expect_snapshot(crayon::num_colors())
-  expect_snapshot(cli::is_utf8_output())
-
   expect_snapshot(print(xf))
   expect_snapshot(with_options(pillar.subtle_num = TRUE, print(xf)))
   expect_snapshot(with_options(pillar.subtle = FALSE, print(xf)))
