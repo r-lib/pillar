@@ -1,3 +1,4 @@
+# nocov start
 keep_empty <- function(fun) {
   function(x) {
     ret <- rep_along(x, "")
@@ -6,6 +7,7 @@ keep_empty <- function(fun) {
     ret
   }
 }
+# nocov end
 
 #' Styling helpers
 #'
