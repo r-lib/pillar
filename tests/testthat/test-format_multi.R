@@ -101,6 +101,11 @@ test_that("sep argument", {
   expect_snapshot(colonnade(x, width = 30))
 })
 
+test_that("color, options: UTF-8 is TRUE", {
+  skip_if(!l10n_info()$`UTF-8`)
+  expect_true(TRUE)
+})
+
 test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   local_colors()
 
@@ -123,6 +128,11 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   expect_snapshot(with_options(pillar.bold = TRUE, print(xf)))
 
   expect_snapshot(colonnade(list(a_very_long_column_name = 0), width = 15))
+})
+
+test_that("color, options: UTF-8 is FALSE", {
+  skip_if(l10n_info()$`UTF-8`)
+  expect_true(TRUE)
 })
 
 test_that("tibble columns", {
