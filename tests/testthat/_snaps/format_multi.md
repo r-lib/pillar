@@ -686,7 +686,7 @@
       2     2
       3     3
 
-# color, options: UTF-8 is FALSE
+# color, options: UTF-8 is TRUE
 
     Code
       crayon::has_color()
@@ -698,21 +698,21 @@
     Code
       crayon::num_colors()
     Output
-      [1] 1
+      [1] 16
 
 ---
 
     Code
       cli::is_utf8_output()
     Output
-      [1] FALSE
+      [1] TRUE
 
 ---
 
     Code
       print(xf)
     Output
-                x
+                [1mx[22m
             [3m[90m<dbl>[39m[23m
       [90m1[39m    -[31m0[39m[31m.[39m[31m00[39m[31m1[39m
       [90m2[39m     0.01 
@@ -729,7 +729,7 @@
     Code
       with_options(pillar.subtle_num = TRUE, print(xf))
     Output
-                x
+                [1mx[22m
             [3m[90m<dbl>[39m[23m
       [90m1[39m    -[90m0[39m[90m.[39m[90m00[39m[31m1[39m
       [90m2[39m     [90m0[39m[90m.[39m[90m0[39m1 
@@ -746,7 +746,7 @@
     Code
       with_options(pillar.subtle = FALSE, print(xf))
     Output
-                x
+                [1mx[22m
             [3m<dbl>[23m
       1    -[31m0[39m[31m.[39m[31m00[39m[31m1[39m
       2     0.01 
@@ -763,7 +763,7 @@
     Code
       with_options(pillar.neg = FALSE, print(xf))
     Output
-                x
+                [1mx[22m
             [3m[90m<dbl>[39m[23m
       [90m1[39m    -0.001
       [90m2[39m     0.01 
@@ -780,7 +780,7 @@
     Code
       with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf))
     Output
-                x
+                [1mx[22m
             [3m<dbl>[23m
       1    -0.001
       2     0.01 
@@ -814,7 +814,7 @@
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
     Output
-        a_very_long_~
+        [1ma_very_long_…[22m
                 [3m[90m<dbl>[39m[23m
       [90m1[39m             0
 
