@@ -717,7 +717,7 @@
     Code
       print(xf)
     Output
-                [1mx[22m
+                x
             [3m[90m<dbl>[39m[23m
       [90m1[39m    -[31m0[39m[31m.[39m[31m00[39m[31m1[39m
       [90m2[39m     0.01 
@@ -734,7 +734,7 @@
     Code
       with_options(pillar.subtle_num = TRUE, print(xf))
     Output
-                [1mx[22m
+                x
             [3m[90m<dbl>[39m[23m
       [90m1[39m    -[90m0[39m[90m.[39m[90m00[39m[31m1[39m
       [90m2[39m     [90m0[39m[90m.[39m[90m0[39m1 
@@ -751,7 +751,7 @@
     Code
       with_options(pillar.subtle = FALSE, print(xf))
     Output
-                [1mx[22m
+                x
             [3m<dbl>[23m
       1    -[31m0[39m[31m.[39m[31m00[39m[31m1[39m
       2     0.01 
@@ -768,7 +768,7 @@
     Code
       with_options(pillar.neg = FALSE, print(xf))
     Output
-                [1mx[22m
+                x
             [3m[90m<dbl>[39m[23m
       [90m1[39m    -0.001
       [90m2[39m     0.01 
@@ -785,7 +785,7 @@
     Code
       with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf))
     Output
-                [1mx[22m
+                x
             [3m<dbl>[23m
       1    -0.001
       2     0.01 
@@ -819,7 +819,7 @@
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
     Output
-        [1ma_very_long_…[22m
+        a_very_long_…
                 [3m[90m<dbl>[39m[23m
       [90m1[39m             0
 
