@@ -34,6 +34,7 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
     check_dots_empty(action = warn)
   }
 
+  # Reset local cache for each new colonnade
   has_color(forget = TRUE)
 
   x <- flatten_colonnade(x)
