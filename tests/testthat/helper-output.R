@@ -55,7 +55,11 @@ local_colors <- function(.local_envir = parent.frame()) {
   withr::defer(envir = .local_envir, {
     # These will be reset by exit handler that was set up above.
     options(crayon.enabled = oldsta)
+    has_color(forget = TRUE)
   })
+
+  # Added safety
+  has_color(forget = TRUE)
 }
 
 local_utf8 <- function(enable = TRUE, .local_envir = parent.frame()) {
