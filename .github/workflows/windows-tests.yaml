@@ -43,9 +43,6 @@ jobs:
       - name: Run tests, allow failures
         run: |
           testthat::test_local(stop_on_failure = FALSE)
-
-      - name: Accept snapshots
-        run: |
           testthat::snapshot_accept()
 
       - name: Commit and push
