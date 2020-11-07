@@ -99,6 +99,7 @@ test_that("NA names", {
 test_that("sep argument", {
   x <- list(sep = 1:3)
   expect_snapshot(colonnade(x, width = 30))
+  expect_snapshot("dummy")
 })
 
 test_that("color, options: UTF-8 is TRUE", {
