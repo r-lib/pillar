@@ -686,7 +686,7 @@
       2     2
       3     3
 
-# color, options: UTF-8 is TRUE
+# color, options: UTF-8 is FALSE
 
     Code
       crayon::has_color()
@@ -698,14 +698,14 @@
     Code
       crayon::num_colors()
     Output
-      [1] 16
+      [1] 1
 
 ---
 
     Code
       cli::is_utf8_output()
     Output
-      [1] TRUE
+      [1] FALSE
 
 ---
 
@@ -814,7 +814,7 @@
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
     Output
-        a_very_long_…
+        a_very_long_~
                 [3m[90m<dbl>[39m[23m
       [90m1[39m             0
 
