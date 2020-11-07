@@ -686,6 +686,11 @@
       2     2
       3     3
 
+---
+
+    Code
+      # dummy
+
 # color, options: UTF-8 is TRUE
 
     Code
