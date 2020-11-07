@@ -120,6 +120,7 @@ has_color <- local({
   }
 })
 
+# nocov start
 # Crayon functions call crayon::has_color() every call
 make_style_fast <- function(...) {
   # Force has_color to be true when making styles
@@ -157,3 +158,4 @@ assign_crayon_styles <- function() {
   crayon_grey_0.6 <<- make_style_fast(grDevices::grey(0.6), grey = TRUE)
   crayon_grey_0.8 <<- make_style_fast(grDevices::grey(0.8), grey = TRUE)
 }
+# nocov end
