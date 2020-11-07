@@ -5,10 +5,6 @@
 #' @import lifecycle
 NULL
 
-.onAttach <- function(...) {
-  crayon::num_colors(forget = TRUE)
-}
-
 .onLoad <- function(libname, pkgname) {
   # Can't use vctrs::s3_register() here with vctrs 0.1.0
   # https://github.com/r-lib/vctrs/pull/314

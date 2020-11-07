@@ -42,12 +42,11 @@ continue <- function(x) {
 local_colors <- function(.local_envir = parent.frame()) {
   # Fetch original settings to restore cache
   oldsta <- crayon::has_color()
-  oldcol <- crayon::num_colors()
 
   # We run this first, so this will run last by withr, to restore the
   # original options.
   withr::local_options(
-    list(crayon.enabled = TRUE, crayon.colors = 16L),
+    list(crayon.enabled = TRUE),
     .local_envir = .local_envir
   )
 
@@ -55,12 +54,8 @@ local_colors <- function(.local_envir = parent.frame()) {
   # before restoring the options.
   withr::defer(envir = .local_envir, {
     # These will be reset by exit handler that was set up above.
-    options(crayon.enabled = oldsta, crayon.colors = oldcol)
-    crayon::num_colors(forget = TRUE)
+    options(crayon.enabled = oldsta)
   })
-
-  # Reset color cache
-  crayon::num_colors(forget = TRUE)
 }
 
 local_utf8 <- function(enable = TRUE, .local_envir = parent.frame()) {
