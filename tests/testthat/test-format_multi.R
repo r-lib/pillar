@@ -109,6 +109,8 @@ test_that("color, options: UTF-8 is TRUE", {
 
 test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   local_colors()
+  expect_true(crayon::has_color())
+  expect_gt(crayon::num_colors(), 1)
 
   if (l10n_info()$`UTF-8`) {
     local_utf8()
