@@ -83,7 +83,7 @@
       a b  
       <NA> 
 
----
+# output test (not on Windows)
 
     Code
       pillar(add_special("成交日"), title = "成交")

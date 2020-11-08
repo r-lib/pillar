@@ -79,7 +79,9 @@ test_that("output test", {
   expect_snapshot(pillar(add_special(c(" a")), width = 5))
   expect_snapshot(pillar(add_special(c("a ")), width = 5))
   expect_snapshot(pillar(add_special(c("a b")), width = 5))
+})
 
+test_that("output test (not on Windows)", {
   skip_on_os("windows")
   expect_snapshot(pillar(add_special("\u6210\u4ea4\u65e5"), title = "\u6210\u4ea4"))
   expect_snapshot(pillar(add_special("\u6210\u4ea4"), title = "\u6210\u4ea4\u65e5"))
