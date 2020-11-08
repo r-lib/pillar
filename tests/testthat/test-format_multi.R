@@ -102,10 +102,12 @@ test_that("sep argument", {
   expect_snapshot("dummy")
 })
 
-test_that("color, options: UTF-8 is TRUE", {
-  skip_if(!l10n_info()$`UTF-8`)
-  expect_true(TRUE)
-})
+# Run opposite test to snapshot output but not alter it
+if (!l10n_info()$`UTF-8`) {
+  test_that("color, options: UTF-8 is TRUE", {
+    skip("Symmetry")
+  })
+}
 
 test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   local_colors()
@@ -129,10 +131,12 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   expect_snapshot(colonnade(list(a_very_long_column_name = 0), width = 15))
 })
 
-test_that("color, options: UTF-8 is FALSE", {
-  skip_if(l10n_info()$`UTF-8`)
-  expect_true(TRUE)
-})
+# Run opposite test to snapshot output but not alter it
+if (l10n_info()$`UTF-8`) {
+  test_that("color, options: UTF-8 is FALSE", {
+    skip("Symmetry")
+  })
+}
 
 test_that("tibble columns", {
   x <- list(a = 1:3, b = data.frame(c = 4:6, d = 7:9))
