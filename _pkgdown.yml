@@ -31,7 +31,6 @@ reference:
   - title: Miscellaneous
     contents:
       - dim_desc
-      - expect_known_display
       - get_extent
       - pillar-package
 

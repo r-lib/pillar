@@ -1,4 +1,8 @@
+# nocov start - expect_known_display()
 #' Test helpers
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
 #'
 #' Expectation for packages that implement a data type with pillar support.
 #' Allows storing the desired result in a file,
@@ -6,11 +10,16 @@
 #' Note that this expectation sets options that affect the formatting of the
 #' pillar, see examples for usage.
 #'
+#' @section Life cycle:
+#' This function is deprecated in favor of [testthat::expect_snapshot()].
+#' If your package uses the third edition of testthat, do not use this function.
+#'
 #' @inheritParams testthat::expect_output_file
 #' @param object An object to check.
 #' @param ... Unused.
 #' @param width The width of the output.
 #' @param crayon Color the output?
+#' @keywords internal
 #' @export
 #' @examples
 #' file <- tempfile("pillar", fileext = ".txt")
@@ -57,3 +66,4 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
 
   testthat::expect_known_output(print(eval_tidy(object)), file, update = TRUE, width = width)
 }
+# nocov end

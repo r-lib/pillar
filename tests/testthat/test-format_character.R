@@ -70,23 +70,25 @@ chartype_frame <- function() {
 }
 
 test_that("output test", {
-  expect_pillar_output(letters[1:5], filename = "letters.txt")
-  expect_pillar_output(paste(letters, collapse = ""), filename = "letters-long.txt")
-  expect_pillar_output(paste(letters, collapse = ""), width = 10, filename = "letters-long-10.txt")
-  expect_pillar_output(paste(letters, collapse = ""), width = 3, filename = "letters-long-03.txt")
-  expect_pillar_output(c(""), width = 5, filename = "spaces0.txt")
-  expect_pillar_output(c(" "), width = 5, filename = "spaces.txt")
-  expect_pillar_output(c(" a"), width = 5, filename = "spaces2.txt")
-  expect_pillar_output(c("a "), width = 5, filename = "spaces3.txt")
-  expect_pillar_output(c("a b"), width = 5, filename = "spaces4.txt")
+  expect_snapshot(pillar(add_special(letters[1:5])))
+  expect_snapshot(pillar(add_special(paste(letters, collapse = ""))))
+  expect_snapshot(pillar(add_special(paste(letters, collapse = "")), width = 10))
+  expect_snapshot(pillar(add_special(paste(letters, collapse = "")), width = 3))
+  expect_snapshot(pillar(add_special(c("")), width = 5))
+  expect_snapshot(pillar(add_special(c(" ")), width = 5))
+  expect_snapshot(pillar(add_special(c(" a")), width = 5))
+  expect_snapshot(pillar(add_special(c("a ")), width = 5))
+  expect_snapshot(pillar(add_special(c("a b")), width = 5))
+})
 
+test_that("output test (not on Windows)", {
   skip_on_os("windows")
-  expect_pillar_output("\u6210\u4ea4\u65e5", title = "\u6210\u4ea4", filename = "deal1.txt")
-  expect_pillar_output("\u6210\u4ea4", title = "\u6210\u4ea4\u65e5", filename = "deal2.txt")
-  expect_pillar_output(1L, title = "\u6210\u4ea4\u65e5", filename = "deal3.txt")
+  expect_snapshot(pillar(add_special("\u6210\u4ea4\u65e5"), title = "\u6210\u4ea4"))
+  expect_snapshot(pillar(add_special("\u6210\u4ea4"), title = "\u6210\u4ea4\u65e5"))
+  expect_snapshot(pillar(add_special(1L), title = "\u6210\u4ea4\u65e5"))
 
   # Spurious warnings on Windows
   suppressWarnings(
-    expect_pillar_output(xf = colonnade(chartype_frame()), width = 50, filename = "utf8.txt")
+    expect_snapshot(colonnade(chartype_frame(), width = 50))
   )
 })

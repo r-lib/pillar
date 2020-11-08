@@ -18,12 +18,20 @@ expect_known_display(object, file, ..., width = 80L, crayon = TRUE)
 \item{crayon}{Color the output?}
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+
 Expectation for packages that implement a data type with pillar support.
 Allows storing the desired result in a file,
 and comparing the output with the file contents.
 Note that this expectation sets options that affect the formatting of the
 pillar, see examples for usage.
 }
+\section{Life cycle}{
+
+This function is deprecated in favor of \code{\link[testthat:expect_snapshot]{testthat::expect_snapshot()}}.
+If your package uses the third edition of testthat, do not use this function.
+}
+
 \examples{
 file <- tempfile("pillar", fileext = ".txt")
 
@@ -45,3 +53,4 @@ integer_pillar <- pillar(1:3)
 expect_known_display(integer_pillar, file, crayon = FALSE)
 }
 }
+\keyword{internal}
