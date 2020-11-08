@@ -2,6 +2,8 @@
 
 - Documentation and tests (#202).
 
+- pillar has been re-licensed as MIT (#215).
+
 
 # pillar 1.4.99.9001
 
