@@ -45,7 +45,6 @@ jobs:
           testthat::test_local(stop_on_failure = FALSE)
           testthat::snapshot_accept()
 
-
       - name: Commit and push
         run: |
           git status
