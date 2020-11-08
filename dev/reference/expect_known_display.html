@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Test helpers — expect_known_display" />
-<meta property="og:description" content="Expectation for packages that implement a data type with pillar support.
+<meta property="og:description" content="
+Expectation for packages that implement a data type with pillar support.
 Allows storing the desired result in a file,
 and comparing the output with the file contents.
 Note that this expectation sets options that affect the formatting of the
@@ -118,7 +119,8 @@ pillar, see examples for usage." />
     </div>
 
     <div class="ref-description">
-    <p>Expectation for packages that implement a data type with pillar support.
+    <p><a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a></p>
+<p>Expectation for packages that implement a data type with pillar support.
 Allows storing the desired result in a file,
 and comparing the output with the file contents.
 Note that this expectation sets options that affect the formatting of the
@@ -152,6 +154,12 @@ pillar, see examples for usage.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="life-cycle"><a class="anchor" href="#life-cycle"></a>Life cycle</h2>
+
+    
+
+<p>This function is deprecated in favor of <code><a href='https://testthat.r-lib.org/reference/expect_snapshot.html'>testthat::expect_snapshot()</a></code>.
+If your package uses the third edition of testthat, do not use this function.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"pillar"</span>, fileext <span class='op'>=</span> <span class='st'>".txt"</span><span class='op'>)</span>
