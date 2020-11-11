@@ -17,7 +17,6 @@ reference:
       - pillar
       - pillar_shaft
       - starts_with("new_pillar_shaft")
-      - new_ornament
       - type_sum
       - format_type_sum
   - title: Styling
@@ -26,12 +25,13 @@ reference:
     contents:
       - starts_with("style_")
       - align
+      - get_extent
+      - new_ornament
       - new_pillar_title
       - new_pillar_type
   - title: Miscellaneous
     contents:
       - dim_desc
-      - get_extent
       - pillar-package
 
 navbar:
