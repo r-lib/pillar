@@ -110,6 +110,8 @@ if (!l10n_info()$`UTF-8`) {
 }
 
 test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
+  skip_if(Sys.getenv("RSTUDIO") != "")
+
   local_colors()
   expect_true(crayon::has_color())
   expect_equal(crayon::num_colors(), 16)
