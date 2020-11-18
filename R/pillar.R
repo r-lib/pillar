@@ -58,14 +58,6 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   new_pillar_1e(capital, shaft, width)
 }
 
-#' @export
-new_pillar <- function(base = list(), ..., class = NULL) {
-  structure(
-    modifyList(base, list(...)),
-    class = c(class, "pillar")
-  )
-}
-
 rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
   capital <- rif_capital(has_title_row, has_star, ...)
   shaft <- rif_shaft(n, ...)

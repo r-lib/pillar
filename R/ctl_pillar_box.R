@@ -1,3 +1,11 @@
+#' @export
+new_pillar <- function(base = list(), ..., class = NULL) {
+  structure(
+    modifyList(base, list(...)),
+    class = c(class, "pillar2")
+  )
+}
+
 new_pillar_box <- function(x, width, min_width = NULL) {
   structure(
     x,
