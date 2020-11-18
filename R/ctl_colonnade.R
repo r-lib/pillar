@@ -10,8 +10,8 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
     width <- width[width > 0]
   }
 
-  base_pillar <- new_data_frame_pillar(x, controller, width, title = NULL)
-  base_pillar
+  pillars <- new_pillars(x, controller, width, title = NULL)
+  pillars
 }
 
 
