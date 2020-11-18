@@ -1,8 +1,44 @@
+pillar2 <- function(x, title = NULL, width = NULL, ...) {
+  if (is.null(width)) {
+    width <- Inf
+  }
+
+  title <- new_pillar_title_box(title)
+  if (get_cell_min_widths(title) > width) {
+    return(NULL)
+  }
+
+  type <- new_pillar_type_box(x)
+  if (get_cell_min_widths(type) > width) {
+    return(NULL)
+  }
+
+  shaft <- pillar_shaft(x, ...)
+  min_width <- get_min_width(shaft)
+  if (min_width > width) {
+    return(NULL)
+  }
+  width <- get_width(shaft)
+
+  data <- new_pillar_box(list(shaft), width, min_width)
+  new_pillar(list(title = title, type = type, data = data))
+}
+
+new_pillar_title_box <- function(x) {
+  title <- new_pillar_title(x)
+  new_pillar_box(list(title), get_width(title), get_min_width(title))
+}
+
+new_pillar_type_box <- function(x) {
+  type <- new_pillar_type(x)
+  new_pillar_box(list(type), get_width(type), get_min_width(type))
+}
+
 #' @export
-new_pillar <- function(base = list(), ..., class = NULL) {
+new_pillar <- function(.base = list(), ..., .class = NULL) {
   structure(
-    modifyList(base, list(...)),
-    class = c(class, "pillar2")
+    modifyList(.base, list(...)),
+    class = c(.class, "pillar2")
   )
 }
 

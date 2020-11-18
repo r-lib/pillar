@@ -35,5 +35,13 @@ ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
 
 #' @export
 ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
-  pillar(x, title, width)
+  pillar2(x, title, if (!is.null(width)) max0(width))
+}
+
+max0 <- function(x) {
+  if (length(x) > 0) {
+    max(x)
+  } else {
+    0L
+  }
 }

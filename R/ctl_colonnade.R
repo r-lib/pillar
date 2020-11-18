@@ -10,7 +10,8 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
     width <- width[width > 0]
   }
 
-  new_data_frame_pillar(x, controller, width, title = NULL)
+  base_pillar <- new_data_frame_pillar(x, controller, width, title = NULL)
+  base_pillar
 }
 
 
@@ -41,10 +42,27 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 
   pillars <- compact(pillars)
 
-  widths <- map(pillars, pillar_get_widths)
-  min_widths <- map(pillars, pillar_get_min_widths)
+  if (length(pillars) == 0) {
+    return(NULL)
+  }
 
-  new_pillar()
+  components <- names(pillars[[1]])
+
+  t_pillars <- map(set_names(components), function(.x) {
+    # FIXME: Special case for .x == "title"
+
+    out <- map(pillars, function(.y) .y[[.x]])
+    widths <- map_int(out, get_cell_widths)
+    min_widths <- map_int(out, get_cell_min_widths)
+
+    new_pillar_box(
+      unlist(out, recursive = FALSE),
+      widths,
+      min_widths
+    )
+  })
+
+  new_pillar(t_pillars)
 }
 
 # Can be rewritten with a repeat loop
