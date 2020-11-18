@@ -110,6 +110,7 @@ if (!l10n_info()$`UTF-8`) {
 }
 
 test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
+  # FIXME: This failed for some reason on 2020-11-18, maybe auto-fixes later?
   skip_if(Sys.getenv("RSTUDIO") != "")
 
   local_colors()
