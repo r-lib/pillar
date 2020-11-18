@@ -1,4 +1,6 @@
 ctl_colonnade <- function(x, controller, has_row_id, width) {
+  # FIXME: width is a vector, see get_tier_width
+
   if (nrow(x) == 0) {
     return(NULL)
   }
@@ -10,8 +12,8 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
     width <- width[width > 0]
   }
 
-  pillars <- new_pillars(x, controller, width, title = NULL)
-  pillars
+  compound_pillar <- new_data_frame_pillar(x, controller, width, title = NULL)
+  colonnade_get_width_2(compound_pillar, width)
 }
 
 
@@ -57,8 +59,8 @@ combine_pillars <- function(pillars) {
 
   t_pillars <- map(set_names(components), function(.x) {
     out <- map(pillars, function(.y) .y[[.x]])
-    widths <- map_int(out, get_cell_widths)
-    min_widths <- map_int(out, get_cell_min_widths)
+    widths <- unlist(map(out, get_cell_widths))
+    min_widths <- unlist(map(out, get_cell_min_widths))
 
     new_pillar_box(
       unlist(out, recursive = FALSE),
@@ -91,66 +93,33 @@ deduct_width <- function(width, consumed_widths) {
 }
 
 
-#' @rdname colonnade
+#' @rdname colonnade2
 #' @usage NULL
 #' @aliases NULL
-colonnade_get_width <- function(x, width, rowid_width) {
+colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
   #' @details
   #' Pillars may be distributed over multiple tiers if
   #' `width > getOption("width")`. In this case each tier is at most
   #' `getOption("width")` characters wide. The very first step of formatting
   #' is to determine how many tiers are shown at most, and the width of each
   #' tier.
-  tier_widths <- get_tier_widths(width, length(x$data), rowid_width)
+  tier_widths
 
-  #'
-  #' To avoid unnecessary computation for showing very wide colonnades, a first
-  #' pass tries to fit all capitals into the tiers.
-  init_cols <- min(length(x$data), sum(floor((tier_widths + 1L) / (MIN_PILLAR_WIDTH + 1L))))
-  capitals <- map2(x$data[seq_len(init_cols)], x$names[seq_len(init_cols)], pillar_capital)
-  init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths)
-  pillar_shown <- init_col_widths_df$id[init_col_widths_df$tier != 0L]
-  if (length(pillar_shown) < init_cols) {
-    # (Include one more pillar to indicate that the data is too wide.)
-    pillar_shown <- c(pillar_shown, pillar_shown[length(pillar_shown)] + 1L)
-  }
-
-  #' For each pillar whose capital fits, it is then decided in which tier it is
-  #' shown, if at all, and how much horizontal space it may use (either its
-  #' minimum or its maximum width).
-  shafts <- map(x$data[pillar_shown], pillar_shaft)
-  pillars <- map2(capitals[pillar_shown], shafts, new_pillar_1e)
-  col_widths_df <- colonnade_compute_tiered_col_widths(pillars, tier_widths)
+  col_widths_df <- colonnade_compute_tiered_col_widths_2(compound_pillar, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
   colonnade_distribute_space_df(col_widths_df, tier_widths)
 }
 
-get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("width")) {
-  if (!is.finite(width)) {
-    pos <- seq(0, length.out = ncol + 1L, by = tier_width)
-  } else if (width < tier_width) {
-    pos <- c(0L, width)
-  } else {
-    pos <- seq(0, width + tier_width - 1, by = tier_width)
-  }
-
-  widths <- diff(pos) - rowid_width
-  widths[widths >= 1L]
-}
-
-colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
+colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, tier_widths) {
   max_tier_width <- max(tier_widths)
 
-  col_df <- data.frame(
-    id = seq_along(pillars),
-    max_widths = pmin(map_int(map(pillars, get_widths), max), max_tier_width),
-    min_widths = map_int(map(pillars, get_min_widths), max),
-    row.names = NULL
-  )
+  max_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_widths)))
+  min_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_min_widths)))
+  id <- seq_along(max_widths)
 
-  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
-  ret$pillar <- pillars
-  ret
+  col_df <- data.frame(id, max_widths, min_widths, row.names = NULL)
+
+  colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
 }
