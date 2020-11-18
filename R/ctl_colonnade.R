@@ -1,4 +1,4 @@
-colonnade2 <- function(x, controller, has_row_id, width) {
+ctl_colonnade <- function(x, controller, has_row_id, width) {
   if (nrow(x) == 0) {
     return(NULL)
   }
@@ -41,8 +41,10 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 
   pillars <- compact(pillars)
 
-  widths <- reduce(pillars, pillar_get_widths)
-  min_widths <- reduce(pillars, pillar_get_min_widths)
+  widths <- map(pillars, pillar_get_widths)
+  min_widths <- map(pillars, pillar_get_min_widths)
+
+  new_pillar()
 }
 
 # Can be rewritten with a repeat loop
