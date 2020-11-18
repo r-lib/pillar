@@ -16,6 +16,11 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
 
 
 new_data_frame_pillar <- function(x, controller, width, title) {
+  pillars <- new_pillars(x, controller, width, title)
+  combine_pillars(pillars)
+}
+
+new_pillars <- function(x, controller, width, title) {
   max_n_pillars <- sum(width %/% 2)
   pillars <- vector("list", max_n_pillars)
 
@@ -40,8 +45,10 @@ new_data_frame_pillar <- function(x, controller, width, title) {
     pillars[[i]] <- pillar
   }
 
-  pillars <- compact(pillars)
+  compact(pillars)
+}
 
+combine_pillars <- function(pillars) {
   if (length(pillars) == 0) {
     return(NULL)
   }
@@ -49,8 +56,6 @@ new_data_frame_pillar <- function(x, controller, width, title) {
   components <- names(pillars[[1]])
 
   t_pillars <- map(set_names(components), function(.x) {
-    # FIXME: Special case for .x == "title"
-
     out <- map(pillars, function(.y) .y[[.x]])
     widths <- map_int(out, get_cell_widths)
     min_widths <- map_int(out, get_cell_min_widths)
