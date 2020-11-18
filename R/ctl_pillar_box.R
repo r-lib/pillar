@@ -6,6 +6,12 @@ new_pillar <- function(base = list(), ..., class = NULL) {
   )
 }
 
+#' @export
+print.pillar2 <- function(x, ...) {
+  # Transient
+  str(x)
+}
+
 new_pillar_box <- function(x, width, min_width = NULL) {
   structure(
     x,
