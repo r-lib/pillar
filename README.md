@@ -36,7 +36,7 @@ devtools::install_github("r-lib/pillar")
 
 pillar is a developer-facing package that is not designed for end-users
 but will eventually be incorporated in packages like
-[tibble](http://tibble.tidyverse.org).
+[tibble](https://tibble.tidyverse.org/).
 
 ``` r
 library(pillar)
@@ -123,5 +123,5 @@ be
 
 Exercising these ideas to their fullest requires a font with good
 support for block drawing characters.
-[PragamataPro](https://www.fsd.it/shop/fonts/pragmatapro/) is one such
+[PragamataPro](https://fsd.it/shop/fonts/pragmatapro/) is one such
 font.
