@@ -1,3 +1,8 @@
+# pillar 1.4.7
+
+- Adapt to changed environment on CRAN's Solaris machine.
+
+
 # pillar 1.4.6.9000
 
 - Internal changes only.
