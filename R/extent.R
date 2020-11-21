@@ -49,9 +49,17 @@ align <- function(x, width = NULL, align = c("left", "right")) {
     width <- max(extent)
   }
   spaces <- pmax(width - extent, 0L)
-  if (align == "left") {
-    paste0(x, strrep(" ", spaces))
-  } else {
-    paste0(strrep(" ", spaces), x)
+
+  pad <- which(spaces > 0)
+  if (length(pad) == 0) {
+    return(x)
   }
+
+  if (align == "left") {
+    x[pad] <- paste0(x[pad], strrep(" ", spaces[pad]))
+  } else {
+    x[pad] <- paste0(strrep(" ", spaces[pad]), x[pad])
+  }
+
+  x
 }
