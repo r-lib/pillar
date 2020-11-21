@@ -66,7 +66,7 @@ get_cell_min_widths <- function(x) {
 }
 
 get_sub_pillar <- function(x, i) {
-  new_pillar(get_cells(x, i, i))
+  new_pillar(map(x, get_cells, i, i))
 }
 
 get_cells <- function(x, from, to) {
