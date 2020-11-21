@@ -1,8 +1,9 @@
+# Adapted from squeeze_impl()
 ctl_colonnade <- function(x, controller, has_row_id, width) {
   # FIXME: width is a vector, see get_tier_width
 
-  if (nrow(x) == 0) {
-    return(NULL)
+  if (ncol(x) == 0 || nrow(x) == 0) {
+    return(new_colonnade_sqeezed(list(), colonnade = x, extra_cols = seq_along(x)))
   }
 
   # Reserve space for rowid column in each tier
@@ -15,12 +16,27 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
   pillars <- new_pillars(x, controller, width, title = NULL)
 
   compound_pillar <- combine_pillars(pillars)
-  width_df <- colonnade_get_width_2(compound_pillar, width)
+  col_widths <- colonnade_get_width_2(compound_pillar, width)
 
-  list(
-    n_pillars = length(pillars),
-    width_df = width_df
-  )
+  col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
+  col_widths_shown <- col_widths_show[["TRUE"]]
+  col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
+
+  # FIXME: format.pillar2
+  out <- map(col_widths_tiers, function(tier) {
+    map2(tier$pillar, tier$width, format)
+  })
+
+  browser()
+
+  # if (!is.null(rowid)) {
+  #   rowid_formatted <- pillar_format_parts(rowid, rowid_width - 1L)
+  #   out <- map(out, function(.x) c(list(rowid_formatted), .x))
+  # }
+
+  extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(pillars))
+  squeezed <- new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
+  squeezed
 }
 
 
