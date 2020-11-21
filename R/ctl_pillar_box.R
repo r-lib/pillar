@@ -25,13 +25,11 @@ pillar2 <- function(x, title = NULL, width = NULL, ...) {
 }
 
 new_pillar_title_box <- function(x) {
-  title <- new_pillar_title(x)
-  new_pillar_box(list(title), get_width(title), get_min_width(title))
+  pillar_box(new_pillar_title(x))
 }
 
 new_pillar_type_box <- function(x) {
-  type <- new_pillar_type(x)
-  new_pillar_box(list(type), get_width(type), get_min_width(type))
+  pillar_box(new_pillar_type(x))
 }
 
 #' @export
@@ -55,6 +53,10 @@ new_pillar_box <- function(x, width, min_width = NULL) {
     min_width = min_width
     # keep class attribute from x
   )
+}
+
+pillar_box <- function(x) {
+  new_pillar_box(list(x), width = get_width(x), min_width = get_min_width(x))
 }
 
 get_cell_widths <- function(x) {
