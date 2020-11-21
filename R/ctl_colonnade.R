@@ -157,6 +157,6 @@ colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, tier_widths) 
   ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
 
   pillars <- map(ret$id, get_sub_pillar, x = compound_pillar)
-  ret$pillars <- pillars
+  ret$pillar <- pillars
   new_tbl(ret)
 }
