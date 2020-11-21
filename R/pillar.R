@@ -55,16 +55,16 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   #' see `pillar:::pillar_shaft.numeric` for an example.
   capital <- pillar_capital(x, title)
   shaft <- pillar_shaft(x, ...)
-  new_pillar(capital, shaft, width)
+  new_pillar_1e(capital, shaft, width)
 }
 
 rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
   capital <- rif_capital(has_title_row, has_star, ...)
   shaft <- rif_shaft(n, ...)
-  new_pillar(capital, shaft)
+  new_pillar_1e(capital, shaft)
 }
 
-new_pillar <- function(capital, shaft, width = NULL) {
+new_pillar_1e <- function(capital, shaft, width = NULL) {
   ret <- structure(
     list(capital = capital, shaft = shaft),
     class = "pillar"
