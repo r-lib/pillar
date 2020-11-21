@@ -16,7 +16,7 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
   } else if (is.matrix(x)) {
     new_matrix_pillar(x, controller, width, title = title)
   } else if (is.array(x)) {
-    abort("NYI")
+    new_array_pillar(x, controller, width, title = title)
   } else {
     ctl_new_pillar(controller, x, width, ..., title = title)
   }
