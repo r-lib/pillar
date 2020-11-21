@@ -46,11 +46,24 @@ new_pillars <- function(x, controller, width, title) {
   max_n_pillars <- sum(width %/% 2)
   pillars <- vector("list", max_n_pillars)
 
+  ticked_names <- tick_if_needed(names(x))
+
   for (i in seq_along(x)) {
+    # FIXME
+    # sub_title <- c(title, ticked_names[[i]])
+    sub_title <- ticked_names[[i]]
+    if (!is.null(title)) {
+      if (i == 1) {
+        sub_title <- paste0(tick_if_needed(title), "$", sub_title)
+      } else {
+        sub_title <- paste0("$", sub_title)
+      }
+    }
+
     # Call ctl_new_compound_pillar() only for objects that can fit
     pillar <- ctl_new_compound_pillar(
       controller, x[[i]], width,
-      title = c(title, names(x)[[i]])
+      title = sub_title
     )
     if (is.null(pillar)) {
       # NULL return: doesn't fit
