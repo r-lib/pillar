@@ -2,26 +2,26 @@
 ctl_colonnade <- function(x, controller, has_row_id, width) {
   # FIXME: width is a vector, see get_tier_width
   n <- nrow(x)
+  nc <- ncol(x)
 
-  if (n == 0 || ncol(x) == 0) {
+  if (n == 0 || nc == 0) {
     return(new_colonnade_sqeezed(list(), colonnade = x, extra_cols = seq_along(x)))
   }
 
   # Reserve space for rowid column in each tier
   if (!is_false(has_row_id)) {
-    n <- nrow(x)
     rowid <- rif_shaft(n)
     rowid_width <- get_cell_widths(rowid)
-    width <- width - rowid_width - 1
-    width <- width[width > 0]
   } else {
     rowid <- NULL
+    rowid_width <- 0L
   }
 
-  pillars <- new_pillars(x, controller, width, title = NULL)
+  tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
+  pillars <- new_pillars(x, controller, tier_widths, title = NULL)
 
   compound_pillar <- combine_pillars(pillars)
-  col_widths <- colonnade_get_width_2(compound_pillar, width)
+  col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
   col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
   col_widths_shown <- col_widths_show[["TRUE"]]
