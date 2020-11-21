@@ -318,7 +318,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' shown, if at all, and how much horizontal space it may use (either its
   #' minimum or its maximum width).
   shafts <- map(x$data[pillar_shown], pillar_shaft)
-  pillars <- map2(capitals[pillar_shown], shafts, new_pillar)
+  pillars <- map2(capitals[pillar_shown], shafts, new_pillar_1e)
   col_widths_df <- colonnade_compute_tiered_col_widths(pillars, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not
