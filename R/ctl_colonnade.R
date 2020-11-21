@@ -1,16 +1,21 @@
 # Adapted from squeeze_impl()
 ctl_colonnade <- function(x, controller, has_row_id, width) {
   # FIXME: width is a vector, see get_tier_width
+  n <- nrow(x)
 
-  if (ncol(x) == 0 || nrow(x) == 0) {
+  if (n == 0 || ncol(x) == 0) {
     return(new_colonnade_sqeezed(list(), colonnade = x, extra_cols = seq_along(x)))
   }
 
   # Reserve space for rowid column in each tier
   if (!is_false(has_row_id)) {
-    rowid_width <- trunc(log10(nrow(x)) + 1)
+    n <- nrow(x)
+    rowid <- rowidformat2(n, has_star = identical(has_row_id, "*"))
+    rowid_width <- get_cell_widths(rowid$data)
     width <- width - rowid_width - 1
     width <- width[width > 0]
+  } else {
+    rowid <- NULL
   }
 
   pillars <- new_pillars(x, controller, width, title = NULL)
