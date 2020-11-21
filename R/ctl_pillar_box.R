@@ -65,6 +65,10 @@ get_cell_min_widths <- function(x) {
   attr(x, "min_width") %||% attr(x, "width")
 }
 
+get_sub_pillar <- function(x, i) {
+  new_pillar(get_cells(x, i, i))
+}
+
 get_cells <- function(x, from, to) {
   stopifnot(from <= to)
 

@@ -12,8 +12,15 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
     width <- width[width > 0]
   }
 
-  compound_pillar <- new_data_frame_pillar(x, controller, width, title = NULL)
-  colonnade_get_width_2(compound_pillar, width)
+  pillars <- new_pillars(x, controller, width, title = NULL)
+
+  compound_pillar <- combine_pillars(pillars)
+  width_df <- colonnade_get_width_2(compound_pillar, width)
+
+  list(
+    n_pillars = length(pillars),
+    width_df = width_df
+  )
 }
 
 
@@ -121,5 +128,9 @@ colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, tier_widths) 
 
   col_df <- data.frame(id, max_widths, min_widths, row.names = NULL)
 
-  colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
+  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
+
+  pillars <- map(ret$id, get_sub_pillar, x = compound_pillar)
+  ret$pillars <- pillars
+  new_tbl(ret)
 }
