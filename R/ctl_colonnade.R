@@ -10,8 +10,8 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
   # Reserve space for rowid column in each tier
   if (!is_false(has_row_id)) {
     n <- nrow(x)
-    rowid <- rowidformat2(n, has_star = identical(has_row_id, "*"))
-    rowid_width <- get_cell_widths(rowid$data)
+    rowid <- rif_shaft(n)
+    rowid_width <- get_cell_widths(rowid)
     width <- width - rowid_width - 1
     width <- width[width > 0]
   } else {
@@ -32,7 +32,17 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
     tier
   })
 
-  # FIXME: rowid
+  if (!is.null(rowid)) {
+    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
+
+    col_widths_tiers <- map(col_widths_tiers, function(tier) {
+      tier <- vctrs::vec_rbind(
+        as_tbl(vctrs::data_frame(id = 0L, width = rowid_width, pillar = list(rowid_pillar))),
+        tier
+      )
+      tier
+    })
+  }
 
   out <- map(col_widths_tiers, function(tier) {
     map2(tier$pillar, tier$width, pillar_format_parts_2)

@@ -24,11 +24,18 @@ pillar2 <- function(x, title = NULL, width = NULL, ...) {
   new_pillar(list(title = title, type = type, data = data))
 }
 
-rowidformat2 <- function(n, has_star = FALSE) {
-  type <- new_pillar_rif_type_box(has_star)
-  data <- rif_shaft(n)
+rowidformat2 <- function(data, names, has_star) {
+  out <- map(set_names(names), function(.x) "")
 
-  new_pillar(list(type = type, data = pillar_box(data)))
+  if ("type" %in% names) {
+    out$type <- new_pillar_rif_type_box(has_star)
+  }
+
+  if ("data" %in% names) {
+    out$data <- pillar_box(data)
+  }
+
+  new_pillar(out)
 }
 
 new_pillar_title_box <- function(x) {
