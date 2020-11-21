@@ -5,7 +5,7 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
   nc <- ncol(x)
 
   if (n == 0 || nc == 0) {
-    return(new_colonnade_sqeezed(list(), colonnade = x, extra_cols = seq_along(x)))
+    return(new_colonnade_body(list(), extra_cols = x))
   }
 
   # Reserve space for rowid column in each tier
@@ -48,8 +48,18 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
     map2(tier$pillar, tier$width, pillar_format_parts_2)
   })
 
-  extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(pillars))
-  new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
+  extra_cols <- x[seq2(nrow(col_widths_shown) + 1L, nc)]
+  new_colonnade_body(out, extra_cols = extra_cols)
+}
+
+new_colonnade_body <- function(x, extra_cols) {
+  formatted_tiers <- map(x, format_colonnade_tier)
+  formatted <- new_vertical(as.character(unlist(formatted_tiers)))
+
+  structure(
+    new_vertical(formatted),
+    extra_cols = extra_cols
+  )
 }
 
 new_data_frame_pillar <- function(x, controller, width, title) {

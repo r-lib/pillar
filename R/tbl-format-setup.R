@@ -101,15 +101,24 @@ tbl_format_setup.tbl <- function(x, width, ...,
   }
 
   rownames(df) <- NULL
-  colonnade <- colonnade(
-    df,
+
+  squeezed <- ctl_colonnade(
+    df, x,
     has_row_id = if (.row_names_info(x) > 0) "*" else TRUE,
     width = width
   )
 
-  squeezed <- squeeze_impl(colonnade)
+  extra_cols <- attr(squeezed, "extra_cols")
+  true_length <- length(extra_cols)
 
-  extra_cols <- extra_cols_impl(squeezed, n = max_extra_cols)
+  if (is.null(max_extra_cols)) {
+    max_extra_cols <- tibble_opt("max_extra_cols")
+  }
+
+  if (true_length > max_extra_cols) {
+    length(extra_cols) <- max_extra_cols
+    attr(extra_cols, "true_length") <- true_length
+  }
 
   new_tbl_format_setup(
     x = x,
