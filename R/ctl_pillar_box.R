@@ -98,3 +98,11 @@ pillar_get_widths <- function(x) {
 pillar_get_min_widths <- function(x) {
   exec(pmax, !!!map(x, get_cell_min_widths))
 }
+
+pillar_format_parts_2 <- function(x, width) {
+  formatted <- map(x, function(.x) format(.x[[1]], width = width))
+
+  alignment <- attr(formatted[["data"]], "align") %||% "left"
+
+  map(formatted, align, width = width, align = alignment)
+}

@@ -22,23 +22,20 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
   col_widths_shown <- col_widths_show[["TRUE"]]
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
 
-  # FIXME: format.pillar2
-  out <- map(col_widths_tiers, function(tier) {
-    map2(tier$pillar, tier$width, format)
+  col_widths_tiers <- map(col_widths_tiers, function(tier) {
+    tier$tier <- NULL
+    tier
   })
 
-  browser()
+  # FIXME: rowid
 
-  # if (!is.null(rowid)) {
-  #   rowid_formatted <- pillar_format_parts(rowid, rowid_width - 1L)
-  #   out <- map(out, function(.x) c(list(rowid_formatted), .x))
-  # }
+  out <- map(col_widths_tiers, function(tier) {
+    map2(tier$pillar, tier$width, pillar_format_parts_2)
+  })
 
   extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(pillars))
-  squeezed <- new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
-  squeezed
+  new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
 }
-
 
 new_data_frame_pillar <- function(x, controller, width, title) {
   pillars <- new_pillars(x, controller, width, title)
