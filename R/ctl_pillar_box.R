@@ -2,7 +2,7 @@ rowidformat2 <- function(data, names, has_star) {
   out <- map(set_names(names), function(.x) "")
 
   if ("type" %in% names) {
-    out$type <- new_pillar_rif_type_box(has_star)
+    out$type <- pillar_box(rif_type(has_star))
   }
 
   if ("data" %in% names) {
@@ -10,10 +10,6 @@ rowidformat2 <- function(data, names, has_star) {
   }
 
   new_pillar(out)
-}
-
-new_pillar_rif_type_box <- function(has_star) {
-  pillar_box(rif_type(has_star))
 }
 
 #' @export
