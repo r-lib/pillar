@@ -1,10 +1,11 @@
-#' Format a vector suitable for tabular display
+#' Object for formatting a vector suitable for tabular display
 #'
 #' @description
 #' `r lifecycle::badge("stable")`
 #'
-#' `pillar()` formats a vector using one row for a title (if given),
-#' one row for the type, and `length(x)` rows for the data.
+#' `pillar()` creates an object that formats a vector.
+#' The output uses one row for a title (if given), one row for the type,
+#' and `vec_size(x)` rows for the data.
 #'
 #' @param x A vector to format.
 #' @param title An optional title for the column. The title will be
@@ -41,19 +42,17 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   #' @details
   #' A pillar consists of arbitrary components.
   #' The `pillar()` constructor uses `title`, `type`, and `data`.
-  #' Arbitrary components can be set via `new_pillar()`.
   #'
   #' - `title` via [new_pillar_title()]
   #' - `type` via [new_pillar_type()], which calls [type_sum()]
   #'   internally
   #' - `data` via [pillar_shaft()]
   #'
-  #' Override or extend [ctl_pillar()] or [ctl_compound_pillar()]
-  #' for your tibble subclass
-  #' to support creation of arbitrary pillar components.
-  #'
   #' All components are formatted via [format()] when displaying the pillar.
   #' A `width` argument is passed to each `format()` call.
+  #'
+  #' As of pillar 1.5.0, `pillar()` returns `NULL` if the width is insufficient
+  #' to display the data.
   if (is.null(width)) {
     my_width <- Inf
   } else {
@@ -77,8 +76,8 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   }
   data_width <- get_width(shaft)
 
-  data <- new_pillar_box(list(shaft), data_width, data_min_width)
-  new_pillar(list(title = title, type = type, data = data), .width = width)
+  data <- new_pillar_box(list(shaft), width = data_width, min_width = data_min_width)
+  new_pillar(list(title = title, type = type, data = data), width = width)
 }
 
 rowidformat2 <- function(data, names, has_star) {
@@ -95,12 +94,49 @@ rowidformat2 <- function(data, names, has_star) {
   new_pillar(out)
 }
 
+#' Construct a custom pillar object
+#'
+#' `r lifecycle::badge("experimental")`
+#'
+#' `new_pillar()` is the low-level constructor for pillar objects.
+#' It supports arbitrary components.
+#' See [pillar()] for the high-level constructor with default components.
+#'
+#' @details
+#' Arbitrary components are supported.
+#' If your tibble subclass needs more or different components in its pillars,
+#' override or extend [ctl_pillar()] and perhaps [ctl_compound_pillar()].
+#'
+#' @inheritParams ellipsis::dots_empty
+#' @inheritParams pillar
+#' @param boxes A named list of components constructed with [pillar_box()].
+#' @param class Name of subclass.
+#'
 #' @export
-new_pillar <- function(.base = list(), ..., .width = NULL, .class = NULL) {
+#' @examples
+#' lines <- function(char = "-") {
+#'   stopifnot(nchar(char) == 1)
+#'   structure(char, class = "lines")
+#' }
+#'
+#' format.lines <- function(x, width, ...) {
+#'   paste(rep(x, width), collapse = "")
+#' }
+#'
+#' new_pillar(list(
+#'   title = pillar_box(new_ornament(c("abc", "de"), align = "right")),
+#'   lines = new_pillar_box(list(lines("=")), width = 1)
+#' ))
+new_pillar <- function(boxes, ..., width = NULL, class = NULL) {
+  check_dots_empty()
+  if (length(boxes) > 0 && !is_named(boxes)) {
+    abort("All components must have names.")
+  }
+
   structure(
-    modifyList(.base, list(...)),
-    width = .width,
-    class = c(.class, "pillar")
+    boxes,
+    width = width,
+    class = c(class, "pillar")
   )
 }
 

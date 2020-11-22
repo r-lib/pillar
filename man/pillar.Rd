@@ -2,7 +2,7 @@
 % Please edit documentation in R/ctl_pillar.R
 \name{pillar}
 \alias{pillar}
-\title{Format a vector suitable for tabular display}
+\title{Object for formatting a vector suitable for tabular display}
 \usage{
 pillar(x, title = NULL, width = NULL, ...)
 }
@@ -19,13 +19,13 @@ used "as is", no quoting will be applied.}
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a>}}{\strong{Stable}}
 
-\code{pillar()} formats a vector using one row for a title (if given),
-one row for the type, and \code{length(x)} rows for the data.
+\code{pillar()} creates an object that formats a vector.
+The output uses one row for a title (if given), one row for the type,
+and \code{vec_size(x)} rows for the data.
 }
 \details{
 A pillar consists of arbitrary components.
 The \code{pillar()} constructor uses \code{title}, \code{type}, and \code{data}.
-Arbitrary components can be set via \code{new_pillar()}.
 \itemize{
 \item \code{title} via \code{\link[=new_pillar_title]{new_pillar_title()}}
 \item \code{type} via \code{\link[=new_pillar_type]{new_pillar_type()}}, which calls \code{\link[=type_sum]{type_sum()}}
@@ -33,12 +33,11 @@ internally
 \item \code{data} via \code{\link[=pillar_shaft]{pillar_shaft()}}
 }
 
-Override or extend \code{\link[=ctl_pillar]{ctl_pillar()}} or \code{\link[=ctl_compound_pillar]{ctl_compound_pillar()}}
-for your tibble subclass
-to support creation of arbitrary pillar components.
-
 All components are formatted via \code{\link[=format]{format()}} when displaying the pillar.
 A \code{width} argument is passed to each \code{format()} call.
+
+As of pillar 1.5.0, \code{pillar()} returns \code{NULL} if the width is insufficient
+to display the data.
 }
 \examples{
 x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))

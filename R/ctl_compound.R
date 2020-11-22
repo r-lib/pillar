@@ -58,8 +58,8 @@ combine_pillars <- function(pillars) {
 
     new_pillar_box(
       unlist(out, recursive = FALSE),
-      widths,
-      min_widths
+      width = widths,
+      min_width = min_widths
     )
   })
 

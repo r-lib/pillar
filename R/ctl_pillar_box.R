@@ -37,7 +37,11 @@ get_cells <- function(x, from, to) {
     get_cells_for_hierarchy(x, from, to)
   } else {
     idx <- seq2(from, to)
-    new_pillar_box(x[idx], get_cell_widths(x)[idx], get_cell_min_widths(x)[idx])
+    new_pillar_box(
+      x[idx],
+      width = get_cell_widths(x)[idx],
+      min_width = get_cell_min_widths(x)[idx]
+    )
   }
 }
 
