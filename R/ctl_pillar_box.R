@@ -17,12 +17,12 @@ new_pillar <- function(.base = list(), ..., .width = NULL, .class = NULL) {
   structure(
     modifyList(.base, list(...)),
     width = .width,
-    class = c(.class, "pillar2")
+    class = c(.class, "pillar")
   )
 }
 
 #' @export
-format.pillar2 <- function(x, width = NULL, ...) {
+format.pillar <- function(x, width = NULL, ...) {
   if (is.null(width)) {
     width <- get_width(x)
   }
@@ -38,7 +38,7 @@ format.pillar2 <- function(x, width = NULL, ...) {
 }
 
 #' @export
-print.pillar2 <- function(x, ...) {
+print.pillar <- function(x, ...) {
   writeLines(style_bold("<pillar>"))
   print(format(x, ...))
 }
