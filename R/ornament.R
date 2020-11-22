@@ -33,8 +33,8 @@ print.pillar_ornament <- function(x, ...) {
 }
 
 #' @export
-format.pillar_ornament <- function(x, ...) {
-  align(x, width = get_width(x), align = attr(x, "align"))
+format.pillar_ornament <- function(x, width = NULL, ...) {
+  align(x, width = width %||% get_width(x), align = attr(x, "align"))
 }
 
 # FIXME: Replace with as_glue()
