@@ -3,12 +3,7 @@
     Code
       pillar(v, width = 4)
     Output
-      <pillar>
-        <dbl>
-      1.00e-9
-      1.00e-6
-      1.00e+3
-      1.00e+9
+      NULL
 
 ---
 

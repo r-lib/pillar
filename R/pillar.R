@@ -53,9 +53,7 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   #' or only when `format()` is called.
   #' The latter allows for adaptive shortening of the output depending on the available width,
   #' see `pillar:::pillar_shaft.numeric` for an example.
-  capital <- pillar_capital(x, title)
-  shaft <- pillar_shaft(x, ...)
-  new_pillar_1e(capital, shaft, width)
+  pillar2(x, title, width, ...)
 }
 
 rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {

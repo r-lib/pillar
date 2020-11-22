@@ -1,27 +1,29 @@
 pillar2 <- function(x, title = NULL, width = NULL, ...) {
   if (is.null(width)) {
-    width <- Inf
+    my_width <- Inf
+  } else {
+    my_width <- width
   }
 
   title <- new_pillar_title_box(title)
-  if (get_cell_min_widths(title) > width) {
+  if (get_cell_min_widths(title) > my_width) {
     return(NULL)
   }
 
   type <- new_pillar_type_box(x)
-  if (get_cell_min_widths(type) > width) {
+  if (get_cell_min_widths(type) > my_width) {
     return(NULL)
   }
 
   shaft <- pillar_shaft(x, ...)
-  min_width <- get_min_width(shaft)
-  if (min_width > width) {
+  data_min_width <- get_min_width(shaft)
+  if (data_min_width > my_width) {
     return(NULL)
   }
-  width <- get_width(shaft)
+  data_width <- get_width(shaft)
 
-  data <- new_pillar_box(list(shaft), width, min_width)
-  new_pillar(list(title = title, type = type, data = data))
+  data <- new_pillar_box(list(shaft), data_width, data_min_width)
+  new_pillar(list(title = title, type = type, data = data), .width = width)
 }
 
 rowidformat2 <- function(data, names, has_star) {
@@ -51,17 +53,34 @@ new_pillar_rif_type_box <- function(has_star) {
 }
 
 #' @export
-new_pillar <- function(.base = list(), ..., .class = NULL) {
+new_pillar <- function(.base = list(), ..., .width = NULL, .class = NULL) {
   structure(
     modifyList(.base, list(...)),
+    width = .width,
     class = c(.class, "pillar2")
   )
 }
 
 #' @export
+format.pillar2 <- function(x, width = NULL, ...) {
+  if (is.null(width)) {
+    width <- get_width(x)
+  }
+
+  if (is.null(width)) {
+    widths <- pillar_get_widths(x)
+    width <- sum(widths) - length(widths) + 1L
+  }
+
+  out <- pillar_format_parts_2(x, width)
+
+  new_vertical(unlist(unname(out)))
+}
+
+#' @export
 print.pillar2 <- function(x, ...) {
-  # Transient
-  str(x)
+  writeLines(style_bold("<pillar>"))
+  print(format(x, ...))
 }
 
 new_pillar_box <- function(x, width, min_width = NULL) {

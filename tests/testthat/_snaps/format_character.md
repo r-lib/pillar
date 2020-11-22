@@ -37,10 +37,7 @@
     Code
       pillar(add_special(paste(letters, collapse = "")), width = 3)
     Output
-      <pillar>
-      <chr>
-      abcd~
-      <NA> 
+      NULL
 
 ---
 
