@@ -3,6 +3,7 @@
     Code
       pillar(x, width = 20)
     Output
+      <pillar>
                     <Surv>
                       306 
                       455 
@@ -16,6 +17,7 @@
     Code
       pillar(x, width = 20)
     Output
+      <pillar>
                    <Surv2>
                       306 
                       455 

@@ -3,6 +3,7 @@
     Code
       pillar(add_special((10^(-3:4)) * c(-1, 1)))
     Output
+      <pillar>
           <dbl>
          -0.001
           0.01 
@@ -21,6 +22,7 @@
     Code
       pillar(add_special(1.23456 * 10^(-3:3)))
     Output
+      <pillar>
            <dbl>
          0.00123
          0.0123 
@@ -38,6 +40,7 @@
     Code
       pillar(add_special((10^(c(-2:4, 0L))) * c(-1, 1)))
     Output
+      <pillar>
           <dbl>
           -0.01
            0.1 
@@ -56,6 +59,7 @@
     Code
       pillar(add_special((10^(0:-5)) * c(-1, 1)), width = 20)
     Output
+      <pillar>
                      <dbl>
                   -1      
                    0.1    
@@ -72,6 +76,7 @@
     Code
       pillar(add_special((10^(5:-5)) + 1e-07), width = 20)
     Output
+      <pillar>
                      <dbl>
             100000.       
              10000.       

@@ -84,6 +84,7 @@ format.pillar <- function(x, width = NULL, ...) {
 
 #' @export
 print.pillar <- function(x, ...) {
+  writeLines(style_bold("<pillar>"))
   print(format(x, ...))
 }
 

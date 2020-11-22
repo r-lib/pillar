@@ -3,6 +3,7 @@
     Code
       rowidformat(3)
     Output
+      <pillar>
        
       1
       2
@@ -13,6 +14,7 @@
     Code
       rowidformat(12, has_title_row = TRUE, has_star = TRUE)
     Output
+      <pillar>
         
        *
        1

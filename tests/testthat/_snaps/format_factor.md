@@ -3,6 +3,7 @@
     Code
       pillar(factor(c(letters[1:5], NA)))
     Output
+      <pillar>
       <fct>
       a    
       b    
@@ -16,6 +17,7 @@
     Code
       pillar(ordered(c(letters[1:5], NA)))
     Output
+      <pillar>
       <ord>
       a    
       b    
@@ -29,6 +31,7 @@
     Code
       pillar(factor("a\nb"))
     Output
+      <pillar>
       <fct> 
       "a\nb"
 
