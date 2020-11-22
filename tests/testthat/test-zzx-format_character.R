@@ -69,14 +69,10 @@ chartype_frame <- function() {
   data.frame(chars, desc, stringsAsFactors = FALSE)
 }
 
-test_that("output test", {
-  expect_snapshot(pillar(add_special(letters[1:5])))
-  expect_snapshot(pillar(add_special(paste(letters, collapse = ""))))
-  expect_snapshot(pillar(add_special(paste(letters, collapse = "")), width = 10))
-  expect_snapshot(pillar(add_special(paste(letters, collapse = "")), width = 3))
-  expect_snapshot(pillar(add_special(c("")), width = 5))
-  expect_snapshot(pillar(add_special(c(" ")), width = 5))
-  expect_snapshot(pillar(add_special(c(" a")), width = 5))
-  expect_snapshot(pillar(add_special(c("a ")), width = 5))
-  expect_snapshot(pillar(add_special(c("a b")), width = 5))
+test_that("output test (not on Windows)", {
+  skip_on_os("windows")
+  # Spurious warnings on Windows
+  suppressWarnings(
+    expect_snapshot(colonnade(chartype_frame(), width = 50))
+  )
 })
