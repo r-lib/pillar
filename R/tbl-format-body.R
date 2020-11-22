@@ -28,7 +28,7 @@ tbl_format_body <- function(x, setup, ...) {
 #' @export
 tbl_format_body.tbl <- function(x, setup, ...) {
   force(setup)
-  setup$squeezed
+  setup$body
 }
 
 #' @export

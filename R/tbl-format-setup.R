@@ -102,13 +102,13 @@ tbl_format_setup.tbl <- function(x, width, ...,
 
   rownames(df) <- NULL
 
-  squeezed <- ctl_colonnade(
+  body <- ctl_colonnade(
     df, x,
     has_row_id = if (.row_names_info(x) > 0) "*" else TRUE,
     width = width
   )
 
-  extra_cols <- attr(squeezed, "extra_cols")
+  extra_cols <- attr(body, "extra_cols")
   true_length <- length(extra_cols)
 
   if (is.null(max_extra_cols)) {
@@ -123,7 +123,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
   new_tbl_format_setup(
     x = x,
     width = width,
-    squeezed = squeezed,
+    body = body,
     rows_body = nrow(df),
     rows_missing = rows_missing,
     rows_total = rows,
@@ -143,7 +143,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'
 #' @param x The input object unchanged,
 #' @param width The `width` argument unchanged,
-#' @param squeezed TBD
+#' @param body TBD
 #' @param rows_body The number of rows shown in the body,
 #'   even if the body does not have any columns.
 #' @param rows_missing The number of rows not shown from the body,
@@ -153,13 +153,13 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #' @param extra_cols TBD
 #'
 #' @keywords internal
-new_tbl_format_setup <- function(x, width, squeezed,
+new_tbl_format_setup <- function(x, width, body,
                                  rows_body, rows_missing, rows_total,
                                  extra_cols) {
   trunc_info <- list(
     x = x,
     width = width,
-    squeezed = squeezed,
+    body = body,
     rows_body = rows_body,
     rows_missing = rows_missing,
     rows_total = rows_total,

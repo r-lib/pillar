@@ -7,7 +7,7 @@
 new_tbl_format_setup(
   x,
   width,
-  squeezed,
+  body,
   rows_body,
   rows_missing,
   rows_total,
@@ -19,7 +19,7 @@ new_tbl_format_setup(
 
 \item{width}{The \code{width} argument unchanged,}
 
-\item{squeezed}{TBD}
+\item{body}{TBD}
 
 \item{rows_body}{The number of rows shown in the body,
 even if the body does not have any columns.}
