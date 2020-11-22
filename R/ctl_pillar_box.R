@@ -43,7 +43,14 @@ print.pillar <- function(x, ...) {
   print(format(x, ...))
 }
 
-new_pillar_box <- function(x, width, min_width = NULL) {
+new_pillar_box <- function(x, ..., width, min_width = NULL) {
+  check_dots_empty()
+  stopifnot(is.list(x))
+  stopifnot(is_integerish(width), length(width) == length(x))
+  if (!is.null(min_width)) {
+    stopifnot(is_integerish(min_width), length(min_width) == length(x))
+  }
+
   structure(
     x,
     width = width,
