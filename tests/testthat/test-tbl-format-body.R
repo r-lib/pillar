@@ -12,10 +12,10 @@ test_that("tbl_format_body() results", {
     tbl_format_body(tbl_format_setup(df, width = 60L))
 
     "Colonnade"
-    colonnade(list(a = 1:3), has_row_id = FALSE)
+    ctl_colonnade(list(a = 1:3), has_row_id = FALSE)
 
     # For coverage tests
-    squeeze_impl(colonnade(list(a = 1:3)))
+    ctl_colonnade(list(a = 1:3))
   })
 })
 
