@@ -1,31 +1,3 @@
-pillar2 <- function(x, title = NULL, width = NULL, ...) {
-  if (is.null(width)) {
-    my_width <- Inf
-  } else {
-    my_width <- width
-  }
-
-  title <- new_pillar_title_box(title)
-  if (get_cell_min_widths(title) > my_width) {
-    return(NULL)
-  }
-
-  type <- new_pillar_type_box(x)
-  if (get_cell_min_widths(type) > my_width) {
-    return(NULL)
-  }
-
-  shaft <- pillar_shaft(x, ...)
-  data_min_width <- get_min_width(shaft)
-  if (data_min_width > my_width) {
-    return(NULL)
-  }
-  data_width <- get_width(shaft)
-
-  data <- new_pillar_box(list(shaft), data_width, data_min_width)
-  new_pillar(list(title = title, type = type, data = data), .width = width)
-}
-
 rowidformat2 <- function(data, names, has_star) {
   out <- map(set_names(names), function(.x) "")
 
@@ -38,14 +10,6 @@ rowidformat2 <- function(data, names, has_star) {
   }
 
   new_pillar(out)
-}
-
-new_pillar_title_box <- function(x) {
-  pillar_box(new_pillar_title(x))
-}
-
-new_pillar_type_box <- function(x) {
-  pillar_box(new_pillar_type(x))
 }
 
 new_pillar_rif_type_box <- function(has_star) {

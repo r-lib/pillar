@@ -39,21 +39,44 @@
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
   #' @details
-  #' A pillar consists of a _capital_ and a _shaft_.
+  #' A pillar consists of arbitrary components.
+  #' The `pillar()` constructor uses `title`, `type`, and `data`.
   #'
-  #' The capital is constructed using the (currently internal)
-  #' `pillar_capital()` function, which uses the `title` argument
-  #' and calls [type_sum()] to format the type.
+  #' - `title` via [new_pillar_title()]
+  #' - `type` via [new_pillar_type()], which calls [type_sum()]
+  #'   internally
+  #' - `data` via [pillar_shaft()]
   #'
-  #' For the shaft, the [pillar_shaft()] generic is called with the object.
-  #' The returned value is stored and processed with [format()] when displaying the pillar.
-  #' The call to `format()` has a valid `width` argument.
-  #' Depending on the implementation,
-  #' the output representation can be computed eagerly right away (as done with [new_pillar_shaft_simple()]),
-  #' or only when `format()` is called.
-  #' The latter allows for adaptive shortening of the output depending on the available width,
-  #' see `pillar:::pillar_shaft.numeric` for an example.
-  pillar2(x, title, width, ...)
+  #' Override [ctl_pillar()] or [ctl_compound_pillar()] to support
+  #' creation of arbitrary pillar components for your tibble subclass.
+  #'
+  #' All components are formatted via [format()] when displaying the pillar.
+  #' A `width` argument is passed to each `format()` call.
+  if (is.null(width)) {
+    my_width <- Inf
+  } else {
+    my_width <- width
+  }
+
+  title <- pillar_box(new_pillar_title(title))
+  if (get_cell_min_widths(title) > my_width) {
+    return(NULL)
+  }
+
+  type <- pillar_box(new_pillar_type(x))
+  if (get_cell_min_widths(type) > my_width) {
+    return(NULL)
+  }
+
+  shaft <- pillar_shaft(x, ...)
+  data_min_width <- get_min_width(shaft)
+  if (data_min_width > my_width) {
+    return(NULL)
+  }
+  data_width <- get_width(shaft)
+
+  data <- new_pillar_box(list(shaft), data_width, data_min_width)
+  new_pillar(list(title = title, type = type, data = data), .width = width)
 }
 
 rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
