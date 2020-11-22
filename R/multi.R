@@ -161,14 +161,24 @@ squeeze_impl <- function(x, width = NULL, ...) {
   col_widths_shown <- col_widths_show[["TRUE"]]
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
 
-  out <- map(col_widths_tiers, function(tier) {
-    map2(tier$pillar, tier$width, pillar_format_parts)
+  col_widths_tiers <- map(col_widths_tiers, function(tier) {
+    tier$tier <- NULL
+    tier
   })
 
   if (!is.null(rowid)) {
-    rowid_formatted <- pillar_format_parts(rowid, rowid_width - 1L)
-    out <- map(out, function(.x) c(list(rowid_formatted), .x))
+    col_widths_tiers <- map(col_widths_tiers, function(tier) {
+      tier <- vctrs::vec_rbind(
+        vctrs::data_frame(id = 0L, width = rowid_width - 1L, pillar = list(rowid)),
+        tier
+      )
+      tier
+    })
   }
+
+  out <- map(col_widths_tiers, function(tier) {
+    map2(tier$pillar, tier$width, pillar_format_parts)
+  })
 
   extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(x$data))
   new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
@@ -192,29 +202,27 @@ get_rowid_from_colonnade <- function(x) {
 }
 
 new_colonnade_sqeezed <- function(x, colonnade, extra_cols) {
+  formatted_tiers <- map(x, format_colonnade_tier)
+  formatted <- new_vertical(as.character(unlist(formatted_tiers)))
+
   structure(
-    x,
+    list(formatted),
     extra_cols = colonnade[extra_cols, ],
     class = "pillar_squeezed_colonnade"
   )
 }
 
-#' @export
-format.pillar_squeezed_colonnade <- function(x, ...) {
-  formatted <- map(x, format_colonnade_tier)
-  new_vertical(as.character(unlist(formatted)))
+format_colonnade_tier <- function(x) {
+  if (length(x) == 0) {
+    return(character())
+  }
+
+  unlist(pmap(unname(x), paste))
 }
 
-format_colonnade_tier <- function(x) {
-  xt <- list(
-    capital = map(x, `[[`, "capital_format"),
-    shaft = map(x, `[[`, "shaft_format")
-  )
-
-  c(
-    eval_tidy(quo(paste(!!!unname(xt$capital)))),
-    eval_tidy(quo(paste(!!!unname(xt$shaft))))
-  )
+#' @export
+format.pillar_squeezed_colonnade <- function(x, ...) {
+  x[[1]]
 }
 
 #' @export
