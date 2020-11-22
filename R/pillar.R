@@ -88,14 +88,14 @@ rowidformat <- function(n, has_title_row = FALSE, has_star = FALSE, ...) {
 new_pillar_1e <- function(capital, shaft, width = NULL) {
   ret <- structure(
     list(capital = capital, shaft = shaft),
-    class = "pillar"
+    class = "pillar_1e"
   )
   ret <- set_width(ret, width)
   ret
 }
 
 #' @export
-format.pillar <- function(x, width = NULL, ...) {
+format.pillar_1e <- function(x, width = NULL, ...) {
   width <- pillar_get_width(x, width)
   out <- pillar_format_parts(x, width)
 
@@ -103,7 +103,7 @@ format.pillar <- function(x, width = NULL, ...) {
 }
 
 #' @export
-print.pillar <- function(x, ...) {
+print.pillar_1e <- function(x, ...) {
   writeLines(style_bold("<pillar>"))
   print(format(x, ...))
 }
