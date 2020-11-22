@@ -3,6 +3,7 @@
     Code
       pillar(add_special(10^c(-9, -6, 3, 9)), width = 10)
     Output
+      <pillar>
            <dbl>
          1.00e-9
          1.00e-6
@@ -17,6 +18,7 @@
     Code
       pillar(add_special((10^c(3, 9, 15, 22)) * c(-1, 1)), width = 10)
     Output
+      <pillar>
            <dbl>
         -1.00e 3
          1.00e 9
@@ -31,6 +33,7 @@
     Code
       pillar(add_special(1.25 * 10^(-309:-319)), width = 10)
     Output
+      <pillar>
              <dbl>
          1.25e-309
          1.25e-310

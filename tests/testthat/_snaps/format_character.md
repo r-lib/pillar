@@ -3,6 +3,7 @@
     Code
       pillar(add_special(letters[1:5]))
     Output
+      <pillar>
       <chr>
       a    
       b    
@@ -16,6 +17,7 @@
     Code
       pillar(add_special(paste(letters, collapse = "")))
     Output
+      <pillar>
       <chr>                     
       abcdefghijklmnopqrstuvwxyz
       <NA>                      
@@ -25,6 +27,7 @@
     Code
       pillar(add_special(paste(letters, collapse = "")), width = 10)
     Output
+      <pillar>
       <chr>     
       abcdefghi~
       <NA>      
@@ -34,6 +37,7 @@
     Code
       pillar(add_special(paste(letters, collapse = "")), width = 3)
     Output
+      <pillar>
       <chr>
       abcd~
       <NA> 
@@ -43,6 +47,7 @@
     Code
       pillar(add_special(c("")), width = 5)
     Output
+      <pillar>
       <chr>
       ""   
        <NA>
@@ -52,6 +57,7 @@
     Code
       pillar(add_special(c(" ")), width = 5)
     Output
+      <pillar>
       <chr>
       " "  
        <NA>
@@ -61,6 +67,7 @@
     Code
       pillar(add_special(c(" a")), width = 5)
     Output
+      <pillar>
       <chr>
       " a" 
        <NA>
@@ -70,6 +77,7 @@
     Code
       pillar(add_special(c("a ")), width = 5)
     Output
+      <pillar>
       <chr>
       "a " 
        <NA>
@@ -79,6 +87,7 @@
     Code
       pillar(add_special(c("a b")), width = 5)
     Output
+      <pillar>
       <chr>
       a b  
       <NA> 
@@ -88,6 +97,7 @@
     Code
       pillar(add_special("成交日"), title = "成交")
     Output
+      <pillar>
       成交  
       <chr> 
       成交日
@@ -98,6 +108,7 @@
     Code
       pillar(add_special("成交"), title = "成交日")
     Output
+      <pillar>
       成交日
       <chr> 
       成交  
@@ -108,6 +119,7 @@
     Code
       pillar(add_special(1L), title = "成交日")
     Output
+      <pillar>
       成交日
        <int>
            1
