@@ -1,5 +1,8 @@
 # Adapted from squeeze_impl()
-ctl_colonnade <- function(x, controller, has_row_id, width) {
+ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_tbl()) {
+  x <- vctrs::new_data_frame(x)
+  width <- get_width_print(width)
+
   # FIXME: width is a vector, see get_tier_width
   n <- nrow(x)
   nc <- ncol(x)
@@ -19,6 +22,10 @@ ctl_colonnade <- function(x, controller, has_row_id, width) {
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
   pillars <- new_pillars(x, controller, tier_widths, title = NULL)
+
+  if (length(pillars) == 0) {
+    return(new_colonnade_body(list(), extra_cols = x))
+  }
 
   compound_pillar <- combine_pillars(pillars)
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
@@ -85,7 +92,11 @@ colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, tier_widths) 
   max_tier_width <- max(tier_widths)
 
   max_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_widths)))
+  max_widths <- pmin(max_widths, max_tier_width)
+
   min_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_min_widths)))
+  min_widths <- pmin(min_widths, max_tier_width)
+
   id <- seq_along(max_widths)
 
   col_df <- data.frame(id, max_widths, min_widths, row.names = NULL)

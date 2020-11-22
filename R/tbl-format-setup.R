@@ -103,9 +103,10 @@ tbl_format_setup.tbl <- function(x, width, ...,
   rownames(df) <- NULL
 
   body <- ctl_colonnade(
-    df, x,
+    df,
     has_row_id = if (.row_names_info(x) > 0) "*" else TRUE,
-    width = width
+    width = width,
+    controller = x
   )
 
   extra_cols <- attr(body, "extra_cols")
