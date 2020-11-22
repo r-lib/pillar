@@ -138,7 +138,7 @@ squeeze_impl <- function(x, width = NULL, ...) {
   # Shortcut for zero-height corner case
   zero_height <- length(x$data) == 0L || length(x$data[[1]]) == 0L
   if (zero_height) {
-    return(new_colonnade_sqeezed(list(), colonnade = x, extra_cols = seq_along(x$data)))
+    return(new_colonnade_squeezed(list(), colonnade = x, extra_cols = seq_along(x$data)))
   }
 
   if (is.null(width)) {
@@ -181,7 +181,7 @@ squeeze_impl <- function(x, width = NULL, ...) {
   })
 
   extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(x$data))
-  new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
+  new_colonnade_squeezed(out, colonnade = x, extra_cols = extra_cols)
 }
 
 get_rowid_from_colonnade <- function(x) {
@@ -201,7 +201,7 @@ get_rowid_from_colonnade <- function(x) {
   rowid
 }
 
-new_colonnade_sqeezed <- function(x, colonnade, extra_cols) {
+new_colonnade_squeezed <- function(x, colonnade, extra_cols) {
   formatted_tiers <- map(x, format_colonnade_tier)
   formatted <- new_vertical(as.character(unlist(formatted_tiers)))
 
