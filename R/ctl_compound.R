@@ -110,6 +110,10 @@ new_matrix_pillar <- function(x, controller, width, title) {
   combine_pillars(compact(pillars))
 }
 
+new_array_pillar <- function(x, controller, width, title) {
+  abort("NYI")
+}
+
 combine_pillars <- function(pillars) {
   if (length(pillars) == 0) {
     return(NULL)
