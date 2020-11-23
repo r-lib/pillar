@@ -15,10 +15,11 @@ new_pillars <- function(x, controller, width, title) {
     sub_title <- ticked_names[[i]]
     if (!is.null(title)) {
       if (i == 1) {
-        sub_title <- paste0(title, "$", sub_title)
+        title[[length(title)]] <- paste0(title[[length(title)]], "$")
       } else {
-        sub_title <- paste0("$", sub_title)
+        title[[length(title)]] <- "$"
       }
+      sub_title <- c(title, sub_title)
     }
 
     # Call ctl_new_compound_pillar() only for objects that can fit
