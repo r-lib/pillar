@@ -129,28 +129,22 @@ test_that("tibble columns", {
 })
 
 test_that("tibble columns (nested)", {
-  x <- list(
+  x <- vctrs::data_frame(
     a = 1:3,
-    b = structure(
-      list(
-        c = 4:6, d = 7:9,
-        e = data.frame(f = 10:12, g = 13:15)
-      ),
-      class = "data.frame"
+    b = vctrs::data_frame(
+      c = 4:6, d = 7:9,
+      e = data.frame(f = 10:12, g = 13:15)
     )
   )
   expect_snapshot(ctl_colonnade(x, width = 40))
 })
 
 test_that("tibble columns (empty)", {
-  x <- list(
+  x <- vctrs::data_frame(
     a = 1:3,
-    b = structure(
-      list(
-        c = 4:6, d = 7:9,
-        e = data.frame(f = 10:12)[, 0]
-      ),
-      class = "data.frame"
+    b = vctrs::data_frame(
+      c = 4:6, d = 7:9,
+      e = vctrs::data_frame(f = 10:12)[, 0]
     )
   )
   expect_snapshot(ctl_colonnade(x, width = 40))
