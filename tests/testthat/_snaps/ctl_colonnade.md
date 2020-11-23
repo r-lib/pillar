@@ -332,16 +332,16 @@
     Code
       ctl_colonnade(rep(list(paste(letters, collapse = " ")), 4), width = Inf)
     Output
-        
+        ``                                                 
         <chr>                                              
       1 a b c d e f g h i j k l m n o p q r s t u v w x y z
-        
+        ``                                                 
         <chr>                                              
       1 a b c d e f g h i j k l m n o p q r s t u v w x y z
-        
+        ``                                                 
         <chr>                                              
       1 a b c d e f g h i j k l m n o p q r s t u v w x y z
-        
+        ``                                                 
         <chr>                                              
       1 a b c d e f g h i j k l m n o p q r s t u v w x y z
 
@@ -590,7 +590,7 @@
     Code
       ctl_colonnade(x, width = 30)
     Output
-         `NA`    NA
+         `NA`    ``
         <int> <int>
       1     1     4
       2     2     5
