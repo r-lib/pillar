@@ -1,3 +1,24 @@
+# pillar 1.4.99.9003
+
+- Breaking: `print.pillar_ornament()` now shows `<pillar_ornament>` in the first line (#228).
+
+- New `format.pillar_ornament()` (#228).
+
+- Breaking: `print.pillar()` shows `<pillar>` in the first line (#227).
+
+- Add code of conduct (#219).
+
+- Re-license as MIT (#215).
+
+- Use testthat 3e (#218).
+
+- Avoid pillar.bold option in most tests (#216).
+
+- Improve formatting for `"Surv"` and `"Surv2"` classes from the survival package (#199).
+
+- Change internal storage format for `colonnade()` and `extra_cols()` (#204).
+
+
 # pillar 1.4.99.9002
 
 - Documentation and tests (#202).
