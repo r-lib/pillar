@@ -1,3 +1,12 @@
+# pillar 1.4.99.9004
+
+- New `ctl_new_pillar()` and `ctl_new_compound_pillar()` used via `print.tbl()`, `format.tbl()` and `tbl_format_setup.tbl()` (#230).
+
+- New `new_pillar()` low-level constructor (#230).
+
+- New `new_pillar_box()` and `pillar_box()`, interface yet to be refined (#230).
+
+
 # pillar 1.4.99.9003
 
 - Breaking: `print.pillar_ornament()` now shows `<pillar_ornament>` in the first line (#228).
