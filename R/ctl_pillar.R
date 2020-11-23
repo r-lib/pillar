@@ -119,7 +119,8 @@ rowidformat2 <- function(data, names, has_star) {
 #' @details
 #' Arbitrary components are supported.
 #' If your tibble subclass needs more or different components in its pillars,
-#' override or extend [ctl_pillar()] and perhaps [ctl_compound_pillar()].
+#' override or extend [ctl_new_pillar()]
+#' and perhaps [ctl_new_compound_pillar()].
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @inheritParams pillar
