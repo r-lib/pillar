@@ -53,31 +53,45 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
   #'
   #' As of pillar 1.5.0, `pillar()` returns `NULL` if the width is insufficient
   #' to display the data.
+  pillar_from_shaft(
+    new_pillar_title(title),
+    new_pillar_type(x),
+    pillar_shaft(x, ...),
+    width
+  )
+}
+
+pillar_from_shaft <- function(title, type, data, width) {
   if (is.null(width)) {
     my_width <- Inf
   } else {
     my_width <- width
   }
 
-  title <- pillar_box(new_pillar_title(title))
-  if (get_cell_min_widths(title) > my_width) {
+  if (get_min_width(title) > my_width) {
     return(NULL)
   }
 
-  type <- pillar_box(new_pillar_type(x))
-  if (get_cell_min_widths(type) > my_width) {
+  if (get_min_width(type) > my_width) {
     return(NULL)
   }
 
-  shaft <- pillar_shaft(x, ...)
-  data_min_width <- get_min_width(shaft)
+  data_min_width <- get_min_width(data)
   if (data_min_width > my_width) {
     return(NULL)
   }
-  data_width <- get_width(shaft)
+  data_width <- get_width(data)
 
-  data <- new_pillar_box(list(shaft), width = data_width, min_width = data_min_width)
-  new_pillar(list(title = title, type = type, data = data), width = width)
+  data_box <- new_pillar_box(list(data), width = data_width, min_width = data_min_width)
+
+  new_pillar(
+    list(
+      title = pillar_box(title),
+      type = pillar_box(type),
+      data = data_box
+    ),
+    width = width
+  )
 }
 
 rowidformat2 <- function(data, names, has_star) {

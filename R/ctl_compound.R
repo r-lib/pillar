@@ -4,6 +4,15 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 }
 
 new_pillars <- function(x, controller, width, title) {
+  if (length(x) == 0) {
+    return(compact(list(pillar_from_shaft(
+      new_pillar_title(prepare_title(title)),
+      new_pillar_type(x),
+      new_empty_shaft(),
+      width
+    ))))
+  }
+
   max_n_pillars <- sum(width %/% 2)
   pillars <- vector("list", max_n_pillars)
 

@@ -18,9 +18,7 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
   } else if (is.array(x)) {
     new_array_pillar(x, controller, width, title = title)
   } else {
-    # FIXME: Keep vectorized titles later
-    title <- paste(title, collapse = "")
-    ctl_new_pillar(controller, x, width, ..., title = title)
+    ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
   }
 }
 
@@ -46,4 +44,9 @@ max0 <- function(x) {
   } else {
     0L
   }
+}
+
+# FIXME: Keep vectorized titles later
+prepare_title <- function(title) {
+  paste(title, collapse = "")
 }
