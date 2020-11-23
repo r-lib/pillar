@@ -9,19 +9,22 @@ reference:
       - tbl_format_header
       - tbl_format_body
       - tbl_format_footer
+      - ctl_new_pillar
       - tbl_sum
   - title: Formatting pillars
     desc: >
       Functions and methods to implement pillar support for your data type.
     contents:
       - pillar
+      - new_pillar
+      - new_pillar_box
       - pillar_shaft
       - starts_with("new_pillar_shaft")
       - type_sum
       - format_type_sum
   - title: Styling
     desc: >
-      For consistent output among different data types.
+      For consistent output of different data types.
     contents:
       - starts_with("style_")
       - align
