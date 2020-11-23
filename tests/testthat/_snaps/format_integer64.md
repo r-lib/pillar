@@ -3,24 +3,14 @@
     Code
       pillar(add_special(x), width = 6)
     Output
-      <pillar>
-       <int64>
-       1.00e12
-       1.00e12
-       1.00e12
-      NA      
+      NULL
 
 ---
 
     Code
       pillar(add_special(x), width = 7)
     Output
-      <pillar>
-       <int64>
-       1.00e12
-       1.00e12
-       1.00e12
-      NA      
+      NULL
 
 ---
 

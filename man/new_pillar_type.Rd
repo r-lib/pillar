@@ -12,6 +12,7 @@ new_pillar_type(x, ...)
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
+Calls \code{\link[=type_sum]{type_sum()}} to format the type.
 Call \code{\link[=format]{format()}} on the result to render column types.
 }
 \examples{

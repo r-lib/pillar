@@ -52,7 +52,7 @@
     Code
       # Colonnade
     Code
-      colonnade(list(a = 1:3), has_row_id = FALSE)
+      ctl_colonnade(list(a = 1:3), has_row_id = FALSE)
     Output
           a
       <int>
@@ -60,7 +60,7 @@
           2
           3
     Code
-      squeeze_impl(colonnade(list(a = 1:3)))
+      ctl_colonnade(list(a = 1:3))
     Output
             a
         <int>

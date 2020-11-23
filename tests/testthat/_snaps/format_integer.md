@@ -3,12 +3,7 @@
     Code
       pillar(add_special(x), width = 6)
     Output
-      <pillar>
-        <int>
-       1.00e7
-       1.00e7
-       1.00e7
-      NA     
+      NULL
 
 ---
 

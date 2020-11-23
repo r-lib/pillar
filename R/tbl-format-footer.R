@@ -58,23 +58,24 @@ format_footer_cols <- function(x, setup) {
   extra_cols <- setup$extra_cols
   if (length(extra_cols) == 0) return(NULL)
 
+  n_extra_cols <- attr(extra_cols, "true_length") %||% length(extra_cols)
+
   vars <- format_extra_vars(extra_cols)
   paste0(
-    big_mark(length(extra_cols)), " ",
+    big_mark(n_extra_cols), " ",
     if (!identical(setup$rows_total, 0L) && setup$rows_body > 0) "more ",
     pluralise("variable(s)", extra_cols), vars
   )
 }
 
 format_extra_vars <- function(extra_cols) {
-  # Also covers empty extra_cols vector!
-  if (is.na(extra_cols[1])) return("")
+  out <- imap(extra_cols, format_abbrev)
 
-  if (anyNA(extra_cols)) {
-    extra_cols <- c(extra_cols[!is.na(extra_cols)], cli::symbol$ellipsis)
+  if (!is.null(attr(extra_cols, "true_length"))) {
+    out <- c(out, cli::symbol$ellipsis)
   }
 
-  paste0(": ", collapse(extra_cols))
+  paste0(": ", collapse(out))
 }
 
 pre_dots <- function(x) {

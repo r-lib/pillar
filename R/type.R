@@ -8,6 +8,7 @@ style_type <- function(x) {
 
 #' Prepare a column type for formatting
 #'
+#' Calls [type_sum()] to format the type.
 #' Call [format()] on the result to render column types.
 #'
 #' @param x A vector for which the type is to be retrieved.

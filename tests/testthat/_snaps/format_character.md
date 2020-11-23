@@ -37,10 +37,7 @@
     Code
       pillar(add_special(paste(letters, collapse = "")), width = 3)
     Output
-      <pillar>
-      <chr>
-      abcd~
-      <NA> 
+      NULL
 
 ---
 
@@ -128,7 +125,7 @@
 ---
 
     Code
-      colonnade(chartype_frame(), width = 50)
+      ctl_colonnade(chartype_frame(), width = 50)
     Output
          chars          desc              
          <chr>          <chr>             
