@@ -21,7 +21,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   }
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
-  pillars <- new_pillars(x, controller, tier_widths, title = NULL)
+  pillars <- new_packed_pillars(x, controller, tier_widths, title = NULL)
 
   if (length(pillars) == 0) {
     return(new_colonnade_body(list(), extra_cols = x))

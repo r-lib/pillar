@@ -1,9 +1,9 @@
 new_data_frame_pillar <- function(x, controller, width, title) {
-  pillars <- new_pillars(x, controller, width, title)
+  pillars <- new_packed_pillars(x, controller, width, title)
   combine_pillars(pillars)
 }
 
-new_pillars <- function(x, controller, width, title) {
+new_packed_pillars <- function(x, controller, width, title) {
   if (length(x) == 0) {
     return(compact(list(pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
