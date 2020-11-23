@@ -54,6 +54,62 @@ new_packed_pillars <- function(x, controller, width, title) {
   compact(pillars)
 }
 
+new_matrix_pillar <- function(x, controller, width, title) {
+  if (ncol(x) == 0) {
+    return(pillar_from_shaft(
+      new_pillar_title(prepare_title(title)),
+      new_pillar_type(x),
+      new_empty_shaft(),
+      width
+    ))
+  }
+
+  max_n_pillars <- sum(width %/% 2)
+  pillars <- vector("list", max_n_pillars)
+
+  idx <- colnames(x)
+  if (is.null(idx)) {
+    idx <- seq_len(ncol(x))
+  } else {
+    idx <- encodeString(idx, quote = '"')
+  }
+
+  ticked_names <- paste0("[,", idx, "]")
+
+  for (i in seq_along(ticked_names)) {
+    # FIXME
+    # sub_title <- c(title, ticked_names[[i]])
+    sub_title <- ticked_names[[i]]
+    if (!is.null(title)) {
+      if (i > 1) {
+        title[[length(title)]] <- ""
+      }
+      sub_title <- c(title, sub_title)
+    }
+
+    # Call ctl_new_pillar() only for objects that can fit
+    pillar <- ctl_new_pillar(
+      controller, x[, i], width,
+      title = prepare_title(sub_title)
+    )
+    if (is.null(pillar)) {
+      # NULL return: doesn't fit
+      break
+    }
+
+    # Compute remaining width
+    width <- deduct_width(width, pillar_get_min_widths(pillar))
+    if (is.null(width)) {
+      # NULL return: current pillar doesn't fit
+      break
+    }
+
+    pillars[[i]] <- pillar
+  }
+
+  combine_pillars(compact(pillars))
+}
+
 combine_pillars <- function(pillars) {
   if (length(pillars) == 0) {
     return(NULL)
