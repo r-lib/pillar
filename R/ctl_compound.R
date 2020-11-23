@@ -15,7 +15,7 @@ new_pillars <- function(x, controller, width, title) {
     sub_title <- ticked_names[[i]]
     if (!is.null(title)) {
       if (i == 1) {
-        sub_title <- paste0(tick_if_needed(title), "$", sub_title)
+        sub_title <- paste0(title, "$", sub_title)
       } else {
         sub_title <- paste0("$", sub_title)
       }
