@@ -1,4 +1,15 @@
 #' @export
+ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
+  check_dots_empty()
+
+  if (length(width) == 0) {
+    return(NULL)
+  }
+
+  UseMethod("ctl_new_pillar")
+}
+
+#' @export
 ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
   check_dots_empty()
 
@@ -20,17 +31,6 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
   } else {
     ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
   }
-}
-
-#' @export
-ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
-  check_dots_empty()
-
-  if (length(width) == 0) {
-    return(NULL)
-  }
-
-  UseMethod("ctl_new_pillar")
 }
 
 #' @export
