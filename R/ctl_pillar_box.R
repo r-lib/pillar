@@ -1,3 +1,11 @@
+#' TBD
+#'
+#' TBD
+#'
+#' @inheritParams ellipsis::dots_empty
+#' @param x TBD
+#' @param width,min_width TBD
+#' @export
 new_pillar_box <- function(x, ..., width, min_width = NULL) {
   check_dots_empty()
   stopifnot(is.list(x))
@@ -14,6 +22,8 @@ new_pillar_box <- function(x, ..., width, min_width = NULL) {
   )
 }
 
+#' @export
+#' @rdname new_pillar_box
 pillar_box <- function(x) {
   new_pillar_box(list(x), width = get_width(x), min_width = get_min_width(x))
 }
