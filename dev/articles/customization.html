@@ -115,8 +115,8 @@
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Code and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-f765173e9dec3652de1e" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f765173e9dec3652de1e">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8d8689d477629fb0bf79" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8d8689d477629fb0bf79">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
@@ -478,10 +478,14 @@
 <ul>
 <li>Export <code>tbl()</code> and <code>as_tbl()</code>
 </li>
+<li>Move <code>glimpse()</code>
+</li>
 <li>Rethink <code><a href="../reference/new_pillar_box.html">new_pillar_box()</a></code> and <code><a href="../reference/new_pillar_box.html">pillar_box()</a></code>, closer coupling with <code><a href="../reference/new_ornament.html">new_ornament()</a></code>?</li>
 <li>Why is the new implementation slower?</li>
 <li>Test coverage per file</li>
 <li>Deprecate <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> (how did that even work?)</li>
+<li>Look for FIXMEs</li>
+<li>Release</li>
 <li>Improve output:
 <ul>
 <li>Tibble-local options for precision</li>
@@ -494,7 +498,6 @@
 <li>Packed matrices: show type only once</li>
 </ul>
 </li>
-<li>Look for FIXMEs</li>
 </ul>
 </div>
   </div>
