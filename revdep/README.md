@@ -1,31 +1,46 @@
-# Platform
-
-|field    |value                        |
-|:--------|:----------------------------|
-|version  |R version 3.6.0 (2019-04-26) |
-|os       |Debian GNU/Linux 9 (stretch) |
-|system   |x86_64, linux-gnu            |
-|ui       |RStudio                      |
-|language |(EN)                         |
-|collate  |en_US.UTF-8                  |
-|ctype    |en_US.UTF-8                  |
-|tz       |Etc/UTC                      |
-|date     |2019-05-07                   |
-
-# Dependencies
-
-|package |old   |new        |Δ  |
-|:-------|:-----|:----------|:--|
-|pillar  |1.3.1 |1.3.1.9003 |*  |
-
 # Revdeps
 
-## New problems (4)
+## Failed to check (24)
 
-|package                          |version |error  |warning |note |
-|:--------------------------------|:-------|:------|:-------|:----|
-|[hms](problems.md#hms)           |0.4.2   |__+1__ |        |     |
-|[repr](problems.md#repr)         |1.0.0   |__+1__ |        |2    |
-|[tibble](problems.md#tibble)     |2.1.1   |__+1__ |        |     |
-|[unpivotr](problems.md#unpivotr) |0.5.1   |__+1__ |        |     |
+|package          |version |error |warning |note |
+|:----------------|:-------|:-----|:-------|:----|
+|butcher          |?       |      |        |     |
+|CausalImpact     |?       |      |        |     |
+|CB2              |?       |      |        |     |
+|cbar             |?       |      |        |     |
+|crossmap         |?       |      |        |     |
+|dabestr          |?       |      |        |     |
+|diceR            |?       |      |        |     |
+|ESTER            |0.2.0   |1     |        |     |
+|ggstatsplot      |0.6.6   |1     |        |     |
+|jstor            |?       |      |        |     |
+|MarketMatching   |?       |      |        |     |
+|metagam          |?       |      |        |     |
+|microbial        |?       |      |        |     |
+|NA               |?       |      |        |     |
+|pencal           |?       |      |        |     |
+|phylopath        |?       |      |        |     |
+|precautionary    |0.1-5   |1     |        |     |
+|processR         |0.2.3   |1     |        |     |
+|psychonetrics    |0.8     |1     |        |     |
+|Seurat           |?       |      |        |     |
+|statsExpressions |0.6.2   |1     |        |     |
+|trackr           |?       |      |        |     |
+|wrswoR           |?       |      |        |     |
+|NA               |?       |      |        |     |
+
+## New problems (10)
+
+|package                                |version |error  |warning |note   |
+|:--------------------------------------|:-------|:------|:-------|:------|
+|[charlatan](problems.md#charlatan)     |0.4.0   |__+1__ |        |       |
+|[forestmangr](problems.md#forestmangr) |0.9.2   |__+1__ |        |1      |
+|[gratia](problems.md#gratia)           |0.4.1   |__+1__ |        |1      |
+|[gtfs2gps](problems.md#gtfs2gps)       |1.3-2   |__+1__ |        |       |
+|[listarrays](problems.md#listarrays)   |0.3.1   |__+1__ |        |1      |
+|[ncdump](problems.md#ncdump)           |0.0.3   |__+1__ |        |       |
+|[prt](problems.md#prt)                 |0.1.2   |__+2__ |        |       |
+|[ricu](problems.md#ricu)               |0.1.2   |__+1__ |        |       |
+|[tibble](problems.md#tibble)           |3.0.4   |__+1__ |        |__+1__ |
+|[trendeval](problems.md#trendeval)     |0.0.1   |__+1__ |        |       |
 

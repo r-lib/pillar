@@ -3,3 +3,7 @@ library
 data.sqlite
 libs
 download
+checks.noindex
+library.noindex
+*.html
+cloud.noindex

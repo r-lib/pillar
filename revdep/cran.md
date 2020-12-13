@@ -1,27 +1,68 @@
 ## revdepcheck results
 
-We checked 305 reverse dependencies (302 from CRAN + 3 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 2663 reverse dependencies (2661 from CRAN + 2 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 4 new problems
- * We failed to check 1 packages
+ * We saw 10 new problems
+ * We failed to check 22 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* GSODR
-  checking re-building of vignette outputs ... WARNING
+* charlatan
+  checking tests ... ERROR
 
-* hms
-  checking tests ...
+* forestmangr
+  checking examples ... ERROR
+
+* gratia
+  checking examples ... ERROR
+
+* gtfs2gps
+  checking tests ... ERROR
+
+* listarrays
+  checking examples ... ERROR
+
+* ncdump
+  checking examples ... ERROR
+
+* prt
+  checking examples ... ERROR
+  checking tests ... ERROR
+
+* ricu
+  checking examples ... ERROR
 
 * tibble
-  checking tests ...
+  checking tests ... ERROR
+  checking R code for possible problems ... NOTE
 
-* unpivotr
+* trendeval
   checking examples ... ERROR
 
 ### Failed to check
 
-* cdcfluview (failed to install)
+* butcher          (NA)
+* CausalImpact     (NA)
+* CB2              (NA)
+* cbar             (NA)
+* crossmap         (NA)
+* dabestr          (NA)
+* diceR            (NA)
+* ESTER            (NA)
+* ggstatsplot      (NA)
+* jstor            (NA)
+* MarketMatching   (NA)
+* metagam          (NA)
+* microbial        (NA)
+* pencal           (NA)
+* phylopath        (NA)
+* precautionary    (NA)
+* processR         (NA)
+* psychonetrics    (NA)
+* Seurat           (NA)
+* statsExpressions (NA)
+* trackr           (NA)
+* wrswoR           (NA)
