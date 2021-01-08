@@ -1,3 +1,8 @@
+# pillar 1.4.99.9005
+
+- One-dimensional arrays are treated the same way as vectors.
+
+
 # pillar 1.4.99.9004
 
 - New `ctl_new_pillar()` and `ctl_new_compound_pillar()` used via `print.tbl()`, `format.tbl()` and `tbl_format_setup.tbl()` (#230).
