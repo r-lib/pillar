@@ -82,7 +82,7 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
     new_data_frame_pillar(x, controller, width, title = title)
   } else if (is.matrix(x)) {
     new_matrix_pillar(x, controller, width, title = title)
-  } else if (is.array(x)) {
+  } else if (is.array(x) && length(dim(x)) > 1) {
     new_array_pillar(x, controller, width, title = title)
   } else {
     ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
