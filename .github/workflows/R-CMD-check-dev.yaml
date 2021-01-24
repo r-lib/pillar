@@ -3,14 +3,20 @@
 on:
   schedule:
     - cron:  '0 1 * * *'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - ".github/workflows/R-CMD-check-dev.yaml"
 
 name: rcc dev
 
 jobs:
   R-CMD-check:
-    runs-on: ${{ matrix.config.os }}
+    runs-on: ubuntu-18.04
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: ${{ matrix.package }}
 
     # Begin custom: services
     # End custom: services
@@ -18,12 +24,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config:
-          - {os: ubuntu-18.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
+        package:
+          - rlang
+          - glue
+          - digest
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
@@ -39,8 +46,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@v1
-        with:
-          r-version: ${{ matrix.config.r }}
 
       - uses: r-lib/actions/setup-pandoc@v1
 
@@ -60,8 +65,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ matrix.config.os }}-r-dev-${{ matrix.config.r }}-${{steps.date.outputs.date}}
-          restore-keys: ${{ matrix.config.os }}-r-dev-${{ matrix.config.r }}-
+          key: ubuntu-18.04-r-dev-release-${{steps.date.outputs.date}}
+          restore-keys: ubuntu-18.04-r-dev-release-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -69,7 +74,7 @@ jobs:
           while read -r cmd
           do
             eval sudo $cmd
-          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "16.04"))')
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "18.04"))')
 
       # Begin custom: before install
       # End custom: before install
@@ -78,7 +83,7 @@ jobs:
         run: |
           deps <- remotes::dev_package_deps(dependencies = TRUE)
           update(deps)
-          lapply(setNames(nm = deps$package), function(x) try(remotes::install_dev(x)))
+          try(remotes::install_dev("${{ matrix.package }}"))
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
@@ -114,7 +119,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@main
         with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          name: ${{ matrix.package }}-results
           path: check
 
       - name: Check rate limits
