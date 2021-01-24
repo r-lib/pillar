@@ -158,7 +158,7 @@ jobs:
         run: |
           deps <- remotes::dev_package_deps(dependencies = TRUE)
           update(deps)
-          try(remotes::install_dev("${{ matrix.package }}"))
+          remotes::install_dev("${{ matrix.package }}")
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
