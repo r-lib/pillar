@@ -28,7 +28,81 @@ jobs:
           - rlang
           - glue
           - digest
-
+          - ellipsis
+          - assertthat
+          - vctrs
+          - utf8
+          - lifecycle
+          - fansi
+          - crayon
+          - cli
+          - pkgconfig
+          - pillar
+          - magrittr
+          - tibble
+          - rematch2
+          - diffobj
+          - R6
+          - ps
+          - processx
+          - prettyunits
+          - callr
+          - withr
+          - rstudioapi
+          - rprojroot
+          - pkgbuild
+          - desc
+          - xfun
+          - stringi
+          - mime
+          - yaml
+          - stringr
+          - markdown
+          - highr
+          - evaluate
+          - base64enc
+          - jsonlite
+          - htmltools
+          - htmlwidgets
+          - waldo
+          - praise
+          - pkgload
+          - brio
+          - colorspace
+          - RColorBrewer
+          - munsell
+          - labeling
+          - farver
+          - testthat
+          - scales
+          - isoband
+          - gtable
+          - gridExtra
+          - ggplot2
+          - viridisLite
+          - generics
+          - cpp11
+          - tidyselect
+          - purrr
+          - dplyr
+          - BH
+          - hms
+          - clipr
+          - igraph
+          - tinytex
+          - knitr
+          - Rcpp
+          - visNetwork
+          - viridis
+          - tidyr
+          - readr
+          - influenceR
+          - downloader
+          - bit
+          - rmarkdown
+          - lubridate
+          - DiagrammeR
+          - bit64
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"
