@@ -94,7 +94,7 @@ jobs:
             f <- tempfile()
             on.exit(unlink(f))
 
-            utils::download.file(f, url)
+            utils::download.file(url, f)
             desc <- read_dcf(f)
 
             url_fields <- c(desc$URL, desc$BugReports)
