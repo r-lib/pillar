@@ -84,7 +84,7 @@ jobs:
             cran_url <- "https://cloud.r-project.org"
 
             refs <- dev_split_ref(package)
-            url <- build_url(cran_url, "web", "packages", refs[["pkg"]], "DESCRIPTION")
+            url <- file.path(cran_url, "web", "packages", refs[["pkg"]], "DESCRIPTION")
 
             f <- tempfile()
             on.exit(unlink(f))
