@@ -38,6 +38,11 @@ jobs:
         run: |
           # Determine package dependencies
           # From remotes
+          read_dcf <- function(path) {
+            fields <- colnames(read.dcf(path))
+            as.list(read.dcf(path, keep.white = fields)[1, ])
+          }
+
           re_match <- function(text, pattern, perl = TRUE, ...) {
 
             stopifnot(is.character(pattern), length(pattern) == 1, !is.na(pattern))
