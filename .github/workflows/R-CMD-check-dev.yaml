@@ -66,8 +66,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ubuntu-18.04-r-dev-release-2-${{steps.date.outputs.date}}
-          restore-keys: ubuntu-18.04-r-dev-release-2-
+          key: ubuntu-18.04-r-dev-release-${{ matrix.package }}-${{steps.date.outputs.date}}
+          restore-keys: ubuntu-18.04-r-dev-release-${{ matrix.package }}-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
