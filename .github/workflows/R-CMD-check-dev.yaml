@@ -23,7 +23,6 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
-      NOT_CRAN: true
       # Begin custom: env vars
       # End custom: env vars
 
@@ -194,6 +193,7 @@ jobs:
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
       R_LIBS_USER: /home/runner/work/_temp/Library
+      NOT_CRAN: true
       # Begin custom: env vars
       # End custom: env vars
 
