@@ -121,13 +121,9 @@ has_color <- local({
 })
 
 # nocov start
-# Crayon functions call crayon::has_color() every call
+# Crayon functions call crayon::num_colors() every call
 make_style_fast <- function(...) {
-  # Force has_color to be true when making styles
-  old <- options(crayon.enabled = TRUE)
-  on.exit(options(old))
-
-  style <- crayon::make_style(...)
+  style <- crayon::make_style(..., colors = crayon::num_colors())
   start <- stats::start(style)
   finish <- crayon::finish(style)
 

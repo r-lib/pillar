@@ -1,3 +1,15 @@
+test_that("sanity check (1)", {
+  expect_false(crayon::has_color())
+  expect_false(has_color())
+
+  expect_snapshot({
+    crayon::has_color()
+    crayon::num_colors()
+    has_color()
+    style_na("NA")
+  })
+})
+
 test_that("output test", {
   x <- list(column_zero_one = 1:3 + 0.23, col_02 = letters[1:3], col_03 = factor(letters[1:3]), col_04 = ordered(letters[1:3]))
   expect_snapshot(colonnade(x, width = 4))
@@ -110,20 +122,25 @@ if (!l10n_info()$`UTF-8`) {
 }
 
 test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
-  # FIXME: This failed for some reason on 2020-11-18, maybe auto-fixes later?
-  skip_if(Sys.getenv("RSTUDIO") == "1")
-
   local_colors()
   expect_true(crayon::has_color())
   expect_equal(crayon::num_colors(), 16)
+  expect_true(has_color())
 
   if (l10n_info()$`UTF-8`) {
     local_utf8()
     expect_true(cli::is_utf8_output())
   }
 
+  expect_snapshot({
+    crayon::has_color()
+    crayon::num_colors()
+    has_color()
+    style_na("NA")
+    style_neg("-1")
+  })
+
   expect_snapshot(style_na("NA"))
-  expect_snapshot(style_neg("-1"))
 
   xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
 
@@ -143,6 +160,18 @@ if (l10n_info()$`UTF-8`) {
     skip("Symmetry")
   })
 }
+
+test_that("sanity check (2)", {
+  expect_false(crayon::has_color())
+  expect_false(has_color())
+
+  expect_snapshot({
+    crayon::has_color()
+    crayon::num_colors()
+    has_color()
+    style_na("NA")
+  })
+})
 
 test_that("tibble columns", {
   x <- list(a = 1:3, b = data.frame(c = 4:6, d = 7:9))
