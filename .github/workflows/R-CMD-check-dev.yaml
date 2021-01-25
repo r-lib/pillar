@@ -34,6 +34,10 @@ jobs:
 
       - uses: actions/checkout@v2
 
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          install-r: false
+
       - id: set-matrix
         run: |
           # Determine package dependencies
@@ -127,10 +131,7 @@ jobs:
             nrow(parts) == 1
           }
 
-          dir.create(".github/lib")
-          .libPaths(".github/lib")
-
-          deps <- tools:::package_dependencies(read.dcf("DESCRIPTION")[1, "Package"], which = c("Depends", "Imports", "LinkingTo", "Suggests"))
+          deps <- tools::package_dependencies(read.dcf("DESCRIPTION")[1, "Package"], which = c("Depends", "Imports", "LinkingTo", "Suggests"))
           packages <- sort(deps[[1]])
           packages <- intersect(packages, rownames(available.packages()))
 
@@ -204,6 +205,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@v1
+        with:
+          install-r: false
 
       - uses: r-lib/actions/setup-pandoc@v1
 
