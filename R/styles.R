@@ -121,15 +121,27 @@ has_color <- local({
 })
 
 # nocov start
-# Crayon functions call crayon::num_colors() every call
+# Crayon functions call crayon::has_color() every call
 make_style_fast <- function(...) {
-  style <- crayon::make_style(..., colors = crayon::num_colors())
-  start <- stats::start(style)
-  finish <- crayon::finish(style)
+  # Force has_color to be true when making styles
+  local_options(crayon.enabled = TRUE)
+
+  style_16 <- crayon::make_style(..., colors = 16)
+  start_16 <- stats::start(style_16)
+  finish_16 <- crayon::finish(style_16)
+
+  style_256 <- crayon::make_style(..., colors = 256)
+  start_256 <- stats::start(style_256)
+  finish_256 <- crayon::finish(style_256)
 
   function(...) {
     if (has_color()) {
-      paste0(start, ..., finish)
+      colors <- crayon::num_colors()
+      if (colors >= 256) {
+        paste0(start_256, ..., finish_256)
+      } else {
+        paste0(start_16, ..., finish_16)
+      }
     } else {
       paste0(...)
     }
