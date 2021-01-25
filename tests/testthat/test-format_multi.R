@@ -122,6 +122,9 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
     expect_true(cli::is_utf8_output())
   }
 
+  expect_snapshot(style_na("NA"))
+  expect_snapshot(style_neg("-1"))
+
   xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
 
   expect_snapshot(print(xf))
