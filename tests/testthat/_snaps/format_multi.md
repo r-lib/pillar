@@ -1,3 +1,26 @@
+# sanity check (1)
+
+    Code
+      crayon::has_color()
+    Output
+      [1] FALSE
+    Code
+      crayon::num_colors()
+    Output
+      [1] 1
+    Code
+      has_color()
+    Output
+      [1] FALSE
+    Code
+      num_colors()
+    Output
+      [1] 1
+    Code
+      style_na("NA")
+    Output
+      [1] "NA"
+
 # output test
 
     Code
@@ -694,6 +717,40 @@
 # color, options: UTF-8 is TRUE
 
     Code
+      crayon::has_color()
+    Output
+      [1] TRUE
+    Code
+      crayon::num_colors()
+    Output
+      [1] 16
+    Code
+      has_color()
+    Output
+      [1] TRUE
+    Code
+      num_colors()
+    Output
+      [1] 16
+    Code
+      style_na("NA")
+    Output
+      [1] "\033[31mNA\033[39m"
+    Code
+      style_neg("-1")
+    Output
+      [1] "\033[31m-1\033[39m"
+
+---
+
+    Code
+      style_na("NA")
+    Output
+      [1] "\033[31mNA\033[39m"
+
+---
+
+    Code
       print(xf)
     Output
                 x
@@ -805,6 +862,40 @@
 # color, options: UTF-8 is FALSE
 
     Code
+      crayon::has_color()
+    Output
+      [1] TRUE
+    Code
+      crayon::num_colors()
+    Output
+      [1] 16
+    Code
+      has_color()
+    Output
+      [1] TRUE
+    Code
+      num_colors()
+    Output
+      [1] 16
+    Code
+      style_na("NA")
+    Output
+      [1] "\033[31mNA\033[39m"
+    Code
+      style_neg("-1")
+    Output
+      [1] "\033[31m-1\033[39m"
+
+---
+
+    Code
+      style_na("NA")
+    Output
+      [1] "\033[31mNA\033[39m"
+
+---
+
+    Code
       print(xf)
     Output
                 x
@@ -912,6 +1003,29 @@
         a_very_long_~
                 [3m[90m<dbl>[39m[23m
       [90m1[39m             0
+
+# sanity check (2)
+
+    Code
+      crayon::has_color()
+    Output
+      [1] FALSE
+    Code
+      crayon::num_colors()
+    Output
+      [1] 1
+    Code
+      has_color()
+    Output
+      [1] FALSE
+    Code
+      num_colors()
+    Output
+      [1] 1
+    Code
+      style_na("NA")
+    Output
+      [1] "NA"
 
 # tibble columns
 

@@ -615,6 +615,20 @@
 # color, options: UTF-8 is TRUE
 
     Code
+      style_na("NA")
+    Output
+      [1] "\033[31mNA\033[39m"
+
+---
+
+    Code
+      style_neg("-1")
+    Output
+      [1] "\033[31m-1\033[39m"
+
+---
+
+    Code
       xf <- (function() ctl_colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA))))
 
 ---
@@ -729,6 +743,20 @@
       [90m1[39m                  0
 
 # color, options: UTF-8 is FALSE
+
+    Code
+      style_na("NA")
+    Output
+      [1] "\033[31mNA\033[39m"
+
+---
+
+    Code
+      style_neg("-1")
+    Output
+      [1] "\033[31m-1\033[39m"
+
+---
 
     Code
       xf <- (function() ctl_colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA))))
