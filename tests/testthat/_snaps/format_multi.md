@@ -7,11 +7,15 @@
     Code
       crayon::num_colors()
     Output
-      [1] 16
+      [1] 1
     Code
       has_color()
     Output
       [1] FALSE
+    Code
+      num_colors()
+    Output
+      [1] 1
     Code
       style_na("NA")
     Output
@@ -725,6 +729,10 @@
     Output
       [1] TRUE
     Code
+      num_colors()
+    Output
+      [1] 16
+    Code
       style_na("NA")
     Output
       [1] "\033[31mNA\033[39m"
@@ -1001,11 +1009,15 @@
     Code
       crayon::num_colors()
     Output
-      [1] 16
+      [1] 1
     Code
       has_color()
     Output
       [1] FALSE
+    Code
+      num_colors()
+    Output
+      [1] 1
     Code
       style_na("NA")
     Output

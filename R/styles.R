@@ -110,18 +110,22 @@ style_list <- function(x) {
 }
 
 # Only check if we have color support once per session
-has_color <- local({
-  has_color <- NULL
+num_colors <- local({
+  num_colors <- NULL
   function(forget = FALSE) {
-    if (is.null(has_color) || forget) {
-      has_color <<- crayon::has_color()
+    if (is.null(num_colors) || forget) {
+      num_colors <<- crayon::num_colors(forget = forget)
     }
-    has_color
+    num_colors
   }
 })
 
+has_color <- function() {
+  num_colors() > 1
+}
+
 # nocov start
-# Crayon functions call crayon::has_color() every call
+# Crayon functions call crayon::num_colors() every call
 make_style_fast <- function(...) {
   # Force has_color to be true when making styles
   local_options(crayon.enabled = TRUE)

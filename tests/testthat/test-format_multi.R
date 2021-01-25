@@ -1,11 +1,14 @@
 test_that("sanity check (1)", {
   expect_false(crayon::has_color())
+  expect_equal(crayon::num_colors(), 1)
   expect_false(has_color())
+  expect_equal(num_colors(), 1)
 
   expect_snapshot({
     crayon::has_color()
     crayon::num_colors()
     has_color()
+    num_colors()
     style_na("NA")
   })
 })
@@ -126,6 +129,7 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   expect_true(crayon::has_color())
   expect_equal(crayon::num_colors(), 16)
   expect_true(has_color())
+  expect_equal(num_colors(), 16)
 
   if (l10n_info()$`UTF-8`) {
     local_utf8()
@@ -136,6 +140,7 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
     crayon::has_color()
     crayon::num_colors()
     has_color()
+    num_colors()
     style_na("NA")
     style_neg("-1")
   })
@@ -163,12 +168,15 @@ if (l10n_info()$`UTF-8`) {
 
 test_that("sanity check (2)", {
   expect_false(crayon::has_color())
+  expect_equal(crayon::num_colors(), 1)
   expect_false(has_color())
+  expect_equal(num_colors(), 1)
 
   expect_snapshot({
     crayon::has_color()
     crayon::num_colors()
     has_color()
+    num_colors()
     style_na("NA")
   })
 })

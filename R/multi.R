@@ -35,7 +35,7 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
   }
 
   # Reset local cache for each new colonnade
-  has_color(forget = TRUE)
+  num_colors(forget = TRUE)
 
   x <- flatten_colonnade(x)
   ret <- vctrs::new_data_frame(x, has_row_id = has_row_id, class = "pillar_colonnade")
