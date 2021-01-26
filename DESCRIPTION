@@ -32,6 +32,7 @@ Suggests:
     DiagrammeR,
     knitr,
     lubridate,
+    nycflights13,
     rmarkdown,
     survival,
     testthat (>= 2.0.0),
