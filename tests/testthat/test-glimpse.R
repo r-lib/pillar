@@ -58,29 +58,29 @@ test_that("glimpse calls tbl_sum() (#550)", {
 
 test_that("output test", {
   expect_snapshot({
-    glimpse(as_tibble(mtcars), width = 70L)
+    glimpse(as_tbl(mtcars), width = 70L)
 
-    glimpse(as_tibble(iris), width = 70L)
+    glimpse(as_tbl(iris), width = 70L)
 
     "No columns"
-    glimpse(as_tibble(iris[integer()]), width = 70L)
+    glimpse(as_tbl(iris[integer()]), width = 70L)
 
     "Non-syntactic names"
     df <- tibble(!!!set_names(c(5, 3), c("mean(x)", "var(x)")))
     glimpse(df, width = 28)
 
-    glimpse(as_tibble(df_all), width = 70L)
+    glimpse(as_tbl(df_all), width = 70L)
 
     "options(tibble.width = 50)"
     withr::with_options(
       list(tibble.width = 50),
-      glimpse(as_tibble(df_all))
+      glimpse(as_tbl(df_all))
     )
 
     "options(tibble.width = 35)"
     withr::with_options(
       list(tibble.width = 35),
-      glimpse(as_tibble(df_all))
+      glimpse(as_tbl(df_all))
     )
 
     "non-tibble"
@@ -94,7 +94,7 @@ test_that("output test", {
     nested_iris_df <- tibble(Species, data)
     glimpse(nested_iris_df, width = 70L)
 
-    data <- map(data, as_tibble)
+    data <- map(data, as_tbl)
     nested_iris_tbl <- tibble(Species, data)
     glimpse(nested_iris_tbl, width = 70L)
   })
