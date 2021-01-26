@@ -66,7 +66,7 @@ test_that("output test", {
     glimpse(as_tbl(iris[integer()]), width = 70L)
 
     "Non-syntactic names"
-    df <- tibble(!!!set_names(c(5, 3), c("mean(x)", "var(x)")))
+    df <- tibble::tibble(!!!set_names(c(5, 3), c("mean(x)", "var(x)")))
     glimpse(df, width = 28)
 
     glimpse(as_tbl(df_all), width = 70L)
@@ -91,11 +91,11 @@ test_that("output test", {
 
     Species <- unique(iris$Species)
     data <- unname(split(iris, iris$Species))
-    nested_iris_df <- tibble(Species, data)
+    nested_iris_df <- tibble::tibble(Species, data)
     glimpse(nested_iris_df, width = 70L)
 
     data <- map(data, as_tbl)
-    nested_iris_tbl <- tibble(Species, data)
+    nested_iris_tbl <- tibble::tibble(Species, data)
     glimpse(nested_iris_tbl, width = 70L)
   })
 })
