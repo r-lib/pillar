@@ -40,7 +40,7 @@ glimpse <- function(x, width = NULL, ...) {
 glimpse.tbl <- function(x, width = NULL, ...) {
   width <- tibble_glimpse_width(width)
   if (!is.finite(width)) {
-    cnd_signal(error_glimpse_infinite_width())
+    abort("`width` must be finite.")
   }
 
   cli::cat_line("Rows: ", big_mark(nrow(x)))
@@ -130,10 +130,4 @@ format_v.factor <- function(x) {
   } else {
     format(x, trim = TRUE, justify = "none")
   }
-}
-
-# Errors ------------------------------------------------------------------
-
-error_glimpse_infinite_width <- function() {
-  tibble_error("`width` must be finite.")
 }
