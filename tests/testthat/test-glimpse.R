@@ -39,14 +39,13 @@ test_that("format_v for list", {
 })
 
 test_that("glimpse(width = Inf) raises legible error", {
-  expect_tibble_error(
-    glimpse(mtcars, width = Inf),
-    error_glimpse_infinite_width()
+  expect_error(
+    glimpse(mtcars, width = Inf)
   )
 })
 
 test_that("glimpse calls tbl_sum() (#550)", {
-  skip_on_non_utf8_locale() # capture_output_lines() forces native encoding
+  skip_if(!l10n_info()$`UTF-8`) # capture_output_lines() forces native encoding
   iris2 <- as_override_tbl_sum(iris)
 
   expect_output(
