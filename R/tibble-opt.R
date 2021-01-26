@@ -38,6 +38,19 @@ get_width_print <- function(width) {
   getOption("width")
 }
 
+get_width_glimpse <- function(width) {
+  if (!is.null(width)) {
+    return(width)
+  }
+
+  width <- tibble_opt("width")
+  if (!is.null(width) && is.finite(width)) {
+    return(width)
+  }
+
+  getOption("width")
+}
+
 get_n_print <- function(n, rows) {
   if (!is.null(n) && n >= 0) {
     return(n)

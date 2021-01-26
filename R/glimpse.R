@@ -38,7 +38,7 @@ glimpse <- function(x, width = NULL, ...) {
 
 #' @export
 glimpse.tbl <- function(x, width = NULL, ...) {
-  width <- tibble_glimpse_width(width)
+  width <- get_width_glimpse(width)
   if (!is.finite(width)) {
     abort("`width` must be finite.")
   }
@@ -78,7 +78,7 @@ glimpse.data.frame <- glimpse.tbl
 #' @importFrom utils str
 #' @export
 glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
-  str(x, width = tibble_width(width), max.level = max.level, ...)
+  str(x, width = get_width_glimpse(width), max.level = max.level, ...)
   invisible(x)
 }
 
