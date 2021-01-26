@@ -14,7 +14,7 @@
 #' This function is deprecated in favor of [testthat::expect_snapshot()].
 #' If your package uses the third edition of testthat, do not use this function.
 #'
-#' @inheritParams testthat::expect_output_file
+#' @inheritParams testthat::expect_known_output
 #' @param object An object to check.
 #' @param ... Unused.
 #' @param width The width of the output.
