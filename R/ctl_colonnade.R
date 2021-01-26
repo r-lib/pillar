@@ -69,9 +69,7 @@ new_colonnade_body <- function(x, extra_cols) {
   )
 }
 
-#' @rdname colonnade2
-#' @usage NULL
-#' @aliases NULL
+#' @noRd
 colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
   #' @details
   #' Pillars may be distributed over multiple tiers if
