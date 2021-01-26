@@ -450,6 +450,7 @@ Use option?
 - Test coverage per file
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
+- Use penguins
 - Release
 - Improve output:
     - Tibble-local options for precision
