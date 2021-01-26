@@ -36,7 +36,7 @@ glimpse <- function(x, width = NULL, ...) {
   UseMethod("glimpse")
 }
 
-# If needed, registered in .onLoad() via replace_if_pillar_has()
+#' @export
 glimpse.tbl <- function(x, width = NULL, ...) {
   width <- tibble_glimpse_width(width)
   if (!is.finite(width)) {
@@ -72,11 +72,11 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   invisible(x)
 }
 
-# If needed, registered in .onLoad() via replace_if_pillar_has()
+#' @export
 glimpse.data.frame <- glimpse.tbl
 
 #' @importFrom utils str
-# If needed, registered in .onLoad() via replace_if_pillar_has()
+#' @export
 glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
   str(x, width = tibble_width(width), max.level = max.level, ...)
   invisible(x)
