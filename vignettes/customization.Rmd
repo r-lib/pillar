@@ -443,14 +443,13 @@ Use option?
 
 ## Next steps
 
-- Export `tbl()` and `as_tbl()`
-- Move `glimpse()`
 - Rethink `new_pillar_box()` and `pillar_box()`, closer coupling with `new_ornament()`?
 - Why is the new implementation slower?
 - Test coverage per file
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
 - Use penguins
+- Export `tbl()` and `as_tbl()`
 - Release
 - Improve output:
     - Tibble-local options for precision
