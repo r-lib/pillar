@@ -64,7 +64,9 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   ticked_names <- format(new_pillar_title(tick_if_needed(names(df))))
   var_names <- paste0("$ ", justify(ticked_names, right = FALSE), " ", var_types, " ")
 
-  data_width <- width - crayon::col_nchar(var_names) - 2
+  # for some reason the offset was -2 in tibble but is now -1
+  # so that the desired width is obtained
+  data_width <- width - crayon::col_nchar(var_names) - 1
   formatted <- map_chr(df, function(x) collapse(format_v(x)))
   truncated <- str_trunc(formatted, data_width)
 
