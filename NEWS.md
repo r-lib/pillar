@@ -1,3 +1,8 @@
+# pillar 1.4.99.9006
+
+- `glimpse()` is now implemented in pillar, tibble keeps exporting it (#234).
+
+
 # pillar 1.4.99.9005
 
 - One-dimensional arrays are treated the same way as vectors.
