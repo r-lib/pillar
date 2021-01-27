@@ -93,18 +93,19 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="http://tibble.tidyverse.org">tibble</a>.</p>
+<p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="https://tibble.tidyverse.org/">tibble</a>.</p>
 <pre class="chroma">
-<span class="kr"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="o">(</span><span class="nv"><a href="https://github.com/r-lib/pillar">pillar</a></span><span class="o">)</span>
+<span class="kr"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span>
 
 <span class="nv">x</span> <span class="o">&lt;-</span> <span class="m">123456789</span> <span class="o">*</span> <span class="o">(</span><span class="m">10</span> <span class="o">^</span> <span class="nf"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="o">(</span><span class="o">-</span><span class="m">3</span>, <span class="o">-</span><span class="m">5</span>, <span class="kc">NA</span>, <span class="o">-</span><span class="m">8</span>, <span class="o">-</span><span class="m">10</span><span class="o">)</span><span class="o">)</span>
-<span class="nf"><a href="https://rdrr.io/pkg/pillar/man/pillar.html">pillar</a></span><span class="o">(</span><span class="nv">x</span><span class="o">)</span>
-<span class="c">#&gt;       <span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="c">#&gt; <span style="text-decoration: underline;">123</span><span>457.    </span></span>
-<span class="c">#&gt;   <span style="text-decoration: underline;">1</span><span>235.    </span></span>
-<span class="c">#&gt;     <span style="color: #BB0000;">NA</span><span>     </span></span>
+<span class="nf"><a href="https://pillar.r-lib.org/reference/pillar.html">pillar</a></span><span class="o">(</span><span class="nv">x</span><span class="o">)</span>
+<span class="c">#&gt; &lt;pillar&gt;</span>
+<span class="c">#&gt;       &lt;dbl&gt;</span>
+<span class="c">#&gt; 123457.    </span>
+<span class="c">#&gt;   1235.    </span>
+<span class="c">#&gt;     NA     </span>
 <span class="c">#&gt;      1.23  </span>
-<span class="c">#&gt;      0.012<span style="text-decoration: underline;">3</span></span></pre>
+<span class="c">#&gt;      0.0123</span></pre>
 <p>If you render this in a console that supports colour, you’ll see something that looks like this:</p>
 <p><img src="reference/figures/colours.png" width="200px"></p>
 </div>
@@ -113,7 +114,7 @@
 <a href="#extending" class="anchor"></a>Extending</h2>
 <p>The primary user of this package is <a href="https://github.com/tidyverse/tibble">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can add color with only a few changes:</p>
 <ol>
-<li>Implement the <a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html"><code>pillar_shaft()</code></a> method for your data type.</li>
+<li>Implement the <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft()</code></a> method for your data type.</li>
 <li>Add pillar to <code>Suggests</code> and implement dynamic method registration using <a href="https://vctrs.r-lib.org/reference/s3_register.html"><code>vctrs::s3_register()</code></a>.
 <ul>
 <li>If you don’t mind the dependency, you can also add it to <code>Imports</code>, and import the methods you override with a regular <code>NAMESPACE</code> import.</li>
@@ -146,18 +147,18 @@
 </ul>
 </li>
 </ul>
-<p>The function <a href="https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html"><code>new_pillar_shaft()</code></a> returns such an object, and also correctly formats <code>NA</code> values. In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <a href="https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html"><code>new_pillar_shaft()</code></a>. See <a href="https://rdrr.io/pkg/pillar/man/pillar_shaft.html"><code>pillar_shaft.numeric()</code></a> for a code that allows changing the display depending on the available width.</p>
+<p>The function <a href="https://pillar.r-lib.org/reference/new_pillar_shaft.html"><code>new_pillar_shaft()</code></a> returns such an object, and also correctly formats <code>NA</code> values. In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <a href="https://pillar.r-lib.org/reference/new_pillar_shaft.html"><code>new_pillar_shaft()</code></a>. See <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft.numeric()</code></a> for a code that allows changing the display depending on the available width.</p>
 </div>
 <div id="useful-helpers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#useful-helpers" class="anchor"></a>Useful helpers</h3>
 <ul>
 <li>
-<a href="https://rdrr.io/pkg/pillar/man/style_subtle.html"><code>style_neg()</code></a> to format negative values</li>
+<a href="https://pillar.r-lib.org/reference/style_subtle.html"><code>style_neg()</code></a> to format negative values</li>
 <li>
-<a href="https://rdrr.io/pkg/pillar/man/style_subtle.html"><code>style_num()</code></a> to format numbers</li>
+<a href="https://pillar.r-lib.org/reference/style_subtle.html"><code>style_num()</code></a> to format numbers</li>
 <li>
-<a href="https://rdrr.io/pkg/pillar/man/style_subtle.html"><code>style_subtle()</code></a> to de-emphasize</li>
+<a href="https://pillar.r-lib.org/reference/style_subtle.html"><code>style_subtle()</code></a> to de-emphasize</li>
 </ul>
 </div>
 </div>
@@ -169,7 +170,7 @@
 <li><p><a href="https://github.com/holman/spark">spark</a> for use of block characters.</p></li>
 </ul>
 <p>The earliest use of unicode characters to generate sparklines appears to be <a href="https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/">from 2009</a>.</p>
-<p>Exercising these ideas to their fullest requires a font with good support for block drawing characters. <a href="https://www.fsd.it/shop/fonts/pragmatapro/">PragamataPro</a> is one such font.</p>
+<p>Exercising these ideas to their fullest requires a font with good support for block drawing characters. <a href="https://fsd.it/shop/fonts/pragmatapro/">PragamataPro</a> is one such font.</p>
 <hr>
 </div>
 <div id="code-of-conduct" class="section level2">
