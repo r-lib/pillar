@@ -23,12 +23,7 @@ new_pillar_type <- function(x, ...) {
 
   type <- get_pillar_type(x)
 
-  ret <- structure(
-    list(
-      type = type
-    ),
-    class = "pillar_type"
-  )
+  ret <- structure(type, class = "pillar_type")
   extent <- get_extent(format_type_sum(type, NULL))
   ret <- set_width(ret, width = max(extent, MIN_PILLAR_WIDTH))
   ret <- set_min_width(ret, MIN_PILLAR_WIDTH)
@@ -44,7 +39,7 @@ get_pillar_type <- function(x) {
 
 #' @export
 format.pillar_type <- function(x, width = NULL, ...) {
-  ret <- format_type_sum(x$type, width)
+  ret <- format_type_sum(x[[1]], width)
   if (!is.null(width) && get_extent(ret) > width) {
     ret <- fansi::substr_ctl(ret, 1, width)
   }

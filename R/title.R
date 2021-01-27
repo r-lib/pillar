@@ -24,12 +24,7 @@ new_pillar_title <- function(x, ...) {
     stopifnot(!is.na(width))
   }
 
-  ret <- structure(
-    list(
-      title = x
-    ),
-    class = "pillar_title"
-  )
+  ret <- structure(list(x), class = "pillar_title")
 
   ret <- set_width(ret, width)
   ret <- set_min_width(ret, get_min_title_width(width))
@@ -52,7 +47,7 @@ get_min_title_width <- function(width) {
 
 #' @export
 format.pillar_title <- function(x, width = NULL, ...) {
-  title <- x$title
+  title <- x[[1]]
   if (is.null(title)) return(character())
 
   if (is.null(width)) {
