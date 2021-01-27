@@ -25,19 +25,20 @@ pillar provides tools for styling columns of data, artfully using colour and uni
 
 ## Usage
 
-pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like [tibble](http://tibble.tidyverse.org).
+pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like [tibble](https://tibble.tidyverse.org/).
 
 <pre class='chroma'>
-<span class='kr'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='o'>(</span><span class='nv'><a href='https://github.com/r-lib/pillar'>pillar</a></span><span class='o'>)</span>
+<span class='kr'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='o'>(</span><span class='nv'><a href='https://pillar.r-lib.org/'>pillar</a></span><span class='o'>)</span>
 
 <span class='nv'>x</span> <span class='o'>&lt;-</span> <span class='m'>123456789</span> <span class='o'>*</span> <span class='o'>(</span><span class='m'>10</span> <span class='o'>^</span> <span class='nf'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='o'>(</span><span class='o'>-</span><span class='m'>3</span>, <span class='o'>-</span><span class='m'>5</span>, <span class='kc'>NA</span>, <span class='o'>-</span><span class='m'>8</span>, <span class='o'>-</span><span class='m'>10</span><span class='o'>)</span><span class='o'>)</span>
-<span class='nf'><a href='https://rdrr.io/pkg/pillar/man/pillar.html'>pillar</a></span><span class='o'>(</span><span class='nv'>x</span><span class='o'>)</span>
-<span class='c'>#&gt;       <span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span></span>
-<span class='c'>#&gt; <span style='text-decoration: underline;'>123</span><span>457.    </span></span>
-<span class='c'>#&gt;   <span style='text-decoration: underline;'>1</span><span>235.    </span></span>
-<span class='c'>#&gt;     <span style='color: #BB0000;'>NA</span><span>     </span></span>
+<span class='nf'><a href='https://pillar.r-lib.org/reference/pillar.html'>pillar</a></span><span class='o'>(</span><span class='nv'>x</span><span class='o'>)</span>
+<span class='c'>#&gt; &lt;pillar&gt;</span>
+<span class='c'>#&gt;       &lt;dbl&gt;</span>
+<span class='c'>#&gt; 123457.    </span>
+<span class='c'>#&gt;   1235.    </span>
+<span class='c'>#&gt;     NA     </span>
 <span class='c'>#&gt;      1.23  </span>
-<span class='c'>#&gt;      0.012<span style='text-decoration: underline;'>3</span></span></pre>
+<span class='c'>#&gt;      0.0123</span></pre>
 
 If you render this in a console that supports colour, you’ll see something that looks like this:
 
@@ -47,7 +48,7 @@ If you render this in a console that supports colour, you’ll see something tha
 
 The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can add color with only a few changes:
 
-1.  Implement the [`pillar_shaft()`](https://rdrr.io/pkg/pillar/man/pillar_shaft.html) method for your data type.
+1.  Implement the [`pillar_shaft()`](https://pillar.r-lib.org/reference/pillar_shaft.html) method for your data type.
 2.  Add pillar to `Suggests` and implement dynamic method registration using [`vctrs::s3_register()`](https://vctrs.r-lib.org/reference/s3_register.html).
     -   If you don’t mind the dependency, you can also add it to `Imports`, and import the methods you override with a regular `NAMESPACE` import.
 
@@ -68,13 +69,13 @@ This method accepts a vector of arbitrary length and is expected to return an S3
 -   It must implement a method [`format(x, width, ...)`](https://rdrr.io/r/base/format.html) that can be called with any value between `min_width` and `width`
     -   This method must return an object that inherits from `character` and has attributes `"align"` (with supported values `"left"`, `"right"`, and `"center"`) and `"width"`
 
-The function [`new_pillar_shaft()`](https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html) returns such an object, and also correctly formats `NA` values. In many cases, the implementation of `pillar_shaft.your_class_name()` will format the data as a character vector (using color for emphasis) and simply call [`new_pillar_shaft()`](https://rdrr.io/pkg/pillar/man/new_pillar_shaft.html). See [`pillar_shaft.numeric()`](https://rdrr.io/pkg/pillar/man/pillar_shaft.html) for a code that allows changing the display depending on the available width.
+The function [`new_pillar_shaft()`](https://pillar.r-lib.org/reference/new_pillar_shaft.html) returns such an object, and also correctly formats `NA` values. In many cases, the implementation of `pillar_shaft.your_class_name()` will format the data as a character vector (using color for emphasis) and simply call [`new_pillar_shaft()`](https://pillar.r-lib.org/reference/new_pillar_shaft.html). See [`pillar_shaft.numeric()`](https://pillar.r-lib.org/reference/pillar_shaft.html) for a code that allows changing the display depending on the available width.
 
 ### Useful helpers
 
--   [`style_neg()`](https://rdrr.io/pkg/pillar/man/style_subtle.html) to format negative values
--   [`style_num()`](https://rdrr.io/pkg/pillar/man/style_subtle.html) to format numbers
--   [`style_subtle()`](https://rdrr.io/pkg/pillar/man/style_subtle.html) to de-emphasize
+-   [`style_neg()`](https://pillar.r-lib.org/reference/style_subtle.html) to format negative values
+-   [`style_num()`](https://pillar.r-lib.org/reference/style_subtle.html) to format numbers
+-   [`style_subtle()`](https://pillar.r-lib.org/reference/style_subtle.html) to de-emphasize
 
 ## Inspirations
 
@@ -84,7 +85,7 @@ The function [`new_pillar_shaft()`](https://rdrr.io/pkg/pillar/man/new_pillar_sh
 
 The earliest use of unicode characters to generate sparklines appears to be [from 2009](https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/).
 
-Exercising these ideas to their fullest requires a font with good support for block drawing characters. [PragamataPro](https://www.fsd.it/shop/fonts/pragmatapro/) is one such font.
+Exercising these ideas to their fullest requires a font with good support for block drawing characters. [PragamataPro](https://fsd.it/shop/fonts/pragmatapro/) is one such font.
 
 ------------------------------------------------------------------------
 
