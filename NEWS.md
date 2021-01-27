@@ -45,9 +45,9 @@
 - Move printing code from tibble to pillar (#179).
 
 
-# pillar 1.4.6.9000
+# pillar 1.4.7
 
-- Internal changes only.
+- Adapt to changed environment on CRAN's Solaris machine.
 
 
 # pillar 1.4.6
