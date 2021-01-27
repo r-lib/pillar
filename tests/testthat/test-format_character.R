@@ -88,6 +88,7 @@ test_that("output test (not on Windows)", {
   expect_snapshot(pillar(add_special(1L), title = "\u6210\u4ea4\u65e5"))
 
   # Spurious warnings on Windows
+  skip_on_os("solaris")
   suppressWarnings(
     expect_snapshot(ctl_colonnade(chartype_frame(), width = 50))
   )
