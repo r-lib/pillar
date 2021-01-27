@@ -105,5 +105,5 @@ Exercising these ideas to their fullest requires a font with good support for bl
 
 ## Code of Conduct
 
-Please note that the pillar project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+Please note that the pillar project is released with a [Contributor Code of Conduct](https://pillar.r-lib.org/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
