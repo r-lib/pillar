@@ -37,5 +37,5 @@ dim_desc <- function(x) {
 size_sum <- function(x) {
   if (!vctrs::vec_is(x)) return("")
 
-  paste0(" [", dim_desc(x), "]")
+  paste0("[", dim_desc(x), "]")
 }
