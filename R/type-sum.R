@@ -19,7 +19,9 @@
 #'   and variants have been implemented.
 #'
 #' @export
-type_sum <- function(x) UseMethod("type_sum")
+type_sum <- function(x) {
+  UseMethod("type_sum")
+}
 
 #' @export
 type_sum.ordered <- function(x) {
@@ -72,7 +74,9 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' obj_sum(mean)
 #' @rdname type_sum
 #' @export
-obj_sum <- function(x) UseMethod("obj_sum")
+obj_sum <- function(x) {
+  UseMethod("obj_sum")
+}
 
 #' @export
 obj_sum.default <- function(x) {
