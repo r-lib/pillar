@@ -61,6 +61,7 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' @description
 #' `obj_sum()` also includes the size of the object if `vctrs::vec_is()`
 #' is `TRUE`.
+#' It should always return a string (a character vector of length one).
 #'
 #' @keywords internal
 #' @examples
@@ -76,16 +77,6 @@ obj_sum <- function(x) UseMethod("obj_sum")
 #' @export
 obj_sum.default <- function(x) {
   paste0(type_sum(x), size_sum(x))
-}
-
-#' @export
-obj_sum.list <- function(x) {
-  map_chr(x, obj_sum.default)
-}
-
-#' @export
-obj_sum.POSIXlt <- function(x) {
-  rep("POSIXlt", length(x))
 }
 
 #' @export

@@ -21,12 +21,6 @@ dim2 <- function(x) {
   dim(x) %||% vctrs::vec_size(x)
 }
 
-size_sum <- function(x) {
-  if (!vctrs::vec_is(x)) return("")
-
-  paste0(" [", dim_desc(x), "]")
-}
-
 mult_sign <- function() {
   cli::symbol$times
 }

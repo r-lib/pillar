@@ -29,7 +29,7 @@ tbl_sum.tbl <- function(x) {
 }
 
 dim_desc <- function(x) {
-  dim <- dim(x) %||% length(x)
+  dim <- dim(x) %||% vctrs::vec_size(x)
   format_dim <- map_chr(dim, big_mark)
   paste0(format_dim, collapse = spaces_around(mult_sign()))
 }

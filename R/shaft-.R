@@ -246,7 +246,7 @@ pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.list <- function(x, ...) {
-  out <- paste0("<", obj_sum(x), ">")
+  out <- paste0("<", map_chr(x, obj_sum), ">")
 
   width <- get_max_extent(out)
 
