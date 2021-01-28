@@ -87,3 +87,28 @@ obj_sum.default <- function(x) {
 obj_sum.AsIs <- function(x) {
   paste0("I(", obj_sum(remove_as_is_class(x)), ")")
 }
+
+#' @description
+#' `size_sum()` is called by `obj_sum()` to format the size of the object.
+#' It should always return a string (a character vector of length one),
+#' it can be an empty string `""` to omit size information,
+#' this is what the default method does for scalars.
+#'
+#' @keywords internal
+#' @examples
+#'
+#' size_sum(1:10)
+#' size_sum(trees)
+#' size_sum(Titanic)
+#' @rdname type_sum
+#' @export
+size_sum <- function(x) {
+  UseMethod("size_sum")
+}
+
+#' @export
+size_sum.default <- function(x) {
+  if (!vctrs::vec_is(x)) return("")
+
+  paste0("[", dim_desc(x), "]")
+}

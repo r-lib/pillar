@@ -33,9 +33,3 @@ dim_desc <- function(x) {
   format_dim <- map_chr(dim, big_mark)
   paste0(format_dim, collapse = spaces_around(mult_sign()))
 }
-
-size_sum <- function(x) {
-  if (!vctrs::vec_is(x)) return("")
-
-  paste0("[", dim_desc(x), "]")
-}
