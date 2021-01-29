@@ -157,8 +157,7 @@ squeeze_impl <- function(x, width = NULL, ...) {
   }
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
-  col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
-  col_widths_shown <- col_widths_show[["TRUE"]]
+  col_widths_shown <- col_widths[col_widths$tier != 0, ]
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
 
   col_widths_tiers <- map(col_widths_tiers, function(tier) {
