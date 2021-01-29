@@ -140,7 +140,7 @@ make_style_fast <- function(...) {
 
   function(...) {
     if (has_color()) {
-      colors <- crayon::num_colors()
+      colors <- num_colors()
       if (colors >= 256) {
         paste0(start_256, ..., finish_256)
       } else {
