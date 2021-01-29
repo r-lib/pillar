@@ -18,7 +18,7 @@ expect_known_display(object, file, ..., width = 80L, crayon = TRUE)
 \item{crayon}{Color the output?}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
+\ifelse{html}{\out{<a href='https://lifecycle.r-lib.org/articles/stages.html#superseded'><img src='figures/lifecycle-superseded.svg' alt='Superseded lifecycle'></a>}}{\strong{Superseded}}
 
 Expectation for packages that implement a data type with pillar support.
 Allows storing the desired result in a file,
