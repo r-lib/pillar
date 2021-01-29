@@ -10,8 +10,8 @@ df_all <- pillar:::new_tbl(list(
   i = list(list(1, 2:3), list(4:6), list(NA))
 ))
 
-# proffer::pprof(
-#   for (i in 1:50) format(df_all)
+# proffer::pprof(filter.callframes = TRUE,
+#   for (i in 1:100) format(df_all)
 # )
 
-bench::mark(format(df_all), iterations = 300)
+bench::mark(format(df_all), iterations = 500)
