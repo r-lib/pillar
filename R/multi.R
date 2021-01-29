@@ -435,7 +435,7 @@ distribute_pillars <- function(widths, tier_widths) {
     current_x <- current_x + widths[[i]] + 1L
   }
 
-  data.frame(id = seq_along(widths), width = widths, tier = tier)
+  vctrs::data_frame(id = seq_along(widths), width = widths, tier = tier)
 }
 
 distribute_pillars_rev <- function(widths, tier_widths) {
