@@ -158,28 +158,27 @@ squeeze_impl <- function(x, width = NULL, ...) {
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
   col_widths_shown <- col_widths[col_widths$tier != 0, ]
-  col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
+  n_cols_shown <- nrow(col_widths_shown)
 
-  col_widths_tiers <- map(col_widths_tiers, function(tier) {
-    tier$tier <- NULL
-    tier
-  })
+  unique_tiers <- unique(col_widths_shown$tier)
 
   if (!is.null(rowid)) {
-    col_widths_tiers <- map(col_widths_tiers, function(tier) {
-      tier <- vctrs::vec_rbind(
-        vctrs::data_frame(id = 0L, width = rowid_width - 1L, pillar = list(rowid)),
-        tier
-      )
-      tier
-    })
+    rowid_def <- vctrs::data_frame(
+      tier = unique_tiers,
+      id = 0L,
+      width = rowid_width - 1L,
+      pillar = list(rowid)
+    )
+    col_widths_shown <- vctrs::vec_rbind(rowid_def, col_widths_shown)
   }
 
-  out <- map(col_widths_tiers, function(tier) {
-    map2(tier$pillar, tier$width, pillar_format_parts)
+  indexes <- split(seq_along(col_widths_shown$tier), col_widths_shown$tier)
+
+  out <- map(indexes, function(i) {
+    map2(col_widths_shown$pillar[i], col_widths_shown$width[i], pillar_format_parts)
   })
 
-  extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(x$data))
+  extra_cols <- seq2(n_cols_shown + 1L, length(x$data))
   new_colonnade_squeezed(out, colonnade = x, extra_cols = extra_cols)
 }
 
