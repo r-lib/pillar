@@ -23,3 +23,13 @@ tbl_sum.override_tbl_sum <- function(x) {
 }
 
 registerS3method("tbl_sum", "override_tbl_sum", tbl_sum.override_tbl_sum, envir = asNamespace("tibble"))
+
+as_override_size_sum <- function(x) {
+  structure(x, class = "override_size_sum")
+}
+
+size_sum.override_size_sum <- function(x, ...) {
+  "SC"
+}
+
+registerS3method("size_sum", "override_size_sum", size_sum.override_size_sum, envir = asNamespace("pillar"))
