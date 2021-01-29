@@ -45,7 +45,8 @@ type_sum() gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to vctrs::vec_ptype_abbr().
 obj_sum() also includes the size of the object if vctrs::vec_is()
-is TRUE." />
+is TRUE.
+It should always return a string (a character vector of length one)." />
 
 
 <meta name="robots" content="noindex">
@@ -126,7 +127,8 @@ is TRUE." />
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>.</p>
 <p><code>obj_sum()</code> also includes the size of the object if <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>
-is <code>TRUE</code>.</p>
+is <code>TRUE</code>.
+It should always return a string (a character vector of length one).</p>
     </div>
 
     <pre class="usage"><span class='fu'>type_sum</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
