@@ -30,6 +30,7 @@ test_that("data frames and common data vectors have size summary", {
   expect_obj_sum_is_ptype(Sys.time() - Sys.time() + 1:3)
   expect_obj_sum_is_ptype(as.POSIXlt(Sys.time() + 1:3))
   expect_obj_sum_is_ptype(list(1, 2:3))
+  expect_obj_sum_is_ptype(as_override_size_sum(1:3))
 })
 
 
