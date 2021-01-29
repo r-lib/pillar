@@ -158,26 +158,17 @@ squeeze_impl <- function(x, width = NULL, ...) {
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
   col_widths_shown <- col_widths[col_widths$tier != 0, ]
-  n_cols_shown <- nrow(col_widths_shown)
-
-  unique_tiers <- unique(col_widths_shown$tier)
-
-  if (!is.null(rowid)) {
-    rowid_def <- vctrs::data_frame(
-      tier = unique_tiers,
-      id = 0L,
-      width = rowid_width - 1L,
-      pillar = list(rowid)
-    )
-    col_widths_shown <- vctrs::vec_rbind(rowid_def, col_widths_shown)
-  }
-
   indexes <- split(seq_along(col_widths_shown$tier), col_widths_shown$tier)
 
   out <- map(indexes, function(i) {
-    map2(col_widths_shown$pillar[i], col_widths_shown$width[i], pillar_format_parts)
+    inner <- map2(col_widths_shown$pillar[i], col_widths_shown$width[i], pillar_format_parts)
+    if (!is.null(rowid)) {
+      inner <- c(list(pillar_format_parts(rowid, rowid_width - 1L)), inner)
+    }
+    inner
   })
 
+  n_cols_shown <- nrow(col_widths_shown)
   extra_cols <- seq2(n_cols_shown + 1L, length(x$data))
   new_colonnade_squeezed(out, colonnade = x, extra_cols = extra_cols)
 }
