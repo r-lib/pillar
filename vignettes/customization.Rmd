@@ -443,13 +443,17 @@ Use option?
 
 ## Next steps
 
-- Rethink `new_pillar_box()` and `pillar_box()`, closer coupling with `new_ornament()`?
+- Wait for tibble 3.0.6 to appear on RSPM
+- Revdepcheck
 - Why is the new implementation slower?
+    - Almost factor 2 with `format(df_all)` run by tibble
 - Test coverage per file
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
 - Use penguins
 - Export `tbl()` and `as_tbl()`
+- Document all functions
+- Rethink `new_pillar_box()` and `pillar_box()`, closer coupling with `new_ornament()`?
 - Release
 - Improve output:
     - Tibble-local options for precision
