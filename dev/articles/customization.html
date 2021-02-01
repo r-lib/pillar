@@ -115,8 +115,8 @@
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Code and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-dea2d4aea8f656f1cfa8" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dea2d4aea8f656f1cfa8">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7bb055c46572d45e094c" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7bb055c46572d45e094c">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
@@ -476,16 +476,11 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
-<li>Wait for tibble 3.0.6 to appear on RSPM</li>
-<li>Revdepcheck</li>
-<li>Why is the new implementation slower?
-<ul>
-<li>Almost factor 2 with <code><a href="https://rdrr.io/r/base/format.html">format(df_all)</a></code> run by tibble</li>
-</ul>
-</li>
 <li>Test coverage per file</li>
 <li>Deprecate <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> (how did that even work?)</li>
 <li>Look for FIXMEs</li>
+<li>Wait for tibble 3.0.6 to appear on RSPM</li>
+<li>Revdepcheck</li>
 <li>Use penguins</li>
 <li>Export <code>tbl()</code> and <code>as_tbl()</code>
 </li>
