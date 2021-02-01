@@ -443,13 +443,11 @@ Use option?
 
 ## Next steps
 
-- Wait for tibble 3.0.6 to appear on RSPM
-- Revdepcheck
-- Why is the new implementation slower?
-    - Almost factor 2 with `format(df_all)` run by tibble
 - Test coverage per file
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
+- Wait for tibble 3.0.6 to appear on RSPM
+- Revdepcheck
 - Use penguins
 - Export `tbl()` and `as_tbl()`
 - Document all functions

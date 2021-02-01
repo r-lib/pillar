@@ -31,11 +31,11 @@ spaces_around <- function(x) {
 
 # function for the thousand separator,
 # returns "," unless it's used for the decimal point, in which case returns "."
-big_mark <- function(x, ...) {
+big_mark <- function(x) {
   # The thousand separator,
   # "," unless it's used for the decimal point, in which case "."
   mark <- if (identical(getOption("OutDec"), ",")) "." else ","
-  ret <- formatC(x, big.mark = mark, format = "d", ...)
+  ret <- formatC(x, big.mark = mark, format = "d", preserve.width = "individual")
   ret[is.na(x)] <- "??"
   ret
 }

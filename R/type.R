@@ -37,13 +37,10 @@ get_pillar_type <- function(x) {
   type
 }
 
+#' @importFrom fansi substr_ctl
 #' @export
 format.pillar_type <- function(x, width = NULL, ...) {
-  ret <- format_type_sum(x[[1]], width)
-  if (!is.null(width) && get_extent(ret) > width) {
-    ret <- fansi::substr_ctl(ret, 1, width)
-  }
-  ret
+  format_type_sum(x[[1]], width)
 }
 
 format_full_pillar_type <- function(x) {

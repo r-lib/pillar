@@ -2,13 +2,15 @@ cat_line <- function(...) {
   cat(..., "\n", sep = "")
 }
 
+#' @importFrom utf8 utf8_width
+#' @importFrom fansi strip_sgr substr_ctl
 str_trunc <- function(x, width) {
   if (all(is.infinite(width))) return(x)
 
-  str_width <- utf8::utf8_width(crayon::strip_style(x), encode = FALSE)
+  str_width <- utf8_width(strip_sgr(x), encode = FALSE)
 
   too_wide <- which(!is.na(x) & str_width > width)
-  x[too_wide] <- paste0(fansi::substr_ctl(x[too_wide], 1, width - 1), get_ellipsis())
+  x[too_wide] <- paste0(substr_ctl(x[too_wide], 1, width - 1), get_ellipsis())
 
   x
 }

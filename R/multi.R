@@ -157,30 +157,19 @@ squeeze_impl <- function(x, width = NULL, ...) {
   }
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
-  col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
-  col_widths_shown <- col_widths_show[["TRUE"]]
-  col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
+  col_widths_shown <- col_widths[col_widths$tier != 0, ]
+  indexes <- split(seq_along(col_widths_shown$tier), col_widths_shown$tier)
 
-  col_widths_tiers <- map(col_widths_tiers, function(tier) {
-    tier$tier <- NULL
-    tier
+  out <- map(indexes, function(i) {
+    inner <- map2(col_widths_shown$pillar[i], col_widths_shown$width[i], pillar_format_parts)
+    if (!is.null(rowid)) {
+      inner <- c(list(pillar_format_parts(rowid, rowid_width - 1L)), inner)
+    }
+    inner
   })
 
-  if (!is.null(rowid)) {
-    col_widths_tiers <- map(col_widths_tiers, function(tier) {
-      tier <- vctrs::vec_rbind(
-        vctrs::data_frame(id = 0L, width = rowid_width - 1L, pillar = list(rowid)),
-        tier
-      )
-      tier
-    })
-  }
-
-  out <- map(col_widths_tiers, function(tier) {
-    map2(tier$pillar, tier$width, pillar_format_parts)
-  })
-
-  extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(x$data))
+  n_cols_shown <- nrow(col_widths_shown)
+  extra_cols <- seq2(n_cols_shown + 1L, length(x$data))
   new_colonnade_squeezed(out, colonnade = x, extra_cols = extra_cols)
 }
 
@@ -435,7 +424,7 @@ distribute_pillars <- function(widths, tier_widths) {
     current_x <- current_x + widths[[i]] + 1L
   }
 
-  data.frame(id = seq_along(widths), width = widths, tier = tier)
+  vctrs::data_frame(id = seq_along(widths), width = widths, tier = tier)
 }
 
 distribute_pillars_rev <- function(widths, tier_widths) {
