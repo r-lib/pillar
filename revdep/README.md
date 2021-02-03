@@ -1,46 +1,124 @@
 # Revdeps
 
-## Failed to check (24)
+## Failed to check (109)
 
-|package          |version |error |warning |note |
-|:----------------|:-------|:-----|:-------|:----|
-|butcher          |?       |      |        |     |
-|CausalImpact     |?       |      |        |     |
-|CB2              |?       |      |        |     |
-|cbar             |?       |      |        |     |
-|crossmap         |?       |      |        |     |
-|dabestr          |?       |      |        |     |
-|diceR            |?       |      |        |     |
-|ESTER            |0.2.0   |1     |        |     |
-|ggstatsplot      |0.6.6   |1     |        |     |
-|jstor            |?       |      |        |     |
-|MarketMatching   |?       |      |        |     |
-|metagam          |?       |      |        |     |
-|microbial        |?       |      |        |     |
-|NA               |?       |      |        |     |
-|pencal           |?       |      |        |     |
-|phylopath        |?       |      |        |     |
-|precautionary    |0.1-5   |1     |        |     |
-|processR         |0.2.3   |1     |        |     |
-|psychonetrics    |0.8     |1     |        |     |
-|Seurat           |?       |      |        |     |
-|statsExpressions |0.6.2   |1     |        |     |
-|trackr           |?       |      |        |     |
-|wrswoR           |?       |      |        |     |
-|NA               |?       |      |        |     |
+|package                          |version  |error     |warning |note |
+|:--------------------------------|:--------|:---------|:-------|:----|
+|AeRobiology                      |2.0.1    |1         |        |     |
+|BaseSet                          |?        |          |        |     |
+|bayesdfa                         |0.1.6    |1         |        |     |
+|BED                              |1.4.3    |1         |        |1    |
+|BIS                              |?        |          |        |     |
+|BNPdensity                       |2020.3.4 |1         |        |1    |
+|butcher                          |?        |          |        |     |
+|CausalImpact                     |?        |          |        |     |
+|CausalQueries                    |?        |          |        |     |
+|CB2                              |?        |          |        |     |
+|cbar                             |?        |          |        |     |
+|CityWaterBalance                 |0.1.0    |1         |        |     |
+|ClusterBootstrap                 |1.1.0    |1         |        |     |
+|CohortPlat                       |?        |          |        |     |
+|Conigrave                        |0.4.4    |1         |        |     |
+|CoordinateCleaner                |?        |          |        |     |
+|CovidMutations                   |0.1.3    |1         |        |     |
+|[crossmap](failures.md#crossmap) |0.2.0    |-1 __+1__ |        |     |
+|CTP                              |2.0.0    |1         |        |     |
+|ctsem                            |3.4.1    |1         |        |     |
+|DCPO                             |0.5.3    |1         |        |     |
+|DecisionAnalysis                 |1.1.0    |1         |        |     |
+|DeclareDesign                    |0.24.0   |1         |        |1    |
+|DepthProc                        |2.1.3    |1         |        |     |
+|DescrTab2                        |?        |          |        |     |
+|DevTreatRules                    |1.1.0    |1         |1       |     |
+|diceR                            |?        |          |        |     |
+|Distance                         |?        |          |        |     |
+|DiversityOccupancy               |1.0.6    |1         |        |     |
+|DMCfun                           |1.3.0    |1         |        |     |
+|DSAIDE                           |0.9.0    |1         |        |     |
+|DSpoty                           |0.1.0    |1         |        |     |
+|DTAT                             |0.3-4    |1         |        |1    |
+|DynNom                           |5.0.1    |1         |        |     |
+|Ecfun                            |?        |          |        |     |
+|EpiCurve                         |2.4-1    |1         |        |     |
+|EpiNow2                          |?        |          |        |     |
+|ERSA                             |?        |          |        |     |
+|EvaluateCore                     |0.1.1    |1         |        |     |
+|EValue                           |4.1.1    |1         |        |     |
+|FLAME                            |2.0.0    |1         |        |     |
+|FunnelPlotR                      |0.3.2    |1         |        |     |
+|gastempt                         |0.5.1    |1         |        |     |
+|GeneBook                         |1.0      |1         |        |     |
+|GenomicMating                    |2.0      |1         |        |     |
+|GGally                           |2.1.0    |1         |        |     |
+|glmmfields                       |0.1.4    |1         |        |     |
+|GOxploreR                        |?        |          |        |     |
+|GuessCompx                       |1.0.3    |1         |1       |     |
+|HierDpart                        |0.5.0    |1         |        |     |
+|IATscores                        |0.2.7    |1         |        |     |
+|IBMPopSim                        |0.3.1    |1         |        |1    |
+|IETD                             |1.0.0    |1         |        |     |
+|IMP                              |1.1      |1         |        |     |
+|IPDfromKM                        |0.1.10   |1         |        |     |
+|ISRaD                            |1.7.8    |1         |        |     |
+|JamendoR                         |0.1.0    |1         |        |1    |
+|KCSNBShiny                       |0.1.0    |1         |        |     |
+|LBSPR                            |?        |          |        |     |
+|LexisNexisTools                  |?        |          |        |     |
+|LifeInsuranceContracts           |0.0.2    |1         |        |     |
+|LLSR                             |0.0.2.19 |1         |        |     |
+|LocFDRPois                       |?        |          |        |     |
+|MachineShop                      |2.6.1    |1         |        |     |
+|Mapinguari                       |?        |          |        |     |
+|MarketMatching                   |?        |          |        |     |
+|MatchThem                        |0.9.3    |1         |        |     |
+|MazamaLocationUtils              |0.1.13   |1         |        |     |
+|MBNMAdose                        |?        |          |        |     |
+|metagam                          |?        |          |        |     |
+|MetaIntegrator                   |?        |          |        |     |
+|Momocs                           |?        |          |        |     |
+|MtreeRing                        |1.4.2    |1         |        |     |
+|multinma                         |0.2.1    |1         |        |     |
+|MXM                              |1.5.0    |1         |        |     |
+|NBShiny3                         |?        |          |        |     |
+|Neighboot                        |1.0.0    |1         |        |     |
+|NPMLEmix                         |1.2      |1         |        |     |
+|OTrecod                          |0.1.0    |1         |        |     |
+|OutliersO3                       |?        |          |        |     |
+|PakPMICS2018hh                   |?        |          |        |     |
+|pencal                           |?        |          |        |     |
+|PhenotypeSimulator               |0.3.3    |1         |        |     |
+|phylopath                        |?        |          |        |     |
+|PKNCA                            |0.9.4    |1         |        |     |
+|Plasmidprofiler                  |0.1.6    |1         |        |     |
+|PLNmodels                        |?        |          |        |     |
+|PML                              |1.2      |1         |        |     |
+|PREPShiny                        |?        |          |        |     |
+|R2019nCoV                        |?        |          |        |     |
+|RadialVisGadgets                 |0.2.0    |1         |        |     |
+|Relectoral                       |0.1.0    |1         |        |     |
+|Rfssa                            |1.0.0    |1         |        |     |
+|rmdcev                           |1.2.4    |1         |        |     |
+|RNHANES                          |?        |          |        |     |
+|RSSL                             |0.9.3    |1         |        |     |
+|rstap                            |1.0.3    |1         |        |     |
+|Rthingsboard                     |0.2.4    |1         |        |     |
+|SanFranBeachWater                |0.1.0    |1         |        |     |
+|SDLfilter                        |2.0.1    |1         |        |     |
+|SEERaBomb                        |2019.2   |1         |        |     |
+|SEIRfansy                        |?        |          |        |     |
+|Seurat                           |?        |          |        |     |
+|ShinyItemAnalysis                |1.3.5    |1         |        |     |
+|SUNGEO                           |0.2.0    |1         |        |     |
+|SwimmeR                          |0.7.2    |1         |        |     |
+|SWMPrExtension                   |?        |          |        |     |
+|trackr                           |?        |          |        |     |
+|wrswoR                           |?        |          |        |     |
 
-## New problems (10)
+## New problems (3)
 
-|package                                |version |error  |warning |note   |
-|:--------------------------------------|:-------|:------|:-------|:------|
-|[charlatan](problems.md#charlatan)     |0.4.0   |__+1__ |        |       |
-|[forestmangr](problems.md#forestmangr) |0.9.2   |__+1__ |        |1      |
-|[gratia](problems.md#gratia)           |0.4.1   |__+1__ |        |1      |
-|[gtfs2gps](problems.md#gtfs2gps)       |1.3-2   |__+1__ |        |       |
-|[listarrays](problems.md#listarrays)   |0.3.1   |__+1__ |        |1      |
-|[ncdump](problems.md#ncdump)           |0.0.3   |__+1__ |        |       |
-|[prt](problems.md#prt)                 |0.1.2   |__+2__ |        |       |
-|[ricu](problems.md#ricu)               |0.1.2   |__+1__ |        |       |
-|[tibble](problems.md#tibble)           |3.0.4   |__+1__ |        |__+1__ |
-|[trendeval](problems.md#trendeval)     |0.0.1   |__+1__ |        |       |
+|package                                |version |error  |warning |note |
+|:--------------------------------------|:-------|:------|:-------|:----|
+|[intensegRid](problems.md#intensegrid) |0.1.0   |__+1__ |        |1    |
+|[prt](problems.md#prt)                 |0.1.2   |__+2__ |        |     |
+|[ricu](problems.md#ricu)               |0.1.3   |__+1__ |        |     |
 
