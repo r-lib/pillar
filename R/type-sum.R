@@ -19,7 +19,9 @@
 #'   and variants have been implemented.
 #'
 #' @export
-type_sum <- function(x) UseMethod("type_sum")
+type_sum <- function(x) {
+  UseMethod("type_sum")
+}
 
 #' @export
 type_sum.ordered <- function(x) {
@@ -72,14 +74,41 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' obj_sum(mean)
 #' @rdname type_sum
 #' @export
-obj_sum <- function(x) UseMethod("obj_sum")
+obj_sum <- function(x) {
+  UseMethod("obj_sum")
+}
 
 #' @export
 obj_sum.default <- function(x) {
-  paste0(type_sum(x), size_sum(x))
+  paste_with_space_if_needed(type_sum(x), size_sum(x))
 }
 
 #' @export
 obj_sum.AsIs <- function(x) {
   paste0("I(", obj_sum(remove_as_is_class(x)), ")")
+}
+
+#' @description
+#' `size_sum()` is called by `obj_sum()` to format the size of the object.
+#' It should always return a string (a character vector of length one),
+#' it can be an empty string `""` to omit size information,
+#' this is what the default method does for scalars.
+#'
+#' @keywords internal
+#' @examples
+#'
+#' size_sum(1:10)
+#' size_sum(trees)
+#' size_sum(Titanic)
+#' @rdname type_sum
+#' @export
+size_sum <- function(x) {
+  UseMethod("size_sum")
+}
+
+#' @export
+size_sum.default <- function(x) {
+  if (!vctrs::vec_is(x)) return("")
+
+  paste0("[", dim_desc(x), "]")
 }

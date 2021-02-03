@@ -15,6 +15,14 @@ str_trunc <- function(x, width) {
   x
 }
 
+paste_with_space_if_needed <- function(x, y) {
+  if (y == "") {
+    x
+  } else {
+    paste(x, y)
+  }
+}
+
 check_sigfig <- function(x) {
   stopifnot(is.numeric(x), length(x) == 1)
   x <- as.integer(x)
