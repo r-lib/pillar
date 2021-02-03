@@ -113,7 +113,7 @@
 <h2 class="hasAnchor">
 <a href="#extending" class="anchor"></a>Extending</h2>
 <p>The primary user of this package is <a href="https://github.com/tidyverse/tibble">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can add color with only a few changes:</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>Implement the <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft()</code></a> method for your data type.</li>
 <li>Add pillar to <code>Suggests</code> and implement dynamic method registration using <a href="https://vctrs.r-lib.org/reference/s3_register.html"><code>vctrs::s3_register()</code></a>.
 <ul>
