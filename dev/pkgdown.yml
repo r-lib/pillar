@@ -3,7 +3,7 @@ pkgdown: 1.6.1.9000
 pkgdown_sha: c931fe24c135c6ca704ae9f300470e9c66d8bfe7
 articles:
   customization: customization.html
-last_built: 2021-02-04T05:09Z
+last_built: 2021-02-04T17:20Z
 urls:
   reference: https://pillar.r-lib.org//reference
   article: https://pillar.r-lib.org//articles
