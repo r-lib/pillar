@@ -2,7 +2,6 @@
 
     Code
       options(width = 59)
-    Code
       colonnade(df_str[c(12L, 33L, 36L, 7L, 41L, 3L, 18L, 23L, 13L, 44L, 14L, 16L,
         25L, 21L, 19L, 45L, 43L, 29L, 1L, 30L, 22L, 27L, 15L, 47L, 28L, 31L, 10L, 50L,
         4L, 40L, 42L, 8L, 6L, 9L, 24L, 48L, 38L, 37L, 34L, 49L, 46L, 2L, 32L, 35L,
@@ -85,7 +84,6 @@
 
     Code
       options(width = 54)
-    Code
       colonnade(df_str[c(40L, 28L, 7L, 16L, 48L, 6L, 21L, 1L,
         20L, 17L, 47L, 45L, 29L, 41L, 49L, 34L, 4L, 39L, 18L,
         36L, 26L, 38L, 10L, 8L, 5L, 15L, 44L, 24L, 46L, 14L, 25L,
@@ -145,7 +143,6 @@
 
     Code
       options(width = 32)
-    Code
       colonnade(df_str[c(47L, 42L, 4L, 46L, 9L, 34L, 19L,
         39L, 8L, 32L, 36L, 12L, 29L, 5L, 15L, 11L, 31L, 27L,
         33L, 28L, 43L, 6L, 13L, 22L, 14L, 16L, 35L, 50L,
@@ -203,7 +200,6 @@
 
     Code
       options(width = 55)
-    Code
       colonnade(df_str[c(41L, 4L, 25L,
         31L, 8L, 22L, 19L, 10L, 29L,
         21L, 34L, 5L, 26L, 36L, 47L,
@@ -268,7 +264,6 @@
 
     Code
       options(width = 54)
-    Code
       colonnade(df_str[c(27L, 22L, 9L, 23L, 16L, 19L, 25L,
         31L, 44L, 1L, 28L, 46L, 12L, 20L, 43L, 37L, 5L, 2L,
         18L, 41L, 26L, 33L, 11L, 49L, 24L, 35L, 4L, 47L, 30L,
@@ -314,7 +309,6 @@
 
     Code
       options(width = 49)
-    Code
       colonnade(df_str[c(32L, 24L, 18L, 25L, 26L, 13L, 33L,
         2L, 50L, 38L, 37L, 16L, 27L, 9L, 28L, 49L, 34L, 15L,
         17L, 35L, 22L, 47L, 3L, 21L, 23L, 41L, 5L, 1L, 14L,
@@ -393,7 +387,6 @@
 
     Code
       options(width = 38)
-    Code
       colonnade(df_str[c(44L, 34L, 49L, 9L, 15L, 16L,
         1L, 10L, 40L, 29L, 26L, 22L, 4L, 43L, 20L, 17L,
         46L, 33L, 35L, 32L, 2L, 12L, 8L, 37L, 23L, 39L,
@@ -442,7 +435,6 @@
 
     Code
       options(width = 54)
-    Code
       colonnade(df_str[c(21L, 26L, 8L, 22L,
         41L, 24L, 13L, 5L, 47L, 37L, 4L,
         42L, 19L, 34L, 11L, 43L, 38L, 3L,
@@ -493,7 +485,6 @@
 
     Code
       options(width = 39)
-    Code
       colonnade(df_str[c(23L, 49L, 13L, 37L, 3L, 25L, 36L,
         4L, 9L, 7L, 27L, 48L, 12L, 10L, 50L, 14L, 38L, 39L,
         46L, 22L, 28L, 8L, 21L, 44L, 32L, 40L, 31L, 1L, 29L,
@@ -623,7 +614,6 @@
 
     Code
       options(width = 31)
-    Code
       colonnade(df_str[c(45L, 14L, 49L, 24L,
         22L, 31L, 42L, 18L, 16L, 47L, 25L,
         4L, 37L, 8L, 26L, 21L, 50L, 5L, 41L,
@@ -686,7 +676,6 @@
 
     Code
       options(width = 52)
-    Code
       colonnade(df_str[c(38L, 46L,
         17L, 11L, 24L, 18L, 16L, 39L,
         50L, 42L, 6L, 13L, 37L, 29L,
@@ -769,7 +758,6 @@
 
     Code
       options(width = 58)
-    Code
       colonnade(df_str[c(17L, 28L, 29L, 27L, 20L, 31L,
         43L, 30L, 32L, 48L, 10L, 50L, 13L, 12L, 36L, 21L,
         46L, 33L, 25L, 35L, 1L, 5L, 16L, 34L, 18L, 42L,
@@ -851,7 +839,6 @@
 
     Code
       options(width = 47)
-    Code
       colonnade(df_str[c(1L, 26L, 20L, 12L, 49L, 16L, 24L, 4L,
         15L, 47L, 8L, 11L, 14L, 50L, 17L, 2L, 44L, 30L, 36L,
         45L, 25L, 38L, 18L, 29L, 5L, 13L, 3L, 23L, 48L, 40L,
@@ -896,7 +883,6 @@
 
     Code
       options(width = 55)
-    Code
       colonnade(df_str[c(6L, 49L, 26L, 45L, 25L, 15L,
         31L, 20L, 21L, 44L, 23L, 48L, 37L, 36L, 5L,
         43L, 11L, 14L, 13L, 39L, 16L, 12L, 4L, 18L,
@@ -954,7 +940,6 @@
 
     Code
       options(width = 46)
-    Code
       colonnade(df_str[c(38L, 42L, 41L, 10L, 40L, 11L, 27L,
         9L, 17L, 37L, 46L, 13L, 36L, 18L, 31L, 20L, 39L, 12L,
         44L, 33L, 50L, 34L, 26L, 32L, 23L, 30L, 29L, 21L, 4L,

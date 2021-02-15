@@ -35,7 +35,7 @@ Suggests:
     nycflights13,
     rmarkdown,
     survival,
-    testthat (>= 2.0.0),
+    testthat (>= 3.0.2),
     tibble,
     withr
 VignetteBuilder: 

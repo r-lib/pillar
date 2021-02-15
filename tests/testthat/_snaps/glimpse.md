@@ -28,16 +28,13 @@
       $ Species      <fct> setosa, setosa, setosa, setosa, setosa, setosa,~
     Code
       # No columns
-    Code
       glimpse(as_tbl(iris[integer()]), width = 70L)
     Output
       Rows: 150
       Columns: 0
     Code
       # Non-syntactic names
-    Code
       df <- tibble::tibble(`mean(x)` = 5, `var(x)` = 3)
-    Code
       glimpse(df, width = 28)
     Output
       Rows: 1
@@ -60,7 +57,6 @@
       $ i <list> [[1, <2, 3>], [<4, 5, 6>], [NA]]
     Code
       # options(tibble.width = 50)
-    Code
       withr::with_options(list(tibble.width = 50), glimpse(as_tbl(df_all)))
     Output
       Rows: 3
@@ -76,7 +72,6 @@
       $ i <list> [[1, <2, 3>], [<4, 5, 6>], [NA]]
     Code
       # options(tibble.width = 35)
-    Code
       withr::with_options(list(tibble.width = 35), glimpse(as_tbl(df_all)))
     Output
       Rows: 3
@@ -92,13 +87,11 @@
       $ i <list> [[1, <2, 3>], [<4, 5, 6~
     Code
       # non-tibble
-    Code
       glimpse(5)
     Output
        num 5
     Code
       iris2 <- as_unknown_rows(iris)
-    Code
       glimpse(iris2, width = 70L)
     Output
       Rows: ??
@@ -110,11 +103,8 @@
       $ Species      <fct> setosa, setosa, setosa, setosa, setosa, setosa,~
     Code
       Species <- unique(iris$Species)
-    Code
       data <- unname(split(iris, iris$Species))
-    Code
       nested_iris_df <- tibble::tibble(Species, data)
-    Code
       glimpse(nested_iris_df, width = 70L)
     Output
       Rows: 3
@@ -123,9 +113,7 @@
       $ data    <list> [<data.frame[50 x 5]>, <data.frame[50 x 5]>, <data.f~
     Code
       data <- map(data, as_tbl)
-    Code
       nested_iris_tbl <- tibble::tibble(Species, data)
-    Code
       glimpse(nested_iris_tbl, width = 70L)
     Output
       Rows: 3
