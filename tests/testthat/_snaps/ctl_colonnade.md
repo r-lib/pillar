@@ -416,7 +416,6 @@
 
     Code
       options(width = 70)
-    Code
       ctl_colonnade(df_all, width = 300)
     Output
             a     b c     d     e     f          g                  
@@ -434,7 +433,6 @@
 
     Code
       options(width = 60)
-    Code
       ctl_colonnade(df_all, width = 300)
     Output
             a     b c     d     e     f         
@@ -452,7 +450,6 @@
 
     Code
       options(width = 50)
-    Code
       ctl_colonnade(df_all, width = 300)
     Output
             a     b c     d     e     f         
@@ -470,7 +467,6 @@
 
     Code
       options(width = 40)
-    Code
       ctl_colonnade(df_all, width = 300)
     Output
             a     b c     d     e    
@@ -493,7 +489,6 @@
 
     Code
       options(width = 30)
-    Code
       ctl_colonnade(df_all, width = 300)
     Output
             a     b c     d    
@@ -521,7 +516,6 @@
 
     Code
       options(width = 20)
-    Code
       ctl_colonnade(df_all, width = 300)
     Output
             a     b c    
@@ -585,9 +579,7 @@
 
     Code
       x <- list(`NA` = 1:3, set_to_NA = 4:6)
-    Code
       names(x)[[2]] <- NA_character_
-    Code
       ctl_colonnade(x, width = 30)
     Output
          `NA`    ``

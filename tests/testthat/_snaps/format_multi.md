@@ -509,7 +509,6 @@
 
     Code
       options(width = 70)
-    Code
       colonnade(df_all, width = 300)
     Output
             a     b c     d     e     f          g                  
@@ -527,7 +526,6 @@
 
     Code
       options(width = 60)
-    Code
       colonnade(df_all, width = 300)
     Output
             a     b c     d     e     f         
@@ -545,7 +543,6 @@
 
     Code
       options(width = 50)
-    Code
       colonnade(df_all, width = 300)
     Output
             a     b c     d     e     f         
@@ -563,7 +560,6 @@
 
     Code
       options(width = 40)
-    Code
       colonnade(df_all, width = 300)
     Output
             a     b c     d     e    
@@ -586,7 +582,6 @@
 
     Code
       options(width = 30)
-    Code
       colonnade(df_all, width = 300)
     Output
             a     b c     d    
@@ -614,7 +609,6 @@
 
     Code
       options(width = 20)
-    Code
       colonnade(df_all, width = 300)
     Output
             a     b c    

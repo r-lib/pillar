@@ -100,7 +100,6 @@
       31  20.6     87   77  
     Code
       # Unknown rows
-    Code
       tbl_format_setup(as_unknown_rows(trees[1:9, ]), width = 30, n = 10)
     Output
       <pillar_tbl_format_setup>
@@ -153,7 +152,6 @@
       # ... with more rows
     Code
       # No rows
-    Code
       tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
     Output
       <pillar_tbl_format_setup>
@@ -162,14 +160,12 @@
       #   a <chr>, b <lgl>
     Code
       # No columns
-    Code
       tbl_format_setup(as_tbl(trees[character()]), width = 30, n = 5L)
     Output
       <pillar_tbl_format_setup>
       # A data frame: 31 x 0
     Code
       # No rows, unknown
-    Code
       tbl_format_setup(as_unknown_rows(trees[integer(), ]), width = 30, n = 5L)
     Output
       <pillar_tbl_format_setup>
@@ -180,7 +176,6 @@
       #   Volume <dbl>
     Code
       # No columns, unknown
-    Code
       tbl_format_setup(as_unknown_rows(trees[, character()]), width = 30, n = 5L)
     Output
       <pillar_tbl_format_setup>
@@ -189,7 +184,6 @@
       #   total
     Code
       # Long table, unknown
-    Code
       tbl_format_setup(as_unknown_rows(new_tbl(list(a = seq.int(10000)))), n = 5L,
       width = 30L)
     Output

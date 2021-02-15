@@ -12,7 +12,6 @@
       # A data frame: ?? x 3
     Code
       # Narrow
-    Code
       tbl_format_header(tbl_format_setup(as_tbl(mtcars), width = 10))
     Output
       <tbl_format_header(setup)>
@@ -22,7 +21,6 @@
       #   11
     Code
       # Custom tbl_sum()
-    Code
       tbl_format_header(tbl_format_setup(new_foo_tbl(), width = 30))
     Output
       <tbl_format_header(setup)>

@@ -2,7 +2,6 @@
 
     Code
       # Various column types
-    Code
       tbl_format_body(tbl_format_setup(df_all, width = 30))
     Output
       <tbl_format_body(setup)>
@@ -27,11 +26,8 @@
       3 <list [1]>
     Code
       # POSIXct and POSIXlt
-    Code
       df <- new_tbl(list(x = as.POSIXct("2016-01-01 12:34:56 GMT") + 1:12))
-    Code
       df$y <- as.POSIXlt(df$x)
-    Code
       tbl_format_body(tbl_format_setup(df, width = 60L))
     Output
       <tbl_format_body(setup)>
@@ -51,7 +47,6 @@
       12 2016-01-01 12:35:08 2016-01-01 12:35:08
     Code
       # Colonnade
-    Code
       ctl_colonnade(list(a = 1:3), has_row_id = FALSE)
     Output
           a
@@ -72,9 +67,7 @@
 
     Code
       x <- c("成交日期", "合同录入日期")
-    Code
       df <- new_tbl(setNames(list(1:3, 4:6), x))
-    Code
       print(df, n = 8L, width = 60L)
     Output
       # A data frame: 3 × 2
