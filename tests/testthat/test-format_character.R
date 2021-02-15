@@ -79,6 +79,9 @@ test_that("output test", {
   expect_snapshot(pillar(add_special(c(" a")), width = 5))
   expect_snapshot(pillar(add_special(c("a ")), width = 5))
   expect_snapshot(pillar(add_special(c("a b")), width = 5))
+  expect_snapshot(pillar(add_special(c("\t")), width = 10))
+  expect_snapshot(pillar(add_special(c("a\nb")), width = 10))
+  expect_snapshot(pillar(add_special(c("a\001b")), width = 10))
 })
 
 test_that("output test (not on Windows)", {
