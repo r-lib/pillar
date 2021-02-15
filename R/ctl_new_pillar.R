@@ -6,7 +6,7 @@
 #' class.
 #' Users will rarely need them.
 #'
-#' `ctl_new_pillar()` is called to construct pillars for one-dimensional
+#' `ctl_new_pillar()` is called to construct pillars for regular (one-dimensional)
 #' vectors.
 #' The default implementation returns an object constructed with [pillar()].
 #' Extend this method to tweak pillar components returned from the default
