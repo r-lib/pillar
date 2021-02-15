@@ -443,17 +443,13 @@ Use option?
 
 ## Next steps
 
-- Test coverage per file
-- Deprecate `format_type_sum()` (how did that even work?)
-- Look for FIXMEs
-- Wait for tibble 3.0.6 to appear on RSPM
-- Revdepcheck
-- Use penguins
-- Export `tbl()` and `as_tbl()`
-    - Better not
 - Document all functions
 - Rethink `new_pillar_box()` and `pillar_box()`, closer coupling with `new_ornament()`?
     - Start with documenting `new_pillar_box()` etc.
+- Test coverage per file
+- Deprecate `format_type_sum()` (how did that even work?)
+- Look for FIXMEs
+- Use penguins
 - Release
 - Blog post?
 
