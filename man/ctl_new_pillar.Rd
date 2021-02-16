@@ -60,7 +60,7 @@ ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
   new_pillar(list(
     title = out$title,
     type = out$type,
-    lines = new_pillar_box(list(lines("=")), width = 1),
+    lines = new_pillar_component(list(lines("=")), width = 1),
     data = out$data
   ))
 }

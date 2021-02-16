@@ -20,7 +20,7 @@ reference:
     contents:
       - pillar
       - new_pillar
-      - new_pillar_box
+      - new_pillar_component
       - pillar_shaft
       - starts_with("new_pillar_shaft")
       - type_sum
