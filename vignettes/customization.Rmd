@@ -126,6 +126,7 @@ format_footer <- function(x, ...) {
 ### New generics
 
 Because printing is now internal to pillar, there's no need to touch `colonnade()`.
+
 Internally, the object to be printed is used as `controller` argument.
 The default controller mimics current behavior.
 
@@ -443,17 +444,23 @@ Use option?
 
 ## Next steps
 
+- Document control and data flow in a new vignette
+
+    - What operations happen when? Are we overspending time recomputing e.g. alignment or calling `format()`? Do we really need to do S3 dispatch for every cell?
+    - Needs better printing for individual steps
+    - Why does printing of compound pillars even work? Transpose? Do we need this?
+    - `ctl_colonnade()` is opaque, for good reason?
+
+- Document all functions
+- Rethink `new_pillar_box()` and `pillar_box()`, closer coupling with `new_ornament()`?
+    - Boxes and ornaments are different concepts: a box is used to describe the components of a pillar, an ornament has the contents of a shaft (or of another component)
+    - Start with documenting `new_pillar_box()` etc.
 - Test coverage per file
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
 - Wait for tibble 3.0.6 to appear on RSPM
 - Revdepcheck
 - Use penguins
-- Export `tbl()` and `as_tbl()`
-    - Better not
-- Document all functions
-- Rethink `new_pillar_box()` and `pillar_box()`, closer coupling with `new_ornament()`?
-    - Start with documenting `new_pillar_box()` etc.
 - Release
 - Blog post?
 
