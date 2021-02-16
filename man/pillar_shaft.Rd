@@ -58,7 +58,7 @@ unless the string fits a shorter width.}
 \item{na_indent}{Indentation of \code{NA} values.}
 }
 \description{
-\ifelse{html}{\out{<a href='https://lifecycle.r-lib.org/articles/stages.html#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a>}}{\strong{Stable}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
 Internal class for formatting the data for a column.
 \code{pillar_shaft()} is a coercion method that must be implemented
