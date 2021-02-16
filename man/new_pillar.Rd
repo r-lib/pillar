@@ -4,10 +4,10 @@
 \alias{new_pillar}
 \title{Construct a custom pillar object}
 \usage{
-new_pillar(boxes, ..., width = NULL, class = NULL)
+new_pillar(components, ..., width = NULL, class = NULL)
 }
 \arguments{
-\item{boxes}{A named list of components constructed with \code{\link[=pillar_box]{pillar_box()}}.}
+\item{components}{A named list of components constructed with \code{\link[=pillar_box]{pillar_box()}}.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 

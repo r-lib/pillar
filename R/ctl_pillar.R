@@ -124,7 +124,7 @@ rowidformat2 <- function(data, names, has_star) {
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @inheritParams pillar
-#' @param boxes A named list of components constructed with [pillar_box()].
+#' @param components A named list of components constructed with [pillar_box()].
 #' @param class Name of subclass.
 #'
 #' @export
@@ -142,14 +142,14 @@ rowidformat2 <- function(data, names, has_star) {
 #'   title = pillar_box(new_ornament(c("abc", "de"), align = "right")),
 #'   lines = new_pillar_box(list(lines("=")), width = 1)
 #' ))
-new_pillar <- function(boxes, ..., width = NULL, class = NULL) {
+new_pillar <- function(components, ..., width = NULL, class = NULL) {
   check_dots_empty()
-  if (length(boxes) > 0 && !is_named(boxes)) {
+  if (length(components) > 0 && !is_named(components)) {
     abort("All components must have names.")
   }
 
   structure(
-    boxes,
+    components,
     width = width,
     class = c(class, "pillar")
   )

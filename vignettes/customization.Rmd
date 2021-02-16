@@ -233,7 +233,7 @@ get_cell_min_widths <- function(x) {
 }
 ```
 
-The cells may be stored as a list with one element per cell (for `type` and `data` components), or as a hierarchy of boxes (for the `name` component).
+The cells may be stored as a list with one element per cell (for `type` and `data` components), or as a hierarchy of components (for the `name` component).
 In the latter case, `length(x) < length(get_cell_widths(x))`, and each element must be a box.
 
 Extraction of a contiguous range of cells is supported.
@@ -263,8 +263,8 @@ get_cells_for_hierarchy <- function(x, from, to) {
 
 ### Sub-pillars and their widths
 
-If the components of a pillar are boxes with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component box.
-For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual boxes.
+If the components of a pillar are components with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component box.
+For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual components.
 
 ```{r}
 pillar_get_widths <- function(x) {
