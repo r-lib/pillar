@@ -22,7 +22,15 @@ tbl_format_footer <- function(x, setup, ...) {
 }
 
 #' @export
-tbl_format_footer.default <- function(x, setup, ...) {
+tbl_format_footer.pillar_tbl_format_setup <- function(x, ...) {
+  new_vertical(c(
+    cli::style_bold("<tbl_format_footer(setup)>"),
+    tbl_format_footer(x$x, setup = x)
+  ))
+}
+
+#' @export
+tbl_format_footer.tbl <- function(x, setup, ...) {
   footer <- pre_dots(format_footer(x, setup))
   footer_comment <- split_lines(format_comment(footer, width = setup$width))
   style_subtle(footer_comment)
