@@ -81,8 +81,8 @@ get_cells_for_hierarchy <- function(x, from, to) {
   from_idx <- idx[[1]]
   to_idx <- idx[[2]]
 
-  browser()
-  abort("NYI")
+  # FIXME
+  abort("NYI: get_cells_for_hierarchy()")
 }
 
 pillar_get_widths <- function(x) {
