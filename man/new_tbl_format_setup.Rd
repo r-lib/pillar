@@ -34,7 +34,7 @@ even if the body does not have any columns.}
 }
 \description{
 The object returned from the default method of \code{\link[=tbl_format_setup]{tbl_format_setup()}}
-is a list with a \code{"class"} attribute and the elements described in the
+is an object with a \code{"class"} attribute and the elements described in the
 "Parameters" section.
 
 Named elements can be added to such objects without affecting the behavior.

@@ -133,7 +133,7 @@ combine_pillars <- function(pillars) {
     )
   })
 
-  new_pillar(t_pillars)
+  new_pillar(t_pillars, class = "compound_pillar")
 }
 
 # Can be rewritten with a repeat loop

@@ -29,7 +29,7 @@ class.
 Users will rarely need them.
 }
 \details{
-\code{ctl_new_pillar()} is called to construct pillars for one-dimensional
+\code{ctl_new_pillar()} is called to construct pillars for regular (one-dimensional)
 vectors.
 The default implementation returns an object constructed with \code{\link[=pillar]{pillar()}}.
 Extend this method to tweak pillar components returned from the default

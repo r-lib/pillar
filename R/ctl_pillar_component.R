@@ -1,14 +1,28 @@
-#' TBD
+#' Components of a pillar
 #'
-#' TBD
+#' `new_pillar_component()` constructs an object of class `"pillar_component"`.
+#'
+#' Objects of class `"pillar"` are internally a named lists of their components.
+#' The default components are `title` (may be missing), `type`, and `data`.
+#' Each component is a `"pillar_component"`.
+#'
+#' This class captures contents that can be fitted in a rectangle.
+#' Each component consists of one or multiple cells that
+#' are aligned horizontally (with one space in between) when printed.
+#' Each cell has a maximum (i.e., desired) width and may have a minimum width
+#' if the contents are compressible.
+#' The component object stores the width of the cells as an attribute.
 #'
 #' @inheritParams ellipsis::dots_empty
-#' @param x TBD
+#' @param x A bare list (for `new_pillar_component()`), or an object with width
+#'   and minimum width attributes (for `pillar_component()`).
 #' @param width,min_width TBD
 #' @export
+#' @examples
+#' # TBD
 new_pillar_component <- function(x, ..., width, min_width = NULL) {
   check_dots_empty()
-  stopifnot(is.list(x))
+  stopifnot(rlang::is_bare_list(x))
   stopifnot(is_integerish(width), length(width) == length(x))
   if (!is.null(min_width)) {
     stopifnot(is_integerish(min_width), length(min_width) == length(x))
@@ -17,11 +31,16 @@ new_pillar_component <- function(x, ..., width, min_width = NULL) {
   structure(
     x,
     width = width,
-    min_width = min_width
-    # keep class attribute from x
+    min_width = min_width,
+    class = "pillar_component"
   )
 }
 
+#' pillar_component()
+#'
+#' `pillar_component()` is a convenience helper that wraps the input in a list
+#' and extracts width and minimum width.
+#'
 #' @export
 #' @rdname new_pillar_component
 pillar_component <- function(x) {
@@ -62,8 +81,8 @@ get_cells_for_hierarchy <- function(x, from, to) {
   from_idx <- idx[[1]]
   to_idx <- idx[[2]]
 
-  browser()
-  abort("NYI")
+  # FIXME
+  abort("NYI: get_cells_for_hierarchy()")
 }
 
 pillar_get_widths <- function(x) {

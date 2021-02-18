@@ -136,7 +136,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'
 #' @description
 #' The object returned from the default method of [tbl_format_setup()]
-#' is a list with a `"class"` attribute and the elements described in the
+#' is an object with a `"class"` attribute and the elements described in the
 #' "Parameters" section.
 #'
 #' Named elements can be added to such objects without affecting the behavior.
@@ -186,6 +186,8 @@ format.pillar_tbl_format_setup <- function(x, ...) {
   check_dots_empty()
   c(
     cli::style_bold("<pillar_tbl_format_setup>"),
-    format_setup(x$x, setup = x)
+    tbl_format_header(x),
+    tbl_format_body(x),
+    tbl_format_footer(x)
   )
 }

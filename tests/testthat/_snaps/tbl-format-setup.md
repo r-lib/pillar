@@ -4,7 +4,9 @@
       tbl_format_setup(as_tbl(mtcars), width = 80)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: 32 x 11
+      <tbl_format_body(setup)>
            mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
        * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
        1  21       6 160     110  3.9   2.62  16.5     0     1     4     4
@@ -39,11 +41,14 @@
       30  19.7     6 145     175  3.62  2.77  15.5     0     1     5     6
       31  15       8 301     335  3.54  3.57  14.6     0     1     5     8
       32  21.4     4 121     109  4.11  2.78  18.6     1     1     4     2
+      <tbl_format_footer(setup)>
     Code
       tbl_format_setup(as_tbl(mtcars), width = 30, n = 8)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: 32 x 11
+      <tbl_format_body(setup)>
           mpg   cyl  disp    hp
       * <dbl> <dbl> <dbl> <dbl>
       1  21       6  160    110
@@ -54,6 +59,7 @@
       6  18.1     6  225    105
       7  14.3     8  360    245
       8  24.4     4  147.    62
+      <tbl_format_footer(setup)>
       # ... with 24 more rows, and
       #   7 more variables:
       #   drat <dbl>, wt <dbl>,
@@ -64,7 +70,9 @@
       tbl_format_setup(as_tbl(trees), width = 30, n = 100)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: 31 x 3
+      <tbl_format_body(setup)>
          Girth Height Volume
          <dbl>  <dbl>  <dbl>
        1   8.3     70   10.3
@@ -98,12 +106,15 @@
       29  18       80   51.5
       30  18       80   51  
       31  20.6     87   77  
+      <tbl_format_footer(setup)>
     Code
       # Unknown rows
       tbl_format_setup(as_unknown_rows(trees[1:9, ]), width = 30, n = 10)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: ?? x 3
+      <tbl_format_body(setup)>
         Girth Height Volume
       * <dbl>  <dbl>  <dbl>
       1   8.3     70   10.3
@@ -115,11 +126,14 @@
       7  11       66   15.6
       8  11       75   18.2
       9  11.1     80   22.6
+      <tbl_format_footer(setup)>
     Code
       tbl_format_setup(as_unknown_rows(trees[1:10, ]), width = 30, n = 10)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: ?? x 3
+      <tbl_format_body(setup)>
          Girth Height Volume
        * <dbl>  <dbl>  <dbl>
        1   8.3     70   10.3
@@ -132,11 +146,14 @@
        8  11       75   18.2
        9  11.1     80   22.6
       10  11.2     75   19.9
+      <tbl_format_footer(setup)>
     Code
       tbl_format_setup(as_unknown_rows(trees[1:11, ]), width = 30, n = 10)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: ?? x 3
+      <tbl_format_body(setup)>
          Girth Height Volume
        * <dbl>  <dbl>  <dbl>
        1   8.3     70   10.3
@@ -149,13 +166,17 @@
        8  11       75   18.2
        9  11.1     80   22.6
       10  11.2     75   19.9
+      <tbl_format_footer(setup)>
       # ... with more rows
     Code
       # No rows
       tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: 0 x 2
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
       # ... with 2 variables:
       #   a <chr>, b <lgl>
     Code
@@ -163,13 +184,19 @@
       tbl_format_setup(as_tbl(trees[character()]), width = 30, n = 5L)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: 31 x 0
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
     Code
       # No rows, unknown
       tbl_format_setup(as_unknown_rows(trees[integer(), ]), width = 30, n = 5L)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: ?? x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
       # ... with 3 variables:
       #   Girth <dbl>,
       #   Height <dbl>,
@@ -179,7 +206,10 @@
       tbl_format_setup(as_unknown_rows(trees[, character()]), width = 30, n = 5L)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: ?? x 0
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
       # ... with at least 5 rows
       #   total
     Code
@@ -188,7 +218,9 @@
       width = 30L)
     Output
       <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
       # A data frame: ?? x 1
+      <tbl_format_body(setup)>
             a
         <int>
       1     1
@@ -196,5 +228,6 @@
       3     3
       4     4
       5     5
+      <tbl_format_footer(setup)>
       # ... with more rows
 

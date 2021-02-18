@@ -7,6 +7,21 @@
 #' The output uses one row for a title (if given), one row for the type,
 #' and `vec_size(x)` rows for the data.
 #'
+#' @details
+#' A pillar consists of arbitrary components.
+#' The `pillar()` constructor uses `title`, `type`, and `data`.
+#'
+#' - `title` via [new_pillar_title()]
+#' - `type` via [new_pillar_type()], which calls [type_sum()]
+#'   internally
+#' - `data` via [pillar_shaft()]
+#'
+#' All components are formatted via [format()] when displaying the pillar.
+#' A `width` argument is passed to each `format()` call.
+#'
+#' As of pillar 1.5.0, `pillar()` returns `NULL` if the width is insufficient
+#' to display the data.
+#'
 #' @param x A vector to format.
 #' @param title An optional title for the column. The title will be
 #'   used "as is", no quoting will be applied.
@@ -39,20 +54,8 @@
 #' pillar(date + c(1, NA, 3:5))
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
-  #' @details
-  #' A pillar consists of arbitrary components.
-  #' The `pillar()` constructor uses `title`, `type`, and `data`.
-  #'
-  #' - `title` via [new_pillar_title()]
-  #' - `type` via [new_pillar_type()], which calls [type_sum()]
-  #'   internally
-  #' - `data` via [pillar_shaft()]
-  #'
-  #' All components are formatted via [format()] when displaying the pillar.
-  #' A `width` argument is passed to each `format()` call.
-  #'
-  #' As of pillar 1.5.0, `pillar()` returns `NULL` if the width is insufficient
-  #' to display the data.
+  "!!DEBUG pillar(`v(title)`, `v(width)`)"
+
   pillar_from_shaft(
     new_pillar_title(title),
     new_pillar_type(x),
@@ -175,4 +178,18 @@ format.pillar <- function(x, width = NULL, ...) {
 print.pillar <- function(x, ...) {
   writeLines(style_bold("<pillar>"))
   print(format(x, ...))
+}
+
+#' @export
+print.compound_pillar <- function(x, ...) {
+  len <- length(x[1][[1]])
+  desc <- paste0("<compound_pillar[", len, "]>")
+  writeLines(style_bold(desc))
+  print(format(x, ...))
+
+  if (len > 1) {
+    writeLines(style_subtle(pre_dots(paste0("and ", len - 1, " more sub-pillars"))))
+  }
+
+  invisible(x)
 }
