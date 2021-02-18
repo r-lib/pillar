@@ -4,7 +4,7 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 }
 
 new_packed_pillars <- function(x, controller, width, title) {
-  "!!DEBUG new_packed_pillars()"
+  "!!DEBUG new_packed_pillars(`v(width)`, `v(title)`)"
 
   if (length(x) == 0) {
     return(compact(list(pillar_from_shaft(
