@@ -83,23 +83,23 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <pre class="chroma">
 <span class="c"># pillar is installed if you install the tidyverse package:</span>
-<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="o">(</span><span class="s">"tidyverse"</span><span class="o">)</span>
+<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"tidyverse"</span><span class="o">)</span>
 
 <span class="c"># Alternatively, install just pillar:</span>
-<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="o">(</span><span class="s">"pillar"</span><span class="o">)</span>
+<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"pillar"</span><span class="o">)</span>
 
 <span class="c"># Or the the development version from GitHub:</span>
 <span class="c"># install.packages("devtools")</span>
-<span class="nf">devtools</span><span class="nf">::</span><span class="nf"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="o">(</span><span class="s">"r-lib/pillar"</span><span class="o">)</span></pre>
+<span class="nf">devtools</span><span class="nf">::</span><span class="nf"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="o">(</span><span class="s">"r-lib/pillar"</span><span class="o">)</span></pre>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="https://tibble.tidyverse.org/">tibble</a>.</p>
+<p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="https://tibble.tidyverse.org/" class="external-link">tibble</a>.</p>
 <pre class="chroma">
-<span class="kr"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span>
+<span class="kr"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span>
 
-<span class="nv">x</span> <span class="o">&lt;-</span> <span class="m">123456789</span> <span class="o">*</span> <span class="o">(</span><span class="m">10</span> <span class="o">^</span> <span class="nf"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="o">(</span><span class="o">-</span><span class="m">3</span>, <span class="o">-</span><span class="m">5</span>, <span class="kc">NA</span>, <span class="o">-</span><span class="m">8</span>, <span class="o">-</span><span class="m">10</span><span class="o">)</span><span class="o">)</span>
+<span class="nv">x</span> <span class="o">&lt;-</span> <span class="m">123456789</span> <span class="o">*</span> <span class="o">(</span><span class="m">10</span> <span class="o">^</span> <span class="nf"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="o">(</span><span class="o">-</span><span class="m">3</span>, <span class="o">-</span><span class="m">5</span>, <span class="kc">NA</span>, <span class="o">-</span><span class="m">8</span>, <span class="o">-</span><span class="m">10</span><span class="o">)</span><span class="o">)</span>
 <span class="nf"><a href="https://pillar.r-lib.org/reference/pillar.html">pillar</a></span><span class="o">(</span><span class="nv">x</span><span class="o">)</span>
 <span class="c">#&gt; &lt;pillar&gt;</span>
 <span class="c">#&gt;       &lt;dbl&gt;</span>
@@ -114,23 +114,23 @@
 <div id="extending" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extending" class="anchor"></a>Extending</h2>
-<p>The primary user of this package is <a href="https://github.com/tidyverse/tibble">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can add color with only a few changes:</p>
+<p>The primary user of this package is <a href="https://github.com/tidyverse/tibble" class="external-link">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can add color with only a few changes:</p>
 <ol style="list-style-type: decimal">
 <li>Implement the <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft()</code></a> method for your data type.</li>
-<li>Add pillar to <code>Suggests</code> and implement dynamic method registration using <a href="https://vctrs.r-lib.org/reference/s3_register.html"><code>vctrs::s3_register()</code></a>.
+<li>Add pillar to <code>Suggests</code> and implement dynamic method registration using <a href="https://vctrs.r-lib.org/reference/s3_register.html" class="external-link"><code>vctrs::s3_register()</code></a>.
 <ul>
 <li>If you don’t mind the dependency, you can also add it to <code>Imports</code>, and import the methods you override with a regular <code>NAMESPACE</code> import.</li>
 </ul>
 </li>
 </ol>
-<p><a href="https://github.com/tidyverse/hms/pull/43">tidyverse/hms#43</a> shows the changes that were necessary to add colored output for the hms package:</p>
+<p><a href="https://github.com/tidyverse/hms/pull/43" class="external-link">tidyverse/hms#43</a> shows the changes that were necessary to add colored output for the hms package:</p>
 <ul>
 <li>
-<a href="https://github.com/tidyverse/hms/pull/43/files#diff-a63dd6b1da682a8549d03475ac91cdcf"><code>pillar.R</code></a> for the actual implementation (old name <code>colformat.R</code>)</li>
+<a href="https://github.com/tidyverse/hms/pull/43/files#diff-a63dd6b1da682a8549d03475ac91cdcf" class="external-link"><code>pillar.R</code></a> for the actual implementation (old name <code>colformat.R</code>)</li>
 <li>
-<a href="https://github.com/tidyverse/hms/pull/43/files#diff-35ba4a2677442e210c23a00a5601aba3"><code>DESCRIPTION</code></a> for the dependency</li>
+<a href="https://github.com/tidyverse/hms/pull/43/files#diff-35ba4a2677442e210c23a00a5601aba3" class="external-link"><code>DESCRIPTION</code></a> for the dependency</li>
 <li>
-<a href="https://github.com/tidyverse/hms/pull/43/files#diff-e549505eb95036528ca3b125f62915a6"><code>zzz.R</code></a> for the dynamic method registration</li>
+<a href="https://github.com/tidyverse/hms/pull/43/files#diff-e549505eb95036528ca3b125f62915a6" class="external-link"><code>zzz.R</code></a> for the dynamic method registration</li>
 </ul>
 <p>Some more detail is given below.</p>
 <div id="implementing-pillar_shaftyour_class_name" class="section level3">
@@ -142,7 +142,7 @@
 <li>It has an attribute <code>"width"</code>
 </li>
 <li>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</li>
-<li>It must implement a method <a href="https://rdrr.io/r/base/format.html"><code>format(x, width, ...)</code></a> that can be called with any value between <code>min_width</code> and <code>width</code>
+<li>It must implement a method <a href="https://rdrr.io/r/base/format.html" class="external-link"><code>format(x, width, ...)</code></a> that can be called with any value between <code>min_width</code> and <code>width</code>
 <ul>
 <li>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code>
 </li>
@@ -168,11 +168,11 @@
 <h2 class="hasAnchor">
 <a href="#inspirations" class="anchor"></a>Inspirations</h2>
 <ul>
-<li><p><a href="https://github.com/sunetos/TextPlots.jl">TextPlots</a> for use of Braille characters</p></li>
-<li><p><a href="https://github.com/holman/spark">spark</a> for use of block characters.</p></li>
+<li><p><a href="https://github.com/sunetos/TextPlots.jl" class="external-link">TextPlots</a> for use of Braille characters</p></li>
+<li><p><a href="https://github.com/holman/spark" class="external-link">spark</a> for use of block characters.</p></li>
 </ul>
-<p>The earliest use of unicode characters to generate sparklines appears to be <a href="https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/">from 2009</a>.</p>
-<p>Exercising these ideas to their fullest requires a font with good support for block drawing characters. <a href="https://fsd.it/shop/fonts/pragmatapro/">PragamataPro</a> is one such font.</p>
+<p>The earliest use of unicode characters to generate sparklines appears to be <a href="https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/" class="external-link">from 2009</a>.</p>
+<p>Exercising these ideas to their fullest requires a font with good support for block drawing characters. <a href="https://fsd.it/shop/fonts/pragmatapro/" class="external-link">PragamataPro</a> is one such font.</p>
 <hr>
 </div>
 <div id="code-of-conduct" class="section level2">
@@ -185,7 +185,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=pillar">https://​cloud.r-project.org/​package=pillar</a>
 </li>
@@ -197,7 +197,7 @@
 </div>
 
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
@@ -205,14 +205,14 @@
 </div>
 
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
 
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
 <a href="http://krlmlr.info">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small>  </li>
@@ -223,12 +223,12 @@
 </div>
 
 <div class="dev-status">
-<h2>Dev status</h2>
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://github.com/r-lib/pillar/actions"><img src="https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/github/r-lib/pillar?branch=master"><img src="https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-<li><a href="https://cran.r-project.org/package=pillar"><img src="https://www.r-pkg.org/badges/version/pillar" alt="CRAN status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://github.com/r-lib/pillar/actions" class="external-link"><img src="https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/github/r-lib/pillar?branch=master" class="external-link"><img src="https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://cran.r-project.org/package=pillar" class="external-link"><img src="https://www.r-pkg.org/badges/version/pillar" alt="CRAN status"></a></li>
 </ul>
 </div>
 

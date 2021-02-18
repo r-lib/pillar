@@ -52,7 +52,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -75,7 +75,7 @@
       <h1 data-toc-skip>Customization</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/vignettes/customization.Rmd"><code>vignettes/customization.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/vignettes/customization.Rmd" class="external-link"><code>vignettes/customization.Rmd</code></a></small>
       <div class="hidden name"><code>customization.Rmd</code></div>
 
     </div>
@@ -83,7 +83,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="op">)</span></code></pre></div>
 <p>This draft describes a new backward-compatible design for making the appearance of a pillar more extensible.</p>
 <p>The design consists of two parts:</p>
 <ol style="list-style-type: decimal">
@@ -114,11 +114,11 @@
   <span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_header.html">tbl_format_header</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
   <span class="va">body</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
   <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_footer.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Code and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-6c31ca86d55ea624328f" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6c31ca86d55ea624328f">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-114688bf28a7f7e64bb3" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-114688bf28a7f7e64bb3">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
@@ -134,7 +134,7 @@
 <code class="sourceCode R"><span class="va">tbl_format_header.default</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
   <span class="fu"><a href="../reference/style_num.html">style_subtle</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span>, <span class="st">": "</span>, <span class="va">sum</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span>, <span class="st">": "</span>, <span class="va">sum</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p><code><a href="../reference/tbl_format_body.html">tbl_format_body()</a></code> formats the colonnade prepared in the setup. The implementation is shown further below.</p>
@@ -183,20 +183,20 @@
 <span class="va">ctl_new_compound_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
   
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
   <span class="op">}</span>
   
-  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">UseMethod</a></span><span class="op">(</span><span class="st">"ctl_new_compound_pillar"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"ctl_new_compound_pillar"</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="co">#' @export</span>
 <span class="va">ctl_new_compound_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="fu">new_data_frame_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="fu">new_matrix_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">...</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
     <span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
@@ -207,11 +207,11 @@
 <span class="va">ctl_new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
   
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
   <span class="op">}</span>
   
-  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">UseMethod</a></span><span class="op">(</span><span class="st">"ctl_new_pillar"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"ctl_new_pillar"</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="co">#' @export</span>
@@ -225,17 +225,17 @@
 <p>Objects of class <code>"pillar"</code> are internally a named lists of their components. The default components are <code>title</code> (may be missing), <code>type</code>, and <code>data</code>. Each component is a <code>"pillar_box"</code>, as described below. Implementations may add new components or modify existing components.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
-<span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html">modifyList</a></span><span class="op">(</span><span class="va">base</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span>,
-    class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">"pillar"</span><span class="op">)</span>
+<span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html" class="external-link">modifyList</a></span><span class="op">(</span><span class="va">base</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span>,
+    class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">"pillar"</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>This allows e.g.:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
 <span class="va">ctl_new_pillar.foo_controller</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">out</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">NextMethod</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">NextMethod</a></span><span class="op">(</span><span class="op">)</span>
   <span class="fu"><a href="../reference/new_pillar.html">new_pillar</a></span><span class="op">(</span><span class="va">out</span>, capital <span class="op">=</span> <span class="cn">NULL</span>, footer <span class="op">=</span> <span class="va">...</span>, class <span class="op">=</span> <span class="st">"foo_pillar"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
@@ -245,7 +245,7 @@
 <p>An object of the <code>"pillar_box"</code> class captures contents that can be fitted in a rectangle. Each box consists of one or multiple cells that are aligned horizontally (with one space inbetween) when printed. Each cell has a maximum (=desired) width and may have a minimum width if the contents are compressible. The box object stores the width of the cells as an attribute.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_pillar_box</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">min_width</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span>
     <span class="va">x</span>,
     width <span class="op">=</span> <span class="va">width</span>,
     min_width <span class="op">=</span> <span class="va">min_width</span>
@@ -254,19 +254,19 @@
 <span class="op">}</span>
 
 <span class="va">get_cell_widths</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"width"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"width"</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">get_cell_min_widths</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"min_width"</span><span class="op">)</span> <span class="op">%||%</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"width"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"min_width"</span><span class="op">)</span> <span class="op">%||%</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"width"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>The cells may be stored as a list with one element per cell (for <code>type</code> and <code>data</code> components), or as a hierarchy of boxes (for the <code>name</code> component). In the latter case, <code>length(x) &lt; length(get_cell_widths(x))</code>, and each element must be a box.</p>
 <p>Extraction of a contiguous range of cells is supported.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">get_cells</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">from</span>, <span class="va">to</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="va">from</span> <span class="op">&lt;=</span> <span class="va">to</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="va">from</span> <span class="op">&lt;=</span> <span class="va">to</span><span class="op">)</span>
   
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu">get_cell_widths</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu">get_cell_widths</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="fu">get_cells_for_hierarchy</span><span class="op">(</span><span class="va">x</span>, <span class="va">from</span>, <span class="va">to</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
     <span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu">seq2</span><span class="op">(</span><span class="va">from</span>, <span class="va">to</span><span class="op">)</span>
@@ -275,9 +275,9 @@
 <span class="op">}</span>
 
 <span class="va">get_cells_for_hierarchy</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">from</span>, <span class="va">to</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">lengths</span> <span class="op">&lt;-</span> <span class="fu">map_int</span><span class="op">(</span><span class="va">x</span>, <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu">get_cell_widths</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">lengths</span> <span class="op">&lt;-</span> <span class="fu">map_int</span><span class="op">(</span><span class="va">x</span>, <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu">get_cell_widths</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   
-  <span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/bincode.html">.bincode</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">from</span>, <span class="va">to</span><span class="op">)</span>, <span class="va">lengths</span><span class="op">)</span>
+  <span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/bincode.html" class="external-link">.bincode</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">from</span>, <span class="va">to</span><span class="op">)</span>, <span class="va">lengths</span><span class="op">)</span>
   <span class="va">from_idx</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
   <span class="va">to_idx</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
   
@@ -309,7 +309,7 @@
 <h3 class="hasAnchor">
 <a href="#implementation-sketch" class="anchor"></a>Implementation sketch</h3>
 <ul>
-<li>The width of the tier(s) for printing is computed from <code><a href="https://rdrr.io/r/base/options.html">getOption("tibble.width")</a></code> and <code><a href="https://rdrr.io/r/base/options.html">getOption("width")</a></code>.</li>
+<li>The width of the tier(s) for printing is computed from <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("tibble.width")</a></code> and <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("width")</a></code>.</li>
 <li>We start with the assumption that each column consumes at least one character, with the space between the columns. This gives an upper bound for the number of columns and allows preallocating memory.</li>
 <li>The new <code>colonnade2()</code> gives us the representation of the entire data frame.</li>
 <li>The new implementation seamlessly supports display of matrices via <code>new_matrix_pillar()</code>.</li>
@@ -317,13 +317,13 @@
 </ul>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">colonnade2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">has_row_id</span>, <span class="va">width</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
   <span class="op">}</span>
   
   <span class="co"># Reserve space for rowid column in each tier</span>
   <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">is_false</span><span class="op">(</span><span class="va">has_row_id</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">rowid_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">trunc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>
+    <span class="va">rowid_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">trunc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>
     <span class="va">width</span> <span class="op">&lt;-</span> <span class="va">width</span> <span class="op">-</span> <span class="va">rowid_width</span> <span class="op">-</span> <span class="fl">1</span>
     <span class="va">width</span> <span class="op">&lt;-</span> <span class="va">width</span><span class="op">[</span><span class="va">width</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">]</span>
   <span class="op">}</span>
@@ -333,23 +333,23 @@
 
 
 <span class="va">new_data_frame_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, <span class="va">title</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">max_n_pillars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">width</span> <span class="op">%/%</span> <span class="fl">2</span><span class="op">)</span>
-  <span class="va">pillars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="va">max_n_pillars</span><span class="op">)</span>
+  <span class="va">max_n_pillars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">width</span> <span class="op">%/%</span> <span class="fl">2</span><span class="op">)</span>
+  <span class="va">pillars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="va">max_n_pillars</span><span class="op">)</span>
   
-  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Call ctl_new_compound_pillar() only for objects that can fit</span>
     <span class="va">pillar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar</a></span><span class="op">(</span>
       <span class="va">controller</span>, <span class="va">x</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">width</span>, 
-      title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">title</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
+      title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">title</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
     <span class="op">)</span>
-    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">pillar</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">pillar</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
       <span class="co"># NULL return: doesn't fit</span>
       <span class="kw">break</span>
     <span class="op">}</span>
     
     <span class="co"># Compute remaining width</span>
     <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">deduct_width</span><span class="op">(</span><span class="va">width</span>, <span class="fu">pillar_get_min_widths</span><span class="op">(</span><span class="va">pillar</span><span class="op">)</span><span class="op">)</span>
-    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
       <span class="co"># NULL return: current pillar doesn't fit</span>
       <span class="kw">break</span>
     <span class="op">}</span>
@@ -365,16 +365,16 @@
 
 <span class="co"># Can be rewritten with a repeat loop</span>
 <span class="va">deduct_width</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">width</span>, <span class="va">consumed_widths</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">consumed_widths</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">consumed_widths</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># All sub-pillars distributed</span>
     <span class="va">width</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Doesn't fit</span>
     <span class="cn">NULL</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">width</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">consumed_widths</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Fits first tier</span>
     <span class="fu">deduct_width</span><span class="op">(</span>
-      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">width</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">-</span> <span class="va">consumed_widths</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">width</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">width</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">-</span> <span class="va">consumed_widths</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">width</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
       <span class="va">consumed_widths</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>
     <span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
@@ -387,13 +387,13 @@
 <div id="avoiding-fetching-too-many-columns" class="section level2">
 <h2 class="hasAnchor">
 <a href="#avoiding-fetching-too-many-columns" class="anchor"></a>Avoiding fetching too many columns</h2>
-<p>For <code>tbl_lazy</code>, the <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code> operator doesn’t work. A new <code>pillar_select_cols()</code> generic supports querying a column subset, this speeds up the preview of queries that return too many columns.</p>
+<p>For <code>tbl_lazy</code>, the <code><a href="https://rdrr.io/r/base/Extract.html" class="external-link">[</a></code> operator doesn’t work. A new <code>pillar_select_cols()</code> generic supports querying a column subset, this speeds up the preview of queries that return too many columns.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
 <span class="va">pillar_select_cols</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
 
-  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">UseMethod</a></span><span class="op">(</span><span class="st">"pillar_select_cols"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"pillar_select_cols"</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="co">#' @export</span>
@@ -403,13 +403,13 @@
 
 <span class="co">#' @export</span>
 <span class="va">pillar_select_cols.data.frame</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">]</span>
+  <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">]</span>
 <span class="op">}</span>
 
 <span class="co"># in dbplyr</span>
 <span class="co">#' @export</span>
 <span class="va">pillar_select_cols.tbl_lazy</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">x</span>, <span class="op">!</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">x</span>, <span class="op">!</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
 <div id="formatting-numbers" class="section level2">
@@ -418,21 +418,21 @@
 <div id="scale-numbers-in-columns-equally" class="section level3">
 <h3 class="hasAnchor">
 <a href="#scale-numbers-in-columns-equally" class="anchor"></a>Scale Numbers In Columns Equally</h3>
-<p><a href="https://github.com/r-lib/pillar/issues/96" class="uri">https://github.com/r-lib/pillar/issues/96</a></p>
+<p><a href="https://github.com/r-lib/pillar/issues/96" class="external-link">https://github.com/r-lib/pillar/issues/96</a></p>
 <p>Idea: Show numbers of the same magnitude with SI prefix in the header.</p>
 <p>Solution: Custom vector class/container.</p>
 </div>
 <div id="respect-getoptiondigits-if-pillar-sigfig-is-unset" class="section level3">
 <h3 class="hasAnchor">
 <a href="#respect-getoptiondigits-if-pillar-sigfig-is-unset" class="anchor"></a>Respect getOption(“digits”) if “pillar.sigfig” is unset?</h3>
-<p><a href="https://github.com/r-lib/pillar/issues/127" class="uri">https://github.com/r-lib/pillar/issues/127</a> (own issue)</p>
+<p><a href="https://github.com/r-lib/pillar/issues/127" class="external-link">https://github.com/r-lib/pillar/issues/127</a> (own issue)</p>
 <p>Idea: Improve adoption of new users.</p>
-<p>Alternative: Show <code><a href="https://rdrr.io/r/base/options.html">getOption("digits")</a></code> significant figures if the differences are small enough.</p>
+<p>Alternative: Show <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code> significant figures if the differences are small enough.</p>
 </div>
 <div id="respect-scipen-option-in-base" class="section level3">
 <h3 class="hasAnchor">
 <a href="#respect-scipen-option-in-base" class="anchor"></a>Respect scipen option in base</h3>
-<p><a href="https://github.com/r-lib/pillar/issues/110" class="uri">https://github.com/r-lib/pillar/issues/110</a></p>
+<p><a href="https://github.com/r-lib/pillar/issues/110" class="external-link">https://github.com/r-lib/pillar/issues/110</a></p>
 <p>Idea: Avoid switching to scientific notation</p>
 <p>Use option?</p>
 </div>
@@ -527,11 +527,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://krlmlr.info">Kirill Müller</a>, <a href="http://hadley.nz">Hadley Wickham</a>.</p>
+  <p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
