@@ -23,9 +23,11 @@ NULL
   }
 
   # Necessary to re-parse environment variable
-  #activate_debugme()
-  debugme::debugme()
-  debug_info()
+  if (requireNamespace("debugme")) {
+    #activate_debugme()
+    debugme::debugme()
+    debug_info()
+  }
 
   invisible()
 }
