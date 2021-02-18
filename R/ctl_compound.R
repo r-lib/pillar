@@ -153,7 +153,7 @@ deduct_width <- function(width, consumed_widths) {
   } else if (width[[1]] >= consumed_widths[[1]]) {
     # Fits first tier
     deduct_width(
-      c(width[[1]] - consumed_widths[[1]], width[-1]),
+      c(width[[1]] - consumed_widths[[1]] - 1L, width[-1]),
       consumed_widths[-1]
     )
   } else {

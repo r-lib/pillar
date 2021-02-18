@@ -253,22 +253,8 @@
       #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 18)
-    Output
-      <pillar_tbl_format_setup>
-      <tbl_format_header(setup)>
-      # A data frame: 3
-      #   x 3
-      <tbl_format_body(setup)>
-        column_zero_zero
-                   <dbl>
-      1             1.23
-      2             2.23
-      3             3.23
-      <tbl_format_footer(setup)>
-      # ... with 2 more
-      #   variables:
-      #   col_01 <tbl[,2]>,
-      #   col_04 <ord>
+    Error <simpleError>
+      invalid 'length' argument
     Code
       tbl_format_setup(x, width = 19)
     Output
@@ -602,14 +588,12 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col_01$col_02
-                   <dbl> <chr>        
-      1             1.23 a            
-      2             2.23 b            
-      3             3.23 c            
+        column_zero_zero col_01$col_02 col_04
+                   <dbl> <chr>         <ord> 
+      1             1.23 a             a     
+      2             2.23 b             b     
+      3             3.23 c             c     
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 40)
     Output
@@ -623,6 +607,8 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 41)
     Output
@@ -636,6 +622,7 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
     Code
       tbl_format_setup(x, width = 42)
     Output
@@ -649,6 +636,7 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
     Code
       tbl_format_setup(x, width = 43)
     Output
@@ -662,6 +650,7 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
     Code
       tbl_format_setup(x, width = 44)
     Output
@@ -675,6 +664,7 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
     Code
       tbl_format_setup(x, width = 45)
     Output
@@ -688,6 +678,7 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
     Code
       tbl_format_setup(x, width = 46)
     Output
@@ -701,6 +692,7 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
     Code
       tbl_format_setup(x, width = 47)
     Output
