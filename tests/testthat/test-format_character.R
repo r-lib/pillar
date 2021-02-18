@@ -86,6 +86,13 @@ test_that("output test", {
 
 test_that("output test (not on Windows)", {
   skip_on_os("windows")
+
+  if(getRversion() == "4.0.4") {
+    # This seems to show differently on the Mac:
+    # writeLines(evaluate::evaluate('c("\\u6210", "\\u6210")')[[1]]$src)
+    skip_on_os("mac")
+  }
+
   expect_snapshot(pillar(add_special("\u6210\u4ea4\u65e5"), title = "\u6210\u4ea4"))
   expect_snapshot(pillar(add_special("\u6210\u4ea4"), title = "\u6210\u4ea4\u65e5"))
   expect_snapshot(pillar(add_special(1L), title = "\u6210\u4ea4\u65e5"))
