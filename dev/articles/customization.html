@@ -117,8 +117,8 @@
   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Code and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-114688bf28a7f7e64bb3" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-114688bf28a7f7e64bb3">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a319d6887ac52271f81e" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a319d6887ac52271f81e">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
@@ -175,7 +175,8 @@
 <div id="new-generics-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-generics-1" class="anchor"></a>New generics</h3>
-<p>Because printing is now internal to pillar, there’s no need to touch <code><a href="../reference/colonnade.html">colonnade()</a></code>. Internally, the object to be printed is used as <code>controller</code> argument. The default controller mimics current behavior.</p>
+<p>Because printing is now internal to pillar, there’s no need to touch <code><a href="../reference/colonnade.html">colonnade()</a></code>.</p>
+<p>Internally, the object to be printed is used as <code>controller</code> argument. The default controller mimics current behavior.</p>
 <p>Two new generics, <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> and <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code>, dispatch on that controller. The first method needs to be aware of packed columns (matrices and data frames), the second will be called only for 1D objects. We mostly expect overrides for <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code>, much rarer if at all for <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code>.</p>
 <p>Apart from the controller, these generics receive the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if <code>getOption("width") &lt; getOption("tibble.width")</code>). Both generics return a <code>"pillar"</code> object, or <code>NULL</code> if the minimum width of the pillar doesn’t fit the remaining width.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -222,7 +223,7 @@
 <div id="the-pillar-class" class="section level3">
 <h3 class="hasAnchor">
 <a href="#the-pillar-class" class="anchor"></a>The <code>"pillar"</code> class</h3>
-<p>Objects of class <code>"pillar"</code> are internally a named lists of their components. The default components are <code>title</code> (may be missing), <code>type</code>, and <code>data</code>. Each component is a <code>"pillar_box"</code>, as described below. Implementations may add new components or modify existing components.</p>
+<p>Objects of class <code>"pillar"</code> are internally a named lists of their components. The default components are <code>title</code> (may be missing), <code>type</code>, and <code>data</code>. Each component is a <code>"pillar_component"</code>, as described below. Implementations may add new components or modify existing components.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
 <span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">base</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
@@ -239,12 +240,12 @@
   <span class="fu"><a href="../reference/new_pillar.html">new_pillar</a></span><span class="op">(</span><span class="va">out</span>, capital <span class="op">=</span> <span class="cn">NULL</span>, footer <span class="op">=</span> <span class="va">...</span>, class <span class="op">=</span> <span class="st">"foo_pillar"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
-<div id="the-pillar_box-class" class="section level3">
+<div id="the-pillar_component-class" class="section level3">
 <h3 class="hasAnchor">
-<a href="#the-pillar_box-class" class="anchor"></a>The <code>"pillar_box"</code> class</h3>
-<p>An object of the <code>"pillar_box"</code> class captures contents that can be fitted in a rectangle. Each box consists of one or multiple cells that are aligned horizontally (with one space inbetween) when printed. Each cell has a maximum (=desired) width and may have a minimum width if the contents are compressible. The box object stores the width of the cells as an attribute.</p>
+<a href="#the-pillar_component-class" class="anchor"></a>The <code>"pillar_component"</code> class</h3>
+<p>An object of the <code>"pillar_component"</code> class captures contents that can be fitted in a rectangle. Each component consists of one or multiple cells that are aligned horizontally (with one space inbetween) when printed. Each cell has a maximum (=desired) width and may have a minimum width if the contents are compressible. The component object stores the width of the cells as an attribute.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">new_pillar_box</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">min_width</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+<code class="sourceCode R"><span class="va">new_pillar_component</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">min_width</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span>
     <span class="va">x</span>,
     width <span class="op">=</span> <span class="va">width</span>,
@@ -260,7 +261,7 @@
 <span class="va">get_cell_min_widths</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"min_width"</span><span class="op">)</span> <span class="op">%||%</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"width"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p>The cells may be stored as a list with one element per cell (for <code>type</code> and <code>data</code> components), or as a hierarchy of boxes (for the <code>name</code> component). In the latter case, <code>length(x) &lt; length(get_cell_widths(x))</code>, and each element must be a box.</p>
+<p>The cells may be stored as a list with one element per cell (for <code>type</code> and <code>data</code> components), or as a hierarchy of components (for the <code>name</code> component). In the latter case, <code>length(x) &lt; length(get_cell_widths(x))</code>, and each element must be a component.</p>
 <p>Extraction of a contiguous range of cells is supported.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">get_cells</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">from</span>, <span class="va">to</span><span class="op">)</span> <span class="op">{</span>
@@ -270,7 +271,7 @@
     <span class="fu">get_cells_for_hierarchy</span><span class="op">(</span><span class="va">x</span>, <span class="va">from</span>, <span class="va">to</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
     <span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu">seq2</span><span class="op">(</span><span class="va">from</span>, <span class="va">to</span><span class="op">)</span>
-    <span class="fu"><a href="../reference/new_pillar_box.html">new_pillar_box</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">idx</span><span class="op">]</span>, <span class="fu">get_cell_widths</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[</span><span class="va">idx</span><span class="op">]</span>, <span class="fu">get_cell_min_widths</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[</span><span class="va">idx</span><span class="op">]</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/new_pillar_component.html">new_pillar_component</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">idx</span><span class="op">]</span>, <span class="fu">get_cell_widths</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[</span><span class="va">idx</span><span class="op">]</span>, <span class="fu">get_cell_min_widths</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[</span><span class="va">idx</span><span class="op">]</span><span class="op">)</span>
   <span class="op">}</span>
 <span class="op">}</span>
 
@@ -287,7 +288,7 @@
 <div id="sub-pillars-and-their-widths" class="section level3">
 <h3 class="hasAnchor">
 <a href="#sub-pillars-and-their-widths" class="anchor"></a>Sub-pillars and their widths</h3>
-<p>If the components of a pillar are boxes with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component box. For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual boxes.</p>
+<p>If the components of a pillar are components with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component component. For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual components.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pillar_get_widths</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">exec</span><span class="op">(</span><span class="va">pmax</span>, <span class="op">!</span><span class="op">!</span><span class="op">!</span><span class="fu">map</span><span class="op">(</span><span class="va">x</span>, <span class="va">get_cell_widths</span><span class="op">)</span><span class="op">)</span>
@@ -478,25 +479,30 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
+<li>
+<p>Document control and data flow in a new vignette</p>
+<ul>
+<li>What operations happen when? Are we overspending time recomputing e.g. alignment or calling <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code>? Do we really need to do S3 dispatch for every cell?</li>
+<li>Needs better printing for individual steps</li>
+<li>Why does printing of compound pillars even work? Transpose? Do we need this?</li>
+<li>
+<code>ctl_colonnade()</code> is opaque, for good reason?</li>
+</ul>
+</li>
+<li><p>Document all functions</p></li>
+<li>
+<p>Rethink <code><a href="../reference/new_pillar_component.html">new_pillar_component()</a></code> and <code><a href="../reference/new_pillar_component.html">pillar_component()</a></code>, closer coupling with <code><a href="../reference/new_ornament.html">new_ornament()</a></code>?</p>
+<ul>
+<li>Components and ornaments are different concepts: a component is used to describe the components of a pillar, an ornament has the contents of a shaft (or of another component)</li>
+<li>Start with documenting <code><a href="../reference/new_pillar_component.html">new_pillar_component()</a></code> etc.</li>
+</ul>
+</li>
 <li><p>Test coverage per file</p></li>
 <li><p>Deprecate <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> (how did that even work?)</p></li>
 <li><p>Look for FIXMEs</p></li>
 <li><p>Wait for tibble 3.0.6 to appear on RSPM</p></li>
 <li><p>Revdepcheck</p></li>
 <li><p>Use penguins</p></li>
-<li>
-<p>Export <code>tbl()</code> and <code>as_tbl()</code></p>
-<ul>
-<li>Better not</li>
-</ul>
-</li>
-<li><p>Document all functions</p></li>
-<li>
-<p>Rethink <code><a href="../reference/new_pillar_box.html">new_pillar_box()</a></code> and <code><a href="../reference/new_pillar_box.html">pillar_box()</a></code>, closer coupling with <code><a href="../reference/new_ornament.html">new_ornament()</a></code>?</p>
-<ul>
-<li>Start with documenting <code><a href="../reference/new_pillar_box.html">new_pillar_box()</a></code> etc.</li>
-</ul>
-</li>
 <li><p>Release</p></li>
 <li><p>Blog post?</p></li>
 <li>
