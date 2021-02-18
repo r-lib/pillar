@@ -253,8 +253,22 @@
       #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 18)
-    Error <simpleError>
-      invalid 'length' argument
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3
+      #   x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 19)
     Output
