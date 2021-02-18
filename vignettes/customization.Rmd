@@ -126,6 +126,7 @@ format_footer <- function(x, ...) {
 ### New generics
 
 Because printing is now internal to pillar, there's no need to touch `colonnade()`.
+
 Internally, the object to be printed is used as `controller` argument.
 The default controller mimics current behavior.
 
@@ -182,7 +183,7 @@ ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
 
 Objects of class `"pillar"` are internally a named lists of their components.
 The default components are `title` (may be missing), `type`, and `data`.
-Each component is a `"pillar_box"`, as described below.
+Each component is a `"pillar_component"`, as described below.
 Implementations may add new components or modify existing components.
 
 ```{r}
@@ -206,15 +207,15 @@ ctl_new_pillar.foo_controller <- function(controller, x, width, ..., title = NUL
 ```
 
 
-### The `"pillar_box"` class
+### The `"pillar_component"` class
 
-An object of the `"pillar_box"` class captures contents that can be fitted in a rectangle.
-Each box consists of one or multiple cells that are aligned horizontally (with one space inbetween) when printed.
+An object of the `"pillar_component"` class captures contents that can be fitted in a rectangle.
+Each component consists of one or multiple cells that are aligned horizontally (with one space inbetween) when printed.
 Each cell has a maximum (=desired) width and may have a minimum width if the contents are compressible.
-The box object stores the width of the cells as an attribute.
+The component object stores the width of the cells as an attribute.
 
 ```{r}
-new_pillar_box <- function(x, width, min_width = NULL) {
+new_pillar_component <- function(x, width, min_width = NULL) {
   structure(
     x,
     width = width,
@@ -232,8 +233,8 @@ get_cell_min_widths <- function(x) {
 }
 ```
 
-The cells may be stored as a list with one element per cell (for `type` and `data` components), or as a hierarchy of boxes (for the `name` component).
-In the latter case, `length(x) < length(get_cell_widths(x))`, and each element must be a box.
+The cells may be stored as a list with one element per cell (for `type` and `data` components), or as a hierarchy of components (for the `name` component).
+In the latter case, `length(x) < length(get_cell_widths(x))`, and each element must be a component.
 
 Extraction of a contiguous range of cells is supported.
 
@@ -245,7 +246,7 @@ get_cells <- function(x, from, to) {
     get_cells_for_hierarchy(x, from, to)
   } else {
     idx <- seq2(from, to)
-    new_pillar_box(x[idx], get_cell_widths(x)[idx], get_cell_min_widths(x)[idx])
+    new_pillar_component(x[idx], get_cell_widths(x)[idx], get_cell_min_widths(x)[idx])
   }
 }
 
@@ -262,8 +263,8 @@ get_cells_for_hierarchy <- function(x, from, to) {
 
 ### Sub-pillars and their widths
 
-If the components of a pillar are boxes with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component box.
-For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual boxes.
+If the components of a pillar are components with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component component.
+For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual components.
 
 ```{r}
 pillar_get_widths <- function(x) {
@@ -443,17 +444,23 @@ Use option?
 
 ## Next steps
 
+- Document control and data flow in a new vignette
+
+    - What operations happen when? Are we overspending time recomputing e.g. alignment or calling `format()`? Do we really need to do S3 dispatch for every cell?
+    - Needs better printing for individual steps
+    - Why does printing of compound pillars even work? Transpose? Do we need this?
+    - `ctl_colonnade()` is opaque, for good reason?
+
+- Document all functions
+- Rethink `new_pillar_component()` and `pillar_component()`, closer coupling with `new_ornament()`?
+    - Components and ornaments are different concepts: a component is used to describe the components of a pillar, an ornament has the contents of a shaft (or of another component)
+    - Start with documenting `new_pillar_component()` etc.
 - Test coverage per file
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
 - Wait for tibble 3.0.6 to appear on RSPM
 - Revdepcheck
 - Use penguins
-- Export `tbl()` and `as_tbl()`
-    - Better not
-- Document all functions
-- Rethink `new_pillar_box()` and `pillar_box()`, closer coupling with `new_ornament()`?
-    - Start with documenting `new_pillar_box()` etc.
 - Release
 - Blog post?
 

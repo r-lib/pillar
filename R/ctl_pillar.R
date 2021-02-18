@@ -82,13 +82,13 @@ pillar_from_shaft <- function(title, type, data, width) {
   }
   data_width <- get_width(data)
 
-  data_box <- new_pillar_box(list(data), width = data_width, min_width = data_min_width)
+  data_component <- new_pillar_component(list(data), width = data_width, min_width = data_min_width)
 
   new_pillar(
     list(
-      title = pillar_box(title),
-      type = pillar_box(type),
-      data = data_box
+      title = pillar_component(title),
+      type = pillar_component(type),
+      data = data_component
     ),
     width = width
   )
@@ -98,11 +98,11 @@ rowidformat2 <- function(data, names, has_star) {
   out <- map(set_names(names), function(.x) "")
 
   if ("type" %in% names) {
-    out$type <- pillar_box(rif_type(has_star))
+    out$type <- pillar_component(rif_type(has_star))
   }
 
   if ("data" %in% names) {
-    out$data <- pillar_box(data)
+    out$data <- pillar_component(data)
   }
 
   new_pillar(out)
@@ -124,7 +124,7 @@ rowidformat2 <- function(data, names, has_star) {
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @inheritParams pillar
-#' @param boxes A named list of components constructed with [pillar_box()].
+#' @param components A named list of components constructed with [pillar_component()].
 #' @param class Name of subclass.
 #'
 #' @export
@@ -139,17 +139,17 @@ rowidformat2 <- function(data, names, has_star) {
 #' }
 #'
 #' new_pillar(list(
-#'   title = pillar_box(new_ornament(c("abc", "de"), align = "right")),
-#'   lines = new_pillar_box(list(lines("=")), width = 1)
+#'   title = pillar_component(new_ornament(c("abc", "de"), align = "right")),
+#'   lines = new_pillar_component(list(lines("=")), width = 1)
 #' ))
-new_pillar <- function(boxes, ..., width = NULL, class = NULL) {
+new_pillar <- function(components, ..., width = NULL, class = NULL) {
   check_dots_empty()
-  if (length(boxes) > 0 && !is_named(boxes)) {
+  if (length(components) > 0 && !is_named(components)) {
     abort("All components must have names.")
   }
 
   structure(
-    boxes,
+    components,
     width = width,
     class = c(class, "pillar")
   )

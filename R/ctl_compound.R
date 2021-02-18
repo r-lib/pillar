@@ -126,7 +126,7 @@ combine_pillars <- function(pillars) {
     widths <- unlist(map(out, get_cell_widths))
     min_widths <- unlist(map(out, get_cell_min_widths))
 
-    new_pillar_box(
+    new_pillar_component(
       unlist(out, recursive = FALSE),
       width = widths,
       min_width = min_widths

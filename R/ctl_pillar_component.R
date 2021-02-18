@@ -6,7 +6,7 @@
 #' @param x TBD
 #' @param width,min_width TBD
 #' @export
-new_pillar_box <- function(x, ..., width, min_width = NULL) {
+new_pillar_component <- function(x, ..., width, min_width = NULL) {
   check_dots_empty()
   stopifnot(is.list(x))
   stopifnot(is_integerish(width), length(width) == length(x))
@@ -23,9 +23,9 @@ new_pillar_box <- function(x, ..., width, min_width = NULL) {
 }
 
 #' @export
-#' @rdname new_pillar_box
-pillar_box <- function(x) {
-  new_pillar_box(list(x), width = get_width(x), min_width = get_min_width(x))
+#' @rdname new_pillar_component
+pillar_component <- function(x) {
+  new_pillar_component(list(x), width = get_width(x), min_width = get_min_width(x))
 }
 
 get_cell_widths <- function(x) {
@@ -47,7 +47,7 @@ get_cells <- function(x, from, to) {
     get_cells_for_hierarchy(x, from, to)
   } else {
     idx <- seq2(from, to)
-    new_pillar_box(
+    new_pillar_component(
       x[idx],
       width = get_cell_widths(x)[idx],
       min_width = get_cell_min_widths(x)[idx]

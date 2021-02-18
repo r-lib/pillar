@@ -4,10 +4,10 @@
 \alias{new_pillar}
 \title{Construct a custom pillar object}
 \usage{
-new_pillar(boxes, ..., width = NULL, class = NULL)
+new_pillar(components, ..., width = NULL, class = NULL)
 }
 \arguments{
-\item{boxes}{A named list of components constructed with \code{\link[=pillar_box]{pillar_box()}}.}
+\item{components}{A named list of components constructed with \code{\link[=pillar_component]{pillar_component()}}.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
@@ -39,7 +39,7 @@ format.lines <- function(x, width, ...) {
 }
 
 new_pillar(list(
-  title = pillar_box(new_ornament(c("abc", "de"), align = "right")),
-  lines = new_pillar_box(list(lines("=")), width = 1)
+  title = pillar_component(new_ornament(c("abc", "de"), align = "right")),
+  lines = new_pillar_component(list(lines("=")), width = 1)
 ))
 }
