@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TBD — new_pillar_component • pillar</title>
+<title>Components of a pillar — new_pillar_component • pillar</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="TBD — new_pillar_component" />
-<meta property="og:description" content="TBD" />
+<meta property="og:title" content="Components of a pillar — new_pillar_component" />
+<meta property="og:description" content="new_pillar_component() constructs an object of class &quot;pillar_component&quot;.
+pillar_component() is a convenience helper that wraps the input in a list
+and extracts width and minimum width." />
 
 
 <meta name="robots" content="noindex">
@@ -116,13 +118,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>TBD</h1>
+    <h1>Components of a pillar</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/ctl_pillar_component.R'><code>R/ctl_pillar_component.R</code></a></small>
     <div class="hidden name"><code>new_pillar_component.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>TBD</p>
+    <p><code>new_pillar_component()</code> constructs an object of class <code>"pillar_component"</code>.</p>
+<p><code>pillar_component()</code> is a convenience helper that wraps the input in a list
+and extracts width and minimum width.</p>
     </div>
 
     <pre class="usage"><span class='fu'>new_pillar_component</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, <span class='va'>width</span>, min_width <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
@@ -134,7 +138,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>TBD</p></td>
+      <td><p>A bare list (for <code>new_pillar_component()</code>), or an object with width
+and minimum width attributes (for <code>pillar_component()</code>).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -146,7 +151,21 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>Objects of class <code>"pillar"</code> are internally a named lists of their components.
+The default components are <code>title</code> (may be missing), <code>type</code>, and <code>data</code>.
+Each component is a <code>"pillar_component"</code>.</p>
+<p>This class captures contents that can be fitted in a rectangle.
+Each component consists of one or multiple cells that
+are aligned horizontally (with one space in between) when printed.
+Each cell has a maximum (i.e., desired) width and may have a minimum width
+if the contents are compressible.
+The component object stores the width of the cells as an attribute.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># TBD</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
