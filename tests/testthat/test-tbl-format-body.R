@@ -21,6 +21,13 @@ test_that("tbl_format_body() results", {
 
 test_that("body: output for wide characters", {
   skip_if(!l10n_info()$`UTF-8`)
+
+  if(getRversion() == "4.0.4") {
+    # This seems to show differently on the Mac:
+    # writeLines(evaluate::evaluate('c("\\u6210", "\\u6210")')[[1]]$src)
+    skip_on_os("mac")
+  }
+
   local_utf8()
 
   expect_snapshot({
