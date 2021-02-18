@@ -136,7 +136,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'
 #' @description
 #' The object returned from the default method of [tbl_format_setup()]
-#' is a list with a `"class"` attribute and the elements described in the
+#' is an object with a `"class"` attribute and the elements described in the
 #' "Parameters" section.
 #'
 #' Named elements can be added to such objects without affecting the behavior.
