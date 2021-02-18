@@ -453,7 +453,7 @@ Use option?
 
 - Document all functions
 - Rethink `new_pillar_component()` and `pillar_component()`, closer coupling with `new_ornament()`?
-    - Boxes and ornaments are different concepts: a component is used to describe the components of a pillar, an ornament has the contents of a shaft (or of another component)
+    - Components and ornaments are different concepts: a component is used to describe the components of a pillar, an ornament has the contents of a shaft (or of another component)
     - Start with documenting `new_pillar_component()` etc.
 - Test coverage per file
 - Deprecate `format_type_sum()` (how did that even work?)
