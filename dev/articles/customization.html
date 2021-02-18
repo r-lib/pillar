@@ -83,7 +83,8 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="op">)</span>
+<span class="co">#&gt; Loading required namespace: debugme</span></code></pre></div>
 <p>This draft describes a new backward-compatible design for making the appearance of a pillar more extensible.</p>
 <p>The design consists of two parts:</p>
 <ol style="list-style-type: decimal">
@@ -117,8 +118,8 @@
   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Code and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-f14449ceaf0b21a64274" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f14449ceaf0b21a64274">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-152650d3b5e906d73a09" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-152650d3b5e906d73a09">{"x":{"diagram":"graph TD\n  print.tbl --> format.tbl\n  format.tbl -- \"options -> n; n_extra\" --> tbl_format_setup\n  format.tbl --> tbl_format_header\n  format.tbl --> tbl_format_body\n  format.tbl --> tbl_format_footer\n  tbl_format_setup -.-> tbl_format_header\n  tbl_format_setup -.-> tbl_format_body\n  tbl_format_setup -.-> tbl_format_footer"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
