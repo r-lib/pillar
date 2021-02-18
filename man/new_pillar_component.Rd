@@ -36,5 +36,5 @@ if the contents are compressible.
 The component object stores the width of the cells as an attribute.
 }
 \examples{
-TBD
+# TBD
 }

@@ -19,7 +19,7 @@
 #' @param width,min_width TBD
 #' @export
 #' @examples
-#' TBD
+#' # TBD
 new_pillar_component <- function(x, ..., width, min_width = NULL) {
   check_dots_empty()
   stopifnot(rlang::is_bare_list(x))
