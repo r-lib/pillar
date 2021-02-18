@@ -4,6 +4,8 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 }
 
 new_packed_pillars <- function(x, controller, width, title) {
+  "!!DEBUG new_packed_pillars()"
+
   if (length(x) == 0) {
     return(compact(list(pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
@@ -19,6 +21,8 @@ new_packed_pillars <- function(x, controller, width, title) {
   ticked_names <- tick_if_needed(names(x))
 
   for (i in seq_along(x)) {
+    "!!DEBUG i = `i`, width = `width`"
+
     # FIXME
     # sub_title <- c(title, ticked_names[[i]])
     sub_title <- ticked_names[[i]]
@@ -115,6 +119,8 @@ new_array_pillar <- function(x, controller, width, title) {
 }
 
 combine_pillars <- function(pillars) {
+  "!!DEBUG combine_pillars(`v(length(pillars))`)"
+
   if (length(pillars) == 0) {
     return(NULL)
   }

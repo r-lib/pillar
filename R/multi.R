@@ -202,6 +202,8 @@ new_colonnade_squeezed <- function(x, colonnade, extra_cols) {
 }
 
 format_colonnade_tier <- function(x) {
+  "!!DEBUG format_colonnade_tier(`v(x)`)"
+
   if (length(x) == 0) {
     return(character())
   }
@@ -355,6 +357,8 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_tier_df) {
+  "!!DEBUG colonnade_compute_tiered_col_widths_df(`v(tier_widths)`)"
+
   #' @details
   #' For fitting pillars in one or more tiers, first a check is made
   #' if all pillars fit with their maximum width (e.g.,
@@ -454,6 +458,8 @@ all_pillars_fit <- function(tier_df) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
+  "!!DEBUG colonnade_distribute_space_df(`v(tier_widths)`)"
+
   col_widths_split <- split(col_widths_df, col_widths_df$tier)
   if (any(col_widths_df$tier == 0)) tier_widths <- c(NA, tier_widths)
   tier_widths <- tier_widths[seq_along(col_widths_split)]

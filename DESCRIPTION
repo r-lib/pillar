@@ -29,6 +29,7 @@ Imports:
     vctrs (>= 0.2.0)
 Suggests: 
     bit64,
+    debugme,
     DiagrammeR,
     knitr,
     lubridate,
