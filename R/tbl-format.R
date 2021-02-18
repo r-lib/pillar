@@ -57,10 +57,6 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
     max_extra_cols = n_extra %||% tibble_opt("max_extra_cols")
   )
 
-  format_setup(x, setup)
-}
-
-format_setup <- function(x, setup) {
   header <- tbl_format_header(x, setup)
   body <- tbl_format_body(x, setup)
   footer <- tbl_format_footer(x, setup)
