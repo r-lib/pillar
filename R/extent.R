@@ -45,6 +45,8 @@ get_max_extent <- function(x) {
 #' align(c("abc", "de"), align = "left")
 #' align(c("abc", "de"), align = "right")
 align <- function(x, width = NULL, align = c("left", "right")) {
+  "!!DEBUG align(`v(x)`, `v(class(x))`)"
+
   align <- match.arg(align)
   extent <- get_extent(x)
   if (is.null(width)) {

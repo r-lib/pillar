@@ -55,6 +55,8 @@
 #'   class = c("line_tbl", "tbl")
 #' )
 ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
+  "!!DEBUG ctl_new_pillar()"
+
   check_dots_empty()
 
   if (length(width) == 0) {
@@ -67,6 +69,8 @@ ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
 #' @rdname ctl_new_pillar
 #' @export
 ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
+  "!!DEBUG ctl_new_compound_pillar()"
+
   check_dots_empty()
 
   if (length(width) == 0) {
@@ -78,6 +82,8 @@ ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
 
 #' @export
 ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
+  "!!DEBUG ctl_new_compound_pillar.tbl()"
+
   if (is.data.frame(x)) {
     new_data_frame_pillar(x, controller, width, title = title)
   } else if (is.matrix(x)) {
@@ -91,6 +97,8 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
 
 #' @export
 ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
+  "!!DEBUG ctl_new_pillar.tbl()"
+
   pillar(x, title, if (!is.null(width)) max0(width))
 }
 

@@ -55,6 +55,7 @@
 #' @export
 tbl_format_setup <- function(x, width, ...,
                              n, max_extra_cols) {
+  "!!DEBUG tbl_format_setup()"
   stopifnot(is.numeric(width), width > 0)
 
   UseMethod("tbl_format_setup")
@@ -70,6 +71,7 @@ tbl_format_setup <- function(x, width, ...,
 #' @importFrom utils head
 tbl_format_setup.tbl <- function(x, width, ...,
                                  n = NULL, max_extra_cols = NULL) {
+  "!!DEBUG tbl_format_setup.tbl()"
   rows <- nrow(x)
   if (is.null(n)) {
     # For testing

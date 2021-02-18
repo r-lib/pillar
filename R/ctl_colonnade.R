@@ -1,5 +1,7 @@
 # Adapted from squeeze_impl()
 ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_tbl()) {
+  "!!DEBUG ctl_colonnade()"
+
   x <- vctrs::new_data_frame(x, names = names2(x))
   width <- get_width_print(width)
 
@@ -30,6 +32,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   compound_pillar <- combine_pillars(pillars)
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
+  # FIXME: Simplify
   col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
   col_widths_shown <- col_widths_show[["TRUE"]]
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
@@ -60,6 +63,8 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 }
 
 new_colonnade_body <- function(x, extra_cols) {
+  "!!DEBUG new_colonnade_body()"
+
   formatted_tiers <- map(x, format_colonnade_tier)
   formatted <- new_vertical(as.character(unlist(formatted_tiers)))
 
@@ -71,6 +76,8 @@ new_colonnade_body <- function(x, extra_cols) {
 
 #' @noRd
 colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
+  "!!DEBUG colonnade_get_width_2(`v(tier_widths)`)"
+
   #' @details
   #' Pillars may be distributed over multiple tiers if
   #' `width > getOption("width")`. In this case each tier is at most
@@ -87,6 +94,8 @@ colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
 }
 
 colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, tier_widths) {
+  "!!DEBUG colonnade_compute_tiered_col_widths_2(`v(tier_widths)`)"
+
   max_tier_width <- max(tier_widths)
 
   max_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_widths)))
