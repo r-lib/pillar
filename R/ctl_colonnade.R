@@ -58,7 +58,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     map2(tier$pillar, tier$width, pillar_format_parts_2)
   })
 
-  extra_cols <- x[seq2(nrow(col_widths_shown) + 1L, nc)]
+  extra_cols <- x[seq2(length(pillars) + 1L, nc)]
   new_colonnade_body(out, extra_cols = extra_cols)
 }
 
@@ -68,10 +68,7 @@ new_colonnade_body <- function(x, extra_cols) {
   formatted_tiers <- map(x, format_colonnade_tier)
   formatted <- new_vertical(as.character(unlist(formatted_tiers)))
 
-  structure(
-    new_vertical(formatted),
-    extra_cols = extra_cols
-  )
+  new_vertical(formatted, extra_cols = extra_cols)
 }
 
 #' @noRd

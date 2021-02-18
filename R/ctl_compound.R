@@ -4,7 +4,7 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 }
 
 new_packed_pillars <- function(x, controller, width, title) {
-  "!!DEBUG new_packed_pillars()"
+  "!!DEBUG new_packed_pillars(`v(width)`, `v(title)`)"
 
   if (length(x) == 0) {
     return(compact(list(pillar_from_shaft(
@@ -144,6 +144,8 @@ combine_pillars <- function(pillars) {
 
 # Can be rewritten with a repeat loop
 deduct_width <- function(width, consumed_widths) {
+  "!!DEBUG deduct_width(`v(width)`, `v(consumed_widths)`)"
+
   if (length(consumed_widths) == 0) {
     # All sub-pillars distributed
     width
@@ -153,7 +155,7 @@ deduct_width <- function(width, consumed_widths) {
   } else if (width[[1]] >= consumed_widths[[1]]) {
     # Fits first tier
     deduct_width(
-      c(width[[1]] - consumed_widths[[1]], width[-1]),
+      c(max(width[[1]] - consumed_widths[[1]] - 1L, 0), width[-1]),
       consumed_widths[-1]
     )
   } else {

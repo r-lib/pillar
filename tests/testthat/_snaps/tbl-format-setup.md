@@ -1,3 +1,765 @@
+# output test
+
+    Code
+      tbl_format_setup(x, width = 4)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A
+      #   data
+      #   frame:
+      #   3
+      #   x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ...
+      #   with
+      #   3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 5)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A
+      #   data
+      #   frame:
+      #   3
+      #   x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ...
+      #   with
+      #   3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 6)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A
+      #   data
+      #   frame:
+      #   3
+      #   x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ...
+      #   with
+      #   3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 7)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A
+      #   data
+      #   frame:
+      #   3
+      #   x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ...
+      #   with
+      #   3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 8)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A
+      #   data
+      #   frame:
+      #   3 x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ...
+      #   with
+      #   3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 9)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data
+      #   frame:
+      #   3 x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ...
+      #   with
+      #   3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 10)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data
+      #   frame:
+      #   3 x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ...
+      #   with
+      #   3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 11)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data
+      #   frame:
+      #   3 x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ... with
+      #   3 more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 12)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data
+      #   frame:
+      #   3 x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ... with
+      #   3 more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 13)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data
+      #   frame: 3
+      #   x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ... with 3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 14)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data
+      #   frame: 3
+      #   x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ... with 3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 15)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data
+      #   frame: 3 x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ... with 3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 16)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame:
+      #   3 x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ... with 3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 17)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame:
+      #   3 x 3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+      # ... with 3
+      #   more
+      #   variables:
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 18)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3
+      #   x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 19)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3
+      #   x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 20)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x
+      #   3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 21)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x
+      #   3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 22)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 23)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 24)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 25)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 26)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 27)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 28)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more
+      #   variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 29)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 30)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 31)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero
+                   <dbl>
+      1             1.23
+      2             2.23
+      3             3.23
+      <tbl_format_footer(setup)>
+      # ... with 2 more variables:
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 32)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02
+                   <dbl> <chr>        
+      1             1.23 a            
+      2             2.23 b            
+      3             3.23 c            
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 33)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02
+                   <dbl> <chr>        
+      1             1.23 a            
+      2             2.23 b            
+      3             3.23 c            
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 34)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02
+                   <dbl> <chr>        
+      1             1.23 a            
+      2             2.23 b            
+      3             3.23 c            
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 35)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02
+                   <dbl> <chr>        
+      1             1.23 a            
+      2             2.23 b            
+      3             3.23 c            
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 36)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02
+                   <dbl> <chr>        
+      1             1.23 a            
+      2             2.23 b            
+      3             3.23 c            
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 37)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02
+                   <dbl> <chr>        
+      1             1.23 a            
+      2             2.23 b            
+      3             3.23 c            
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 38)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02
+                   <dbl> <chr>        
+      1             1.23 a            
+      2             2.23 b            
+      3             3.23 c            
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 39)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 col_04
+                   <dbl> <chr>         <ord> 
+      1             1.23 a             a     
+      2             2.23 b             b     
+      3             3.23 c             c     
+      <tbl_format_footer(setup)>
+    Code
+      tbl_format_setup(x, width = 40)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03
+                   <dbl> <chr>         <fct>  
+      1             1.23 a             a      
+      2             2.23 b             b      
+      3             3.23 c             c      
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable:
+      #   col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 41)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03
+                   <dbl> <chr>         <fct>  
+      1             1.23 a             a      
+      2             2.23 b             b      
+      3             3.23 c             c      
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 42)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03
+                   <dbl> <chr>         <fct>  
+      1             1.23 a             a      
+      2             2.23 b             b      
+      3             3.23 c             c      
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 43)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03
+                   <dbl> <chr>         <fct>  
+      1             1.23 a             a      
+      2             2.23 b             b      
+      3             3.23 c             c      
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 44)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03
+                   <dbl> <chr>         <fct>  
+      1             1.23 a             a      
+      2             2.23 b             b      
+      3             3.23 c             c      
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 45)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03
+                   <dbl> <chr>         <fct>  
+      1             1.23 a             a      
+      2             2.23 b             b      
+      3             3.23 c             c      
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 46)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03
+                   <dbl> <chr>         <fct>  
+      1             1.23 a             a      
+      2             2.23 b             b      
+      3             3.23 c             c      
+      <tbl_format_footer(setup)>
+      # ... with 1 more variable: col_04 <ord>
+    Code
+      tbl_format_setup(x, width = 47)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03 col_04
+                   <dbl> <chr>         <fct>   <ord> 
+      1             1.23 a             a       a     
+      2             2.23 b             b       b     
+      3             3.23 c             c       c     
+      <tbl_format_footer(setup)>
+    Code
+      tbl_format_setup(x, width = 48)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03 col_04
+                   <dbl> <chr>         <fct>   <ord> 
+      1             1.23 a             a       a     
+      2             2.23 b             b       b     
+      3             3.23 c             c       c     
+      <tbl_format_footer(setup)>
+    Code
+      tbl_format_setup(x, width = 49)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03 col_04
+                   <dbl> <chr>         <fct>   <ord> 
+      1             1.23 a             a       a     
+      2             2.23 b             b       b     
+      3             3.23 c             c       c     
+      <tbl_format_footer(setup)>
+    Code
+      tbl_format_setup(x, width = Inf)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 3 x 3
+      <tbl_format_body(setup)>
+        column_zero_zero col_01$col_02 $col_03 col_04
+                   <dbl> <chr>         <fct>   <ord> 
+      1             1.23 a             a       a     
+      2             2.23 b             b       b     
+      3             3.23 c             c       c     
+      <tbl_format_footer(setup)>
+
 # tbl_format_setup() results
 
     Code
