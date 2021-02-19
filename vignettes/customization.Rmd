@@ -444,26 +444,37 @@ Use option?
 
 ## Next steps
 
-- Document control and data flow in a new vignette
-
-    - What operations happen when? Are we overspending time recomputing e.g. alignment or calling `format()`? Do we really need to do S3 dispatch for every cell?
-    - Needs better printing for individual steps
-    - Why does printing of compound pillars even work? Transpose? Do we need this?
-    - `ctl_colonnade()` is opaque, for good reason?
-
-- Document all functions
-- Rethink `new_pillar_component()` and `pillar_component()`, closer coupling with `new_ornament()`?
-    - Components and ornaments are different concepts: a component is used to describe the components of a pillar, an ornament has the contents of a shaft (or of another component)
-    - Start with documenting `new_pillar_component()` etc.
-- Test coverage per file
+- Triage issues
+- Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
+   - Is there a transpose operation somewhere? Do we need this?
+- Finish documentation of `.Rmd` and functions
+    - We can show the control flow with debugme
+    - We're calling `align()` slightly too often
+    - We seem to need dispatch, we could try switchpatching if benchmarks show problems
+    - Individual steps are printed better, `ctl_colonnade()` is still opaque
+- Create walkthrough `.Rmd` to show extension points:
+    - `tbl_sum()`: add header line
+    - `tbl_format_header()` (?)
+    - `tbl_format_footer()`
+    - `tbl_format_setup()`: compute number of cells, show in header and footer
+    - `ctl_pillar()`
+    - `ctl_compound_pillar()`
+    - `tbl_format_body()`
+- Basic implementation for arrays: shaft for first slice, then ellipsis
+- Verify revdepchecks
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
-- Wait for tibble 3.0.6 to appear on RSPM
-- Revdepcheck
-- Use penguins
 - Release
 - Blog post?
 
+- Reduce calls to `align()`: 
+    - align all components vertically
+    - squash
+    - only then `align()`
+    - paste
+- Benchmark and profile again
+- Test coverage per file
+- Use penguins
 - Improve output:
     - Tibble-local options for precision
     - Classes for numeric and string, use {formattable}
