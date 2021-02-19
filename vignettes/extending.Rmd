@@ -1,0 +1,165 @@
+---
+title: "Custom formatting"
+output: html_vignette
+vignette: >
+  %\VignetteIndexEntry{Custom formatting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pillar)
+```
+
+How to customize the printed output of a `"tbl"` subclass?
+
+```{r}
+tbl <- vctrs::new_data_frame(
+  list(
+    a = letters[1:3],
+    b = vctrs::new_data_frame(
+      list(c = 1:3, d = 4:6 + 0.5), 
+      class = c("hidden", "tbl")
+    )
+  ),
+  class = c("custom", "tbl")
+)
+
+tbl
+```
+
+## Tweak header
+
+```{r}
+tbl_sum.custom <- function(x, ...) {
+  c(NextMethod(), "New" = "A new header")
+}
+
+tbl
+
+tbl_sum.custom <- function(x, ...) {
+  c("Override" = "Replace all headers")
+}
+
+tbl
+```
+
+
+## Restyle header
+
+```{r}
+tbl_format_header.custom <- function(x, setup, ...) {
+  crayon::italic(NextMethod())
+}
+
+tbl
+
+tbl_format_header.custom <- function(x, setup, ...) {
+  crayon::italic(paste0(names(setup$tbl_sum), " = ", setup$tbl_sum))
+}
+
+tbl
+```
+
+## Restyle footer
+
+```{r}
+tbl_format_footer.custom <- function(x, setup, ...) {
+  c(NextMethod(), "... and with extra info in the footer")
+}
+
+tbl
+
+tbl_format_footer.custom <- function(x, setup, ...) {
+  crayon::italic("Footer redone completely")
+}
+
+tbl
+```
+
+## Tweak body
+
+```{r}
+ctl_new_pillar.custom <- function(controller, x, width, ..., title = NULL) {
+  out <- NextMethod()
+  new_pillar(list(
+    top_rule = new_pillar_component(list("="), width = 1),
+    title = out$title,
+    type = out$type,
+    mid_rule = new_pillar_component(list("-"), width = 1),
+    data = out$data,
+    bottom_rule = new_pillar_component(list("="), width = 1)
+  ))
+}
+
+tbl
+
+```
+
+```{r}
+rule <- function(char = "-") {
+  stopifnot(nchar(char) == 1)
+  structure(char, class = "rule")
+}
+
+format.rule <- function(x, width, ...) {
+  paste(rep(x, width), collapse = "")
+}
+
+ctl_new_pillar.custom <- function(controller, x, width, ..., title = NULL) {
+  out <- NextMethod()
+  new_pillar(list(
+    top_rule = new_pillar_component(list(rule("=")), width = 1),
+    title = out$title,
+    type = out$type,
+    mid_rule = new_pillar_component(list(rule("-")), width = 1),
+    data = out$data,
+    bottom_rule = new_pillar_component(list(rule("=")), width = 1)
+  ))
+}
+
+tbl
+```
+
+
+```{r}
+ctl_new_compound_pillar.custom <- function(controller, x, width, ..., title = NULL) {
+  if (!inherits(x, "hidden")) {
+    return(NextMethod())
+  }
+  
+  if (width < 6) {
+    return(NULL)
+  }
+  
+  new_pillar(
+    list(
+      top_rule = new_pillar_component(list(rule("=")), width = 1),
+      title = new_pillar_component(list("hidden"), width = 6),
+      type = new_pillar_component(list(""), width = 1),
+      mid_rule = new_pillar_component(list(rule("-")), width = 1),
+      data = new_pillar_component(list(""), width = 1),
+      bottom_rule = new_pillar_component(list(rule("=")), width = 1)
+    ),
+    width = 6
+  )
+}
+
+tbl
+  
+```
+
+## Compute additional info beforehand
+
+...
+
+## Restyle body
+
+...
