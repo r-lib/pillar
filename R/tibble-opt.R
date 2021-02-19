@@ -62,3 +62,11 @@ get_n_print <- function(n, rows) {
     rows
   }
 }
+
+get_max_extra_cols <- function(max_extra_cols) {
+  if (!is.null(max_extra_cols) && max_extra_cols >= 0) {
+    return(max_extra_cols)
+  }
+
+  tibble_opt("max_extra_cols")
+}

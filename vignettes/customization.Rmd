@@ -40,7 +40,7 @@ The design consists of two parts:
 `format.tbl()` retains its semantics.
 For compatibility it returns a character vector with one element per line.
 
-```{r}
+```{r eval = FALSE}
 #' @export
 format.tbl <- function(x, ...) {
   setup <- tbl_format_setup(x, width = width, n = n, n_extra = n_extra)
@@ -71,7 +71,7 @@ Classes that need to do more when setting up the printing implement a method.
 Contrary to the existing logic, the width would be baked into the `setup` object.
 I haven't seen a use case for formatting the same prepared object with multiple widths.
 
-```{r}
+```{r eval = FALSE}
 tbl_format_setup.default <- function(x, ...) {
   trunc_mat(x, ...)
 }
@@ -80,7 +80,7 @@ tbl_format_setup.default <- function(x, ...) {
 `tbl_format_header()` in the default implementation formats the output of `tbl_sum()`.
 The implementer is expected to apply `style_subtle()` in case the class wants to add color or other styling.
 
-```{r}
+```{r eval = FALSE}
 tbl_format_header.default <- function(x, ...) {
   sum <- tbl_sum(x)
   style_subtle(
@@ -95,7 +95,7 @@ The implementation is shown further below.
 `tbl_format_footer()` is copied from tibble.
 The implementer is expected to apply `style_subtle()` in case the class wants to add color or other styling.
 
-```{r}
+```{r eval = FALSE}
 tbl_format_footer.default <- function(x, ...) {
   style_subtle(format_footer(x, ...))
 }
@@ -137,7 +137,7 @@ We mostly expect overrides for `ctl_new_pillar()`, much rarer if at all for `ctl
 Apart from the controller, these generics receive the object, the formatted name (which can be a vector in the case of packed data frames or matrices), and the remaining width (which can also be a vector in the case of multiple tiers, if `getOption("width") < getOption("tibble.width")`).
 Both generics return a `"pillar"` object, or `NULL` if the minimum width of the pillar doesn't fit the remaining width.
 
-```{r}
+```{r eval = FALSE}
 #' @export
 ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
   check_dots_empty()
@@ -186,7 +186,7 @@ The default components are `title` (may be missing), `type`, and `data`.
 Each component is a `"pillar_component"`, as described below.
 Implementations may add new components or modify existing components.
 
-```{r}
+```{r eval = FALSE}
 #' @export
 new_pillar <- function(base = list(), ..., class = NULL) {
   structure(
@@ -198,7 +198,7 @@ new_pillar <- function(base = list(), ..., class = NULL) {
 
 This allows e.g.:
 
-```{r}
+```{r eval = FALSE}
 #' @export
 ctl_new_pillar.foo_controller <- function(controller, x, width, ..., title = NULL) {
   out <- NextMethod()
@@ -214,7 +214,7 @@ Each component consists of one or multiple cells that are aligned horizontally (
 Each cell has a maximum (=desired) width and may have a minimum width if the contents are compressible.
 The component object stores the width of the cells as an attribute.
 
-```{r}
+```{r eval = FALSE}
 new_pillar_component <- function(x, width, min_width = NULL) {
   structure(
     x,
@@ -238,7 +238,7 @@ In the latter case, `length(x) < length(get_cell_widths(x))`, and each element m
 
 Extraction of a contiguous range of cells is supported.
 
-```{r}
+```{r eval = FALSE}
 get_cells <- function(x, from, to) {
   stopifnot(from <= to)
   
@@ -266,7 +266,7 @@ get_cells_for_hierarchy <- function(x, from, to) {
 If the components of a pillar are components with multiple cells, the pillar can be decomposed into sub-pillars that consist of corresponding cells from each component component.
 For each sub-pillar, its width can be computed as a maximum of the cell widths of the individual components.
 
-```{r}
+```{r eval = FALSE}
 pillar_get_widths <- function(x) {
   exec(pmax, !!!map(x, get_cell_widths))
 }
@@ -292,7 +292,7 @@ Alternatively, widths can be computed once when constructing the pillar object a
 - The new implementation seamlessly supports display of matrices via `new_matrix_pillar()`.
 - After the final list of pillars is known, they are distributed using the existing implementation to make use of excess space (not shown here).
 
-```{r}
+```{r eval = FALSE}
 colonnade2 <- function(x, controller, has_row_id, width) {
   if (nrow(x) == 0) {
     return(NULL)
@@ -366,7 +366,7 @@ deduct_width <- function(width, consumed_widths) {
 For `tbl_lazy`, the `[` operator doesn't work.
 A new `pillar_select_cols()` generic supports querying a column subset, this speeds up the preview of queries that return too many columns.
 
-```{r}
+```{r eval = FALSE}
 #' @export
 pillar_select_cols <- function(x, n, ...) {
   check_dots_empty()
@@ -444,26 +444,37 @@ Use option?
 
 ## Next steps
 
-- Document control and data flow in a new vignette
-
-    - What operations happen when? Are we overspending time recomputing e.g. alignment or calling `format()`? Do we really need to do S3 dispatch for every cell?
-    - Needs better printing for individual steps
-    - Why does printing of compound pillars even work? Transpose? Do we need this?
-    - `ctl_colonnade()` is opaque, for good reason?
-
-- Document all functions
-- Rethink `new_pillar_component()` and `pillar_component()`, closer coupling with `new_ornament()`?
-    - Components and ornaments are different concepts: a component is used to describe the components of a pillar, an ornament has the contents of a shaft (or of another component)
-    - Start with documenting `new_pillar_component()` etc.
-- Test coverage per file
+- Triage issues
+- Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
+   - Is there a transpose operation somewhere? Do we need this?
+- Finish documentation of `.Rmd` and functions
+    - We can show the control flow with debugme
+    - We're calling `align()` slightly too often
+    - We seem to need dispatch, we could try switchpatching if benchmarks show problems
+    - Individual steps are printed better, `ctl_colonnade()` is still opaque
+- Create walkthrough `.Rmd` to show extension points:
+    - `tbl_sum()`: add header line
+    - `tbl_format_header()` (?)
+    - `tbl_format_footer()`
+    - `tbl_format_setup()`: compute number of cells, show in header and footer
+    - `ctl_pillar()`
+    - `ctl_compound_pillar()`
+    - `tbl_format_body()`
+- Basic implementation for arrays: shaft for first slice, then ellipsis
+- Verify revdepchecks
 - Deprecate `format_type_sum()` (how did that even work?)
 - Look for FIXMEs
-- Wait for tibble 3.0.6 to appear on RSPM
-- Revdepcheck
-- Use penguins
 - Release
 - Blog post?
 
+- Reduce calls to `align()`: 
+    - align all components vertically
+    - squash
+    - only then `align()`
+    - paste
+- Benchmark and profile again
+- Test coverage per file
+- Use penguins
 - Improve output:
     - Tibble-local options for precision
     - Classes for numeric and string, use {formattable}

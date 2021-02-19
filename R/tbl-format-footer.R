@@ -66,20 +66,20 @@ format_footer_cols <- function(x, setup) {
   extra_cols <- setup$extra_cols
   if (length(extra_cols) == 0) return(NULL)
 
-  n_extra_cols <- attr(extra_cols, "true_length") %||% length(extra_cols)
+  extra_cols_total <- setup$extra_cols_total
 
-  vars <- format_extra_vars(extra_cols)
+  vars <- format_extra_vars(extra_cols, extra_cols_total)
   paste0(
-    big_mark(n_extra_cols), " ",
+    big_mark(extra_cols_total), " ",
     if (!identical(setup$rows_total, 0L) && setup$rows_body > 0) "more ",
     pluralise("variable(s)", extra_cols), vars
   )
 }
 
-format_extra_vars <- function(extra_cols) {
+format_extra_vars <- function(extra_cols, extra_cols_total) {
   out <- imap(extra_cols, format_abbrev)
 
-  if (!is.null(attr(extra_cols, "true_length"))) {
+  if (extra_cols_total > length(extra_cols)) {
     out <- c(out, cli::symbol$ellipsis)
   }
 

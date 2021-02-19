@@ -24,9 +24,8 @@ tbl_format_header <- function(x, setup, ...) {
 
 #' @export
 tbl_format_header.tbl <- function(x, setup, ...) {
-  # FIXME: Can we somehow pass the actual number of rows here,
-  # perhaps as an attribute?
-  named_header <- tbl_sum(x)
+  named_header <- setup$tbl_sum
+
   if (all(names2(named_header) == "")) {
     header <- named_header
   } else {
