@@ -7,17 +7,21 @@
 new_tbl_format_setup(
   x,
   width,
+  tbl_sum,
   body,
   rows_body,
   rows_missing,
   rows_total,
-  extra_cols
+  extra_cols,
+  extra_cols_total
 )
 }
 \arguments{
 \item{x}{The input object unchanged,}
 
 \item{width}{The \code{width} argument unchanged,}
+
+\item{tbl_sum}{A named character vector, as areturned from \code{\link[=tbl_sum]{tbl_sum()}},}
 
 \item{body}{TBD}
 
@@ -30,7 +34,11 @@ even if the body does not have any columns.}
 \item{rows_total}{The total number of rows in the data,
 \code{NA} if unknown.}
 
-\item{extra_cols}{TBD}
+\item{extra_cols}{Columns that did not fit into the body,
+as a character vector of formatted column names and types.}
+
+\item{extra_cols_total}{The total number of columns, may be larger than
+\code{length(extra_cols)}.}
 }
 \description{
 The object returned from the default method of \code{\link[=tbl_format_setup]{tbl_format_setup()}}

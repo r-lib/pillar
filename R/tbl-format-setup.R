@@ -65,7 +65,9 @@ tbl_format_setup <- function(x, width = NULL, ...,
 
   # Calls UseMethod("tbl_format_setup"),
   # allows using default values in S3 dispatch
-  tbl_format_setup_(x, width, ..., n = n, max_extra_cols = max_extra_cols)
+  out <- tbl_format_setup_(x, width, ..., n = n, max_extra_cols = max_extra_cols)
+  return(out)
+  UseMethod("tbl_format_setup")
 }
 
 tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols) {
