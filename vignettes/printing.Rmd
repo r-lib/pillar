@@ -79,8 +79,8 @@ setup
 A setup object is required here to avoid computing information twice.
 For instance, the dimensions shown in the header or the extra columns displayed in the footer are available only after the body has been computed.
 
-The default implementation converts the input to a data frame via `as.data.frame(head(x))`, and returns an object constructed with `new_tbl_format_setup()`.
-If you override this method, e.g. to incorporate additional information, you can add new items to the default setup object, but you should not overwrite existing items.
+The default implementation converts the input to a data frame via `as.data.frame(head(x))`, and returns an object constructed with `new_tbl_format_setup()` that contains the data frame and additional information.
+If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.
 
 ```{r}
 pillar:::tbl_format_setup.tbl
@@ -141,8 +141,12 @@ In the following, the first and the fourth steps are discussed.
 
 ## Creating pillar objects
 
-Each column in the tibble is passed to `ctl_new_compound_pillar()`.
-This is a generic that dispatches over the container:
+Each column in the tibble is passed to `ctl_new_compound_pillar()`, which eventually calls `ctl_new_pillar()` once or several times.
+
+
+### Compound pillars
+
+The `ctl_new_compound_pillar()` generic dispatches over the container:
 
 ```{r}
 ctl_new_compound_pillar(tbl, tbl$a, width = 20)
@@ -158,27 +162,51 @@ Implementers of `"tbl"` subclasses will rarely if ever need to extend or overrid
 pillar:::ctl_new_compound_pillar.tbl
 ```
 
-The `ctl_new_pillar()` method also dispatches over the container.
+
+### Simple pillars
+
+The `ctl_new_pillar()` method is called for columns that are not data frames or arrays, and also dispatches over the container.
 
 ```{r}
 pillar:::ctl_new_pillar.tbl
 ```
 
-The default method simply calls `pillar()`.
-This function now returns `NULL` if the width is insufficient to contain the data,
-otherwise (ultimately) a pillar object constructed with `new_pillar()`.
-It is possible to change the appearance of pillars by overriding or extending `ctl_new_pillar()`.
+The default method calls `pillar()` directly, passing the maximum width available.
 
 ```{r}
 pillar
 ```
 
-By default, pillars consist of title, type, and body (shaft).
 Formatting for title and type is provided by `new_pillar_title()` and `new_pillar_type()`.
 The body can be customized by implementing `pillar_shaft()` for a vector class, see `vignette("pillar", package = "vctrs")` for details.
 If title or type don't fit the available width, `pillar_shaft()` is never called.
 
+This function now returns `NULL` if the width is insufficient to contain the data.
+It is possible to change the appearance of pillars by overriding or extending `ctl_new_pillar()`, see the next section for details.
+
+
+### Components
+
+Both compound and simple pillar objects share the same structure and are ultimately constructed with `new_pillar()`.
+
+```{r}
+new_pillar
+```
+
+A pillar is stored as a list of components.
+For simple pillars each component has length one, for compound pillars all components have the same length.
+In the future, this restriction may be levied to support nested components, e.g. for column titles spanning multiple sub-pillars for compound pillars.
+The maximum width available for the simple pillar of for each sub-pillar of a compound pillar is also recorded.
+
+![Layout of the objects contained in a pillar](pillar-objects.png)
+
+
 ## Formatting pillars
 
-- `format.pillar()` with known width
-- careful, don't align twice
+When a pillar object is constructed, it has a minimum a desired (maximum) width.
+Because it depends on the number and width of other pillar objects that may not be even constructed, the final width is not known yet.
+It is passed to `format()`, which uses the desired width if empty:
+
+```{r}
+pillar:::format.pillar
+```
