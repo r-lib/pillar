@@ -53,11 +53,22 @@
 #'   An object that will be passed as `setup` argument to
 #'   [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()].
 #' @export
-tbl_format_setup <- function(x, width, ...,
-                             n, max_extra_cols) {
+tbl_format_setup <- function(x, width = NULL, ...,
+                             n = NULL, max_extra_cols = NULL) {
   "!!DEBUG tbl_format_setup()"
-  stopifnot(is.numeric(width), width > 0)
 
+  width <- get_width_print(width)
+
+  n <- get_n_print(n, nrow(x))
+
+  max_extra_cols <- get_max_extra_cols(max_extra_cols)
+
+  # Calls UseMethod("tbl_format_setup"),
+  # allows using default values in S3 dispatch
+  tbl_format_setup_(x, width, ..., n = n, max_extra_cols = max_extra_cols)
+}
+
+tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols) {
   UseMethod("tbl_format_setup")
 }
 
@@ -70,14 +81,11 @@ tbl_format_setup <- function(x, width, ...,
 #' @export
 #' @importFrom utils head
 tbl_format_setup.tbl <- function(x, width, ...,
-                                 n = NULL, max_extra_cols = NULL) {
+                                 n, max_extra_cols) {
   "!!DEBUG tbl_format_setup.tbl()"
+
+  # Number of rows
   rows <- nrow(x)
-  if (is.null(n)) {
-    # For testing
-    n <- rows
-    stopifnot(!is.na(n))
-  }
 
   if (is.na(rows)) {
     df <- as.data.frame(head(x, n + 1))
@@ -91,8 +99,10 @@ tbl_format_setup.tbl <- function(x, width, ...,
   }
 
   if (is.na(rows)) {
+    # Lazy table with too many rows
     needs_dots <- (nrow(df) >= n)
   } else {
+    # Lazy table with few rows, or regular data frame
     needs_dots <- (rows > n)
   }
 
@@ -102,6 +112,10 @@ tbl_format_setup.tbl <- function(x, width, ...,
     rows_missing <- 0L
   }
 
+  # Header
+  tbl_sum <- tbl_sum(x)
+
+  # Body
   rownames(df) <- NULL
 
   body <- ctl_colonnade(
@@ -111,26 +125,25 @@ tbl_format_setup.tbl <- function(x, width, ...,
     controller = x
   )
 
+  # Extra columns
   extra_cols <- attr(body, "extra_cols")
-  true_length <- length(extra_cols)
+  extra_cols_total <- length(extra_cols)
 
-  if (is.null(max_extra_cols)) {
-    max_extra_cols <- tibble_opt("max_extra_cols")
-  }
-
-  if (true_length > max_extra_cols) {
+  if (extra_cols_total > max_extra_cols) {
     length(extra_cols) <- max_extra_cols
-    attr(extra_cols, "true_length") <- true_length
   }
 
+  # Result
   new_tbl_format_setup(
     x = x,
     width = width,
+    tbl_sum = tbl_sum,
     body = body,
     rows_body = nrow(df),
     rows_missing = rows_missing,
     rows_total = rows,
-    extra_cols = extra_cols
+    extra_cols = extra_cols,
+    extra_cols_total = extra_cols_total
   )
 }
 
@@ -146,6 +159,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'
 #' @param x The input object unchanged,
 #' @param width The `width` argument unchanged,
+#' @param tbl_sum A named character vector, as areturned from [tbl_sum()],
 #' @param body TBD
 #' @param rows_body The number of rows shown in the body,
 #'   even if the body does not have any columns.
@@ -153,20 +167,25 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'   `NA` if unknown.
 #' @param rows_total The total number of rows in the data,
 #'   `NA` if unknown.
-#' @param extra_cols TBD
+#' @param extra_cols Columns that did not fit into the body,
+#'   as a character vector of formatted column names and types.
+#' @param extra_cols_total The total number of columns, may be larger than
+#'   `length(extra_cols)`.
 #'
 #' @keywords internal
-new_tbl_format_setup <- function(x, width, body,
+new_tbl_format_setup <- function(x, width, tbl_sum, body,
                                  rows_body, rows_missing, rows_total,
-                                 extra_cols) {
+                                 extra_cols, extra_cols_total) {
   trunc_info <- list(
     x = x,
     width = width,
+    tbl_sum = tbl_sum,
     body = body,
     rows_body = rows_body,
     rows_missing = rows_missing,
     rows_total = rows_total,
-    extra_cols = extra_cols
+    extra_cols = extra_cols,
+    extra_cols_total = extra_cols_total
   )
 
   structure(trunc_info, class = "pillar_tbl_format_setup")

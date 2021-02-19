@@ -47,14 +47,9 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   check_dots_empty(action = signal)
 
-  width <- get_width_print(width)
-
-  n <- get_n_print(n, nrow(x))
-
   setup <- tbl_format_setup(x, width = width, ...,
     n = n,
-    # FIXME: Don't repeat in default method
-    max_extra_cols = n_extra %||% tibble_opt("max_extra_cols")
+    max_extra_cols = n_extra
   )
 
   header <- tbl_format_header(x, setup)
