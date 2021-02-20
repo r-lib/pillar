@@ -17,7 +17,7 @@ used "as is", no quoting will be applied.}
 \item{...}{Passed on to \code{\link[=pillar_shaft]{pillar_shaft()}}.}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a>}}{\strong{Stable}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
 \code{pillar()} formats a vector using one row for a title (if given),
 one row for the type, and \code{length(x)} rows for the data.

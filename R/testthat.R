@@ -6,7 +6,7 @@
 #' Note that this expectation sets options that affect the formatting of the
 #' pillar, see examples for usage.
 #'
-#' @inheritParams testthat::expect_output_file
+#' @inheritParams testthat::expect_known_output
 #' @param object An object to check.
 #' @param ... Unused.
 #' @param width The width of the output.

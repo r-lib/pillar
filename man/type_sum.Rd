@@ -14,7 +14,7 @@ obj_sum(x)
 and variants have been implemented.}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a>}}{\strong{Questioning}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
 
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
