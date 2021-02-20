@@ -100,7 +100,7 @@ jobs:
       # End custom: install
 
       - name: Install package
-        run: R CMD INSTALL .
+        run: R CMD INSTALL . --with-keep.source --with-keep.parse.data
 
       - name: Session info
         run: |
