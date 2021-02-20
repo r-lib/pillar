@@ -111,8 +111,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-c155b7103c252ce1e5fc" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c155b7103c252ce1e5fc">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-df9927b92f921ee9e1ae" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-df9927b92f921ee9e1ae">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -143,7 +143,7 @@
 <span class="co">#&gt;     writeLines(format(x, width = width, ..., n = n, n_extra = n_extra))</span>
 <span class="co">#&gt;     invisible(x)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c532cfc4a0&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557655b84bb0&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pillar</span><span class="fu">:::</span><span class="va"><a href="../reference/format_tbl.html">format.tbl</a></span>
@@ -156,7 +156,7 @@
 <span class="co">#&gt;     footer &lt;- tbl_format_footer(x, setup)</span>
 <span class="co">#&gt;     c(header, body, footer)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c532cf39b8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557655b7e148&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <p>While it’s possible to extend or override these methods for your <code>"tbl"</code> subclass, often overriding the more specialized methods shown below is sufficient.</p>
 </div>
@@ -193,7 +193,7 @@
 <span class="co">#&gt;     return(out)</span>
 <span class="co">#&gt;     UseMethod("tbl_format_setup")</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c52fc0b308&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557652a7f360&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <p>The default implementation converts the input to a data frame via <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame(head(x))</a></code>, and returns an object constructed with <code><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup()</a></code> that contains the data frame and additional information. If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -241,7 +241,7 @@
 <span class="co">#&gt;         body = body, rows_body = nrow(df), rows_missing = rows_missing, </span>
 <span class="co">#&gt;         rows_total = rows, extra_cols = extra_cols, extra_cols_total = extra_cols_total)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c52f280770&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x5576520dd3a8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <p>At the core, the internal function <code>ctl_colonnade()</code> composes the body. Its functionality and the customization points it offers are detailed in the “Colonnade” section below.</p>
 </div>
@@ -281,7 +281,7 @@
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt;     style_subtle(format_comment(header, width = setup$width))</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c532bfd8c0&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557655a8e308&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pillar</span><span class="fu">:::</span><span class="va">tbl_format_body.tbl</span>
@@ -290,7 +290,7 @@
 <span class="co">#&gt;     force(setup)</span>
 <span class="co">#&gt;     setup$body</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c532edf468&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557655d6df60&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pillar</span><span class="fu">:::</span><span class="va">tbl_format_footer.tbl</span>
@@ -300,7 +300,7 @@
 <span class="co">#&gt;     footer_comment &lt;- split_lines(format_comment(footer, width = setup$width))</span>
 <span class="co">#&gt;     style_subtle(footer_comment)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c532ee1e08&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557655d70900&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 </div>
 <div id="colonnade" class="section level2">
@@ -361,7 +361,7 @@
 <span class="co">#&gt;         ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))</span>
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c52e3d9cc8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557651db8ac8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 </div>
 <div id="simple-pillars" class="section level3">
@@ -376,7 +376,7 @@
 <span class="co">#&gt;     pillar(x, title, if (!is.null(width)) </span>
 <span class="co">#&gt;         max0(width))</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c52e504a50&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557651db1ee8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <p>The default method calls <code><a href="../reference/pillar.html">pillar()</a></code> directly, passing the maximum width available.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -387,7 +387,7 @@
 <span class="co">#&gt;     pillar_from_shaft(new_pillar_title(title), new_pillar_type(x), </span>
 <span class="co">#&gt;         pillar_shaft(x, ...), width)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c52e503af0&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x557651c4a040&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <p>Formatting for title and type is provided by <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code>. The body can be customized by implementing <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> for a vector class, see <code><a href="https://vctrs.r-lib.org/articles/pillar.html" class="external-link">vignette("pillar", package = "vctrs")</a></code> for details. If title or type don’t fit the available width, <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> is never called.</p>
 <p>This function now returns <code>NULL</code> if the width is insufficient to contain the data. It is possible to change the appearance of pillars by overriding or extending <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code>, see the next section for details.</p>
@@ -407,7 +407,7 @@
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt;     structure(components, width = width, class = c(class, "pillar"))</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c53145fc28&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x5576542ef0f8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 <p>A pillar is stored as a list of components. For simple pillars each component has length one, for compound pillars all components have the same length. In the future, this restriction may be levied to support nested components, e.g. for column titles spanning multiple sub-pillars for compound pillars. The maximum width available for the simple pillar of for each sub-pillar of a compound pillar is also recorded.</p>
 <div class="figure">
@@ -433,7 +433,7 @@
 <span class="co">#&gt;     out &lt;- pillar_format_parts_2(x, width)</span>
 <span class="co">#&gt;     new_vertical(unlist(unname(out)))</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55c5323f7450&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x55765528bd40&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 </div>
   </div>
