@@ -55,7 +55,7 @@
 #' @export
 tbl_format_setup <- function(x, width = NULL, ...,
                              n = NULL, max_extra_cols = NULL) {
-  "!!DEBUG tbl_format_setup()"
+  "!!!!!DEBUG tbl_format_setup()"
 
   width <- get_width_print(width)
 
@@ -84,7 +84,7 @@ tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols) {
 #' @importFrom utils head
 tbl_format_setup.tbl <- function(x, width, ...,
                                  n, max_extra_cols) {
-  "!!DEBUG tbl_format_setup.tbl()"
+  "!!!!!DEBUG tbl_format_setup.tbl()"
 
   # Number of rows
   rows <- nrow(x)

@@ -67,7 +67,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' pillar_shaft(NA)
 #' pillar_shaft(c(1:3, NA))
 pillar_shaft <- function(x, ...) {
-  "!!DEBUG pillar_shaft(`v(class(x))`)"
+  "!!!!!DEBUG pillar_shaft(`v(class(x))`)"
 
   if (!missing(...)) {
     check_dots_used(action = warn)

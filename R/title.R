@@ -10,7 +10,7 @@ style_title <- style_bold
 #' @examples
 #' format(new_pillar_title(names(iris)))
 new_pillar_title <- function(x, ...) {
-  "!!DEBUG new_pillar_title(`v(x)`)"
+  "!!!!!DEBUG new_pillar_title(`v(x)`)"
   if (!missing(...)) {
     check_dots_empty(action = warn)
   }
