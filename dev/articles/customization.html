@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9007</span>
       </span>
     </div>
 
@@ -117,8 +117,8 @@
   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Code and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines are inputs to function calls.</p>
-<div id="htmlwidget-08c8922a9e212df33aa4" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-08c8922a9e212df33aa4">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c4e20c3c7b014525b005" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c4e20c3c7b014525b005">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="new-generics" class="section level3">
 <h3 class="hasAnchor">
@@ -479,7 +479,6 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
-<li><p>Triage issues</p></li>
 <li>
 <p>Understand: Why does printing of compound pillars in <code>ctl_colonnade()</code> even work (as opposed to printing a single tibble)?</p>
 <ul>
@@ -489,25 +488,14 @@
 <li>
 <p>Finish documentation of <code>.Rmd</code> and functions</p>
 <ul>
-<li>We can show the control flow with debugme</li>
-<li>We’re calling <code><a href="../reference/align.html">align()</a></code> slightly too often</li>
-<li>We seem to need dispatch, we could try switchpatching if benchmarks show problems</li>
-<li>Individual steps are printed better, <code>ctl_colonnade()</code> is still opaque</li>
+<li>Explain how to show the control flow with debugme</li>
+<li>Hide code in <code>&lt;details&gt;</code>, pretty-print, keep source</li>
 </ul>
 </li>
 <li>
-<p>Create walkthrough <code>.Rmd</code> to show extension points:</p>
+<p>Finish walkthrough <code>.Rmd</code> to show extension points:</p>
 <ul>
-<li>
-<code><a href="../reference/tbl_sum.html">tbl_sum()</a></code>: add header line</li>
-<li>
-<code><a href="../reference/tbl_format_header.html">tbl_format_header()</a></code> (?)</li>
-<li><code><a href="../reference/tbl_format_footer.html">tbl_format_footer()</a></code></li>
-<li>
-<code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code>: compute number of cells, show in header and footer</li>
-<li><code>ctl_pillar()</code></li>
-<li><code>ctl_compound_pillar()</code></li>
-<li><code><a href="../reference/tbl_format_body.html">tbl_format_body()</a></code></li>
+<li>Construct separate class for each example</li>
 </ul>
 </li>
 <li><p>Basic implementation for arrays: shaft for first slice, then ellipsis</p></li>
@@ -557,11 +545,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
+  <p></p>
+<p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
