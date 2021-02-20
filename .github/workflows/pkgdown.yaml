@@ -5,10 +5,12 @@ on:
     - main
     - "docs*"
     - "cran-*"
+    - "r-*"
   pull_request:
     branches:
       - main
       - master
+      - "r-*"
   schedule:
     - cron:  '20 2 * * *'
 
