@@ -56,7 +56,7 @@ set_show_source_source_hook <- function() {
     paste0(
       "<details><summary>Source code of <code>",
       qualified_fun_name, "()</code></summary>",
-      x, "</details>"
+      x, "</details>\n"
     )
   }
 
