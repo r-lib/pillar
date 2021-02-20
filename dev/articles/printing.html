@@ -111,8 +111,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-f34888a86be5e4282fb1" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f34888a86be5e4282fb1">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-66a1ecc735d3e07e16fe" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-66a1ecc735d3e07e16fe">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -137,24 +137,24 @@
 <span class="co">#&gt;   ..$ d: int [1:3] 7 8 9</span>
 <span class="co">#&gt;  $ e: int [1:3] 10 11 12</span></code></pre></div>
 <details><p><summary>Source code of <code>pillar:::print.tbl()</code></summary></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>print.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (x, <span class="dt">width =</span> <span class="ot">NULL</span>, ..., <span class="dt">n =</span> <span class="ot">NULL</span>, <span class="dt">n_extra =</span> <span class="ot">NULL</span>) </span>
-<span id="cb3-2"><a href="#cb3-2"></a>{</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    <span class="kw">writeLines</span>(<span class="kw">format</span>(x, <span class="dt">width =</span> width, ..., <span class="dt">n =</span> n, <span class="dt">n_extra =</span> n_extra))</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="kw">invisible</span>(x)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>}</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x56414a465008</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">print.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span></code></pre></div>
 </details><p>The <code><a href="../reference/format_tbl.html">format.tbl()</a></code> method creates a setup object, and uses that object to format header, body and footer.</p>
 <details><p><summary>Source code of <code>pillar:::format.tbl()</code></summary></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>format.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (x, <span class="dt">width =</span> <span class="ot">NULL</span>, ..., <span class="dt">n =</span> <span class="ot">NULL</span>, <span class="dt">n_extra =</span> <span class="ot">NULL</span>) </span>
-<span id="cb4-2"><a href="#cb4-2"></a>{</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">check_dots_empty</span>(<span class="dt">action =</span> signal)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    setup &lt;-<span class="st"> </span><span class="kw">tbl_format_setup</span>(x, <span class="dt">width =</span> width, ..., <span class="dt">n =</span> n, <span class="dt">max_extra_cols =</span> n_extra)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>    header &lt;-<span class="st"> </span><span class="kw">tbl_format_header</span>(x, setup)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>    body &lt;-<span class="st"> </span><span class="kw">tbl_format_body</span>(x, setup)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>    footer &lt;-<span class="st"> </span><span class="kw">tbl_format_footer</span>(x, setup)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="kw">c</span>(header, body, footer)</span>
-<span id="cb4-9"><a href="#cb4-9"></a>}</span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x56414a45c680</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span>
+<span class="fl">7</span>
+<span class="fl">8</span>
+<span class="fl">9</span></code></pre></div>
 </details><p>While it’s possible to extend or override these methods for your <code>"tbl"</code> subclass, often overriding the more specialized methods shown below is sufficient.</p>
 </div>
 <div id="setup" class="section level2">
@@ -179,63 +179,63 @@
 <p>A setup object is required here to avoid computing information twice. For instance, the dimensions shown in the header or the extra columns displayed in the footer are available only after the body has been computed.</p>
 <p>The generic dispatches over the container, so that you can override it if necessary. It is responsible for assigning default values to arguments before passing them on to the method.</p>
 <details><p><summary>Source code of <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code></summary></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>tbl_format_setup &lt;-<span class="st"> </span><span class="cf">function</span> (x, <span class="dt">width =</span> <span class="ot">NULL</span>, ..., <span class="dt">n =</span> <span class="ot">NULL</span>, <span class="dt">max_extra_cols =</span> <span class="ot">NULL</span>) </span>
-<span id="cb6-2"><a href="#cb6-2"></a>{</span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="st">"!!DEBUG tbl_format_setup()"</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>    width &lt;-<span class="st"> </span><span class="kw">get_width_print</span>(width)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>    n &lt;-<span class="st"> </span><span class="kw">get_n_print</span>(n, <span class="kw">nrow</span>(x))</span>
-<span id="cb6-6"><a href="#cb6-6"></a>    max_extra_cols &lt;-<span class="st"> </span><span class="kw">get_max_extra_cols</span>(max_extra_cols)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>    out &lt;-<span class="st"> </span><span class="kw">tbl_format_setup_</span>(x, width, ..., <span class="dt">n =</span> n, <span class="dt">max_extra_cols =</span> max_extra_cols)</span>
-<span id="cb6-8"><a href="#cb6-8"></a>    <span class="kw">return</span>(out)</span>
-<span id="cb6-9"><a href="#cb6-9"></a>    <span class="kw">UseMethod</span>(<span class="st">"tbl_format_setup"</span>)</span>
-<span id="cb6-10"><a href="#cb6-10"></a>}</span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x564146fa95f8</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span>
+<span class="fl">7</span>
+<span class="fl">8</span>
+<span class="fl">9</span>
+<span class="fl">10</span></code></pre></div>
 </details><p>The default implementation converts the input to a data frame via <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame(head(x))</a></code>, and returns an object constructed with <code><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup()</a></code> that contains the data frame and additional information. If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.</p>
 <details><p><summary>Source code of <code>pillar:::tbl_format_setup.tbl()</code></summary></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>tbl_format_setup.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (x, width, ..., n, max_extra_cols) </span>
-<span id="cb7-2"><a href="#cb7-2"></a>{</span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="st">"!!DEBUG tbl_format_setup.tbl()"</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>    rows &lt;-<span class="st"> </span><span class="kw">nrow</span>(x)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="cf">if</span> (<span class="kw">is.na</span>(rows)) {</span>
-<span id="cb7-6"><a href="#cb7-6"></a>        df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">head</span>(x, n <span class="op">+</span><span class="st"> </span><span class="dv">1</span>))</span>
-<span id="cb7-7"><a href="#cb7-7"></a>        <span class="cf">if</span> (<span class="kw">nrow</span>(df) <span class="op">&lt;=</span><span class="st"> </span>n) {</span>
-<span id="cb7-8"><a href="#cb7-8"></a>            rows &lt;-<span class="st"> </span><span class="kw">nrow</span>(df)</span>
-<span id="cb7-9"><a href="#cb7-9"></a>        }</span>
-<span id="cb7-10"><a href="#cb7-10"></a>        <span class="cf">else</span> {</span>
-<span id="cb7-11"><a href="#cb7-11"></a>            df &lt;-<span class="st"> </span>df[<span class="kw">seq_len</span>(n), , drop =<span class="st"> </span><span class="ot">FALSE</span>]</span>
-<span id="cb7-12"><a href="#cb7-12"></a>        }</span>
-<span id="cb7-13"><a href="#cb7-13"></a>    }</span>
-<span id="cb7-14"><a href="#cb7-14"></a>    <span class="cf">else</span> {</span>
-<span id="cb7-15"><a href="#cb7-15"></a>        df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">head</span>(x, n))</span>
-<span id="cb7-16"><a href="#cb7-16"></a>    }</span>
-<span id="cb7-17"><a href="#cb7-17"></a>    <span class="cf">if</span> (<span class="kw">is.na</span>(rows)) {</span>
-<span id="cb7-18"><a href="#cb7-18"></a>        needs_dots &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(df) <span class="op">&gt;=</span><span class="st"> </span>n)</span>
-<span id="cb7-19"><a href="#cb7-19"></a>    }</span>
-<span id="cb7-20"><a href="#cb7-20"></a>    <span class="cf">else</span> {</span>
-<span id="cb7-21"><a href="#cb7-21"></a>        needs_dots &lt;-<span class="st"> </span>(rows <span class="op">&gt;</span><span class="st"> </span>n)</span>
-<span id="cb7-22"><a href="#cb7-22"></a>    }</span>
-<span id="cb7-23"><a href="#cb7-23"></a>    <span class="cf">if</span> (needs_dots) {</span>
-<span id="cb7-24"><a href="#cb7-24"></a>        rows_missing &lt;-<span class="st"> </span>rows <span class="op">-</span><span class="st"> </span>n</span>
-<span id="cb7-25"><a href="#cb7-25"></a>    }</span>
-<span id="cb7-26"><a href="#cb7-26"></a>    <span class="cf">else</span> {</span>
-<span id="cb7-27"><a href="#cb7-27"></a>        rows_missing &lt;-<span class="st"> </span>0L</span>
-<span id="cb7-28"><a href="#cb7-28"></a>    }</span>
-<span id="cb7-29"><a href="#cb7-29"></a>    tbl_sum &lt;-<span class="st"> </span><span class="kw">tbl_sum</span>(x)</span>
-<span id="cb7-30"><a href="#cb7-30"></a>    <span class="kw">rownames</span>(df) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb7-31"><a href="#cb7-31"></a>    body &lt;-<span class="st"> </span><span class="kw">ctl_colonnade</span>(df, <span class="dt">has_row_id =</span> <span class="cf">if</span> (<span class="kw">.row_names_info</span>(x) <span class="op">&gt;</span><span class="st"> </span></span>
-<span id="cb7-32"><a href="#cb7-32"></a><span class="st">        </span><span class="dv">0</span>) </span>
-<span id="cb7-33"><a href="#cb7-33"></a>        <span class="st">"*"</span></span>
-<span id="cb7-34"><a href="#cb7-34"></a>    <span class="cf">else</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> width, <span class="dt">controller =</span> x)</span>
-<span id="cb7-35"><a href="#cb7-35"></a>    extra_cols &lt;-<span class="st"> </span><span class="kw">attr</span>(body, <span class="st">"extra_cols"</span>)</span>
-<span id="cb7-36"><a href="#cb7-36"></a>    extra_cols_total &lt;-<span class="st"> </span><span class="kw">length</span>(extra_cols)</span>
-<span id="cb7-37"><a href="#cb7-37"></a>    <span class="cf">if</span> (extra_cols_total <span class="op">&gt;</span><span class="st"> </span>max_extra_cols) {</span>
-<span id="cb7-38"><a href="#cb7-38"></a>        <span class="kw">length</span>(extra_cols) &lt;-<span class="st"> </span>max_extra_cols</span>
-<span id="cb7-39"><a href="#cb7-39"></a>    }</span>
-<span id="cb7-40"><a href="#cb7-40"></a>    <span class="kw">new_tbl_format_setup</span>(<span class="dt">x =</span> x, <span class="dt">width =</span> width, <span class="dt">tbl_sum =</span> tbl_sum, </span>
-<span id="cb7-41"><a href="#cb7-41"></a>        <span class="dt">body =</span> body, <span class="dt">rows_body =</span> <span class="kw">nrow</span>(df), <span class="dt">rows_missing =</span> rows_missing, </span>
-<span id="cb7-42"><a href="#cb7-42"></a>        <span class="dt">rows_total =</span> rows, <span class="dt">extra_cols =</span> extra_cols, <span class="dt">extra_cols_total =</span> extra_cols_total)</span>
-<span id="cb7-43"><a href="#cb7-43"></a>}</span>
-<span id="cb7-44"><a href="#cb7-44"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x564144d4cdd8</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span>
+<span class="fl">7</span>
+<span class="fl">8</span>
+<span class="fl">9</span>
+<span class="fl">10</span>
+<span class="fl">11</span>
+<span class="fl">12</span>
+<span class="fl">13</span>
+<span class="fl">14</span>
+<span class="fl">15</span>
+<span class="fl">16</span>
+<span class="fl">17</span>
+<span class="fl">18</span>
+<span class="fl">19</span>
+<span class="fl">20</span>
+<span class="fl">21</span>
+<span class="fl">22</span>
+<span class="fl">23</span>
+<span class="fl">24</span>
+<span class="fl">25</span>
+<span class="fl">26</span>
+<span class="fl">27</span>
+<span class="fl">28</span>
+<span class="fl">29</span>
+<span class="fl">30</span>
+<span class="fl">31</span>
+<span class="fl">32</span>
+<span class="fl">33</span>
+<span class="fl">34</span>
+<span class="fl">35</span>
+<span class="fl">36</span>
+<span class="fl">37</span>
+<span class="fl">38</span>
+<span class="fl">39</span>
+<span class="fl">40</span>
+<span class="fl">41</span>
+<span class="fl">42</span>
+<span class="fl">43</span></code></pre></div>
 </details><p>At the core, the internal function <code>ctl_colonnade()</code> composes the body. Its functionality and the customization points it offers are detailed in the “Colonnade” section below.</p>
 </div>
 <div id="header-body-footer" class="section level2">
@@ -261,34 +261,34 @@
 <span class="co">#&gt; [1] "character"</span></code></pre></div>
 <p>Since most of the work already has been carried out in <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code>, the default implementations mostly consist of code that styles and wraps the output.</p>
 <details><p><summary>Source code of <code>pillar:::tbl_format_header.tbl()</code></summary></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>tbl_format_header.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (x, setup, ...) </span>
-<span id="cb10-2"><a href="#cb10-2"></a>{</span>
-<span id="cb10-3"><a href="#cb10-3"></a>    named_header &lt;-<span class="st"> </span>setup<span class="op">$</span>tbl_sum</span>
-<span id="cb10-4"><a href="#cb10-4"></a>    <span class="cf">if</span> (<span class="kw">all</span>(<span class="kw">names2</span>(named_header) <span class="op">==</span><span class="st"> ""</span>)) {</span>
-<span id="cb10-5"><a href="#cb10-5"></a>        header &lt;-<span class="st"> </span>named_header</span>
-<span id="cb10-6"><a href="#cb10-6"></a>    }</span>
-<span id="cb10-7"><a href="#cb10-7"></a>    <span class="cf">else</span> {</span>
-<span id="cb10-8"><a href="#cb10-8"></a>        header &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">justify</span>(<span class="kw">paste0</span>(<span class="kw">names2</span>(named_header), </span>
-<span id="cb10-9"><a href="#cb10-9"></a>            <span class="st">":"</span>), <span class="dt">right =</span> <span class="ot">FALSE</span>, <span class="dt">space =</span> NBSP), <span class="st">" "</span>, named_header)</span>
-<span id="cb10-10"><a href="#cb10-10"></a>    }</span>
-<span id="cb10-11"><a href="#cb10-11"></a>    <span class="kw">style_subtle</span>(<span class="kw">format_comment</span>(header, <span class="dt">width =</span> setup<span class="op">$</span>width))</span>
-<span id="cb10-12"><a href="#cb10-12"></a>}</span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x56414a353a18</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_format_header.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span>
+<span class="fl">7</span>
+<span class="fl">8</span>
+<span class="fl">9</span>
+<span class="fl">10</span>
+<span class="fl">11</span>
+<span class="fl">12</span></code></pre></div>
 </details><details><p><summary>Source code of <code>pillar:::tbl_format_body.tbl()</code></summary></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>tbl_format_body.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (x, setup, ...) </span>
-<span id="cb11-2"><a href="#cb11-2"></a>{</span>
-<span id="cb11-3"><a href="#cb11-3"></a>    <span class="kw">force</span>(setup)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>    setup<span class="op">$</span>body</span>
-<span id="cb11-5"><a href="#cb11-5"></a>}</span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x56414a6337d0</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_format_body.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span></code></pre></div>
 </details><details><p><summary>Source code of <code>pillar:::tbl_format_footer.tbl()</code></summary></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>tbl_format_footer.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (x, setup, ...) </span>
-<span id="cb12-2"><a href="#cb12-2"></a>{</span>
-<span id="cb12-3"><a href="#cb12-3"></a>    footer &lt;-<span class="st"> </span><span class="kw">pre_dots</span>(<span class="kw">format_footer</span>(x, setup))</span>
-<span id="cb12-4"><a href="#cb12-4"></a>    footer_comment &lt;-<span class="st"> </span><span class="kw">split_lines</span>(<span class="kw">format_comment</span>(footer, <span class="dt">width =</span> setup<span class="op">$</span>width))</span>
-<span id="cb12-5"><a href="#cb12-5"></a>    <span class="kw">style_subtle</span>(footer_comment)</span>
-<span id="cb12-6"><a href="#cb12-6"></a>}</span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x56414a632340</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tbl_format_footer.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span></code></pre></div>
 </details>
 </div>
 <div id="colonnade" class="section level2">
@@ -332,23 +332,23 @@
 <span class="co">#&gt; … and 1 more sub-pillars</span></code></pre></div>
 <p>The default method distinguishes between compound and simple pillars. Data frame, matrix, and array columns are decomposed into sub-pillars and returned as a compound pillar. Regular vectors are forwarded to <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code>. Implementers of <code>"tbl"</code> subclasses will rarely if ever need to extend or override this method.</p>
 <details><p><summary>Source code of <code>pillar:::ctl_new_compound_pillar.tbl()</code></summary></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>ctl_new_compound_pillar.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (controller, x, width, ..., <span class="dt">title =</span> <span class="ot">NULL</span>) </span>
-<span id="cb14-2"><a href="#cb14-2"></a>{</span>
-<span id="cb14-3"><a href="#cb14-3"></a>    <span class="st">"!!DEBUG ctl_new_compound_pillar.tbl()"</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>    <span class="cf">if</span> (<span class="kw">is.data.frame</span>(x)) {</span>
-<span id="cb14-5"><a href="#cb14-5"></a>        <span class="kw">new_data_frame_pillar</span>(x, controller, width, <span class="dt">title =</span> title)</span>
-<span id="cb14-6"><a href="#cb14-6"></a>    }</span>
-<span id="cb14-7"><a href="#cb14-7"></a>    <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">is.matrix</span>(x)) {</span>
-<span id="cb14-8"><a href="#cb14-8"></a>        <span class="kw">new_matrix_pillar</span>(x, controller, width, <span class="dt">title =</span> title)</span>
-<span id="cb14-9"><a href="#cb14-9"></a>    }</span>
-<span id="cb14-10"><a href="#cb14-10"></a>    <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">is.array</span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">dim</span>(x)) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) {</span>
-<span id="cb14-11"><a href="#cb14-11"></a>        <span class="kw">new_array_pillar</span>(x, controller, width, <span class="dt">title =</span> title)</span>
-<span id="cb14-12"><a href="#cb14-12"></a>    }</span>
-<span id="cb14-13"><a href="#cb14-13"></a>    <span class="cf">else</span> {</span>
-<span id="cb14-14"><a href="#cb14-14"></a>        <span class="kw">ctl_new_pillar</span>(controller, x, width, ..., <span class="dt">title =</span> <span class="kw">prepare_title</span>(title))</span>
-<span id="cb14-15"><a href="#cb14-15"></a>    }</span>
-<span id="cb14-16"><a href="#cb14-16"></a>}</span>
-<span id="cb14-17"><a href="#cb14-17"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x564148a68fe0</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ctl_new_compound_pillar.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span>
+<span class="fl">7</span>
+<span class="fl">8</span>
+<span class="fl">9</span>
+<span class="fl">10</span>
+<span class="fl">11</span>
+<span class="fl">12</span>
+<span class="fl">13</span>
+<span class="fl">14</span>
+<span class="fl">15</span>
+<span class="fl">16</span></code></pre></div>
 </details>
 </div>
 <div id="simple-pillars" class="section level3">
@@ -363,22 +363,22 @@
 <span class="co">#&gt;                    2</span>
 <span class="co">#&gt;                    3</span></code></pre></div>
 <details><p><summary>Source code of <code>pillar:::ctl_new_pillar.tbl()</code></summary></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>ctl_new_pillar.tbl &lt;-<span class="st"> </span><span class="cf">function</span> (controller, x, width, ..., <span class="dt">title =</span> <span class="ot">NULL</span>) </span>
-<span id="cb16-2"><a href="#cb16-2"></a>{</span>
-<span id="cb16-3"><a href="#cb16-3"></a>    <span class="st">"!!DEBUG ctl_new_pillar.tbl()"</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>    <span class="kw">pillar</span>(x, title, <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(width)) </span>
-<span id="cb16-5"><a href="#cb16-5"></a>        <span class="kw">max0</span>(width))</span>
-<span id="cb16-6"><a href="#cb16-6"></a>}</span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x564148a71be0</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ctl_new_pillar.tbl</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span></code></pre></div>
 </details><p>The default method calls <code><a href="../reference/pillar.html">pillar()</a></code> directly, passing the maximum width available.</p>
 <details><p><summary>Source code of <code><a href="../reference/pillar.html">pillar()</a></code></summary></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>pillar &lt;-<span class="st"> </span><span class="cf">function</span> (x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...) </span>
-<span id="cb17-2"><a href="#cb17-2"></a>{</span>
-<span id="cb17-3"><a href="#cb17-3"></a>    <span class="st">"!!DEBUG pillar(`v(title)`, `v(width)`)"</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>    <span class="kw">pillar_from_shaft</span>(<span class="kw">new_pillar_title</span>(title), <span class="kw">new_pillar_type</span>(x), </span>
-<span id="cb17-5"><a href="#cb17-5"></a>        <span class="kw">pillar_shaft</span>(x, ...), width)</span>
-<span id="cb17-6"><a href="#cb17-6"></a>}</span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x564148a70520</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pillar</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span></code></pre></div>
 </details><p>Formatting for title and type is provided by <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code>. The body can be customized by implementing <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> for a vector class, see <code><a href="https://vctrs.r-lib.org/articles/pillar.html" class="external-link">vignette("pillar", package = "vctrs")</a></code> for details. If title or type don’t fit the available width, <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> is never called.</p>
 <p>This function now returns <code>NULL</code> if the width is insufficient to contain the data. It is possible to change the appearance of pillars by overriding or extending <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code>.</p>
 </div>
@@ -387,16 +387,16 @@
 <a href="#components" class="anchor"></a>Components</h3>
 <p>Both compound and simple pillar objects share the same structure and are ultimately constructed with <code><a href="../reference/new_pillar.html">new_pillar()</a></code>.</p>
 <details><p><summary>Source code of <code><a href="../reference/new_pillar.html">new_pillar()</a></code></summary></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>new_pillar &lt;-<span class="st"> </span><span class="cf">function</span> (components, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">class =</span> <span class="ot">NULL</span>) </span>
-<span id="cb18-2"><a href="#cb18-2"></a>{</span>
-<span id="cb18-3"><a href="#cb18-3"></a>    <span class="st">"!!DEBUG new_pillar(`v(width)`, `v(class)`)"</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>    <span class="kw">check_dots_empty</span>()</span>
-<span id="cb18-5"><a href="#cb18-5"></a>    <span class="cf">if</span> (<span class="kw">length</span>(components) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is_named</span>(components)) {</span>
-<span id="cb18-6"><a href="#cb18-6"></a>        <span class="kw">abort</span>(<span class="st">"All components must have names."</span>)</span>
-<span id="cb18-7"><a href="#cb18-7"></a>    }</span>
-<span id="cb18-8"><a href="#cb18-8"></a>    <span class="kw">structure</span>(components, <span class="dt">width =</span> width, <span class="dt">class =</span> <span class="kw">c</span>(class, <span class="st">"pillar"</span>))</span>
-<span id="cb18-9"><a href="#cb18-9"></a>}</span>
-<span id="cb18-10"><a href="#cb18-10"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x564148ba64a8</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span>
+<span class="fl">7</span>
+<span class="fl">8</span>
+<span class="fl">9</span></code></pre></div>
 </details><p>A pillar is stored as a list of components. For simple pillars each component has length one, for compound pillars all components have the same length. In the future, this restriction may be levied to support nested components, e.g. for column titles spanning multiple sub-pillars for compound pillars. The maximum width available for the simple pillar of for each sub-pillar of a compound pillar is also recorded.</p>
 <div class="figure">
 <img src="pillar-objects.png" alt=""><p class="caption">Layout of the objects contained in a pillar</p>
@@ -408,19 +408,19 @@
 <a href="#formatting-pillars" class="anchor"></a>Formatting pillars</h2>
 <p>When a pillar object is constructed, it has a minimum a desired (maximum) width. Because it depends on the number and width of other pillar objects that may not be even constructed, the final width is not known yet. It is passed to <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code>, which uses the desired width if empty:</p>
 <details><p><summary>Source code of <code>pillar:::format.pillar()</code></summary></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>format.pillar &lt;-<span class="st"> </span><span class="cf">function</span> (x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...) </span>
-<span id="cb19-2"><a href="#cb19-2"></a>{</span>
-<span id="cb19-3"><a href="#cb19-3"></a>    <span class="cf">if</span> (<span class="kw">is.null</span>(width)) {</span>
-<span id="cb19-4"><a href="#cb19-4"></a>        width &lt;-<span class="st"> </span><span class="kw">get_width</span>(x)</span>
-<span id="cb19-5"><a href="#cb19-5"></a>    }</span>
-<span id="cb19-6"><a href="#cb19-6"></a>    <span class="cf">if</span> (<span class="kw">is.null</span>(width)) {</span>
-<span id="cb19-7"><a href="#cb19-7"></a>        widths &lt;-<span class="st"> </span><span class="kw">pillar_get_widths</span>(x)</span>
-<span id="cb19-8"><a href="#cb19-8"></a>        width &lt;-<span class="st"> </span><span class="kw">sum</span>(widths) <span class="op">-</span><span class="st"> </span><span class="kw">length</span>(widths) <span class="op">+</span><span class="st"> </span>1L</span>
-<span id="cb19-9"><a href="#cb19-9"></a>    }</span>
-<span id="cb19-10"><a href="#cb19-10"></a>    out &lt;-<span class="st"> </span><span class="kw">pillar_format_parts_2</span>(x, width)</span>
-<span id="cb19-11"><a href="#cb19-11"></a>    <span class="kw">new_vertical</span>(<span class="kw">unlist</span>(<span class="kw">unname</span>(out)))</span>
-<span id="cb19-12"><a href="#cb19-12"></a>}</span>
-<span id="cb19-13"><a href="#cb19-13"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x5641496523d0</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">format.pillar</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fl">2</span>
+<span class="fl">3</span>
+<span class="fl">4</span>
+<span class="fl">5</span>
+<span class="fl">6</span>
+<span class="fl">7</span>
+<span class="fl">8</span>
+<span class="fl">9</span>
+<span class="fl">10</span>
+<span class="fl">11</span>
+<span class="fl">12</span></code></pre></div>
 </details>
 </div>
   </div>
