@@ -445,7 +445,7 @@ Use option?
 ## Next steps
 
 - Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
-   - Is there a transpose operation somewhere? Do we need this?
+    - `combine_pillars()` is called, flattens
 - Finish documentation of `.Rmd` and functions
     - Explain how to show the control flow with debugme
     - Hide code in `<details>`, pretty-print, keep source
