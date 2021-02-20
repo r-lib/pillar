@@ -54,7 +54,7 @@
 #' pillar(date + c(1, NA, 3:5))
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
-  "!!!!!DEBUG pillar(`v(title)`, `v(width)`)"
+  "!!!!DEBUG pillar(`v(title)`, `v(width)`)"
 
   pillar_from_shaft(
     new_pillar_title(title),
@@ -151,7 +151,7 @@ rowidformat2 <- function(data, names, has_star) {
 #'   lines = new_pillar_component(list(lines("=")), width = 1)
 #' ))
 new_pillar <- function(components, ..., width = NULL, class = NULL) {
-  "!!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"
+  "!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"
 
   check_dots_empty()
   if (length(components) > 0 && !is_named(components)) {

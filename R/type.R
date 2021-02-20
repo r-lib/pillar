@@ -17,7 +17,7 @@ style_type <- function(x) {
 #' @examples
 #' format(new_pillar_type(iris$Species))
 new_pillar_type <- function(x, ...) {
-  "!!!!!DEBUG new_pillar_type(`v(class(x))`)"
+  "!!!!DEBUG new_pillar_type(`v(class(x))`)"
   if (!missing(...)) {
     check_dots_empty(action = warn)
   }

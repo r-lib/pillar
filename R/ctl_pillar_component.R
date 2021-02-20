@@ -21,7 +21,7 @@
 #' @examples
 #' # TBD
 new_pillar_component <- function(x, ..., width, min_width = NULL) {
-  "!!!!!DEBUG new_pillar_component(`v(x)`, `v(width)`, `v(min_width)`)"
+  "!!!!DEBUG new_pillar_component(`v(x)`, `v(width)`, `v(min_width)`)"
 
   check_dots_empty()
   stopifnot(rlang::is_bare_list(x))
