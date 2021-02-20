@@ -1,9 +1,3 @@
-template:
-  package: tidytemplate
-
-home:
-  strip_header: true
-
 reference:
   - title: High-level interface
     desc: >
@@ -20,7 +14,6 @@ reference:
     contents:
       - pillar_shaft
       - starts_with("new_pillar_shaft")
-      - new_ornament
       - type_sum
       - format_type_sum
   - title: Styling
@@ -29,13 +22,14 @@ reference:
     contents:
       - starts_with("style_")
       - align
+      - get_extent
+      - new_ornament
       - new_pillar_title
       - new_pillar_type
   - title: Miscellaneous
     contents:
       - dim_desc
       - expect_known_display
-      - get_extent
       - pillar-package
 
 navbar:
