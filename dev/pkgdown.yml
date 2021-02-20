@@ -1,11 +1,12 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1.9000
-pkgdown_sha: 1ca166905f1b019ed4af9642617ea09fa2b8fc17
+pkgdown_sha: 93e8e8dd2a785d18670888b4856621b3963ffa8c
 articles:
   customization: customization.html
+  debugme: debugme.html
   extending: extending.html
   printing: printing.html
-last_built: 2021-02-20T04:42Z
+last_built: 2021-02-20T17:21Z
 urls:
   reference: https://pillar.r-lib.org//reference
   article: https://pillar.r-lib.org//articles

@@ -111,8 +111,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-06aaf04dd16f1836e581" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-06aaf04dd16f1836e581">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-bef7c82978c03919b01f" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bef7c82978c03919b01f">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -185,7 +185,7 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,
                              <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!DEBUG tbl_format_setup()"</span>
+  <span class="st">"!!!!DEBUG tbl_format_setup()"</span>
 
   <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width_print</span><span class="op">(</span><span class="va">width</span><span class="op">)</span>
 
@@ -204,7 +204,7 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
                                  <span class="va">n</span>, <span class="va">max_extra_cols</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!DEBUG tbl_format_setup.tbl()"</span>
+  <span class="st">"!!!!DEBUG tbl_format_setup.tbl()"</span>
 
   <span class="co"># Number of rows</span>
   <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -372,7 +372,7 @@
 <details><p><summary>Source code of <code>pillar:::ctl_new_compound_pillar.tbl()</code></summary></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ctl_new_compound_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!DEBUG ctl_new_compound_pillar.tbl()"</span>
+  <span class="st">"!!!!DEBUG ctl_new_compound_pillar.tbl(`v(width)`, `v(title)`)"</span>
 
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="fu">new_data_frame_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
@@ -400,7 +400,7 @@
 <details><p><summary>Source code of <code>pillar:::ctl_new_pillar.tbl()</code></summary></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ctl_new_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!DEBUG ctl_new_pillar.tbl()"</span>
+  <span class="st">"!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"</span>
 
   <span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="fu">max0</span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
@@ -408,7 +408,7 @@
 <details><p><summary>Source code of <code><a href="../reference/pillar.html">pillar()</a></code></summary></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!DEBUG pillar(`v(title)`, `v(width)`)"</span>
+  <span class="st">"!!!!DEBUG pillar(`v(title)`, `v(width)`)"</span>
 
   <span class="fu">pillar_from_shaft</span><span class="op">(</span>
     <span class="fu"><a href="../reference/new_pillar_title.html">new_pillar_title</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span>,
@@ -427,7 +427,7 @@
 <details><p><summary>Source code of <code><a href="../reference/new_pillar.html">new_pillar()</a></code></summary></p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!DEBUG new_pillar(`v(width)`, `v(class)`)"</span>
+  <span class="st">"!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"</span>
 
   <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">components</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu">is_named</span><span class="op">(</span><span class="va">components</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
