@@ -5,12 +5,9 @@ set_show_source_hooks <- function() {
   set_show_source_source_hook()
 }
 
-# Defines a `show_source` knitr option. If this chunk option is set, code is duplicated
-# (running with tibbles or data frames, respectively): one line of df code
-# followed by the same line of the corresponding tibble code.
-# The code is also evaluated, if the results are identical (disregarding the
-# class), only the tibble copy is retained.
-#
+# Defines a `show_source` knitr option. If this chunk option is set,
+# the code should be a single function (use ::: for internal functions).
+# The code will be replaced by the function definition, and not evaluated.
 set_show_source_opts_hook <- function(width) {
   force(width)
 
@@ -34,11 +31,7 @@ set_show_source_opts_hook <- function(width) {
   knitr::opts_hooks$set(show_source = show_source_opts_hook)
 }
 
-# show_source chunks are shown side by side, with the help of an HTML table.
-# Each source chunk introduces a new table cell, even chunks also introduce
-# a new table row.
-# vertical-align: top keeps the table rows nicely aligned.
-# This places some limitations on the chunk sources but works well so far.
+# show_source chunks are included in a <details> tag.
 set_show_source_source_hook <- function() {
   # Need to use a closure here to daisy-chain hooks and to keep state
 
