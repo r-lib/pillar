@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9007</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.7.9000</span>
       </span>
     </div>
 
@@ -129,69 +129,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-formatting-tables" class="hasAnchor"><a href="#section-formatting-tables" class="anchor"></a>Formatting tables</h2>
-          <p class="section-desc"><p>Override or extend these methods if you want to customize the appearance of your tibble-like object.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="format_tbl.html">print(<i>&lt;tbl&gt;</i>)</a></code> <code><a href="format_tbl.html">format(<i>&lt;tbl&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Formatting of tbl objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tbl_format_setup.html">tbl_format_setup()</a></code> </p>
-        </td>
-        <td><p>Set up formatting</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tbl_format_header.html">tbl_format_header()</a></code> </p>
-        </td>
-        <td><p>Format the header of a tibble</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tbl_format_body.html">tbl_format_body()</a></code> </p>
-        </td>
-        <td><p>Format the body of a tibble</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tbl_format_footer.html">tbl_format_footer()</a></code> </p>
-        </td>
-        <td><p>Format the footer of a tibble</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ctl_new_pillar.html">ctl_new_pillar()</a></code> <code><a href="ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> </p>
-        </td>
-        <td><p>Customize your tibble subclass</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tbl_sum.html">tbl_sum()</a></code> </p>
-        </td>
-        <td><p>Provide a succinct summary of an object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="glimpse.html">glimpse()</a></code> </p>
-        </td>
-        <td><p>Get a glimpse of your data</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-formatting-pillars" class="hasAnchor"><a href="#section-formatting-pillars" class="anchor"></a>Formatting pillars</h2>
-          <p class="section-desc"><p>Functions and methods to implement pillar support for your data type.</p></p>
+          <h2 id="section-high-level-interface" class="hasAnchor"><a href="#section-high-level-interface" class="anchor"></a>High-level interface</h2>
+          <p class="section-desc"><p>These functions accept vectors or lists and create objects that format nicely on the terminal.</p></p>
         </th>
       </tr>
       
@@ -204,20 +143,33 @@
         <td>
           <p><code><a href="pillar.html">pillar()</a></code> </p>
         </td>
-        <td><p>Object for formatting a vector suitable for tabular display</p></td>
+        <td><p>Format a vector suitable for tabular display</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="new_pillar.html">new_pillar()</a></code> </p>
+          <p><code><a href="colonnade.html">colonnade()</a></code> <code><a href="colonnade.html">squeeze()</a></code> </p>
         </td>
-        <td><p>Construct a custom pillar object</p></td>
+        <td><p>Format multiple vectors in a tabular display</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="new_pillar_component.html">new_pillar_component()</a></code> <code><a href="new_pillar_component.html">pillar_component()</a></code> </p>
+          <p><code><a href="extra_cols.html">extra_cols()</a></code> </p>
         </td>
-        <td><p>Components of a pillar</p></td>
-      </tr><tr>
+        <td><p>Retrieve information about columns that didn't fit the available width</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-hooks" class="hasAnchor"><a href="#section-hooks" class="anchor"></a>Hooks</h2>
+          <p class="section-desc"><p>Override or use these methods if you want pillar support for your data type.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="pillar_shaft.html">pillar_shaft()</a></code> <code><a href="pillar_shaft.html">print(<i>&lt;pillar_shaft&gt;</i>)</a></code> <code><a href="pillar_shaft.html">format(<i>&lt;pillar_shaft&gt;</i>)</a></code> </p>
@@ -246,7 +198,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section-styling" class="hasAnchor"><a href="#section-styling" class="anchor"></a>Styling</h2>
-          <p class="section-desc"><p>For consistent output of different data types.</p></p>
+          <p class="section-desc"><p>For consistent output among different data types.</p></p>
         </th>
       </tr>
       
@@ -309,6 +261,12 @@
           <p><code><a href="dim_desc.html">dim_desc()</a></code> </p>
         </td>
         <td><p>Format dimensions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="expect_known_display.html">expect_known_display()</a></code> </p>
+        </td>
+        <td><p>Test helpers</p></td>
       </tr><tr>
         
         <td>

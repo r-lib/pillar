@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9007</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.7.9000</span>
       </span>
     </div>
 
@@ -119,87 +119,12 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="pillar-14999007" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9007">
-<a href="#pillar-14999007" class="anchor"></a>pillar 1.4.99.9007<small> Unreleased </small>
-</h1>
-<ul>
-<li>New printing vignette (<a href='https://github.com/r-lib/pillar/issues/251'>#251</a>).</li>
-<li>Fix calculation of remaining width and extra columns (<a href='https://github.com/r-lib/pillar/issues/249'>#249</a>).</li>
-<li>Enable debugme (<a href='https://github.com/r-lib/pillar/issues/248'>#248</a>).</li>
-<li>
-<code><a href="../reference/new_pillar_component.html">pillar_component()</a></code> and <code><a href="../reference/new_pillar_component.html">new_pillar_component()</a></code> instead of <code>*pillar_box()</code> .</li>
-<li>New <code><a href="../reference/type_sum.html">size_sum()</a></code> generic (<a href='https://github.com/r-lib/pillar/issues/239'>#239</a>).</li>
-<li>
-<code><a href="../reference/type_sum.html">obj_sum()</a></code> now always returns a string. <code><a href="../reference/pillar_shaft.html">pillar_shaft.list()</a></code> iterates over its elements and calls <code><a href="../reference/type_sum.html">obj_sum()</a></code> for each (<a href='https://github.com/r-lib/pillar/issues/137'>#137</a>).</li>
-</ul>
-</div>
-    <div id="pillar-14999006" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9006">
-<a href="#pillar-14999006" class="anchor"></a>pillar 1.4.99.9006<small> Unreleased </small>
-</h1>
-<ul>
-<li>
-<code><a href="../reference/glimpse.html">glimpse()</a></code> is now implemented in pillar, tibble keeps exporting it (<a href='https://github.com/r-lib/pillar/issues/234'>#234</a>).</li>
-</ul>
-</div>
-    <div id="pillar-14999005" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9005">
-<a href="#pillar-14999005" class="anchor"></a>pillar 1.4.99.9005<small> Unreleased </small>
-</h1>
-<ul>
-<li>One-dimensional arrays are treated the same way as vectors.</li>
-</ul>
-</div>
-    <div id="pillar-14999004" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9004">
-<a href="#pillar-14999004" class="anchor"></a>pillar 1.4.99.9004<small> Unreleased </small>
-</h1>
-<ul>
-<li><p>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> used via <code><a href="../reference/format_tbl.html">print.tbl()</a></code>, <code><a href="../reference/format_tbl.html">format.tbl()</a></code> and <code><a href="../reference/tbl_format_setup.html">tbl_format_setup.tbl()</a></code> (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
-<li><p>New <code><a href="../reference/new_pillar.html">new_pillar()</a></code> low-level constructor (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
-<li><p>New <code>new_pillar_box()</code> and <code>pillar_box()</code>, interface yet to be refined (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
-</ul>
-</div>
-    <div id="pillar-14999003" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9003">
-<a href="#pillar-14999003" class="anchor"></a>pillar 1.4.99.9003<small> Unreleased </small>
-</h1>
-<ul>
-<li><p>Breaking: <code>print.pillar_ornament()</code> now shows <code>&lt;pillar_ornament&gt;</code> in the first line (<a href='https://github.com/r-lib/pillar/issues/228'>#228</a>).</p></li>
-<li><p>New <code>format.pillar_ornament()</code> (<a href='https://github.com/r-lib/pillar/issues/228'>#228</a>).</p></li>
-<li><p>Breaking: <code>print.pillar()</code> shows <code>&lt;pillar&gt;</code> in the first line (<a href='https://github.com/r-lib/pillar/issues/227'>#227</a>).</p></li>
-<li><p>Add code of conduct (<a href='https://github.com/r-lib/pillar/issues/219'>#219</a>).</p></li>
-<li><p>Re-license as MIT (<a href='https://github.com/r-lib/pillar/issues/215'>#215</a>).</p></li>
-<li><p>Use testthat 3e (<a href='https://github.com/r-lib/pillar/issues/218'>#218</a>).</p></li>
-<li><p>Avoid pillar.bold option in most tests (<a href='https://github.com/r-lib/pillar/issues/216'>#216</a>).</p></li>
-<li><p>Improve formatting for <code>"Surv"</code> and <code>"Surv2"</code> classes from the survival package (<a href='https://github.com/r-lib/pillar/issues/199'>#199</a>).</p></li>
-<li><p>Change internal storage format for <code><a href="../reference/colonnade.html">colonnade()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> (<a href='https://github.com/r-lib/pillar/issues/204'>#204</a>).</p></li>
-</ul>
-</div>
-    <div id="pillar-14999002" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9002">
-<a href="#pillar-14999002" class="anchor"></a>pillar 1.4.99.9002<small> Unreleased </small>
-</h1>
-<ul>
-<li><p>Documentation and tests (<a href='https://github.com/r-lib/pillar/issues/202'>#202</a>).</p></li>
-<li><p>pillar has been re-licensed as MIT (<a href='https://github.com/r-lib/pillar/issues/215'>#215</a>).</p></li>
-</ul>
-</div>
-    <div id="pillar-14999001" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9001">
-<a href="#pillar-14999001" class="anchor"></a>pillar 1.4.99.9001<small> Unreleased </small>
-</h1>
-<ul>
-<li>Move printing code from tibble to pillar (<a href='https://github.com/r-lib/pillar/issues/179'>#179</a>).</li>
-</ul>
-</div>
     <div id="pillar-1479000" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.7.9000">
 <a href="#pillar-1479000" class="anchor"></a>pillar 1.4.7.9000<small> Unreleased </small>
 </h1>
 <ul>
-<li>Internal changes only.</li>
+<li>Adapt to changed environment on CRAN’s Solaris machine.</li>
 </ul>
 </div>
     <div id="pillar-147" class="section level1">
@@ -317,7 +242,7 @@
 <a href="#performance" class="anchor"></a>Performance</h2>
 <ul>
 <li>
-<code><a href="../reference/squeeze.html">squeeze()</a></code> is now faster (because the width computation in <code><a href="../reference/pillar_shaft.html">pillar_shaft.numeric()</a></code> now uses more arithmetics instead of string concatenation). Further speedups may require implementation of crucial parts in C (<a href='https://github.com/r-lib/pillar/issues/147'>#147</a>).</li>
+<code><a href="../reference/colonnade.html">squeeze()</a></code> is now faster (because the width computation in <code><a href="../reference/pillar_shaft.html">pillar_shaft.numeric()</a></code> now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (<a href='https://github.com/r-lib/pillar/issues/147'>#147</a>).</li>
 <li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="../reference/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
 </ul>
 </div>
@@ -419,7 +344,7 @@
 </h1>
 <ul>
 <li>Whole numbers are printed without a decimal dot again. Numbers that are the result of a whole number divided by a power of 10 (subject to a tolerance to account for floating-point imprecision) are shown without trailing decimal zeros, even if these zeros are significant according to the <code>pillar.sigfig</code> option (<a href='https://github.com/r-lib/pillar/issues/105'>#105</a>).</li>
-<li>New <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> to support consistent output in <code><a href="../reference/glimpse.html">glimpse()</a></code> (<a href='https://github.com/r-lib/pillar/issues/31'>#31</a>).</li>
+<li>New <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> to support consistent output in <code>glimpse()</code> (<a href='https://github.com/r-lib/pillar/issues/31'>#31</a>).</li>
 <li>New <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> generic that allows overriding the formatting of the type summary in the capital (<a href='https://github.com/r-lib/pillar/issues/73'>#73</a>).</li>
 <li>The <code>digits.secs</code> option is respected when computing the width for date-time values (<a href='https://github.com/r-lib/pillar/issues/102'>#102</a>).</li>
 </ul>
@@ -446,7 +371,7 @@
 <a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
-<li>Very small numbers (like <code>1e-310</code>) are now printed correctly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
+<li>Very small numbers (like <code>1e-310</code>) are now printed corectly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
 <li>Fix representation of right-hand side for <code>getOption("pillar.sigfig") &gt;= 6</code> (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/380'>#380</a>).</li>
 <li>Fix computation of significant figures for numbers with absolute value &gt;= 1 (<a href='https://github.com/r-lib/pillar/issues/98'>#98</a>).</li>
 </ul>
