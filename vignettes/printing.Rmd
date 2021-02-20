@@ -54,6 +54,8 @@ Dotted lines represent information that a function obtains via argument or (in t
 DiagrammeR::mermaid("format.mmd")
 ```
 
+The pillar package uses debugme for debugging.
+Activating debugging for pillar is another way to track the control flow, see `vignette("debugme")` for details.
 
 
 ## Initialization
