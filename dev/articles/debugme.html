@@ -88,92 +88,88 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>DEBUGME_SHOW_TIMESTAMP <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="op">)</span>
-<span class="co">#&gt; pillar Loaded </span>
-<span class="co">#&gt; pillar Level 2 +1ms </span>
-<span class="co">#&gt; pillar Level 3 +1ms </span>
-<span class="co">#&gt; pillar Level 4 +1ms</span>
 
 <span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>c <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, d <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>, e <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tbl</span>, width <span class="op">=</span> <span class="fl">23</span><span class="op">)</span>
-<span class="co">#&gt; pillar tbl_format_setup() +155ms </span>
-<span class="co">#&gt; pillar +-tbl_format_setup.tbl() +1ms </span>
-<span class="co">#&gt; pillar   +-ctl_colonnade() +3ms </span>
-<span class="co">#&gt; pillar     +-ctl_new_compound_pillar(width = 21, title = "a") +8ms </span>
-<span class="co">#&gt; pillar       +-ctl_new_compound_pillar.tbl(width = 21, title = "a") +3ms </span>
-<span class="co">#&gt; pillar         +-ctl_new_pillar(width = 21, title = "a") +3ms </span>
-<span class="co">#&gt; pillar           +-ctl_new_pillar.tbl(width = 21, title = "a") +3ms </span>
-<span class="co">#&gt; pillar             +-pillar(title = "a", width = 21) +3ms </span>
-<span class="co">#&gt; pillar               +-new_pillar_title(x = "a") +3ms </span>
-<span class="co">#&gt; pillar               +-new_pillar_type(class(x) = "integer") +32ms </span>
-<span class="co">#&gt; pillar               +-pillar_shaft(class(x) = "integer") +4ms </span>
-<span class="co">#&gt; pillar               +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L) +37ms </span>
-<span class="co">#&gt; pillar               +-new_pillar(width = 21, class = NULL) +3ms </span>
-<span class="co">#&gt; pillar                 +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 1L, min_width = 1L) +5ms </span>
-<span class="co">#&gt; pillar                 +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L) +5ms </span>
-<span class="co">#&gt; pillar     +-ctl_new_compound_pillar(width = 15, title = "b") +8ms </span>
-<span class="co">#&gt; pillar       +-ctl_new_compound_pillar.tbl(width = 15, title = "b") +3ms </span>
-<span class="co">#&gt; pillar         +-ctl_new_compound_pillar(width = 15, title = &lt;chr: "b$", "c"&gt;) +31ms </span>
-<span class="co">#&gt; pillar           +-ctl_new_compound_pillar.tbl(width = 15, title = &lt;chr: "b$", "c"&gt;) +4ms </span>
-<span class="co">#&gt; pillar             +-ctl_new_pillar(width = 15, title = "b$c") +8ms </span>
-<span class="co">#&gt; pillar               +-ctl_new_pillar.tbl(width = 15, title = "b$c") +3ms </span>
-<span class="co">#&gt; pillar                 +-pillar(title = "b$c", width = 15) +3ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar_title(x = "b$c") +22ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar_type(class(x) = "integer") +7ms </span>
-<span class="co">#&gt; pillar                   +-pillar_shaft(class(x) = "integer") +3ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L) +38ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar(width = 15, class = NULL) +3ms </span>
-<span class="co">#&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 3L, min_width = 3L) +5ms </span>
-<span class="co">#&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L) +5ms </span>
-<span class="co">#&gt; pillar         +-ctl_new_compound_pillar(width = 9, title = &lt;chr: "$", "d"&gt;) +9ms </span>
-<span class="co">#&gt; pillar           +-ctl_new_compound_pillar.tbl(width = 9, title = &lt;chr: "$", "d"&gt;) +4ms </span>
-<span class="co">#&gt; pillar             +-ctl_new_pillar(width = 9, title = "$d") +3ms </span>
-<span class="co">#&gt; pillar               +-ctl_new_pillar.tbl(width = 9, title = "$d") +3ms </span>
-<span class="co">#&gt; pillar                 +-pillar(title = "$d", width = 9) +3ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar_title(x = "$d") +3ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar_type(class(x) = "integer") +9ms </span>
-<span class="co">#&gt; pillar                   +-pillar_shaft(class(x) = "integer") +7ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L) +6ms </span>
-<span class="co">#&gt; pillar                   +-new_pillar(width = 9, class = NULL) +3ms </span>
-<span class="co">#&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 2L, min_width = 2L) +5ms </span>
-<span class="co">#&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L) +5ms </span>
-<span class="co">#&gt; pillar         +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;, &lt;pllr_ttl&gt;&gt;, width = &lt;int: 3L, 2L&gt;, min_width = &lt;int: 3L, 2L&gt;) +17ms </span>
-<span class="co">#&gt; pillar         +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;, &lt;pllr_typ&gt;&gt;, width = &lt;int: 5L, 5L&gt;, min_width = &lt;int: 5L, 5L&gt;) +9ms </span>
-<span class="co">#&gt; pillar         +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;, &lt;pllr_sh_&gt;&gt;, width = &lt;int: 1L, 1L&gt;, min_width = &lt;int: 1L, 1L&gt;) +9ms </span>
-<span class="co">#&gt; pillar         +-new_pillar(width = NULL, class = "compound_pillar") +3ms </span>
-<span class="co">#&gt; pillar     +-ctl_new_compound_pillar(width = 3, title = "e") +12ms </span>
-<span class="co">#&gt; pillar       +-ctl_new_compound_pillar.tbl(width = 3, title = "e") +3ms </span>
-<span class="co">#&gt; pillar         +-ctl_new_pillar(width = 3, title = "e") +3ms </span>
-<span class="co">#&gt; pillar           +-ctl_new_pillar.tbl(width = 3, title = "e") +3ms </span>
-<span class="co">#&gt; pillar             +-pillar(title = "e", width = 3) +3ms </span>
-<span class="co">#&gt; pillar               +-new_pillar_title(x = "e") +3ms </span>
-<span class="co">#&gt; pillar               +-new_pillar_type(class(x) = "integer") +7ms </span>
-<span class="co">#&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;, &lt;pllr_ttl&gt;, &lt;pllr_ttl&gt;&gt;, width = &lt;int: 1L, 3L, 2L&gt;, min_width = &lt;int: 1L, 3L, 2L&gt;) +31ms </span>
-<span class="co">#&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;, &lt;pllr_typ&gt;, &lt;pllr_typ&gt;&gt;, width = &lt;int: 5L, 5L, 5L&gt;, min_width = &lt;int: 5L, 5L, 5L&gt;) +13ms </span>
-<span class="co">#&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;, &lt;pllr_sh_&gt;, &lt;pllr_sh_&gt;&gt;, width = &lt;int: 1L, 1L, 1L&gt;, min_width = &lt;int: 1L, 1L, 1L&gt;) +10ms </span>
-<span class="co">#&gt; pillar     +-new_pillar(width = NULL, class = "compound_pillar") +3ms </span>
-<span class="co">#&gt; pillar     +-new_pillar(width = NULL, class = NULL) +7ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 1L, min_width = 1L) +5ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L) +6ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L) +5ms </span>
-<span class="co">#&gt; pillar     +-new_pillar(width = NULL, class = NULL) +4ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 3L, min_width = 3L) +5ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L) +5ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L) +5ms </span>
-<span class="co">#&gt; pillar     +-new_pillar(width = NULL, class = NULL) +4ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 2L, min_width = 2L) +5ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L) +5ms </span>
-<span class="co">#&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L) +6ms </span>
-<span class="co">#&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_rf_&gt;&gt;, width = 1L, min_width = 1L) +7ms </span>
-<span class="co">#&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_rf_&gt;&gt;, width = 1L, min_width = 1L) +5ms </span>
-<span class="co">#&gt; pillar     +-new_pillar(width = NULL, class = NULL) +8ms </span>
-<span class="co">#&gt; # A tibble: 3 x 3</span>
-<span class="co">#&gt;       a   b$c    $d</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1     1     4     7</span>
-<span class="co">#&gt; 2     2     5     8</span>
-<span class="co">#&gt; 3     3     6     9</span>
-<span class="co">#&gt; # … with 1 more</span>
-<span class="co">#&gt; #   variable: e &lt;int&gt;</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tbl</span>, width <span class="op">=</span> <span class="fl">23</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; #&gt; pillar tbl_format_setup()
+#&gt; #&gt; pillar +-tbl_format_setup.tbl()
+#&gt; #&gt; pillar   +-ctl_colonnade()
+#&gt; #&gt; pillar     +-ctl_new_compound_pillar(width = 21, title = "a")
+#&gt; #&gt; pillar       +-ctl_new_compound_pillar.tbl(width = 21, title = "a")
+#&gt; #&gt; pillar         +-ctl_new_pillar(width = 21, title = "a")
+#&gt; #&gt; pillar           +-ctl_new_pillar.tbl(width = 21, title = "a")
+#&gt; #&gt; pillar             +-pillar(title = "a", width = 21)
+#&gt; #&gt; pillar               +-new_pillar_title(x = "a")
+#&gt; #&gt; pillar               +-new_pillar_type(class(x) = "integer")
+#&gt; #&gt; pillar               +-pillar_shaft(class(x) = "integer")
+#&gt; #&gt; pillar               +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar               +-new_pillar(width = 21, class = NULL)
+#&gt; #&gt; pillar                 +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar                 +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L)
+#&gt; #&gt; pillar     +-ctl_new_compound_pillar(width = 15, title = "b")
+#&gt; #&gt; pillar       +-ctl_new_compound_pillar.tbl(width = 15, title = "b")
+#&gt; #&gt; pillar         +-ctl_new_compound_pillar(width = 15, title = &lt;chr: "b$", "c"&gt;)
+#&gt; #&gt; pillar           +-ctl_new_compound_pillar.tbl(width = 15, title = &lt;chr: "b$", "c"&gt;)
+#&gt; #&gt; pillar             +-ctl_new_pillar(width = 15, title = "b$c")
+#&gt; #&gt; pillar               +-ctl_new_pillar.tbl(width = 15, title = "b$c")
+#&gt; #&gt; pillar                 +-pillar(title = "b$c", width = 15)
+#&gt; #&gt; pillar                   +-new_pillar_title(x = "b$c")
+#&gt; #&gt; pillar                   +-new_pillar_type(class(x) = "integer")
+#&gt; #&gt; pillar                   +-pillar_shaft(class(x) = "integer")
+#&gt; #&gt; pillar                   +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar                   +-new_pillar(width = 15, class = NULL)
+#&gt; #&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 3L, min_width = 3L)
+#&gt; #&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L)
+#&gt; #&gt; pillar         +-ctl_new_compound_pillar(width = 9, title = &lt;chr: "$", "d"&gt;)
+#&gt; #&gt; pillar           +-ctl_new_compound_pillar.tbl(width = 9, title = &lt;chr: "$", "d"&gt;)
+#&gt; #&gt; pillar             +-ctl_new_pillar(width = 9, title = "$d")
+#&gt; #&gt; pillar               +-ctl_new_pillar.tbl(width = 9, title = "$d")
+#&gt; #&gt; pillar                 +-pillar(title = "$d", width = 9)
+#&gt; #&gt; pillar                   +-new_pillar_title(x = "$d")
+#&gt; #&gt; pillar                   +-new_pillar_type(class(x) = "integer")
+#&gt; #&gt; pillar                   +-pillar_shaft(class(x) = "integer")
+#&gt; #&gt; pillar                   +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar                   +-new_pillar(width = 9, class = NULL)
+#&gt; #&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 2L, min_width = 2L)
+#&gt; #&gt; pillar                     +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L)
+#&gt; #&gt; pillar         +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;, &lt;pllr_ttl&gt;&gt;, width = &lt;int: 3L, 2L&gt;, min_width = &lt;int: 3L, 2L&gt;)
+#&gt; #&gt; pillar         +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;, &lt;pllr_typ&gt;&gt;, width = &lt;int: 5L, 5L&gt;, min_width = &lt;int: 5L, 5L&gt;)
+#&gt; #&gt; pillar         +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;, &lt;pllr_sh_&gt;&gt;, width = &lt;int: 1L, 1L&gt;, min_width = &lt;int: 1L, 1L&gt;)
+#&gt; #&gt; pillar         +-new_pillar(width = NULL, class = "compound_pillar")
+#&gt; #&gt; pillar     +-ctl_new_compound_pillar(width = 3, title = "e")
+#&gt; #&gt; pillar       +-ctl_new_compound_pillar.tbl(width = 3, title = "e")
+#&gt; #&gt; pillar         +-ctl_new_pillar(width = 3, title = "e")
+#&gt; #&gt; pillar           +-ctl_new_pillar.tbl(width = 3, title = "e")
+#&gt; #&gt; pillar             +-pillar(title = "e", width = 3)
+#&gt; #&gt; pillar               +-new_pillar_title(x = "e")
+#&gt; #&gt; pillar               +-new_pillar_type(class(x) = "integer")
+#&gt; #&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;, &lt;pllr_ttl&gt;, &lt;pllr_ttl&gt;&gt;, width = &lt;int: 1L, 3L, 2L&gt;, min_width = &lt;int: 1L, 3L, 2L&gt;)
+#&gt; #&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;, &lt;pllr_typ&gt;, &lt;pllr_typ&gt;&gt;, width = &lt;int: 5L, 5L, 5L&gt;, min_width = &lt;int: 5L, 5L, 5L&gt;)
+#&gt; #&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;, &lt;pllr_sh_&gt;, &lt;pllr_sh_&gt;&gt;, width = &lt;int: 1L, 1L, 1L&gt;, min_width = &lt;int: 1L, 1L, 1L&gt;)
+#&gt; #&gt; pillar     +-new_pillar(width = NULL, class = "compound_pillar")
+#&gt; #&gt; pillar     +-new_pillar(width = NULL, class = NULL)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar     +-new_pillar(width = NULL, class = NULL)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 3L, min_width = 3L)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar     +-new_pillar(width = NULL, class = NULL)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_ttl&gt;&gt;, width = 2L, min_width = 2L)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_typ&gt;&gt;, width = 5L, min_width = 5L)
+#&gt; #&gt; pillar       +-new_pillar_component(x = &lt;list: &lt;pllr_sh_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_rf_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar     +-new_pillar_component(x = &lt;list: &lt;pllr_rf_&gt;&gt;, width = 1L, min_width = 1L)
+#&gt; #&gt; pillar     +-new_pillar(width = NULL, class = NULL)
+#&gt; #&gt; # A tibble: 3 x 3
+#&gt; #&gt;       a   b$c    $d
+#&gt; #&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+#&gt; #&gt; 1     1     4     7
+#&gt; #&gt; 2     2     5     8
+#&gt; #&gt; 3     3     6     9
+#&gt; #&gt; # … with 1 more
+#&gt; #&gt; #   variable: e &lt;int&gt;</code></pre>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
