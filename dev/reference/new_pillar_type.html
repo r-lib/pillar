@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Prepare a column type for formatting — new_pillar_type" />
-<meta property="og:description" content="Call format() on the result to render column types." />
+<meta property="og:description" content="Calls type_sum() to format the type.
+Call format() on the result to render column types." />
 
 
 <meta name="robots" content="noindex">
@@ -80,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.7.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9007</span>
       </span>
     </div>
 
@@ -122,7 +123,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Call <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> on the result to render column types.</p>
+    <p>Calls <code><a href='type_sum.html'>type_sum()</a></code> to format the type.
+Call <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> on the result to render column types.</p>
     </div>
 
     <pre class="usage"><span class='fu'>new_pillar_type</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -143,7 +145,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='fu'>new_pillar_type</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "\033[3m\033[90m&lt;fct&gt;\033[39m\033[23m"</div></pre>
+</div><div class='output co'>#&gt; [1] "\033[3m\033[38;5;246m&lt;fct&gt;\033[39m\033[23m"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
