@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9007</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.7.9001</span>
       </span>
     </div>
 
@@ -76,38 +76,36 @@
 <a href="#pillar" class="anchor"></a>pillar</h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
 <p>pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<pre class="chroma">
-<span class="c"># pillar is installed if you install the tidyverse package:</span>
-<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"tidyverse"</span><span class="o">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># pillar is installed if you install the tidyverse package:</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span>
 
-<span class="c"># Alternatively, install just pillar:</span>
-<span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"pillar"</span><span class="o">)</span>
+<span class="co"># Alternatively, install just pillar:</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pillar"</span><span class="op">)</span>
 
-<span class="c"># Or the the development version from GitHub:</span>
-<span class="c"># install.packages("devtools")</span>
-<span class="nf">devtools</span><span class="nf">::</span><span class="nf"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="o">(</span><span class="s">"r-lib/pillar"</span><span class="o">)</span></pre>
+<span class="co"># Or the the development version from GitHub:</span>
+<span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r-lib/pillar"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like <a href="https://tibble.tidyverse.org/" class="external-link">tibble</a>.</p>
-<pre class="chroma">
-<span class="kr"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/pillar" class="external-link">pillar</a></span><span class="op">)</span>
 
-<span class="nv">x</span> <span class="o">&lt;-</span> <span class="m">123456789</span> <span class="o">*</span> <span class="o">(</span><span class="m">10</span> <span class="o">^</span> <span class="nf"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="o">(</span><span class="o">-</span><span class="m">3</span>, <span class="o">-</span><span class="m">5</span>, <span class="kc">NA</span>, <span class="o">-</span><span class="m">8</span>, <span class="o">-</span><span class="m">10</span><span class="o">)</span><span class="o">)</span>
-<span class="nf"><a href="https://pillar.r-lib.org/reference/pillar.html">pillar</a></span><span class="o">(</span><span class="nv">x</span><span class="o">)</span>
-<span class="c">#&gt; &lt;pillar&gt;</span>
-<span class="c">#&gt;       &lt;dbl&gt;</span>
-<span class="c">#&gt; 123457.    </span>
-<span class="c">#&gt;   1235.    </span>
-<span class="c">#&gt;     NA     </span>
-<span class="c">#&gt;      1.23  </span>
-<span class="c">#&gt;      0.0123</span></pre>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> <span class="op">(</span><span class="fl">10</span> <span class="op">^</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt;       [3m[90m&lt;dbl&gt;[39m[23m</span>
+<span class="co">#&gt; [4m1[24m[4m2[24m[4m3[24m457.    </span>
+<span class="co">#&gt;   [4m1[24m235.    </span>
+<span class="co">#&gt;     [31mNA[39m     </span>
+<span class="co">#&gt;      1.23  </span>
+<span class="co">#&gt;      0.012[4m3[24m</span></code></pre></div>
 <p>If you render this in a console that supports colour, you’ll see something that looks like this:</p>
 <p><img src="reference/figures/colours.png" width="200px"></p>
 </div>
@@ -116,8 +114,8 @@
 <a href="#extending" class="anchor"></a>Extending</h2>
 <p>The primary user of this package is <a href="https://github.com/tidyverse/tibble" class="external-link">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can add color with only a few changes:</p>
 <ol style="list-style-type: decimal">
-<li>Implement the <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft()</code></a> method for your data type.</li>
-<li>Add pillar to <code>Suggests</code> and implement dynamic method registration using <a href="https://vctrs.r-lib.org/reference/s3_register.html" class="external-link"><code>vctrs::s3_register()</code></a>.
+<li>Implement the <code><a href="reference/pillar_shaft.html">pillar_shaft()</a></code> method for your data type.</li>
+<li>Add pillar to <code>Suggests</code> and implement dynamic method registration using <code><a href="https://vctrs.r-lib.org/reference/s3_register.html" class="external-link">vctrs::s3_register()</a></code>.
 <ul>
 <li>If you don’t mind the dependency, you can also add it to <code>Imports</code>, and import the methods you override with a regular <code>NAMESPACE</code> import.</li>
 </ul>
@@ -142,25 +140,25 @@
 <li>It has an attribute <code>"width"</code>
 </li>
 <li>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</li>
-<li>It must implement a method <a href="https://rdrr.io/r/base/format.html" class="external-link"><code>format(x, width, ...)</code></a> that can be called with any value between <code>min_width</code> and <code>width</code>
+<li>It must implement a method <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format(x, width, ...)</a></code> that can be called with any value between <code>min_width</code> and <code>width</code>
 <ul>
 <li>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code>
 </li>
 </ul>
 </li>
 </ul>
-<p>The function <a href="https://pillar.r-lib.org/reference/new_pillar_shaft.html"><code>new_pillar_shaft()</code></a> returns such an object, and also correctly formats <code>NA</code> values. In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <a href="https://pillar.r-lib.org/reference/new_pillar_shaft.html"><code>new_pillar_shaft()</code></a>. See <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft.numeric()</code></a> for a code that allows changing the display depending on the available width.</p>
+<p>The function <code><a href="reference/new_pillar_shaft.html">new_pillar_shaft()</a></code> returns such an object, and also correctly formats <code>NA</code> values. In many cases, the implementation of <code>pillar_shaft.your_class_name()</code> will format the data as a character vector (using color for emphasis) and simply call <code><a href="reference/new_pillar_shaft.html">new_pillar_shaft()</a></code>. See <code><a href="reference/pillar_shaft.html">pillar_shaft.numeric()</a></code> for a code that allows changing the display depending on the available width.</p>
 </div>
 <div id="useful-helpers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#useful-helpers" class="anchor"></a>Useful helpers</h3>
 <ul>
 <li>
-<a href="https://pillar.r-lib.org/reference/style_subtle.html"><code>style_neg()</code></a> to format negative values</li>
+<code><a href="reference/style_num.html">style_neg()</a></code> to format negative values</li>
 <li>
-<a href="https://pillar.r-lib.org/reference/style_subtle.html"><code>style_num()</code></a> to format numbers</li>
+<code><a href="reference/style_num.html">style_num()</a></code> to format numbers</li>
 <li>
-<a href="https://pillar.r-lib.org/reference/style_subtle.html"><code>style_subtle()</code></a> to de-emphasize</li>
+<code><a href="reference/style_num.html">style_subtle()</a></code> to de-emphasize</li>
 </ul>
 </div>
 </div>
@@ -173,12 +171,6 @@
 </ul>
 <p>The earliest use of unicode characters to generate sparklines appears to be <a href="https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/" class="external-link">from 2009</a>.</p>
 <p>Exercising these ideas to their fullest requires a font with good support for block drawing characters. <a href="https://fsd.it/shop/fonts/pragmatapro/" class="external-link">PragamataPro</a> is one such font.</p>
-<hr>
-</div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the pillar project is released with a <a href="https://pillar.r-lib.org/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
@@ -199,17 +191,10 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
 </ul>
 </div>
 
-<div class="community">
-<h2 data-toc-skip>Community</h2>
-<ul class="list-unstyled">
-<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
-</ul>
-</div>
 
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>

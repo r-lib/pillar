@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Object for formatting a vector suitable for tabular display — pillar • pillar</title>
+<title>Format a vector suitable for tabular display — pillar • pillar</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,10 @@
 
 
 
-<meta property="og:title" content="Object for formatting a vector suitable for tabular display — pillar" />
+<meta property="og:title" content="Format a vector suitable for tabular display — pillar" />
 <meta property="og:description" content="
-pillar() creates an object that formats a vector.
-The output uses one row for a title (if given), one row for the type,
-and vec_size(x) rows for the data." />
+pillar() formats a vector using one row for a title (if given),
+one row for the type, and length(x) rows for the data." />
 
 
 <meta name="robots" content="noindex">
@@ -83,7 +82,7 @@ and vec_size(x) rows for the data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9007</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.7.9001</span>
       </span>
     </div>
 
@@ -119,16 +118,15 @@ and vec_size(x) rows for the data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Object for formatting a vector suitable for tabular display</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/ctl_pillar.R'><code>R/ctl_pillar.R</code></a></small>
+    <h1>Format a vector suitable for tabular display</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pillar/blob/master/R/pillar.R'><code>R/pillar.R</code></a></small>
     <div class="hidden name"><code>pillar.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#stable'><img src='figures/lifecycle-stable.svg' alt='[Stable]' /></a></p>
-<p><code>pillar()</code> creates an object that formats a vector.
-The output uses one row for a title (if given), one row for the type,
-and <code>vec_size(x)</code> rows for the data.</p>
+<p><code>pillar()</code> formats a vector using one row for a title (if given),
+one row for the type, and <code><a href='https://rdrr.io/r/base/length.html'>length(x)</a></code> rows for the data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span>, title <span class='op'>=</span> <span class='cn'>NULL</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -157,40 +155,37 @@ used "as is", no quoting will be applied.</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A pillar consists of arbitrary components.
-The <code>pillar()</code> constructor uses <code>title</code>, <code>type</code>, and <code>data</code>.</p><ul>
-<li><p><code>title</code> via <code><a href='new_pillar_title.html'>new_pillar_title()</a></code></p></li>
-<li><p><code>type</code> via <code><a href='new_pillar_type.html'>new_pillar_type()</a></code>, which calls <code><a href='type_sum.html'>type_sum()</a></code>
-internally</p></li>
-<li><p><code>data</code> via <code><a href='pillar_shaft.html'>pillar_shaft()</a></code></p></li>
-</ul>
-
-<p>All components are formatted via <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> when displaying the pillar.
-A <code>width</code> argument is passed to each <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> call.</p>
-<p>As of pillar 1.5.0, <code>pillar()</code> returns <code>NULL</code> if the width is insufficient
-to display the data.</p>
+    <p>A pillar consists of a <em>capital</em> and a <em>shaft</em>.</p>
+<p>The capital is constructed using the (currently internal)
+<code>pillar_capital()</code> function, which uses the <code>title</code> argument
+and calls <code><a href='type_sum.html'>type_sum()</a></code> to format the type.</p>
+<p>For the shaft, the <code><a href='pillar_shaft.html'>pillar_shaft()</a></code> generic is called with the object.
+The returned value is stored and processed with <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> when displaying the pillar.
+The call to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> has a valid <code>width</code> argument.
+Depending on the implementation,
+the output representation can be computed eagerly right away (as done with <code><a href='new_pillar_shaft.html'>new_pillar_shaft_simple()</a></code>),
+or only when <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> is called.
+The latter allows for adaptive shortening of the output depending on the available width,
+see <code>pillar:::pillar_shaft.numeric</code> for an example.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fl'>123456789</span> <span class='op'>*</span> <span class='op'>(</span><span class='fl'>10</span> <span class='op'>^</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span>, <span class='op'>-</span><span class='fl'>3</span>, <span class='op'>-</span><span class='fl'>5</span>, <span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>8</span>, <span class='op'>-</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;         <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+</div><div class='output co'>#&gt;         <span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; 12</span><span style='text-decoration: underline;'>345</span><span>679.    
 #&gt;   </span><span style='text-decoration: underline;'>123</span><span>457.    
 #&gt;     </span><span style='text-decoration: underline;'>1</span><span>235.    
 #&gt;       </span><span style='color: #BB0000;'>NA</span><span>     
 #&gt;        1.23  
 #&gt;        0.012</span><span style='text-decoration: underline;'>3</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='op'>-</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+7
-#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+5
-#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+3
-#&gt; </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>  
-#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+0
-#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-2</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+</div><div class='output co'>#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #555555;'>e</span><span>+7
+#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #555555;'>e</span><span>+5
+#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #555555;'>e</span><span>+3
+#&gt; </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #555555;'> </span><span>  
+#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #555555;'>e</span><span>+0
+#&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-2</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; 0.080</span><span style='text-decoration: underline;'>8</span><span> 
 #&gt; 0.834  
 #&gt; 0.601  
@@ -201,8 +196,7 @@ to display the data.</p>
 #&gt; 0.290  
 #&gt; 0.733  
 #&gt; 0.773  </div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Cauchy.html'>rcauchy</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+</div><div class='output co'>#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt;  -</span><span style='color: #BB0000;'>0.416</span><span> 
 #&gt;   0.613 
 #&gt;   0.108 
@@ -225,8 +219,7 @@ to display the data.</p>
 #&gt;  -</span><span style='color: #BB0000;'>1.49</span><span>  </div><div class='input'>
 <span class='co'># Special values are highlighted</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='cn'>NA</span>, <span class='cn'>NaN</span>, <span class='cn'>Inf</span>, <span class='op'>-</span><span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+</div><div class='output co'>#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt;    0.031</span><span style='text-decoration: underline;'>2</span><span>
 #&gt;    0.226 
 #&gt;    0.301 
@@ -238,18 +231,15 @@ to display the data.</p>
 #&gt; -</span><span style='color: #BB0000;'>Inf</span><span>     </div><div class='input'>
 <span class='co'># Very wide ranges will be displayed in scientific format</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt;             1.00</span><span style='color: #949494;'>e</span><span>+10
-#&gt;             1.00</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; 1.00</span><span style='color: #949494;'>e</span><span>+10
-#&gt; 1.00</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'>
+</div><div class='output co'>#&gt;                </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt;             1.00</span><span style='color: #555555;'>e</span><span>+10
+#&gt;             1.00</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; 1.00</span><span style='color: #555555;'>e</span><span>+10
+#&gt; 1.00</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>NA</span>, <span class='cn'>FALSE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>
 #&gt; FALSE
 #&gt; </span><span style='color: #BB0000;'>NA</span><span>   
 #&gt; FALSE
@@ -262,40 +252,35 @@ to display the data.</p>
 #&gt; TRUE </div><div class='input'>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"This is string is rather long"</span>, <span class='cn'>NA</span>, <span class='st'>"?"</span>, <span class='st'>"Short"</span><span class='op'>)</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                        
+</div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                        
 #&gt; This is string is rather long
 #&gt; </span><span style='color: #BB0000;'>NA</span><span>                           
 #&gt; ?                            
 #&gt; Short                        </div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                         
+</div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         
 #&gt; This is string is rather long 
 #&gt; </span><span style='color: #BB0000;'>NA</span><span>                            
 #&gt; ?                             
 #&gt; Short                         </div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
 #&gt; This…
 #&gt; </span><span style='color: #BB0000;'>NA</span><span>   
 #&gt; ?    
 #&gt; Short</div><div class='input'>
 <span class='va'>date</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2017-05-15"</span><span class='op'>)</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='va'>date</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>NA</span>, <span class='fl'>3</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>    
+</div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>    
 #&gt; 2017-05-16
 #&gt; </span><span style='color: #BB0000;'>NA</span><span>        
 #&gt; 2017-05-18
 #&gt; 2017-05-19
 #&gt; 2017-05-20</div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='va'>date</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='cn'>NA</span>, <span class='fl'>600</span>, <span class='fl'>3600</span>, <span class='fl'>86400</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>             
-#&gt; 2017-05-15 </span><span style='color: #949494;'>00:00:30</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>             
+#&gt; 2017-05-15 </span><span style='color: #555555;'>00:00:30</span><span>
 #&gt; </span><span style='color: #BB0000;'>NA</span><span>                 
-#&gt; 2017-05-15 </span><span style='color: #949494;'>00:10:00</span><span>
-#&gt; 2017-05-15 </span><span style='color: #949494;'>01:00:00</span><span>
-#&gt; 2017-05-16 </span><span style='color: #949494;'>00:00:00</span><span></div></span></pre>
+#&gt; 2017-05-15 </span><span style='color: #555555;'>00:10:00</span><span>
+#&gt; 2017-05-15 </span><span style='color: #555555;'>01:00:00</span><span>
+#&gt; 2017-05-16 </span><span style='color: #555555;'>00:00:00</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
