@@ -8,9 +8,13 @@ on:
   push:
     branches:
       - master
+      - main
+      - "r-*"
   pull_request:
     branches:
       - master
+      - main
+      - "r-*"
 
 name: rcc
 

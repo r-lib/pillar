@@ -5,6 +5,7 @@ on:
     - main
     - "docs*"
     - "cran-*"
+    - "r-*"
 
 name: pkgdown
 
