@@ -93,7 +93,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE, type = .Platform$pkgType)
-          remotes::install_github("r-lib/pkgdown")
+          remotes::install_github("krlmlr/pkgdown@f-keep-source")
         shell: Rscript {0}
 
       # Begin custom: install
