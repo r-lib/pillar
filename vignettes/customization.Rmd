@@ -448,7 +448,6 @@ Use option?
     - `combine_pillars()` is called, flattens
 - Finish documentation of `.Rmd` and functions
     - Explain how to show the control flow with debugme
-    - Hide code in `<details>`, pretty-print, keep source
 - Finish walkthrough `.Rmd` to show extension points:
     - Construct separate class for each example
 - Basic implementation for arrays: shaft for first slice, then ellipsis
