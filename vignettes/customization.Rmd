@@ -444,22 +444,13 @@ Use option?
 
 ## Next steps
 
-- Triage issues
 - Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
    - Is there a transpose operation somewhere? Do we need this?
 - Finish documentation of `.Rmd` and functions
-    - We can show the control flow with debugme
-    - We're calling `align()` slightly too often
-    - We seem to need dispatch, we could try switchpatching if benchmarks show problems
-    - Individual steps are printed better, `ctl_colonnade()` is still opaque
-- Create walkthrough `.Rmd` to show extension points:
-    - `tbl_sum()`: add header line
-    - `tbl_format_header()` (?)
-    - `tbl_format_footer()`
-    - `tbl_format_setup()`: compute number of cells, show in header and footer
-    - `ctl_pillar()`
-    - `ctl_compound_pillar()`
-    - `tbl_format_body()`
+    - Explain how to show the control flow with debugme
+    - Hide code in `<details>`, pretty-print, keep source
+- Finish walkthrough `.Rmd` to show extension points:
+    - Construct separate class for each example
 - Basic implementation for arrays: shaft for first slice, then ellipsis
 - Verify revdepchecks
 - Deprecate `format_type_sum()` (how did that even work?)
