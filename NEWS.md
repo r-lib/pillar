@@ -1,3 +1,13 @@
+# pillar 1.4.99.9007
+
+- New printing vignette (#251).
+- Fix calculation of remaining width and extra columns (#249).
+- Enable debugme (#248).
+- `pillar_component()` and `new_pillar_component()` instead of `*pillar_box()` .
+- New `size_sum()` generic (#239).
+- `obj_sum()` now always returns a string. `pillar_shaft.list()` iterates over its elements and calls `obj_sum()` for each (#137).
+
+
 # pillar 1.4.99.9006
 
 - `glimpse()` is now implemented in pillar, tibble keeps exporting it (#234).
