@@ -16,10 +16,7 @@ set_show_source_opts_hook <- function(width) {
     fun_name <- gsub("^.*:::", "", qualified_fun_name)
 
     fun <- eval(parse(text = fun_name))
-    # Better than deparse(), because it keeps the original source
-    code <- capture.output(print(fun))
-    # Remove last line that shows the environment
-    code <- grep("^[<]", code, invert = TRUE)
+    code <- deparse(fun, control = "useSource")
 
     options$code <- paste0(fun_name, " <- ", paste0(code, collapse = "\n"))
     options$eval <- FALSE
