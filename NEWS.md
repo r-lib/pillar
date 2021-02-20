@@ -1,6 +1,13 @@
+# pillar 1.4.7.9001
+
+- New `size_sum()` generic (#239).
+- `obj_sum()` now always returns a string. `pillar_shaft.list()` iterates over its elements and calls `obj_sum()` for each (#137).
+- Improve formatting for `"Surv"` and `"Surv2"` classes from the survival package (#199).
+
+
 # pillar 1.4.7.9000
 
-- Adapt to changed environment on CRAN's Solaris machine.
+- Only internal changes.
 
 
 # pillar 1.4.7
