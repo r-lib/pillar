@@ -142,7 +142,6 @@ tbl_format_setup.tbl <- function(x, width, ...,
     width = width,
     tbl_sum = tbl_sum,
     body = body,
-    rows_body = nrow(df),
     rows_missing = rows_missing,
     rows_total = rows,
     extra_cols = extra_cols,
@@ -167,8 +166,6 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #' @param tbl_sum A named character vector, as returned from [tbl_sum()].
 #' @param body A character vector with the formatted body,
 #'   one element per line,
-#' @param rows_body The number of rows shown in the body,
-#'   even if the body does not have any columns.
 #' @param rows_missing The number of rows not shown from the body,
 #'   `NA` if unknown.
 #' @param rows_total The total number of rows in the data,
@@ -180,7 +177,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'
 #' @keywords internal
 new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
-                                 rows_body, rows_missing, rows_total,
+                                 rows_missing, rows_total,
                                  extra_cols, extra_cols_total) {
   trunc_info <- list(
     x = x,
@@ -188,7 +185,6 @@ new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
     width = width,
     tbl_sum = tbl_sum,
     body = body,
-    rows_body = rows_body,
     rows_missing = rows_missing,
     rows_total = rows_total,
     extra_cols = extra_cols,

@@ -10,7 +10,6 @@ new_tbl_format_setup(
   width,
   tbl_sum,
   body,
-  rows_body,
   rows_missing,
   rows_total,
   extra_cols,
@@ -29,9 +28,6 @@ trimmed to the desired number of rows.}
 
 \item{body}{A character vector with the formatted body,
 one element per line,}
-
-\item{rows_body}{The number of rows shown in the body,
-even if the body does not have any columns.}
 
 \item{rows_missing}{The number of rows not shown from the body,
 \code{NA} if unknown.}
