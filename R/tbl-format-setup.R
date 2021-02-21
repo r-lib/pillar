@@ -138,6 +138,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
   # Result
   new_tbl_format_setup(
     x = x,
+    df = df,
     width = width,
     tbl_sum = tbl_sum,
     body = body,
@@ -159,10 +160,13 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #' Named elements can be added to such objects without affecting the behavior.
 #' Do not modify existing elements.
 #'
-#' @param x The input object unchanged,
-#' @param width The `width` argument unchanged,
-#' @param tbl_sum A named character vector, as areturned from [tbl_sum()],
-#' @param body TBD
+#' @param x The input object unchanged.
+#' @param df A data frame representation of the intended output,
+#'   trimmed to the desired number of rows.
+#' @param width The `width` argument unchanged.
+#' @param tbl_sum A named character vector, as returned from [tbl_sum()].
+#' @param body A character vector with the formatted body,
+#'   one element per line,
 #' @param rows_body The number of rows shown in the body,
 #'   even if the body does not have any columns.
 #' @param rows_missing The number of rows not shown from the body,
@@ -175,11 +179,12 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'   `length(extra_cols)`.
 #'
 #' @keywords internal
-new_tbl_format_setup <- function(x, width, tbl_sum, body,
+new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
                                  rows_body, rows_missing, rows_total,
                                  extra_cols, extra_cols_total) {
   trunc_info <- list(
     x = x,
+    df = df,
     width = width,
     tbl_sum = tbl_sum,
     body = body,

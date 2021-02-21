@@ -230,8 +230,11 @@ The example below uses plain data frame output for a tibble.
 
 ```{r}
 tbl_format_body.oldskool <- function(x, setup, ...) {
-  capture.output(print.data.frame(head(x, setup$rows_body)))
+  capture.output(print.data.frame(setup$df))
 }
 
 print(example_tbl("oldskool"), n = 2)
 ```
+
+Note that default printed output is computed in `tbl_format_setup()`, this takes a considerable amount of time.
+If you really need to change the output for the entire body, consider providing your own `tbl_format_setup()` method.
