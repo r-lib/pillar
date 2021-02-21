@@ -4,7 +4,7 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 }
 
 new_packed_pillars <- function(x, controller, width, title) {
-  "!!DEBUG new_packed_pillars(`v(width)`, `v(title)`)"
+  "!!!!!DEBUG new_packed_pillars(`v(width)`, `v(title)`)"
 
   if (length(x) == 0) {
     return(compact(list(pillar_from_shaft(
@@ -21,7 +21,7 @@ new_packed_pillars <- function(x, controller, width, title) {
   ticked_names <- tick_if_needed(names(x))
 
   for (i in seq_along(x)) {
-    "!!DEBUG i = `i`, width = `width`"
+    "!!!!!DEBUG i = `i`, width = `width`"
 
     # FIXME
     # sub_title <- c(title, ticked_names[[i]])
@@ -119,7 +119,7 @@ new_array_pillar <- function(x, controller, width, title) {
 }
 
 combine_pillars <- function(pillars) {
-  "!!DEBUG combine_pillars(`v(length(pillars))`)"
+  "!!!!!DEBUG combine_pillars(`v(length(pillars))`)"
 
   if (length(pillars) == 0) {
     return(NULL)
@@ -144,7 +144,7 @@ combine_pillars <- function(pillars) {
 
 # Can be rewritten with a repeat loop
 deduct_width <- function(width, consumed_widths) {
-  "!!DEBUG deduct_width(`v(width)`, `v(consumed_widths)`)"
+  "!!!!!DEBUG deduct_width(`v(width)`, `v(consumed_widths)`)"
 
   if (length(consumed_widths) == 0) {
     # All sub-pillars distributed

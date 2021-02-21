@@ -54,7 +54,7 @@
 #' pillar(date + c(1, NA, 3:5))
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
-  "!!DEBUG pillar(`v(title)`, `v(width)`)"
+  "!!!!DEBUG pillar(`v(title)`, `v(width)`)"
 
   pillar_from_shaft(
     new_pillar_title(title),
@@ -65,7 +65,7 @@ pillar <- function(x, title = NULL, width = NULL, ...) {
 }
 
 pillar_from_shaft <- function(title, type, data, width) {
-  "!!DEBUG pillar_from_shaft(`v(width)`)"
+  "!!!!!DEBUG pillar_from_shaft(`v(width)`)"
 
   if (is.null(width)) {
     my_width <- Inf
@@ -74,18 +74,18 @@ pillar_from_shaft <- function(title, type, data, width) {
   }
 
   if (get_min_width(title) > my_width) {
-    "!!DEBUG Early exit, (`v(get_min_width(title))`) > (`v(my_width)`)"
+    "!!!!!DEBUG Early exit, (`v(get_min_width(title))`) > (`v(my_width)`)"
     return(NULL)
   }
 
   if (get_min_width(type) > my_width) {
-    "!!DEBUG Early exit, (`v(get_min_width(type))`) > (`v(my_width)`)"
+    "!!!!!DEBUG Early exit, (`v(get_min_width(type))`) > (`v(my_width)`)"
     return(NULL)
   }
 
   data_min_width <- get_min_width(data)
   if (data_min_width > my_width) {
-    "!!DEBUG Early exit, (`v(get_min_width(data))`) > (`v(my_width)`)"
+    "!!!!!DEBUG Early exit, (`v(get_min_width(data))`) > (`v(my_width)`)"
     return(NULL)
   }
   data_width <- get_width(data)
@@ -151,7 +151,7 @@ rowidformat2 <- function(data, names, has_star) {
 #'   lines = new_pillar_component(list(lines("=")), width = 1)
 #' ))
 new_pillar <- function(components, ..., width = NULL, class = NULL) {
-  "!!DEBUG new_pillar(`v(width)`, `v(class)`)"
+  "!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"
 
   check_dots_empty()
   if (length(components) > 0 && !is_named(components)) {

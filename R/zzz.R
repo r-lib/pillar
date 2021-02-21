@@ -57,11 +57,11 @@ register_s3_method <- function(pkg, generic, class, fun = NULL, gen_pkg = pkg) {
   )
 }
 
-activate_debugme <- function(bangs = 2) {
+activate_debugme <- function(level = 2) {
   old_debugme <- remove_from_logging(get_debugme())
   old_debugme <- gsub("(.)$", "\\1,", old_debugme)
 
-  my_debugme <- paste0(strrep("!", bangs), get_pkgname())
+  my_debugme <- paste0(strrep("!", level), get_pkgname())
 
   set_debugme(paste0(old_debugme, my_debugme))
 }
@@ -88,9 +88,11 @@ remove_from_logging <- function(spec) {
 
 debug_info <- function(pkgname) {
   "!DEBUG Loaded"
-  "!!DEBUG Two bangs"
-  "!!!DEBUG Three bangs"
-  "!!!!DEBUG Four bangs"
+  "!!DEBUG Level 2"
+  "!!!DEBUG Level 3"
+  "!!!!DEBUG Level 4"
+  "!!!!!DEBUG Level 5"
+  "!!!!!!DEBUG Level 6"
 }
 
 get_pkgname <- function() {

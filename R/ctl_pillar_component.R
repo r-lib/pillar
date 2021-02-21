@@ -21,7 +21,7 @@
 #' @examples
 #' # TBD
 new_pillar_component <- function(x, ..., width, min_width = NULL) {
-  "!!DEBUG new_pillar_component(`v(x)`, `v(width)`, `v(min_width)`)"
+  "!!!!DEBUG new_pillar_component(`v(x)`, `v(width)`, `v(min_width)`)"
 
   check_dots_empty()
   stopifnot(rlang::is_bare_list(x))
@@ -96,7 +96,7 @@ pillar_get_min_widths <- function(x) {
 }
 
 pillar_format_parts_2 <- function(x, width) {
-  "!!DEBUG pillar_format_parts_2(`v(width)`)"
+  "!!!!!DEBUG pillar_format_parts_2(`v(width)`)"
 
   formatted <- map(x, function(.x) format(.x[[1]], width = width))
 
