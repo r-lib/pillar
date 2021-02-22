@@ -54,7 +54,7 @@
 #' pillar(date + c(1, NA, 3:5))
 #' pillar(as.POSIXct(date) + c(30, NA, 600, 3600, 86400))
 pillar <- function(x, title = NULL, width = NULL, ...) {
-  "!!!!DEBUG pillar(`v(title)`, `v(width)`)"
+  "!!!!DEBUG pillar(`v(class(x))`, `v(title)`, `v(width)`)"
 
   pillar_from_shaft(
     new_pillar_title(title),
