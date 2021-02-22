@@ -6,10 +6,10 @@
 \usage{
 new_tbl_format_setup(
   x,
+  df,
   width,
   tbl_sum,
   body,
-  rows_body,
   rows_missing,
   rows_total,
   extra_cols,
@@ -17,16 +17,17 @@ new_tbl_format_setup(
 )
 }
 \arguments{
-\item{x}{The input object unchanged,}
+\item{x}{The input object unchanged.}
 
-\item{width}{The \code{width} argument unchanged,}
+\item{df}{A data frame representation of the intended output,
+trimmed to the desired number of rows.}
 
-\item{tbl_sum}{A named character vector, as areturned from \code{\link[=tbl_sum]{tbl_sum()}},}
+\item{width}{The \code{width} argument unchanged.}
 
-\item{body}{TBD}
+\item{tbl_sum}{A named character vector, as returned from \code{\link[=tbl_sum]{tbl_sum()}}.}
 
-\item{rows_body}{The number of rows shown in the body,
-even if the body does not have any columns.}
+\item{body}{A character vector with the formatted body,
+one element per line,}
 
 \item{rows_missing}{The number of rows not shown from the body,
 \code{NA} if unknown.}
