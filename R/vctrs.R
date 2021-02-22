@@ -1,7 +1,6 @@
 #' @export
-type_sum.vctrs_unspecified <- function(x) {
-  # FIXME: Remove when vec_ptype_abbr.vctrs_unspecified() becomes available
-  "???"
+pillar_shaft.vctrs_unspecified <- function(x, ...) {
+  new_pillar_shaft_simple(rep(".", vctrs::vec_size(x)), align = "right")
 }
 
 #' @export
