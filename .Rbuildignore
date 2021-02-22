@@ -21,3 +21,4 @@
 ^\.ccache$
 ^LICENSE\.md$
 ^bench\.R$
+^TODO\.md$
