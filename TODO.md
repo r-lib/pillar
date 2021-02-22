@@ -4,7 +4,9 @@
 
 - Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
     - `combine_pillars()` is called, flattens
-- Deprecate `format_type_sum()` (how did that even work?)
+- Fix `format_type_sum()`
+    - bisect
+- Fix remaining `format_v()` issue
 - Release
 - Blog post?
 
