@@ -472,3 +472,4 @@ Use option?
     - Show columns that are abbreviated in full
     - Packed data frames and matrices: if too wide, show ellipsis
     - Packed matrices: show type only once
+    - Tick column title in extra columns

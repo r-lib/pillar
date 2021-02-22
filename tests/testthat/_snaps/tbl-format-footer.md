@@ -35,6 +35,6 @@
       <tbl_format_footer(setup)>
       # ... with 16 more variables: l <chr>, m <chr>, n <chr>, o <chr>,
       #   p <chr>, q <chr>, r <chr>, s <chr>, t <chr>, u <chr>, v <chr>,
-      #   w <chr>, x <chr>, y <chr>, z <chr>, a b c d e f g h i j k l m n o
-      #   p q r s t u v w x y z <dbl>
+      #   w <chr>, x <chr>, y <chr>, z <chr>,
+      #   a b c d e f g h i j k l m n o p q r s t u v w x y z <dbl>
 

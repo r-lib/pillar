@@ -9,8 +9,6 @@ test_that("tbl_format_footer() results", {
 })
 
 test_that("wrapping column names with spaces in the footer", {
-  # FIXME: This is bad behavior, but seemingly difficult to fix
-
   expect_snapshot({
     tbl_format_footer(tbl_format_setup(
       new_tbl(list2(!!!set_names(letters), !!paste(letters, collapse = " ") := 2)),
