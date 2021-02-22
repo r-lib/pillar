@@ -7,14 +7,10 @@ pillar 1.5.0
 ## R CMD check results
 
 - [x] Checked locally, R 4.0.4
-- [ ] Checked on CI system, R 4.0.4
-- [ ] Checked on win-builder, R devel
-
-Check the boxes above after successful execution and remove this line. Then run `fledge::release()`.
+- [x] Checked on CI system, R 4.0.4
+- [x] Checked on win-builder, R devel
 
 ## Current CRAN check results
 
 - [x] Checked on 2021-02-22, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
-- [ ] ERROR: r-devel-windows-ix86+x86_64
-
-Check results at: https://cran.r-project.org/web/checks/check_results_pillar.html
+- [x] ERROR: r-devel-windows-ix86+x86_64; no longer shown on Winbuilder, relevant code changed

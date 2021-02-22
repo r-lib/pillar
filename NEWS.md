@@ -1,77 +1,48 @@
 # pillar 1.5.0
 
-- Vectors of the `vctrs_unspecified()` class are formatted better (#256).
-- Arrays are now formatted by showing only their first slice (#142).
-- Avoid wrapping extra column names with spaces (#254).
-- New "Extending" article.
-- Syntax highlighting and details tag for source code of functions in "printing" vignette.
+## Breaking changes
 
-
-# pillar 1.4.99.9007
-
-- New printing vignette (#251).
-- Fix calculation of remaining width and extra columns (#249).
-- Enable debugme (#248).
-- `pillar_component()` and `new_pillar_component()` instead of `*pillar_box()` .
-- New `size_sum()` generic (#239).
 - `obj_sum()` now always returns a string. `pillar_shaft.list()` iterates over its elements and calls `obj_sum()` for each (#137).
 
+- Breaking: `print.pillar()` and `print.pillar_ornament()` now show  `<pillar>` `<pillar_ornament>` in the first line (#227, #228).
 
-# pillar 1.4.99.9006
+- pillar has been re-licensed as MIT (#215).
 
-- `glimpse()` is now implemented in pillar, tibble keeps exporting it (#234).
+## Extensibility
 
-
-# pillar 1.4.99.9005
-
-- One-dimensional arrays are treated the same way as vectors.
-
-
-# pillar 1.4.99.9004
+- New `size_sum()` generic (#239).
 
 - New `ctl_new_pillar()` and `ctl_new_compound_pillar()` used via `print.tbl()`, `format.tbl()` and `tbl_format_setup.tbl()` (#230).
 
 - New `new_pillar()` low-level constructor (#230).
 
-- New `new_pillar_box()` and `pillar_box()`, interface yet to be refined (#230).
+- New `new_pillar_component()` and `pillar_component()` (#230).
 
+- New articles `vignette("extending")` and `vignette("printing")` (#251).
 
-# pillar 1.4.99.9003
+## Formatting
 
-- Breaking: `print.pillar_ornament()` now shows `<pillar_ornament>` in the first line (#228).
-
-- New `format.pillar_ornament()` (#228).
-
-- Breaking: `print.pillar()` shows `<pillar>` in the first line (#227).
-
-- Add code of conduct (#219).
-
-- Re-license as MIT (#215).
-
-- Use testthat 3e (#218).
-
-- Avoid pillar.bold option in most tests (#216).
+- All printing code has been moved from tibble to pillar (#179), including `glimpse()` (#234). This concentrates the printing code in one package and allows for better extensibility.
 
 - Improve formatting for `"Surv"` and `"Surv2"` classes from the survival package (#199).
 
+- Vectors of the `vctrs_unspecified()` class are formatted better (#256).
+
+- Arrays are now formatted by showing only their first slice (#142).
+
+- Avoid wrapping extra column names with spaces (#254).
+
+## Internal
+
+- Now using debugme to simplify understand the complex control flow, see `vignette("debugme")` (#248).
+
+- New `format.pillar_ornament()` (#228).
+
+- Using testthat 3e (#218).
+
+- Avoid pillar.bold option in most tests (#216).
+
 - Change internal storage format for `colonnade()` and `extra_cols()` (#204).
-
-
-# pillar 1.4.99.9002
-
-- Documentation and tests (#202).
-
-- pillar has been re-licensed as MIT (#215).
-
-
-# pillar 1.4.99.9001
-
-- Move printing code from tibble to pillar (#179).
-
-
-# pillar 1.4.7.9000
-
-- Internal changes only.
 
 
 # pillar 1.4.7
