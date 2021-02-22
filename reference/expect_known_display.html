@@ -40,11 +40,14 @@
 
 
 <meta property="og:title" content="Test helpers — expect_known_display" />
-<meta property="og:description" content="Expectation for packages that implement a data type with pillar support.
+<meta property="og:description" content="
+Expectation for packages that implement a data type with pillar support.
 Allows storing the desired result in a file,
 and comparing the output with the file contents.
 Note that this expectation sets options that affect the formatting of the
 pillar, see examples for usage." />
+
+
 
 
 
@@ -60,9 +63,15 @@ pillar, see examples for usage." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,7 +85,7 @@ pillar, see examples for usage." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -89,13 +98,16 @@ pillar, see examples for usage." />
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
+  <a href="../news/articles.html">Articles</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/pillar/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -118,7 +130,8 @@ pillar, see examples for usage." />
     </div>
 
     <div class="ref-description">
-    <p>Expectation for packages that implement a data type with pillar support.
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#superseded'><img src='figures/lifecycle-superseded.svg' alt='[Superseded]' /></a></p>
+<p>Expectation for packages that implement a data type with pillar support.
 Allows storing the desired result in a file,
 and comparing the output with the file contents.
 Note that this expectation sets options that affect the formatting of the
@@ -152,6 +165,12 @@ pillar, see examples for usage.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="life-cycle"><a class="anchor" href="#life-cycle"></a>Life cycle</h2>
+
+    
+
+<p>This function is deprecated in favor of <code><a href='https://testthat.r-lib.org/reference/expect_snapshot.html'>testthat::expect_snapshot()</a></code>.
+If your package uses the third edition of testthat, do not use this function.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"pillar"</span>, fileext <span class='op'>=</span> <span class='st'>".txt"</span><span class='op'>)</span>
@@ -185,11 +204,11 @@ pillar, see examples for usage.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://krlmlr.info'>Kirill Müller</a>, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
+  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -197,6 +216,8 @@ pillar, see examples for usage.</p>
 
   
 
+
+  
 
   </body>
 </html>
