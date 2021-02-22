@@ -115,7 +115,16 @@ new_matrix_pillar <- function(x, controller, width, title) {
 }
 
 new_array_pillar <- function(x, controller, width, title) {
-  abort("NYI")
+  first_slice <- head(as.vector(x), vctrs::vec_size(x))
+
+  body <- pillar_shaft(first_slice)
+
+  pillar_from_shaft(
+    new_pillar_title(title),
+    new_pillar_type(x),
+    new_continuation_shaft(body),
+    width
+  )
 }
 
 combine_pillars <- function(pillars) {
