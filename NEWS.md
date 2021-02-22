@@ -1,3 +1,12 @@
+# pillar 1.5.0.9000
+
+- Vectors of the `vctrs_unspecified()` class are formatted better (#256).
+- Arrays are now formatted by showing only their first slice (#142).
+- Avoid wrapping extra column names with spaces (#254).
+- New "Extending" article.
+- Syntax highlighting and details tag for source code of functions in "printing" vignette.
+
+
 # pillar 1.5.0
 
 - Vectors of the `vctrs_unspecified()` class are formatted better (#256).
