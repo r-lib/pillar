@@ -47,6 +47,8 @@ navbar:
     href: "reference/pillar-package.html#package-options"
   - text: Reference
     href: reference/index.html
+  - text: Articles
+    href: news/articles.html
   - text: News
     href: news/index.html
 
