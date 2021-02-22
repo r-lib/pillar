@@ -58,7 +58,7 @@ pillar_format_parts <- function(x, width, ...) {
 }
 
 format_abbrev <- function(x, title = NULL) {
-  type_format <- format_full_pillar_type(x)
+  type_format <- fansi::strip_ctl(format_full_pillar_type(x))
   if (is.null(title)) {
     type_format
   } else {
