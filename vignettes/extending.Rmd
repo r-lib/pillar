@@ -21,6 +21,7 @@ library(pillar)
 How to customize the printed output of a `"tbl"` subclass?
 This vignette shows the various customization options.
 Customizing the formatting of a vector class in a tibble is described in `vignette("pillar", package = "vctrs")`.
+An overview over the control and data flow is given in `vignette("printing")`.
 
 This vignette assumes that the reader is familiar with S3 classes, methods, and inheritance.
 The ["S3" chapter](https://adv-r.hadley.nz/s3.html) of Hadley Wickham's "Advanced R" is a good start.
