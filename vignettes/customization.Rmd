@@ -446,8 +446,6 @@ Use option?
 
 - Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
     - `combine_pillars()` is called, flattens
-- Finish walkthrough `.Rmd` to show extension points:
-    - Construct separate class for each example
 - Basic implementation for arrays: shaft for first slice, then ellipsis
 - Verify revdepchecks
 - Deprecate `format_type_sum()` (how did that even work?)
