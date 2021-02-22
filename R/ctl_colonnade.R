@@ -5,7 +5,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   x <- vctrs::new_data_frame(x, names = names2(x))
   width <- get_width_print(width)
 
-  # FIXME: width is a vector, see get_tier_width
   n <- nrow(x)
   nc <- ncol(x)
 

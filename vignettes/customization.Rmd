@@ -447,7 +447,6 @@ Use option?
 - Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
     - `combine_pillars()` is called, flattens
 - Deprecate `format_type_sum()` (how did that even work?)
-- Look for FIXMEs
 - Release
 - Blog post?
 
@@ -457,6 +456,7 @@ Use option?
     - only then `align()`
     - paste
 - Benchmark and profile again
+- Look for FIXMEs
 - Test coverage per file
 - Use penguins
 - Improve output:
