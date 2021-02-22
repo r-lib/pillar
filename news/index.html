@@ -126,96 +126,48 @@
 <h1 class="page-header" data-toc-text="1.5.0">
 <a href="#pillar-150" class="anchor"></a>pillar 1.5.0<small> Unreleased </small>
 </h1>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
-<li>Vectors of the <code>vctrs_unspecified()</code> class are formatted better (<a href='https://github.com/r-lib/pillar/issues/256'>#256</a>).</li>
-<li>Arrays are now formatted by showing only their first slice (<a href='https://github.com/r-lib/pillar/issues/142'>#142</a>).</li>
-<li>Avoid wrapping extra column names with spaces (<a href='https://github.com/r-lib/pillar/issues/254'>#254</a>).</li>
-<li>New “Extending” article.</li>
-<li>Syntax highlighting and details tag for source code of functions in “printing” vignette.</li>
-</ul>
-</div>
-    <div id="pillar-14999007" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9007">
-<a href="#pillar-14999007" class="anchor"></a>pillar 1.4.99.9007<small> Unreleased </small>
-</h1>
-<ul>
-<li>New printing vignette (<a href='https://github.com/r-lib/pillar/issues/251'>#251</a>).</li>
-<li>Fix calculation of remaining width and extra columns (<a href='https://github.com/r-lib/pillar/issues/249'>#249</a>).</li>
-<li>Enable debugme (<a href='https://github.com/r-lib/pillar/issues/248'>#248</a>).</li>
-<li>
-<code><a href="../reference/new_pillar_component.html">pillar_component()</a></code> and <code><a href="../reference/new_pillar_component.html">new_pillar_component()</a></code> instead of <code>*pillar_box()</code> .</li>
-<li>New <code><a href="../reference/type_sum.html">size_sum()</a></code> generic (<a href='https://github.com/r-lib/pillar/issues/239'>#239</a>).</li>
-<li>
-<code><a href="../reference/type_sum.html">obj_sum()</a></code> now always returns a string. <code><a href="../reference/pillar_shaft.html">pillar_shaft.list()</a></code> iterates over its elements and calls <code><a href="../reference/type_sum.html">obj_sum()</a></code> for each (<a href='https://github.com/r-lib/pillar/issues/137'>#137</a>).</li>
-</ul>
-</div>
-    <div id="pillar-14999006" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9006">
-<a href="#pillar-14999006" class="anchor"></a>pillar 1.4.99.9006<small> Unreleased </small>
-</h1>
-<ul>
-<li>
-<code><a href="../reference/glimpse.html">glimpse()</a></code> is now implemented in pillar, tibble keeps exporting it (<a href='https://github.com/r-lib/pillar/issues/234'>#234</a>).</li>
-</ul>
-</div>
-    <div id="pillar-14999005" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9005">
-<a href="#pillar-14999005" class="anchor"></a>pillar 1.4.99.9005<small> Unreleased </small>
-</h1>
-<ul>
-<li>One-dimensional arrays are treated the same way as vectors.</li>
-</ul>
-</div>
-    <div id="pillar-14999004" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9004">
-<a href="#pillar-14999004" class="anchor"></a>pillar 1.4.99.9004<small> Unreleased </small>
-</h1>
-<ul>
-<li><p>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> used via <code><a href="../reference/format_tbl.html">print.tbl()</a></code>, <code><a href="../reference/format_tbl.html">format.tbl()</a></code> and <code><a href="../reference/tbl_format_setup.html">tbl_format_setup.tbl()</a></code> (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
-<li><p>New <code><a href="../reference/new_pillar.html">new_pillar()</a></code> low-level constructor (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
-<li><p>New <code>new_pillar_box()</code> and <code>pillar_box()</code>, interface yet to be refined (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
-</ul>
-</div>
-    <div id="pillar-14999003" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9003">
-<a href="#pillar-14999003" class="anchor"></a>pillar 1.4.99.9003<small> Unreleased </small>
-</h1>
-<ul>
-<li><p>Breaking: <code>print.pillar_ornament()</code> now shows <code>&lt;pillar_ornament&gt;</code> in the first line (<a href='https://github.com/r-lib/pillar/issues/228'>#228</a>).</p></li>
-<li><p>New <code>format.pillar_ornament()</code> (<a href='https://github.com/r-lib/pillar/issues/228'>#228</a>).</p></li>
-<li><p>Breaking: <code>print.pillar()</code> shows <code>&lt;pillar&gt;</code> in the first line (<a href='https://github.com/r-lib/pillar/issues/227'>#227</a>).</p></li>
-<li><p>Add code of conduct (<a href='https://github.com/r-lib/pillar/issues/219'>#219</a>).</p></li>
-<li><p>Re-license as MIT (<a href='https://github.com/r-lib/pillar/issues/215'>#215</a>).</p></li>
-<li><p>Use testthat 3e (<a href='https://github.com/r-lib/pillar/issues/218'>#218</a>).</p></li>
-<li><p>Avoid pillar.bold option in most tests (<a href='https://github.com/r-lib/pillar/issues/216'>#216</a>).</p></li>
-<li><p>Improve formatting for <code>"Surv"</code> and <code>"Surv2"</code> classes from the survival package (<a href='https://github.com/r-lib/pillar/issues/199'>#199</a>).</p></li>
-<li><p>Change internal storage format for <code><a href="../reference/colonnade.html">colonnade()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> (<a href='https://github.com/r-lib/pillar/issues/204'>#204</a>).</p></li>
-</ul>
-</div>
-    <div id="pillar-14999002" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9002">
-<a href="#pillar-14999002" class="anchor"></a>pillar 1.4.99.9002<small> Unreleased </small>
-</h1>
-<ul>
-<li><p>Documentation and tests (<a href='https://github.com/r-lib/pillar/issues/202'>#202</a>).</p></li>
+<li><p><code><a href="../reference/type_sum.html">obj_sum()</a></code> now always returns a string. <code><a href="../reference/pillar_shaft.html">pillar_shaft.list()</a></code> iterates over its elements and calls <code><a href="../reference/type_sum.html">obj_sum()</a></code> for each (<a href='https://github.com/r-lib/pillar/issues/137'>#137</a>).</p></li>
+<li><p>Breaking: <code>print.pillar()</code> and <code>print.pillar_ornament()</code> now show <code>&lt;pillar&gt;</code> <code>&lt;pillar_ornament&gt;</code> in the first line (<a href='https://github.com/r-lib/pillar/issues/227'>#227</a>, <a href='https://github.com/r-lib/pillar/issues/228'>#228</a>).</p></li>
 <li><p>pillar has been re-licensed as MIT (<a href='https://github.com/r-lib/pillar/issues/215'>#215</a>).</p></li>
 </ul>
 </div>
-    <div id="pillar-14999001" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.99.9001">
-<a href="#pillar-14999001" class="anchor"></a>pillar 1.4.99.9001<small> Unreleased </small>
-</h1>
+<div id="extensibility" class="section level2">
+<h2 class="hasAnchor">
+<a href="#extensibility" class="anchor"></a>Extensibility</h2>
 <ul>
-<li>Move printing code from tibble to pillar (<a href='https://github.com/r-lib/pillar/issues/179'>#179</a>).</li>
+<li><p>New <code><a href="../reference/type_sum.html">size_sum()</a></code> generic (<a href='https://github.com/r-lib/pillar/issues/239'>#239</a>).</p></li>
+<li><p>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> used via <code><a href="../reference/format_tbl.html">print.tbl()</a></code>, <code><a href="../reference/format_tbl.html">format.tbl()</a></code> and <code><a href="../reference/tbl_format_setup.html">tbl_format_setup.tbl()</a></code> (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
+<li><p>New <code><a href="../reference/new_pillar.html">new_pillar()</a></code> low-level constructor (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
+<li><p>New <code><a href="../reference/new_pillar_component.html">new_pillar_component()</a></code> and <code><a href="../reference/new_pillar_component.html">pillar_component()</a></code> (<a href='https://github.com/r-lib/pillar/issues/230'>#230</a>).</p></li>
+<li><p>New articles <code><a href="../articles/extending.html">vignette("extending")</a></code> and <code><a href="../articles/printing.html">vignette("printing")</a></code> (<a href='https://github.com/r-lib/pillar/issues/251'>#251</a>).</p></li>
 </ul>
 </div>
-    <div id="pillar-1479000" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.7.9000">
-<a href="#pillar-1479000" class="anchor"></a>pillar 1.4.7.9000<small> Unreleased </small>
-</h1>
+<div id="formatting" class="section level2">
+<h2 class="hasAnchor">
+<a href="#formatting" class="anchor"></a>Formatting</h2>
 <ul>
-<li>Internal changes only.</li>
+<li><p>All printing code has been moved from tibble to pillar (<a href='https://github.com/r-lib/pillar/issues/179'>#179</a>), including <code><a href="../reference/glimpse.html">glimpse()</a></code> (<a href='https://github.com/r-lib/pillar/issues/234'>#234</a>). This concentrates the printing code in one package and allows for better extensibility.</p></li>
+<li><p>Improve formatting for <code>"Surv"</code> and <code>"Surv2"</code> classes from the survival package (<a href='https://github.com/r-lib/pillar/issues/199'>#199</a>).</p></li>
+<li><p>Vectors of the <code>vctrs_unspecified()</code> class are formatted better (<a href='https://github.com/r-lib/pillar/issues/256'>#256</a>).</p></li>
+<li><p>Arrays are now formatted by showing only their first slice (<a href='https://github.com/r-lib/pillar/issues/142'>#142</a>).</p></li>
+<li><p>Avoid wrapping extra column names with spaces (<a href='https://github.com/r-lib/pillar/issues/254'>#254</a>).</p></li>
 </ul>
+</div>
+<div id="internal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#internal" class="anchor"></a>Internal</h2>
+<ul>
+<li><p>Now using debugme to simplify understand the complex control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> (<a href='https://github.com/r-lib/pillar/issues/248'>#248</a>).</p></li>
+<li><p>New <code>format.pillar_ornament()</code> (<a href='https://github.com/r-lib/pillar/issues/228'>#228</a>).</p></li>
+<li><p>Using testthat 3e (<a href='https://github.com/r-lib/pillar/issues/218'>#218</a>).</p></li>
+<li><p>Avoid pillar.bold option in most tests (<a href='https://github.com/r-lib/pillar/issues/216'>#216</a>).</p></li>
+<li><p>Change internal storage format for <code><a href="../reference/colonnade.html">colonnade()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> (<a href='https://github.com/r-lib/pillar/issues/204'>#204</a>).</p></li>
+</ul>
+</div>
 </div>
     <div id="pillar-147" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.7">
@@ -254,9 +206,9 @@
 <li><p><code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</p></li>
 </ul>
 </div>
-<div id="internal" class="section level2">
+<div id="internal-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal" class="anchor"></a>Internal</h2>
+<a href="#internal-1" class="anchor"></a>Internal</h2>
 <ul>
 <li><p>Use lifecycle package.</p></li>
 <li><p>Remove compatibility code for R &lt; 3.3.</p></li>
@@ -310,9 +262,9 @@
 <h1 class="page-header" data-toc-text="1.4.0">
 <a href="#pillar-140" class="anchor"></a>pillar 1.4.0<small> 2019-05-11 </small>
 </h1>
-<div id="breaking-changes" class="section level2">
+<div id="breaking-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
+<a href="#breaking-changes-1" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>
 <code><a href="../reference/type_sum.html">type_sum()</a></code> forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code> (<a href='https://github.com/r-lib/pillar/issues/134'>#134</a>). This makes sure that <code>list_of</code> columns (for values of the same type) are properly displayed. The value returned for <code>factor</code> and <code>complex</code> remains unchanged, because this will change in vctrs.</li>
@@ -336,9 +288,9 @@
 <li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="../reference/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
 </ul>
 </div>
-<div id="internal-1" class="section level2">
+<div id="internal-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal-1" class="anchor"></a>Internal</h2>
+<a href="#internal-2" class="anchor"></a>Internal</h2>
 <ul>
 <li>All internal S3 classes have the <code>pillar_</code> prefix (<a href='https://github.com/r-lib/pillar/issues/156'>#156</a>).</li>
 <li>Only check native output on Windows, due to subtle differences when running on Linux in a latin1 locale.</li>
@@ -404,9 +356,9 @@
 <li><p>Slightly faster printing of colonnades by reusing an intermediate result.</p></li>
 </ul>
 </div>
-<div id="internal-2" class="section level2">
+<div id="internal-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal-2" class="anchor"></a>Internal</h2>
+<a href="#internal-3" class="anchor"></a>Internal</h2>
 <ul>
 <li><p><code><a href="../reference/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
 <li><p><code><a href="../reference/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
