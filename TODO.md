@@ -5,7 +5,7 @@
 - Understand: Why does printing of compound pillars in `ctl_colonnade()` even work (as opposed to printing a single tibble)?
     - `combine_pillars()` is called, flattens
 - Fix `format_type_sum()`
-    - bisect
+    - bad commit a94e10097f157726faf53d4b068e75396f883d1f
 - Fix remaining `format_v()` issue
 - Release
 - Blog post?
@@ -16,6 +16,7 @@
     - only then `align()`
     - paste
 - Benchmark and profile again
+    - `bench.R`
 - Look for FIXMEs
 - Test coverage per file
 - Use penguins
