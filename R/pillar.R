@@ -57,12 +57,12 @@ pillar_format_parts <- function(x, width, ...) {
   )
 }
 
-format_abbrev <- function(x, title = NULL) {
-  type_format <- format_full_pillar_type(x)
+format_abbrev <- function(x, title = NULL, space = " ") {
+  type_format <- fansi::strip_ctl(format_full_pillar_type(x))
   if (is.null(title)) {
     type_format
   } else {
     title_format <- format_full_pillar_title(title)
-    paste0(title_format, "\u00a0", type_format)
+    paste0(title_format, space, type_format)
   }
 }

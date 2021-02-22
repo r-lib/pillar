@@ -86,6 +86,9 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
     out <- c(out, cli::symbol$ellipsis)
   }
 
+  out <- gsub(NBSP, "\\\\U00a0", out)
+  out <- gsub(" ", NBSP, out)
+
   paste0(": ", collapse(out))
 }
 

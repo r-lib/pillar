@@ -275,7 +275,7 @@ extra_cols_impl <- function(x, n = NULL) {
   }
 
   idx <- seq_len(min(length(extra_cols$data), n))
-  ret[idx] <- map2_chr(extra_cols$data[idx], extra_cols$names[idx], format_abbrev)
+  ret[idx] <- map2_chr(extra_cols$data[idx], extra_cols$names[idx], format_abbrev, space = NBSP)
   ret
 }
 
