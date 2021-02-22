@@ -30,7 +30,9 @@ The different customization options are showcased in `vignette("extending")`.
 ## Requirements
 
 - Fit into pre-specified width, distributing across multiple tiers if necessary
+
 - Optionally shrink and stretch individual columns
+
 - Header, body and footer for the tibble
 
     - Avoid recomputation of information
@@ -40,7 +42,15 @@ The different customization options are showcased in `vignette("extending")`.
     - The container, not the column vectors, determine the appearance
 
 - Customization of the entire output and of the pillars
+
 - Support for data frame columns (packed data frames) and matrix/array columns
+
+- Pillars are always shown from left to right, no "holes" in the colonnade
+
+    - If the first column consumes all available space, the remaining columns are not shown, even if they all would fit if the first column is omitted.
+
+- Printing pillars should take time proportional to the number of characters printed, and be "fast enough".
+
 
 
 ## Overview
