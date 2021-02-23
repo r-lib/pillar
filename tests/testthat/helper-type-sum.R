@@ -3,16 +3,23 @@ as_override_type_sum <- function(x) {
 }
 
 type_sum.override_type_sum <- function(x, ...) {
-  "SC"
+  structure("SC", class = "override_format_type_sum")
 }
 
 registerS3method("type_sum", "override_type_sum", type_sum.override_type_sum, envir = asNamespace("pillar"))
 
+# Needed for head()
 `[.override_type_sum` <- function(x, ...) {
   as_override_type_sum(NextMethod())
 }
 
 registerS3method("[", "override_type_sum", `[.override_type_sum`, envir = asNamespace("tibble"))
+
+format_type_sum.override_format_type_sum <- function(x, ...) {
+  "SC"
+}
+
+registerS3method("format_type_sum", "override_format_type_sum", format_type_sum.override_format_type_sum, envir = asNamespace("pillar"))
 
 as_override_tbl_sum <- function(x) {
   structure(x, class = c("override_tbl_sum", class(x)))

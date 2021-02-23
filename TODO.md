@@ -29,6 +29,7 @@
     - Packed matrices: show type only once
     - Tick column title in extra columns
     - Simplify matrix formatting to format like an array: https://github.com/r-lib/pillar/issues/142#issuecomment-489357664
+    - `tibble::tibble(a = structure(1000:1003, class = "foo"))` should right-align, because the underlying data is a number?
 
 ## Formatting numbers
 

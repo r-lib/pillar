@@ -24,7 +24,8 @@ new_pillar_type <- function(x, ...) {
 
   type <- get_pillar_type(x)
 
-  ret <- structure(type, class = "pillar_type")
+  # Must wrap in a list, because type_sum() can return a classed object
+  ret <- structure(list(type), class = "pillar_type")
   extent <- get_extent(format_type_sum(type, NULL))
   ret <- set_width(ret, width = max(extent, MIN_PILLAR_WIDTH))
   ret <- set_min_width(ret, MIN_PILLAR_WIDTH)
@@ -34,6 +35,7 @@ new_pillar_type <- function(x, ...) {
 get_pillar_type <- function(x) {
   type <- type_sum(x)
   if (length(type) == 0L) type <- "?"
+  # Can return a classed object to be formatted by format_type_sum()
   type[] <- as.character(type[[1L]])
   type
 }
