@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.99.9007</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.0.9000</span>
       </span>
     </div>
 
@@ -121,8 +121,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-8a90b23309b403056a84" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8a90b23309b403056a84">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-915ff17966f380f9e0e6" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-915ff17966f380f9e0e6">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -418,7 +418,7 @@
 <details><p><summary>Source code of <code><a href="../reference/pillar.html">pillar()</a></code></summary></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!!!DEBUG pillar(`v(title)`, `v(width)`)"</span>
+  <span class="st">"!!!!DEBUG pillar(`v(class(x))`, `v(title)`, `v(width)`)"</span>
 
   <span class="fu">pillar_from_shaft</span><span class="op">(</span>
     <span class="fu"><a href="../reference/new_pillar_title.html">new_pillar_title</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span>,
