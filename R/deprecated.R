@@ -18,7 +18,7 @@ NULL
 #' @export
 #' @rdname deprecated
 is_vector_s3 <- function(x) {
-  deprecate_soft("1.4.4", "is_vector_s3()", "vctrs::vec_is()")
+  deprecate_soft("1.4.4", "pillar::is_vector_s3()", "vctrs::vec_is()")
 
   UseMethod("is_vector_s3")
 }

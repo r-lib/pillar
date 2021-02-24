@@ -1,14 +1,10 @@
-context("format_scientific")
-
 format_scientific_bw <- function(x, ...) {
-  without_color({
-    ret <- pillar_shaft(x, ...)
-    # Hack: Pretend decimal format requires 100 characters
-    ret$dec <- set_width(ret$dec, 100)
-    ret <- set_width(ret, 100)
-    ret <- set_min_width(ret, min(get_min_widths(ret)))
-    format(ret, width = get_min_width(ret))
-  })
+  ret <- pillar_shaft(x, ...)
+  # Hack: Pretend decimal format requires 100 characters
+  ret$dec <- set_width(ret$dec, 100)
+  ret <- set_width(ret, 100)
+  ret <- set_min_width(ret, min(get_min_widths(ret)))
+  format(ret, width = get_min_width(ret))
 }
 
 test_that("negative values displayed correct", {
@@ -26,9 +22,9 @@ test_that("corner cases", {
 })
 
 test_that("output test", {
-  expect_pillar_output(10^c(-9, -6, 3, 9), width = 10, filename = "scientific.txt")
-  expect_pillar_output((10^c(3, 9, 15, 22)) * c(-1, 1), width = 10, filename = "scientific-short-neg.txt")
-  expect_pillar_output(1.25 * 10^(-309:-319), width = 10, filename = "scientific-tiny.txt")
+  expect_snapshot(pillar(add_special(10^c(-9, -6, 3, 9)), width = 10))
+  expect_snapshot(pillar(add_special((10^c(3, 9, 15, 22)) * c(-1, 1)), width = 10))
+  expect_snapshot(pillar(add_special(1.25 * 10^(-309:-319)), width = 10))
 })
 
 expect_scientific_width <- function(x) {

@@ -1,4 +1,0 @@
-<Duration>
-1s        
-2s        
-3s        

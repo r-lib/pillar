@@ -1,3 +1,55 @@
+# pillar 1.5.0
+
+## Breaking changes
+
+- `obj_sum()` now always returns a string. `pillar_shaft.list()` iterates over its elements and calls `obj_sum()` for each (#137).
+
+- Breaking: `print.pillar()` and `print.pillar_ornament()` now show  `<pillar>` `<pillar_ornament>` in the first line (#227, #228).
+
+- pillar has been re-licensed as MIT (#215).
+
+## Extensibility
+
+- New `size_sum()` generic (#239).
+
+- New `ctl_new_pillar()` and `ctl_new_compound_pillar()` used via `print.tbl()`, `format.tbl()` and `tbl_format_setup.tbl()` (#230).
+
+- New `new_pillar()` low-level constructor (#230).
+
+- New `new_pillar_component()` and `pillar_component()` (#230).
+
+- New articles `vignette("extending")` and `vignette("printing")` (#251).
+
+## Formatting
+
+- All printing code has been moved from tibble to pillar (#179), including `glimpse()` (#234). This concentrates the printing code in one package and allows for better extensibility.
+
+- Improve formatting for `"Surv"` and `"Surv2"` classes from the survival package (#199).
+
+- Vectors of the `vctrs_unspecified()` class are formatted better (#256).
+
+- Arrays are now formatted by showing only their first slice (#142).
+
+- Avoid wrapping extra column names with spaces (#254).
+
+## Internal
+
+- Now using debugme to simplify understand the complex control flow, see `vignette("debugme")` (#248).
+
+- New `format.pillar_ornament()` (#228).
+
+- Using testthat 3e (#218).
+
+- Avoid pillar.bold option in most tests (#216).
+
+- Change internal storage format for `colonnade()` and `extra_cols()` (#204).
+
+
+# pillar 1.4.7
+
+- Adapt to changed environment on CRAN's Solaris machine.
+
+
 # pillar 1.4.6
 
 - Restore compatibility with R 3.2.
@@ -79,7 +131,7 @@
 
 ## Performance
 
-- `squeeze()` is now faster (because the width computation in `pillar_shaft.numeric()` now uses more arithmetics instead of string concatenation). Further speedups may require implemetation of crucial parts in C (#147).
+- `squeeze()` is now faster (because the width computation in `pillar_shaft.numeric()` now uses more arithmetics instead of string concatenation). Further speedups may require implementation of crucial parts in C (#147).
 - Styling output is faster: an expensive check for availability of colored output is carried out only once per call to `colonnade()`, and styling is implemented manually (#133, @jimhester).
 
 ## Internal
@@ -171,7 +223,7 @@ Bug fixes
 ---------
 
 - Numeric values with a `"class"` attribute (e.g., `Duration` from lubridate) are now formatted using `format()` if the `pillar_shaft()` method is not implemented for that class (#88).
-- Very small numbers (like `1e-310`) are now printed corectly (tidyverse/tibble#377).
+- Very small numbers (like `1e-310`) are now printed correctly (tidyverse/tibble#377).
 - Fix representation of right-hand side for `getOption("pillar.sigfig") >= 6` (tidyverse/tibble#380).
 - Fix computation of significant figures for numbers with absolute value >= 1 (#98).
 

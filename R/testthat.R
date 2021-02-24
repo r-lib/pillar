@@ -1,4 +1,8 @@
+# nocov start - expect_known_display()
 #' Test helpers
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
 #'
 #' Expectation for packages that implement a data type with pillar support.
 #' Allows storing the desired result in a file,
@@ -6,11 +10,16 @@
 #' Note that this expectation sets options that affect the formatting of the
 #' pillar, see examples for usage.
 #'
-#' @inheritParams testthat::expect_output_file
+#' @section Life cycle:
+#' This function is deprecated in favor of [testthat::expect_snapshot()].
+#' If your package uses the third edition of testthat, do not use this function.
+#'
+#' @inheritParams testthat::expect_known_output
 #' @param object An object to check.
 #' @param ... Unused.
 #' @param width The width of the output.
 #' @param crayon Color the output?
+#' @keywords internal
 #' @export
 #' @examples
 #' file <- tempfile("pillar", fileext = ".txt")
@@ -37,20 +46,24 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
   object <- enquo(object)
 
   if (crayon) {
-    old <- options(crayon.enabled = TRUE, crayon.colors = 16L)
+    old_crayon <- options(crayon.enabled = TRUE, crayon.colors = 16L, cli.num_colors = 16L)
     crayon::num_colors(forget = TRUE)
-    has_color(forget = TRUE)
+    num_colors(forget = TRUE)
   } else {
-    old <- options(crayon.enabled = FALSE)
+    old_crayon <- options(crayon.enabled = FALSE)
     crayon::num_colors(forget = TRUE)
-    has_color(forget = TRUE)
+    num_colors(forget = TRUE)
   }
 
+  old_unicode <- options(cli.unicode = l10n_info()$`UTF-8`)
+
   on.exit({
-    options(old)
+    options(old_crayon)
+    options(old_unicode)
     crayon::num_colors(forget = TRUE)
-    has_color(forget = TRUE)
+    num_colors(forget = TRUE)
   })
 
   testthat::expect_known_output(print(eval_tidy(object)), file, update = TRUE, width = width)
 }
+# nocov end

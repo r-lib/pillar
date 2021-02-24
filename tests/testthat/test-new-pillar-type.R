@@ -1,5 +1,3 @@
-context("test-new-pillar-type.R")
-
 test_that("can format new_pillar_type()", {
   expect_equal(
     format(new_pillar_type(1:3)),

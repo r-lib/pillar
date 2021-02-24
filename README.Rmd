@@ -1,7 +1,5 @@
 ---
-output:
-  github_document:
-    html_preview: false
+output: downlit::readme_document
 ---
 <!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
@@ -17,7 +15,7 @@ knitr::opts_chunk$set(
 # pillar
 
 <!-- badges: start -->
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R build status](https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/pillar/actions)
 [![Coverage status](https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/pillar?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
@@ -42,7 +40,7 @@ devtools::install_github("r-lib/pillar")
 
 ## Usage
 
-pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like [tibble](http://tibble.tidyverse.org).
+pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like [tibble](https://tibble.tidyverse.org/).
 
 ```{r}
 library(pillar)
@@ -101,4 +99,11 @@ The function `new_pillar_shaft()` returns such an object, and also correctly for
 
 The earliest use of unicode characters to generate sparklines appears to be [from 2009](https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/).
 
-Exercising these ideas to their fullest requires a font with good support for block drawing characters. [PragamataPro](https://www.fsd.it/shop/fonts/pragmatapro/) is one such font.
+Exercising these ideas to their fullest requires a font with good support for block drawing characters. [PragamataPro](https://fsd.it/shop/fonts/pragmatapro/) is one such font.
+
+---
+
+## Code of Conduct
+
+Please note that the pillar project is released with a [Contributor Code of Conduct](https://pillar.r-lib.org/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

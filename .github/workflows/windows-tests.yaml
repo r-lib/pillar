@@ -1,8 +1,8 @@
 on:
   push:
-    branches: master
     paths:
-      - tests/testthat/out/*
+      - .github/workflows/windows-tests.yaml
+      - tests/testthat/_snaps/*
 
 name: windows-tests
 
@@ -17,6 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
+        with:
+          install-r: false
 
       - name: Edit Git config
         run: |
@@ -30,7 +32,7 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
 
       - name: Cache R packages
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
@@ -38,30 +40,24 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("devtools")
           remotes::install_deps(dependencies = TRUE)
-
-      - name: Purge existing output
-        run: |
-          rm -rf tests/testthat/out-native
-          mkdir -p tests/testthat/out-native
-        shell: bash
 
       - name: Run tests, allow failures
         run: |
-          devtools::test(reporter = "summary")
+          testthat::test_local(stop_on_failure = FALSE)
+          testthat::snapshot_accept()
 
       - name: Commit and push
         run: |
           git status
-          git status tests/testthat/out-native
-          git status --porcelain tests/testthat/out-native
-          if [[ $(git status --porcelain tests/testthat/out-native) == "" ]]
+          git status tests/testthat/_snaps
+          git status --porcelain tests/testthat/_snaps
+          if [[ $(git status --porcelain tests/testthat/_snaps) == "" ]]
           then
             echo "No changes to commit"
           else
-            git add tests/testthat/out-native
-            git commit -m "Add Windows output"
+            git add tests/testthat/_snaps
+            git commit -m "Add Windows snapshot output"
             git push origin
           fi
         shell: bash

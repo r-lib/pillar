@@ -6,7 +6,7 @@
 #'
 #' The `colonnade()` function doesn't process the input but returns an object
 #' with a [format()] and a [print()] method.
-#' The implementations call `squeeze()` to create [pillar] objects and fit them to a given width.
+#' The implementations call [squeeze()] to create [pillar] objects and fit them to a given width.
 #'
 #' @param x A list, which can contain matrices or data frames.
 #'   If named, the names will be used as title for the pillars. Non-syntactic names
@@ -15,6 +15,7 @@
 #'   the row ID column with a star.
 #' @param width Default width of the entire output, optional.
 #' @inheritParams ellipsis::dots_empty
+#' @keywords internal
 #' @export
 #' @examples
 #' colonnade(list(a = 1:3, b = letters[1:3]))
@@ -33,55 +34,65 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
     check_dots_empty(action = warn)
   }
 
-  has_color(forget = TRUE)
+  # Reset local cache for each new colonnade
+  num_colors(forget = TRUE)
 
   x <- flatten_colonnade(x)
-  proxy <- structure(x, has_row_id = has_row_id)
-  ret <- structure(proxy, class = "pillar_colonnade")
+  ret <- vctrs::new_data_frame(x, has_row_id = has_row_id, class = "pillar_colonnade")
   ret <- set_width(ret, width)
   ret
 }
 
 flatten_colonnade <- function(x) {
-  if (length(x) == 0) return(list())
+  out <- map2(
+    unname(x),
+    names2(x),
+    flatten_column
+  )
 
-  unlist(
-    map2(
-      unname(x),
-      names(x) %||% rep_along(x, list(NULL)),
-      flatten_column
-    ),
-    recursive = FALSE
+  vctrs::vec_rbind(
+    !!!out,
+    #.ptype = vctrs::data_frame(names = list(), data = list())
+    .ptype = vctrs::data_frame(names = character(), data = list())
   )
 }
 
 flatten_column <- function(x, name) {
-  name <- tick_if_needed(name)
+  if (name != "") {
+    name <- tick_if_needed(name)
+  }
 
   if (is.data.frame(x)) {
     flatten_df_column(x, name)
-  } else if (is.matrix(x)) {
+  } else if (is.matrix(x) && !inherits(x, c("Surv", "Surv2"))) {
     flatten_matrix_column(x, name)
   } else {
     # Length-one list, will be unlist()ed afterwards
-    set_names(list(x), name)
+    #vctrs::data_frame(names = list(name), data = list(x))
+    vctrs::data_frame(names = name, data = list(x))
   }
 }
 
 flatten_df_column <- function(x, name) {
   if (length(x) == 0) {
-    set_names(list(new_empty_col_sentinel(x)), name)
+    # vctrs::data_frame(names = list(name), data = list(new_empty_col_sentinel(x)))
+    vctrs::data_frame(names = name, data = list(new_empty_col_sentinel(x)))
   } else {
     x <- flatten_colonnade(unclass(x))
-    names(x) <- paste0("$", names(x))
-    names(x)[[1]] <- paste0(name, names(x)[[1]])
+    #x$names <- map(x$names, function(.x) c(name, .x))
+    x$names <- paste0("$", x$names)
+    x$names[[1]] <- paste0(name, x$names[[1]])
     x
   }
 }
 
 flatten_matrix_column <- function(x, name) {
   if (ncol(x) == 0) {
-    set_names(list(new_empty_col_sentinel(x)), name)
+    vctrs::data_frame(
+      #names = list(c(name, "[,0]")),
+      names = name,
+      data = list(new_empty_col_sentinel(x))
+    )
   } else {
     x_list <- map(seq_len(ncol(x)), function(i) x[,i])
 
@@ -91,9 +102,12 @@ flatten_matrix_column <- function(x, name) {
     } else {
       idx <- encodeString(idx, quote = '"')
     }
-    names(x_list) <- paste0("[,", idx, "]")
-    names(x_list)[[1]] <- paste0(name, names(x_list)[[1]])
-    x_list
+
+    #names <- map(idx, function(.x) c(name, .x))
+    names <- paste0("[,", idx, "]")
+    names[[1]] <- paste0(name, names[[1]])
+
+    vctrs::data_frame(names = names, data = x_list)
   }
 }
 
@@ -101,21 +115,30 @@ new_empty_col_sentinel <- function(type) {
   structure(list(type), class = c("pillar_empty_col"))
 }
 
-#' @description
+#' Squeeze a colonnade to a fixed width
+#'
 #' The `squeeze()` function usually doesn't need to be called manually.
 #' It returns an object suitable for printing and formatting at a fixed width
 #' with additional information about omitted columns, which can be retrieved
 #' via [extra_cols()].
 #'
-#' @rdname colonnade
+#' @keywords internal
 #' @export
 #' @examples
+#' long_string <- list(paste(letters, collapse = " "))
+#' squeeze(colonnade(long_string), width = 40)
 #' squeeze(colonnade(long_string), width = 20)
 squeeze <- function(x, width = NULL, ...) {
+  deprecate_soft("1.5.0", "pillar::squeeze()")
+
+  squeeze_impl(x, width, ...)
+}
+
+squeeze_impl <- function(x, width = NULL, ...) {
   # Shortcut for zero-height corner case
-  zero_height <- length(x) == 0L || length(x[[1]]) == 0L
+  zero_height <- length(x$data) == 0L || length(x$data[[1]]) == 0L
   if (zero_height) {
-    return(new_colonnade_sqeezed(list(), colonnade = x, extra_cols = seq_along(x)))
+    return(new_colonnade_squeezed(list(), colonnade = x, extra_cols = seq_along(x$data)))
   }
 
   if (is.null(width)) {
@@ -134,48 +157,29 @@ squeeze <- function(x, width = NULL, ...) {
   }
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
-  col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
-  col_widths_shown <- col_widths_show[["TRUE"]]
-  col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
+  col_widths_shown <- col_widths[col_widths$tier != 0, ]
+  indexes <- split(seq_along(col_widths_shown$tier), col_widths_shown$tier)
 
-  out <- map(col_widths_tiers, function(tier) {
-    map2(tier$pillar, tier$width, pillar_format_parts)
+  out <- map(indexes, function(i) {
+    inner <- map2(col_widths_shown$pillar[i], col_widths_shown$width[i], pillar_format_parts)
+    if (!is.null(rowid)) {
+      inner <- c(list(pillar_format_parts(rowid, rowid_width - 1L)), inner)
+    }
+    inner
   })
 
-  if (!is.null(rowid)) {
-    rowid_formatted <- pillar_format_parts(rowid, rowid_width - 1L)
-    out <- map(out, function(x) c(list(rowid_formatted), x))
-  }
-
-  extra_cols <- seq2(nrow(col_widths_shown) + 1L, length(x))
-  new_colonnade_sqeezed(out, colonnade = x, extra_cols = extra_cols)
-}
-
-map_named <- function(.x, .f) {
-  names <- names(.x)
-  if (!is.null(names)) {
-    map2(.x, names, .f)
-  } else {
-    map(.x, .f)
-  }
-}
-
-map_chr_named <- function(.x, .f) {
-  names <- names(.x)
-  if (!is.null(names)) {
-    map2_chr(.x, names, .f)
-  } else {
-    map_chr(.x, .f)
-  }
+  n_cols_shown <- nrow(col_widths_shown)
+  extra_cols <- seq2(n_cols_shown + 1L, length(x$data))
+  new_colonnade_squeezed(out, colonnade = x, extra_cols = extra_cols)
 }
 
 get_rowid_from_colonnade <- function(x) {
-  has_title <- is_named(x)
+  has_title <- any(x$names != "")
 
   has_row_id <- attr(x, "has_row_id")
-  if (!is_false(has_row_id) && length(x) > 0) {
+  if (!is_false(has_row_id) && length(x$data) > 0) {
     rowid <- rowidformat(
-      length(x[[1]]),
+      length(x$data[[1]]),
       has_star = identical(has_row_id, "*"),
       has_title_row = has_title
     )
@@ -186,30 +190,30 @@ get_rowid_from_colonnade <- function(x) {
   rowid
 }
 
-new_colonnade_sqeezed <- function(x, colonnade, extra_cols) {
+new_colonnade_squeezed <- function(x, colonnade, extra_cols) {
+  formatted_tiers <- map(x, format_colonnade_tier)
+  formatted <- new_vertical(as.character(unlist(formatted_tiers)))
+
   structure(
-    x,
-    extra_cols = colonnade[extra_cols],
+    list(formatted),
+    extra_cols = colonnade[extra_cols, ],
     class = "pillar_squeezed_colonnade"
   )
 }
 
-#' @export
-format.pillar_squeezed_colonnade <- function(x, ...) {
-  formatted <- map(x, format_colonnade_tier)
-  new_vertical(as.character(unlist(formatted)))
+format_colonnade_tier <- function(x) {
+  "!!!!!DEBUG format_colonnade_tier(`v(x)`)"
+
+  if (length(x) == 0) {
+    return(character())
+  }
+
+  unlist(pmap(unname(x), paste))
 }
 
-format_colonnade_tier <- function(x) {
-  xt <- list(
-    capital = map(x, `[[`, "capital_format"),
-    shaft = map(x, `[[`, "shaft_format")
-  )
-
-  c(
-    eval_tidy(quo(paste(!!!unname(xt$capital)))),
-    eval_tidy(quo(paste(!!!unname(xt$shaft))))
-  )
+#' @export
+format.pillar_squeezed_colonnade <- function(x, ...) {
+  x[[1]]
 }
 
 #' @export
@@ -236,12 +240,16 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' Formatting a [colonnade] object may lead to some columns being omitted
 #' due to width restrictions. This method returns a character vector that
 #' describes each of the omitted columns.
+#'
 #' @param x The result of [squeeze()] on a [colonnade] object
 #' @inheritParams ellipsis::dots_used
+#' @keywords internal
 #' @export
 #' @examples
 #' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
 extra_cols <- function(x, ...) {
+  deprecate_soft("1.5.0", "pillar::extra_cols()")
+
   if (!missing(...)) {
     check_dots_used(action = warn)
   }
@@ -255,17 +263,25 @@ extra_cols <- function(x, ...) {
 #'   beyond `n` will be `NA`.
 #' @export
 extra_cols.pillar_squeezed_colonnade <- function(x, ..., n = Inf) {
-  extra_cols <- attr(x, "extra_cols")
-  ret <- rep(NA_character_, length(extra_cols))
+  extra_cols_impl(x, n)
+}
 
-  idx <- seq_len(min(length(extra_cols), n))
-  ret[idx] <- map_chr_named(extra_cols[idx], format_abbrev)
+extra_cols_impl <- function(x, n = NULL) {
+  extra_cols <- attr(x, "extra_cols")
+  ret <- rep(NA_character_, length(extra_cols$data))
+
+  if (is.null(n)) {
+    n <- Inf
+  }
+
+  idx <- seq_len(min(length(extra_cols$data), n))
+  ret[idx] <- map2_chr(extra_cols$data[idx], extra_cols$names[idx], format_abbrev, space = NBSP)
   ret
 }
 
 #' @export
 format.pillar_colonnade <- function(x, ...) {
-  format(squeeze(x, ...))
+  format(squeeze_impl(x, ...))
 }
 
 #' @export
@@ -283,13 +299,13 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' `getOption("width")` characters wide. The very first step of formatting
   #' is to determine how many tiers are shown at most, and the width of each
   #' tier.
-  tier_widths <- get_tier_widths(width, length(x), rowid_width)
+  tier_widths <- get_tier_widths(width, length(x$data), rowid_width)
 
   #'
   #' To avoid unnecessary computation for showing very wide colonnades, a first
   #' pass tries to fit all capitals into the tiers.
-  init_cols <- min(length(x), sum(floor((tier_widths + 1L) / (MIN_PILLAR_WIDTH + 1L))))
-  capitals <- map_named(x[seq_len(init_cols)], pillar_capital)
+  init_cols <- min(length(x$data), sum(floor((tier_widths + 1L) / (MIN_PILLAR_WIDTH + 1L))))
+  capitals <- map2(x$data[seq_len(init_cols)], x$names[seq_len(init_cols)], pillar_capital)
   init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths)
   pillar_shown <- init_col_widths_df$id[init_col_widths_df$tier != 0L]
   if (length(pillar_shown) < init_cols) {
@@ -300,8 +316,8 @@ colonnade_get_width <- function(x, width, rowid_width) {
   #' For each pillar whose capital fits, it is then decided in which tier it is
   #' shown, if at all, and how much horizontal space it may use (either its
   #' minimum or its maximum width).
-  shafts <- map(x[pillar_shown], pillar_shaft)
-  pillars <- map2(capitals[pillar_shown], shafts, new_pillar)
+  shafts <- map(x$data[pillar_shown], pillar_shaft)
+  pillars <- map2(capitals[pillar_shown], shafts, new_pillar_1e)
   col_widths_df <- colonnade_compute_tiered_col_widths(pillars, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not
@@ -341,6 +357,8 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_tier_df) {
+  "!!!!!DEBUG colonnade_compute_tiered_col_widths_df(`v(tier_widths)`)"
+
   #' @details
   #' For fitting pillars in one or more tiers, first a check is made
   #' if all pillars fit with their maximum width (e.g.,
@@ -410,7 +428,7 @@ distribute_pillars <- function(widths, tier_widths) {
     current_x <- current_x + widths[[i]] + 1L
   }
 
-  data.frame(id = seq_along(widths), width = widths, tier = tier)
+  vctrs::data_frame(id = seq_along(widths), width = widths, tier = tier)
 }
 
 distribute_pillars_rev <- function(widths, tier_widths) {
@@ -440,6 +458,8 @@ all_pillars_fit <- function(tier_df) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
+  "!!!!!DEBUG colonnade_distribute_space_df(`v(tier_widths)`)"
+
   col_widths_split <- split(col_widths_df, col_widths_df$tier)
   if (any(col_widths_df$tier == 0)) tier_widths <- c(NA, tier_widths)
   tier_widths <- tier_widths[seq_along(col_widths_split)]

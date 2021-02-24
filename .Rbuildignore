@@ -19,3 +19,6 @@
 ^CRAN-RELEASE$
 ^data-raw$
 ^\.ccache$
+^LICENSE\.md$
+^bench\.R$
+^TODO\.md$

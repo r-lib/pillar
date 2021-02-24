@@ -1,5 +1,3 @@
-context("test-new-pillar-title.R")
-
 test_that("can format new_pillar_title()", {
   expect_equal(
     format(new_pillar_title(names(iris))),

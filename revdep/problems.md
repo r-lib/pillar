@@ -1,167 +1,205 @@
-# hms
+# crossmap
 
 <details>
 
-* Version: 0.4.2
-* Source code: https://github.com/cran/hms
-* URL: https://github.com/tidyverse/hms
-* BugReports: https://github.com/tidyverse/hms/issues
-* Date/Publication: 2018-03-10 21:33:37 UTC
-* Number of recursive dependencies: 19
+* Version: 0.2.0
+* GitHub: https://github.com/rossellhayes/crossmap
+* Source code: https://github.com/cran/crossmap
+* Date/Publication: 2020-09-24 07:30:02 UTC
+* Number of recursive dependencies: 60
 
-Run `revdep_details(,"hms")` for more info
+Run `cloud_details(, "crossmap")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ...
+*   checking whether package ‘crossmap’ can be installed ... ERROR
     ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      y[4]: " 00\033[90m'\033[39m00.000\033[90m\"\033[39m"
-      
-      x[5]: " 00\033[38;5;246m'\033[39m00.001\033[38;5;246m\"\033[39m"
-      y[5]: " 00\033[90m'\033[39m00.001\033[90m\"\033[39m"
-      
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
-      OK: 134 SKIPPED: 0 WARNINGS: 0 FAILED: 5
-      1. Failure: pillar (@test-colformat.R#4) 
-      2. Failure: pillar (@test-colformat.R#8) 
-      3. Failure: pillar (@test-colformat.R#12) 
-      4. Failure: pillar (@test-colformat.R#16) 
-      5. Failure: pillar (@test-colformat.R#20) 
-      
-      Error: testthat unit tests failed
-      Execution halted
+    Installation failed.
+    See ‘/tmp/workdir/crossmap/new/crossmap.Rcheck/00install.out’ for details.
     ```
 
-# repr
+## Newly fixed
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘crossmap’ ...
+** package ‘crossmap’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘crossmap’ ...
+** package ‘crossmap’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (crossmap)
+
+
+```
+# intensegRid
 
 <details>
 
-* Version: 1.0.0
-* Source code: https://github.com/cran/repr
-* Date/Publication: 2019-04-29 16:50:03 UTC
+* Version: 0.1.0
+* GitHub: https://github.com/KKulma/intensegRid
+* Source code: https://github.com/cran/intensegRid
+* Date/Publication: 2020-11-12 10:00:11 UTC
 * Number of recursive dependencies: 59
 
-Run `revdep_details(,"repr")` for more info
+Run `cloud_details(, "intensegRid")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ...
+*   checking tests ... ERROR
     ```
-     ERROR
+      Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
-      OK: 68 SKIPPED: 27 WARNINGS: 1 FAILED: 23
-      1. Failure: LaTeX escaping in matrices works (@test_escaping.r#53) 
-      2. Failure: LaTeX escaping in matrices works (@test_escaping.r#60) 
-      3. Failure: HTML escaping in matrices works (@test_escaping.r#72) 
-      4. Failure: HTML escaping in matrices works (@test_escaping.r#81) 
-      5. Failure: Factors are maintained in small arrays for HTML (@test_escaping.r#138) 
-      6. Failure: Factors are maintained in small arrays for HTML (@test_escaping.r#142) 
-      7. Failure: Factors are maintained in small arrays for HTML (@test_escaping.r#146) 
-      8. Failure: Factors are sanitized in small data.frames for HTML (@test_escaping.r#167) 
-      9. Failure: Factors are sanitized in small data.frames for HTML (@test_escaping.r#171) 
-      1. ...
+      > library(testthat)
+      > library(intensegRid)
+      > 
+      > test_check("intensegRid")
+      ══ Failed tests ════════════════════════════════════════════════════════════════
+      ── Error (test-intensity.R:23:3): get_national_ci() works ──────────────────────
+      Error: ERROR: The status call is 500
+      Backtrace:
+          █
+       1. └─intensegRid::get_national_ci() test-intensity.R:23:2
+       2.   └─intensegRid:::get_data(call)
       
-      Error: testthat unit tests failed
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 49 ]
+      Error: Test failures
       Execution halted
     ```
 
 ## In both
 
-*   checking package dependencies ... NOTE
+*   checking dependencies in R code ... NOTE
     ```
-    Packages which this enhances but not available for checking:
-      'vegalite', 'plotly', 'geojsonio'
-    ```
-
-*   checking Rd cross-references ... NOTE
-    ```
-    Packages unavailable to check Rd xrefs: ‘geojsonio’, ‘plotly’, ‘vegalite’
+    Namespace in Imports field not imported from: ‘purrr’
+      All declared Imports should be used.
     ```
 
-# tibble
+# prt
 
 <details>
 
-* Version: 2.1.1
-* Source code: https://github.com/cran/tibble
-* URL: http://tibble.tidyverse.org/, https://github.com/tidyverse/tibble
-* BugReports: https://github.com/tidyverse/tibble/issues
-* Date/Publication: 2019-03-16 22:50:03 UTC
-* Number of recursive dependencies: 48
+* Version: 0.1.2
+* GitHub: https://github.com/nbenn/prt
+* Source code: https://github.com/cran/prt
+* Date/Publication: 2020-09-29 13:40:02 UTC
+* Number of recursive dependencies: 62
 
-Run `revdep_details(,"tibble")` for more info
+Run `cloud_details(, "prt")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ...
+*   checking examples ... ERROR
     ```
-     ERROR
+    Running examples in ‘prt-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: print.prt
+    > ### Title: Printing prt
+    > ### Aliases: print.prt format.prt trunc_dt
+    > 
+    > ### ** Examples
+    > 
+    > cars <- as_prt(mtcars)
+    > 
+    > print(cars)
+    Error in x[[1L]][[1L]][["shaft_format"]] : subscript out of bounds
+    Calls: print ... format -> format.trunc_dt -> squeeze_dt -> add_empty_row
+    Execution halted
+    ```
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
-      OK: 727 SKIPPED: 1 WARNINGS: 2 FAILED: 15
-      1. Failure: glimpse output matches known output (@test-glimpse.R#51) 
-      2. Failure: glimpse output matches known output (@test-glimpse.R#66) 
-      3. Failure: glimpse output matches known output (@test-glimpse.R#71) 
-      4. Failure: glimpse output matches known output (@test-glimpse.R#79) 
-      5. Failure: glimpse works for structures with unknown rows (@test-glimpse.R#105) 
-      6. Failure: glimpse works on nested data (#486) (@test-glimpse.R#135) 
-      7. Failure: glimpse works on nested data (#486) (@test-glimpse.R#140) 
-      8. Failure: trunc_mat output matches known output (@test-trunc-mat.R#30) 
-      9. Failure: trunc_mat output matches known output (@test-trunc-mat.R#35) 
-      1. ...
+      - "  成交日期 合同录入日期"
+      + "list(capital_format = c(\" \", \" \"), shaft_format = c(\"1\", \"2\", \"3\"))"
+      - "     <int>        <int>"
+      + "成交日期 合同录入日期"
+      - "1        1            4"
+      + "   <int>        <int>"
+      - "2        2            5"
+      + "       1            4"
+      - "3        3            6"
+      + "       2            5"
+      + "       3            6"
       
-      Error: testthat unit tests failed
+      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 257 ]
+      Error: Test failures
       Execution halted
     ```
 
-# unpivotr
+# ricu
 
 <details>
 
-* Version: 0.5.1
-* Source code: https://github.com/cran/unpivotr
-* URL: https://github.com/nacnudus/unpivotr
-* BugReports: https://github.com/nacnudus/unpivotr/issues
-* Date/Publication: 2019-03-30 19:10:03 UTC
-* Number of recursive dependencies: 84
+* Version: 0.1.3
+* GitHub: https://github.com/septic-tank/ricu
+* Source code: https://github.com/cran/ricu
+* Date/Publication: 2021-01-29 23:40:02 UTC
+* Number of recursive dependencies: 83
 
-Run `revdep_details(,"unpivotr")` for more info
+Run `cloud_details(, "ricu")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ...
+*   checking examples ... ERROR
     ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      ══ testthat results  ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
-      OK: 222 SKIPPED: 0 WARNINGS: 7 FAILED: 10
-      1.  Failure: as_cells() works with all common datatypes (@test-as_cells.R#95) 
-      2.  Error: as_cells() works with all common datatypes (@test-as_cells.R#98) 
-      3.  Failure: behead() works with all common datatypes (@test-behead.R#74) 
-      4.  Failure: behead() works with all common datatypes (@test-behead.R#75) 
-      5.  Failure: behead() works with all common datatypes (@test-behead.R#82) 
-      6.  Failure: pack() works on common data types (@test-pack.R#24) 
-      7.  Failure: pack() works on common data types (@test-pack.R#36) 
-      8.  Failure: unpack() orders type columns alphabetically (@test-pack.R#59) 
-      9.  Failure: tidy_table works with all common datatypes (@test-tidy_table.R#94) 
-      10. Error: tidy_table works with all common datatypes (@test-tidy_table.R#97) 
-      
-      Error: testthat unit tests failed
-      Execution halted
+    Running examples in ‘ricu-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: change_id
+    > ### Title: Switch between id types
+    > ### Aliases: change_id upgrade_id downgrade_id upgrade_id.ts_tbl
+    > ###   upgrade_id.id_tbl downgrade_id.ts_tbl downgrade_id.id_tbl
+    > 
+    > ### ** Examples
+    > 
+    ...
+    + tbl <- mimic_demo$labevents
+    + dat <- load_difftime(tbl, itemid == 50809, c("charttime", "valuenum"))
+    + dat
+    + 
+    + change_id(dat, "icustay_id", tbl, keep_old_id = FALSE)
+    + }
+    Loading required package: mimic.demo
+    Error in x[[1L]][[1L]][["shaft_format"]] : subscript out of bounds
+    Calls: <Anonymous> ... format -> format.trunc_dt -> squeeze_dt -> add_empty_row
+    Execution halted
     ```
 

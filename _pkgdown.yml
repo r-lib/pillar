@@ -1,24 +1,33 @@
+url: https://pillar.r-lib.org/
+
 reference:
-  - title: High-level interface
+  - title: Formatting tables
     desc: >
-      These functions accept vectors or lists and create objects that format
-      nicely on the terminal.
+      Override or extend these methods if you want to customize the appearance
+      of your tibble-like object.
+    contents:
+      - format_tbl
+      - tbl_format_setup
+      - tbl_format_header
+      - tbl_format_body
+      - tbl_format_footer
+      - ctl_new_pillar
+      - tbl_sum
+      - glimpse
+  - title: Formatting pillars
+    desc: >
+      Functions and methods to implement pillar support for your data type.
     contents:
       - pillar
-      - colonnade
-      - squeeze
-      - extra_cols
-  - title: Hooks
-    desc: >
-      Override or use these methods if you want pillar support for your data type.
-    contents:
+      - new_pillar
+      - new_pillar_component
       - pillar_shaft
       - starts_with("new_pillar_shaft")
       - type_sum
       - format_type_sum
   - title: Styling
     desc: >
-      For consistent output among different data types.
+      For consistent output of different data types.
     contents:
       - starts_with("style_")
       - align
@@ -29,7 +38,6 @@ reference:
   - title: Miscellaneous
     contents:
       - dim_desc
-      - expect_known_display
       - pillar-package
 
 navbar:
@@ -39,6 +47,8 @@ navbar:
     href: "reference/pillar-package.html#package-options"
   - text: Reference
     href: reference/index.html
+  - text: Articles
+    href: news/articles.html
   - text: News
     href: news/index.html
 

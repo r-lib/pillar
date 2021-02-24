@@ -5,7 +5,7 @@
 \alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a>}}{\strong{Maturing}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 Provides \link{pillar} and \link{colonnade} generics designed for formatting columns
 of data using the full range of colours provided by modern terminals.
 }
@@ -47,6 +47,7 @@ colonnade(iris[1:3, ])
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://pillar.r-lib.org/}
   \item \url{https://github.com/r-lib/pillar}
   \item Report bugs at \url{https://github.com/r-lib/pillar/issues}
 }

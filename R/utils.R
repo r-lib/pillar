@@ -2,15 +2,25 @@ cat_line <- function(...) {
   cat(..., "\n", sep = "")
 }
 
+#' @importFrom utf8 utf8_width
+#' @importFrom fansi strip_sgr substr_ctl
 str_trunc <- function(x, width) {
-  if (is.infinite(width)) return(x)
+  if (all(is.infinite(width))) return(x)
 
-  str_width <- utf8::utf8_width(crayon::strip_style(x), encode = FALSE)
+  str_width <- utf8_width(strip_sgr(x), encode = FALSE)
 
   too_wide <- which(!is.na(x) & str_width > width)
-  x[too_wide] <- paste0(fansi::substr_ctl(x[too_wide], 1, width - 1), get_ellipsis())
+  x[too_wide] <- paste0(substr_ctl(x[too_wide], 1, width - 1), get_ellipsis())
 
   x
+}
+
+paste_with_space_if_needed <- function(x, y) {
+  if (y == "") {
+    x
+  } else {
+    paste(x, y)
+  }
 }
 
 check_sigfig <- function(x) {
@@ -49,4 +59,9 @@ remove_as_is_class <- function(x) {
 
 diff_to_trunc <- function(x) {
   x - trunc(x)
+}
+
+v <- function(x) {
+  expr <- rlang::expr_deparse(substitute(x), width = Inf)
+  paste0(expr, " = ", rlang::expr_deparse(x, width = 80)[[1]])
 }

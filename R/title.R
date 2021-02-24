@@ -10,23 +10,22 @@ style_title <- style_bold
 #' @examples
 #' format(new_pillar_title(names(iris)))
 new_pillar_title <- function(x, ...) {
+  "!!!!DEBUG new_pillar_title(`v(x)`)"
   if (!missing(...)) {
     check_dots_empty(action = warn)
   }
 
   if (is.null(x)) {
     width <- 0L
+  } else if (all(is.na(x) | x == "")) {
+    width <- 0L
+    x <- NULL
   } else {
     width <- get_max_extent(format_title(x, width = Inf))
     stopifnot(!is.na(width))
   }
 
-  ret <- structure(
-    list(
-      title = x
-    ),
-    class = "pillar_title"
-  )
+  ret <- structure(list(x), class = "pillar_title")
 
   ret <- set_width(ret, width)
   ret <- set_min_width(ret, get_min_title_width(width))
@@ -49,7 +48,7 @@ get_min_title_width <- function(width) {
 
 #' @export
 format.pillar_title <- function(x, width = NULL, ...) {
-  title <- x$title
+  title <- x[[1]]
   if (is.null(title)) return(character())
 
   if (is.null(width)) {

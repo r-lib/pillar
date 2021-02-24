@@ -3,18 +3,21 @@
 \name{type_sum}
 \alias{type_sum}
 \alias{obj_sum}
+\alias{size_sum}
 \title{Provide a succinct summary of an object}
 \usage{
 type_sum(x)
 
 obj_sum(x)
+
+size_sum(x)
 }
 \arguments{
 \item{x}{an object to summarise. Generally only methods of atomic vectors
 and variants have been implemented.}
 }
 \description{
-\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#questioning'><img src='figures/lifecycle-questioning.svg' alt='Questioning lifecycle'></a>}}{\strong{Questioning}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
 
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
@@ -22,6 +25,12 @@ For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_full]{
 
 \code{obj_sum()} also includes the size of the object if \code{vctrs::vec_is()}
 is \code{TRUE}.
+It should always return a string (a character vector of length one).
+
+\code{size_sum()} is called by \code{obj_sum()} to format the size of the object.
+It should always return a string (a character vector of length one),
+it can be an empty string \code{""} to omit size information,
+this is what the default method does for scalars.
 }
 \section{Lifecycle}{
 
@@ -38,5 +47,9 @@ obj_sum(matrix(1:10))
 obj_sum(Sys.Date())
 obj_sum(Sys.time())
 obj_sum(mean)
+
+size_sum(1:10)
+size_sum(trees)
+size_sum(Titanic)
 }
 \keyword{internal}

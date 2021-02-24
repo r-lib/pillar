@@ -31,7 +31,7 @@
 #' @export
 new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
-    deprecate_soft("1.4.0", "new_pillar_shaft(subclass = )", "new_pillar_shaft(class = )")
+    deprecate_soft("1.4.0", "pillar::new_pillar_shaft(subclass = )", "new_pillar_shaft(class = )")
     class <- subclass
   }
 
@@ -67,6 +67,8 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 #' pillar_shaft(NA)
 #' pillar_shaft(c(1:3, NA))
 pillar_shaft <- function(x, ...) {
+  "!!!!DEBUG pillar_shaft(`v(class(x))`)"
+
   if (!missing(...)) {
     check_dots_used(action = warn)
   }
@@ -156,8 +158,19 @@ pillar_shaft_number <- function(x, sigfig) {
   )
 }
 
+# registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
   pillar_shaft_number(x, sigfig)
+}
+
+# registered in .onLoad()
+pillar_shaft.Surv <- function(x, ...) {
+  new_pillar_shaft_simple(format(x), align = "right")
+}
+
+# registered in .onLoad()
+pillar_shaft.Surv2 <- function(x, ...) {
+  new_pillar_shaft_simple(format(x), align = "right")
 }
 
 #' @export
@@ -235,7 +248,7 @@ pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.list <- function(x, ...) {
-  out <- paste0("<", obj_sum(x), ">")
+  out <- paste0("<", map_chr(x, obj_sum), ">")
 
   width <- get_max_extent(out)
 

@@ -8,6 +8,7 @@ style_type <- function(x) {
 
 #' Prepare a column type for formatting
 #'
+#' Calls [type_sum()] to format the type.
 #' Call [format()] on the result to render column types.
 #'
 #' @param x A vector for which the type is to be retrieved.
@@ -16,18 +17,15 @@ style_type <- function(x) {
 #' @examples
 #' format(new_pillar_type(iris$Species))
 new_pillar_type <- function(x, ...) {
+  "!!!!DEBUG new_pillar_type(`v(class(x))`)"
   if (!missing(...)) {
     check_dots_empty(action = warn)
   }
 
   type <- get_pillar_type(x)
 
-  ret <- structure(
-    list(
-      type = type
-    ),
-    class = "pillar_type"
-  )
+  # Must wrap in a list, because type_sum() can return a classed object
+  ret <- structure(list(type), class = "pillar_type")
   extent <- get_extent(format_type_sum(type, NULL))
   ret <- set_width(ret, width = max(extent, MIN_PILLAR_WIDTH))
   ret <- set_min_width(ret, MIN_PILLAR_WIDTH)
@@ -37,17 +35,15 @@ new_pillar_type <- function(x, ...) {
 get_pillar_type <- function(x) {
   type <- type_sum(x)
   if (length(type) == 0L) type <- "?"
+  # Can return a classed object to be formatted by format_type_sum()
   type[] <- as.character(type[[1L]])
   type
 }
 
+#' @importFrom fansi substr_ctl
 #' @export
 format.pillar_type <- function(x, width = NULL, ...) {
-  ret <- format_type_sum(x$type, width)
-  if (!is.null(width) && get_extent(ret) > width) {
-    ret <- fansi::substr_ctl(ret, 1, width)
-  }
-  ret
+  format_type_sum(x[[1]], width)
 }
 
 format_full_pillar_type <- function(x) {

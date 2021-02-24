@@ -21,12 +21,6 @@ dim2 <- function(x) {
   dim(x) %||% vctrs::vec_size(x)
 }
 
-size_sum <- function(x) {
-  if (!vctrs::vec_is(x)) return("")
-
-  paste0(" [", dim_desc(x), "]")
-}
-
 mult_sign <- function() {
   cli::symbol$times
 }
@@ -37,7 +31,11 @@ spaces_around <- function(x) {
 
 # function for the thousand separator,
 # returns "," unless it's used for the decimal point, in which case returns "."
-big_mark <- function(x, ...) {
+big_mark <- function(x) {
+  # The thousand separator,
+  # "," unless it's used for the decimal point, in which case "."
   mark <- if (identical(getOption("OutDec"), ",")) "." else ","
-  formatC(x, big.mark = mark, ...)
+  ret <- formatC(x, big.mark = mark, format = "d", preserve.width = "individual")
+  ret[is.na(x)] <- "??"
+  ret
 }

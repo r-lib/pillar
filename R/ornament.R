@@ -15,7 +15,10 @@
 #' @examples
 #' new_ornament(c("abc", "de"), align = "right")
 new_ornament <- function(x, width = NULL, align = NULL) {
-  if (is.null(width)) width <- get_max_extent(x)
+  if (is.null(width)) {
+    width <- get_max_extent(x)
+  }
+
   ret <- structure(
     x,
     align = align,
@@ -27,15 +30,17 @@ new_ornament <- function(x, width = NULL, align = NULL) {
 
 #' @export
 print.pillar_ornament <- function(x, ...) {
-  if (length(x) > 0) {
-    cat_line(paste(
-      align(x, width = get_width(x), align = attr(x, "align")),
-      collapse = "\n"
-    ))
-  }
+  writeLines(style_bold("<pillar_ornament>"))
+  writeLines(format(x, ...))
   invisible(x)
 }
 
+#' @export
+format.pillar_ornament <- function(x, width = NULL, ...) {
+  align(x, width = width %||% get_width(x), align = attr(x, "align"))
+}
+
+# FIXME: Replace with as_glue()
 new_vertical <- function(x, ..., class = NULL) {
   ret <- structure(
     x,

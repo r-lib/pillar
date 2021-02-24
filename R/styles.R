@@ -1,3 +1,4 @@
+# nocov start
 keep_empty <- function(fun) {
   function(x) {
     ret <- rep_along(x, "")
@@ -6,6 +7,7 @@ keep_empty <- function(fun) {
     ret
   }
 }
+# nocov end
 
 #' Styling helpers
 #'
@@ -108,65 +110,41 @@ style_list <- function(x) {
 }
 
 # Only check if we have color support once per session
-has_color <- local({
-  has_color <- NULL
+num_colors <- local({
+  num_colors <- NULL
   function(forget = FALSE) {
-    if (is.null(has_color) || forget) {
-      has_color <<- crayon::has_color()
+    if (is.null(num_colors) || forget) {
+      num_colors <<- crayon::num_colors(forget = forget)
     }
-    has_color
+    num_colors
   }
 })
 
-# Important to use 16-color palette for consistent testing
-is_testing <- local({
-  is_testing <- FALSE
-  function(set = NA) {
-    if (!is.na(set)) {
-      is_testing <<- set
-    }
-    is_testing
-  }
-})
-
-# Crayon functions call crayon::has_color() every call
-make_style_fast <- function(...) {
-  # Force has_color to be true when making styles
-  old <- options(crayon.enabled = TRUE)
-  on.exit(options(old))
-
-  style <- crayon::make_style(...)
-  start <- stats::start(style)
-  finish <- crayon::finish(style)
-
-  function(...) {
-    if (has_color()) {
-      paste0(start, ..., finish)
-    } else {
-      paste0(...)
-    }
-  }
+has_color <- function() {
+  num_colors() > 1
 }
 
-make_style_fast_16 <- function(...) {
+# nocov start
+# Crayon functions call crayon::num_colors() every call
+make_style_fast <- function(...) {
   # Force has_color to be true when making styles
-  old <- options(crayon.enabled = TRUE)
-  on.exit(options(old))
-
-  style <- crayon::make_style(...)
-  start <- stats::start(style)
-  finish <- crayon::finish(style)
+  local_options(crayon.enabled = TRUE, cli.num_colors = 16L)
 
   style_16 <- crayon::make_style(..., colors = 16)
   start_16 <- stats::start(style_16)
   finish_16 <- crayon::finish(style_16)
 
+  style_256 <- crayon::make_style(..., colors = 256)
+  start_256 <- stats::start(style_256)
+  finish_256 <- crayon::finish(style_256)
+
   function(...) {
     if (has_color()) {
-      if (is_testing()) {
-        paste0(start_16, gsub(finish_16, start_16, ..., fixed = TRUE), finish_16)
+      colors <- num_colors()
+      if (colors >= 256) {
+        paste0(start_256, ..., finish_256)
       } else {
-        paste0(start, gsub(finish, start, ..., fixed = TRUE), finish)
+        paste0(start_16, ..., finish_16)
       }
     } else {
       paste0(...)
@@ -189,6 +167,7 @@ assign_crayon_styles <- function() {
   crayon_red <<- make_style_fast("red")
   crayon_yellow <<- make_style_fast("yellow")
   crayon_bold <<- make_style_fast("bold")
-  crayon_grey_0.6 <<- make_style_fast_16(grDevices::grey(0.6), grey = TRUE)
-  crayon_grey_0.8 <<- make_style_fast_16(grDevices::grey(0.8), grey = TRUE)
+  crayon_grey_0.6 <<- make_style_fast(grDevices::grey(0.6), grey = TRUE)
+  crayon_grey_0.8 <<- make_style_fast(grDevices::grey(0.8), grey = TRUE)
 }
+# nocov end
