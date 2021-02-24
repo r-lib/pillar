@@ -127,18 +127,14 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
-<li>
-<p>Understand: Why does printing of compound pillars in <code>ctl_colonnade()</code> even work (as opposed to printing a single tibble)?</p>
+<li>Add deprecation labels</li>
+<li>Fix remaining <code>format_v()</code> issue
 <ul>
-<li>
-<code>combine_pillars()</code> is called, flattens</li>
+<li>https://github.com/tidyverse/tibble/issues/418</li>
 </ul>
 </li>
-<li><p>Release</p></li>
-<li><p>Blog post?</p></li>
-<li><p>Fix remaining <code>format_v()</code> issue</p></li>
-<li>
-<p>Reduce calls to <code><a href="reference/align.html">align()</a></code>:</p>
+<li>Rework README</li>
+<li>Reduce calls to <code><a href="reference/align.html">align()</a></code>:
 <ul>
 <li>align all components vertically</li>
 <li>squash</li>
@@ -147,32 +143,32 @@
 <li>paste</li>
 </ul>
 </li>
-<li>
-<p>Benchmark and profile again</p>
+<li>Benchmark and profile again
 <ul>
 <li><code>bench.R</code></li>
+<li>https://github.com/tidyverse/tibble/issues/598</li>
 </ul>
 </li>
-<li><p>Look for FIXMEs</p></li>
-<li><p>Test coverage per file</p></li>
-<li><p>Use penguins</p></li>
-<li>
-<p>Improve output:</p>
+<li>Look for FIXMEs</li>
+<li>Test coverage per file</li>
+<li>Use penguins</li>
+<li>Improve output:
 <ul>
 <li>Tibble-local options for precision</li>
 <li>Classes for numeric and string, use {formattable}</li>
-<li>Multi-stage output for packed data frames</li>
-<li>Arrays!</li>
+<li>Multi-stage (hierarchical) output for packed data frames</li>
 <li>Show number of rows if known</li>
 <li>Show columns that are abbreviated in full</li>
 <li>Packed data frames and matrices: if too wide, show ellipsis</li>
 <li>Packed matrices: show type only once</li>
 <li>Tick column title in extra columns</li>
+<li>Second backtick if column name is abbreviated, https://github.com/tidyverse/tibble/issues/838</li>
 <li>Simplify matrix formatting to format like an array: https://github.com/r-lib/pillar/issues/142#issuecomment-489357664</li>
 <li>
 <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble(a = structure(1000:1003, class = "foo"))</a></code> should right-align, because the underlying data is a number?</li>
 </ul>
 </li>
+<li>Blog post?</li>
 </ul>
 </div>
 <div id="formatting-numbers" class="section level2">
