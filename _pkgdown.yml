@@ -69,12 +69,12 @@ navbar:
     articles:
       text: Articles
       menu:
-      - text: 'Printing a tibble: Tracking control flow'
-        href: articles/debugme.html
       - text: Custom formatting
         href: articles/extending.html
       - text: 'Printing a tibble: Control and data flow'
         href: articles/printing.html
+      - text: 'Printing a tibble: Tracking control flow'
+        href: articles/debugme.html
 
 development:
   mode: auto
