@@ -1,13 +1,9 @@
 #' Object for formatting a vector suitable for tabular display
 #'
-#' @description
-#' `r lifecycle::badge("stable")`
-#'
 #' `pillar()` creates an object that formats a vector.
 #' The output uses one row for a title (if given), one row for the type,
 #' and `vec_size(x)` rows for the data.
 #'
-#' @details
 #' A pillar consists of arbitrary components.
 #' The `pillar()` constructor uses `title`, `type`, and `data`.
 #'

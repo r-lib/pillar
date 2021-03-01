@@ -17,6 +17,8 @@ tbl_format_footer(x, setup, ...)
 A character vector.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 For easier customization, the formatting of a tibble is split
 into three components: header, body, and footer.
 The \code{tbl_format_footer()} method is responsible for formatting the footer

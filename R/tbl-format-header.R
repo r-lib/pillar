@@ -1,6 +1,8 @@
 #' Format the header of a tibble
 #'
 #' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' For easier customization, the formatting of a tibble is split
 #' into three components: header, body, and footer.
 #' The `tbl_format_header()` method is responsible for formatting the header

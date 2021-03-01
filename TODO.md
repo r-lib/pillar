@@ -2,11 +2,11 @@
 
 ## Next steps
 
-- Add deprecation labels
+- Add examples to new functions
 - Fix remaining `format_v()` issue
     - https://github.com/tidyverse/tibble/issues/418
 - Rework README
-- Reduce calls to `align()`: 
+- Reduce calls to `align()`:
     - align all components vertically
     - squash
     - only then `align()`
@@ -78,7 +78,7 @@ Use option?
 - Useful packages
 
     - formattable
-    
+
         - extract vector classes to separate package
-    
+
     - units
