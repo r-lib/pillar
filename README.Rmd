@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 # pillar
 
 <!-- badges: start -->
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R build status](https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/pillar/actions)
 [![Coverage status](https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/pillar?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
@@ -92,9 +92,9 @@ The function `new_pillar_shaft()` returns such an object, and also correctly for
 
 ## Inspirations
 
-* [TextPlots](https://github.com/sunetos/TextPlots.jl) for use of Braille 
+* [TextPlots](https://github.com/sunetos/TextPlots.jl) for use of Braille
   characters
-  
+
 * [spark](https://github.com/holman/spark) for use of block characters.
 
 The earliest use of unicode characters to generate sparklines appears to be [from 2009](https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/).

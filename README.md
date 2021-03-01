@@ -4,7 +4,7 @@
 
 <!-- badges: start -->
 
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html) [![R build status](https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/pillar/actions) [![Coverage status](https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/pillar?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) [![R build status](https://github.com/r-lib/pillar/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/pillar/actions) [![Coverage status](https://codecov.io/gh/r-lib/pillar/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/pillar?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
 
 <!-- badges: end -->
 
@@ -32,13 +32,13 @@ pillar is a developer-facing package that is not designed for end-users but will
 
 <span class='nv'>x</span> <span class='o'>&lt;-</span> <span class='m'>123456789</span> <span class='o'>*</span> <span class='o'>(</span><span class='m'>10</span> <span class='o'>^</span> <span class='nf'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='o'>(</span><span class='o'>-</span><span class='m'>3</span>, <span class='o'>-</span><span class='m'>5</span>, <span class='kc'>NA</span>, <span class='o'>-</span><span class='m'>8</span>, <span class='o'>-</span><span class='m'>10</span><span class='o'>)</span><span class='o'>)</span>
 <span class='nf'><a href='https://pillar.r-lib.org/reference/pillar.html'>pillar</a></span><span class='o'>(</span><span class='nv'>x</span><span class='o'>)</span>
-<span class='c'>#&gt; &lt;pillar&gt;</span>
-<span class='c'>#&gt;       &lt;dbl&gt;</span>
-<span class='c'>#&gt; 123457.    </span>
-<span class='c'>#&gt;   1235.    </span>
-<span class='c'>#&gt;     NA     </span>
+<span class='c'>#&gt; <span style='font-weight: bold;'>&lt;pillar&gt;</span></span>
+<span class='c'>#&gt;       <span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='c'>#&gt; <span style='text-decoration: underline;'>123</span><span>457.    </span></span>
+<span class='c'>#&gt;   <span style='text-decoration: underline;'>1</span><span>235.    </span></span>
+<span class='c'>#&gt;     <span style='color: #BB0000;'>NA</span><span>     </span></span>
 <span class='c'>#&gt;      1.23  </span>
-<span class='c'>#&gt;      0.0123</span></pre>
+<span class='c'>#&gt;      0.012<span style='text-decoration: underline;'>3</span></span></pre>
 
 If you render this in a console that supports colour, you’ll see something that looks like this:
 
