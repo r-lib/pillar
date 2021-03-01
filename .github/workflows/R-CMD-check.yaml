@@ -33,14 +33,14 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,                 r: 'release'}
-          - {os: windows-latest,               r: 'release', rspm: "https://packagemanager.rstudio.com/all/latest" }
-          - {os: windows-latest,               r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/all/latest" }
-          - {os: ubuntu-, os-version: 20.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-, os-version: 18.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
-          - {os: ubuntu-, os-version: 16.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
-          - {os: ubuntu-, os-version: 16.04,   r: 'devel',   rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest", http-user-agent: "R/4.0.0 (ubuntu-16.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
-          - {os: ubuntu-, os-version: 16.04,   r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
+          - { os: macOS-latest,                 r: 'release' }
+          - { os: windows-latest,               r: 'release', rspm: "https://packagemanager.rstudio.com/all/latest" }
+          - { os: windows-latest,               r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/all/latest" }
+          - { os: ubuntu-, os-version: 20.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest" }
+          - { os: ubuntu-, os-version: 18.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest" }
+          - { os: ubuntu-, os-version: 16.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest" }
+          - { os: ubuntu-, os-version: 16.04,   r: 'devel',   rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest", http-user-agent: "R/4.0.0 (ubuntu-16.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
+          - { os: ubuntu-, os-version: 16.04,   r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest" }
 
           # Begin custom: R 3.5
           - {os: ubuntu-, os-version: 16.04,   r: '3.5',     rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
@@ -144,7 +144,8 @@ jobs:
 
       - name: Show test output
         if: always()
-        run: find check -name '*.Rout*' -exec head -n 1000000 '{}' \; || true
+        run: |
+          find check -name '*.Rout*' -exec head -n 1000000 '{}' \; || true
         shell: bash
 
       - name: Upload check results
