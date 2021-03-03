@@ -2,7 +2,6 @@
 
 ## Next steps
 
-- Add examples to new functions
 - Fix remaining `format_v()` issue
     - https://github.com/tidyverse/tibble/issues/418
 - Rework README
