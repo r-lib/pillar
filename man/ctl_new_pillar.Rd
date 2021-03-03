@@ -46,6 +46,33 @@ Implementations should return \code{NULL} if none of the data
 fits the available width.
 }
 \examples{
+\dontshow{if (requireNamespace("palmerpenguins", quietly = TRUE) && requireNamespace("tibble", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Create pillar objects
+ctl_new_pillar(
+  palmerpenguins::penguins,
+  palmerpenguins::penguins$species[1:3], width = 60
+)
+ctl_new_pillar(
+  palmerpenguins::penguins,
+  palmerpenguins::penguins$bill_length_mm[1:3],
+  width = 60
+)
+
+# Packed data frame
+ctl_new_compound_pillar(
+  tibble::tibble(),
+  palmerpenguins::penguins,
+  width = 60
+)
+
+# Packed matrix
+ctl_new_compound_pillar(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
+
+# Packed array
+ctl_new_compound_pillar(tibble::tibble(), Titanic, width = 60)
+\dontshow{\}) # examplesIf}
+
+# Customize output
 lines <- function(char = "-") {
   stopifnot(nchar(char) == 1)
   structure(char, class = "lines")
