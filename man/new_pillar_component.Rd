@@ -10,12 +10,13 @@ new_pillar_component(x, ..., width, min_width = NULL)
 pillar_component(x)
 }
 \arguments{
-\item{x}{A bare list (for \code{new_pillar_component()}), or an object with width
-and minimum width attributes (for \code{pillar_component()}).}
+\item{x}{A bare list (for \code{new_pillar_component()}), or an object
+with attributes \code{"width"} and \code{"min_width"} attributes (for \code{pillar_component()}).}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
-\item{width, min_width}{TBD}
+\item{width, min_width}{Width and minimum width for the new component.
+If \code{min_width} is \code{NULL}, it is assumed to match \code{width}.}
 }
 \description{
 \code{new_pillar_component()} constructs an object of class \code{"pillar_component"}.
@@ -36,5 +37,8 @@ if the contents are compressible.
 The component object stores the width of the cells as an attribute.
 }
 \examples{
-# TBD
+new_pillar_component(list(letters[1:3]), width = 1)
+pillar_component(new_pillar_title("letters"))
+pillar_component(new_pillar_type(letters))
+pillar_component(pillar_shaft(letters[1:3]))
 }

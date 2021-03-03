@@ -30,3 +30,12 @@ If you only need to change or extend the components shown in the header,
 override or extend \code{\link[=tbl_sum]{tbl_sum()}} for your class which is called by the
 default method.
 }
+\examples{
+\dontshow{if (requireNamespace("palmerpenguins", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+setup <- tbl_format_setup(palmerpenguins::penguins)
+tbl_format_header(palmerpenguins::penguins, setup)
+
+# Shortcut for debugging
+tbl_format_header(setup)
+\dontshow{\}) # examplesIf}
+}

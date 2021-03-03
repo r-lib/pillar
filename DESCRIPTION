@@ -34,6 +34,7 @@ Suggests:
     knitr,
     lubridate,
     nycflights13,
+    palmerpenguins,
     rmarkdown,
     survival,
     testthat (>= 3.0.2),

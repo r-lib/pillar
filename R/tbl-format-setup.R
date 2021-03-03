@@ -50,9 +50,11 @@
 #'   No [option]s should be considered by implementations of this method.
 #'
 #' @return
-#'   An object that will be passed as `setup` argument to
+#'   An object that can be passed as `setup` argument to
 #'   [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()].
 #' @export
+#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' tbl_format_setup(palmerpenguins::penguins)
 tbl_format_setup <- function(x, width = NULL, ...,
                              n = NULL, max_extra_cols = NULL) {
   "!!!!DEBUG tbl_format_setup()"

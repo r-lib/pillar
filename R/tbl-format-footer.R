@@ -17,6 +17,12 @@
 #' @inherit tbl_format_body return
 #'
 #' @export
+#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' setup <- tbl_format_setup(palmerpenguins::penguins)
+#' tbl_format_footer(palmerpenguins::penguins, setup)
+#'
+#' # Shortcut for debugging
+#' tbl_format_footer(setup)
 tbl_format_footer <- function(x, setup, ...) {
   check_dots_empty()
 
