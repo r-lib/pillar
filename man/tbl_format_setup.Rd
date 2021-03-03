@@ -25,7 +25,7 @@ if the width is too small for the entire tibble.
 No \link{option}s should be considered by implementations of this method.}
 }
 \value{
-An object that will be passed as \code{setup} argument to
+An object that can be passed as \code{setup} argument to
 \code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}}.
 }
 \description{
@@ -66,4 +66,9 @@ This allows to keep the logic of the \code{width} and \code{n} arguments.
 The default method for the \code{"tbl"} class collects information for
 standard printing for tibbles.
 See \code{\link[=new_tbl_format_setup]{new_tbl_format_setup()}} for details on the returned object.
+}
+\examples{
+\dontshow{if (requireNamespace("palmerpenguins", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+tbl_format_setup(palmerpenguins::penguins)
+\dontshow{\}) # examplesIf}
 }
