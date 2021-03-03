@@ -14,12 +14,16 @@
 #' The component object stores the width of the cells as an attribute.
 #'
 #' @inheritParams ellipsis::dots_empty
-#' @param x A bare list (for `new_pillar_component()`), or an object with width
-#'   and minimum width attributes (for `pillar_component()`).
-#' @param width,min_width TBD
+#' @param x A bare list (for `new_pillar_component()`), or an object
+#'   with attributes `"width"` and `"min_width"` attributes (for `pillar_component()`).
+#' @param width,min_width Width and minimum width for the new component.
+#'   If `min_width` is `NULL`, it is assumed to match `width`.
 #' @export
 #' @examples
-#' # TBD
+#' new_pillar_component(list(letters[1:3]), width = 1)
+#' pillar_component(new_pillar_title("letters"))
+#' pillar_component(new_pillar_type(letters))
+#' pillar_component(pillar_shaft(letters[1:3]))
 new_pillar_component <- function(x, ..., width, min_width = NULL) {
   "!!!!DEBUG new_pillar_component(`v(x)`, `v(width)`, `v(min_width)`)"
 
