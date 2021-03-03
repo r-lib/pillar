@@ -40,8 +40,7 @@
 
 
 <meta property="og:title" content="Provide a succinct summary of an object — type_sum" />
-<meta property="og:description" content="
-type_sum() gives a brief summary of object type. Objects that commonly
+<meta property="og:description" content="type_sum() gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to vctrs::vec_ptype_abbr().
 obj_sum() also includes the size of the object if vctrs::vec_is()
@@ -135,8 +134,7 @@ this is what the default method does for scalars." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#questioning'><img src='figures/lifecycle-questioning.svg' alt='[Questioning]' /></a></p>
-<p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
+    <p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>.</p>
 <p><code>obj_sum()</code> also includes the size of the object if <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>
@@ -164,15 +162,6 @@ and variants have been implemented.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="lifecycle"><a class="anchor" href="#lifecycle"></a>Lifecycle</h2>
-
-    
-
-<p><code>type_sum()</code> is in the "questioning" stage, because <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>
-provides essentially the same functionality based on a robust framework.
-The generic will remain available for a while.
-Users and implementers are encouraged to consider <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>
-once it becomes stable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>

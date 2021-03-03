@@ -192,7 +192,7 @@ No <a href='https://rdrr.io/r/base/options.html'>option</a>s should be considere
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object that will be passed as <code>setup</code> argument to
+    <p>An object that can be passed as <code>setup</code> argument to
 <code><a href='tbl_format_header.html'>tbl_format_header()</a></code>, <code><a href='tbl_format_body.html'>tbl_format_body()</a></code>, and <code><a href='tbl_format_footer.html'>tbl_format_footer()</a></code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -213,6 +213,26 @@ This allows to keep the logic of the <code>width</code> and <code>n</code> argum
 standard printing for tibbles.
 See <code><a href='new_tbl_format_setup.html'>new_tbl_format_setup()</a></code> for details on the returned object.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>tbl_format_setup</span><span class='op'>(</span><span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='font-weight: bold;'>&lt;pillar_tbl_format_setup&gt;</span><span>
+#&gt; </span><span style='font-weight: bold;'>&lt;tbl_format_header(setup)&gt;</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 344 x 8</span><span>
+#&gt; </span><span style='font-weight: bold;'>&lt;tbl_format_body(setup)&gt;</span><span>
+#&gt;    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Adelie  Torgersen           39.1          18.7               181        </span><span style='text-decoration: underline;'>3</span><span>750
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Adelie  Torgersen           39.5          17.4               186        </span><span style='text-decoration: underline;'>3</span><span>800
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Adelie  Torgersen           40.3          18                 195        </span><span style='text-decoration: underline;'>3</span><span>250
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Adelie  Torgersen           </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>                  </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Adelie  Torgersen           36.7          19.3               193        </span><span style='text-decoration: underline;'>3</span><span>450
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Adelie  Torgersen           39.3          20.6               190        </span><span style='text-decoration: underline;'>3</span><span>650
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Adelie  Torgersen           38.9          17.8               181        </span><span style='text-decoration: underline;'>3</span><span>625
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Adelie  Torgersen           39.2          19.6               195        </span><span style='text-decoration: underline;'>4</span><span>675
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Adelie  Torgersen           34.1          18.1               193        </span><span style='text-decoration: underline;'>3</span><span>475
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Adelie  Torgersen           42            20.2               190        </span><span style='text-decoration: underline;'>4</span><span>250
+#&gt; </span><span style='font-weight: bold;'>&lt;tbl_format_footer(setup)&gt;</span><span>
+#&gt; </span><span style='color: #949494;'># … with 334 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
