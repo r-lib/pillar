@@ -234,7 +234,8 @@ pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0
   width <- get_max_extent(x)
 
   new_pillar_shaft_simple(
-    x, width = width, align = "left", min_width = min(width, min_width),
+    x,
+    width = width, align = "left", min_width = min(width, min_width),
     na = pillar_na(use_brackets_if_no_color = TRUE),
     na_indent = na_indent
   )

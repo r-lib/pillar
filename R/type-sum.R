@@ -26,7 +26,9 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
-  if (is.object(x) || vctrs::vec_is(x)) return(vctrs::vec_ptype_abbr(x))
+  if (is.object(x) || vctrs::vec_is(x)) {
+    return(vctrs::vec_ptype_abbr(x))
+  }
 
   switch(typeof(x),
     builtin = ,
@@ -97,7 +99,9 @@ size_sum <- function(x) {
 
 #' @export
 size_sum.default <- function(x) {
-  if (!vctrs::vec_is(x)) return("")
+  if (!vctrs::vec_is(x)) {
+    return("")
+  }
 
   paste0("[", dim_desc(x), "]")
 }

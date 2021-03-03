@@ -84,7 +84,9 @@ get_decimal_width <- function(x) {
 }
 
 safe_signif <- function(x, digits) {
-  if (length(x) == 0L) return(numeric())
+  if (length(x) == 0L) {
+    return(numeric())
+  }
   signif(x, digits)
 }
 
@@ -274,7 +276,9 @@ assemble_decimal <- function(x) {
 
 #' @export
 format.pillar_shaft_decimal <- function(x, width, ...) {
-  if (length(x$dec$num) == 0L) return(character())
+  if (length(x$dec$num) == 0L) {
+    return(character())
+  }
 
   if (width < get_min_width(x)) {
     stop(

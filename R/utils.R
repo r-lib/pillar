@@ -5,7 +5,9 @@ cat_line <- function(...) {
 #' @importFrom utf8 utf8_width
 #' @importFrom fansi strip_sgr substr_ctl
 str_trunc <- function(x, width) {
-  if (all(is.infinite(width))) return(x)
+  if (all(is.infinite(width))) {
+    return(x)
+  }
 
   str_width <- utf8_width(strip_sgr(x), encode = FALSE)
 
@@ -38,7 +40,9 @@ slice <- function(df, index) {
 }
 
 bind_rows <- function(x) {
-  if (length(x) == 0) return(data.frame())
+  if (length(x) == 0) {
+    return(data.frame())
+  }
   eval_tidy(quo(rbind(!!!x)))
 }
 
@@ -47,12 +51,16 @@ get_ellipsis <- function() {
 }
 
 is_latex_output <- function() {
-  if (!("knitr" %in% loadedNamespaces())) return(FALSE)
+  if (!("knitr" %in% loadedNamespaces())) {
+    return(FALSE)
+  }
   get("is_latex_output", asNamespace("knitr"))()
 }
 
 remove_as_is_class <- function(x) {
-  if (all(class(x) == "AsIs")) return(unclass(x))
+  if (all(class(x) == "AsIs")) {
+    return(unclass(x))
+  }
   class(x) <- setdiff(class(x), "AsIs")
   x
 }

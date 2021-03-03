@@ -38,18 +38,24 @@ get_min_title_width <- function(width) {
     stop("Option pillar.min_title_chars must be a nonnegative number", call. = FALSE)
   }
 
-  if (is.infinite(title_chars)) return(width)
+  if (is.infinite(title_chars)) {
+    return(width)
+  }
 
   # We don't use the ellipsis if we don't truncate, a solution with min()
   # is difficult to make work in all corner cases (and slower too)
-  if (width <= title_chars) return(width)
+  if (width <= title_chars) {
+    return(width)
+  }
   title_chars + get_extent(get_ellipsis())
 }
 
 #' @export
 format.pillar_title <- function(x, width = NULL, ...) {
   title <- x[[1]]
-  if (is.null(title)) return(character())
+  if (is.null(title)) {
+    return(character())
+  }
 
   if (is.null(width)) {
     width <- get_width(x)

@@ -83,12 +83,30 @@ test_that("tests from tibble", {
   expect_snapshot(colonnade(iris[1:3, ], width = 20))
   expect_snapshot(colonnade(df_all, width = 30))
   expect_snapshot(colonnade(df_all, width = 300))
-  expect_snapshot({ options(width = 70); colonnade(df_all, width = 300) })
-  expect_snapshot({ options(width = 60); colonnade(df_all, width = 300) })
-  expect_snapshot({ options(width = 50); colonnade(df_all, width = 300) })
-  expect_snapshot({ options(width = 40); colonnade(df_all, width = 300) })
-  expect_snapshot({ options(width = 30); colonnade(df_all, width = 300) })
-  expect_snapshot({ options(width = 20); colonnade(df_all, width = 300) })
+  expect_snapshot({
+    options(width = 70)
+    colonnade(df_all, width = 300)
+  })
+  expect_snapshot({
+    options(width = 60)
+    colonnade(df_all, width = 300)
+  })
+  expect_snapshot({
+    options(width = 50)
+    colonnade(df_all, width = 300)
+  })
+  expect_snapshot({
+    options(width = 40)
+    colonnade(df_all, width = 300)
+  })
+  expect_snapshot({
+    options(width = 30)
+    colonnade(df_all, width = 300)
+  })
+  expect_snapshot({
+    options(width = 20)
+    colonnade(df_all, width = 300)
+  })
   expect_snapshot(colonnade(list(`\n` = c("\n", '"'), `\r` = factor("\n")), width = 30))
   expect_snapshot(colonnade(list(a = c("", " ", "a ", " a")), width = 30))
   expect_snapshot(colonnade(list("mean(x)" = 5, "var(x)" = 3), width = 30))

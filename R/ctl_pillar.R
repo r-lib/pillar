@@ -25,7 +25,7 @@
 #' @param ... Passed on to [pillar_shaft()].
 #' @export
 #' @examples
-#' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
+#' x <- 123456789 * (10^c(-1, -3, -5, NA, -8, -10))
 #' pillar(x)
 #' pillar(-x)
 #' pillar(runif(10))

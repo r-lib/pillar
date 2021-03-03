@@ -19,7 +19,9 @@ supernum <- function(x) {
   stopifnot(is.integer(x))
 
   num <- !is.na(x)
-  if (!any(num)) return(rep_along(x, ""))
+  if (!any(num)) {
+    return(rep_along(x, ""))
+  }
 
   neg <- num & x < 0
   if (any(neg)) {

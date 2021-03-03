@@ -35,14 +35,12 @@
 #' # Good: Use tidyeval to defer construction
 #' pillar_quo <- rlang::quo(pillar(1:3))
 #' expect_known_display(!!pillar_quo, file, crayon = FALSE)
-#'
 #' \dontrun{
 #' # Bad: Options set in the active session may affect the display
 #' integer_pillar <- pillar(1:3)
 #' expect_known_display(integer_pillar, file, crayon = FALSE)
 #' }
 expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) {
-
   object <- enquo(object)
 
   if (crayon) {

@@ -47,7 +47,8 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   check_dots_empty(action = signal)
 
-  setup <- tbl_format_setup(x, width = width, ...,
+  setup <- tbl_format_setup(x,
+    width = width, ...,
     n = n,
     max_extra_cols = n_extra
   )
@@ -59,7 +60,9 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 }
 
 format_comment <- function(x, width) {
-  if (length(x) == 0L) return(character())
+  if (length(x) == 0L) {
+    return(character())
+  }
   map_chr(x, wrap, prefix = "# ", width = min(width, cli::console_width()))
 }
 
