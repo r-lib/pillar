@@ -1,27 +1,27 @@
 test_that("format_v for values", {
   expect_equal(format_v(1), "1")
-  expect_equal(format_v(1:3), c("1", "2", "3"))
+  expect_equal(format_v(1:3), "1, 2, 3")
   expect_equal(format_v(NA), "NA")
   expect_equal(format_v(TRUE), "TRUE")
-  expect_equal(format_v(logical()), character())
+  expect_equal(format_v(logical()), "")
 })
 
 test_that("format_v for character", {
   expect_equal(format_v("1"), paste0('"', "1", '"'))
-  expect_equal(format_v(letters), paste0('"', letters, '"'))
+  expect_equal(format_v(letters), collapse(paste0('"', letters, '"')))
   expect_equal(format_v(NA_character_), "NA")
-  expect_equal(format_v(character()), character())
+  expect_equal(format_v(character()), "")
 })
 
 test_that("format_v for factor", {
-  expect_equal(format_v(factor(c("1", "a"))), c("1", "a"))
-  expect_equal(format_v(factor(c("foo", '"bar"'))), c("foo", "\"bar\""))
-  expect_equal(format_v(factor()), character())
+  expect_equal(format_v(factor(c("1", "a"))), "1, a")
+  expect_equal(format_v(factor(c("foo", '"bar"'))), "foo, \"bar\"")
+  expect_equal(format_v(factor()), "")
   # Add quotes around factor levels with comma
   # so they don't appear as if they were two observations (GH 384)
   expect_equal(
     format_v(factor(c("foo, bar", "foo", '"bar"'))),
-    paste0('"', c("foo, bar", "foo", "\\\"bar\\\""), '"')
+    collapse(paste0('"', c("foo, bar", "foo", "\\\"bar\\\""), '"'))
   )
 })
 
