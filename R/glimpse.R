@@ -93,8 +93,9 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 #' without compromising on readability.
 #' To distinguish between vectors and lists, the latter are always surrounded
 #' by `[]` brackets, empty lists are shown as `[]`.
-#' Vectors inside lists are surrounded by `<>` angle brackets,
-#' empty vectors are shown as `<>`.
+#' Vectors inside lists, of length not equal to one,
+#' are surrounded by `<>` angle brackets.
+#' Empty vectors are shown as `<>`.
 #'
 #' @return A string (a character vector of length 1).
 #' @inheritDotParams ellipsis::check_dots_empty

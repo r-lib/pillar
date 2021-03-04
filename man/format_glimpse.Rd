@@ -29,8 +29,9 @@ The output strives to be as unambiguous as possible,
 without compromising on readability.
 To distinguish between vectors and lists, the latter are always surrounded
 by \verb{[]} brackets, empty lists are shown as \verb{[]}.
-Vectors inside lists are surrounded by \verb{<>} angle brackets,
-empty vectors are shown as \verb{<>}.
+Vectors inside lists, of length not equal to one,
+are surrounded by \verb{<>} angle brackets.
+Empty vectors are shown as \verb{<>}.
 }
 \examples{
 format_glimpse(1:3)
