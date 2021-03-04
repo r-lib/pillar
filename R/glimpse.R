@@ -21,10 +21,10 @@
 #' @export
 #' @examples
 #' glimpse(mtcars)
+#'
 #' @examplesIf requireNamespace("nycflights13", quietly = TRUE)
 #' glimpse(nycflights13::flights)
 #'
-# Can be overridden in .onLoad()
 glimpse <- function(x, width = NULL, ...) {
   UseMethod("glimpse")
 }
