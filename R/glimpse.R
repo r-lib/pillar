@@ -1,5 +1,6 @@
 #' Get a glimpse of your data
 #'
+#' @description
 #' `glimpse()` is like a transposed version of `print()`:
 #' columns run down the page, and data runs across.
 #' This makes it possible to see every column in a data frame.
@@ -7,6 +8,8 @@
 #' but it tries to show you as much data as possible.
 #' (And it always shows the underlying data, even when applied
 #' to a remote data source.)
+#'
+#' See [format_glimpse()] for details on the formatting.
 #'
 #' @section S3 methods:
 #' `glimpse` is an S3 generic with a customised method for `tbl`s and
@@ -81,13 +84,17 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 
 #' Format a vector for horizontal printing
 #'
+#' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' This generic provides the logic for printing vectors in [glimpse()].
 #'
 #' The output strives to be as unambiguous as possible,
 #' without compromising on readability.
 #' To distinguish between vectors and lists, the latter are always surrounded
-#' by `[]` brackets.
-#' Vectors inside lists are surrounded by `<>` angle brackets.
+#' by `[]` brackets, empty lists are shown as `[]`.
+#' Vectors inside lists are surrounded by `<>` angle brackets,
+#' empty vectors are shown as `<>`.
 #'
 #' @return A string (a character vector of length 1).
 #' @inheritDotParams ellipsis::check_dots_empty
