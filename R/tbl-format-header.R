@@ -61,7 +61,9 @@ tbl_format_header.pillar_tbl_format_setup <- function(x, ...) {
 }
 
 justify <- function(x, right = TRUE, space = " ") {
-  if (length(x) == 0L) return(character())
+  if (length(x) == 0L) {
+    return(character())
+  }
   width <- nchar(x, type = "width")
   max_width <- max(width)
   spaces_template <- paste(rep(space, max_width), collapse = "")

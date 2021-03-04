@@ -75,7 +75,9 @@ format_footer_rows <- function(x, setup) {
 
 format_footer_cols <- function(x, setup) {
   extra_cols <- setup$extra_cols
-  if (length(extra_cols) == 0) return(NULL)
+  if (length(extra_cols) == 0) {
+    return(NULL)
+  }
 
   extra_cols_total <- setup$extra_cols_total
 
@@ -112,7 +114,9 @@ collapse <- function(x) paste(x, collapse = ", ")
 
 split_lines <- function(x) {
   # Avoid .ptype argument to vec_c()
-  if (is_empty(x)) return(character())
+  if (is_empty(x)) {
+    return(character())
+  }
 
   unlist(strsplit(x, "\n", fixed = TRUE))
 }

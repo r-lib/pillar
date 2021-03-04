@@ -21,7 +21,6 @@
 #' @export
 #' @examples
 #' glimpse(mtcars)
-#'
 #' @examplesIf requireNamespace("nycflights13", quietly = TRUE)
 #' glimpse(nycflights13::flights)
 #'
@@ -52,7 +51,9 @@ glimpse.tbl <- function(x, width = NULL, ...) {
     cli::cat_line(names(brief_summary), ": ", brief_summary)
   }
 
-  if (ncol(df) == 0) return(invisible(x))
+  if (ncol(df) == 0) {
+    return(invisible(x))
+  }
 
   var_types <- map_chr(map(df, new_pillar_type), format)
   ticked_names <- format(new_pillar_title(tick_if_needed(names(df))))
@@ -84,7 +85,7 @@ format_v <- function(x) UseMethod("format_v")
 format_v.default <- function(x) {
   dims <- dim(x)
 
-  if (!is.null(dims)){
+  if (!is.null(dims)) {
     dims_out <- paste0(dims, collapse = " x ")
     out <- paste0("<", class(x)[[1]], "[", dims_out, "]>")
     out
