@@ -134,10 +134,10 @@ format_glimpse.list <- function(x) {
 
   # Surround vectors by <>
   # Lists are already formatted by the inner format_glimpse()
-  is_not_list <- !map_lgl(x, is.list)
-  atomic <- rep_along(x, TRUE)
-  atomic[is_not_list] <- (map_int(x[is_not_list], length) == 1L)
-  out[!atomic] <- paste0("<", out[!atomic], ">")
+  not_list <- !map_lgl(x, is.list)
+  scalar <- rep_along(x, TRUE)
+  scalar[not_list] <- (map_int(x[not_list], length) == 1L)
+  out[!scalar] <- paste0("<", out[!scalar], ">")
 
   paste0("[", collapse(out), "]")
 }
