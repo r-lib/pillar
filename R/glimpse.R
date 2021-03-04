@@ -79,38 +79,81 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
   invisible(x)
 }
 
-format_v <- function(x) UseMethod("format_v")
+#' Format a vector for horizontal printing
+#'
+#' This generic provides the logic for printing vectors in [glimpse()].
+#'
+#' The output strives to be as unambiguous as possible,
+#' without compromising on readability.
+#' To distinguish between vectors and lists, the latter are always surrounded
+#' by `[]` brackets.
+#' Vectors inside lists are surrounded by `<>` angle brackets.
+#'
+#' @return A string (a character vector of length 1).
+#' @inheritDotParams ellipsis::check_dots_empty
+#' @param x A vector.
+#' @export
+#' @examples
+#' format_v(1:3)
+#'
+#' # Lists use [], vectors inside lists use <>
+#' format_v(list(1:3))
+#' format_v(list(1, 2:3))
+#' format_v(list(list(1), list(2:3)))
+#' format_v(list(character()))
+#' format_v(list(NULL))
+#'
+#' # Character strings are always quoted
+#' writeLines(format_v(letters[1:3]))
+#' writeLines(format_v(c("A", "B, C")))
+#'
+#' # Factors are quoted only when needed
+#' writeLines(format_v(factor(letters[1:3])))
+#' writeLines(format_v(factor(c("A", "B, C"))))
+format_v <- function(x, ...) {
+  UseMethod("format_v")
+}
 
 #' @export
-format_v.default <- function(x) {
+format_v.default <- function(x, ...) {
   dims <- dim(x)
 
   if (!is.null(dims)) {
     dims_out <- paste0(dims, collapse = " x ")
     out <- paste0("<", class(x)[[1]], "[", dims_out, "]>")
-    out
   } else {
-    format(x, trim = TRUE, justify = "none")
+    out <- format(x, trim = TRUE, justify = "none")
   }
+
+  collapse(out)
 }
 
 #' @export
 format_v.list <- function(x) {
-  out <- map(x, format_v)
-  atomic <- (map_int(out, length) == 1L)
-  out <- map_chr(out, collapse)
+  out <- map_chr(x, format_v)
+
+  # Surround vectors by <>
+  # Lists are already formatted by the inner format_v()
+  is_not_list <- !map_lgl(x, is.list)
+  atomic <- rep_along(x, TRUE)
+  atomic[is_not_list] <- (map_int(x[is_not_list], length) == 1L)
   out[!atomic] <- paste0("<", out[!atomic], ">")
+
   paste0("[", collapse(out), "]")
 }
 
 #' @export
-format_v.character <- function(x) encodeString(x, quote = '"')
+format_v.character <- function(x) {
+  collapse(encodeString(x, quote = '"'))
+}
 
 #' @export
 format_v.factor <- function(x) {
-  if (any(grepl(",", x, fixed = TRUE))) {
-    encodeString(as.character(x), quote = '"')
+  if (any(grepl(",", levels(x), fixed = TRUE))) {
+    out <- encodeString(as.character(x), quote = '"')
   } else {
-    format(x, trim = TRUE, justify = "none")
+    out <- format(x, trim = TRUE, justify = "none")
   }
+
+  collapse(out)
 }
