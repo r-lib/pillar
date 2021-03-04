@@ -136,7 +136,7 @@ format_glimpse.default <- function(x, ...) {
 }
 
 #' @export
-format_glimpse.list <- function(x) {
+format_glimpse.list <- function(x, ...) {
   out <- map_chr(x, format_glimpse)
 
   # Surround vectors by <>
@@ -150,12 +150,12 @@ format_glimpse.list <- function(x) {
 }
 
 #' @export
-format_glimpse.character <- function(x) {
+format_glimpse.character <- function(x, ...) {
   collapse(encodeString(x, quote = '"'))
 }
 
 #' @export
-format_glimpse.factor <- function(x) {
+format_glimpse.factor <- function(x, ...) {
   if (any(grepl(",", levels(x), fixed = TRUE))) {
     out <- encodeString(as.character(x), quote = '"')
   } else {
