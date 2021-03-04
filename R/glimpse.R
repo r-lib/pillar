@@ -62,7 +62,7 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   # for some reason the offset was -2 in tibble but is now -1
   # so that the desired width is obtained
   data_width <- width - crayon::col_nchar(var_names) - 1
-  formatted <- map_chr(df, function(x) collapse(format_glimpse(x)))
+  formatted <- map_chr(df, format_glimpse)
   truncated <- str_trunc(formatted, data_width)
 
   cli::cat_line(var_names, truncated)
