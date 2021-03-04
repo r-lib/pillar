@@ -26,6 +26,8 @@ It's a little like \code{\link[=str]{str()}} applied to a data frame
 but it tries to show you as much data as possible.
 (And it always shows the underlying data, even when applied
 to a remote data source.)
+
+See \code{\link[=format_glimpse]{format_glimpse()}} for details on the formatting.
 }
 \section{S3 methods}{
 
