@@ -38,7 +38,7 @@ As of pillar 1.5.0, \code{pillar()} returns \code{NULL} if the width is insuffic
 to display the data.
 }
 \examples{
-x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
+x <- 123456789 * (10^c(-1, -3, -5, NA, -8, -10))
 pillar(x)
 pillar(-x)
 pillar(runif(10))
