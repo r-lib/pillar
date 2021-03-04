@@ -62,7 +62,7 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   # for some reason the offset was -2 in tibble but is now -1
   # so that the desired width is obtained
   data_width <- width - crayon::col_nchar(var_names) - 1
-  formatted <- map_chr(df, function(x) collapse(format_v(x)))
+  formatted <- map_chr(df, function(x) collapse(format_glimpse(x)))
   truncated <- str_trunc(formatted, data_width)
 
   cli::cat_line(var_names, truncated)
@@ -94,28 +94,28 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 #' @param x A vector.
 #' @export
 #' @examples
-#' format_v(1:3)
+#' format_glimpse(1:3)
 #'
 #' # Lists use [], vectors inside lists use <>
-#' format_v(list(1:3))
-#' format_v(list(1, 2:3))
-#' format_v(list(list(1), list(2:3)))
-#' format_v(list(character()))
-#' format_v(list(NULL))
+#' format_glimpse(list(1:3))
+#' format_glimpse(list(1, 2:3))
+#' format_glimpse(list(list(1), list(2:3)))
+#' format_glimpse(list(character()))
+#' format_glimpse(list(NULL))
 #'
 #' # Character strings are always quoted
-#' writeLines(format_v(letters[1:3]))
-#' writeLines(format_v(c("A", "B, C")))
+#' writeLines(format_glimpse(letters[1:3]))
+#' writeLines(format_glimpse(c("A", "B, C")))
 #'
 #' # Factors are quoted only when needed
-#' writeLines(format_v(factor(letters[1:3])))
-#' writeLines(format_v(factor(c("A", "B, C"))))
-format_v <- function(x, ...) {
-  UseMethod("format_v")
+#' writeLines(format_glimpse(factor(letters[1:3])))
+#' writeLines(format_glimpse(factor(c("A", "B, C"))))
+format_glimpse <- function(x, ...) {
+  UseMethod("format_glimpse")
 }
 
 #' @export
-format_v.default <- function(x, ...) {
+format_glimpse.default <- function(x, ...) {
   dims <- dim(x)
 
   if (!is.null(dims)) {
@@ -129,11 +129,11 @@ format_v.default <- function(x, ...) {
 }
 
 #' @export
-format_v.list <- function(x) {
-  out <- map_chr(x, format_v)
+format_glimpse.list <- function(x) {
+  out <- map_chr(x, format_glimpse)
 
   # Surround vectors by <>
-  # Lists are already formatted by the inner format_v()
+  # Lists are already formatted by the inner format_glimpse()
   is_not_list <- !map_lgl(x, is.list)
   atomic <- rep_along(x, TRUE)
   atomic[is_not_list] <- (map_int(x[is_not_list], length) == 1L)
@@ -143,12 +143,12 @@ format_v.list <- function(x) {
 }
 
 #' @export
-format_v.character <- function(x) {
+format_glimpse.character <- function(x) {
   collapse(encodeString(x, quote = '"'))
 }
 
 #' @export
-format_v.factor <- function(x) {
+format_glimpse.factor <- function(x) {
   if (any(grepl(",", levels(x), fixed = TRUE))) {
     out <- encodeString(as.character(x), quote = '"')
   } else {
