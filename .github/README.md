@@ -26,7 +26,7 @@ The same content is available on <https://pillar.r-lib.org/> with proper formatt
 
 ## Usage
 
-pillar is a developer-facing package that is not designed for end-users. It defines generics and helpers that are useful for package authors who create custom vector classes (see <https://github.com/krlmlr/awesome-vctrs#readme> for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or [sf](https://r-spatial.github.io/sf/)).
+pillar is a developer-facing package that is not designed for end-users. It powers the [`print()`](https://rdrr.io/r/base/print.html) and [`format()`](https://rdrr.io/r/base/format.html) methods for [tibble](https://tibble.tidyverse.org/)s. It also and defines generics and helpers that are useful for package authors who create custom vector classes (see <https://github.com/krlmlr/awesome-vctrs#readme> for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or [sf](https://r-spatial.github.io/sf/)).
 
 <pre class='chroma'>
 <span class='kr'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='o'>(</span><span class='nv'><a href='https://pillar.r-lib.org/'>pillar</a></span><span class='o'>)</span>
