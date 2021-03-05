@@ -12,6 +12,9 @@
 
 pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.
 
+Due to limitations of GitHub's Markdown display, formatting cannot be shown in the README.
+The same content is available on <https://pillar.r-lib.org/> with proper formatting.
+
 ## Installation
 
 <pre class='chroma'>
