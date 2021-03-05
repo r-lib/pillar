@@ -1,3 +1,8 @@
+# pillar 1.5.0.9002
+
+- Internal changes only.
+
+
 # pillar 1.5.0.9001
 
 - Color and formatting can now be reliably turned off by setting the `"cli.num_colors"` option to 1 (#269).
