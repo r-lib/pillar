@@ -1,5 +1,6 @@
 # pillar 1.5.0.9001
 
+- Color and formatting can now be reliably turned off by setting the `"cli.num_colors"` option to 1 (#269).
 - New `format_glimpse()` (#177).
 - Add examples for new functions (#264).
 - Fix lifecycle badges everywhere.
