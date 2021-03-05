@@ -3,6 +3,9 @@ output: downlit::readme_document
 ---
 <!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
+
+<!-- .github/README.md is copied manually from README.md and adapted -->
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -12,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 
-# pillar
+# [pillar](https://pillar.r-lib.org/)
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)

@@ -1,6 +1,8 @@
 <!-- README.md is generated from README.Rmd on GitHub Actions: do not edit by hand -->
 
-# pillar
+<!-- .github/README.md is copied manually from README.md and adapted -->
+
+# [pillar](https://pillar.r-lib.org/)
 
 <!-- badges: start -->
 
