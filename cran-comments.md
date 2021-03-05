@@ -1,4 +1,4 @@
-pillar 1.5.0
+pillar 1.5.1
 
 ## Cran Repository Policy
 
@@ -12,5 +12,5 @@ pillar 1.5.0
 
 ## Current CRAN check results
 
-- [x] Checked on 2021-02-22, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
-- [x] ERROR: r-devel-windows-ix86+x86_64; no longer shown on Winbuilder, relevant code changed
+- [x] Checked on 2021-03-05, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
+- [x] WARN: r-patched-solaris-x86, r-release-macos-x86_64, r-oldrel-macos-x86_64: pandoc problems
