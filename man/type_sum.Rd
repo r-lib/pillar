@@ -30,6 +30,12 @@ It should always return a string (a character vector of length one),
 it can be an empty string \code{""} to omit size information,
 this is what the default method does for scalars.
 }
+\details{
+When formatting a pillar,
+\code{type_sum()} will be called on a slice of the column vector.
+The formatted type should only depend on the type and not on the data,
+to avoid confusion.
+}
 \examples{
 obj_sum(1:10)
 obj_sum(matrix(1:10))
