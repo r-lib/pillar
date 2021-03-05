@@ -35,6 +35,7 @@ format_glimpse(1:3)
 format_glimpse(list(1:3))
 format_glimpse(list(1, 2:3))
 format_glimpse(list(list(1), list(2:3)))
+format_glimpse(list(as.list(1), as.list(2:3)))
 format_glimpse(list(character()))
 format_glimpse(list(NULL))
 
