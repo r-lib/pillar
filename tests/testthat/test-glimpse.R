@@ -1,41 +1,38 @@
-test_that("format_v for values", {
-  expect_equal(format_v(1), "1")
-  expect_equal(format_v(1:3), c("1", "2", "3"))
-  expect_equal(format_v(NA), "NA")
-  expect_equal(format_v(TRUE), "TRUE")
-  expect_equal(format_v(logical()), character())
-})
+test_that("format_glimpse() output test", {
+  expect_snapshot({
+    "# Atomic numbers"
+    format_glimpse(1)
+    format_glimpse(1:3)
+    format_glimpse(NA)
+    format_glimpse(TRUE)
+    format_glimpse(logical())
 
-test_that("format_v for character", {
-  expect_equal(format_v("1"), paste0('"', "1", '"'))
-  expect_equal(format_v(letters), paste0('"', letters, '"'))
-  expect_equal(format_v(NA_character_), "NA")
-  expect_equal(format_v(character()), character())
-})
+    "# Strings"
+    format_glimpse("1")
+    format_glimpse(letters)
+    format_glimpse(NA_character_)
+    format_glimpse(character())
 
-test_that("format_v for factor", {
-  expect_equal(format_v(factor(c("1", "a"))), c("1", "a"))
-  expect_equal(format_v(factor(c("foo", '"bar"'))), c("foo", "\"bar\""))
-  expect_equal(format_v(factor()), character())
-  # Add quotes around factor levels with comma
-  # so they don't appear as if they were two observations (GH 384)
-  expect_equal(
-    format_v(factor(c("foo, bar", "foo", '"bar"'))),
-    paste0('"', c("foo, bar", "foo", "\\\"bar\\\""), '"')
-  )
-})
+    "# Factors"
+    format_glimpse(factor(c("1", "a")))
+    format_glimpse(factor(c("foo", '"bar"')))
+    format_glimpse(factor())
 
-test_that("format_v for list", {
-  expect_equal(format_v(list(1:3)), "[<1, 2, 3>]")
-  expect_equal(format_v(as.list(1:3)), "[1, 2, 3]")
-  expect_equal(format_v(list(1:3, 4)), "[<1, 2, 3>, 4]")
-  expect_equal(format_v(list(1:3, 4:5)), "[<1, 2, 3>, <4, 5>]")
-  expect_equal(format_v(list()), "[]")
+    "Add quotes around factor levels with comma"
+    "so they don't appear as if they were two observations (#384)"
+    format_glimpse(factor(c("foo, bar", "foo", '"bar"')))
 
-  expect_equal(format_v(list(list())), "[[]]")
-  expect_equal(format_v(list(character())), "[<>]")
-  expect_equal(format_v(list(1:3, list(4))), "[<1, 2, 3>, [4]]")
-  expect_equal(format_v(list(1:3, list(4:5))), "[<1, 2, 3>, [<4, 5>]]")
+    "# Lists"
+    format_glimpse(list(1:3))
+    format_glimpse(as.list(1:3))
+    format_glimpse(list(1:3, 4))
+    format_glimpse(list(1:3, 4:5))
+    format_glimpse(list())
+    format_glimpse(list(list()))
+    format_glimpse(list(character()))
+    format_glimpse(list(1:3, list(4)))
+    format_glimpse(list(1:3, list(4:5)))
+  })
 })
 
 test_that("glimpse(width = Inf) raises legible error", {
@@ -55,7 +52,7 @@ test_that("glimpse calls tbl_sum() (#550)", {
   )
 })
 
-test_that("output test", {
+test_that("output test for glimpse()", {
   expect_snapshot({
     glimpse(as_tbl(mtcars), width = 70L)
 

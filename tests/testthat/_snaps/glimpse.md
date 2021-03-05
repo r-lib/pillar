@@ -1,4 +1,103 @@
-# output test
+# format_glimpse() output test
+
+    Code
+      # # Atomic numbers
+      format_glimpse(1)
+    Output
+      [1] "1"
+    Code
+      format_glimpse(1:3)
+    Output
+      [1] "1" "2" "3"
+    Code
+      format_glimpse(NA)
+    Output
+      [1] "NA"
+    Code
+      format_glimpse(TRUE)
+    Output
+      [1] "TRUE"
+    Code
+      format_glimpse(logical())
+    Output
+      character(0)
+    Code
+      # # Strings
+      format_glimpse("1")
+    Output
+      [1] "\"1\""
+    Code
+      format_glimpse(letters)
+    Output
+       [1] "\"a\"" "\"b\"" "\"c\"" "\"d\"" "\"e\"" "\"f\"" "\"g\"" "\"h\"" "\"i\""
+      [10] "\"j\"" "\"k\"" "\"l\"" "\"m\"" "\"n\"" "\"o\"" "\"p\"" "\"q\"" "\"r\""
+      [19] "\"s\"" "\"t\"" "\"u\"" "\"v\"" "\"w\"" "\"x\"" "\"y\"" "\"z\""
+    Code
+      format_glimpse(NA_character_)
+    Output
+      [1] "NA"
+    Code
+      format_glimpse(character())
+    Output
+      character(0)
+    Code
+      # # Factors
+      format_glimpse(factor(c("1", "a")))
+    Output
+      [1] "1" "a"
+    Code
+      format_glimpse(factor(c("foo", "\"bar\"")))
+    Output
+      [1] "foo"     "\"bar\""
+    Code
+      format_glimpse(factor())
+    Output
+      character(0)
+    Code
+      # Add quotes around factor levels with comma
+      # so they don't appear as if they were two observations (#384)
+      format_glimpse(factor(c("foo, bar", "foo", "\"bar\"")))
+    Output
+      [1] "\"foo, bar\""    "\"foo\""         "\"\\\"bar\\\"\""
+    Code
+      # # Lists
+      format_glimpse(list(1:3))
+    Output
+      [1] "<1, 2, 3>"
+    Code
+      format_glimpse(as.list(1:3))
+    Output
+      [1] "1" "2" "3"
+    Code
+      format_glimpse(list(1:3, 4))
+    Output
+      [1] "<1, 2, 3>" "4"        
+    Code
+      format_glimpse(list(1:3, 4:5))
+    Output
+      [1] "<1, 2, 3>" "<4, 5>"   
+    Code
+      format_glimpse(list())
+    Output
+      [1] "list()"
+    Code
+      format_glimpse(list(list()))
+    Output
+      [1] "[]"
+    Code
+      format_glimpse(list(character()))
+    Output
+      [1] "<>"
+    Code
+      format_glimpse(list(1:3, list(4)))
+    Output
+      [1] "<1, 2, 3>" "[4]"      
+    Code
+      format_glimpse(list(1:3, list(4:5)))
+    Output
+      [1] "<1, 2, 3>" "[<4, 5>]" 
+
+# output test for glimpse()
 
     Code
       glimpse(as_tbl(mtcars), width = 70L)
@@ -53,8 +152,8 @@
       $ e <fct> a, b, NA
       $ f <date> 2015-12-10, 2015-12-11, NA
       $ g <dttm> 2015-12-09 10:51:35, 2015-12-09 10:51:36, NA
-      $ h <list> [1, 2, NA]
-      $ i <list> [[1, <2, 3>], [<4, 5, 6>], [NA]]
+      $ h <list> 1, 2, NA
+      $ i <list> [1, <2, 3>], [<4, 5, 6>], [NA]
     Code
       # options(tibble.width = 50)
       withr::with_options(list(tibble.width = 50), glimpse(as_tbl(df_all)))
@@ -68,8 +167,8 @@
       $ e <fct> a, b, NA
       $ f <date> 2015-12-10, 2015-12-11, NA
       $ g <dttm> 2015-12-09 10:51:35, 2015-12-09 10:51:~
-      $ h <list> [1, 2, NA]
-      $ i <list> [[1, <2, 3>], [<4, 5, 6>], [NA]]
+      $ h <list> 1, 2, NA
+      $ i <list> [1, <2, 3>], [<4, 5, 6>], [NA]
     Code
       # options(tibble.width = 35)
       withr::with_options(list(tibble.width = 35), glimpse(as_tbl(df_all)))
@@ -83,8 +182,8 @@
       $ e <fct> a, b, NA
       $ f <date> 2015-12-10, 2015-12-11,~
       $ g <dttm> 2015-12-09 10:51:35, 20~
-      $ h <list> [1, 2, NA]
-      $ i <list> [[1, <2, 3>], [<4, 5, 6~
+      $ h <list> 1, 2, NA
+      $ i <list> [1, <2, 3>], [<4, 5, 6>~
     Code
       # non-tibble
       glimpse(5)
@@ -110,7 +209,7 @@
       Rows: 3
       Columns: 2
       $ Species <fct> setosa, versicolor, virginica
-      $ data    <list> [<data.frame[50 x 5]>, <data.frame[50 x 5]>, <data.f~
+      $ data    <list> [<data.frame[50 x 5]>], [<data.frame[50 x 5]>], [<da~
     Code
       data <- map(data, as_tbl)
       nested_iris_tbl <- tibble::tibble(Species, data)
@@ -119,5 +218,5 @@
       Rows: 3
       Columns: 2
       $ Species <fct> setosa, versicolor, virginica
-      $ data    <list> [<tbl[50 x 5]>, <tbl[50 x 5]>, <tbl[50 x 5]>]
+      $ data    <list> [<tbl[50 x 5]>], [<tbl[50 x 5]>], [<tbl[50 x 5]>]
 

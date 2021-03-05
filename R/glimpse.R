@@ -1,5 +1,6 @@
 #' Get a glimpse of your data
 #'
+#' @description
 #' `glimpse()` is like a transposed version of `print()`:
 #' columns run down the page, and data runs across.
 #' This makes it possible to see every column in a data frame.
@@ -7,6 +8,8 @@
 #' but it tries to show you as much data as possible.
 #' (And it always shows the underlying data, even when applied
 #' to a remote data source.)
+#'
+#' See [format_glimpse()] for details on the formatting.
 #'
 #' @section S3 methods:
 #' `glimpse` is an S3 generic with a customised method for `tbl`s and
@@ -62,7 +65,7 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   # for some reason the offset was -2 in tibble but is now -1
   # so that the desired width is obtained
   data_width <- width - crayon::col_nchar(var_names) - 1
-  formatted <- map_chr(df, function(x) collapse(format_v(x)))
+  formatted <- map_chr(df, format_glimpse_1)
   truncated <- str_trunc(formatted, data_width)
 
   cli::cat_line(var_names, truncated)
@@ -79,36 +82,98 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
   invisible(x)
 }
 
-format_v <- function(x) UseMethod("format_v")
+#' Format a vector for horizontal printing
+#'
+#' @description
+#' `r lifecycle::badge("experimental")`
+#'
+#' This generic provides the logic for printing vectors in [glimpse()].
+#'
+#' The output strives to be as unambiguous as possible,
+#' without compromising on readability.
+#' In a list, to distinguish between vectors and nested lists,
+#' the latter are surrounded by `[]` brackets.
+#' Empty lists are shown as `[]`.
+#' Vectors inside lists, of length not equal to one,
+#' are surrounded by `<>` angle brackets.
+#' Empty vectors are shown as `<>`.
+#'
+#' @return A character vector of the same length as `x`.
+#' @inheritParams ellipsis::dots_used
+#' @param x A vector.
+#' @export
+#' @examples
+#' format_glimpse(1:3)
+#'
+#' # Lists use [], vectors inside lists use <>
+#' format_glimpse(list(1:3))
+#' format_glimpse(list(1, 2:3))
+#' format_glimpse(list(list(1), list(2:3)))
+#' format_glimpse(list(as.list(1), as.list(2:3)))
+#' format_glimpse(list(character()))
+#' format_glimpse(list(NULL))
+#'
+#' # Character strings are always quoted
+#' writeLines(format_glimpse(letters[1:3]))
+#' writeLines(format_glimpse(c("A", "B, C")))
+#'
+#' # Factors are quoted only when needed
+#' writeLines(format_glimpse(factor(letters[1:3])))
+#' writeLines(format_glimpse(factor(c("A", "B, C"))))
+format_glimpse <- function(x, ...) {
+  check_dots_used()
+  UseMethod("format_glimpse")
+}
+
+# A variant with collapse and without checks, for format_glimpse.list()
+format_glimpse_1 <- function(x, ...) {
+  collapse(format_glimpse_(x, ...))
+}
+
+format_glimpse_ <- function(x, ...) {
+  UseMethod("format_glimpse")
+}
+
 
 #' @export
-format_v.default <- function(x) {
+format_glimpse.default <- function(x, ...) {
   dims <- dim(x)
 
   if (!is.null(dims)) {
     dims_out <- paste0(dims, collapse = " x ")
-    out <- paste0("<", class(x)[[1]], "[", dims_out, "]>")
-    out
+    paste0("<", class(x)[[1]], "[", dims_out, "]>")
   } else {
     format(x, trim = TRUE, justify = "none")
   }
 }
 
 #' @export
-format_v.list <- function(x) {
-  out <- map(x, format_v)
-  atomic <- (map_int(out, length) == 1L)
-  out <- map_chr(out, collapse)
-  out[!atomic] <- paste0("<", out[!atomic], ">")
-  paste0("[", collapse(out), "]")
+format_glimpse.list <- function(x, ..., .inner = FALSE) {
+  if (!.inner && length(x) == 0) {
+    return("list()")
+  }
+
+  out <- map_chr(x, format_glimpse_1, .inner = TRUE)
+
+  # Surround vectors by <>
+  # Only surround inner lists by []
+  list <- map_lgl(x, is.list)
+  scalar <- rep_along(x, TRUE)
+  scalar[!list] <- (map_int(x[!list], length) == 1L)
+  out[!scalar] <- paste0("<", out[!scalar], ">")
+  out[list] <- paste0("[", out[list], "]")
+
+  out
 }
 
 #' @export
-format_v.character <- function(x) encodeString(x, quote = '"')
+format_glimpse.character <- function(x, ...) {
+  encodeString(x, quote = '"')
+}
 
 #' @export
-format_v.factor <- function(x) {
-  if (any(grepl(",", x, fixed = TRUE))) {
+format_glimpse.factor <- function(x, ...) {
+  if (any(grepl(",", levels(x), fixed = TRUE))) {
     encodeString(as.character(x), quote = '"')
   } else {
     format(x, trim = TRUE, justify = "none")
