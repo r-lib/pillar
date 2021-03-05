@@ -134,40 +134,28 @@
 <h1 class="page-header" data-toc-text="1.5.1">
 <a href="#pillar-151" class="anchor"></a>pillar 1.5.1<small> Unreleased </small>
 </h1>
+<div id="features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#features" class="anchor"></a>Features</h2>
 <ul>
-<li>Internal changes only.</li>
+<li>New <code><a href="../reference/format_glimpse.html">format_glimpse()</a></code> (<a href='https://github.com/r-lib/pillar/issues/177'>#177</a>).</li>
 </ul>
 </div>
-    <div id="pillar-1509002" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.0.9002">
-<a href="#pillar-1509002" class="anchor"></a>pillar 1.5.0.9002<small> Unreleased </small>
-</h1>
-<ul>
-<li>Internal changes only.</li>
-</ul>
-</div>
-    <div id="pillar-1509001" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.0.9001">
-<a href="#pillar-1509001" class="anchor"></a>pillar 1.5.0.9001<small> Unreleased </small>
-</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Color and formatting can now be reliably turned off by setting the <code>"cli.num_colors"</code> option to 1 (<a href='https://github.com/r-lib/pillar/issues/269'>#269</a>).</li>
-<li>New <code><a href="../reference/format_glimpse.html">format_glimpse()</a></code> (<a href='https://github.com/r-lib/pillar/issues/177'>#177</a>).</li>
+</ul>
+</div>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<ul>
 <li>Add examples for new functions (<a href='https://github.com/r-lib/pillar/issues/264'>#264</a>).</li>
 <li>Fix lifecycle badges everywhere.</li>
 </ul>
 </div>
-    <div id="pillar-1509000" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.0.9000">
-<a href="#pillar-1509000" class="anchor"></a>pillar 1.5.0.9000<small> Unreleased </small>
-</h1>
-<ul>
-<li>Vectors of the <code>vctrs_unspecified()</code> class are formatted better (<a href='https://github.com/r-lib/pillar/issues/256'>#256</a>).</li>
-<li>Arrays are now formatted by showing only their first slice (<a href='https://github.com/r-lib/pillar/issues/142'>#142</a>).</li>
-<li>Avoid wrapping extra column names with spaces (<a href='https://github.com/r-lib/pillar/issues/254'>#254</a>).</li>
-<li>New “Extending” article.</li>
-<li>Syntax highlighting and details tag for source code of functions in “printing” vignette.</li>
-</ul>
 </div>
     <div id="pillar-150" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.0">
@@ -236,9 +224,9 @@
 <h1 class="page-header" data-toc-text="1.4.5">
 <a href="#pillar-145" class="anchor"></a>pillar 1.4.5<small> 2020-07-09 </small>
 </h1>
-<div id="features" class="section level2">
+<div id="features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#features" class="anchor"></a>Features</h2>
+<a href="#features-1" class="anchor"></a>Features</h2>
 <ul>
 <li><p>New <code>pillar.min_chars</code> option allows controlling the minimum number of characters shown for a character column (<a href='https://github.com/r-lib/pillar/issues/178'>#178</a>, <a href='https://github.com/statsmaths'>@statsmaths</a>).</p></li>
 <li><p><code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html" class="external-link">bit64::integer64()</a></code> columns are now formatted the same way as numeric columns (<a href='https://github.com/r-lib/pillar/issues/175'>#175</a>).</p></li>
@@ -348,9 +336,9 @@
 <h1 class="page-header" data-toc-text="1.3.1">
 <a href="#pillar-131" class="anchor"></a>pillar 1.3.1<small> 2018-12-15 </small>
 </h1>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix off-by-one error in distribution of empty space (<a href='https://github.com/r-lib/pillar/issues/141'>#141</a>).</li>
 </ul>
@@ -455,9 +443,9 @@
 <li>Decimal values longer than 13 characters always print in scientific notation.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
 <li>Very small numbers (like <code>1e-310</code>) are now printed correctly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
