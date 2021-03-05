@@ -12,7 +12,7 @@ format_glimpse(x, ...)
 \item{...}{Arguments passed to methods.}
 }
 \value{
-A string (a character vector of length 1).
+A character vector of the same length as \code{x}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
