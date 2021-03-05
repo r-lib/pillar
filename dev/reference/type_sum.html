@@ -162,6 +162,12 @@ and variants have been implemented.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>When formatting a pillar,
+<code>type_sum()</code> will be called on a slice of the column vector.
+The formatted type should only depend on the type and not on the data,
+to avoid confusion.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>
