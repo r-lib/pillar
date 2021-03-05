@@ -4,6 +4,16 @@ test_that("print() returns output invisibly", {
   expect_identical(ret$value, as_tbl(trees))
 })
 
+test_that("format() reacts on cli.num_colors option", {
+  local_colors()
+
+  expect_snapshot({
+    format(as_tbl(trees))
+    options(cli.num_colors = 1)
+    format(as_tbl(trees))
+  })
+})
+
 test_that("print() output", {
   expect_snapshot({
     as_tbl(mtcars)

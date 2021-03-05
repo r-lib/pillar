@@ -47,6 +47,10 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   check_dots_empty(action = signal)
 
+  # Reset local cache for each new output
+  force(x)
+  num_colors(forget = TRUE)
+
   setup <- tbl_format_setup(x,
     width = width, ...,
     n = n,
