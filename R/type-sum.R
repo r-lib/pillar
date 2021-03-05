@@ -4,6 +4,11 @@
 #' occur in a data frame should return a string with four or less characters.
 #' For most inputs, the argument is forwarded to [vctrs::vec_ptype_abbr()].
 #'
+#' When formatting a pillar,
+#' `type_sum()` will be called on a slice of the column vector.
+#' The formatted type should only depend on the type and not on the data,
+#' to avoid confusion.
+#'
 #' @param x an object to summarise. Generally only methods of atomic vectors
 #'   and variants have been implemented.
 #'
