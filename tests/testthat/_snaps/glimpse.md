@@ -8,7 +8,7 @@
     Code
       format_glimpse(1:3)
     Output
-      [1] "1, 2, 3"
+      [1] "1" "2" "3"
     Code
       format_glimpse(NA)
     Output
@@ -20,7 +20,7 @@
     Code
       format_glimpse(logical())
     Output
-      [1] ""
+      character(0)
     Code
       # # Strings
       format_glimpse("1")
@@ -29,7 +29,9 @@
     Code
       format_glimpse(letters)
     Output
-      [1] "\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\", \"k\", \"l\", \"m\", \"n\", \"o\", \"p\", \"q\", \"r\", \"s\", \"t\", \"u\", \"v\", \"w\", \"x\", \"y\", \"z\""
+       [1] "\"a\"" "\"b\"" "\"c\"" "\"d\"" "\"e\"" "\"f\"" "\"g\"" "\"h\"" "\"i\""
+      [10] "\"j\"" "\"k\"" "\"l\"" "\"m\"" "\"n\"" "\"o\"" "\"p\"" "\"q\"" "\"r\""
+      [19] "\"s\"" "\"t\"" "\"u\"" "\"v\"" "\"w\"" "\"x\"" "\"y\"" "\"z\""
     Code
       format_glimpse(NA_character_)
     Output
@@ -37,26 +39,26 @@
     Code
       format_glimpse(character())
     Output
-      [1] ""
+      character(0)
     Code
       # # Factors
       format_glimpse(factor(c("1", "a")))
     Output
-      [1] "1, a"
+      [1] "1" "a"
     Code
       format_glimpse(factor(c("foo", "\"bar\"")))
     Output
-      [1] "foo, \"bar\""
+      [1] "foo"     "\"bar\""
     Code
       format_glimpse(factor())
     Output
-      [1] ""
+      character(0)
     Code
       # Add quotes around factor levels with comma
       # so they don't appear as if they were two observations (#384)
       format_glimpse(factor(c("foo, bar", "foo", "\"bar\"")))
     Output
-      [1] "\"foo, bar\", \"foo\", \"\\\"bar\\\"\""
+      [1] "\"foo, bar\""    "\"foo\""         "\"\\\"bar\\\"\""
     Code
       # # Lists
       format_glimpse(list(1:3))
@@ -65,15 +67,15 @@
     Code
       format_glimpse(as.list(1:3))
     Output
-      [1] "1, 2, 3"
+      [1] "1" "2" "3"
     Code
       format_glimpse(list(1:3, 4))
     Output
-      [1] "<1, 2, 3>, 4"
+      [1] "<1, 2, 3>" "4"        
     Code
       format_glimpse(list(1:3, 4:5))
     Output
-      [1] "<1, 2, 3>, <4, 5>"
+      [1] "<1, 2, 3>" "<4, 5>"   
     Code
       format_glimpse(list())
     Output
@@ -89,11 +91,11 @@
     Code
       format_glimpse(list(1:3, list(4)))
     Output
-      [1] "<1, 2, 3>, [4]"
+      [1] "<1, 2, 3>" "[4]"      
     Code
       format_glimpse(list(1:3, list(4:5)))
     Output
-      [1] "<1, 2, 3>, [<4, 5>]"
+      [1] "<1, 2, 3>" "[<4, 5>]" 
 
 # output test for glimpse()
 

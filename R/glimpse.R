@@ -65,7 +65,7 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   # for some reason the offset was -2 in tibble but is now -1
   # so that the desired width is obtained
   data_width <- width - crayon::col_nchar(var_names) - 1
-  formatted <- map_chr(df, format_glimpse)
+  formatted <- map_chr(df, function(.x) collapse(format_glimpse(.x)))
   truncated <- str_trunc(formatted, data_width)
 
   cli::cat_line(var_names, truncated)
@@ -98,7 +98,7 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 #' are surrounded by `<>` angle brackets.
 #' Empty vectors are shown as `<>`.
 #'
-#' @return A string (a character vector of length 1).
+#' @return A character vector of the same length as `x`.
 #' @inheritParams ellipsis::dots_used
 #' @param x A vector.
 #' @export
@@ -125,6 +125,7 @@ format_glimpse <- function(x, ...) {
   UseMethod("format_glimpse")
 }
 
+# A variant without checks, for format_glimpse.list()
 format_glimpse_ <- function(x, ...) {
   UseMethod("format_glimpse")
 }
@@ -136,12 +137,10 @@ format_glimpse.default <- function(x, ...) {
 
   if (!is.null(dims)) {
     dims_out <- paste0(dims, collapse = " x ")
-    out <- paste0("<", class(x)[[1]], "[", dims_out, "]>")
+    paste0("<", class(x)[[1]], "[", dims_out, "]>")
   } else {
-    out <- format(x, trim = TRUE, justify = "none")
+    format(x, trim = TRUE, justify = "none")
   }
-
-  collapse(out)
 }
 
 #' @export
@@ -150,7 +149,7 @@ format_glimpse.list <- function(x, ..., .inner = FALSE) {
     return("list()")
   }
 
-  out <- map_chr(x, format_glimpse_, .inner = TRUE)
+  out <- map_chr(x, function(.x) collapse(format_glimpse_(.x, .inner = TRUE)))
 
   # Surround vectors by <>
   # Only surround inner lists by []
@@ -160,21 +159,19 @@ format_glimpse.list <- function(x, ..., .inner = FALSE) {
   out[!scalar] <- paste0("<", out[!scalar], ">")
   out[list] <- paste0("[", out[list], "]")
 
-  collapse(out)
+  out
 }
 
 #' @export
 format_glimpse.character <- function(x, ...) {
-  collapse(encodeString(x, quote = '"'))
+  encodeString(x, quote = '"')
 }
 
 #' @export
 format_glimpse.factor <- function(x, ...) {
   if (any(grepl(",", levels(x), fixed = TRUE))) {
-    out <- encodeString(as.character(x), quote = '"')
+    encodeString(as.character(x), quote = '"')
   } else {
-    out <- format(x, trim = TRUE, justify = "none")
+    format(x, trim = TRUE, justify = "none")
   }
-
-  collapse(out)
 }
