@@ -61,39 +61,39 @@
       # # Lists
       format_glimpse(list(1:3))
     Output
-      [1] "[<1, 2, 3>]"
+      [1] "<1, 2, 3>"
     Code
       format_glimpse(as.list(1:3))
     Output
-      [1] "[1, 2, 3]"
+      [1] "1, 2, 3"
     Code
       format_glimpse(list(1:3, 4))
     Output
-      [1] "[<1, 2, 3>, 4]"
+      [1] "<1, 2, 3>, 4"
     Code
       format_glimpse(list(1:3, 4:5))
     Output
-      [1] "[<1, 2, 3>, <4, 5>]"
+      [1] "<1, 2, 3>, <4, 5>"
     Code
       format_glimpse(list())
     Output
-      [1] "[]"
+      [1] "list()"
     Code
       format_glimpse(list(list()))
     Output
-      [1] "[[]]"
+      [1] "[]"
     Code
       format_glimpse(list(character()))
     Output
-      [1] "[<>]"
+      [1] "<>"
     Code
       format_glimpse(list(1:3, list(4)))
     Output
-      [1] "[<1, 2, 3>, [4]]"
+      [1] "<1, 2, 3>, [4]"
     Code
       format_glimpse(list(1:3, list(4:5)))
     Output
-      [1] "[<1, 2, 3>, [<4, 5>]]"
+      [1] "<1, 2, 3>, [<4, 5>]"
 
 # output test for glimpse()
 
@@ -150,8 +150,8 @@
       $ e <fct> a, b, NA
       $ f <date> 2015-12-10, 2015-12-11, NA
       $ g <dttm> 2015-12-09 10:51:35, 2015-12-09 10:51:36, NA
-      $ h <list> [1, 2, NA]
-      $ i <list> [[1, <2, 3>], [<4, 5, 6>], [NA]]
+      $ h <list> 1, 2, NA
+      $ i <list> [1, <2, 3>], [<4, 5, 6>], [NA]
     Code
       # options(tibble.width = 50)
       withr::with_options(list(tibble.width = 50), glimpse(as_tbl(df_all)))
@@ -165,8 +165,8 @@
       $ e <fct> a, b, NA
       $ f <date> 2015-12-10, 2015-12-11, NA
       $ g <dttm> 2015-12-09 10:51:35, 2015-12-09 10:51:~
-      $ h <list> [1, 2, NA]
-      $ i <list> [[1, <2, 3>], [<4, 5, 6>], [NA]]
+      $ h <list> 1, 2, NA
+      $ i <list> [1, <2, 3>], [<4, 5, 6>], [NA]
     Code
       # options(tibble.width = 35)
       withr::with_options(list(tibble.width = 35), glimpse(as_tbl(df_all)))
@@ -180,8 +180,8 @@
       $ e <fct> a, b, NA
       $ f <date> 2015-12-10, 2015-12-11,~
       $ g <dttm> 2015-12-09 10:51:35, 20~
-      $ h <list> [1, 2, NA]
-      $ i <list> [[1, <2, 3>], [<4, 5, 6~
+      $ h <list> 1, 2, NA
+      $ i <list> [1, <2, 3>], [<4, 5, 6>~
     Code
       # non-tibble
       glimpse(5)
@@ -207,7 +207,7 @@
       Rows: 3
       Columns: 2
       $ Species <fct> setosa, versicolor, virginica
-      $ data    <list> [<data.frame[50 x 5]>, <data.frame[50 x 5]>, <data.f~
+      $ data    <list> [<data.frame[50 x 5]>], [<data.frame[50 x 5]>], [<da~
     Code
       data <- map(data, as_tbl)
       nested_iris_tbl <- tibble::tibble(Species, data)
@@ -216,5 +216,5 @@
       Rows: 3
       Columns: 2
       $ Species <fct> setosa, versicolor, virginica
-      $ data    <list> [<tbl[50 x 5]>, <tbl[50 x 5]>, <tbl[50 x 5]>]
+      $ data    <list> [<tbl[50 x 5]>], [<tbl[50 x 5]>], [<tbl[50 x 5]>]
 

@@ -91,14 +91,15 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 #'
 #' The output strives to be as unambiguous as possible,
 #' without compromising on readability.
-#' To distinguish between vectors and lists, the latter are always surrounded
-#' by `[]` brackets, empty lists are shown as `[]`.
+#' In a list, to distinguish between vectors and nested lists,
+#' the latter are surrounded by `[]` brackets.
+#' Empty lists are shown as `[]`.
 #' Vectors inside lists, of length not equal to one,
 #' are surrounded by `<>` angle brackets.
 #' Empty vectors are shown as `<>`.
 #'
 #' @return A string (a character vector of length 1).
-#' @inheritDotParams ellipsis::check_dots_empty
+#' @inheritParams ellipsis::dots_used
 #' @param x A vector.
 #' @export
 #' @examples
@@ -119,8 +120,14 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 #' writeLines(format_glimpse(factor(letters[1:3])))
 #' writeLines(format_glimpse(factor(c("A", "B, C"))))
 format_glimpse <- function(x, ...) {
+  check_dots_used()
   UseMethod("format_glimpse")
 }
+
+format_glimpse_ <- function(x, ...) {
+  UseMethod("format_glimpse")
+}
+
 
 #' @export
 format_glimpse.default <- function(x, ...) {
@@ -137,17 +144,22 @@ format_glimpse.default <- function(x, ...) {
 }
 
 #' @export
-format_glimpse.list <- function(x, ...) {
-  out <- map_chr(x, format_glimpse)
+format_glimpse.list <- function(x, ..., .inner = FALSE) {
+  if (!.inner && length(x) == 0) {
+    return("list()")
+  }
+
+  out <- map_chr(x, format_glimpse_, .inner = TRUE)
 
   # Surround vectors by <>
-  # Lists are already formatted by the inner format_glimpse()
-  not_list <- !map_lgl(x, is.list)
+  # Only surround inner lists by []
+  list <- map_lgl(x, is.list)
   scalar <- rep_along(x, TRUE)
-  scalar[not_list] <- (map_int(x[not_list], length) == 1L)
+  scalar[!list] <- (map_int(x[!list], length) == 1L)
   out[!scalar] <- paste0("<", out[!scalar], ">")
+  out[list] <- paste0("[", out[list], "]")
 
-  paste0("[", collapse(out), "]")
+  collapse(out)
 }
 
 #' @export

@@ -9,13 +9,7 @@ format_glimpse(x, ...)
 \arguments{
 \item{x}{A vector.}
 
-\item{...}{
-  Arguments passed on to \code{\link[ellipsis:check_dots_empty]{ellipsis::check_dots_empty}}
-  \describe{
-    \item{\code{env}}{Environment in which to look for \code{...}.}
-    \item{\code{action}}{The action to take when the dots have not been used. One of
-\code{\link[rlang:abort]{rlang::abort()}}, \code{\link[rlang:abort]{rlang::warn()}}, \code{\link[rlang:abort]{rlang::inform()}} or \code{\link[rlang:abort]{rlang::signal()}}.}
-  }}
+\item{...}{Arguments passed to methods.}
 }
 \value{
 A string (a character vector of length 1).
@@ -27,8 +21,9 @@ This generic provides the logic for printing vectors in \code{\link[=glimpse]{gl
 
 The output strives to be as unambiguous as possible,
 without compromising on readability.
-To distinguish between vectors and lists, the latter are always surrounded
-by \verb{[]} brackets, empty lists are shown as \verb{[]}.
+In a list, to distinguish between vectors and nested lists,
+the latter are surrounded by \verb{[]} brackets.
+Empty lists are shown as \verb{[]}.
 Vectors inside lists, of length not equal to one,
 are surrounded by \verb{<>} angle brackets.
 Empty vectors are shown as \verb{<>}.
