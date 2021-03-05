@@ -1,3 +1,10 @@
+# pillar 1.5.0.9001
+
+- New `format_glimpse()` (#177).
+- Add examples for new functions (#264).
+- Fix lifecycle badges everywhere.
+
+
 # pillar 1.5.0.9000
 
 - Vectors of the `vctrs_unspecified()` class are formatted better (#256).
