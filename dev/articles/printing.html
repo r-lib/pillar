@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.0.9001</span>
       </span>
     </div>
 
@@ -121,8 +121,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-00f29f1a7dd050888154" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-00f29f1a7dd050888154">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-0f8fcef0d6d057c406e1" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0f8fcef0d6d057c406e1">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -157,6 +157,10 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">n_extra</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">check_dots_empty</span><span class="op">(</span>action <span class="op">=</span> <span class="va">signal</span><span class="op">)</span>
+
+  <span class="co"># Reset local cache for each new output</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/force.html" class="external-link">force</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+  <span class="fu">num_colors</span><span class="op">(</span>forget <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
   <span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="va">x</span>,
     width <span class="op">=</span> <span class="va">width</span>, <span class="va">...</span>,
