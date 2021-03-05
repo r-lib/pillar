@@ -2,9 +2,6 @@
 
 ## Next steps
 
-- Fix remaining `format_glimpse()` issue
-    - https://github.com/tidyverse/tibble/issues/418
-- Rework README
 - Reduce calls to `align()`:
     - align all components vertically
     - squash
