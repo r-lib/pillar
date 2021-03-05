@@ -15,6 +15,9 @@
 #' This means you only need to override or extend implementations for the parts
 #' that need change.
 #'
+#' The output uses color and highlighting according to the `"cli.num_colors"` option.
+#' Set it to `1` to suppress colored and highlighted output.
+#'
 #' @seealso
 #'
 #' - [tbl_format_setup()] for preparing an object for formatting
