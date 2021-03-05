@@ -17,15 +17,11 @@ pillar provides tools for styling columns of data, artfully using colour and uni
 <span class='nf'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='o'>(</span><span class='s'>"tidyverse"</span><span class='o'>)</span>
 
 <span class='c'># Alternatively, install just pillar:</span>
-<span class='nf'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='o'>(</span><span class='s'>"pillar"</span><span class='o'>)</span>
-
-<span class='c'># Or the the development version from GitHub:</span>
-<span class='c'># install.packages("devtools")</span>
-<span class='nf'>devtools</span><span class='nf'>::</span><span class='nf'><a href='https://devtools.r-lib.org//reference/remote-reexports.html'>install_github</a></span><span class='o'>(</span><span class='s'>"r-lib/pillar"</span><span class='o'>)</span></pre>
+<span class='nf'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='o'>(</span><span class='s'>"pillar"</span><span class='o'>)</span></pre>
 
 ## Usage
 
-pillar is a developer-facing package that is not designed for end-users but will eventually be incorporated in packages like [tibble](https://tibble.tidyverse.org/).
+pillar is a developer-facing package that is not designed for end-users. It defines generics and helpers that are useful for package authors who create custom vector classes (see <https://github.com/krlmlr/awesome-vctrs#readme> for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or, [sf](https://r-spatial.github.io/sf/)).
 
 <pre class='chroma'>
 <span class='kr'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='o'>(</span><span class='nv'><a href='https://pillar.r-lib.org/'>pillar</a></span><span class='o'>)</span>
@@ -33,59 +29,70 @@ pillar is a developer-facing package that is not designed for end-users but will
 <span class='nv'>x</span> <span class='o'>&lt;-</span> <span class='m'>123456789</span> <span class='o'>*</span> <span class='o'>(</span><span class='m'>10</span> <span class='o'>^</span> <span class='nf'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='o'>(</span><span class='o'>-</span><span class='m'>3</span>, <span class='o'>-</span><span class='m'>5</span>, <span class='kc'>NA</span>, <span class='o'>-</span><span class='m'>8</span>, <span class='o'>-</span><span class='m'>10</span><span class='o'>)</span><span class='o'>)</span>
 <span class='nf'><a href='https://pillar.r-lib.org/reference/pillar.html'>pillar</a></span><span class='o'>(</span><span class='nv'>x</span><span class='o'>)</span>
 <span class='c'>#&gt; <span style='font-weight: bold;'>&lt;pillar&gt;</span></span>
-<span class='c'>#&gt;       <span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='c'>#&gt;       <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='c'>#&gt; <span style='text-decoration: underline;'>123</span><span>457.    </span></span>
 <span class='c'>#&gt;   <span style='text-decoration: underline;'>1</span><span>235.    </span></span>
 <span class='c'>#&gt;     <span style='color: #BB0000;'>NA</span><span>     </span></span>
 <span class='c'>#&gt;      1.23  </span>
-<span class='c'>#&gt;      0.012<span style='text-decoration: underline;'>3</span></span></pre>
+<span class='c'>#&gt;      0.012<span style='text-decoration: underline;'>3</span></span>
 
-If you render this in a console that supports colour, you’ll see something that looks like this:
+<span class='nf'><a href='https://pillar.r-lib.org/reference/tbl_format_setup.html'>tbl_format_setup</a></span><span class='o'>(</span><span class='nf'>tibble</span><span class='nf'>::</span><span class='nf'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='o'>(</span><span class='nv'>x</span><span class='o'>)</span><span class='o'>)</span>
+<span class='c'>#&gt; <span style='font-weight: bold;'>&lt;pillar_tbl_format_setup&gt;</span></span>
+<span class='c'>#&gt; <span style='font-weight: bold;'>&lt;tbl_format_header(setup)&gt;</span></span>
+<span class='c'>#&gt; <span style='color: #949494;'># A tibble: 5 x 1</span></span>
+<span class='c'>#&gt; <span style='font-weight: bold;'>&lt;tbl_format_body(setup)&gt;</span></span>
+<span class='c'>#&gt;             <span style='font-weight: bold;'>x</span></span>
+<span class='c'>#&gt;         <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>1</span><span> </span><span style='text-decoration: underline;'>123</span><span>457.    </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>2</span><span>   </span><span style='text-decoration: underline;'>1</span><span>235.    </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>3</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>4</span><span>      1.23  </span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>5</span><span>      0.012</span><span style='text-decoration: underline;'>3</span></span>
+<span class='c'>#&gt; <span style='font-weight: bold;'>&lt;tbl_format_footer(setup)&gt;</span></span></pre>
 
-<img src="man/figures/colours.png" width="200px" />
+## Custom vector classes
 
-## Extending
+The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can customize the display by implementing a [`pillar_shaft()`](https://pillar.r-lib.org/reference/pillar_shaft.html) method.
 
-The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can add color with only a few changes:
+<pre class='chroma'>
+<span class='kr'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='o'>(</span><span class='nv'><a href='https://pillar.r-lib.org/'>pillar</a></span><span class='o'>)</span>
 
-1.  Implement the [`pillar_shaft()`](https://pillar.r-lib.org/reference/pillar_shaft.html) method for your data type.
-2.  Add pillar to `Suggests` and implement dynamic method registration using [`vctrs::s3_register()`](https://vctrs.r-lib.org/reference/s3_register.html).
-    -   If you don’t mind the dependency, you can also add it to `Imports`, and import the methods you override with a regular `NAMESPACE` import.
+<span class='nv'>percent</span> <span class='o'>&lt;-</span> <span class='nf'>vctrs</span><span class='nf'>::</span><span class='nf'><a href='https://vctrs.r-lib.org/reference/new_vctr.html'>new_vctr</a></span><span class='o'>(</span><span class='m'>9</span><span class='o'>:</span><span class='m'>11</span> <span class='o'>*</span> <span class='m'>0.01</span>, class <span class='o'>=</span> <span class='s'>"percent"</span><span class='o'>)</span>
 
-[tidyverse/hms\#43](https://github.com/tidyverse/hms/pull/43) shows the changes that were necessary to add colored output for the hms package:
+<span class='nv'>pillar_shaft.percent</span> <span class='o'>&lt;-</span> <span class='kr'>function</span><span class='o'>(</span><span class='nv'>x</span>, <span class='nv'>...</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='nv'>fmt</span> <span class='o'>&lt;-</span> <span class='nf'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='o'>(</span><span class='nf'>vctrs</span><span class='nf'>::</span><span class='nf'><a href='https://vctrs.r-lib.org/reference/vec_data.html'>vec_data</a></span><span class='o'>(</span><span class='nv'>x</span><span class='o'>)</span> <span class='o'>*</span> <span class='m'>100</span><span class='o'>)</span>
+  <span class='nf'><a href='https://pillar.r-lib.org/reference/new_pillar_shaft.html'>new_pillar_shaft_simple</a></span><span class='o'>(</span><span class='nf'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='o'>(</span><span class='nv'>fmt</span>, <span class='s'>" "</span>, <span class='nf'><a href='https://pillar.r-lib.org/reference/style_subtle.html'>style_subtle</a></span><span class='o'>(</span><span class='s'>"%"</span><span class='o'>)</span><span class='o'>)</span>, align <span class='o'>=</span> <span class='s'>"right"</span><span class='o'>)</span>
+<span class='o'>}</span>
 
--   [`pillar.R`](https://github.com/tidyverse/hms/pull/43/files#diff-a63dd6b1da682a8549d03475ac91cdcf) for the actual implementation (old name `colformat.R`)
--   [`DESCRIPTION`](https://github.com/tidyverse/hms/pull/43/files#diff-35ba4a2677442e210c23a00a5601aba3) for the dependency
--   [`zzz.R`](https://github.com/tidyverse/hms/pull/43/files#diff-e549505eb95036528ca3b125f62915a6) for the dynamic method registration
+<span class='nf'><a href='https://pillar.r-lib.org/reference/pillar.html'>pillar</a></span><span class='o'>(</span><span class='nv'>percent</span><span class='o'>)</span>
+<span class='c'>#&gt; <span style='font-weight: bold;'>&lt;pillar&gt;</span></span>
+<span class='c'>#&gt; <span style='color: #949494;font-style: italic;'>&lt;percent&gt;</span></span>
+<span class='c'>#&gt;       9 <span style='color: #949494;'>%</span></span>
+<span class='c'>#&gt;      10 <span style='color: #949494;'>%</span></span>
+<span class='c'>#&gt;      11 <span style='color: #949494;'>%</span></span></pre>
 
-Some more detail is given below.
+See [`vignette("pillar", package = "vctrs")`](https://vctrs.r-lib.org/articles/pillar.html) for details.
 
-### Implementing `pillar_shaft.your_class_name()`
+## Custom table classes
 
-This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:
+pillar provides various extension points for customizing how a tibble-like class is printed.
 
--   It has an attribute `"width"`
--   It can have an attribute `"min_width"`, if missing, `"width"` is used
--   It must implement a method [`format(x, width, ...)`](https://rdrr.io/r/base/format.html) that can be called with any value between `min_width` and `width`
-    -   This method must return an object that inherits from `character` and has attributes `"align"` (with supported values `"left"`, `"right"`, and `"center"`) and `"width"`
+<pre class='chroma'>
+<span class='nv'>tbl</span> <span class='o'>&lt;-</span> <span class='nf'>vctrs</span><span class='nf'>::</span><span class='nf'><a href='https://vctrs.r-lib.org/reference/new_data_frame.html'>new_data_frame</a></span><span class='o'>(</span><span class='nf'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='o'>(</span>a <span class='o'>=</span> <span class='m'>1</span><span class='o'>:</span><span class='m'>3</span><span class='o'>)</span>, class <span class='o'>=</span> <span class='nf'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='o'>(</span><span class='s'>"my_tbl"</span>, <span class='s'>"tbl"</span><span class='o'>)</span><span class='o'>)</span>
 
-The function [`new_pillar_shaft()`](https://pillar.r-lib.org/reference/new_pillar_shaft.html) returns such an object, and also correctly formats `NA` values. In many cases, the implementation of `pillar_shaft.your_class_name()` will format the data as a character vector (using color for emphasis) and simply call [`new_pillar_shaft()`](https://pillar.r-lib.org/reference/new_pillar_shaft.html). See [`pillar_shaft.numeric()`](https://pillar.r-lib.org/reference/pillar_shaft.html) for a code that allows changing the display depending on the available width.
+<span class='nv'>tbl_sum.my_tbl</span> <span class='o'>&lt;-</span> <span class='kr'>function</span><span class='o'>(</span><span class='nv'>x</span>, <span class='nv'>...</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='nf'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='o'>(</span><span class='s'>"Hello"</span> <span class='o'>=</span> <span class='s'>"world!"</span><span class='o'>)</span>
+<span class='o'>}</span>
 
-### Useful helpers
+<span class='nv'>tbl</span>
+<span class='c'>#&gt; <span style='color: #949494;'># Hello: world!</span></span>
+<span class='c'>#&gt;       <span style='font-weight: bold;'>a</span></span>
+<span class='c'>#&gt;   <span style='color: #949494;font-style: italic;'>&lt;int&gt;</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>1</span><span>     1</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>2</span><span>     2</span></span>
+<span class='c'>#&gt; <span style='color: #BCBCBC;'>3</span><span>     3</span></span></pre>
 
--   [`style_neg()`](https://pillar.r-lib.org/reference/style_subtle.html) to format negative values
--   [`style_num()`](https://pillar.r-lib.org/reference/style_subtle.html) to format numbers
--   [`style_subtle()`](https://pillar.r-lib.org/reference/style_subtle.html) to de-emphasize
-
-## Inspirations
-
--   [TextPlots](https://github.com/sunetos/TextPlots.jl) for use of Braille characters
-
--   [spark](https://github.com/holman/spark) for use of block characters.
-
-The earliest use of unicode characters to generate sparklines appears to be [from 2009](https://blog.jonudell.net/2009/01/13/fuel-prices-and-pageviews/).
-
-Exercising these ideas to their fullest requires a font with good support for block drawing characters. [PragamataPro](https://fsd.it/shop/fonts/pragmatapro/) is one such font.
+See [`vignette("extending", package = "pillar")`](https://pillar.r-lib.org/articles/extending.html) for a walkthrough of the options.
 
 ------------------------------------------------------------------------
 
