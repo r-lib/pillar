@@ -65,7 +65,7 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   # for some reason the offset was -2 in tibble but is now -1
   # so that the desired width is obtained
   data_width <- width - crayon::col_nchar(var_names) - 1
-  formatted <- map_chr(df, function(.x) collapse(format_glimpse(.x)))
+  formatted <- map_chr(df, format_glimpse_1)
   truncated <- str_trunc(formatted, data_width)
 
   cli::cat_line(var_names, truncated)
@@ -125,7 +125,11 @@ format_glimpse <- function(x, ...) {
   UseMethod("format_glimpse")
 }
 
-# A variant without checks, for format_glimpse.list()
+# A variant with collapse and without checks, for format_glimpse.list()
+format_glimpse_1 <- function(x, ...) {
+  collapse(format_glimpse_(x, ...))
+}
+
 format_glimpse_ <- function(x, ...) {
   UseMethod("format_glimpse")
 }
@@ -149,7 +153,7 @@ format_glimpse.list <- function(x, ..., .inner = FALSE) {
     return("list()")
   }
 
-  out <- map_chr(x, function(.x) collapse(format_glimpse_(.x, .inner = TRUE)))
+  out <- map_chr(x, format_glimpse_1, .inner = TRUE)
 
   # Surround vectors by <>
   # Only surround inner lists by []
