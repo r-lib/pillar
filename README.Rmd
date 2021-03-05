@@ -39,7 +39,7 @@ install.packages("pillar")
 ## Usage
 
 pillar is a developer-facing package that is not designed for end-users.
-It defines generics and helpers that are useful for package authors who create custom vector classes (see https://github.com/krlmlr/awesome-vctrs#readme for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or, [sf](https://r-spatial.github.io/sf/)).
+It defines generics and helpers that are useful for package authors who create custom vector classes (see https://github.com/krlmlr/awesome-vctrs#readme for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or [sf](https://r-spatial.github.io/sf/)).
 
 ```{r}
 library(pillar)
