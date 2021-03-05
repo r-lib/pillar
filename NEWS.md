@@ -1,28 +1,16 @@
 # pillar 1.5.1
 
-- Internal changes only.
+## Features
 
+- New `format_glimpse()` (#177).
 
-# pillar 1.5.0.9002
-
-- Internal changes only.
-
-
-# pillar 1.5.0.9001
+## Bug fixes
 
 - Color and formatting can now be reliably turned off by setting the `"cli.num_colors"` option to 1 (#269).
-- New `format_glimpse()` (#177).
+
+## Documentation
 - Add examples for new functions (#264).
 - Fix lifecycle badges everywhere.
-
-
-# pillar 1.5.0.9000
-
-- Vectors of the `vctrs_unspecified()` class are formatted better (#256).
-- Arrays are now formatted by showing only their first slice (#142).
-- Avoid wrapping extra column names with spaces (#254).
-- New "Extending" article.
-- Syntax highlighting and details tag for source code of functions in "printing" vignette.
 
 
 # pillar 1.5.0
