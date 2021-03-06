@@ -70,18 +70,42 @@ chartype_frame <- function() {
 }
 
 test_that("output test", {
-  expect_snapshot({pillar(add_special(letters[1:5]))})
-  expect_snapshot({pillar(add_special(paste(letters, collapse = "")))})
-  expect_snapshot({pillar(add_special(paste(letters, collapse = "")), width = 10)})
-  expect_snapshot({pillar(add_special(paste(letters, collapse = "")), width = 3)})
-  expect_snapshot({pillar(add_special(c("")), width = 5)})
-  expect_snapshot({pillar(add_special(c(" ")), width = 5)})
-  expect_snapshot({pillar(add_special(c(" a")), width = 5)})
-  expect_snapshot({pillar(add_special(c("a ")), width = 5)})
-  expect_snapshot({pillar(add_special(c("a b")), width = 5)})
-  expect_snapshot({pillar(add_special(c("\t")), width = 10)})
-  expect_snapshot({pillar(add_special(c("a\nb")), width = 10)})
-  expect_snapshot({pillar(add_special(c("a\001b")), width = 10)})
+  expect_snapshot({
+    pillar(add_special(letters[1:5]))
+  })
+  expect_snapshot({
+    pillar(add_special(paste(letters, collapse = "")))
+  })
+  expect_snapshot({
+    pillar(add_special(paste(letters, collapse = "")), width = 10)
+  })
+  expect_snapshot({
+    pillar(add_special(paste(letters, collapse = "")), width = 3)
+  })
+  expect_snapshot({
+    pillar(add_special(c("")), width = 5)
+  })
+  expect_snapshot({
+    pillar(add_special(c(" ")), width = 5)
+  })
+  expect_snapshot({
+    pillar(add_special(c(" a")), width = 5)
+  })
+  expect_snapshot({
+    pillar(add_special(c("a ")), width = 5)
+  })
+  expect_snapshot({
+    pillar(add_special(c("a b")), width = 5)
+  })
+  expect_snapshot({
+    pillar(add_special(c("\t")), width = 10)
+  })
+  expect_snapshot({
+    pillar(add_special(c("a\nb")), width = 10)
+  })
+  expect_snapshot({
+    pillar(add_special(c("a\001b")), width = 10)
+  })
 })
 
 test_that("output test (not on Windows)", {
@@ -93,13 +117,21 @@ test_that("output test (not on Windows)", {
     skip_on_os("mac")
   }
 
-  expect_snapshot({pillar(add_special("\u6210\u4ea4\u65e5"), title = "\u6210\u4ea4")})
-  expect_snapshot({pillar(add_special("\u6210\u4ea4"), title = "\u6210\u4ea4\u65e5")})
-  expect_snapshot({pillar(add_special(1L), title = "\u6210\u4ea4\u65e5")})
+  expect_snapshot({
+    pillar(add_special("\u6210\u4ea4\u65e5"), title = "\u6210\u4ea4")
+  })
+  expect_snapshot({
+    pillar(add_special("\u6210\u4ea4"), title = "\u6210\u4ea4\u65e5")
+  })
+  expect_snapshot({
+    pillar(add_special(1L), title = "\u6210\u4ea4\u65e5")
+  })
 
   # Spurious warnings on Windows
   skip_on_os("solaris")
   suppressWarnings(
-    expect_snapshot({ctl_colonnade(chartype_frame(), width = 50)})
+    expect_snapshot({
+      ctl_colonnade(chartype_frame(), width = 50)
+    })
   )
 })

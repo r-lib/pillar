@@ -73,6 +73,8 @@ test_that("output test (not on Windows)", {
   skip_on_os("windows")
   # Spurious warnings on Windows
   suppressWarnings(
-    expect_snapshot({colonnade(chartype_frame(), width = 50)})
+    expect_snapshot({
+      colonnade(chartype_frame(), width = 50)
+    })
   )
 })
