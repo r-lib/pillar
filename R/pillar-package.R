@@ -1,13 +1,15 @@
 #' @aliases NULL pillar-package
 #'
 #' @description
-#' `r lifecycle::badge("maturing")`
-#' Provides [pillar] and [colonnade] generics designed for formatting columns
-#' of data using the full range of colours provided by modern terminals.
-
+#' `r lifecycle::badge("stable")`
+#'
+#' Formats tabular data in columns or rows
+#' using the full range of colours provided by modern terminals.
+#' Provides various generics for making every aspect of the display customizable.
+#'
 #' @details
 #' See [pillar()] for formatting a single column,
-#' and [colonnade()] for formatting multiple columns passed as a data frame.
+#' and [print.tbl()] for formatting data-frame-like objects.
 #'
 #' @section Package options:
 #'

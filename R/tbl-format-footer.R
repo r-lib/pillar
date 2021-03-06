@@ -1,6 +1,8 @@
 #' Format the footer of a tibble
 #'
 #' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' For easier customization, the formatting of a tibble is split
 #' into three components: header, body, and footer.
 #' The `tbl_format_footer()` method is responsible for formatting the footer
@@ -15,6 +17,12 @@
 #' @inherit tbl_format_body return
 #'
 #' @export
+#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' setup <- tbl_format_setup(palmerpenguins::penguins)
+#' tbl_format_footer(palmerpenguins::penguins, setup)
+#'
+#' # Shortcut for debugging
+#' tbl_format_footer(setup)
 tbl_format_footer <- function(x, setup, ...) {
   check_dots_empty()
 
@@ -67,7 +75,9 @@ format_footer_rows <- function(x, setup) {
 
 format_footer_cols <- function(x, setup) {
   extra_cols <- setup$extra_cols
-  if (length(extra_cols) == 0) return(NULL)
+  if (length(extra_cols) == 0) {
+    return(NULL)
+  }
 
   extra_cols_total <- setup$extra_cols_total
 
@@ -104,7 +114,9 @@ collapse <- function(x) paste(x, collapse = ", ")
 
 split_lines <- function(x) {
   # Avoid .ptype argument to vec_c()
-  if (is_empty(x)) return(character())
+  if (is_empty(x)) {
+    return(character())
+  }
 
   unlist(strsplit(x, "\n", fixed = TRUE))
 }

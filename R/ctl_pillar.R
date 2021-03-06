@@ -1,13 +1,9 @@
 #' Object for formatting a vector suitable for tabular display
 #'
-#' @description
-#' `r lifecycle::badge("stable")`
-#'
 #' `pillar()` creates an object that formats a vector.
 #' The output uses one row for a title (if given), one row for the type,
 #' and `vec_size(x)` rows for the data.
 #'
-#' @details
 #' A pillar consists of arbitrary components.
 #' The `pillar()` constructor uses `title`, `type`, and `data`.
 #'
@@ -29,7 +25,7 @@
 #' @param ... Passed on to [pillar_shaft()].
 #' @export
 #' @examples
-#' x <- 123456789 * (10 ^ c(-1, -3, -5, NA, -8, -10))
+#' x <- 123456789 * (10^c(-1, -3, -5, NA, -8, -10))
 #' pillar(x)
 #' pillar(-x)
 #' pillar(runif(10))

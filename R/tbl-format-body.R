@@ -1,6 +1,8 @@
 #' Format the body of a tibble
 #'
 #' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' For easier customization, the formatting of a tibble is split
 #' into three components: header, body, and footer.
 #' The `tbl_format_body()` method is responsible for formatting the body
@@ -19,6 +21,12 @@
 #'   A character vector.
 #'
 #' @export
+#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' setup <- tbl_format_setup(palmerpenguins::penguins)
+#' tbl_format_body(palmerpenguins::penguins, setup)
+#'
+#' # Shortcut for debugging
+#' tbl_format_body(setup)
 tbl_format_body <- function(x, setup, ...) {
   check_dots_empty()
 

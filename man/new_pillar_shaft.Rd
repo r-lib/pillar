@@ -47,8 +47,6 @@ new_pillar_shaft_simple(
 \item{na_indent}{Indentation of \code{NA} values.}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
-
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}
 class.
 This is a virtual or abstract class, you must specify the \code{class}

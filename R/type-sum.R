@@ -1,19 +1,13 @@
 #' Provide a succinct summary of an object
 #'
-#' @description
-#' `r lifecycle::badge("questioning")`
-#'
-#' @description
 #' `type_sum()` gives a brief summary of object type. Objects that commonly
 #' occur in a data frame should return a string with four or less characters.
 #' For most inputs, the argument is forwarded to [vctrs::vec_ptype_abbr()].
 #'
-#' @section Lifecycle:
-#' `type_sum()` is in the "questioning" stage, because [vctrs::vec_ptype_abbr()]
-#' provides essentially the same functionality based on a robust framework.
-#' The generic will remain available for a while.
-#' Users and implementers are encouraged to consider `vctrs::vec_ptype_abbr()`
-#' once it becomes stable.
+#' When formatting a pillar,
+#' `type_sum()` will be called on a slice of the column vector.
+#' The formatted type should only depend on the type and not on the data,
+#' to avoid confusion.
 #'
 #' @param x an object to summarise. Generally only methods of atomic vectors
 #'   and variants have been implemented.
@@ -37,7 +31,9 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
-  if (is.object(x) || vctrs::vec_is(x)) return(vctrs::vec_ptype_abbr(x))
+  if (is.object(x) || vctrs::vec_is(x)) {
+    return(vctrs::vec_ptype_abbr(x))
+  }
 
   switch(typeof(x),
     builtin = ,
@@ -108,7 +104,9 @@ size_sum <- function(x) {
 
 #' @export
 size_sum.default <- function(x) {
-  if (!vctrs::vec_is(x)) return("")
+  if (!vctrs::vec_is(x)) {
+    return("")
+  }
 
   paste0("[", dim_desc(x), "]")
 }

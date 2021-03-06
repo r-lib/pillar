@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.5.0
+Version: 1.5.1
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -34,6 +34,7 @@ Suggests:
     knitr,
     lubridate,
     nycflights13,
+    palmerpenguins,
     rmarkdown,
     survival,
     testthat (>= 3.0.2),

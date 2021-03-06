@@ -17,6 +17,8 @@ tbl_format_header(x, setup, ...)
 A character vector.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 For easier customization, the formatting of a tibble is split
 into three components: header, body, and footer.
 The \code{tbl_format_header()} method is responsible for formatting the header
@@ -27,4 +29,13 @@ of the entire header.
 If you only need to change or extend the components shown in the header,
 override or extend \code{\link[=tbl_sum]{tbl_sum()}} for your class which is called by the
 default method.
+}
+\examples{
+\dontshow{if (requireNamespace("palmerpenguins", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+setup <- tbl_format_setup(palmerpenguins::penguins)
+tbl_format_header(palmerpenguins::penguins, setup)
+
+# Shortcut for debugging
+tbl_format_header(setup)
+\dontshow{\}) # examplesIf}
 }

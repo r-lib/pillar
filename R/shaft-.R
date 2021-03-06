@@ -1,8 +1,6 @@
 #' Constructor for column data
 #'
 #' @description
-#' `r lifecycle::badge("stable")`
-#'
 #' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
 #' class.
 #' This is a virtual or abstract class, you must specify the `class`
@@ -50,9 +48,6 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
 }
 
 #' Column data
-#'
-#' @description
-#' `r lifecycle::badge("stable")`
 #'
 #' Internal class for formatting the data for a column.
 #' `pillar_shaft()` is a coercion method that must be implemented
@@ -239,7 +234,8 @@ pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0
   width <- get_max_extent(x)
 
   new_pillar_shaft_simple(
-    x, width = width, align = "left", min_width = min(width, min_width),
+    x,
+    width = width, align = "left", min_width = min(width, min_width),
     na = pillar_na(use_brackets_if_no_color = TRUE),
     na_indent = na_indent
   )

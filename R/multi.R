@@ -52,7 +52,7 @@ flatten_colonnade <- function(x) {
 
   vctrs::vec_rbind(
     !!!out,
-    #.ptype = vctrs::data_frame(names = list(), data = list())
+    # .ptype = vctrs::data_frame(names = list(), data = list())
     .ptype = vctrs::data_frame(names = character(), data = list())
   )
 }
@@ -68,7 +68,7 @@ flatten_column <- function(x, name) {
     flatten_matrix_column(x, name)
   } else {
     # Length-one list, will be unlist()ed afterwards
-    #vctrs::data_frame(names = list(name), data = list(x))
+    # vctrs::data_frame(names = list(name), data = list(x))
     vctrs::data_frame(names = name, data = list(x))
   }
 }
@@ -79,7 +79,7 @@ flatten_df_column <- function(x, name) {
     vctrs::data_frame(names = name, data = list(new_empty_col_sentinel(x)))
   } else {
     x <- flatten_colonnade(unclass(x))
-    #x$names <- map(x$names, function(.x) c(name, .x))
+    # x$names <- map(x$names, function(.x) c(name, .x))
     x$names <- paste0("$", x$names)
     x$names[[1]] <- paste0(name, x$names[[1]])
     x
@@ -89,12 +89,12 @@ flatten_df_column <- function(x, name) {
 flatten_matrix_column <- function(x, name) {
   if (ncol(x) == 0) {
     vctrs::data_frame(
-      #names = list(c(name, "[,0]")),
+      # names = list(c(name, "[,0]")),
       names = name,
       data = list(new_empty_col_sentinel(x))
     )
   } else {
-    x_list <- map(seq_len(ncol(x)), function(i) x[,i])
+    x_list <- map(seq_len(ncol(x)), function(i) x[, i])
 
     idx <- colnames(x)
     if (is.null(idx)) {
@@ -103,7 +103,7 @@ flatten_matrix_column <- function(x, name) {
       idx <- encodeString(idx, quote = '"')
     }
 
-    #names <- map(idx, function(.x) c(name, .x))
+    # names <- map(idx, function(.x) c(name, .x))
     names <- paste0("[,", idx, "]")
     names[[1]] <- paste0(name, names[[1]])
 
@@ -365,13 +365,17 @@ colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_ti
   #' `option(tibble.width = Inf)` or narrow colonnade).
   max_fit <- distribute_pillars(col_df$max_widths, tier_widths)
   #' If yes, this is the resulting fit, no more work needs to be done.
-  if (all_pillars_fit(max_fit)) return(max_fit)
+  if (all_pillars_fit(max_fit)) {
+    return(max_fit)
+  }
 
   #' Otherwise, if the maximum width is too wide, the same test
   #' is carried out with the minimum width.
   #' If this is still too wide, this is the resulting fit.
   min_fit <- distribute_pillars(col_df$min_widths, tier_widths)
-  if (!all_pillars_fit(min_fit)) return(min_fit)
+  if (!all_pillars_fit(min_fit)) {
+    return(min_fit)
+  }
 
   #' Otherwise, some tiers from the start
   #' will contain pillars with their maximum width, and the remaining tiers
@@ -475,11 +479,15 @@ colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
 #' @usage NULL
 #' @aliases NULL
 colonnade_distribute_space <- function(col_widths, max_widths, width) {
-  if (any(is.na(col_widths))) return(col_widths)
+  if (any(is.na(col_widths))) {
+    return(col_widths)
+  }
 
   missing_space <- max_widths - col_widths
   # Shortcut to avoid division by zero
-  if (all(missing_space == 0L)) return(rep_along(col_widths, 0L))
+  if (all(missing_space == 0L)) {
+    return(rep_along(col_widths, 0L))
+  }
 
   #' @details
   #' The remaining space is distributed from left to right.

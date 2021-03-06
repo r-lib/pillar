@@ -9,11 +9,11 @@ width <- sample.int(1200, N) + 300L
 output_width <- sample.int(30, N, replace = TRUE) + 30L
 
 code <- paste0(
-  'expect_pillar_output(\n',
-  '  xf = colonnade(df_str[', order, '], width = ', width, '),\n',
-  '  output_width = ', output_width, ',\n',
-  '  filename = "str-', sprintf("%.2d", idx), '-', width, '-', output_width, '.txt"\n',
-  ')'
+  "expect_pillar_output(\n",
+  "  xf = colonnade(df_str[", order, "], width = ", width, "),\n",
+  "  output_width = ", output_width, ",\n",
+  '  filename = "str-', sprintf("%.2d", idx), "-", width, "-", output_width, '.txt"\n',
+  ")"
 )
 
 cat(code, sep = "\n")

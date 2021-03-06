@@ -5,13 +5,15 @@
 \alias{pillar-package}
 \title{pillar: Coloured Formatting for Columns}
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
-Provides \link{pillar} and \link{colonnade} generics designed for formatting columns
-of data using the full range of colours provided by modern terminals.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+
+Formats tabular data in columns or rows
+using the full range of colours provided by modern terminals.
+Provides various generics for making every aspect of the display customizable.
 }
 \details{
 See \code{\link[=pillar]{pillar()}} for formatting a single column,
-and \code{\link[=colonnade]{colonnade()}} for formatting multiple columns passed as a data frame.
+and \code{\link[=print.tbl]{print.tbl()}} for formatting data-frame-like objects.
 }
 \section{Package options}{
 

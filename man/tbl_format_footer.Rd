@@ -17,6 +17,8 @@ tbl_format_footer(x, setup, ...)
 A character vector.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 For easier customization, the formatting of a tibble is split
 into three components: header, body, and footer.
 The \code{tbl_format_footer()} method is responsible for formatting the footer
@@ -26,4 +28,13 @@ Override or extend this method if you need to change the appearance
 of the footer.
 The default implementation adds information about rows and columns
 that are not shown in the body.
+}
+\examples{
+\dontshow{if (requireNamespace("palmerpenguins", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+setup <- tbl_format_setup(palmerpenguins::penguins)
+tbl_format_footer(palmerpenguins::penguins, setup)
+
+# Shortcut for debugging
+tbl_format_footer(setup)
+\dontshow{\}) # examplesIf}
 }

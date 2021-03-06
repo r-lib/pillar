@@ -14,6 +14,7 @@ reference:
       - ctl_new_pillar
       - tbl_sum
       - glimpse
+      - format_glimpse
   - title: Formatting pillars
     desc: >
       Functions and methods to implement pillar support for your data type.

@@ -43,6 +43,9 @@ In this case, the default methods offer many customization options
 at every level of detail.
 This means you only need to override or extend implementations for the parts
 that need change.
+
+The output uses color and highlighting according to the \code{"cli.num_colors"} option.
+Set it to \code{1} to suppress colored and highlighted output.
 }
 \examples{
 print(vctrs::new_data_frame(list(a = 1), class = "tbl"))

@@ -17,8 +17,6 @@ size_sum(x)
 and variants have been implemented.}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
-
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}.
@@ -32,15 +30,12 @@ It should always return a string (a character vector of length one),
 it can be an empty string \code{""} to omit size information,
 this is what the default method does for scalars.
 }
-\section{Lifecycle}{
-
-\code{type_sum()} is in the "questioning" stage, because \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}
-provides essentially the same functionality based on a robust framework.
-The generic will remain available for a while.
-Users and implementers are encouraged to consider \code{vctrs::vec_ptype_abbr()}
-once it becomes stable.
+\details{
+When formatting a pillar,
+\code{type_sum()} will be called on a slice of the column vector.
+The formatted type should only depend on the type and not on the data,
+to avoid confusion.
 }
-
 \examples{
 obj_sum(1:10)
 obj_sum(matrix(1:10))

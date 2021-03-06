@@ -17,6 +17,8 @@ tbl_format_body(x, setup, ...)
 A character vector.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 For easier customization, the formatting of a tibble is split
 into three components: header, body, and footer.
 The \code{tbl_format_body()} method is responsible for formatting the body
@@ -26,4 +28,13 @@ Override this method if you need to change the appearance of all parts
 of the body.
 If you only need to change the appearance of a single data type,
 override \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}} and \code{\link[=pillar_shaft]{pillar_shaft()}} for this data type.
+}
+\examples{
+\dontshow{if (requireNamespace("palmerpenguins", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+setup <- tbl_format_setup(palmerpenguins::penguins)
+tbl_format_body(palmerpenguins::penguins, setup)
+
+# Shortcut for debugging
+tbl_format_body(setup)
+\dontshow{\}) # examplesIf}
 }

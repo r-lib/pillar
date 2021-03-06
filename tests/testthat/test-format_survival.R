@@ -1,5 +1,5 @@
 test_that("survival output", {
-  skip_if_not_installed("survival")
+  skip_if_not_installed("survival", "3.2.9")
 
   x <- head(survival::Surv(survival::lung$time, survival::lung$status))
   expect_snapshot(pillar(x, width = 20))

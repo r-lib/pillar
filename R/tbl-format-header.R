@@ -1,6 +1,8 @@
 #' Format the header of a tibble
 #'
 #' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' For easier customization, the formatting of a tibble is split
 #' into three components: header, body, and footer.
 #' The `tbl_format_header()` method is responsible for formatting the header
@@ -16,6 +18,12 @@
 #' @inherit tbl_format_body return
 #'
 #' @export
+#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' setup <- tbl_format_setup(palmerpenguins::penguins)
+#' tbl_format_header(palmerpenguins::penguins, setup)
+#'
+#' # Shortcut for debugging
+#' tbl_format_header(setup)
 tbl_format_header <- function(x, setup, ...) {
   check_dots_empty()
 
@@ -53,7 +61,9 @@ tbl_format_header.pillar_tbl_format_setup <- function(x, ...) {
 }
 
 justify <- function(x, right = TRUE, space = " ") {
-  if (length(x) == 0L) return(character())
+  if (length(x) == 0L) {
+    return(character())
+  }
   width <- nchar(x, type = "width")
   max_width <- max(width)
   spaces_template <- paste(rep(space, max_width), collapse = "")

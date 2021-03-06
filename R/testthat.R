@@ -42,15 +42,14 @@
 #' expect_known_display(integer_pillar, file, crayon = FALSE)
 #' }
 expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) {
-
   object <- enquo(object)
 
   if (crayon) {
-    old_crayon <- options(crayon.enabled = TRUE, crayon.colors = 16L, cli.num_colors = 16L)
+    old_crayon <- options(cli.num_colors = 16L)
     crayon::num_colors(forget = TRUE)
     num_colors(forget = TRUE)
   } else {
-    old_crayon <- options(crayon.enabled = FALSE)
+    old_crayon <- options(cli.num_colors = 1L)
     crayon::num_colors(forget = TRUE)
     num_colors(forget = TRUE)
   }

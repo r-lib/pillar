@@ -15,6 +15,9 @@
 #' This means you only need to override or extend implementations for the parts
 #' that need change.
 #'
+#' The output uses color and highlighting according to the `"cli.num_colors"` option.
+#' Set it to `1` to suppress colored and highlighted output.
+#'
 #' @seealso
 #'
 #' - [tbl_format_setup()] for preparing an object for formatting
@@ -47,7 +50,12 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   check_dots_empty(action = signal)
 
-  setup <- tbl_format_setup(x, width = width, ...,
+  # Reset local cache for each new output
+  force(x)
+  num_colors(forget = TRUE)
+
+  setup <- tbl_format_setup(x,
+    width = width, ...,
     n = n,
     max_extra_cols = n_extra
   )
@@ -59,7 +67,9 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
 }
 
 format_comment <- function(x, width) {
-  if (length(x) == 0L) return(character())
+  if (length(x) == 0L) {
+    return(character())
+  }
   map_chr(x, wrap, prefix = "# ", width = min(width, cli::console_width()))
 }
 
