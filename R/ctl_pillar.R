@@ -172,9 +172,7 @@ format.pillar <- function(x, width = NULL, ...) {
     width <- sum(widths) - length(widths) + 1L
   }
 
-  out <- pillar_format_parts_2(x, width)
-
-  new_vertical(unlist(unname(out)))
+  new_vertical(pillar_format_parts_2(x, width))
 }
 
 #' @export
