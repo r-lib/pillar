@@ -390,7 +390,7 @@
 # matrix columns (empty)
 
     Code
-      ctl_colonnade(x, width = 30)
+      ctl_colonnade(list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0]), width = 30)
     Output
             a b        
         <int> <int[,0]>

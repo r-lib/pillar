@@ -153,8 +153,10 @@ test_that("matrix columns (named)", {
 })
 
 test_that("matrix columns (empty)", {
-  x <- list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0])
   expect_snapshot({
-    ctl_colonnade(x, width = 30)
+    ctl_colonnade(
+      list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0]),
+      width = 30
+    )
   })
 })
