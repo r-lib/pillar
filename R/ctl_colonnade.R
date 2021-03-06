@@ -53,14 +53,24 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     })
   }
 
-  out <- map(col_widths_tiers, function(tier) {
+  flat_tiers <- map(col_widths_tiers, function(tier) {
     map2(tier$pillar, tier$width, pillar_format_parts_2)
   })
 
-  out <- map(out, format_colonnade_tier)
+  out <- map(flat_tiers, format_colonnade_tier_2)
 
   extra_cols <- x[seq2(length(pillars) + 1L, nc)]
   new_colonnade_body(out, extra_cols = extra_cols)
+}
+
+format_colonnade_tier_2 <- function(x) {
+  "!!!!!DEBUG format_colonnade_tier_2(`v(x)`)"
+
+  if (length(x) == 0) {
+    return(character())
+  }
+
+  exec(paste, !!!x)
 }
 
 new_colonnade_body <- function(x, extra_cols) {
