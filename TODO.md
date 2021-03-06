@@ -2,11 +2,6 @@
 
 ## Next steps
 
-- Reduce calls to `align()`:
-    - align all components vertically
-    - squash
-    - only then `align()`
-    - paste
 - Benchmark and profile again
     - `bench.R`
     - https://github.com/tidyverse/tibble/issues/598
