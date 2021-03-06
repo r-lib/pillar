@@ -176,7 +176,7 @@
       3 NA        
     Code
       ctl_colonnade(list(`
-      ` = c("\n", "\""), `` = factor("\n")), width = 30)
+      ` = c("\n", "\""), `` = factor(c("\n", "\n"))), width = 30)
     Output
         `\n`  `\r` 
         <chr> <fct>
