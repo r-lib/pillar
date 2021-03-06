@@ -42,16 +42,40 @@ reference:
       - pillar-package
 
 navbar:
-  type: default
-  left:
-  - text: Options
-    href: "reference/pillar-package.html#package-options"
-  - text: Reference
-    href: reference/index.html
-  - text: Articles
-    href: news/articles.html
-  - text: News
-    href: news/index.html
+  structure:
+    left:
+    - home
+    - options
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    options:
+      text: Options
+      href: "reference/pillar-package.html#package-options"
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: Changelog
+      href: news/index.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/r-lib/pillar/
+    articles:
+      text: Articles
+      menu:
+      - text: Custom formatting
+        href: articles/extending.html
+      - text: 'Printing a tibble: Control and data flow'
+        href: articles/printing.html
+      - text: 'Printing a tibble: Tracking control flow'
+        href: articles/debugme.html
 
 development:
   mode: auto
