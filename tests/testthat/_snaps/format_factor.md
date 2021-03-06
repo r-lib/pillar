@@ -11,9 +11,6 @@
       d    
       e    
       <NA> 
-
----
-
     Code
       pillar(ordered(c(letters[1:5], NA)))
     Output
@@ -25,9 +22,6 @@
       d    
       e    
       <NA> 
-
----
-
     Code
       pillar(factor("a\nb"))
     Output

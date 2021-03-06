@@ -4,9 +4,6 @@
       pillar(v, width = 4)
     Output
       NULL
-
----
-
     Code
       pillar(v, width = 7)
     Output
@@ -16,9 +13,6 @@
       1.00e-6
       1.00e+3
       1.00e+9
-
----
-
     Code
       pillar(v, width = 10)
     Output
@@ -28,9 +22,6 @@
          1.00e-6
          1.00e+3
          1.00e+9
-
----
-
     Code
       pillar(v, width = 15)
     Output
@@ -40,9 +31,6 @@
               1.00e-6
               1.00e+3
               1.00e+9
-
----
-
     Code
       pillar(v, width = 22)
     Output

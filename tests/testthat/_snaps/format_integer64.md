@@ -4,16 +4,10 @@
       pillar(add_special(x), width = 6)
     Output
       NULL
-
----
-
     Code
       pillar(add_special(x), width = 7)
     Output
       NULL
-
----
-
     Code
       pillar(add_special(x), width = 8)
     Output
@@ -23,9 +17,6 @@
        1.00e12
        1.00e12
       NA      
-
----
-
     Code
       pillar(add_special(x), width = 9)
     Output
@@ -35,9 +26,6 @@
         1.00e12
         1.00e12
        NA      
-
----
-
     Code
       pillar(add_special(x), width = 10)
     Output
@@ -47,9 +35,6 @@
          1.00e12
          1.00e12
         NA      
-
----
-
     Code
       pillar(add_special(x), width = 11)
     Output
@@ -59,9 +44,6 @@
           1.00e12
           1.00e12
          NA      
-
----
-
     Code
       pillar(add_special(x), width = 12)
     Output
@@ -71,9 +53,6 @@
            1.00e12
            1.00e12
           NA      
-
----
-
     Code
       pillar(add_special(x), width = 13)
     Output
@@ -83,9 +62,6 @@
       1000000000002
       1000000000003
                  NA
-
----
-
     Code
       pillar(add_special(x), width = 14)
     Output

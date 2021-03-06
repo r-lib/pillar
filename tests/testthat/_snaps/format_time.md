@@ -7,9 +7,6 @@
       <dttm>             
       2017-07-28 18:04:35
       NA                 
-
----
-
     Code
       pillar(add_special(as.POSIXlt("2017-07-28 18:04:35 +0200")))
     Output
