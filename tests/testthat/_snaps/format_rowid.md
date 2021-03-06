@@ -8,9 +8,6 @@
       1
       2
       3
-
----
-
     Code
       rowidformat(12, has_title_row = TRUE, has_star = TRUE)
     Output

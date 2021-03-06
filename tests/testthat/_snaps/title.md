@@ -14,9 +14,6 @@
            NA
          -Inf
           Inf
-
----
-
     Code
       pillar(add_special(10^(1:6)), title = "crayon")
     Output
@@ -32,9 +29,6 @@
            NA
          -Inf
           Inf
-
----
-
     Code
       pillar(add_special(10^(1:6)), title = "short")
     Output
@@ -50,9 +44,6 @@
            NA
          -Inf
           Inf
-
----
-
     Code
       pillar(add_special(10^(1:6)), title = "somewhat_wider")
     Output
@@ -68,9 +59,6 @@
                   NA
                 -Inf
                  Inf
-
----
-
     Code
       pillar(add_special(10^(1:6)), title = "exactly_fifteen")
     Output
@@ -86,9 +74,6 @@
                    NA
                  -Inf
                   Inf
-
----
-
     Code
       pillar(add_special(10^(1:6)), title = "absolutely_breaking_all_sensible_boundaries",
       width = 18)

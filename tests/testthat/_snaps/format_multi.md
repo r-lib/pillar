@@ -25,20 +25,8 @@
 
     Code
       colonnade(x, width = 4)
-
----
-
-    Code
       colonnade(x, width = 5)
-
----
-
-    Code
       colonnade(x, width = 6)
-
----
-
-    Code
       colonnade(x, width = 7)
     Output
         colu~
@@ -46,9 +34,6 @@
       1  1.23
       2  2.23
       3  3.23
-
----
-
     Code
       colonnade(x, width = 8)
     Output
@@ -57,9 +42,6 @@
       1   1.23
       2   2.23
       3   3.23
-
----
-
     Code
       colonnade(x, width = 9)
     Output
@@ -68,9 +50,6 @@
       1    1.23
       2    2.23
       3    3.23
-
----
-
     Code
       colonnade(x, width = 10)
     Output
@@ -79,9 +58,6 @@
       1     1.23
       2     2.23
       3     3.23
-
----
-
     Code
       colonnade(x, width = 11)
     Output
@@ -90,9 +66,6 @@
       1      1.23
       2      2.23
       3      3.23
-
----
-
     Code
       colonnade(x, width = 12)
     Output
@@ -101,30 +74,11 @@
       1       1.23
       2       2.23
       3       3.23
-
----
-
     Code
       colonnade(x, width = 13)
-
----
-
-    Code
       colonnade(x, width = 14)
-
----
-
-    Code
       colonnade(x, width = 15)
-
----
-
-    Code
       colonnade(x, width = 16)
-
----
-
-    Code
       colonnade(x, width = 17)
     Output
         column_zero_one
@@ -132,9 +86,6 @@
       1            1.23
       2            2.23
       3            3.23
-
----
-
     Code
       colonnade(x, width = 18)
     Output
@@ -143,9 +94,6 @@
       1            1.23
       2            2.23
       3            3.23
-
----
-
     Code
       colonnade(x, width = 19)
     Output
@@ -154,9 +102,6 @@
       1            1.23
       2            2.23
       3            3.23
-
----
-
     Code
       colonnade(x, width = 20)
     Output
@@ -165,9 +110,6 @@
       1            1.23
       2            2.23
       3            3.23
-
----
-
     Code
       colonnade(x, width = 21)
     Output
@@ -176,9 +118,6 @@
       1            1.23
       2            2.23
       3            3.23
-
----
-
     Code
       colonnade(x, width = 22)
     Output
@@ -187,9 +126,6 @@
       1            1.23
       2            2.23
       3            3.23
-
----
-
     Code
       colonnade(x, width = 23)
     Output
@@ -198,9 +134,6 @@
       1            1.23
       2            2.23
       3            3.23
-
----
-
     Code
       colonnade(x, width = 24)
     Output
@@ -209,9 +142,6 @@
       1            1.23 a     
       2            2.23 b     
       3            3.23 c     
-
----
-
     Code
       colonnade(x, width = 25)
     Output
@@ -220,9 +150,6 @@
       1            1.23 a     
       2            2.23 b     
       3            3.23 c     
-
----
-
     Code
       colonnade(x, width = 26)
     Output
@@ -231,9 +158,6 @@
       1            1.23 a     
       2            2.23 b     
       3            3.23 c     
-
----
-
     Code
       colonnade(x, width = 27)
     Output
@@ -242,9 +166,6 @@
       1            1.23 a     
       2            2.23 b     
       3            3.23 c     
-
----
-
     Code
       colonnade(x, width = 28)
     Output
@@ -253,9 +174,6 @@
       1            1.23 a     
       2            2.23 b     
       3            3.23 c     
-
----
-
     Code
       colonnade(x, width = 29)
     Output
@@ -264,9 +182,6 @@
       1            1.23 a     
       2            2.23 b     
       3            3.23 c     
-
----
-
     Code
       colonnade(x, width = 30)
     Output
@@ -275,9 +190,6 @@
       1            1.23 a     
       2            2.23 b     
       3            3.23 c     
-
----
-
     Code
       colonnade(x, width = 31)
     Output
@@ -286,9 +198,6 @@
       1            1.23 a      a     
       2            2.23 b      b     
       3            3.23 c      c     
-
----
-
     Code
       colonnade(x, width = 32)
     Output
@@ -297,9 +206,6 @@
       1            1.23 a      a     
       2            2.23 b      b     
       3            3.23 c      c     
-
----
-
     Code
       colonnade(x, width = 33)
     Output
@@ -308,9 +214,6 @@
       1            1.23 a      a     
       2            2.23 b      b     
       3            3.23 c      c     
-
----
-
     Code
       colonnade(x, width = 34)
     Output
@@ -319,9 +222,6 @@
       1            1.23 a      a     
       2            2.23 b      b     
       3            3.23 c      c     
-
----
-
     Code
       colonnade(x, width = 35)
     Output
@@ -330,9 +230,6 @@
       1            1.23 a      a     
       2            2.23 b      b     
       3            3.23 c      c     
-
----
-
     Code
       colonnade(x, width = 36)
     Output
@@ -341,9 +238,6 @@
       1            1.23 a      a     
       2            2.23 b      b     
       3            3.23 c      c     
-
----
-
     Code
       colonnade(x, width = 37)
     Output
@@ -352,9 +246,6 @@
       1            1.23 a      a     
       2            2.23 b      b     
       3            3.23 c      c     
-
----
-
     Code
       colonnade(x, width = 38)
     Output
@@ -363,9 +254,6 @@
       1            1.23 a      a      a     
       2            2.23 b      b      b     
       3            3.23 c      c      c     
-
----
-
     Code
       colonnade(x, width = 39)
     Output
@@ -374,9 +262,6 @@
       1            1.23 a      a      a     
       2            2.23 b      b      b     
       3            3.23 c      c      c     
-
----
-
     Code
       colonnade(x, width = Inf)
     Output
@@ -453,9 +338,6 @@
       6  18.1     6  225    105
       7  14.3     8  360    245
       8  24.4     4  147.    62
-
----
-
     Code
       colonnade(iris[1:5, ], width = 30)
     Output
@@ -466,9 +348,6 @@
       3          4.7         3.2
       4          4.6         3.1
       5          5           3.6
-
----
-
     Code
       colonnade(iris[1:3, ], width = 20)
     Output
@@ -477,9 +356,6 @@
       1          5.1
       2          4.9
       3          4.7
-
----
-
     Code
       colonnade(df_all, width = 30)
     Output
@@ -488,9 +364,6 @@
       1   1       1 TRUE  a    
       2   2.5     2 FALSE b    
       3  NA      NA NA    <NA> 
-
----
-
     Code
       colonnade(df_all, width = 300)
     Output
@@ -504,9 +377,6 @@
       1 <list [2]>
       2 <list [1]>
       3 <list [1]>
-
----
-
     Code
       options(width = 70)
       colonnade(df_all, width = 300)
@@ -521,9 +391,6 @@
       1 <int [1]> <list [2]>
       2 <int [1]> <list [1]>
       3 <int [1]> <list [1]>
-
----
-
     Code
       options(width = 60)
       colonnade(df_all, width = 300)
@@ -538,9 +405,6 @@
       1 2015-12-09 10:51:35 <int [1]> <list [2]>
       2 2015-12-09 10:51:36 <int [1]> <list [1]>
       3 NA                  <int [1]> <list [1]>
-
----
-
     Code
       options(width = 50)
       colonnade(df_all, width = 300)
@@ -555,9 +419,6 @@
       1 2015-12-09 10:51:35 <int [1]> <list [2]>
       2 2015-12-09 10:51:36 <int [1]> <list [1]>
       3 NA                  <int [1]> <list [1]>
-
----
-
     Code
       options(width = 40)
       colonnade(df_all, width = 300)
@@ -577,9 +438,6 @@
       1 <int [1]> <list [2]>
       2 <int [1]> <list [1]>
       3 <int [1]> <list [1]>
-
----
-
     Code
       options(width = 30)
       colonnade(df_all, width = 300)
@@ -604,9 +462,6 @@
       1 <int [1]> <list [2]>
       2 <int [1]> <list [1]>
       3 <int [1]> <list [1]>
-
----
-
     Code
       options(width = 20)
       colonnade(df_all, width = 300)
@@ -641,26 +496,16 @@
       1 <list [2]>
       2 <list [1]>
       3 <list [1]>
-
----
-
     Code
       colonnade(list(`
-      ` = c(
-        "\n", "\""), `` = factor(
-        "\n")), width = 30)
+      ` = c("\n", "\""), `` = factor("\n")), width = 30)
     Output
         `\n`  `\r` 
         <chr> <fct>
       1 "\n"  "\n" 
       2 "\""  "\n" 
-
----
-
     Code
-      colonnade(list(a = c(
-        "", " ", "a ",
-        " a")), width = 30)
+      colonnade(list(a = c("", " ", "a ", " a")), width = 30)
     Output
         a    
         <chr>
@@ -668,14 +513,8 @@
       2 " "  
       3 "a " 
       4 " a" 
-
----
-
     Code
-      colonnade(list(
-        `mean(x)` = 5,
-        `var(x)` = 3),
-      width = 30)
+      colonnade(list(`mean(x)` = 5, `var(x)` = 3), width = 30)
     Output
         `mean(x)` `var(x)`
             <dbl>    <dbl>
@@ -702,9 +541,6 @@
       1     1
       2     2
       3     3
-
----
-
     Code
       # dummy
 
@@ -758,9 +594,6 @@
       [90m7[39m -[31m[4m1[24m00[39m[31m0[39m    
       [90m8[39m [4m1[24m[4m0[24m000    
       [90m9[39m    [31mNA[39m    
-
----
-
     Code
       with_options(pillar.subtle_num = TRUE, print(xf))
     Output
@@ -775,9 +608,6 @@
       [90m7[39m -[31m[4m1[24m00[39m[90m0[39m    
       [90m8[39m [4m1[24m[4m0[24m0[90m00[39m    
       [90m9[39m    [31mNA[39m    
-
----
-
     Code
       with_options(pillar.subtle = FALSE, print(xf))
     Output
@@ -792,9 +622,6 @@
       7 -[31m[4m1[24m00[39m[31m0[39m    
       8 [4m1[24m[4m0[24m000    
       9    [31mNA[39m    
-
----
-
     Code
       with_options(pillar.neg = FALSE, print(xf))
     Output
@@ -809,9 +636,6 @@
       [90m7[39m -[4m1[24m000    
       [90m8[39m [4m1[24m[4m0[24m000    
       [90m9[39m    [31mNA[39m    
-
----
-
     Code
       with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf))
     Output
@@ -826,9 +650,6 @@
       7 -[4m1[24m000    
       8 [4m1[24m[4m0[24m000    
       9    [31mNA[39m    
-
----
-
     Code
       with_options(pillar.bold = TRUE, print(xf))
     Output

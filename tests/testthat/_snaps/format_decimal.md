@@ -16,9 +16,6 @@
          NA    
        -Inf    
         Inf    
-
----
-
     Code
       pillar(add_special(1.23456 * 10^(-3:3)))
     Output

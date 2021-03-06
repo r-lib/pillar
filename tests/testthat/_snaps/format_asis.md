@@ -8,9 +8,6 @@
              1
              2
              3
-
----
-
     Code
       pillar(I(list(1, 1:2, 1:3)))
     Output
