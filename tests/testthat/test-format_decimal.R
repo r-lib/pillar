@@ -93,17 +93,17 @@ test_that("corner cases", {
 })
 
 test_that("output test", {
-  expect_snapshot(pillar(add_special((10^(-3:4)) * c(-1, 1))))
-  expect_snapshot(pillar(add_special(1.23456 * 10^(-3:3))))
+  expect_snapshot({pillar(add_special((10^(-3:4)) * c(-1, 1)))})
+  expect_snapshot({pillar(add_special(1.23456 * 10^(-3:3)))})
   withr::with_options(
     list(pillar.sigfig = 5),
-    expect_snapshot(pillar(add_special((10^(c(-2:4, 0L))) * c(-1, 1))))
+    expect_snapshot({pillar(add_special((10^(c(-2:4, 0L))) * c(-1, 1)))})
   )
   withr::with_options(
     list(pillar.sigfig = 7),
-    expect_snapshot(pillar(add_special((10^(0:-5)) * c(-1, 1)), width = 20))
+    expect_snapshot({pillar(add_special((10^(0:-5)) * c(-1, 1)), width = 20)})
   )
-  expect_snapshot(pillar(add_special((10^(5:-5)) + 1e-7), width = 20))
+  expect_snapshot({pillar(add_special((10^(5:-5)) + 1e-7), width = 20)})
 })
 
 expect_decimal_width <- function(x) {
