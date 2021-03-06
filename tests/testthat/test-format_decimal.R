@@ -95,8 +95,6 @@ test_that("corner cases", {
 test_that("output test", {
   expect_snapshot({
     pillar(add_special((10^(-3:4)) * c(-1, 1)))
-  })
-  expect_snapshot({
     pillar(add_special(1.23456 * 10^(-3:3)))
   })
   withr::with_options(

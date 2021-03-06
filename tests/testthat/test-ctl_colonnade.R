@@ -9,50 +9,24 @@ test_that("tests from tibble", {
 
   expect_snapshot({
     ctl_colonnade(mtcars[1:8, ], has_row_id = "*", width = 30)
-  })
-  expect_snapshot({
     ctl_colonnade(iris[1:5, ], width = 30)
-  })
-  expect_snapshot({
     ctl_colonnade(iris[1:3, ], width = 20)
-  })
-  expect_snapshot({
     ctl_colonnade(df_all, width = 30)
-  })
-  expect_snapshot({
     ctl_colonnade(df_all, width = 300)
-  })
-  expect_snapshot({
     options(width = 70)
     ctl_colonnade(df_all, width = 300)
-  })
-  expect_snapshot({
     options(width = 60)
     ctl_colonnade(df_all, width = 300)
-  })
-  expect_snapshot({
     options(width = 50)
     ctl_colonnade(df_all, width = 300)
-  })
-  expect_snapshot({
     options(width = 40)
     ctl_colonnade(df_all, width = 300)
-  })
-  expect_snapshot({
     options(width = 30)
     ctl_colonnade(df_all, width = 300)
-  })
-  expect_snapshot({
     options(width = 20)
     ctl_colonnade(df_all, width = 300)
-  })
-  expect_snapshot({
     ctl_colonnade(list(`\n` = c("\n", '"'), `\r` = factor("\n")), width = 30)
-  })
-  expect_snapshot({
     ctl_colonnade(list(a = c("", " ", "a ", " a")), width = 30)
-  })
-  expect_snapshot({
     ctl_colonnade(list("mean(x)" = 5, "var(x)" = 3), width = 30)
   })
 })
@@ -80,8 +54,6 @@ test_that("sep argument", {
   x <- list(sep = 1:3)
   expect_snapshot({
     ctl_colonnade(x, width = 30)
-  })
-  expect_snapshot({
     "dummy"
   })
 })
@@ -108,30 +80,16 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
 
   expect_snapshot({
     style_na("NA")
-  })
-  expect_snapshot({
     style_neg("-1")
   })
 
   expect_snapshot({
     xf <- function() ctl_colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
-  })
-  expect_snapshot({
     print(xf())
-  })
-  expect_snapshot({
     with_options(pillar.subtle_num = TRUE, print(xf()))
-  })
-  expect_snapshot({
     with_options(pillar.subtle = FALSE, print(xf()))
-  })
-  expect_snapshot({
     with_options(pillar.neg = FALSE, print(xf()))
-  })
-  expect_snapshot({
     with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf()))
-  })
-  expect_snapshot({
     with_options(pillar.bold = TRUE, print(xf()))
   })
 

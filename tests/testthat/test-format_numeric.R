@@ -5,17 +5,9 @@ test_that("same pillar at different widths", {
   expect_equal(get_width(x$data), 7)
   expect_snapshot({
     pillar(v, width = 4)
-  })
-  expect_snapshot({
     pillar(v, width = 7)
-  })
-  expect_snapshot({
     pillar(v, width = 10)
-  })
-  expect_snapshot({
     pillar(v, width = 15)
-  })
-  expect_snapshot({
     pillar(v, width = 22)
   })
 })
