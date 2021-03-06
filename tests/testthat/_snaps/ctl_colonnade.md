@@ -224,7 +224,7 @@
     Code
       # dummy
 
-# color, options: UTF-8 is FALSE
+# color, options: UTF-8 is TRUE
 
     Code
       style_na("NA")
@@ -328,7 +328,7 @@
     Code
       ctl_colonnade(list(a_very_long_column_name = 0), width = 20)
     Output
-        a_very_long_colum~
+        a_very_long_colum…
                      [3m[90m<dbl>[39m[23m
       [90m1[39m                  0
 
@@ -359,11 +359,11 @@
     Code
       ctl_colonnade(x, width = 40)
     Output
-            a   b$c    $d $e      
-        <int> <int> <int> <df[,0]>
-      1     1     4     7         
-      2     2     5     8         
-      3     3     6     9         
+            a   b$c    $d $e           c
+        <int> <int> <int> <df[,0]> <int>
+      1     1     4     7             10
+      2     2     5     8             11
+      3     3     6     9             12
 
 # matrix columns (unnamed)
 
@@ -390,11 +390,11 @@
 # matrix columns (empty)
 
     Code
-      ctl_colonnade(list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0]), width = 30)
+      ctl_colonnade(list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0], c = 4:6), width = 30)
     Output
-            a b        
-        <int> <int[,0]>
-      1     1          
-      2     2          
-      3     3          
+            a b             c
+        <int> <int[,0]> <int>
+      1     1               4
+      2     2               5
+      3     3               6
 

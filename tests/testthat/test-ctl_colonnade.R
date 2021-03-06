@@ -131,7 +131,8 @@ test_that("tibble columns (empty)", {
     b = vctrs::data_frame(
       c = 4:6, d = 7:9,
       e = vctrs::data_frame(f = 10:12)[, 0]
-    )
+    ),
+    c = 10:12
   )
   expect_snapshot({
     ctl_colonnade(x, width = 40)
@@ -155,7 +156,7 @@ test_that("matrix columns (named)", {
 test_that("matrix columns (empty)", {
   expect_snapshot({
     ctl_colonnade(
-      list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0]),
+      list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0], c = 4:6),
       width = 30
     )
   })

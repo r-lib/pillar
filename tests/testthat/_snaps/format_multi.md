@@ -544,7 +544,7 @@
     Code
       # dummy
 
-# color, options: UTF-8 is FALSE
+# color, options: UTF-8 is TRUE
 
     Code
       crayon::has_color()
@@ -670,7 +670,7 @@
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
     Output
-        a_very_long_~
+        a_very_long_…
                 [3m[90m<dbl>[39m[23m
       [90m1[39m             0
 
@@ -724,11 +724,11 @@
     Code
       colonnade(x, width = 40)
     Output
-            a   b$c    $d $e      
-        <int> <int> <int> <df[,0]>
-      1     1     4     7         
-      2     2     5     8         
-      3     3     6     9         
+            a   b$c    $d $e          $f
+        <int> <int> <int> <df[,0]> <int>
+      1     1     4     7             10
+      2     2     5     8             11
+      3     3     6     9             12
 
 # matrix columns (unnamed)
 
@@ -757,9 +757,9 @@
     Code
       colonnade(x, width = 30)
     Output
-            a b        
-        <int> <int[,0]>
-      1     1          
-      2     2          
-      3     3          
+            a b             c
+        <int> <int[,0]> <int>
+      1     1               4
+      2     2               5
+      3     3               6
 
