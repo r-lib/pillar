@@ -242,7 +242,8 @@ test_that("tibble columns (empty)", {
     b = structure(
       list(
         c = 4:6, d = 7:9,
-        e = data.frame(f = 10:12)[, 0]
+        e = data.frame(f = 10:12)[, 0],
+        f = 10:12
       ),
       class = "data.frame"
     )
@@ -267,7 +268,7 @@ test_that("matrix columns (named)", {
 })
 
 test_that("matrix columns (empty)", {
-  x <- list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0])
+  x <- list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0], c = 4:6)
   expect_snapshot({
     colonnade(x, width = 30)
   })

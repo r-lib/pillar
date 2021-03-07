@@ -25,7 +25,7 @@ test_that("tests from tibble", {
     ctl_colonnade(df_all, width = 300)
     options(width = 20)
     ctl_colonnade(df_all, width = 300)
-    ctl_colonnade(list(`\n` = c("\n", '"'), `\r` = factor("\n")), width = 30)
+    ctl_colonnade(list(`\n` = c("\n", '"'), `\r` = factor(c("\n", "\n"))), width = 30)
     ctl_colonnade(list(a = c("", " ", "a ", " a")), width = 30)
     ctl_colonnade(list("mean(x)" = 5, "var(x)" = 3), width = 30)
   })
@@ -131,7 +131,8 @@ test_that("tibble columns (empty)", {
     b = vctrs::data_frame(
       c = 4:6, d = 7:9,
       e = vctrs::data_frame(f = 10:12)[, 0]
-    )
+    ),
+    c = 10:12
   )
   expect_snapshot({
     ctl_colonnade(x, width = 40)
@@ -153,8 +154,10 @@ test_that("matrix columns (named)", {
 })
 
 test_that("matrix columns (empty)", {
-  x <- list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0])
   expect_snapshot({
-    ctl_colonnade(x, width = 30)
+    ctl_colonnade(
+      list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0], c = 4:6),
+      width = 30
+    )
   })
 })

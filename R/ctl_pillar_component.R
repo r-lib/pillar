@@ -106,5 +106,5 @@ pillar_format_parts_2 <- function(x, width) {
 
   alignment <- attr(formatted[["data"]], "align") %||% "left"
 
-  map(formatted, align, width = width, align = alignment)
+  align(unlist(formatted), width = width, align = alignment)
 }

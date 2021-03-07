@@ -19,6 +19,9 @@
 #' for the titles and types of the sub-pillar.
 #' Users will only rarely need to override this method if ever.
 #'
+#' All components must be of the same height.
+#' This restriction may be levied in the future.
+#'
 #' Implementations should return `NULL` if none of the data
 #' fits the available width.
 #'

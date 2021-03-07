@@ -6,11 +6,11 @@ new_data_frame_pillar <- function(x, controller, width, title) {
 new_packed_pillars <- function(x, controller, width, title) {
   "!!!!!DEBUG new_packed_pillars(`v(width)`, `v(title)`)"
 
-  if (length(x) == 0) {
+  if (ncol(x) == 0) {
     return(compact(list(pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
       new_pillar_type(x),
-      new_empty_shaft(),
+      new_empty_shaft(nrow(x)),
       width
     ))))
   }
@@ -63,7 +63,7 @@ new_matrix_pillar <- function(x, controller, width, title) {
     return(pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
       new_pillar_type(x),
-      new_empty_shaft(),
+      new_empty_shaft(nrow(x)),
       width
     ))
   }
