@@ -41,11 +41,11 @@ format.pillar_ornament <- function(x, width = NULL, ...) {
 }
 
 # FIXME: Replace with as_glue()
-new_vertical <- function(x, ..., class = NULL) {
+new_vertical <- function(x, ...) {
   ret <- structure(
     x,
     ...,
-    class = c(class, "pillar_vertical")
+    class = "pillar_vertical"
   )
   ret
 }
