@@ -48,11 +48,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
 
-  col_widths_tiers <- map(col_widths_tiers, function(tier) {
-    tier$tier <- NULL
-    tier
-  })
-
   flat_tiers <- map(col_widths_tiers, function(tier) {
     map2(tier$pillar, tier$width, pillar_format_parts_2)
   })
