@@ -6,7 +6,7 @@
 #' @param x A character vector.
 #' @export
 #' @importFrom fansi strip_sgr
-#' @importFrom utf8 utf8_width
+#' @importFrom utf8 utf8_width utf8_format
 #' @examples
 #' get_extent(c("abc", "de"))
 #' get_extent("\u904b\u6c23")
@@ -48,14 +48,7 @@ align <- function(x, width = NULL, align = c("left", "right")) {
   "!!!!!DEBUG align(`v(x)`, `v(class(x))`)"
 
   align <- match.arg(align)
-  extent <- get_extent(x)
-  if (is.null(width)) {
-    width <- max(extent)
-  }
-  spaces <- pmax(width - extent, 0L)
-  if (align == "left") {
-    paste0(x, strrep(" ", spaces))
-  } else {
-    paste0(strrep(" ", spaces), x)
-  }
+  attributes(x) <- NULL
+
+  utf8_format(x, justify = align, width = width)
 }

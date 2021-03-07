@@ -294,6 +294,6 @@ format.pillar_shaft_decimal <- function(x, width, ...) {
   }
 
   used_width <- get_max_extent(row)
-  row <- paste0(strrep(" ", width - used_width), row)
+  row <- paste0(strrep(" ", pmax(width - used_width, 0)), row)
   new_ornament(row, width = width, align = "right")
 }
