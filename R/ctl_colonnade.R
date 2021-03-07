@@ -31,26 +31,27 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   compound_pillar <- combine_pillars(pillars)
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
-  # FIXME: Simplify
   col_widths_shown <- col_widths[col_widths$tier != 0, ]
+
+  if (!is.null(rowid)) {
+    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
+
+    col_widths_rowid <- as_tbl(vctrs::data_frame(
+      tier = unique(col_widths$tier),
+      id = 0L,
+      width = rowid_width,
+      pillar = list(rowid_pillar)
+    ))
+
+    col_widths_shown <- vctrs::vec_rbind(col_widths_rowid, col_widths_shown)
+  }
+
   col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
 
   col_widths_tiers <- map(col_widths_tiers, function(tier) {
     tier$tier <- NULL
     tier
   })
-
-  if (!is.null(rowid)) {
-    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
-
-    col_widths_tiers <- map(col_widths_tiers, function(tier) {
-      tier <- vctrs::vec_rbind(
-        as_tbl(vctrs::data_frame(id = 0L, width = rowid_width, pillar = list(rowid_pillar))),
-        tier
-      )
-      tier
-    })
-  }
 
   flat_tiers <- map(col_widths_tiers, function(tier) {
     map2(tier$pillar, tier$width, pillar_format_parts_2)
