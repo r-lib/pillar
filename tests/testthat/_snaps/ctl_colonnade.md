@@ -129,7 +129,7 @@
       [1] "2015-12-10" "2015-12-11" NA          
       
       $extra_cols$g
-      [1] "2015-12-09 10:51:35 CET" "2015-12-09 10:51:36 CET"
+      [1] "2015-12-09 10:51:35 UTC" "2015-12-09 10:51:36 UTC"
       [3] NA                       
       
       $extra_cols$h
@@ -315,8 +315,8 @@
       
       $extra_cols
       $extra_cols$g
-      [1] "2015-12-09 10:51:35 CET"
-      [2] "2015-12-09 10:51:36 CET"
+      [1] "2015-12-09 10:51:35 UTC"
+      [2] "2015-12-09 10:51:36 UTC"
       [3] NA                       
       
       $extra_cols$h
@@ -426,7 +426,7 @@
     Code
       # dummy
 
-# color, options: UTF-8 is TRUE
+# color, options: UTF-8 is FALSE
 
     Code
       style_na("NA")
@@ -561,7 +561,7 @@
       ctl_colonnade(list(a_very_long_column_name = 0), width = 20)
     Output
       $body
-        a_very_long_colum…
+        a_very_long_colum~
                      [3m[90m<dbl>[39m[23m
       [90m1[39m                  0
       
