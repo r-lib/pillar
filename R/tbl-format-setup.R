@@ -122,15 +122,17 @@ tbl_format_setup.tbl <- function(x, width, ...,
   # Body
   rownames(df) <- NULL
 
-  body <- ctl_colonnade(
+  colonnade <- ctl_colonnade(
     df,
     has_row_id = if (.row_names_info(x) > 0) "*" else TRUE,
     width = width,
     controller = x
   )
 
+  body <- colonnade$body
+
   # Extra columns
-  extra_cols <- attr(body, "extra_cols")
+  extra_cols <- colonnade$extra_cols
   extra_cols_total <- length(extra_cols)
 
   if (extra_cols_total > max_extra_cols) {

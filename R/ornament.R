@@ -40,12 +40,12 @@ format.pillar_ornament <- function(x, width = NULL, ...) {
   align(x, width = width %||% get_width(x), align = attr(x, "align"))
 }
 
-# FIXME: Replace with as_glue()
-new_vertical <- function(x, ..., class = NULL) {
+# FIXME: Replace with as_glue(),
+# requires https://github.com/tidyverse/glue/issues/214
+new_vertical <- function(x) {
   ret <- structure(
     x,
-    ...,
-    class = c(class, "pillar_vertical")
+    class = "pillar_vertical"
   )
   ret
 }
