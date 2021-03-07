@@ -125,11 +125,11 @@ test_that("tests from tibble", {
 test_that("empty", {
   expect_equal(
     format(colonnade(list(a = character(), b = logical()), width = 30)),
-    structure(character(), class = "pillar_vertical")
+    as_glue(character())
   )
   expect_equal(
     format(colonnade(iris[1:5, character()], width = 30)),
-    structure(character(), class = "pillar_vertical")
+    as_glue(character())
   )
 })
 

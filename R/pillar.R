@@ -18,7 +18,7 @@ format.pillar_1e <- function(x, width = NULL, ...) {
   width <- pillar_get_width(x, width)
   out <- pillar_format_parts(x, width)
 
-  new_vertical(unlist(unname(out)))
+  as_glue(unlist(unname(out)))
 }
 
 #' @export
