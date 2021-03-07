@@ -10,7 +10,7 @@ df_all <- new_tbl(list(
   d = c("a", "b", NA),
   e = factor(c("a", "b", NA)),
   f = as.Date("2015-12-09") + c(1:2, NA),
-  g = as.POSIXct("2015-12-09 10:51:34.5678 UTC") + c(1:2, NA),
+  g = as.POSIXct("2015-12-09 10:51:34.5678", tz = "UTC") + c(1:2, NA),
   h = as.list(c(1:2, NA)),
   i = list(list(1, 2:3), list(4:6), list(NA))
 ))
