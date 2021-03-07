@@ -118,6 +118,7 @@
     Code
       ctl_colonnade(chartype_frame(), width = 50)
     Output
+      $body
          chars          desc              
          <chr>          <chr>             
        1 "\u0001\u001f" C0 control code   
@@ -135,4 +136,8 @@
       13 "\xfd\xfe\xff" Invalid           
       14 "\\"           Backslash         
       15 "\""           Quote             
+      
+      $extra_cols
+      named list()
+      
 
