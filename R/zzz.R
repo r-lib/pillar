@@ -32,31 +32,6 @@ NULL
   invisible()
 }
 
-register_s3_method <- function(pkg, generic, class, fun = NULL, gen_pkg = pkg) {
-  stopifnot(is.character(pkg), length(pkg) == 1)
-  stopifnot(is.character(generic), length(generic) == 1)
-  stopifnot(is.character(class), length(class) == 1)
-  if (is.null(fun)) {
-    fun <- get(paste0(generic, ".", class), envir = parent.frame())
-  }
-  stopifnot(is.function(fun))
-
-  if (pkg %in% loadedNamespaces()) {
-    envir <- asNamespace(gen_pkg)
-    registerS3method(generic, class, fun, envir = envir)
-  }
-
-  # Always register hook in case package is later unloaded & reloaded
-  setHook(
-    packageEvent(pkg, "onLoad"),
-    function(...) {
-      envir <- asNamespace(gen_pkg)
-      # FIXME: Need to work around base R bug, as mentioned by Carson?
-      registerS3method(generic, class, fun, envir = envir)
-    }
-  )
-}
-
 activate_debugme <- function(level = 2) {
   old_debugme <- remove_from_logging(get_debugme())
   old_debugme <- gsub("(.)$", "\\1,", old_debugme)
