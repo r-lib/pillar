@@ -1,3 +1,10 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# pillar 1.5.1.9001
+
+- Internal changes only.
+
+
 # pillar 1.5.1.9000
 
 - Internal changes only.
