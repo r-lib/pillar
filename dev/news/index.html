@@ -464,23 +464,6 @@
 <li>Decimal values longer than 13 characters always print in scientific notation.</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
-<ul>
-<li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href='https://github.com/r-lib/pillar/issues/88'>#88</a>).</li>
-<li>Very small numbers (like <code>1e-310</code>) are now printed correctly (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/377'>#377</a>).</li>
-<li>Fix representation of right-hand side for <code>getOption("pillar.sigfig") &gt;= 6</code> (tidyverse/tibble<a href='https://github.com/r-lib/pillar/issues/380'>#380</a>).</li>
-<li>Fix computation of significant figures for numbers with absolute value &gt;= 1 (<a href='https://github.com/r-lib/pillar/issues/98'>#98</a>).</li>
-</ul>
-</div>
-<div id="new-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h2>
-<ul>
-<li>New styling helper <code><a href="../reference/style_num.html">style_subtle_num()</a></code>, formatting depends on the <code>pillar.subtle_num</code> option.</li>
-</ul>
-</div>
 </div>
     <div id="pillar-110" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.0">
