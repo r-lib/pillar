@@ -14,7 +14,12 @@ test_that("sanity check (1)", {
 })
 
 test_that("output test", {
-  x <- list(column_zero_one = 1:3 + 0.23, col_02 = letters[1:3], col_03 = factor(letters[1:3]), col_04 = ordered(letters[1:3]))
+  x <- list(
+    column_zero_one = 1:3 + 0.23,
+    col_02 = letters[1:3],
+    col_03 = factor(letters[1:3]),
+    col_04 = ordered(letters[1:3])
+  )
   expect_snapshot({
     colonnade(x, width = 4)
     colonnade(x, width = 5)
