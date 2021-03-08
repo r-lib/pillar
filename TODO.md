@@ -16,7 +16,7 @@
     - Tick column title in extra columns
     - Second backtick if column name is abbreviated, <https://github.com/tidyverse/tibble/issues/838>
     - Simplify matrix formatting to format like an array: <https://github.com/r-lib/pillar/issues/142#issuecomment-489357664>
-    - `tibble::tibble(a = structure(1000:1003, class = "foo"))` should right-align, because the underlying data is a number?
+- Resolve vctrs import
 - Blog post?
 - Format and truncate in {utf8}
 - Benchmark and profile again
