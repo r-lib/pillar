@@ -41,4 +41,29 @@ test_that("print() output", {
   })
 })
 
-# FIXME: Test get_n_print() and get_width_print() for more combinations
+test_that("get_n_print()", {
+  local_options(tibble.print_min = 3, tibble.print_max = 6)
+
+  expect_equal(get_n_print(5, 2), 5)
+  expect_equal(get_n_print(5, 3), 5)
+  expect_equal(get_n_print(5, 5), 5)
+  expect_equal(get_n_print(5, 6), 5)
+  expect_equal(get_n_print(5, 7), 5)
+
+  expect_equal(get_n_print(Inf, 7), Inf)
+
+  expect_equal(get_n_print(NULL, 2), 2)
+  expect_equal(get_n_print(NULL, 3), 3)
+  expect_equal(get_n_print(NULL, 5), 5)
+  expect_equal(get_n_print(NULL, 6), 6)
+  expect_equal(get_n_print(NULL, 7), 3)
+})
+
+test_that("get_width_print()", {
+  local_options(tibble.width = 120)
+
+  expect_equal(get_width_print(NULL), 120)
+  expect_equal(get_width_print(40), 40)
+  expect_equal(get_width_print(80), 80)
+  expect_equal(get_width_print(140), 140)
+})

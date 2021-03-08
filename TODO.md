@@ -2,7 +2,6 @@
 
 ## Next steps
 
-- Look for FIXMEs
 - Test coverage per file
 - Use penguins
 - Improve output:
