@@ -81,6 +81,14 @@ s3_register <- function(generic, class, method = NULL) {
     }
   }
 
+  do_register <- function(method_fn, envir) {
+    registerS3method(generic, class, method_fn, envir = envir)
+
+    s3 <- .getNamespaceInfo(envir, "S3methods")
+    s3 <- matrix(as.character(s3), nrow = nrow(s3), ncol = ncol(s3))
+    setNamespaceInfo(envir, "S3methods", s3)
+  }
+
   method_fn <- get_method(method)
   stopifnot(is.function(method_fn))
 
@@ -92,8 +100,7 @@ s3_register <- function(generic, class, method = NULL) {
 
       # Refresh the method, it might have been updated by `devtools::load_all()`
       method_fn <- get_method(method)
-
-      registerS3method(generic, class, method_fn, envir = ns)
+      do_register(method_fn, ns)
     }
   )
 
@@ -106,7 +113,7 @@ s3_register <- function(generic, class, method = NULL) {
 
   # Only register if generic can be accessed
   if (exists(generic, envir)) {
-    registerS3method(generic, class, method_fn, envir = envir)
+    do_register(method_fn, envir)
   }
 
   invisible()

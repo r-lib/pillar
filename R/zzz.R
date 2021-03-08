@@ -8,13 +8,11 @@ NULL
 # nolint start
 .onLoad <- function(libname, pkgname) {
 # nolint end
-  # Can't use vctrs::s3_register() here with vctrs 0.1.0
-  # https://github.com/r-lib/vctrs/pull/314
-  register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
-  register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
-  register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
-  register_s3_method("survival", "pillar_shaft", "Surv", gen_pkg = "pillar")
-  register_s3_method("survival", "pillar_shaft", "Surv2", gen_pkg = "pillar")
+  s3_register("knitr::knit_print", "pillar_squeezed_colonnade")
+  s3_register("vctrs::vec_ptype_abbr", "pillar_empty_col")
+  s3_register("bit64::pillar_shaft", "integer64")
+  s3_register("survival::pillar_shaft", "Surv")
+  s3_register("survival::pillar_shaft", "Surv2")
 
   assign_crayon_styles()
 
