@@ -66,6 +66,7 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
       - name: Configure Git identity
+        if: github.event_name == 'push'
         run: |
           env | sort
           git config --global user.name "$GITHUB_WORKFLOW"
