@@ -79,7 +79,7 @@ NBSP <- "\U00A0"
 
 wrap <- function(..., indent = 0, prefix = "", width) {
   x <- paste0(..., collapse = "")
-  wrapped <- strwrap2(x, width - nchar(prefix, type = "width"), indent)
+  wrapped <- strwrap2(x, width - get_extent(prefix), indent)
   wrapped <- paste0(prefix, wrapped)
   wrapped <- gsub(NBSP, " ", wrapped)
 
