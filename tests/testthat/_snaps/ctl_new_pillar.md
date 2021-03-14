@@ -50,12 +50,15 @@
               2
               3
       ... and 1 more sub-pillars
+
+# ctl_new_compound_pillar() for tables
+
     Code
       ctl_new_compound_pillar(new_tbl(), Titanic, width = 20, title = "a")
     Output
       <pillar>
                          a
-                   <table>
+           <table[,2,2,2]>
                      0 ...
                      0 ...
                     35 ...
