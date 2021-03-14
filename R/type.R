@@ -90,7 +90,7 @@ format_type_sum <- function(x, width, ...) {
 #' @export
 #' @rdname format_type_sum
 format_type_sum.default <- function(x, width, ...) {
-  if (!is.null(width) && width - 2 < nchar(x, type = "width")) {
+  if (!is.null(width) && width - 2 < get_extent(x)) {
     x <- substr(x, 1, max(width - 2, 0))
   }
   style_type(paste0("<", x, ">"))

@@ -60,7 +60,7 @@ glimpse.tbl <- function(x, width = NULL, ...) {
 
   var_types <- map_chr(map(df, new_pillar_type), format)
   ticked_names <- format(new_pillar_title(tick_if_needed(names(df))))
-  var_names <- paste0("$ ", justify(ticked_names, right = FALSE), " ", var_types, " ")
+  var_names <- paste0("$ ", align(ticked_names), " ", var_types, " ")
 
   # for some reason the offset was -2 in tibble but is now -1
   # so that the desired width is obtained
