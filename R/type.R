@@ -54,9 +54,13 @@ format_full_pillar_type <- function(x) {
 #' Format a type summary
 #'
 #' Called on values returned from [type_sum()] for defining the description
-#' in the capital.  Implement this method for a helper class for custom
-#' formatting, and return an object of this helper class from your
-#' `type_sum()` implementation.  See examples.
+#' in the capital.
+#'
+#' Two methods are implemented by default for this generic: the default method,
+#' and the method for the `"AsIs"` class.
+#' Return `I("type")` from your [type_sum()] implementation to format the type
+#' without angle brackets.
+#' For even more control over the formatting, implement your own method.
 #'
 #' @param x A return value from `type_sum()`
 #' @param width The desired total width. If the returned string still is
@@ -65,17 +69,13 @@ format_full_pillar_type <- function(x) {
 #'
 #' @export
 #' @examples
+#' # Default method: show the type with angle brackets
 #' format_type_sum(1, NULL)
 #' pillar(1)
 #'
+#' # AsIs method: show the type without angle brackets
 #' type_sum.accel <- function(x) {
-#'   structure("kg m/s^2", width = 8, class = "type_sum_accel")
-#' }
-#' format_type_sum.type_sum_accel <- function(x, width, ...) {
-#'   if (!is.null(width) && width < attr(x, "width")) {
-#'     x <- substr(x, 1, width)
-#'   }
-#'   style_subtle(x)
+#'   I("kg m/s^2")
 #' }
 #' accel <- structure(9.81, class = "accel")
 #' pillar(accel)
@@ -94,4 +94,13 @@ format_type_sum.default <- function(x, width, ...) {
     x <- substr(x, 1, max(width - 2, 0))
   }
   style_type(paste0("<", x, ">"))
+}
+
+#' @export
+#' @rdname format_type_sum
+format_type_sum.AsIs <- function(x, width, ...) {
+  if (!is.null(width) && width < get_extent(x)) {
+    x <- substr(x, 1, width)
+  }
+  style_type(unclass(x))
 }
