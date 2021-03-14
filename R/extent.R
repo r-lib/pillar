@@ -14,8 +14,10 @@ get_extent <- function(x) {
   force(x)
   x <- strip_sgr(x, warn = FALSE)
   width <- utf8_width(x, encode = FALSE, utf8 = TRUE)
-  is_na <- which(is.na(width))
-  width[is_na] <- nchar(x[is_na], type = "width")
+  if (anyNA(width)) {
+    is_na <- which(is.na(width))
+    width[is_na] <- nchar(x[is_na], type = "width")
+  }
   width
 }
 
