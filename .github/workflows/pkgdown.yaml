@@ -80,8 +80,6 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'req <- remotes::system_requirements("ubuntu", "18.04"); if (length(req) > 0) cat(req, sep = "\n")')
-          # For some reason gert is installed from source and needs this
-          sudo apt-get install -y libgit2-dev
 
       # Begin custom: before install
       # End custom: before install
@@ -91,7 +89,8 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+          # For some reason harfbuzz and gert are installed from source and needs this
+          sudo apt-get install -y libharfbuzz-dev libfribidi-dev libgit2-dev
 
       - name: Install dependencies
         run: |
