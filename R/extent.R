@@ -42,11 +42,12 @@ get_max_extent <- function(x) {
 #'   display width of the character vector is used (see [get_max_extent()]).
 #' @param align How should strings be aligned? If `align = left` then padding
 #'   appears on the `right`, and vice versa.
+#' @param space What character should be used for the padding?
 #' @export
 #' @examples
 #' align(c("abc", "de"), align = "left")
 #' align(c("abc", "de"), align = "right")
-align <- function(x, width = NULL, align = c("left", "right")) {
+align <- function(x, width = NULL, align = c("left", "right"), space = " ") {
   "!!!!!DEBUG align(`v(x)`, `v(class(x))`)"
 
   align <- match.arg(align)
@@ -56,8 +57,8 @@ align <- function(x, width = NULL, align = c("left", "right")) {
   }
   spaces <- pmax(width - extent, 0L)
   if (align == "left") {
-    paste0(x, strrep(" ", spaces))
+    paste0(x, strrep(space, spaces))
   } else {
-    paste0(strrep(" ", spaces), x)
+    paste0(strrep(space, spaces), x)
   }
 }
