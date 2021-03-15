@@ -49,8 +49,7 @@ format.pillar_shaft_simple <- function(x, width, ...) {
   }
   shaft[is.na(shaft)] <- paste0(
     strrep(" ", attr(x, "na_indent")),
-    # Fallback for compatibility, remove pillar_na() call in pillar 1.5.0
-    attr(x, "na") %||% pillar_na()
+    attr(x, "na")
   )
 
   new_ornament(shaft, width = width, align = align)
