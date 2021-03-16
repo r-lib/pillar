@@ -159,6 +159,9 @@ pillar_shaft_number <- function(x, sigfig, digits, display) {
   } else if (display == "sci") {
     sci <- format_scientific(x, sigfig = sigfig, digits = digits)
     dec <- NULL
+  } else if (display == "eng") {
+    sci <- format_scientific(x, sigfig = sigfig, digits = digits, engineering = TRUE)
+    dec <- NULL
   }
 
   ret <- list()
