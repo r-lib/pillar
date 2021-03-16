@@ -340,7 +340,7 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">format.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">shaft</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">shaft</span>, width <span class="op">=</span> <span class="fu">get_width</span><span class="op">(</span><span class="va">shaft</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">shaft</span>, width <span class="op">=</span> <span class="fu">pillar</span><span class="fu">:::</span><span class="fu">get_width</span><span class="op">(</span><span class="va">shaft</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
   <span class="va">out</span>
 <span class="op">}</span></code></pre></div>
