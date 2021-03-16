@@ -116,13 +116,17 @@
                 <span class="va">label</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">scale</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">notation</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
+  
+  <span class="co"># FIXME</span>
+  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+  
   <span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/new_vctr.html" class="external-link">new_vctr</a></span><span class="op">(</span>
     <span class="va">x</span>,
-    sigfig <span class="op">=</span> <span class="va">sigfig</span>,
-    digits <span class="op">=</span> <span class="va">digits</span>,
-    label <span class="op">=</span> <span class="va">label</span>,
-    scale <span class="op">=</span> <span class="va">scale</span>,
-    notation <span class="op">=</span> <span class="va">notation</span>,
+    pillar_sigfig <span class="op">=</span> <span class="va">sigfig</span>,
+    pillar_digits <span class="op">=</span> <span class="va">digits</span>,
+    pillar_label <span class="op">=</span> <span class="va">label</span>,
+    pillar_scale <span class="op">=</span> <span class="va">scale</span>,
+    pillar_notation <span class="op">=</span> <span class="va">notation</span>,
     class <span class="op">=</span> <span class="st">"tibble_num"</span>,
     inherit_base_type <span class="op">=</span> <span class="cn">TRUE</span>
   <span class="op">)</span>
@@ -131,53 +135,73 @@
 <span class="co">#' @importFrom pillar pillar_shaft</span>
 <span class="co">#' @export</span>
 <span class="va">pillar_shaft.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_data.html" class="external-link">vec_data</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-  <span class="va">scale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"scale"</span><span class="op">)</span>
-  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">scale</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">*</span> <span class="va">scale</span>
+  <span class="co"># still seems necessary</span>
+  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vctrs.r-lib.org/" class="external-link">vctrs</a></span><span class="op">)</span>
+
+<span class="co">#' @export</span>
+<span class="va">vec_ptype_full.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">notation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"notation"</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">notation</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">class</span> <span class="op">&lt;-</span> <span class="st">"tibble_num"</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="va">class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"tibble_num("</span>, <span class="va">notation</span>, <span class="st">")"</span><span class="op">)</span>
   <span class="op">}</span>
   
-  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span>
-    <span class="va">data</span>,
-    sigfig <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"sigfig"</span><span class="op">)</span>,
-    digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"digits"</span><span class="op">)</span>,
-    notation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"notation"</span><span class="op">)</span>
-  <span class="op">)</span>
+  <span class="va">sigfig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"sigfig"</span><span class="op">)</span>
+  <span class="va">digits</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"digits"</span><span class="op">)</span>
+  <span class="va">label</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"label"</span><span class="op">)</span>
+  <span class="va">notation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"notation"</span><span class="op">)</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">digits</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">":."</span>, <span class="va">digits</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">sigfig</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">out</span> <span class="op">&lt;-</span> <span class="va">class</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">":"</span>, <span class="va">sigfig</span><span class="op">)</span>
+  <span class="op">}</span>
+
+  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"{"</span>, <span class="va">label</span>, <span class="st">"}"</span><span class="op">)</span>
+  <span class="op">}</span>
+
+  <span class="va">out</span>
 <span class="op">}</span>
 
 <span class="co">#' @export</span>
-<span class="va">type_sum.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">label</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"label"</span><span class="op">)</span>
+<span class="va">vec_ptype_abbr.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">notation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_notation"</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">notation</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">notation</span> <span class="op">&lt;-</span> <span class="st">"num"</span>
+  <span class="op">}</span>
   
-  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">label</span><span class="op">)</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="va">notation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"notation"</span><span class="op">)</span>
-    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">notation</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-      <span class="va">notation</span> <span class="op">&lt;-</span> <span class="st">"num"</span>
-    <span class="op">}</span>
-    
-    <span class="va">sigfig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"sigfig"</span><span class="op">)</span>
-    <span class="va">digits</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"digits"</span><span class="op">)</span>
-    
-    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">digits</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-      <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">sigfig</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-        <span class="va">notation</span>
-      <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-        <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">notation</span>, <span class="st">":"</span>, <span class="va">sigfig</span><span class="op">)</span>
-      <span class="op">}</span>
+  <span class="va">sigfig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_sigfig"</span><span class="op">)</span>
+  <span class="va">digits</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_digits"</span><span class="op">)</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">digits</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">sigfig</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+      <span class="va">notation</span>
     <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">notation</span>, <span class="st">":."</span>, <span class="va">digits</span><span class="op">)</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">notation</span>, <span class="st">":"</span>, <span class="va">sigfig</span><span class="op">)</span>
     <span class="op">}</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">notation</span>, <span class="st">":."</span>, <span class="va">digits</span><span class="op">)</span>
   <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
 </div>
 <div id="showing-num" class="section level2">
 <h2 class="hasAnchor">
-<a href="#showing-num" class="anchor"></a>Showing <code>num()</code>
+<a href="#showing-num" class="anchor"></a>Showing <code>num</code>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'tibble'</span>
+<span class="co">#&gt; The following object is masked from 'package:vctrs':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     data_frame</span></code></pre></div>
 <div id="significant-figures" class="section level3">
 <h3 class="hasAnchor">
 <a href="#significant-figures" class="anchor"></a>Significant figures</h3>
@@ -310,46 +334,83 @@
 </div>
 <div id="computing-on-num" class="section level2">
 <h2 class="hasAnchor">
-<a href="#computing-on-num" class="anchor"></a>Computing on <code>num()</code>
+<a href="#computing-on-num" class="anchor"></a>Computing on <code>num</code>
 </h2>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vctrs.r-lib.org/" class="external-link">vctrs</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'vctrs'</span>
-<span class="co">#&gt; The following object is masked from 'package:tibble':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     data_frame</span>
-
-<span class="va">vec_arith.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">op</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+<code class="sourceCode R"><span class="va">format.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">shaft</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">shaft</span>, width <span class="op">=</span> <span class="fu">get_width</span><span class="op">(</span><span class="va">shaft</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+  <span class="va">out</span>
+<span class="op">}</span></code></pre></div>
+<div id="arithmetics" class="section level3">
+<h3 class="hasAnchor">
+<a href="#arithmetics" class="anchor"></a>Arithmetics</h3>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vec_arith.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">op</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"vec_arith.tibble_num"</span>, <span class="va">y</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="va">vec_arith.tibble_num.default</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">op</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>
-  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_arith.html" class="external-link">vec_arith</a></span><span class="op">(</span><span class="va">op</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_arith.html" class="external-link">vec_arith_base</a></span><span class="op">(</span><span class="va">op</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
   
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"tibble_num"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+    <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_proxy.html" class="external-link">vec_restore</a></span><span class="op">(</span><span class="va">out</span>, <span class="va">x</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
+    <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_proxy.html" class="external-link">vec_restore</a></span><span class="op">(</span><span class="va">out</span>, <span class="va">y</span><span class="op">)</span>
   <span class="op">}</span>
+<span class="op">}</span>
+<span class="va">vec_arith.tibble_num.MISSING</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">op</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
+  <span class="co"># FIXME</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_arith.html" class="external-link">vec_arith_base</a></span><span class="op">(</span><span class="va">op</span>, <span class="fl">0</span>, <span class="va">x</span><span class="op">)</span>
   
-  <span class="va">out</span>
+  <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_proxy.html" class="external-link">vec_restore</a></span><span class="op">(</span><span class="va">out</span>, <span class="va">x</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">vec_arith.numeric.tibble_num</span> <span class="op">&lt;-</span> <span class="va">vec_arith.tibble_num.default</span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">num</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span>
 <span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
 <span class="co">#&gt; [1] 3</span>
 <span class="fl">1</span> <span class="op">+</span> <span class="fu">num</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
 <span class="co">#&gt; [1] 3</span>
-<span class="fu">num</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fu">num</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+<span class="fl">1L</span> <span class="op">+</span> <span class="fu">num</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
 <span class="co">#&gt; [1] 3</span>
-<span class="fu">num</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">*</span> <span class="fu">num</span><span class="op">(</span><span class="fl">4</span>, sigfig <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="fu">num</span><span class="op">(</span><span class="fl">3.23456</span>, sigfig <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">-</span> <span class="fu">num</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
+<span class="co">#&gt; [1] 1.235</span>
+<span class="fu">num</span><span class="op">(</span><span class="fl">3</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fu">num</span><span class="op">(</span><span class="fl">4</span>, sigfig <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
 <span class="co">#&gt; [1] 12</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">-</span><span class="fu">num</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
+<span class="co">#&gt; [1] -2</span></code></pre></div>
+</div>
+<div id="mathematics" class="section level3">
+<h3 class="hasAnchor">
+<a href="#mathematics" class="anchor"></a>Mathematics</h3>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vec_math.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">op</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_math.html" class="external-link">vec_math_base</a></span><span class="op">(</span><span class="va">op</span>, <span class="va">x</span><span class="op">)</span>
+  
+  <span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_proxy.html" class="external-link">vec_restore</a></span><span class="op">(</span><span class="va">out</span>, <span class="va">x</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu">num</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, label <span class="op">=</span> <span class="st">"€"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu">num</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, notation <span class="op">=</span> <span class="st">"eng"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
+<span class="co">#&gt; [1] 2.00e0</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fu">num</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, label <span class="op">=</span> <span class="st">"%"</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; &lt;tibble_num[3]&gt;</span>
+<span class="co">#&gt; [1] 84.1 90.9 14.1</span></code></pre></div>
+</div>
 </div>
   </div>
 
