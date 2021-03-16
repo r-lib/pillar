@@ -40,11 +40,11 @@ num <- function(x, sigfig = NULL, digits = NULL,
   
   vctrs::new_vctr(
     x,
-    sigfig = sigfig,
-    digits = digits,
-    label = label,
-    scale = scale,
-    notation = notation,
+    pillar_sigfig = sigfig,
+    pillar_digits = digits,
+    pillar_label = label,
+    pillar_scale = scale,
+    pillar_notation = notation,
     class = "tibble_num",
     inherit_base_type = TRUE
   )
@@ -53,18 +53,8 @@ num <- function(x, sigfig = NULL, digits = NULL,
 #' @importFrom pillar pillar_shaft
 #' @export
 pillar_shaft.tibble_num <- function(x, ...) {
-  data <- vctrs::vec_data(x)
-  scale <- attr(x, "scale")
-  if (!is.null(scale)) {
-    data <- data * scale
-  }
-  
-  pillar_shaft(
-    data,
-    sigfig = attr(x, "sigfig"),
-    digits = attr(x, "digits"),
-    notation = attr(x, "notation")
-  )
+  # still seems necessary
+  pillar_shaft(unclass(x))
 }
 
 library(vctrs)
@@ -100,13 +90,13 @@ vec_ptype_full.tibble_num <- function(x, ...) {
 
 #' @export
 vec_ptype_abbr.tibble_num <- function(x, ...) {
-  notation <- attr(x, "notation")
+  notation <- attr(x, "pillar_notation")
   if (is.null(notation)) {
     notation <- "num"
   }
   
-  sigfig <- attr(x, "sigfig")
-  digits <- attr(x, "digits")
+  sigfig <- attr(x, "pillar_sigfig")
+  digits <- attr(x, "pillar_digits")
   
   if (is.null(digits)) {
     if (is.null(sigfig)) {
@@ -116,17 +106,6 @@ vec_ptype_abbr.tibble_num <- function(x, ...) {
     }
   } else {
     paste0(notation, ":.", digits)
-  }
-}
-
-#' @export
-type_sum.tibble_num <- function(x, ...) {
-  label <- attr(x, "label")
-  
-  if (!is.null(label)) {
-    I(label)
-  } else {
-    vec_ptype_abbr(x)
   }
 }
 ```

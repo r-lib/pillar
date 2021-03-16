@@ -114,23 +114,25 @@ pillar_shaft.logical <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 #' @param sigfig
-#'   Minimum number of significant figures to display, default: 3.
-#'   Numbers larger than 1 will potentially show more significant figures than this.
-#' @param digits
-#'   Number of figures to display after the decimal point,
-#'   overrides `sigfig` if given.
-#' @param notation
-#'   One of `"dec"`, `"sci"`, `"eng"`, `"scifix"` or `"engfix"`.
-#'   If `NULL`, `"dec"` is used if it fits and if the total width
-#'   is not larger than 13.
-pillar_shaft.numeric <- function(x, ..., sigfig = NULL, digits = NULL,
-                                 notation = NULL) {
-  if (!is.null(attr(x, "class"))) {
+#'   Deprecated. Set a `"pillar_sigfig"` attribute on the data instead.
+pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
+  if (!is.null(attr(x, "class")) && isTRUE(attr(x, "pillar_aware"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
-  pillar_shaft_number(x, sigfig, digits, notation)
+  data <- unclass(x)
+  scale <- attr(x, "pillar_scale")
+  if (!is.null(scale)) {
+    data <- data * scale
+  }
+
+  pillar_shaft_number(
+    data,
+    sigfig %||% attr(x, "pillar_sigfig"),
+    attr(x, "pillar_digits"),
+    attr(x, "pillar_notation")
+  )
 }
 
 pillar_shaft_number <- function(x, sigfig, digits, notation) {
