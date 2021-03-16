@@ -31,6 +31,11 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
+  label <- attr(x, "pillar_label")
+  if (!is.null(label)) {
+    return(I(label))
+  }
+
   if (is.object(x) || vctrs::vec_is(x)) {
     return(vctrs::vec_ptype_abbr(x))
   }
