@@ -164,7 +164,7 @@ pillar_shaft_number <- function(x, sigfig, digits) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig, 0L)
+  pillar_shaft_number(x, sigfig, digits = NULL)
 }
 
 # registered in .onLoad()
