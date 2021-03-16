@@ -22,7 +22,7 @@ format_decimal <- function(x, sigfig, digits) {
   split_decimal(x, sigfig, digits)
 }
 
-split_decimal <- function(x, sigfig, digits, scientific = FALSE) {
+split_decimal <- function(x, sigfig, digits, sci_mod = NULL) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -37,7 +37,11 @@ split_decimal <- function(x, sigfig, digits, scientific = FALSE) {
   # Compute exponent and mantissa
   exp <- compute_exp(abs_x, sigfig)
 
-  if (scientific) {
+  if (!is.null(sci_mod)) {
+    if (sci_mod != 1) {
+      exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
+    }
+
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
     mnt <- abs_x
@@ -64,7 +68,7 @@ split_decimal <- function(x, sigfig, digits, scientific = FALSE) {
 
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
-  if (!scientific) {
+  if (is.null(sci_mod)) {
     dec[diff_to_trunc(x) == 0] <- FALSE
   }
 

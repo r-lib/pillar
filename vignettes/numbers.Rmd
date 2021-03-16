@@ -142,11 +142,12 @@ tibble(
 ```
 
 
-### Display
+### Notation
 
 ```{r}
 tibble(
-  sci  = num(10^(-8:8), display = "sci"),
-  dec  = num(10^(-8:8), display = "dec")
+  sci  = num(10^(-13:6), display = "sci"),
+  eng  = num(10^(-13:6), display = "eng"),
+  dec  = num(10^(-13:6), display = "dec")
 )
 ```
