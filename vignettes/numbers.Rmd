@@ -213,6 +213,7 @@ format.tibble_num <- function(x, ...) {
 }
 ```
 
+### Arithmetics
 
 ```{r}
 vec_arith.tibble_num <- function(op, x, y, ...) {
@@ -220,15 +221,20 @@ vec_arith.tibble_num <- function(op, x, y, ...) {
 }
 vec_arith.tibble_num.default <- function(op, x, y, ...) {
   stopifnot(is.numeric(x), is.numeric(y))
-  out <- vec_arith(op, unclass(x), unclass(y))
+  out <- vec_arith_base(op, x, y)
   
   if (inherits(x, "tibble_num")) {
-    attributes(out) <- attributes(x)
+    vec_restore(out, x)
   } else {
-    attributes(out) <- attributes(y)
+    vec_restore(out, y)
   }
+}
+vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
+  stopifnot(is.numeric(x))
+  # FIXME
+  out <- vec_arith_base(op, 0, x)
   
-  out
+  vec_restore(out, x)
 }
 
 vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
@@ -237,18 +243,23 @@ vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
 ```{r}
 num(1) + 2
 1 + num(2)
+1L + num(2)
 num(3.23456, sigfig = 4) - num(2)
 num(3, digits = 2) * num(4, sigfig = 2)
 ```
 
 ```{r}
+-num(2)
+```
+
+### Mathematics
+
+```{r}
 vec_math.tibble_num <- function(op, x, ...) {
   stopifnot(is.numeric(x))
-  out <- vec_math(op, unclass(x))
-
-  attributes(out) <- attributes(x)
-
-  out
+  out <- vec_math_base(op, x)
+  
+  vec_restore(out, x)
 }
 ```
 
