@@ -63,6 +63,52 @@ pillar_shaft.tibble_num <- function(x, ...) {
   )
 }
 
+library(vctrs)
+
+#' @export
+vec_ptype_full.tibble_num <- function(x, ...) {
+  notation <- attr(x, "notation")
+  if (is.null(notation)) {
+    class <- "tibble_num"
+  } else {
+    class <- paste0("tibble_num(", notation, ")")
+  }
+  
+  sigfig <- attr(x, "sigfig")
+  digits <- attr(x, "digits")
+  
+  if (is.null(digits)) {
+    if (is.null(sigfig)) {
+      class
+    } else {
+      paste0(class, ":", sigfig)
+    }
+  } else {
+    paste0(class, ":.", digits)
+  }
+}
+
+#' @export
+vec_ptype_abbr.tibble_num <- function(x, ...) {
+  notation <- attr(x, "notation")
+  if (is.null(notation)) {
+    notation <- "num"
+  }
+  
+  sigfig <- attr(x, "sigfig")
+  digits <- attr(x, "digits")
+  
+  if (is.null(digits)) {
+    if (is.null(sigfig)) {
+      notation
+    } else {
+      paste0(notation, ":", sigfig)
+    }
+  } else {
+    paste0(notation, ":.", digits)
+  }
+}
+
 #' @export
 type_sum.tibble_num <- function(x, ...) {
   label <- attr(x, "label")
@@ -70,23 +116,7 @@ type_sum.tibble_num <- function(x, ...) {
   if (!is.null(label)) {
     I(label)
   } else {
-    notation <- attr(x, "notation")
-    if (is.null(notation)) {
-      notation <- "num"
-    }
-    
-    sigfig <- attr(x, "sigfig")
-    digits <- attr(x, "digits")
-    
-    if (is.null(digits)) {
-      if (is.null(sigfig)) {
-        notation
-      } else {
-        paste0(notation, ":", sigfig)
-      }
-    } else {
-      paste0(notation, ":.", digits)
-    }
+    vec_ptype_abbr(x)
   }
 }
 ```
@@ -165,8 +195,16 @@ tibble(
 ## Computing on `num()`
 
 ```{r}
-library(vctrs)
+format.tibble_num <- function(x, ...) {
+  shaft <- pillar_shaft(x)
+  out <- format(shaft, width = get_width(shaft))
+  attributes(out) <- NULL
+  out
+}
+```
 
+
+```{r}
 vec_arith.tibble_num <- function(op, x, y, ...) {
   UseMethod("vec_arith.tibble_num", y)
 }
@@ -186,10 +224,9 @@ vec_arith.tibble_num.default <- function(op, x, y, ...) {
 vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
 ```
 
-
 ```{r}
 num(1) + 2
 1 + num(2)
-num(1) + num(2)
-num(3) * num(4, sigfig = 2)
+num(3.23456, sigfig = 4) - num(2)
+num(3, digits = 2) * num(4, sigfig = 2)
 ```
