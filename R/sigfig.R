@@ -18,7 +18,7 @@
 # @examples
 # format_decimal(1.5:3.5)
 # format_decimal(1e9)
-format_decimal <- function(x, sigfig, digits) {
+format_decimal <- function(x, sigfig, digits = NULL) {
   split_decimal(x, sigfig, digits)
 }
 
