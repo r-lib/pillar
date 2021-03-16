@@ -1,0 +1,69 @@
+---
+title: "Controlling display of numbers"
+output: html_vignette
+vignette: >
+  %\VignetteIndexEntry{Controlling display of numbers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Tibbles print numbers with three significant digits by default, switching to scientific notation if the available space is too small.
+Underlines are used to highlight groups of three digits.
+This display works for many, but not for all use cases.
+
+```{r include = FALSE}
+pkgload::load_all()
+```
+
+```{r}
+library(pillar)
+```
+
+## The `num()` constructor
+
+```{r}
+#' @export
+num <- function(x, sigfig = NULL) {
+  stopifnot(is.numeric(x))
+  vctrs::new_vctr(
+    x,
+    sigfig = sigfig,
+    class = "tibble_num",
+    inherit_base_type = TRUE
+  )
+}
+
+#' @importFrom pillar pillar_shaft
+#' @export
+pillar_shaft.tibble_num <- function(x, ...) {
+  pillar_shaft(
+    vctrs::vec_data(x),
+    sigfig = attr(x, "sigfig")
+  )
+}
+
+#' @export
+type_sum.tibble_num <- function(x, ...) {
+  paste0("num:", attr(x, "sigfig"))
+}
+```
+
+## Using `num()`
+
+```{r}
+library(tibble)
+
+# Significant figures
+tibble(
+  x = num(9:11 * 100 + 0.5, 3),
+  x4 = num(9:11 * 100 + 0.5, 4),
+  x5 = num(9:11 * 100 + 0.5, 5),
+)
+```
