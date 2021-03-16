@@ -18,10 +18,6 @@ Tibbles print numbers with three significant digits by default, switching to sci
 Underlines are used to highlight groups of three digits.
 This display works for many, but not for all use cases.
 
-```{r include = FALSE}
-pkgload::load_all()
-```
-
 ```{r}
 library(pillar)
 ```
