@@ -7,8 +7,8 @@
 # @examples
 # format_scientific(1.5:3.5)
 # format_scientific(1e9)
-format_scientific <- function(x, sigfig) {
-  split_decimal(x, sigfig, scientific = TRUE)
+format_scientific <- function(x, sigfig, digits) {
+  split_decimal(x, sigfig, digits, scientific = TRUE)
 }
 
 format_exp <- function(x) {

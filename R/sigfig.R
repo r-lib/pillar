@@ -18,11 +18,11 @@
 # @examples
 # format_decimal(1.5:3.5)
 # format_decimal(1e9)
-format_decimal <- function(x, sigfig) {
-  split_decimal(x, sigfig)
+format_decimal <- function(x, sigfig, digits) {
+  split_decimal(x, sigfig, digits)
 }
 
-split_decimal <- function(x, sigfig, scientific = FALSE) {
+split_decimal <- function(x, sigfig, digits, scientific = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -43,12 +43,22 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     mnt <- abs_x
     mnt_idx <- which(num & abs_x != 0)
     mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
-    round_x <- safe_signif(mnt, sigfig)
-    rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
+    if (is.null(digits)) {
+      round_x <- safe_signif(mnt, sigfig)
+      rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
+    } else {
+      round_x <- round(mnt, sigfig)
+      rhs_digits <- digits
+    }
     exp_display <- exp
   } else {
-    round_x <- safe_signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
-    rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+    if (is.null(digits)) {
+      round_x <- safe_signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
+      rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+    } else {
+      round_x <- round(abs_x, digits)
+      rhs_digits <- digits
+    }
     exp_display <- rep_along(x, NA_integer_)
   }
 

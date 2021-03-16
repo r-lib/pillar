@@ -113,29 +113,38 @@ pillar_shaft.logical <- function(x, ...) {
 
 #' @export
 #' @rdname pillar_shaft
-#' @param sigfig Minimum number of significant figures to display, default: 3.
+#' @param sigfig
+#'   Minimum number of significant figures to display, default: 3.
 #'   Numbers larger than 1 will potentially show more significant figures than this.
-pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
+#' @param digits
+#'   Number of figures to display after the decimal point,
+#'   overrides `sigfig` if given.
+pillar_shaft.numeric <- function(x, ..., sigfig = NULL, digits = NULL) {
   if (!is.null(attr(x, "class"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
-  pillar_shaft_number(x, sigfig)
+  pillar_shaft_number(x, sigfig, digits)
 }
 
-pillar_shaft_number <- function(x, sigfig) {
+pillar_shaft_number <- function(x, sigfig, digits) {
+  if (!is.null(digits)) {
+    if (!is.numeric(digits) || length(digits) != 1 || digits < 0L) {
+      abort("`digits` must be a nonnegative number.")
+    }
+  }
   if (is.null(sigfig)) {
     sigfig <- getOption("pillar.sigfig", 3)
     if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
-      inform("Option pillar.min_chars must be a nonnegative number greater or equal 1. Resetting to 1.")
+      inform("Option pillar.min_chars must be a positive number greater or equal 1. Resetting to 1.")
       sigfig <- 1L
       options(pillar.sigfig = sigfig)
     }
   }
 
-  dec <- format_decimal(x, sigfig = sigfig)
-  sci <- format_scientific(x, sigfig = sigfig)
+  dec <- format_decimal(x, sigfig = sigfig, digits = digits)
+  sci <- format_scientific(x, sigfig = sigfig, digits = digits)
 
   ret <- list(dec = dec, sci = sci)
 
@@ -155,7 +164,7 @@ pillar_shaft_number <- function(x, sigfig) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig)
+  pillar_shaft_number(x, sigfig, 0L)
 }
 
 # registered in .onLoad()
