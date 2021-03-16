@@ -30,13 +30,14 @@ library(pillar)
 
 ```{r}
 #' @export
-num <- function(x, sigfig = NULL, digits = NULL, label = NULL) {
+num <- function(x, sigfig = NULL, digits = NULL, label = NULL, scale = 1) {
   stopifnot(is.numeric(x))
   vctrs::new_vctr(
     x,
     sigfig = sigfig,
     digits = digits,
     label = label,
+    scale = scale,
     class = "tibble_num",
     inherit_base_type = TRUE
   )
@@ -45,8 +46,14 @@ num <- function(x, sigfig = NULL, digits = NULL, label = NULL) {
 #' @importFrom pillar pillar_shaft
 #' @export
 pillar_shaft.tibble_num <- function(x, ...) {
+  data <- vctrs::vec_data(x)
+  scale <- attr(x, "scale")
+  if (scale != 1) {
+    data <- data * scale
+  }
+  
   pillar_shaft(
-    vctrs::vec_data(x),
+    data,
     sigfig = attr(x, "sigfig"),
     digits = attr(x, "digits")
   )
@@ -95,5 +102,12 @@ tibble(
   usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
   gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
   chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
+)
+
+# Percentage
+tibble(
+  small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
+  medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
+  large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
 )
 ```
