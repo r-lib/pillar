@@ -99,7 +99,13 @@ tbl_format_setup.tbl <- function(x, width, ...,
       df <- df[seq_len(n), , drop = FALSE]
     }
   } else {
-    df <- as.data.frame(head(x, n))
+    if (!is.data.frame(x)) {
+      x <- as.data.frame(x)
+    }
+
+    # head() destroys attributes
+    idx <- seq_len(n)
+    df <- map(x, `[`, idx)
   }
 
   if (is.na(rows)) {

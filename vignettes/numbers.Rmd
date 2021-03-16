@@ -262,10 +262,8 @@ set_num_opts <- function(x, sigfig = NULL, digits = NULL,
 
 library(units)
 
-pillar(set_num_opts(set_units(1:3, m), notation = "sci") + set_units(1:3, km))
-pillar(set_num_opts(set_units(1:3, km), digits = 2) + set_units(1:3, m))
-
-# FIXME: subsetting needs to preserve pillar attributes
-set_num_opts(set_units(1:3, m) + set_units(1:3, km), notation = "sci")
-set_num_opts(set_units(1:3, m) + set_units(1:3, km), notation = "sci")[1:3]
+tibble(
+  sci = set_num_opts(set_units(4:6, m), notation = "sci") + set_units(1:3, km),
+  digits = set_num_opts(set_units(1:3, km), digits = 2) + set_units(4:6, m)
+)
 ```
