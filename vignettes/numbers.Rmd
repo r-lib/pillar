@@ -131,7 +131,7 @@ type_sum.tibble_num <- function(x, ...) {
 }
 ```
 
-## Showing `num()`
+## Showing `num`
 
 ```{r}
 library(tibble)
@@ -202,7 +202,7 @@ tibble(
 )
 ```
 
-## Computing on `num()`
+## Computing on `num`
 
 ```{r}
 format.tibble_num <- function(x, ...) {
