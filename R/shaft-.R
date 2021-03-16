@@ -119,16 +119,17 @@ pillar_shaft.logical <- function(x, ...) {
 #' @param digits
 #'   Number of figures to display after the decimal point,
 #'   overrides `sigfig` if given.
-pillar_shaft.numeric <- function(x, ..., sigfig = NULL, digits = NULL) {
+pillar_shaft.numeric <- function(x, ..., sigfig = NULL, digits = NULL,
+                                 display = NULL) {
   if (!is.null(attr(x, "class"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
-  pillar_shaft_number(x, sigfig, digits)
+  pillar_shaft_number(x, sigfig, digits, display)
 }
 
-pillar_shaft_number <- function(x, sigfig, digits) {
+pillar_shaft_number <- function(x, sigfig, digits, display) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1 || digits < 0L) {
       abort("`digits` must be a nonnegative number.")
@@ -143,20 +144,30 @@ pillar_shaft_number <- function(x, sigfig, digits) {
     }
   }
 
-  dec <- format_decimal(x, sigfig = sigfig, digits = digits)
-  sci <- format_scientific(x, sigfig = sigfig, digits = digits)
+  if (is.null(display)) {
+    dec <- format_decimal(x, sigfig = sigfig, digits = digits)
+    sci <- format_scientific(x, sigfig = sigfig, digits = digits)
 
-  ret <- list(dec = dec, sci = sci)
-
-  MAX_DEC_WIDTH <- 13
-  dec_width <- get_width(ret$dec)
-  if (dec_width > MAX_DEC_WIDTH) {
-    dec_width <- get_width(ret$sci)
+    MAX_DEC_WIDTH <- 13
+    dec_width <- get_width(dec)
+    if (dec_width > MAX_DEC_WIDTH) {
+      dec <- NULL
+    }
+  } else if (display == "dec") {
+    dec <- format_decimal(x, sigfig = sigfig, digits = digits)
+    sci <- NULL
+  } else if (display == "sci") {
+    sci <- format_scientific(x, sigfig = sigfig, digits = digits)
+    dec <- NULL
   }
+
+  ret <- list()
+  ret$dec <- dec
+  ret$sci <- sci
 
   new_pillar_shaft(
     ret,
-    width = dec_width,
+    width = get_width(ret$dec %||% ret$sci),
     min_width = min(get_min_widths(ret)),
     class = "pillar_shaft_decimal"
   )
@@ -164,7 +175,7 @@ pillar_shaft_number <- function(x, sigfig, digits) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig, digits = NULL)
+  pillar_shaft_number(x, sigfig, digits = NULL, display = NULL)
 }
 
 # registered in .onLoad()

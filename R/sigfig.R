@@ -286,22 +286,24 @@ assemble_decimal <- function(x) {
 
 #' @export
 format.pillar_shaft_decimal <- function(x, width, ...) {
-  if (length(x$dec$num) == 0L) {
+  if (is.null(x$dec) || width < get_width(x$dec)) {
+    fmt <- x$sci
+  } else {
+    fmt <- x$dec
+  }
+
+  if (length(fmt$num) == 0L) {
     return(character())
   }
 
-  if (width < get_min_width(x)) {
+  if (width < get_min_width(fmt)) {
     stop(
       "Need at least width ", get_min_width(x), ", requested ", width, ".",
       call. = FALSE
     )
   }
 
-  if (width >= get_width(x$dec)) {
-    row <- assemble_decimal(x$dec)
-  } else {
-    row <- assemble_decimal(x$sci)
-  }
+  row <- assemble_decimal(fmt)
 
   used_width <- get_max_extent(row)
   row <- paste0(strrep(" ", width - used_width), row)

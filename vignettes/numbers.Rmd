@@ -31,7 +31,7 @@ library(pillar)
 ```{r}
 #' @export
 num <- function(x, sigfig = NULL, digits = NULL, 
-                label = NULL, scale = NULL) {
+                label = NULL, scale = NULL, display = NULL) {
   
   stopifnot(is.numeric(x))
   vctrs::new_vctr(
@@ -40,6 +40,7 @@ num <- function(x, sigfig = NULL, digits = NULL,
     digits = digits,
     label = label,
     scale = scale,
+    display = display,
     class = "tibble_num",
     inherit_base_type = TRUE
   )
@@ -57,7 +58,8 @@ pillar_shaft.tibble_num <- function(x, ...) {
   pillar_shaft(
     data,
     sigfig = attr(x, "sigfig"),
-    digits = attr(x, "digits")
+    digits = attr(x, "digits"),
+    display = attr(x, "display")
   )
 }
 
@@ -68,13 +70,22 @@ type_sum.tibble_num <- function(x, ...) {
   if (!is.null(label)) {
     I(label)
   } else {
+    display <- attr(x, "display")
+    if (is.null(display)) {
+      display <- "num"
+    }
+    
     sigfig <- attr(x, "sigfig")
     digits <- attr(x, "digits")
     
     if (is.null(digits)) {
-      paste0("num:", sigfig)
+      if (is.null(sigfig)) {
+        display
+      } else {
+        paste0(display, ":", sigfig)
+      }
     } else {
-      paste0("num:.", digits)
+      paste0(display, ":.", digits)
     }
   }
 }
@@ -127,5 +138,15 @@ tibble(
   small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
   medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
   large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
+)
+```
+
+
+### Display
+
+```{r}
+tibble(
+  sci  = num(10^(-8:8), display = "sci"),
+  dec  = num(10^(-8:8), display = "dec")
 )
 ```
