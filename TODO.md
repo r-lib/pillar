@@ -7,7 +7,6 @@
     - Multi-stage (hierarchical) output for packed data frames
     - Show columns that are abbreviated in full
     - Packed data frames and matrices: if too wide, show ellipsis
-    - Packed matrices: show type only once
     - Tick column title in extra columns
     - Second backtick if column name is abbreviated, <https://github.com/tidyverse/tibble/issues/838>
     - Simplify matrix formatting to format like an array: <https://github.com/r-lib/pillar/issues/142#issuecomment-489357664>
@@ -15,6 +14,7 @@
         - Requires column specification
     - Show number of rows if known
         - requires `tbl_sum()` with ellipsis?
+    - `format_glimpse()` uses `pillar_shaft()` for numbers
 - Resolve vctrs imports
 - Format and truncate in {utf8}
 - Test coverage per file
