@@ -91,7 +91,7 @@ type_sum.tibble_num <- function(x, ...) {
 }
 ```
 
-## Using `num()`
+## Showing `num()`
 
 ```{r}
 library(tibble)
@@ -160,4 +160,36 @@ tibble(
   scifix  = num(10^(-13:6) * 123, notation = "scifix"),
   engfix  = num(10^(-13:6) * 123, notation = "engfix")
 )
+```
+
+## Computing on `num()`
+
+```{r}
+library(vctrs)
+
+vec_arith.tibble_num <- function(op, x, y, ...) {
+  UseMethod("vec_arith.tibble_num", y)
+}
+vec_arith.tibble_num.default <- function(op, x, y, ...) {
+  stopifnot(is.numeric(x), is.numeric(y))
+  out <- vec_arith(op, unclass(x), unclass(y))
+  
+  if (inherits(x, "tibble_num")) {
+    attributes(out) <- attributes(x)
+  } else {
+    attributes(out) <- attributes(y)
+  }
+  
+  out
+}
+
+vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
+```
+
+
+```{r}
+num(1) + 2
+1 + num(2)
+num(1) + num(2)
+num(3) * num(4, sigfig = 2)
 ```
