@@ -30,12 +30,13 @@ library(pillar)
 
 ```{r}
 #' @export
-num <- function(x, sigfig = NULL, digits = NULL) {
+num <- function(x, sigfig = NULL, digits = NULL, label = NULL) {
   stopifnot(is.numeric(x))
   vctrs::new_vctr(
     x,
     sigfig = sigfig,
     digits = digits,
+    label = label,
     class = "tibble_num",
     inherit_base_type = TRUE
   )
@@ -53,13 +54,19 @@ pillar_shaft.tibble_num <- function(x, ...) {
 
 #' @export
 type_sum.tibble_num <- function(x, ...) {
-  sigfig <- attr(x, "sigfig")
-  digits <- attr(x, "digits")
+  label <- attr(x, "label")
   
-  if (is.null(digits)) {
-    paste0("num:", sigfig)
+  if (!is.null(label)) {
+    I(label)
   } else {
-    paste0("num:.", digits)
+    sigfig <- attr(x, "sigfig")
+    digits <- attr(x, "digits")
+    
+    if (is.null(digits)) {
+      paste0("num:", sigfig)
+    } else {
+      paste0("num:.", digits)
+    }
   }
 }
 ```
@@ -81,5 +88,12 @@ tibble(
   x0 = num(9:11 * 100 + 0.5, digits = 0),
   x1 = num(9:11 * 100 + 0.5, digits = 1),
   x2 = num(9:11 * 100 + 0.5, digits = 2),
+)
+
+# Currency
+tibble(
+  usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
+  gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
+  chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
 )
 ```
