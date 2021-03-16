@@ -30,11 +30,12 @@ library(pillar)
 
 ```{r}
 #' @export
-num <- function(x, sigfig = NULL) {
+num <- function(x, sigfig = NULL, digits = NULL) {
   stopifnot(is.numeric(x))
   vctrs::new_vctr(
     x,
     sigfig = sigfig,
+    digits = digits,
     class = "tibble_num",
     inherit_base_type = TRUE
   )
@@ -45,13 +46,21 @@ num <- function(x, sigfig = NULL) {
 pillar_shaft.tibble_num <- function(x, ...) {
   pillar_shaft(
     vctrs::vec_data(x),
-    sigfig = attr(x, "sigfig")
+    sigfig = attr(x, "sigfig"),
+    digits = attr(x, "digits")
   )
 }
 
 #' @export
 type_sum.tibble_num <- function(x, ...) {
-  paste0("num:", attr(x, "sigfig"))
+  sigfig <- attr(x, "sigfig")
+  digits <- attr(x, "digits")
+  
+  if (is.null(digits)) {
+    paste0("num:", sigfig)
+  } else {
+    paste0("num:.", digits)
+  }
 }
 ```
 
@@ -62,8 +71,15 @@ library(tibble)
 
 # Significant figures
 tibble(
-  x = num(9:11 * 100 + 0.5, 3),
+  x3 = num(9:11 * 100 + 0.5, 3),
   x4 = num(9:11 * 100 + 0.5, 4),
   x5 = num(9:11 * 100 + 0.5, 5),
+)
+
+# Decimal digits
+tibble(
+  x0 = num(9:11 * 100 + 0.5, digits = 0),
+  x1 = num(9:11 * 100 + 0.5, digits = 1),
+  x2 = num(9:11 * 100 + 0.5, digits = 2),
 )
 ```
