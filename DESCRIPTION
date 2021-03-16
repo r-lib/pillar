@@ -57,4 +57,4 @@ Config/testthat/start-first:
     ctl_colonnade_1,
     ctl_colonnade_2
 Remotes: 
-    r-quantities/units#274
+    r-quantities/units
