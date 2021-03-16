@@ -22,7 +22,7 @@ format_decimal <- function(x, sigfig, digits = NULL) {
   split_decimal(x, sigfig, digits)
 }
 
-split_decimal <- function(x, sigfig, digits, sci_mod = NULL) {
+split_decimal <- function(x, sigfig, digits, sci_mod = NULL, fixed = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -38,6 +38,9 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL) {
   exp <- compute_exp(abs_x, sigfig)
 
   if (!is.null(sci_mod)) {
+    if (fixed) {
+      exp <- rep_along(exp, as.integer(round(min(exp))))
+    }
     if (sci_mod != 1) {
       exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
     }

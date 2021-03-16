@@ -120,8 +120,9 @@ pillar_shaft.logical <- function(x, ...) {
 #'   Number of figures to display after the decimal point,
 #'   overrides `sigfig` if given.
 #' @param notation
-#'   One of `"dec"`, `"sci"` or `"eng"`. If `NULL`, `"dec"` is used if it fits
-#'   and if the total width is not larger than 13.
+#'   One of `"dec"`, `"sci"`, `"eng"`, `"scifix"` or `"engfix"`.
+#'   If `NULL`, `"dec"` is used if it fits and if the total width
+#'   is not larger than 13.
 pillar_shaft.numeric <- function(x, ..., sigfig = NULL, digits = NULL,
                                  notation = NULL) {
   if (!is.null(attr(x, "class"))) {
@@ -159,11 +160,19 @@ pillar_shaft_number <- function(x, sigfig, digits, notation) {
   } else if (notation == "dec") {
     dec <- format_decimal(x, sigfig = sigfig, digits = digits)
     sci <- NULL
-  } else if (notation == "sci") {
-    sci <- format_scientific(x, sigfig = sigfig, digits = digits)
+  } else if (notation %in% c("sci", "scifix")) {
+    sci <- format_scientific(
+      x,
+      sigfig = sigfig, digits = digits,
+      fixed = (notation == "scifix")
+    )
     dec <- NULL
-  } else if (notation == "eng") {
-    sci <- format_scientific(x, sigfig = sigfig, digits = digits, engineering = TRUE)
+  } else if (notation %in% c("eng", "engfix")) {
+    sci <- format_scientific(
+      x,
+      sigfig = sigfig, digits = digits, engineering = TRUE,
+      fixed = (notation == "engfix")
+    )
     dec <- NULL
   }
 

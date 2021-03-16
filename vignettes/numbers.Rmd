@@ -151,3 +151,13 @@ tibble(
   dec  = num(10^(-13:6), notation = "dec")
 )
 ```
+
+
+### Fixed exponent
+
+```{r}
+tibble(
+  scifix  = num(10^(-13:6) * 123, notation = "scifix"),
+  engfix  = num(10^(-13:6) * 123, notation = "engfix")
+)
+```
