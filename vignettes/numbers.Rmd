@@ -34,6 +34,10 @@ num <- function(x, sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL, notation = NULL) {
   
   stopifnot(is.numeric(x))
+  
+  # FIXME
+  x <- as.numeric(x)
+  
   vctrs::new_vctr(
     x,
     sigfig = sigfig,
@@ -76,16 +80,22 @@ vec_ptype_full.tibble_num <- function(x, ...) {
   
   sigfig <- attr(x, "sigfig")
   digits <- attr(x, "digits")
+  label <- attr(x, "label")
+  notation <- attr(x, "notation")
   
-  if (is.null(digits)) {
-    if (is.null(sigfig)) {
-      class
-    } else {
-      paste0(class, ":", sigfig)
-    }
+  if (!is.null(digits)) {
+    out <- paste0(class, ":.", digits)
+  } else if (is.null(sigfig)) {
+    out <- class
   } else {
-    paste0(class, ":.", digits)
+    out <- paste0(class, ":", sigfig)
   }
+
+  if (!is.null(label)) {
+    out <- paste0(out, "{", label, "}")
+  }
+
+  out
 }
 
 #' @export
@@ -229,4 +239,21 @@ num(1) + 2
 1 + num(2)
 num(3.23456, sigfig = 4) - num(2)
 num(3, digits = 2) * num(4, sigfig = 2)
+```
+
+```{r}
+vec_math.tibble_num <- function(op, x, ...) {
+  stopifnot(is.numeric(x))
+  out <- vec_math(op, unclass(x))
+
+  attributes(out) <- attributes(x)
+
+  out
+}
+```
+
+```{r}
+min(num(1:3, label = "€"))
+mean(num(1:3, notation = "eng"))
+sin(num(1:3, label = "%", scale = 100))
 ```
