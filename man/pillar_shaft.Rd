@@ -24,7 +24,7 @@ pillar_shaft(x, ...)
 
 \method{pillar_shaft}{logical}(x, ...)
 
-\method{pillar_shaft}{numeric}(x, ..., sigfig = NULL)
+\method{pillar_shaft}{numeric}(x, ..., sigfig = NULL, digits = NULL, notation = NULL)
 
 \method{pillar_shaft}{Date}(x, ...)
 
@@ -51,6 +51,12 @@ pillar_shaft(x, ...)
 
 \item{sigfig}{Minimum number of significant figures to display, default: 3.
 Numbers larger than 1 will potentially show more significant figures than this.}
+
+\item{digits}{Number of figures to display after the decimal point,
+overrides \code{sigfig} if given.}
+
+\item{notation}{One of \code{"dec"}, \code{"sci"} or \code{"eng"}. If \code{NULL}, \code{"dec"} is used if it fits
+and if the total width is not larger than 13.}
 
 \item{min_width}{Minimum number of characters to display,
 unless the string fits a shorter width.}
