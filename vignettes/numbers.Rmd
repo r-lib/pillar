@@ -30,7 +30,9 @@ library(pillar)
 
 ```{r}
 #' @export
-num <- function(x, sigfig = NULL, digits = NULL, label = NULL, scale = 1) {
+num <- function(x, sigfig = NULL, digits = NULL, 
+                label = NULL, scale = NULL) {
+  
   stopifnot(is.numeric(x))
   vctrs::new_vctr(
     x,
@@ -48,7 +50,7 @@ num <- function(x, sigfig = NULL, digits = NULL, label = NULL, scale = 1) {
 pillar_shaft.tibble_num <- function(x, ...) {
   data <- vctrs::vec_data(x)
   scale <- attr(x, "scale")
-  if (scale != 1) {
+  if (!is.null(scale)) {
     data <- data * scale
   }
   
