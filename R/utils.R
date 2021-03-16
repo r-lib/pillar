@@ -1,3 +1,31 @@
+#' @importFrom utils head
+df_head <- function(x, n) {
+  if (!is.data.frame(x)) {
+    as.data.frame(head(x, n))
+  } else {
+    vec_head(as.data.frame(x), n)
+  }
+}
+
+vec_head <- function(x, n) {
+  n <- min(n, vctrs::vec_size(x))
+  vec_slice_safe(x, seq_len(n))
+}
+
+# FIXME: Needed? Can we do vec_slice()?
+vec_slice_safe <- function(x, i) {
+  if (is.data.frame(x)) {
+    x[] <- map(x, vec_slice_safe, i)
+    x
+  } else if (isS4(x)) {
+    browser()
+    # vec_slice() doesn't work for S4 classes yet
+    head(x, length(i))
+  } else {
+    vctrs::vec_slice(x, i)
+  }
+}
+
 cat_line <- function(...) {
   cat(..., "\n", sep = "")
 }

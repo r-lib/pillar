@@ -44,7 +44,7 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   # this is an overestimate, but shouldn't be too expensive.
   # every type needs at least three characters: "x, "
   rows <- as.integer(width / 3)
-  df <- as.data.frame(head(x, rows))
+  df <- df_head(x, rows)
   cli::cat_line("Columns: ", big_mark(ncol(df)))
 
   summary <- tbl_sum(x)

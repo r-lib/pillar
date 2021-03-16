@@ -83,7 +83,6 @@ tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols) {
 #'
 #' @rdname tbl_format_setup
 #' @export
-#' @importFrom utils head
 tbl_format_setup.tbl <- function(x, width, ...,
                                  n, max_extra_cols) {
   "!!!!DEBUG tbl_format_setup.tbl()"
@@ -92,20 +91,14 @@ tbl_format_setup.tbl <- function(x, width, ...,
   rows <- nrow(x)
 
   if (is.na(rows)) {
-    df <- as.data.frame(head(x, n + 1))
+    df <- df_head(x, n + 1)
     if (nrow(df) <= n) {
       rows <- nrow(df)
     } else {
-      df <- df[seq_len(n), , drop = FALSE]
+      df <- vec_head(df, n)
     }
   } else {
-    if (!is.data.frame(x)) {
-      x <- as.data.frame(x)
-    }
-
-    # head() destroys attributes
-    idx <- seq_len(n)
-    df <- map(x, `[`, idx)
+    df <- df_head(x, n)
   }
 
   if (is.na(rows)) {
