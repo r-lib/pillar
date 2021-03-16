@@ -82,29 +82,45 @@ type_sum.tibble_num <- function(x, ...) {
 
 ```{r}
 library(tibble)
+```
 
-# Significant figures
+
+### Significant figures
+
+```{r}
 tibble(
   x3 = num(9:11 * 100 + 0.5, 3),
   x4 = num(9:11 * 100 + 0.5, 4),
   x5 = num(9:11 * 100 + 0.5, 5),
 )
+```
 
-# Decimal digits
+
+### Decimal digits
+
+```{r}
 tibble(
   x0 = num(9:11 * 100 + 0.5, digits = 0),
   x1 = num(9:11 * 100 + 0.5, digits = 1),
   x2 = num(9:11 * 100 + 0.5, digits = 2),
 )
+```
 
-# Currency
+
+### Currency
+
+```{r}
 tibble(
   usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
   gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
   chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
 )
+```
 
-# Percentage
+
+### Percentage
+
+```{r}
 tibble(
   small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
   medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
