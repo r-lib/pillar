@@ -2,6 +2,7 @@
 
 ## Next steps
 
+- Fix lubridate, bad commit: d79b80dc67ea91abf8c6eb3c946c1153a8e782f8
 - Improve output:
     - Classes for numeric and string, use {formattable}
     - Multi-stage (hierarchical) output for packed data frames
