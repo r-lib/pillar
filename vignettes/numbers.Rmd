@@ -31,7 +31,7 @@ library(pillar)
 ```{r}
 #' @export
 num <- function(x, sigfig = NULL, digits = NULL, 
-                label = NULL, scale = NULL, display = NULL) {
+                label = NULL, scale = NULL, notation = NULL) {
   
   stopifnot(is.numeric(x))
   vctrs::new_vctr(
@@ -40,7 +40,7 @@ num <- function(x, sigfig = NULL, digits = NULL,
     digits = digits,
     label = label,
     scale = scale,
-    display = display,
+    notation = notation,
     class = "tibble_num",
     inherit_base_type = TRUE
   )
@@ -59,7 +59,7 @@ pillar_shaft.tibble_num <- function(x, ...) {
     data,
     sigfig = attr(x, "sigfig"),
     digits = attr(x, "digits"),
-    display = attr(x, "display")
+    notation = attr(x, "notation")
   )
 }
 
@@ -70,9 +70,9 @@ type_sum.tibble_num <- function(x, ...) {
   if (!is.null(label)) {
     I(label)
   } else {
-    display <- attr(x, "display")
-    if (is.null(display)) {
-      display <- "num"
+    notation <- attr(x, "notation")
+    if (is.null(notation)) {
+      notation <- "num"
     }
     
     sigfig <- attr(x, "sigfig")
@@ -80,12 +80,12 @@ type_sum.tibble_num <- function(x, ...) {
     
     if (is.null(digits)) {
       if (is.null(sigfig)) {
-        display
+        notation
       } else {
-        paste0(display, ":", sigfig)
+        paste0(notation, ":", sigfig)
       }
     } else {
-      paste0(display, ":.", digits)
+      paste0(notation, ":.", digits)
     }
   }
 }
@@ -146,8 +146,8 @@ tibble(
 
 ```{r}
 tibble(
-  sci  = num(10^(-13:6), display = "sci"),
-  eng  = num(10^(-13:6), display = "eng"),
-  dec  = num(10^(-13:6), display = "dec")
+  sci  = num(10^(-13:6), notation = "sci"),
+  eng  = num(10^(-13:6), notation = "eng"),
+  dec  = num(10^(-13:6), notation = "dec")
 )
 ```

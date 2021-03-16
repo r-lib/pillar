@@ -119,17 +119,20 @@ pillar_shaft.logical <- function(x, ...) {
 #' @param digits
 #'   Number of figures to display after the decimal point,
 #'   overrides `sigfig` if given.
+#' @param notation
+#'   One of `"dec"`, `"sci"` or `"eng"`. If `NULL`, `"dec"` is used if it fits
+#'   and if the total width is not larger than 13.
 pillar_shaft.numeric <- function(x, ..., sigfig = NULL, digits = NULL,
-                                 display = NULL) {
+                                 notation = NULL) {
   if (!is.null(attr(x, "class"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
-  pillar_shaft_number(x, sigfig, digits, display)
+  pillar_shaft_number(x, sigfig, digits, notation)
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, display) {
+pillar_shaft_number <- function(x, sigfig, digits, notation) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1 || digits < 0L) {
       abort("`digits` must be a nonnegative number.")
@@ -144,7 +147,7 @@ pillar_shaft_number <- function(x, sigfig, digits, display) {
     }
   }
 
-  if (is.null(display)) {
+  if (is.null(notation)) {
     dec <- format_decimal(x, sigfig = sigfig, digits = digits)
     sci <- format_scientific(x, sigfig = sigfig, digits = digits)
 
@@ -153,13 +156,13 @@ pillar_shaft_number <- function(x, sigfig, digits, display) {
     if (dec_width > MAX_DEC_WIDTH) {
       dec <- NULL
     }
-  } else if (display == "dec") {
+  } else if (notation == "dec") {
     dec <- format_decimal(x, sigfig = sigfig, digits = digits)
     sci <- NULL
-  } else if (display == "sci") {
+  } else if (notation == "sci") {
     sci <- format_scientific(x, sigfig = sigfig, digits = digits)
     dec <- NULL
-  } else if (display == "eng") {
+  } else if (notation == "eng") {
     sci <- format_scientific(x, sigfig = sigfig, digits = digits, engineering = TRUE)
     dec <- NULL
   }
@@ -178,7 +181,7 @@ pillar_shaft_number <- function(x, sigfig, digits, display) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig, digits = NULL, display = NULL)
+  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL)
 }
 
 # registered in .onLoad()
