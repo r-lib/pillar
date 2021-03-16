@@ -179,7 +179,7 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
 <span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for numeric</span>
-<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, sigfig <span class='op'>=</span> <span class='cn'>NULL</span>, digits <span class='op'>=</span> <span class='cn'>NULL</span>, notation <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, sigfig <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for Date</span>
 <span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -224,17 +224,6 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
       <th>sigfig</th>
       <td><p>Minimum number of significant figures to display, default: 3.
 Numbers larger than 1 will potentially show more significant figures than this.</p></td>
-    </tr>
-    <tr>
-      <th>digits</th>
-      <td><p>Number of figures to display after the decimal point,
-overrides <code>sigfig</code> if given.</p></td>
-    </tr>
-    <tr>
-      <th>notation</th>
-      <td><p>One of <code>"dec"</code>, <code>"sci"</code>, <code>"eng"</code>, <code>"scifix"</code> or <code>"engfix"</code>.
-If <code>NULL</code>, <code>"dec"</code> is used if it fits and if the total width
-is not larger than 13.</p></td>
     </tr>
     <tr>
       <th>min_width</th>
