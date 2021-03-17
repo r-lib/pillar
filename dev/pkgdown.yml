@@ -4,8 +4,9 @@ pkgdown_sha: ae4332d48aedc46be2b532b26661a9bc6b7244fc
 articles:
   debugme: debugme.html
   extending: extending.html
+  numbers: numbers.html
   printing: printing.html
-last_built: 2021-03-16T17:14Z
+last_built: 2021-03-17T12:26Z
 urls:
   reference: https://pillar.r-lib.org/reference
   article: https://pillar.r-lib.org/articles

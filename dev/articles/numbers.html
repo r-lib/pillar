@@ -456,6 +456,63 @@
 <span class="co">#&gt; Units: [m]</span>
 <span class="co">#&gt; [1] 1001 2002 3003</span></code></pre></div>
 </div>
+<div id="formattable" class="section level3">
+<h3 class="hasAnchor">
+<a href="#formattable" class="anchor"></a>formattable</h3>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://renkun-ken.github.io/formattable/" class="external-link">formattable</a></span><span class="op">)</span>
+
+<span class="va">pillar_shaft.formattable</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">pillar</span><span class="fu">::</span><span class="fu"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">pillar_shaft.formattable_currency</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">formattable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable"</span><span class="op">)</span>
+
+  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="fu">num</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, digits <span class="op">=</span> <span class="va">formattable</span><span class="op">$</span><span class="va">digits</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">pillar_shaft.formattable_percent</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">formattable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable"</span><span class="op">)</span>
+
+  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="fu">num</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, digits <span class="op">=</span> <span class="va">formattable</span><span class="op">$</span><span class="va">digits</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">pillar_shaft.formattable_scientific</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="fu">num</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">type_sum.formattable</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">formattable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable"</span><span class="op">)</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable_currency"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"^formattable_"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable_percent"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="st">"%"</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/abbreviate.html" class="external-link">abbreviate</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"^formattable_"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_currency.html" class="external-link">num_currency</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">)</span>
+<span class="co">#&gt; [1] $100.10 $200.10 $300.10</span>
+<span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_percent.html" class="external-link">num_percent</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>
+<span class="co">#&gt; [1] 10.10% 20.10% 30.10%</span>
+<span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_scientific.html" class="external-link">num_scientific</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1.0100e-01 2.0100e-01 3.0100e-01</span>
+
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+  currency <span class="op">=</span> <span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_currency.html" class="external-link">num_currency</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">)</span>,
+  percent <span class="op">=</span> <span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_percent.html" class="external-link">num_percent</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>,
+  scientific <span class="op">=</span> <span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_scientific.html" class="external-link">num_scientific</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 x 3</span>
+<span class="co">#&gt;   currency percent scientific</span>
+<span class="co">#&gt;          $       %     &lt;scnt&gt;</span>
+<span class="co">#&gt; 1     100.    10.1    1.01e-1</span>
+<span class="co">#&gt; 2     200.    20.1    2.01e-1</span>
+<span class="co">#&gt; 3     300.    30.1    3.01e-1</span></code></pre></div>
+</div>
 </div>
   </div>
 
