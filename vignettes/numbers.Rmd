@@ -248,6 +248,8 @@ sin(num(1:3, label = "%", scale = 100))
 
 ### gt
 
+- Consumption via new `fmt_auto()`?
+
 FIXME
 
 ### units
