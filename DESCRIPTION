@@ -31,6 +31,7 @@ Suggests:
     bit64,
     debugme,
     DiagrammeR,
+    formattable,
     knitr,
     lubridate,
     nycflights13,
@@ -57,4 +58,5 @@ Config/testthat/start-first:
     ctl_colonnade_1,
     ctl_colonnade_2
 Remotes: 
+    renkun-ken/formattable#154,
     r-quantities/units
