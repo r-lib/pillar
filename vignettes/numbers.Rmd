@@ -58,18 +58,17 @@ library(vctrs)
 
 #' @export
 vec_ptype_full.tibble_num <- function(x, ...) {
-  notation <- attr(x, "notation")
+  notation <- attr(x, "pillar_notation")
   if (is.null(notation)) {
     class <- "tibble_num"
   } else {
     class <- paste0("tibble_num(", notation, ")")
   }
   
-  sigfig <- attr(x, "sigfig")
-  digits <- attr(x, "digits")
-  label <- attr(x, "label")
-  notation <- attr(x, "notation")
-  
+  sigfig <- attr(x, "pillar_sigfig")
+  digits <- attr(x, "pillar_digits")
+  label <- attr(x, "pillar_label")
+
   if (!is.null(digits)) {
     out <- paste0(class, ":.", digits)
   } else if (is.null(sigfig)) {
