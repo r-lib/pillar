@@ -764,8 +764,25 @@
 
     Code
       tbl_format_setup(as_tbl(mtcars), width = 80)
-    Error <simpleError>
-      replacement element 1 has 10 rows, need 32
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 32 x 11
+      <tbl_format_body(setup)>
+           mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+       * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+       1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+       2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+       3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+       4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+       5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+       6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+       7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+       8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+       9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+      10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+      <tbl_format_footer(setup)>
+      # ... with 22 more rows
     Code
       tbl_format_setup(as_tbl(mtcars), width = 30, n = 8)
     Output
@@ -773,40 +790,16 @@
       <tbl_format_header(setup)>
       # A data frame: 32 x 11
       <tbl_format_body(setup)>
-           mpg   cyl  disp    hp
-       * <dbl> <dbl> <dbl> <dbl>
-       1  21       6  160    110
-       2  21       6  160    110
-       3  22.8     4  108     93
-       4  21.4     6  258    110
-       5  18.7     8  360    175
-       6  18.1     6  225    105
-       7  14.3     8  360    245
-       8  24.4     4  147.    62
-       9  21       6  160    110
-      10  21       6  160    110
-      11  22.8     4  108     93
-      12  21.4     6  258    110
-      13  18.7     8  360    175
-      14  18.1     6  225    105
-      15  14.3     8  360    245
-      16  24.4     4  147.    62
-      17  21       6  160    110
-      18  21       6  160    110
-      19  22.8     4  108     93
-      20  21.4     6  258    110
-      21  18.7     8  360    175
-      22  18.1     6  225    105
-      23  14.3     8  360    245
-      24  24.4     4  147.    62
-      25  21       6  160    110
-      26  21       6  160    110
-      27  22.8     4  108     93
-      28  21.4     6  258    110
-      29  18.7     8  360    175
-      30  18.1     6  225    105
-      31  14.3     8  360    245
-      32  24.4     4  147.    62
+          mpg   cyl  disp    hp
+      * <dbl> <dbl> <dbl> <dbl>
+      1  21       6  160    110
+      2  21       6  160    110
+      3  22.8     4  108     93
+      4  21.4     6  258    110
+      5  18.7     8  360    175
+      6  18.1     6  225    105
+      7  14.3     8  360    245
+      8  24.4     4  147.    62
       <tbl_format_footer(setup)>
       # ... with 24 more rows, and
       #   7 more variables:
@@ -897,8 +890,25 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(as_unknown_rows(trees[1:11, ]), width = 30, n = 10)
-    Error <simpleError>
-      replacement element 1 has 10 rows, need 11
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: ?? x 3
+      <tbl_format_body(setup)>
+         Girth Height Volume
+       * <dbl>  <dbl>  <dbl>
+       1   8.3     70   10.3
+       2   8.6     65   10.3
+       3   8.8     63   10.2
+       4  10.5     72   16.4
+       5  10.7     81   18.8
+       6  10.8     83   19.7
+       7  11       66   15.6
+       8  11       75   18.2
+       9  11.1     80   22.6
+      10  11.2     75   19.9
+      <tbl_format_footer(setup)>
+      # ... with more rows
     Code
       # No rows
       tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
@@ -941,12 +951,24 @@
       # A data frame: ?? x 0
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with at least 31 rows
+      # ... with at least 5 rows
       #   total
     Code
       # Long table, unknown
       tbl_format_setup(as_unknown_rows(new_tbl(list(a = seq.int(10000)))), n = 5L,
       width = 30L)
-    Error <simpleError>
-      replacement element 1 has 6 rows, need 10000
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: ?? x 1
+      <tbl_format_body(setup)>
+            a
+        <int>
+      1     1
+      2     2
+      3     3
+      4     4
+      5     5
+      <tbl_format_footer(setup)>
+      # ... with more rows
 
