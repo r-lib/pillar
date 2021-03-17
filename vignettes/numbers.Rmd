@@ -246,6 +246,10 @@ sin(num(1:3, label = "%", scale = 100))
 
 ## Integrating with other classes
 
+### gt
+
+FIXME
+
 ### units
 
 ```{r}
