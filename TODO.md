@@ -5,6 +5,7 @@
 - Fix lubridate, bad commit: d79b80dc67ea91abf8c6eb3c946c1153a8e782f8
 - Improve output:
     - Classes for numeric and string, use {formattable}
+        - https://github.com/r-lib/pillar/issues/191
     - Multi-stage (hierarchical) output for packed data frames
     - Show columns that are abbreviated in full
     - Packed data frames and matrices: if too wide, show ellipsis
