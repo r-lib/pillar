@@ -1,7 +1,7 @@
 # can output durations
 
     Code
-      pillar(v)
+      pillar(lubridate::as.duration(1:3))
     Output
       <pillar>
       <Duration>

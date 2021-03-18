@@ -41,10 +41,10 @@ example_tbl <- function(class) {
 }
 ```
 
-The `"custom"` class doesn't have any customizations yet, and prints like a regular tibble.
+The `"default"` class doesn't have any customizations yet, and prints like a regular tibble.
 
 ```{r}
-example_tbl("custom")
+example_tbl("default")
 ```
 
 
