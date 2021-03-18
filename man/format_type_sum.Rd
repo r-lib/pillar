@@ -3,11 +3,14 @@
 \name{format_type_sum}
 \alias{format_type_sum}
 \alias{format_type_sum.default}
+\alias{format_type_sum.AsIs}
 \title{Format a type summary}
 \usage{
 format_type_sum(x, width, ...)
 
 \method{format_type_sum}{default}(x, width, ...)
+
+\method{format_type_sum}{AsIs}(x, width, ...)
 }
 \arguments{
 \item{x}{A return value from \code{type_sum()}}
@@ -19,22 +22,23 @@ wider, it will be trimmed. Can be \code{NULL}.}
 }
 \description{
 Called on values returned from \code{\link[=type_sum]{type_sum()}} for defining the description
-in the capital.  Implement this method for a helper class for custom
-formatting, and return an object of this helper class from your
-\code{type_sum()} implementation.  See examples.
+in the capital.
+}
+\details{
+Two methods are implemented by default for this generic: the default method,
+and the method for the \code{"AsIs"} class.
+Return \code{I("type")} from your \code{\link[=type_sum]{type_sum()}} implementation to format the type
+without angle brackets.
+For even more control over the formatting, implement your own method.
 }
 \examples{
+# Default method: show the type with angle brackets
 format_type_sum(1, NULL)
 pillar(1)
 
+# AsIs method: show the type without angle brackets
 type_sum.accel <- function(x) {
-  structure("kg m/s^2", width = 8, class = "type_sum_accel")
-}
-format_type_sum.type_sum_accel <- function(x, width, ...) {
-  if (!is.null(width) && width < attr(x, "width")) {
-    x <- substr(x, 1, width)
-  }
-  style_subtle(x)
+  I("kg m/s^2")
 }
 accel <- structure(9.81, class = "accel")
 pillar(accel)
