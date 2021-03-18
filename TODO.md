@@ -4,14 +4,14 @@
 
 - Improve output:
     - Finish `num()`
-        - test ggplot2, reiterate https://github.com/tidyverse/ggplot2/pull/4065 with `num()`
+        - move to implementation
+        - debug scales
         - use one attribute
         - `format.num()` should respect `trim` argument
         - redundant information goes up into the header
         - SI notation, https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes
         - constructor errors if sigfig and digits
         - fixed number of digits useful
-        - implement in pillar, reexport
         - https://github.com/r-lib/pillar/issues/191
     - Implement `char()` for characters
     - See open issues in "Challenges" section below
@@ -31,6 +31,7 @@
     - Show number of rows if known
         - requires `tbl_sum()` with ellipsis?
     - `format_glimpse()` uses `pillar_shaft()` for numbers
+    - Show time zone for times: https://github.com/r-lib/vctrs/issues/709
 - Resolve vctrs imports
 - Format and truncate in {utf8}
 - Test coverage per file
