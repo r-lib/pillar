@@ -25,7 +25,7 @@ NULL
   }
 
   # Necessary to re-parse environment variable
-  if (requireNamespace("debugme", quietly = TRUE)) {
+  if (Sys.getenv("DEBUGME") != "" && requireNamespace("debugme", quietly = TRUE)) {
     # activate_debugme()
     debugme::debugme()
     debug_info()
