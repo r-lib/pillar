@@ -53,6 +53,8 @@ test_that("glimpse calls tbl_sum() (#550)", {
 })
 
 test_that("output test for glimpse()", {
+  local_unknown_rows()
+
   expect_snapshot({
     glimpse(as_tbl(mtcars), width = 70L)
 

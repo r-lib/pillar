@@ -1,4 +1,6 @@
 test_that("tbl_format_header() results", {
+  local_unknown_rows()
+
   expect_snapshot({
     tbl_format_header(tbl_format_setup(as_tbl(mtcars), width = 80))
 

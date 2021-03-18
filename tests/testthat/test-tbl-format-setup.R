@@ -57,6 +57,8 @@ test_that("output test", {
 })
 
 test_that("tbl_format_setup() results", {
+  local_unknown_rows()
+
   expect_snapshot({
     tbl_format_setup(as_tbl(mtcars), width = 80)
 
