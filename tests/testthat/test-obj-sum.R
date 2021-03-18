@@ -15,6 +15,8 @@ test_that("NULL handled specially", {
 })
 
 test_that("data frames and common data vectors have size summary", {
+  local_override_size_sum()
+
   expect_obj_sum_is_ptype <- function(x) {
     obj_sum <- obj_sum(x)
     ptype <- type_sum(x)

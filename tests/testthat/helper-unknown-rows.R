@@ -4,14 +4,14 @@ as_unknown_rows <- function(x) {
   x
 }
 
-dim.unknown_rows <- function(x) {
-  c(NA_integer_, length(x))
+local_unknown_rows <- function(frame = caller_env()) {
+  local_methods(
+    .frame = frame,
+    dim.unknown_rows = function(x) {
+      c(NA_integer_, length(x))
+    },
+    head.unknown_rows = function(x, n) {
+      head(as.data.frame(x), n)
+    }
+  )
 }
-
-registerS3method("dim", "unknown_rows", dim.unknown_rows)
-
-head.unknown_rows <- function(x, n) {
-  head(as.data.frame(x), n)
-}
-
-registerS3method("head", "unknown_rows", head.unknown_rows)

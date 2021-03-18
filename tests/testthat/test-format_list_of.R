@@ -1,4 +1,6 @@
 test_that("smoke test", {
+  local_override_size_sum()
+
   v <- vctrs::new_list_of(list(1L, 2:4), integer())
   expect_snapshot({
     pillar(v, width = 15)

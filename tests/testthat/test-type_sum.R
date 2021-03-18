@@ -1,4 +1,6 @@
 test_that("works with glimpse", {
+  local_override_type_sum()
+
   foo <- as_override_type_sum_asis(2011:2013)
   bar <- as_override_type_sum_custom(2011:2013)
   expect_equal(unclass(type_sum(foo)), "AsIs")
@@ -10,6 +12,8 @@ test_that("works with glimpse", {
 })
 
 test_that("can override", {
+  local_override_type_sum()
+
   foo <- as_override_type_sum_asis(2011:2013)
   bar <- as_override_type_sum_custom(2011:2013)
 
