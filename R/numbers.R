@@ -159,6 +159,7 @@ vec_arith.tibble_num.default <- function(op, x, y, ...) {
     vec_restore(out, y)
   }
 }
+#' @export
 vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
   stopifnot(is.numeric(x))
   # FIXME
@@ -167,6 +168,7 @@ vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
   vec_restore(out, x)
 }
 
+#' @export
 vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
 
 
