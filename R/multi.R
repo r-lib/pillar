@@ -38,7 +38,7 @@ colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
   num_colors(forget = TRUE)
 
   x <- flatten_colonnade(x)
-  ret <- vctrs::new_data_frame(x, has_row_id = has_row_id, class = "pillar_colonnade")
+  ret <- new_data_frame(x, has_row_id = has_row_id, class = "pillar_colonnade")
   ret <- set_width(ret, width)
   ret
 }
@@ -50,10 +50,10 @@ flatten_colonnade <- function(x) {
     flatten_column
   )
 
-  vctrs::vec_rbind(
+  vec_rbind(
     !!!out,
-    # .ptype = vctrs::data_frame(names = list(), data = list())
-    .ptype = vctrs::data_frame(names = character(), data = list())
+    # .ptype = data_frame(names = list(), data = list())
+    .ptype = data_frame(names = character(), data = list())
   )
 }
 
@@ -68,15 +68,15 @@ flatten_column <- function(x, name) {
     flatten_matrix_column(x, name)
   } else {
     # Length-one list, will be unlist()ed afterwards
-    # vctrs::data_frame(names = list(name), data = list(x))
-    vctrs::data_frame(names = name, data = list(x))
+    # data_frame(names = list(name), data = list(x))
+    data_frame(names = name, data = list(x))
   }
 }
 
 flatten_df_column <- function(x, name) {
   if (length(x) == 0) {
-    # vctrs::data_frame(names = list(name), data = list(new_empty_col_sentinel(x)))
-    vctrs::data_frame(names = name, data = list(new_empty_col_sentinel(x)))
+    # data_frame(names = list(name), data = list(new_empty_col_sentinel(x)))
+    data_frame(names = name, data = list(new_empty_col_sentinel(x)))
   } else {
     x <- flatten_colonnade(unclass(x))
     # x$names <- map(x$names, function(.x) c(name, .x))
@@ -88,7 +88,7 @@ flatten_df_column <- function(x, name) {
 
 flatten_matrix_column <- function(x, name) {
   if (ncol(x) == 0) {
-    vctrs::data_frame(
+    data_frame(
       # names = list(c(name, "[,0]")),
       names = name,
       data = list(new_empty_col_sentinel(x))
@@ -107,7 +107,7 @@ flatten_matrix_column <- function(x, name) {
     names <- paste0("[,", idx, "]")
     names[[1]] <- paste0(name, names[[1]])
 
-    vctrs::data_frame(names = names, data = x_list)
+    data_frame(names = names, data = x_list)
   }
 }
 
@@ -432,7 +432,7 @@ distribute_pillars <- function(widths, tier_widths) {
     current_x <- current_x + widths[[i]] + 1L
   }
 
-  vctrs::data_frame(id = seq_along(widths), width = widths, tier = tier)
+  data_frame(id = seq_along(widths), width = widths, tier = tier)
 }
 
 distribute_pillars_rev <- function(widths, tier_widths) {

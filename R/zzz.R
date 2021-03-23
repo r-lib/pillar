@@ -3,6 +3,13 @@
 #' @import rlang
 #' @import ellipsis
 #' @import lifecycle
+#' @importFrom vctrs data_frame
+#' @importFrom vctrs new_data_frame
+#' @importFrom vctrs s3_register
+#' @importFrom vctrs vec_is
+#' @importFrom vctrs vec_ptype_abbr
+#' @importFrom vctrs vec_rbind
+#' @importFrom vctrs vec_size
 NULL
 
 # nolint start
