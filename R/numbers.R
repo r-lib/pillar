@@ -170,8 +170,7 @@ vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
 vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
 
 
-
-## ----numbers-15---------------------------------------------------------------------------------------
+#' @export
 vec_math.tibble_num <- function(op, x, ...) {
   stopifnot(is.numeric(x))
   out <- vec_math_base(op, x)
