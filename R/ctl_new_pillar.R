@@ -80,7 +80,7 @@
 #'   ))
 #' }
 #'
-#' new_data_frame(
+#' vctrs::new_data_frame(
 #'   list(a = 1:3, b = letters[1:3]),
 #'   class = c("line_tbl", "tbl")
 #' )
