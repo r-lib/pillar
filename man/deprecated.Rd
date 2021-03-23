@@ -9,7 +9,7 @@ is_vector_s3(x)
 }
 \description{
 \code{is_vector_s3()} returns \code{TRUE} if an object represents an S3 vector.
-The default implementation forwards to \code{vctrs::vec_is()}.
+The default implementation forwards to \code{\link[vctrs:vec_assert]{vctrs::vec_is()}}.
 }
 \section{Lifecycle}{
 

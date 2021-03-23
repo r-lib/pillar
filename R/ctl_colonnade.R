@@ -2,7 +2,7 @@
 ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_tbl()) {
   "!!!!DEBUG ctl_colonnade()"
 
-  x <- vctrs::new_data_frame(x, names = names2(x))
+  x <- new_data_frame(x, names = names2(x))
   width <- get_width_print(width)
 
   n <- nrow(x)
@@ -34,14 +34,14 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   if (!is.null(rowid)) {
     rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
 
-    col_widths_rowid <- as_tbl(vctrs::data_frame(
+    col_widths_rowid <- as_tbl(data_frame(
       tier = unique(col_widths$tier),
       id = 0L,
       width = rowid_width,
       pillar = list(rowid_pillar)
     ))
 
-    col_widths <- vctrs::vec_rbind(col_widths_rowid, col_widths)
+    col_widths <- vec_rbind(col_widths_rowid, col_widths)
   }
 
   tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)

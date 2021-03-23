@@ -21,7 +21,7 @@ and variants have been implemented.}
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}.
 
-\code{obj_sum()} also includes the size of the object if \code{vctrs::vec_is()}
+\code{obj_sum()} also includes the size of the object if \code{\link[vctrs:vec_assert]{vctrs::vec_is()}}
 is \code{TRUE}.
 It should always return a string (a character vector of length one).
 

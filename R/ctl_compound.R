@@ -115,7 +115,7 @@ new_matrix_pillar <- function(x, controller, width, title) {
 }
 
 new_array_pillar <- function(x, controller, width, title) {
-  first_slice <- head(as.vector(x), vctrs::vec_size(x))
+  first_slice <- head(as.vector(x), vec_size(x))
 
   body <- pillar_shaft(first_slice)
 

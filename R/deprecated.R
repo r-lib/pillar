@@ -6,7 +6,7 @@ NULL
 #' is_vector_s3()
 #'
 #' `is_vector_s3()` returns `TRUE` if an object represents an S3 vector.
-#' The default implementation forwards to `vctrs::vec_is()`.
+#' The default implementation forwards to [vctrs::vec_is()].
 #'
 #' @section Lifecycle:
 #' `is_vector_s3()` is soft-deprecated, because [vctrs::vec_is()]
@@ -24,4 +24,6 @@ is_vector_s3 <- function(x) {
 }
 
 #' @export
-is_vector_s3.default <- function(x) vctrs::vec_is(x)
+is_vector_s3.default <- function(x) {
+  vec_is(x)
+}

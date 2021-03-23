@@ -31,8 +31,8 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
-  if (is.object(x) || vctrs::vec_is(x)) {
-    return(vctrs::vec_ptype_abbr(x))
+  if (is.object(x) || vec_is(x)) {
+    return(vec_ptype_abbr(x))
   }
 
   switch(typeof(x),
@@ -53,11 +53,11 @@ type_sum.default <- function(x) {
 
 # Registered in .onLoad()
 vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
-  vctrs::vec_ptype_abbr(x[[1]])
+  vec_ptype_abbr(x[[1]])
 }
 
 #' @description
-#' `obj_sum()` also includes the size of the object if `vctrs::vec_is()`
+#' `obj_sum()` also includes the size of the object if [vctrs::vec_is()]
 #' is `TRUE`.
 #' It should always return a string (a character vector of length one).
 #'
@@ -104,7 +104,7 @@ size_sum <- function(x) {
 
 #' @export
 size_sum.default <- function(x) {
-  if (!vctrs::vec_is(x)) {
+  if (!vec_is(x)) {
     return("")
   }
 
