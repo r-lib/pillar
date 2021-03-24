@@ -153,7 +153,6 @@
 <ul>
 <li>Finish <code><a href="reference/num.html">num()</a></code>
 <ul>
-<li>redundant information goes up into the header</li>
 <li>SI notation, <a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes" class="external-link uri">https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes</a>
 </li>
 <li>constructor errors if sigfig and digits</li>
@@ -206,9 +205,20 @@
 <li><a href="https://github.com/tidyverse/tibble/issues/598" class="external-link uri">https://github.com/tidyverse/tibble/issues/598</a></li>
 </ul>
 </li>
+</ul>
+</div>
+<div id="challenges" class="section level2">
+<h2 class="hasAnchor">
+<a href="#challenges" class="anchor"></a>Challenges</h2>
+<ul>
 <li>scales support for num
 <ul>
 <li>Needs at least <code><a href="https://rdrr.io/r/base/pretty.html" class="external-link">pretty()</a></code>, <code><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq()</a></code>, a generic <code><a href="https://rdrr.io/r/base/outer.html" class="external-link">outer()</a></code> (or a change to scales), and perhaps much more</li>
+</ul>
+</li>
+<li>redundant information goes up into the header
+<ul>
+<li>for fixed magnitude, need to rework <code><a href="reference/type_sum.html">type_sum()</a></code> – should operate on the pillar shaft</li>
 </ul>
 </li>
 </ul>
