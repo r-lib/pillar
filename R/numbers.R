@@ -77,7 +77,8 @@ num <- function(x, sigfig = NULL, digits = NULL,
     pillar_scale = scale,
     pillar_notation = notation,
     class = "tibble_num",
-    inherit_base_type = TRUE
+    # https://github.com/r-lib/vctrs/issues/1339
+    inherit_base_type = FALSE
   )
 }
 
