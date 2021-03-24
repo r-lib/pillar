@@ -144,10 +144,12 @@ format.tibble_num <- function(x, ...) {
   out
 }
 
+#' @method vec_arith tibble_num
 #' @export
 vec_arith.tibble_num <- function(op, x, y, ...) {
   UseMethod("vec_arith.tibble_num", y)
 }
+#' @method vec_arith.tibble_num default
 #' @export
 vec_arith.tibble_num.default <- function(op, x, y, ...) {
   stopifnot(is.numeric(x), is.numeric(y))
@@ -159,6 +161,7 @@ vec_arith.tibble_num.default <- function(op, x, y, ...) {
     vec_restore(out, y)
   }
 }
+#' @method vec_arith.tibble_num MISSING
 #' @export
 vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
   stopifnot(is.numeric(x))

@@ -6,6 +6,7 @@
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs s3_register
+#' @importFrom vctrs vec_arith
 #' @importFrom vctrs vec_arith.numeric
 #' @importFrom vctrs vec_cast
 #' @importFrom vctrs vec_cast.double
