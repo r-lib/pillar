@@ -147,6 +147,18 @@ format.tibble_num <- function(x, ...) {
   out
 }
 
+#' @export
+obj_print_data.tibble_num <- function(x, ...) {
+  if (length(x) == 0) {
+    return(invisible(x))
+  }
+
+  # FIXME: base::print.default() can't use color, roll own implementation?
+  out <- stats::setNames(strip_sgr(format(x), warn = FALSE), names(x))
+  print(out, quote = FALSE)
+  invisible(x)
+}
+
 #' @method vec_arith tibble_num
 #' @export
 vec_arith.tibble_num <- function(op, x, y, ...) {
