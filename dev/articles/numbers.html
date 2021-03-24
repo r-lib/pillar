@@ -119,7 +119,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>
 <span class="co">#&gt; &lt;tibble_num(sci)[5]&gt;</span>
-<span class="co">#&gt; [1] -1.00e0 0.      1.00e0  2.00e0  3.00e0</span>
+<span class="co">#&gt; [1] -1.00e0  0.      1.00e0  2.00e0  3.00e0</span>
 
 <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
   x4 <span class="op">=</span> <span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">12</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, <span class="fl">4</span><span class="op">)</span>,
@@ -207,18 +207,24 @@
 <h3 class="hasAnchor">
 <a href="#units" class="anchor"></a>units</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">set_num_opts</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">sigfig</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">digits</span> <span class="op">=</span> <span class="cn">NULL</span>,
-                         <span class="va">label</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">scale</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">notation</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_sigfig"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">sigfig</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_digits"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">digits</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_label"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">label</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_scale"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">scale</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_notation"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">notation</span>
-  <span class="va">x</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-quantities/units/" class="external-link">units</a></span><span class="op">)</span>
+<span class="co">#&gt; udunits database from /usr/share/xml/udunits/udunits2.xml</span>
+
+<span class="va">set_units.tibble_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">unclassed</span> <span class="op">&lt;-</span> <span class="va">x</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">unclassed</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="va">unclassed</span>, <span class="va">...</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">out</span>
 <span class="op">}</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-quantities/units/" class="external-link">units</a></span><span class="op">)</span>
-<span class="co">#&gt; udunits database from /usr/share/xml/udunits/udunits2.xml</span>
+<span class="co"># Need to avoid unclass() in units: https://github.com/r-quantities/units/pull/275</span>
+<span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>, <span class="va">m</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">km</span><span class="op">)</span>
+<span class="co">#&gt; Units: [m]</span>
+<span class="co">#&gt; [1] 1001 2002 3003</span>
+
+
+
 
 <span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">set_num_opts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">m</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">km</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
@@ -233,11 +239,24 @@
 <span class="co">#&gt;  2.00</span>
 <span class="co">#&gt;  3.00</span>
 
-<span class="co"># FIXME: subsetting needs to preserve pillar attributes</span>
+<span class="co"># FIXME: subsetting needs to preserve pillar attribute</span>
 <span class="fu"><a href="../reference/num.html">set_num_opts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">m</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">km</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>
 <span class="co">#&gt; Units: [m]</span>
 <span class="co">#&gt; [1] 1001 2002 3003</span>
-<span class="co">#&gt; attr(,"pillar_notation")</span>
+<span class="co">#&gt; attr(,"pillar")</span>
+<span class="co">#&gt; attr(,"pillar")$sigfig</span>
+<span class="co">#&gt; NULL</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"pillar")$digits</span>
+<span class="co">#&gt; NULL</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"pillar")$label</span>
+<span class="co">#&gt; NULL</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"pillar")$scale</span>
+<span class="co">#&gt; NULL</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"pillar")$notation</span>
 <span class="co">#&gt; [1] "sci"</span>
 <span class="fu"><a href="../reference/num.html">set_num_opts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">m</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">km</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
 <span class="co">#&gt; Units: [m]</span>
@@ -315,7 +334,7 @@
 
 <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/oob.html" class="external-link">squish</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; &lt;tibble_num{%}[10]&gt;</span>
-<span class="co">#&gt;  [1] 1   2   3   4   5   6   7.  8   9   10</span>
+<span class="co">#&gt;  [1]  1   2   3   4   5   6   7.  8   9  10</span>
 
 <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>
 <span class="co">#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span>
@@ -323,7 +342,7 @@
 <span class="co">#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span>
 
 <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/cscale.html" class="external-link">cscale</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/rescale_pal.html" class="external-link">rescale_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Error in UseMethod("rescale"): no applicable method for 'rescale' applied to an object of class "c('tibble_num', 'vctrs_vctr')"</span></code></pre></div>
+<span class="co">#&gt; Error in UseMethod("rescale"): no applicable method for 'rescale' applied to an object of class "c('tibble_num', 'vctrs_vctr', 'double')"</span></code></pre></div>
 </div>
 <div id="ggplot2" class="section level3">
 <h3 class="hasAnchor">
