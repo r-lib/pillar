@@ -11,7 +11,8 @@ num(
   digits = NULL,
   label = NULL,
   scale = NULL,
-  notation = NULL
+  notation = NULL,
+  fixed_magnitude = NULL
 )
 
 set_num_opts(
@@ -20,7 +21,8 @@ set_num_opts(
   digits = NULL,
   label = NULL,
   scale = NULL,
-  notation = NULL
+  notation = c("dec", "sci", "eng"),
+  fixed_magnitude = NULL
 )
 }
 \description{
@@ -82,8 +84,8 @@ tibble::tibble(
 
 # Fixed exponent notation
 tibble::tibble(
-  scifix  = num(10^(-13:6) * 123, notation = "scifix"),
-  engfix  = num(10^(-13:6) * 123, notation = "engfix")
+  scifix  = num(10^(-13:6) * 123, notation = "sci", fixed_magnitude = TRUE),
+  engfix  = num(10^(-13:6) * 123, notation = "eng", fixed_magnitude = TRUE)
 )
 \dontshow{\}) # examplesIf}
 }

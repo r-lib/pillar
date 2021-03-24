@@ -36,8 +36,8 @@ test_that("output test", {
 
     # Fixed exponent notation
     tibble::tibble(
-      scifix  = num(10^(-13:6) * 123, notation = "scifix"),
-      engfix  = num(10^(-13:6) * 123, notation = "engfix")
+      scifix  = num(10^(-13:6) * 123, notation = "sci", fixed_magnitude = TRUE),
+      engfix  = num(10^(-13:6) * 123, notation = "eng", fixed_magnitude = TRUE)
     )
   })
 })

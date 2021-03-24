@@ -117,7 +117,7 @@ pillar_shaft.logical <- function(x, ...) {
 #'   Deprecated. Set a `"pillar_sigfig"` attribute on the data instead.
 pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
   pillar_attr <- attr(x, "pillar")
-  
+
   if (is.null(pillar_attr) && !is.null(attr(x, "class"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
@@ -133,11 +133,12 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     data,
     sigfig %||% pillar_attr$sigfig,
     pillar_attr$digits,
-    pillar_attr$notation
+    pillar_attr$notation,
+    isTRUE(pillar_attr$fixed_magnitude)
   )
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, notation) {
+pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1 || digits < 0L) {
       abort("`digits` must be a nonnegative number.")
@@ -164,20 +165,22 @@ pillar_shaft_number <- function(x, sigfig, digits, notation) {
   } else if (notation == "dec") {
     dec <- format_decimal(x, sigfig = sigfig, digits = digits)
     sci <- NULL
-  } else if (notation %in% c("sci", "scifix")) {
+  } else if (notation == "sci") {
     sci <- format_scientific(
       x,
       sigfig = sigfig, digits = digits,
-      fixed = (notation == "scifix")
+      fixed = fixed
     )
     dec <- NULL
-  } else if (notation %in% c("eng", "engfix")) {
+  } else if (notation == "eng") {
     sci <- format_scientific(
       x,
       sigfig = sigfig, digits = digits, engineering = TRUE,
-      fixed = (notation == "engfix")
+      fixed = fixed
     )
     dec <- NULL
+  } else {
+    abort(paste0('Internal error: `notation = "', notation, '".'))
   }
 
   ret <- list()
@@ -194,7 +197,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL)
+  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed = FALSE)
 }
 
 # registered in .onLoad()

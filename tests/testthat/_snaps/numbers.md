@@ -70,12 +70,13 @@
       19 1.00e+ 5 100.00e+ 3  100000              
       20 1.00e+ 6   1.00e+ 6 1000000              
     Code
-      tibble::tibble(scifix = num(10^(-13:6) * 123, notation = "scifix"), engfix = num(
-        10^(-13:6) * 123, notation = "engfix"))
+      tibble::tibble(scifix = num(10^(-13:6) * 123, notation = "sci",
+      fixed_magnitude = TRUE), engfix = num(10^(-13:6) * 123, notation = "eng",
+      fixed_magnitude = TRUE))
     Output
       # A tibble: 20 x 2
                               scifix                       engfix
-                            <scifix>                     <engfix>
+                               <sci>                        <eng>
        1                    1.23e-11                    12.30e-12
        2                   12.30e-11                   123.00e-12
        3                  123.00e-11                  1230.00e-12

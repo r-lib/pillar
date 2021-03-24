@@ -57,11 +57,12 @@
 #'
 #' # Fixed exponent notation
 #' tibble::tibble(
-#'   scifix  = num(10^(-13:6) * 123, notation = "scifix"),
-#'   engfix  = num(10^(-13:6) * 123, notation = "engfix")
+#'   scifix  = num(10^(-13:6) * 123, notation = "sci", fixed_magnitude = TRUE),
+#'   engfix  = num(10^(-13:6) * 123, notation = "eng", fixed_magnitude = TRUE)
 #' )
 num <- function(x, sigfig = NULL, digits = NULL,
-                label = NULL, scale = NULL, notation = NULL) {
+                label = NULL, scale = NULL, notation = NULL,
+                fixed_magnitude = NULL) {
 
   stopifnot(is.numeric(x))
 
@@ -75,7 +76,8 @@ num <- function(x, sigfig = NULL, digits = NULL,
     digits = digits,
     label = label,
     scale = scale,
-    notation = notation
+    notation = notation,
+    fixed_magnitude = fixed_magnitude
   )
 
   # FIXME: Include class(x) to support subclassing/mixin?
@@ -228,13 +230,29 @@ vec_math.tibble_num <- function(op, x, ...) {
 #' @export
 #' @rdname num
 set_num_opts <- function(x, sigfig = NULL, digits = NULL,
-                         label = NULL, scale = NULL, notation = NULL) {
+                         label = NULL, scale = NULL,
+                         notation = c("dec", "sci", "eng"),
+                         fixed_magnitude = NULL) {
+
+  if (missing(notation)) {
+    notation <- NULL
+  } else if (!is.null(notation)) {
+    notation <- arg_match(notation)
+  }
+
+  if (!is.null(fixed_magnitude) && !is.null(notation)) {
+    if (fixed_magnitude && notation == "dec") {
+      abort('Incomatible arguments: `notation = "dec" and `fixed_magnitude = TRUE`')
+    }
+  }
+
   pillar_attr <- list(
     sigfig = sigfig,
     digits = digits,
     label = label,
     scale = scale,
-    notation = notation
+    notation = notation,
+    fixed_magnitude = fixed_magnitude
   )
   attr(x, "pillar") <- pillar_attr
   x
