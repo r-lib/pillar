@@ -234,10 +234,14 @@ vec_ptype2.integer.tibble_num <- function(x, y, ...) {
 
 #' @export
 vec_cast.double.tibble_num <- function(x, to, ...) {
+  vec_data(x)
+}
+#' @export
+vec_cast.tibble_num.double <- function(x, to, ...) {
   vec_restore(x, to)
 }
 #' @export
-vec_cast.integer.tibble_num <- function(x, to, ...) {
+vec_cast.tibble_num.integer <- function(x, to, ...) {
   vec_restore(as.numeric(x), to)
 }
 
