@@ -166,29 +166,12 @@ library(scales)
 
 x <- num(1:10 / 100, label = "%", scale = 100)
 
-vec_ptype2.tibble_num.double <- function(x, y, ...) x
-vec_ptype2.double.tibble_num <- function(x, y, ...) y
-
-vec_ptype2.tibble_num.integer <- function(x, y, ...) x
-vec_ptype2.integer.tibble_num <- function(x, y, ...) y
-
-#vec_cast.tibble_num.double <- function(x, to, ...) x
-vec_cast.double.tibble_num <- function(x, to, ...) vec_restore(x, to)
-
-vec_cast.integer.tibble_num <- function(x, to, ...) vec_restore(as.numeric(x), to)
-
-vec_prox_compare.tibble_num <- function(x, ...) vec_data(x)
-vec_prox_order.tibble_num <- function(x, ...) vec_data(x)
-
 scales::squish(x)
 
 x < 0
 x < 0L
 
-# FIXME
-class(x) <- c(class(x), "numeric")
-
-scales::cscale(x, scales::viridis_pal())
+scales::cscale(x, scales::rescale_pal())
 ```
 
 ### ggplot2
