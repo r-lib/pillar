@@ -66,7 +66,9 @@ num <- function(x, sigfig = NULL, digits = NULL,
   stopifnot(is.numeric(x))
 
   # FIXME: math and arith should also work for integers
-  x <- as.numeric(x)
+  if (is.integer(x)) {
+    x <- as.numeric(x)
+  }
 
   # FIXME: can't use set_num_opts()
   vctrs::new_vctr(
