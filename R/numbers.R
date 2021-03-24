@@ -22,16 +22,16 @@
 #' @examplesIf requireNamespace("tibble", quietly = TRUE)
 #' # Significant figures
 #' tibble::tibble(
-#'   x0 = num(9:11 * 100 + 0.5, 3),
-#'   x1 = num(9:11 * 100 + 0.5, 4),
-#'   x2 = num(9:11 * 100 + 0.5, 5),
+#'   x3 = num(9:11 * 100 + 0.5, 3),
+#'   x4 = num(9:11 * 100 + 0.5, 4),
+#'   x5 = num(9:11 * 100 + 0.5, 5),
 #' )
 #'
 #' # Maximum digits after the decimal points
 #' tibble(
-#'   x3 = num(9:11 * 100 + 0.5, digits = 0),
-#'   x4 = num(9:11 * 100 + 0.5, digits = 1),
-#'   x5 = num(9:11 * 100 + 0.5, digits = 2),
+#'   x0 = num(9:11 * 100 + 0.5, digits = 0),
+#'   x1 = num(9:11 * 100 + 0.5, digits = 1),
+#'   x2 = num(9:11 * 100 + 0.5, digits = 2),
 #' )
 #'
 #' # FIXME: Use fixed digits
