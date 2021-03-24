@@ -146,7 +146,7 @@ format.tibble_num <- function(x, ...) {
   "!!!!DEBUG format.tibble_num()"
 
   shaft <- pillar_shaft(x)
-  out <- format(shaft, width = pillar:::get_width(shaft))
+  out <- format(shaft, width = get_width(shaft))
   attributes(out) <- NULL
   out
 }
