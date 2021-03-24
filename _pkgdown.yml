@@ -36,6 +36,9 @@ reference:
       - new_ornament
       - new_pillar_title
       - new_pillar_type
+  - title: Vector classes
+    contents:
+      - num
   - title: Miscellaneous
     contents:
       - dim_desc
