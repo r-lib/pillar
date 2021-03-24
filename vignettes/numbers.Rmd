@@ -179,6 +179,10 @@ scales::cscale(x, scales::rescale_pal())
 ```{r numbers-19}
 library(ggplot2)
 
+scale_type.tibble_num <- function(x, ...) {
+  "continuous"
+}
+
 data.frame(x = x, y = 1:10) %>%
   ggplot(aes(x = x, y = y)) %>%
   + geom_point()
