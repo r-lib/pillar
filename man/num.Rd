@@ -53,7 +53,7 @@ tibble::tibble(
 )
 
 # Maximum digits after the decimal points
-tibble(
+tibble::tibble(
   x0 = num(9:11 * 100 + 0.5, digits = 0),
   x1 = num(9:11 * 100 + 0.5, digits = 1),
   x2 = num(9:11 * 100 + 0.5, digits = 2),
@@ -74,14 +74,14 @@ tibble::tibble(
 )
 
 # Notation
-tibble(
+tibble::tibble(
   sci  = num(10^(-13:6), notation = "sci"),
   eng  = num(10^(-13:6), notation = "eng"),
   dec  = num(10^(-13:6), notation = "dec")
 )
 
 # Fixed exponent notation
-tibble(
+tibble::tibble(
   scifix  = num(10^(-13:6) * 123, notation = "scifix"),
   engfix  = num(10^(-13:6) * 123, notation = "engfix")
 )
