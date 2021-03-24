@@ -31,7 +31,9 @@ type_sum.factor <- function(x) {
 
 #' @export
 type_sum.default <- function(x) {
-  label <- attr(x, "pillar_label")
+  pillar_attr <- attr(x, "pillar")
+  
+  label <- pillar_attr$label
   if (!is.null(label)) {
     return(I(label))
   }

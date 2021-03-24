@@ -5,7 +5,7 @@
     Output
       <pillar>
       <Duration>
-               1
-               2
-               3
+      1s        
+      2s        
+      3s        
 

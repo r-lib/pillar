@@ -4,7 +4,6 @@
 
 - Improve output:
     - Finish `num()`
-        - use one attribute
         - `format.num()` should respect `trim` argument
         - redundant information goes up into the header
         - SI notation, <https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes>

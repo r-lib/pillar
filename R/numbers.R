@@ -71,11 +71,13 @@ num <- function(x, sigfig = NULL, digits = NULL,
   # FIXME: can't use set_num_opts()
   vctrs::new_vctr(
     x,
-    pillar_sigfig = sigfig,
-    pillar_digits = digits,
-    pillar_label = label,
-    pillar_scale = scale,
-    pillar_notation = notation,
+    pillar = list(
+      sigfig = sigfig,
+      digits = digits,
+      label = label,
+      scale = scale,
+      notation = notation
+    ),
     class = "tibble_num",
     # https://github.com/r-lib/vctrs/issues/1339
     inherit_base_type = FALSE
@@ -90,16 +92,17 @@ pillar_shaft.tibble_num <- function(x, ...) {
 
 #' @export
 vec_ptype_full.tibble_num <- function(x, ...) {
-  notation <- attr(x, "pillar_notation")
+  pillar_attr <- attr(x, "pillar")
+  notation <- pillar_attr$notation
   if (is.null(notation)) {
     class <- "tibble_num"
   } else {
     class <- paste0("tibble_num(", notation, ")")
   }
 
-  sigfig <- attr(x, "pillar_sigfig")
-  digits <- attr(x, "pillar_digits")
-  label <- attr(x, "pillar_label")
+  sigfig <- pillar_attr$sigfig
+  digits <- pillar_attr$digits
+  label <- pillar_attr$label
 
   if (!is.null(digits)) {
     out <- paste0(class, ":.", digits)
@@ -118,13 +121,14 @@ vec_ptype_full.tibble_num <- function(x, ...) {
 
 #' @export
 vec_ptype_abbr.tibble_num <- function(x, ...) {
-  notation <- attr(x, "pillar_notation")
+  pillar_attr <- attr(x, "pillar")
+  notation <- pillar_attr$notation
   if (is.null(notation)) {
     notation <- "num"
   }
 
-  sigfig <- attr(x, "pillar_sigfig")
-  digits <- attr(x, "pillar_digits")
+  sigfig <- pillar_attr$sigfig
+  digits <- pillar_attr$digits
 
   if (is.null(digits)) {
     if (is.null(sigfig)) {
@@ -218,11 +222,14 @@ vec_math.tibble_num <- function(op, x, ...) {
 #' @rdname num
 set_num_opts <- function(x, sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL, notation = NULL) {
-  attr(x, "pillar_sigfig") <- sigfig
-  attr(x, "pillar_digits") <- digits
-  attr(x, "pillar_label") <- label
-  attr(x, "pillar_scale") <- scale
-  attr(x, "pillar_notation") <- notation
+  pillar_attr <- list(
+    sigfig = sigfig,
+    digits = digits,
+    label = label,
+    scale = scale,
+    notation = notation
+  )
+  attr(x, "pillar") <- pillar_attr
   x
 }
 

@@ -116,22 +116,24 @@ pillar_shaft.logical <- function(x, ...) {
 #' @param sigfig
 #'   Deprecated. Set a `"pillar_sigfig"` attribute on the data instead.
 pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
-  if (!is.null(attr(x, "class")) && isTRUE(attr(x, "pillar_aware"))) {
+  pillar_attr <- attr(x, "pillar")
+  
+  if (is.null(pillar_attr) && !is.null(attr(x, "class"))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
   data <- unclass(x)
-  scale <- attr(x, "pillar_scale")
+  scale <- pillar_attr$scale
   if (!is.null(scale)) {
     data <- data * scale
   }
 
   pillar_shaft_number(
     data,
-    sigfig %||% attr(x, "pillar_sigfig"),
-    attr(x, "pillar_digits"),
-    attr(x, "pillar_notation")
+    sigfig %||% pillar_attr$sigfig,
+    pillar_attr$digits,
+    pillar_attr$notation
   )
 }
 
