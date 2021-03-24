@@ -138,6 +138,8 @@ vec_ptype_abbr.tibble_num <- function(x, ...) {
 
 #' @export
 format.tibble_num <- function(x, ...) {
+  "!!!!DEBUG format.tibble_num()"
+
   shaft <- pillar_shaft(x)
   out <- format(shaft, width = pillar:::get_width(shaft))
   attributes(out) <- NULL
@@ -147,11 +149,14 @@ format.tibble_num <- function(x, ...) {
 #' @method vec_arith tibble_num
 #' @export
 vec_arith.tibble_num <- function(op, x, y, ...) {
+  "!!!!DEBUG vec_arith.tibble_num(`v(op)`)"
+
   UseMethod("vec_arith.tibble_num", y)
 }
 #' @method vec_arith.tibble_num default
 #' @export
 vec_arith.tibble_num.default <- function(op, x, y, ...) {
+  "!!!!DEBUG vec_arith.tibble_num.default(`v(op)`)"
   stopifnot(is.numeric(x), is.numeric(y))
   out <- vec_arith_base(op, x, y)
 
@@ -164,6 +169,7 @@ vec_arith.tibble_num.default <- function(op, x, y, ...) {
 #' @method vec_arith.tibble_num MISSING
 #' @export
 vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
+  "!!!!DEBUG vec_arith.tibble_num.MISSING(`v(op)`)"
   stopifnot(is.numeric(x))
   # FIXME
   out <- vec_arith_base(op, 0, x)
@@ -171,12 +177,15 @@ vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
   vec_restore(out, x)
 }
 
+#' @method vec_arith.numeric tibble_num
 #' @export
 vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
 
 
 #' @export
 vec_math.tibble_num <- function(op, x, ...) {
+  "!!!!DEBUG vec_math(`v(op)`)"
+
   stopifnot(is.numeric(x))
   out <- vec_math_base(op, x)
 
@@ -205,21 +214,37 @@ set_num_opts <- function(x, sigfig = NULL, digits = NULL,
 }
 
 #' @export
-vec_ptype2.tibble_num.double <- function(x, y, ...) x
+vec_ptype2.tibble_num.double <- function(x, y, ...) {
+  x
+}
 #' @export
-vec_ptype2.double.tibble_num <- function(x, y, ...) y
+vec_ptype2.double.tibble_num <- function(x, y, ...) {
+  y
+}
 
 #' @export
-vec_ptype2.tibble_num.integer <- function(x, y, ...) x
+vec_ptype2.tibble_num.integer <- function(x, y, ...) {
+  x
+}
 #' @export
-vec_ptype2.integer.tibble_num <- function(x, y, ...) y
+vec_ptype2.integer.tibble_num <- function(x, y, ...) {
+  y
+}
 
 #' @export
-vec_cast.double.tibble_num <- function(x, to, ...) vec_restore(x, to)
+vec_cast.double.tibble_num <- function(x, to, ...) {
+  vec_restore(x, to)
+}
 #' @export
-vec_cast.integer.tibble_num <- function(x, to, ...) vec_restore(as.numeric(x), to)
+vec_cast.integer.tibble_num <- function(x, to, ...) {
+  vec_restore(as.numeric(x), to)
+}
 
 #' @export
-vec_proxy_compare.tibble_num <- function(x, ...) vec_data(x)
+vec_proxy_compare.tibble_num <- function(x, ...) {
+  vec_data(x)
+}
 #' @export
-vec_proxy_order.tibble_num <- function(x, ...) vec_data(x)
+vec_proxy_order.tibble_num <- function(x, ...) {
+  vec_data(x)
+}
