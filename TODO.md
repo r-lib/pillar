@@ -4,7 +4,6 @@
 
 - Improve output:
     - Finish `num()`
-        - redundant information goes up into the header
         - SI notation, <https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes>
         - constructor errors if sigfig and digits
         - fixed number of digits useful
@@ -36,8 +35,13 @@
 - Benchmark and profile again
     - `bench.R`
     - <https://github.com/tidyverse/tibble/issues/598>
+
+## Challenges
+
 - scales support for num
     - Needs at least `pretty()`, `seq()`, a generic `outer()` (or a change to scales), and perhaps much more
+- redundant information goes up into the header
+    - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
 
 
 ## Formatting numbers
