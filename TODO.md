@@ -4,7 +4,6 @@
 
 - Improve output:
     - Finish `num()`
-        - debug scales
         - use one attribute
         - `format.num()` should respect `trim` argument
         - redundant information goes up into the header
@@ -39,6 +38,8 @@
 - Benchmark and profile again
     - `bench.R`
     - <https://github.com/tidyverse/tibble/issues/598>
+- scales support for num
+    - Needs at least `pretty()`, `seq()`, a generic `outer()` (or a change to scales), and perhaps much more
 
 
 ## Formatting numbers
