@@ -145,12 +145,16 @@ vec_ptype_abbr.tibble_num <- function(x, ...) {
 }
 
 #' @export
-format.tibble_num <- function(x, ...) {
+format.tibble_num <- function(x, trim = FALSE, ...) {
   "!!!!DEBUG format.tibble_num()"
 
   shaft <- pillar_shaft(x)
   out <- format(shaft, width = get_width(shaft))
-  attributes(out) <- NULL
+  if (trim) {
+    attributes(out) <- NULL
+  } else {
+    out <- format(out, align = "right")
+  }
   out
 }
 

@@ -14,14 +14,14 @@ test_that("output test", {
     )
 
     # FIXME: Use fixed digits
-    tibble::tibble::tibble(
+    tibble::tibble(
       usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
       gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
       chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
     )
 
     # Scale
-    tibble::tibble::tibble(
+    tibble::tibble(
       small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
       medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
       large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
@@ -58,5 +58,12 @@ test_that("mathematics", {
     min(num(1:3, label = "€"))
     mean(num(1:3, notation = "eng"))
     sin(num(1:3, label = "%", scale = 100))
+  })
+})
+
+test_that("formatting", {
+  expect_snapshot({
+    format(num(-1:3))
+    format(num(-1:3), trim = TRUE)
   })
 })
