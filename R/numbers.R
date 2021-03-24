@@ -66,24 +66,25 @@ num <- function(x, sigfig = NULL, digits = NULL,
   stopifnot(is.numeric(x))
 
   # FIXME: math and arith should also work for integers
-  if (is.integer(x)) {
-    x <- as.numeric(x)
-  }
+  x[] <- as.numeric(x)
 
-  # FIXME: can't use set_num_opts()
-  vctrs::new_vctr(
+  # FIXME: new_vctr() overrides class attribute, doesn't support subclassing
+  out <- set_num_opts(
     x,
-    pillar = list(
-      sigfig = sigfig,
-      digits = digits,
-      label = label,
-      scale = scale,
-      notation = notation
-    ),
-    class = "tibble_num",
-    # https://github.com/r-lib/vctrs/issues/1339
-    inherit_base_type = FALSE
+    sigfig = sigfig,
+    digits = digits,
+    label = label,
+    scale = scale,
+    notation = notation
   )
+
+  # FIXME: Include class(x) to support subclassing/mixin?
+  # Needs vec_base(): vec_data() but only strips vctrs_vctr class?
+  # Avoid inheriting from numeric (?): https://github.com/r-lib/vctrs/issues/1339
+  new_class <- c("tibble_num", "vctrs_vctr", "double")
+  class(out) <- new_class
+
+  out
 }
 
 #' @export
