@@ -22,7 +22,7 @@ format_decimal <- function(x, sigfig, digits = NULL) {
   split_decimal(x, sigfig, digits)
 }
 
-split_decimal <- function(x, sigfig, digits, sci_mod = NULL, fixed = FALSE) {
+split_decimal <- function(x, sigfig, digits, sci_mod = NULL, si = FALSE, fixed = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -43,6 +43,11 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL, fixed = FALSE) {
     }
     if (sci_mod != 1) {
       exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
+    }
+    if (si) {
+      # Truncate very small and very large exponents
+      exp <- pmax(exp, -24)
+      exp <- pmin(exp, 24)
     }
 
     # Must divide by 10^exp, because 10^-exp may not be representable
@@ -84,7 +89,8 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL, fixed = FALSE) {
     rhs = rhs,
     rhs_digits = rhs_digits,
     dec = dec,
-    exp = exp_display
+    exp = exp_display,
+    si = si
   )
 
   set_width(ret, get_decimal_width(ret))
@@ -284,7 +290,7 @@ style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
   ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle_num(x, negative))
 }
 
-assemble_decimal <- function(x) {
+assemble_decimal <- function(x, si) {
   mantissa <- format_mantissa(x)
   exp <- format_exp(x)
 

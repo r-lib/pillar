@@ -179,6 +179,13 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
       fixed = fixed
     )
     dec <- NULL
+  } else if (notation == "si") {
+    sci <- format_scientific(
+      x,
+      sigfig = sigfig, digits = digits, engineering = "si",
+      fixed = fixed
+    )
+    dec <- NULL
   } else {
     abort(paste0('Internal error: `notation = "', notation, '".'))
   }

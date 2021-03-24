@@ -8,11 +8,38 @@
 # format_scientific(1.5:3.5)
 # format_scientific(1e9)
 format_scientific <- function(x, sigfig, digits = NULL, engineering = FALSE, fixed = FALSE) {
-  split_decimal(x, sigfig, digits, sci_mod = if (engineering) 3 else 1, fixed = fixed)
+  split_decimal(
+    x, sigfig, digits,
+    sci_mod = if (identical(engineering, FALSE)) 1 else 3,
+    si = identical(engineering, "si"),
+    fixed = fixed
+  )
 }
 
 format_exp <- function(x) {
-  supernum(x$exp)
+  if (x$si) {
+    si(x$exp)
+  } else {
+    supernum(x$exp)
+  }
+}
+
+si <- function(x) {
+  if (all(x == 0L)) {
+    return(rep_along(x, ""))
+  }
+
+  num <- !is.na(x)
+  if (!any(num)) {
+    return(rep_along(x, ""))
+  }
+
+  si_prefixes <- c(
+    "y", "z", "a", "f", "p", "n", "μ", "m", " ", "k", "M", "G", "T", "P", "E", "Z", "Y"
+  )
+
+  idx <- (x / 3) + 9
+  style_bold(si_prefixes[idx])
 }
 
 supernum <- function(x) {

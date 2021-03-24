@@ -29,15 +29,17 @@ test_that("output test", {
 
     # Notation
     tibble::tibble(
-      sci  = num(10^(-13:6), notation = "sci"),
-      eng  = num(10^(-13:6), notation = "eng"),
-      dec  = num(10^(-13:6), notation = "dec")
+      sci = num(10^(-13:6), notation = "sci"),
+      eng = num(10^(-13:6), notation = "eng"),
+      dec = num(10^(-13:6), notation = "dec"),
+      si  = num(10^(-13:6), notation = "si"),
     )
 
     # Fixed exponent notation
     tibble::tibble(
-      scifix  = num(10^(-13:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-      engfix  = num(10^(-13:6) * 123, notation = "eng", fixed_magnitude = TRUE)
+      scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
+      engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE),
+      sifix  = num(10^(-7:6) * 123, notation = "si",  fixed_magnitude = TRUE)
     )
   })
 })

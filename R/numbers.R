@@ -50,15 +50,17 @@
 #'
 #' # Notation
 #' tibble::tibble(
-#'   sci  = num(10^(-13:6), notation = "sci"),
-#'   eng  = num(10^(-13:6), notation = "eng"),
-#'   dec  = num(10^(-13:6), notation = "dec")
+#'   sci = num(10^(-13:6), notation = "sci"),
+#'   eng = num(10^(-13:6), notation = "eng"),
+#'   eng = num(10^(-13:6), notation = "si"),
+#'   dec = num(10^(-13:6), notation = "dec")
 #' )
 #'
 #' # Fixed exponent notation
 #' tibble::tibble(
-#'   scifix  = num(10^(-13:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-#'   engfix  = num(10^(-13:6) * 123, notation = "eng", fixed_magnitude = TRUE)
+#'   scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
+#'   engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE),
+#'   sifix  = num(10^(-7:6) * 123, notation = "si",  fixed_magnitude = TRUE)
 #' )
 num <- function(x, sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL, notation = NULL,
@@ -231,7 +233,7 @@ vec_math.tibble_num <- function(op, x, ...) {
 #' @rdname num
 set_num_opts <- function(x, sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL,
-                         notation = c("dec", "sci", "eng"),
+                         notation = c("dec", "sci", "eng", "si"),
                          fixed_magnitude = NULL) {
 
   if (missing(notation)) {
