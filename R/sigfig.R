@@ -143,6 +143,8 @@ compute_rhs_digits <- function(x, sigfig) {
   rhs_digits
 }
 
+LOG_10 <- log(10)
+
 compute_exp <- function(x, sigfig) {
   # With 3 significant digits:
   # 0.9994 -> 0.999 -> exp == -1
@@ -151,7 +153,7 @@ compute_exp <- function(x, sigfig) {
   # before computing log10().
   # Division before log is the same as subtraction after log.
   # Using log1p for numerical stability.
-  offset <- log1p(-5 * 10^(-sigfig - 1)) / log(10)
+  offset <- log1p(-5 * 10^(-sigfig - 1)) / LOG_10
 
   ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
