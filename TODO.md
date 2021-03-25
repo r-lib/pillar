@@ -4,12 +4,13 @@
 
 - Improve output:
     - Finish `num()`
-        - SI notation, <https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes>
         - constructor errors if sigfig and digits
         - fixed number of digits useful
         - <https://github.com/r-lib/pillar/issues/191>
     - Implement `char()` for characters
-    - See open issues in "Challenges" section below
+        - `min_width = ...`
+        - `shorten = c("back", "front", "mid", "none", "abbreviate")`
+    - See open issues in "Formatting numbers" section below
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
