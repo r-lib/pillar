@@ -30,16 +30,16 @@
 #'
 #' # Maximum digits after the decimal points
 #' tibble::tibble(
-#'   x0 = num(9:11 * 100 + 0.5, digits = 0),
-#'   x1 = num(9:11 * 100 + 0.5, digits = 1),
-#'   x2 = num(9:11 * 100 + 0.5, digits = 2),
+#'   x0 = num(9:11 * 100 + 0.5, digits =  0),
+#'   x1 = num(9:11 * 100 + 0.5, digits = -1),
+#'   x2 = num(9:11 * 100 + 0.5, digits = -2),
 #' )
 #'
 #' # Use fixed digits and a currency label
 #' tibble::tibble(
-#'   usd = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "USD"),
-#'   gbp = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "£"),
-#'   chf = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "SFr")
+#'   usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
+#'   gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
+#'   chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
 #' )
 #'
 #' # Scale
@@ -115,11 +115,15 @@ vec_ptype_full.tibble_num <- function(x, ...) {
   label <- pillar_attr$label
 
   if (!is.null(digits)) {
-    out <- paste0(class, ":.", digits)
-  } else if (is.null(sigfig)) {
-    out <- class
-  } else {
+    if (digits >= 0) {
+      out <- paste0(class, ":.", digits, "!")
+    } else {
+      out <- paste0(class, ":.", -digits)
+    }
+  } else if (!is.null(sigfig)) {
     out <- paste0(class, ":", sigfig)
+  } else {
+    out <- class
   }
 
   if (!is.null(label)) {
@@ -140,15 +144,20 @@ vec_ptype_abbr.tibble_num <- function(x, ...) {
   sigfig <- pillar_attr$sigfig
   digits <- pillar_attr$digits
 
-  if (is.null(digits)) {
-    if (is.null(sigfig)) {
-      notation
+  if (!is.null(digits)) {
+    if (digits > 0) {
+      out <- paste0(notation, ":.", digits, "!")
     } else {
-      paste0(notation, ":", sigfig)
+      out <- paste0(notation, ":.", -digits)
     }
+  } else if (!is.null(sigfig)) {
+    out <- paste0(notation, ":", sigfig)
   } else {
-    paste0(notation, ":.", digits)
+    out <- notation
   }
+
+  out
+
 }
 
 #' @export

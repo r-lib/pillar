@@ -12,14 +12,14 @@
       3   1100.  1100.   1100.5
     Code
       tibble::tibble(x3 = num(9:11 * 100 + 0.5, digits = 0), x4 = num(9:11 * 100 +
-      0.5, digits = 1), x5 = num(9:11 * 100 + 0.5, digits = 2), )
+      0.5, digits = -1), x5 = num(9:11 * 100 + 0.5, digits = -2), )
     Output
       # A tibble: 3 x 3
               x3       x4       x5
         <num:.0> <num:.1> <num:.2>
-      1     900.    900.5   900.50
-      2    1000.   1000.5  1000.50
-      3    1100.   1100.5  1100.50
+      1     900.    900.5    900.5
+      2    1000.   1000.5   1000.5
+      3    1100.   1100.5   1100.5
     Code
       tibble::tibble(usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"), gbp = num(
         9:11 * 100 + 0.5, digits = 2, label = "£"), chf = num(9:11 * 100 + 0.5,
@@ -118,7 +118,7 @@
     Code
       num(3, digits = 2) * num(4, sigfig = 2)
     Output
-      <tibble_num:.2[1]>
+      <tibble_num:.2![1]>
       [1] 12  
     Code
       -num(2)

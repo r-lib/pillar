@@ -58,9 +58,12 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL, si = FALSE, fixed =
     if (is.null(digits)) {
       round_x <- safe_signif(mnt, sigfig)
       rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
+    } else if (digits >= 0) {
+      round_x <- round(mnt, digits)
+      rhs_digits <- digits
     } else {
       round_x <- round(mnt, sigfig)
-      rhs_digits <- digits
+      rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
     }
     exp_display <- exp
   } else {
@@ -68,9 +71,12 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL, si = FALSE, fixed =
       min_sigfig <- compute_min_sigfig(abs_x)
       round_x <- safe_signif(abs_x, pmax(sigfig, min_sigfig, na.rm = TRUE))
       rhs_digits <- compute_rhs_digits(abs_x, sigfig)
-    } else {
+    } else if (digits >= 0) {
       round_x <- round(abs_x, digits)
       rhs_digits <- digits
+    } else {
+      round_x <- round(abs_x, -digits)
+      rhs_digits <- compute_rhs_digits(abs_x - floor(abs_x), -digits)
     }
     exp_display <- rep_along(x, NA_integer_)
   }

@@ -140,8 +140,8 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
 
 pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
   if (!is.null(digits)) {
-    if (!is.numeric(digits) || length(digits) != 1 || digits < 0L) {
-      abort("`digits` must be a nonnegative number.")
+    if (!is.numeric(digits) || length(digits) != 1) {
+      abort("`digits` must be a number.")
     }
   }
   if (is.null(sigfig)) {
