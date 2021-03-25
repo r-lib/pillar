@@ -34,10 +34,10 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL, si = FALSE, fixed =
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
 
-  # Compute exponent and mantissa
-  exp <- compute_exp(abs_x, sigfig)
-
   if (!is.null(sci_mod)) {
+    # Compute exponent and mantissa
+    exp <- compute_exp(abs_x, sigfig)
+
     if (fixed) {
       exp <- rep_along(exp, as.integer(round(min(exp))))
     }
@@ -65,7 +65,8 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL, si = FALSE, fixed =
     exp_display <- exp
   } else {
     if (is.null(digits)) {
-      round_x <- safe_signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
+      min_sigfig <- compute_min_sigfig(abs_x)
+      round_x <- safe_signif(abs_x, pmax(sigfig, min_sigfig, na.rm = TRUE))
       rhs_digits <- compute_rhs_digits(abs_x, sigfig)
     } else {
       round_x <- round(abs_x, digits)
@@ -141,6 +142,13 @@ compute_rhs_digits <- function(x, sigfig) {
     }
   }
   rhs_digits
+}
+
+compute_min_sigfig <- function(x) {
+  ret <- rep_along(x, NA_integer_)
+  nonzero <- which(x != 0 & is.finite(x))
+  ret[nonzero] <- as.integer(floor(log10(x[nonzero]))) + 1L
+  ret
 }
 
 LOG_10 <- log(10)

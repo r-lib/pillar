@@ -61,11 +61,11 @@ tibble::tibble(
   x2 = num(9:11 * 100 + 0.5, digits = 2),
 )
 
-# FIXME: Use fixed digits
+# Use fixed digits and a currency label
 tibble::tibble(
-  usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
-  gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
-  chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
+  usd = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "USD"),
+  gbp = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "£"),
+  chf = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "SFr")
 )
 
 # Scale

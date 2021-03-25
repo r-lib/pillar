@@ -14,6 +14,7 @@
 #' the most notable exceptions are [var()] and [sd()].
 #' FIXME: `num_()` modifier.
 #'
+#' @inheritParams dots_empty
 #' @export
 #' @examples
 #' # Display as a vector
@@ -22,9 +23,9 @@
 #' @examplesIf requireNamespace("tibble", quietly = TRUE)
 #' # Significant figures
 #' tibble::tibble(
-#'   x3 = num(9:11 * 100 + 0.5, 3),
-#'   x4 = num(9:11 * 100 + 0.5, 4),
-#'   x5 = num(9:11 * 100 + 0.5, 5),
+#'   x3 = num(9:11 * 100 + 0.5, sigfig = 3),
+#'   x4 = num(9:11 * 100 + 0.5, sigfig = 4),
+#'   x5 = num(9:11 * 100 + 0.5, sigfig = 5),
 #' )
 #'
 #' # Maximum digits after the decimal points
@@ -34,11 +35,11 @@
 #'   x2 = num(9:11 * 100 + 0.5, digits = 2),
 #' )
 #'
-#' # FIXME: Use fixed digits
+#' # Use fixed digits and a currency label
 #' tibble::tibble(
-#'   usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
-#'   gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
-#'   chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
+#'   usd = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "USD"),
+#'   gbp = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "£"),
+#'   chf = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "SFr")
 #' )
 #'
 #' # Scale
@@ -62,11 +63,13 @@
 #'   engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE),
 #'   sifix  = num(10^(-7:6) * 123, notation = "si",  fixed_magnitude = TRUE)
 #' )
-num <- function(x, sigfig = NULL, digits = NULL,
+num <- function(x, ...,
+                sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL, notation = NULL,
                 fixed_magnitude = NULL) {
 
   stopifnot(is.numeric(x))
+  check_dots_empty()
 
   # FIXME: math and arith should also work for integers
   x[] <- as.numeric(x)
@@ -231,10 +234,13 @@ vec_math.tibble_num <- function(op, x, ...) {
 #'
 #' @export
 #' @rdname num
-set_num_opts <- function(x, sigfig = NULL, digits = NULL,
+set_num_opts <- function(x, ...,
+                         sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL,
                          notation = c("dec", "sci", "eng", "si"),
                          fixed_magnitude = NULL) {
+
+  check_dots_empty()
 
   if (missing(notation)) {
     notation <- NULL

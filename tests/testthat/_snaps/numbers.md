@@ -1,8 +1,8 @@
 # output test
 
     Code
-      tibble::tibble(x0 = num(9:11 * 100 + 0.5, 3), x1 = num(9:11 * 100 + 0.5, 4),
-      x2 = num(9:11 * 100 + 0.5, 5), )
+      tibble::tibble(x0 = num(9:11 * 100 + 0.5, sigfig = 3), x1 = num(9:11 * 100 +
+      0.5, sigfig = 4), x2 = num(9:11 * 100 + 0.5, sigfig = 5), )
     Output
       # A tibble: 3 x 3
              x0      x1      x2

@@ -114,7 +114,7 @@ pillar_shaft.logical <- function(x, ...) {
 #' @export
 #' @rdname pillar_shaft
 #' @param sigfig
-#'   Deprecated. Set a `"pillar_sigfig"` attribute on the data instead.
+#'   Deprecated, use [num()] or [set_num_opts()] on the data instead.
 pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
   pillar_attr <- attr(x, "pillar")
 

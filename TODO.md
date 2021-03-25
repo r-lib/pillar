@@ -4,8 +4,9 @@
 
 - Improve output:
     - Finish `num()`
-        - constructor errors if sigfig and digits
         - fixed number of digits useful
+        - pillar attribute should get `print()` method
+        - fail if combining different labels
         - <https://github.com/r-lib/pillar/issues/191>
     - Implement `char()` for characters
         - `min_width = ...`
