@@ -9,11 +9,11 @@ test_that("output test", {
     # Maximum digits after the decimal points
     tibble::tibble(
       x3 = num(9:11 * 100 + 0.5, digits = 0),
-      x4 = num(9:11 * 100 + 0.5, digits = 1),
-      x5 = num(9:11 * 100 + 0.5, digits = 2),
+      x4 = num(9:11 * 100 + 0.5, digits = -1),
+      x5 = num(9:11 * 100 + 0.5, digits = -2),
     )
 
-    # FIXME: Use digits_fixed
+    # Exact digits after the decimal point, with label
     tibble::tibble(
       usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
       gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
