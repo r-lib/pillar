@@ -61,9 +61,6 @@
     <loc>https://pillar.r-lib.org/reference/new_tbl_format_setup.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/num.html</loc>
-  </url>
-  <url>
     <loc>https://pillar.r-lib.org/reference/pillar-package.html</loc>
   </url>
   <url>
@@ -101,9 +98,6 @@
   </url>
   <url>
     <loc>https://pillar.r-lib.org/articles/extending.html</loc>
-  </url>
-  <url>
-    <loc>https://pillar.r-lib.org/articles/numbers.html</loc>
   </url>
   <url>
     <loc>https://pillar.r-lib.org/articles/printing.html</loc>

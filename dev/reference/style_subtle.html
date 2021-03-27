@@ -154,17 +154,17 @@ maintain a consistent style with the default data types." />
 maintain a consistent style with the default data types.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>style_num</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>negative</span>, significant <span class='op'>=</span> <span class='fu'>rep_along</span><span class='op'>(</span><span class='va'>x</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'><a href='style_subtle.html'>style_num</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>negative</span>, significant <span class='op'>=</span> <span class='fu'>rep_along</span><span class='op'>(</span><span class='va'>x</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>style_subtle</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'><a href='style_subtle.html'>style_subtle</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>style_subtle_num</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>negative</span><span class='op'>)</span>
+<span class='fu'><a href='style_subtle.html'>style_subtle_num</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>negative</span><span class='op'>)</span>
 
-<span class='fu'>style_bold</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'><a href='style_subtle.html'>style_bold</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>style_na</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'><a href='style_subtle.html'>style_na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>style_neg</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+<span class='fu'><a href='style_subtle.html'>style_neg</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,30 +182,30 @@ indicate if the values are negative and significant, respectively</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>style_subtle()</code> is affected by the <code>pillar.subtle</code> option.</p>
-<p><code>style_subtle_num()</code> is affected by the <code>pillar.subtle_num</code> option, which is
+    <p><code><a href='style_subtle.html'>style_subtle()</a></code> is affected by the <code>pillar.subtle</code> option.</p>
+<p><code><a href='style_subtle.html'>style_subtle_num()</a></code> is affected by the <code>pillar.subtle_num</code> option, which is
 <code>FALSE</code> by default.</p>
-<p><code>style_bold()</code> is affected by the <code>pillar.bold</code> option.</p>
-<p><code>style_neg()</code> is affected by the <code>pillar.neg</code> option.</p>
+<p><code><a href='style_subtle.html'>style_bold()</a></code> is affected by the <code>pillar.bold</code> option.</p>
+<p><code><a href='style_subtle.html'>style_neg()</a></code> is affected by the <code>pillar.neg</code> option.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='pillar-package.html'>pillar-package</a> for a list of options</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>style_num</span><span class='op'>(</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='style_subtle.html'>style_num</a></span><span class='op'>(</span>
   <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"123"</span>, <span class='st'>"456"</span><span class='op'>)</span>,
   negative <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "\033[31m123\033[39m" "456"                </div><div class='input'><span class='fu'>style_num</span><span class='op'>(</span>
+</div><div class='output co'>#&gt; [1] "\033[31m123\033[39m" "456"                </div><div class='input'><span class='fu'><a href='style_subtle.html'>style_num</a></span><span class='op'>(</span>
   <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"123"</span>, <span class='st'>"456"</span><span class='op'>)</span>,
   negative <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span><span class='op'>)</span>,
   significant <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "\033[31m123\033[39m" "456"                </div><div class='input'><span class='fu'>style_subtle</span><span class='op'>(</span><span class='st'>"text"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "\033[38;5;246mtext\033[39m"</div><div class='input'><span class='fu'>style_subtle_num</span><span class='op'>(</span><span class='fl'>0.01</span> <span class='op'>*</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "\033[31m0.01\033[39m" "0.02"                 "\033[31m0.03\033[39m"</div><div class='input'><span class='fu'>style_bold</span><span class='op'>(</span><span class='st'>"Petal.Width"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Petal.Width"</div><div class='input'><span class='fu'>style_na</span><span class='op'>(</span><span class='st'>"NA"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "\033[31mNA\033[39m"</div><div class='input'><span class='fu'>style_neg</span><span class='op'>(</span><span class='st'>"123"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "\033[31m123\033[39m" "456"                </div><div class='input'><span class='fu'><a href='style_subtle.html'>style_subtle</a></span><span class='op'>(</span><span class='st'>"text"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "\033[38;5;246mtext\033[39m"</div><div class='input'><span class='fu'><a href='style_subtle.html'>style_subtle_num</a></span><span class='op'>(</span><span class='fl'>0.01</span> <span class='op'>*</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "\033[31m0.01\033[39m" "0.02"                 "\033[31m0.03\033[39m"</div><div class='input'><span class='fu'><a href='style_subtle.html'>style_bold</a></span><span class='op'>(</span><span class='st'>"Petal.Width"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Petal.Width"</div><div class='input'><span class='fu'><a href='style_subtle.html'>style_na</a></span><span class='op'>(</span><span class='st'>"NA"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "\033[31mNA\033[39m"</div><div class='input'><span class='fu'><a href='style_subtle.html'>style_neg</a></span><span class='op'>(</span><span class='st'>"123"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "\033[31m123\033[39m"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -218,7 +218,7 @@ indicate if the values are negative and significant, respectively</p></td>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
