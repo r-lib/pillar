@@ -4,7 +4,7 @@
 
 - Improve output:
     - Finish `num()`
-        - fixed number of digits useful
+        - <https://github.com/r-lib/vctrs/issues/1339>: `vec_ptype2.num.num()`
         - pillar attribute should get `print()` method
         - fail if combining different labels
         - <https://github.com/r-lib/pillar/issues/191>
