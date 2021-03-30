@@ -4,9 +4,7 @@
 
 - Improve output:
     - Finish `num()`
-        - Implement `vec_c()` between differently formatted numbers
         - pillar attribute should get `print()` method
-        - fail if combining different labels
         - <https://github.com/r-lib/pillar/issues/191>
     - Implement `char()` for characters
         - `min_width = ...`

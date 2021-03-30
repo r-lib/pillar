@@ -49,10 +49,20 @@ test_that("coercion", {
     vec_c(num(1), num(2)),
     num(as.numeric(1:2))
   )
-  skip("Broken")
   expect_identical(
-    vec_c(num(1, sigfig = 4), num(2, sigfig = 2)),
+    vec_c(num(1, sigfig = 4), num(2, sigfig = 2, notation = "si")),
     num(as.numeric(1:2), sigfig = 4)
+  )
+  expect_identical(
+    vec_c(num(1, label = "a"), 2),
+    num(as.numeric(1:2), label = "a")
+  )
+  expect_identical(
+    vec_c(1, num(2, label = "a")),
+    num(as.numeric(1:2), label = "a")
+  )
+  expect_error(
+    vec_c(num(1, label = "a"), num(2, label = "b"))
   )
 })
 

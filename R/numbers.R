@@ -297,6 +297,23 @@ vec_ptype2.integer.tibble_num <- function(x, y, ...) {
 }
 
 #' @export
+vec_cast.tibble_num.tibble_num <- function(x, to, ...) {
+  pillar_x <- attr(x, "pillar")
+  pillar_to <- attr(to, "pillar")
+
+  pillar_x_label <- pillar_x$label
+  pillar_to_label <- pillar_to$label
+
+  if (!is.null(pillar_x_label) && !is.null(pillar_to_label)) {
+    if (!identical(pillar_x$label, pillar_to$label)) {
+      abort("Only `tibble_num` objects with the same label can be combined.")
+    }
+  }
+
+  attr(x, "pillar") <- pillar_to
+  x
+}
+#' @export
 vec_cast.double.tibble_num <- function(x, to, ...) {
   vec_data(x)
 }
