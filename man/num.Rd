@@ -7,6 +7,7 @@
 \usage{
 num(
   x,
+  ...,
   sigfig = NULL,
   digits = NULL,
   label = NULL,
@@ -17,6 +18,7 @@ num(
 
 set_num_opts(
   x,
+  ...,
   sigfig = NULL,
   digits = NULL,
   label = NULL,
