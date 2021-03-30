@@ -10,6 +10,7 @@
 #' @importFrom vctrs vec_arith
 #' @importFrom vctrs vec_arith.numeric
 #' @importFrom vctrs vec_arith_base
+#' @importFrom vctrs vec_c
 #' @importFrom vctrs vec_cast
 #' @importFrom vctrs vec_cast.double
 #' @importFrom vctrs vec_cast.integer

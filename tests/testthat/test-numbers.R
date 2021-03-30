@@ -44,6 +44,18 @@ test_that("output test", {
   })
 })
 
+test_that("coercion", {
+  expect_identical(
+    vec_c(num(1), num(2)),
+    num(as.numeric(1:2))
+  )
+  skip("Broken")
+  expect_identical(
+    vec_c(num(1, sigfig = 4), num(2, sigfig = 2)),
+    num(as.numeric(1:2), sigfig = 4)
+  )
+})
+
 test_that("arithmetics", {
   expect_snapshot({
     num(1) + 2

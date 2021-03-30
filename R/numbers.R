@@ -275,6 +275,10 @@ set_num_opts <- function(x, ...,
 }
 
 #' @export
+vec_ptype2.tibble_num.tibble_num <- function(x, y, ...) {
+  x
+}
+#' @export
 vec_ptype2.tibble_num.double <- function(x, y, ...) {
   x
 }
