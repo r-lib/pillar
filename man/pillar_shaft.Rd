@@ -49,7 +49,7 @@ pillar_shaft(x, ...)
 
 \item{width}{Width for printing and formatting.}
 
-\item{sigfig}{Deprecated. Set a \code{"pillar_sigfig"} attribute on the data instead.}
+\item{sigfig}{Deprecated, use \code{\link[=num]{num()}} or \code{\link[=set_num_opts]{set_num_opts()}} on the data instead.}
 
 \item{min_width}{Minimum number of characters to display,
 unless the string fits a shorter width.}

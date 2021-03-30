@@ -51,23 +51,23 @@ num(9:11 * 100 + 0.5)
 \dontshow{if (requireNamespace("tibble", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Significant figures
 tibble::tibble(
-  x3 = num(9:11 * 100 + 0.5, 3),
-  x4 = num(9:11 * 100 + 0.5, 4),
-  x5 = num(9:11 * 100 + 0.5, 5),
+  x3 = num(9:11 * 100 + 0.5, sigfig = 3),
+  x4 = num(9:11 * 100 + 0.5, sigfig = 4),
+  x5 = num(9:11 * 100 + 0.5, sigfig = 5),
 )
 
 # Maximum digits after the decimal points
 tibble::tibble(
-  x0 = num(9:11 * 100 + 0.5, digits = 0),
-  x1 = num(9:11 * 100 + 0.5, digits = 1),
-  x2 = num(9:11 * 100 + 0.5, digits = 2),
+  x0 = num(9:11 * 100 + 0.5, digits =  0),
+  x1 = num(9:11 * 100 + 0.5, digits = -1),
+  x2 = num(9:11 * 100 + 0.5, digits = -2),
 )
 
 # Use fixed digits and a currency label
 tibble::tibble(
-  usd = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "USD"),
-  gbp = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "£"),
-  chf = num(9:11 * 100 + 0.5, digits_fixed = 2, label = "SFr")
+  usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
+  gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
+  chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
 )
 
 # Scale
