@@ -14,13 +14,13 @@
 #' the most notable exceptions are [var()] and [sd()].
 #' FIXME: `num_()` modifier.
 #'
-#' @inheritParams dots_empty
+#' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples
 #' # Display as a vector
 #' num(9:11 * 100 + 0.5)
-#'
 #' @examplesIf requireNamespace("tibble", quietly = TRUE)
+#'
 #' # Significant figures
 #' tibble::tibble(
 #'   x3 = num(9:11 * 100 + 0.5, sigfig = 3),
@@ -157,7 +157,6 @@ vec_ptype_abbr.tibble_num <- function(x, ...) {
   }
 
   out
-
 }
 
 #' @export

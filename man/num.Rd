@@ -27,6 +27,9 @@ set_num_opts(
   fixed_magnitude = NULL
 )
 }
+\arguments{
+\item{...}{These dots are for future extensions and must be empty.}
+}
 \description{
 Constructs a vector with custom that can be formatted with predefined
 significant digits, or with a maximum or fixed number of digits
@@ -47,8 +50,8 @@ useful for composing with other types.
 \examples{
 # Display as a vector
 num(9:11 * 100 + 0.5)
-
 \dontshow{if (requireNamespace("tibble", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
 # Significant figures
 tibble::tibble(
   x3 = num(9:11 * 100 + 0.5, sigfig = 3),
