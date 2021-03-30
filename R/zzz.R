@@ -37,7 +37,9 @@ NULL
   register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
   register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
   register_s3_method("survival", "pillar_shaft", "Surv", gen_pkg = "pillar")
+  register_s3_method("survival", "type_sum", "Surv", gen_pkg = "pillar")
   register_s3_method("survival", "pillar_shaft", "Surv2", gen_pkg = "pillar")
+  register_s3_method("survival", "type_sum", "Surv2", gen_pkg = "pillar")
 
   assign_crayon_styles()
 

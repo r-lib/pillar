@@ -217,6 +217,16 @@ pillar_shaft.Surv2 <- function(x, ...) {
   new_pillar_shaft_simple(format(x), align = "right")
 }
 
+# registered in .onLoad()
+type_sum.Surv <- function(x) {
+  "Surv"
+}
+
+# registered in .onLoad()
+type_sum.Surv2 <- function(x) {
+  "Surv2"
+}
+
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.Date <- function(x, ...) {
