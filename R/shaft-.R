@@ -164,6 +164,11 @@ pillar_shaft.Surv <- function(x, ...) {
 }
 
 # registered in .onLoad()
+pillar_shaft.Surv2 <- function(x, ...) {
+  new_pillar_shaft_simple(format(x), align = "right")
+}
+
+# registered in .onLoad()
 type_sum.Surv <- function(x) {
   "Surv"
 }
