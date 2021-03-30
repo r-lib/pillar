@@ -4,7 +4,7 @@
       pillar(x, width = 20)
     Output
       <pillar>
-                    <Surv>
+                <Surv[,2]>
                       306 
                       455 
                      1010+
@@ -18,7 +18,7 @@
       pillar(x, width = 20)
     Output
       <pillar>
-                   <Surv2>
+               <Surv2[,2]>
                      306:2
                      455:2
                     1010+ 
