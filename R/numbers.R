@@ -102,35 +102,7 @@ pillar_shaft.tibble_num <- function(x, ...) {
 
 #' @export
 vec_ptype_full.tibble_num <- function(x, ...) {
-  pillar_attr <- attr(x, "pillar")
-  notation <- pillar_attr$notation
-  if (is.null(notation)) {
-    class <- "tibble_num"
-  } else {
-    class <- paste0("tibble_num(", notation, ")")
-  }
-
-  sigfig <- pillar_attr$sigfig
-  digits <- pillar_attr$digits
-  label <- pillar_attr$label
-
-  if (!is.null(digits)) {
-    if (digits >= 0) {
-      out <- paste0(class, ":.", digits, "!")
-    } else {
-      out <- paste0(class, ":.", -digits)
-    }
-  } else if (!is.null(sigfig)) {
-    out <- paste0(class, ":", sigfig)
-  } else {
-    out <- class
-  }
-
-  if (!is.null(label)) {
-    out <- paste0(out, "{", label, "}")
-  }
-
-  out
+  format(attr(x, "pillar"))
 }
 
 #' @export
@@ -262,16 +234,61 @@ set_num_opts <- function(x, ...,
     }
   }
 
-  pillar_attr <- list(
-    sigfig = sigfig,
-    digits = digits,
-    label = label,
-    scale = scale,
-    notation = notation,
-    fixed_magnitude = fixed_magnitude
+  if (!is.null(scale) && is.null(label)) {
+    abort("Must set `label` if `scale` is provided.")
+  }
+
+  pillar_attr <- structure(
+    list(
+      sigfig = sigfig,
+      digits = digits,
+      label = label,
+      scale = scale,
+      notation = notation,
+      fixed_magnitude = fixed_magnitude
+    ),
+    class = "tibble_num_attr"
   )
   attr(x, "pillar") <- pillar_attr
   x
+}
+
+#' @export
+format.tibble_num_attr <- function(x, ...) {
+  notation <- x$notation
+  if (is.null(notation)) {
+    class <- "tibble_num"
+  } else {
+    class <- paste0("tibble_num(", notation, ")")
+  }
+
+  sigfig <- x$sigfig
+  digits <- x$digits
+  label <- x$label
+
+  if (!is.null(digits)) {
+    if (digits >= 0) {
+      out <- paste0(class, ":.", digits, "!")
+    } else {
+      out <- paste0(class, ":.", -digits)
+    }
+  } else if (!is.null(sigfig)) {
+    out <- paste0(class, ":", sigfig)
+  } else {
+    out <- class
+  }
+
+  if (!is.null(label)) {
+    out <- paste0(out, "{", label, "}")
+  }
+
+  out
+}
+
+#' @export
+print.tibble_num_attr <- function(x, ...) {
+  writeLines(format(x))
+  invisible(x)
 }
 
 #' @export

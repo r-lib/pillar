@@ -91,3 +91,10 @@ test_that("formatting", {
     format(num(-1:3), trim = TRUE)
   })
 })
+
+test_that("attribute", {
+  expect_snapshot({
+    set_num_opts(1, sigfig = 2, fixed_magnitude = TRUE)
+    set_num_opts(1000, digits = 2, notation = "eng")
+  })
+})
