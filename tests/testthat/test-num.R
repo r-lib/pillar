@@ -79,7 +79,7 @@ test_that("arithmetics", {
 
 test_that("mathematics", {
   expect_snapshot({
-    min(num(1:3, label = "€"))
+    min(num(1:3, label = "$"))
     mean(num(1:3, notation = "eng"))
     sin(num(1:3, label = "%", scale = 100))
   })
