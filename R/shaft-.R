@@ -154,7 +154,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
   }
 
   if (is.null(notation)) {
-    dec <- format_decimal(x, sigfig = sigfig, digits = digits)
+    dec <- split_decimal(x, sigfig = sigfig, digits = digits)
     sci <- format_scientific(x, sigfig = sigfig, digits = digits)
 
     MAX_DEC_WIDTH <- 13
@@ -163,7 +163,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
       dec <- NULL
     }
   } else if (notation == "dec") {
-    dec <- format_decimal(x, sigfig = sigfig, digits = digits)
+    dec <- split_decimal(x, sigfig = sigfig, digits = digits)
     sci <- NULL
   } else if (notation == "sci") {
     sci <- format_scientific(

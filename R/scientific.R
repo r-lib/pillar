@@ -2,8 +2,8 @@
 #
 # Uses colour and careful alignment.
 #
-# @seealso [format_decimal()]
-# @inheritParams format_decimal
+# @seealso [split_decimal()]
+# @inheritParams split_decimal
 # @examples
 # format_scientific(1.5:3.5)
 # format_scientific(1e9)

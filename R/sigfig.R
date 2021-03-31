@@ -13,16 +13,11 @@
 #
 # @param x A numeric vector
 # @param sigfig Number of significant figures to display.
-# @param ... Ignored
 # @seealso [format_scientific()]
 # @examples
-# format_decimal(1.5:3.5)
-# format_decimal(1e9)
-format_decimal <- function(x, sigfig, digits = NULL) {
-  split_decimal(x, sigfig, digits)
-}
-
-split_decimal <- function(x, sigfig, digits, sci_mod = NULL, si = FALSE, fixed = FALSE) {
+# split_decimal(1.5:3.5)
+# split_decimal(1e9)
+split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
