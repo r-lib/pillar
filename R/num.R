@@ -76,7 +76,7 @@
 #' tibble::tibble(
 #'   sci = num(10^(-13:6), notation = "sci"),
 #'   eng = num(10^(-13:6), notation = "eng"),
-#'   eng = num(10^(-13:6), notation = "si"),
+#'   si  = num(10^(-13:6), notation = "si"),
 #'   dec = num(10^(-13:6), notation = "dec")
 #' )
 #'
