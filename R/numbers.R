@@ -282,6 +282,18 @@ format.tibble_num_attr <- function(x, ...) {
     out <- paste0(out, "{", label, "}")
   }
 
+  scale <- x$scale
+
+  if (!is.null(scale)) {
+    out <- paste0(out, "*", scale)
+  }
+
+  fixed_magnitude <- x$fixed_magnitude
+
+  if (!is.null(fixed_magnitude)) {
+    out <- paste0(out, "|")
+  }
+
   out
 }
 

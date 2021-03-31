@@ -141,7 +141,7 @@
     Code
       sin(num(1:3, label = "%", scale = 100))
     Output
-      <tibble_num{%}[3]>
+      <tibble_num{%}*100[3]>
       [1] 84.1 90.9 14.1
 
 # formatting
@@ -154,4 +154,19 @@
       format(num(-1:3), trim = TRUE)
     Output
       [1] "-1" "0"  "1"  "2"  "3" 
+
+# attribute
+
+    Code
+      set_num_opts(1, sigfig = 2, fixed_magnitude = TRUE)
+    Output
+      [1] 1
+      attr(,"pillar")
+      tibble_num:2|
+    Code
+      set_num_opts(1000, digits = 2, notation = "eng")
+    Output
+      [1] 1000
+      attr(,"pillar")
+      tibble_num(eng):.2!
 
