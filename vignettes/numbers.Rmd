@@ -36,9 +36,9 @@ library(tibble)
 num(-1:3, notation = "sci")
 
 tibble(
-  x4 = num(8:12 * 100 + 0.5, 4),
-  x1 = num(8:12 * 100 + 0.5, digits = 1),
-  usd = num(8:12 * 100 + 0.5, digits_fixed = 2, label = "USD"),
+  x4 = num(8:12 * 100 + 0.5, digits = 4),
+  x1 = num(8:12 * 100 + 0.5, digits = -1),
+  usd = num(8:12 * 100 + 0.5, digits = 2, label = "USD"),
   percent = num(8:12 / 100 + 0.0005, label = "%", scale = 100),
   eng = num(10^(-3:1), notation = "eng", fixed_magnitude = TRUE),
   si = num(10^(-3:1) * 123, notation = "si")
@@ -101,18 +101,13 @@ set_units.tibble_num <- function(x, ...) {
   out
 }
 
-# Need to avoid unclass() in units: https://github.com/r-quantities/units/pull/275
-set_units(num(1:3, notation = "sci"), m) + set_units(1:3, km)
+tibble(
+  sci_int = set_num_opts(set_units(1:3, m), notation = "sci") + set_units(1:3, km),
+  digits_int = set_num_opts(set_units(1:3, km), digits = 2) + set_units(1:3, m),
 
-
-
-
-pillar(set_num_opts(set_units(1:3, m), notation = "sci") + set_units(1:3, km))
-pillar(set_num_opts(set_units(1:3, km), digits = 2) + set_units(1:3, m))
-
-# FIXME: subsetting needs to preserve pillar attribute
-set_num_opts(set_units(1:3, m) + set_units(1:3, km), notation = "sci")
-set_num_opts(set_units(1:3, m) + set_units(1:3, km), notation = "sci")[1:3]
+  # FIXME: Need to preserve pillar attribute on arithmetics
+  sci_ext = set_units(num(1:3, notation = "sci"), m) + set_units(1:3, km)
+)
 ```
 
 ### formattable
@@ -127,13 +122,13 @@ pillar_shaft.formattable <- function(x, ...) {
 pillar_shaft.formattable_currency <- function(x, ...) {
   formattable <- attr(x, "formattable")
 
-  pillar_shaft(num(unclass(x), digits_fixed = formattable$digits))
+  pillar_shaft(num(unclass(x), digits = formattable$digits))
 }
 
 pillar_shaft.formattable_percent <- function(x, ...) {
   formattable <- attr(x, "formattable")
 
-  pillar_shaft(num(unclass(x), digits_fixed = formattable$digits, scale = 100))
+  pillar_shaft(num(unclass(x), digits = formattable$digits, scale = 100))
 }
 
 pillar_shaft.formattable_scientific <- function(x, ...) {

@@ -4,6 +4,7 @@
 
 - Improve output:
     - Finish `num()`
+        - units need to preserve pillar attribute after arithmetics
         - <https://github.com/r-lib/pillar/issues/191>
     - Implement `char()` for characters
         - `min_width = ...`
