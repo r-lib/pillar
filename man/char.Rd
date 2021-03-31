@@ -8,15 +8,15 @@
 char(
   x,
   ...,
-  min_width = NULL,
-  shorten = c("back", "front", "mid", "never", "abbreviate")
+  min_chars = NULL,
+  shorten = c("back", "front", "mid", "abbreviate")
 )
 
 set_char_opts(
   x,
   ...,
-  min_width = NULL,
-  shorten = c("back", "front", "mid", "never", "abbreviate")
+  min_chars = NULL,
+  shorten = c("back", "front", "mid", "abbreviate")
 )
 }
 \arguments{
@@ -51,9 +51,9 @@ data_with_id <- function(id) {
 data_with_id(rand_strings)
 
 # Use char() to avoid or control truncation
-data_with_id(char(rand_strings, min_width = 35))
+data_with_id(char(rand_strings, min_chars = 35))
 data_with_id(char(rand_strings, shorten = "none"))
-data_with_id(char(rand_strings, min_width = 35, shorten = "mid"))
+data_with_id(char(rand_strings, min_chars = 35, shorten = "mid"))
 
 lipsum <- stringi::stri_rand_lipsum(3)
 data_with_id(char(lipsum, shorten = "abbreviate"))
