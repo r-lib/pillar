@@ -49,8 +49,7 @@ pillar_shaft(x, ...)
 
 \item{width}{Width for printing and formatting.}
 
-\item{sigfig}{Minimum number of significant figures to display, default: 3.
-Numbers larger than 1 will potentially show more significant figures than this.}
+\item{sigfig}{Deprecated, use \code{\link[=num]{num()}} or \code{\link[=set_num_opts]{set_num_opts()}} on the data instead.}
 
 \item{min_width}{Minimum number of characters to display,
 unless the string fits a shorter width.}

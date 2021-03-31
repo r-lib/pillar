@@ -31,14 +31,18 @@ Suggests:
     bit64,
     debugme,
     DiagrammeR,
+    formattable,
+    ggplot2,
     knitr,
     lubridate,
     nycflights13,
     palmerpenguins,
     rmarkdown,
+    scales,
     survival,
     testthat (>= 3.0.2),
     tibble,
+    units,
     withr
 VignetteBuilder: 
     knitr
@@ -54,3 +58,6 @@ Config/testthat/start-first:
     ctl_colonnade,
     ctl_colonnade_1,
     ctl_colonnade_2
+Remotes: 
+    renkun-ken/formattable#154,
+    r-quantities/units

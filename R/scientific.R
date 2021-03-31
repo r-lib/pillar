@@ -1,18 +1,27 @@
-# Format numbers in scientific notation
-#
-# Uses colour and careful alignment.
-#
-# @seealso [format_decimal()]
-# @inheritParams format_decimal
-# @examples
-# format_scientific(1.5:3.5)
-# format_scientific(1e9)
-format_scientific <- function(x, sigfig) {
-  split_decimal(x, sigfig, scientific = TRUE)
+format_exp <- function(x) {
+  if (x$si) {
+    si(x$exp)
+  } else {
+    supernum(x$exp)
+  }
 }
 
-format_exp <- function(x) {
-  supernum(x$exp)
+si <- function(x) {
+  num <- !is.na(x)
+  if (!any(num)) {
+    return(rep_along(x, ""))
+  }
+
+  if (all(x[num] == 0L)) {
+    return(rep_along(x, ""))
+  }
+
+  si_prefixes <- c(
+    "y", "z", "a", "f", "p", "n", "\u00b5", "m", " ", "k", "M", "G", "T", "P", "E", "Z", "Y"
+  )
+
+  idx <- (x / 3) + 9
+  style_bold(si_prefixes[idx])
 }
 
 supernum <- function(x) {

@@ -13,16 +13,18 @@
 #
 # @param x A numeric vector
 # @param sigfig Number of significant figures to display.
-# @param ... Ignored
-# @seealso [format_scientific()]
+# @param digits Number of digits after the decimal point, incompatible with
+#   `sigfig`. A negative number means the maximum number of digits to display.
+# @param sci_mod Set to 1 for scientific or to 3 for engineering display.
+# @param si Set to `TRUE` for SI notation, requires `sci_mod = 3`
+# @param fixed Set to `TRUE` to use the same exponent everywhere.
+# @seealso [split_decimal()]
 # @examples
-# format_decimal(1.5:3.5)
-# format_decimal(1e9)
-format_decimal <- function(x, sigfig) {
-  split_decimal(x, sigfig)
-}
-
-split_decimal <- function(x, sigfig, scientific = FALSE) {
+# split_decimal(1.5:3.5)
+# split_decimal(1.5:3.5, sci_mod = 1)
+# split_decimal(1e9)
+# split_decimal(1e9, sci_mod = 1)
+split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed_magnitude = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -34,27 +36,56 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
 
-  # Compute exponent and mantissa
-  exp <- compute_exp(abs_x, sigfig)
+  if (!is.null(sci_mod)) {
+    # Compute exponent and mantissa
+    exp <- compute_exp(abs_x, sigfig)
 
-  if (scientific) {
+    if (fixed_magnitude) {
+      exp <- rep_along(exp, as.integer(round(min(exp))))
+    }
+    if (sci_mod != 1) {
+      exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
+    }
+    if (si) {
+      # Truncate very small and very large exponents
+      exp <- pmax(exp, -24L)
+      exp <- pmin(exp, 24L)
+    }
+
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
     mnt <- abs_x
     mnt_idx <- which(num & abs_x != 0)
     mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
-    round_x <- safe_signif(mnt, sigfig)
-    rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
+    if (is.null(digits)) {
+      round_x <- safe_signif(mnt, sigfig)
+      rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
+    } else if (digits >= 0) {
+      round_x <- round(mnt, digits)
+      rhs_digits <- digits
+    } else {
+      round_x <- round(mnt, sigfig)
+      rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
+    }
     exp_display <- exp
   } else {
-    round_x <- safe_signif(abs_x, pmax(sigfig, exp + 1, na.rm = TRUE))
-    rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+    if (is.null(digits)) {
+      min_sigfig <- compute_min_sigfig(abs_x)
+      round_x <- safe_signif(abs_x, pmax(sigfig, min_sigfig, na.rm = TRUE))
+      rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+    } else if (digits >= 0) {
+      round_x <- round(abs_x, digits)
+      rhs_digits <- digits
+    } else {
+      round_x <- round(abs_x, -digits)
+      rhs_digits <- compute_rhs_digits(abs_x - floor(abs_x), -digits)
+    }
     exp_display <- rep_along(x, NA_integer_)
   }
 
   lhs <- trunc(round_x)
   rhs <- round_x - lhs
-  if (!scientific) {
+  if (is.null(sci_mod)) {
     dec[diff_to_trunc(x) == 0] <- FALSE
   }
 
@@ -67,7 +98,8 @@ split_decimal <- function(x, sigfig, scientific = FALSE) {
     rhs = rhs,
     rhs_digits = rhs_digits,
     dec = dec,
-    exp = exp_display
+    exp = exp_display,
+    si = si
   )
 
   set_width(ret, get_decimal_width(ret))
@@ -120,6 +152,15 @@ compute_rhs_digits <- function(x, sigfig) {
   rhs_digits
 }
 
+compute_min_sigfig <- function(x) {
+  ret <- rep_along(x, NA_integer_)
+  nonzero <- which(x != 0 & is.finite(x))
+  ret[nonzero] <- as.integer(floor(log10(x[nonzero]))) + 1L
+  ret
+}
+
+LOG_10 <- log(10)
+
 compute_exp <- function(x, sigfig) {
   # With 3 significant digits:
   # 0.9994 -> 0.999 -> exp == -1
@@ -128,7 +169,7 @@ compute_exp <- function(x, sigfig) {
   # before computing log10().
   # Division before log is the same as subtraction after log.
   # Using log1p for numerical stability.
-  offset <- log1p(-5 * 10^(-sigfig - 1)) / log(10)
+  offset <- log1p(-5 * 10^(-sigfig - 1)) / LOG_10
 
   ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
@@ -276,22 +317,24 @@ assemble_decimal <- function(x) {
 
 #' @export
 format.pillar_shaft_decimal <- function(x, width, ...) {
-  if (length(x$dec$num) == 0L) {
+  if (is.null(x$dec) || width < get_width(x$dec)) {
+    fmt <- x$sci
+  } else {
+    fmt <- x$dec
+  }
+
+  if (length(fmt$num) == 0L) {
     return(character())
   }
 
-  if (width < get_min_width(x)) {
+  if (width < get_min_width(fmt)) {
     stop(
       "Need at least width ", get_min_width(x), ", requested ", width, ".",
       call. = FALSE
     )
   }
 
-  if (width >= get_width(x$dec)) {
-    row <- assemble_decimal(x$dec)
-  } else {
-    row <- assemble_decimal(x$sci)
-  }
+  row <- assemble_decimal(fmt)
 
   used_width <- get_max_extent(row)
   row <- paste0(strrep(" ", width - used_width), row)

@@ -1,3 +1,17 @@
+#' @importFrom utils head
+df_head <- function(x, n) {
+  if (!is.data.frame(x)) {
+    as.data.frame(head(x, n))
+  } else {
+    vec_head(as.data.frame(x), n)
+  }
+}
+
+vec_head <- function(x, n) {
+  n <- min(n, vctrs::vec_size(x))
+  vctrs::vec_slice(x, seq_len(n))
+}
+
 cat_line <- function(...) {
   cat(..., "\n", sep = "")
 }

@@ -36,6 +36,9 @@ reference:
       - new_ornament
       - new_pillar_title
       - new_pillar_type
+  - title: Vector classes
+    contents:
+      - num
   - title: Miscellaneous
     contents:
       - dim_desc
@@ -70,6 +73,8 @@ navbar:
     articles:
       text: Articles
       menu:
+      - text: Controlling display of numbers
+        href: articles/numbers.html
       - text: Custom formatting
         href: articles/extending.html
       - text: 'Printing a tibble: Control and data flow'

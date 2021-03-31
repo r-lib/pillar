@@ -109,6 +109,11 @@ jobs:
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "${{matrix.config.os-version}}"))')
 
       # Begin custom: before install
+      # FIXME: Remove with cran units
+      - name: Install system dependencies
+        if: runner.os == 'macOS'
+        run: |
+          brew install udunits
       # End custom: before install
 
       - name: Install dependencies

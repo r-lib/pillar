@@ -1,0 +1,176 @@
+---
+title: "Controlling display of numbers"
+output: html_vignette
+vignette: >
+  %\VignetteIndexEntry{Controlling display of numbers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r numbers-1, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  cache = TRUE,
+  comment = "#>"
+)
+```
+
+Tibbles print numbers with three significant digits by default, switching to scientific notation if the available space is too small.
+Underlines are used to highlight groups of three digits.
+This display works for many, but not for all use cases.
+
+```{r numbers-2}
+library(pillar)
+```
+
+## Showing `num`
+
+```{r numbers-4}
+library(tibble)
+```
+
+
+### Example
+
+```{r numbers-5}
+num(-1:3, notation = "sci")
+
+tibble(
+  x4 = num(8:12 * 100 + 0.5, digits = 4),
+  x1 = num(8:12 * 100 + 0.5, digits = -1),
+  usd = num(8:12 * 100 + 0.5, digits = 2, label = "USD"),
+  percent = num(8:12 / 100 + 0.0005, label = "%", scale = 100),
+  eng = num(10^(-3:1), notation = "eng", fixed_magnitude = TRUE),
+  si = num(10^(-3:1) * 123, notation = "si")
+)
+```
+
+
+## Computing on `num`
+
+### Arithmetics
+
+```{r numbers-13}
+num(1) + 2
+1 + num(2)
+1L + num(2)
+num(3.23456, sigfig = 4) - num(2)
+num(4, sigfig = 2) * num(3, digits = 2)
+num(3, digits = 2) * num(4, sigfig = 2)
+-num(2)
+```
+
+### Mathematics
+
+```{r numbers-16}
+min(num(1:3, label = "$"))
+mean(num(1:3, notation = "eng"))
+sin(num(1:3, label = "%", scale = 100))
+```
+
+## Integrating with other classes
+
+### gt
+
+- Consumption via new `fmt_auto()`?
+
+FIXME
+
+### units
+
+```{r numbers-17}
+library(units)
+
+set_units.tibble_num <- function(x, ...) {
+  unclassed <- x
+  class(unclassed) <- NULL
+  out <- set_units(unclassed, ...)
+  class(out) <- c(class(out), class(x))
+  out
+}
+
+tibble(
+  sci_int = set_num_opts(set_units(1:3, m), notation = "sci") + set_units(1:3, km),
+  digits_int = set_num_opts(set_units(1:3, km), digits = 2) + set_units(1:3, m),
+
+  # FIXME: Need to preserve pillar attribute on arithmetics
+  sci_ext = set_units(num(1:3, notation = "sci"), m) + set_units(1:3, km)
+)
+```
+
+### formattable
+
+```{r numbers-18}
+library(formattable)
+
+pillar_shaft.formattable <- function(x, ...) {
+  pillar::new_pillar_shaft_simple(format(x), align = "right")
+}
+
+pillar_shaft.formattable_currency <- function(x, ...) {
+  formattable <- attr(x, "formattable")
+
+  pillar_shaft(num(unclass(x), digits = formattable$digits))
+}
+
+pillar_shaft.formattable_percent <- function(x, ...) {
+  formattable <- attr(x, "formattable")
+
+  pillar_shaft(num(unclass(x), digits = formattable$digits, label = "%", scale = 100))
+}
+
+pillar_shaft.formattable_scientific <- function(x, ...) {
+  pillar_shaft(num(unclass(x), notation = "sci"))
+}
+
+type_sum.formattable <- function(x) {
+  formattable <- attr(x, "formattable")
+
+  if (inherits(x, "formattable_currency")) {
+    I(sub("^formattable_", "", class(x)[[1]]))
+  } else if (inherits(x, "formattable_percent")) {
+    I("%")
+  } else {
+    abbreviate(sub("^formattable_", "", class(x)[[1]]), 4)
+  }
+}
+
+num_currency(1:3 * 100 + 0.1)
+num_percent(1:3 * 0.1 + 0.001)
+num_scientific(1:3 * 0.1 + 0.001)
+
+tibble(
+  currency = num_currency(1:3 * 100 + 0.1),
+  percent = num_percent(1:3 * 0.1 + 0.001),
+  scientific = num_scientific(1:3 * 0.1 + 0.001)
+)
+```
+
+### scales
+
+```{r numbers-scales, error = TRUE}
+library(scales)
+
+x <- num(1:10 / 100, label = "%", scale = 100)
+
+scales::squish(x)
+
+x < 0
+x < 0L
+
+scales::cscale(x, scales::rescale_pal())
+```
+
+### ggplot2
+
+```{r numbers-19}
+library(ggplot2)
+
+scale_type.tibble_num <- function(x, ...) {
+  "continuous"
+}
+
+data.frame(x = x, y = 1:10) %>%
+  ggplot(aes(x = x, y = y)) %>%
+  + geom_point()
+```

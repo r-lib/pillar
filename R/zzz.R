@@ -5,10 +5,26 @@
 #' @import lifecycle
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
+#' @importFrom vctrs obj_print_data
 #' @importFrom vctrs s3_register
+#' @importFrom vctrs vec_arith
+#' @importFrom vctrs vec_arith.numeric
+#' @importFrom vctrs vec_arith_base
+#' @importFrom vctrs vec_c
+#' @importFrom vctrs vec_cast
+#' @importFrom vctrs vec_cast.double
+#' @importFrom vctrs vec_cast.integer
+#' @importFrom vctrs vec_data
 #' @importFrom vctrs vec_is
+#' @importFrom vctrs vec_math
+#' @importFrom vctrs vec_math_base
+#' @importFrom vctrs vec_proxy_compare
+#' @importFrom vctrs vec_proxy_order
 #' @importFrom vctrs vec_ptype_abbr
+#' @importFrom vctrs vec_ptype_full
+#' @importFrom vctrs vec_ptype2
 #' @importFrom vctrs vec_rbind
+#' @importFrom vctrs vec_restore
 #' @importFrom vctrs vec_size
 NULL
 

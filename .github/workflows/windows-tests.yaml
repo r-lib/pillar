@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
         with:
-          install-r: false
+          install-r: true # set to false when units comes from CRAN
 
       - name: Edit Git config
         run: |

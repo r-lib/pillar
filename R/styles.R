@@ -128,7 +128,8 @@ has_color <- function() {
 # Crayon functions call crayon::num_colors() every call
 make_style_fast <- function(...) {
   # Force has_color to be true when making styles
-  local_options(cli.num_colors = 16L)
+  # Use prefix to avoid problems with empty NAMESPACE
+  rlang::local_options(cli.num_colors = 16L)
 
   style_16 <- crayon::make_style(..., colors = 16)
   start_16 <- stats::start(style_16)
