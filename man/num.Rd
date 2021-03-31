@@ -3,7 +3,7 @@
 \name{num}
 \alias{num}
 \alias{set_num_opts}
-\title{Format a number in a tibble}
+\title{Format a numeric vector in a tibble}
 \usage{
 num(
   x,
@@ -64,7 +64,7 @@ using exponents that are a multiple of three.
 corresponding to the smallest element in scientific, engineering or SI notation.}
 }
 \description{
-Constructs a vector with custom that can be formatted with predefined
+Constructs a numeric vector that can be formatted with predefined
 significant digits, or with a maximum or fixed number of digits
 after the decimal point.
 Scaling is supported, as well as forcing a decimal, scientific
@@ -75,7 +75,6 @@ The formatting is applied when the vector is printed or formatted,
 and also in a tibble column.
 The formatting annotation and the class survives most arithmetic transformations,
 the most notable exceptions are \code{\link[=var]{var()}} and \code{\link[=sd]{sd()}}.
-FIXME: \code{num_()} modifier.
 
 \code{set_num_opts()} adds formatting options to an arbitrary numeric vector,
 useful for composing with other types.

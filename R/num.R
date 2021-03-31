@@ -1,7 +1,7 @@
-#' Format a number in a tibble
+#' Format a numeric vector in a tibble
 #'
 #' @description
-#' Constructs a vector with custom that can be formatted with predefined
+#' Constructs a numeric vector that can be formatted with predefined
 #' significant digits, or with a maximum or fixed number of digits
 #' after the decimal point.
 #' Scaling is supported, as well as forcing a decimal, scientific
@@ -12,7 +12,6 @@
 #' and also in a tibble column.
 #' The formatting annotation and the class survives most arithmetic transformations,
 #' the most notable exceptions are [var()] and [sd()].
-#' FIXME: `num_()` modifier.
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @param x A numeric vector.
@@ -271,7 +270,7 @@ set_num_opts <- function(x, ...,
       notation = notation,
       fixed_magnitude = fixed_magnitude
     ),
-    class = "tibble_num_attr"
+    class = c("tibble_num_attr", "tibble_vec_attr")
   )
   attr(x, "pillar") <- pillar_attr
   x

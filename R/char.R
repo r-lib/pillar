@@ -1,152 +1,98 @@
-#' Format a number in a tibble
+#' Format a character vector in a tibble
 #'
 #' @description
-#' Constructs a vector with custom that can be formatted with predefined
-#' significant digits, or with a maximum or fixed number of digits
-#' after the decimal point.
-#' Scaling is supported, as well as forcing a decimal, scientific
-#' or engineering notation.
-#' If a label is given, it is shown in the header of a column.
+#' Constructs a character vector that can be formatted with predefined minimum width
+#' or without width restrictions, and where the abbreviation style can be configured.
 #'
 #' The formatting is applied when the vector is printed or formatted,
 #' and also in a tibble column.
-#' The formatting annotation and the class survives most arithmetic transformations,
-#' the most notable exceptions are [var()] and [sd()].
-#' FIXME: `num_()` modifier.
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples
 #' # Display as a vector
-#' num(9:11 * 100 + 0.5)
-#' @examplesIf requireNamespace("tibble", quietly = TRUE)
+#' char(letters[1:3])
+#' @examplesIf { set.seed(20210331); requireNamespace("stringi", quietly = TRUE) }
 #'
-#' # Significant figures
-#' tibble::tibble(
-#'   x3 = num(9:11 * 100 + 0.5, sigfig = 3),
-#'   x4 = num(9:11 * 100 + 0.5, sigfig = 4),
-#'   x5 = num(9:11 * 100 + 0.5, sigfig = 5),
-#' )
+#' rand_strings <- pillar(stringi::stri_rand_strings(10, 31:40))
 #'
-#' # Maximum digits after the decimal points
-#' tibble::tibble(
-#'   x0 = num(9:11 * 100 + 0.5, digits =  0),
-#'   x1 = num(9:11 * 100 + 0.5, digits = -1),
-#'   x2 = num(9:11 * 100 + 0.5, digits = -2),
-#' )
+#' # Plain character vectors get truncated if space is limited:
+#' data_with_id <- function(id) {
+#'   tibble::tibble(
+#'     id,
+#'     some_number_1 = 1, some_number_2 = 2, some_number_3 = 3,
+#'     some_number_4 = 4, some_number_5 = 5, some_number_6 = 6,
+#'     some_number_7 = 7, some_number_8 = 8, some_number_9 = 9
+#'   )
+#' }
+#' data_with_id(rand_strings)
 #'
-#' # Use fixed digits and a currency label
-#' tibble::tibble(
-#'   usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
-#'   gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
-#'   chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
-#' )
+#' # Use char() to avoid or control truncation
+#' data_with_id(char(rand_strings, min_width = 35))
+#' data_with_id(char(rand_strings, shorten = "none"))
+#' data_with_id(char(rand_strings, min_width = 35, shorten = "mid"))
 #'
-#' # Scale
-#' tibble::tibble(
-#'   small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
-#'   medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
-#'   large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
-#' )
-#'
-#' # Notation
-#' tibble::tibble(
-#'   sci = num(10^(-13:6), notation = "sci"),
-#'   eng = num(10^(-13:6), notation = "eng"),
-#'   eng = num(10^(-13:6), notation = "si"),
-#'   dec = num(10^(-13:6), notation = "dec")
-#' )
-#'
-#' # Fixed exponent notation
-#' tibble::tibble(
-#'   scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-#'   engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE),
-#'   sifix  = num(10^(-7:6) * 123, notation = "si",  fixed_magnitude = TRUE)
-#' )
-num <- function(x, ...,
-                sigfig = NULL, digits = NULL,
-                label = NULL, scale = NULL, notation = NULL,
-                fixed_magnitude = NULL) {
+#' lipsum <- stringi::stri_rand_lipsum(3)
+#' data_with_id(char(lipsum, shorten = "abbreviate"))
+char <- function(x, ..., min_width = NULL,
+                 shorten = c("back", "front", "mid", "never", "abbreviate")) {
 
-  stopifnot(is.numeric(x))
+  stopifnot(is.character(x))
   check_dots_empty()
 
-  # FIXME: math and arith should also work for integers
-  x[] <- as.numeric(x)
-
-  # FIXME: new_vctr() overrides class attribute, doesn't support subclassing
-  out <- set_num_opts(
+  out <- set_char_opts(
     x,
-    sigfig = sigfig,
-    digits = digits,
-    label = label,
-    scale = scale,
-    notation = notation,
-    fixed_magnitude = fixed_magnitude
+    min_width = min_width,
+    shorten = shorten
   )
 
-  # FIXME: Include class(x) to support subclassing/mixin?
-  # Needs vec_base(): vec_data() but only strips vctrs_vctr class?
-  # Avoid inheriting from numeric (?): https://github.com/r-lib/vctrs/issues/1339
-  new_class <- c("tibble_num", "vctrs_vctr", "double")
+  new_class <- c("tibble_char", "vctrs_vctr", "character")
   class(out) <- new_class
 
   out
 }
 
 #' @export
-pillar_shaft.tibble_num <- function(x, ...) {
+pillar_shaft.tibble_char <- function(x, ...) {
   # still seems necessary
   pillar_shaft(unclass(x))
 }
 
 #' @export
-vec_ptype_full.tibble_num <- function(x, ...) {
+vec_ptype_full.tibble_char <- function(x, ...) {
   format(attr(x, "pillar"))
 }
 
 #' @export
-vec_ptype_abbr.tibble_num <- function(x, ...) {
+vec_ptype_abbr.tibble_char <- function(x, ...) {
   pillar_attr <- attr(x, "pillar")
-  notation <- pillar_attr$notation
-  if (is.null(notation)) {
-    notation <- "num"
-  }
 
-  sigfig <- pillar_attr$sigfig
-  digits <- pillar_attr$digits
+  out <- "char"
 
-  if (!is.null(digits)) {
-    if (digits > 0) {
-      out <- paste0(notation, ":.", digits, "!")
-    } else {
-      out <- paste0(notation, ":.", -digits)
-    }
-  } else if (!is.null(sigfig)) {
-    out <- paste0(notation, ":", sigfig)
-  } else {
-    out <- notation
+  shorten <- pillar_attr$shorten
+  if (!is.null(shorten) && shorten == "abbr") {
+    out <- "abbr"
   }
 
   out
 }
 
 #' @export
-format.tibble_num <- function(x, trim = FALSE, ...) {
-  "!!!!DEBUG format.tibble_num()"
+format.tibble_char <- function(x, trim = FALSE, ...) {
+  "!!!!DEBUG format.tibble_char()"
 
   shaft <- pillar_shaft(x)
   out <- format(shaft, width = get_width(shaft))
   if (trim) {
     attributes(out) <- NULL
   } else {
-    out <- format(out, align = "right")
+    out <- format(out, align = "left")
   }
   out
 }
 
 #' @export
-obj_print_data.tibble_num <- function(x, ...) {
+obj_print_data.tibble_char <- function(x, ...) {
   if (length(x) == 0) {
     return(invisible(x))
   }
@@ -157,209 +103,122 @@ obj_print_data.tibble_num <- function(x, ...) {
   invisible(x)
 }
 
-#' @method vec_arith tibble_num
-#' @export
-vec_arith.tibble_num <- function(op, x, y, ...) {
-  "!!!!DEBUG vec_arith.tibble_num(`v(op)`)"
-
-  UseMethod("vec_arith.tibble_num", y)
-}
-#' @method vec_arith.tibble_num default
-#' @export
-vec_arith.tibble_num.default <- function(op, x, y, ...) {
-  "!!!!DEBUG vec_arith.tibble_num.default(`v(op)`)"
-  stopifnot(is.numeric(x), is.numeric(y))
-  out <- vec_arith_base(op, x, y)
-
-  if (inherits(x, "tibble_num")) {
-    vec_restore(out, x)
-  } else {
-    vec_restore(out, y)
-  }
-}
-#' @method vec_arith.tibble_num MISSING
-#' @export
-vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
-  "!!!!DEBUG vec_arith.tibble_num.MISSING(`v(op)`)"
-  stopifnot(is.numeric(x))
-  # FIXME
-  out <- vec_arith_base(op, 0, x)
-
-  vec_restore(out, x)
-}
-
-#' @method vec_arith.numeric tibble_num
-#' @export
-vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
-
-
-#' @export
-vec_math.tibble_num <- function(op, x, ...) {
-  "!!!!DEBUG vec_math(`v(op)`)"
-
-  stopifnot(is.numeric(x))
-  out <- vec_math_base(op, x)
-
-  if (is.numeric(out)) {
-    out <- vec_restore(out, x)
-  }
-
-  out
-}
-
-#' set_num_opts
+#' set_char_opts
 #'
-#' `set_num_opts()` adds formatting options to an arbitrary numeric vector,
+#' `set_char_opts()` adds formatting options to an arbitrary character vector,
 #' useful for composing with other types.
 #'
 #' @export
-#' @rdname num
-set_num_opts <- function(x, ...,
-                         sigfig = NULL, digits = NULL,
-                         label = NULL, scale = NULL,
-                         notation = c("dec", "sci", "eng", "si"),
-                         fixed_magnitude = NULL) {
+#' @rdname char
+set_char_opts <- function(x, ..., min_width = NULL,
+                          shorten = c("back", "front", "mid", "never", "abbreviate")) {
 
   check_dots_empty()
 
-  if (missing(notation)) {
-    notation <- NULL
-  } else if (!is.null(notation)) {
-    notation <- arg_match(notation)
+  shorten <- ""
+  if (missing(shorten)) {
+    shorten <- NULL
+  } else if (!is.null(shorten)) {
+    shorten <- arg_match(shorten)
   }
 
-  if (!is.null(fixed_magnitude) && !is.null(notation)) {
-    if (fixed_magnitude && notation == "dec") {
-      abort('Incomatible arguments: `notation = "dec" and `fixed_magnitude = TRUE`')
-    }
-  }
-
-  if (!is.null(scale) && is.null(label)) {
-    abort("Must set `label` if `scale` is provided.")
+  if (!is.null(min_width) && !is.null(shorten) && shorten == "never") {
+    abort('Incomatible arguments: `min_width` and `shorten = "never"`')
   }
 
   pillar_attr <- structure(
     list(
-      sigfig = sigfig,
-      digits = digits,
-      label = label,
-      scale = scale,
-      notation = notation,
-      fixed_magnitude = fixed_magnitude
+      min_width = min_width,
+      shorten = shorten
     ),
-    class = "tibble_num_attr"
+    class = c("tibble_char_attr", "tibble_vec_attr")
   )
   attr(x, "pillar") <- pillar_attr
   x
 }
 
 #' @export
-format.tibble_num_attr <- function(x, ...) {
-  notation <- x$notation
-  if (is.null(notation)) {
-    class <- "tibble_num"
-  } else {
-    class <- paste0("tibble_num(", notation, ")")
+format.tibble_char_attr <- function(x, ...) {
+  out <- "tibble_char"
+
+  min_width <- x$min_width
+  if (!is.null(min_width)) {
+    out <- paste0(out, "(", min_width, ")")
   }
 
-  sigfig <- x$sigfig
-  digits <- x$digits
-  label <- x$label
+  shorten <- x$shorten
+  if (!is.null(shorten)) {
+    extra <- switch(shorten,
+      back = ">",
+      front = "<",
+      mid = "|",
+      never = "=",
+      abbr = "&"
+    )
 
-  if (!is.null(digits)) {
-    if (digits >= 0) {
-      out <- paste0(class, ":.", digits, "!")
-    } else {
-      out <- paste0(class, ":.", -digits)
-    }
-  } else if (!is.null(sigfig)) {
-    out <- paste0(class, ":", sigfig)
-  } else {
-    out <- class
-  }
-
-  if (!is.null(label)) {
-    out <- paste0(out, "{", label, "}")
-  }
-
-  scale <- x$scale
-
-  if (!is.null(scale)) {
-    out <- paste0(out, "*", scale)
-  }
-
-  fixed_magnitude <- x$fixed_magnitude
-
-  if (!is.null(fixed_magnitude)) {
-    out <- paste0(out, "|")
+    out <- paste0(out, extra)
   }
 
   out
 }
 
 #' @export
-print.tibble_num_attr <- function(x, ...) {
+print.tibble_char_attr <- function(x, ...) {
   writeLines(format(x))
   invisible(x)
 }
 
 #' @export
-vec_ptype2.tibble_num.tibble_num <- function(x, y, ...) {
+vec_ptype2.tibble_char.tibble_char <- function(x, y, ...) {
   x
 }
 #' @export
-vec_ptype2.tibble_num.double <- function(x, y, ...) {
+vec_ptype2.tibble_char.character <- function(x, y, ...) {
   x
 }
 #' @export
-vec_ptype2.double.tibble_num <- function(x, y, ...) {
+vec_ptype2.character.tibble_char <- function(x, y, ...) {
   y
 }
 
 #' @export
-vec_ptype2.tibble_num.integer <- function(x, y, ...) {
-  x
-}
-#' @export
-vec_ptype2.integer.tibble_num <- function(x, y, ...) {
-  y
-}
-
-#' @export
-vec_cast.tibble_num.tibble_num <- function(x, to, ...) {
+vec_cast.tibble_char.tibble_char <- function(x, to, ...) {
   pillar_x <- attr(x, "pillar")
   pillar_to <- attr(to, "pillar")
 
-  pillar_x_label <- pillar_x$label
-  pillar_to_label <- pillar_to$label
+  pillar_x_shorten <- pillar_x$shorten
+  pillar_to_shorten <- pillar_to$shorten
 
-  if (!is.null(pillar_x_label) && !is.null(pillar_to_label)) {
-    if (!identical(pillar_x$label, pillar_to$label)) {
-      abort("Only `tibble_num` objects with the same label can be combined.")
+  if (!is.null(pillar_x_shorten) && !is.null(pillar_to_shorten)) {
+    if (!identical(pillar_x$shorten, pillar_to$shorten)) {
+      abort("Only `tibble_char` objects with the same shortening setting can be combined.")
     }
+  }
+
+  pillar_x_min_width <- pillar_x$min_width
+  pillar_to_min_width <- pillar_to$min_width
+
+  if (!is.null(pillar_x_min_width) && !is.null(pillar_to_min_width)) {
+    pillar_to$min_width <- max(pillar_x_min_width, pillar_to_min_width)
   }
 
   attr(x, "pillar") <- pillar_to
   x
 }
 #' @export
-vec_cast.double.tibble_num <- function(x, to, ...) {
+vec_cast.character.tibble_char <- function(x, to, ...) {
   vec_data(x)
 }
 #' @export
-vec_cast.tibble_num.double <- function(x, to, ...) {
+vec_cast.tibble_char.character <- function(x, to, ...) {
   vec_restore(x, to)
-}
-#' @export
-vec_cast.tibble_num.integer <- function(x, to, ...) {
-  vec_restore(as.numeric(x), to)
 }
 
 #' @export
-vec_proxy_compare.tibble_num <- function(x, ...) {
+vec_proxy_compare.tibble_char <- function(x, ...) {
   vec_data(x)
 }
 #' @export
-vec_proxy_order.tibble_num <- function(x, ...) {
+vec_proxy_order.tibble_char <- function(x, ...) {
   vec_data(x)
 }

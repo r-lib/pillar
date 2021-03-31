@@ -9,6 +9,7 @@
     - Implement `char()` for characters
         - `min_width = ...`
         - `shorten = c("back", "front", "mid", "none", "abbreviate")`
+    - `num_()` and `char_()` modifiers
     - See open issues in "Formatting numbers" section below
     - Support providing a number for the `fixed_magnitude` argument
 - CRAN release pillar
