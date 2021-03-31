@@ -36,7 +36,7 @@
 #' lipsum <- stringi::stri_rand_lipsum(3)
 #' data_with_id(char(lipsum, shorten = "abbreviate"))
 char <- function(x, ..., min_chars = NULL,
-                 shorten = c("back", "front", "mid", "never", "abbreviate")) {
+                 shorten = c("back", "front", "mid", "abbreviate")) {
 
   stopifnot(is.character(x))
   check_dots_empty()
@@ -116,7 +116,7 @@ obj_print_data.tibble_char <- function(x, ...) {
 #' @export
 #' @rdname char
 set_char_opts <- function(x, ..., min_chars = NULL,
-                          shorten = c("back", "front", "mid", "never", "abbreviate")) {
+                          shorten = c("back", "front", "mid", "abbreviate")) {
 
   check_dots_empty()
 
@@ -124,10 +124,6 @@ set_char_opts <- function(x, ..., min_chars = NULL,
     shorten <- NULL
   } else if (!is.null(shorten)) {
     shorten <- arg_match(shorten)
-  }
-
-  if (!is.null(min_chars) && !is.null(shorten) && shorten == "never") {
-    abort('Incomatible arguments: `min_chars` and `shorten = "never"`')
   }
 
   pillar_attr <- structure(
