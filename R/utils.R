@@ -27,14 +27,33 @@ str_trunc <- function(x, width, shorten) {
 
   too_wide <- which(!is.na(x) & str_width > width)
   if (any(too_wide)) {
-    x[too_wide] <- str_add_ellipsis(x[too_wide], str_width, width, shorten)
+    x[too_wide] <- str_add_ellipsis(x[too_wide], str_width[too_wide], width, shorten)
   }
 
   x
 }
 
 str_add_ellipsis <- function(x, str_width, width, shorten) {
-  paste0(substr2_ctl(x, 1, width - 1, type = "width"), get_ellipsis())
+  switch(shorten,
+    back = {
+      abbr <- substr2_ctl(x, 1, width - 1, type = "width")
+      paste0(abbr, get_ellipsis())
+    },
+    front = {
+      abbr <- substr2_ctl(x, str_width - width + 2, str_width, type = "width")
+      paste0(get_ellipsis(), abbr)
+    },
+    mid = {
+      front_width <- ceiling(width / 2) - 1
+      back_width <- width - front_width - 1
+      abbr_front <- substr2_ctl(x, 1, front_width, type = "width")
+      abbr_back <- substr2_ctl(x, str_width - back_width + 1, str_width, type = "width")
+      paste0(abbr_front, get_ellipsis(), abbr_back)
+    },
+    abbreviate = {
+      abbreviate(x, minlength = width, strict = TRUE)
+    }
+  )
 }
 
 paste_with_space_if_needed <- function(x, y) {

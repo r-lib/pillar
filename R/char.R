@@ -33,8 +33,13 @@
 #' data_with_id(char(rand_strings, shorten = "none"))
 #' data_with_id(char(rand_strings, min_chars = 35, shorten = "mid"))
 #'
-#' lipsum <- stringi::stri_rand_lipsum(3)
-#' data_with_id(char(lipsum, shorten = "abbreviate"))
+#' lipsum <- unlist(strsplit(stringi::stri_rand_lipsum(1), "(?<=[.]) +", perl = TRUE))
+#' tibble::tibble(
+#'   back = char(lipsum, shorten = "back"),
+#'   front = char(lipsum, shorten = "front"),
+#'   mid   = char(lipsum, shorten = "mid")
+#' )
+#' tibble::tibble(abbr = char(lipsum, shorten = "abbreviate"))
 char <- function(x, ..., min_chars = NULL,
                  shorten = c("back", "front", "mid", "abbreviate")) {
 

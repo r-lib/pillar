@@ -21,7 +21,8 @@ new_pillar_shaft_simple(
   align = "left",
   min_width = NULL,
   na = NULL,
-  na_indent = 0L
+  na_indent = 0L,
+  shorten = c("back", "front", "mid", "abbreviate")
 )
 }
 \arguments{
