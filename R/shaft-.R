@@ -138,7 +138,7 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
   )
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
+pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_magnitude) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1) {
       abort("`digits` must be a number.")
@@ -153,9 +153,9 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
     }
   }
 
-  if (is.null(notation)) {
+  if (is.null(notation) || notation == "fit") {
     dec <- split_decimal(x, sigfig = sigfig, digits = digits)
-    sci <- split_decimal(x, sigfig = sigfig, digits = digits, sci_mod = 1)
+    sci <- split_decimal(x, sigfig = sigfig, digits = digits, sci_mod = 1, fixed_magnitude = fixed_magnitude)
 
     MAX_DEC_WIDTH <- 13
     dec_width <- get_width(dec)
@@ -170,21 +170,21 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
       x,
       sigfig = sigfig, digits = digits,
       sci_mod = 1,
-      fixed = fixed
+      fixed_magnitude = fixed_magnitude
     )
     dec <- NULL
   } else if (notation == "eng") {
     sci <- split_decimal(
       x,
       sigfig = sigfig, digits = digits, sci_mod = 3,
-      fixed = fixed
+      fixed_magnitude = fixed_magnitude
     )
     dec <- NULL
   } else if (notation == "si") {
     sci <- split_decimal(
       x,
       sigfig = sigfig, digits = digits, sci_mod = 3, si = TRUE,
-      fixed = fixed
+      fixed_magnitude = fixed_magnitude
     )
     dec <- NULL
   } else {

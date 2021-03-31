@@ -15,6 +15,29 @@
 #' FIXME: `num_()` modifier.
 #'
 #' @inheritParams ellipsis::dots_empty
+#' @param sigfig Define the number of significant digits to show. Must be one or greater.
+#'   The `"pillar.sigfig"` option is not consulted.
+#'   Can't be combined with `digits`.
+#' @param digits Number of digits after the decimal points to show.
+#'   Positive numbers specify the exact number of digits to show.
+#'   Negative numbers specify (after negation) the maximum number of digits to show.
+#'   With `digits = 2`, the numbers 1.2 and 1.234 are printed as 1.20 and 1.23,
+#'   with `digits = -2` as 1.2 and 1.23, respectively.
+#'   Can't be combined with `sigfig`.
+#' @param label A label to show instead of the type description.
+#' @param scale Multiplier to apply to the data before showing.
+#'   Useful for displaying e.g. percentages.
+#'   Must be combined with `label`.
+#' @param notation One of `"fit"`, `"dec"`, `"sci"`, `"eng"`, or `"si"`.
+#'   - `"fit"`: Use decimal notation if it fits and if it consumes 13 digits or less,
+#'     otherwise use scientific notation. (The default for numeric pillars.)
+#'   - `"dec"`: Use decimal notation, regardless of width.
+#'   - `"sci"`: Use scientific notation.
+#'   - `"eng"`: Use engineering notation, i.e. scientific notation
+#'       using exponents that are a multiple of three.
+#'   - `"si"`: Use SI notation, prefixes between `10e-24` and `10e24` are supported.
+#' @param fixed_magnitude If `TRUE`, all elements will use the same magnitude
+#'   corresponding to the smallest element in scientific, engineering or SI notation.
 #' @export
 #' @examples
 #' # Display as a vector
@@ -217,7 +240,7 @@ vec_math.tibble_num <- function(op, x, ...) {
 set_num_opts <- function(x, ...,
                          sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL,
-                         notation = c("dec", "sci", "eng", "si"),
+                         notation = c("fit", "dec", "sci", "eng", "si"),
                          fixed_magnitude = NULL) {
 
   check_dots_empty()

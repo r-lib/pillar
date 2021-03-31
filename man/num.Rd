@@ -23,12 +23,43 @@ set_num_opts(
   digits = NULL,
   label = NULL,
   scale = NULL,
-  notation = c("dec", "sci", "eng", "si"),
+  notation = c("fit", "dec", "sci", "eng", "si"),
   fixed_magnitude = NULL
 )
 }
 \arguments{
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{sigfig}{Define the number of significant digits to show. Must be one or greater.
+The \code{"pillar.sigfig"} option is not consulted.
+Can't be combined with \code{digits}.}
+
+\item{digits}{Number of digits after the decimal points to show.
+Positive numbers specify the exact number of digits to show.
+Negative numbers specify (after negation) the maximum number of digits to show.
+With \code{digits = 2}, the numbers 1.2 and 1.234 are printed as 1.20 and 1.23,
+with \code{digits = -2} as 1.2 and 1.23, respectively.
+Can't be combined with \code{sigfig}.}
+
+\item{label}{A label to show instead of the type description.}
+
+\item{scale}{Multiplier to apply to the data before showing.
+Useful for displaying e.g. percentages.
+Must be combined with \code{label}.}
+
+\item{notation}{One of \code{"fit"}, \code{"dec"}, \code{"sci"}, \code{"eng"}, or \code{"si"}.
+\itemize{
+\item \code{"fit"}: Use decimal notation if it fits and if it consumes 13 digits or less,
+otherwise use scientific notation. (The default for numeric pillars.)
+\item \code{"dec"}: Use decimal notation, regardless of width.
+\item \code{"sci"}: Use scientific notation.
+\item \code{"eng"}: Use engineering notation, i.e. scientific notation
+using exponents that are a multiple of three.
+\item \code{"si"}: Use SI notation, prefixes between \code{10e-24} and \code{10e24} are supported.
+}}
+
+\item{fixed_magnitude}{If \code{TRUE}, all elements will use the same magnitude
+corresponding to the smallest element in scientific, engineering or SI notation.}
 }
 \description{
 Constructs a vector with custom that can be formatted with predefined

@@ -10,6 +10,7 @@
         - `min_width = ...`
         - `shorten = c("back", "front", "mid", "none", "abbreviate")`
     - See open issues in "Formatting numbers" section below
+    - Support providing a number for the `fixed_magnitude` argument
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble

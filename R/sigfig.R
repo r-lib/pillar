@@ -24,7 +24,7 @@
 # split_decimal(1.5:3.5, sci_mod = 1)
 # split_decimal(1e9)
 # split_decimal(1e9, sci_mod = 1)
-split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed = FALSE) {
+split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed_magnitude = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
@@ -40,7 +40,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     # Compute exponent and mantissa
     exp <- compute_exp(abs_x, sigfig)
 
-    if (fixed) {
+    if (fixed_magnitude) {
       exp <- rep_along(exp, as.integer(round(min(exp))))
     }
     if (sci_mod != 1) {
