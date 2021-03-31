@@ -306,7 +306,7 @@ style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
   ifelse(significant, ifelse(negative, style_neg(x), x), style_subtle_num(x, negative))
 }
 
-assemble_decimal <- function(x, si) {
+assemble_decimal <- function(x) {
   mantissa <- format_mantissa(x)
   exp <- format_exp(x)
 
