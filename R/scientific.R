@@ -1,21 +1,3 @@
-# Format numbers in scientific notation
-#
-# Uses colour and careful alignment.
-#
-# @seealso [split_decimal()]
-# @inheritParams split_decimal
-# @examples
-# format_scientific(1.5:3.5)
-# format_scientific(1e9)
-format_scientific <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed = FALSE) {
-  split_decimal(
-    x, sigfig, digits,
-    sci_mod = sci_mod,
-    si = si,
-    fixed = fixed
-  )
-}
-
 format_exp <- function(x) {
   if (x$si) {
     si(x$exp)

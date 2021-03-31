@@ -13,10 +13,17 @@
 #
 # @param x A numeric vector
 # @param sigfig Number of significant figures to display.
-# @seealso [format_scientific()]
+# @param digits Number of digits after the decimal point, incompatible with
+#   `sigfig`. A negative number means the maximum number of digits to display.
+# @param sci_mod Set to 1 for scientific or to 3 for engineering display.
+# @param si Set to `TRUE` for SI notation, requires `sci_mod = 3`
+# @param fixed Set to `TRUE` to use the same exponent everywhere.
+# @seealso [split_decimal()]
 # @examples
 # split_decimal(1.5:3.5)
+# split_decimal(1.5:3.5, sci_mod = 1)
 # split_decimal(1e9)
+# split_decimal(1e9, sci_mod = 1)
 split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed = FALSE) {
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)

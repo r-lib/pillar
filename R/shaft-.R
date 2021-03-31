@@ -155,7 +155,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
 
   if (is.null(notation)) {
     dec <- split_decimal(x, sigfig = sigfig, digits = digits)
-    sci <- format_scientific(x, sigfig = sigfig, digits = digits, sci_mod = 1)
+    sci <- split_decimal(x, sigfig = sigfig, digits = digits, sci_mod = 1)
 
     MAX_DEC_WIDTH <- 13
     dec_width <- get_width(dec)
@@ -166,7 +166,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
     dec <- split_decimal(x, sigfig = sigfig, digits = digits)
     sci <- NULL
   } else if (notation == "sci") {
-    sci <- format_scientific(
+    sci <- split_decimal(
       x,
       sigfig = sigfig, digits = digits,
       sci_mod = 1,
@@ -174,14 +174,14 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed) {
     )
     dec <- NULL
   } else if (notation == "eng") {
-    sci <- format_scientific(
+    sci <- split_decimal(
       x,
       sigfig = sigfig, digits = digits, sci_mod = 3,
       fixed = fixed
     )
     dec <- NULL
   } else if (notation == "si") {
-    sci <- format_scientific(
+    sci <- split_decimal(
       x,
       sigfig = sigfig, digits = digits, sci_mod = 3, si = TRUE,
       fixed = fixed
