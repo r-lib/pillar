@@ -73,6 +73,8 @@ navbar:
     articles:
       text: Articles
       menu:
+      - text: Controlling display of numbers
+        href: articles/numbers.html
       - text: Custom formatting
         href: articles/extending.html
       - text: 'Printing a tibble: Control and data flow'
