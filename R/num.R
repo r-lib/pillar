@@ -230,7 +230,7 @@ set_num_opts <- function(x, ...,
 
   if (!is.null(fixed_magnitude) && !is.null(notation)) {
     if (fixed_magnitude && notation == "dec") {
-      abort('Incomatible arguments: `notation = "dec" and `fixed_magnitude = TRUE`')
+      abort('Incomatible arguments: `notation = "dec"` and `fixed_magnitude = TRUE`')
     }
   }
 
