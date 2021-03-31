@@ -4,7 +4,6 @@
 
 - Improve output:
     - Finish `num()`
-        - pillar attribute should get `print()` method
         - <https://github.com/r-lib/pillar/issues/191>
     - Implement `char()` for characters
         - `min_width = ...`
