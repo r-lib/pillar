@@ -129,9 +129,9 @@
 # mathematics
 
     Code
-      min(num(1:3, label = "€"))
+      min(num(1:3, label = "$"))
     Output
-      <tibble_num{€}[1]>
+      <tibble_num{$}[1]>
       [1] 1
     Code
       mean(num(1:3, notation = "eng"))
