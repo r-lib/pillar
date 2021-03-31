@@ -29,13 +29,13 @@
 #' data_with_id(rand_strings)
 #'
 #' # Use char() to avoid or control truncation
-#' data_with_id(char(rand_strings, min_width = 35))
+#' data_with_id(char(rand_strings, min_chars = 35))
 #' data_with_id(char(rand_strings, shorten = "none"))
-#' data_with_id(char(rand_strings, min_width = 35, shorten = "mid"))
+#' data_with_id(char(rand_strings, min_chars = 35, shorten = "mid"))
 #'
 #' lipsum <- stringi::stri_rand_lipsum(3)
 #' data_with_id(char(lipsum, shorten = "abbreviate"))
-char <- function(x, ..., min_width = NULL,
+char <- function(x, ..., min_chars = NULL,
                  shorten = c("back", "front", "mid", "never", "abbreviate")) {
 
   stopifnot(is.character(x))
@@ -47,7 +47,7 @@ char <- function(x, ..., min_width = NULL,
 
   out <- set_char_opts(
     x,
-    min_width = min_width,
+    min_chars = min_chars,
     shorten = shorten
   )
 
@@ -115,7 +115,7 @@ obj_print_data.tibble_char <- function(x, ...) {
 #'
 #' @export
 #' @rdname char
-set_char_opts <- function(x, ..., min_width = NULL,
+set_char_opts <- function(x, ..., min_chars = NULL,
                           shorten = c("back", "front", "mid", "never", "abbreviate")) {
 
   check_dots_empty()
@@ -126,13 +126,13 @@ set_char_opts <- function(x, ..., min_width = NULL,
     shorten <- arg_match(shorten)
   }
 
-  if (!is.null(min_width) && !is.null(shorten) && shorten == "never") {
-    abort('Incomatible arguments: `min_width` and `shorten = "never"`')
+  if (!is.null(min_chars) && !is.null(shorten) && shorten == "never") {
+    abort('Incomatible arguments: `min_chars` and `shorten = "never"`')
   }
 
   pillar_attr <- structure(
     list(
-      min_width = min_width,
+      min_chars = min_chars,
       shorten = shorten
     ),
     class = c("tibble_char_attr", "tibble_vec_attr")
@@ -145,9 +145,9 @@ set_char_opts <- function(x, ..., min_width = NULL,
 format.tibble_char_attr <- function(x, ...) {
   out <- "tibble_char"
 
-  min_width <- x$min_width
-  if (!is.null(min_width)) {
-    out <- paste0(out, "(", min_width, ")")
+  min_chars <- x$min_chars
+  if (!is.null(min_chars)) {
+    out <- paste0(out, "(", min_chars, ")")
   }
 
   shorten <- x$shorten
@@ -199,11 +199,11 @@ vec_cast.tibble_char.tibble_char <- function(x, to, ...) {
     }
   }
 
-  pillar_x_min_width <- pillar_x$min_width
-  pillar_to_min_width <- pillar_to$min_width
+  pillar_x_min_chars <- pillar_x$min_chars
+  pillar_to_min_chars <- pillar_to$min_chars
 
-  if (!is.null(pillar_x_min_width) && !is.null(pillar_to_min_width)) {
-    pillar_to$min_width <- max(pillar_x_min_width, pillar_to_min_width)
+  if (!is.null(pillar_x_min_chars) && !is.null(pillar_to_min_chars)) {
+    pillar_to$min_chars <- max(pillar_x_min_chars, pillar_to_min_chars)
   }
 
   attr(x, "pillar") <- pillar_to
