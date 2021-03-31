@@ -15,6 +15,7 @@
 #' FIXME: `num_()` modifier.
 #'
 #' @inheritParams ellipsis::dots_empty
+#' @param x A numeric vector.
 #' @param sigfig Define the number of significant digits to show. Must be one or greater.
 #'   The `"pillar.sigfig"` option is not consulted.
 #'   Can't be combined with `digits`.

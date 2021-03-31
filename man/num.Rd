@@ -28,6 +28,8 @@ set_num_opts(
 )
 }
 \arguments{
+\item{x}{A numeric vector.}
+
 \item{...}{These dots are for future extensions and must be empty.}
 
 \item{sigfig}{Define the number of significant digits to show. Must be one or greater.
