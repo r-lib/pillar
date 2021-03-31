@@ -9,35 +9,35 @@
     Output
       <pillar>
         <dbl>
-      1.00e-9
-      1.00e-6
+      1.00e-5
+      1.00e-2
       1.00e+3
-      1.00e+9
+      1.00e+6
     Code
       pillar(v, width = 10)
     Output
       <pillar>
            <dbl>
-         1.00e-9
-         1.00e-6
+         1.00e-5
+         1.00e-2
          1.00e+3
-         1.00e+9
+         1.00e+6
     Code
       pillar(v, width = 15)
     Output
       <pillar>
                 <dbl>
-              1.00e-9
-              1.00e-6
-              1.00e+3
-              1.00e+9
+              0.00001
+              0.01   
+           1000      
+        1000000      
     Code
       pillar(v, width = 22)
     Output
       <pillar>
                        <dbl>
-                     1.00e-9
-                     1.00e-6
-                     1.00e+3
-                     1.00e+9
+                     0.00001
+                     0.01   
+                  1000      
+               1000000      
 

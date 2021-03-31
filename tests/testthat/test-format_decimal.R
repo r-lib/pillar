@@ -110,7 +110,7 @@ test_that("output test", {
     })
   )
   expect_snapshot({
-    pillar(add_special((10^(5:-5)) + 1e-7), width = 20)
+    pillar(add_special((10^(4:-4)) + 1e-6), width = 20)
   })
 })
 
