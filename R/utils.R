@@ -27,10 +27,14 @@ str_trunc <- function(x, width, shorten) {
 
   too_wide <- which(!is.na(x) & str_width > width)
   if (any(too_wide)) {
-    x[too_wide] <- paste0(substr2_ctl(x[too_wide], 1, width - 1, type = "width"), get_ellipsis())
+    x[too_wide] <- str_add_ellipsis(x[too_wide], str_width, width, shorten)
   }
 
   x
+}
+
+str_add_ellipsis <- function(x, str_width, width, shorten) {
+  paste0(substr2_ctl(x, 1, width - 1, type = "width"), get_ellipsis())
 }
 
 paste_with_space_if_needed <- function(x, y) {
