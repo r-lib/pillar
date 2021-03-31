@@ -257,9 +257,13 @@ pillar_shaft.POSIXt <- function(x, ...) {
 
 #' @export
 #' @rdname pillar_shaft
-#' @param min_width Minimum number of characters to display,
-#'   unless the string fits a shorter width.
+#' @param min_width
+#'   Deprecated, use [char()] or [set_char_opts()] on the data instead.
 pillar_shaft.character <- function(x, ..., min_width = NULL) {
+  pillar_attr <- attr(x, "pillar")
+
+  min_chars <- min_width %||% pillar_attr$min_chars
+
   x <- utf8::utf8_encode(x)
   out <- x
 
@@ -274,22 +278,22 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
   }
 
   # determine width based on width of characters in the vector
-  if (is.null(min_width)) {
-    min_width <- getOption("pillar.min_chars", 3L)
-    if (!is.numeric(min_width) || length(min_width) != 1 || min_width < 3L) {
+  if (is.null(min_chars)) {
+    min_chars <- getOption("pillar.min_chars", 3L)
+    if (!is.numeric(min_chars) || length(min_chars) != 1 || min_chars < 3L) {
       inform("Option pillar.min_chars must be a nonnegative number greater or equal 3. Resetting to 3.")
-      min_width <- 3L
-      options(pillar.min_chars = min_width)
+      min_chars <- 3L
+      options(pillar.min_chars = min_chars)
     }
   }
 
-  pillar_shaft(new_vertical(out), ..., min_width = min_width, na_indent = na_indent)
+  pillar_shaft(new_vertical(out), ..., min_width = min_chars, na_indent = na_indent, shorten = pillar_attr$shorten)
 }
 
 #' @export
 #' @inheritParams new_pillar_shaft_simple
 #' @rdname pillar_shaft
-pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0L) {
+pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0L, shorten = NULL) {
   min_width <- max(min_width, 3L)
   width <- get_max_extent(x)
 
@@ -297,7 +301,8 @@ pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0
     x,
     width = width, align = "left", min_width = min(width, min_width),
     na = pillar_na(use_brackets_if_no_color = TRUE),
-    na_indent = na_indent
+    na_indent = na_indent,
+    shorten = shorten
   )
 }
 
