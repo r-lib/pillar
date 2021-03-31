@@ -89,7 +89,8 @@
 #' )
 num <- function(x, ...,
                 sigfig = NULL, digits = NULL,
-                label = NULL, scale = NULL, notation = NULL,
+                label = NULL, scale = NULL,
+                notation = c("fit", "dec", "sci", "eng", "si"),
                 fixed_magnitude = NULL) {
 
   stopifnot(is.numeric(x))
@@ -97,6 +98,10 @@ num <- function(x, ...,
 
   # FIXME: math and arith should also work for integers
   x[] <- as.numeric(x)
+
+  if (missing(notation)) {
+    notation <- NULL
+  }
 
   # FIXME: new_vctr() overrides class attribute, doesn't support subclassing
   out <- set_num_opts(

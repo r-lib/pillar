@@ -12,7 +12,7 @@ num(
   digits = NULL,
   label = NULL,
   scale = NULL,
-  notation = NULL,
+  notation = c("fit", "dec", "sci", "eng", "si"),
   fixed_magnitude = NULL
 )
 
