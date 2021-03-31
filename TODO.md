@@ -17,6 +17,7 @@
 - Tibble-local options for precision
     - Requires column specification
     - Write proposal
+- Avoid `requireNamespace()`
 - Breaking changes
     - Multi-stage (hierarchical) output for packed data frames
     - Show columns that are abbreviated in full

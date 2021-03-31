@@ -78,7 +78,7 @@ FIXME
 
 ### units
 
-```{r numbers-17}
+```{r numbers-17, error = rlang::is_installed("units")}
 library(units)
 
 set_units.tibble_num <- function(x, ...) {
