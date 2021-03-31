@@ -128,3 +128,8 @@ tibble::tibble(
 )
 \dontshow{\}) # examplesIf}
 }
+\seealso{
+Other vector classes: 
+\code{\link{char}()}
+}
+\concept{vector classes}

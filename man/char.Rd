@@ -59,3 +59,8 @@ lipsum <- stringi::stri_rand_lipsum(3)
 data_with_id(char(lipsum, shorten = "abbreviate"))
 \dontshow{\}) # examplesIf}
 }
+\seealso{
+Other vector classes: 
+\code{\link{num}()}
+}
+\concept{vector classes}

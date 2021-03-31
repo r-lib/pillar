@@ -7,6 +7,7 @@
 #' The formatting is applied when the vector is printed or formatted,
 #' and also in a tibble column.
 #'
+#' @family vector classes
 #' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples

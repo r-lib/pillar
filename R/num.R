@@ -13,6 +13,7 @@
 #' The formatting annotation and the class survives most arithmetic transformations,
 #' the most notable exceptions are [var()] and [sd()].
 #'
+#' @family vector classes
 #' @inheritParams ellipsis::dots_empty
 #' @param x A numeric vector.
 #' @param sigfig Define the number of significant digits to show. Must be one or greater.
