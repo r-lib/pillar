@@ -147,7 +147,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_magnitude) {
   if (is.null(sigfig)) {
     sigfig <- getOption("pillar.sigfig", 3)
     if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
-      inform("Option pillar.min_chars must be a positive number greater or equal 1. Resetting to 1.")
+      inform("Option pillar.sigfig must be a positive number greater or equal 1. Resetting to 1.")
       sigfig <- 1L
       options(pillar.sigfig = sigfig)
     }
