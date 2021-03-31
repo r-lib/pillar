@@ -40,6 +40,10 @@ char <- function(x, ..., min_width = NULL,
   stopifnot(is.character(x))
   check_dots_empty()
 
+  if (missing(shorten)) {
+    shorten <- NULL
+  }
+
   out <- set_char_opts(
     x,
     min_width = min_width,
@@ -115,7 +119,6 @@ set_char_opts <- function(x, ..., min_width = NULL,
 
   check_dots_empty()
 
-  shorten <- ""
   if (missing(shorten)) {
     shorten <- NULL
   } else if (!is.null(shorten)) {
