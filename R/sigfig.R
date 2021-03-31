@@ -46,8 +46,8 @@ split_decimal <- function(x, sigfig, digits, sci_mod = NULL, si = FALSE, fixed =
     }
     if (si) {
       # Truncate very small and very large exponents
-      exp <- pmax(exp, -24)
-      exp <- pmin(exp, 24)
+      exp <- pmax(exp, -24L)
+      exp <- pmin(exp, 24L)
     }
 
     # Must divide by 10^exp, because 10^-exp may not be representable
