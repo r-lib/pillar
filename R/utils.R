@@ -17,8 +17,8 @@ cat_line <- function(...) {
 }
 
 #' @importFrom utf8 utf8_width
-#' @importFrom fansi strip_sgr substr_ctl
-str_trunc <- function(x, width) {
+#' @importFrom fansi strip_sgr substr2_ctl
+str_trunc <- function(x, width, shorten) {
   if (all(is.infinite(width))) {
     return(x)
   }
@@ -26,7 +26,9 @@ str_trunc <- function(x, width) {
   str_width <- utf8_width(strip_sgr(x), encode = FALSE)
 
   too_wide <- which(!is.na(x) & str_width > width)
-  x[too_wide] <- paste0(substr_ctl(x[too_wide], 1, width - 1), get_ellipsis())
+  if (any(too_wide)) {
+    x[too_wide] <- paste0(substr2_ctl(x[too_wide], 1, width - 1, type = "width"), get_ellipsis())
+  }
 
   x
 }

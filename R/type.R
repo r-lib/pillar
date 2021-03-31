@@ -40,7 +40,6 @@ get_pillar_type <- function(x, shaft) {
   type
 }
 
-#' @importFrom fansi substr_ctl
 #' @export
 format.pillar_type <- function(x, width = NULL, ...) {
   format_type_sum(x[[1]], width)
