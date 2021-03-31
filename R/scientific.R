@@ -7,12 +7,12 @@ format_exp <- function(x) {
 }
 
 si <- function(x) {
-  if (all(x == 0L)) {
+  num <- !is.na(x)
+  if (!any(num)) {
     return(rep_along(x, ""))
   }
 
-  num <- !is.na(x)
-  if (!any(num)) {
+  if (all(x[num] == 0L)) {
     return(rep_along(x, ""))
   }
 
