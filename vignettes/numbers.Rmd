@@ -128,7 +128,7 @@ pillar_shaft.formattable_currency <- function(x, ...) {
 pillar_shaft.formattable_percent <- function(x, ...) {
   formattable <- attr(x, "formattable")
 
-  pillar_shaft(num(unclass(x), digits = formattable$digits, scale = 100))
+  pillar_shaft(num(unclass(x), digits = formattable$digits, label = "%", scale = 100))
 }
 
 pillar_shaft.formattable_scientific <- function(x, ...) {
