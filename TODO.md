@@ -6,12 +6,8 @@
     - Finish `num()`
         - units need to preserve pillar attribute after arithmetics
         - formattable: class hierarchy
-    - Implement `char()` for characters
-        - `min_width = ...`
-        - `shorten = c("back", "front", "mid", "none", "abbreviate")`
     - `num_()` and `char_()` modifiers
     - See open issues in "Formatting numbers" section below
-    - Support providing a number for the `fixed_magnitude` argument
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
@@ -32,6 +28,7 @@
     - Show time zone for times: <https://github.com/r-lib/vctrs/issues/709>
 - Resolve vctrs imports
 - Format and truncate in {utf8}
+- Support providing a number for the `fixed_magnitude` argument?
 - Test coverage per file
 - Use penguins
 - Blog post?
