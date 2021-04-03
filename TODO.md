@@ -3,17 +3,26 @@
 ## Next steps
 
 - Improve output:
-    - Finish `num()`
-        - formattable: class hierarchy
-    - `num_()` and `char_()` modifiers
     - See open issues in "Formatting numbers" section below
-- Tibble-local options for precision
-    - Requires column specification
-    - Write proposal
+        - <https://github.com/r-lib/pillar/issues/96>: significant digits and fixed notation
+        - <https://github.com/r-lib/pillar/issues/127>: Unneeded switch to scientific notation?
+    - Finish `num()`
+        - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
+- Discuss
+    - `num_()` and `char_()` modifiers
+    - Choice of class, argument and attribute names
+    - Tibble-local options for precision
+        - Requires column specification
+        - Write proposal
+    - Challenge: redundant information goes up into the header
+        - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
+    - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
+    - Respect `getOption("scipen")`? <<https://github.com/r-lib/pillar/issues/110>
+- Clean up issues
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
-- Avoid `requireNamespace()`
+- Avoid `requireNamespace()` in `@examplesIf`
 - Breaking changes
     - Multi-stage (hierarchical) output for packed data frames
     - Show columns that are abbreviated in full
@@ -39,38 +48,13 @@
 
 - scales support for num
     - Needs at least `pretty()`, `seq()`, a generic `outer()` (or a change to scales), and perhaps much more
-- redundant information goes up into the header
-    - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
 
 
 ## Formatting numbers
 
-### Scale Numbers In Columns Equally
-
-<https://github.com/r-lib/pillar/issues/96>
-
-Idea: Show numbers of the same magnitude with SI prefix in the header.
-
-Solution: Custom vector class/container.
-
-### Respect getOption("digits") if "pillar.sigfig" is unset?
-
-<https://github.com/r-lib/pillar/issues/127> (own issue)
-
-Idea: Improve adoption of new users.
-
-Alternative: Show `getOption("digits")` significant figures if the differences are small enough.
-
-### Respect scipen option in base
-
-<https://github.com/r-lib/pillar/issues/110>
-
-Idea: Avoid switching to scientific notation
-
-
 ### Problems
 
-- Change formatting for all columns/containers: solved well enough (except scipen?)
+- Change formatting for all columns/containers: solved well enough
 
 - Specify distinct formatting (e.g. different number of significant figures, avoidance of scientific notation) per column or per container
 
