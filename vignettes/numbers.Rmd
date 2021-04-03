@@ -93,9 +93,8 @@ tibble(
   sci_ext = set_units(num(1:3 + 0.001, notation = "sci"), km)
 )
 
-# FIXME: Need to preserve pillar attribute on arithmetics
 tibble(
-  sci_int = set_num_opts(set_units(1:3, m), digits = 3) + set_units(1:3, km),
+  sci_int = set_num_opts(set_units(1:3, m), notation = "sci") + set_units(1:3, km),
   digits_int = set_num_opts(set_units(1:3, km), digits = 4) + set_units(1:3, m),
   sci_ext = set_units(num(1:3, notation = "sci"), m) + set_units(1:3, km)
 )
