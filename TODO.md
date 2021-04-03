@@ -4,16 +4,15 @@
 
 - Improve output:
     - Finish `num()`
-        - units need to preserve pillar attribute after arithmetics
         - formattable: class hierarchy
     - `num_()` and `char_()` modifiers
     - See open issues in "Formatting numbers" section below
-- CRAN release pillar
-- Reexport `num()` and `char()` in tibble
-- CRAN release tibble
 - Tibble-local options for precision
     - Requires column specification
     - Write proposal
+- CRAN release pillar
+- Reexport `num()` and `char()` in tibble
+- CRAN release tibble
 - Avoid `requireNamespace()`
 - Breaking changes
     - Multi-stage (hierarchical) output for packed data frames
