@@ -3,7 +3,7 @@ df_head <- function(x, n) {
   if (!is.data.frame(x)) {
     as.data.frame(head(x, n))
   } else {
-    vec_head(as.data.frame(x), n)
+    vec_head(x, n)
   }
 }
 
