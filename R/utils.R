@@ -18,7 +18,7 @@ cat_line <- function(...) {
 
 #' @importFrom utf8 utf8_width
 #' @importFrom fansi strip_sgr substr2_ctl
-str_trunc <- function(x, width, shorten = "back") {
+str_trunc <- function(x, width, shorten = NULL) {
   if (all(is.infinite(width))) {
     return(x)
   }
@@ -34,6 +34,10 @@ str_trunc <- function(x, width, shorten = "back") {
 }
 
 str_add_ellipsis <- function(x, str_width, width, shorten) {
+  if (is.null(shorten)) {
+    shorten <- "back"
+  }
+
   switch(shorten,
     back = {
       abbr <- substr2_ctl(x, 1, width - 1, type = "width")

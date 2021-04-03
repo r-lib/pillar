@@ -29,6 +29,12 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
     na <- pillar_na()
   }
 
+  if (missing(shorten)) {
+    shorten <- NULL
+  } else if (!is.null(shorten)) {
+    shorten <- match_arg(shorten)
+  }
+
   new_pillar_shaft(
     list(formatted),
     ...,
