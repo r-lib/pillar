@@ -3,16 +3,21 @@
     Code
       pillar(add_special(x), width = 6)
     Output
-      NULL
+      <pillar>
+       <int>
+       1  e7
+       1  e7
+       1  e7
+      NA    
     Code
       pillar(add_special(x), width = 7)
     Output
       <pillar>
         <int>
-       1.00e7
-       1.00e7
-       1.00e7
-      NA     
+        1  e7
+        1  e7
+        1  e7
+       NA    
     Code
       pillar(add_special(x), width = 8)
     Output
