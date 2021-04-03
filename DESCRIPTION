@@ -39,6 +39,7 @@ Suggests:
     palmerpenguins,
     rmarkdown,
     scales,
+    stringi,
     survival,
     testthat (>= 3.0.2),
     tibble,

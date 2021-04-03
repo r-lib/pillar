@@ -21,7 +21,8 @@ new_pillar_shaft_simple(
   align = "left",
   min_width = NULL,
   na = NULL,
-  na_indent = 0L
+  na_indent = 0L,
+  shorten = c("back", "front", "mid", "abbreviate")
 )
 }
 \arguments{
@@ -45,6 +46,14 @@ new_pillar_shaft_simple(
 \code{\link[=style_na]{style_na()}} with fallback if color is not available.}
 
 \item{na_indent}{Indentation of \code{NA} values.}
+
+\item{shorten}{How to abbreviate the data if necessary:
+\itemize{
+\item \code{"back"} (default): add an ellipsis at the end
+\item \code{"front"}: add an ellipsis at the front
+\item \code{"mid"}: add an ellipsis in the middle
+\item \code{"abbreviate"}: use \code{\link[=abbreviate]{abbreviate()}}
+}}
 }
 \description{
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}

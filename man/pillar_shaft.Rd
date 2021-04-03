@@ -32,7 +32,7 @@ pillar_shaft(x, ...)
 
 \method{pillar_shaft}{character}(x, ..., min_width = NULL)
 
-\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = NULL, na_indent = 0L)
+\method{pillar_shaft}{pillar_vertical}(x, ..., min_width = NULL, na_indent = 0L, shorten = NULL)
 
 \method{pillar_shaft}{list}(x, ...)
 
@@ -51,10 +51,17 @@ pillar_shaft(x, ...)
 
 \item{sigfig}{Deprecated, use \code{\link[=num]{num()}} or \code{\link[=set_num_opts]{set_num_opts()}} on the data instead.}
 
-\item{min_width}{Minimum number of characters to display,
-unless the string fits a shorter width.}
+\item{min_width}{Deprecated, use \code{\link[=char]{char()}} or \code{\link[=set_char_opts]{set_char_opts()}} on the data instead.}
 
 \item{na_indent}{Indentation of \code{NA} values.}
+
+\item{shorten}{How to abbreviate the data if necessary:
+\itemize{
+\item \code{"back"} (default): add an ellipsis at the end
+\item \code{"front"}: add an ellipsis at the front
+\item \code{"mid"}: add an ellipsis in the middle
+\item \code{"abbreviate"}: use \code{\link[=abbreviate]{abbreviate()}}
+}}
 }
 \description{
 Internal class for formatting the data for a column.

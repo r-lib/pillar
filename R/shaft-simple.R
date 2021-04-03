@@ -10,6 +10,7 @@
 #' The `formatted` argument may also contain ANSI escapes to change color
 #' or other attributes of the text, see [crayon].
 #'
+#' @inheritParams char
 #' @param formatted An object coercible to [character].
 #' @param align Alignment of the column.
 #' @param na String to use as `NA` value, defaults to `"NA"` styled with
@@ -18,13 +19,20 @@
 #' @export
 #' @rdname new_pillar_shaft
 new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left",
-                                    min_width = NULL, na = NULL, na_indent = 0L) {
+                                    min_width = NULL, na = NULL, na_indent = 0L,
+                                    shorten = c("back", "front", "mid", "abbreviate")) {
   if (is.null(width)) {
     width <- get_max_extent(as.character(formatted))
   }
 
   if (is.null(na)) {
     na <- pillar_na()
+  }
+
+  if (missing(shorten)) {
+    shorten <- NULL
+  } else if (!is.null(shorten)) {
+    shorten <- arg_match(shorten)
   }
 
   new_pillar_shaft(
@@ -35,6 +43,7 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
     align = align,
     na = na,
     na_indent = na_indent,
+    shorten = shorten,
     class = "pillar_shaft_simple"
   )
 }
@@ -42,10 +51,11 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
 #' @export
 format.pillar_shaft_simple <- function(x, width, ...) {
   align <- attr(x, "align")
+  shorten <- attr(x, "shorten")
   desired_width <- get_width(x)
   shaft <- as.character(x[[1]])
   if (width < desired_width) {
-    shaft <- str_trunc(shaft, width)
+    shaft <- str_trunc(shaft, width, shorten)
   }
   shaft[is.na(shaft)] <- paste0(
     strrep(" ", attr(x, "na_indent")),
