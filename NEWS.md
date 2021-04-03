@@ -1,5 +1,17 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.5.1.9002
+
+- New `char()` offers a flexible way to customize the display of character columns (#84).
+- Use display width instead of number of characters when truncating character columns.
+- New `num()` offers a flexible way to customize the display of numeric columns (#191).
+- Compatibility with vctrs 0.3.7 (#291).
+- Load the debugme package only if the `DEBUGME` environment variable is set.
+- New `format_type_sum.AsIs()` avoids the need to implement your own `format_type_sum()` method (#286).
+- `format.pillar_shaft_simple()` requires `"na"` attribute and no longer defaults to `pillar_na()` (#273).
+- `align()` gains `space` argument to control the character used for filling (#285).
+
+
 # pillar 1.5.1.9001
 
 - Internal changes only.
