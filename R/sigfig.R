@@ -25,20 +25,25 @@
 # split_decimal(1e9)
 # split_decimal(1e9, sci_mod = 1)
 split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed_magnitude = FALSE) {
+  "!!!!!!DEBUG split_decimal(`v(x)`, `v(sigfig)`, `v(digits)`, `v(sci_mod)`, `v(si)`, `v(fixed_magnitude)`"
+
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
   abs_x <- abs(x)
 
   num <- is.finite(x)
+  "!!!!!!DEBUG `v(num)`"
   dec <- num
 
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
+  "!!!!!!DEBUG `v(neg)`"
 
   if (!is.null(sci_mod)) {
     # Compute exponent and mantissa
     exp <- compute_exp(abs_x, sigfig)
+    "!!!!!!DEBUG `v(exp)`"
 
     if (fixed_magnitude) {
       exp <- rep_along(exp, as.integer(round(min(exp))))
@@ -52,11 +57,17 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
       exp <- pmin(exp, 24L)
     }
 
+    "!!!!!!DEBUG `v(exp)`"
+
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
     mnt <- abs_x
+    "!!!!!!DEBUG `v(mnt)`"
+
     mnt_idx <- which(num & abs_x != 0)
     mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
+    "!!!!!!DEBUG `v(mnt)`"
+
     if (is.null(digits)) {
       round_x <- safe_signif(mnt, sigfig)
       rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
@@ -67,6 +78,9 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
       round_x <- round(mnt, sigfig)
       rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
     }
+    "!!!!!!DEBUG `v(round_x)`"
+    "!!!!!!DEBUG `v(rhs_digits)`"
+
     exp_display <- exp
   } else {
     if (is.null(digits)) {
@@ -84,10 +98,16 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   }
 
   lhs <- trunc(round_x)
+  "!!!!!!DEBUG `v(lhs)`"
+
   rhs <- round_x - lhs
+  "!!!!!!DEBUG `v(rhs)`"
+
   if (is.null(sci_mod)) {
     dec[diff_to_trunc(x) == 0] <- FALSE
   }
+
+  "!!!!!!DEBUG `v(dec)`"
 
   ret <- list(
     sigfig = sigfig,
