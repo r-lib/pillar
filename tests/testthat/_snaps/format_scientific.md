@@ -14,8 +14,8 @@
            <dbl>
            1.e-9
            1.e-6
-           1.e+3
-           1.e+9
+           1 e+3
+           1 e+9
           NA    
         -Inf    
          Inf    
@@ -24,13 +24,13 @@
     Output
       <pillar>
            <dbl>
-          -1.e 3
-           1.e 9
-          -1.e15
-           1.e22
-          NA    
-        -Inf    
-         Inf    
+           -1e 3
+            1e 9
+           -1e15
+            1e22
+           NA   
+         -Inf   
+          Inf   
     Code
       pillar(add_special(1.25 * 10^(-309:-319)), width = 10)
     Output

@@ -104,10 +104,10 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   rhs <- round_x - lhs
   "!!!!!!DEBUG `v(rhs)`"
 
-  if (is.null(sci_mod)) {
-    dec[diff_to_trunc(x) == 0] <- FALSE
-  }
+  reset_dec <- (diff_to_trunc(x) == 0)
+  "!!!!!!DEBUG `v(rhs)`"
 
+  dec[reset_dec] <- FALSE
   "!!!!!!DEBUG `v(dec)`"
 
   ret <- list(

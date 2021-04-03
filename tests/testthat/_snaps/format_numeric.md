@@ -11,8 +11,8 @@
         <dbl>
         1.e-5
         1.e-2
-        1.e+3
-        1.e+6
+        1 e+3
+        1 e+6
     Code
       pillar(v, width = 10)
     Output
@@ -20,8 +20,8 @@
            <dbl>
            1.e-5
            1.e-2
-           1.e+3
-           1.e+6
+           1 e+3
+           1 e+6
     Code
       pillar(v, width = 15)
     Output
