@@ -154,26 +154,49 @@
 <ul>
 <li>Improve output:
 <ul>
+<li>See open issues in “Formatting numbers” section below
+<ul>
+<li>
+<a href="https://github.com/r-lib/pillar/issues/96" class="external-link uri">https://github.com/r-lib/pillar/issues/96</a>: significant digits and fixed notation</li>
+<li>
+<a href="https://github.com/r-lib/pillar/issues/127" class="external-link uri">https://github.com/r-lib/pillar/issues/127</a>: Unneeded switch to scientific notation?</li>
+</ul>
+</li>
 <li>Finish <code><a href="reference/num.html">num()</a></code>
 <ul>
-<li>formattable: class hierarchy</li>
+<li>formattable: class hierarchy, finish <a href="https://github.com/renkun-ken/formattable/pull/154" class="external-link uri">https://github.com/renkun-ken/formattable/pull/154</a>
+</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>Discuss
+<ul>
 <li>
 <code>num_()</code> and <code>char_()</code> modifiers</li>
-<li>See open issues in “Formatting numbers” section below</li>
-</ul>
-</li>
+<li>Choice of class, argument and attribute names</li>
 <li>Tibble-local options for precision
 <ul>
 <li>Requires column specification</li>
 <li>Write proposal</li>
 </ul>
 </li>
+<li>Challenge: redundant information goes up into the header
+<ul>
+<li>for fixed magnitude, need to rework <code><a href="reference/type_sum.html">type_sum()</a></code> – should operate on the pillar shaft</li>
+</ul>
+</li>
+<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code>? <a href="https://github.com/r-lib/pillar/issues/127" class="external-link uri">https://github.com/r-lib/pillar/issues/127</a>
+</li>
+<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("scipen")</a></code>? &lt;<a href="https://github.com/r-lib/pillar/issues/110" class="external-link uri">https://github.com/r-lib/pillar/issues/110</a>
+</li>
+</ul>
+</li>
+<li>Clean up issues</li>
 <li>CRAN release pillar</li>
 <li>Reexport <code><a href="reference/num.html">num()</a></code> and <code><a href="reference/char.html">char()</a></code> in tibble</li>
 <li>CRAN release tibble</li>
-<li>Avoid <code><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace()</a></code>
+<li>Avoid <code><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace()</a></code> in <code>@examplesIf</code>
 </li>
 <li>Breaking changes
 <ul>
@@ -219,41 +242,16 @@
 <li>Needs at least <code><a href="https://rdrr.io/r/base/pretty.html" class="external-link">pretty()</a></code>, <code><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq()</a></code>, a generic <code><a href="https://rdrr.io/r/base/outer.html" class="external-link">outer()</a></code> (or a change to scales), and perhaps much more</li>
 </ul>
 </li>
-<li>redundant information goes up into the header
-<ul>
-<li>for fixed magnitude, need to rework <code><a href="reference/type_sum.html">type_sum()</a></code> – should operate on the pillar shaft</li>
-</ul>
-</li>
 </ul>
 </div>
 <div id="formatting-numbers" class="section level2">
 <h2 class="hasAnchor">
 <a href="#formatting-numbers" class="anchor"></a>Formatting numbers</h2>
-<div id="scale-numbers-in-columns-equally" class="section level3">
-<h3 class="hasAnchor">
-<a href="#scale-numbers-in-columns-equally" class="anchor"></a>Scale Numbers In Columns Equally</h3>
-<p><a href="https://github.com/r-lib/pillar/issues/96" class="external-link uri">https://github.com/r-lib/pillar/issues/96</a></p>
-<p>Idea: Show numbers of the same magnitude with SI prefix in the header.</p>
-<p>Solution: Custom vector class/container.</p>
-</div>
-<div id="respect-getoptiondigits-if-pillarsigfig-is-unset" class="section level3">
-<h3 class="hasAnchor">
-<a href="#respect-getoptiondigits-if-pillarsigfig-is-unset" class="anchor"></a>Respect getOption(“digits”) if “pillar.sigfig” is unset?</h3>
-<p><a href="https://github.com/r-lib/pillar/issues/127" class="external-link uri">https://github.com/r-lib/pillar/issues/127</a> (own issue)</p>
-<p>Idea: Improve adoption of new users.</p>
-<p>Alternative: Show <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code> significant figures if the differences are small enough.</p>
-</div>
-<div id="respect-scipen-option-in-base" class="section level3">
-<h3 class="hasAnchor">
-<a href="#respect-scipen-option-in-base" class="anchor"></a>Respect scipen option in base</h3>
-<p><a href="https://github.com/r-lib/pillar/issues/110" class="external-link uri">https://github.com/r-lib/pillar/issues/110</a></p>
-<p>Idea: Avoid switching to scientific notation</p>
-</div>
 <div id="problems" class="section level3">
 <h3 class="hasAnchor">
 <a href="#problems" class="anchor"></a>Problems</h3>
 <ul>
-<li><p>Change formatting for all columns/containers: solved well enough (except scipen?)</p></li>
+<li><p>Change formatting for all columns/containers: solved well enough</p></li>
 <li>
 <p>Specify distinct formatting (e.g. different number of significant figures, avoidance of scientific notation) per column or per container</p>
 <ul>
