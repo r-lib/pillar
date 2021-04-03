@@ -69,8 +69,9 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     "!!!!!!DEBUG `v(mnt)`"
 
     if (is.null(digits)) {
-      round_x <- safe_signif(mnt, sigfig)
-      rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
+      min_sigfig <- compute_min_sigfig(mnt)
+      round_x <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
+      rhs_digits <- compute_rhs_digits(mnt, sigfig)
     } else if (digits >= 0) {
       round_x <- round(mnt, digits)
       rhs_digits <- digits
