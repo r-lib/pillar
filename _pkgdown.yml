@@ -39,6 +39,7 @@ reference:
   - title: Vector classes
     contents:
       - num
+      - char
   - title: Miscellaneous
     contents:
       - dim_desc
