@@ -40,7 +40,10 @@
 
 
 <meta property="og:title" content="Construct a custom pillar object — new_pillar" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="
+new_pillar() is the low-level constructor for pillar objects.
+It supports arbitrary components.
+See pillar() for the high-level constructor with default components." />
 
 
 <meta name="robots" content="noindex">
@@ -153,6 +156,9 @@
 
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
+<p><code>new_pillar()</code> is the low-level constructor for pillar objects.
+It supports arbitrary components.
+See <code><a href='pillar.html'>pillar()</a></code> for the high-level constructor with default components.</p>
     </div>
 
     <pre class="usage"><span class='fu'>new_pillar</span><span class='op'>(</span><span class='va'>components</span>, <span class='va'>...</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, class <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -180,10 +186,7 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>new_pillar()</code> is the low-level constructor for pillar objects.
-It supports arbitrary components.
-See <code><a href='pillar.html'>pillar()</a></code> for the high-level constructor with default components.</p>
-<p>Arbitrary components are supported.
+    <p>Arbitrary components are supported.
 If your tibble subclass needs more or different components in its pillars,
 override or extend <code><a href='ctl_new_pillar.html'>ctl_new_pillar()</a></code>
 and perhaps <code><a href='ctl_new_pillar.html'>ctl_new_compound_pillar()</a></code>.</p>
