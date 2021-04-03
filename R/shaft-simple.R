@@ -32,7 +32,7 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
   if (missing(shorten)) {
     shorten <- NULL
   } else if (!is.null(shorten)) {
-    shorten <- match_arg(shorten)
+    shorten <- arg_match(shorten)
   }
 
   new_pillar_shaft(
