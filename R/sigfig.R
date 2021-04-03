@@ -78,8 +78,6 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
       round_x <- round(mnt, sigfig)
       rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
     }
-    "!!!!!!DEBUG `v(round_x)`"
-    "!!!!!!DEBUG `v(rhs_digits)`"
 
     exp_display <- exp
   } else {

@@ -159,6 +159,8 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_magnitude) {
 
     MAX_DEC_WIDTH <- 13
     dec_width <- get_width(dec)
+    "!!!!!!DEBUG `v(dec_width)`"
+
     if (dec_width > MAX_DEC_WIDTH) {
       dec <- NULL
     }
