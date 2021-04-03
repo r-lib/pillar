@@ -13,7 +13,7 @@
 #' @examples
 #' # Display as a vector
 #' char(letters[1:3])
-#' @examplesIf { set.seed(20210331); requireNamespace("stringi", quietly = TRUE) }
+#' @examplesIf { set.seed(20210331); rlang::is_installed("stringi") }
 #'
 #' rand_strings <- pillar(stringi::stri_rand_strings(10, 31:40))
 #'

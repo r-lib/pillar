@@ -35,7 +35,7 @@ useful for composing with other types.
 \examples{
 # Display as a vector
 char(letters[1:3])
-\dontshow{if ({ set.seed(20210331); requireNamespace("stringi", quietly = TRUE) }) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if ({ set.seed(20210331); rlang::is_installed("stringi") }) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 rand_strings <- pillar(stringi::stri_rand_strings(10, 31:40))
 
