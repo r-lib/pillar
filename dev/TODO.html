@@ -160,18 +160,13 @@
 <li>formattable: class hierarchy</li>
 </ul>
 </li>
-<li>Implement <code>char()</code> for characters
-<ul>
-<li><code>min_width = ...</code></li>
-<li><code>shorten = c("back", "front", "mid", "none", "abbreviate")</code></li>
-</ul>
-</li>
+<li>
+<code>num_()</code> and <code>char_()</code> modifiers</li>
 <li>See open issues in “Formatting numbers” section below</li>
-<li>Support providing a number for the <code>fixed_magnitude</code> argument</li>
 </ul>
 </li>
 <li>CRAN release pillar</li>
-<li>Reexport <code><a href="reference/num.html">num()</a></code> and <code>char()</code> in tibble</li>
+<li>Reexport <code><a href="reference/num.html">num()</a></code> and <code><a href="reference/char.html">char()</a></code> in tibble</li>
 <li>CRAN release tibble</li>
 <li>Tibble-local options for precision
 <ul>
@@ -204,6 +199,7 @@
 </li>
 <li>Resolve vctrs imports</li>
 <li>Format and truncate in {utf8}</li>
+<li>Support providing a number for the <code>fixed_magnitude</code> argument?</li>
 <li>Test coverage per file</li>
 <li>Use penguins</li>
 <li>Blog post?</li>
@@ -262,7 +258,7 @@
 <li>
 <p>Specify distinct formatting (e.g. different number of significant figures, avoidance of scientific notation) per column or per container</p>
 <ul>
-<li><p>Tag value during creation with <code><a href="reference/num.html">num()</a></code> or <code>char()</code> – property of the data</p></li>
+<li><p>Tag value during creation with <code><a href="reference/num.html">num()</a></code> or <code><a href="reference/char.html">char()</a></code> – property of the data</p></li>
 <li>
 <p>Apply formatting based on column name/type</p>
 <ul>

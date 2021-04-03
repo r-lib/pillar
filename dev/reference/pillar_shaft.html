@@ -197,7 +197,7 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
 <span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, min_width <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for pillar_vertical</span>
-<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, min_width <span class='op'>=</span> <span class='cn'>NULL</span>, na_indent <span class='op'>=</span> <span class='fl'>0L</span><span class='op'>)</span>
+<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, min_width <span class='op'>=</span> <span class='cn'>NULL</span>, na_indent <span class='op'>=</span> <span class='fl'>0L</span>, shorten <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for list</span>
 <span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -232,12 +232,20 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
     </tr>
     <tr>
       <th>min_width</th>
-      <td><p>Minimum number of characters to display,
-unless the string fits a shorter width.</p></td>
+      <td><p>Deprecated, use <code><a href='char.html'>char()</a></code> or <code><a href='char.html'>set_char_opts()</a></code> on the data instead.</p></td>
     </tr>
     <tr>
       <th>na_indent</th>
       <td><p>Indentation of <code>NA</code> values.</p></td>
+    </tr>
+    <tr>
+      <th>shorten</th>
+      <td><p>How to abbreviate the data if necessary:</p><ul>
+<li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
+<li><p><code>"front"</code>: add an ellipsis at the front</p></li>
+<li><p><code>"mid"</code>: add an ellipsis in the middle</p></li>
+<li><p><code>"abbreviate"</code>: use <code><a href='https://rdrr.io/r/base/abbreviate.html'>abbreviate()</a></code></p></li>
+</ul></td>
     </tr>
     </table>
 
