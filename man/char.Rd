@@ -50,7 +50,7 @@ useful for composing with other types.
 char(letters[1:3])
 \dontshow{if ({ set.seed(20210331); rlang::is_installed("stringi") }) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
-rand_strings <- pillar(stringi::stri_rand_strings(10, 31:40))
+rand_strings <- stringi::stri_rand_strings(10, 31:40)
 
 # Plain character vectors get truncated if space is limited:
 data_with_id <- function(id) {

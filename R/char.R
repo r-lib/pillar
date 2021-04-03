@@ -23,7 +23,7 @@
 #' char(letters[1:3])
 #' @examplesIf { set.seed(20210331); rlang::is_installed("stringi") }
 #'
-#' rand_strings <- pillar(stringi::stri_rand_strings(10, 31:40))
+#' rand_strings <- stringi::stri_rand_strings(10, 31:40)
 #'
 #' # Plain character vectors get truncated if space is limited:
 #' data_with_id <- function(id) {
