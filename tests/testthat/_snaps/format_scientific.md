@@ -1,3 +1,10 @@
+# exponents correct in presence of NA
+
+    Code
+      format(split_decimal_bw(c(NA, 1e-05)), justify = "right")
+    Output
+      [1] "NA    " " 1.e-5"
+
 # output test
 
     Code
