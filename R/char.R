@@ -1,6 +1,8 @@
 #' Format a character vector in a tibble
 #'
 #' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' Constructs a character vector that can be formatted with predefined minimum width
 #' or without width restrictions, and where the abbreviation style can be configured.
 #'

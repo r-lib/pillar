@@ -1,6 +1,8 @@
 #' Format a numeric vector in a tibble
 #'
 #' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' Constructs a numeric vector that can be formatted with predefined
 #' significant digits, or with a maximum or fixed number of digits
 #' after the decimal point.

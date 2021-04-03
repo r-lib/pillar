@@ -64,6 +64,8 @@ using exponents that are a multiple of three.
 corresponding to the smallest element in scientific, engineering or SI notation.}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Constructs a numeric vector that can be formatted with predefined
 significant digits, or with a maximum or fixed number of digits
 after the decimal point.

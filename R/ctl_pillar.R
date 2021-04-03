@@ -114,6 +114,7 @@ rowidformat2 <- function(data, names, has_star) {
 
 #' Construct a custom pillar object
 #'
+#' @description
 #' `r lifecycle::badge("experimental")`
 #'
 #' `new_pillar()` is the low-level constructor for pillar objects.
