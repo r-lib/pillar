@@ -9,6 +9,14 @@
 #'
 #' @family vector classes
 #' @inheritParams ellipsis::dots_empty
+#' @param x A character vector.
+#' @param min_chars The minimum width to allocate to this column, defaults to 15.
+#'   The `"pillar.min_chars"` option is not consulted.
+#' @param shorten How to abbreviate the data if necessary:
+#' - `"back"` (default): add an ellipsis at the end
+#' - `"front"`: add an ellipsis at the front
+#' - `"mid"`: add an ellipsis in the middle
+#' - `"abbreviate"`: use [abbreviate()]
 #' @export
 #' @examples
 #' # Display as a vector

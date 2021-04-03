@@ -20,7 +20,20 @@ set_char_opts(
 )
 }
 \arguments{
+\item{x}{A character vector.}
+
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{min_chars}{The minimum width to allocate to this column, defaults to 15.
+The \code{"pillar.min_chars"} option is not consulted.}
+
+\item{shorten}{How to abbreviate the data if necessary:
+\itemize{
+\item \code{"back"} (default): add an ellipsis at the end
+\item \code{"front"}: add an ellipsis at the front
+\item \code{"mid"}: add an ellipsis in the middle
+\item \code{"abbreviate"}: use \code{\link[=abbreviate]{abbreviate()}}
+}}
 }
 \description{
 Constructs a character vector that can be formatted with predefined minimum width
