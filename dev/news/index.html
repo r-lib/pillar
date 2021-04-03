@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.1.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.1.9002</span>
       </span>
     </div>
 
@@ -147,6 +147,23 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="pillar-1519002" class="section level1">
+<h1 class="page-header" data-toc-text="1.5.1.9002">
+<a href="#pillar-1519002" class="anchor"></a>pillar 1.5.1.9002<small> Unreleased </small>
+</h1>
+<ul>
+<li>New <code><a href="../reference/char.html">char()</a></code> offers a flexible way to customize the display of character columns (<a href='https://github.com/r-lib/pillar/issues/84'>#84</a>).</li>
+<li>Use display width instead of number of characters when truncating character columns.</li>
+<li>New <code><a href="../reference/num.html">num()</a></code> offers a flexible way to customize the display of numeric columns (<a href='https://github.com/r-lib/pillar/issues/191'>#191</a>).</li>
+<li>Compatibility with vctrs 0.3.7 (<a href='https://github.com/r-lib/pillar/issues/291'>#291</a>).</li>
+<li>Load the debugme package only if the <code>DEBUGME</code> environment variable is set.</li>
+<li>New <code><a href="../reference/format_type_sum.html">format_type_sum.AsIs()</a></code> avoids the need to implement your own <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> method (<a href='https://github.com/r-lib/pillar/issues/286'>#286</a>).</li>
+<li>
+<code>format.pillar_shaft_simple()</code> requires <code>"na"</code> attribute and no longer defaults to <code>pillar_na()</code> (<a href='https://github.com/r-lib/pillar/issues/273'>#273</a>).</li>
+<li>
+<code><a href="../reference/align.html">align()</a></code> gains <code>space</code> argument to control the character used for filling (<a href='https://github.com/r-lib/pillar/issues/285'>#285</a>).</li>
+</ul>
+</div>
     <div id="pillar-1519001" class="section level1">
 <h1 class="page-header" data-toc-text="1.5.1.9001">
 <a href="#pillar-1519001" class="anchor"></a>pillar 1.5.1.9001<small> Unreleased </small>
