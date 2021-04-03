@@ -19,11 +19,11 @@
 #' - `"abbreviate"`: use [abbreviate()]
 #' @export
 #' @examples
-#' # Display as a vector
+#' # Display as a vector:
 #' char(letters[1:3])
 #' @examplesIf { set.seed(20210331); rlang::is_installed("stringi") }
-#'
-#' rand_strings <- stringi::stri_rand_strings(10, 31:40)
+#' # Space constraints:
+#' rand_strings <- stringi::stri_rand_strings(10, seq(40, 22, by = -2))
 #'
 #' # Plain character vectors get truncated if space is limited:
 #' data_with_id <- function(id) {
@@ -37,10 +37,11 @@
 #' data_with_id(rand_strings)
 #'
 #' # Use char() to avoid or control truncation
-#' data_with_id(char(rand_strings, min_chars = 35))
-#' data_with_id(char(rand_strings, shorten = "none"))
-#' data_with_id(char(rand_strings, min_chars = 35, shorten = "mid"))
+#' data_with_id(char(rand_strings, min_chars = 24))
+#' data_with_id(char(rand_strings, min_chars = Inf))
+#' data_with_id(char(rand_strings, min_chars = 24, shorten = "mid"))
 #'
+#' # Lorem Ipsum, one sentence per row.
 #' lipsum <- unlist(strsplit(stringi::stri_rand_lipsum(1), "(?<=[.]) +", perl = TRUE))
 #' tibble::tibble(
 #'   back = char(lipsum, shorten = "back"),
