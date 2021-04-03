@@ -17,7 +17,8 @@
     - Challenge: redundant information goes up into the header
         - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
     - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
-    - Respect `getOption("scipen")`? <<https://github.com/r-lib/pillar/issues/110>
+    - Respect `getOption("scipen")`? <https://github.com/r-lib/pillar/issues/110>
+    - Numbers of same magnitude but with subtle differences? <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
 - Clean up issues
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
