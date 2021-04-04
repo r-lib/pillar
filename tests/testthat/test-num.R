@@ -46,15 +46,15 @@ test_that("output test", {
 
 test_that("many digits", {
   expect_snapshot({
-    num(1.23456789 * 10 ^ (-1:8))
-    num(1.23456789 * 10 ^ (-1:9))
-    num(1.23456789 * 10 ^ (-1:9), notation = "dec")
-    num(1.23456789 * 10 ^ (-1:9), notation = "sci")
-    num(1.23456789 * 10 ^ (-1:9), notation = "eng")
-    num(1.23456789 * 10 ^ (-1:9), notation = "si")
-    num(1.23456789 * 10 ^ (-1:9), notation = "sci", fixed_magnitude = TRUE)
-    num(1.23456789 * 10 ^ (-1:9), notation = "eng", fixed_magnitude = TRUE)
-    num(1.23456789 * 10 ^ (-1:9), notation = "si", fixed_magnitude = TRUE)
+    num(123456789 * 10 ^ (-9:0))
+    num(123456789 * 10 ^ (-10:0))
+    num(123456789 * 10 ^ (-10:0), notation = "dec")
+    num(123456789 * 10 ^ (-10:0), notation = "sci")
+    num(123456789 * 10 ^ (-10:0), notation = "eng")
+    num(123456789 * 10 ^ (-10:0), notation = "si")
+    num(123456789 * 10 ^ (-10:0), notation = "sci", fixed_magnitude = TRUE)
+    num(123456789 * 10 ^ (-10:0), notation = "eng", fixed_magnitude = TRUE)
+    num(123456789 * 10 ^ (-10:0), notation = "si", fixed_magnitude = TRUE)
   })
 })
 
