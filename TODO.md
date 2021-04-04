@@ -3,6 +3,7 @@
 ## Next steps
 
 - Improve output:
+    - Remove units PR from `DESCRIPTION`
     - See open issues in "Formatting numbers" section below
         - <https://github.com/r-lib/pillar/issues/96>: significant digits and fixed notation
         - <https://github.com/r-lib/pillar/issues/127>: Unneeded switch to scientific notation?
@@ -19,12 +20,15 @@
     - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
     - Respect `getOption("scipen")`? <https://github.com/r-lib/pillar/issues/110>
     - Numbers of same magnitude but with subtle differences? <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
+    - `shorten = "unique"`? <https://github.com/r-lib/pillar/issues/101>
+    - Support providing a number for the `fixed_magnitude` argument? <https://github.com/r-lib/pillar/issues/96#issuecomment-812981071>
 - Clean up issues
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
 - Avoid `requireNamespace()` in `@examplesIf`
 - Breaking changes
+    - Abbreviate list columns at the left: <https://github.com/r-lib/pillar/issues/84>
     - Multi-stage (hierarchical) output for packed data frames
     - Show columns that are abbreviated in full
     - Packed data frames and matrices: if too wide, show ellipsis
@@ -37,7 +41,6 @@
     - Show time zone for times: <https://github.com/r-lib/vctrs/issues/709>
 - Resolve vctrs imports
 - Format and truncate in {utf8}
-- Support providing a number for the `fixed_magnitude` argument?
 - Test coverage per file
 - Use penguins
 - Blog post?
