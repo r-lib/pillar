@@ -61,4 +61,4 @@ Config/testthat/start-first:
     ctl_colonnade_2
 Remotes: 
     renkun-ken/formattable#154,
-    r-quantities/units#280
+    r-quantities/units
