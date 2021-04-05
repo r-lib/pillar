@@ -108,10 +108,6 @@ remove_as_is_class <- function(x) {
   x
 }
 
-diff_to_trunc <- function(x) {
-  x - trunc(x)
-}
-
 v <- function(x) {
   expr <- rlang::expr_deparse(substitute(x), width = Inf)
   paste0(expr, " = ", rlang::expr_deparse(x, width = 80)[[1]])

@@ -64,7 +64,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
     mnt_idx <- which(num & mnt != 0)
-    mnt[mnt_idx] <- mnt[mnt_idx] / (10^exp[mnt_idx])
+    mnt[mnt_idx] <- safe_divide_10_to(mnt[mnt_idx], exp[mnt_idx])
     "!!!!!!DEBUG `v(mnt)`"
   } else {
     exp <- rep_along(x, NA_integer_)
@@ -95,6 +95,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   rhs <- round_mnt - lhs
   "!!!!!!DEBUG `v(rhs)`"
 
+  "!!!!!!DEBUG `v(diff_to_trunc(mnt))`"
   reset_dec <- (diff_to_trunc(mnt) == 0)
   "!!!!!!DEBUG `v(reset_dec)`"
 
@@ -132,6 +133,16 @@ safe_signif <- function(x, digits) {
     return(numeric())
   }
   signif(x, digits)
+}
+
+safe_divide_10_to <- function(x, y) {
+  # Computes x / 10^y in a robust way
+
+  x / (10^y)
+}
+
+diff_to_trunc <- function(x) {
+  x - trunc(x)
 }
 
 sqrt_eps <- sqrt(.Machine$double.eps)
