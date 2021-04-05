@@ -3,7 +3,6 @@
 ## Next steps
 
 - Improve output:
-    - Revert df43c7fcea2fc8d5d159eeb298d800e54990f6fd
     - See open issues in "Formatting numbers" section below
         - <https://github.com/r-lib/pillar/issues/96>: significant digits and fixed notation
         - <https://github.com/r-lib/pillar/issues/127>: Unneeded switch to scientific notation?
