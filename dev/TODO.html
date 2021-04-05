@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.1.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.1.9003</span>
       </span>
     </div>
 
@@ -148,36 +148,29 @@
 
 <div id="todo" class="section level1">
 
-<div id="next-steps" class="section level2">
+<div id="discuss" class="section level2">
 <h2 class="hasAnchor">
-<a href="#next-steps" class="anchor"></a>Next steps</h2>
-<ul>
-<li>Improve output:
-<ul>
-<li>Tibble-local options for precision
-<ul>
-<li>Requires column specification</li>
-<li>Write proposal</li>
-</ul>
-</li>
-<li>pillar(num(1:3, digits = 3))</li>
-<li>Finish <code><a href="reference/num.html">num()</a></code>
-<ul>
-<li>formattable: class hierarchy, finish <a href="https://github.com/renkun-ken/formattable/pull/154" class="external-link uri">https://github.com/renkun-ken/formattable/pull/154</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Discuss
+<a href="#discuss" class="anchor"></a>Discuss</h2>
 <ul>
 <li>Scientific notation: format <code>1e10</code> ok if it’s exactly 1^10? <a href="https://github.com/r-lib/pillar/pull/298" class="external-link uri">https://github.com/r-lib/pillar/pull/298</a>
 </li>
 <li>Show decimal digits if there’s space? <a href="https://github.com/r-lib/pillar/issues/96#issuecomment-813314956" class="external-link uri">https://github.com/r-lib/pillar/issues/96#issuecomment-813314956</a>
 </li>
 <li>
-<code>num_()</code> and <code>char_()</code> modifiers: https://pillar.r-lib.org/dev/articles/numbers.html#recovery</li>
-<li>Choice of class, argument and attribute names</li>
+<code>num_()</code> and <code>char_()</code> modifiers: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#recovery" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#recovery</a>
+</li>
+<li>Tibble-local options for display: below <a href="https://pillar.r-lib.org/dev/articles/numbers.html#recovery" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#recovery</a>
+</li>
+<li>Choice of class, argument and attribute names
+<ul>
+<li><a href="https://pillar.r-lib.org/dev/reference/num.html" class="uri">https://pillar.r-lib.org/dev/reference/num.html</a></li>
+<li><a href="https://pillar.r-lib.org/dev/reference/char.html" class="uri">https://pillar.r-lib.org/dev/reference/char.html</a></li>
+<li>
+<code>"pillar"</code> attribute for both classes</li>
+<li>class names: <code>"tibble_num"</code>, <code>"tibble_num_attr"</code>, <code>"tibble_char"</code>, <code>"tibble_char_attr"</code>
+</li>
+</ul>
+</li>
 <li>Challenge: redundant information goes up into the header
 <ul>
 <li>for fixed magnitude, need to rework <code><a href="reference/type_sum.html">type_sum()</a></code> – should operate on the pillar shaft</li>
@@ -193,6 +186,20 @@
 <code>shorten = "unique"</code>? <a href="https://github.com/r-lib/pillar/issues/101" class="external-link uri">https://github.com/r-lib/pillar/issues/101</a>
 </li>
 <li>Support providing a number for the <code>fixed_magnitude</code> argument? <a href="https://github.com/r-lib/pillar/issues/96#issuecomment-812981071" class="external-link uri">https://github.com/r-lib/pillar/issues/96#issuecomment-812981071</a>
+</li>
+</ul>
+</div>
+<div id="next-steps" class="section level2">
+<h2 class="hasAnchor">
+<a href="#next-steps" class="anchor"></a>Next steps</h2>
+<ul>
+<li>Improve output:
+<ul>
+<li>Finish <code><a href="reference/num.html">num()</a></code>
+<ul>
+<li>formattable: class hierarchy, finish <a href="https://github.com/renkun-ken/formattable/pull/154" class="external-link uri">https://github.com/renkun-ken/formattable/pull/154</a>
+</li>
+</ul>
 </li>
 </ul>
 </li>
