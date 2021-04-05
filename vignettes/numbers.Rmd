@@ -186,7 +186,7 @@ data.frame(x = x, y = 1:10) %>%
 num_ <- function(f) {
   force(f)
   function(x, ...) {
-    vec_restore(f(x, ...), x)
+    vctrs::vec_restore(f(x, ...), x)
   }
 }
 
