@@ -82,16 +82,19 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
 
     exp_display <- exp
   } else {
+    mnt <- abs_x
+    "!!!!!!DEBUG `v(mnt)`"
+
     if (is.null(digits)) {
-      min_sigfig <- compute_min_sigfig(abs_x)
-      round_x <- safe_signif(abs_x, pmax(sigfig, min_sigfig, na.rm = TRUE))
-      rhs_digits <- compute_rhs_digits(abs_x, sigfig)
+      min_sigfig <- compute_min_sigfig(mnt)
+      round_x <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
+      rhs_digits <- compute_rhs_digits(mnt, sigfig)
     } else if (digits >= 0) {
-      round_x <- round(abs_x, digits)
+      round_x <- round(mnt, digits)
       rhs_digits <- digits
     } else {
-      round_x <- round(abs_x, -digits)
-      rhs_digits <- compute_rhs_digits(abs_x - floor(abs_x), -digits)
+      round_x <- round(mnt, -digits)
+      rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
     }
     exp_display <- rep_along(x, NA_integer_)
   }
@@ -102,8 +105,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   rhs <- round_x - lhs
   "!!!!!!DEBUG `v(rhs)`"
 
-  reset_dec <- (diff_to_trunc(x) == 0)
-  "!!!!!!DEBUG `v(rhs)`"
+  reset_dec <- (diff_to_trunc(mnt) == 0)
+  "!!!!!!DEBUG `v(reset_dec)`"
 
   dec[reset_dec] <- FALSE
   "!!!!!!DEBUG `v(dec)`"

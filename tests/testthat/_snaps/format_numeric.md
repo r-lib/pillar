@@ -9,19 +9,19 @@
     Output
       <pillar>
         <dbl>
-        1.e-5
-        1.e-2
-        1 e+3
-        1 e+6
+         1e-5
+         1e-2
+         1e+3
+         1e+6
     Code
       pillar(v, width = 10)
     Output
       <pillar>
            <dbl>
-           1.e-5
-           1.e-2
-           1 e+3
-           1 e+6
+            1e-5
+            1e-2
+            1e+3
+            1e+6
     Code
       pillar(v, width = 15)
     Output

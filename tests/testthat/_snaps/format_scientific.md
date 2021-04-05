@@ -3,7 +3,7 @@
     Code
       format(split_decimal_bw(c(NA, 1e-05)), justify = "right")
     Output
-      [1] "NA    " " 1.e-5"
+      [1] "NA   " " 1e-5"
 
 # output test
 
@@ -12,13 +12,13 @@
     Output
       <pillar>
            <dbl>
-           1.e-9
-           1.e-6
-           1 e+3
-           1 e+9
-          NA    
-        -Inf    
-         Inf    
+            1e-9
+            1e-6
+            1e+3
+            1e+9
+           NA   
+         -Inf   
+          Inf   
     Code
       pillar(add_special((10^c(3, 9, 15, 22)) * c(-1, 1)), width = 10)
     Output
