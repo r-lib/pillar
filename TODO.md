@@ -10,6 +10,7 @@
     - Finish `num()`
         - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - Discuss
+    - Scientific notation: format `1e10` ok if it's exactly 1^10?
     - `num_()` and `char_()` modifiers
     - Choice of class, argument and attribute names
     - Tibble-local options for precision
