@@ -68,35 +68,24 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
     "!!!!!!DEBUG `v(mnt)`"
 
-    if (is.null(digits)) {
-      min_sigfig <- compute_min_sigfig(mnt)
-      round_x <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
-      rhs_digits <- compute_rhs_digits(mnt, sigfig)
-    } else if (digits >= 0) {
-      round_x <- round(mnt, digits)
-      rhs_digits <- digits
-    } else {
-      round_x <- round(mnt, sigfig)
-      rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
-    }
-
     exp_display <- exp
   } else {
     mnt <- abs_x
     "!!!!!!DEBUG `v(mnt)`"
 
-    if (is.null(digits)) {
-      min_sigfig <- compute_min_sigfig(mnt)
-      round_x <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
-      rhs_digits <- compute_rhs_digits(mnt, sigfig)
-    } else if (digits >= 0) {
-      round_x <- round(mnt, digits)
-      rhs_digits <- digits
-    } else {
-      round_x <- round(mnt, -digits)
-      rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
-    }
     exp_display <- rep_along(x, NA_integer_)
+  }
+
+  if (is.null(digits)) {
+    min_sigfig <- compute_min_sigfig(mnt)
+    round_x <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
+    rhs_digits <- compute_rhs_digits(mnt, sigfig)
+  } else if (digits >= 0) {
+    round_x <- round(mnt, digits)
+    rhs_digits <- digits
+  } else {
+    round_x <- round(mnt, -digits)
+    rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
   }
 
   lhs <- trunc(round_x)
