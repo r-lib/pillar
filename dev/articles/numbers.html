@@ -336,6 +336,30 @@
 <p><img src="numbers_files/figure-html/numbers-19-1.png" width="700"></p>
 </div>
 </div>
+<div id="recovery" class="section level2">
+<h2 class="hasAnchor">
+<a href="#recovery" class="anchor"></a>Recovery</h2>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">num_</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/force.html" class="external-link">force</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span>
+  <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_proxy.html" class="external-link">vec_restore</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>, <span class="va">x</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="fu">num_</span><span class="op">(</span><span class="va">var</span><span class="op">)</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
+<span class="co">#&gt; [1] 1</span>
+
+<span class="va">var</span> <span class="op">&lt;-</span> <span class="fu">num_</span><span class="op">(</span><span class="va">var</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
+<span class="co">#&gt; [1] 1</span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
