@@ -3,56 +3,66 @@
     Code
       pillar(add_special(x), width = 6)
     Output
-      NULL
+      <pillar>
+      <int6>
+        1e12
+        1e12
+        1e12
+       NA   
     Code
       pillar(add_special(x), width = 7)
     Output
-      NULL
+      <pillar>
+      <int64>
+         1e12
+         1e12
+         1e12
+        NA   
     Code
       pillar(add_special(x), width = 8)
     Output
       <pillar>
        <int64>
-       1.00e12
-       1.00e12
-       1.00e12
-      NA      
+          1e12
+          1e12
+          1e12
+         NA   
     Code
       pillar(add_special(x), width = 9)
     Output
       <pillar>
         <int64>
-        1.00e12
-        1.00e12
-        1.00e12
-       NA      
+           1e12
+           1e12
+           1e12
+          NA   
     Code
       pillar(add_special(x), width = 10)
     Output
       <pillar>
          <int64>
-         1.00e12
-         1.00e12
-         1.00e12
-        NA      
+            1e12
+            1e12
+            1e12
+           NA   
     Code
       pillar(add_special(x), width = 11)
     Output
       <pillar>
           <int64>
-          1.00e12
-          1.00e12
-          1.00e12
-         NA      
+             1e12
+             1e12
+             1e12
+            NA   
     Code
       pillar(add_special(x), width = 12)
     Output
       <pillar>
            <int64>
-           1.00e12
-           1.00e12
-           1.00e12
-          NA      
+              1e12
+              1e12
+              1e12
+             NA   
     Code
       pillar(add_special(x), width = 13)
     Output

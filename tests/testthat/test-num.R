@@ -44,6 +44,20 @@ test_that("output test", {
   })
 })
 
+test_that("many digits", {
+  expect_snapshot({
+    num(123456789 * 10 ^ (-9:0))
+    num(123456789 * 10 ^ (-9:1))
+    num(123456789 * 10 ^ (-9:1), notation = "dec")
+    num(123456789 * 10 ^ (-9:1), notation = "sci")
+    num(123456789 * 10 ^ (-9:1), notation = "eng")
+    num(123456789 * 10 ^ (-9:1), notation = "si")
+    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_magnitude = TRUE)
+    num(123456789 * 10 ^ (-9:1), notation = "eng", fixed_magnitude = TRUE)
+    num(123456789 * 10 ^ (-9:1), notation = "si", fixed_magnitude = TRUE)
+  })
+})
+
 test_that("coercion", {
   expect_identical(
     vec_c(num(1), num(2)),
