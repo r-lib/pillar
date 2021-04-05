@@ -5,7 +5,7 @@
 - Scientific notation: format `1e10` ok if it's exactly 1^10? <https://github.com/r-lib/pillar/pull/298>
 - Show decimal digits if there's space? <https://github.com/r-lib/pillar/issues/96#issuecomment-813314956>
 - `num_()` and `char_()` modifiers: <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>
-- Tibble-local options for display: below <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>
+- Tibble-local options for display: <https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1>
 - Choice of class, argument and attribute names
     - <https://pillar.r-lib.org/dev/reference/num.html>
     - <https://pillar.r-lib.org/dev/reference/char.html>
