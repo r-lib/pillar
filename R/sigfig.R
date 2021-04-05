@@ -74,25 +74,25 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   if (is.null(digits)) {
     "!!!!!!DEBUG `v(sigfig)`"
     min_sigfig <- compute_min_sigfig(mnt)
-    round_x <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
+    round_mnt <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
     rhs_digits <- compute_rhs_digits(mnt, sigfig)
   } else if (digits >= 0) {
     "!!!!!!DEBUG `v(digits)`"
-    round_x <- round(mnt, digits)
+    round_mnt <- round(mnt, digits)
     rhs_digits <- digits
   } else {
     "!!!!!!DEBUG `v(-digits)`"
-    round_x <- round(mnt, -digits)
+    round_mnt <- round(mnt, -digits)
     rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
   }
 
-  "!!!!!!DEBUG `v(round_x)`"
+  "!!!!!!DEBUG `v(round_mnt)`"
   "!!!!!!DEBUG `v(rhs_digits)`"
 
-  lhs <- trunc(round_x)
+  lhs <- trunc(round_mnt)
   "!!!!!!DEBUG `v(lhs)`"
 
-  rhs <- round_x - lhs
+  rhs <- round_mnt - lhs
   "!!!!!!DEBUG `v(rhs)`"
 
   reset_dec <- (diff_to_trunc(mnt) == 0)
