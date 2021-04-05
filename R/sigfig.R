@@ -87,7 +87,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   } else {
     "!!!!!!DEBUG `v(-digits)`"
     round_mnt <- round(mnt, -digits)
-    rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
+    trunc_mnt <- trunc(mnt)
+    rhs_digits <- compute_rhs_digits(mnt - trunc_mnt, -digits, trunc_mnt)
   }
 
   "!!!!!!DEBUG `v(round_mnt)`"
@@ -162,7 +163,7 @@ within_tolerance <- function(x, y) {
   out
 }
 
-compute_rhs_digits <- function(x, sigfig) {
+compute_rhs_digits <- function(x, sigfig, offset = rep_along(x, 0)) {
   "!!!!!!DEBUG compute_rhs_digits(`v(x)`, `v(sigfig)`)"
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
@@ -182,7 +183,7 @@ compute_rhs_digits <- function(x, sigfig) {
       "!!!!!!DEBUG `v(rhs_digits)"
 
       which_to_check <- which(to_check)
-      val <- x[which_to_check] * 10^(rhs_digits[which_to_check] - 1)
+      val <- (x[which_to_check] + offset[which_to_check]) * 10^(rhs_digits[which_to_check] - 1)
       "!!!!!!DEBUG `v(val)"
       "!!!!!!DEBUG `v(val - round(val))"
 

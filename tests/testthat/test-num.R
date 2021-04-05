@@ -58,6 +58,22 @@ test_that("many digits", {
   })
 })
 
+test_that("sigfig and digits", {
+  expect_snapshot({
+    num(c(578890.23, 240234.131, 40234.1))
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 6)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 7)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 8)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 9)
+    num(c(578890.23, 240234.131, 40234.1), digits = 2)
+    num(c(578890.23, 240234.131, 40234.1), digits = 3)
+    num(c(578890.23, 240234.131, 40234.1), digits = 4)
+    num(c(578890.23, 240234.131, 40234.1), digits = -2)
+    num(c(578890.23, 240234.131, 40234.1), digits = -3)
+    num(c(578890.23, 240234.131, 40234.1), digits = -4)
+  })
+})
+
 test_that("coercion", {
   expect_identical(
     vec_c(num(1), num(2)),
