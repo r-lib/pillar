@@ -74,6 +74,13 @@ test_that("sigfig and digits", {
   })
 })
 
+test_that("forced digits", {
+  expect_snapshot({
+    pillar(num(1:3, digits = 2))
+    pillar(num(1:3, digits = 5))
+  })
+})
+
 test_that("coercion", {
   expect_identical(
     vec_c(num(1), num(2)),

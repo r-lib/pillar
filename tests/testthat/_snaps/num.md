@@ -212,6 +212,25 @@
       <tibble_num:.4[3]>
       [1] 578890.23  240234.131  40234.1  
 
+# forced digits
+
+    Code
+      pillar(num(1:3, digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+            1  
+            2  
+            3  
+    Code
+      pillar(num(1:3, digits = 5))
+    Output
+      <pillar>
+      <num:.5!>
+         1     
+         2     
+         3     
+
 # arithmetics
 
     Code

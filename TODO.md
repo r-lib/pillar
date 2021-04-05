@@ -6,6 +6,7 @@
     - Tibble-local options for precision
         - Requires column specification
         - Write proposal
+    - pillar(num(1:3, digits = 3))
     - Finish `num()`
         - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - Discuss
