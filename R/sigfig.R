@@ -30,8 +30,6 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
-  abs_x <- abs(x)
-
   num <- is.finite(x)
   "!!!!!!DEBUG `v(num)`"
   dec <- num
@@ -40,9 +38,12 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   neg <- !is.na(x) & x < 0
   "!!!!!!DEBUG `v(neg)`"
 
+  mnt <- abs(x)
+  "!!!!!!DEBUG `v(mnt)`"
+
   if (!is.null(sci_mod)) {
     # Compute exponent and mantissa
-    exp <- compute_exp(abs_x, sigfig)
+    exp <- compute_exp(mnt, sigfig)
     "!!!!!!DEBUG `v(exp)`"
 
     if (fixed_magnitude) {
@@ -62,30 +63,31 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
 
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
-    mnt <- abs_x
-    "!!!!!!DEBUG `v(mnt)`"
-
-    mnt_idx <- which(num & abs_x != 0)
-    mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
+    mnt_idx <- which(num & mnt != 0)
+    mnt[mnt_idx] <- mnt[mnt_idx] / (10^exp[mnt_idx])
     "!!!!!!DEBUG `v(mnt)`"
   } else {
-    mnt <- abs_x
-    "!!!!!!DEBUG `v(mnt)`"
-
     exp <- rep_along(x, NA_integer_)
+    "!!!!!!DEBUG `v(exp)`"
   }
 
   if (is.null(digits)) {
+    "!!!!!!DEBUG `v(sigfig)`"
     min_sigfig <- compute_min_sigfig(mnt)
     round_x <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
     rhs_digits <- compute_rhs_digits(mnt, sigfig)
   } else if (digits >= 0) {
+    "!!!!!!DEBUG `v(digits)`"
     round_x <- round(mnt, digits)
     rhs_digits <- digits
   } else {
+    "!!!!!!DEBUG `v(-digits)`"
     round_x <- round(mnt, -digits)
     rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
   }
+
+  "!!!!!!DEBUG `v(round_x)`"
+  "!!!!!!DEBUG `v(rhs_digits)`"
 
   lhs <- trunc(round_x)
   "!!!!!!DEBUG `v(lhs)`"
