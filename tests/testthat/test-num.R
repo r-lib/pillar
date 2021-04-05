@@ -58,16 +58,19 @@ test_that("many digits", {
   })
 })
 
-test_that("example", {
+test_that("sigfig and digits", {
   expect_snapshot({
     num(c(578890.23, 240234.131, 40234.1))
-    num(c(578890.23, 240234.131, 40234.1), notation = "dec")
-    num(c(578890.23, 240234.131, 40234.1), notation = "sci")
-    num(c(578890.23, 240234.131, 40234.1), notation = "eng")
-    num(c(578890.23, 240234.131, 40234.1), notation = "si")
-    num(c(578890.23, 240234.131, 40234.1), notation = "sci", fixed_magnitude = TRUE)
-    num(c(578890.23, 240234.131, 40234.1), notation = "eng", fixed_magnitude = TRUE)
-    num(c(578890.23, 240234.131, 40234.1), notation = "si", fixed_magnitude = TRUE)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 6)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 7)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 8)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 9)
+    num(c(578890.23, 240234.131, 40234.1), digits = 2)
+    num(c(578890.23, 240234.131, 40234.1), digits = 3)
+    num(c(578890.23, 240234.131, 40234.1), digits = 4)
+    num(c(578890.23, 240234.131, 40234.1), digits = -2)
+    num(c(578890.23, 240234.131, 40234.1), digits = -3)
+    num(c(578890.23, 240234.131, 40234.1), digits = -4)
   })
 })
 
