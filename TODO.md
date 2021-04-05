@@ -3,18 +3,17 @@
 ## Next steps
 
 - Improve output:
-    - See open issues in "Formatting numbers" section below
-        - <https://github.com/r-lib/pillar/issues/127>: Unneeded switch to scientific notation?
+    - Tibble-local options for precision
+        - Requires column specification
+        - Write proposal
+    - pillar(num(1:3, digits = 3))
     - Finish `num()`
         - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - Discuss
     - Scientific notation: format `1e10` ok if it's exactly 1^10? <https://github.com/r-lib/pillar/pull/298>
     - Show decimal digits if there's space? <https://github.com/r-lib/pillar/issues/96#issuecomment-813314956>
-    - `num_()` and `char_()` modifiers
+    - `num_()` and `char_()` modifiers: https://pillar.r-lib.org/dev/articles/numbers.html#recovery
     - Choice of class, argument and attribute names
-    - Tibble-local options for precision
-        - Requires column specification
-        - Write proposal
     - Challenge: redundant information goes up into the header
         - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
     - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
