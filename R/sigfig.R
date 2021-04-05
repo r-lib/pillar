@@ -47,17 +47,18 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
 
     if (fixed_magnitude) {
       exp <- rep_along(exp, as.integer(round(min(exp))))
+      "!!!!!!DEBUG `v(exp)`"
     }
     if (sci_mod != 1) {
       exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
+      "!!!!!!DEBUG `v(exp)`"
     }
     if (si) {
       # Truncate very small and very large exponents
       exp <- pmax(exp, -24L)
       exp <- pmin(exp, 24L)
+      "!!!!!!DEBUG `v(exp)`"
     }
-
-    "!!!!!!DEBUG `v(exp)`"
 
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
