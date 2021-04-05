@@ -360,6 +360,69 @@
 <span class="co">#&gt; &lt;tibble_num[1]&gt;</span>
 <span class="co">#&gt; [1] 1</span></code></pre></div>
 </div>
+<div id="sketch-rule-based-decoration" class="section level2">
+<h2 class="hasAnchor">
+<a href="#sketch-rule-based-decoration" class="anchor"></a>Sketch: Rule-based decoration</h2>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following object is masked from 'package:pillar':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     dim_desc</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+
+<span class="va">data_units</span> <span class="op">&lt;-</span> 
+  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_mm"</span><span class="op">)</span>, <span class="va">set_units</span>, <span class="st">"mm"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_g"</span><span class="op">)</span>, <span class="va">set_units</span>, <span class="st">"g"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">data_units</span> <span class="op">%&gt;%</span>  
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>bill_area <span class="op">=</span> <span class="va">bill_length_mm</span> <span class="op">*</span> <span class="va">bill_depth_mm</span>, .after <span class="op">=</span> <span class="va">island</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 344 x 9</span>
+<span class="co">#&gt;    species island    bill_area bill_length_mm bill_depth_mm flipper_length_mm</span>
+<span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;        [mm^2]           [mm]          [mm]              [mm]</span>
+<span class="co">#&gt;  1 Adelie  Torgersen      731.           39.1          18.7               181</span>
+<span class="co">#&gt;  2 Adelie  Torgersen      687.           39.5          17.4               186</span>
+<span class="co">#&gt;  3 Adelie  Torgersen      725.           40.3          18                 195</span>
+<span class="co">#&gt;  4 Adelie  Torgersen       NA            NA            NA                  NA</span>
+<span class="co">#&gt;  5 Adelie  Torgersen      708.           36.7          19.3               193</span>
+<span class="co">#&gt;  6 Adelie  Torgersen      810.           39.3          20.6               190</span>
+<span class="co">#&gt;  7 Adelie  Torgersen      692.           38.9          17.8               181</span>
+<span class="co">#&gt;  8 Adelie  Torgersen      768.           39.2          19.6               195</span>
+<span class="co">#&gt;  9 Adelie  Torgersen      617.           34.1          18.1               193</span>
+<span class="co">#&gt; 10 Adelie  Torgersen      848.           42            20.2               190</span>
+<span class="co">#&gt; # … with 334 more rows, and 3 more variables: body_mass_g [g], sex &lt;fct&gt;,</span>
+<span class="co">#&gt; #   year &lt;int&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data_decor</span> <span class="op">&lt;-</span> 
+  <span class="va">data_units</span> <span class="op">%&gt;%</span> 
+  <span class="fu">decorate</span><span class="op">(</span><span class="va">year</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">decorate</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data_units</span> <span class="op">%&gt;%</span>  
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>bill_area <span class="op">=</span> <span class="va">bill_length_mm</span> <span class="op">*</span> <span class="va">bill_depth_mm</span>, .after <span class="op">=</span> <span class="va">island</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 344 x 9
+#&gt;    species island    bill_area bill_length_mm bill_depth_mm flipper_length_mm
+#&gt;    &lt;fct&gt;   &lt;fct&gt;        [mm^2]           [mm]          [mm]              [mm]
+#&gt;  1 Adelie  Torgersen   731.170         39.100        18.700            181   
+#&gt;  2 Adelie  Torgersen   687.300         39.500        17.400            186   
+#&gt;  3 Adelie  Torgersen   725.400         40.300        18                195   
+#&gt;  4 Adelie  Torgersen    NA             NA            NA                 NA   
+#&gt;  5 Adelie  Torgersen   708.310         36.700        19.300            193   
+#&gt;  6 Adelie  Torgersen   809.580         39.300        20.600            190   
+#&gt;  7 Adelie  Torgersen   692.420         38.900        17.800            181   
+#&gt;  8 Adelie  Torgersen   768.320         39.200        19.600            195   
+#&gt;  9 Adelie  Torgersen   617.210         34.100        18.100            193   
+#&gt; 10 Adelie  Torgersen   848.400         42            20.200            190   
+#&gt; # … with 334 more rows, and 3 more variables: body_mass_g [g], sex &lt;fct&gt;,
+#&gt; #   year &lt;int&gt;</code></pre>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
