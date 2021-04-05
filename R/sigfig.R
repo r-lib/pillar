@@ -67,13 +67,11 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     mnt_idx <- which(num & abs_x != 0)
     mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
     "!!!!!!DEBUG `v(mnt)`"
-
-    exp_display <- exp
   } else {
     mnt <- abs_x
     "!!!!!!DEBUG `v(mnt)`"
 
-    exp_display <- rep_along(x, NA_integer_)
+    exp <- rep_along(x, NA_integer_)
   }
 
   if (is.null(digits)) {
@@ -109,7 +107,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     rhs = rhs,
     rhs_digits = rhs_digits,
     dec = dec,
-    exp = exp_display,
+    exp = exp,
     si = si
   )
 
