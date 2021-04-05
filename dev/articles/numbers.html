@@ -377,12 +377,12 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 
-<span class="va">data_units</span> <span class="op">&lt;-</span> 
+<span class="va">data_units</span> <span class="op">&lt;-</span>
   <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_mm"</span><span class="op">)</span>, <span class="va">set_units</span>, <span class="st">"mm"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_g"</span><span class="op">)</span>, <span class="va">set_units</span>, <span class="st">"g"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">data_units</span> <span class="op">%&gt;%</span>  
+<span class="va">data_units</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>bill_area <span class="op">=</span> <span class="va">bill_length_mm</span> <span class="op">*</span> <span class="va">bill_depth_mm</span>, .after <span class="op">=</span> <span class="va">island</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 344 x 9</span>
 <span class="co">#&gt;    species island    bill_area bill_length_mm bill_depth_mm flipper_length_mm</span>
@@ -400,12 +400,12 @@
 <span class="co">#&gt; # … with 334 more rows, and 3 more variables: body_mass_g [g], sex &lt;fct&gt;,</span>
 <span class="co">#&gt; #   year &lt;int&gt;</span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data_decor</span> <span class="op">&lt;-</span> 
-  <span class="va">data_units</span> <span class="op">%&gt;%</span> 
-  <span class="fu">decorate</span><span class="op">(</span><span class="va">year</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">data_decor</span> <span class="op">&lt;-</span>
+  <span class="va">data_units</span> <span class="op">%&gt;%</span>
+  <span class="fu">decorate</span><span class="op">(</span><span class="va">year</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">decorate</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data_units</span> <span class="op">%&gt;%</span>  
+<code class="sourceCode R"><span class="va">data_decor</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>bill_area <span class="op">=</span> <span class="va">bill_length_mm</span> <span class="op">*</span> <span class="va">bill_depth_mm</span>, .after <span class="op">=</span> <span class="va">island</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 344 x 9
 #&gt;    species island    bill_area bill_length_mm bill_depth_mm flipper_length_mm
