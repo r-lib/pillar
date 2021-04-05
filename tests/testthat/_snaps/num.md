@@ -154,6 +154,49 @@
        [5]         1234568.m        12345679.m       123456789 m      1234567890 m
        [9]     12345678900 m    123456789000 m   1234567890000 m
 
+# example
+
+    Code
+      num(c(578890.23, 240234.131, 40234.1))
+    Output
+      <tibble_num[3]>
+      [1] 578890. 240234.  40234.
+    Code
+      num(c(578890.23, 240234.131, 40234.1), notation = "dec")
+    Output
+      <tibble_num(dec)[3]>
+      [1] 578890. 240234.  40234.
+    Code
+      num(c(578890.23, 240234.131, 40234.1), notation = "sci")
+    Output
+      <tibble_num(sci)[3]>
+      [1] 5.79e5 2.40e5 4.02e4
+    Code
+      num(c(578890.23, 240234.131, 40234.1), notation = "eng")
+    Output
+      <tibble_num(eng)[3]>
+      [1] 579. e3 240. e3  40.2e3
+    Code
+      num(c(578890.23, 240234.131, 40234.1), notation = "si")
+    Output
+      <tibble_num(si)[3]>
+      [1]  579. k  240. k   40.2k
+    Code
+      num(c(578890.23, 240234.131, 40234.1), notation = "sci", fixed_magnitude = TRUE)
+    Output
+      <tibble_num(sci)|[3]>
+      [1] 57.9 e4 24.0 e4  4.02e4
+    Code
+      num(c(578890.23, 240234.131, 40234.1), notation = "eng", fixed_magnitude = TRUE)
+    Output
+      <tibble_num(eng)|[3]>
+      [1] 579. e3 240. e3  40.2e3
+    Code
+      num(c(578890.23, 240234.131, 40234.1), notation = "si", fixed_magnitude = TRUE)
+    Output
+      <tibble_num(si)|[3]>
+      [1]  579. k  240. k   40.2k
+
 # arithmetics
 
     Code
