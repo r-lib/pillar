@@ -1,26 +1,29 @@
 # TODO
 
+## Discuss
+
+- Scientific notation: format `1e10` ok if it's exactly 1^10? <https://github.com/r-lib/pillar/pull/298>
+- Show decimal digits if there's space? <https://github.com/r-lib/pillar/issues/96#issuecomment-813314956>
+- `num_()` and `char_()` modifiers: <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>
+- Tibble-local options for display: below <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>
+- Choice of class, argument and attribute names
+    - <https://pillar.r-lib.org/dev/reference/num.html>
+    - <https://pillar.r-lib.org/dev/reference/char.html>
+    - `"pillar"` attribute for both classes
+    - class names: `"tibble_num"`, `"tibble_num_attr"`, `"tibble_char"`, `"tibble_char_attr"`
+- Challenge: redundant information goes up into the header
+    - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
+- Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
+- Respect `getOption("scipen")`? <https://github.com/r-lib/pillar/issues/110>
+- Numbers of same magnitude but with subtle differences? <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
+- `shorten = "unique"`? <https://github.com/r-lib/pillar/issues/101>
+- Support providing a number for the `fixed_magnitude` argument? <https://github.com/r-lib/pillar/issues/96#issuecomment-812981071>
+
 ## Next steps
 
 - Improve output:
-    - Tibble-local options for precision
-        - Requires column specification
-        - Write proposal
-    - pillar(num(1:3, digits = 3))
     - Finish `num()`
         - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
-- Discuss
-    - Scientific notation: format `1e10` ok if it's exactly 1^10? <https://github.com/r-lib/pillar/pull/298>
-    - Show decimal digits if there's space? <https://github.com/r-lib/pillar/issues/96#issuecomment-813314956>
-    - `num_()` and `char_()` modifiers: https://pillar.r-lib.org/dev/articles/numbers.html#recovery
-    - Choice of class, argument and attribute names
-    - Challenge: redundant information goes up into the header
-        - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
-    - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
-    - Respect `getOption("scipen")`? <https://github.com/r-lib/pillar/issues/110>
-    - Numbers of same magnitude but with subtle differences? <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
-    - `shorten = "unique"`? <https://github.com/r-lib/pillar/issues/101>
-    - Support providing a number for the `fixed_magnitude` argument? <https://github.com/r-lib/pillar/issues/96#issuecomment-812981071>
 - Clean up issues
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
