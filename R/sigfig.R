@@ -38,7 +38,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   neg <- !is.na(x) & x < 0
   "!!!!!!DEBUG `v(neg)`"
 
-  mnt <- abs(x)
+  abs_x <- abs(x)
+  mnt <- abs_x
   "!!!!!!DEBUG `v(mnt)`"
 
   if (!is.null(sci_mod)) {
@@ -66,9 +67,12 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     mnt_idx <- which(num & mnt != 0)
     mnt[mnt_idx] <- safe_divide_10_to(mnt[mnt_idx], exp[mnt_idx])
     "!!!!!!DEBUG `v(mnt)`"
+
+    exp_display <- exp
   } else {
-    exp <- rep_along(x, NA_integer_)
+    exp <- 0
     "!!!!!!DEBUG `v(exp)`"
+    exp_display <- rep_along(x, NA_integer_)
   }
 
   if (is.null(digits)) {
@@ -95,8 +99,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   rhs <- round_mnt - lhs
   "!!!!!!DEBUG `v(rhs)`"
 
-  "!!!!!!DEBUG `v(diff_to_trunc(mnt))`"
-  reset_dec <- (diff_to_trunc(mnt) == 0)
+  "!!!!!!DEBUG `v(lhs * 10^exp - abs_x)`"
+  reset_dec <- (mnt == 0 | (rhs == 0 & within_tolerance(lhs * 10^exp, abs_x)))
   "!!!!!!DEBUG `v(reset_dec)`"
 
   dec[reset_dec] <- FALSE
@@ -111,7 +115,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
     rhs = rhs,
     rhs_digits = rhs_digits,
     dec = dec,
-    exp = exp,
+    exp = exp_display,
     si = si
   )
 
@@ -143,6 +147,22 @@ safe_divide_10_to <- function(x, y) {
 
 diff_to_trunc <- function(x) {
   x - trunc(x)
+}
+
+eps_2 <- 2 * .Machine$double.eps
+
+within_tolerance <- function(x, y) {
+  l2x <- floor(log2(x))
+  "!!!!!!DEBUG `v(l2x)"
+  l2y <- floor(log2(y))
+  "!!!!!!DEBUG `v(l2y)"
+
+  equal <- (l2x == l2y)
+  equal[is.na(equal)] <- FALSE
+  out <- equal
+  "!!!!!!DEBUG `v(abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]))"
+  out[equal] <- abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]) <= eps_2
+  out
 }
 
 sqrt_eps <- sqrt(.Machine$double.eps)
