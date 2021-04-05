@@ -3,7 +3,6 @@
 ## Next steps
 
 - Improve output:
-    - Demo: `num_()` and `char_()` modifiers
     - Tibble-local options for precision
         - Requires column specification
         - Write proposal
@@ -12,7 +11,7 @@
 - Discuss
     - Scientific notation: format `1e10` ok if it's exactly 1^10? <https://github.com/r-lib/pillar/pull/298>
     - Show decimal digits if there's space? <https://github.com/r-lib/pillar/issues/96#issuecomment-813314956>
-    - `num_()` and `char_()` modifiers
+    - `num_()` and `char_()` modifiers: https://pillar.r-lib.org/dev/articles/numbers.html#recovery
     - Choice of class, argument and attribute names
     - Challenge: redundant information goes up into the header
         - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
