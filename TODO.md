@@ -3,13 +3,13 @@
 ## Next steps
 
 - Improve output:
-    - Revert df43c7fcea2fc8d5d159eeb298d800e54990f6fd
     - See open issues in "Formatting numbers" section below
         - <https://github.com/r-lib/pillar/issues/96>: significant digits and fixed notation
         - <https://github.com/r-lib/pillar/issues/127>: Unneeded switch to scientific notation?
     - Finish `num()`
         - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - Discuss
+    - Scientific notation: format `1e10` ok if it's exactly 1^10?
     - `num_()` and `char_()` modifiers
     - Choice of class, argument and attribute names
     - Tibble-local options for precision
