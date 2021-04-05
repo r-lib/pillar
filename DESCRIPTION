@@ -31,6 +31,7 @@ Suggests:
     bit64,
     debugme,
     DiagrammeR,
+    dplyr,
     formattable,
     ggplot2,
     knitr,

@@ -198,3 +198,41 @@ num_(var)(x)
 var <- num_(var)
 var(x)
 ```
+
+## Sketch: Rule-based decoration
+
+```{r}
+library(dplyr)
+
+data_units <- 
+  palmerpenguins::penguins %>%
+  mutate(across(ends_with("_mm"), set_units, "mm")) %>%
+  mutate(across(ends_with("_g"), set_units, "g"))
+
+data_units %>%  
+  mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island)
+```
+
+```{r eval = FALSE}
+data_decor <- 
+  data_units %>% 
+  decorate(year, digits = 0) %>% 
+  decorate(where(is.numeric), digits = 3)
+```
+
+```{r echo = FALSE}
+data_decor <- 
+  data_units
+```
+
+```{r eval = FALSE}
+data_units %>%  
+  mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island)
+```
+
+```{r echo = FALSE}
+data_units %>%  
+  mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island) %>% 
+  mutate(across(year, set_num_opts, digits = 0)) %>% 
+  mutate(across(where(is.numeric), set_num_opts, digits = 3))
+```
