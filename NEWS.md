@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.5.1.9003
+
+- More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (#298).
+- Numbers in scientific and decimal notation are formatted with the same rules regarding significant or decimal digits (#297).
+
+
 # pillar 1.5.1.9002
 
 - New `char()` offers a flexible way to customize the display of character columns (#84).
