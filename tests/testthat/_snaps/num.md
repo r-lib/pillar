@@ -219,17 +219,17 @@
     Output
       <pillar>
       <num:.2!>
-            1  
-            2  
-            3  
+           1.00
+           2.00
+           3.00
     Code
       pillar(num(1:3, digits = 5))
     Output
       <pillar>
       <num:.5!>
-         1     
-         2     
-         3     
+        1.00000
+        2.00000
+        3.00000
 
 # arithmetics
 
@@ -257,7 +257,7 @@
       num(3, digits = 2) * num(4, sigfig = 2)
     Output
       <tibble_num:.2![1]>
-      [1] 12  
+      [1] 12.00
     Code
       -num(2)
     Output

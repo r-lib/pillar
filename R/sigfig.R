@@ -100,12 +100,14 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   rhs <- round_mnt - lhs
   "!!!!!!DEBUG `v(rhs)`"
 
-  "!!!!!!DEBUG `v(lhs * 10^exp - abs_x)`"
-  reset_dec <- (mnt == 0 | (rhs == 0 & within_tolerance(lhs * 10^exp, abs_x)))
-  "!!!!!!DEBUG `v(reset_dec)`"
+  if (is.null(digits) || digits < 0) {
+    "!!!!!!DEBUG `v(lhs * 10^exp - abs_x)`"
+    reset_dec <- (mnt == 0 | (rhs == 0 & within_tolerance(lhs * 10^exp, abs_x)))
+    "!!!!!!DEBUG `v(reset_dec)`"
 
-  dec[reset_dec] <- FALSE
-  "!!!!!!DEBUG `v(dec)`"
+    dec[reset_dec] <- FALSE
+    "!!!!!!DEBUG `v(dec)`"
+  }
 
   ret <- list(
     sigfig = sigfig,
