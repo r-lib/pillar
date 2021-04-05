@@ -3,8 +3,10 @@
 ## Next steps
 
 - Improve output:
-    - See open issues in "Formatting numbers" section below
-        - <https://github.com/r-lib/pillar/issues/127>: Unneeded switch to scientific notation?
+    - Demo: `num_()` and `char_()` modifiers
+    - Tibble-local options for precision
+        - Requires column specification
+        - Write proposal
     - Finish `num()`
         - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - Discuss
@@ -12,9 +14,6 @@
     - Show decimal digits if there's space? <https://github.com/r-lib/pillar/issues/96#issuecomment-813314956>
     - `num_()` and `char_()` modifiers
     - Choice of class, argument and attribute names
-    - Tibble-local options for precision
-        - Requires column specification
-        - Write proposal
     - Challenge: redundant information goes up into the header
         - for fixed magnitude, need to rework `type_sum()` -- should operate on the pillar shaft
     - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
