@@ -71,12 +71,12 @@
       19 1e+ 5 100e+ 3  100000                  100k
       20 1e+ 6   1e+ 6 1000000                    1M
     Code
-      tibble::tibble(scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-      engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE), sifix = num(
-        10^(-7:6) * 123, notation = "si", fixed_magnitude = TRUE))
+      tibble::tibble(scimin = num(10^(-7:6) * 123, notation = "sci", exponent = -Inf),
+      engmin = num(10^(-7:6) * 123, notation = "eng", exponent = -Inf), simin = num(
+        10^(-7:6) * 123, notation = "si", exponent = -Inf))
     Output
       # A tibble: 14 x 3
-                       scifix               engfix                sifix
+                       scimin               engmin                simin
                         <sci>                <eng>                 <si>
        1              1.23e-5              12.3e-6                12.3µ
        2             12.3 e-5             123  e-6               123  µ
@@ -92,6 +92,28 @@
       12   123000000000   e-5   1230000000000  e-6     1230000000000  µ
       13  1230000000000   e-5  12300000000000  e-6    12300000000000  µ
       14 12300000000000   e-5 123000000000000  e-6   123000000000000  µ
+    Code
+      tibble::tibble(scismall = num(10^(-7:6) * 123, notation = "sci", exponent = -3),
+      scilarge = num(10^(-7:6) * 123, notation = "eng", exponent = 3), scimax = num(
+        10^(-7:6) * 123, notation = "si", exponent = Inf))
+    Output
+      # A tibble: 14 x 3
+                     scismall            scilarge              scimax
+                        <sci>               <eng>                <si>
+       1            0.0123e-3      0.0000000123e3    0.0000000000123M
+       2            0.123 e-3      0.000000123 e3    0.000000000123 M
+       3            1.23  e-3      0.00000123  e3    0.00000000123  M
+       4           12.3   e-3      0.0000123   e3    0.0000000123   M
+       5          123     e-3      0.000123    e3    0.000000123    M
+       6         1230     e-3      0.00123     e3    0.00000123     M
+       7        12300     e-3      0.0123      e3    0.0000123      M
+       8       123000     e-3      0.123       e3    0.000123       M
+       9      1230000     e-3      1.23        e3    0.00123        M
+      10     12300000     e-3     12.3         e3    0.0123         M
+      11    123000000     e-3    123           e3    0.123          M
+      12   1230000000     e-3   1230           e3    1.23           M
+      13  12300000000     e-3  12300           e3   12.3            M
+      14 123000000000     e-3 123000           e3  123              M
 
 # many digits
 
@@ -133,26 +155,47 @@
        [1]   123.  m     1.23     12.3     123.        1.23k    12.3 k   123.  k
        [8]     1.23M    12.3 M   123.  M     1.23G
     Code
-      num(123456789 * 10^(-9:1), notation = "sci", fixed_magnitude = TRUE)
+      num(123456789 * 10^(-9:1), notation = "sci", exponent = -Inf)
     Output
-      <pillar_num(sci)|[11]>
+      <pillar_num(sci)|-Inf[11]>
        [1]           1.23e-1          12.3 e-1         123.  e-1        1235.  e-1
        [5]       12346.  e-1      123457.  e-1     1234568.  e-1    12345679.  e-1
        [9]   123456789   e-1  1234567890   e-1 12345678900   e-1
     Code
-      num(123456789 * 10^(-9:1), notation = "eng", fixed_magnitude = TRUE)
+      num(123456789 * 10^(-9:1), notation = "eng", exponent = -Inf)
     Output
-      <pillar_num(eng)|[11]>
+      <pillar_num(eng)|-Inf[11]>
        [1]           123.e-3          1235.e-3         12346.e-3        123457.e-3
        [5]       1234568.e-3      12345679.e-3     123456789 e-3    1234567890 e-3
        [9]   12345678900 e-3  123456789000 e-3 1234567890000 e-3
     Code
-      num(123456789 * 10^(-9:1), notation = "si", fixed_magnitude = TRUE)
+      num(123456789 * 10^(-9:1), notation = "si", exponent = -Inf)
     Output
-      <pillar_num(si)|[11]>
+      <pillar_num(si)|-Inf[11]>
        [1]             123.m            1235.m           12346.m          123457.m
        [5]         1234568.m        12345679.m       123456789 m      1234567890 m
        [9]     12345678900 m    123456789000 m   1234567890000 m
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci", exponent = -3)
+    Output
+      <pillar_num(sci)|-3[11]>
+       [1]           123.e-3          1235.e-3         12346.e-3        123457.e-3
+       [5]       1234568.e-3      12345679.e-3     123456789 e-3    1234567890 e-3
+       [9]   12345678900 e-3  123456789000 e-3 1234567890000 e-3
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci", exponent = 3)
+    Output
+      <pillar_num(sci)|3[11]>
+       [1]       0.000123e3       0.00123 e3       0.0123  e3       0.123   e3
+       [5]       1.23    e3      12.3     e3     123.      e3    1235.      e3
+       [9]   12346.      e3  123457.      e3 1234568.      e3
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci", exponent = Inf)
+    Output
+      <pillar_num(sci)|Inf[11]>
+       [1] 0.000000000123e9 0.00000000123 e9 0.0000000123  e9 0.000000123   e9
+       [5] 0.00000123    e9 0.0000123     e9 0.000123      e9 0.00123       e9
+       [9] 0.0123        e9 0.123         e9 1.23          e9
 
 # sigfig and digits
 
@@ -296,11 +339,11 @@
 # attribute
 
     Code
-      set_num_opts(1, sigfig = 2, fixed_magnitude = TRUE)
+      set_num_opts(1, sigfig = 2, exponent = -Inf)
     Output
       [1] 1
       attr(,"pillar")
-      pillar_num:2|
+      pillar_num:2|-Inf
     Code
       set_num_opts(1000, digits = 2, notation = "eng")
     Output

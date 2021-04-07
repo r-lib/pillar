@@ -13,7 +13,7 @@ num(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  fixed_magnitude = NULL
+  exponent = NULL
 )
 
 set_num_opts(
@@ -24,7 +24,7 @@ set_num_opts(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  fixed_magnitude = NULL
+  exponent = NULL
 )
 }
 \arguments{
@@ -60,8 +60,9 @@ using exponents that are a multiple of three.
 \item \code{"si"}: Use SI notation, prefixes between \code{10e-24} and \code{10e24} are supported.
 }}
 
-\item{fixed_magnitude}{If \code{TRUE}, all elements will use the same magnitude
-corresponding to the smallest element in scientific, engineering or SI notation.}
+\item{exponent}{Use the same exponent for all numbers in scientific, engineering or SI notation.
+\code{-Inf} uses the smallest, \code{+Inf} the largest exponent present in the data.
+The default is to use varying exponents.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -122,11 +123,17 @@ tibble::tibble(
   dec = num(10^(-13:6), notation = "dec")
 )
 
-# Fixed exponent notation
+# Fixed exponent
 tibble::tibble(
-  scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-  engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE),
-  sifix  = num(10^(-7:6) * 123, notation = "si",  fixed_magnitude = TRUE)
+  scimin = num(10^(-7:6) * 123, notation = "sci", exponent = -Inf),
+  engmin = num(10^(-7:6) * 123, notation = "eng", exponent = -Inf),
+  simin  = num(10^(-7:6) * 123, notation = "si",  exponent = -Inf)
+)
+
+tibble::tibble(
+  scismall = num(10^(-7:6) * 123, notation = "sci", exponent = -3),
+  scilarge = num(10^(-7:6) * 123, notation = "sci", exponent = 3),
+  scimax   = num(10^(-7:6) * 123, notation = "sci", exponent = Inf)
 )
 \dontshow{\}) # examplesIf}
 }

@@ -39,8 +39,10 @@
 #'   - `"eng"`: Use engineering notation, i.e. scientific notation
 #'       using exponents that are a multiple of three.
 #'   - `"si"`: Use SI notation, prefixes between `10e-24` and `10e24` are supported.
-#' @param fixed_magnitude If `TRUE`, all elements will use the same magnitude
-#'   corresponding to the smallest element in scientific, engineering or SI notation.
+#' @param exponent
+#'   Use the same exponent for all numbers in scientific, engineering or SI notation.
+#'   `-Inf` uses the smallest, `+Inf` the largest exponent present in the data.
+#'   The default is to use varying exponents.
 #' @export
 #' @examples
 #' # Display as a vector
@@ -83,17 +85,23 @@
 #'   dec = num(10^(-13:6), notation = "dec")
 #' )
 #'
-#' # Fixed exponent notation
+#' # Fixed exponent
 #' tibble::tibble(
-#'   scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-#'   engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE),
-#'   sifix  = num(10^(-7:6) * 123, notation = "si",  fixed_magnitude = TRUE)
+#'   scimin = num(10^(-7:6) * 123, notation = "sci", exponent = -Inf),
+#'   engmin = num(10^(-7:6) * 123, notation = "eng", exponent = -Inf),
+#'   simin  = num(10^(-7:6) * 123, notation = "si",  exponent = -Inf)
+#' )
+#'
+#' tibble::tibble(
+#'   scismall = num(10^(-7:6) * 123, notation = "sci", exponent = -3),
+#'   scilarge = num(10^(-7:6) * 123, notation = "sci", exponent = 3),
+#'   scimax   = num(10^(-7:6) * 123, notation = "sci", exponent = Inf)
 #' )
 num <- function(x, ...,
                 sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL,
                 notation = c("fit", "dec", "sci", "eng", "si"),
-                fixed_magnitude = NULL) {
+                exponent = NULL) {
 
   stopifnot(is.numeric(x))
   check_dots_empty()
@@ -113,7 +121,7 @@ num <- function(x, ...,
     label = label,
     scale = scale,
     notation = notation,
-    fixed_magnitude = fixed_magnitude
+    exponent = exponent
   )
 
   # FIXME: Include class(x) to support subclassing/mixin?
@@ -249,7 +257,7 @@ set_num_opts <- function(x, ...,
                          sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL,
                          notation = c("fit", "dec", "sci", "eng", "si"),
-                         fixed_magnitude = NULL) {
+                         exponent = NULL) {
 
   check_dots_empty()
 
@@ -259,9 +267,9 @@ set_num_opts <- function(x, ...,
     notation <- arg_match(notation)
   }
 
-  if (!is.null(fixed_magnitude) && !is.null(notation)) {
-    if (fixed_magnitude && notation == "dec") {
-      abort('Incomatible arguments: `notation = "dec"` and `fixed_magnitude = TRUE`')
+  if (!is.null(exponent) && !is.null(notation)) {
+    if (exponent && notation == "dec") {
+      abort('Incomatible arguments: `notation = "dec"` and `exponent` given')
     }
   }
 
@@ -276,7 +284,7 @@ set_num_opts <- function(x, ...,
       label = label,
       scale = scale,
       notation = notation,
-      fixed_magnitude = fixed_magnitude
+      exponent = exponent
     ),
     class = c("pillar_num_attr", "tibble_vec_attr")
   )
@@ -319,10 +327,10 @@ format.pillar_num_attr <- function(x, ...) {
     out <- paste0(out, "*", scale)
   }
 
-  fixed_magnitude <- x$fixed_magnitude
+  exponent <- x$exponent
 
-  if (!is.null(fixed_magnitude)) {
-    out <- paste0(out, "|")
+  if (!is.null(exponent)) {
+    out <- paste0(out, "|", exponent)
   }
 
   out

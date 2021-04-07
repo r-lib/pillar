@@ -40,7 +40,7 @@ tibble(
   x1 = num(8:12 * 100 + 0.5, digits = -1),
   usd = num(8:12 * 100 + 0.5, digits = 2, label = "USD"),
   percent = num(8:12 / 100 + 0.0005, label = "%", scale = 100),
-  eng = num(10^(-3:1), notation = "eng", fixed_magnitude = TRUE),
+  eng = num(10^(-3:1), notation = "eng", exponent = -Inf),
   si = num(10^(-3:1) * 123, notation = "si")
 )
 ```
