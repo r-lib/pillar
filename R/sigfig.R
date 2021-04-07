@@ -25,8 +25,8 @@
 # split_decimal(1e9)
 # split_decimal(1e9, sci_mod = 1)
 split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
-                          exponent = NULL) {
-  "!!!!!!DEBUG split_decimal(`v(x)`, `v(sigfig)`, `v(digits)`, `v(sci_mod)`, `v(si)`, `v(exponent)`"
+                          fixed_exponent = NULL) {
+  "!!!!!!DEBUG split_decimal(`v(x)`, `v(sigfig)`, `v(digits)`, `v(sci_mod)`, `v(si)`, `v(fixed_exponent)`"
 
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
@@ -44,16 +44,16 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   "!!!!!!DEBUG `v(mnt)`"
 
   if (!is.null(sci_mod)) {
-    if (is.null(exponent) || is.infinite(exponent)) {
-      # Compute exponent and mantissa, only if required
+    if (is.null(fixed_exponent) || is.infinite(fixed_exponent)) {
+      # Compute fixed_exponent and mantissa, only if required
       exp <- compute_exp(mnt, sigfig)
     }
     "!!!!!!DEBUG `v(exp)`"
 
-    if (!is.null(exponent)) {
-      if (is.finite(exponent)) {
-        exp <- exponent
-      } else if (exponent < 0) {
+    if (!is.null(fixed_exponent)) {
+      if (is.finite(fixed_exponent)) {
+        exp <- fixed_exponent
+      } else if (fixed_exponent < 0) {
         exp <- min(exp)
       } else {
         exp <- max(exp)

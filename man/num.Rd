@@ -13,7 +13,7 @@ num(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  exponent = NULL
+  fixed_exponent = NULL
 )
 
 set_num_opts(
@@ -24,7 +24,7 @@ set_num_opts(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  exponent = NULL
+  fixed_exponent = NULL
 )
 }
 \arguments{
@@ -60,9 +60,9 @@ using exponents that are a multiple of three.
 \item \code{"si"}: Use SI notation, prefixes between \code{10e-24} and \code{10e24} are supported.
 }}
 
-\item{exponent}{Use the same exponent for all numbers in scientific, engineering or SI notation.
-\code{-Inf} uses the smallest, \code{+Inf} the largest exponent present in the data.
-The default is to use varying exponents.}
+\item{fixed_exponent}{Use the same fixed_exponent for all numbers in scientific, engineering or SI notation.
+\code{-Inf} uses the smallest, \code{+Inf} the largest fixed_exponent present in the data.
+The default is to use varying fixed_exponents.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -125,15 +125,15 @@ tibble::tibble(
 
 # Fixed exponent
 tibble::tibble(
-  scimin = num(10^(-7:6) * 123, notation = "sci", exponent = -Inf),
-  engmin = num(10^(-7:6) * 123, notation = "eng", exponent = -Inf),
-  simin  = num(10^(-7:6) * 123, notation = "si",  exponent = -Inf)
+  scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
+  engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
+  simin  = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = -Inf)
 )
 
 tibble::tibble(
-  scismall = num(10^(-7:6) * 123, notation = "sci", exponent = -3),
-  scilarge = num(10^(-7:6) * 123, notation = "sci", exponent = 3),
-  scimax   = num(10^(-7:6) * 123, notation = "sci", exponent = Inf)
+  scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
+  scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
+  scimax   = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf)
 )
 \dontshow{\}) # examplesIf}
 }

@@ -37,15 +37,15 @@ test_that("output test", {
 
     # Fixed exponent notation
     tibble::tibble(
-      scimin = num(10^(-7:6) * 123, notation = "sci", exponent = -Inf),
-      engmin = num(10^(-7:6) * 123, notation = "eng", exponent = -Inf),
-      simin  = num(10^(-7:6) * 123, notation = "si",  exponent = -Inf)
+      scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
+      engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
+      simin  = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = -Inf)
     )
 
     tibble::tibble(
-      scismall = num(10^(-7:6) * 123, notation = "sci", exponent = -3),
-      scilarge = num(10^(-7:6) * 123, notation = "eng", exponent = 3),
-      scimax   = num(10^(-7:6) * 123, notation = "si",  exponent = Inf)
+      scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
+      scilarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
+      scimax   = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = Inf)
     )
   })
 })
@@ -58,12 +58,12 @@ test_that("many digits", {
     num(123456789 * 10 ^ (-9:1), notation = "sci")
     num(123456789 * 10 ^ (-9:1), notation = "eng")
     num(123456789 * 10 ^ (-9:1), notation = "si")
-    num(123456789 * 10 ^ (-9:1), notation = "sci", exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "eng", exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "si", exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", exponent = -3)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", exponent = 3)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", exponent = Inf)
+    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = -Inf)
+    num(123456789 * 10 ^ (-9:1), notation = "eng", fixed_exponent = -Inf)
+    num(123456789 * 10 ^ (-9:1), notation = "si", fixed_exponent = -Inf)
+    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = -3)
+    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = 3)
+    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = Inf)
   })
 })
 
@@ -140,7 +140,7 @@ test_that("formatting", {
 
 test_that("attribute", {
   expect_snapshot({
-    set_num_opts(1, sigfig = 2, exponent = -Inf)
+    set_num_opts(1, sigfig = 2, fixed_exponent = -Inf)
     set_num_opts(1000, digits = 2, notation = "eng")
   })
 })

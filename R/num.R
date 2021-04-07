@@ -39,10 +39,10 @@
 #'   - `"eng"`: Use engineering notation, i.e. scientific notation
 #'       using exponents that are a multiple of three.
 #'   - `"si"`: Use SI notation, prefixes between `10e-24` and `10e24` are supported.
-#' @param exponent
-#'   Use the same exponent for all numbers in scientific, engineering or SI notation.
-#'   `-Inf` uses the smallest, `+Inf` the largest exponent present in the data.
-#'   The default is to use varying exponents.
+#' @param fixed_exponent
+#'   Use the same fixed_exponent for all numbers in scientific, engineering or SI notation.
+#'   `-Inf` uses the smallest, `+Inf` the largest fixed_exponent present in the data.
+#'   The default is to use varying fixed_exponents.
 #' @export
 #' @examples
 #' # Display as a vector
@@ -87,21 +87,21 @@
 #'
 #' # Fixed exponent
 #' tibble::tibble(
-#'   scimin = num(10^(-7:6) * 123, notation = "sci", exponent = -Inf),
-#'   engmin = num(10^(-7:6) * 123, notation = "eng", exponent = -Inf),
-#'   simin  = num(10^(-7:6) * 123, notation = "si",  exponent = -Inf)
+#'   scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
+#'   engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
+#'   simin  = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = -Inf)
 #' )
 #'
 #' tibble::tibble(
-#'   scismall = num(10^(-7:6) * 123, notation = "sci", exponent = -3),
-#'   scilarge = num(10^(-7:6) * 123, notation = "sci", exponent = 3),
-#'   scimax   = num(10^(-7:6) * 123, notation = "sci", exponent = Inf)
+#'   scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
+#'   scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
+#'   scimax   = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf)
 #' )
 num <- function(x, ...,
                 sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL,
                 notation = c("fit", "dec", "sci", "eng", "si"),
-                exponent = NULL) {
+                fixed_exponent = NULL) {
 
   stopifnot(is.numeric(x))
   check_dots_empty()
@@ -121,7 +121,7 @@ num <- function(x, ...,
     label = label,
     scale = scale,
     notation = notation,
-    exponent = exponent
+    fixed_exponent = fixed_exponent
   )
 
   # FIXME: Include class(x) to support subclassing/mixin?
@@ -257,7 +257,7 @@ set_num_opts <- function(x, ...,
                          sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL,
                          notation = c("fit", "dec", "sci", "eng", "si"),
-                         exponent = NULL) {
+                         fixed_exponent = NULL) {
 
   check_dots_empty()
 
@@ -267,9 +267,9 @@ set_num_opts <- function(x, ...,
     notation <- arg_match(notation)
   }
 
-  if (!is.null(exponent) && !is.null(notation)) {
-    if (exponent && notation == "dec") {
-      abort('Incomatible arguments: `notation = "dec"` and `exponent` given')
+  if (!is.null(fixed_exponent) && !is.null(notation)) {
+    if (fixed_exponent && notation == "dec") {
+      abort('Incomatible arguments: `notation = "dec"` and `fixed_exponent` given')
     }
   }
 
@@ -284,7 +284,7 @@ set_num_opts <- function(x, ...,
       label = label,
       scale = scale,
       notation = notation,
-      exponent = exponent
+      fixed_exponent = fixed_exponent
     ),
     class = c("pillar_num_attr", "tibble_vec_attr")
   )
@@ -327,10 +327,10 @@ format.pillar_num_attr <- function(x, ...) {
     out <- paste0(out, "*", scale)
   }
 
-  exponent <- x$exponent
+  fixed_exponent <- x$fixed_exponent
 
-  if (!is.null(exponent)) {
-    out <- paste0(out, "|", exponent)
+  if (!is.null(fixed_exponent)) {
+    out <- paste0(out, "|", fixed_exponent)
   }
 
   out

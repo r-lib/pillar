@@ -134,11 +134,11 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     sigfig %||% pillar_attr$sigfig,
     pillar_attr$digits,
     pillar_attr$notation,
-    pillar_attr$exponent
+    pillar_attr$fixed_exponent
   )
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, notation, exponent) {
+pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1) {
       abort("`digits` must be a number.")
@@ -155,7 +155,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, exponent) {
 
   if (is.null(notation) || notation == "fit") {
     dec <- split_decimal(x, sigfig = sigfig, digits = digits)
-    sci <- split_decimal(x, sigfig = sigfig, digits = digits, sci_mod = 1, exponent = exponent)
+    sci <- split_decimal(x, sigfig = sigfig, digits = digits, sci_mod = 1, fixed_exponent = fixed_exponent)
 
     MAX_DEC_WIDTH <- 13
     dec_width <- get_width(dec)
@@ -172,21 +172,21 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, exponent) {
       x,
       sigfig = sigfig, digits = digits,
       sci_mod = 1,
-      exponent = exponent
+      fixed_exponent = fixed_exponent
     )
     dec <- NULL
   } else if (notation == "eng") {
     sci <- split_decimal(
       x,
       sigfig = sigfig, digits = digits, sci_mod = 3,
-      exponent = exponent
+      fixed_exponent = fixed_exponent
     )
     dec <- NULL
   } else if (notation == "si") {
     sci <- split_decimal(
       x,
       sigfig = sigfig, digits = digits, sci_mod = 3, si = TRUE,
-      exponent = exponent
+      fixed_exponent = fixed_exponent
     )
     dec <- NULL
   } else {
@@ -207,7 +207,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, exponent) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, exponent = NULL)
+  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL)
 }
 
 # registered in .onLoad()
