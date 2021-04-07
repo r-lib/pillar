@@ -148,53 +148,36 @@
 
 <div id="todo" class="section level1">
 
-<div id="discuss" class="section level2">
-<h2 class="hasAnchor">
-<a href="#discuss" class="anchor"></a>Discuss</h2>
-<ul>
-<li>Scientific notation: format <code>1e10</code> ok if it’s exactly 1^10? <a href="https://github.com/r-lib/pillar/pull/298" class="external-link uri">https://github.com/r-lib/pillar/pull/298</a>
-</li>
-<li>Show decimal digits if there’s space? <a href="https://github.com/r-lib/pillar/issues/96#issuecomment-813314956" class="external-link uri">https://github.com/r-lib/pillar/issues/96#issuecomment-813314956</a>
-</li>
-<li>
-<code>num_()</code> and <code>char_()</code> modifiers: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#recovery" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#recovery</a>
-</li>
-<li>Tibble-local options for display: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1</a>
-</li>
-<li>Choice of class, argument and attribute names
-<ul>
-<li><a href="https://pillar.r-lib.org/dev/reference/num.html" class="uri">https://pillar.r-lib.org/dev/reference/num.html</a></li>
-<li><a href="https://pillar.r-lib.org/dev/reference/char.html" class="uri">https://pillar.r-lib.org/dev/reference/char.html</a></li>
-<li>
-<code>"pillar"</code> attribute for both classes</li>
-<li>class names: <code>"tibble_num"</code>, <code>"tibble_num_attr"</code>, <code>"tibble_char"</code>, <code>"tibble_char_attr"</code>
-</li>
-</ul>
-</li>
-<li>Challenge: redundant information goes up into the header
-<ul>
-<li>for fixed magnitude, need to rework <code><a href="reference/type_sum.html">type_sum()</a></code> – should operate on the pillar shaft</li>
-</ul>
-</li>
-<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code>? <a href="https://github.com/r-lib/pillar/issues/127" class="external-link uri">https://github.com/r-lib/pillar/issues/127</a>
-</li>
-<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("scipen")</a></code>? <a href="https://github.com/r-lib/pillar/issues/110" class="external-link uri">https://github.com/r-lib/pillar/issues/110</a>
-</li>
-<li>Numbers of same magnitude but with subtle differences? <a href="https://github.com/r-lib/pillar/issues/97#issuecomment-363699335" class="external-link uri">https://github.com/r-lib/pillar/issues/97#issuecomment-363699335</a>
-</li>
-<li>
-<code>shorten = "unique"</code>? <a href="https://github.com/r-lib/pillar/issues/101" class="external-link uri">https://github.com/r-lib/pillar/issues/101</a>
-</li>
-<li>Support providing a number for the <code>fixed_magnitude</code> argument? <a href="https://github.com/r-lib/pillar/issues/96#issuecomment-812981071" class="external-link uri">https://github.com/r-lib/pillar/issues/96#issuecomment-812981071</a>
-</li>
-</ul>
-</div>
 <div id="next-steps" class="section level2">
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
 <li>Improve output:
 <ul>
+<li>Support providing a number for the <code>fixed_magnitude</code> argument: <a href="https://github.com/r-lib/pillar/issues/96#issuecomment-812981071" class="external-link uri">https://github.com/r-lib/pillar/issues/96#issuecomment-812981071</a>
+</li>
+<li>Challenge: redundant information goes up into the header
+<ul>
+<li>call <code><a href="reference/type_sum.html">type_sum()</a></code> on the pillar shaft – if it returns <code>NULL</code> (as in the default method) call it on the vector</li>
+</ul>
+</li>
+<li>Showcase differences between base and our printing in a vignette
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/options.html" class="external-link">options(digits)</a></code> and <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options(scipen)</a></code>
+</li>
+</ul>
+</li>
+<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("scipen")</a></code>? <a href="https://github.com/r-lib/pillar/issues/110" class="external-link uri">https://github.com/r-lib/pillar/issues/110</a>
+<ul>
+<li>Try to respect, <code>scipen = 10</code> means 11 digits</li>
+</ul>
+</li>
+<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code>? <a href="https://github.com/r-lib/pillar/issues/127" class="external-link uri">https://github.com/r-lib/pillar/issues/127</a>
+<ul>
+<li>Is equivalent to <code>pillar.sigfig</code> ?</li>
+</ul>
+</li>
 <li>Finish <code><a href="reference/num.html">num()</a></code>
 <ul>
 <li>formattable: class hierarchy, finish <a href="https://github.com/renkun-ken/formattable/pull/154" class="external-link uri">https://github.com/renkun-ken/formattable/pull/154</a>
@@ -204,6 +187,22 @@
 </ul>
 </li>
 <li>Clean up issues</li>
+<li>Finish documentation
+<ul>
+<li>
+<code>num_()</code> and <code>char_()</code> modifiers: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#recovery" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#recovery</a>
+<ul>
+<li>Document pattern</li>
+<li>Raise vctrs issue</li>
+</ul>
+</li>
+<li>Tibble-local options for display: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1</a>
+<ul>
+<li>Document pattern</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>CRAN release pillar</li>
 <li>Reexport <code><a href="reference/num.html">num()</a></code> and <code><a href="reference/char.html">char()</a></code> in tibble</li>
 <li>CRAN release tibble</li>
@@ -230,6 +229,15 @@
 <code><a href="reference/format_glimpse.html">format_glimpse()</a></code> uses <code><a href="reference/pillar_shaft.html">pillar_shaft()</a></code> for numbers</li>
 <li>Show time zone for times: <a href="https://github.com/r-lib/vctrs/issues/709" class="external-link uri">https://github.com/r-lib/vctrs/issues/709</a>
 </li>
+<li>Class for numbers of same magnitude but with subtle differences? <a href="https://github.com/r-lib/pillar/issues/97#issuecomment-363699335" class="external-link uri">https://github.com/r-lib/pillar/issues/97#issuecomment-363699335</a>
+</li>
+<li>Highlight equal parts of a string column <a href="https://github.com/r-lib/pillar/issues/97#issuecomment-363699335" class="external-link uri">https://github.com/r-lib/pillar/issues/97#issuecomment-363699335</a>
+</li>
+<li>
+<code>shorten = "unique"</code>? <a href="https://github.com/r-lib/pillar/issues/101" class="external-link uri">https://github.com/r-lib/pillar/issues/101</a>
+</li>
+<li>
+<code>shorten = "front"</code>: right-align?</li>
 </ul>
 </li>
 <li>Resolve vctrs imports</li>
