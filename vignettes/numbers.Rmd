@@ -81,7 +81,7 @@ FIXME
 ```{r numbers-17}
 library(units)
 
-set_units.tibble_num <- function(x, ...) {
+set_units.pillar_num <- function(x, ...) {
   unclassed <- x
   class(unclassed) <- NULL
   set_units(unclassed, ...)
@@ -171,7 +171,7 @@ scales::cscale(x, scales::rescale_pal())
 ```{r numbers-19}
 library(ggplot2)
 
-scale_type.tibble_num <- function(x, ...) {
+scale_type.pillar_num <- function(x, ...) {
   "continuous"
 }
 

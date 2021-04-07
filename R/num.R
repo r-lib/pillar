@@ -119,25 +119,25 @@ num <- function(x, ...,
   # FIXME: Include class(x) to support subclassing/mixin?
   # Needs vec_base(): vec_data() but only strips vctrs_vctr class?
   # Avoid inheriting from numeric (?): https://github.com/r-lib/vctrs/issues/1339
-  new_class <- c("tibble_num", "vctrs_vctr", "double")
+  new_class <- c("pillar_num", "vctrs_vctr", "double")
   class(out) <- new_class
 
   out
 }
 
 #' @export
-pillar_shaft.tibble_num <- function(x, ...) {
+pillar_shaft.pillar_num <- function(x, ...) {
   # still seems necessary
   pillar_shaft(unclass(x))
 }
 
 #' @export
-vec_ptype_full.tibble_num <- function(x, ...) {
+vec_ptype_full.pillar_num <- function(x, ...) {
   format(attr(x, "pillar"))
 }
 
 #' @export
-vec_ptype_abbr.tibble_num <- function(x, ...) {
+vec_ptype_abbr.pillar_num <- function(x, ...) {
   pillar_attr <- attr(x, "pillar")
   notation <- pillar_attr$notation
   if (is.null(notation)) {
@@ -163,8 +163,8 @@ vec_ptype_abbr.tibble_num <- function(x, ...) {
 }
 
 #' @export
-format.tibble_num <- function(x, trim = FALSE, ...) {
-  "!!!!DEBUG format.tibble_num()"
+format.pillar_num <- function(x, trim = FALSE, ...) {
+  "!!!!DEBUG format.pillar_num()"
 
   shaft <- pillar_shaft(x)
   out <- format(shaft, width = get_width(shaft))
@@ -177,7 +177,7 @@ format.tibble_num <- function(x, trim = FALSE, ...) {
 }
 
 #' @export
-obj_print_data.tibble_num <- function(x, ...) {
+obj_print_data.pillar_num <- function(x, ...) {
   if (length(x) == 0) {
     return(invisible(x))
   }
@@ -188,30 +188,30 @@ obj_print_data.tibble_num <- function(x, ...) {
   invisible(x)
 }
 
-#' @method vec_arith tibble_num
+#' @method vec_arith pillar_num
 #' @export
-vec_arith.tibble_num <- function(op, x, y, ...) {
-  "!!!!DEBUG vec_arith.tibble_num(`v(op)`)"
+vec_arith.pillar_num <- function(op, x, y, ...) {
+  "!!!!DEBUG vec_arith.pillar_num(`v(op)`)"
 
-  UseMethod("vec_arith.tibble_num", y)
+  UseMethod("vec_arith.pillar_num", y)
 }
-#' @method vec_arith.tibble_num default
+#' @method vec_arith.pillar_num default
 #' @export
-vec_arith.tibble_num.default <- function(op, x, y, ...) {
-  "!!!!DEBUG vec_arith.tibble_num.default(`v(op)`)"
+vec_arith.pillar_num.default <- function(op, x, y, ...) {
+  "!!!!DEBUG vec_arith.pillar_num.default(`v(op)`)"
   stopifnot(is.numeric(x), is.numeric(y))
   out <- vec_arith_base(op, x, y)
 
-  if (inherits(x, "tibble_num")) {
+  if (inherits(x, "pillar_num")) {
     vec_restore(out, x)
   } else {
     vec_restore(out, y)
   }
 }
-#' @method vec_arith.tibble_num MISSING
+#' @method vec_arith.pillar_num MISSING
 #' @export
-vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
-  "!!!!DEBUG vec_arith.tibble_num.MISSING(`v(op)`)"
+vec_arith.pillar_num.MISSING <- function(op, x, y, ...) {
+  "!!!!DEBUG vec_arith.pillar_num.MISSING(`v(op)`)"
   stopifnot(is.numeric(x))
   # FIXME
   out <- vec_arith_base(op, 0, x)
@@ -219,13 +219,13 @@ vec_arith.tibble_num.MISSING <- function(op, x, y, ...) {
   vec_restore(out, x)
 }
 
-#' @method vec_arith.numeric tibble_num
+#' @method vec_arith.numeric pillar_num
 #' @export
-vec_arith.numeric.tibble_num <- vec_arith.tibble_num.default
+vec_arith.numeric.pillar_num <- vec_arith.pillar_num.default
 
 
 #' @export
-vec_math.tibble_num <- function(op, x, ...) {
+vec_math.pillar_num <- function(op, x, ...) {
   "!!!!DEBUG vec_math(`v(op)`)"
 
   stopifnot(is.numeric(x))
@@ -278,19 +278,19 @@ set_num_opts <- function(x, ...,
       notation = notation,
       fixed_magnitude = fixed_magnitude
     ),
-    class = c("tibble_num_attr", "tibble_vec_attr")
+    class = c("pillar_num_attr", "tibble_vec_attr")
   )
   attr(x, "pillar") <- pillar_attr
   x
 }
 
 #' @export
-format.tibble_num_attr <- function(x, ...) {
+format.pillar_num_attr <- function(x, ...) {
   notation <- x$notation
   if (is.null(notation)) {
-    class <- "tibble_num"
+    class <- "pillar_num"
   } else {
-    class <- paste0("tibble_num(", notation, ")")
+    class <- paste0("pillar_num(", notation, ")")
   }
 
   sigfig <- x$sigfig
@@ -329,35 +329,35 @@ format.tibble_num_attr <- function(x, ...) {
 }
 
 #' @export
-print.tibble_num_attr <- function(x, ...) {
+print.pillar_num_attr <- function(x, ...) {
   writeLines(format(x))
   invisible(x)
 }
 
 #' @export
-vec_ptype2.tibble_num.tibble_num <- function(x, y, ...) {
+vec_ptype2.pillar_num.pillar_num <- function(x, y, ...) {
   x
 }
 #' @export
-vec_ptype2.tibble_num.double <- function(x, y, ...) {
+vec_ptype2.pillar_num.double <- function(x, y, ...) {
   x
 }
 #' @export
-vec_ptype2.double.tibble_num <- function(x, y, ...) {
+vec_ptype2.double.pillar_num <- function(x, y, ...) {
   y
 }
 
 #' @export
-vec_ptype2.tibble_num.integer <- function(x, y, ...) {
+vec_ptype2.pillar_num.integer <- function(x, y, ...) {
   x
 }
 #' @export
-vec_ptype2.integer.tibble_num <- function(x, y, ...) {
+vec_ptype2.integer.pillar_num <- function(x, y, ...) {
   y
 }
 
 #' @export
-vec_cast.tibble_num.tibble_num <- function(x, to, ...) {
+vec_cast.pillar_num.pillar_num <- function(x, to, ...) {
   pillar_x <- attr(x, "pillar")
   pillar_to <- attr(to, "pillar")
 
@@ -366,7 +366,7 @@ vec_cast.tibble_num.tibble_num <- function(x, to, ...) {
 
   if (!is.null(pillar_x_label) && !is.null(pillar_to_label)) {
     if (!identical(pillar_x$label, pillar_to$label)) {
-      abort("Only `tibble_num` objects with the same label can be combined.")
+      abort("Only `pillar_num` objects with the same label can be combined.")
     }
   }
 
@@ -374,23 +374,23 @@ vec_cast.tibble_num.tibble_num <- function(x, to, ...) {
   x
 }
 #' @export
-vec_cast.double.tibble_num <- function(x, to, ...) {
+vec_cast.double.pillar_num <- function(x, to, ...) {
   vec_data(x)
 }
 #' @export
-vec_cast.tibble_num.double <- function(x, to, ...) {
+vec_cast.pillar_num.double <- function(x, to, ...) {
   vec_restore(x, to)
 }
 #' @export
-vec_cast.tibble_num.integer <- function(x, to, ...) {
+vec_cast.pillar_num.integer <- function(x, to, ...) {
   vec_restore(as.numeric(x), to)
 }
 
 #' @export
-vec_proxy_compare.tibble_num <- function(x, ...) {
+vec_proxy_compare.pillar_num <- function(x, ...) {
   vec_data(x)
 }
 #' @export
-vec_proxy_order.tibble_num <- function(x, ...) {
+vec_proxy_order.pillar_num <- function(x, ...) {
   vec_data(x)
 }
