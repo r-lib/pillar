@@ -98,58 +98,58 @@
     Code
       num(123456789 * 10^(-9:0))
     Output
-      <tibble_num[10]>
+      <pillar_num[10]>
        [1]         0.123         1.23         12.3         123.         1235.   
        [6]     12346.       123457.      1234568.     12345679.    123456789    
     Code
       num(123456789 * 10^(-9:1))
     Output
-      <tibble_num[11]>
+      <pillar_num[11]>
        [1] 1.23e-1 1.23e+0 1.23e+1 1.23e+2 1.23e+3 1.23e+4 1.23e+5 1.23e+6 1.23e+7
       [10] 1.23e+8 1.23e+9
     Code
       num(123456789 * 10^(-9:1), notation = "dec")
     Output
-      <tibble_num(dec)[11]>
+      <pillar_num(dec)[11]>
        [1]          0.123          1.23          12.3          123.          1235.   
        [6]      12346.        123457.       1234568.      12345679.     123456789    
       [11] 1234567890    
     Code
       num(123456789 * 10^(-9:1), notation = "sci")
     Output
-      <tibble_num(sci)[11]>
+      <pillar_num(sci)[11]>
        [1] 1.23e-1 1.23e+0 1.23e+1 1.23e+2 1.23e+3 1.23e+4 1.23e+5 1.23e+6 1.23e+7
       [10] 1.23e+8 1.23e+9
     Code
       num(123456789 * 10^(-9:1), notation = "eng")
     Output
-      <tibble_num(eng)[11]>
+      <pillar_num(eng)[11]>
        [1] 123.  e-3   1.23e+0  12.3 e+0 123.  e+0   1.23e+3  12.3 e+3 123.  e+3
        [8]   1.23e+6  12.3 e+6 123.  e+6   1.23e+9
     Code
       num(123456789 * 10^(-9:1), notation = "si")
     Output
-      <tibble_num(si)[11]>
+      <pillar_num(si)[11]>
        [1]   123.  m     1.23     12.3     123.        1.23k    12.3 k   123.  k
        [8]     1.23M    12.3 M   123.  M     1.23G
     Code
       num(123456789 * 10^(-9:1), notation = "sci", fixed_magnitude = TRUE)
     Output
-      <tibble_num(sci)|[11]>
+      <pillar_num(sci)|[11]>
        [1]           1.23e-1          12.3 e-1         123.  e-1        1235.  e-1
        [5]       12346.  e-1      123457.  e-1     1234568.  e-1    12345679.  e-1
        [9]   123456789   e-1  1234567890   e-1 12345678900   e-1
     Code
       num(123456789 * 10^(-9:1), notation = "eng", fixed_magnitude = TRUE)
     Output
-      <tibble_num(eng)|[11]>
+      <pillar_num(eng)|[11]>
        [1]           123.e-3          1235.e-3         12346.e-3        123457.e-3
        [5]       1234568.e-3      12345679.e-3     123456789 e-3    1234567890 e-3
        [9]   12345678900 e-3  123456789000 e-3 1234567890000 e-3
     Code
       num(123456789 * 10^(-9:1), notation = "si", fixed_magnitude = TRUE)
     Output
-      <tibble_num(si)|[11]>
+      <pillar_num(si)|[11]>
        [1]             123.m            1235.m           12346.m          123457.m
        [5]         1234568.m        12345679.m       123456789 m      1234567890 m
        [9]     12345678900 m    123456789000 m   1234567890000 m
@@ -159,57 +159,57 @@
     Code
       num(c(578890.23, 240234.131, 40234.1))
     Output
-      <tibble_num[3]>
+      <pillar_num[3]>
       [1] 578890. 240234.  40234.
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 6)
     Output
-      <tibble_num:6[3]>
+      <pillar_num:6[3]>
       [1] 578890.  240234.   40234.1
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 7)
     Output
-      <tibble_num:7[3]>
+      <pillar_num:7[3]>
       [1] 578890.2 240234.1  40234.1
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 8)
     Output
-      <tibble_num:8[3]>
+      <pillar_num:8[3]>
       [1] 578890.23 240234.13  40234.1 
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 9)
     Output
-      <tibble_num:9[3]>
+      <pillar_num:9[3]>
       [1] 578890.23  240234.131  40234.1  
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = 2)
     Output
-      <tibble_num:.2![3]>
+      <pillar_num:.2![3]>
       [1] 578890.23 240234.13  40234.10
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = 3)
     Output
-      <tibble_num:.3![3]>
+      <pillar_num:.3![3]>
       [1] 578890.230 240234.131  40234.100
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = 4)
     Output
-      <tibble_num:.4![3]>
+      <pillar_num:.4![3]>
       [1] 578890.2300 240234.1310  40234.1000
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = -2)
     Output
-      <tibble_num:.2[3]>
+      <pillar_num:.2[3]>
       [1] 578890.23 240234.13  40234.1 
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = -3)
     Output
-      <tibble_num:.3[3]>
+      <pillar_num:.3[3]>
       [1] 578890.23  240234.131  40234.1  
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = -4)
     Output
-      <tibble_num:.4[3]>
+      <pillar_num:.4[3]>
       [1] 578890.23  240234.131  40234.1  
 
 # forced digits
@@ -236,32 +236,32 @@
     Code
       num(1) + 2
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] 3
     Code
       1 + num(2)
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] 3
     Code
       1L + num(2)
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] 3
     Code
       num(3.23456, sigfig = 4) - num(2)
     Output
-      <tibble_num:4[1]>
+      <pillar_num:4[1]>
       [1] 1.235
     Code
       num(3, digits = 2) * num(4, sigfig = 2)
     Output
-      <tibble_num:.2![1]>
+      <pillar_num:.2![1]>
       [1] 12.00
     Code
       -num(2)
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] -2
 
 # mathematics
@@ -269,17 +269,17 @@
     Code
       min(num(1:3, label = "$"))
     Output
-      <tibble_num{$}[1]>
+      <pillar_num{$}[1]>
       [1] 1
     Code
       mean(num(1:3, notation = "eng"))
     Output
-      <tibble_num(eng)[1]>
+      <pillar_num(eng)[1]>
       [1] 2e0
     Code
       sin(num(1:3, label = "%", scale = 100))
     Output
-      <tibble_num{%}*100[3]>
+      <pillar_num{%}*100[3]>
       [1] 84.1 90.9 14.1
 
 # formatting
@@ -300,11 +300,11 @@
     Output
       [1] 1
       attr(,"pillar")
-      tibble_num:2|
+      pillar_num:2|
     Code
       set_num_opts(1000, digits = 2, notation = "eng")
     Output
       [1] 1000
       attr(,"pillar")
-      tibble_num(eng):.2!
+      pillar_num(eng):.2!
 
