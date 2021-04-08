@@ -3,7 +3,6 @@
 ## Next steps
 
 - Improve output:
-    - Support providing a number for the `fixed_magnitude` argument: <https://github.com/r-lib/pillar/issues/96#issuecomment-812981071>
     - Challenge: redundant information goes up into the header
         - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
     - Showcase differences between base and our printing in a vignette
