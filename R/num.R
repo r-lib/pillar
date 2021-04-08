@@ -127,21 +127,10 @@ num <- function(x, ...,
   # FIXME: Include class(x) to support subclassing/mixin?
   # Needs vec_base(): vec_data() but only strips vctrs_vctr class?
   # Avoid inheriting from numeric (?): https://github.com/r-lib/vctrs/issues/1339
-  new_class <- c("pillar_num", "vctrs_vctr", "double")
+  new_class <- c("pillar_num", "pillar_vctr", "vctrs_vctr", "double")
   class(out) <- new_class
 
   out
-}
-
-#' @export
-pillar_shaft.pillar_num <- function(x, ...) {
-  # still seems necessary
-  pillar_shaft(unclass(x))
-}
-
-#' @export
-vec_ptype_full.pillar_num <- function(x, ...) {
-  format(attr(x, "pillar"))
 }
 
 #' @export
@@ -182,18 +171,6 @@ format.pillar_num <- function(x, trim = FALSE, ...) {
     out <- format(out, align = "right")
   }
   out
-}
-
-#' @export
-obj_print_data.pillar_num <- function(x, ...) {
-  if (length(x) == 0) {
-    return(invisible(x))
-  }
-
-  # FIXME: base::print.default() can't use color, roll own implementation?
-  out <- stats::setNames(strip_sgr(format(x), warn = FALSE), names(x))
-  print(out, quote = FALSE)
-  invisible(x)
 }
 
 #' @method vec_arith pillar_num
@@ -286,7 +263,7 @@ set_num_opts <- function(x, ...,
       notation = notation,
       fixed_exponent = fixed_exponent
     ),
-    class = c("pillar_num_attr", "tibble_vec_attr")
+    class = c("pillar_num_attr", "pillar_vctr_attr", "tibble_vec_attr")
   )
   attr(x, "pillar") <- pillar_attr
   x
@@ -334,12 +311,6 @@ format.pillar_num_attr <- function(x, ...) {
   }
 
   out
-}
-
-#' @export
-print.pillar_num_attr <- function(x, ...) {
-  writeLines(format(x))
-  invisible(x)
 }
 
 #' @export
@@ -392,13 +363,4 @@ vec_cast.pillar_num.double <- function(x, to, ...) {
 #' @export
 vec_cast.pillar_num.integer <- function(x, to, ...) {
   vec_restore(as.numeric(x), to)
-}
-
-#' @export
-vec_proxy_compare.pillar_num <- function(x, ...) {
-  vec_data(x)
-}
-#' @export
-vec_proxy_order.pillar_num <- function(x, ...) {
-  vec_data(x)
 }
