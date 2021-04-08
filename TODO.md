@@ -3,8 +3,14 @@
 ## Next steps
 
 - Improve output:
+    - Define pillar_vctr class
+    - Obey `"max.print"` in `print.pillar_vctr()`
     - Challenge: redundant information goes up into the header
         - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
+        - Search for `new_pillar_type()`
+        - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
+    - Wide character + list column: why does the character column take up all the space?
+        - geocode
     - Showcase differences between base and our printing in a vignette
         - `options(digits)` and `options(scipen)`
     - Respect `getOption("scipen")`? <https://github.com/r-lib/pillar/issues/110>
@@ -13,6 +19,7 @@
         - Is equivalent to `pillar.sigfig` ?
     - Finish `num()`
         - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
+    - Add to awesome list
 - Clean up issues
 - Finish documentation
     - `num_()` and `char_()` modifiers: <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>

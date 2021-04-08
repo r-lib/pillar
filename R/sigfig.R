@@ -50,12 +50,15 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
     }
     "!!!!!!DEBUG `v(exp)`"
 
+    # FIXME: move this computation to vec_ptype_abbr() and vec_ptype_full()
     if (!is.null(fixed_exponent)) {
       if (is.finite(fixed_exponent)) {
         exp <- fixed_exponent
       } else if (fixed_exponent < 0) {
+        # FIXME: what if only NA?
         exp <- min(exp)
       } else {
+        # FIXME: what if only NA?
         exp <- max(exp)
       }
       exp <- rep_along(x, as.integer(round(exp)))
