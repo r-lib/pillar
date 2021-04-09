@@ -3,7 +3,6 @@
 ## Next steps
 
 - Improve output:
-    - Define pillar_vctr class
     - Obey `"max.print"` in `print.pillar_vctr()`
     - Challenge: redundant information goes up into the header
         - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
