@@ -45,17 +45,20 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
 
   if (!is.null(sci_mod)) {
     if (is.null(fixed_exponent) || is.infinite(fixed_exponent)) {
-      # Compute fixed_exponent and mantissa, only if required
-      exp <- compute_exp(mnt, sigfig)
+      # Compute exponent and mantissa, only if required
+      exp <- compute_exp(mnt, sigfig, digits)
     }
     "!!!!!!DEBUG `v(exp)`"
 
+    # FIXME: move this computation to vec_ptype_abbr() and vec_ptype_full()
     if (!is.null(fixed_exponent)) {
       if (is.finite(fixed_exponent)) {
         exp <- fixed_exponent
       } else if (fixed_exponent < 0) {
+        # FIXME: what if only NA?
         exp <- min(exp)
       } else {
+        # FIXME: what if only NA?
         exp <- max(exp)
       }
       exp <- rep_along(x, as.integer(round(exp)))
@@ -224,7 +227,11 @@ compute_min_sigfig <- function(x) {
 
 LOG_10 <- log(10)
 
-compute_exp <- function(x, sigfig) {
+compute_exp <- function(x, sigfig, digits) {
+  if (is.null(sigfig)) {
+    sigfig <- abs(digits)
+  }
+
   # With 3 significant digits:
   # 0.9994 -> 0.999 -> exp == -1
   # 0.9995 -> 1.00 -> exp == 0

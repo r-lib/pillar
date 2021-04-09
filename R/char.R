@@ -67,21 +67,10 @@ char <- function(x, ..., min_chars = NULL,
     shorten = shorten
   )
 
-  new_class <- c("pillar_char", "vctrs_vctr", "character")
+  new_class <- c("pillar_char", "pillar_vctr", "vctrs_vctr", "character")
   class(out) <- new_class
 
   out
-}
-
-#' @export
-pillar_shaft.pillar_char <- function(x, ...) {
-  # still seems necessary
-  pillar_shaft(unclass(x))
-}
-
-#' @export
-vec_ptype_full.pillar_char <- function(x, ...) {
-  format(attr(x, "pillar"))
 }
 
 #' @export
@@ -112,18 +101,6 @@ format.pillar_char <- function(x, trim = FALSE, ...) {
   out
 }
 
-#' @export
-obj_print_data.pillar_char <- function(x, ...) {
-  if (length(x) == 0) {
-    return(invisible(x))
-  }
-
-  # FIXME: base::print.default() can't use color, roll own implementation?
-  out <- stats::setNames(strip_sgr(format(x), warn = FALSE), names(x))
-  print(out, quote = FALSE)
-  invisible(x)
-}
-
 #' set_char_opts
 #'
 #' `set_char_opts()` adds formatting options to an arbitrary character vector,
@@ -147,7 +124,7 @@ set_char_opts <- function(x, ..., min_chars = NULL,
       min_chars = min_chars,
       shorten = shorten
     ),
-    class = c("pillar_char_attr", "tibble_vec_attr")
+    class = c("pillar_char_attr", "pillar_vctr_attr", "tibble_vec_attr")
   )
   attr(x, "pillar") <- pillar_attr
   x
@@ -176,12 +153,6 @@ format.pillar_char_attr <- function(x, ...) {
   }
 
   out
-}
-
-#' @export
-print.pillar_char_attr <- function(x, ...) {
-  writeLines(format(x))
-  invisible(x)
 }
 
 #' @export
@@ -228,13 +199,4 @@ vec_cast.character.pillar_char <- function(x, to, ...) {
 #' @export
 vec_cast.pillar_char.character <- function(x, to, ...) {
   vec_restore(x, to)
-}
-
-#' @export
-vec_proxy_compare.pillar_char <- function(x, ...) {
-  vec_data(x)
-}
-#' @export
-vec_proxy_order.pillar_char <- function(x, ...) {
-  vec_data(x)
 }
