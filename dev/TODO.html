@@ -154,9 +154,21 @@
 <ul>
 <li>Improve output:
 <ul>
+<li>Define pillar_vctr class</li>
+<li>Obey <code>"max.print"</code> in <code>print.pillar_vctr()</code>
+</li>
 <li>Challenge: redundant information goes up into the header
 <ul>
 <li>call <code><a href="reference/type_sum.html">type_sum()</a></code> on the pillar shaft – if it returns <code>NULL</code> (as in the default method) call it on the vector</li>
+<li>Search for <code><a href="reference/new_pillar_type.html">new_pillar_type()</a></code>
+</li>
+<li>Maybe it’s easier to recompute in <code><a href="reference/type_sum.html">type_sum()</a></code> and <code>vec_ptype_abbr()</code>
+</li>
+</ul>
+</li>
+<li>Wide character + list column: why does the character column take up all the space?
+<ul>
+<li>geocode</li>
 </ul>
 </li>
 <li>Showcase differences between base and our printing in a vignette
@@ -182,6 +194,7 @@
 </li>
 </ul>
 </li>
+<li>Add to awesome list</li>
 </ul>
 </li>
 <li>Clean up issues</li>
