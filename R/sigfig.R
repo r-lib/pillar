@@ -52,12 +52,15 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
     mnt_idx <- which(num & mnt != 0)
     mnt[mnt_idx] <- safe_divide_10_to(mnt[mnt_idx], exp[mnt_idx])
     "!!!!!!DEBUG `v(mnt)`"
-
-    exp_display <- exp
   } else {
     exp <- 0
     "!!!!!!DEBUG `v(exp)`"
+  }
+
+  if (is.null(sci_mod) || !is.null(fixed_exponent)) {
     exp_display <- rep_along(x, NA_integer_)
+  } else {
+    exp_display <- exp
   }
 
   if (is.null(digits)) {
