@@ -275,6 +275,64 @@
         2.00000
         3.00000
 
+# all NA
+
+    Code
+      pillar(num(NA_real_, digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+           NA  
+    Code
+      pillar(num(NA_real_, notation = "si"))
+    Output
+      <pillar>
+       <si>
+         NA
+    Code
+      pillar(num(NA_real_, fixed_exponent = -1))
+    Output
+      <pillar>
+      <num>
+         NA
+    Code
+      pillar(num(NA_real_, fixed_exponent = -Inf))
+    Output
+      <pillar>
+      <num>
+         NA
+
+# some NA
+
+    Code
+      pillar(num(c(NA_real_, 1000), digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+          NA   
+        1000.00
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "si"))
+    Output
+      <pillar>
+       <si>
+       NANA
+         1k
+    Code
+      pillar(num(c(NA_real_, 1000), fixed_exponent = -1))
+    Output
+      <pillar>
+      <num>
+         NA
+       1000
+    Code
+      pillar(num(c(NA_real_, 1000), fixed_exponent = -Inf))
+    Output
+      <pillar>
+      <num>
+         NA
+       1000
+
 # arithmetics
 
     Code

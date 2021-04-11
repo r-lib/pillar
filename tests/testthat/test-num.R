@@ -90,6 +90,24 @@ test_that("forced digits", {
   })
 })
 
+test_that("all NA", {
+  expect_snapshot({
+    pillar(num(NA_real_, digits = 2))
+    pillar(num(NA_real_, notation = "si"))
+    pillar(num(NA_real_, fixed_exponent = -1))
+    pillar(num(NA_real_, fixed_exponent = -Inf))
+  })
+})
+
+test_that("some NA", {
+  expect_snapshot({
+    pillar(num(c(NA_real_, 1000), digits = 2))
+    pillar(num(c(NA_real_, 1000), notation = "si"))
+    pillar(num(c(NA_real_, 1000), fixed_exponent = -1))
+    pillar(num(c(NA_real_, 1000), fixed_exponent = -Inf))
+  })
+})
+
 test_that("coercion", {
   expect_identical(
     vec_c(num(1), num(2)),
