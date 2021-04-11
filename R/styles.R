@@ -66,13 +66,13 @@ style_spark_na <- function(x) {
 #' @export
 #' @examples
 #' style_bold("Petal.Width")
-style_bold <- function(x) {
+style_bold <- keep_empty(function(x) {
   if (isTRUE(getOption("pillar.bold", FALSE))) {
     crayon_bold(x)
   } else {
     x
   }
-}
+})
 
 #' @rdname style_subtle
 #' @export
