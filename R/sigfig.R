@@ -115,12 +115,12 @@ fix_exp <- function(num, exp, fixed_exponent, sci_mod, si) {
   if (!is.null(fixed_exponent)) {
     if (is.finite(fixed_exponent)) {
       exp <- fixed_exponent
+    } else if (all(is.na(exp))) {
+      exp <- NA_real_
     } else if (fixed_exponent < 0) {
-      # FIXME: what if only NA?
-      exp <- min(exp)
+      exp <- min(exp, na.rm = TRUE)
     } else {
-      # FIXME: what if only NA?
-      exp <- max(exp)
+      exp <- max(exp, na.rm = TRUE)
     }
     "!!!!!!DEBUG `v(exp)`"
     exp <- rep_along(num, as.integer(round(exp)))

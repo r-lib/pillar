@@ -355,8 +355,9 @@
       pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
     Output
       <pillar>
-    Error <simpleError>
-      invalid 'times' value
+      <sci>
+       NA  
+        1e3
 
 # arithmetics
 

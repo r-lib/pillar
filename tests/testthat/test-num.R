@@ -102,7 +102,7 @@ test_that("all NA", {
 })
 
 test_that("some NA", {
-  expect_snapshot(error = TRUE, {
+  expect_snapshot({
     pillar(num(c(NA_real_, 1000), digits = 2))
     pillar(num(c(NA_real_, 1000), notation = "si"))
     pillar(num(c(NA_real_, 1000), notation = "sci"))
