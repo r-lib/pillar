@@ -145,11 +145,16 @@ fix_exp <- function(num, exp, fixed_exponent, sci_mod, si) {
 get_decimal_width <- function(x) {
   exp <- x$exp[!is.na(x$exp)]
 
+  if (x$si) {
+    exp_digits <- any(exp != 0)
+  } else {
+    exp_digits <- any(exp < 0) + max(2 + trunc(log10(abs(exp) + 0.5)), 0)
+  }
+
   max(x$neg + nchar(x$lhs), 0) +
     any(x$dec, na.rm = TRUE) +
     max(x$rhs_digits, 0) +
-    any(exp < 0) +
-    max(2 + trunc(log10(abs(exp) + 0.5)), 0)
+    exp_digits
 }
 
 safe_signif <- function(x, digits) {
