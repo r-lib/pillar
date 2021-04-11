@@ -71,7 +71,7 @@ See `vignette("numbers")` for details.
 ## Scientific notation
 
 Both base R and pillar switch to scientific notation when the decimal representation becomes too wide.
-The larger `getOption("scipen")`, the stronger the penalty for switching to scientific notation.
+The larger `getOption("scipen")`, the stronger the resistance to switching to scientific notation.
 The default `0` seems to be anchored at 13 digits for the integer part.
 
 ```{r}
