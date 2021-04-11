@@ -94,6 +94,8 @@ test_that("all NA", {
   expect_snapshot({
     pillar(num(NA_real_, digits = 2))
     pillar(num(NA_real_, notation = "si"))
+    pillar(num(NA_real_, notation = "sci"))
+    pillar(num(NA_real_, notation = "eng"))
     pillar(num(NA_real_, fixed_exponent = -1))
     pillar(num(NA_real_, fixed_exponent = -Inf))
   })
@@ -103,6 +105,8 @@ test_that("some NA", {
   expect_snapshot({
     pillar(num(c(NA_real_, 1000), digits = 2))
     pillar(num(c(NA_real_, 1000), notation = "si"))
+    pillar(num(c(NA_real_, 1000), notation = "sci"))
+    pillar(num(c(NA_real_, 1000), notation = "eng"))
     pillar(num(c(NA_real_, 1000), fixed_exponent = -1))
     pillar(num(c(NA_real_, 1000), fixed_exponent = -Inf))
   })

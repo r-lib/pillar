@@ -290,6 +290,18 @@
        <si>
          NA
     Code
+      pillar(num(NA_real_, notation = "sci"))
+    Output
+      <pillar>
+      <sci>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "eng"))
+    Output
+      <pillar>
+      <eng>
+         NA
+    Code
       pillar(num(NA_real_, fixed_exponent = -1))
     Output
       <pillar>
@@ -318,6 +330,20 @@
        <si>
        NANA
          1k
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "sci"))
+    Output
+      <pillar>
+      <sci>
+       NA  
+        1e3
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "eng"))
+    Output
+      <pillar>
+      <eng>
+       NA  
+        1e3
     Code
       pillar(num(c(NA_real_, 1000), fixed_exponent = -1))
     Output
