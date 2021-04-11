@@ -109,7 +109,10 @@
       <a href="articles/numbers.html">Controlling display of numbers</a>
     </li>
     <li>
-      <a href="articles/extending.html">Custom formatting</a>
+      <a href="articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -154,29 +157,7 @@
 <ul>
 <li>Improve output:
 <ul>
-<li>Challenge: redundant information goes up into the header
-<ul>
-<li>call <code><a href="reference/type_sum.html">type_sum()</a></code> on the pillar shaft – if it returns <code>NULL</code> (as in the default method) call it on the vector</li>
-<li>Search for <code><a href="reference/new_pillar_type.html">new_pillar_type()</a></code>
-</li>
-<li>Maybe it’s easier to recompute in <code><a href="reference/type_sum.html">type_sum()</a></code> and <code>vec_ptype_abbr()</code>
-<ul>
-<li>not sure, problems dealing with truncated vs. actual length</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Wide character + list column: why does the character column take up all the space?
-<ul>
-<li>geocode</li>
-</ul>
-</li>
-<li>Showcase differences between base and our printing in a vignette
-<ul>
-<li>
-<code><a href="https://rdrr.io/r/base/options.html" class="external-link">options(digits)</a></code> and <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options(scipen)</a></code>
-</li>
-</ul>
+<li>Width of <code><a href="reference/num.html">num(12345678901234567, notation = "si")</a></code>
 </li>
 <li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("scipen")</a></code>? <a href="https://github.com/r-lib/pillar/issues/110" class="external-link uri">https://github.com/r-lib/pillar/issues/110</a>
 <ul>
@@ -188,18 +169,12 @@
 <li>Is equivalent to <code>pillar.sigfig</code> ?</li>
 </ul>
 </li>
-<li>Finish <code><a href="reference/num.html">num()</a></code>
-<ul>
-<li>formattable: class hierarchy, finish <a href="https://github.com/renkun-ken/formattable/pull/154" class="external-link uri">https://github.com/renkun-ken/formattable/pull/154</a>
-</li>
-</ul>
-</li>
-<li>Add to awesome list</li>
 </ul>
 </li>
 <li>Clean up issues</li>
 <li>Finish documentation
 <ul>
+<li>Add to awesome list</li>
 <li>
 <code>num_()</code> and <code>char_()</code> modifiers: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#recovery" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#recovery</a>
 <ul>
@@ -212,6 +187,14 @@
 <li>Document pattern</li>
 </ul>
 </li>
+<li>Finish <code>numbers.Rmd</code>
+</li>
+</ul>
+</li>
+<li>Finish <code><a href="reference/num.html">num()</a></code>
+<ul>
+<li>formattable: class hierarchy, finish <a href="https://github.com/renkun-ken/formattable/pull/154" class="external-link uri">https://github.com/renkun-ken/formattable/pull/154</a>
+</li>
 </ul>
 </li>
 <li>CRAN release pillar</li>
@@ -221,10 +204,27 @@
 </li>
 <li>Breaking changes
 <ul>
+<li>Wide character + list column: why does the character column take up all the space?
+<ul>
+<li><code>tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))</code></li>
+</ul>
+</li>
+<li>Redundant information goes up into the header <a href="https://github.com/r-lib/pillar/pull/307" class="external-link uri">https://github.com/r-lib/pillar/pull/307</a>
+<ul>
+<li>call <code><a href="reference/type_sum.html">type_sum()</a></code> on the pillar shaft – if it returns <code>NULL</code> (as in the default method) call it on the vector</li>
+<li>Search for <code><a href="reference/new_pillar_type.html">new_pillar_type()</a></code>
+</li>
+<li>Maybe it’s easier to recompute in <code><a href="reference/type_sum.html">type_sum()</a></code> and <code>vec_ptype_abbr()</code>
+<ul>
+<li>not sure, problems dealing with truncated vs. actual length</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Abbreviate list columns at the left: <a href="https://github.com/r-lib/pillar/issues/84" class="external-link uri">https://github.com/r-lib/pillar/issues/84</a>
 </li>
 <li>Multi-stage (hierarchical) output for packed data frames</li>
-<li>Show columns that are abbreviated in full</li>
+<li>Show column names that are abbreviated in full</li>
 <li>Packed data frames and matrices: if too wide, show ellipsis</li>
 <li>Tick column title in extra columns</li>
 <li>Second backtick if column name is abbreviated, <a href="https://github.com/tidyverse/tibble/issues/838" class="external-link uri">https://github.com/tidyverse/tibble/issues/838</a>
