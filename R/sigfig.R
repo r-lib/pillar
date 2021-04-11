@@ -44,7 +44,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   "!!!!!!DEBUG `v(mnt)`"
 
   if (!is.null(sci_mod)) {
-    exp <- fix_exp(x, compute_exp(mnt, sigfig, digits), fixed_exponent, sci_mod, si)
+    exp <- fix_exp(num, compute_exp(mnt, sigfig, digits), fixed_exponent, sci_mod, si)
     "!!!!!!DEBUG `v(exp)`"
 
     # Must divide by 10^exp, because 10^-exp may not be representable
@@ -110,7 +110,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   set_width(ret, get_decimal_width(ret))
 }
 
-fix_exp <- function(x, exp, fixed_exponent, sci_mod, si) {
+fix_exp <- function(num, exp, fixed_exponent, sci_mod, si) {
+  "!!!!!!DEBUG fix_exp(`v(num)`, `v(exp)`, `v(fixed_exponent)`, `v(sci_mod)`, `v(si)`"
   if (!is.null(fixed_exponent)) {
     if (is.finite(fixed_exponent)) {
       exp <- fixed_exponent
@@ -121,7 +122,9 @@ fix_exp <- function(x, exp, fixed_exponent, sci_mod, si) {
       # FIXME: what if only NA?
       exp <- max(exp)
     }
-    exp <- rep_along(x, as.integer(round(exp)))
+    "!!!!!!DEBUG `v(exp)`"
+    exp <- rep_along(num, as.integer(round(exp)))
+    exp[!num] <- NA_integer_
     "!!!!!!DEBUG `v(exp)`"
   }
 
