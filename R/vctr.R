@@ -10,34 +10,47 @@ vec_ptype_full.pillar_vctr <- function(x, ...) {
 }
 
 #' @export
-obj_print_data.pillar_vctr <- function(x, ..., max = NULL) {
-  if (length(x) == 0) {
-    return(invisible(x))
-  }
-
+print.pillar_vctr <- function(x, ..., max = NULL) {
   if (is.null(max)) {
     max <- getOption("max.print")
   }
 
   xx <- vec_head(x, max)
+  size <- vec_size(x)
 
-  # FIXME: base::print.default() can't use color, roll own implementation?
-  out <- stats::setNames(strip_sgr(format(xx), warn = FALSE), names(xx))
-  print(out, quote = FALSE, max = max)
+  obj_print_header.pillar_vctr(xx, ..., .size = size)
+  obj_print_data.pillar_vctr(xx, ..., .size = size)
+  obj_print_footer.pillar_vctr(xx, ..., .size = size)
   invisible(x)
 }
 
 #' @export
-obj_print_footer.pillar_vctr <- function(x, ..., max = NULL) {
-  if (is.null(max)) {
-    max <- getOption("max.print")
-  }
+obj_print_header.pillar_vctr <- function(x, ..., .size) {
+  writeLines(paste0("<", vec_ptype_full(x), "[", .size, "]>"))
+  invisible(x)
+}
 
-  if (max >= vec_size(x)) {
+#' @export
+obj_print_data.pillar_vctr <- function(x, ..., .size) {
+  if (length(x) == 0) {
     return(invisible(x))
   }
 
-  writeLines(style_subtle(pre_dots(paste0("and ", vec_size(x) - max, " more"))))
+  # FIXME: base::print.default() can't use color, roll own implementation?
+  out <- stats::setNames(strip_sgr(format(x), warn = FALSE), names(x))
+  print(out, quote = FALSE, max = vec_size(x))
+  invisible(x)
+}
+
+#' @export
+obj_print_footer.pillar_vctr <- function(x, ..., .size) {
+  delta <- .size - vec_size(x)
+
+  if (delta <= 0) {
+    return(invisible(x))
+  }
+
+  writeLines(style_subtle(pre_dots(paste0("and ", delta, " more"))))
   invisible(x)
 }
 
