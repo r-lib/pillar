@@ -44,13 +44,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   "!!!!!!DEBUG `v(mnt)`"
 
   if (!is.null(sci_mod)) {
-    if (is.null(fixed_exponent) || is.infinite(fixed_exponent)) {
-      # Compute exponent and mantissa, only if required
-      exp <- compute_exp(mnt, sigfig, digits)
-    }
-    "!!!!!!DEBUG `v(exp)`"
-
-    exp <- fix_exp(x, exp, fixed_exponent, sci_mod, si)
+    exp <- fix_exp(x, compute_exp(mnt, sigfig, digits), fixed_exponent, sci_mod, si)
     "!!!!!!DEBUG `v(exp)`"
 
     # Must divide by 10^exp, because 10^-exp may not be representable
