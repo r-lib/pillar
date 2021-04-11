@@ -3,11 +3,11 @@
 ## Next steps
 
 - Improve output:
-    - Obey `"max.print"` in `print.pillar_vctr()`
     - Challenge: redundant information goes up into the header
         - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
         - Search for `new_pillar_type()`
         - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
+            - not sure, problems dealing with truncated vs. actual length
     - Wide character + list column: why does the character column take up all the space?
         - geocode
     - Showcase differences between base and our printing in a vignette
