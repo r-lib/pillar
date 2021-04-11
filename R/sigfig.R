@@ -50,31 +50,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
     }
     "!!!!!!DEBUG `v(exp)`"
 
-    # FIXME: move this computation to vec_ptype_abbr() and vec_ptype_full()
-    if (!is.null(fixed_exponent)) {
-      if (is.finite(fixed_exponent)) {
-        exp <- fixed_exponent
-      } else if (fixed_exponent < 0) {
-        # FIXME: what if only NA?
-        exp <- min(exp)
-      } else {
-        # FIXME: what if only NA?
-        exp <- max(exp)
-      }
-      exp <- rep_along(x, as.integer(round(exp)))
-      "!!!!!!DEBUG `v(exp)`"
-    }
-
-    if (sci_mod != 1) {
-      exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
-      "!!!!!!DEBUG `v(exp)`"
-    }
-    if (si) {
-      # Truncate very small and very large exponents
-      exp <- pmax(exp, -24L)
-      exp <- pmin(exp, 24L)
-      "!!!!!!DEBUG `v(exp)`"
-    }
+    exp <- fix_exp(x, exp, fixed_exponent, sci_mod, si)
+    "!!!!!!DEBUG `v(exp)`"
 
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
@@ -137,6 +114,35 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   )
 
   set_width(ret, get_decimal_width(ret))
+}
+
+fix_exp <- function(x, exp, fixed_exponent, sci_mod, si) {
+  if (!is.null(fixed_exponent)) {
+    if (is.finite(fixed_exponent)) {
+      exp <- fixed_exponent
+    } else if (fixed_exponent < 0) {
+      # FIXME: what if only NA?
+      exp <- min(exp)
+    } else {
+      # FIXME: what if only NA?
+      exp <- max(exp)
+    }
+    exp <- rep_along(x, as.integer(round(exp)))
+    "!!!!!!DEBUG `v(exp)`"
+  }
+
+  if (sci_mod != 1) {
+    exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
+    "!!!!!!DEBUG `v(exp)`"
+  }
+  if (si) {
+    # Truncate very small and very large exponents
+    exp <- pmax(exp, -24L)
+    exp <- pmin(exp, 24L)
+    "!!!!!!DEBUG `v(exp)`"
+  }
+
+  exp
 }
 
 get_decimal_width <- function(x) {
