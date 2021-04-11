@@ -32,6 +32,8 @@
 #'     display character columns, default: `0`.  Character columns may be
 #'     truncated up to that width to save horizontal space. Set to `Inf` to
 #'     turn off truncation of character columns.
+#' - `pillar.max_dec_width`: The maximum allowed width for decimal notation,
+#'     default 13.
 #'
 #' @examples
 #' pillar(1:3)
