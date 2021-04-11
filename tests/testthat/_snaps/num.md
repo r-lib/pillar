@@ -328,7 +328,7 @@
     Output
       <pillar>
        <si>
-       NANA
+        NA 
          1k
     Code
       pillar(num(c(NA_real_, 1000), notation = "sci"))
