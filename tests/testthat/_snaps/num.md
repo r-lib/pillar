@@ -275,6 +275,90 @@
         2.00000
         3.00000
 
+# all NA
+
+    Code
+      pillar(num(NA_real_, digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+           NA  
+    Code
+      pillar(num(NA_real_, notation = "si"))
+    Output
+      <pillar>
+       <si>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "sci"))
+    Output
+      <pillar>
+      <sci>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "eng"))
+    Output
+      <pillar>
+      <eng>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "sci", fixed_exponent = -1))
+    Output
+      <pillar>
+      <sci>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "sci", fixed_exponent = -Inf))
+    Output
+      <pillar>
+      <sci>
+         NA
+
+# some NA
+
+    Code
+      pillar(num(c(NA_real_, 1000), digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+          NA   
+        1000.00
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "si"))
+    Output
+      <pillar>
+       <si>
+        NA 
+         1k
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "sci"))
+    Output
+      <pillar>
+      <sci>
+       NA  
+        1e3
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "eng"))
+    Output
+      <pillar>
+      <eng>
+       NA  
+        1e3
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -1))
+    Output
+      <pillar>
+         <sci>
+         NA   
+      10000e-1
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
+    Output
+      <pillar>
+      <sci>
+       NA  
+        1e3
+
 # arithmetics
 
     Code
