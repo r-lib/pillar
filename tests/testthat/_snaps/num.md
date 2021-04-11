@@ -302,16 +302,16 @@
       <eng>
          NA
     Code
-      pillar(num(NA_real_, fixed_exponent = -1))
+      pillar(num(NA_real_, notation = "sci", fixed_exponent = -1))
     Output
       <pillar>
-      <num>
+      <sci>
          NA
     Code
-      pillar(num(NA_real_, fixed_exponent = -Inf))
+      pillar(num(NA_real_, notation = "sci", fixed_exponent = -Inf))
     Output
       <pillar>
-      <num>
+      <sci>
          NA
 
 # some NA
@@ -345,19 +345,18 @@
        NA  
         1e3
     Code
-      pillar(num(c(NA_real_, 1000), fixed_exponent = -1))
+      pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -1))
     Output
       <pillar>
-      <num>
-         NA
-       1000
+         <sci>
+         NA   
+      10000e-1
     Code
-      pillar(num(c(NA_real_, 1000), fixed_exponent = -Inf))
+      pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
     Output
       <pillar>
-      <num>
-         NA
-       1000
+    Error <simpleError>
+      invalid 'times' value
 
 # arithmetics
 
