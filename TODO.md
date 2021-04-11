@@ -3,37 +3,37 @@
 ## Next steps
 
 - Improve output:
-    - Challenge: redundant information goes up into the header
-        - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
-        - Search for `new_pillar_type()`
-        - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
-            - not sure, problems dealing with truncated vs. actual length
-    - Wide character + list column: why does the character column take up all the space?
-        - geocode
-    - Showcase differences between base and our printing in a vignette
-        - `options(digits)` and `options(scipen)`
+    - Width of `num(12345678901234567, notation = "si")`
     - Respect `getOption("scipen")`? <https://github.com/r-lib/pillar/issues/110>
         - Try to respect, `scipen = 10` means 11 digits
     - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
         - Is equivalent to `pillar.sigfig` ?
-    - Finish `num()`
-        - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
-    - Add to awesome list
 - Clean up issues
 - Finish documentation
+    - Add to awesome list
     - `num_()` and `char_()` modifiers: <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>
         - Document pattern
         - Raise vctrs issue
     - Tibble-local options for display: <https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1>
         - Document pattern
+    - Finish `numbers.Rmd`
+- Finish `num()`
+    - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - CRAN release pillar
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
 - Avoid `requireNamespace()` in `@examplesIf`
 - Breaking changes
+    - Wide character + list column: why does the character column take up all the space?
+        - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
+    - Redundant information goes up into the header <https://github.com/r-lib/pillar/pull/307>
+        - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
+        - Search for `new_pillar_type()`
+        - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
+            - not sure, problems dealing with truncated vs. actual length
     - Abbreviate list columns at the left: <https://github.com/r-lib/pillar/issues/84>
     - Multi-stage (hierarchical) output for packed data frames
-    - Show columns that are abbreviated in full
+    - Show column names that are abbreviated in full
     - Packed data frames and matrices: if too wide, show ellipsis
     - Tick column title in extra columns
     - Second backtick if column name is abbreviated, <https://github.com/tidyverse/tibble/issues/838>

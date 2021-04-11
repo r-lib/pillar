@@ -157,11 +157,11 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent) {
     dec <- split_decimal(x, sigfig = sigfig, digits = digits)
     sci <- split_decimal(x, sigfig = sigfig, digits = digits, sci_mod = 1, fixed_exponent = fixed_exponent)
 
-    MAX_DEC_WIDTH <- 13
+    max_dec_width <- getOption("pillar.max_dec_width", 13)
     dec_width <- get_width(dec)
     "!!!!!!DEBUG `v(dec_width)`"
 
-    if (dec_width > MAX_DEC_WIDTH) {
+    if (dec_width > max_dec_width) {
       dec <- NULL
     }
   } else if (notation == "dec") {
