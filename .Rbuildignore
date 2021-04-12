@@ -24,3 +24,4 @@
 ^TODO\.md$
 ^\.lintr$
 _cache$
+^\.vscode$
