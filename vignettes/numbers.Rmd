@@ -64,7 +64,7 @@ num(3, digits = 2) * num(4, sigfig = 2)
 
 ### Mathematics
 
-```{r numbers-16}
+```{r numbers-15}
 min(num(1:3, label = "$"))
 mean(num(1:3, notation = "eng"))
 sin(num(1:3, label = "%", scale = 100))
