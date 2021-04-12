@@ -2,24 +2,8 @@
 
 ## Next steps
 
-- Improve output:
-    - Width of `num(12345678901234567, notation = "si")`
-    - Respect `getOption("scipen")`? <https://github.com/r-lib/pillar/issues/110>
-        - Try to respect, `scipen = 10` means 11 digits
-    - Respect `getOption("digits")`? <https://github.com/r-lib/pillar/issues/127>
-        - Is equivalent to `pillar.sigfig` ?
-- Clean up issues
-- Finish documentation
-    - Add to awesome list
-    - `num_()` and `char_()` modifiers: <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>
-        - Document pattern
-        - Raise vctrs issue
-    - Tibble-local options for display: <https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1>
-        - Document pattern
-    - Finish `numbers.Rmd`
-- Finish `num()`
-    - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - CRAN release pillar
+- Add to awesome list
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
 - Avoid `requireNamespace()` in `@examplesIf`
@@ -31,6 +15,7 @@
         - Search for `new_pillar_type()`
         - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
             - not sure, problems dealing with truncated vs. actual length
+    - Shorter list columns: <https://github.com/r-lib/pillar/issues/168>
     - Abbreviate list columns at the left: <https://github.com/r-lib/pillar/issues/84>
     - Multi-stage (hierarchical) output for packed data frames
     - Show column names that are abbreviated in full
@@ -41,12 +26,18 @@
     - Show number of rows if known
         - requires `tbl_sum()` with ellipsis?
     - `format_glimpse()` uses `pillar_shaft()` for numbers
+    - Reduce minimum width to 1
     - Show time zone for times: <https://github.com/r-lib/vctrs/issues/709>
     - Class for numbers of same magnitude but with subtle differences? <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
     - Highlight equal parts of a string column <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
     - `shorten = "unique"`? <https://github.com/r-lib/pillar/issues/101>
     - `shorten = "front"`: right-align?
+    - control `NA` and zero characters: <https://github.com/r-lib/pillar/issues/151>
 - Resolve vctrs imports
+- Rethink tibble-local options for display: section "Rule-based formatting" in `numbers.Rmd`
+    - What are the use cases, beyond databases?
+    - Document pattern: helper function with `mutate(across(...))`
+    - Define class that applies this?
 - Format and truncate in {utf8}
 - Test coverage per file
 - Use penguins
