@@ -57,7 +57,7 @@ otherwise use scientific notation. (The default for numeric pillars.)
 \item \code{"sci"}: Use scientific notation.
 \item \code{"eng"}: Use engineering notation, i.e. scientific notation
 using exponents that are a multiple of three.
-\item \code{"si"}: Use SI notation, prefixes between \code{10e-24} and \code{10e24} are supported.
+\item \code{"si"}: Use SI notation, prefixes between \code{1e-24} and \code{1e24} are supported.
 }}
 
 \item{fixed_exponent}{Use the same fixed_exponent for all numbers in scientific, engineering or SI notation.
