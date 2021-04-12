@@ -67,6 +67,9 @@ Your format() method can assume a valid value for the width argument." />
 
 
 
+<!-- dependencies from examples -->
+
+
   
 
   
@@ -89,7 +92,7 @@ Your format() method can assume a valid value for the width argument." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -115,7 +118,13 @@ Your format() method can assume a valid value for the width argument." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/extending.html">Custom formatting</a>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="../articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -191,7 +200,7 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
 <span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, min_width <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for pillar_vertical</span>
-<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, min_width <span class='op'>=</span> <span class='cn'>NULL</span>, na_indent <span class='op'>=</span> <span class='fl'>0L</span><span class='op'>)</span>
+<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, min_width <span class='op'>=</span> <span class='cn'>NULL</span>, na_indent <span class='op'>=</span> <span class='fl'>0L</span>, shorten <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for list</span>
 <span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -222,17 +231,24 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
     </tr>
     <tr>
       <th>sigfig</th>
-      <td><p>Minimum number of significant figures to display, default: 3.
-Numbers larger than 1 will potentially show more significant figures than this.</p></td>
+      <td><p>Deprecated, use <code><a href='num.html'>num()</a></code> or <code><a href='num.html'>set_num_opts()</a></code> on the data instead.</p></td>
     </tr>
     <tr>
       <th>min_width</th>
-      <td><p>Minimum number of characters to display,
-unless the string fits a shorter width.</p></td>
+      <td><p>Deprecated, use <code><a href='char.html'>char()</a></code> or <code><a href='char.html'>set_char_opts()</a></code> on the data instead.</p></td>
     </tr>
     <tr>
       <th>na_indent</th>
       <td><p>Indentation of <code>NA</code> values.</p></td>
+    </tr>
+    <tr>
+      <th>shorten</th>
+      <td><p>How to abbreviate the data if necessary:</p><ul>
+<li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
+<li><p><code>"front"</code>: add an ellipsis at the front</p></li>
+<li><p><code>"mid"</code>: add an ellipsis in the middle</p></li>
+<li><p><code>"abbreviate"</code>: use <code><a href='https://rdrr.io/r/base/abbreviate.html'>abbreviate()</a></code></p></li>
+</ul></td>
     </tr>
     </table>
 
@@ -269,11 +285,11 @@ but you should not rely on this behavior.</p>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

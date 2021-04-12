@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -59,7 +59,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/extending.html">Custom formatting</a>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="../articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -118,15 +124,20 @@
     class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">"tbl"</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p>The <code>"custom"</code> class doesn’t have any customizations yet, and prints like a regular tibble.</p>
+<p>The <code>"default"</code> class doesn’t have any customizations yet, and prints like a regular tibble.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">example_tbl</span><span class="op">(</span><span class="st">"custom"</span><span class="op">)</span>
-<span class="co">#&gt; # A data frame: 3 × 2</span>
-<span class="co">#&gt;   a       b$c    $d</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 a         1   4.5</span>
-<span class="co">#&gt; 2 b         2   5.5</span>
-<span class="co">#&gt; 3 c         3   6.5</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">example_tbl</span><span class="op">(</span><span class="st">"default"</span><span class="op">)</span>
+<span class="co">#&gt; $a</span>
+<span class="co">#&gt; [1] "a" "b" "c"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $b</span>
+<span class="co">#&gt;   c   d</span>
+<span class="co">#&gt; 1 1 4.5</span>
+<span class="co">#&gt; 2 2 5.5</span>
+<span class="co">#&gt; 3 3 6.5</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"class")</span>
+<span class="co">#&gt; [1] "default"    "tbl"        "data.frame"</span></code></pre></div>
 <div id="header" class="section level2">
 <h2 class="hasAnchor">
 <a href="#header" class="anchor"></a>Header</h2>
@@ -191,7 +202,7 @@
   <span class="va">default_footer</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">NextMethod</a></span><span class="op">(</span><span class="op">)</span>
 
   <span class="va">extra_info</span> <span class="op">&lt;-</span> <span class="st">"and with extra info in the footer"</span>
-  <span class="va">extra_footer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/style_num.html">style_subtle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"# "</span>, <span class="fu">cli</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/cli/man/symbol.html" class="external-link">symbol</a></span><span class="op">$</span><span class="va">ellipsis</span>, <span class="st">" "</span>, <span class="va">extra_info</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">extra_footer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"# "</span>, <span class="fu">cli</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/cli/man/symbol.html" class="external-link">symbol</a></span><span class="op">$</span><span class="va">ellipsis</span>, <span class="st">" "</span>, <span class="va">extra_info</span><span class="op">)</span><span class="op">)</span>
 
   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">default_footer</span>, <span class="va">extra_footer</span><span class="op">)</span>
 <span class="op">}</span>
@@ -342,8 +353,8 @@
 <span class="co">#&gt;   a     b       </span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;hidden&gt;</span>
 <span class="co">#&gt; 1 a             </span>
-<span class="co">#&gt; 2 b             </span>
-<span class="co">#&gt; 3 c</span></code></pre></div>
+<span class="co">#&gt; 2 b     b       </span>
+<span class="co">#&gt; 3 c     &lt;hidden&gt;</span></code></pre></div>
 </div>
 <div id="restyle-body" class="section level3">
 <h3 class="hasAnchor">
@@ -377,12 +388,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>.</p>
+<p>Developed by <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>

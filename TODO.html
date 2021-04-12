@@ -57,6 +57,7 @@
 
 
 
+
   
 
   
@@ -79,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -105,7 +106,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/extending.html">Custom formatting</a>
+      <a href="articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -148,81 +155,110 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
-<li>Reduce calls to <code><a href="reference/align.html">align()</a></code>:
-<ul>
-<li>align all components vertically</li>
-<li>squash</li>
-<li>only then <code><a href="reference/align.html">align()</a></code>
+<li>CRAN release pillar</li>
+<li>Add to awesome list</li>
+<li>Reexport <code><a href="reference/num.html">num()</a></code> and <code><a href="reference/char.html">char()</a></code> in tibble</li>
+<li>CRAN release tibble</li>
+<li>Avoid <code><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace()</a></code> in <code>@examplesIf</code>
 </li>
-<li>paste</li>
+<li>Breaking changes
+<ul>
+<li>Wide character + list column: why does the character column take up all the space?
+<ul>
+<li><code>tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))</code></li>
 </ul>
 </li>
+<li>Redundant information goes up into the header <a href="https://github.com/r-lib/pillar/pull/307" class="external-link uri">https://github.com/r-lib/pillar/pull/307</a>
+<ul>
+<li>call <code><a href="reference/type_sum.html">type_sum()</a></code> on the pillar shaft – if it returns <code>NULL</code> (as in the default method) call it on the vector</li>
+<li>Search for <code><a href="reference/new_pillar_type.html">new_pillar_type()</a></code>
+</li>
+<li>Maybe it’s easier to recompute in <code><a href="reference/type_sum.html">type_sum()</a></code> and <code>vec_ptype_abbr()</code>
+<ul>
+<li>not sure, problems dealing with truncated vs. actual length</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Shorter list columns: <a href="https://github.com/r-lib/pillar/issues/168" class="external-link uri">https://github.com/r-lib/pillar/issues/168</a>
+</li>
+<li>Abbreviate list columns at the left: <a href="https://github.com/r-lib/pillar/issues/84" class="external-link uri">https://github.com/r-lib/pillar/issues/84</a>
+</li>
+<li>Multi-stage (hierarchical) output for packed data frames</li>
+<li>Show column names that are abbreviated in full</li>
+<li>Packed data frames and matrices: if too wide, show ellipsis</li>
+<li>Tick column title in extra columns</li>
+<li>Second backtick if column name is abbreviated, <a href="https://github.com/tidyverse/tibble/issues/838" class="external-link uri">https://github.com/tidyverse/tibble/issues/838</a>
+</li>
+<li>Simplify matrix formatting to format like an array: <a href="https://github.com/r-lib/pillar/issues/142#issuecomment-489357664" class="external-link uri">https://github.com/r-lib/pillar/issues/142#issuecomment-489357664</a>
+</li>
+<li>Show number of rows if known
+<ul>
+<li>requires <code><a href="reference/tbl_sum.html">tbl_sum()</a></code> with ellipsis?</li>
+</ul>
+</li>
+<li>
+<code><a href="reference/format_glimpse.html">format_glimpse()</a></code> uses <code><a href="reference/pillar_shaft.html">pillar_shaft()</a></code> for numbers</li>
+<li>Reduce minimum width to 1</li>
+<li>Show time zone for times: <a href="https://github.com/r-lib/vctrs/issues/709" class="external-link uri">https://github.com/r-lib/vctrs/issues/709</a>
+</li>
+<li>Class for numbers of same magnitude but with subtle differences? <a href="https://github.com/r-lib/pillar/issues/97#issuecomment-363699335" class="external-link uri">https://github.com/r-lib/pillar/issues/97#issuecomment-363699335</a>
+</li>
+<li>Highlight equal parts of a string column <a href="https://github.com/r-lib/pillar/issues/97#issuecomment-363699335" class="external-link uri">https://github.com/r-lib/pillar/issues/97#issuecomment-363699335</a>
+</li>
+<li>
+<code>shorten = "unique"</code>? <a href="https://github.com/r-lib/pillar/issues/101" class="external-link uri">https://github.com/r-lib/pillar/issues/101</a>
+</li>
+<li>
+<code>shorten = "front"</code>: right-align?</li>
+<li>control <code>NA</code> and zero characters: <a href="https://github.com/r-lib/pillar/issues/151" class="external-link uri">https://github.com/r-lib/pillar/issues/151</a>
+</li>
+</ul>
+</li>
+<li>Resolve vctrs imports</li>
+<li>Rethink tibble-local options for display: section “Rule-based formatting” in <code>numbers.Rmd</code>
+<ul>
+<li>What are the use cases, beyond databases?</li>
+<li>Document pattern: helper function with <code>mutate(across(...))</code>
+</li>
+<li>Define class that applies this?</li>
+</ul>
+</li>
+<li>Format and truncate in {utf8}</li>
+<li>Test coverage per file</li>
+<li>Use penguins</li>
+<li>Blog post?</li>
 <li>Benchmark and profile again
 <ul>
 <li><code>bench.R</code></li>
-<li>https://github.com/tidyverse/tibble/issues/598</li>
+<li><a href="https://github.com/tidyverse/tibble/issues/598" class="external-link uri">https://github.com/tidyverse/tibble/issues/598</a></li>
 </ul>
 </li>
-<li>Look for FIXMEs</li>
-<li>Test coverage per file</li>
-<li>Use penguins</li>
-<li>Improve output:
+</ul>
+</div>
+<div id="challenges" class="section level2">
+<h2 class="hasAnchor">
+<a href="#challenges" class="anchor"></a>Challenges</h2>
 <ul>
-<li>Tibble-local options for precision</li>
-<li>Classes for numeric and string, use {formattable}</li>
-<li>Multi-stage (hierarchical) output for packed data frames</li>
-<li>Show number of rows if known</li>
-<li>Show columns that are abbreviated in full</li>
-<li>Packed data frames and matrices: if too wide, show ellipsis</li>
-<li>Packed matrices: show type only once</li>
-<li>Tick column title in extra columns</li>
-<li>Second backtick if column name is abbreviated, https://github.com/tidyverse/tibble/issues/838</li>
-<li>Simplify matrix formatting to format like an array: https://github.com/r-lib/pillar/issues/142#issuecomment-489357664</li>
-<li>
-<code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble(a = structure(1000:1003, class = "foo"))</a></code> should right-align, because the underlying data is a number?</li>
+<li>scales support for num
+<ul>
+<li>Needs at least <code><a href="https://rdrr.io/r/base/pretty.html" class="external-link">pretty()</a></code>, <code><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq()</a></code>, a generic <code><a href="https://rdrr.io/r/base/outer.html" class="external-link">outer()</a></code> (or a change to scales), and perhaps much more</li>
 </ul>
 </li>
-<li>Blog post?</li>
 </ul>
 </div>
 <div id="formatting-numbers" class="section level2">
 <h2 class="hasAnchor">
 <a href="#formatting-numbers" class="anchor"></a>Formatting numbers</h2>
-<div id="scale-numbers-in-columns-equally" class="section level3">
-<h3 class="hasAnchor">
-<a href="#scale-numbers-in-columns-equally" class="anchor"></a>Scale Numbers In Columns Equally</h3>
-<p>https://github.com/r-lib/pillar/issues/96</p>
-<p>Idea: Show numbers of the same magnitude with SI prefix in the header.</p>
-<p>Solution: Custom vector class/container.</p>
-</div>
-<div id="respect-getoptiondigits-if-pillarsigfig-is-unset" class="section level3">
-<h3 class="hasAnchor">
-<a href="#respect-getoptiondigits-if-pillarsigfig-is-unset" class="anchor"></a>Respect getOption(“digits”) if “pillar.sigfig” is unset?</h3>
-<p>https://github.com/r-lib/pillar/issues/127 (own issue)</p>
-<p>Idea: Improve adoption of new users.</p>
-<p>Alternative: Show <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code> significant figures if the differences are small enough.</p>
-</div>
-<div id="respect-scipen-option-in-base" class="section level3">
-<h3 class="hasAnchor">
-<a href="#respect-scipen-option-in-base" class="anchor"></a>Respect scipen option in base</h3>
-<p>https://github.com/r-lib/pillar/issues/110</p>
-<p>Idea: Avoid switching to scientific notation</p>
-<p>Use option?</p>
-</div>
 <div id="problems" class="section level3">
 <h3 class="hasAnchor">
 <a href="#problems" class="anchor"></a>Problems</h3>
 <ul>
-<li><p>Change formatting for all columns/containers: solved well enough (except scipen?)</p></li>
+<li><p>Change formatting for all columns/containers: solved well enough</p></li>
 <li>
 <p>Specify distinct formatting (e.g. different number of significant figures, avoidance of scientific notation) per column or per container</p>
 <ul>
-<li>
-<p>Tag value during creation – property of the data</p>
-<ul>
-<li>Needs good name</li>
-</ul>
-</li>
+<li><p>Tag value during creation with <code><a href="reference/num.html">num()</a></code> or <code><a href="reference/char.html">char()</a></code> – property of the data</p></li>
 <li>
 <p>Apply formatting based on column name/type</p>
 <ul>
@@ -230,18 +266,6 @@
 <li><p>Automatically: set option to container</p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li>
-<p>Useful packages</p>
-<ul>
-<li>
-<p>formattable</p>
-<ul>
-<li>extract vector classes to separate package</li>
-</ul>
-</li>
-<li><p>units</p></li>
 </ul>
 </li>
 </ul>
@@ -263,11 +287,11 @@
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

@@ -62,6 +62,9 @@ Users will rarely need them." />
 
 
 
+<!-- dependencies from examples -->
+
+
   
 
   
@@ -84,7 +87,7 @@ Users will rarely need them." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -110,7 +113,13 @@ Users will rarely need them." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/extending.html">Custom formatting</a>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="../articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -200,6 +209,8 @@ that are data frames, matrices or arrays.
 The default implementation returns a compound pillar with suitable formatting
 for the titles and types of the sub-pillar.
 Users will only rarely need to override this method if ever.</p>
+<p>All components must be of the same height.
+This restriction may be levied in the future.</p>
 <p>Implementations should return <code>NULL</code> if none of the data
 fits the available width.</p>
 
@@ -589,7 +600,7 @@ fits the available width.</p>
 <span class='co'># Packed array</span>
 <span class='fu'>ctl_new_compound_pillar</span><span class='op'>(</span><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>Titanic</span>, width <span class='op'>=</span> <span class='fl'>60</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;                                                      </span><span style='color: #949494;font-style: italic;'>&lt;table&gt;</span><span>
+#&gt;                                              </span><span style='color: #949494;font-style: italic;'>&lt;table[,2,2,2]&gt;</span><span>
 #&gt;                                                          0 …
 #&gt;                                                          0 …
 #&gt;                                                         35 …
@@ -635,11 +646,11 @@ fits the available width.</p>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

@@ -79,6 +79,7 @@ formatted argument." />
 
 
 
+
   
 
   
@@ -101,7 +102,7 @@ formatted argument." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -127,7 +128,13 @@ formatted argument." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/extending.html">Custom formatting</a>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="../articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -207,7 +214,8 @@ By default, the required width is computed from the natural width of the
   align <span class='op'>=</span> <span class='st'>"left"</span>,
   min_width <span class='op'>=</span> <span class='cn'>NULL</span>,
   na <span class='op'>=</span> <span class='cn'>NULL</span>,
-  na_indent <span class='op'>=</span> <span class='fl'>0L</span>
+  na_indent <span class='op'>=</span> <span class='fl'>0L</span>,
+  shorten <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"back"</span>, <span class='st'>"front"</span>, <span class='st'>"mid"</span>, <span class='st'>"abbreviate"</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -248,11 +256,20 @@ By default, the required width is computed from the natural width of the
     <tr>
       <th>na</th>
       <td><p>String to use as <code>NA</code> value, defaults to <code>"NA"</code> styled with
-<code><a href='style_num.html'>style_na()</a></code> with fallback if color is not available.</p></td>
+<code><a href='style_subtle.html'>style_na()</a></code> with fallback if color is not available.</p></td>
     </tr>
     <tr>
       <th>na_indent</th>
       <td><p>Indentation of <code>NA</code> values.</p></td>
+    </tr>
+    <tr>
+      <th>shorten</th>
+      <td><p>How to abbreviate the data if necessary:</p><ul>
+<li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
+<li><p><code>"front"</code>: add an ellipsis at the front</p></li>
+<li><p><code>"mid"</code>: add an ellipsis in the middle</p></li>
+<li><p><code>"abbreviate"</code>: use <code><a href='https://rdrr.io/r/base/abbreviate.html'>abbreviate()</a></code></p></li>
+</ul></td>
     </tr>
     </table>
 
@@ -272,11 +289,11 @@ or other attributes of the text, see crayon.</p>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

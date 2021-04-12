@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -59,7 +59,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/extending.html">Custom formatting</a>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="../articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -141,8 +147,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-e4094bb805172b6556eb" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e4094bb805172b6556eb">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-3eea9ba867cb171cf69f" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3eea9ba867cb171cf69f">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -160,9 +166,9 @@
 <span class="co">#&gt; # … with 1 more</span>
 <span class="co">#&gt; #   variable: e &lt;int&gt;</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span>
-<span class="co">#&gt; tibble [3 × 3] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt; tibble[,3] [3 × 3] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ a: int [1:3] 1 2 3</span>
-<span class="co">#&gt;  $ b: tibble [3 × 2] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;  $ b: tibble[,2] [3 × 2] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;   ..$ c: int [1:3] 4 5 6</span>
 <span class="co">#&gt;   ..$ d: int [1:3] 7 8 9</span>
 <span class="co">#&gt;  $ e: int [1:3] 10 11 12</span></code></pre></div>
@@ -245,14 +251,14 @@
   <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">df_head</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>
     <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span>
       <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
     <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-      <span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>
+      <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">vec_head</span><span class="op">(</span><span class="va">df</span>, <span class="va">n</span><span class="op">)</span>
     <span class="op">}</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">df_head</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span><span class="op">)</span>
   <span class="op">}</span>
 
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
@@ -273,17 +279,19 @@
   <span class="va">tbl_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
   <span class="co"># Body</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
 
-  <span class="va">body</span> <span class="op">&lt;-</span> <span class="fu">ctl_colonnade</span><span class="op">(</span>
+  <span class="va">colonnade</span> <span class="op">&lt;-</span> <span class="fu">ctl_colonnade</span><span class="op">(</span>
     <span class="va">df</span>,
     has_row_id <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.row_names_info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="st">"*"</span> <span class="kw">else</span> <span class="cn">TRUE</span>,
     width <span class="op">=</span> <span class="va">width</span>,
     controller <span class="op">=</span> <span class="va">x</span>
   <span class="op">)</span>
 
+  <span class="va">body</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">body</span>
+
   <span class="co"># Extra columns</span>
-  <span class="va">extra_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">body</span>, <span class="st">"extra_cols"</span><span class="op">)</span>
+  <span class="va">extra_cols</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">extra_cols</span>
   <span class="va">extra_cols_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">extra_cols</span><span class="op">)</span>
 
   <span class="kw">if</span> <span class="op">(</span><span class="va">extra_cols_total</span> <span class="op">&gt;</span> <span class="va">max_extra_cols</span><span class="op">)</span> <span class="op">{</span>
@@ -336,18 +344,15 @@
     <span class="va">header</span> <span class="op">&lt;-</span> <span class="va">named_header</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
     <span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span>
-      <span class="fu">justify</span><span class="op">(</span>
-        <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu">names2</span><span class="op">(</span><span class="va">named_header</span><span class="op">)</span>, <span class="st">":"</span><span class="op">)</span>,
-        right <span class="op">=</span> <span class="cn">FALSE</span>, space <span class="op">=</span> <span class="va">NBSP</span>
-      <span class="op">)</span>,
-      <span class="co"># We add a space after the NBSP inserted by justify()</span>
+      <span class="fu"><a href="../reference/align.html">align</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu">names2</span><span class="op">(</span><span class="va">named_header</span><span class="op">)</span>, <span class="st">":"</span><span class="op">)</span>, space <span class="op">=</span> <span class="va">NBSP</span><span class="op">)</span>,
+      <span class="co"># We add a space after the NBSP inserted by align()</span>
       <span class="co"># so that wrapping occurs at the right location for very narrow outputs</span>
       <span class="st">" "</span>,
       <span class="va">named_header</span>
     <span class="op">)</span>
   <span class="op">}</span>
 
-  <span class="fu"><a href="../reference/style_num.html">style_subtle</a></span><span class="op">(</span><span class="fu">format_comment</span><span class="op">(</span><span class="va">header</span>, width <span class="op">=</span> <span class="va">setup</span><span class="op">$</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu">format_comment</span><span class="op">(</span><span class="va">header</span>, width <span class="op">=</span> <span class="va">setup</span><span class="op">$</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><details><p><summary>Source code of <code>pillar:::tbl_format_body.tbl()</code></summary></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -360,7 +365,7 @@
 <code class="sourceCode R"><span class="va">tbl_format_footer.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu">pre_dots</span><span class="op">(</span><span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span><span class="op">)</span>
   <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">split_lines</span><span class="op">(</span><span class="fu">format_comment</span><span class="op">(</span><span class="va">footer</span>, width <span class="op">=</span> <span class="va">setup</span><span class="op">$</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/style_num.html">style_subtle</a></span><span class="op">(</span><span class="va">footer_comment</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="va">footer_comment</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details>
 </div>
@@ -497,9 +502,7 @@
     <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1L</span>
   <span class="op">}</span>
 
-  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span>
-
-  <span class="fu">new_vertical</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">new_vertical</span><span class="op">(</span><span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details>
 </div>
@@ -517,12 +520,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>.</p>
+<p>Developed by <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>

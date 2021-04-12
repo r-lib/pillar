@@ -61,6 +61,9 @@ Provides various generics for making every aspect of the display customizable." 
 
 
 
+<!-- dependencies from examples -->
+
+
   
 
   
@@ -83,7 +86,7 @@ Provides various generics for making every aspect of the display customizable." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -109,7 +112,13 @@ Provides various generics for making every aspect of the display customizable." 
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/extending.html">Custom formatting</a>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="../articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -185,6 +194,8 @@ titles.</p></li>
 display character columns, default: <code>0</code>.  Character columns may be
 truncated up to that width to save horizontal space. Set to <code>Inf</code> to
 turn off truncation of character columns.</p></li>
+<li><p><code>pillar.max_dec_width</code>: The maximum allowed width for decimal notation,
+default 13.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -243,11 +254,11 @@ turn off truncation of character columns.</p></li>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

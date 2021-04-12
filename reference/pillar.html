@@ -60,6 +60,9 @@ and vec_size(x) rows for the data." />
 
 
 
+<!-- dependencies from examples -->
+
+
   
 
   
@@ -82,7 +85,7 @@ and vec_size(x) rows for the data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -108,7 +111,13 @@ and vec_size(x) rows for the data." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/extending.html">Custom formatting</a>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Custom formatting</a>
+    </li>
+    <li>
+      <a href="../articles/extending.html">Significant figures and scientific notation</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -212,62 +221,62 @@ to display the data.</p>
 #&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+0
 #&gt; -</span><span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-2</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; 0.080</span><span style='text-decoration: underline;'>8</span><span> 
-#&gt; 0.834  
-#&gt; 0.601  
-#&gt; 0.157  
-#&gt; 0.007</span><span style='text-decoration: underline;'>40</span><span>
-#&gt; 0.466  
-#&gt; 0.498  
-#&gt; 0.290  
-#&gt; 0.733  
-#&gt; 0.773  </div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Cauchy.html'>rcauchy</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; 0.222
+#&gt; 0.121
+#&gt; 0.531
+#&gt; 0.795
+#&gt; 0.353
+#&gt; 0.937
+#&gt; 0.633
+#&gt; 0.657
+#&gt; 0.900
+#&gt; 0.617</div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Cauchy.html'>rcauchy</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt;  -</span><span style='color: #BB0000;'>0.416</span><span> 
-#&gt;   0.613 
-#&gt;   0.108 
-#&gt;   1.58  
-#&gt;   3.16  
-#&gt;   0.706 
-#&gt;   3.20  
-#&gt;   0.203 
-#&gt;   2.74  
-#&gt;  -</span><span style='color: #BB0000;'>0.077</span><span style='color: #BB0000;text-decoration: underline;'>0</span><span>
-#&gt;   1.29  
-#&gt;  -</span><span style='color: #BB0000;'>1.59</span><span>  
-#&gt;  -</span><span style='color: #BB0000;'>1.10</span><span>  
-#&gt;   0.707 
-#&gt;  -</span><span style='color: #BB0000;'>0.061</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span>
-#&gt;  -</span><span style='color: #BB0000;'>1.05</span><span>  
-#&gt;   0.163 
-#&gt; -</span><span style='color: #BB0000;'>10.5</span><span>   
-#&gt;  -</span><span style='color: #BB0000;'>1.42</span><span>  
-#&gt;  -</span><span style='color: #BB0000;'>1.49</span><span>  </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; -</span><span style='color: #BB0000;'>1.34</span><span>  
+#&gt; -</span><span style='color: #BB0000;'>6.88</span><span>  
+#&gt; -</span><span style='color: #BB0000;'>0.695</span><span> 
+#&gt;  0.652 
+#&gt; -</span><span style='color: #BB0000;'>1.17</span><span>  
+#&gt; -</span><span style='color: #BB0000;'>2.46</span><span>  
+#&gt;  0.182 
+#&gt; -</span><span style='color: #BB0000;'>2.19</span><span>  
+#&gt;  3.58  
+#&gt;  0.087</span><span style='text-decoration: underline;'>8</span><span>
+#&gt; -</span><span style='color: #BB0000;'>1.09</span><span>  
+#&gt;  0.087</span><span style='text-decoration: underline;'>7</span><span>
+#&gt;  1.23  
+#&gt;  1.30  
+#&gt;  1.62  
+#&gt;  1.08  
+#&gt;  8.26  
+#&gt;  2.44  
+#&gt;  0.177 
+#&gt; -</span><span style='color: #BB0000;'>0.887</span><span> </div><div class='input'>
 <span class='co'># Special values are highlighted</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='cn'>NA</span>, <span class='cn'>NaN</span>, <span class='cn'>Inf</span>, <span class='op'>-</span><span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt;    0.031</span><span style='text-decoration: underline;'>2</span><span>
-#&gt;    0.226 
-#&gt;    0.301 
-#&gt;    0.636 
-#&gt;    0.479 
-#&gt;   </span><span style='color: #BB0000;'>NA</span><span>     
-#&gt;  </span><span style='color: #BB0000;'>NaN</span><span>     
-#&gt;  </span><span style='color: #BB0000;'>Inf</span><span>     
-#&gt; -</span><span style='color: #BB0000;'>Inf</span><span>     </div><div class='input'>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt;    0.869
+#&gt;    0.871
+#&gt;    0.623
+#&gt;    0.297
+#&gt;    0.449
+#&gt;   </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt;  </span><span style='color: #BB0000;'>NaN</span><span>    
+#&gt;  </span><span style='color: #BB0000;'>Inf</span><span>    
+#&gt; -</span><span style='color: #BB0000;'>Inf</span><span>    </div><div class='input'>
 <span class='co'># Very wide ranges will be displayed in scientific format</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pillar&gt;
 #&gt;                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt;             1.00</span><span style='color: #949494;'>e</span><span>+10
-#&gt;             1.00</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span><span class='op'>)</span>
+#&gt;                1</span><span style='color: #949494;'>e</span><span>+10
+#&gt;                1</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; 1.00</span><span style='color: #949494;'>e</span><span>+10
-#&gt; 1.00</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; 1</span><span style='color: #949494;'>e</span><span>+10
+#&gt; 1</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span></div><div class='input'>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>NA</span>, <span class='cn'>FALSE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pillar&gt;
@@ -329,11 +338,11 @@ to display the data.</p>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
+  <p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
