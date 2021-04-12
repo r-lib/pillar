@@ -21,16 +21,12 @@ This display works for many, but not for all use cases.
 
 ```{r numbers-2}
 library(pillar)
-```
-
-## Showing `num`
-
-```{r numbers-4}
 library(tibble)
 ```
 
+## Per-column number formatting
 
-### Example
+The new `num()` constructor allows creating vectors that behave like numbers but allow customizing their display.
 
 ```{r numbers-5}
 num(-1:3, notation = "sci")
@@ -47,6 +43,12 @@ tibble(
 
 
 ## Computing on `num`
+
+Formatting numbers is useful for presentation of results.
+If defined early on in the analysis, the formatting options survive most operations.
+It is worth defining output options that suit your data once early on in the process, to benefit from the formatting throughout the analysis.
+We are working on seamlessly applying this formatting to the final presentation (plots, tables, ...).
+
 
 ### Arithmetics
 
@@ -67,6 +69,52 @@ min(num(1:3, label = "$"))
 mean(num(1:3, notation = "eng"))
 sin(num(1:3, label = "%", scale = 100))
 ```
+
+### Recovery
+
+The `var()` function is one of the examples where the formatting is lost:
+
+```{r numbers-16}
+x <- num(c(1, 2, 4), notation = "eng")
+var(x)
+```
+
+One way to recover is to apply `num()` to the result:
+
+```{r numbers-16a}
+num(var(x), notation = "eng")
+```
+
+For automatic recovery, we can also define our version of `var()`, or even override the base implementation:
+
+```{r numbers-16b}
+var_ <- function(x, ...) {
+  out <- var(x, ...)
+  vctrs::vec_restore(out, x)
+}
+var_(x)
+```
+
+This pattern can be applied to all functions that lose the formatting.
+The `make_restore()` function defined below is a function factory that consumes a function and returns a derived function:
+
+```{r numbers-16c}
+make_restore <- function(fun) {
+  force(fun)
+  function(x, ...) {
+    out <- fun(x, ...)
+    vctrs::vec_restore(out, x)
+  }
+}
+
+var_ <- make_restore(var)
+sd_ <- make_restore(sd)
+
+var_(x)
+sd_(x)
+```
+
+`````{asis echo = FALSE}
 
 ## Integrating with other classes
 
@@ -180,26 +228,9 @@ data.frame(x = x, y = 1:10) %>%
   + geom_point()
 ```
 
-## Recovery
+## Rule-based decoration
 
-```{r}
-num_ <- function(f) {
-  force(f)
-  function(x, ...) {
-    vctrs::vec_restore(f(x, ...), x)
-  }
-}
 
-x <- num(1:3)
-
-var(x)
-num_(var)(x)
-
-var <- num_(var)
-var(x)
-```
-
-## Sketch: Rule-based decoration
 
 ```{r}
 library(dplyr)
@@ -231,3 +262,5 @@ data_units %>%
   mutate(across(year, set_num_opts, digits = 0)) %>%
   mutate(across(where(is.numeric), set_num_opts, digits = 3))
 ```
+
+`````
