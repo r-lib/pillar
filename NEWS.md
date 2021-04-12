@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.5.1.9004
+
+- New `"pillar.max_dec_width"` option (#308).
+- New `vignette("digits")` (#308).
+
+
 # pillar 1.5.1.9003
 
 - More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (#298).
