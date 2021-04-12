@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.5.2
+
+- Same as previous version.
+
+
 # pillar 1.5.1.9004
 
 - New `"pillar.max_dec_width"` option (#308).
