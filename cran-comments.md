@@ -14,5 +14,5 @@ pillar 1.6.0
 
 - [x] Checked on 2021-04-12, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
 - [x] NOTE: r-devel-linux-x86_64-debian-clang, r-devel-linux-x86_64-debian-gcc, r-devel-linux-x86_64-fedora-clang, r-devel-linux-x86_64-fedora-gcc, r-devel-windows-ix86+x86_64, r-devel-windows-x86_64-gcc10-UCRT: Fixed
-- [ ] WARN: r-patched-solaris-x86: Fixed
-- [ ] WARN: r-release-macos-x86_64, r-oldrel-macos-x86_64: Fixed
+- [x] WARN: r-patched-solaris-x86: Fixed
+- [x] WARN: r-release-macos-x86_64, r-oldrel-macos-x86_64: Fixed
