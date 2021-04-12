@@ -155,49 +155,8 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
-<li>Improve output:
-<ul>
-<li>Width of <code><a href="reference/num.html">num(12345678901234567, notation = "si")</a></code>
-</li>
-<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("scipen")</a></code>? <a href="https://github.com/r-lib/pillar/issues/110" class="external-link uri">https://github.com/r-lib/pillar/issues/110</a>
-<ul>
-<li>Try to respect, <code>scipen = 10</code> means 11 digits</li>
-</ul>
-</li>
-<li>Respect <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code>? <a href="https://github.com/r-lib/pillar/issues/127" class="external-link uri">https://github.com/r-lib/pillar/issues/127</a>
-<ul>
-<li>Is equivalent to <code>pillar.sigfig</code> ?</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Clean up issues</li>
-<li>Finish documentation
-<ul>
-<li>Add to awesome list</li>
-<li>
-<code>num_()</code> and <code>char_()</code> modifiers: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#recovery" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#recovery</a>
-<ul>
-<li>Document pattern</li>
-<li>Raise vctrs issue</li>
-</ul>
-</li>
-<li>Tibble-local options for display: <a href="https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1" class="uri">https://pillar.r-lib.org/dev/articles/numbers.html#sketch-rule-based-decoration-1</a>
-<ul>
-<li>Document pattern</li>
-</ul>
-</li>
-<li>Finish <code>numbers.Rmd</code>
-</li>
-</ul>
-</li>
-<li>Finish <code><a href="reference/num.html">num()</a></code>
-<ul>
-<li>formattable: class hierarchy, finish <a href="https://github.com/renkun-ken/formattable/pull/154" class="external-link uri">https://github.com/renkun-ken/formattable/pull/154</a>
-</li>
-</ul>
-</li>
 <li>CRAN release pillar</li>
+<li>Add to awesome list</li>
 <li>Reexport <code><a href="reference/num.html">num()</a></code> and <code><a href="reference/char.html">char()</a></code> in tibble</li>
 <li>CRAN release tibble</li>
 <li>Avoid <code><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace()</a></code> in <code>@examplesIf</code>
@@ -221,6 +180,8 @@
 </li>
 </ul>
 </li>
+<li>Shorter list columns: <a href="https://github.com/r-lib/pillar/issues/168" class="external-link uri">https://github.com/r-lib/pillar/issues/168</a>
+</li>
 <li>Abbreviate list columns at the left: <a href="https://github.com/r-lib/pillar/issues/84" class="external-link uri">https://github.com/r-lib/pillar/issues/84</a>
 </li>
 <li>Multi-stage (hierarchical) output for packed data frames</li>
@@ -238,6 +199,7 @@
 </li>
 <li>
 <code><a href="reference/format_glimpse.html">format_glimpse()</a></code> uses <code><a href="reference/pillar_shaft.html">pillar_shaft()</a></code> for numbers</li>
+<li>Reduce minimum width to 1</li>
 <li>Show time zone for times: <a href="https://github.com/r-lib/vctrs/issues/709" class="external-link uri">https://github.com/r-lib/vctrs/issues/709</a>
 </li>
 <li>Class for numbers of same magnitude but with subtle differences? <a href="https://github.com/r-lib/pillar/issues/97#issuecomment-363699335" class="external-link uri">https://github.com/r-lib/pillar/issues/97#issuecomment-363699335</a>
@@ -249,9 +211,19 @@
 </li>
 <li>
 <code>shorten = "front"</code>: right-align?</li>
+<li>control <code>NA</code> and zero characters: <a href="https://github.com/r-lib/pillar/issues/151" class="external-link uri">https://github.com/r-lib/pillar/issues/151</a>
+</li>
 </ul>
 </li>
 <li>Resolve vctrs imports</li>
+<li>Rethink tibble-local options for display: section “Rule-based formatting” in <code>numbers.Rmd</code>
+<ul>
+<li>What are the use cases, beyond databases?</li>
+<li>Document pattern: helper function with <code>mutate(across(...))</code>
+</li>
+<li>Define class that applies this?</li>
+</ul>
+</li>
 <li>Format and truncate in {utf8}</li>
 <li>Test coverage per file</li>
 <li>Use penguins</li>
