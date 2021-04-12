@@ -2,13 +2,6 @@
 
 ## Next steps
 
-- Finish documentation
-    - `num_()` and `char_()` modifiers: <https://pillar.r-lib.org/dev/articles/numbers.html#recovery>
-        - Document pattern
-        - Raise vctrs issue
-    - Finish `numbers.Rmd`
-- Finish `num()`
-    - formattable: class hierarchy, finish <https://github.com/renkun-ken/formattable/pull/154>
 - CRAN release pillar
 - Add to awesome list
 - Reexport `num()` and `char()` in tibble
