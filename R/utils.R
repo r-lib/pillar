@@ -8,8 +8,7 @@ df_head <- function(x, n) {
 }
 
 vec_head <- function(x, n) {
-  n <- min(n, vctrs::vec_size(x))
-  vctrs::vec_slice(x, seq_len(n))
+  utils::head(x, n)
 }
 
 cat_line <- function(...) {
