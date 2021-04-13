@@ -15,6 +15,7 @@
         - Search for `new_pillar_type()`
         - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
             - not sure, problems dealing with truncated vs. actual length
+    - Avoid showing dimensions twice in `obj_sum()`, use `vec_ptype_abbr()` (with default handling of non-vctrs things) and not `type_sum()`
     - Shorter list columns: <https://github.com/r-lib/pillar/issues/168>
     - Abbreviate list columns at the left: <https://github.com/r-lib/pillar/issues/84>
     - Multi-stage (hierarchical) output for packed data frames
