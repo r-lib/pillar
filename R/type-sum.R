@@ -13,24 +13,24 @@
 #'   and variants have been implemented.
 #'
 #' @export
-type_sum <- function(x) {
+type_sum <- function(x, ...) {
   UseMethod("type_sum")
 }
 
 #' @export
-type_sum.ordered <- function(x) {
+type_sum.ordered <- function(x, ...) {
   # r-lib/vctrs#323:
   type_sum.default(x)
 }
 
 #' @export
-type_sum.factor <- function(x) {
+type_sum.factor <- function(x, ...) {
   # r-lib/vctrs#323:
   "fct"
 }
 
 #' @export
-type_sum.default <- function(x) {
+type_sum.default <- function(x, ...) {
   pillar_attr <- attr(x, "pillar")
 
   label <- pillar_attr$label
@@ -77,17 +77,17 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' obj_sum(mean)
 #' @rdname type_sum
 #' @export
-obj_sum <- function(x) {
+obj_sum <- function(x, ...) {
   UseMethod("obj_sum")
 }
 
 #' @export
-obj_sum.default <- function(x) {
+obj_sum.default <- function(x, ...) {
   paste_with_space_if_needed(type_sum(x), size_sum(x))
 }
 
 #' @export
-obj_sum.AsIs <- function(x) {
+obj_sum.AsIs <- function(x, ...) {
   paste0("I(", obj_sum(remove_as_is_class(x)), ")")
 }
 
@@ -105,12 +105,12 @@ obj_sum.AsIs <- function(x) {
 #' size_sum(Titanic)
 #' @rdname type_sum
 #' @export
-size_sum <- function(x) {
+size_sum <- function(x, ...) {
   UseMethod("size_sum")
 }
 
 #' @export
-size_sum.default <- function(x) {
+size_sum.default <- function(x, ...) {
   if (!vec_is(x)) {
     return("")
   }
