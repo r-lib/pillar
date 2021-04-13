@@ -7,51 +7,28 @@
 
 # pillar 1.6.0
 
-- Same as previous version.
+## Features
 
-
-# pillar 1.5.2.9000
-
-- Same as previous version.
-
-
-# pillar 1.5.2
-
-- Same as previous version.
-
-
-# pillar 1.5.1.9004
-
+- New `num()` and `char()` offer a flexible way to customize the display of numeric and character columns (#191, #84).
 - New `"pillar.max_dec_width"` option (#308).
-- New `vignette("digits")` (#308).
-
-
-# pillar 1.5.1.9003
-
-- More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (#298).
+- New `format_type_sum.AsIs()` avoids the need to implement your own `format_type_sum()` method (#286).
+- `align()` gains `space` argument to control the character used for filling (#285).
 - Numbers in scientific and decimal notation are formatted with the same rules regarding significant or decimal digits (#297).
 
+## Bug fixes
 
-# pillar 1.5.1.9002
-
-- New `char()` offers a flexible way to customize the display of character columns (#84).
-- Use display width instead of number of characters when truncating character columns.
-- New `num()` offers a flexible way to customize the display of numeric columns (#191).
-- Compatibility with vctrs 0.3.7 (#291).
 - Load the debugme package only if the `DEBUGME` environment variable is set.
-- New `format_type_sum.AsIs()` avoids the need to implement your own `format_type_sum()` method (#286).
+- More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (#298).
+- Use display width instead of number of characters when truncating character columns.
+
+## Documentation
+
+- New `vignette("numbers")` and `vignette("digits")` (#308).
+
+## Internal
+
+- Compatibility with vctrs 0.3.7 (#291).
 - `format.pillar_shaft_simple()` requires `"na"` attribute and no longer defaults to `pillar_na()` (#273).
-- `align()` gains `space` argument to control the character used for filling (#285).
-
-
-# pillar 1.5.1.9001
-
-- Internal changes only.
-
-
-# pillar 1.5.1.9000
-
-- Internal changes only.
 
 
 # pillar 1.5.1
