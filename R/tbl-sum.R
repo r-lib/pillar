@@ -14,7 +14,7 @@
 #' @seealso [pillar::type_sum()]
 #' @param x Object to summarise.
 #' @export
-tbl_sum <- function(x, ...) {
+tbl_sum <- function(x, ..., dummy = NULL) {
   UseMethod("tbl_sum", x)
 }
 

@@ -13,7 +13,7 @@
 #'   and variants have been implemented.
 #'
 #' @export
-type_sum <- function(x, ...) {
+type_sum <- function(x, ..., dummy = NULL) {
   UseMethod("type_sum")
 }
 
@@ -77,7 +77,7 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' obj_sum(mean)
 #' @rdname type_sum
 #' @export
-obj_sum <- function(x, ...) {
+obj_sum <- function(x, ..., dummy = NULL) {
   UseMethod("obj_sum")
 }
 
@@ -105,7 +105,7 @@ obj_sum.AsIs <- function(x, ...) {
 #' size_sum(Titanic)
 #' @rdname type_sum
 #' @export
-size_sum <- function(x, ...) {
+size_sum <- function(x, ..., dummy = NULL) {
   UseMethod("size_sum")
 }
 
