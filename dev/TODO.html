@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.0.9000</span>
       </span>
     </div>
 
@@ -155,8 +155,6 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
 <ul>
-<li>CRAN release pillar</li>
-<li>Add to awesome list</li>
 <li>Reexport <code><a href="reference/num.html">num()</a></code> and <code><a href="reference/char.html">char()</a></code> in tibble</li>
 <li>CRAN release tibble</li>
 <li>Avoid <code><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace()</a></code> in <code>@examplesIf</code>
@@ -179,6 +177,8 @@
 </ul>
 </li>
 </ul>
+</li>
+<li>Avoid showing dimensions twice in <code><a href="reference/type_sum.html">obj_sum()</a></code>, use <code>vec_ptype_abbr()</code> (with default handling of non-vctrs things) and not <code><a href="reference/type_sum.html">type_sum()</a></code>
 </li>
 <li>Shorter list columns: <a href="https://github.com/r-lib/pillar/issues/168" class="external-link uri">https://github.com/r-lib/pillar/issues/168</a>
 </li>
@@ -216,6 +216,7 @@
 </ul>
 </li>
 <li>Resolve vctrs imports</li>
+<li>Help with {errors} and {quantities}</li>
 <li>Rethink tibble-local options for display: section “Rule-based formatting” in <code>numbers.Rmd</code>
 <ul>
 <li>What are the use cases, beyond databases?</li>

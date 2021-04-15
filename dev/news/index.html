@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.5.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.0.9000</span>
       </span>
     </div>
 
@@ -150,94 +150,77 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="pillar-1529000" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.2.9000">
-<a href="#pillar-1529000" class="anchor"></a>pillar 1.5.2.9000<small> Unreleased </small>
+    <div id="pillar-1609000" class="section level1">
+<h1 class="page-header" data-toc-text="1.6.0.9000">
+<a href="#pillar-1609000" class="anchor"></a>pillar 1.6.0.9000<small> Unreleased </small>
 </h1>
 <ul>
 <li>Same as previous version.</li>
 </ul>
 </div>
-    <div id="pillar-152" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.2">
-<a href="#pillar-152" class="anchor"></a>pillar 1.5.2<small> Unreleased </small>
-</h1>
-<ul>
-<li>Same as previous version.</li>
-</ul>
-</div>
-    <div id="pillar-1519004" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.1.9004">
-<a href="#pillar-1519004" class="anchor"></a>pillar 1.5.1.9004<small> Unreleased </small>
-</h1>
-<ul>
-<li>New <code>"pillar.max_dec_width"</code> option (<a href='https://github.com/r-lib/pillar/issues/308'>#308</a>).</li>
-<li>New <code><a href="../articles/digits.html">vignette("digits")</a></code> (<a href='https://github.com/r-lib/pillar/issues/308'>#308</a>).</li>
-</ul>
-</div>
-    <div id="pillar-1519003" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.1.9003">
-<a href="#pillar-1519003" class="anchor"></a>pillar 1.5.1.9003<small> Unreleased </small>
-</h1>
-<ul>
-<li>More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (<a href='https://github.com/r-lib/pillar/issues/298'>#298</a>).</li>
-<li>Numbers in scientific and decimal notation are formatted with the same rules regarding significant or decimal digits (<a href='https://github.com/r-lib/pillar/issues/297'>#297</a>).</li>
-</ul>
-</div>
-    <div id="pillar-1519002" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.1.9002">
-<a href="#pillar-1519002" class="anchor"></a>pillar 1.5.1.9002<small> Unreleased </small>
-</h1>
-<ul>
-<li>New <code><a href="../reference/char.html">char()</a></code> offers a flexible way to customize the display of character columns (<a href='https://github.com/r-lib/pillar/issues/84'>#84</a>).</li>
-<li>Use display width instead of number of characters when truncating character columns.</li>
-<li>New <code><a href="../reference/num.html">num()</a></code> offers a flexible way to customize the display of numeric columns (<a href='https://github.com/r-lib/pillar/issues/191'>#191</a>).</li>
-<li>Compatibility with vctrs 0.3.7 (<a href='https://github.com/r-lib/pillar/issues/291'>#291</a>).</li>
-<li>Load the debugme package only if the <code>DEBUGME</code> environment variable is set.</li>
-<li>New <code><a href="../reference/format_type_sum.html">format_type_sum.AsIs()</a></code> avoids the need to implement your own <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> method (<a href='https://github.com/r-lib/pillar/issues/286'>#286</a>).</li>
-<li>
-<code>format.pillar_shaft_simple()</code> requires <code>"na"</code> attribute and no longer defaults to <code>pillar_na()</code> (<a href='https://github.com/r-lib/pillar/issues/273'>#273</a>).</li>
-<li>
-<code><a href="../reference/align.html">align()</a></code> gains <code>space</code> argument to control the character used for filling (<a href='https://github.com/r-lib/pillar/issues/285'>#285</a>).</li>
-</ul>
-</div>
-    <div id="pillar-1519001" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.1.9001">
-<a href="#pillar-1519001" class="anchor"></a>pillar 1.5.1.9001<small> Unreleased </small>
-</h1>
-<ul>
-<li>Internal changes only.</li>
-</ul>
-</div>
-    <div id="pillar-1519000" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.1.9000">
-<a href="#pillar-1519000" class="anchor"></a>pillar 1.5.1.9000<small> Unreleased </small>
-</h1>
-<ul>
-<li>Internal changes only.</li>
-</ul>
-</div>
-    <div id="pillar-151" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.1">
-<a href="#pillar-151" class="anchor"></a>pillar 1.5.1<small> 2021-03-05 </small>
+    <div id="pillar-160" class="section level1">
+<h1 class="page-header" data-toc-text="1.6.0">
+<a href="#pillar-160" class="anchor"></a>pillar 1.6.0<small> 2021-04-13 </small>
 </h1>
 <div id="features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#features" class="anchor"></a>Features</h2>
 <ul>
-<li>New <code><a href="../reference/format_glimpse.html">format_glimpse()</a></code> (<a href='https://github.com/r-lib/pillar/issues/177'>#177</a>).</li>
+<li>New <code><a href="../reference/num.html">num()</a></code> and <code><a href="../reference/char.html">char()</a></code> offer a flexible way to customize the display of numeric and character columns (<a href='https://github.com/r-lib/pillar/issues/191'>#191</a>, <a href='https://github.com/r-lib/pillar/issues/84'>#84</a>).</li>
+<li>New <code>"pillar.max_dec_width"</code> option (<a href='https://github.com/r-lib/pillar/issues/308'>#308</a>).</li>
+<li>New <code><a href="../reference/format_type_sum.html">format_type_sum.AsIs()</a></code> avoids the need to implement your own <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> method (<a href='https://github.com/r-lib/pillar/issues/286'>#286</a>).</li>
+<li>
+<code><a href="../reference/align.html">align()</a></code> gains <code>space</code> argument to control the character used for filling (<a href='https://github.com/r-lib/pillar/issues/285'>#285</a>).</li>
+<li>Numbers in scientific and decimal notation are formatted with the same rules regarding significant or decimal digits (<a href='https://github.com/r-lib/pillar/issues/297'>#297</a>).</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Color and formatting can now be reliably turned off by setting the <code>"cli.num_colors"</code> option to 1 (<a href='https://github.com/r-lib/pillar/issues/269'>#269</a>).</li>
+<li>Load the debugme package only if the <code>DEBUGME</code> environment variable is set.</li>
+<li>More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (<a href='https://github.com/r-lib/pillar/issues/298'>#298</a>).</li>
+<li>Use display width instead of number of characters when truncating character columns.</li>
 </ul>
 </div>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#documentation" class="anchor"></a>Documentation</h2>
+<ul>
+<li>New <code><a href="../articles/numbers.html">vignette("numbers")</a></code> and <code><a href="../articles/digits.html">vignette("digits")</a></code> (<a href='https://github.com/r-lib/pillar/issues/308'>#308</a>).</li>
+</ul>
+</div>
+<div id="internal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#internal" class="anchor"></a>Internal</h2>
+<ul>
+<li>Compatibility with vctrs 0.3.7 (<a href='https://github.com/r-lib/pillar/issues/291'>#291</a>).</li>
+<li>
+<code>format.pillar_shaft_simple()</code> requires <code>"na"</code> attribute and no longer defaults to <code>pillar_na()</code> (<a href='https://github.com/r-lib/pillar/issues/273'>#273</a>).</li>
+</ul>
+</div>
+</div>
+    <div id="pillar-151" class="section level1">
+<h1 class="page-header" data-toc-text="1.5.1">
+<a href="#pillar-151" class="anchor"></a>pillar 1.5.1<small> 2021-03-05 </small>
+</h1>
+<div id="features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#features-1" class="anchor"></a>Features</h2>
+<ul>
+<li>New <code><a href="../reference/format_glimpse.html">format_glimpse()</a></code> (<a href='https://github.com/r-lib/pillar/issues/177'>#177</a>).</li>
+</ul>
+</div>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Color and formatting can now be reliably turned off by setting the <code>"cli.num_colors"</code> option to 1 (<a href='https://github.com/r-lib/pillar/issues/269'>#269</a>).</li>
+</ul>
+</div>
+<div id="documentation-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation-1" class="anchor"></a>Documentation</h2>
 <ul>
 <li>Add examples for new functions (<a href='https://github.com/r-lib/pillar/issues/264'>#264</a>).</li>
 <li>Fix lifecycle badges everywhere.</li>
@@ -279,9 +262,9 @@
 <li><p>Avoid wrapping extra column names with spaces (<a href='https://github.com/r-lib/pillar/issues/254'>#254</a>).</p></li>
 </ul>
 </div>
-<div id="internal" class="section level2">
+<div id="internal-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal" class="anchor"></a>Internal</h2>
+<a href="#internal-1" class="anchor"></a>Internal</h2>
 <ul>
 <li><p>Now using debugme to simplify understand the complex control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> (<a href='https://github.com/r-lib/pillar/issues/248'>#248</a>).</p></li>
 <li><p>New <code>format.pillar_ornament()</code> (<a href='https://github.com/r-lib/pillar/issues/228'>#228</a>).</p></li>
@@ -311,9 +294,9 @@
 <h1 class="page-header" data-toc-text="1.4.5">
 <a href="#pillar-145" class="anchor"></a>pillar 1.4.5<small> 2020-07-09 </small>
 </h1>
-<div id="features-1" class="section level2">
+<div id="features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#features-1" class="anchor"></a>Features</h2>
+<a href="#features-2" class="anchor"></a>Features</h2>
 <ul>
 <li><p>New <code>pillar.min_chars</code> option allows controlling the minimum number of characters shown for a character column (<a href='https://github.com/r-lib/pillar/issues/178'>#178</a>, <a href='https://github.com/statsmaths'>@statsmaths</a>).</p></li>
 <li><p><code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html" class="external-link">bit64::integer64()</a></code> columns are now formatted the same way as numeric columns (<a href='https://github.com/r-lib/pillar/issues/175'>#175</a>).</p></li>
@@ -328,9 +311,9 @@
 <li><p><code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code> warn if <code>...</code> is not empty.</p></li>
 </ul>
 </div>
-<div id="internal-1" class="section level2">
+<div id="internal-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal-1" class="anchor"></a>Internal</h2>
+<a href="#internal-2" class="anchor"></a>Internal</h2>
 <ul>
 <li><p>Use lifecycle package.</p></li>
 <li><p>Remove compatibility code for R &lt; 3.3.</p></li>
@@ -410,9 +393,9 @@
 <li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="../reference/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href='https://github.com/r-lib/pillar/issues/133'>#133</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
 </ul>
 </div>
-<div id="internal-2" class="section level2">
+<div id="internal-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal-2" class="anchor"></a>Internal</h2>
+<a href="#internal-3" class="anchor"></a>Internal</h2>
 <ul>
 <li>All internal S3 classes have the <code>pillar_</code> prefix (<a href='https://github.com/r-lib/pillar/issues/156'>#156</a>).</li>
 <li>Only check native output on Windows, due to subtle differences when running on Linux in a latin1 locale.</li>
@@ -423,9 +406,9 @@
 <h1 class="page-header" data-toc-text="1.3.1">
 <a href="#pillar-131" class="anchor"></a>pillar 1.3.1<small> 2018-12-15 </small>
 </h1>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix off-by-one error in distribution of empty space (<a href='https://github.com/r-lib/pillar/issues/141'>#141</a>).</li>
 </ul>
@@ -478,9 +461,9 @@
 <li><p>Slightly faster printing of colonnades by reusing an intermediate result.</p></li>
 </ul>
 </div>
-<div id="internal-3" class="section level2">
+<div id="internal-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal-3" class="anchor"></a>Internal</h2>
+<a href="#internal-4" class="anchor"></a>Internal</h2>
 <ul>
 <li><p><code><a href="../reference/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
 <li><p><code><a href="../reference/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
