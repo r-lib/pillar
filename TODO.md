@@ -2,8 +2,6 @@
 
 ## Next steps
 
-- CRAN release pillar
-- Add to awesome list
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
 - Avoid `requireNamespace()` in `@examplesIf`
@@ -35,6 +33,7 @@
     - `shorten = "front"`: right-align?
     - control `NA` and zero characters: <https://github.com/r-lib/pillar/issues/151>
 - Resolve vctrs imports
+- Help with {errors} and {quantities}
 - Rethink tibble-local options for display: section "Rule-based formatting" in `numbers.Rmd`
     - What are the use cases, beyond databases?
     - Document pattern: helper function with `mutate(across(...))`
