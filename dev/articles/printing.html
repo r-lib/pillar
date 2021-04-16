@@ -148,8 +148,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-e0d10f102e8d036501be" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e0d10f102e8d036501be">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-d9916e2c8fd4c7b4e2cb" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d9916e2c8fd4c7b4e2cb">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -167,9 +167,9 @@
 <span class="co">#&gt; # … with 1 more</span>
 <span class="co">#&gt; #   variable: e &lt;int&gt;</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span>
-<span class="co">#&gt; tibble[,3] [3 × 3] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt; tibble [3 × 3] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ a: int [1:3] 1 2 3</span>
-<span class="co">#&gt;  $ b: tibble[,2] [3 × 2] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;  $ b: tibble [3 × 2] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;   ..$ c: int [1:3] 4 5 6</span>
 <span class="co">#&gt;   ..$ d: int [1:3] 7 8 9</span>
 <span class="co">#&gt;  $ e: int [1:3] 10 11 12</span></code></pre></div>
