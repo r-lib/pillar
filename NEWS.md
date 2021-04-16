@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.0.9001
+
+- `obj_sum()` no longer includes shape twice (#315).
+
+
 # pillar 1.6.0.9000
 
 - Same as previous version.
