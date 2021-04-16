@@ -2,11 +2,15 @@
 
 ## Next steps
 
-- CRAN release pillar
-- Add to awesome list
+- revdepcheck for adding ellipsis to methods
+
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
 - Avoid `requireNamespace()` in `@examplesIf`
+- Use `attr(exact = TRUE)` for speed
+- LTR/RTL: <https://github.com/tidyverse/tibble/issues/433>
+- Discuss:
+    - Add convenience arguments to `print.tbl()`? <https://github.com/tidyverse/tibble/issues/637>
 - Breaking changes
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
@@ -35,6 +39,7 @@
     - `shorten = "front"`: right-align?
     - control `NA` and zero characters: <https://github.com/r-lib/pillar/issues/151>
 - Resolve vctrs imports
+- Help with {errors} and {quantities}
 - Rethink tibble-local options for display: section "Rule-based formatting" in `numbers.Rmd`
     - What are the use cases, beyond databases?
     - Document pattern: helper function with `mutate(across(...))`

@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.6.0
+Version: 1.6.0.9000
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -32,6 +32,7 @@ Suggests:
     debugme,
     DiagrammeR,
     dplyr,
+    formattable,
     ggplot2,
     knitr,
     lubridate,
@@ -43,6 +44,7 @@ Suggests:
     survival,
     testthat (>= 3.0.2),
     tibble,
+    units,
     withr
 VignetteBuilder: 
     knitr
@@ -58,3 +60,6 @@ Config/testthat/start-first:
     ctl_colonnade,
     ctl_colonnade_1,
     ctl_colonnade_2
+Remotes: 
+    renkun-ken/formattable#154,
+    r-quantities/units
