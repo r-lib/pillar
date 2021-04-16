@@ -83,7 +83,11 @@ obj_sum <- function(x) {
 
 #' @export
 obj_sum.default <- function(x) {
-  paste_with_space_if_needed(type_sum(x), size_sum(x))
+  if (!vec_is(x)) {
+    type_sum(x)
+  } else {
+    paste(vec_ptype_abbr(x, suffix_shape = FALSE), size_sum(x))
+  }
 }
 
 #' @export
