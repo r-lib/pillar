@@ -2,9 +2,15 @@
 
 ## Next steps
 
+- revdepcheck for adding ellipsis to methods
+
 - Reexport `num()` and `char()` in tibble
 - CRAN release tibble
 - Avoid `requireNamespace()` in `@examplesIf`
+- Use `attr(exact = TRUE)` for speed
+- LTR/RTL: <https://github.com/tidyverse/tibble/issues/433>
+- Discuss:
+    - Add convenience arguments to `print.tbl()`? <https://github.com/tidyverse/tibble/issues/637>
 - Breaking changes
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
