@@ -116,7 +116,7 @@
 <div id="digits" class="section level2">
 <h2 class="hasAnchor">
 <a href="#digits" class="anchor"></a>Digits</h2>
-<p>The default for <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code> is 7, whereas the <code>"pillar.sigfig"</code> option defaults to 3. Another difference is that pillar will show at most the specified number of significant digits, even if space is available. The rationale is to allow a quick glance over the magnitude of a number, without spending too much horizontal space.</p>
+<p>The default for <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code> is 7, whereas the <code>"pillar.sigfig"</code> option defaults to 3. In the default setting, pillar prints the first three digits only (i.e. the digits that represent &gt; 99.9% of the value of the number). Another difference is that pillar will show at most the specified number of significant digits, even if space is available. The rationale is to allow a quick glance over the most significant digits of a number, without spending too much horizontal space and without distraction from insignificant digits.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2345</span>, <span class="fl">12.345</span>, <span class="fl">123.45</span>, <span class="fl">1234.5</span>, <span class="fl">12345</span><span class="op">)</span>
@@ -162,8 +162,22 @@
 <span class="co">#&gt;   123.45  </span>
 <span class="co">#&gt;  1234.5   </span>
 <span class="co">#&gt; 12345</span></code></pre></div>
-<p>To show a fixed number of decimal digits, use <code><a href="../reference/num.html">num()</a></code> with a <code>digits</code> argument:</p>
+<p>Setting <code>"pillar.sigfig"</code> to a larger value will not enhance the display with digits deemed insignificant:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2345</span>, <span class="fl">12.3456</span>, <span class="fl">123.4567</span>, <span class="fl">1234.5678</span>, <span class="fl">12345.6789</span><span class="op">)</span>
+<span class="co">#&gt; [1]     1.2345    12.3456   123.4567  1234.5678 12345.6789</span>
+<span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2345</span>, <span class="fl">12.3456</span>, <span class="fl">123.4567</span>, <span class="fl">1234.5678</span>, <span class="fl">12345.6789</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; &lt;pillar&gt;</span>
+<span class="co">#&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;     1.2345</span>
+<span class="co">#&gt;    12.3456</span>
+<span class="co">#&gt;   123.4567</span>
+<span class="co">#&gt;  1234.568 </span>
+<span class="co">#&gt; 12345.68</span></code></pre></div>
+<p>To show a fixed number of decimal digits, use <code><a href="../reference/num.html">num()</a></code> with a <code>digits</code> argument:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2345</span>, <span class="fl">12.345</span>, <span class="fl">123.45</span>, <span class="fl">1234.5</span>, <span class="fl">12345</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar_num:.2![5]&gt;</span>
 <span class="co">#&gt; [1]     1.23    12.35   123.45  1234.50 12345.00</span></code></pre></div>
@@ -173,7 +187,7 @@
 <h2 class="hasAnchor">
 <a href="#scientific-notation" class="anchor"></a>Scientific notation</h2>
 <p>Both base R and pillar switch to scientific notation when the decimal representation becomes too wide. The larger <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("scipen")</a></code>, the stronger the resistance to switching to scientific notation. The default <code>0</code> seems to be anchored at 13 digits for the integer part.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">123456789012</span>
 <span class="co">#&gt; [1] 123456789012</span>
 <span class="fl">123456789012.3</span>
@@ -190,7 +204,7 @@
 <span class="fl">12345678901234.5</span>
 <span class="co">#&gt; [1] 1.234568e+13</span></code></pre></div>
 <p>The <code>"pillar.max_dec_width"</code> option is similar, it indicates the width that must be exceeded for a switch to scientific notation to happen. This width includes the decimal separator.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="fl">123456789012</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
 <span class="co">#&gt;        &lt;dbl&gt;</span>
@@ -221,7 +235,7 @@
 <span class="co">#&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1.234568e13</span></code></pre></div>
 <p>To avoid switching to scientific notation, set the <code>"pillar.max_dec_width"</code> option to a large value. Note that if the required width is not available to show the column, it will not be shown at all in this case. The <code>notation</code> argument to <code><a href="../reference/num.html">num()</a></code> offers more options:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">12345678901234567</span>, notation <span class="op">=</span> <span class="st">"dec"</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar_num(dec)[1]&gt;</span>
 <span class="co">#&gt; [1] 12345678901234568</span>
