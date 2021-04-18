@@ -90,7 +90,7 @@ For automatic recovery, we can also define our version of `var()`, or even overr
 ```{r numbers-16b}
 var_ <- function(x, ...) {
   out <- var(x, ...)
-  vctrs::vec_restore(out, x)
+  vctrs::vec_restore(out, vctrs::vec_proxy(x))
 }
 var_(x)
 ```
@@ -103,7 +103,7 @@ make_restore <- function(fun) {
   force(fun)
   function(x, ...) {
     out <- fun(x, ...)
-    vctrs::vec_restore(out, x)
+    vctrs::vec_restore(out, vctrs::vec_proxy(x))
   }
 }
 
