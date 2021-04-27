@@ -3,9 +3,7 @@
 ## Next steps
 
 - revdepcheck for adding ellipsis to methods
-
-- Reexport `num()` and `char()` in tibble
-- CRAN release tibble
+- Update utf8
 - Avoid `requireNamespace()` in `@examplesIf`
 - Use `attr(exact = TRUE)` for speed
 - LTR/RTL: <https://github.com/tidyverse/tibble/issues/433>
