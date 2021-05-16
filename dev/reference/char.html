@@ -64,8 +64,6 @@ useful for composing with other types." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -170,7 +168,7 @@ and also in a tibble column.</p>
 useful for composing with other types.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>char</span><span class='op'>(</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>char</span><span class='op'>(</span>
   <span class='va'>x</span>,
   <span class='va'>...</span>,
   min_chars <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -182,7 +180,7 @@ useful for composing with other types.</p>
   <span class='va'>...</span>,
   min_chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   shorten <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"back"</span>, <span class='st'>"front"</span>, <span class='st'>"mid"</span>, <span class='st'>"abbreviate"</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -217,120 +215,127 @@ The <code>"pillar.min_chars"</code> option is not consulted.</p></td>
 <code><a href='num.html'>num</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Display as a vector:</span>
-<span class='fu'>char</span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar_char[3]&gt;
-#&gt; [1] a b c</div><div class='input'><span class='co'># Space constraints:</span>
-<span class='va'>rand_strings</span> <span class='op'>&lt;-</span> <span class='fu'>stringi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/stringi/man/stri_rand_strings.html'>stri_rand_strings</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>40</span>, <span class='fl'>22</span>, by <span class='op'>=</span> <span class='op'>-</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># Plain character vectors get truncated if space is limited:</span>
-<span class='va'>data_with_id</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-    <span class='va'>id</span>,
-    some_number_1 <span class='op'>=</span> <span class='fl'>1</span>, some_number_2 <span class='op'>=</span> <span class='fl'>2</span>, some_number_3 <span class='op'>=</span> <span class='fl'>3</span>,
-    some_number_4 <span class='op'>=</span> <span class='fl'>4</span>, some_number_5 <span class='op'>=</span> <span class='fl'>5</span>, some_number_6 <span class='op'>=</span> <span class='fl'>6</span>,
-    some_number_7 <span class='op'>=</span> <span class='fl'>7</span>, some_number_8 <span class='op'>=</span> <span class='fl'>8</span>, some_number_9 <span class='op'>=</span> <span class='fl'>9</span>
-  <span class='op'>)</span>
-<span class='op'>}</span>
-<span class='fu'>data_with_id</span><span class='op'>(</span><span class='va'>rand_strings</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 x 10</span><span>
-#&gt;    id      some_number_1 some_number_2 some_number_3 some_number_4 some_number_5
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WJSsxf…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> HQOlqj…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> GR8hYm…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> dO0k5C…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 3yKhjZ…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> uyWa9T…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> UaiZMc…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> z2qYwl…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> ek4O7h…             1             2             3             4             5
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> YCRHBt…             1             2             3             4             5
-#&gt; </span><span style='color: #949494;'># … with 4 more variables: some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   some_number_8 &lt;dbl&gt;, some_number_9 &lt;dbl&gt;</span><span></div><div class='input'>
-<span class='co'># Use char() to avoid or control truncation</span>
-<span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 10</span><span>
-#&gt;    id                                  some_number_1 some_number_2 some_number_3
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WJSsxf5RPiDjFRy7iVoadHgnz4uveIpMlA…             1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> HQOlqjZavreUgr3GXLoDX6mpkxihE20qyT…             1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> GR8hYmPYrwJG9UsJm9A47KvwLTo2FQEkuq…             1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> dO0k5CLEp9McpsCkmBt5wkYOioyg9COiuR              1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 3yKhjZZbegjEYOJm1HIxNkWvYx8Ozl85                1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> uyWa9TGFPzGkVAZsJlCaIHvalJsvMC                  1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> UaiZMcOCjm7Lh2Gthq6NgOGsJbR2                    1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> z2qYwlo7fldemmrE772uCYLrI6                      1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> ek4O7hFxIud6K9YsvhQTB6Oe                        1             2             3
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> YCRHBt1kj2i9JnNgyaa5MB                          1             2             3
-#&gt; </span><span style='color: #949494;'># … with 6 more variables: some_number_4 &lt;dbl&gt;, some_number_5 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;, some_number_8 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   some_number_9 &lt;dbl&gt;</span><span></div><div class='input'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 10</span><span>
-#&gt;    id                                       some_number_1 some_number_2
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WJSsxf5RPiDjFRy7iVoadHgnz4uveIpMlA7Qaqjz             1             2
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> HQOlqjZavreUgr3GXLoDX6mpkxihE20qyTAB45               1             2
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> GR8hYmPYrwJG9UsJm9A47KvwLTo2FQEkuqMT                 1             2
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> dO0k5CLEp9McpsCkmBt5wkYOioyg9COiuR                   1             2
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 3yKhjZZbegjEYOJm1HIxNkWvYx8Ozl85                     1             2
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> uyWa9TGFPzGkVAZsJlCaIHvalJsvMC                       1             2
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> UaiZMcOCjm7Lh2Gthq6NgOGsJbR2                         1             2
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> z2qYwlo7fldemmrE772uCYLrI6                           1             2
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> ek4O7hFxIud6K9YsvhQTB6Oe                             1             2
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> YCRHBt1kj2i9JnNgyaa5MB                               1             2
-#&gt; </span><span style='color: #949494;'># … with 7 more variables: some_number_3 &lt;dbl&gt;, some_number_4 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   some_number_5 &lt;dbl&gt;, some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   some_number_8 &lt;dbl&gt;, some_number_9 &lt;dbl&gt;</span><span></div><div class='input'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='fl'>24</span>, shorten <span class='op'>=</span> <span class='st'>"mid"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 10</span><span>
-#&gt;    id                                  some_number_1 some_number_2 some_number_3
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WJSsxf5RPiDjFRy7i…nz4uveIpMlA7Qaqjz             1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> HQOlqjZavreUgr3GX…6mpkxihE20qyTAB45             1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> GR8hYmPYrwJG9UsJm…47KvwLTo2FQEkuqMT             1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> dO0k5CLEp9McpsCkmBt5wkYOioyg9COiuR              1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 3yKhjZZbegjEYOJm1HIxNkWvYx8Ozl85                1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> uyWa9TGFPzGkVAZsJlCaIHvalJsvMC                  1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> UaiZMcOCjm7Lh2Gthq6NgOGsJbR2                    1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> z2qYwlo7fldemmrE772uCYLrI6                      1             2             3
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> ek4O7hFxIud6K9YsvhQTB6Oe                        1             2             3
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> YCRHBt1kj2i9JnNgyaa5MB                          1             2             3
-#&gt; </span><span style='color: #949494;'># … with 6 more variables: some_number_4 &lt;dbl&gt;, some_number_5 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;, some_number_8 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   some_number_9 &lt;dbl&gt;</span><span></div><div class='input'>
-<span class='co'># Lorem Ipsum, one sentence per row.</span>
-<span class='va'>lipsum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='fu'>stringi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/stringi/man/stri_rand_lipsum.html'>stri_rand_lipsum</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"(?&lt;=[.]) +"</span>, perl <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  back <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"back"</span><span class='op'>)</span>,
-  front <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"front"</span><span class='op'>)</span>,
-  mid   <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"mid"</span><span class='op'>)</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 3</span><span>
-#&gt;    back                      front                     mid                      
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                   
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Lorem ipsum dolor sit am… … dui, nisl vitae sociis. Lorem ipsum …itae sociis.
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Laoreet in nec diam ut s… …rtor risus donec turpis. Laoreet in n…onec turpis.
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Eleifend eleifend, metus… …fend, metus nunc turpis. Eleifend ele…nunc turpis.
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Augue massa lobortis fau… …t efficitur ac faucibus. Augue massa …ac faucibus.
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Elit egestas egestas sit… …nubia faucibus facilisi. Elit egestas…us facilisi.
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Tempor urna nisi feugiat… …a nisi feugiat senectus. Tempor urna …at senectus.
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Nunc in pretium dui ac.   Nunc in pretium dui ac.   Nunc in pretium dui ac.  
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Elit semper eu.           Elit semper eu.           Elit semper eu.          
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Sapien congue, dictum ma… …sa sed posuere sagittis. Sapien congu…re sagittis.
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Interdum ante aenean, ni… …felis ultricies dapibus. Interdum ant…ies dapibus.</div><div class='input'><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>abbr <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"abbreviate"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 1</span><span>
-#&gt;    abbr                                                                         
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                                                       
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Loremipsumdolorsitamet,sitetauctorlacinetiamcommodo!Tinciduntdui,nislvitsocs.
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Laoreetinnecdiamutsuspendisseadipiscingsuspendissconubtortorrisusdonecturpis.
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Eleifend eleifend, metus nunc turpis.                                        
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Augue massa lobortis faucibus velit efficitur ac faucibus.                   
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Elit egestas egestas sit amet ut conubia faucibus facilisi.                  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Tempor urna nisi feugiat senectus.                                           
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Nunc in pretium dui ac.                                                      
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Elit semper eu.                                                              
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Sapien congue, dictum massa sed posuere sagittis.                            
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Interdumanteaenean,nisidapibuslacinianullalaoreet,felisultriciesdapibus.     </div></span></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'># Display as a vector:</span></span>
+<span class='r-in'><span class='fu'>char</span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar_char[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] a b c</span>
+<span class='r-in'><span class='co'># Space constraints:</span></span>
+<span class='r-in'><span class='va'>rand_strings</span> <span class='op'>&lt;-</span> <span class='fu'>stringi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/stringi/man/stri_rand_strings.html'>stri_rand_strings</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>40</span>, <span class='fl'>22</span>, by <span class='op'>=</span> <span class='op'>-</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Plain character vectors get truncated if space is limited:</span></span>
+<span class='r-in'><span class='va'>data_with_id</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='va'>id</span>,</span>
+<span class='r-in'>    some_number_1 <span class='op'>=</span> <span class='fl'>1</span>, some_number_2 <span class='op'>=</span> <span class='fl'>2</span>, some_number_3 <span class='op'>=</span> <span class='fl'>3</span>,</span>
+<span class='r-in'>    some_number_4 <span class='op'>=</span> <span class='fl'>4</span>, some_number_5 <span class='op'>=</span> <span class='fl'>5</span>, some_number_6 <span class='op'>=</span> <span class='fl'>6</span>,</span>
+<span class='r-in'>    some_number_7 <span class='op'>=</span> <span class='fl'>7</span>, some_number_8 <span class='op'>=</span> <span class='fl'>8</span>, some_number_9 <span class='op'>=</span> <span class='fl'>9</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='va'>rand_strings</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    id      some_number_1 some_number_2 some_number_3 some_number_4 some_number_5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> WJSsxf…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> HQOlqj…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> GR8hYm…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> dO0k5C…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> 3yKhjZ…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> uyWa9T…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> UaiZMc…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> z2qYwl…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> ek4O7h…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> YCRHBt…             1             2             3             4             5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 4 more variables: some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_8 &lt;dbl&gt;, some_number_9 &lt;dbl&gt;</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Use char() to avoid or control truncation</span></span>
+<span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    id                                  some_number_1 some_number_2 some_number_3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> WJSsxf5RPiDjFRy7iVoadHgnz4uveIpMlA…             1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> HQOlqjZavreUgr3GXLoDX6mpkxihE20qyT…             1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> GR8hYmPYrwJG9UsJm9A47KvwLTo2FQEkuq…             1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> dO0k5CLEp9McpsCkmBt5wkYOioyg9COiuR              1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> 3yKhjZZbegjEYOJm1HIxNkWvYx8Ozl85                1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> uyWa9TGFPzGkVAZsJlCaIHvalJsvMC                  1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> UaiZMcOCjm7Lh2Gthq6NgOGsJbR2                    1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> z2qYwlo7fldemmrE772uCYLrI6                      1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> ek4O7hFxIud6K9YsvhQTB6Oe                        1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> YCRHBt1kj2i9JnNgyaa5MB                          1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 6 more variables: some_number_4 &lt;dbl&gt;, some_number_5 &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;, some_number_8 &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_9 &lt;dbl&gt;</span></span>
+<span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    id                                       some_number_1 some_number_2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> WJSsxf5RPiDjFRy7iVoadHgnz4uveIpMlA7Qaqjz             1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> HQOlqjZavreUgr3GXLoDX6mpkxihE20qyTAB45               1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> GR8hYmPYrwJG9UsJm9A47KvwLTo2FQEkuqMT                 1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> dO0k5CLEp9McpsCkmBt5wkYOioyg9COiuR                   1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> 3yKhjZZbegjEYOJm1HIxNkWvYx8Ozl85                     1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> uyWa9TGFPzGkVAZsJlCaIHvalJsvMC                       1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> UaiZMcOCjm7Lh2Gthq6NgOGsJbR2                         1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> z2qYwlo7fldemmrE772uCYLrI6                           1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> ek4O7hFxIud6K9YsvhQTB6Oe                             1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> YCRHBt1kj2i9JnNgyaa5MB                               1             2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 7 more variables: some_number_3 &lt;dbl&gt;, some_number_4 &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_5 &lt;dbl&gt;, some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_8 &lt;dbl&gt;, some_number_9 &lt;dbl&gt;</span></span>
+<span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='fl'>24</span>, shorten <span class='op'>=</span> <span class='st'>"mid"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    id                                  some_number_1 some_number_2 some_number_3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> WJSsxf5RPiDjFRy7i…nz4uveIpMlA7Qaqjz             1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> HQOlqjZavreUgr3GX…6mpkxihE20qyTAB45             1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> GR8hYmPYrwJG9UsJm…47KvwLTo2FQEkuqMT             1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> dO0k5CLEp9McpsCkmBt5wkYOioyg9COiuR              1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> 3yKhjZZbegjEYOJm1HIxNkWvYx8Ozl85                1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> uyWa9TGFPzGkVAZsJlCaIHvalJsvMC                  1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> UaiZMcOCjm7Lh2Gthq6NgOGsJbR2                    1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> z2qYwlo7fldemmrE772uCYLrI6                      1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> ek4O7hFxIud6K9YsvhQTB6Oe                        1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> YCRHBt1kj2i9JnNgyaa5MB                          1             2             3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 6 more variables: some_number_4 &lt;dbl&gt;, some_number_5 &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;, some_number_8 &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_9 &lt;dbl&gt;</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Lorem Ipsum, one sentence per row.</span></span>
+<span class='r-in'><span class='va'>lipsum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='fu'>stringi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/stringi/man/stri_rand_lipsum.html'>stri_rand_lipsum</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"(?&lt;=[.]) +"</span>, perl <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
+<span class='r-in'>  back <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"back"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  front <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"front"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  mid   <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"mid"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    back                      front                     mid                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                   </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> Lorem ipsum dolor sit am… … dui, nisl vitae sociis. Lorem ipsum …itae sociis.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> Laoreet in nec diam ut s… …rtor risus donec turpis. Laoreet in n…onec turpis.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> Eleifend eleifend, metus… …fend, metus nunc turpis. Eleifend ele…nunc turpis.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> Augue massa lobortis fau… …t efficitur ac faucibus. Augue massa …ac faucibus.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> Elit egestas egestas sit… …nubia faucibus facilisi. Elit egestas…us facilisi.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> Tempor urna nisi feugiat… …a nisi feugiat senectus. Tempor urna …at senectus.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> Nunc in pretium dui ac.   Nunc in pretium dui ac.   Nunc in pretium dui ac.  </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> Elit semper eu.           Elit semper eu.           Elit semper eu.          </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> Sapien congue, dictum ma… …sa sed posuere sagittis. Sapien congu…re sagittis.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> Interdum ante aenean, ni… …felis ultricies dapibus. Interdum ant…ies dapibus.</span></span>
+<span class='r-in'><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>abbr <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"abbreviate"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    abbr                                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;char&gt;</span><span>                                                                       </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span><span> Loremipsumdolorsitamet,sitetauctorlacinetiamcommodo!Tinciduntdui,nislvitsocs.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span><span> Laoreetinnecdiamutsuspendisseadipiscingsuspendissconubtortorrisusdonecturpis.</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span><span> Eleifend eleifend, metus nunc turpis.                                        </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span><span> Augue massa lobortis faucibus velit efficitur ac faucibus.                   </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span><span> Elit egestas egestas sit amet ut conubia faucibus facilisi.                  </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span><span> Tempor urna nisi feugiat senectus.                                           </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span><span> Nunc in pretium dui ac.                                                      </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span><span> Elit semper eu.                                                              </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span><span> Sapien congue, dictum massa sed posuere sagittis.                            </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span><span> Interdumanteaenean,nisidapibuslacinianullalaoreet,felisultriciesdapibus.     </span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

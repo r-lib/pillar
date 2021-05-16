@@ -183,7 +183,7 @@ See <code><a href='https://tibble.tidyverse.org/articles/extending.html'>vignett
 <p>This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:</p><ul>
 <li><p>It has an attribute <code>"width"</code></p></li>
 <li><p>It can have an attribute <code>"min_width"</code>, if missing, <code>"width"</code> is used</p></li>
-<li><p>It must implement a method <code><a href='https://rdrr.io/r/base/format.html'>format(x, width, ...)</a></code> that can be called with any value between <code>min_width</code> and <code>width</code></p></li>
+<li><p>It must implement a method <code>format(x, width, ...)</code> that can be called with any value between <code>min_width</code> and <code>width</code></p></li>
 <li><p>This method must return an object that inherits from <code>character</code> and has attributes <code>"align"</code> (with supported values <code>"left"</code>, <code>"right"</code>, and <code>"center"</code>) and <code>"width"</code></p></li>
 </ul>
 
@@ -192,13 +192,13 @@ In many cases, the implementation of <code>pillar_shaft.your_class_name()</code>
 See <code>pillar:::pillar_shaft.numeric</code> for a code that allows changing the display depending on the available width.</p>
 <p><code>new_pillar_shaft_simple()</code> provides an implementation of the <code>pillar_shaft</code>
 class suitable for output that has a fixed formatting, which will be
-truncated with a continuation character (ellipsis or <code><a href='https://rdrr.io/r/base/tilde.html'>~</a></code>) if it doesn't fit
+truncated with a continuation character (ellipsis or <code>~</code>) if it doesn't fit
 the available width.
 By default, the required width is computed from the natural width of the
 <code>formatted</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_pillar_shaft</span><span class='op'>(</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>new_pillar_shaft</span><span class='op'>(</span>
   <span class='va'>x</span>,
   <span class='va'>...</span>,
   width <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -216,7 +216,7 @@ By default, the required width is computed from the natural width of the
   na <span class='op'>=</span> <span class='cn'>NULL</span>,
   na_indent <span class='op'>=</span> <span class='fl'>0L</span>,
   shorten <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"back"</span>, <span class='st'>"front"</span>, <span class='st'>"mid"</span>, <span class='st'>"abbreviate"</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
