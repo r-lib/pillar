@@ -67,8 +67,6 @@ this is what the default method does for scalars." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -92,7 +90,7 @@ this is what the default method does for scalars." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -176,11 +174,11 @@ it can be an empty string <code>""</code> to omit size information,
 this is what the default method does for scalars.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>type_sum</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>type_sum</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='fu'>obj_sum</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>size_sum</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+<span class='fu'>size_sum</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,16 +198,24 @@ The formatted type should only depend on the type and not on the data,
 to avoid confusion.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "int [10]"</div><div class='input'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "int[,1] [10 × 1]"</div><div class='input'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "date [1]"</div><div class='input'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "dttm [1]"</div><div class='input'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='va'>mean</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "fn"</div><div class='input'>
-<span class='fu'>size_sum</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[10]"</div><div class='input'><span class='fu'>size_sum</span><span class='op'>(</span><span class='va'>trees</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[31 × 3]"</div><div class='input'><span class='fu'>size_sum</span><span class='op'>(</span><span class='va'>Titanic</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[4 × 2 × 2 × 2]"</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "int [10]"</span>
+<span class='r-in'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "int [10 × 1]"</span>
+<span class='r-in'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "date [1]"</span>
+<span class='r-in'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "dttm [1]"</span>
+<span class='r-in'><span class='fu'>obj_sum</span><span class='op'>(</span><span class='va'>mean</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "fn"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>size_sum</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[10]"</span>
+<span class='r-in'><span class='fu'>size_sum</span><span class='op'>(</span><span class='va'>trees</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[31 × 3]"</span>
+<span class='r-in'><span class='fu'>size_sum</span><span class='op'>(</span><span class='va'>Titanic</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[4 × 2 × 2 × 2]"</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

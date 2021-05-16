@@ -61,8 +61,6 @@ See pillar() for the high-level constructor with default components." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -86,7 +84,7 @@ See pillar() for the high-level constructor with default components." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -164,7 +162,7 @@ It supports arbitrary components.
 See <code><a href='pillar.html'>pillar()</a></code> for the high-level constructor with default components.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_pillar</span><span class='op'>(</span><span class='va'>components</span>, <span class='va'>...</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, class <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>new_pillar</span><span class='op'>(</span><span class='va'>components</span>, <span class='va'>...</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, class <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,23 +193,24 @@ override or extend <code><a href='ctl_new_pillar.html'>ctl_new_pillar()</a></cod
 and perhaps <code><a href='ctl_new_pillar.html'>ctl_new_compound_pillar()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>lines</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>char</span> <span class='op'>=</span> <span class='st'>"-"</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nchar</a></span><span class='op'>(</span><span class='va'>char</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='va'>char</span>, class <span class='op'>=</span> <span class='st'>"lines"</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='va'>format.lines</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span><span class='op'>)</span>, collapse <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='fu'>new_pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  title <span class='op'>=</span> <span class='fu'><a href='new_pillar_component.html'>pillar_component</a></span><span class='op'>(</span><span class='fu'><a href='new_ornament.html'>new_ornament</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"abc"</span>, <span class='st'>"de"</span><span class='op'>)</span>, align <span class='op'>=</span> <span class='st'>"right"</span><span class='op'>)</span><span class='op'>)</span>,
-  lines <span class='op'>=</span> <span class='fu'><a href='new_pillar_component.html'>new_pillar_component</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span><span class='st'>"="</span><span class='op'>)</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar&gt;
-#&gt; abc
-#&gt;  de
-#&gt; =  </div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>lines</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>char</span> <span class='op'>=</span> <span class='st'>"-"</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nchar</a></span><span class='op'>(</span><span class='va'>char</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='va'>char</span>, class <span class='op'>=</span> <span class='st'>"lines"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>format.lines</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span><span class='op'>)</span>, collapse <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>new_pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>  title <span class='op'>=</span> <span class='fu'><a href='new_pillar_component.html'>pillar_component</a></span><span class='op'>(</span><span class='fu'><a href='new_ornament.html'>new_ornament</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"abc"</span>, <span class='st'>"de"</span><span class='op'>)</span>, align <span class='op'>=</span> <span class='st'>"right"</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span class='r-in'>  lines <span class='op'>=</span> <span class='fu'><a href='new_pillar_component.html'>new_pillar_component</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span><span class='st'>"="</span><span class='op'>)</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> abc</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  de</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> =  </span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

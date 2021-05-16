@@ -67,8 +67,6 @@ Your format() method can assume a valid value for the width argument." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -92,7 +90,7 @@ Your format() method can assume a valid value for the width argument." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -176,7 +174,7 @@ raises an error.
 Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> method can assume a valid value for the <code>width</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for pillar_shaft</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -212,7 +210,7 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
 <span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -258,22 +256,26 @@ Your <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> meth
 but you should not rely on this behavior.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar_ornament&gt;
-#&gt; 1
-#&gt; 2
-#&gt; 3</div><div class='input'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='fl'>1.5</span><span class='op'>:</span><span class='fl'>3.5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar_ornament&gt;
-#&gt; 1.5
-#&gt; 2.5
-#&gt; 3.5</div><div class='input'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar_ornament&gt;
-#&gt; <span style='color: #BB0000;'>NA</span><span>   </div><div class='input'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;pillar_ornament&gt;
-#&gt;  1
-#&gt;  2
-#&gt;  3
-#&gt; </span><span style='color: #BB0000;'>NA</span><span></div></span></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar_ornament&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3</span>
+<span class='r-in'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='fl'>1.5</span><span class='op'>:</span><span class='fl'>3.5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar_ornament&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1.5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2.5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3.5</span>
+<span class='r-in'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar_ornament&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>   </span></span>
+<span class='r-in'><span class='fu'>pillar_shaft</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar_ornament&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

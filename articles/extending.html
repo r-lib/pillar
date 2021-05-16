@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -140,10 +140,10 @@
 <span class="co">#&gt; [1] "default"    "tbl"        "data.frame"</span></code></pre></div>
 <div id="header" class="section level2">
 <h2 class="hasAnchor">
-<a href="#header" class="anchor"></a>Header</h2>
+<a href="#header" class="anchor" aria-hidden="true"></a>Header</h2>
 <div id="tweak-header" class="section level3">
 <h3 class="hasAnchor">
-<a href="#tweak-header" class="anchor"></a>Tweak header</h3>
+<a href="#tweak-header" class="anchor" aria-hidden="true"></a>Tweak header</h3>
 <p>The easiest customization consists of tweaking the header. Implement a <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code> method to extend or replace the information shown in the header, keeping the original formatting.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_sum.default_header_extend</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
@@ -174,7 +174,7 @@
 </div>
 <div id="restyle-header" class="section level3">
 <h3 class="hasAnchor">
-<a href="#restyle-header" class="anchor"></a>Restyle header</h3>
+<a href="#restyle-header" class="anchor" aria-hidden="true"></a>Restyle header</h3>
 <p>To style the header in a different way, implement a <code><a href="../reference/tbl_format_header.html">tbl_format_header()</a></code> method. The implementation is responsible for the entire formatting and styling, including the leading hash.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_header.custom_header_replace</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
@@ -192,10 +192,10 @@
 </div>
 <div id="footer" class="section level2">
 <h2 class="hasAnchor">
-<a href="#footer" class="anchor"></a>Footer</h2>
+<a href="#footer" class="anchor" aria-hidden="true"></a>Footer</h2>
 <div id="restyle-footer" class="section level3">
 <h3 class="hasAnchor">
-<a href="#restyle-footer" class="anchor"></a>Restyle footer</h3>
+<a href="#restyle-footer" class="anchor" aria-hidden="true"></a>Restyle footer</h3>
 <p>Similarly, to add information the footer, or to replace it entirely, implement a <code><a href="../reference/tbl_format_footer.html">tbl_format_footer()</a></code> method. Here, as in all <code>tbl_format_*()</code> methods, you can use the information contained in the setup object, see <code><a href="../reference/new_tbl_format_setup.html">?new_tbl_format_setup</a></code> for the available fields. Again, the implementation is responsible for the entire formatting and styling, including the leading hash if needed.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_footer.custom_footer_extend</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
@@ -230,7 +230,7 @@
 </div>
 <div id="compute-additional-info-beforehand" class="section level3">
 <h3 class="hasAnchor">
-<a href="#compute-additional-info-beforehand" class="anchor"></a>Compute additional info beforehand</h3>
+<a href="#compute-additional-info-beforehand" class="anchor" aria-hidden="true"></a>Compute additional info beforehand</h3>
 <p>If the same information needs to be displayed in several parts (e.g., in both header and footer), it is useful to compute it in <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> and store it in the setup object. New elements may be added to the setup object, existing elements should not be overwritten. Exception: the <code>tbl_sum</code> element contains the output of <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code> and can be enhanced with additional elements.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup.extra_info</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
@@ -258,10 +258,10 @@
 </div>
 <div id="body" class="section level2">
 <h2 class="hasAnchor">
-<a href="#body" class="anchor"></a>Body</h2>
+<a href="#body" class="anchor" aria-hidden="true"></a>Body</h2>
 <div id="tweak-pillar-composition" class="section level3">
 <h3 class="hasAnchor">
-<a href="#tweak-pillar-composition" class="anchor"></a>Tweak pillar composition</h3>
+<a href="#tweak-pillar-composition" class="anchor" aria-hidden="true"></a>Tweak pillar composition</h3>
 <p>Pillars consist of components, see <code><a href="../reference/new_pillar_component.html">?new_pillar_component</a></code> for details. Extend or override the <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> method to alter the appearance. The example below adds table rules of constant width to the output.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ctl_new_pillar.pillar_rule</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
@@ -326,7 +326,7 @@
 </div>
 <div id="tweak-display-of-compound-pillars" class="section level3">
 <h3 class="hasAnchor">
-<a href="#tweak-display-of-compound-pillars" class="anchor"></a>Tweak display of compound pillars</h3>
+<a href="#tweak-display-of-compound-pillars" class="anchor" aria-hidden="true"></a>Tweak display of compound pillars</h3>
 <p>Compound pillars are created by <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> for columns that contain a data frame, a matrix or an array. The default implementation also calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> shown above. The example</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ctl_new_compound_pillar.hide_df</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
@@ -358,7 +358,7 @@
 </div>
 <div id="restyle-body" class="section level3">
 <h3 class="hasAnchor">
-<a href="#restyle-body" class="anchor"></a>Restyle body</h3>
+<a href="#restyle-body" class="anchor" aria-hidden="true"></a>Restyle body</h3>
 <p>Last but not least, it is also possible to completely alter the display of the body by overriding <code><a href="../reference/tbl_format_body.html">tbl_format_body()</a></code>. The example below uses plain data frame output for a tibble.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_body.oldskool</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>

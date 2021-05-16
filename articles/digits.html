@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -114,8 +114,8 @@
 <p>Base R offers the <code>"digits"</code> and <code>"scipen"</code> options to control the number of significant digits and the switch to scientific notation. For pillar, the options <code>"pillar.sigfig"</code> and <code>"pillar.max_dec_width"</code> fulfill a similar purpose. This vignette showcases similarities and differences. See <code><a href="../reference/pillar-package.html">?"pillar-package"</a></code> for an overview over all options.</p>
 <div id="digits" class="section level2">
 <h2 class="hasAnchor">
-<a href="#digits" class="anchor"></a>Digits</h2>
-<p>The default for <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("digits")</a></code> is 7, whereas the <code>"pillar.sigfig"</code> option defaults to 3. In the default setting, pillar prints the first three digits only (i.e. the digits that represent &gt; 99.9% of the value of the number). Another difference is that pillar will show at most the specified number of significant digits, even if space is available. The rationale is to allow a quick glance over the most significant digits of a number, without spending too much horizontal space and without distraction from insignificant digits.</p>
+<a href="#digits" class="anchor" aria-hidden="true"></a>Digits</h2>
+<p>The default for <code>getOption("digits")</code> is 7, whereas the <code>"pillar.sigfig"</code> option defaults to 3. In the default setting, pillar prints the first three digits only (i.e. the digits that represent &gt; 99.9% of the value of the number). Another difference is that pillar will show at most the specified number of significant digits, even if space is available. The rationale is to allow a quick glance over the most significant digits of a number, without spending too much horizontal space and without distraction from insignificant digits.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2345</span>, <span class="fl">12.345</span>, <span class="fl">123.45</span>, <span class="fl">1234.5</span>, <span class="fl">12345</span><span class="op">)</span>
@@ -184,8 +184,8 @@
 </div>
 <div id="scientific-notation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#scientific-notation" class="anchor"></a>Scientific notation</h2>
-<p>Both base R and pillar switch to scientific notation when the decimal representation becomes too wide. The larger <code><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption("scipen")</a></code>, the stronger the resistance to switching to scientific notation. The default <code>0</code> seems to be anchored at 13 digits for the integer part.</p>
+<a href="#scientific-notation" class="anchor" aria-hidden="true"></a>Scientific notation</h2>
+<p>Both base R and pillar switch to scientific notation when the decimal representation becomes too wide. The larger <code>getOption("scipen")</code>, the stronger the resistance to switching to scientific notation. The default <code>0</code> seems to be anchored at 13 digits for the integer part.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">123456789012</span>
 <span class="co">#&gt; [1] 123456789012</span>

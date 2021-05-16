@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://pillar.r-lib.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/TODO.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/articles/debugme.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/articles/digits.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/articles/extending.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/articles/numbers.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/articles/printing.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://pillar.r-lib.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://pillar.r-lib.org/reference/align.html</loc>
@@ -41,6 +80,9 @@
   </url>
   <url>
     <loc>https://pillar.r-lib.org/reference/glimpse.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/reference/index.html</loc>
   </url>
   <url>
     <loc>https://pillar.r-lib.org/reference/new_ornament.html</loc>
@@ -98,20 +140,5 @@
   </url>
   <url>
     <loc>https://pillar.r-lib.org/reference/type_sum.html</loc>
-  </url>
-  <url>
-    <loc>https://pillar.r-lib.org/articles/debugme.html</loc>
-  </url>
-  <url>
-    <loc>https://pillar.r-lib.org/articles/digits.html</loc>
-  </url>
-  <url>
-    <loc>https://pillar.r-lib.org/articles/extending.html</loc>
-  </url>
-  <url>
-    <loc>https://pillar.r-lib.org/articles/numbers.html</loc>
-  </url>
-  <url>
-    <loc>https://pillar.r-lib.org/articles/printing.html</loc>
   </url>
 </urlset>

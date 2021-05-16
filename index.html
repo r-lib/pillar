@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -102,14 +102,14 @@
   <div class="contents col-md-9">
 <div id="pillar" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#pillar" class="anchor"></a>pillar</h1></div>
+<a href="#pillar" class="anchor" aria-hidden="true"></a>pillar</h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
 <p>pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
 <pre class="chroma">
 <span class="c"># pillar is installed if you install the tidyverse package:</span>
 <span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"tidyverse"</span><span class="o">)</span>
@@ -119,7 +119,7 @@
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<a href="#usage" class="anchor" aria-hidden="true"></a>Usage</h2>
 <p>pillar is a developer-facing package that is not designed for end-users. It powers the <a href="https://rdrr.io/r/base/print.html" class="external-link"><code>print()</code></a> and <a href="https://rdrr.io/r/base/format.html" class="external-link"><code>format()</code></a> methods for <a href="https://tibble.tidyverse.org/" class="external-link">tibble</a>s. It also and defines generics and helpers that are useful for package authors who create custom vector classes (see <a href="https://github.com/krlmlr/awesome-vctrs#readme" class="external-link uri">https://github.com/krlmlr/awesome-vctrs#readme</a> for examples) or custom table classes (like <a href="https://dbplyr.tidyverse.org/" class="external-link">dbplyr</a> or <a href="https://r-spatial.github.io/sf/" class="external-link">sf</a>).</p>
 <pre class="chroma">
 <span class="kr"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span>
@@ -150,7 +150,7 @@
 </div>
 <div id="custom-vector-classes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#custom-vector-classes" class="anchor"></a>Custom vector classes</h2>
+<a href="#custom-vector-classes" class="anchor" aria-hidden="true"></a>Custom vector classes</h2>
 <p>The primary user of this package is <a href="https://github.com/tidyverse/tibble" class="external-link">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can customize the display by implementing a <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft()</code></a> method.</p>
 <pre class="chroma">
 <span class="kr"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span>
@@ -172,7 +172,7 @@
 </div>
 <div id="custom-table-classes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#custom-table-classes" class="anchor"></a>Custom table classes</h2>
+<a href="#custom-table-classes" class="anchor" aria-hidden="true"></a>Custom table classes</h2>
 <p>pillar provides various extension points for customizing how a tibble-like class is printed.</p>
 <pre class="chroma">
 <span class="nv">tbl</span> <span class="o">&lt;-</span> <span class="nf">vctrs</span><span class="nf">::</span><span class="nf"><a href="https://vctrs.r-lib.org/reference/new_data_frame.html" class="external-link">new_data_frame</a></span><span class="o">(</span><span class="nf"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="o">(</span>a <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="o">)</span>, class <span class="o">=</span> <span class="nf"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="o">(</span><span class="s">"my_tbl"</span>, <span class="s">"tbl"</span><span class="o">)</span><span class="o">)</span>
@@ -193,7 +193,7 @@
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<a href="#code-of-conduct" class="anchor" aria-hidden="true"></a>Code of Conduct</h2>
 <p>Please note that the pillar project is released with a <a href="https://pillar.r-lib.org/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>

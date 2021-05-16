@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -115,7 +115,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></code></pre></div>
 <div id="per-column-number-formatting" class="section level2">
 <h2 class="hasAnchor">
-<a href="#per-column-number-formatting" class="anchor"></a>Per-column number formatting</h2>
+<a href="#per-column-number-formatting" class="anchor" aria-hidden="true"></a>Per-column number formatting</h2>
 <p>The new <code><a href="../reference/num.html">num()</a></code> constructor allows creating vectors that behave like numbers but allow customizing their display.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>
@@ -141,12 +141,12 @@
 </div>
 <div id="computing-on-num" class="section level2">
 <h2 class="hasAnchor">
-<a href="#computing-on-num" class="anchor"></a>Computing on <code>num</code>
+<a href="#computing-on-num" class="anchor" aria-hidden="true"></a>Computing on <code>num</code>
 </h2>
 <p>Formatting numbers is useful for presentation of results. If defined early on in the analysis, the formatting options survive most operations. It is worth defining output options that suit your data once early on in the process, to benefit from the formatting throughout the analysis. We are working on seamlessly applying this formatting to the final presentation (plots, tables, …).</p>
 <div id="arithmetics" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arithmetics" class="anchor"></a>Arithmetics</h3>
+<a href="#arithmetics" class="anchor" aria-hidden="true"></a>Arithmetics</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span>
 <span class="co">#&gt; &lt;pillar_num[1]&gt;</span>
@@ -172,7 +172,7 @@
 </div>
 <div id="mathematics" class="section level3">
 <h3 class="hasAnchor">
-<a href="#mathematics" class="anchor"></a>Mathematics</h3>
+<a href="#mathematics" class="anchor" aria-hidden="true"></a>Mathematics</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, label <span class="op">=</span> <span class="st">"$"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar_num{$}[1]&gt;</span>
@@ -186,7 +186,7 @@
 </div>
 <div id="recovery" class="section level3">
 <h3 class="hasAnchor">
-<a href="#recovery" class="anchor"></a>Recovery</h3>
+<a href="#recovery" class="anchor" aria-hidden="true"></a>Recovery</h3>
 <p>The <code><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var()</a></code> function is one of the examples where the formatting is lost:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"eng"</span><span class="op">)</span>
@@ -225,7 +225,204 @@
 <span class="fu">sd_</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar_num(eng)[1]&gt;</span>
 <span class="co">#&gt; [1] 1.53e0</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-quantities/units/" class="external-link">units</a></span><span class="op">)</span>
+<span class="co">#&gt; udunits database from /usr/share/xml/udunits/udunits2.xml</span>
+
+<span class="va">set_units.pillar_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">unclassed</span> <span class="op">&lt;-</span> <span class="va">x</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">unclassed</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="va">unclassed</span>, <span class="va">...</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">m</span><span class="op">)</span>
+<span class="va">km</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">km</span><span class="op">)</span>
+
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+  sci_int <span class="op">=</span> <span class="fu"><a href="../reference/num.html">set_num_opts</a></span><span class="op">(</span><span class="va">m</span> <span class="op">+</span> <span class="va">km</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>,
+  digits_int <span class="op">=</span> <span class="fu"><a href="../reference/num.html">set_num_opts</a></span><span class="op">(</span><span class="va">km</span> <span class="op">+</span> <span class="va">m</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,
+  sci_ext <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">0.001</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>, <span class="va">km</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 x 3</span>
+<span class="co">#&gt;   sci_int digits_int sci_ext</span>
+<span class="co">#&gt;       [m]       [km]    [km]</span>
+<span class="co">#&gt; 1  1.00e3     1.0010  1.00e0</span>
+<span class="co">#&gt; 2  2.00e3     2.0020  2.00e0</span>
+<span class="co">#&gt; 3  3.00e3     3.0030  3.00e0</span>
+
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+  sci_int <span class="op">=</span> <span class="fu"><a href="../reference/num.html">set_num_opts</a></span><span class="op">(</span><span class="va">m</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span> <span class="op">+</span> <span class="va">km</span>,
+  digits_int <span class="op">=</span> <span class="fu"><a href="../reference/num.html">set_num_opts</a></span><span class="op">(</span><span class="va">km</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span> <span class="va">m</span>,
+  sci_ext <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">set_units</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>, <span class="va">m</span><span class="op">)</span> <span class="op">+</span> <span class="va">km</span>
+<span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 x 3</span>
+<span class="co">#&gt;   sci_int digits_int sci_ext</span>
+<span class="co">#&gt;       [m]       [km]     [m]</span>
+<span class="co">#&gt; 1  1.00e3     1.0010  1.00e3</span>
+<span class="co">#&gt; 2  2.00e3     2.0020  2.00e3</span>
+<span class="co">#&gt; 3  3.00e3     3.0030  3.00e3</span></code></pre></div>
 </div>
+<div id="formattable" class="section level3">
+<h3 class="hasAnchor">
+<a href="#formattable" class="anchor" aria-hidden="true"></a>formattable</h3>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://renkun-ken.github.io/formattable/" class="external-link">formattable</a></span><span class="op">)</span>
+
+<span class="va">pillar_shaft.formattable</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">pillar</span><span class="fu">::</span><span class="fu"><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">pillar_shaft.formattable_currency</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">formattable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable"</span><span class="op">)</span>
+
+  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, digits <span class="op">=</span> <span class="va">formattable</span><span class="op">$</span><span class="va">digits</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">pillar_shaft.formattable_percent</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">formattable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable"</span><span class="op">)</span>
+
+  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, digits <span class="op">=</span> <span class="va">formattable</span><span class="op">$</span><span class="va">digits</span>, label <span class="op">=</span> <span class="st">"%"</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">pillar_shaft.formattable_scientific</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">type_sum.formattable</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">formattable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable"</span><span class="op">)</span>
+
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable_currency"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"^formattable_"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"formattable_percent"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="st">"%"</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/abbreviate.html" class="external-link">abbreviate</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"^formattable_"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_currency.html" class="external-link">num_currency</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">)</span>
+<span class="co">#&gt; [1] $100.10 $200.10 $300.10</span>
+<span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_percent.html" class="external-link">num_percent</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>
+<span class="co">#&gt; [1] 10.10% 20.10% 30.10%</span>
+<span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_scientific.html" class="external-link">num_scientific</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1.0100e-01 2.0100e-01 3.0100e-01</span>
+
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
+  currency <span class="op">=</span> <span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_currency.html" class="external-link">num_currency</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">)</span>,
+  percent <span class="op">=</span> <span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_percent.html" class="external-link">num_percent</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>,
+  scientific <span class="op">=</span> <span class="fu"><a href="https://renkun-ken.github.io/formattable/reference/num_scientific.html" class="external-link">num_scientific</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 x 3</span>
+<span class="co">#&gt;   currency percent scientific</span>
+<span class="co">#&gt;          $       %     &lt;scnt&gt;</span>
+<span class="co">#&gt; 1     100.    10.1    1.01e-1</span>
+<span class="co">#&gt; 2     200.    20.1    2.01e-1</span>
+<span class="co">#&gt; 3     300.    30.1    3.01e-1</span></code></pre></div>
+</div>
+<div id="scales" class="section level3">
+<h3 class="hasAnchor">
+<a href="#scales" class="anchor" aria-hidden="true"></a>scales</h3>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'scales'</span>
+<span class="co">#&gt; The following objects are masked from 'package:formattable':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     comma, percent, scientific</span>
+
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/num.html">num</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op">/</span> <span class="fl">100</span>, label <span class="op">=</span> <span class="st">"%"</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
+
+<span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/oob.html" class="external-link">squish</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; &lt;pillar_num{%}*100[10]&gt;</span>
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span>
+
+<span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>
+<span class="co">#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span>
+<span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0L</span>
+<span class="co">#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span>
+
+<span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/cscale.html" class="external-link">cscale</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/rescale_pal.html" class="external-link">rescale_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Error in UseMethod("rescale"): no applicable method for 'rescale' applied to an object of class "c('pillar_num', 'pillar_vctr', 'vctrs_vctr', 'double')"</span></code></pre></div>
+</div>
+<div id="ggplot2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#ggplot2" class="anchor" aria-hidden="true"></a>ggplot2</h3>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+
+<span class="va">scale_type.pillar_num</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+  <span class="st">"continuous"</span>
+<span class="op">}</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p><img src="numbers_files/figure-html/numbers-19-1.png" width="700"></p>
+</div>
+</div>
+<div id="rule-based-decoration" class="section level2">
+<h2 class="hasAnchor">
+<a href="#rule-based-decoration" class="anchor" aria-hidden="true"></a>Rule-based decoration</h2>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following object is masked from 'package:pillar':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     dim_desc</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+
+<span class="va">data_units</span> <span class="op">&lt;-</span>
+  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_mm"</span><span class="op">)</span>, <span class="va">set_units</span>, <span class="st">"mm"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_g"</span><span class="op">)</span>, <span class="va">set_units</span>, <span class="st">"g"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">data_units</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>bill_area <span class="op">=</span> <span class="va">bill_length_mm</span> <span class="op">*</span> <span class="va">bill_depth_mm</span>, .after <span class="op">=</span> <span class="va">island</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 344 x 9</span>
+<span class="co">#&gt;    species island    bill_area bill_length_mm bill_depth_mm flipper_length_mm</span>
+<span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;        [mm^2]           [mm]          [mm]              [mm]</span>
+<span class="co">#&gt;  1 Adelie  Torgersen      731.           39.1          18.7               181</span>
+<span class="co">#&gt;  2 Adelie  Torgersen      687.           39.5          17.4               186</span>
+<span class="co">#&gt;  3 Adelie  Torgersen      725.           40.3          18                 195</span>
+<span class="co">#&gt;  4 Adelie  Torgersen       NA            NA            NA                  NA</span>
+<span class="co">#&gt;  5 Adelie  Torgersen      708.           36.7          19.3               193</span>
+<span class="co">#&gt;  6 Adelie  Torgersen      810.           39.3          20.6               190</span>
+<span class="co">#&gt;  7 Adelie  Torgersen      692.           38.9          17.8               181</span>
+<span class="co">#&gt;  8 Adelie  Torgersen      768.           39.2          19.6               195</span>
+<span class="co">#&gt;  9 Adelie  Torgersen      617.           34.1          18.1               193</span>
+<span class="co">#&gt; 10 Adelie  Torgersen      848.           42            20.2               190</span>
+<span class="co">#&gt; # … with 334 more rows, and 3 more variables: body_mass_g [g], sex &lt;fct&gt;,</span>
+<span class="co">#&gt; #   year &lt;int&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data_decor</span> <span class="op">&lt;-</span>
+  <span class="va">data_units</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">decorate</span><span class="op">(</span><span class="va">year</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">decorate</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data_decor</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>bill_area <span class="op">=</span> <span class="va">bill_length_mm</span> <span class="op">*</span> <span class="va">bill_depth_mm</span>, .after <span class="op">=</span> <span class="va">island</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 344 x 9
+#&gt;    species island    bill_area bill_length_mm bill_depth_mm flipper_length_mm
+#&gt;    &lt;fct&gt;   &lt;fct&gt;        [mm^2]           [mm]          [mm]              [mm]
+#&gt;  1 Adelie  Torgersen   731.170         39.100        18.700           181.000
+#&gt;  2 Adelie  Torgersen   687.300         39.500        17.400           186.000
+#&gt;  3 Adelie  Torgersen   725.400         40.300        18.000           195.000
+#&gt;  4 Adelie  Torgersen    NA             NA            NA                NA    
+#&gt;  5 Adelie  Torgersen   708.310         36.700        19.300           193.000
+#&gt;  6 Adelie  Torgersen   809.580         39.300        20.600           190.000
+#&gt;  7 Adelie  Torgersen   692.420         38.900        17.800           181.000
+#&gt;  8 Adelie  Torgersen   768.320         39.200        19.600           195.000
+#&gt;  9 Adelie  Torgersen   617.210         34.100        18.100           193.000
+#&gt; 10 Adelie  Torgersen   848.400         42.000        20.200           190.000
+#&gt; # … with 334 more rows, and 3 more variables: body_mass_g [g], sex &lt;fct&gt;,
+#&gt; #   year &lt;int&gt;</code></pre>
+<p>`````</p>
 </div>
   </div>
 

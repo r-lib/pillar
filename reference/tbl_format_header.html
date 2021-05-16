@@ -67,8 +67,6 @@ default method." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -92,7 +90,7 @@ default method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -176,7 +174,7 @@ override or extend <code><a href='tbl_sum.html'>tbl_sum()</a></code> for your cl
 default method.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tbl_format_header</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>setup</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>tbl_format_header</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>setup</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,13 +198,15 @@ default method.</p>
     <p>A character vector.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>setup</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tbl_format_setup.html'>tbl_format_setup</a></span><span class='op'>(</span><span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span><span class='op'>)</span>
-<span class='fu'>tbl_format_header</span><span class='op'>(</span><span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span>, <span class='va'>setup</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "\033[38;5;246m# A tibble: 344 x 8\033[39m"</div><div class='input'>
-<span class='co'># Shortcut for debugging</span>
-<span class='fu'>tbl_format_header</span><span class='op'>(</span><span class='va'>setup</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='font-weight: bold;'>&lt;tbl_format_header(setup)&gt;</span><span>
-#&gt; </span><span style='color: #949494;'># A tibble: 344 x 8</span><span></div></span></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>setup</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tbl_format_setup.html'>tbl_format_setup</a></span><span class='op'>(</span><span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>tbl_format_header</span><span class='op'>(</span><span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span>, <span class='va'>setup</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "\033[38;5;246m# A tibble: 344 x 8\033[39m"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Shortcut for debugging</span></span>
+<span class='r-in'><span class='fu'>tbl_format_header</span><span class='op'>(</span><span class='va'>setup</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='font-weight: bold;'>&lt;tbl_format_header(setup)&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 344 x 8</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

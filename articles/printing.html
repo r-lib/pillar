@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <p>What happens when a tibble is printed? This vignette documents the control flow and the data flow, explains the design choices, and shows the default implementation for the <code>"tbl"</code> class. It is mainly of interest for implementers of table subclasses. Customizing the formatting of a vector class in a tibble is described in <code><a href="https://vctrs.r-lib.org/articles/pillar.html" class="external-link">vignette("pillar", package = "vctrs")</a></code>. The different customization options are showcased in <code><a href="../articles/extending.html">vignette("extending")</a></code>.</p>
 <div id="requirements" class="section level2">
 <h2 class="hasAnchor">
-<a href="#requirements" class="anchor"></a>Requirements</h2>
+<a href="#requirements" class="anchor" aria-hidden="true"></a>Requirements</h2>
 <ul>
 <li><p>Fit into pre-specified width, distributing across multiple tiers if necessary</p></li>
 <li><p>Optionally shrink and stretch individual columns</p></li>
@@ -145,14 +145,14 @@
 </div>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<a href="#overview" class="anchor" aria-hidden="true"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-250c6af60e6e1b8f3847" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-250c6af60e6e1b8f3847">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-b7b5efe633adc9031b51" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b7b5efe633adc9031b51">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
-<a href="#initialization" class="anchor"></a>Initialization</h2>
+<a href="#initialization" class="anchor" aria-hidden="true"></a>Initialization</h2>
 <p>A tibble is a list of columns of class <code>"tbl_df"</code> and <code>"tbl"</code>. Printing is designed to work for non-data-frame table-like objects such as lazy tables. The <code><a href="../reference/format_tbl.html">print.tbl()</a></code> method calls <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> for the object and prints the output.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>c <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, d <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>, e <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span>
@@ -166,9 +166,9 @@
 <span class="co">#&gt; # … with 1 more</span>
 <span class="co">#&gt; #   variable: e &lt;int&gt;</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span>
-<span class="co">#&gt; tibble[,3] [3 × 3] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt; tibble [3 × 3] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ a: int [1:3] 1 2 3</span>
-<span class="co">#&gt;  $ b: tibble[,2] [3 × 2] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;  $ b: tibble [3 × 2] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;   ..$ c: int [1:3] 4 5 6</span>
 <span class="co">#&gt;   ..$ d: int [1:3] 7 8 9</span>
 <span class="co">#&gt;  $ e: int [1:3] 10 11 12</span></code></pre></div>
@@ -203,7 +203,7 @@
 </div>
 <div id="setup" class="section level2">
 <h2 class="hasAnchor">
-<a href="#setup" class="anchor"></a>Setup</h2>
+<a href="#setup" class="anchor" aria-hidden="true"></a>Setup</h2>
 <p>Most of the work for formatting actually happens in <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code>. The desired output width is baked into the setup object and must be available when calling. Setup objects print like a tibble but with a clear separation of header, body, and footer.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="va">tbl</span>, width <span class="op">=</span> <span class="fl">24</span><span class="op">)</span>
@@ -240,7 +240,7 @@
   <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"tbl_format_setup"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-</details><p>The default implementation converts the input to a data frame via <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame(head(x))</a></code>, and returns an object constructed with <code><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup()</a></code> that contains the data frame and additional information. If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.</p>
+</details><p>The default implementation converts the input to a data frame via <code>as.data.frame(head(x))</code>, and returns an object constructed with <code><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup()</a></code> that contains the data frame and additional information. If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.</p>
 <details><p><summary>Source code of <code>pillar:::tbl_format_setup.tbl()</code></summary></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
@@ -315,7 +315,7 @@
 </div>
 <div id="header-body-footer" class="section level2">
 <h2 class="hasAnchor">
-<a href="#header-body-footer" class="anchor"></a>Header, body, footer</h2>
+<a href="#header-body-footer" class="anchor" aria-hidden="true"></a>Header, body, footer</h2>
 <p>The components of a tibble are formatted with <code>tbl_format_*()</code> generics, which also dispatch on the container to allow extension or overrides. They return a character vector, with one element per line printed. The setup object is required.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tbl_format_header.html">tbl_format_header</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span>
@@ -371,7 +371,7 @@
 </div>
 <div id="colonnade" class="section level2">
 <h2 class="hasAnchor">
-<a href="#colonnade" class="anchor"></a>Colonnade</h2>
+<a href="#colonnade" class="anchor" aria-hidden="true"></a>Colonnade</h2>
 <p>The internal function <code>ctl_colonnade()</code> composes the body. It performs the following tasks:</p>
 <ol style="list-style-type: decimal">
 <li>Create a pillar object for every column that fits, using <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code>, <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and ultimately <code><a href="../reference/pillar.html">pillar()</a></code> and <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code>
@@ -387,11 +387,11 @@
 </div>
 <div id="creating-pillar-objects" class="section level2">
 <h2 class="hasAnchor">
-<a href="#creating-pillar-objects" class="anchor"></a>Creating pillar objects</h2>
+<a href="#creating-pillar-objects" class="anchor" aria-hidden="true"></a>Creating pillar objects</h2>
 <p>Each column in the tibble is passed to <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code>, which eventually calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> once or several times.</p>
 <div id="compound-pillars" class="section level3">
 <h3 class="hasAnchor">
-<a href="#compound-pillars" class="anchor"></a>Compound pillars</h3>
+<a href="#compound-pillars" class="anchor" aria-hidden="true"></a>Compound pillars</h3>
 <p>The <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> generic dispatches on the container:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
@@ -428,7 +428,7 @@
 </div>
 <div id="simple-pillars" class="section level3">
 <h3 class="hasAnchor">
-<a href="#simple-pillars" class="anchor"></a>Simple pillars</h3>
+<a href="#simple-pillars" class="anchor" aria-hidden="true"></a>Simple pillars</h3>
 <p>The <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> method is called for columns that are not data frames or arrays, and also dispatches over the container.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
@@ -462,7 +462,7 @@
 </div>
 <div id="components" class="section level3">
 <h3 class="hasAnchor">
-<a href="#components" class="anchor"></a>Components</h3>
+<a href="#components" class="anchor" aria-hidden="true"></a>Components</h3>
 <p>Both compound and simple pillar objects share the same structure and are ultimately constructed with <code><a href="../reference/new_pillar.html">new_pillar()</a></code>.</p>
 <details><p><summary>Source code of <code><a href="../reference/new_pillar.html">new_pillar()</a></code></summary></p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
@@ -488,7 +488,7 @@
 </div>
 <div id="formatting-pillars" class="section level2">
 <h2 class="hasAnchor">
-<a href="#formatting-pillars" class="anchor"></a>Formatting pillars</h2>
+<a href="#formatting-pillars" class="anchor" aria-hidden="true"></a>Formatting pillars</h2>
 <p>When a pillar object is constructed, it has a minimum a desired (maximum) width. Because it depends on the number and width of other pillar objects that may not be even constructed, the final width is not known yet. It is passed to <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code>, which uses the desired width if empty:</p>
 <details><p><summary>Source code of <code>pillar:::format.pillar()</code></summary></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
