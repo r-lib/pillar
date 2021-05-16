@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.1
+
+- Same as previous version.
+
+
 # pillar 1.6.0.9002
 
 - Bump required versions of ellipsis and vctrs to avoid warning during package load.
