@@ -2,22 +2,8 @@
 
 # pillar 1.6.1
 
-- Same as previous version.
-
-
-# pillar 1.6.0.9002
-
 - Bump required versions of ellipsis and vctrs to avoid warning during package load.
-
-
-# pillar 1.6.0.9001
-
 - `obj_sum()` no longer includes shape twice (#315).
-
-
-# pillar 1.6.0.9000
-
-- Same as previous version.
 
 
 # pillar 1.6.0
