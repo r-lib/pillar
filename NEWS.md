@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.0.9002
+
+- Bump required versions of ellipsis and vctrs to avoid warning during package load.
+
+
 # pillar 1.6.0.9001
 
 - `obj_sum()` no longer includes shape twice (#315).
