@@ -76,9 +76,9 @@ navbar:
       menu:
       - text: Controlling display of numbers
         href: articles/numbers.html
-      - text: Custom formatting
-        href: articles/digits.html
       - text: "Significant figures and scientific notation"
+        href: articles/digits.html
+      - text: Custom formatting
         href: articles/extending.html
       - text: 'Printing a tibble: Control and data flow'
         href: articles/printing.html
