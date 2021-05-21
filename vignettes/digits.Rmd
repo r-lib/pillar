@@ -25,6 +25,8 @@ See `?"pillar-package"` for an overview over all options.
 
 ## Digits
 
+### Basic differences
+
 The default for `getOption("digits")` is 7, whereas the `"pillar.sigfig"` option defaults to 3.
 In the default setting, pillar prints the first three digits only (i.e. the digits that represent > 99.9% of the value of the number).
 Another difference is that pillar will show at most the specified number of significant digits, even if space is available.
@@ -36,6 +38,8 @@ c(1.2345, 12.345, 123.45, 1234.5, 12345)
 pillar(c(1.2345, 12.345, 123.45, 1234.5, 12345))
 ```
 
+### Terminal zeros
+
 Terminal zeros are only shown in pillar if there is a nonzero value past the significant digits shown.
 This is in contrast to base R where terminal zeros are always shown if there is space, but hidden if the value is too insignificant:
 
@@ -44,6 +48,8 @@ c(1, 1.00001)
 pillar(c(1, 1.00001))
 ```
 
+### Trailing dot
+
 A trailing decimal separator is shown if there is a fractional part but the integer part already exceeds the significant digits.
 The presence of the decimal separator does **not** indicate that the number is larger, only that there exists a nonzero fractional part:
 
@@ -51,6 +57,8 @@ The presence of the decimal separator does **not** indicate that the number is l
 c(123, 123.45, 567.89)
 pillar(c(123, 123.45, 567.89))
 ```
+
+### Showing more digits
 
 To show more significant digits, set the `"pillar.sigfig"` option to a larger value:
 
@@ -70,6 +78,8 @@ c(1.2345, 12.3456, 123.4567, 1234.5678, 12345.6789)
 pillar(c(1.2345, 12.3456, 123.4567, 1234.5678, 12345.6789))
 ```
 
+### Fixed number of digits
+
 To show a fixed number of decimal digits, use `num()` with a `digits` argument:
 
 ```{r}
@@ -79,6 +89,8 @@ num(c(1.2345, 12.345, 123.45, 1234.5, 12345), digits = 2)
 See `vignette("numbers")` for details.
 
 ## Scientific notation
+
+### When is it used?
 
 Both base R and pillar switch to scientific notation when the decimal representation becomes too wide.
 The larger `getOption("scipen")`, the stronger the resistance to switching to scientific notation.
@@ -108,6 +120,8 @@ pillar(1234567890123)
 pillar(12345678901234)
 pillar(12345678901234.5)
 ```
+
+### Enforce notation
 
 To avoid switching to scientific notation, set the `"pillar.max_dec_width"` option to a large value.
 Note that if the required width is not available to show the column, it will not be shown at all in this case.
