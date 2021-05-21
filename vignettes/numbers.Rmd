@@ -85,12 +85,13 @@ One way to recover is to apply `num()` to the result:
 num(var(x), notation = "eng")
 ```
 
-For automatic recovery, we can also define our version of `var()`, or even override the base implementation:
+For automatic recovery, we can also define our version of `var()`, or even overwrite the base implementation.
+Note that this pattern is still experimental and may be subject to change:
 
 ```{r numbers-16b}
 var_ <- function(x, ...) {
-  out <- var(x, ...)
-  vctrs::vec_restore(out, vctrs::vec_proxy(x))
+  out <- var(vctrs::vec_proxy(x), ...)
+  vctrs::vec_restore(out, x)
 }
 var_(x)
 ```
@@ -102,8 +103,8 @@ The `make_restore()` function defined below is a function factory that consumes 
 make_restore <- function(fun) {
   force(fun)
   function(x, ...) {
-    out <- fun(x, ...)
-    vctrs::vec_restore(out, vctrs::vec_proxy(x))
+    out <- fun(vctrs::vec_proxy(x), ...)
+    vctrs::vec_restore(out, x)
   }
 }
 
