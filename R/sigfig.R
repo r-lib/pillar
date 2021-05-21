@@ -180,7 +180,7 @@ within_tolerance <- function(x, y) {
   "!!!!!!DEBUG `v(l2y)`"
 
   equal <- (l2x == l2y)
-  equal[is.na(equal)] <- FALSE
+  equal[is.na(equal) | x == y] <- FALSE
   out <- equal
   "!!!!!!DEBUG `v(abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]))`"
   out[equal] <- abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]) <= eps_2
