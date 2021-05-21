@@ -153,7 +153,7 @@ tibble(
 
 ### formattable
 
-```{r numbers-18}
+```{r numbers-18, error = TRUE}
 library(formattable)
 
 pillar_shaft.formattable <- function(x, ...) {
