@@ -5,8 +5,8 @@
     Output
       <pillar>
       <int6>
-        1e12
-        1e12
+        0   
+        1e11
         1e12
        NA   
     Code
@@ -14,8 +14,8 @@
     Output
       <pillar>
       <int64>
-         1e12
-         1e12
+         0   
+         1e11
          1e12
         NA   
     Code
@@ -23,8 +23,8 @@
     Output
       <pillar>
        <int64>
-          1e12
-          1e12
+          0   
+          1e11
           1e12
          NA   
     Code
@@ -32,8 +32,8 @@
     Output
       <pillar>
         <int64>
-           1e12
-           1e12
+           0   
+           1e11
            1e12
           NA   
     Code
@@ -41,8 +41,8 @@
     Output
       <pillar>
          <int64>
-            1e12
-            1e12
+            0   
+            1e11
             1e12
            NA   
     Code
@@ -50,8 +50,8 @@
     Output
       <pillar>
           <int64>
-             1e12
-             1e12
+             0   
+             1e11
              1e12
             NA   
     Code
@@ -59,8 +59,8 @@
     Output
       <pillar>
            <int64>
-              1e12
-              1e12
+              0   
+              1e11
               1e12
              NA   
     Code
@@ -68,17 +68,17 @@
     Output
       <pillar>
             <int64>
-      1000000000001
+                  0
+       100000000001
       1000000000002
-      1000000000003
                  NA
     Code
       pillar(add_special(x), width = 14)
     Output
       <pillar>
              <int64>
-       1000000000001
+                   0
+        100000000001
        1000000000002
-       1000000000003
                   NA
 
