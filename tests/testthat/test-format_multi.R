@@ -95,6 +95,7 @@ test_that("output test", {
 })
 
 test_that("tests from tibble", {
+  skip_if_not_installed("rlang", "0.4.11.9000")
   local_options(width = 80)
 
   expect_snapshot({
