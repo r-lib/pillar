@@ -174,7 +174,9 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='fu'>new_pillar_title</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Sepal.Length" "Sepal.Width " "Petal.Length" "Petal.Width " "Species     "</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "\033[1mSepal.Length\033[22m" "\033[1mSepal.Width \033[22m"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3] "\033[1mPetal.Length\033[22m" "\033[1mPetal.Width \033[22m"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5] "\033[1mSpecies     \033[22m"</span>
 </code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
