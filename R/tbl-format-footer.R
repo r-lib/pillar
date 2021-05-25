@@ -113,7 +113,7 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
 
 wrap_footer <- function(footer, setup) {
   if (length(footer) == 0) {
-    return()
+    return(character())
   }
 
   footer_string <- pre_dots(paste(footer, collapse = " "))
