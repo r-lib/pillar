@@ -89,10 +89,11 @@ format_footer_cols <- function(x, setup) {
   extra_cols_total <- setup$extra_cols_total
 
   vars <- format_extra_vars(extra_cols, extra_cols_total)
-  paste0(
-    big_mark(extra_cols_total), " ",
-    if (!identical(setup$rows_total, 0L) && nrow(setup$df) > 0) "more ",
-    pluralise("variable(s)", extra_cols), vars
+  c(
+    big_mark(extra_cols_total),
+    if (!identical(setup$rows_total, 0L) && nrow(setup$df) > 0) "more",
+    pluralise("variable(s):", extra_cols),
+    vars
   )
 }
 
@@ -106,7 +107,8 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
   out <- gsub(NBSP, "\\\\U00a0", out)
   out <- gsub(" ", NBSP, out)
 
-  paste0(": ", collapse(out))
+  out[-length(out)] <- paste0(out[-length(out)], ",")
+  out
 }
 
 pre_dots <- function(x) {
