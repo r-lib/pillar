@@ -39,8 +39,12 @@ tbl_format_footer.pillar_tbl_format_setup <- function(x, ...) {
 
 #' @export
 tbl_format_footer.tbl <- function(x, setup, ...) {
-  footer <- pre_dots(format_footer(x, setup))
-  footer_comment <- split_lines(format_comment(footer, width = setup$width))
+  footer <- format_footer(x, setup)
+  if (length(footer) == 0) {
+    return()
+  }
+  footer_string <- pre_dots(paste(footer, collapse = " "))
+  footer_comment <- split_lines(format_comment(footer_string, width = setup$width))
   style_subtle(footer_comment)
 }
 
@@ -62,7 +66,7 @@ format_footer <- function(x, setup) {
     }
   }
 
-  paste(c("with", extra), collapse = " ")
+  c("with", extra)
 }
 
 format_footer_rows <- function(x, setup) {
