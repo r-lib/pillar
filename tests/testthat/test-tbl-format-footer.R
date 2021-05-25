@@ -16,3 +16,12 @@ test_that("wrapping column names with spaces in the footer", {
     ))
   })
 })
+
+test_that("overflow", {
+  expect_snapshot({
+    tbl_format_footer(tbl_format_setup(
+      new_tbl(list2(!!!set_names(rep(letters, 6)))),
+      width = 70
+    ))
+  })
+})
