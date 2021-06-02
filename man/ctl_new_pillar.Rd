@@ -3,11 +3,14 @@
 \name{ctl_new_pillar}
 \alias{ctl_new_pillar}
 \alias{ctl_new_compound_pillar}
+\alias{ctl_new_rowid_pillar}
 \title{Customize your tibble subclass}
 \usage{
 ctl_new_pillar(controller, x, width, ..., title = NULL)
 
 ctl_new_compound_pillar(controller, x, width, ..., title = NULL)
+
+ctl_new_rowid_pillar(controller, x, width, has_row_id, ..., title = NULL)
 }
 \arguments{
 \item{controller}{The object of class \code{"tbl"} currently printed.}
@@ -20,6 +23,9 @@ in \code{ctl_new_compound_pillar()}}
 \item{...}{These dots are for future extensions and must be empty.}
 
 \item{title}{The title, derived from the name of the column in the data}
+
+\item{has_row_id}{Logical flag indicating whether to construct a row ID
+pillar}
 }
 \description{
 Gain full control over the appearance of the pillars of your tibble subclass

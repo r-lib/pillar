@@ -110,6 +110,26 @@ ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
   UseMethod("ctl_new_compound_pillar")
 }
 
+#' @param has_row_id Logical flag indicating whether to construct a row ID
+#' pillar
+#' @rdname ctl_new_pillar
+#' @export
+ctl_new_rowid_pillar <- function(controller, x, width, has_row_id, ..., title = NULL) {
+  "!!!!DEBUG ctl_new_rowid_pillar(`v(width)`, `v(title)`)"
+
+  check_dots_empty()
+
+  if (length(width) == 0) {
+    return(NULL)
+  }
+
+  if (is_false(has_row_id)) {
+    return(NULL)
+  }
+
+  UseMethod("ctl_new_rowid_pillar")
+}
+
 #' @export
 ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   "!!!!DEBUG ctl_new_compound_pillar.tbl(`v(width)`, `v(title)`)"
@@ -130,6 +150,22 @@ ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   "!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"
 
   pillar(x, title, if (!is.null(width)) max0(width))
+}
+
+#' @export
+ctl_new_rowid_pillar.tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+  "!!!!DEBUG ctl_new_rowid_pillar.tbl(`v(width)`, `v(title)`)"
+
+  data <- rif_shaft(nrow(x))
+
+  new_pillar(
+    list(
+      title = "",
+      type = pillar_component(rif_type(identical(has_row_id, "*"))),
+      data = pillar_component(data)
+    ),
+    width = get_cell_widths(data)
+  )
 }
 
 max0 <- function(x) {

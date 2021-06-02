@@ -12,13 +12,13 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     return(new_colonnade_body(list(), extra_cols = x))
   }
 
+  rowid <- ctl_new_rowid_pillar(controller, x, width, has_row_id, title = NULL)
+
   # Reserve space for rowid column in each tier
-  if (!is_false(has_row_id)) {
-    rowid <- rif_shaft(n)
-    rowid_width <- get_cell_widths(rowid)
-  } else {
-    rowid <- NULL
+  if (is.null(rowid)) {
     rowid_width <- 0L
+  } else {
+    rowid_width <- get_cell_widths(rowid)
   }
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
@@ -32,13 +32,12 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
   if (!is.null(rowid)) {
-    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
 
     col_widths_rowid <- as_tbl(data_frame(
       tier = unique(col_widths$tier),
       id = 0L,
       width = rowid_width,
-      pillar = list(rowid_pillar)
+      pillar = list(rowid)
     ))
 
     col_widths <- vec_rbind(col_widths_rowid, col_widths)

@@ -98,20 +98,6 @@ pillar_from_shaft <- function(title, type, data, width) {
   )
 }
 
-rowidformat2 <- function(data, names, has_star) {
-  out <- map(set_names(names), function(.x) "")
-
-  if ("type" %in% names) {
-    out$type <- pillar_component(rif_type(has_star))
-  }
-
-  if ("data" %in% names) {
-    out$data <- pillar_component(data)
-  }
-
-  new_pillar(out)
-}
-
 #' Construct a custom pillar object
 #'
 #' @description
