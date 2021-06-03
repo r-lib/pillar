@@ -156,19 +156,23 @@ ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
 ctl_new_rowid_pillar.tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
   "!!!!DEBUG ctl_new_rowid_pillar.tbl(`v(width)`, `v(title)`)"
 
-  data <- rif_shaft(nrow(x))
-
-  names <- names(
+  template <- names(
     ctl_new_pillar(controller, vector(), width, title = title)
   )
 
-  out <- map(set_names(names), function(.x) "")
+  if (!length(template)) {
+    return(NULL)
+  }
 
-  if ("type" %in% names) {
+  data <- rif_shaft(nrow(x))
+
+  out <- map(set_names(template), function(.x) "")
+
+  if ("type" %in% template) {
     out$type <- pillar_component(rif_type(identical(has_row_id, "*")))
   }
 
-  if ("data" %in% names) {
+  if ("data" %in% template) {
     out$data <- pillar_component(data)
   }
 
