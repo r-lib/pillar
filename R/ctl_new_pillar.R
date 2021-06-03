@@ -158,14 +158,21 @@ ctl_new_rowid_pillar.tbl <- function(controller, x, width, has_row_id, ..., titl
 
   data <- rif_shaft(nrow(x))
 
-  new_pillar(
-    list(
-      title = "",
-      type = pillar_component(rif_type(identical(has_row_id, "*"))),
-      data = pillar_component(data)
-    ),
-    width = get_cell_widths(data)
+  names <- names(
+    ctl_new_pillar(controller, vector(), width, title = title)
   )
+
+  out <- map(set_names(names), function(.x) "")
+
+  if ("type" %in% names) {
+    out$type <- pillar_component(rif_type(identical(has_row_id, "*")))
+  }
+
+  if ("data" %in% names) {
+    out$data <- pillar_component(data)
+  }
+
+  new_pillar(out, width = get_cell_widths(data))
 }
 
 max0 <- function(x) {
