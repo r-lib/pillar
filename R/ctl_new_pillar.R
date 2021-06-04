@@ -84,6 +84,49 @@
 #'   list(a = 1:3, b = letters[1:3]),
 #'   class = c("line_tbl", "tbl")
 #' )
+#'
+#' ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+#'   out <- NextMethod()
+#'   new_pillar(
+#'     list(
+#'       title = out$title,
+#'       type = out$type,
+#'       lines = new_pillar_component(list(lines("=")), width = 1),
+#'       data = out$data
+#'     ),
+#'     width = as.integer(floor(log10(max(nrow(x), 1))) + 1)
+#'   )
+#' }
+#'
+#' vctrs::new_data_frame(
+#'   list(a = 1:3, b = letters[1:3]),
+#'   class = c("line_tbl", "tbl")
+#' )
+#'
+#' ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+#'   out <- NextMethod()
+#'   rowid <- utils::as.roman(seq_len(nrow(x)))
+#'   width <- max(nchar(as.character(rowid)))
+#'   new_pillar(
+#'     list(
+#'       title = out$title,
+#'       type = out$type,
+#'       data = pillar_component(
+#'         new_pillar_shaft(list(row_ids = rowid),
+#'           width = width,
+#'           class = c("tbl_rif_shaft", "pillar_rif_shaft")
+#'         )
+#'       )
+#'     ),
+#'     width = width
+#'   )
+#' }
+#'
+#' vctrs::new_data_frame(
+#'   list(a = 1:3, b = letters[1:3]),
+#'   class = c("roman_tbl", "tbl")
+#' )
+#'
 ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
   "!!!!DEBUG ctl_new_pillar(`v(width)`, `v(title)`)"
 
