@@ -341,14 +341,10 @@ get_tier_widths <- function(width, ncol, rowid_width, tier_width = getOption("wi
 colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
   max_tier_width <- max(tier_widths)
 
-  col_df <- data.frame(
-    id = seq_along(pillars),
-    max_widths = pmin(map_int(map(pillars, get_widths), max), max_tier_width),
-    min_widths = map_int(map(pillars, get_min_widths), max),
-    row.names = NULL
-  )
+  max_widths <- pmin(map_int(map(pillars, get_widths), max), max_tier_width)
+  min_widths <- map_int(map(pillars, get_min_widths), max)
 
-  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
+  ret <- colonnade_compute_tiered_col_widths_df(max_widths, min_widths, tier_widths)
   ret$pillar <- pillars
   ret
 }
@@ -356,8 +352,11 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
 #' @rdname colonnade
 #' @usage NULL
 #' @aliases NULL
-colonnade_compute_tiered_col_widths_df <- function(col_df, tier_widths, fixed_tier_df) {
+colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_widths) {
   "!!!!!DEBUG colonnade_compute_tiered_col_widths_df(`v(tier_widths)`)"
+
+  id <- seq_along(max_widths)
+  col_df <- data.frame(id, max_widths, min_widths, row.names = NULL)
 
   #' @details
   #' For fitting pillars in one or more tiers, first a check is made
