@@ -8,7 +8,6 @@
 #' @importFrom vctrs obj_print_footer
 #' @importFrom vctrs obj_print_header
 #' @importFrom vctrs obj_print_data
-#' @importFrom vctrs s3_register
 #' @importFrom vctrs vec_arith
 #' @importFrom vctrs vec_arith.numeric
 #' @importFrom vctrs vec_arith_base

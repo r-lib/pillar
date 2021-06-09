@@ -182,6 +182,9 @@ within_tolerance <- function(x, y) {
   equal <- (l2x == l2y)
   equal[is.na(equal)] <- FALSE
   out <- equal
+
+  # Work around integer64 problem
+  equal[x == y] <- FALSE
   "!!!!!!DEBUG `v(abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]))`"
   out[equal] <- abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]) <= eps_2
   out
