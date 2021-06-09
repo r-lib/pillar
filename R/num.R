@@ -185,12 +185,12 @@ vec_arith.pillar_num <- function(op, x, y, ...) {
 vec_arith.pillar_num.default <- function(op, x, y, ...) {
   "!!!!DEBUG vec_arith.pillar_num.default(`v(op)`)"
   stopifnot(is.numeric(x), is.numeric(y))
-  out <- vec_arith_base(op, x, y)
+  out <- vec_arith_base(op, vec_proxy(x), vec_proxy(y))
 
   if (inherits(x, "pillar_num")) {
-    vec_restore(out, vec_proxy(x))
+    vec_restore(out, x)
   } else {
-    vec_restore(out, vec_proxy(y))
+    vec_restore(out, y)
   }
 }
 #' @method vec_arith.pillar_num MISSING
@@ -199,9 +199,9 @@ vec_arith.pillar_num.MISSING <- function(op, x, y, ...) {
   "!!!!DEBUG vec_arith.pillar_num.MISSING(`v(op)`)"
   stopifnot(is.numeric(x))
   # FIXME
-  out <- vec_arith_base(op, 0, x)
+  out <- vec_arith_base(op, 0, vec_proxy(x))
 
-  vec_restore(out, vec_proxy(x))
+  vec_restore(out, x)
 }
 
 #' @method vec_arith.numeric pillar_num
@@ -214,10 +214,10 @@ vec_math.pillar_num <- function(op, x, ...) {
   "!!!!DEBUG vec_math(`v(op)`)"
 
   stopifnot(is.numeric(x))
-  out <- vec_math_base(op, x)
+  out <- vec_math_base(op, vec_proxy(x))
 
   if (is.numeric(out)) {
-    out <- vec_restore(out, vec_proxy(x))
+    out <- vec_restore(out, x)
   }
 
   out
@@ -358,9 +358,9 @@ vec_cast.double.pillar_num <- function(x, to, ...) {
 }
 #' @export
 vec_cast.pillar_num.double <- function(x, to, ...) {
-  vec_restore(x, vec_proxy(to))
+  vec_restore(vec_proxy(x), to)
 }
 #' @export
 vec_cast.pillar_num.integer <- function(x, to, ...) {
-  vec_restore(as.numeric(x), vec_proxy(to))
+  vec_restore(as.numeric(x), to)
 }
