@@ -116,8 +116,32 @@ wrap_footer <- function(footer, setup) {
     return(character())
   }
 
-  footer_string <- pre_dots(paste(footer, collapse = " "))
-  split_lines(format_comment(footer_string, width = setup$width))
+  widths <- pmin(get_extent(footer), setup$width - 4L)
+  # extra_width <- get_extent(cli::symbol$ellipsis) + 1L # space, ellipsis
+  extra_width <- 1 + 1L # space, ellipsis
+  if (length(footer) == 1) {
+    tier_widths <- setup$width - 2 - 2 * extra_width
+  } else {
+    tier_widths <- c(
+      setup$width - 2 - extra_width, # pre_dots
+      rep(setup$width - 4, length(footer) - 2),
+      setup$width - 4 - extra_width
+    )
+  }
+
+  # FIXME: Make configurable
+  tier_widths <- head(tier_widths, 5)
+
+  wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
+  wrap <- wrap[wrap$tier != 0, ]
+  split <- split(footer[wrap$id], wrap$tier)
+  split[[1]] <- c(cli::symbol$ellipsis, split[[1]])
+  if (nrow(wrap) < length(footer)) {
+    split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
+  }
+  split <- imap(split, function(x, y) c("#", if (y != 1) " ", x))
+
+  map_chr(split, paste, collapse = " ")
 }
 
 pre_dots <- function(x) {
