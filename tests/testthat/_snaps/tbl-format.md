@@ -64,10 +64,10 @@
       8  24.4     4  147.    62
       # ... with 24 more rows, and
       #   7 more variables:
-      #   drat <dbl>, wt <dbl>,
-      #   qsec <dbl>, vs <dbl>,
-      #   am <dbl>, gear <dbl>,
-      #   carb <dbl>
+      #   drat <dbl>, wt <dbl>,
+      #   qsec <dbl>, vs <dbl>,
+      #   am <dbl>, gear <dbl>,
+      #   carb <dbl>
     Code
       print(as_tbl(mtcars), n = 30)
     Output
