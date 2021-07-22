@@ -4,9 +4,10 @@
 
 - revdepcheck for adding ellipsis to methods
 - Update utf8
+- Release blob under r-dbi
 - Avoid `requireNamespace()` in `@examplesIf`
 - Use `attr(exact = TRUE)` for speed
-- LTR/RTL: <https://github.com/tidyverse/tibble/issues/433>
+- Milestone: <https://github.com/r-lib/pillar/milestone/11>
 - Discuss:
     - Add convenience arguments to `print.tbl()`? <https://github.com/tidyverse/tibble/issues/637>
 - Breaking changes
