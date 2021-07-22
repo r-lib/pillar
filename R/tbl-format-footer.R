@@ -120,7 +120,7 @@ wrap_footer <- function(footer, setup) {
   max_extent <- setup$width - 1L
 
   # FIXME: Make n_tiers configurable
-  tier_widths <- pmax(get_footer_tier_widths(footer, max_extent, n_tiers = Inf), 0)
+  tier_widths <- get_footer_tier_widths(footer, max_extent, n_tiers = Inf)
 
   # show optuput even if too wide
   widths <- pmin(get_extent(footer), max_extent - 4L)

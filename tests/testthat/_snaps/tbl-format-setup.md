@@ -13,13 +13,6 @@
       #   3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with
-      #   3
-      #   more
-      #   variables:
-      #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>,
-      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 6)
     Output
