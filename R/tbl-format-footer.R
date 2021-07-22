@@ -119,7 +119,7 @@ wrap_footer <- function(footer, setup) {
   # When asking for width = 80, use at most 79 characters
   max_extent <- setup$width - 1L
 
-  tier_widths <- get_footer_tier_widths(footer, max_extent)
+  tier_widths <- pmax(get_footer_tier_widths(footer, max_extent), 0)
 
   # show optuput even if too wide
   widths <- pmin(get_extent(footer), max_extent - 4L)
@@ -128,7 +128,7 @@ wrap_footer <- function(footer, setup) {
   # truncate output that doesn't fit
   wrap <- wrap[wrap$tier != 0, ]
   split <- split(footer[wrap$id], wrap$tier)
-  if (nrow(wrap) < length(footer)) {
+  if (nrow(wrap) < length(footer) && length(split) > 0) {
     split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
   }
   split <- imap(split, function(x, y) c("#", if (y == 1) cli::symbol$ellipsis else " ", x))
