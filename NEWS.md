@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.1.9001
+
+- Fix internal logic around `vec_proxy()` and `vec_restore()` (#316).
+- Fix warning with zero of type `bit64::integer64()` (#319).
+- Fix documentation on usage of `vctrs::vec_proxy()` and `vctrs::vec_restore()` (#322).
+
+
 # pillar 1.6.1.9000
 
 - Same as previous version.
