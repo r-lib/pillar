@@ -61,4 +61,5 @@ Config/testthat/start-first:
     ctl_colonnade_1,
     ctl_colonnade_2
 Remotes: 
+    r-lib/rlang#1243,
     renkun-ken/formattable#154
