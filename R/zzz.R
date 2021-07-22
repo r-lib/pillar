@@ -19,6 +19,7 @@
 #' @importFrom vctrs vec_is
 #' @importFrom vctrs vec_math
 #' @importFrom vctrs vec_math_base
+#' @importFrom vctrs vec_proxy
 #' @importFrom vctrs vec_proxy_compare
 #' @importFrom vctrs vec_proxy_order
 #' @importFrom vctrs vec_ptype_abbr
