@@ -768,8 +768,8 @@
       7  14.3     8  360    245
       8  24.4     4  147.    62
       <tbl_format_footer(setup)>
-      # ... with 24 more rows, and 7
-      #   more variables:
+      # ... with 24 more rows, and
+      #   7 more variables:
       #   drat <dbl>, wt <dbl>,
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>, ...
@@ -884,8 +884,8 @@
       # A data frame: 0 x 2
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with 2 variables: a <chr>,
-      #   b <lgl>
+      # ... with 2 variables:
+      #   a <chr>, b <lgl>
     Code
       # No columns
       tbl_format_setup(as_tbl(trees[character()]), width = 30, n = 5L)
@@ -905,7 +905,8 @@
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
       # ... with 3 variables:
-      #   Girth <dbl>, Height <dbl>,
+      #   Girth <dbl>,
+      #   Height <dbl>,
       #   Volume <dbl>
     Code
       # No columns, unknown
@@ -916,7 +917,8 @@
       # A data frame: ?? x 0
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with at least 5 rows total
+      # ... with at least 5 rows
+      #   total
     Code
       # Long table, unknown
       tbl_format_setup(as_unknown_rows(new_tbl(list(a = seq.int(10000)))), n = 5L,

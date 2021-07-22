@@ -11,10 +11,10 @@
     Output
       [1m<tbl_format_footer(setup)>[22m
       [90m# ... with 22 more variables:[39m
-      [90m#   e <chr>, f <chr>, g <chr>,[39m
-      [90m#   h <chr>, i <chr>, j <chr>,[39m
-      [90m#   k <chr>, l <chr>, m <chr>,[39m
-      [90m#   n <chr>, o <chr>, p <chr>, ...[39m
+      [90m#   e <chr>, f <chr>,[39m
+      [90m#   g <chr>, h <chr>,[39m
+      [90m#   i <chr>, j <chr>,[39m
+      [90m#   k <chr>, l <chr>, ...[39m
 
 # wrapping column names with spaces in the footer
 
@@ -59,5 +59,5 @@
       #   p <chr>, q <chr>, r <chr>, s <chr>, t <chr>, u <chr>, v <chr>,
       #   w <chr>, x <chr>, y <chr>, z <chr>, a <chr>, b <chr>, c <chr>,
       #   d <chr>, e <chr>, f <chr>, g <chr>, h <chr>, i <chr>, j <chr>,
-      #   k <chr>, l.1 <chr>, m.1 <chr>, n.1 <chr>, o.1 <chr>, p.1 <chr>, ...
+      #   k <chr>, l.1 <chr>, m.1 <chr>, n.1 <chr>, o.1 <chr>, ...
 

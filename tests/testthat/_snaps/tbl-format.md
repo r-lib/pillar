@@ -62,8 +62,8 @@
       6  18.1     6  225    105
       7  14.3     8  360    245
       8  24.4     4  147.    62
-      # ... with 24 more rows, and 7
-      #   more variables:
+      # ... with 24 more rows, and
+      #   7 more variables:
       #   drat <dbl>, wt <dbl>,
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>, ...

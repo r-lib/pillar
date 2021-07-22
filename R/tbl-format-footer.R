@@ -116,21 +116,24 @@ wrap_footer <- function(footer, setup) {
     return(character())
   }
 
-  widths <- pmin(get_extent(footer), setup$width - 4L)
-  # extra_width <- get_extent(cli::symbol$ellipsis) + 1L # space, ellipsis
-  extra_width <- 1 + 1L # space, ellipsis
-  if (length(footer) == 1) {
-    tier_widths <- setup$width - 2 - 2 * extra_width
-  } else {
-    tier_widths <- c(
-      setup$width - 2 - extra_width, # pre_dots
-      rep(setup$width - 4, length(footer) - 2),
-      setup$width - 4 - extra_width
-    )
-  }
+  # When asking for width = 80, use at most 79 characters
+  max_extent <- setup$width - 1L
+
+  widths <- pmin(get_extent(footer), max_extent - 4L)
+  extra_width <- get_extent(cli::symbol$ellipsis) + 1L # space, ellipsis
 
   # FIXME: Make configurable
-  tier_widths <- head(tier_widths, 5)
+  n_tiers <- min(length(footer), 5)
+
+  if (n_tiers == 1) {
+    tier_widths <- max_extent - 2 - 2 * extra_width
+  } else {
+    tier_widths <- c(
+      max_extent - 2 - extra_width,
+      rep(max_extent - 4, n_tiers - 2),
+      max_extent - 4 - extra_width
+    )
+  }
 
   wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
   wrap <- wrap[wrap$tier != 0, ]
