@@ -27,6 +27,6 @@ tbl_sum.default <- function(x, ...) {
 }
 
 #' @export
-tbl_sum.tbl <- function(x) {
+tbl_sum.tbl <- function(x, ...) {
   c("A data frame" = dim_desc(x))
 }
