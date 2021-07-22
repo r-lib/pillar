@@ -66,7 +66,8 @@
       #   7 more variables:
       #   drat <dbl>, wt <dbl>,
       #   qsec <dbl>, vs <dbl>,
-      #   am <dbl>, gear <dbl>, ...
+      #   am <dbl>, gear <dbl>,
+      #   carb <dbl>
     Code
       print(as_tbl(mtcars), n = 30)
     Output

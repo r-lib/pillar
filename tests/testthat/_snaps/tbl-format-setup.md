@@ -17,7 +17,9 @@
       #   3
       #   more
       #   variables:
-      #   column_zero_zero <dbl>, ...
+      #   column_zero_zero <dbl>,
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 6)
     Output
@@ -91,7 +93,8 @@
       #   3 more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>, ...
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 12)
     Output
@@ -106,7 +109,8 @@
       #   3 more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>, ...
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 13)
     Output
@@ -121,7 +125,8 @@
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>, ...
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 14)
     Output
@@ -136,7 +141,8 @@
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>, ...
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 15)
     Output
@@ -151,7 +157,8 @@
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>, ...
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 16)
     Output
@@ -165,7 +172,8 @@
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>, ...
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 17)
     Output
@@ -179,7 +187,8 @@
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   col_01 <tbl[,2]>, ...
+      #   col_01 <tbl[,2]>,
+      #   col_04 <ord>
     Code
       tbl_format_setup(x, width = 18)
     Output
@@ -734,7 +743,8 @@
       #   7 more variables:
       #   drat <dbl>, wt <dbl>,
       #   qsec <dbl>, vs <dbl>,
-      #   am <dbl>, gear <dbl>, ...
+      #   am <dbl>, gear <dbl>,
+      #   carb <dbl>
     Code
       tbl_format_setup(as_tbl(trees), width = 30, n = 100)
     Output

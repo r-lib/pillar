@@ -119,7 +119,8 @@ wrap_footer <- function(footer, setup) {
   # When asking for width = 80, use at most 79 characters
   max_extent <- setup$width - 1L
 
-  tier_widths <- pmax(get_footer_tier_widths(footer, max_extent), 0)
+  # FIXME: Make n_tiers configurable
+  tier_widths <- pmax(get_footer_tier_widths(footer, max_extent, n_tiers = Inf), 0)
 
   # show optuput even if too wide
   widths <- pmin(get_extent(footer), max_extent - 4L)
@@ -136,11 +137,10 @@ wrap_footer <- function(footer, setup) {
   map_chr(split, paste, collapse = " ")
 }
 
-get_footer_tier_widths <- function(footer, max_extent) {
+get_footer_tier_widths <- function(footer, max_extent, n_tiers) {
   extra_width <- get_extent(cli::symbol$ellipsis) + 1L # space, ellipsis
 
-  # FIXME: Make configurable
-  n_tiers <- min(length(footer), 5)
+  n_tiers <- min(length(footer), n_tiers)
 
   if (n_tiers == 1) {
     max_extent - 2 - 2 * extra_width
