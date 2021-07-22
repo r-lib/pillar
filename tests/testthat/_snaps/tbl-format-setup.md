@@ -1,6 +1,19 @@
 # output test
 
     Code
+      tbl_format_setup(x, width = 4)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A
+      #   data
+      #   frame:
+      #   3
+      #   x
+      #   3
+      <tbl_format_body(setup)>
+      <tbl_format_footer(setup)>
+    Code
       tbl_format_setup(x, width = 5)
     Output
       <pillar_tbl_format_setup>

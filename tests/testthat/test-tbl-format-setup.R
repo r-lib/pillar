@@ -6,6 +6,7 @@ test_that("output test", {
   ))
 
   expect_snapshot({
+    tbl_format_setup(x, width = 4)
     tbl_format_setup(x, width = 5)
     tbl_format_setup(x, width = 6)
     tbl_format_setup(x, width = 7)
