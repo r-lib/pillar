@@ -107,11 +107,7 @@ colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, tier_widths) 
   min_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_min_widths)))
   min_widths <- pmin(min_widths, max_tier_width)
 
-  id <- seq_along(max_widths)
-
-  col_df <- data.frame(id, max_widths, min_widths, row.names = NULL)
-
-  ret <- colonnade_compute_tiered_col_widths_df(col_df, tier_widths, data.frame(tier = integer()))
+  ret <- colonnade_compute_tiered_col_widths_df(max_widths, min_widths, tier_widths)
 
   pillars <- map(ret$id, get_sub_pillar, x = compound_pillar)
   ret$pillar <- pillars

@@ -1,5 +1,5 @@
 new_continuation_shaft <- function(parent) {
-  extra_width <- nchar(cli::symbol$ellipsis) + 1L
+  extra_width <- get_extent(cli::symbol$ellipsis) + 1L
 
   new_pillar_shaft(
     list(parent, extra_width),

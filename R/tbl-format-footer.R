@@ -104,9 +104,6 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
     out <- c(out, cli::symbol$ellipsis)
   }
 
-  out <- gsub(NBSP, "\\\\U00a0", out)
-  out <- gsub(" ", NBSP, out)
-
   out[-length(out)] <- paste0(out[-length(out)], ",")
   out
 }
@@ -116,8 +113,41 @@ wrap_footer <- function(footer, setup) {
     return(character())
   }
 
-  footer_string <- pre_dots(paste(footer, collapse = " "))
-  split_lines(format_comment(footer_string, width = setup$width))
+  # When asking for width = 80, use at most 79 characters
+  max_extent <- setup$width - 1L
+
+  # FIXME: Make n_tiers configurable
+  tier_widths <- get_footer_tier_widths(footer, max_extent, n_tiers = Inf)
+
+  # show optuput even if too wide
+  widths <- pmin(get_extent(footer), max_extent - 4L)
+  wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
+
+  # truncate output that doesn't fit
+  wrap <- wrap[wrap$tier != 0, ]
+  split <- split(footer[wrap$id], wrap$tier)
+  if (nrow(wrap) < length(footer) && length(split) > 0) {
+    split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
+  }
+  split <- imap(split, function(x, y) c("#", if (y == 1) cli::symbol$ellipsis else " ", x))
+
+  map_chr(split, paste, collapse = " ")
+}
+
+get_footer_tier_widths <- function(footer, max_extent, n_tiers) {
+  extra_width <- get_extent(cli::symbol$ellipsis) + 1L # space, ellipsis
+
+  n_tiers <- min(length(footer), n_tiers)
+
+  if (n_tiers == 1) {
+    max_extent - 2 - 2 * extra_width
+  } else {
+    c(
+      max_extent - 2 - extra_width,
+      rep(max_extent - 4, n_tiers - 2),
+      max_extent - 4 - extra_width
+    )
+  }
 }
 
 pre_dots <- function(x) {
