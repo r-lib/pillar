@@ -13,8 +13,11 @@
 #'
 #' @seealso [pillar::type_sum()]
 #' @param x Object to summarise.
+#' @param ... Unused, for extensibility.
 #' @export
-tbl_sum <- function(x) {
+tbl_sum <- function(x, ...) {
+  check_dots_empty()
+
   UseMethod("tbl_sum", x)
 }
 
