@@ -22,7 +22,7 @@ tbl_sum <- function(x, ...) {
 }
 
 #' @export
-tbl_sum.default <- function(x) {
+tbl_sum.default <- function(x, ...) {
   c("Description" = obj_sum(x))
 }
 

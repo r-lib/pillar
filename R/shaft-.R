@@ -221,12 +221,12 @@ pillar_shaft.Surv2 <- function(x, ...) {
 }
 
 # registered in .onLoad()
-type_sum.Surv <- function(x) {
+type_sum.Surv <- function(x, ...) {
   "Surv"
 }
 
 # registered in .onLoad()
-type_sum.Surv2 <- function(x) {
+type_sum.Surv2 <- function(x, ...) {
   "Surv2"
 }
 

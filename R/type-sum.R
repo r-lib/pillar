@@ -21,13 +21,13 @@ type_sum <- function(x, ...) {
 }
 
 #' @export
-type_sum.ordered <- function(x) {
+type_sum.ordered <- function(x, ...) {
   # r-lib/vctrs#323:
   type_sum.default(x)
 }
 
 #' @export
-type_sum.factor <- function(x) {
+type_sum.factor <- function(x, ...) {
   # r-lib/vctrs#323:
   "fct"
 }
@@ -87,7 +87,7 @@ obj_sum <- function(x, ...) {
 }
 
 #' @export
-obj_sum.default <- function(x) {
+obj_sum.default <- function(x, ...) {
   if (!vec_is(x)) {
     type_sum(x)
   } else {
@@ -96,7 +96,7 @@ obj_sum.default <- function(x) {
 }
 
 #' @export
-obj_sum.AsIs <- function(x) {
+obj_sum.AsIs <- function(x, ...) {
   paste0("I(", obj_sum(remove_as_is_class(x)), ")")
 }
 
@@ -121,7 +121,7 @@ size_sum <- function(x, ...) {
 }
 
 #' @export
-size_sum.default <- function(x) {
+size_sum.default <- function(x, ...) {
   if (!vec_is(x)) {
     return("")
   }
