@@ -135,7 +135,7 @@ num <- function(x, ...,
 
 #' @export
 vec_ptype_abbr.pillar_num <- function(x, ...) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
   notation <- pillar_attr$notation
   if (is.null(notation)) {
     notation <- "num"
@@ -337,8 +337,8 @@ vec_ptype2.integer.pillar_num <- function(x, y, ...) {
 
 #' @export
 vec_cast.pillar_num.pillar_num <- function(x, to, ...) {
-  pillar_x <- attr(x, "pillar")
-  pillar_to <- attr(to, "pillar")
+  pillar_x <- attr(x, "pillar", exact = TRUE)
+  pillar_to <- attr(to, "pillar", exact = TRUE)
 
   pillar_x_label <- pillar_x$label
   pillar_to_label <- pillar_to$label

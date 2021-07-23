@@ -116,9 +116,9 @@ pillar_shaft.logical <- function(x, ...) {
 #' @param sigfig
 #'   Deprecated, use [num()] or [set_num_opts()] on the data instead.
 pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
 
-  if (is.null(pillar_attr) && !is.null(attr(x, "class"))) {
+  if (is.null(pillar_attr) && !is.null(attr(x, "class", exact = TRUE))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
@@ -262,7 +262,7 @@ pillar_shaft.POSIXt <- function(x, ...) {
 #' @param min_width
 #'   Deprecated, use [char()] or [set_char_opts()] on the data instead.
 pillar_shaft.character <- function(x, ..., min_width = NULL) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
 
   min_chars <- min_width %||% pillar_attr$min_chars
 

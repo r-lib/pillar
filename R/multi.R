@@ -176,7 +176,7 @@ squeeze_impl <- function(x, width = NULL, ...) {
 get_rowid_from_colonnade <- function(x) {
   has_title <- any(x$names != "")
 
-  has_row_id <- attr(x, "has_row_id")
+  has_row_id <- attr(x, "has_row_id", exact = TRUE)
   if (!is_false(has_row_id) && length(x$data) > 0) {
     rowid <- rowidformat(
       length(x$data[[1]]),
@@ -267,7 +267,7 @@ extra_cols.pillar_squeezed_colonnade <- function(x, ..., n = Inf) {
 }
 
 extra_cols_impl <- function(x, n = NULL) {
-  extra_cols <- attr(x, "extra_cols")
+  extra_cols <- attr(x, "extra_cols", exact = TRUE)
   ret <- rep(NA_character_, length(extra_cols$data))
 
   if (is.null(n)) {
