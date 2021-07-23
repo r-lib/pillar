@@ -52,7 +52,7 @@ NULL
   }
 
   # Necessary to re-parse environment variable
-  if (Sys.getenv("DEBUGME") != "" && requireNamespace("debugme", quietly = TRUE)) {
+  if (Sys.getenv("DEBUGME") != "" && rlang::is_installed("debugme")) {
     # activate_debugme()
     debugme::debugme()
     debug_info()

@@ -33,7 +33,7 @@
 #' @param title The title, derived from the name of the column in the data
 #'
 #' @export
-#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE) && requireNamespace("tibble", quietly = TRUE)
+#' @examplesIf rlang::is_installed("palmerpenguins", quietly = TRUE) && requireNamespace("tibble")
 #' # Create pillar objects
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,
