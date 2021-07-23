@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.1.9002
+
+- Using `attr(exact = TRUE)` everywhere.
+- `is_vector_s3()` is no longer generic (#181).
+
+
 # pillar 1.6.1.9001
 
 - Fix internal logic around `vec_proxy()` and `vec_restore()` (#316).
