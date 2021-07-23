@@ -11,7 +11,7 @@ pillar_shaft.vctrs_vctr <- function(x, ...) {
 
 #' @export
 type_sum.vctrs_vctr <- function(x) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
 
   label <- pillar_attr$label
   if (!is.null(label)) {

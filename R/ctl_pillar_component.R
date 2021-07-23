@@ -54,11 +54,12 @@ pillar_component <- function(x) {
 }
 
 get_cell_widths <- function(x) {
-  attr(x, "width")
+  # FIXME: Choose different name to avoid confusion with get_width()?
+  attr(x, "width", exact = TRUE)
 }
 
 get_cell_min_widths <- function(x) {
-  attr(x, "min_width") %||% attr(x, "width")
+  attr(x, "min_width", exact = TRUE) %||% attr(x, "width", exact = TRUE)
 }
 
 get_sub_pillar <- function(x, i) {
@@ -104,7 +105,7 @@ pillar_format_parts_2 <- function(x, width) {
 
   formatted <- map(x, function(.x) format(.x[[1]], width = width))
 
-  alignment <- attr(formatted[["data"]], "align") %||% "left"
+  alignment <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"
 
   align(unlist(formatted), width = width, align = alignment)
 }

@@ -19,6 +19,6 @@ format.pillar_continuation_shaft <- function(x, width, ...) {
   new_ornament(
     paste0(parent_format, " ", cli::symbol$ellipsis),
     width = width,
-    align = attr(parent_format, "align")
+    align = attr(parent_format, "align", exact = TRUE)
   )
 }
