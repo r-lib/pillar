@@ -40,8 +40,7 @@
 
 
 <meta property="og:title" content="Deprecated functions — deprecated" />
-<meta property="og:description" content="is_vector_s3() returns TRUE if an object represents an S3 vector.
-The default implementation forwards to vctrs::vec_is()." />
+<meta property="og:description" content="is_vector_s3() forwards to vctrs::vec_is()." />
 
 
 <meta name="robots" content="noindex">
@@ -153,8 +152,7 @@ The default implementation forwards to vctrs::vec_is()." />
     </div>
 
     <div class="ref-description">
-    <p><code>is_vector_s3()</code> returns <code>TRUE</code> if an object represents an S3 vector.
-The default implementation forwards to <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>.</p>
+    <p><code>is_vector_s3()</code> forwards to <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>.</p>
     </div>
 
     <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>is_vector_s3</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></code></pre></div>
@@ -164,11 +162,8 @@ The default implementation forwards to <code><a href='https://vctrs.r-lib.org/re
 
     
 
-<p><code>is_vector_s3()</code> is soft-deprecated, because <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>
-provides the same functionality based on a robust framework.
-The generic will remain available for a while but is no longer used.
-Users and implementers are encouraged to ensure that <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>
-is <code>TRUE</code> for their class.</p>
+<p><code>is_vector_s3()</code> is soft-deprecated and no longer generic,
+use <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code> instead.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
