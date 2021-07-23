@@ -47,7 +47,7 @@
 #' @examples
 #' # Display as a vector
 #' num(9:11 * 100 + 0.5)
-#' @examplesIf requireNamespace("tibble", quietly = TRUE)
+#' @examplesIf rlang::is_installed("tibble")
 #'
 #' # Significant figures
 #' tibble::tibble(

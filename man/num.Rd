@@ -85,7 +85,7 @@ useful for composing with other types.
 \examples{
 # Display as a vector
 num(9:11 * 100 + 0.5)
-\dontshow{if (requireNamespace("tibble", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("tibble")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # Significant figures
 tibble::tibble(

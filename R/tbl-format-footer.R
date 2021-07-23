@@ -17,7 +17,7 @@
 #' @inherit tbl_format_body return
 #'
 #' @export
-#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' @examplesIf rlang::is_installed("palmerpenguins")
 #' setup <- tbl_format_setup(palmerpenguins::penguins)
 #' tbl_format_footer(palmerpenguins::penguins, setup)
 #'

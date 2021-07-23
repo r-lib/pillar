@@ -25,7 +25,7 @@
 #' @examples
 #' glimpse(mtcars)
 #'
-#' @examplesIf requireNamespace("nycflights13", quietly = TRUE)
+#' @examplesIf rlang::is_installed("nycflights13")
 #' glimpse(nycflights13::flights)
 #'
 glimpse <- function(x, width = NULL, ...) {

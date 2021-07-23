@@ -2,12 +2,11 @@
 
 ## Next steps
 
-- revdepcheck for adding ellipsis to methods
 - Update utf8
-- Release blob under r-dbi
-- Avoid `requireNamespace()` in `@examplesIf`
+- Release blob
 - Use `attr(exact = TRUE)` for speed
 - Milestone: <https://github.com/r-lib/pillar/milestone/11>
+- revdepcheck for adding ellipsis to methods
 - Discuss:
     - Add convenience arguments to `print.tbl()`? <https://github.com/tidyverse/tibble/issues/637>
 - Breaking changes
