@@ -49,7 +49,7 @@ Implementations should return \code{NULL} if none of the data
 fits the available width.
 }
 \examples{
-\dontshow{if (rlang::is_installed("palmerpenguins", quietly = TRUE) && requireNamespace("tibble")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("palmerpenguins") && requireNamespace("tibble")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Create pillar objects
 ctl_new_pillar(
   palmerpenguins::penguins,
