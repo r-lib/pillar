@@ -56,7 +56,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   out <- map(flat_tiers, format_colonnade_tier_2)
 
-  extra_cols <- x[seq2(length(pillars) + 1L, nc)]
+  extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
   new_colonnade_body(out, extra_cols = extra_cols)
 }
 
