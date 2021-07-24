@@ -23,7 +23,7 @@ keep_empty <- function(fun) {
 #' style_subtle("text")
 style_subtle <- keep_empty(function(x) {
   force(x)
-  if (isTRUE(pillar_option_get_subtle())) {
+  if (isTRUE(get_pillar_option_subtle())) {
     crayon_grey_0.6(x)
   } else {
     x
@@ -39,7 +39,7 @@ style_subtle <- keep_empty(function(x) {
 #' @examples
 #' style_subtle_num(0.01 * 1:3, c(TRUE, FALSE, TRUE))
 style_subtle_num <- function(x, negative) {
-  if (isTRUE(pillar_option_get_subtle_num())) {
+  if (isTRUE(get_pillar_option_subtle_num())) {
     style_subtle(x)
   } else {
     ifelse(negative, style_neg(x), x)
@@ -48,7 +48,7 @@ style_subtle_num <- function(x, negative) {
 
 style_hint <- keep_empty(function(x) {
   force(x)
-  if (isTRUE(pillar_option_get_subtle())) {
+  if (isTRUE(get_pillar_option_subtle())) {
     crayon_grey_0.8(x)
   } else {
     x
@@ -67,7 +67,7 @@ style_spark_na <- function(x) {
 #' @examples
 #' style_bold("Petal.Width")
 style_bold <- keep_empty(function(x) {
-  if (isTRUE(pillar_option_get_bold())) {
+  if (isTRUE(get_pillar_option_bold())) {
     crayon_bold(x)
   } else {
     x
@@ -90,7 +90,7 @@ style_na <- function(x) {
 #' @examples
 #' style_neg("123")
 style_neg <- keep_empty(function(x) {
-  if (isTRUE(pillar_option_get_neg())) {
+  if (isTRUE(get_pillar_option_neg())) {
     crayon_red(x)
   } else {
     x

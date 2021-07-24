@@ -7,13 +7,22 @@ make_option_impl <- function(getter, option_name = NULL, env = caller_env()) {
     stopifnot(is.character(option_name))
   }
   name <- sub(paste0(utils::packageName(env), "."), "", option_name, fixed = TRUE)
+  getter_name <- paste0("get_", utils::packageName(env), "_option_", name)
+  local_setter_name <- paste0("local_", utils::packageName(env), "_option_", name)
+  setter_name <- paste0("set_", utils::packageName(env), "_option_", name)
+
+  local_setter_body <- expr(
+    {
+      !!call2("local_options", !!option_name := sym("value"), .frame = sym("env"))
+      !!call2(getter_name)
+      invisible(out[[1]])
+    }
+  )
 
   setter_body <- expr(
-    if (local) {
-      out <- !!call2("local_options", !!option_name := sym("value"), env = sym("env"))
-      invisible(out[[1]])
-    } else {
+    {
       out <- !!call2("options", !!option_name := sym("value"))
+      !!call2(getter_name)
       invisible(out[[1]])
     }
   )
@@ -24,15 +33,15 @@ make_option_impl <- function(getter, option_name = NULL, env = caller_env()) {
         abort("Can't pass `local` argument if `value` is missing.")
       }
       !!getter_body
-    } else !!setter_body
+    } else if (local) !!local_setter_body
+    else !!setter_body
   })
 
   args <- pairlist2(value = , local = FALSE, env = quote(caller_env()))
 
-  getter_name <- paste0(utils::packageName(env), "_option_get_", name)
   assign(getter_name, new_function(list(), getter_body, env = env), env)
-  setter_name <- paste0(utils::packageName(env), "_option_set_", name)
-  assign(setter_name, new_function(args, setter_body, env = env), env)
+  assign(local_setter_name, new_function(args, local_setter_body, env = env), env)
+  assign(setter_name, new_function(pairlist2(value = ), setter_body, env = env), env)
 
   new_function(args, body, env = env)
 }
