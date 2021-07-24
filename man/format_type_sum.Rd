@@ -40,6 +40,12 @@ pillar(1)
 type_sum.accel <- function(x) {
   I("kg m/s^2")
 }
+
+\dontshow{if (Sys.getenv("IN_PKGDOWN") != "") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Necessary in pkgdown
+registerS3method("type_sum", "accel", type_sum.accel)
+\dontshow{\}) # examplesIf}
+
 accel <- structure(9.81, class = "accel")
 pillar(accel)
 }
