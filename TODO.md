@@ -2,11 +2,12 @@
 
 ## Next steps
 
-- Update utf8
-- Release blob
-- Use `attr(exact = TRUE)` for speed
-- Milestone: <https://github.com/r-lib/pillar/milestone/11>
 - revdepcheck for adding ellipsis to methods
+- Milestone: <https://github.com/r-lib/pillar/milestone/11>
+
+- Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
+    - Get extra width?
+
 - Discuss:
     - Add convenience arguments to `print.tbl()`? <https://github.com/tidyverse/tibble/issues/637>
 - Breaking changes
