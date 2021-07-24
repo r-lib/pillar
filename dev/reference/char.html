@@ -231,7 +231,7 @@ The <code>"pillar.min_chars"</code> option is not consulted.</p></td>
 <span class='r-in'>  <span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='va'>rand_strings</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 10</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    id      some_number_1 some_number_2 some_number_3 some_number_4 some_number_5</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> WJSsxf…             1             2             3             4             5</span>
@@ -249,7 +249,7 @@ The <code>"pillar.min_chars"</code> option is not consulted.</p></td>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Use char() to avoid or control truncation</span></span>
 <span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 10</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    id                                  some_number_1 some_number_2 some_number_3</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;char&gt;</span>                                      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> WJSsxf5RPiDjFRy7iVoadHgnz4uveIpMlA…             1             2             3</span>
@@ -266,7 +266,7 @@ The <code>"pillar.min_chars"</code> option is not consulted.</p></td>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;, some_number_8 &lt;dbl&gt;,</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_9 &lt;dbl&gt;</span></span>
 <span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 10</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    id                                       some_number_1 some_number_2</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;char&gt;</span>                                           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> WJSsxf5RPiDjFRy7iVoadHgnz4uveIpMlA7Qaqjz             1             2</span>
@@ -283,7 +283,7 @@ The <code>"pillar.min_chars"</code> option is not consulted.</p></td>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_5 &lt;dbl&gt;, some_number_6 &lt;dbl&gt;, some_number_7 &lt;dbl&gt;,</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   some_number_8 &lt;dbl&gt;, some_number_9 &lt;dbl&gt;</span></span>
 <span class='r-in'><span class='fu'>data_with_id</span><span class='op'>(</span><span class='fu'>char</span><span class='op'>(</span><span class='va'>rand_strings</span>, min_chars <span class='op'>=</span> <span class='fl'>24</span>, shorten <span class='op'>=</span> <span class='st'>"mid"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 10</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    id                                  some_number_1 some_number_2 some_number_3</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;char&gt;</span>                                      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> WJSsxf5RPiDjFRy7i…nz4uveIpMlA7Qaqjz             1             2             3</span>
@@ -307,7 +307,7 @@ The <code>"pillar.min_chars"</code> option is not consulted.</p></td>
 <span class='r-in'>  front <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"front"</span><span class='op'>)</span>,</span>
 <span class='r-in'>  mid   <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"mid"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 3</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    back                      front                     mid                      </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;char&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;char&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;char&gt;</span>                   </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> Lorem ipsum dolor sit am… … dui, nisl vitae sociis. Lorem ipsum …itae sociis.</span>
@@ -321,7 +321,7 @@ The <code>"pillar.min_chars"</code> option is not consulted.</p></td>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> Sapien congue, dictum ma… …sa sed posuere sagittis. Sapien congu…re sagittis.</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> Interdum ante aenean, ni… …felis ultricies dapibus. Interdum ant…ies dapibus.</span>
 <span class='r-in'><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>abbr <span class='op'>=</span> <span class='fu'>char</span><span class='op'>(</span><span class='va'>lipsum</span>, shorten <span class='op'>=</span> <span class='st'>"abbreviate"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 x 1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 10 × 1</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    abbr                                                                         </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;char&gt;</span>                                                                       </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> Loremipsumdolorsitamet,sitetauctorlacinetiamcommodo!Tinciduntdui,nislvitsocs.</span>
