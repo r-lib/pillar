@@ -33,7 +33,7 @@ new_pillar_title <- function(x, ...) {
 }
 
 get_min_title_width <- function(width) {
-  title_chars <- getOption("pillar.min_title_chars", 15)
+  title_chars <- pillar_option_get_min_title_chars()
   if (!is.numeric(title_chars) || length(title_chars) != 1 || title_chars < 0) {
     stop("Option pillar.min_title_chars must be a nonnegative number", call. = FALSE)
   }
