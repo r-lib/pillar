@@ -101,11 +101,11 @@ pillar_get_min_widths <- function(x) {
 }
 
 pillar_format_parts_2 <- function(x, width) {
-  "!!!!!DEBUG pillar_format_parts_2(`v(width)`)"
-
   formatted <- map(x, function(.x) format(.x[[1]], width = width))
 
-  alignment <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"
+  align <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"
 
-  align(unlist(formatted), width = width, align = alignment)
+  flat <- unlist(formatted)
+  extent <- get_extent(flat)
+  align_impl(flat, width, align, " ", extent)
 }

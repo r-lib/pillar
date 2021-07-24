@@ -55,6 +55,10 @@ align <- function(x, width = NULL, align = c("left", "right"), space = " ") {
   if (is.null(width)) {
     width <- max(extent)
   }
+  align_impl(x, width, align, space, extent)
+}
+
+align_impl <- function(x, width, align, space, extent) {
   spaces <- pmax(width - extent, 0L)
   if (align == "left") {
     paste0(x, strrep(space, spaces))
