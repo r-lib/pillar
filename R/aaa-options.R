@@ -40,8 +40,8 @@ make_option_impl <- function(getter, option_name = NULL, env = caller_env()) {
   args <- pairlist2(value = , local = FALSE, env = quote(caller_env()))
 
   assign(getter_name, new_function(list(), getter_body, env = env), env)
-  assign(local_setter_name, new_function(args, local_setter_body, env = env), env)
-  assign(setter_name, new_function(pairlist2(value = ), setter_body, env = env), env)
+  assign(local_setter_name, new_function(args[c(1, 3)], local_setter_body, env = env), env)
+  assign(setter_name, new_function(args[1], setter_body, env = env), env)
 
   new_function(args, body, env = env)
 }
