@@ -61,7 +61,7 @@ navbar:
       href: index.html
     options:
       text: Options
-      href: "reference/pillar-package.html#package-options"
+      href: "reference/pillar_options.html"
     reference:
       text: Reference
       href: reference/index.html
