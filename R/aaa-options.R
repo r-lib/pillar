@@ -28,7 +28,7 @@ make_option_impl <- function(getter, option_name = NULL, env = caller_env()) {
   )
 
   body <- expr({
-    if (missing(value)) {
+    if (missing(!!sym("value"))) {
       if (!missing(local)) {
         abort("Can't pass `local` argument if `value` is missing.")
       }
