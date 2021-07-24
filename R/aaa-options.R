@@ -13,7 +13,7 @@ make_option_impl <- function(getter, option_name = NULL, env = caller_env()) {
 
   local_setter_body <- expr(
     {
-      !!call2("local_options", !!option_name := sym("value"), .frame = sym("env"))
+      out <- !!call2("local_options", !!option_name := sym("value"), .frame = sym("env"))
       !!call2(getter_name)
       invisible(out[[1]])
     }

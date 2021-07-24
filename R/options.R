@@ -58,7 +58,8 @@ pillar_options <- list2(
     sigfig <- getOption("pillar.sigfig", default = 3L)
     if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
       inform("Option pillar.sigfig must be a positive number greater or equal 1. Resetting to 3.")
-      set_pillar_option_sigfig(3L)
+      sigfig <- 3L
+      set_pillar_option_sigfig(sigfig)
     }
     sigfig
   }),
@@ -81,8 +82,10 @@ pillar_options <- list2(
     min_chars <- getOption("pillar.min_chars", default = 3L)
     if (!is.numeric(min_chars) || length(min_chars) != 1 || min_chars < 3L) {
       inform("Option pillar.min_chars must be a nonnegative number greater or equal 3. Resetting to 3.")
-      set_pillar_option_min_chars(3L)
+      min_chars <- 3L
+      set_pillar_option_min_chars(min_chars)
     }
+    min_chars
   }),
   #' - `max_dec_width`: The maximum allowed width for decimal notation,
   #'     default 13.
