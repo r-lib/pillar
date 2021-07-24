@@ -45,16 +45,3 @@ make_option_impl <- function(getter, option_name = NULL, env = caller_env()) {
 
   new_function(args, body, env = env)
 }
-
-option_usage <- function(env = caller_env()) {
-  pkg_name <- utils::packageName(env)
-  options <- get(paste0(pkg_name, "_options"), env)
-  first_option <- names(options)[[1]]
-
-  c(
-    "@usage",
-    paste0('pillar_options$bold(value, local = FALSE) # same as: options(', pkg_name, ".", first_option, " = value)"),
-    "",
-    paste0('pillar_options$bold()                     # similar to: getOption("', pkg_name, ".", first_option, '")')
-  )
-}

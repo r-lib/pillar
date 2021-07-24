@@ -16,9 +16,26 @@
 #' `pillar_options$foo(value)` is equivalent to
 #' `options(pillar.foo = value)`.
 #'
-#' @eval option_usage()
-#'
 #' @export
+#' @examples
+#' # Default setting:
+#' pillar_options$sigfig()
+#' pillar(1.234567)
+#'
+#' # Change for the duration of the session:
+#' old <- pillar_options$sigfig(6)
+#' pillar(1.234567)
+#'
+#' # Change back to the original value:
+#' pillar_options$sigfig(old)
+#' pillar(1.234567)
+#'
+#' # Local scope:
+#' local({
+#'   pillar_options$sigfig(6, local = TRUE)
+#'   pillar(1.234567)
+#' })
+#' pillar(1.234567)
 #' @section Options for the pillar package:
 pillar_options <- list2(
   # get_pillar_option_bold
