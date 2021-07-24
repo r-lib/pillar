@@ -77,12 +77,6 @@ format_full_pillar_type <- function(x) {
 #'   I("kg m/s^2")
 #' }
 #'
-#' @examplesIf Sys.getenv("IN_PKGDOWN") != ""
-#' # Necessary in pkgdown
-#' registerS3method("type_sum", "accel", type_sum.accel)
-#'
-#' @examples
-#'
 #' accel <- structure(9.81, class = "accel")
 #' pillar(accel)
 format_type_sum <- function(x, width, ...) {
@@ -91,6 +85,11 @@ format_type_sum <- function(x, width, ...) {
   }
 
   UseMethod("format_type_sum")
+}
+
+# https://github.com/r-lib/pkgdown/issues/1540
+type_sum.accel <- function(x) {
+  I("kg m/s^2")
 }
 
 #' @export
