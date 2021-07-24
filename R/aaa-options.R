@@ -1,9 +1,12 @@
-make_option_impl <- function(name, default, env = caller_env()) {
-  option_name <- paste0(utils::packageName(env), ".", name)
+make_option_impl <- function(getter, option_name = NULL, env = caller_env()) {
+  getter_body <- enexpr(getter)
 
-  # Do not change the structure of this expression,
-  # it is used in options_usage()
-  getter_body <- expr(getOption(!!option_name, default = !!default))
+  if (is.null(option_name)) {
+    # Assuming that the call is getOption()
+    option_name <- getter_body[[2]]
+    stopifnot(is.character(option_name))
+  }
+  name <- sub(paste0(utils::packageName(env), "."), "", option_name, fixed = TRUE)
 
   setter_body <- expr(
     if (local) {
@@ -39,17 +42,7 @@ option_usage <- function(env = caller_env()) {
   options <- get(paste0(pkg_name, "_options"), env)
   first_option <- names(options)[[1]]
 
-  first_option_getter <- get(paste0(pkg_name, "_option_get_", first_option), env)
-  first_option_default <- expr_deparse(body(first_option_getter)[[3]])
-
   c(
-    "@details",
-    paste0(
-      'These options can also be queried via [getOption()] and set via [options()] by prefixing them with `',
-      pkg_name, '.` (the package name and a dot). Example: `', pkg_name, '_options$', first_option,
-      '()` is equivalent to `getOption("', pkg_name, '.', first_option,
-      '", default = ', first_option_default, ')`.'
-    ),
     "@usage",
     paste0('pillar_options$bold(value, local = FALSE) # same as: options(', pkg_name, ".", first_option, " = value)"),
     "",

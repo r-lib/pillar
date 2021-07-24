@@ -24,9 +24,13 @@ is returned, invisibly.
 Setting \code{local = TRUE} enables the option for the duration of the
 current stack frame via \code{\link[rlang:local_options]{rlang::local_options()}}.
 
-These options can also be queried via \code{\link[=getOption]{getOption()}} and set via \code{\link[=options]{options()}} by prefixing them with \code{pillar.} (the package name and a dot). Example: \code{pillar_options$bold()} is equivalent to \code{getOption("pillar.bold", default = FALSE)}.
+These options can also be queried via \code{\link[=getOption]{getOption()}} and set via \code{\link[=options]{options()}}
+by prefixing them with \code{pillar.} (the package name and a dot).
+Example: for an option \code{foo},
+\code{pillar_options$foo(value)} is equivalent to
+\code{options(pillar.foo = value)}.
 }
-\section{Options}{
+\section{Options for the pillar package}{
 
 \itemize{
 \item \code{bold}: Use bold font, e.g. for column headers? This currently
@@ -45,7 +49,7 @@ title, default: \code{15}.  Column titles may be truncated up to that width to
 save horizontal space. Set to \code{Inf} to turn off truncation of column
 titles.
 \item \code{min_chars}: The minimum number of characters wide to
-display character columns, default: \code{0}.  Character columns may be
+display character columns, default: \code{3}.  Character columns may be
 truncated up to that width to save horizontal space. Set to \code{Inf} to
 turn off truncation of character columns.
 \item \code{max_dec_width}: The maximum allowed width for decimal notation,
