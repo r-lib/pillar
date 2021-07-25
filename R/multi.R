@@ -407,6 +407,7 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
 #' @aliases NULL
 distribute_pillars <- function(widths, tier_widths) {
   tier <- rep(NA_integer_, length(widths))
+  offset <- rep(NA_integer_, length(widths))
   current_tier <- 1L
   current_x <- 0L
 
@@ -428,16 +429,31 @@ distribute_pillars <- function(widths, tier_widths) {
     }
 
     tier[[i]] <- current_tier
-    current_x <- current_x + widths[[i]] + 1L
+    current_x <- current_x + widths[[i]]
+    offset[[i]] <- current_x
+    current_x <- current_x + 1L
   }
 
-  data_frame(id = seq_along(widths), width = widths, tier = tier)
+  data_frame(id = seq_along(widths), width = widths, tier = tier, offset = offset)
 }
 
 distribute_pillars_rev <- function(widths, tier_widths) {
   ret <- distribute_pillars(rev(widths), rev(tier_widths))
-  ret[2:3] <- ret[rev(seq_along(widths)), 2:3]
-  ret$tier <- length(tier_widths) + 1L - ret$tier
+  ret[2:4] <- ret[rev(seq_along(widths)), 2:4]
+  tier <- length(tier_widths) + 1L - ret$tier
+  ret$tier <- tier
+
+  splits <- unname(split(seq_along(tier), tier))
+  tier_widths <- tier_widths[seq_along(splits)]
+
+  new_offset <- unlist(map2(splits, tier_widths, function(.x, .y) {
+    offsets <- ret$offset[.x]
+    new_offset <-  max(offsets) - offsets
+    new_offset - max(new_offset) + .y
+  }))
+
+  ret$offset <- c(new_offset, rep(NA_integer_, sum(is.na(tier))))
+
   ret
 }
 
