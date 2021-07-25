@@ -395,8 +395,6 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
     cut_point <- cut_point_candidates[[1]] - 1L
   }
 
-  tier_mix_fit <- min_fit_rev$tier[[cut_point]]
-
   max_fit_cut <- max_fit[seq_len(cut_point), ]
   min_fit_cut <- min_fit_rev[seq2(cut_point + 1L, nrow(min_fit_rev)), ]
 
