@@ -22,24 +22,24 @@
         `47`                                           
         <chr>                                          
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefg
-        `25`   `42`   `27`   `44`   `20`   `14`  `36`  `43` 
-        <chr>  <chr>  <chr>  <chr>  <chr>  <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `41`    `26`   `45`    `22`  `9`   `13`  `32`  `31` 
-        <chr>   <chr>  <chr>   <chr> <chr> <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcdef~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `12`   `19`   `48`    `49`   `35`  `3`   `11`  `23` 
-        <chr>  <chr>  <chr>   <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcdef~ Abcde~ Abcd~ Abc   Abcd~ Abcd~
-        `24`   `40`   `15`   `38`  `10`  `46`   `5`   `50`  
-        <chr>  <chr>  <chr>  <chr> <chr> <chr>  <chr> <chr> 
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcde~ Abcde Abcde~
-        `18`    `21`   `6`   `30`    `2`   `7`   `1`   `4`  
-        <chr>   <chr>  <chr> <chr>   <chr> <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcd~ Abcdef~ Ab    Abcd~ A     Abcd 
-        `8`    `17`     `33`        `39`         `37`       
-        <chr>  <chr>    <chr>       <chr>        <chr>      
-      1 Abcde~ Abcdefg~ Abcdefghij~ AbcdefghijA~ Abcdefghij~
+        `25`                      `42`   `27`   `44`   `20` 
+        <chr>                     <chr>  <chr>  <chr>  <chr>
+      1 AbcdefghijAbcdefghijAbcde Abcde~ Abcde~ Abcde~ Abcd~
+        `14`   `36`   `43`   `41`   `26`  `45`   `22`  `9`  
+        <chr>  <chr>  <chr>  <chr>  <chr> <chr>  <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~ Abcd~
+        `13`   `32`   `31`   `12`  `19`  `48`   `49`   `35` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr>  <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcde~ Abcde~ Abcd~
+        `3`   `11`   `23`   `24`   `40`   `15`  `38`   `10` 
+        <chr> <chr>  <chr>  <chr>  <chr>  <chr> <chr>  <chr>
+      1 Abc   Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~
+        `46`    `5`   `50`    `18`   `21`  `6`   `30`  `2`  
+        <chr>   <chr> <chr>   <chr>  <chr> <chr> <chr> <chr>
+      1 Abcdef~ Abcde Abcdef~ Abcde~ Abcd~ Abcd~ Abcd~ Ab   
+        `7`    `1`   `4`   `8`    `17`  `33`   `39`   `37`  
+        <chr>  <chr> <chr> <chr>  <chr> <chr>  <chr>  <chr> 
+      1 Abcde~ A     Abcd  Abcde~ Abcd~ Abcde~ Abcde~ Abcde~
       
       $extra_cols
       named list()
@@ -147,12 +147,12 @@
         `16`             `19`               
         <chr>            <chr>              
       1 AbcdefghijAbcdef AbcdefghijAbcdefghi
-        `15`   `22`   `39`    `10`  `46`   `5`  
-        <chr>  <chr>  <chr>   <chr> <chr>  <chr>
-      1 Abcde~ Abcde~ Abcdef~ Abcd~ Abcde~ Abcde
-        `30`        `8`    `26`      `37`       
-        <chr>       <chr>  <chr>     <chr>      
-      1 Abcdefghij~ Abcde~ Abcdefgh~ Abcdefghij~
+        `15`            `22`     `39`      `10` 
+        <chr>           <chr>    <chr>     <chr>
+      1 AbcdefghijAbcde Abcdefg~ Abcdefgh~ Abcd~
+        `46`    `5`   `30`    `8`   `26`  `37`  
+        <chr>   <chr> <chr>   <chr> <chr> <chr> 
+      1 Abcdef~ Abcde Abcdef~ Abcd~ Abcd~ Abcde~
       
       $extra_cols
       named list()
@@ -224,21 +224,21 @@
         `41`                                 
         <chr>                                
       1 AbcdefghijAbcdefghijAbcdefghijAbcdef~
-        `21`   `4`   `25`   `38`  `48`  `9`  
-        <chr>  <chr> <chr>  <chr> <chr> <chr>
-      1 Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~
-        `24`   `26`   `39`  `20`  `36`  `42` 
+        `21`                  `4`   `25`     
+        <chr>                 <chr> <chr>    
+      1 AbcdefghijAbcdefghijA Abcd  Abcdefgh~
+        `38`   `48`   `9`   `24`  `26`  `39` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `16`   `6`    `11`  `7`   `12`  `1`  
+        `20`   `36`   `42`  `16`  `6`   `11` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcdef Abcd~ Abcd~ Abcd~ A    
-        `46`   `15`   `5`   `8`   `50`  `32` 
+      1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+        `7`    `12`  `1`   `46`   `15`  `5`  
+        <chr>  <chr> <chr> <chr>  <chr> <chr>
+      1 Abcde~ Abcd~ A     Abcde~ Abcd~ Abcde
+        `8`    `50`   `32`  `30`  `49`  `28` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde Abcd~ Abcd~ Abcd~
-        `30`         `49`          `28`      
-        <chr>        <chr>         <chr>     
-      1 AbcdefghijA~ AbcdefghijAb~ Abcdefghi~
+      1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
@@ -256,57 +256,36 @@
         `11`       
         <chr>      
       1 AbcdefghijA
-        `36`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `17`             
-        <chr>            
-      1 AbcdefghijAbcdefg
-        `14`          
-        <chr>         
-      1 AbcdefghijAbcd
-        `31`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `35`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `23`                   
-        <chr>                  
-      1 AbcdefghijAbcdefghijAbc
-        `13`          `6`   
-        <chr>         <chr> 
-      1 AbcdefghijAbc Abcdef
-        `44`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `45`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `22`   `21`  `18`  `33`  `10` 
+        `36`     `17`    `14`  `31`   
+        <chr>    <chr>   <chr> <chr>  
+      1 Abcdefg~ Abcdef~ Abcd~ Abcdef~
+        `35`   `23`  `13`  `6`   `44` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `43`   `2`   `46`  `34`  `3`  
+        `45`   `22`  `21`  `18`  `33` 
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Ab    Abcd~ Abcd~ Abc  
-        `19`   `1`   `38`  `9`   `37` 
+      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+        `10`   `43`  `2`   `46`  `34` 
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ A     Abcd~ Abcd~ Abcd~
-        `5`   `8`    `25`  `49`  `27` 
+      1 Abcde~ Abcd~ Ab    Abcd~ Abcd~
+        `3`   `19`   `1`   `38`  `9`  
         <chr> <chr>  <chr> <chr> <chr>
-      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
-        `29`   `15`  `39`  `24`  `40` 
+      1 Abc   Abcde~ A     Abcd~ Abcd~
+        `37`   `5`   `8`   `25`  `49` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde Abcd~ Abcd~ Abcd~
+        `27`   `29`  `15`  `39`  `24` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `48`   `26`  `47`  `42`  `41` 
+        `40`   `48`  `26`  `47`  `42` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `12`   `28`  `30`  `7`   `16` 
+        `41`   `12`  `28`  `30`  `7`  
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `4`   `50`     `20`    `32`   
-        <chr> <chr>    <chr>   <chr>  
-      1 Abcd  Abcdefg~ Abcdef~ Abcdef~
+        `16`   `4`   `50`  `20`  `32` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd  Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
@@ -408,18 +387,18 @@
         `34`                             
         <chr>                            
       1 AbcdefghijAbcdefghijAbcdefghijAb~
-        `8`    `24`    `29`   `1`   `12` 
-        <chr>  <chr>   <chr>  <chr> <chr>
-      1 Abcde~ Abcdef~ Abcde~ A     Abcd~
-        `2`   `20`    `17`  `35`    `5`  
-        <chr> <chr>   <chr> <chr>   <chr>
-      1 Ab    Abcdef~ Abcd~ Abcdef~ Abcde
-        `19`   `30`    `7`   `26`  `42`  
-        <chr>  <chr>   <chr> <chr> <chr> 
-      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
-        `41`          `39`         `10`  
-        <chr>         <chr>        <chr> 
-      1 AbcdefghijAb~ AbcdefghijA~ Abcde~
+        `8`      `24`        `29`        
+        <chr>    <chr>       <chr>       
+      1 Abcdefgh Abcdefghij~ AbcdefghijA~
+        `1`   `12`   `2`   `20`    `17`  
+        <chr> <chr>  <chr> <chr>   <chr> 
+      1 A     Abcde~ Ab    Abcdef~ Abcde~
+        `35`    `5`   `19`   `30`   `7`  
+        <chr>   <chr> <chr>  <chr>  <chr>
+      1 Abcdef~ Abcde Abcde~ Abcde~ Abcd~
+        `26`   `42`   `41`   `39`   `10` 
+        <chr>  <chr>  <chr>  <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
       
       $extra_cols
       named list()
@@ -437,45 +416,36 @@
         `43`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `1`   `3`   `15`           
-        <chr> <chr> <chr>          
-      1 A     Abc   AbcdefghijAbcde
-        `28`                        
-        <chr>                       
-      1 AbcdefghijAbcdefghijAbcdefgh
-        `12`        
-        <chr>       
-      1 AbcdefghijAb
-        `46`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `34`   `31`  `7`   `11`  `4`  
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd 
-        `44`   `8`   `9`   `5`   `36` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcde Abcd~
-        `22`   `17`  `39`  `18`  `45` 
+        `1`   `3`   `15`     `28`     
+        <chr> <chr> <chr>    <chr>    
+      1 A     Abc   Abcdefg~ Abcdefgh~
+        `12`   `46`  `34`  `31`  `7`  
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `37`   `13`  `29`  `6`   `30` 
+        `11`   `4`   `44`  `8`   `9`  
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd  Abcd~ Abcd~ Abcd~
+        `5`   `36`   `22`  `17`  `39` 
+        <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `18`   `45`  `37`  `13`  `29` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `16`   `20`  `10`  `19`  `26` 
+        `6`    `30`  `16`  `20`  `10` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcdef Abcd~ Abcd~ Abcd~ Abcd~
+        `19`   `26`  `33`  `40`  `35` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `33`   `40`  `35`  `48`  `38` 
+        `48`   `38`  `25`  `2`   `47` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd~ Abcd~ Ab    Abcd~
+        `42`   `41`  `27`  `14`  `21` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `25`   `2`   `47`  `42`  `41` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Ab    Abcd~ Abcd~ Abcd~
-        `27`   `14`  `21`  `24`  `50` 
+        `24`   `50`  `49`  `23`  `32` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `49`       `23`      `32`     
-        <chr>      <chr>     <chr>    
-      1 Abcdefghi~ Abcdefgh~ Abcdefgh~
       
       $extra_cols
       named list()
@@ -493,117 +463,36 @@
         `37`                         
         <chr>                        
       1 AbcdefghijAbcdefghijAbcdefgh~
-        `46`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `21`                  `3`  
-        <chr>                 <chr>
-      1 AbcdefghijAbcdefghijA Abc  
-        `16`            
-        <chr>           
-      1 AbcdefghijAbcdef
-        `39`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `34`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `33`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `10`       `17`             
-        <chr>      <chr>            
-      1 Abcdefghij AbcdefghijAbcdefg
-        `19`               
-        <chr>              
-      1 AbcdefghijAbcdefghi
-        `36`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `45`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `49`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `11`       
-        <chr>      
-      1 AbcdefghijA
-        `50`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `14`          
-        <chr>         
-      1 AbcdefghijAbcd
-        `29`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefghi
-        `44`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `13`         
-        <chr>        
-      1 AbcdefghijAbc
-        `30`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `38`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `32`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `40`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `42`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `1`  
-        <chr>
-      1 A    
-        `31`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `41`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `7`    
-        <chr>  
-      1 Abcdefg
-        `23`                   
-        <chr>                  
-      1 AbcdefghijAbcdefghijAbc
-        `35`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefgh~
-        `28`                        
-        <chr>                       
-      1 AbcdefghijAbcdefghijAbcdefgh
-        `6`   
-        <chr> 
-      1 Abcdef
-        `25`                     
-        <chr>                    
-      1 AbcdefghijAbcdefghijAbcde
-        `2`   `9`       `12`        
-        <chr> <chr>     <chr>       
-      1 Ab    Abcdefghi AbcdefghijAb
-        `15`            `5`  
-        <chr>           <chr>
-      1 AbcdefghijAbcde Abcde
-        `18`              
-        <chr>             
-      1 AbcdefghijAbcdefgh
-        `20`                
-        <chr>               
-      1 AbcdefghijAbcdefghij
-        `27`  `43`  `8`   `47`  `4`  
+        `46`     `21`    `3`   `16`  
+        <chr>    <chr>   <chr> <chr> 
+      1 Abcdefg~ Abcdef~ Abc   Abcde~
+        `39`  `34`  `33`  `10`  `17` 
         <chr> <chr> <chr> <chr> <chr>
-      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd 
-        `48`    `24`    `26`   `22`  
-        <chr>   <chr>   <chr>  <chr> 
-      1 Abcdef~ Abcdef~ Abcde~ Abcde~
+      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `19`  `36`  `45`  `49`  `11` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `50`  `14`  `29`  `44`  `13` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `30`  `38`  `32`  `40`  `42` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `1`   `31`  `41`  `7`   `23` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 A     Abcd~ Abcd~ Abcd~ Abcd~
+        `35`  `28`  `6`   `25`  `2`  
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd~ Abcd~ Abcd~ Abcd~ Ab   
+        `9`   `12`  `15`  `5`   `18` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd~ Abcd~ Abcd~ Abcde Abcd~
+        `20`  `27`  `43`  `8`   `47` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `4`   `48`  `24`  `26`  `22` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd  Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
@@ -621,33 +510,24 @@
         `31`                           
         <chr>                          
       1 AbcdefghijAbcdefghijAbcdefghijA
-        `39`                                   
-        <chr>                                  
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghi
-        `40`                                    
-        <chr>                                   
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghij
-        `30`                           `10`      
-        <chr>                          <chr>     
-      1 AbcdefghijAbcdefghijAbcdefghij Abcdefghij
-        `21`                  `9`       `16`            
-        <chr>                 <chr>     <chr>           
-      1 AbcdefghijAbcdefghijA Abcdefghi AbcdefghijAbcdef
-        `46`   `25`   `15`   `24`  `3`   `50`  `35`  `1`   `12` 
+        `39`              `40`              `30`          `10`  
+        <chr>             <chr>             <chr>         <chr> 
+      1 AbcdefghijAbcdef~ AbcdefghijAbcdef~ AbcdefghijAb~ Abcde~
+        `21`   `9`    `16`   `46`  `25`  `15`  `24`  `3`   `50` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Abc   Abcd~ Abcd~ A     Abcd~
-        `34`   `48`   `4`   `29`   `23`  `37`  `36`  `28`  `43` 
-        <chr>  <chr>  <chr> <chr>  <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `11`   `17`   `32`   `8`   `41`  `13`  `44`  `7`   `38` 
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abc   Abcd~
+        `35`   `1`   `12`   `34`   `48`  `4`   `29`  `23`  `37` 
+        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ A     Abcde~ Abcde~ Abcd~ Abcd  Abcd~ Abcd~ Abcd~
+        `36`   `28`   `43`   `11`  `17`  `32`  `8`   `41`  `13` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `26`   `33`   `20`   `19`  `2`   `18`  `49`  `27`  `47` 
+        `44`   `7`    `38`   `26`  `33`  `20`  `19`  `2`   `18` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Ab    Abcd~ Abcd~ Abcd~ Abcd~
-        `22`      `14`    `6`   `5`   `45`          `42`        
-        <chr>     <chr>   <chr> <chr> <chr>         <chr>       
-      1 Abcdefgh~ Abcdef~ Abcd~ Abcde AbcdefghijAb~ AbcdefghijA~
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Ab    Abcd~
+        `49`   `27`   `47`   `22`  `14`  `6`   `5`   `45`  `42` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abcd~
       
       $extra_cols
       named list()
@@ -861,78 +741,36 @@
         `43`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `23`                   
-        <chr>                  
-      1 AbcdefghijAbcdefghijAbc
-        `22`                  
-        <chr>                 
-      1 AbcdefghijAbcdefghijAb
-        `11`        `6`   
-        <chr>       <chr> 
-      1 AbcdefghijA Abcdef
-        `26`                      
-        <chr>                     
-      1 AbcdefghijAbcdefghijAbcdef
-        `48`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `17`              `7`    
-        <chr>             <chr>  
-      1 AbcdefghijAbcdefg Abcdefg
-        `42`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `36`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `21`                 
-        <chr>                
-      1 AbcdefghijAbcdefghijA
-        `35`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `50`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `13`         
-        <chr>        
-      1 AbcdefghijAbc
-        `19`               
-        <chr>              
-      1 AbcdefghijAbcdefghi
-        `29`                         
-        <chr>                        
-      1 AbcdefghijAbcdefghijAbcdefghi
-        `8`      `15`            `4`  
-        <chr>    <chr>           <chr>
-      1 Abcdefgh AbcdefghijAbcde Abcd 
-        `2`  
-        <chr>
-      1 Ab   
-        `27`                       
-        <chr>                      
-      1 AbcdefghijAbcdefghijAbcdefg
-        `49`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghi~
-        `47`   `30`  `31`  `25`  `28` 
+        `23`     `22`     `11`   `6`  
+        <chr>    <chr>    <chr>  <chr>
+      1 Abcdefg~ Abcdefg~ Abcde~ Abcd~
+        `26`   `48`  `17`  `7`   `42` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `46`   `12`  `32`  `39`  `24` 
+        `36`   `21`  `35`  `50`  `13` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `10`   `45`  `5`   `37`  `14` 
+        `19`   `29`  `8`   `15`  `4`  
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcde Abcd~ Abcd~
-        `40`   `20`  `41`  `44`  `33` 
+      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd 
+        `2`   `27`   `49`  `47`  `30` 
+        <chr> <chr>  <chr> <chr> <chr>
+      1 Ab    Abcde~ Abcd~ Abcd~ Abcd~
+        `31`   `25`  `28`  `46`  `12` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `18`   `38`  `3`   `1`   `34` 
+        `32`   `39`  `24`  `10`  `45` 
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abc   A     Abcd~
-        `16`             `9`      
-        <chr>            <chr>    
-      1 AbcdefghijAbcdef Abcdefghi
+      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+        `5`   `37`   `14`  `40`  `20` 
+        <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `41`   `44`  `33`  `18`  `38` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+        `3`   `1`   `34`   `16`  `9`  
+        <chr> <chr> <chr>  <chr> <chr>
+      1 Abc   A     Abcde~ Abcd~ Abcd~
       
       $extra_cols
       named list()
@@ -1108,18 +946,18 @@
         `45`                                         
         <chr>                                        
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcde
-        `6`    `4`   `11`   `24`   `43`  `32`  `3`   `38` 
-        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcdef Abcd  Abcde~ Abcde~ Abcd~ Abcd~ Abc   Abcd~
-        `5`   `49`   `27`   `17`   `8`   `22`  `40`  `12` 
-        <chr> <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `15`   `1`   `28`   `31`   `29`  `13`  `48`  `34` 
-        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ A     Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `36`        `30`       `20`    `16`   `46`        
-        <chr>       <chr>      <chr>   <chr>  <chr>       
-      1 Abcdefghij~ Abcdefghi~ Abcdef~ Abcde~ AbcdefghijA~
+        `6`    `4`   `11`    `24`        `43`             
+        <chr>  <chr> <chr>   <chr>       <chr>            
+      1 Abcdef Abcd  Abcdef~ Abcdefghij~ AbcdefghijAbcdef~
+        `32`   `3`   `38`   `5`   `49`   `27`  `17`  `8`  
+        <chr>  <chr> <chr>  <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde~ Abc   Abcde~ Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `22`   `40`   `12`   `15`  `1`   `28`  `31`  `29` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ A     Abcd~ Abcd~ Abcd~
+        `13`   `48`   `34`   `36`  `30`  `20`  `16`  `46` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
@@ -1137,39 +975,36 @@
         `38`                             
         <chr>                            
       1 AbcdefghijAbcdefghijAbcdefghijAb~
-        `18`              
-        <chr>             
-      1 AbcdefghijAbcdefgh
-        `23`   `36`   `35`   `20`   `44` 
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `19`   `13`   `41`   `31`   `7`  
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `11`   `29`    `2`   `14`  `26`  
+        `18`    `23`    `36`     `35`    
+        <chr>   <chr>   <chr>    <chr>   
+      1 Abcdef~ Abcdef~ Abcdefg~ Abcdefg~
+        `20`   `44`    `19`  `13`  `41`  
         <chr>  <chr>   <chr> <chr> <chr> 
-      1 Abcde~ Abcdef~ Ab    Abcd~ Abcde~
-        `46`   `40`   `45`   `9`    `34` 
+      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
+        `31`    `7`    `11`  `29`   `2`  
+        <chr>   <chr>  <chr> <chr>  <chr>
+      1 Abcdef~ Abcde~ Abcd~ Abcde~ Ab   
+        `14`   `26`   `46`   `40`   `45` 
         <chr>  <chr>  <chr>  <chr>  <chr>
       1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `33`    `22`   `1`   `17`  `28`  
-        <chr>   <chr>  <chr> <chr> <chr> 
-      1 Abcdef~ Abcde~ A     Abcd~ Abcde~
-        `10`   `21`   `30`  `47`   `49`  
-        <chr>  <chr>  <chr> <chr>  <chr> 
-      1 Abcde~ Abcde~ Abcd~ Abcde~ Abcde~
-        `6`    `12`   `4`   `25`   `32`  
-        <chr>  <chr>  <chr> <chr>  <chr> 
-      1 Abcdef Abcde~ Abcd  Abcde~ Abcde~
-        `15`   `43`    `24`  `48`   `3`  
+        `9`    `34`    `33`   `22`  `1`  
+        <chr>  <chr>   <chr>  <chr> <chr>
+      1 Abcde~ Abcdef~ Abcde~ Abcd~ A    
+        `17`   `28`    `10`  `21`  `30`  
+        <chr>  <chr>   <chr> <chr> <chr> 
+      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
+        `47`    `49`    `6`   `12`  `4`  
+        <chr>   <chr>   <chr> <chr> <chr>
+      1 Abcdef~ Abcdef~ Abcd~ Abcd~ Abcd 
+        `25`   `32`    `15`  `43`   `24` 
         <chr>  <chr>   <chr> <chr>  <chr>
-      1 Abcde~ Abcdef~ Abcd~ Abcde~ Abc  
-        `37`   `50`   `42`   `39`   `16` 
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `8`     `27`                `5`  
-        <chr>   <chr>               <chr>
-      1 Abcdef~ AbcdefghijAbcdefgh~ Abcde
+      1 Abcde~ Abcdef~ Abcd~ Abcde~ Abcd~
+        `48`   `3`   `37`   `50`   `42`  
+        <chr>  <chr> <chr>  <chr>  <chr> 
+      1 Abcde~ Abc   Abcde~ Abcde~ Abcde~
+        `39`    `16`   `8`   `27`   `5`  
+        <chr>   <chr>  <chr> <chr>  <chr>
+      1 Abcdef~ Abcde~ Abcd~ Abcde~ Abcde
       
       $extra_cols
       named list()
@@ -1184,81 +1019,36 @@
       })
     Output
       $body
-        `22`                   `9`      
-        <chr>                  <chr>    
-      1 AbcdefghijAbcdefghijAb Abcdefghi
-        `11`        `26`                      
-        <chr>       <chr>                     
-      1 AbcdefghijA AbcdefghijAbcdefghijAbcdef
-        `19`                `16`            
-        <chr>               <chr>           
-      1 AbcdefghijAbcdefghi AbcdefghijAbcdef
-        `32`                            
-        <chr>                           
-      1 AbcdefghijAbcdefghijAbcdefghijAb
-        `25`                      `1`  
-        <chr>                     <chr>
-      1 AbcdefghijAbcdefghijAbcde A    
-        `30`                          
-        <chr>                         
-      1 AbcdefghijAbcdefghijAbcdefghij
-        `31`                            `6`   
-        <chr>                           <chr> 
-      1 AbcdefghijAbcdefghijAbcdefghijA Abcdef
-        `24`                     `10`      
-        <chr>                    <chr>     
-      1 AbcdefghijAbcdefghijAbcd Abcdefghij
-        `39`                                   
-        <chr>                                  
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghi
-        `21`                 
-        <chr>                
-      1 AbcdefghijAbcdefghijA
-        `50`                                   
-        <chr>                                  
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh~
-        `7`     `29`                         
-        <chr>   <chr>                        
-      1 Abcdefg AbcdefghijAbcdefghijAbcdefghi
-        `12`        
-        <chr>       
-      1 AbcdefghijAb
-        `46`                                   
-        <chr>                                  
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh~
-        `43`                                   
-        <chr>                                  
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh~
-        `15`           
-        <chr>          
-      1 AbcdefghijAbcde
-        `35`                               
-        <chr>                              
-      1 AbcdefghijAbcdefghijAbcdefghijAbcde
-        `20`                
-        <chr>               
-      1 AbcdefghijAbcdefghij
-        `40`                                   
-        <chr>                                  
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh~
-        `49`                                   
-        <chr>                                  
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh~
-        `38`                                  
-        <chr>                                 
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh
-        `36`    `48`   `34`   `3`   `8`   `4`  
+        `22`                  
+        <chr>                 
+      1 AbcdefghijAbcdefghijAb
+        `9`      
+        <chr>    
+      1 Abcdefghi
+        `11`   `26`   `19`   `16`  `32`   `25` 
+        <chr>  <chr>  <chr>  <chr> <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~
+        `1`   `30`    `31`   `6`   `24`   `10` 
+        <chr> <chr>   <chr>  <chr> <chr>  <chr>
+      1 A     Abcdef~ Abcde~ Abcd~ Abcde~ Abcd~
+        `39`    `21`   `50`   `7`   `29`  `12` 
         <chr>   <chr>  <chr>  <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcde~ Abc   Abcd~ Abcd 
-        `27`   `42`   `44`   `33`   `45`  `18` 
+      1 Abcdef~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
+        `46`   `43`   `15`   `35`   `20`  `40` 
         <chr>  <chr>  <chr>  <chr>  <chr> <chr>
       1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcd~
-        `5`   `2`   `13`   `47`    `28`   `17` 
-        <chr> <chr> <chr>  <chr>   <chr>  <chr>
-      1 Abcde Ab    Abcde~ Abcdef~ Abcde~ Abcd~
-        `37`        `14`    `41`       `23`    
-        <chr>       <chr>   <chr>      <chr>   
-      1 Abcdefghij~ Abcdef~ Abcdefghi~ Abcdefg~
+        `49`   `38`   `36`   `48`   `34`  `3`  
+        <chr>  <chr>  <chr>  <chr>  <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abc  
+        `8`    `4`   `27`   `42`   `44`   `33` 
+        <chr>  <chr> <chr>  <chr>  <chr>  <chr>
+      1 Abcde~ Abcd  Abcde~ Abcde~ Abcde~ Abcd~
+        `45`    `18`   `5`   `2`   `13`  `47`  
+        <chr>   <chr>  <chr> <chr> <chr> <chr> 
+      1 Abcdef~ Abcde~ Abcde Ab    Abcd~ Abcde~
+        `28`   `17`   `37`   `14`  `41`   `23` 
+        <chr>  <chr>  <chr>  <chr> <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~
       
       $extra_cols
       named list()

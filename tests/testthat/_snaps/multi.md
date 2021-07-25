@@ -14,25 +14,25 @@
         id width tier offset max_widths
       1  1    30    1     30         30
       2  2    30    2     30         30
-      3  3    15    3     15         30
-      4  4    15    3     31         30
+      3  3    30    3     30         30
+      4  4    15    3     60         30
     Code
       colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 2))
     Output
         id width tier offset max_widths
       1  1    30    1     30         30
-      2  2    15    2     15         30
-      3  3    15    2     31         30
-      4  4    15    2     47         30
+      2  2    15    2     28         30
+      3  3    15    2     44         30
+      4  4    15    2     60         30
     Code
       colonnade_compute_tiered_col_widths_df(rep(30, 5), rep(15, 5), rep(60, 3))
     Output
         id width tier offset max_widths
       1  1    30    1     30         30
       2  2    30    2     30         30
-      3  3    15    3     15         30
-      4  4    15    3     31         30
-      5  5    15    3     47         30
+      3  3    15    3     28         30
+      4  4    15    3     44         30
+      5  5    15    3     60         30
     Code
       colonnade_compute_tiered_col_widths_df(rep(30, 5), rep(15, 5), rep(60, 4))
     Output
@@ -40,22 +40,22 @@
       1  1    30    1     30         30
       2  2    30    2     30         30
       3  3    30    3     30         30
-      4  4    15    4     15         30
-      5  5    15    4     31         30
+      4  4    30    4     30         30
+      5  5    15    4     60         30
     Code
       colonnade_compute_tiered_col_widths_df(rep(30, 10), rep(15, 10), rep(60, 5))
     Output
          id width tier offset max_widths
       1   1    30    1     30         30
       2   2    30    2     30         30
-      3   3    15    3     15         30
-      4   4    15    3     31         30
-      5   5    15    3     47         30
-      6   6    15    4     15         30
-      7   7    15    4     31         30
-      8   8    15    4     47         30
-      9   9    15    5     15         30
-      10 10    15    5     31         30
+      3   3    30    3     30         30
+      4   4    15    3     60         30
+      5   5    15    4     28         30
+      6   6    15    4     44         30
+      7   7    15    4     60         30
+      8   8    15    5     28         30
+      9   9    15    5     44         30
+      10 10    15    5     60         30
 
 # distribute_pillars()
 
