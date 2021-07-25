@@ -31,28 +31,23 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   compound_pillar <- combine_pillars(pillars)
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
-  if (!is.null(rowid)) {
-    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
-
-    col_widths_rowid <- as_tbl(data_frame(
-      tier = unique(col_widths$tier),
-      id = 0L,
-      width = rowid_width,
-      pillar = list(rowid_pillar)
-    ))
-
-    col_widths <- vec_rbind(col_widths_rowid, col_widths)
-  }
+  col_widths$formatted <- map2(
+    col_widths$pillar, col_widths$width,
+    pillar_format_parts_2
+  )
 
   tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)
 
   flat_tiers <- map(tiers, function(tier) {
-    map2(
-      col_widths$pillar[tier],
-      col_widths$width[tier],
-      pillar_format_parts_2
-    )
+    formatted <- col_widths$formatted[tier]
+    map(formatted, function(.x) .x$aligned[[1]])
   })
+
+  if (!is.null(rowid)) {
+    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
+    rowid_formatted <- list(pillar_format_parts_2(rowid_pillar, rowid_width)$aligned[[1]])
+    flat_tiers <- map(flat_tiers, function(.x) c(rowid_formatted, .x))
+  }
 
   out <- map(flat_tiers, format_colonnade_tier_2)
 
@@ -84,32 +79,32 @@ colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
   "!!!!!DEBUG colonnade_get_width_2(`v(tier_widths)`)"
 
   #' @details
-  #' Pillars may be distributed over multiple tiers if
-  #' `width > getOption("width")`. In this case each tier is at most
-  #' `getOption("width")` characters wide. The very first step of formatting
-  #' is to determine how many tiers are shown at most, and the width of each
-  #' tier.
-  col_widths_df <- colonnade_compute_tiered_col_widths_2(compound_pillar, tier_widths)
+  #' Each pillar indiacates its maximum and minimum width.
+  min_max_widths <- colonnade_get_min_max_widths(compound_pillar)
+  #'
+  #' Pillars may be distributed over multiple tiers according to their width
+  #' if `width > getOption("width")`.
+  #' In this case each tier is at most `getOption("width")` characters wide.
+  #' The very first step of formatting is to determine
+  #' how many tiers are shown at most,
+  #' and the width of each tier.
+  col_widths_df <- colonnade_compute_tiered_col_widths_df(min_max_widths$max_width, min_max_widths$min_width, tier_widths)
+  # col_widths_df <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
 
   #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
-  colonnade_distribute_space_df(col_widths_df, tier_widths)
+  out <- colonnade_distribute_space_df(col_widths_df, tier_widths)
+  # out <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
+
+  # FIXME: Defer split of compound pillars
+  out$pillar <- map(out$id, get_sub_pillar, x = compound_pillar)
+
+  new_tbl(out)
 }
 
-colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, tier_widths) {
-  "!!!!!DEBUG colonnade_compute_tiered_col_widths_2(`v(tier_widths)`)"
+colonnade_get_min_max_widths <- function(compound_pillar) {
+  max_width <- exec(pmax, !!!unname(map(compound_pillar, get_cell_widths)))
+  min_width <- exec(pmax, !!!unname(map(compound_pillar, get_cell_min_widths)))
 
-  max_tier_width <- max(tier_widths)
-
-  max_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_widths)))
-  max_widths <- pmin(max_widths, max_tier_width)
-
-  min_widths <- exec(pmax, !!!unname(map(compound_pillar, get_cell_min_widths)))
-  min_widths <- pmin(min_widths, max_tier_width)
-
-  ret <- colonnade_compute_tiered_col_widths_df(max_widths, min_widths, tier_widths)
-
-  pillars <- map(ret$id, get_sub_pillar, x = compound_pillar)
-  ret$pillar <- pillars
-  new_tbl(ret)
+  new_tbl(list(min_width = min_width, max_width = max_width))
 }
