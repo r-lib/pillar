@@ -157,7 +157,7 @@ squeeze_impl <- function(x, width = NULL, ...) {
   }
 
   col_widths <- colonnade_get_width(x, width, rowid_width)
-  col_widths_shown <- col_widths[!is.na(col_widths$tier), ]
+  col_widths_shown <- col_widths[!safe_is_na(col_widths$tier), ]
   indexes <- split(seq_along(col_widths_shown$tier), col_widths_shown$tier)
 
   out <- map(indexes, function(i) {
@@ -307,7 +307,7 @@ colonnade_get_width <- function(x, width, rowid_width) {
   init_cols <- min(length(x$data), sum(floor((tier_widths + 1L) / (MIN_PILLAR_WIDTH + 1L))))
   capitals <- map2(x$data[seq_len(init_cols)], x$names[seq_len(init_cols)], pillar_capital)
   init_col_widths_df <- colonnade_compute_tiered_col_widths(capitals, tier_widths)
-  pillar_shown <- init_col_widths_df$id[!is.na(init_col_widths_df$tier)]
+  pillar_shown <- init_col_widths_df$id[!safe_is_na(init_col_widths_df$tier)]
   if (length(pillar_shown) < init_cols) {
     # (Include one more pillar to indicate that the data is too wide.)
     pillar_shown <- c(pillar_shown, pillar_shown[length(pillar_shown)] + 1L)
@@ -454,7 +454,7 @@ distribute_pillars_offset <- function(widths, tier_widths,
 
 all_pillars_fit <- function(tier_df) {
   rows <- nrow(tier_df)
-  rows == 0 || !anyNA(tier_df$tier[[nrow(tier_df)]])
+  rows == 0 || !safe_any_na(tier_df$tier[[nrow(tier_df)]])
 }
 
 #' @rdname colonnade
@@ -464,7 +464,7 @@ colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
   "!!!!!DEBUG colonnade_distribute_space_df(`v(tier_widths)`)"
 
   col_widths_split <- split(col_widths_df, col_widths_df$tier)
-  if (anyNA(col_widths_df$tier)) {
+  if (safe_any_na(col_widths_df$tier)) {
     tier_widths <- c(NA, tier_widths)
   }
   tier_widths <- tier_widths[seq_along(col_widths_split)]
