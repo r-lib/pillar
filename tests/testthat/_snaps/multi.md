@@ -72,7 +72,7 @@
         id width tier
       1  1     1    1
       2  2     2    1
-      3  3     3    0
+      3  3     3   NA
     Code
       distribute_pillars(1:3, c(5, 5))
     Output
@@ -117,8 +117,8 @@
       distribute_pillars_rev(1:3, 5)
     Output
         id width tier
-      1  1     1    2
-      2  2     2    2
+      1  1     1   NA
+      2  2     2   NA
       3  3     3    1
     Code
       distribute_pillars_rev(1:3, c(5, 5))
