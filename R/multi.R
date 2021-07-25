@@ -386,18 +386,17 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
   #' This is the "mixed" tier which is refined later on.
   min_fit_rev <- distribute_pillars_rev(col_df$min_widths, tier_widths)
 
-  cut_point <- max(which.max(max_fit$tier == min_fit_rev$tier & max_fit$offset <= min_fit_rev$offset), 0)
+  cut_point <- which(max_fit$tier == min_fit_rev$tier & max_fit$offset <= min_fit_rev$offset)
+  if (length(cut_point) == 0) {
+    cut_point <- which.max(max_fit$tier == min_fit_rev$tier) - 1L
+  } else {
+    cut_point <- cut_point[[1]]
+  }
+
   tier_mix_fit <- min_fit_rev$tier[[cut_point]]
 
   max_fit_cut <- max_fit[seq_len(cut_point), ]
   min_fit_cut <- min_fit_rev[seq2(cut_point + 1L, nrow(min_fit_rev)), ]
-
-  #min_fit_cut <- distribute_pillars_offset(
-  #  col_df$min_widths,
-  #  tier_widths,
-  #  widths_offset = cut_point,
-  #  tier_widths_offset = tier_mix_fit
-  #)
 
   combined_fit <- rbind(max_fit_cut, min_fit_cut)
 
