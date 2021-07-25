@@ -3,6 +3,9 @@ test_that("colonnade_compute_tiered_col_widths_df()", {
     colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 4))
     colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 3))
     colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 2))
+    colonnade_compute_tiered_col_widths_df(rep(30, 5), rep(15, 5), rep(60, 3))
+    colonnade_compute_tiered_col_widths_df(rep(30, 5), rep(15, 5), rep(60, 4))
+    colonnade_compute_tiered_col_widths_df(rep(30, 10), rep(15, 10), rep(60, 5))
   })
 })
 
