@@ -2,38 +2,6 @@
 
 ## Next steps
 
-- f-greedy: rethink implementation of `colonnade_compute_tiered_col_widths_df()`
-    - idea: fitting functions also indicate horizontal position within the tier?
-      This allows for a precise cutoff
-
-    - fit min reverse
-    - no fit? fit min, return
-    - iterate over tiers
-        - fit max
-        - conflict with fit min reverse? break
-    - 
-    
-    - start populating first tier
-        - fit? 
-    
-    - how many free tiers do we have available?
-        - at least one?
-            - populate those with the maximum width
-            - recursive call for the remaining tiers
-        - none?
-            - populate first tier with maximum width, check through lookup if 
-            - 
-
-    - shortcut: discrete fit with minimum width; if no fit, try to still fit with maximum width in a second step
-    
-    
-    - remove special case of "all pillars fit", we still want to reorganize/
-    - for how many columns can we guarantee maximum width?
-        - current implementation answers that approximately, we know the tiers that we can close
-        - second step: close tiers (except last), try to fit remaining with a recursive call
-
-
-
 - revdepcheck for adding ellipsis to methods
 - Milestone: <https://github.com/r-lib/pillar/milestone/11>
 
