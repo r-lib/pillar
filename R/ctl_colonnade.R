@@ -95,11 +95,18 @@ colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
   #' The very first step of formatting is to determine
   #' how many tiers are shown at most,
   #' and the width of each tier.
-  col_widths_df <- colonnade_compute_tiered_col_widths_2(compound_pillar, min_max_widths, tier_widths)
+  col_widths_df <- colonnade_compute_tiered_col_widths_df(min_max_widths$max_width, min_max_widths$min_width, tier_widths)
+  # col_widths_df <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
+
+  pillars <- map(col_widths_df$id, get_sub_pillar, x = compound_pillar)
+  col_widths_df$pillar <- pillars
 
   #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
-  colonnade_distribute_space_df(col_widths_df, tier_widths)
+  out <- colonnade_distribute_space_df(col_widths_df, tier_widths)
+  # out <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
+
+  new_tbl(out)
 }
 
 colonnade_get_min_max_widths <- function(compound_pillar) {
@@ -107,14 +114,4 @@ colonnade_get_min_max_widths <- function(compound_pillar) {
   min_width <- exec(pmax, !!!unname(map(compound_pillar, get_cell_min_widths)))
 
   new_tbl(list(min_width = min_width, max_width = max_width))
-}
-
-colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, min_max_widths, tier_widths) {
-  "!!!!!DEBUG colonnade_compute_tiered_col_widths_2(`v(tier_widths)`)"
-
-  ret <- colonnade_compute_tiered_col_widths_df(min_max_widths$max_width, min_max_widths$min_width, tier_widths)
-
-  pillars <- map(ret$id, get_sub_pillar, x = compound_pillar)
-  ret$pillar <- pillars
-  new_tbl(ret)
 }
