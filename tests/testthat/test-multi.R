@@ -19,3 +19,14 @@ test_that("distribute_pillars()", {
     distribute_pillars(5:3, 9:8)
   })
 })
+
+test_that("distribute_pillars_rev()", {
+  expect_snapshot({
+    distribute_pillars_rev(1:3, 10)
+    distribute_pillars_rev(1:3, 5)
+    distribute_pillars_rev(1:3, c(5, 5))
+    distribute_pillars_rev(1:5, 7:9)
+    distribute_pillars_rev(3:5, 8:10)
+    distribute_pillars_rev(5:3, 9:8)
+  })
+})
