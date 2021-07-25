@@ -383,7 +383,7 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
   #' agree.
   min_fit_rev <- distribute_pillars_rev(col_df$min_widths, tier_widths)
 
-  cut_point <- max(min(which(c(max_fit$tier == min_fit_rev$tier))), 1L)
+  cut_point <- max(min(which(max_fit$tier == min_fit_rev$tier)), 1L)
   cut_point_tier <- max_fit$tier[[cut_point]]
 
   min_fit_cut <- distribute_pillars_offset(
