@@ -394,7 +394,7 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
 #' @usage NULL
 #' @aliases NULL
 combine_pillar_distributions <- function(max_fit, min_fit_rev, tier_widths) {
-  #'
+  #' @details
   #' We determine the cut point where minimum and maximum assignment
   #' agree.
   #' The following strategy is applied:
