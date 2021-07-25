@@ -2,9 +2,6 @@
 
 ## Next steps
 
-- new branch: tier 0 -> missing from table?
-    - defer if possible
-
 - f-greedy: rethink implementation of `colonnade_compute_tiered_col_widths_df()`
     - idea: fitting functions also indicate horizontal position within the tier?
       This allows for a precise cutoff
