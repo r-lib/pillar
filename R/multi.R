@@ -381,28 +381,47 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
   #' one tier will contain some pillars with maximum and some with minimum width,
   #' and the remaining tiers contain pillars with their minimum width only.
   #'
-  #' We determine the cut point where minimum and maximum assignment
-  #' agree.
-  #' This is the "mixed" tier which is refined later on.
+  #' For this, we compute a "reverse minimum assignment".
   min_fit_rev <- distribute_pillars_rev(col_df$min_widths, tier_widths)
 
+  combined_fit <- combine_pillar_distributions(max_fit, min_fit_rev, tier_widths)
+
+  combined_fit$max_widths <- col_df$max_widths
+  combined_fit
+}
+
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
+combine_pillar_distributions <- function(max_fit, min_fit_rev, tier_widths) {
+  #' @details
+  #' We determine the cut point where minimum and maximum assignment
+  #' agree.
+  #' The following strategy is applied:
+  #'
+  #' 1. First, we determine the tier in which the cut point lies.
+  #'    This is the first instance of a column that ends up in the same tier
+  #'    for both minimum and maximum assignment.
   cut_point_tier <- max_fit$tier[min(which(max_fit$tier == min_fit_rev$tier))]
+  #' 2. A set of candidate cut points is derived.
   cut_point_candidates <- which(max_fit$tier == cut_point_tier)
+  #' 3. We consult the column offsets. The last column where the minimum assignment
+  #'    has a greater or equal offset than the maximum assignment is our latest
+  #'    cut point.
   cut_point_candidate_idx <- which(max_fit$offset[cut_point_candidates] <= min_fit_rev$offset[cut_point_candidates])
   if (length(cut_point_candidate_idx) > 0) {
     cut_point <- cut_point_candidates[max(cut_point_candidate_idx)]
   } else {
+    #'    If no such column exists, the cut point is the column just before our
+    #'    first candidate.
     cut_point <- cut_point_candidates[[1]] - 1L
   }
 
+  #' 4. Finally, we combine maximum and minimum reverse fits at the cut point.
+  #'    We don't need to redistribute anything here.
   max_fit_cut <- max_fit[seq_len(cut_point), ]
   min_fit_cut <- min_fit_rev[seq2(cut_point + 1L, nrow(min_fit_rev)), ]
-
-  combined_fit <- rbind(max_fit_cut, min_fit_cut)
-
-  combined_fit$max_widths <- col_df$max_widths
-  combined_fit$offsets <- NULL
-  combined_fit
+  rbind(max_fit_cut, min_fit_cut)
 }
 
 #' @rdname colonnade
