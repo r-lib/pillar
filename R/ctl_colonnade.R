@@ -31,19 +31,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   compound_pillar <- combine_pillars(pillars)
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
-  if (!is.null(rowid)) {
-    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
-
-    col_widths_rowid <- as_tbl(data_frame(
-      tier = unique(col_widths$tier),
-      id = 0L,
-      width = rowid_width,
-      pillar = list(rowid_pillar)
-    ))
-
-    col_widths <- vec_rbind(col_widths_rowid, col_widths)
-  }
-
   col_widths$formatted <- map2(
     col_widths$pillar, col_widths$width,
     pillar_format_parts_2
@@ -55,6 +42,12 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     formatted <- col_widths$formatted[tier]
     map(formatted, function(.x) .x$aligned[[1]])
   })
+
+  if (!is.null(rowid)) {
+    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
+    rowid_formatted <- list(pillar_format_parts_2(rowid_pillar, rowid_width)$aligned[[1]])
+    flat_tiers <- map(flat_tiers, function(.x) c(rowid_formatted, .x))
+  }
 
   out <- map(flat_tiers, format_colonnade_tier_2)
 
