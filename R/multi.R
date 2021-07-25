@@ -384,6 +384,16 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
   #' For this, we compute a "reverse minimum assignment".
   min_fit_rev <- distribute_pillars_rev(col_df$min_widths, tier_widths)
 
+  combined_fit <- combine_pillar_distributions(max_fit, min_fit_rev, tier_widths)
+
+  combined_fit$max_widths <- col_df$max_widths
+  combined_fit
+}
+
+#' @rdname colonnade
+#' @usage NULL
+#' @aliases NULL
+combine_pillar_distributions <- function(max_fit, min_fit_rev, tier_widths) {
   #'
   #' We determine the cut point where minimum and maximum assignment
   #' agree.
@@ -411,10 +421,7 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
   #'    We don't need to redistribute anything here.
   max_fit_cut <- max_fit[seq_len(cut_point), ]
   min_fit_cut <- min_fit_rev[seq2(cut_point + 1L, nrow(min_fit_rev)), ]
-  combined_fit <- rbind(max_fit_cut, min_fit_cut)
-
-  combined_fit$max_widths <- col_df$max_widths
-  combined_fit
+  rbind(max_fit_cut, min_fit_cut)
 }
 
 #' @rdname colonnade
