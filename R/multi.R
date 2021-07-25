@@ -464,9 +464,6 @@ colonnade_distribute_space_df <- function(col_widths_df, tier_widths) {
   "!!!!!DEBUG colonnade_distribute_space_df(`v(tier_widths)`)"
 
   col_widths_split <- split(col_widths_df, col_widths_df$tier)
-  if (safe_any_na(col_widths_df$tier)) {
-    tier_widths <- c(NA, tier_widths)
-  }
   tier_widths <- tier_widths[seq_along(col_widths_split)]
   col_widths_apply <- map2(col_widths_split, tier_widths, function(x, width) {
     x$width <- x$width + colonnade_distribute_space(x$width, x$max_widths, width)
