@@ -648,18 +648,18 @@
         `26`                      
         <chr>                     
       1 AbcdefghijAbcdefghijAbcdef
-        `44`   `11`   `46`  `28`  `7`   `18`  `50`  `16`  `29` 
+        `44`                                        
+        <chr>                                       
+      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcd
+        `11`   `46`   `28`  `7`   `18`  `50`  `16`  `29`  `30` 
         <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `30`   `4`   `23`   `17`  `40`  `33`  `14`  `27`  `19` 
+        `4`   `23`   `17`   `40`  `33`  `14`  `27`  `19`  `34` 
+        <chr> <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
+      1 Abcd  Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `32`   `3`   `37`   `15`  `10`  `5`   `35`  `31`  `42` 
         <chr>  <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `34`   `32`   `3`   `37`  `15`  `10`  `5`   `35`  `31` 
-        <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abc   Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abcd~
-        `42`                                      
-        <chr>                                     
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAb
+      1 Abcde~ Abc   Abcde~ Abcd~ Abcd~ Abcde Abcd~ Abcd~ Abcd~
     Code
       options(width = 33)
       colonnade(df_str[c(40L, 6L, 25L, 5L, 26L, 17L, 19L, 2L, 11L, 34L, 45L, 24L, 22L,
@@ -769,15 +769,15 @@
         `50`                           
         <chr>                          
       1 AbcdefghijAbcdefghijAbcdefghij~
-        `10`   `9`    `8`   `47`  `31` 
+        `10`       `9`       `8`     
+        <chr>      <chr>     <chr>   
+      1 Abcdefghij Abcdefghi Abcdefgh
+        `47`   `31`   `14`  `38`  `33` 
         <chr>  <chr>  <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `14`   `38`   `33`  `32`  `43` 
+        `32`   `43`   `23`  `15`  `37` 
         <chr>  <chr>  <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `23`       `15`     `37`       
-        <chr>      <chr>    <chr>      
-      1 Abcdefghi~ Abcdefg~ Abcdefghij~
     Code
       options(width = 32)
       colonnade(df_str[c(43L, 23L, 22L, 11L, 6L, 26L, 48L, 17L, 7L, 42L, 36L, 21L,
@@ -957,12 +957,12 @@
         `48`                                        
         <chr>                                       
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbc~
-        `20`   `21`   `44`   `25`  `10`  `22`  `30` 
+        `20`                 `21`                 
+        <chr>                <chr>                
+      1 AbcdefghijAbcdefghij AbcdefghijAbcdefghijA
+        `44`   `25`   `10`   `22`  `30`  `40`  `17` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `40`                           `17`         
-        <chr>                          <chr>        
-      1 AbcdefghijAbcdefghijAbcdefghi~ AbcdefghijAb~
     Code
       options(width = 52)
       colonnade(df_str[c(7L, 44L, 19L, 21L, 18L, 35L, 23L, 50L, 33L, 37L, 25L, 26L,

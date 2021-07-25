@@ -377,24 +377,34 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
   }
 
   #' Otherwise, some tiers from the start
-  #' will contain pillars with their maximum width, and the remaining tiers
-  #' contain pillars with their minimum width.
+  #' will contain pillars with their maximum width,
+  #' one tier will contain some pillars with maximum and some with minimum width,
+  #' and the remaining tiers contain pillars with their minimum width only.
+  #'
   #' We determine the cut point where minimum and maximum assignment
   #' agree.
+  #' This is the "mixed" tier which is refined later on.
   min_fit_rev <- distribute_pillars_rev(col_df$min_widths, tier_widths)
 
-  cut_point <- max(min(which(max_fit$tier == min_fit_rev$tier)), 1L)
-  cut_point_tier <- max_fit$tier[[cut_point]]
+  cut_point_optimistic <- max(which(max_fit$tier == min_fit_rev$tier), 1L)
+  tier_mix_fit <- min_fit_rev$tier[[cut_point_optimistic]]
+
+  balance_idx <- which(min_fit_rev$tier == tier_mix_fit & (max_fit$tier >= tier_mix_fit | max_fit$tier == 0))
+  cut_point <- min(balance_idx)
+
+  # FIXME: inline distribute_pillars_offset, more fine-grained around cut point
+
+  max_fit_cut <- max_fit[seq_len(cut_point - 1L), ]
 
   min_fit_cut <- distribute_pillars_offset(
     col_df$min_widths,
     tier_widths,
-    cut_point,
-    cut_point_tier
+    widths_offset = cut_point,
+    tier_widths_offset = tier_mix_fit
   )
 
   combined_fit <- rbind(
-    max_fit[seq_len(cut_point - 1L), ],
+    max_fit_cut,
     min_fit_cut
   )
 
@@ -459,10 +469,23 @@ distribute_pillars_rev <- function(widths, tier_widths) {
 
 distribute_pillars_offset <- function(widths, tier_widths,
                                       widths_offset, tier_widths_offset) {
-  fit_cut <- distribute_pillars(
-    widths[seq2(widths_offset, length(widths))],
-    tier_widths[seq2(tier_widths_offset, length(tier_widths))]
-  )
+  tier_widths <- tier_widths[seq2(tier_widths_offset, length(tier_widths))]
+  if (length(tier_widths) == 0) {
+    # Work around corner case
+    return(distribute_pillars(integer(), integer()))
+  }
+
+  widths <- widths[seq2(widths_offset, length(widths))]
+  fit_cut <- distribute_pillars(widths, tier_widths)
+  add_pillars_offset(fit_cut, widths_offset, tier_widths_offset)
+}
+
+add_pillars_offset <- function(fit_cut, widths_offset, tier_widths_offset) {
+  if (tier_widths_offset == 1) {
+    # Work around corner case
+    return(fit_cut)
+  }
+
   fit_cut$id <- fit_cut$id + (widths_offset - 1L)
   fit_cut$tier <- fit_cut$tier + (tier_widths_offset - 1L)
   fit_cut

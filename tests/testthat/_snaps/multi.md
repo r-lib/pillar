@@ -20,19 +20,19 @@
       colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 2))
     Output
         id width tier offset max_widths
-      1  1    15    1     15         30
-      2  2    15    1     31         30
-      3  3    15    1     47         30
-      4  4    15    2     15         30
+      1  1    30    1     30         30
+      2  2    15    2     15         30
+      3  3    15    2     31         30
+      4  4    15    2     47         30
     Code
       colonnade_compute_tiered_col_widths_df(rep(30, 5), rep(15, 5), rep(60, 3))
     Output
         id width tier offset max_widths
       1  1    30    1     30         30
-      2  2    15    2     15         30
-      3  3    15    2     31         30
-      4  4    15    2     47         30
-      5  5    15    3     15         30
+      2  2    30    2     30         30
+      3  3    15    3     15         30
+      4  4    15    3     31         30
+      5  5    15    3     47         30
     Code
       colonnade_compute_tiered_col_widths_df(rep(30, 5), rep(15, 5), rep(60, 4))
     Output
