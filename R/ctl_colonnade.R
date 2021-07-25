@@ -44,14 +44,16 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     col_widths <- vec_rbind(col_widths_rowid, col_widths)
   }
 
+  col_widths$formatted <- map2(
+    col_widths$pillar, col_widths$width,
+    pillar_format_parts_2
+  )
+
   tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)
 
   flat_tiers <- map(tiers, function(tier) {
-    map2(
-      col_widths$pillar[tier],
-      col_widths$width[tier],
-      pillar_format_parts_2
-    )
+    formatted <- col_widths$formatted[tier]
+    map(formatted, function(.x) .x$aligned[[1]])
   })
 
   out <- map(flat_tiers, format_colonnade_tier_2)

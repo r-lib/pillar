@@ -54,7 +54,7 @@ pillar_component <- function(x) {
 }
 
 get_cell_widths <- function(x) {
-  # FIXME: Choose different name to avoid confusion with get_width()?
+  # FIXME: Choose different name to avoid confusion with get_width()?
   attr(x, "width", exact = TRUE)
 }
 
@@ -101,11 +101,17 @@ pillar_get_min_widths <- function(x) {
 }
 
 pillar_format_parts_2 <- function(x, width) {
+  # Code is repeated in ctl_colonnade
   formatted <- map(x, function(.x) format(.x[[1]], width = width))
 
   align <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"
 
   flat <- unlist(formatted)
   extent <- get_extent(flat)
-  align_impl(flat, width, align, " ", extent)
+  aligned <- align_impl(flat, width, align, " ", extent)
+
+  new_tbl(list(
+    formatted = list(formatted), align = align, flat = list(flat),
+    max_extent = max(extent), aligned = list(aligned)
+  ))
 }
