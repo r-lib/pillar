@@ -98,13 +98,13 @@ colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
   col_widths_df <- colonnade_compute_tiered_col_widths_df(min_max_widths$max_width, min_max_widths$min_width, tier_widths)
   # col_widths_df <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
 
-  pillars <- map(col_widths_df$id, get_sub_pillar, x = compound_pillar)
-  col_widths_df$pillar <- pillars
-
   #' Remaining space is then distributed proportionally to pillars that do not
   #' use their desired width.
   out <- colonnade_distribute_space_df(col_widths_df, tier_widths)
   # out <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
+
+  # FIXME: Defer split of compound pillars
+  out$pillar <- map(out$id, get_sub_pillar, x = compound_pillar)
 
   new_tbl(out)
 }
