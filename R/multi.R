@@ -355,6 +355,12 @@ colonnade_compute_tiered_col_widths <- function(pillars, tier_widths) {
 colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_widths) {
   "!!!!!DEBUG colonnade_compute_tiered_col_widths_df(`v(tier_widths)`)"
 
+  max_tier_width <- max(tier_widths)
+
+  # Safety:
+  max_widths <- pmin(max_widths, max_tier_width)
+  min_widths <- pmin(min_widths, max_tier_width)
+
   id <- seq_along(max_widths)
   col_df <- data.frame(id, max_widths, min_widths, row.names = NULL)
 

@@ -112,13 +112,7 @@ colonnade_get_min_max_widths <- function(compound_pillar) {
 colonnade_compute_tiered_col_widths_2 <- function(compound_pillar, min_max_widths, tier_widths) {
   "!!!!!DEBUG colonnade_compute_tiered_col_widths_2(`v(tier_widths)`)"
 
-  max_tier_width <- max(tier_widths)
-
-  # Safety:
-  max_widths <- pmin(min_max_widths$max_width, max_tier_width)
-  min_widths <- pmin(min_max_widths$min_width, max_tier_width)
-
-  ret <- colonnade_compute_tiered_col_widths_df(max_widths, min_widths, tier_widths)
+  ret <- colonnade_compute_tiered_col_widths_df(min_max_widths$max_width, min_max_widths$min_width, tier_widths)
 
   pillars <- map(ret$id, get_sub_pillar, x = compound_pillar)
   ret$pillar <- pillars
