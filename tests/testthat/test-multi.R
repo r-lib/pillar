@@ -1,3 +1,11 @@
+test_that("colonnade_compute_tiered_col_widths_df()", {
+  expect_snapshot({
+    colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 4))
+    colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 3))
+    colonnade_compute_tiered_col_widths_df(rep(30, 4), rep(15, 4), rep(60, 2))
+  })
+})
+
 test_that("distribute_pillars()", {
   expect_snapshot({
     distribute_pillars(1:3, 10)
