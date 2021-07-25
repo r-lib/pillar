@@ -386,7 +386,7 @@ colonnade_compute_tiered_col_widths_df <- function(max_widths, min_widths, tier_
   #' This is the "mixed" tier which is refined later on.
   min_fit_rev <- distribute_pillars_rev(col_df$min_widths, tier_widths)
 
-  cut_point_tier <- max_fit$tier[max(which(max_fit$tier == min_fit_rev$tier))]
+  cut_point_tier <- max_fit$tier[min(which(max_fit$tier == min_fit_rev$tier))]
   cut_point_candidates <- which(max_fit$tier == cut_point_tier)
   cut_point_candidate_idx <- which(max_fit$offset[cut_point_candidates] <= min_fit_rev$offset[cut_point_candidates])
   if (length(cut_point_candidate_idx) > 0) {
