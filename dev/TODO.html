@@ -154,6 +154,54 @@
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor" aria-hidden="true"></a>Next steps</h2>
 <ul>
+<li>
+<p>f-greedy: rethink implementation of <code>colonnade_compute_tiered_col_widths_df()</code></p>
+<ul>
+<li><p>idea: fitting functions also indicate horizontal position within the tier? This allows for a precise cutoff</p></li>
+<li><p>fit min reverse</p></li>
+<li><p>no fit? fit min, return</p></li>
+<li>
+<p>iterate over tiers</p>
+<ul>
+<li>fit max</li>
+<li>conflict with fit min reverse? break</li>
+</ul>
+</li>
+<li>
+<li>
+<p>start populating first tier</p>
+<ul>
+<li>fit?</li>
+</ul>
+</li>
+<li>
+<p>how many free tiers do we have available?</p>
+<ul>
+<li>at least one?
+<ul>
+<li>populate those with the maximum width</li>
+<li>recursive call for the remaining tiers</li>
+</ul>
+</li>
+<li>none?
+<ul>
+<li>populate first tier with maximum width, check through lookup if</li>
+<li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>shortcut: discrete fit with minimum width; if no fit, try to still fit with maximum width in a second step</p></li>
+<li><p>remove special case of “all pillars fit”, we still want to reorganize/</p></li>
+<li>
+<p>for how many columns can we guarantee maximum width?</p>
+<ul>
+<li>current implementation answers that approximately, we know the tiers that we can close</li>
+<li>second step: close tiers (except last), try to fit remaining with a recursive call</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>revdepcheck for adding ellipsis to methods</p></li>
 <li><p>Milestone: <a href="https://github.com/r-lib/pillar/milestone/11" class="external-link uri">https://github.com/r-lib/pillar/milestone/11</a></p></li>
 <li>
