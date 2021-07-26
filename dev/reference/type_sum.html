@@ -43,9 +43,12 @@
 <meta property="og:description" content="type_sum() gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to vctrs::vec_ptype_abbr().
-obj_sum() also includes the size of the object if vctrs::vec_is()
-is TRUE.
+obj_sum() also includes the size (but not the shape) of the object
+if vctrs::vec_is() is TRUE.
 It should always return a string (a character vector of length one).
+As of pillar v1.6.1, the default method forwards to vctrs::vec_ptype_abbr()
+for vectors and to type_sum() for other objects.
+Previous versions always forwarded to type_sum().
 size_sum() is called by obj_sum() to format the size of the object.
 It should always return a string (a character vector of length one),
 it can be an empty string &quot;&quot; to omit size information,
@@ -164,9 +167,12 @@ this is what the default method does for scalars." />
     <p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>.</p>
-<p><code>obj_sum()</code> also includes the size of the object if <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code>
-is <code>TRUE</code>.
-It should always return a string (a character vector of length one).</p>
+<p><code>obj_sum()</code> also includes the size (but not the shape) of the object
+if <code><a href='https://vctrs.r-lib.org/reference/vec_assert.html'>vctrs::vec_is()</a></code> is <code>TRUE</code>.
+It should always return a string (a character vector of length one).
+As of pillar v1.6.1, the default method forwards to <code><a href='https://vctrs.r-lib.org/reference/vec_ptype_full.html'>vctrs::vec_ptype_abbr()</a></code>
+for vectors and to <code>type_sum()</code> for other objects.
+Previous versions always forwarded to <code>type_sum()</code>.</p>
 <p><code>size_sum()</code> is called by <code>obj_sum()</code> to format the size of the object.
 It should always return a string (a character vector of length one),
 it can be an empty string <code>""</code> to omit size information,
