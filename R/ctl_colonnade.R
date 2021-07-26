@@ -60,18 +60,19 @@ pillar_format_tier <- function(pillars, widths, max_widths) {
   extra <- sum(widths - extents)
 
   # Second pass: trying to use the remaining width, starting at the left
-  for (col_idx in which(widths < max_widths)) {
-    if (extra <= 0) {
-      break
+  if (extra > 0) {
+    for (col_idx in which(widths < max_widths)) {
+      new_formatted <- pillar_format_parts_2(pillars[[col_idx]], min(widths[[col_idx]] + extra, max_widths[[col_idx]]))
+      delta <- new_formatted$max_extent - formatted[[col_idx]]$max_extent
+      if (delta > 0) {
+        formatted[[col_idx]] <- new_formatted
+        extra <- extra - delta
+        if (extra <= 0) {
+          break
+        }
+      }
+      col_idx <- col_idx + 1L
     }
-
-    new_formatted <- pillar_format_parts_2(pillars[[col_idx]], min(widths[[col_idx]] + extra, max_widths[[col_idx]]))
-    delta <- new_formatted$max_extent - formatted[[col_idx]]$max_extent
-    if (delta > 0) {
-      extra <- extra - delta
-      formatted[[col_idx]] <- new_formatted
-    }
-    col_idx <- col_idx + 1L
   }
 
   map(formatted, function(.x) {
