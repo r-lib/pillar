@@ -24,8 +24,9 @@ For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_full]{
 \code{obj_sum()} also includes the size (but not the shape) of the object
 if \code{\link[vctrs:vec_assert]{vctrs::vec_is()}} is \code{TRUE}.
 It should always return a string (a character vector of length one).
-The default method forwards to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}} as of pillar v1.6.1,
-previous versions forwarded to \code{\link[=type_sum]{type_sum()}}.
+As of pillar v1.6.1, the default method forwards to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}
+for vectors and to \code{\link[=type_sum]{type_sum()}} for other objects.
+Previous versions always forwarded to \code{\link[=type_sum]{type_sum()}}.
 
 \code{size_sum()} is called by \code{obj_sum()} to format the size of the object.
 It should always return a string (a character vector of length one),

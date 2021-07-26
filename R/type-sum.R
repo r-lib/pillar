@@ -67,8 +67,9 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' `obj_sum()` also includes the size (but not the shape) of the object
 #' if [vctrs::vec_is()] is `TRUE`.
 #' It should always return a string (a character vector of length one).
-#' The default method forwards to [vctrs::vec_ptype_abbr()] as of pillar v1.6.1,
-#' previous versions forwarded to [type_sum()].
+#' As of pillar v1.6.1, the default method forwards to [vctrs::vec_ptype_abbr()]
+#' for vectors and to [type_sum()] for other objects.
+#' Previous versions always forwarded to [type_sum()].
 #'
 #' @examples
 #' obj_sum(1:10)
