@@ -2,37 +2,28 @@
 #'
 #' Options that affect display of tibble-like output.
 #'
-#' All options are available via the `pillar_options` list.
-#' The elements of this list are combined getter/setter functions.
-#' Calling a function without arguments returns the current value,
-#' by providing an argument the current value is set and the old value
-#' is returned, invisibly.
-#' Setting `local = TRUE` enables the option for the duration of the
-#' current stack frame via [rlang::local_options()].
-#'
-#' These options can also be set via [options()] and queried via [getOption()].
+#' These options can be set via [options()] and queried via [getOption()].
 #' For this, add a `pillar.` prefix (the package name and a dot) to the option name.
-#' Example: for an option `foo`,
-#' `pillar_options$foo(value)` is equivalent to
-#' `options(pillar.foo = value)`.
+#' Example: for an option `foo`, use `options(pillar.foo = value)` to set it
+#' and `getOption("pillar.foo")` to retrieve the current value (`NULL` means
+#' that the default is used).
 #'
-#' @export
 #' @examples
 #' # Default setting:
-#' pillar_options$sigfig()
+#' getOption("pillar.sigfig")
 #' pillar(1.234567)
 #'
 #' # Change for the duration of the session:
-#' old <- pillar_options$sigfig(6)
+#' old <- options(pillar.sigfig = 6)
 #' pillar(1.234567)
 #'
 #' # Change back to the original value:
-#' pillar_options$sigfig(old)
+#' options(old)
 #' pillar(1.234567)
 #'
 #' # Local scope:
 #' local({
-#'   pillar_options$sigfig(6, local = TRUE)
+#'   rlang::local_options(pillar.sigfig = 6)
 #'   pillar(1.234567)
 #' })
 #' pillar(1.234567)
