@@ -131,14 +131,20 @@ jobs:
             nrow(parts) == 1
           }
 
-          deps <- tools::package_dependencies(read.dcf("DESCRIPTION")[1, "Package"], which = c("Depends", "Imports", "LinkingTo", "Suggests"))
-          packages <- sort(deps[[1]])
+          if (!requireNamespace("desc", quietly = TRUE)) {
+            install.packages("desc")
+          }
+
+          deps_df <- desc::desc_get_deps()
+          deps_df <- deps_df[deps_df$type %in% c("Depends", "Imports", "LinkingTo", "Suggests"), ]
+
+          packages <- sort(deps_df$package)
           packages <- intersect(packages, rownames(available.packages()))
 
           valid_dev_dep <- vapply(packages, has_dev_dep, logical(1))
 
           # https://github.com/r-lib/remotes/issues/576
-          valid_dev_dep[packages %in% c("igraph", "duckdb")] <- FALSE
+          valid_dev_dep[packages %in% c("igraph", "duckdb", "logging")] <- FALSE
 
           deps <- packages[valid_dev_dep]
           if (any(!valid_dev_dep)) {
@@ -188,6 +194,7 @@ jobs:
       matrix: ${{fromJson(needs.matrix.outputs.matrix)}}
 
     env:
+      _R_CHECK_BASHISMS_: FALSE
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: https://packagemanager.rstudio.com/cran/__linux__/bionic/latest
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
