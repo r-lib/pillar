@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.1.9003
+
+- `obj_sum()` no longer calls `type_sum()` for vectors since pillar v1.6.1, this is now documented (#321).
+- If a column doesn't make use of all horizontal width offered to it, the excess width is distributed over other columns (#331).
+- All pillars are shown with their true horizontal extent, irrespective of the indicated `width`. This simplifies the implementation of custom `pillar_shaft()` methods (#347).
+- Improved allocation of free space in multi-tier tables with `getOption("tibble.width") > getOption("width")` (#344).
+- Avoid mangling of duplicate column names in footer (#332).
+
+
 # pillar 1.6.1.9002
 
 - Using `attr(exact = TRUE)` everywhere.
