@@ -19,24 +19,24 @@
         `47`                                           
         <chr>                                          
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefg
-        `25`   `42`   `27`   `44`   `20`   `14`  `36`  `43` 
-        <chr>  <chr>  <chr>  <chr>  <chr>  <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `41`    `26`   `45`    `22`  `9`   `13`  `32`  `31` 
-        <chr>   <chr>  <chr>   <chr> <chr> <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcdef~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `12`   `19`   `48`    `49`   `35`  `3`   `11`  `23` 
-        <chr>  <chr>  <chr>   <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcdef~ Abcde~ Abcd~ Abc   Abcd~ Abcd~
-        `24`   `40`   `15`   `38`  `10`  `46`   `5`   `50`  
-        <chr>  <chr>  <chr>  <chr> <chr> <chr>  <chr> <chr> 
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcde~ Abcde Abcde~
-        `18`    `21`   `6`   `30`    `2`   `7`   `1`   `4`  
-        <chr>   <chr>  <chr> <chr>   <chr> <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcd~ Abcdef~ Ab    Abcd~ A     Abcd 
-        `8`    `17`     `33`        `39`         `37`       
-        <chr>  <chr>    <chr>       <chr>        <chr>      
-      1 Abcde~ Abcdefg~ Abcdefghij~ AbcdefghijA~ Abcdefghij~
+        `25`                      `42`   `27`   `44`   `20` 
+        <chr>                     <chr>  <chr>  <chr>  <chr>
+      1 AbcdefghijAbcdefghijAbcde Abcde~ Abcde~ Abcde~ Abcd~
+        `14`   `36`   `43`   `41`   `26`  `45`   `22`  `9`  
+        <chr>  <chr>  <chr>  <chr>  <chr> <chr>  <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~ Abcd~
+        `13`   `32`   `31`   `12`  `19`  `48`   `49`   `35` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr>  <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcde~ Abcde~ Abcd~
+        `3`   `11`   `23`   `24`   `40`   `15`  `38`   `10` 
+        <chr> <chr>  <chr>  <chr>  <chr>  <chr> <chr>  <chr>
+      1 Abc   Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~
+        `46`    `5`   `50`    `18`   `21`  `6`   `30`  `2`  
+        <chr>   <chr> <chr>   <chr>  <chr> <chr> <chr> <chr>
+      1 Abcdef~ Abcde Abcdef~ Abcde~ Abcd~ Abcd~ Abcd~ Ab   
+        `7`    `1`   `4`   `8`    `17`  `33`   `39`   `37`  
+        <chr>  <chr> <chr> <chr>  <chr> <chr>  <chr>  <chr> 
+      1 Abcde~ A     Abcd  Abcde~ Abcd~ Abcde~ Abcde~ Abcde~
     Code
       options(width = 42)
       colonnade(df_str[c(28L, 41L, 12L, 29L, 13L, 43L, 24L, 50L, 48L, 35L, 44L, 21L,
@@ -137,12 +137,12 @@
         `16`             `19`               
         <chr>            <chr>              
       1 AbcdefghijAbcdef AbcdefghijAbcdefghi
-        `15`   `22`   `39`    `10`  `46`   `5`  
-        <chr>  <chr>  <chr>   <chr> <chr>  <chr>
-      1 Abcde~ Abcde~ Abcdef~ Abcd~ Abcde~ Abcde
-        `30`        `8`    `26`      `37`       
-        <chr>       <chr>  <chr>     <chr>      
-      1 Abcdefghij~ Abcde~ Abcdefgh~ Abcdefghij~
+        `15`            `22`     `39`      `10` 
+        <chr>           <chr>    <chr>     <chr>
+      1 AbcdefghijAbcde Abcdefg~ Abcdefgh~ Abcd~
+        `46`    `5`   `30`    `8`   `26`  `37`  
+        <chr>   <chr> <chr>   <chr> <chr> <chr> 
+      1 Abcdef~ Abcde Abcdef~ Abcd~ Abcd~ Abcde~
     Code
       options(width = 39)
       colonnade(df_str[c(40L, 17L, 13L, 23L, 22L, 2L, 18L, 3L, 29L, 45L, 14L, 19L,
@@ -207,21 +207,21 @@
         `41`                                 
         <chr>                                
       1 AbcdefghijAbcdefghijAbcdefghijAbcdef~
-        `21`   `4`   `25`   `38`  `48`  `9`  
-        <chr>  <chr> <chr>  <chr> <chr> <chr>
-      1 Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~
-        `24`   `26`   `39`  `20`  `36`  `42` 
+        `21`                  `4`   `25`     
+        <chr>                 <chr> <chr>    
+      1 AbcdefghijAbcdefghijA Abcd  Abcdefgh~
+        `38`   `48`   `9`   `24`  `26`  `39` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `16`   `6`    `11`  `7`   `12`  `1`  
+        `20`   `36`   `42`  `16`  `6`   `11` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcdef Abcd~ Abcd~ Abcd~ A    
-        `46`   `15`   `5`   `8`   `50`  `32` 
+      1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+        `7`    `12`  `1`   `46`   `15`  `5`  
+        <chr>  <chr> <chr> <chr>  <chr> <chr>
+      1 Abcde~ Abcd~ A     Abcde~ Abcd~ Abcde
+        `8`    `50`   `32`  `30`  `49`  `28` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde Abcd~ Abcd~ Abcd~
-        `30`         `49`          `28`      
-        <chr>        <chr>         <chr>     
-      1 AbcdefghijA~ AbcdefghijAb~ Abcdefghi~
+      1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
     Code
       options(width = 32)
       colonnade(df_str[c(11L, 36L, 17L, 14L, 31L, 35L, 23L, 13L, 6L, 44L, 45L, 22L,
@@ -259,30 +259,30 @@
         `45`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `22`   `21`  `18`  `33`  `10` 
+        `22`    `21`    `18`   `33`   
+        <chr>   <chr>   <chr>  <chr>  
+      1 Abcdef~ Abcdef~ Abcde~ Abcdef~
+        `10`   `43`  `2`   `46`  `34` 
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `43`   `2`   `46`  `34`  `3`  
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Ab    Abcd~ Abcd~ Abc  
-        `19`   `1`   `38`  `9`   `37` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ A     Abcd~ Abcd~ Abcd~
-        `5`   `8`    `25`  `49`  `27` 
+      1 Abcde~ Abcd~ Ab    Abcd~ Abcd~
+        `3`   `19`   `1`   `38`  `9`  
         <chr> <chr>  <chr> <chr> <chr>
-      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
-        `29`   `15`  `39`  `24`  `40` 
+      1 Abc   Abcde~ A     Abcd~ Abcd~
+        `37`   `5`   `8`   `25`  `49` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde Abcd~ Abcd~ Abcd~
+        `27`   `29`  `15`  `39`  `24` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `48`   `26`  `47`  `42`  `41` 
+        `40`   `48`  `26`  `47`  `42` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `12`   `28`  `30`  `7`   `16` 
+        `41`   `12`  `28`  `30`  `7`  
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `4`   `50`     `20`    `32`   
-        <chr> <chr>    <chr>   <chr>  
-      1 Abcd  Abcdefg~ Abcdef~ Abcdef~
+        `16`   `4`   `50`  `20`  `32` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd  Abcd~ Abcd~ Abcd~
     Code
       options(width = 35)
       colonnade(df_str[c(18L, 46L, 11L, 43L, 31L, 47L, 48L, 44L, 50L, 15L, 28L, 33L,
@@ -377,18 +377,18 @@
         `34`                             
         <chr>                            
       1 AbcdefghijAbcdefghijAbcdefghijAb~
-        `8`    `24`    `29`   `1`   `12` 
-        <chr>  <chr>   <chr>  <chr> <chr>
-      1 Abcde~ Abcdef~ Abcde~ A     Abcd~
-        `2`   `20`    `17`  `35`    `5`  
-        <chr> <chr>   <chr> <chr>   <chr>
-      1 Ab    Abcdef~ Abcd~ Abcdef~ Abcde
-        `19`   `30`    `7`   `26`  `42`  
-        <chr>  <chr>   <chr> <chr> <chr> 
-      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
-        `41`          `39`         `10`  
-        <chr>         <chr>        <chr> 
-      1 AbcdefghijAb~ AbcdefghijA~ Abcde~
+        `8`      `24`        `29`        
+        <chr>    <chr>       <chr>       
+      1 Abcdefgh Abcdefghij~ AbcdefghijA~
+        `1`   `12`   `2`   `20`    `17`  
+        <chr> <chr>  <chr> <chr>   <chr> 
+      1 A     Abcde~ Ab    Abcdef~ Abcde~
+        `35`    `5`   `19`   `30`   `7`  
+        <chr>   <chr> <chr>  <chr>  <chr>
+      1 Abcdef~ Abcde Abcde~ Abcde~ Abcd~
+        `26`   `42`   `41`   `39`   `10` 
+        <chr>  <chr>  <chr>  <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
     Code
       options(width = 32)
       colonnade(df_str[c(43L, 1L, 3L, 15L, 28L, 12L, 46L, 34L, 31L, 7L, 11L, 4L, 44L,
@@ -411,33 +411,33 @@
         `46`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `34`   `31`  `7`   `11`  `4`  
+        `34`         `31`        `7`  
+        <chr>        <chr>       <chr>
+      1 AbcdefghijA~ Abcdefghij~ Abcd~
+        `11`   `4`   `44`  `8`   `9`  
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd 
-        `44`   `8`   `9`   `5`   `36` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcde Abcd~
-        `22`   `17`  `39`  `18`  `45` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `37`   `13`  `29`  `6`   `30` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `16`   `20`  `10`  `19`  `26` 
+      1 Abcde~ Abcd  Abcd~ Abcd~ Abcd~
+        `5`   `36`   `22`  `17`  `39` 
+        <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `18`   `45`  `37`  `13`  `29` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `33`   `40`  `35`  `48`  `38` 
+        `6`    `30`  `16`  `20`  `10` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcdef Abcd~ Abcd~ Abcd~ Abcd~
+        `19`   `26`  `33`  `40`  `35` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `25`   `2`   `47`  `42`  `41` 
+        `48`   `38`  `25`  `2`   `47` 
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Ab    Abcd~ Abcd~ Abcd~
-        `27`   `14`  `21`  `24`  `50` 
+      1 Abcde~ Abcd~ Abcd~ Ab    Abcd~
+        `42`   `41`  `27`  `14`  `21` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `49`       `23`      `32`     
-        <chr>      <chr>     <chr>    
-      1 Abcdefghi~ Abcdefgh~ Abcdefgh~
+        `24`   `50`  `49`  `23`  `32` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
     Code
       options(width = 31)
       colonnade(df_str[c(37L, 46L, 21L, 3L, 16L, 39L, 34L, 33L, 10L, 17L, 19L, 36L,
@@ -553,12 +553,12 @@
         `20`                
         <chr>               
       1 AbcdefghijAbcdefghij
-        `27`  `43`  `8`   `47`  `4`  
-        <chr> <chr> <chr> <chr> <chr>
-      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd 
-        `48`    `24`    `26`   `22`  
+        `27`    `43`    `8`    `47`  
         <chr>   <chr>   <chr>  <chr> 
       1 Abcdef~ Abcdef~ Abcde~ Abcde~
+        `4`   `48`  `24`  `26`  `22` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd  Abcd~ Abcd~ Abcd~ Abcd~
     Code
       options(width = 58)
       colonnade(df_str[c(31L, 39L, 40L, 30L, 10L, 21L, 9L, 16L, 46L, 25L, 15L, 24L,
@@ -581,21 +581,21 @@
         `21`                  `9`       `16`            
         <chr>                 <chr>     <chr>           
       1 AbcdefghijAbcdefghijA Abcdefghi AbcdefghijAbcdef
-        `46`   `25`   `15`   `24`  `3`   `50`  `35`  `1`   `12` 
-        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Abc   Abcd~ Abcd~ A     Abcd~
-        `34`   `48`   `4`   `29`   `23`  `37`  `36`  `28`  `43` 
-        <chr>  <chr>  <chr> <chr>  <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `11`   `17`   `32`   `8`   `41`  `13`  `44`  `7`   `38` 
+        `46`         `25`      `15`   `24`    `3`   `50`        
+        <chr>        <chr>     <chr>  <chr>   <chr> <chr>       
+      1 AbcdefghijA~ Abcdefgh~ Abcde~ Abcdef~ Abc   AbcdefghijA~
+        `35`   `1`   `12`   `34`   `48`  `4`   `29`  `23`  `37` 
+        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ A     Abcde~ Abcde~ Abcd~ Abcd  Abcd~ Abcd~ Abcd~
+        `36`   `28`   `43`   `11`  `17`  `32`  `8`   `41`  `13` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `26`   `33`   `20`   `19`  `2`   `18`  `49`  `27`  `47` 
+        `44`   `7`    `38`   `26`  `33`  `20`  `19`  `2`   `18` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Ab    Abcd~ Abcd~ Abcd~ Abcd~
-        `22`      `14`    `6`   `5`   `45`          `42`        
-        <chr>     <chr>   <chr> <chr> <chr>         <chr>       
-      1 Abcdefgh~ Abcdef~ Abcd~ Abcde AbcdefghijAb~ AbcdefghijA~
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Ab    Abcd~
+        `49`   `27`   `47`   `22`  `14`  `6`   `5`   `45`  `42` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abcd~
     Code
       options(width = 57)
       colonnade(df_str[c(43L, 21L, 41L, 48L, 22L, 25L, 2L, 8L, 1L, 24L, 6L, 39L, 38L,
@@ -648,18 +648,18 @@
         `26`                      
         <chr>                     
       1 AbcdefghijAbcdefghijAbcdef
-        `44`   `11`   `46`  `28`  `7`   `18`  `50`  `16`  `29` 
+        `44`                                        
+        <chr>                                       
+      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcd
+        `11`   `46`   `28`  `7`   `18`  `50`  `16`  `29`  `30` 
         <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `30`   `4`   `23`   `17`  `40`  `33`  `14`  `27`  `19` 
+        `4`   `23`   `17`   `40`  `33`  `14`  `27`  `19`  `34` 
+        <chr> <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
+      1 Abcd  Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `32`   `3`   `37`   `15`  `10`  `5`   `35`  `31`  `42` 
         <chr>  <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `34`   `32`   `3`   `37`  `15`  `10`  `5`   `35`  `31` 
-        <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abc   Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abcd~
-        `42`                                      
-        <chr>                                     
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAb
+      1 Abcde~ Abc   Abcde~ Abcd~ Abcd~ Abcde Abcd~ Abcd~ Abcd~
     Code
       options(width = 33)
       colonnade(df_str[c(40L, 6L, 25L, 5L, 26L, 17L, 19L, 2L, 11L, 34L, 45L, 24L, 22L,
@@ -769,15 +769,15 @@
         `50`                           
         <chr>                          
       1 AbcdefghijAbcdefghijAbcdefghij~
-        `10`   `9`    `8`   `47`  `31` 
+        `10`       `9`       `8`     
+        <chr>      <chr>     <chr>   
+      1 Abcdefghij Abcdefghi Abcdefgh
+        `47`   `31`   `14`  `38`  `33` 
         <chr>  <chr>  <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `14`   `38`   `33`  `32`  `43` 
+        `32`   `43`   `23`  `15`  `37` 
         <chr>  <chr>  <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `23`       `15`     `37`       
-        <chr>      <chr>    <chr>      
-      1 Abcdefghi~ Abcdefg~ Abcdefghij~
     Code
       options(width = 32)
       colonnade(df_str[c(43L, 23L, 22L, 11L, 6L, 26L, 48L, 17L, 7L, 42L, 36L, 21L,
@@ -842,24 +842,24 @@
         `49`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `47`   `30`  `31`  `25`  `28` 
+        `47`            `30`          
+        <chr>           <chr>         
+      1 AbcdefghijAbcd~ AbcdefghijAbc~
+        `31`   `25`  `28`  `46`  `12` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `46`   `12`  `32`  `39`  `24` 
+        `32`   `39`  `24`  `10`  `45` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `10`   `45`  `5`   `37`  `14` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcde Abcd~ Abcd~
-        `40`   `20`  `41`  `44`  `33` 
+        `5`   `37`   `14`  `40`  `20` 
+        <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `41`   `44`  `33`  `18`  `38` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `18`   `38`  `3`   `1`   `34` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abc   A     Abcd~
-        `16`             `9`      
-        <chr>            <chr>    
-      1 AbcdefghijAbcdef Abcdefghi
+        `3`   `1`   `34`   `16`  `9`  
+        <chr> <chr> <chr>  <chr> <chr>
+      1 Abc   A     Abcde~ Abcd~ Abcd~
     Code
       options(width = 46)
       colonnade(df_str[c(5L, 24L, 43L, 46L, 35L, 39L, 18L, 26L, 8L, 27L, 2L, 50L, 6L,
@@ -957,12 +957,12 @@
         `48`                                        
         <chr>                                       
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbc~
-        `20`   `21`   `44`   `25`  `10`  `22`  `30` 
+        `20`                 `21`                 
+        <chr>                <chr>                
+      1 AbcdefghijAbcdefghij AbcdefghijAbcdefghijA
+        `44`   `25`   `10`   `22`  `30`  `40`  `17` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `40`                           `17`         
-        <chr>                          <chr>        
-      1 AbcdefghijAbcdefghijAbcdefghi~ AbcdefghijAb~
     Code
       options(width = 52)
       colonnade(df_str[c(7L, 44L, 19L, 21L, 18L, 35L, 23L, 50L, 33L, 37L, 25L, 26L,
@@ -1021,18 +1021,18 @@
         `45`                                         
         <chr>                                        
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcde
-        `6`    `4`   `11`   `24`   `43`  `32`  `3`   `38` 
-        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcdef Abcd  Abcde~ Abcde~ Abcd~ Abcd~ Abc   Abcd~
-        `5`   `49`   `27`   `17`   `8`   `22`  `40`  `12` 
-        <chr> <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `15`   `1`   `28`   `31`   `29`  `13`  `48`  `34` 
-        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ A     Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `36`        `30`       `20`    `16`   `46`        
-        <chr>       <chr>      <chr>   <chr>  <chr>       
-      1 Abcdefghij~ Abcdefghi~ Abcdef~ Abcde~ AbcdefghijA~
+        `6`    `4`   `11`        `24`       `43`          
+        <chr>  <chr> <chr>       <chr>      <chr>         
+      1 Abcdef Abcd  AbcdefghijA Abcdefghi~ AbcdefghijAbc~
+        `32`   `3`   `38`   `5`   `49`   `27`  `17`  `8`  
+        <chr>  <chr> <chr>  <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde~ Abc   Abcde~ Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `22`   `40`   `12`   `15`  `1`   `28`  `31`  `29` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ A     Abcd~ Abcd~ Abcd~
+        `13`   `48`   `34`   `36`  `30`  `20`  `16`  `46` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
     Code
       options(width = 35)
       colonnade(df_str[c(38L, 18L, 23L, 36L, 35L, 20L, 44L, 19L, 13L, 41L, 31L, 7L,
@@ -1046,36 +1046,36 @@
         `18`              
         <chr>             
       1 AbcdefghijAbcdefgh
-        `23`   `36`   `35`   `20`   `44` 
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `19`   `13`   `41`   `31`   `7`  
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `11`   `29`    `2`   `14`  `26`  
+        `23`      `36`        `35`       
+        <chr>     <chr>       <chr>      
+      1 Abcdefgh~ Abcdefghij~ Abcdefghij~
+        `20`   `44`    `19`  `13`  `41`  
         <chr>  <chr>   <chr> <chr> <chr> 
-      1 Abcde~ Abcdef~ Ab    Abcd~ Abcde~
-        `46`   `40`   `45`   `9`    `34` 
+      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
+        `31`    `7`    `11`  `29`   `2`  
+        <chr>   <chr>  <chr> <chr>  <chr>
+      1 Abcdef~ Abcde~ Abcd~ Abcde~ Ab   
+        `14`   `26`   `46`   `40`   `45` 
         <chr>  <chr>  <chr>  <chr>  <chr>
       1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `33`    `22`   `1`   `17`  `28`  
-        <chr>   <chr>  <chr> <chr> <chr> 
-      1 Abcdef~ Abcde~ A     Abcd~ Abcde~
-        `10`   `21`   `30`  `47`   `49`  
-        <chr>  <chr>  <chr> <chr>  <chr> 
-      1 Abcde~ Abcde~ Abcd~ Abcde~ Abcde~
-        `6`    `12`   `4`   `25`   `32`  
-        <chr>  <chr>  <chr> <chr>  <chr> 
-      1 Abcdef Abcde~ Abcd  Abcde~ Abcde~
-        `15`   `43`    `24`  `48`   `3`  
+        `9`    `34`    `33`   `22`  `1`  
+        <chr>  <chr>   <chr>  <chr> <chr>
+      1 Abcde~ Abcdef~ Abcde~ Abcd~ A    
+        `17`   `28`    `10`  `21`  `30`  
+        <chr>  <chr>   <chr> <chr> <chr> 
+      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
+        `47`    `49`    `6`   `12`  `4`  
+        <chr>   <chr>   <chr> <chr> <chr>
+      1 Abcdef~ Abcdef~ Abcd~ Abcd~ Abcd 
+        `25`   `32`    `15`  `43`   `24` 
         <chr>  <chr>   <chr> <chr>  <chr>
-      1 Abcde~ Abcdef~ Abcd~ Abcde~ Abc  
-        `37`   `50`   `42`   `39`   `16` 
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `8`     `27`                `5`  
-        <chr>   <chr>               <chr>
-      1 Abcdef~ AbcdefghijAbcdefgh~ Abcde
+      1 Abcde~ Abcdef~ Abcd~ Abcde~ Abcd~
+        `48`   `3`   `37`   `50`   `42`  
+        <chr>  <chr> <chr>  <chr>  <chr> 
+      1 Abcde~ Abc   Abcde~ Abcde~ Abcde~
+        `39`    `16`   `8`   `27`   `5`  
+        <chr>   <chr>  <chr> <chr>  <chr>
+      1 Abcdef~ Abcde~ Abcd~ Abcde~ Abcde
     Code
       options(width = 41)
       colonnade(df_str[c(22L, 9L, 11L, 26L, 19L, 16L, 32L, 25L, 1L, 30L, 31L, 6L, 24L,
@@ -1146,16 +1146,16 @@
         `38`                                  
         <chr>                                 
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh
-        `36`    `48`   `34`   `3`   `8`   `4`  
-        <chr>   <chr>  <chr>  <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcde~ Abc   Abcd~ Abcd 
-        `27`   `42`   `44`   `33`   `45`  `18` 
-        <chr>  <chr>  <chr>  <chr>  <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcd~
-        `5`   `2`   `13`   `47`    `28`   `17` 
-        <chr> <chr> <chr>  <chr>   <chr>  <chr>
-      1 Abcde Ab    Abcde~ Abcdef~ Abcde~ Abcd~
-        `37`        `14`    `41`       `23`    
-        <chr>       <chr>   <chr>      <chr>   
-      1 Abcdefghij~ Abcdef~ Abcdefghi~ Abcdefg~
+        `36`        `48`        `34`      `3`  
+        <chr>       <chr>       <chr>     <chr>
+      1 Abcdefghij~ Abcdefghij~ Abcdefgh~ Abc  
+        `8`    `4`   `27`   `42`   `44`   `33` 
+        <chr>  <chr> <chr>  <chr>  <chr>  <chr>
+      1 Abcde~ Abcd  Abcde~ Abcde~ Abcde~ Abcd~
+        `45`    `18`   `5`   `2`   `13`  `47`  
+        <chr>   <chr>  <chr> <chr> <chr> <chr> 
+      1 Abcdef~ Abcde~ Abcde Ab    Abcd~ Abcde~
+        `28`   `17`   `37`   `14`  `41`   `23` 
+        <chr>  <chr>  <chr>  <chr> <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~
 

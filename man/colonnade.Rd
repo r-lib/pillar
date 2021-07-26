@@ -49,10 +49,28 @@ Otherwise, if the maximum width is too wide, the same test
 is carried out with the minimum width.
 If this is still too wide, this is the resulting fit.
 Otherwise, some tiers from the start
-will contain pillars with their maximum width, and the remaining tiers
-contain pillars with their minimum width.
+will contain pillars with their maximum width,
+one tier will contain some pillars with maximum and some with minimum width,
+and the remaining tiers contain pillars with their minimum width only.
+
+For this, we compute a "reverse minimum assignment".
+
 We determine the cut point where minimum and maximum assignment
 agree.
+The following strategy is applied:
+\enumerate{
+\item First, we determine the tier in which the cut point lies.
+This is the first instance of a column that ends up in the same tier
+for both minimum and maximum assignment.
+\item A set of candidate cut points is derived.
+\item We consult the column offsets. The last column where the minimum assignment
+has a greater or equal offset than the maximum assignment is our latest
+cut point.
+If no such column exists, the cut point is the column just before our
+first candidate.
+\item Finally, we combine maximum and minimum reverse fits at the cut point.
+We don't need to redistribute anything here.
+}
 
 Fitting pillars into tiers is very similar to a word-wrapping algorithm.
 In a loop, new tiers are opened if the current tier overflows.
