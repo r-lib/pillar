@@ -10,8 +10,8 @@
 #' Setting `local = TRUE` enables the option for the duration of the
 #' current stack frame via [rlang::local_options()].
 #'
-#' These options can also be queried via [getOption()] and set via [options()]
-#' by prefixing them with `pillar.` (the package name and a dot).
+#' These options can also be set via [options()] and queried via [getOption()].
+#' For this, add a `pillar.` prefix (the package name and a dot) to the option name.
 #' Example: for an option `foo`,
 #' `pillar_options$foo(value)` is equivalent to
 #' `options(pillar.foo = value)`.

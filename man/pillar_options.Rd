@@ -22,8 +22,8 @@ is returned, invisibly.
 Setting \code{local = TRUE} enables the option for the duration of the
 current stack frame via \code{\link[rlang:local_options]{rlang::local_options()}}.
 
-These options can also be queried via \code{\link[=getOption]{getOption()}} and set via \code{\link[=options]{options()}}
-by prefixing them with \code{pillar.} (the package name and a dot).
+These options can also be set via \code{\link[=options]{options()}} and queried via \code{\link[=getOption]{getOption()}}.
+For this, add a \code{pillar.} prefix (the package name and a dot) to the option name.
 Example: for an option \code{foo},
 \code{pillar_options$foo(value)} is equivalent to
 \code{options(pillar.foo = value)}.
