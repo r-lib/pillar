@@ -201,22 +201,22 @@
       $ Petal.Width  <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.~
       $ Species      <fct> setosa, setosa, setosa, setosa, setosa, setosa,~
     Code
-      Species <- unique(iris$Species)
+      species <- unique(iris$Species)
       data <- unname(split(iris, iris$Species))
-      nested_iris_df <- tibble::tibble(Species, data)
+      nested_iris_df <- tibble::tibble(species, data)
       glimpse(nested_iris_df, width = 70L)
     Output
       Rows: 3
       Columns: 2
-      $ Species <fct> setosa, versicolor, virginica
+      $ species <fct> setosa, versicolor, virginica
       $ data    <list> [<data.frame[50 x 5]>], [<data.frame[50 x 5]>], [<da~
     Code
       data <- map(data, as_tbl)
-      nested_iris_tbl <- tibble::tibble(Species, data)
+      nested_iris_tbl <- tibble::tibble(species, data)
       glimpse(nested_iris_tbl, width = 70L)
     Output
       Rows: 3
       Columns: 2
-      $ Species <fct> setosa, versicolor, virginica
+      $ species <fct> setosa, versicolor, virginica
       $ data    <list> [<tbl[50 x 5]>], [<tbl[50 x 5]>], [<tbl[50 x 5]>]
 

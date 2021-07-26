@@ -7,6 +7,7 @@
         11L, 23L, 24L, 40L, 15L, 38L, 10L, 46L, 5L, 50L, 18L, 21L, 6L, 30L, 2L, 7L,
         1L, 4L, 8L, 17L, 33L, 39L, 37L)], width = 516)
     Output
+      $body
         `28`                        
         <chr>                       
       1 AbcdefghijAbcdefghijAbcdefgh
@@ -37,6 +38,10 @@
         `8`    `17`     `33`        `39`         `37`       
         <chr>  <chr>    <chr>       <chr>        <chr>      
       1 Abcde~ Abcdefg~ Abcdefghij~ AbcdefghijA~ Abcdefghij~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 42)
       ctl_colonnade(df_str[c(28L, 41L, 12L, 29L, 13L, 43L, 24L, 50L, 48L, 35L, 44L,
@@ -44,6 +49,7 @@
         31L, 1L, 4L, 38L, 9L, 27L, 40L, 32L, 17L, 6L, 49L, 16L, 19L, 15L, 22L, 39L,
         10L, 46L, 5L, 30L, 8L, 26L, 37L)], width = 1365)
     Output
+      $body
         `28`                        
         <chr>                       
       1 AbcdefghijAbcdefghijAbcdefgh
@@ -143,6 +149,10 @@
         `30`        `8`    `26`      `37`       
         <chr>       <chr>  <chr>     <chr>      
       1 Abcdefghij~ Abcde~ Abcdefgh~ Abcdefghij~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 39)
       ctl_colonnade(df_str[c(40L, 17L, 13L, 23L, 22L, 2L, 18L, 3L, 29L, 45L, 14L, 19L,
@@ -150,6 +160,7 @@
         9L, 24L, 26L, 39L, 20L, 36L, 42L, 16L, 6L, 11L, 7L, 12L, 1L, 46L, 15L, 5L, 8L,
         50L, 32L, 30L, 49L, 28L)], width = 934)
     Output
+      $body
         `40`                                 
         <chr>                                
       1 AbcdefghijAbcdefghijAbcdefghijAbcdef~
@@ -222,6 +233,10 @@
         `30`         `49`          `28`      
         <chr>        <chr>         <chr>     
       1 AbcdefghijA~ AbcdefghijAb~ Abcdefghi~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 32)
       ctl_colonnade(df_str[c(11L, 36L, 17L, 14L, 31L, 35L, 23L, 13L, 6L, 44L, 45L,
@@ -229,6 +244,7 @@
         25L, 49L, 27L, 29L, 15L, 39L, 24L, 40L, 48L, 26L, 47L, 42L, 41L, 12L, 28L,
         30L, 7L, 16L, 4L, 50L, 20L, 32L)], width = 565)
     Output
+      $body
         `11`       
         <chr>      
       1 AbcdefghijA
@@ -283,6 +299,10 @@
         `4`   `50`     `20`    `32`   
         <chr> <chr>    <chr>   <chr>  
       1 Abcd  Abcdefg~ Abcdef~ Abcdef~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 35)
       ctl_colonnade(df_str[c(18L, 46L, 11L, 43L, 31L, 47L, 48L, 44L, 50L, 15L, 28L,
@@ -290,6 +310,7 @@
         36L, 27L, 38L, 14L, 34L, 8L, 24L, 29L, 1L, 12L, 2L, 20L, 17L, 35L, 5L, 19L,
         30L, 7L, 26L, 42L, 41L, 39L, 10L)], width = 1121)
     Output
+      $body
         `18`              
         <chr>             
       1 AbcdefghijAbcdefgh
@@ -389,6 +410,10 @@
         `41`          `39`         `10`  
         <chr>         <chr>        <chr> 
       1 AbcdefghijAb~ AbcdefghijA~ Abcde~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 32)
       ctl_colonnade(df_str[c(43L, 1L, 3L, 15L, 28L, 12L, 46L, 34L, 31L, 7L, 11L, 4L,
@@ -396,6 +421,7 @@
         20L, 10L, 19L, 26L, 33L, 40L, 35L, 48L, 38L, 25L, 2L, 47L, 42L, 41L, 27L, 14L,
         21L, 24L, 50L, 49L, 23L, 32L)], width = 446)
     Output
+      $body
         `43`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
@@ -438,6 +464,10 @@
         `49`       `23`      `32`     
         <chr>      <chr>     <chr>    
       1 Abcdefghi~ Abcdefgh~ Abcdefgh~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 31)
       ctl_colonnade(df_str[c(37L, 46L, 21L, 3L, 16L, 39L, 34L, 33L, 10L, 17L, 19L,
@@ -445,6 +475,7 @@
         41L, 7L, 23L, 35L, 28L, 6L, 25L, 2L, 9L, 12L, 15L, 5L, 18L, 20L, 27L, 43L, 8L,
         47L, 4L, 48L, 24L, 26L, 22L)], width = 1166)
     Output
+      $body
         `37`                         
         <chr>                        
       1 AbcdefghijAbcdefghijAbcdefgh~
@@ -559,6 +590,10 @@
         `48`    `24`    `26`   `22`  
         <chr>   <chr>   <chr>  <chr> 
       1 Abcdef~ Abcdef~ Abcde~ Abcde~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 58)
       ctl_colonnade(df_str[c(31L, 39L, 40L, 30L, 10L, 21L, 9L, 16L, 46L, 25L, 15L,
@@ -566,6 +601,7 @@
         17L, 32L, 8L, 41L, 13L, 44L, 7L, 38L, 26L, 33L, 20L, 19L, 2L, 18L, 49L, 27L,
         47L, 22L, 14L, 6L, 5L, 45L, 42L)], width = 546)
     Output
+      $body
         `31`                           
         <chr>                          
       1 AbcdefghijAbcdefghijAbcdefghijA
@@ -596,6 +632,10 @@
         `22`      `14`    `6`   `5`   `45`          `42`        
         <chr>     <chr>   <chr> <chr> <chr>         <chr>       
       1 Abcdefgh~ Abcdef~ Abcd~ Abcde AbcdefghijAb~ AbcdefghijA~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 57)
       ctl_colonnade(df_str[c(43L, 21L, 41L, 48L, 22L, 25L, 2L, 8L, 1L, 24L, 6L, 39L,
@@ -603,6 +643,7 @@
         50L, 16L, 29L, 30L, 4L, 23L, 17L, 40L, 33L, 14L, 27L, 19L, 34L, 32L, 3L, 37L,
         15L, 10L, 5L, 35L, 31L, 42L)], width = 1035)
     Output
+      $body
         `43`                                       
         <chr>                                      
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbc
@@ -660,6 +701,10 @@
         `42`                                      
         <chr>                                     
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAb
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 33)
       ctl_colonnade(df_str[c(40L, 6L, 25L, 5L, 26L, 17L, 19L, 2L, 11L, 34L, 45L, 24L,
@@ -667,6 +712,7 @@
         42L, 28L, 3L, 46L, 21L, 20L, 16L, 29L, 50L, 10L, 9L, 8L, 47L, 31L, 14L, 38L,
         33L, 32L, 43L, 23L, 15L, 37L)], width = 1217)
     Output
+      $body
         `40`                           
         <chr>                          
       1 AbcdefghijAbcdefghijAbcdefghij~
@@ -778,6 +824,10 @@
         `23`       `15`     `37`       
         <chr>      <chr>    <chr>      
       1 Abcdefghi~ Abcdefg~ Abcdefghij~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 32)
       ctl_colonnade(df_str[c(43L, 23L, 22L, 11L, 6L, 26L, 48L, 17L, 7L, 42L, 36L, 21L,
@@ -785,6 +835,7 @@
         46L, 12L, 32L, 39L, 24L, 10L, 45L, 5L, 37L, 14L, 40L, 20L, 41L, 44L, 33L, 18L,
         38L, 3L, 1L, 34L, 16L, 9L)], width = 770)
     Output
+      $body
         `43`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
@@ -860,6 +911,10 @@
         `16`             `9`      
         <chr>            <chr>    
       1 AbcdefghijAbcdef Abcdefghi
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 46)
       ctl_colonnade(df_str[c(5L, 24L, 43L, 46L, 35L, 39L, 18L, 26L, 8L, 27L, 2L, 50L,
@@ -867,6 +922,7 @@
         34L, 19L, 42L, 32L, 1L, 45L, 15L, 7L, 11L, 49L, 23L, 12L, 48L, 20L, 21L, 44L,
         25L, 10L, 22L, 30L, 40L, 17L)], width = 1439)
     Output
+      $body
         `5`   `24`                    
         <chr> <chr>                   
       1 Abcde AbcdefghijAbcdefghijAbcd
@@ -963,6 +1019,10 @@
         `40`                           `17`         
         <chr>                          <chr>        
       1 AbcdefghijAbcdefghijAbcdefghi~ AbcdefghijAb~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 52)
       ctl_colonnade(df_str[c(7L, 44L, 19L, 21L, 18L, 35L, 23L, 50L, 33L, 37L, 25L,
@@ -970,6 +1030,7 @@
         3L, 38L, 5L, 49L, 27L, 17L, 8L, 22L, 40L, 12L, 15L, 1L, 28L, 31L, 29L, 13L,
         48L, 34L, 36L, 30L, 20L, 16L, 46L)], width = 1065)
     Output
+      $body
         `7`    
         <chr>  
       1 Abcdefg
@@ -1033,6 +1094,10 @@
         `36`        `30`       `20`    `16`   `46`        
         <chr>       <chr>      <chr>   <chr>  <chr>       
       1 Abcdefghij~ Abcdefghi~ Abcdef~ Abcde~ AbcdefghijA~
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 35)
       ctl_colonnade(df_str[c(38L, 18L, 23L, 36L, 35L, 20L, 44L, 19L, 13L, 41L, 31L,
@@ -1040,6 +1105,7 @@
         10L, 21L, 30L, 47L, 49L, 6L, 12L, 4L, 25L, 32L, 15L, 43L, 24L, 48L, 3L, 37L,
         50L, 42L, 39L, 16L, 8L, 27L, 5L)], width = 393)
     Output
+      $body
         `38`                             
         <chr>                            
       1 AbcdefghijAbcdefghijAbcdefghijAb~
@@ -1076,6 +1142,10 @@
         `8`     `27`                `5`  
         <chr>   <chr>               <chr>
       1 Abcdef~ AbcdefghijAbcdefgh~ Abcde
+      
+      $extra_cols
+      named list()
+      
     Code
       options(width = 41)
       ctl_colonnade(df_str[c(22L, 9L, 11L, 26L, 19L, 16L, 32L, 25L, 1L, 30L, 31L, 6L,
@@ -1083,6 +1153,7 @@
         36L, 48L, 34L, 3L, 8L, 4L, 27L, 42L, 44L, 33L, 45L, 18L, 5L, 2L, 13L, 47L,
         28L, 17L, 37L, 14L, 41L, 23L)], width = 999)
     Output
+      $body
         `22`                   `9`      
         <chr>                  <chr>    
       1 AbcdefghijAbcdefghijAb Abcdefghi
@@ -1158,4 +1229,8 @@
         `37`        `14`    `41`       `23`    
         <chr>       <chr>   <chr>      <chr>   
       1 Abcdefghij~ Abcdef~ Abcdefghi~ Abcdefg~
+      
+      $extra_cols
+      named list()
+      
 

@@ -9,7 +9,6 @@ test_that("works with glimpse", {
 test_that("can override", {
   foo <- as_override_type_sum(2011:2013)
 
-  # FIXME: Should this be right-aligned?
   expect_snapshot({
     new_tbl(list(foo = foo))
   })

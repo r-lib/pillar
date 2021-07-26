@@ -31,30 +31,27 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   compound_pillar <- combine_pillars(pillars)
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
-  # FIXME: Simplify
-  col_widths_show <- split(col_widths, factor(col_widths$tier != 0, levels = c(FALSE, TRUE)))
-  col_widths_shown <- col_widths_show[["TRUE"]]
-  col_widths_tiers <- split(col_widths_shown, col_widths_shown$tier)
-
-  col_widths_tiers <- map(col_widths_tiers, function(tier) {
-    tier$tier <- NULL
-    tier
-  })
-
   if (!is.null(rowid)) {
     rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
 
-    col_widths_tiers <- map(col_widths_tiers, function(tier) {
-      tier <- vctrs::vec_rbind(
-        as_tbl(vctrs::data_frame(id = 0L, width = rowid_width, pillar = list(rowid_pillar))),
-        tier
-      )
-      tier
-    })
+    col_widths_rowid <- as_tbl(vctrs::data_frame(
+      tier = unique(col_widths$tier),
+      id = 0L,
+      width = rowid_width,
+      pillar = list(rowid_pillar)
+    ))
+
+    col_widths <- vctrs::vec_rbind(col_widths_rowid, col_widths)
   }
 
-  flat_tiers <- map(col_widths_tiers, function(tier) {
-    map2(tier$pillar, tier$width, pillar_format_parts_2)
+  tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)
+
+  flat_tiers <- map(tiers, function(tier) {
+    map2(
+      col_widths$pillar[tier],
+      col_widths$width[tier],
+      pillar_format_parts_2
+    )
   })
 
   out <- map(flat_tiers, format_colonnade_tier_2)
@@ -76,8 +73,10 @@ format_colonnade_tier_2 <- function(x) {
 new_colonnade_body <- function(x, extra_cols) {
   "!!!!!DEBUG new_colonnade_body()"
 
-  formatted <- new_vertical(as.character(unlist(x)))
-  new_vertical(formatted, extra_cols = extra_cols)
+  body <- new_vertical(as.character(unlist(x)))
+  extra_cols <- as.list(extra_cols)
+
+  list(body = body, extra_cols = extra_cols)
 }
 
 #' @noRd
@@ -90,8 +89,6 @@ colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
   #' `getOption("width")` characters wide. The very first step of formatting
   #' is to determine how many tiers are shown at most, and the width of each
   #' tier.
-  tier_widths
-
   col_widths_df <- colonnade_compute_tiered_col_widths_2(compound_pillar, tier_widths)
 
   #' Remaining space is then distributed proportionally to pillars that do not

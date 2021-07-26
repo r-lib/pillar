@@ -49,19 +49,29 @@
       # Colonnade
       ctl_colonnade(list(a = 1:3), has_row_id = FALSE)
     Output
+      $body
           a
       <int>
           1
           2
           3
+      
+      $extra_cols
+      named list()
+      
     Code
       ctl_colonnade(list(a = 1:3))
     Output
+      $body
             a
         <int>
       1     1
       2     2
       3     3
+      
+      $extra_cols
+      named list()
+      
 
 # body: output for wide characters
 
