@@ -7,9 +7,10 @@
 #' using the full range of colours provided by modern terminals.
 #' Provides various generics for making every aspect of the display customizable.
 #'
-#' @details
-#' See [pillar()] for formatting a single column,
-#' and [print.tbl()] for formatting data-frame-like objects.
+#' @seealso
+#' - [pillar()] for formatting a single column,
+#' - [print.tbl()] for formatting data-frame-like objects,
+#' - [pillar_options] for a list of package options.
 #'
 #' @examples
 #' pillar(1:3)

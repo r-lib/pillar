@@ -11,10 +11,6 @@ Formats tabular data in columns or rows
 using the full range of colours provided by modern terminals.
 Provides various generics for making every aspect of the display customizable.
 }
-\details{
-See \code{\link[=pillar]{pillar()}} for formatting a single column,
-and \code{\link[=print.tbl]{print.tbl()}} for formatting data-frame-like objects.
-}
 \examples{
 pillar(1:3)
 pillar(c(1, 2, 3))
@@ -22,13 +18,11 @@ pillar(factor(letters[1:3]), title = "letters")
 colonnade(iris[1:3, ])
 }
 \seealso{
-Useful links:
 \itemize{
-  \item \url{https://pillar.r-lib.org/}
-  \item \url{https://github.com/r-lib/pillar}
-  \item Report bugs at \url{https://github.com/r-lib/pillar/issues}
+\item \code{\link[=pillar]{pillar()}} for formatting a single column,
+\item \code{\link[=print.tbl]{print.tbl()}} for formatting data-frame-like objects,
+\item \link{pillar_options} for a list of package options.
 }
-
 }
 \author{
 \strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
