@@ -65,7 +65,7 @@ pillar_format_tier <- function(pillars, widths, max_widths) {
   extra <- sum(widths - extents)
 
   # Second pass: trying to use the remaining width, starting at the left
-  col_idx <- 1
+  col_idx <- 1L
   while (extra > 0 && col_idx <= length(pillars)) {
     new_formatted <- pillar_format_parts_2(pillars[[col_idx]], min(widths[[col_idx]] + extra, max_widths[[col_idx]]))
     delta <- new_formatted$max_extent - formatted[[col_idx]]$max_extent
