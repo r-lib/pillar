@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.1.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.1.9003</span>
       </span>
     </div>
 
@@ -149,6 +149,16 @@
       <small>Source: <a href='https://github.com/r-lib/pillar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="pillar-1619003" class="section level1">
+<h1 class="page-header" data-toc-text="1.6.1.9003">
+<a href="#pillar-1619003" class="anchor" aria-hidden="true"></a>pillar 1.6.1.9003<small> Unreleased </small></h1>
+<ul><li>
+<code><a href="../reference/type_sum.html">obj_sum()</a></code> no longer calls <code><a href="../reference/type_sum.html">type_sum()</a></code> for vectors since pillar v1.6.1, this is now documented (<a href='https://github.com/r-lib/pillar/issues/321'>#321</a>).</li>
+<li>If a column doesn’t make use of all horizontal width offered to it, the excess width is distributed over other columns (<a href='https://github.com/r-lib/pillar/issues/331'>#331</a>).</li>
+<li>All pillars are shown with their true horizontal extent, irrespective of the indicated <code>width</code>. This simplifies the implementation of custom <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> methods (<a href='https://github.com/r-lib/pillar/issues/347'>#347</a>).</li>
+<li>Improved allocation of free space in multi-tier tables with <code>getOption("tibble.width") &gt; getOption("width")</code> (<a href='https://github.com/r-lib/pillar/issues/344'>#344</a>).</li>
+<li>Avoid mangling of duplicate column names in footer (<a href='https://github.com/r-lib/pillar/issues/332'>#332</a>).</li>
+</ul></div>
     <div id="pillar-1619002" class="section level1">
 <h1 class="page-header" data-toc-text="1.6.1.9002">
 <a href="#pillar-1619002" class="anchor" aria-hidden="true"></a>pillar 1.6.1.9002<small> Unreleased </small></h1>
