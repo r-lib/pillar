@@ -159,3 +159,45 @@ test_that("matrix columns (empty)", {
     )
   })
 })
+
+test_that("filling unused width (#331)", {
+  new_foo <- function(x = character()) {
+    vctrs::vec_assert(x, character())
+    vctrs::new_vctr(x, class = "foo")
+  }
+
+  data <- new_tbl(list(
+    month = month.name[1],
+    sentences = new_foo(paste(letters, collapse = " ")),
+    blah = paste(LETTERS, collapse = " ")
+  ))
+
+  pillar_shaft.foo <- function(x, ...) {
+    full <- format(x)
+    trunc <- format(paste0(substr(x, 1, 7), cli::symbol$continue))
+    pillar::new_pillar_shaft(
+      list(full = full, trunc = trunc),
+      width = pillar::get_max_extent(full),
+      min_width = pillar::get_max_extent(trunc),
+      class = "pillar_shaft_foo"
+    )
+  }
+
+  format.pillar_shaft_foo <- function(x, width, ...) {
+    if (pillar::get_max_extent(x$full) <= width) {
+      ornament <- x$full
+    } else {
+      ornament <- x$trunc
+    }
+
+    pillar::new_ornament(ornament, align = "left")
+  }
+
+  local_methods(pillar_shaft.foo = pillar_shaft.foo, format.pillar_shaft_foo = format.pillar_shaft_foo)
+
+  expect_snapshot({
+    data
+    options(width = 60)
+    print(data)
+  })
+})
