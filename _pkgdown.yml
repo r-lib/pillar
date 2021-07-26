@@ -43,7 +43,7 @@ reference:
       - char
   - title: Miscellaneous
     contents:
-      - options
+      - pillar_options
       - pillar-package
 
 navbar:
