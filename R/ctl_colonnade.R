@@ -80,6 +80,10 @@ pillar_format_tier <- function(pillars, widths, max_widths) {
   })
 }
 
+# Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
+fsi <- function(...) paste0("\u2068", ..., "\u2069")
+lro <- function(...) paste0("\u202d", ..., "\u202c")
+
 format_colonnade_tier_2 <- function(x) {
   "!!!!!DEBUG format_colonnade_tier_2(`v(x)`)"
 
@@ -87,7 +91,9 @@ format_colonnade_tier_2 <- function(x) {
     return(character())
   }
 
-  exec(paste, !!!x)
+  x <- map(x, fsi)
+  out <- exec(paste, !!!x)
+  lro(out)
 }
 
 new_colonnade_body <- function(x, extra_cols) {
