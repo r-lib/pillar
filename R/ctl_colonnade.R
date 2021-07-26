@@ -31,11 +31,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   compound_pillar <- combine_pillars(pillars)
   col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
 
-  col_widths$formatted <- map2(
-    col_widths$pillar, col_widths$width,
-    pillar_format_parts_2
-  )
-
   tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)
 
   flat_tiers <- map(tiers, function(tier) {
