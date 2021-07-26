@@ -21,9 +21,11 @@ and variants have been implemented.}
 occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}.
 
-\code{obj_sum()} also includes the size of the object if \code{\link[vctrs:vec_assert]{vctrs::vec_is()}}
-is \code{TRUE}.
+\code{obj_sum()} also includes the size (but not the shape) of the object
+if \code{\link[vctrs:vec_assert]{vctrs::vec_is()}} is \code{TRUE}.
 It should always return a string (a character vector of length one).
+The default method forwards to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}} as of pillar v1.6.1,
+previous versions forwarded to \code{\link[=type_sum]{type_sum()}}.
 
 \code{size_sum()} is called by \code{obj_sum()} to format the size of the object.
 It should always return a string (a character vector of length one),
