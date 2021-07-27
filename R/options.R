@@ -94,4 +94,13 @@ pillar_options <- list2(
   max_footer_lines = make_option_impl(
     getOption("pillar.max_footer_lines", default = 7L)
   ),
+  #' - `bidi`: Set to `TRUE` for experimental support for bidirectional scripts.
+  #'     Default: `FALSE`. When this option is set, "left right override"
+  #'     and "first strong isolate"
+  #'     [Unicode controls](https://www.w3.org/International/questions/qa-bidi-unicode-controls)
+  #'     are inserted to ensure that text appears in its intended direction
+  #'     and that the column headings correspond to the correct columns.
+  bidi = make_option_impl(
+    getOption("pillar.bidi", default = FALSE)
+  ),
 )
