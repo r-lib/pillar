@@ -88,4 +88,10 @@ pillar_options <- list2(
   max_dec_width = make_option_impl(
     getOption("pillar.max_dec_width", default = 13L)
   ),
+  #' - `max_footer_lines`: The maximum number of lines in the footer,
+  #'     default: `7`. Set to `Inf` to turn off truncation of footer lines,
+  #'     the `max_extra_cols` option still limits the number of columns printed.
+  max_footer_lines = make_option_impl(
+    getOption("pillar.max_footer_lines", default = 7L)
+  ),
 )
