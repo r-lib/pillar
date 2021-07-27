@@ -8,6 +8,8 @@
 #' and `getOption("pillar.foo")` to retrieve the current value.
 #' An option value of `NULL` means that the default is used.
 #'
+#' @format NULL
+#'
 #' @examples
 #' # Default setting:
 #' getOption("pillar.sigfig")
