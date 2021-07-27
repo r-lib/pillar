@@ -14,11 +14,19 @@ pillar_options
 Options that affect display of tibble-like output.
 }
 \details{
-These options can be set via \code{\link[=options]{options()}} and queried via \code{\link[=getOption]{getOption()}}.
+All options are available via the \code{pillar_options} list.
+The elements of this list are combined getter/setter functions.
+Calling a function without arguments returns the current value,
+by providing an argument the current value is set and the old value
+is returned, invisibly.
+Setting \code{local = TRUE} enables the option for the duration of the
+current stack frame via \code{\link[rlang:local_options]{rlang::local_options()}}.
+
+These options can also be set via \code{\link[=options]{options()}} and queried via \code{\link[=getOption]{getOption()}}.
 For this, add a \code{pillar.} prefix (the package name and a dot) to the option name.
-Example: for an option \code{foo}, use \code{options(pillar.foo = value)} to set it
-and \code{getOption("pillar.foo")} to retrieve the current value.
-An option value of \code{NULL} means that the default is used.
+Example: for an option \code{foo},
+\code{pillar_options$foo(value)} is equivalent to
+\code{options(pillar.foo = value)}.
 }
 \section{Options for the pillar package}{
 
@@ -49,20 +57,20 @@ default 13.
 
 \examples{
 # Default setting:
-getOption("pillar.sigfig")
+pillar_options$sigfig()
 pillar(1.234567)
 
 # Change for the duration of the session:
-old <- options(pillar.sigfig = 6)
+old <- pillar_options$sigfig(6)
 pillar(1.234567)
 
 # Change back to the original value:
-options(old)
+pillar_options$sigfig(old)
 pillar(1.234567)
 
 # Local scope:
 local({
-  rlang::local_options(pillar.sigfig = 6)
+  pillar_options$sigfig(6, local = TRUE)
   pillar(1.234567)
 })
 pillar(1.234567)
