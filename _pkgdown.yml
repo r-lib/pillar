@@ -28,7 +28,7 @@ reference:
       - format_type_sum
   - title: Styling
     desc: >
-      For consistent output of different data types.
+      For consistent output.
     contents:
       - starts_with("style_")
       - align
@@ -36,13 +36,14 @@ reference:
       - new_ornament
       - new_pillar_title
       - new_pillar_type
+      - dim_desc
   - title: Vector classes
     contents:
       - num
       - char
   - title: Miscellaneous
     contents:
-      - dim_desc
+      - pillar_options
       - pillar-package
 
 navbar:
@@ -61,7 +62,7 @@ navbar:
       href: index.html
     options:
       text: Options
-      href: "reference/pillar-package.html#package-options"
+      href: "reference/pillar_options.html"
     reference:
       text: Reference
       href: reference/index.html
