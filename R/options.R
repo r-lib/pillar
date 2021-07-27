@@ -5,8 +5,8 @@
 #' These options can be set via [options()] and queried via [getOption()].
 #' For this, add a `pillar.` prefix (the package name and a dot) to the option name.
 #' Example: for an option `foo`, use `options(pillar.foo = value)` to set it
-#' and `getOption("pillar.foo")` to retrieve the current value (`NULL` means
-#' that the default is used).
+#' and `getOption("pillar.foo")` to retrieve the current value.
+#' An option value of `NULL` means that the default is used.
 #'
 #' @examples
 #' # Default setting:

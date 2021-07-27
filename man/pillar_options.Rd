@@ -17,8 +17,8 @@ Options that affect display of tibble-like output.
 These options can be set via \code{\link[=options]{options()}} and queried via \code{\link[=getOption]{getOption()}}.
 For this, add a \code{pillar.} prefix (the package name and a dot) to the option name.
 Example: for an option \code{foo}, use \code{options(pillar.foo = value)} to set it
-and \code{getOption("pillar.foo")} to retrieve the current value (\code{NULL} means
-that the default is used).
+and \code{getOption("pillar.foo")} to retrieve the current value.
+An option value of \code{NULL} means that the default is used.
 }
 \section{Options for the pillar package}{
 
