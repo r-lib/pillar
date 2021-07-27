@@ -46,7 +46,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     flat_tiers <- map(flat_tiers, function(.x) c(rowid_formatted, .x))
   }
 
-  out <- map(flat_tiers, format_colonnade_tier_2)
+  out <- map(flat_tiers, format_colonnade_tier_2, bidi = get_pillar_option_bidi())
 
   extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
   new_colonnade_body(out, extra_cols = extra_cols)
@@ -81,19 +81,26 @@ pillar_format_tier <- function(pillars, widths, max_widths) {
 }
 
 # Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
-fsi <- function(...) paste0("\u2068", ..., "\u2069")
-lro <- function(...) paste0("\u202d", ..., "\u202c")
+fsi <- function(x) {
+  paste0("\u2068", x, "\u2069")
+}
 
-format_colonnade_tier_2 <- function(x) {
-  "!!!!!DEBUG format_colonnade_tier_2(`v(x)`)"
+lro <- function(x) {
+  paste0("\u202d", x, "\u202c")
+}
 
+format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   if (length(x) == 0) {
     return(character())
   }
 
-  x <- map(x, fsi)
-  out <- exec(paste, !!!x)
-  lro(out)
+  if (bidi) {
+    x <- map(x, fsi)
+    out <- exec(paste, !!!x)
+    lro(out)
+  } else {
+    exec(paste, !!!x)
+  }
 }
 
 new_colonnade_body <- function(x, extra_cols) {
