@@ -16,12 +16,7 @@
       [90m#   i <chr>, j <chr>,[39m
       [90m#   k <chr>, l <chr>,[39m
       [90m#   m <chr>, n <chr>,[39m
-      [90m#   o <chr>, p <chr>,[39m
-      [90m#   q <chr>, r <chr>,[39m
-      [90m#   s <chr>, t <chr>,[39m
-      [90m#   u <chr>, v <chr>,[39m
-      [90m#   w <chr>, x <chr>,[39m
-      [90m#   y <chr>, z <chr>[39m
+      [90m#   o <chr>, p <chr>, ...[39m
 
 # wrapping column names with spaces in the footer
 

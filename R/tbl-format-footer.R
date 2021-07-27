@@ -126,9 +126,9 @@ wrap_footer <- function(footer, setup) {
   wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
 
   # truncate output that doesn't fit
-  wrap <- wrap[wrap$tier != 0, ]
+  truncated <- anyNA(wrap$tier)
   split <- split(footer[wrap$id], wrap$tier)
-  if (nrow(wrap) < length(footer) && length(split) > 0) {
+  if (truncated && length(split) > 0) {
     split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
   }
   split <- imap(split, function(x, y) c("#", if (y == 1) cli::symbol$ellipsis else " ", x))
