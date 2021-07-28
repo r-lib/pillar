@@ -34,10 +34,10 @@ glimpse <- function(x, width = NULL, ...) {
 
 #' @export
 glimpse.tbl <- function(x, width = NULL, ...) {
-  width <- get_width_glimpse(width)
-  if (!is.finite(width)) {
+  if (!is.null(width) && !is.finite(width)) {
     abort("`width` must be finite.")
   }
+  width <- get_width_glimpse(width)
 
   cli::cat_line("Rows: ", big_mark(nrow(x)))
 

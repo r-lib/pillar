@@ -20,6 +20,21 @@ An option value of \code{NULL} means that the default is used.
 \section{Options for the pillar package}{
 
 \itemize{
+\item \code{print_max}: Maximum number of rows printed, default: \code{20}.
+Set to \code{Inf} to always print all rows.
+For compatibility reasons, \code{getOption("tibble.print_max")} and
+\code{getOption("dplyr.print_max")} are also consulted,
+this will be soft-deprecated in pillar v2.0.0.
+\item \code{print_min}: Number of rows printed if the table has more than
+\code{print_max} rows, default: \code{10}.
+For compatibility reasons, \code{getOption("tibble.print_min")} and
+\code{getOption("dplyr.print_min")} are also consulted,
+this will be soft-deprecated in pillar v2.0.0..
+\item \code{width}: \code{tibble.width}: Output width. Default: \code{NULL}
+(use \code{getOption("width")}).
+For compatibility reasons, \code{getOption("tibble.width")} and
+\code{getOption("dplyr.width")} are also consulted,
+this will be soft-deprecated in pillar v2.0.0..
 \item \code{bold}: Use bold font, e.g. for column headers? This currently
 defaults to \code{FALSE}, because many terminal fonts have poor support for
 bold fonts.
@@ -40,7 +55,18 @@ display character columns, default: \code{3}.  Character columns may be
 truncated up to that width to save horizontal space. Set to \code{Inf} to
 turn off truncation of character columns.
 \item \code{max_dec_width}: The maximum allowed width for decimal notation,
-default 13.
+default: \code{13}.
+\item \code{max_footer_lines}: The maximum number of lines in the footer,
+default: \code{7}. Set to \code{Inf} to turn off truncation of footer lines.
+The legacy \code{getOption("tibble.max_extra_cols")} option
+still limits the number of columns printed,
+this will be soft-deprecated in pillar v2.0.0.
+\item \code{bidi}: Set to \code{TRUE} for experimental support for bidirectional scripts.
+Default: \code{FALSE}. When this option is set, "left right override"
+and "first strong isolate"
+\href{https://www.w3.org/International/questions/qa-bidi-unicode-controls}{Unicode controls}
+are inserted to ensure that text appears in its intended direction
+and that the column headings correspond to the correct columns.
 }
 }
 

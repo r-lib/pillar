@@ -31,6 +31,30 @@
 #' pillar(1.234567)
 #' @section Options for the pillar package:
 pillar_options <- list2(
+  #' - `print_max`: Maximum number of rows printed, default: `20`.
+  #'   Set to \code{Inf} to always print all rows.
+  #'   For compatibility reasons, `getOption("tibble.print_max")` and
+  #'   `getOption("dplyr.print_max")` are also consulted,
+  #'   this will be soft-deprecated in pillar v2.0.0.
+  print_max = make_option_impl(
+    getOption("pillar.print_max", default = tibble_opt("print_max", 20L))
+  ),
+  #' - `print_min`: Number of rows printed if the table has more than
+  #'   `print_max` rows, default: `10`.
+  #'   For compatibility reasons, `getOption("tibble.print_min")` and
+  #'   `getOption("dplyr.print_min")` are also consulted,
+  #'   this will be soft-deprecated in pillar v2.0.0..
+  print_min = make_option_impl(
+    getOption("pillar.print_min", default = tibble_opt("print_min", 10L))
+  ),
+  #' - `width`: `tibble.width`: Output width. Default: `NULL`
+  #'   (use `getOption("width")`).
+  #'   For compatibility reasons, `getOption("tibble.width")` and
+  #'   `getOption("dplyr.width")` are also consulted,
+  #'   this will be soft-deprecated in pillar v2.0.0..
+  width = make_option_impl(
+    getOption("pillar.width", default = tibble_opt("width", getOption("width")))
+  ),
   bold = make_option_impl(
     getOption("pillar.bold", default = FALSE)
   ),
@@ -84,13 +108,15 @@ pillar_options <- list2(
     min_chars
   }),
   #' - `max_dec_width`: The maximum allowed width for decimal notation,
-  #'     default 13.
+  #'     default: `13`.
   max_dec_width = make_option_impl(
     getOption("pillar.max_dec_width", default = 13L)
   ),
   #' - `max_footer_lines`: The maximum number of lines in the footer,
-  #'     default: `7`. Set to `Inf` to turn off truncation of footer lines,
-  #'     the `max_extra_cols` option still limits the number of columns printed.
+  #'     default: `7`. Set to `Inf` to turn off truncation of footer lines.
+  #'     The legacy `getOption("tibble.max_extra_cols")` option
+  #'     still limits the number of columns printed,
+  #'   this will be soft-deprecated in pillar v2.0.0.
   max_footer_lines = make_option_impl(
     getOption("pillar.max_footer_lines", default = 7L)
   ),
