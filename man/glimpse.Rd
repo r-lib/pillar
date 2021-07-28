@@ -9,8 +9,9 @@ glimpse(x, width = NULL, ...)
 \arguments{
 \item{x}{An object to glimpse at.}
 
-\item{width}{Width of output: defaults to the setting of the option
-\code{tibble.width} (if finite) or the width of the console.}
+\item{width}{Width of output: defaults to the setting of the
+\link[=pillar_options]{\code{width} option} (if finite)
+or the width of the console.}
 
 \item{...}{Unused, for extensibility.}
 }

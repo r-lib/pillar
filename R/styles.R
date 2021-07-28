@@ -14,7 +14,7 @@ keep_empty <- function(fun) {
 #' Functions that allow implementers of formatters for custom data types to
 #' maintain a consistent style with the default data types.
 #'
-#' `style_subtle()` is affected by the `pillar.subtle` option.
+#' `style_subtle()` is affected by the [`pillar.subtle` option][pillar_options].
 #'
 #' @param x The character vector to style.
 #' @export
@@ -32,8 +32,9 @@ style_subtle <- keep_empty(function(x) {
 
 #' @rdname style_subtle
 #' @details
-#' `style_subtle_num()` is affected by the `pillar.subtle_num` option, which is
-#' `FALSE` by default.
+#' `style_subtle_num()` is affected by the
+#' [`pillar.subtle_num` option][pillar_options],
+#' which is `FALSE` by default.
 #'
 #' @export
 #' @examples
@@ -60,7 +61,8 @@ style_spark_na <- function(x) {
 }
 
 #' @details
-#' `style_bold()` is affected by the `pillar.bold` option.
+#' `style_bold()` is affected by the [`pillar.bold` option][pillar_options],
+#' which is `FALSE` by default.
 #'
 #' @rdname style_subtle
 #' @export
@@ -83,7 +85,7 @@ style_na <- function(x) {
 }
 
 #' @details
-#' `style_neg()` is affected by the `pillar.neg` option.
+#' `style_neg()` is affected by the [`pillar.neg` option][pillar_options].
 #'
 #' @rdname style_subtle
 #' @export

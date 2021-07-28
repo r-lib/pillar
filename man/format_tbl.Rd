@@ -14,16 +14,14 @@
 \item{x}{Object to format or print.}
 
 \item{width}{Width of text output to generate. This defaults to \code{NULL}, which
-means use \code{getOption("tibble.width")} or (if also \code{NULL})
-\code{getOption("width")}; the latter displays only the columns that fit on one
-screen. You can also set \code{options(tibble.width = Inf)} to override this
-default and always print all columns.}
+means use the \link[=pillar_options]{\code{width} option}.}
 
 \item{...}{Passed on to \code{\link[=tbl_format_setup]{tbl_format_setup()}}.}
 
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print all rows
-if less than option \code{tibble.print_max}. Otherwise, will print
-\code{tibble.print_min} rows.}
+if less than the \link[=pillar_options]{\code{print_max} option}.
+Otherwise, will print as many rows as specified by the
+\link[=pillar_options]{\code{print_min} option}.}
 
 \item{n_extra}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL}, the default,
