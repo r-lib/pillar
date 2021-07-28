@@ -6,9 +6,23 @@
 \alias{format.tbl}
 \title{Formatting of tbl objects}
 \usage{
-\method{print}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
+\method{print}{tbl}(
+  x,
+  width = NULL,
+  ...,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL
+)
 
-\method{format}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
+\method{format}{tbl}(
+  x,
+  width = NULL,
+  ...,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL
+)
 }
 \arguments{
 \item{x}{Object to format or print.}
@@ -23,9 +37,13 @@ if less than the \code{print_max} \link[=pillar_options]{option}.
 Otherwise, will print as many rows as specified by the
 \code{print_min} \link[=pillar_options]{option}.}
 
-\item{n_extra}{Number of extra columns to print abbreviated information for,
+\item{max_extra_cols}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL},
-the \code{max_extra_cols} \link[=pillar_options]{option} is used.}
+the \code{max_extra_cols} \link[=pillar_options]{option} is used.
+The previously defined \code{n_extra} argument is soft-deprecated.}
+
+\item{max_footer_lines}{Maximum number of footer lines. If \code{NULL},
+the \code{max_footer_lines} \link[=pillar_options]{option} is used.}
 }
 \description{
 These functions and methods are responsible for printing objects

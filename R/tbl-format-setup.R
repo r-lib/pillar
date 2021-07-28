@@ -50,6 +50,10 @@
 #'   if the width is too small for the entire tibble.
 #'   No [options][pillar_options] should be considered
 #'   by implementations of this method.
+#' @param max_footer_lines
+#'   Maximum number of lines for the footer.
+#'   No [options][pillar_options] should be considered
+#'   by implementations of this method.
 #'
 #' @return
 #'   An object that can be passed as `setup` argument to

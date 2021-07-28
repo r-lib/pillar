@@ -32,6 +32,10 @@ by implementations of this method.}
 if the width is too small for the entire tibble.
 No \link[=pillar_options]{options} should be considered
 by implementations of this method.}
+
+\item{max_footer_lines}{Maximum number of lines for the footer.
+No \link[=pillar_options]{options} should be considered
+by implementations of this method.}
 }
 \value{
 An object that can be passed as \code{setup} argument to
