@@ -50,7 +50,7 @@ pillar_options <- list2(
   #' - `width`: Output width. Default: `NULL`
   #'   (use `getOption("width")`).
   #'   This can be larger than `getOption("width")`, in this case the output
-  #'   of the table's body is distributed over multiple tiers for wide tables.
+  #'   of the table's body is distributed over multiple tiers for wide tibbles.
   #'   For compatibility reasons, `getOption("tibble.width")` and
   #'   `getOption("dplyr.width")` are also consulted,
   #'   this will be soft-deprecated in pillar v2.0.0.

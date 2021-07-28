@@ -33,7 +33,7 @@ this will be soft-deprecated in pillar v2.0.0..
 \item \code{width}: Output width. Default: \code{NULL}
 (use \code{getOption("width")}).
 This can be larger than \code{getOption("width")}, in this case the output
-of the table's body is distributed over multiple tiers for wide tables.
+of the table's body is distributed over multiple tiers for wide tibbles.
 For compatibility reasons, \code{getOption("tibble.width")} and
 \code{getOption("dplyr.width")} are also consulted,
 this will be soft-deprecated in pillar v2.0.0.
