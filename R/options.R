@@ -57,22 +57,30 @@ pillar_options <- list2(
   width = make_option_impl(
     getOption("pillar.width", default = tibble_opt("width", getOption("width")))
   ),
-  bold = make_option_impl(
-    getOption("pillar.bold", default = FALSE)
+  #' - `max_footer_lines`: The maximum number of lines in the footer,
+  #'     default: `7`. Set to `Inf` to turn off truncation of footer lines.
+  #'     The legacy `getOption("tibble.max_extra_cols")` option
+  #'     still limits the number of columns printed,
+  #'   this will be soft-deprecated in pillar v2.0.0.
+  max_footer_lines = make_option_impl(
+    getOption("pillar.max_footer_lines", default = 7L)
   ),
   #' - `bold`: Use bold font, e.g. for column headers? This currently
   #'     defaults to `FALSE`, because many terminal fonts have poor support for
   #'     bold fonts.
-  subtle = make_option_impl(
-    getOption("pillar.subtle", default = TRUE)
+  bold = make_option_impl(
+    getOption("pillar.bold", default = FALSE)
   ),
   #' - `subtle`: Use subtle style, e.g. for row numbers and data types?
   #'     Default: `TRUE`.
-  subtle_num = make_option_impl(
-    getOption("pillar.subtle_num", default = FALSE)
+  subtle = make_option_impl(
+    getOption("pillar.subtle", default = TRUE)
   ),
   #' - `subtle_num`: Use subtle style for insignificant digits? Default:
   #'     `FALSE`, is also affected by the `subtle` option.
+  subtle_num = make_option_impl(
+    getOption("pillar.subtle_num", default = FALSE)
+  ),
   #' - `neg`: Highlight negative numbers? Default: `TRUE`.
   neg = make_option_impl(
     getOption("pillar.neg", default = TRUE)

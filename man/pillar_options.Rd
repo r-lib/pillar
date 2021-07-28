@@ -37,6 +37,11 @@ of the table's body is distributed over multiple tiers for wide tables.
 For compatibility reasons, \code{getOption("tibble.width")} and
 \code{getOption("dplyr.width")} are also consulted,
 this will be soft-deprecated in pillar v2.0.0.
+\item \code{max_footer_lines}: The maximum number of lines in the footer,
+default: \code{7}. Set to \code{Inf} to turn off truncation of footer lines.
+The legacy \code{getOption("tibble.max_extra_cols")} option
+still limits the number of columns printed,
+this will be soft-deprecated in pillar v2.0.0.
 \item \code{bold}: Use bold font, e.g. for column headers? This currently
 defaults to \code{FALSE}, because many terminal fonts have poor support for
 bold fonts.
@@ -58,11 +63,6 @@ truncated up to that width to save horizontal space. Set to \code{Inf} to
 turn off truncation of character columns.
 \item \code{max_dec_width}: The maximum allowed width for decimal notation,
 default: \code{13}.
-\item \code{max_footer_lines}: The maximum number of lines in the footer,
-default: \code{7}. Set to \code{Inf} to turn off truncation of footer lines.
-The legacy \code{getOption("tibble.max_extra_cols")} option
-still limits the number of columns printed,
-this will be soft-deprecated in pillar v2.0.0.
 \item \code{bidi}: Set to \code{TRUE} for experimental support for bidirectional scripts.
 Default: \code{FALSE}. When this option is set, "left right override"
 and "first strong isolate"
