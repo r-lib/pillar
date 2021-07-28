@@ -47,6 +47,14 @@ test_that("output test", {
       scilarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
       scimax   = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = Inf)
     )
+
+    # Extra significant figures
+    tibble::tibble(
+      default = num(100 + 1:3 * 0.001),
+      extra1 = num(100 + 1:3 * 0.001, extra_sigfig = TRUE),
+      extra2 = num(100 + 1:3 * 0.0001, extra_sigfig = TRUE),
+      extra3 = num(10000 + 1:3 * 0.00001, extra_sigfig = TRUE)
+    )
   })
 })
 

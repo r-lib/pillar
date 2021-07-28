@@ -236,6 +236,19 @@ compute_min_sigfig <- function(x) {
   ret
 }
 
+compute_extra_sigfig <- function(x) {
+  x <- sort(abs(x))
+  delta <- diff(x)
+  x <- x[-1]
+
+  keep <- which((delta != 0) & is.finite(delta))
+  if (length(keep) == 0) {
+    return(0)
+  }
+
+  ceiling(log10(max(x[keep] / delta[keep]))) - 1
+}
+
 LOG_10 <- log(10)
 
 compute_exp <- function(x, sigfig, digits) {
