@@ -33,19 +33,45 @@ test_that("max_footer_lines option", {
     new_tbl(x)
   }
 
+  expect_identical(
+    local({
+      local_pillar_option_max_footer_lines(3)
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("")))
+    }),
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl(""), max_footer_lines = 3)
+    )
+  )
+
   expect_snapshot({
-    new_footer_tbl("")
-    new_footer_tbl("prefix_")
-    new_footer_tbl("a_very_long_prefix_")
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl(""))
+    )
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl("prefix_"))
+    )
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl("a_very_long_prefix_"))
+    )
 
-    set_pillar_option_max_footer_lines(3)
-    new_footer_tbl("")
-    new_footer_tbl("prefix_")
-    new_footer_tbl("a_very_long_prefix_")
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl(""), max_footer_lines = 3)
+    )
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = 3)
+    )
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl("a_very_long_prefix_"), max_footer_lines = 3)
+    )
 
-    set_pillar_option_max_footer_lines(Inf)
-    new_footer_tbl("")
-    new_footer_tbl("prefix_")
-    new_footer_tbl("a_very_long_prefix_")
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl(""), max_footer_lines = Inf)
+    )
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = Inf)
+    )
+    tbl_format_footer(
+      tbl_format_setup(new_footer_tbl("a_very_long_prefix_"), max_footer_lines = Inf)
+    )
   })
 })

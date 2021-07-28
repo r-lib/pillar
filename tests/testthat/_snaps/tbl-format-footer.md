@@ -68,12 +68,9 @@
 # max_footer_lines option
 
     Code
-      new_footer_tbl("")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("")))
     Output
-      # A data frame: 1 x 52
-           aa    ba    ab    bb    ac    bc    ad    bd    ae    be    af    bf    ag
-        <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int>
-      1     1     2     3     4     5     6     7     8     9    10    11    12    13
+      <tbl_format_footer(setup)>
       # ... with 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
       #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
       #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>,
@@ -81,12 +78,9 @@
       #   bt <int>, au <int>, bu <int>, av <int>, bv <int>, aw <int>, bw <int>,
       #   ax <int>, bx <int>, ay <int>, by <int>, az <int>, bz <int>
     Code
-      new_footer_tbl("prefix_")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_")))
     Output
-      # A data frame: 1 x 52
-        prefix_aa prefix_ba prefix_ab prefix_bb prefix_ac prefix_bc prefix_ad
-            <int>     <int>     <int>     <int>     <int>     <int>     <int>
-      1         1         2         3         4         5         6         7
+      <tbl_format_footer(setup)>
       # ... with 45 more variables: prefix_bd <int>, prefix_ae <int>,
       #   prefix_be <int>, prefix_af <int>, prefix_bf <int>, prefix_ag <int>,
       #   prefix_bg <int>, prefix_ah <int>, prefix_bh <int>, prefix_ai <int>,
@@ -95,12 +89,9 @@
       #   prefix_bm <int>, prefix_an <int>, prefix_bn <int>, prefix_ao <int>,
       #   prefix_bo <int>, prefix_ap <int>, prefix_bp <int>, prefix_aq <int>, ...
     Code
-      new_footer_tbl("a_very_long_prefix_")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_")))
     Output
-      # A data frame: 1 x 52
-        a_very_long_prefix_aa a_very_long_prefix_ba a_very_long_pref~ a_very_long_pre~
-                        <int>                 <int>             <int>            <int>
-      1                     1                     2                 3                4
+      <tbl_format_footer(setup)>
       # ... with 48 more variables: a_very_long_prefix_ac <int>,
       #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
       #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
@@ -109,44 +100,31 @@
       #   a_very_long_prefix_bg <int>, a_very_long_prefix_ah <int>,
       #   a_very_long_prefix_bh <int>, a_very_long_prefix_ai <int>, ...
     Code
-      set_pillar_option_max_footer_lines(3)
-      new_footer_tbl("")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = 3))
     Output
-      # A data frame: 1 x 52
-           aa    ba    ab    bb    ac    bc    ad    bd    ae    be    af    bf    ag
-        <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int>
-      1     1     2     3     4     5     6     7     8     9    10    11    12    13
+      <tbl_format_footer(setup)>
       # ... with 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
       #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
       #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>, ...
     Code
-      new_footer_tbl("prefix_")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = 3))
     Output
-      # A data frame: 1 x 52
-        prefix_aa prefix_ba prefix_ab prefix_bb prefix_ac prefix_bc prefix_ad
-            <int>     <int>     <int>     <int>     <int>     <int>     <int>
-      1         1         2         3         4         5         6         7
+      <tbl_format_footer(setup)>
       # ... with 45 more variables: prefix_bd <int>, prefix_ae <int>,
       #   prefix_be <int>, prefix_af <int>, prefix_bf <int>, prefix_ag <int>,
       #   prefix_bg <int>, prefix_ah <int>, prefix_bh <int>, prefix_ai <int>, ...
     Code
-      new_footer_tbl("a_very_long_prefix_")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_"),
+      max_footer_lines = 3))
     Output
-      # A data frame: 1 x 52
-        a_very_long_prefix_aa a_very_long_prefix_ba a_very_long_pref~ a_very_long_pre~
-                        <int>                 <int>             <int>            <int>
-      1                     1                     2                 3                4
+      <tbl_format_footer(setup)>
       # ... with 48 more variables: a_very_long_prefix_ac <int>,
       #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
       #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>, ...
     Code
-      set_pillar_option_max_footer_lines(Inf)
-      new_footer_tbl("")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = Inf))
     Output
-      # A data frame: 1 x 52
-           aa    ba    ab    bb    ac    bc    ad    bd    ae    be    af    bf    ag
-        <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int>
-      1     1     2     3     4     5     6     7     8     9    10    11    12    13
+      <tbl_format_footer(setup)>
       # ... with 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
       #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
       #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>,
@@ -154,12 +132,9 @@
       #   bt <int>, au <int>, bu <int>, av <int>, bv <int>, aw <int>, bw <int>,
       #   ax <int>, bx <int>, ay <int>, by <int>, az <int>, bz <int>
     Code
-      new_footer_tbl("prefix_")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = Inf))
     Output
-      # A data frame: 1 x 52
-        prefix_aa prefix_ba prefix_ab prefix_bb prefix_ac prefix_bc prefix_ad
-            <int>     <int>     <int>     <int>     <int>     <int>     <int>
-      1         1         2         3         4         5         6         7
+      <tbl_format_footer(setup)>
       # ... with 45 more variables: prefix_bd <int>, prefix_ae <int>,
       #   prefix_be <int>, prefix_af <int>, prefix_bf <int>, prefix_ag <int>,
       #   prefix_bg <int>, prefix_ah <int>, prefix_bh <int>, prefix_ai <int>,
@@ -173,12 +148,10 @@
       #   prefix_bw <int>, prefix_ax <int>, prefix_bx <int>, prefix_ay <int>,
       #   prefix_by <int>, prefix_az <int>, prefix_bz <int>
     Code
-      new_footer_tbl("a_very_long_prefix_")
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_"),
+      max_footer_lines = Inf))
     Output
-      # A data frame: 1 x 52
-        a_very_long_prefix_aa a_very_long_prefix_ba a_very_long_pref~ a_very_long_pre~
-                        <int>                 <int>             <int>            <int>
-      1                     1                     2                 3                4
+      <tbl_format_footer(setup)>
       # ... with 48 more variables: a_very_long_prefix_ac <int>,
       #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
       #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
