@@ -54,7 +54,10 @@ print_tbl <- function(x, width = NULL, ...,
                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
 
   if (!is.null(n_extra)) {
-    deprecate_soft("1.6.2", "pillar::print(n_extra = )", "pillar::print(max_extra_cols = )")
+    deprecate_soft(
+      "1.6.2", "pillar::print(n_extra = )", "pillar::print(max_extra_cols = )",
+      user_env = caller_env(2)
+    )
     if (is.null(max_extra_cols)) {
       max_extra_cols <- n_extra
     }
@@ -83,7 +86,10 @@ format_tbl <- function(x, width = NULL, ...,
   check_dots_empty(action = signal)
 
   if (!is.null(n_extra)) {
-    deprecate_soft("1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )")
+    deprecate_soft(
+      "1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )",
+      user_env = caller_env(2)
+    )
     if (is.null(max_extra_cols)) {
       max_extra_cols <- n_extra
     }
