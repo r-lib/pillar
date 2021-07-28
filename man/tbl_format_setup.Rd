@@ -18,12 +18,12 @@ This argument is mandatory for all implementations of this method.}
 \item{...}{Extra arguments to \code{\link[=print.tbl]{print.tbl()}} or \code{\link[=format.tbl]{format.tbl()}}.}
 
 \item{n}{Actual number of rows to print.
-No \link[=pillar_option]{option}s should be considered
+No \link[=pillar_options]{options} should be considered
 by implementations of this method.}
 
 \item{max_extra_cols}{Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.
-No \link[=pillar_option]{option}s should be considered
+No \link[=pillar_options]{options} should be considered
 by implementations of this method.}
 }
 \value{
