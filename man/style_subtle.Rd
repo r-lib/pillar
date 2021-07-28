@@ -32,13 +32,13 @@ Functions that allow implementers of formatters for custom data types to
 maintain a consistent style with the default data types.
 }
 \details{
-\code{style_subtle()} is affected by the \code{pillar.subtle} \link[=pillar_options]{option}.
+\code{style_subtle()} is affected by the \code{subtle} \link[=pillar_options]{option}.
 
 \code{style_subtle_num()} is affected by the
-\code{pillar.subtle_num} \link[=pillar_options]{option},
+\code{subtle_num} \link[=pillar_options]{option},
 which is \code{FALSE} by default.
 
-\code{style_bold()} is affected by the \code{pillar.bold} \link[=pillar_options]{option},
+\code{style_bold()} is affected by the \code{bold} \link[=pillar_options]{option},
 which is \code{FALSE} by default.
 
 \code{style_neg()} is affected by the \code{pillar.neg} \link[=pillar_options]{option}.
