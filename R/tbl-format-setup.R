@@ -58,7 +58,8 @@
 #' @examplesIf rlang::is_installed("palmerpenguins")
 #' tbl_format_setup(palmerpenguins::penguins)
 tbl_format_setup <- function(x, width = NULL, ...,
-                             n = NULL, max_extra_cols = NULL) {
+                             n = NULL, max_extra_cols = NULL,
+                             max_footer_lines = NULL) {
   "!!!!DEBUG tbl_format_setup()"
 
   width <- get_width_print(width)
@@ -66,15 +67,19 @@ tbl_format_setup <- function(x, width = NULL, ...,
   n <- get_n_print(n, nrow(x))
 
   max_extra_cols <- get_max_extra_cols(max_extra_cols)
+  max_footer_lines <- get_max_footer_lines(max_footer_lines)
 
   # Calls UseMethod("tbl_format_setup"),
   # allows using default values in S3 dispatch
-  out <- tbl_format_setup_(x, width, ..., n = n, max_extra_cols = max_extra_cols)
+  out <- tbl_format_setup_(
+    x, width, ...,
+    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
+  )
   return(out)
   UseMethod("tbl_format_setup")
 }
 
-tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols) {
+tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols, max_footer_lines) {
   UseMethod("tbl_format_setup")
 }
 
@@ -86,7 +91,7 @@ tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols) {
 #' @rdname tbl_format_setup
 #' @export
 tbl_format_setup.tbl <- function(x, width, ...,
-                                 n, max_extra_cols) {
+                                 n, max_extra_cols, max_footer_lines) {
   "!!!!DEBUG tbl_format_setup.tbl()"
 
   # Number of rows
@@ -150,7 +155,8 @@ tbl_format_setup.tbl <- function(x, width, ...,
     rows_missing = rows_missing,
     rows_total = rows,
     extra_cols = extra_cols,
-    extra_cols_total = extra_cols_total
+    extra_cols_total = extra_cols_total,
+    max_footer_lines = max_footer_lines
   )
 }
 
@@ -179,11 +185,13 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'   as a character vector of formatted column names and types.
 #' @param extra_cols_total The total number of columns, may be larger than
 #'   `length(extra_cols)`.
+#' @param max_footer_lines The maximum number of lines in the footer.
 #'
 #' @keywords internal
 new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
                                  rows_missing, rows_total,
-                                 extra_cols, extra_cols_total) {
+                                 extra_cols, extra_cols_total,
+                                 max_footer_lines) {
   trunc_info <- list(
     x = x,
     df = df,
@@ -193,7 +201,8 @@ new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
     rows_missing = rows_missing,
     rows_total = rows_total,
     extra_cols = extra_cols,
-    extra_cols_total = extra_cols_total
+    extra_cols_total = extra_cols_total,
+    max_footer_lines = max_footer_lines
   )
 
   structure(trunc_info, class = "pillar_tbl_format_setup")

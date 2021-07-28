@@ -5,9 +5,16 @@
 \alias{tbl_format_setup.tbl}
 \title{Set up formatting}
 \usage{
-tbl_format_setup(x, width = NULL, ..., n = NULL, max_extra_cols = NULL)
+tbl_format_setup(
+  x,
+  width = NULL,
+  ...,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL
+)
 
-\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols)
+\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols, max_footer_lines)
 }
 \arguments{
 \item{x}{An object.}
