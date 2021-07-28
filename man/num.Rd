@@ -67,7 +67,7 @@ using exponents that are a multiple of three.
 The default is to use varying exponents.}
 
 \item{extra_sigfig}{If \code{TRUE}, increase the number of significant digits if the data consists of
-similar numbers with subtle differences.}
+numbers of the same magnitude with subtle differences.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}

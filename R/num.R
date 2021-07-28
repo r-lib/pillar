@@ -45,7 +45,7 @@
 #'   The default is to use varying exponents.
 #' @param extra_sigfig
 #'   If `TRUE`, increase the number of significant digits if the data consists of
-#'   similar numbers with subtle differences.
+#'   numbers of the same magnitude with subtle differences.
 #' @export
 #' @examples
 #' # Display as a vector
