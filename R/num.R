@@ -43,6 +43,9 @@
 #'   Use the same exponent for all numbers in scientific, engineering or SI notation.
 #'   `-Inf` uses the smallest, `+Inf` the largest fixed_exponent present in the data.
 #'   The default is to use varying exponents.
+#' @param extra_sigfig
+#'   If `TRUE`, increase the number of significant digits if the data consists of
+#'   numbers of the same magnitude with subtle differences.
 #' @export
 #' @examples
 #' # Display as a vector
@@ -97,11 +100,20 @@
 #'   scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
 #'   scimax   = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf)
 #' )
+#'
+#' #' Extra significant digits
+#' tibble::tibble(
+#'   default = num(100 + 1:3 * 0.001),
+#'   extra1 = num(100 + 1:3 * 0.001, extra_sigfig = TRUE),
+#'   extra2 = num(100 + 1:3 * 0.0001, extra_sigfig = TRUE),
+#'   extra3 = num(10000 + 1:3 * 0.00001, extra_sigfig = TRUE)
+#' )
 num <- function(x, ...,
                 sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL,
                 notation = c("fit", "dec", "sci", "eng", "si"),
-                fixed_exponent = NULL) {
+                fixed_exponent = NULL,
+                extra_sigfig = NULL) {
 
   stopifnot(is.numeric(x))
   check_dots_empty()
@@ -121,7 +133,8 @@ num <- function(x, ...,
     label = label,
     scale = scale,
     notation = notation,
-    fixed_exponent = fixed_exponent
+    fixed_exponent = fixed_exponent,
+    extra_sigfig = extra_sigfig
   )
 
   # FIXME: Include class(x) to support subclassing/mixin?
@@ -234,7 +247,8 @@ set_num_opts <- function(x, ...,
                          sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL,
                          notation = c("fit", "dec", "sci", "eng", "si"),
-                         fixed_exponent = NULL) {
+                         fixed_exponent = NULL,
+                         extra_sigfig = NULL) {
 
   check_dots_empty()
 
@@ -254,6 +268,10 @@ set_num_opts <- function(x, ...,
     abort("Must set `label` if `scale` is provided.")
   }
 
+  if (!is.null(digits) && !is.null(extra_sigfig)) {
+    abort("Incompatible arguments: `extra_sigfig` and `digits`.")
+  }
+
   pillar_attr <- structure(
     list(
       sigfig = sigfig,
@@ -261,7 +279,8 @@ set_num_opts <- function(x, ...,
       label = label,
       scale = scale,
       notation = notation,
-      fixed_exponent = fixed_exponent
+      fixed_exponent = fixed_exponent,
+      extra_sigfig = extra_sigfig
     ),
     class = c("pillar_num_attr", "pillar_vctr_attr", "tibble_vec_attr")
   )
@@ -281,6 +300,7 @@ format.pillar_num_attr <- function(x, ...) {
   sigfig <- x$sigfig
   digits <- x$digits
   label <- x$label
+  extra_sigfig <- x$extra_sigfig
 
   if (!is.null(digits)) {
     if (digits >= 0) {
@@ -290,6 +310,12 @@ format.pillar_num_attr <- function(x, ...) {
     }
   } else if (!is.null(sigfig)) {
     out <- paste0(class, ":", sigfig)
+
+    if (isTRUE(extra_sigfig)) {
+      out <- paste0(out, "*")
+    }
+  } else if (isTRUE(extra_sigfig)) {
+    out <- paste0(class, "*")
   } else {
     out <- class
   }

@@ -13,7 +13,8 @@ num(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  fixed_exponent = NULL
+  fixed_exponent = NULL,
+  extra_sigfig = NULL
 )
 
 set_num_opts(
@@ -24,7 +25,8 @@ set_num_opts(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  fixed_exponent = NULL
+  fixed_exponent = NULL,
+  extra_sigfig = NULL
 )
 }
 \arguments{
@@ -63,6 +65,9 @@ using exponents that are a multiple of three.
 \item{fixed_exponent}{Use the same exponent for all numbers in scientific, engineering or SI notation.
 \code{-Inf} uses the smallest, \code{+Inf} the largest fixed_exponent present in the data.
 The default is to use varying exponents.}
+
+\item{extra_sigfig}{If \code{TRUE}, increase the number of significant digits if the data consists of
+numbers of the same magnitude with subtle differences.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -134,6 +139,14 @@ tibble::tibble(
   scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
   scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
   scimax   = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf)
+)
+
+#' Extra significant digits
+tibble::tibble(
+  default = num(100 + 1:3 * 0.001),
+  extra1 = num(100 + 1:3 * 0.001, extra_sigfig = TRUE),
+  extra2 = num(100 + 1:3 * 0.0001, extra_sigfig = TRUE),
+  extra3 = num(10000 + 1:3 * 0.00001, extra_sigfig = TRUE)
 )
 \dontshow{\}) # examplesIf}
 }

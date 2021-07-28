@@ -115,6 +115,17 @@
       12   1230000000     e-3   1230           e3   1.23           M
       13  12300000000     e-3  12300           e3  12.3            M
       14 123000000000     e-3 123000           e3 123              M
+    Code
+      tibble::tibble(default = num(100 + 1:3 * 0.001), extra1 = num(100 + 1:3 * 0.001,
+      extra_sigfig = TRUE), extra2 = num(100 + 1:3 * 1e-04, extra_sigfig = TRUE),
+      extra3 = num(10000 + 1:3 * 1e-05, extra_sigfig = TRUE))
+    Output
+      # A tibble: 3 x 4
+        default  extra1   extra2      extra3
+          <num>   <num>    <num>       <num>
+      1    100. 100.001 100.0001 10000.00001
+      2    100. 100.002 100.0002 10000.00002
+      3    100. 100.003 100.0003 10000.00003
 
 # many digits
 
