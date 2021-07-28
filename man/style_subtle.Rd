@@ -41,7 +41,7 @@ which is \code{FALSE} by default.
 \code{style_bold()} is affected by the \code{pillar.bold} \link[=pillar_options]{option},
 which is \code{FALSE} by default.
 
-\code{style_neg()} is affected by the \link[=pillar_options]{\code{pillar.neg} option}.
+\code{style_neg()} is affected by the \code{pillar.neg} \link[=pillar_options]{option}.
 }
 \examples{
 style_num(
