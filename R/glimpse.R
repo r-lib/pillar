@@ -17,7 +17,7 @@
 #'
 #' @param x An object to glimpse at.
 #' @param width Width of output: defaults to the setting of the
-#'   [`width` option][pillar_options] (if finite)
+#'   `width` [option][pillar_options] (if finite)
 #'   or the width of the console.
 #' @param ... Unused, for extensibility.
 #' @return x original x is (invisibly) returned, allowing `glimpse()` to be

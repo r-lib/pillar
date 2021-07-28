@@ -10,7 +10,7 @@ glimpse(x, width = NULL, ...)
 \item{x}{An object to glimpse at.}
 
 \item{width}{Width of output: defaults to the setting of the
-\link[=pillar_options]{\code{width} option} (if finite)
+\code{width} \link[=pillar_options]{option} (if finite)
 or the width of the console.}
 
 \item{...}{Unused, for extensibility.}

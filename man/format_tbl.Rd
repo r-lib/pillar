@@ -14,18 +14,18 @@
 \item{x}{Object to format or print.}
 
 \item{width}{Width of text output to generate. This defaults to \code{NULL}, which
-means use the \link[=pillar_options]{\code{width} option}.}
+means use the \code{width} \link[=pillar_options]{option}.}
 
 \item{...}{Passed on to \code{\link[=tbl_format_setup]{tbl_format_setup()}}.}
 
 \item{n}{Number of rows to show. If \code{NULL}, the default, will print all rows
-if less than the \link[=pillar_options]{\code{print_max} option}.
+if less than the \code{print_max} \link[=pillar_options]{option}.
 Otherwise, will print as many rows as specified by the
-\link[=pillar_options]{\code{print_min} option}.}
+\code{print_min} \link[=pillar_options]{option}.}
 
 \item{n_extra}{Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If \code{NULL},
-the \link[=pillar_options]{\code{max_extra_cols} option} is used.}
+the \code{max_extra_cols} \link[=pillar_options]{option} is used.}
 }
 \description{
 These functions and methods are responsible for printing objects
