@@ -59,11 +59,17 @@ pillar_options <- list2(
   ),
   #' - `max_footer_lines`: The maximum number of lines in the footer,
   #'     default: `7`. Set to `Inf` to turn off truncation of footer lines.
-  #'     The legacy `getOption("tibble.max_extra_cols")` option
-  #'     still limits the number of columns printed,
-  #'   this will be soft-deprecated in pillar v2.0.0.
+  #'     The `max_extra_cols` option still limits
+  #'     the number of columns printed.
   max_footer_lines = make_option_impl(
     getOption("pillar.max_footer_lines", default = 7L)
+  ),
+  #' - `max_extra_cols`: The maximum number of columns printed in the footer,
+  #'     default: `100`. Set to `Inf` to show all columns.
+  #'     Set the more predictable `max_footer_lines` to control the number
+  #'     of footer lines instead.
+  max_extra_cols = make_option_impl(
+    getOption("pillar.max_extra_cols", default = tibble_opt("max_extra_cols", 100L))
   ),
   #' - `bold`: Use bold font, e.g. for column headers? This currently
   #'     defaults to `FALSE`, because many terminal fonts have poor support for
@@ -121,14 +127,6 @@ pillar_options <- list2(
   #'     default: `13`.
   max_dec_width = make_option_impl(
     getOption("pillar.max_dec_width", default = 13L)
-  ),
-  #' - `max_footer_lines`: The maximum number of lines in the footer,
-  #'     default: `7`. Set to `Inf` to turn off truncation of footer lines.
-  #'     The legacy `getOption("tibble.max_extra_cols")` option
-  #'     still limits the number of columns printed,
-  #'   this will be soft-deprecated in pillar v2.0.0.
-  max_footer_lines = make_option_impl(
-    getOption("pillar.max_footer_lines", default = 7L)
   ),
   #' - `bidi`: Set to `TRUE` for experimental support for bidirectional scripts.
   #'     Default: `FALSE`. When this option is set, "left right override"

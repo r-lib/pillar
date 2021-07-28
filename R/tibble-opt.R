@@ -50,5 +50,5 @@ get_max_extra_cols <- function(max_extra_cols) {
     return(max_extra_cols)
   }
 
-  tibble_opt("max_extra_cols", 100L)
+  get_pillar_option_max_extra_cols()
 }

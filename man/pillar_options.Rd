@@ -39,9 +39,12 @@ For compatibility reasons, \code{getOption("tibble.width")} and
 this will be soft-deprecated in pillar v2.0.0.
 \item \code{max_footer_lines}: The maximum number of lines in the footer,
 default: \code{7}. Set to \code{Inf} to turn off truncation of footer lines.
-The legacy \code{getOption("tibble.max_extra_cols")} option
-still limits the number of columns printed,
-this will be soft-deprecated in pillar v2.0.0.
+The \code{max_extra_cols} option still limits
+the number of columns printed.
+\item \code{max_extra_cols}: The maximum number of columns printed in the footer,
+default: \code{100}. Set to \code{Inf} to show all columns.
+Set the more predictable \code{max_footer_lines} to control the number
+of footer lines instead.
 \item \code{bold}: Use bold font, e.g. for column headers? This currently
 defaults to \code{FALSE}, because many terminal fonts have poor support for
 bold fonts.

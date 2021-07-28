@@ -24,8 +24,8 @@ Otherwise, will print as many rows as specified by the
 \link[=pillar_options]{\code{print_min} option}.}
 
 \item{n_extra}{Number of extra columns to print abbreviated information for,
-if the width is too small for the entire tibble. If \code{NULL}, the default,
-the value of the \code{\link[tibble:tibble-package]{tibble.max_extra_cols}} option is used.}
+if the width is too small for the entire tibble. If \code{NULL},
+the \link[=pillar_options]{\code{max_extra_cols} option} is used.}
 }
 \description{
 These functions and methods are responsible for printing objects

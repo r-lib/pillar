@@ -31,8 +31,8 @@
 #' @param width Width of text output to generate. This defaults to `NULL`, which
 #'   means use the [`width` option][pillar_options].
 #' @param n_extra Number of extra columns to print abbreviated information for,
-#'   if the width is too small for the entire tibble. If `NULL`, the default,
-#'   the value of the [`tibble.max_extra_cols`][tibble::tibble-package] option is used.
+#'   if the width is too small for the entire tibble. If `NULL`,
+#'   the [`max_extra_cols` option][pillar_options] is used.
 #'
 #' @name format_tbl
 #' @export
