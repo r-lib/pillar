@@ -47,7 +47,7 @@ pillar_options <- list2(
   print_min = make_option_impl(
     getOption("pillar.print_min", default = tibble_opt("print_min", 10L))
   ),
-  #' - `width`: `tibble.width`: Output width. Default: `NULL`
+  #' - `width`: Output width. Default: `NULL`
   #'   (use `getOption("width")`).
   #'   This can be larger than `getOption("width")`, in this case the output
   #'   of the table's body is distributed over multiple tiers for wide tables.
