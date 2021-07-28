@@ -29,7 +29,7 @@ this will be soft-deprecated in pillar v2.0.0.
 \code{print_max} rows, default: \code{10}.
 For compatibility reasons, \code{getOption("tibble.print_min")} and
 \code{getOption("dplyr.print_min")} are also consulted,
-this will be soft-deprecated in pillar v2.0.0..
+this will be soft-deprecated in pillar v2.0.0.
 \item \code{width}: Output width. Default: \code{NULL}
 (use \code{getOption("width")}).
 This can be larger than \code{getOption("width")}, in this case the output

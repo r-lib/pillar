@@ -43,7 +43,7 @@ pillar_options <- list2(
   #'   `print_max` rows, default: `10`.
   #'   For compatibility reasons, `getOption("tibble.print_min")` and
   #'   `getOption("dplyr.print_min")` are also consulted,
-  #'   this will be soft-deprecated in pillar v2.0.0..
+  #'   this will be soft-deprecated in pillar v2.0.0.
   print_min = make_option_impl(
     getOption("pillar.print_min", default = tibble_opt("print_min", 10L))
   ),
