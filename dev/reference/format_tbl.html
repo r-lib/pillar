@@ -197,10 +197,7 @@ Set it to <code>1</code> to suppress colored and highlighted output.</p>
     <tr>
       <th>width</th>
       <td><p>Width of text output to generate. This defaults to <code>NULL</code>, which
-means use <code>getOption("tibble.width")</code> or (if also <code>NULL</code>)
-<code>getOption("width")</code>; the latter displays only the columns that fit on one
-screen. You can also set <code>options(tibble.width = Inf)</code> to override this
-default and always print all columns.</p></td>
+means use the <code>width</code> <a href='pillar_options.html'>option</a>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -209,14 +206,15 @@ default and always print all columns.</p></td>
     <tr>
       <th>n</th>
       <td><p>Number of rows to show. If <code>NULL</code>, the default, will print all rows
-if less than option <code>tibble.print_max</code>. Otherwise, will print
-<code>tibble.print_min</code> rows.</p></td>
+if less than the <code>print_max</code> <a href='pillar_options.html'>option</a>.
+Otherwise, will print as many rows as specified by the
+<code>print_min</code> <a href='pillar_options.html'>option</a>.</p></td>
     </tr>
     <tr>
       <th>n_extra</th>
       <td><p>Number of extra columns to print abbreviated information for,
-if the width is too small for the entire tibble. If <code>NULL</code>, the default,
-the value of the <code><a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble.max_extra_cols</a></code> option is used.</p></td>
+if the width is too small for the entire tibble. If <code>NULL</code>,
+the <code>max_extra_cols</code> <a href='pillar_options.html'>option</a> is used.</p></td>
     </tr>
     </table>
 
