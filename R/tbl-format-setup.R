@@ -43,11 +43,13 @@
 #'   Extra arguments to [print.tbl()] or [format.tbl()].
 #' @param n
 #'   Actual number of rows to print.
-#'   No [option]s should be considered by implementations of this method.
+#'   No [option][pillar_option]s should be considered
+#'   by implementations of this method.
 #' @param max_extra_cols
 #'   Number of columns to print abbreviated information for,
 #'   if the width is too small for the entire tibble.
-#'   No [option]s should be considered by implementations of this method.
+#'   No [option][pillar_option]s should be considered
+#'   by implementations of this method.
 #'
 #' @return
 #'   An object that can be passed as `setup` argument to
