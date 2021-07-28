@@ -60,9 +60,9 @@ using exponents that are a multiple of three.
 \item \code{"si"}: Use SI notation, prefixes between \code{1e-24} and \code{1e24} are supported.
 }}
 
-\item{fixed_exponent}{Use the same fixed_exponent for all numbers in scientific, engineering or SI notation.
+\item{fixed_exponent}{Use the same exponent for all numbers in scientific, engineering or SI notation.
 \code{-Inf} uses the smallest, \code{+Inf} the largest fixed_exponent present in the data.
-The default is to use varying fixed_exponents.}
+The default is to use varying exponents.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}

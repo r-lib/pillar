@@ -40,9 +40,9 @@
 #'       using exponents that are a multiple of three.
 #'   - `"si"`: Use SI notation, prefixes between `1e-24` and `1e24` are supported.
 #' @param fixed_exponent
-#'   Use the same fixed_exponent for all numbers in scientific, engineering or SI notation.
+#'   Use the same exponent for all numbers in scientific, engineering or SI notation.
 #'   `-Inf` uses the smallest, `+Inf` the largest fixed_exponent present in the data.
-#'   The default is to use varying fixed_exponents.
+#'   The default is to use varying exponents.
 #' @export
 #' @examples
 #' # Display as a vector
