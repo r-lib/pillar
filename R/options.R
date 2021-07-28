@@ -186,10 +186,17 @@ get_n_print <- function(n, rows) {
 }
 
 get_max_extra_cols <- function(max_extra_cols) {
-  # FIXME: Deprecate
   if (!is.null(max_extra_cols) && max_extra_cols >= 0) {
     return(max_extra_cols)
   }
 
   get_pillar_option_max_extra_cols()
+}
+
+get_max_footer_lines <- function(max_footer_lines) {
+  if (!is.null(max_footer_lines) && max_footer_lines >= 0) {
+    return(max_footer_lines)
+  }
+
+  get_pillar_option_max_footer_lines()
 }
