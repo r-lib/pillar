@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.1.9004
+
+- New `pillar.bidi` option. When active, control characters are inserted to improve display of data with right-to-left text (#333).
+- The new `pillar.max_footer_lines` option (default: 7) allows controlling the maximum number of footer lines shown. It is applied in addition to the existing `tibble.max_extra_cols` option (#263).
+- Consistent definition of all options in one place, with internal accessors (#339).
+
+
 # pillar 1.6.1.9003
 
 - `obj_sum()` no longer calls `type_sum()` for vectors since pillar v1.6.1, this is now documented (#321).
