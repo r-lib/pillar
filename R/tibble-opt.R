@@ -1,4 +1,4 @@
-tibble_opt <- function(x, default = op.tibble[[x]]) {
+tibble_opt <- function(x, default) {
   x_tibble <- paste0("tibble.", x)
   res <- getOption(x_tibble)
   if (!is.null(res)) {
