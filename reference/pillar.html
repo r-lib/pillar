@@ -60,7 +60,6 @@ and vec_size(x) rows for the data." />
 
 
 
-
   
 
   
@@ -83,7 +82,7 @@ and vec_size(x) rows for the data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -96,7 +95,7 @@ and vec_size(x) rows for the data." />
   </a>
 </li>
 <li>
-  <a href="../reference/pillar-package.html#package-options">Options</a>
+  <a href="../reference/pillar_options.html">Options</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -112,10 +111,10 @@ and vec_size(x) rows for the data." />
       <a href="../articles/numbers.html">Controlling display of numbers</a>
     </li>
     <li>
-      <a href="../articles/digits.html">Custom formatting</a>
+      <a href="../articles/digits.html">Significant figures and scientific notation</a>
     </li>
     <li>
-      <a href="../articles/extending.html">Significant figures and scientific notation</a>
+      <a href="../articles/extending.html">Custom formatting</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -203,25 +202,25 @@ to display the data.</p>
     <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fl'>123456789</span> <span class='op'>*</span> <span class='op'>(</span><span class='fl'>10</span><span class='op'>^</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span>, <span class='op'>-</span><span class='fl'>3</span>, <span class='op'>-</span><span class='fl'>5</span>, <span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>8</span>, <span class='op'>-</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 12<span style='text-decoration: underline;'>345</span><span>679.    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='text-decoration: underline;'>123</span><span>457.    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='text-decoration: underline;'>1</span><span>235.    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       <span style='color: #BB0000;'>NA</span><span>     </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12<span style='text-decoration: underline;'>345</span>679.    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='text-decoration: underline;'>123</span>457.    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='text-decoration: underline;'>1</span>235.    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       <span style='color: #BB0000;'>NA</span>     </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>        1.23  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>        0.012<span style='text-decoration: underline;'>3</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='op'>-</span><span class='va'>x</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+7</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+5</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+3</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>  </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span>+0</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span>+7</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span>+5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span>+3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span>   <span style='color: #949494;'> </span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span>+0</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.23</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-2</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 0.222</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 0.121</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 0.531</span>
@@ -234,18 +233,18 @@ to display the data.</p>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 0.617</span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Cauchy.html'>rcauchy</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.34</span><span>  </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>6.88</span><span>  </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>0.695</span><span> </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.34</span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>6.88</span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>0.695</span> </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  0.652 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.17</span><span>  </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>2.46</span><span>  </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.17</span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>2.46</span>  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  0.182 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>2.19</span><span>  </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>2.19</span>  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  3.58  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  0.087<span style='text-decoration: underline;'>8</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.09</span><span>  </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>1.09</span>  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  0.087<span style='text-decoration: underline;'>7</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  1.23  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  1.30  </span>
@@ -254,40 +253,40 @@ to display the data.</p>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  8.26  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  2.44  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  0.177 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>0.887</span><span> </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>0.887</span> </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Special values are highlighted</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>, <span class='cn'>NA</span>, <span class='cn'>NaN</span>, <span class='cn'>Inf</span>, <span class='op'>-</span><span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    0.869</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    0.871</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    0.623</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    0.297</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>    0.449</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #BB0000;'>NA</span><span>    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  <span style='color: #BB0000;'>NaN</span><span>    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  <span style='color: #BB0000;'>Inf</span><span>    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>Inf</span><span>    </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #BB0000;'>NA</span>    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  <span style='color: #BB0000;'>NaN</span>    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  <span style='color: #BB0000;'>Inf</span>    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> -<span style='color: #BB0000;'>Inf</span>    </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Very wide ranges will be displayed in scientific format</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                1<span style='color: #949494;'>e</span><span>+10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                1<span style='color: #949494;'>e</span>+10</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>                1<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e10</span>, <span class='fl'>1e-10</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> 1<span style='color: #949494;'>e</span><span>+10</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1<span style='color: #949494;'>e</span>+10</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 1<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>NA</span>, <span class='cn'>FALSE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> FALSE</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>   </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span>   </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> FALSE</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> FALSE</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> TRUE </span>
@@ -300,40 +299,40 @@ to display the data.</p>
 <span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"This is string is rather long"</span>, <span class='cn'>NA</span>, <span class='st'>"?"</span>, <span class='st'>"Short"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                        </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                        </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> This is string is rather long</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>                           </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span>                           </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> ?                            </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> Short                        </span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                         </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> This is string is rather long </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>                            </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> ?                             </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Short                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> This is string is rather long</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span>                           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ?                            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Short                        </span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> This…</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>   </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span>   </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> ?    </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> Short</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>date</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2017-05-15"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='va'>date</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>NA</span>, <span class='fl'>3</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>    </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>    </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-16</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>        </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span>        </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-18</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-19</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-20</span>
 <span class='r-in'><span class='fu'>pillar</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='va'>date</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='cn'>NA</span>, <span class='fl'>600</span>, <span class='fl'>3600</span>, <span class='fl'>86400</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>             </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>             </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-15 <span style='color: #949494;'>00:00:30</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span><span>                 </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>NA</span>                 </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-15 <span style='color: #949494;'>00:10:00</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-15 <span style='color: #949494;'>01:00:00</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> 2017-05-16 <span style='color: #949494;'>00:00:00</span></span>

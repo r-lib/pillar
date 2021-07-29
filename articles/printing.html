@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@
   </a>
 </li>
 <li>
-  <a href="../reference/pillar-package.html#package-options">Options</a>
+  <a href="../reference/pillar_options.html">Options</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -62,10 +62,10 @@
       <a href="../articles/numbers.html">Controlling display of numbers</a>
     </li>
     <li>
-      <a href="../articles/digits.html">Custom formatting</a>
+      <a href="../articles/digits.html">Significant figures and scientific notation</a>
     </li>
     <li>
-      <a href="../articles/extending.html">Significant figures and scientific notation</a>
+      <a href="../articles/extending.html">Custom formatting</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -147,8 +147,8 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor" aria-hidden="true"></a>Overview</h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-2650e646029581ec0532" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2650e646029581ec0532">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-33f630506c777171f45b" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-33f630506c777171f45b">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div id="initialization" class="section level2">
 <h2 class="hasAnchor">
@@ -157,7 +157,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>c <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, d <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>, e <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tbl</span>, width <span class="op">=</span> <span class="fl">23</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 3</span>
+<span class="co">#&gt; # A tibble: 3 × 3</span>
 <span class="co">#&gt;       a   b$c    $d</span>
 <span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
 <span class="co">#&gt; 1     1     4     7</span>
@@ -174,30 +174,22 @@
 <span class="co">#&gt;  $ e: int [1:3] 10 11 12</span></code></pre></div>
 <details><p><summary>Source code of <code>pillar:::print.tbl()</code></summary></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">print.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">n_extra</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="va">width</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="va">n</span>, n_extra <span class="op">=</span> <span class="va">n_extra</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">print.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,
+                      <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">print_tbl</span><span class="op">(</span>
+    <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
+    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>
+  <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>The <code><a href="../reference/format_tbl.html">format.tbl()</a></code> method creates a setup object, and uses that object to format header, body and footer.</p>
 <details><p><summary>Source code of <code>pillar:::format.tbl()</code></summary></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">n_extra</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">check_dots_empty</span><span class="op">(</span>action <span class="op">=</span> <span class="va">signal</span><span class="op">)</span>
-
-  <span class="co"># Reset local cache for each new output</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/force.html" class="external-link">force</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-  <span class="fu">num_colors</span><span class="op">(</span>forget <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-  <span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="va">x</span>,
-    width <span class="op">=</span> <span class="va">width</span>, <span class="va">...</span>,
-    n <span class="op">=</span> <span class="va">n</span>,
-    max_extra_cols <span class="op">=</span> <span class="va">n_extra</span>
+<code class="sourceCode R"><span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,
+                       <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="../reference/format_tbl.html">format_tbl</a></span><span class="op">(</span>
+    <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
+    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>
   <span class="op">)</span>
-
-  <span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_header.html">tbl_format_header</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
-  <span class="va">body</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
-  <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_format_footer.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">header</span>, <span class="va">body</span>, <span class="va">footer</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>While it’s possible to extend or override these methods for your <code>"tbl"</code> subclass, often overriding the more specialized methods shown below is sufficient.</p>
 </div>
@@ -210,7 +202,7 @@
 <span class="va">setup</span>
 <span class="co">#&gt; &lt;pillar_tbl_format_setup&gt;</span>
 <span class="co">#&gt; &lt;tbl_format_header(setup)&gt;</span>
-<span class="co">#&gt; # A tibble: 3 x 3</span>
+<span class="co">#&gt; # A tibble: 3 × 3</span>
 <span class="co">#&gt; &lt;tbl_format_body(setup)&gt;</span>
 <span class="co">#&gt;       a   b$c    $d</span>
 <span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
@@ -222,10 +214,11 @@
 <span class="co">#&gt; #   variable: e &lt;int&gt;</span></code></pre></div>
 <p>A setup object is required here to avoid computing information twice. For instance, the dimensions shown in the header or the extra columns displayed in the footer are available only after the body has been computed.</p>
 <p>The generic dispatches over the container, so that you can override it if necessary. It is responsible for assigning default values to arguments before passing them on to the method.</p>
-<details><p><summary>Source code of <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code></summary></p>
+<details><p><summary>Source code of <code>tbl_format_setup()</code></summary></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,
-                             <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+                             <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,
+                             <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG tbl_format_setup()"</span>
 
   <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width_print</span><span class="op">(</span><span class="va">width</span><span class="op">)</span>
@@ -233,10 +226,14 @@
   <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">get_n_print</span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
 
   <span class="va">max_extra_cols</span> <span class="op">&lt;-</span> <span class="fu">get_max_extra_cols</span><span class="op">(</span><span class="va">max_extra_cols</span><span class="op">)</span>
+  <span class="va">max_footer_lines</span> <span class="op">&lt;-</span> <span class="fu">get_max_footer_lines</span><span class="op">(</span><span class="va">max_footer_lines</span><span class="op">)</span>
 
   <span class="co"># Calls UseMethod("tbl_format_setup"),</span>
   <span class="co"># allows using default values in S3 dispatch</span>
-  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span><span class="op">)</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_</span><span class="op">(</span>
+    <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
+    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>
+  <span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"tbl_format_setup"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
@@ -244,7 +241,7 @@
 <details><p><summary>Source code of <code>pillar:::tbl_format_setup.tbl()</code></summary></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
-                                 <span class="va">n</span>, <span class="va">max_extra_cols</span><span class="op">)</span> <span class="op">{</span>
+                                 <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG tbl_format_setup.tbl()"</span>
 
   <span class="co"># Number of rows</span>
@@ -308,7 +305,8 @@
     rows_missing <span class="op">=</span> <span class="va">rows_missing</span>,
     rows_total <span class="op">=</span> <span class="va">rows</span>,
     extra_cols <span class="op">=</span> <span class="va">extra_cols</span>,
-    extra_cols_total <span class="op">=</span> <span class="va">extra_cols_total</span>
+    extra_cols_total <span class="op">=</span> <span class="va">extra_cols_total</span>,
+    max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>At the core, the internal function <code>ctl_colonnade()</code> composes the body. Its functionality and the customization points it offers are detailed in the “Colonnade” section below.</p>
@@ -319,7 +317,7 @@
 <p>The components of a tibble are formatted with <code>tbl_format_*()</code> generics, which also dispatch on the container to allow extension or overrides. They return a character vector, with one element per line printed. The setup object is required.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tbl_format_header.html">tbl_format_header</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span>
-<span class="co">#&gt; [1] "# A tibble: 3 x 3"</span>
+<span class="co">#&gt; [1] "# A tibble: 3 × 3"</span>
 <span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span>
 <span class="co">#&gt;       a   b$c    $d</span>
 <span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
@@ -363,8 +361,8 @@
 </details><details><p><summary>Source code of <code>pillar:::tbl_format_footer.tbl()</code></summary></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_footer.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu">pre_dots</span><span class="op">(</span><span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span><span class="op">)</span>
-  <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">split_lines</span><span class="op">(</span><span class="fu">format_comment</span><span class="op">(</span><span class="va">footer</span>, width <span class="op">=</span> <span class="va">setup</span><span class="op">$</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
+  <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer</span><span class="op">(</span><span class="va">footer</span>, <span class="va">setup</span><span class="op">)</span>
   <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="va">footer_comment</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details>
@@ -445,7 +443,7 @@
   <span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="fu">max0</span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>The default method calls <code><a href="../reference/pillar.html">pillar()</a></code> directly, passing the maximum width available.</p>
-<details><p><summary>Source code of <code><a href="../reference/pillar.html">pillar()</a></code></summary></p>
+<details><p><summary>Source code of <code>pillar()</code></summary></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG pillar(`v(class(x))`, `v(title)`, `v(width)`)"</span>
@@ -464,7 +462,7 @@
 <h3 class="hasAnchor">
 <a href="#components" class="anchor" aria-hidden="true"></a>Components</h3>
 <p>Both compound and simple pillar objects share the same structure and are ultimately constructed with <code><a href="../reference/new_pillar.html">new_pillar()</a></code>.</p>
-<details><p><summary>Source code of <code><a href="../reference/new_pillar.html">new_pillar()</a></code></summary></p>
+<details><p><summary>Source code of <code>new_pillar()</code></summary></p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"</span>
@@ -502,7 +500,7 @@
     <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1L</span>
   <span class="op">}</span>
 
-  <span class="fu">new_vertical</span><span class="op">(</span><span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">new_vertical</span><span class="op">(</span><span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span><span class="op">$</span><span class="va">aligned</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details>
 </div>

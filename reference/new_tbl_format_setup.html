@@ -62,7 +62,6 @@ Do not modify existing elements." />
 
 
 
-
   
 
   
@@ -85,7 +84,7 @@ Do not modify existing elements." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -98,7 +97,7 @@ Do not modify existing elements." />
   </a>
 </li>
 <li>
-  <a href="../reference/pillar-package.html#package-options">Options</a>
+  <a href="../reference/pillar_options.html">Options</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -114,10 +113,10 @@ Do not modify existing elements." />
       <a href="../articles/numbers.html">Controlling display of numbers</a>
     </li>
     <li>
-      <a href="../articles/digits.html">Custom formatting</a>
+      <a href="../articles/digits.html">Significant figures and scientific notation</a>
     </li>
     <li>
-      <a href="../articles/extending.html">Significant figures and scientific notation</a>
+      <a href="../articles/extending.html">Custom formatting</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -173,7 +172,8 @@ Do not modify existing elements.</p>
   <span class='va'>rows_missing</span>,
   <span class='va'>rows_total</span>,
   <span class='va'>extra_cols</span>,
-  <span class='va'>extra_cols_total</span>
+  <span class='va'>extra_cols_total</span>,
+  <span class='va'>max_footer_lines</span>
 <span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -220,6 +220,10 @@ as a character vector of formatted column names and types.</p></td>
       <th>extra_cols_total</th>
       <td><p>The total number of columns, may be larger than
 <code>length(extra_cols)</code>.</p></td>
+    </tr>
+    <tr>
+      <th>max_footer_lines</th>
+      <td><p>The maximum number of lines in the footer.</p></td>
     </tr>
     </table>
 

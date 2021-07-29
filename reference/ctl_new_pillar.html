@@ -62,7 +62,6 @@ Users will rarely need them." />
 
 
 
-
   
 
   
@@ -85,7 +84,7 @@ Users will rarely need them." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -98,7 +97,7 @@ Users will rarely need them." />
   </a>
 </li>
 <li>
-  <a href="../reference/pillar-package.html#package-options">Options</a>
+  <a href="../reference/pillar_options.html">Options</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -114,10 +113,10 @@ Users will rarely need them." />
       <a href="../articles/numbers.html">Controlling display of numbers</a>
     </li>
     <li>
-      <a href="../articles/digits.html">Custom formatting</a>
+      <a href="../articles/digits.html">Significant figures and scientific notation</a>
     </li>
     <li>
-      <a href="../articles/extending.html">Significant figures and scientific notation</a>
+      <a href="../articles/extending.html">Custom formatting</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -219,17 +218,17 @@ fits the available width.</p>
 <span class='r-in'>  <span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span><span class='op'>$</span><span class='va'>species</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>, width <span class='op'>=</span> <span class='fl'>60</span></span>
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>                                                       </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                      </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                      </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie</span>
 <span class='r-in'><span class='fu'>ctl_new_pillar</span><span class='op'>(</span></span>
 <span class='r-in'>  <span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span>,</span>
 <span class='r-in'>  <span class='fu'>palmerpenguins</span><span class='fu'>::</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/reference/penguins.html'>penguins</a></span><span class='op'>$</span><span class='va'>bill_length_mm</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>,</span>
 <span class='r-in'>  width <span class='op'>=</span> <span class='fl'>60</span></span>
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         39.1</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         39.5</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         40.3</span>
@@ -241,359 +240,359 @@ fits the available width.</p>
 <span class='r-in'>  width <span class='op'>=</span> <span class='fl'>60</span></span>
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;compound_pillar[5]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> species                                                   </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>                                                     </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo                                                    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap                                                 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> species  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Adelie   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Gentoo   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chinstrap</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>… and 4 more sub-pillars</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Packed matrix</span></span>
 <span class='r-in'><span class='fu'>ctl_new_compound_pillar</span><span class='op'>(</span><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>60</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;compound_pillar[2]&gt;</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1]</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='color: #949494;font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>         1</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>         2</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>         3</span>
@@ -602,7 +601,7 @@ fits the available width.</p>
 <span class='r-in'><span class='co'># Packed array</span></span>
 <span class='r-in'><span class='fu'>ctl_new_compound_pillar</span><span class='op'>(</span><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>Titanic</span>, width <span class='op'>=</span> <span class='fl'>60</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                              <span style='color: #949494;font-style: italic;'>&lt;table[,2,2,2]&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                              <span style='color: #949494; font-style: italic;'>&lt;table[,2,2,2]&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>                                                          0 …</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>                                                          0 …</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         35 …</span>
@@ -634,10 +633,10 @@ fits the available width.</p>
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A data frame: 3 × 2</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>       a b    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span><span>     1 a    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span><span>     2 b    </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span><span>     3 c    </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span>     1 a    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span>     2 b    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span>     3 c    </span>
 </code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

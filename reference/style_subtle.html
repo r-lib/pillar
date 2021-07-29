@@ -59,7 +59,6 @@ maintain a consistent style with the default data types." />
 
 
 
-
   
 
   
@@ -82,7 +81,7 @@ maintain a consistent style with the default data types." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -95,7 +94,7 @@ maintain a consistent style with the default data types." />
   </a>
 </li>
 <li>
-  <a href="../reference/pillar-package.html#package-options">Options</a>
+  <a href="../reference/pillar_options.html">Options</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -111,10 +110,10 @@ maintain a consistent style with the default data types." />
       <a href="../articles/numbers.html">Controlling display of numbers</a>
     </li>
     <li>
-      <a href="../articles/digits.html">Custom formatting</a>
+      <a href="../articles/digits.html">Significant figures and scientific notation</a>
     </li>
     <li>
-      <a href="../articles/extending.html">Significant figures and scientific notation</a>
+      <a href="../articles/extending.html">Custom formatting</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -186,11 +185,13 @@ indicate if the values are negative and significant, respectively</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>style_subtle()</code> is affected by the <code>pillar.subtle</code> option.</p>
-<p><code>style_subtle_num()</code> is affected by the <code>pillar.subtle_num</code> option, which is
-<code>FALSE</code> by default.</p>
-<p><code>style_bold()</code> is affected by the <code>pillar.bold</code> option.</p>
-<p><code>style_neg()</code> is affected by the <code>pillar.neg</code> option.</p>
+    <p><code>style_subtle()</code> is affected by the <code>subtle</code> <a href='pillar_options.html'>option</a>.</p>
+<p><code>style_subtle_num()</code> is affected by the
+<code>subtle_num</code> <a href='pillar_options.html'>option</a>,
+which is <code>FALSE</code> by default.</p>
+<p><code>style_bold()</code> is affected by the <code>bold</code> <a href='pillar_options.html'>option</a>,
+which is <code>FALSE</code> by default.</p>
+<p><code>style_neg()</code> is affected by the <code>pillar.neg</code> <a href='pillar_options.html'>option</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='pillar-package.html'>pillar-package</a> for a list of options</p></div>

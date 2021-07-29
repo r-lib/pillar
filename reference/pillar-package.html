@@ -61,7 +61,6 @@ Provides various generics for making every aspect of the display customizable." 
 
 
 
-
   
 
   
@@ -84,7 +83,7 @@ Provides various generics for making every aspect of the display customizable." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -97,7 +96,7 @@ Provides various generics for making every aspect of the display customizable." 
   </a>
 </li>
 <li>
-  <a href="../reference/pillar-package.html#package-options">Options</a>
+  <a href="../reference/pillar_options.html">Options</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -113,10 +112,10 @@ Provides various generics for making every aspect of the display customizable." 
       <a href="../articles/numbers.html">Controlling display of numbers</a>
     </li>
     <li>
-      <a href="../articles/digits.html">Custom formatting</a>
+      <a href="../articles/digits.html">Significant figures and scientific notation</a>
     </li>
     <li>
-      <a href="../articles/extending.html">Significant figures and scientific notation</a>
+      <a href="../articles/extending.html">Custom formatting</a>
     </li>
     <li>
       <a href="../articles/printing.html">Printing a tibble: Control and data flow</a>
@@ -164,46 +163,14 @@ Provides various generics for making every aspect of the display customizable.</
 
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>See <code><a href='pillar.html'>pillar()</a></code> for formatting a single column,
-and <code><a href='format_tbl.html'>print.tbl()</a></code> for formatting data-frame-like objects.</p>
-    <h2 class="hasAnchor" id="package-options"><a class="anchor" href="#package-options"></a>Package options</h2>
-
-    
-
-<ul>
-<li><p><code>pillar.bold</code>: Use bold font, e.g. for column headers? This currently
-defaults to <code>FALSE</code>, because many terminal fonts have poor support for
-bold fonts.</p></li>
-<li><p><code>pillar.subtle</code>: Use subtle style, e.g. for row numbers and data types?
-Default: <code>TRUE</code>.</p></li>
-<li><p><code>pillar.subtle_num</code>: Use subtle style for insignificant digits? Default:
-<code>FALSE</code>, is also affected by the <code>pillar.subtle</code> option.</p></li>
-<li><p><code>pillar.neg</code>: Highlight negative numbers? Default: <code>TRUE</code>.</p></li>
-<li><p><code>pillar.sigfig</code>: The number of significant digits that will be printed and
-highlighted, default: <code>3</code>. Set the <code>pillar.subtle</code> option to <code>FALSE</code> to
-turn off highlighting of significant digits.</p></li>
-<li><p><code>pillar.min_title_chars</code>: The minimum number of characters for the column
-title, default: <code>15</code>.  Column titles may be truncated up to that width to
-save horizontal space. Set to <code>Inf</code> to turn off truncation of column
-titles.</p></li>
-<li><p><code>pillar.min_chars</code>: The minimum number of characters wide to
-display character columns, default: <code>0</code>.  Character columns may be
-truncated up to that width to save horizontal space. Set to <code>Inf</code> to
-turn off truncation of character columns.</p></li>
-<li><p><code>pillar.max_dec_width</code>: The maximum allowed width for decimal notation,
-default 13.</p></li>
-</ul>
-
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://pillar.r-lib.org/'>https://pillar.r-lib.org/</a></p></li>
-<li><p><a href='https://github.com/r-lib/pillar'>https://github.com/r-lib/pillar</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/r-lib/pillar/issues'>https://github.com/r-lib/pillar/issues</a></p></li>
+    <div class='dont-index'>
+<ul>
+<li><p><code><a href='pillar.html'>pillar()</a></code> for formatting a single column,</p></li>
+<li><p><code><a href='format_tbl.html'>print.tbl()</a></code> for formatting data-frame-like objects,</p></li>
+<li><p><a href='pillar_options.html'>pillar_options</a> for a list of package options.</p></li>
 </ul>
-
 </div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -221,29 +188,29 @@ default 13.</p></li>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'><a href='pillar.html'>pillar</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>     1</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>     2</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>     3</span>
 <span class='r-in'><span class='fu'><a href='pillar.html'>pillar</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>     1</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>     2</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>     3</span>
 <span class='r-in'><span class='fu'><a href='pillar.html'>pillar</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>, title <span class='op'>=</span> <span class='st'>"letters"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;pillar&gt;</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> letters</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>  </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> a      </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> b      </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> c      </span>
 <span class='r-in'><span class='fu'><a href='colonnade.html'>colonnade</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='op'>]</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>          <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>  </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span><span>          5.1         3.5          1.4         0.2 setosa </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span><span>          4.9         3            1.4         0.2 setosa </span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span><span>          4.7         3.2          1.3         0.2 setosa </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span>          5.1         3.5          1.4         0.2 setosa </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span>          4.9         3            1.4         0.2 setosa </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span>          4.7         3.2          1.3         0.2 setosa </span>
 </code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
