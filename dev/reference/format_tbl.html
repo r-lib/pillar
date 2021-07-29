@@ -182,10 +182,24 @@ Set it to <code>1</code> to suppress colored and highlighted output.</p>
     </div>
 
     <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='co'># S3 method for tbl</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>NULL</span>, n_extra <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  n <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max_extra_cols <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max_footer_lines <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for tbl</span>
-<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>NULL</span>, n_extra <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
+<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  n <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max_extra_cols <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max_footer_lines <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -211,10 +225,16 @@ Otherwise, will print as many rows as specified by the
 <code>print_min</code> <a href='pillar_options.html'>option</a>.</p></td>
     </tr>
     <tr>
-      <th>n_extra</th>
+      <th>max_extra_cols</th>
       <td><p>Number of extra columns to print abbreviated information for,
 if the width is too small for the entire tibble. If <code>NULL</code>,
-the <code>max_extra_cols</code> <a href='pillar_options.html'>option</a> is used.</p></td>
+the <code>max_extra_cols</code> <a href='pillar_options.html'>option</a> is used.
+The previously defined <code>n_extra</code> argument is soft-deprecated.</p></td>
+    </tr>
+    <tr>
+      <th>max_footer_lines</th>
+      <td><p>Maximum number of footer lines. If <code>NULL</code>,
+the <code>max_footer_lines</code> <a href='pillar_options.html'>option</a> is used.</p></td>
     </tr>
     </table>
 

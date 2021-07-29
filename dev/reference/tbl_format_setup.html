@@ -183,10 +183,17 @@ If you need to customize parts of the printed output independently,
 override these methods instead.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>tbl_format_setup</span><span class='op'>(</span><span class='va'>x</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span>, n <span class='op'>=</span> <span class='cn'>NULL</span>, max_extra_cols <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>tbl_format_setup</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>,
+  n <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max_extra_cols <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max_footer_lines <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for tbl</span>
-<span class='fu'>tbl_format_setup</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span>, <span class='va'>n</span>, <span class='va'>max_extra_cols</span><span class='op'>)</span></code></pre></div>
+<span class='fu'>tbl_format_setup</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>width</span>, <span class='va'>...</span>, <span class='va'>n</span>, <span class='va'>max_extra_cols</span>, <span class='va'>max_footer_lines</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -214,6 +221,12 @@ by implementations of this method.</p></td>
       <th>max_extra_cols</th>
       <td><p>Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.
+No <a href='pillar_options.html'>options</a> should be considered
+by implementations of this method.</p></td>
+    </tr>
+    <tr>
+      <th>max_footer_lines</th>
+      <td><p>Maximum number of lines for the footer.
 No <a href='pillar_options.html'>options</a> should be considered
 by implementations of this method.</p></td>
     </tr>
