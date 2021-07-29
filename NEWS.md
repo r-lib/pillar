@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.2
+
+- Same as previous version.
+
+
 # pillar 1.6.1.9006
 
 - `print.tbl()` and `format.tbl()` support the `max_extra_cols` and `max_footer_lines` arguments that override the corresponding options (#360).
