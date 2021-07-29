@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.1.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.1.9005</span>
       </span>
     </div>
 
@@ -158,9 +158,6 @@
     <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='va'>pillar_options</span></code></pre></div>
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>An object of class <code>list</code> of length 8.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>All options are available via the <code>pillar_options</code> list.
@@ -180,6 +177,31 @@ Example: for an option <code>foo</code>,
     
 
 <ul>
+<li><p><code>print_max</code>: Maximum number of rows printed, default: <code>20</code>.
+Set to <code>Inf</code> to always print all rows.
+For compatibility reasons, <code>getOption("tibble.print_max")</code> and
+<code>getOption("dplyr.print_max")</code> are also consulted,
+this will be soft-deprecated in pillar v2.0.0.</p></li>
+<li><p><code>print_min</code>: Number of rows printed if the table has more than
+<code>print_max</code> rows, default: <code>10</code>.
+For compatibility reasons, <code>getOption("tibble.print_min")</code> and
+<code>getOption("dplyr.print_min")</code> are also consulted,
+this will be soft-deprecated in pillar v2.0.0.</p></li>
+<li><p><code>width</code>: Output width. Default: <code>NULL</code>
+(use <code>getOption("width")</code>).
+This can be larger than <code>getOption("width")</code>, in this case the output
+of the table's body is distributed over multiple tiers for wide tibbles.
+For compatibility reasons, <code>getOption("tibble.width")</code> and
+<code>getOption("dplyr.width")</code> are also consulted,
+this will be soft-deprecated in pillar v2.0.0.</p></li>
+<li><p><code>max_footer_lines</code>: The maximum number of lines in the footer,
+default: <code>7</code>. Set to <code>Inf</code> to turn off truncation of footer lines.
+The <code>max_extra_cols</code> option still limits
+the number of columns printed.</p></li>
+<li><p><code>max_extra_cols</code>: The maximum number of columns printed in the footer,
+default: <code>100</code>. Set to <code>Inf</code> to show all columns.
+Set the more predictable <code>max_footer_lines</code> to control the number
+of footer lines instead.</p></li>
 <li><p><code>bold</code>: Use bold font, e.g. for column headers? This currently
 defaults to <code>FALSE</code>, because many terminal fonts have poor support for
 bold fonts.</p></li>
@@ -200,7 +222,13 @@ display character columns, default: <code>3</code>.  Character columns may be
 truncated up to that width to save horizontal space. Set to <code>Inf</code> to
 turn off truncation of character columns.</p></li>
 <li><p><code>max_dec_width</code>: The maximum allowed width for decimal notation,
-default 13.</p></li>
+default: <code>13</code>.</p></li>
+<li><p><code>bidi</code>: Set to <code>TRUE</code> for experimental support for bidirectional scripts.
+Default: <code>FALSE</code>. When this option is set, "left right override"
+and "first strong isolate"
+<a href='https://www.w3.org/International/questions/qa-bidi-unicode-controls'>Unicode controls</a>
+are inserted to ensure that text appears in its intended direction
+and that the column headings correspond to the correct columns.</p></li>
 </ul>
 
 
