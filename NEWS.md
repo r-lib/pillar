@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.1.9006
+
+- `print.tbl()` and `format.tbl()` support the `max_extra_cols` and `max_footer_lines` arguments that override the corresponding options (#360).
+- `print.tbl()` and `format.tbl()` maps the now deprecated `n_extra` argument to `max_extra_cols` for consistency (#360).
+
+
 # pillar 1.6.1.9005
 
 - `num()` gains `extra_sigfig` argument to automatically show more significant figures for numbers of the same magnitude with subtle differences (#97).
