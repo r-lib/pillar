@@ -134,11 +134,12 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     sigfig %||% pillar_attr$sigfig,
     pillar_attr$digits,
     pillar_attr$notation,
-    pillar_attr$fixed_exponent
+    pillar_attr$fixed_exponent,
+    pillar_attr$extra_sigfig
   )
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent) {
+pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, extra_sigfig) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1) {
       abort("`digits` must be a number.")
@@ -146,6 +147,10 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent) {
   }
   if (is.null(sigfig)) {
     sigfig <- get_pillar_option_sigfig()
+  }
+
+  if (isTRUE(extra_sigfig)) {
+    sigfig <- sigfig + compute_extra_sigfig(x)
   }
 
   if (is.null(notation) || notation == "fit") {
@@ -202,7 +207,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL)
+  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL, extra_sigfig = NULL)
 }
 
 # registered in .onLoad()

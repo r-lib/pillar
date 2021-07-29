@@ -25,16 +25,14 @@
 #' @param x Object to format or print.
 #' @param ... Passed on to [tbl_format_setup()].
 #' @param n Number of rows to show. If `NULL`, the default, will print all rows
-#'   if less than option `tibble.print_max`. Otherwise, will print
-#'   `tibble.print_min` rows.
+#'   if less than the `print_max` [option][pillar_options].
+#'   Otherwise, will print as many rows as specified by the
+#'   `print_min` [option][pillar_options].
 #' @param width Width of text output to generate. This defaults to `NULL`, which
-#'   means use `getOption("tibble.width")` or (if also `NULL`)
-#'   `getOption("width")`; the latter displays only the columns that fit on one
-#'   screen. You can also set `options(tibble.width = Inf)` to override this
-#'   default and always print all columns.
+#'   means use the `width` [option][pillar_options].
 #' @param n_extra Number of extra columns to print abbreviated information for,
-#'   if the width is too small for the entire tibble. If `NULL`, the default,
-#'   the value of the [`tibble.max_extra_cols`][tibble::tibble-package] option is used.
+#'   if the width is too small for the entire tibble. If `NULL`,
+#'   the `max_extra_cols` [option][pillar_options] is used.
 #'
 #' @name format_tbl
 #' @export

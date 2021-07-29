@@ -6,4 +6,4 @@ rlang::with_options(
 )
 
 # Override .Rprofile
-options(pillar.bold = FALSE)
+walk(pillar_options, do.call, list(NULL))

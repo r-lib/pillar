@@ -116,17 +116,19 @@ wrap_footer <- function(footer, setup) {
   # When asking for width = 80, use at most 79 characters
   max_extent <- setup$width - 1L
 
-  # FIXME: Make n_tiers configurable
-  tier_widths <- get_footer_tier_widths(footer, max_extent, n_tiers = Inf)
+  tier_widths <- get_footer_tier_widths(
+    footer, max_extent,
+    get_pillar_option_max_footer_lines()
+  )
 
   # show optuput even if too wide
   widths <- pmin(get_extent(footer), max_extent - 4L)
   wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
 
   # truncate output that doesn't fit
-  wrap <- wrap[wrap$tier != 0, ]
+  truncated <- anyNA(wrap$tier)
   split <- split(footer[wrap$id], wrap$tier)
-  if (nrow(wrap) < length(footer) && length(split) > 0) {
+  if (truncated && length(split) > 0) {
     split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
   }
   split <- imap(split, function(x, y) c("#", if (y == 1) cli::symbol$ellipsis else " ", x))
