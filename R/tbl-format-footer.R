@@ -118,7 +118,7 @@ wrap_footer <- function(footer, setup) {
 
   tier_widths <- get_footer_tier_widths(
     footer, max_extent,
-    get_pillar_option_max_footer_lines()
+    setup$max_footer_lines
   )
 
   # show optuput even if too wide

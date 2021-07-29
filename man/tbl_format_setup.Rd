@@ -5,9 +5,16 @@
 \alias{tbl_format_setup.tbl}
 \title{Set up formatting}
 \usage{
-tbl_format_setup(x, width = NULL, ..., n = NULL, max_extra_cols = NULL)
+tbl_format_setup(
+  x,
+  width = NULL,
+  ...,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL
+)
 
-\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols)
+\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols, max_footer_lines)
 }
 \arguments{
 \item{x}{An object.}
@@ -23,6 +30,10 @@ by implementations of this method.}
 
 \item{max_extra_cols}{Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.
+No \link[=pillar_options]{options} should be considered
+by implementations of this method.}
+
+\item{max_footer_lines}{Maximum number of lines for the footer.
 No \link[=pillar_options]{options} should be considered
 by implementations of this method.}
 }
