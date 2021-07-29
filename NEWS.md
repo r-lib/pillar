@@ -2,53 +2,40 @@
 
 # pillar 1.6.2
 
-- Same as previous version.
+## Options
 
+- Options `pillar.print_max`, `pillar.print_min`, `pillar.width` and `pillar.max_extra_cols` are now queried before the corresponding `tibble.` or `dplyr.` options are consulted, the latter will be soft-deprecated in pillar v2.0.0 (#353).
+- New `pillar.bidi` option. When active, control characters are inserted to improve display of data with right-to-left text (#333).
+- The new `pillar.max_footer_lines` option (default: 7) allows controlling the maximum number of footer lines shown. It is applied in addition to the existing `tibble.max_extra_cols` option (#263).
 
-# pillar 1.6.1.9006
+## Formatting
 
+- If a column doesn't make use of all horizontal width offered to it, the excess width is distributed over other columns (#331).
+- Improved allocation of free space in multi-tier tables with `getOption("tibble.width") > getOption("width")` (#344).
+- All pillars are shown with their true horizontal extent, irrespective of the indicated `width`. This simplifies the implementation of custom `pillar_shaft()` methods (#347).
+
+## Features
+
+- `num()` gains `extra_sigfig` argument to automatically show more significant figures for numbers of the same magnitude with subtle differences (#97).
 - `print.tbl()` and `format.tbl()` support the `max_extra_cols` and `max_footer_lines` arguments that override the corresponding options (#360).
 - `print.tbl()` and `format.tbl()` maps the now deprecated `n_extra` argument to `max_extra_cols` for consistency (#360).
 
+## Bug fixes
 
-# pillar 1.6.1.9005
-
-- `num()` gains `extra_sigfig` argument to automatically show more significant figures for numbers of the same magnitude with subtle differences (#97).
-- Options `pillar.print_max`, `pillar.print_min`, `pillar.width` and `pillar.max_extra_cols` are now queried before the corresponding `tibble.` or `dplyr.` options are consulted, the latter will be soft-deprecated in pillar v2.0.0 (#353).
-
-
-# pillar 1.6.1.9004
-
-- New `pillar.bidi` option. When active, control characters are inserted to improve display of data with right-to-left text (#333).
-- The new `pillar.max_footer_lines` option (default: 7) allows controlling the maximum number of footer lines shown. It is applied in addition to the existing `tibble.max_extra_cols` option (#263).
-- Consistent definition of all options in one place, with internal accessors (#339).
-
-
-# pillar 1.6.1.9003
-
-- `obj_sum()` no longer calls `type_sum()` for vectors since pillar v1.6.1, this is now documented (#321).
-- If a column doesn't make use of all horizontal width offered to it, the excess width is distributed over other columns (#331).
-- All pillars are shown with their true horizontal extent, irrespective of the indicated `width`. This simplifies the implementation of custom `pillar_shaft()` methods (#347).
-- Improved allocation of free space in multi-tier tables with `getOption("tibble.width") > getOption("width")` (#344).
 - Avoid mangling of duplicate column names in footer (#332).
+- Fix warning with zero of type `bit64::integer64()` (#319).
 
+## Documentation
 
-# pillar 1.6.1.9002
+- All package options are now documented in `?pillar_options` (#339).
+- `obj_sum()` no longer calls `type_sum()` for vectors since pillar v1.6.1, this is now documented (#321).
+- Fix documentation on usage of `vctrs::vec_proxy()` and `vctrs::vec_restore()` (#322).
+
+## Internal
 
 - Using `attr(exact = TRUE)` everywhere.
 - `is_vector_s3()` is no longer generic (#181).
-
-
-# pillar 1.6.1.9001
-
 - Fix internal logic around `vec_proxy()` and `vec_restore()` (#316).
-- Fix warning with zero of type `bit64::integer64()` (#319).
-- Fix documentation on usage of `vctrs::vec_proxy()` and `vctrs::vec_restore()` (#322).
-
-
-# pillar 1.6.1.9000
-
-- Same as previous version.
 
 
 # pillar 1.6.1
