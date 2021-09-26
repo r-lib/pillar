@@ -1,16 +1,19 @@
-pillar 1.6.2
+pillar 1.6.3
 
 ## Cran Repository Policy
 
-- [x] Reviewed CRP last edited 2021-04-25.
+- [ ] Reviewed CRP last edited 2021-09-25.
+
+See changes at https://github.com/eddelbuettel/crp/compare/master@%7B2021-04-25%7D...master@%7B2021-09-25%7D
 
 ## R CMD check results
 
-- [x] Checked locally, R 4.1.0
-- [x] Checked on CI system, R 4.1.0
-- [x] Checked on win-builder, R devel
+- [x] Checked locally, R 4.1.1
+- [ ] Checked on CI system, R 4.1.1
+- [ ] Checked on win-builder, R devel
+
+Check the boxes above after successful execution and remove this line. Then run `fledge::release()`.
 
 ## Current CRAN check results
 
-- [x] Checked on 2021-07-29, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
-- [x] WARN: r-release-macos-arm64: Insufficient pandoc version
+- [x] Checked on 2021-09-26, no problems found.
