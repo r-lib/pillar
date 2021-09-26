@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - ".github/workflows/R-CMD-check-dev.yaml"
+  push:
     branches:
     - "cran-*"
 
