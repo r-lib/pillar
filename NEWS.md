@@ -7,17 +7,7 @@
 
 # pillar 1.6.3
 
-- Same as previous version.
-
-
-# pillar 1.6.2.9001
-
 - Avoid blanket import for lifecycle package for compatibility with upcoming rlang (#368, @romainfrancois).
-
-
-# pillar 1.6.2.9000
-
-- Same as previous version.
 
 
 # pillar 1.6.2
