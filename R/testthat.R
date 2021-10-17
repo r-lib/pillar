@@ -63,6 +63,7 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
     num_colors(forget = TRUE)
   })
 
+  testthat::local_edition(2)
   testthat::expect_known_output(print(eval_tidy(object)), file, update = TRUE, width = width)
 }
 # nocov end
