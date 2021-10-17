@@ -462,7 +462,7 @@ distribute_pillars <- function(widths, tier_widths) {
     current_x <- current_x + 1L
   }
 
-  data_frame(id = seq_along(widths), width = widths, tier = tier, offset_after = offset_after)
+  data_frame(id = seq_along(widths), tier = tier, width = widths, offset_after = offset_after)
 }
 
 distribute_pillars_rev <- function(widths, tier_widths) {
