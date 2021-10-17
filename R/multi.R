@@ -485,30 +485,6 @@ distribute_pillars_rev <- function(widths, tier_widths) {
   ret
 }
 
-distribute_pillars_offset <- function(widths, tier_widths,
-                                      widths_offset, tier_widths_offset) {
-  tier_widths <- tier_widths[seq2(tier_widths_offset, length(tier_widths))]
-  if (length(tier_widths) == 0) {
-    # Work around corner case
-    return(distribute_pillars(integer(), integer()))
-  }
-
-  widths <- widths[seq2(widths_offset, length(widths))]
-  fit_cut <- distribute_pillars(widths, tier_widths)
-  add_pillars_offset(fit_cut, widths_offset, tier_widths_offset)
-}
-
-add_pillars_offset <- function(fit_cut, widths_offset, tier_widths_offset) {
-  if (tier_widths_offset == 1) {
-    # Work around corner case
-    return(fit_cut)
-  }
-
-  fit_cut$id <- fit_cut$id + (widths_offset - 1L)
-  fit_cut$tier <- fit_cut$tier + (tier_widths_offset - 1L)
-  fit_cut
-}
-
 all_pillars_fit <- function(tier_df) {
   rows <- nrow(tier_df)
   rows == 0 || !safe_any_na(tier_df$tier[[nrow(tier_df)]])
