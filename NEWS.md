@@ -2,24 +2,19 @@
 
 # pillar 1.6.4
 
-- Same as previous version.
-
-
-# pillar 1.6.3.9002
-
-- `colonnade()` no longer exists, `squeeze()` and `extra_cols()` now raise an error (#272).
-
-
-# pillar 1.6.3.9001
+## Bug fixes
 
 - Fix printing for some tibbles where a fixed-width column is followed by a column with variable width (#366).
-- `num()` requires an integerish `digits` argument (#362).
 - Avoid nested backtick blocks in vignette.
+
+## Breaking changes
+
+- `colonnade()` no longer exists, `squeeze()` and `extra_cols()` now raise an error (#272).
+- `num()` requires an integerish `digits` argument (#362).
+
+## Documentation
+
 - Link to tibble vignettes and documentation pages.
-
-# pillar 1.6.3.9000
-
-- Same as previous version.
 
 
 # pillar 1.6.3
