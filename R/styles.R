@@ -18,7 +18,7 @@ keep_empty <- function(fun) {
 #'
 #' @param x The character vector to style.
 #' @export
-#' @seealso [pillar-package] for a list of options
+#' @seealso [pillar_options] for a list of options
 #' @examples
 #' style_subtle("text")
 style_subtle <- keep_empty(function(x) {
