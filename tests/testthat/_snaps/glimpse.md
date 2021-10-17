@@ -141,7 +141,7 @@
       $ `mean(x)` <dbl> 5
       $ `var(x)`  <dbl> 3
     Code
-      glimpse(as_tbl(df_all), width = 70L)
+      glimpse(as_tbl(df_all()), width = 70L)
     Output
       Rows: 3
       Columns: 9
@@ -156,7 +156,7 @@
       $ i <list> [1, <2, 3>], [<4, 5, 6>], [NA]
     Code
       # options(tibble.width = 50)
-      withr::with_options(list(tibble.width = 50), glimpse(as_tbl(df_all)))
+      withr::with_options(list(tibble.width = 50), glimpse(as_tbl(df_all())))
     Output
       Rows: 3
       Columns: 9
@@ -171,7 +171,7 @@
       $ i <list> [1, <2, 3>], [<4, 5, 6>], [NA]
     Code
       # options(tibble.width = 35)
-      withr::with_options(list(tibble.width = 35), glimpse(as_tbl(df_all)))
+      withr::with_options(list(tibble.width = 35), glimpse(as_tbl(df_all())))
     Output
       Rows: 3
       Columns: 9

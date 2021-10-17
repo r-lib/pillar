@@ -385,7 +385,7 @@
       2          4.9
       3          4.7
     Code
-      colonnade(df_all, width = 30)
+      colonnade(df_all(), width = 30)
     Output
             a     b c     d    
         <dbl> <int> <lgl> <chr>
@@ -393,7 +393,7 @@
       2   2.5     2 FALSE b    
       3  NA      NA NA    <NA> 
     Code
-      colonnade(df_all, width = 300)
+      colonnade(df_all(), width = 300)
     Output
             a     b c     d     e     f          g                   h        
         <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
@@ -407,7 +407,7 @@
       3 <list [1]>
     Code
       options(width = 70)
-      colonnade(df_all, width = 300)
+      colonnade(df_all(), width = 300)
     Output
             a     b c     d     e     f          g                  
         <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>             
@@ -421,7 +421,7 @@
       3 <int [1]> <list [1]>
     Code
       options(width = 60)
-      colonnade(df_all, width = 300)
+      colonnade(df_all(), width = 300)
     Output
             a     b c     d     e     f         
         <dbl> <int> <lgl> <chr> <fct> <date>    
@@ -435,7 +435,7 @@
       3 NA                  <int [1]> <list [1]>
     Code
       options(width = 50)
-      colonnade(df_all, width = 300)
+      colonnade(df_all(), width = 300)
     Output
             a     b c     d     e     f         
         <dbl> <int> <lgl> <chr> <fct> <date>    
@@ -449,7 +449,7 @@
       3 NA                  <int [1]> <list [1]>
     Code
       options(width = 40)
-      colonnade(df_all, width = 300)
+      colonnade(df_all(), width = 300)
     Output
             a     b c     d     e    
         <dbl> <int> <lgl> <chr> <fct>
@@ -468,7 +468,7 @@
       3 <int [1]> <list [1]>
     Code
       options(width = 30)
-      colonnade(df_all, width = 300)
+      colonnade(df_all(), width = 300)
     Output
             a     b c     d    
         <dbl> <int> <lgl> <chr>
@@ -492,7 +492,7 @@
       3 <int [1]> <list [1]>
     Code
       options(width = 20)
-      colonnade(df_all, width = 300)
+      colonnade(df_all(), width = 300)
     Output
             a     b c    
         <dbl> <int> <lgl>

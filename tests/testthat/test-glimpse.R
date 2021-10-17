@@ -70,18 +70,18 @@ test_that("output test for glimpse()", {
     df <- tibble::tibble(!!!set_names(c(5, 3), c("mean(x)", "var(x)")))
     glimpse(df, width = 28)
 
-    glimpse(as_tbl(df_all), width = 70L)
+    glimpse(as_tbl(df_all()), width = 70L)
 
     "options(tibble.width = 50)"
     withr::with_options(
       list(tibble.width = 50),
-      glimpse(as_tbl(df_all))
+      glimpse(as_tbl(df_all()))
     )
 
     "options(tibble.width = 35)"
     withr::with_options(
       list(tibble.width = 35),
-      glimpse(as_tbl(df_all))
+      glimpse(as_tbl(df_all()))
     )
 
     "non-tibble"

@@ -111,7 +111,7 @@
       
       
     Code
-      ctl_colonnade(df_all, width = 30)
+      ctl_colonnade(df_all(), width = 30)
     Output
       $body
             a     b c     d    
@@ -165,7 +165,7 @@
       
       
     Code
-      ctl_colonnade(df_all, width = 300)
+      ctl_colonnade(df_all(), width = 300)
     Output
       $body
             a     b c     d     e     f          g                   h        
@@ -184,7 +184,7 @@
       
     Code
       options(width = 70)
-      ctl_colonnade(df_all, width = 300)
+      ctl_colonnade(df_all(), width = 300)
     Output
       $body
             a     b c     d     e     f          g                  
@@ -203,7 +203,7 @@
       
     Code
       options(width = 60)
-      ctl_colonnade(df_all, width = 300)
+      ctl_colonnade(df_all(), width = 300)
     Output
       $body
             a     b c     d     e     f         
@@ -222,7 +222,7 @@
       
     Code
       options(width = 50)
-      ctl_colonnade(df_all, width = 300)
+      ctl_colonnade(df_all(), width = 300)
     Output
       $body
             a     b c     d     e     f         
@@ -241,7 +241,7 @@
       
     Code
       options(width = 40)
-      ctl_colonnade(df_all, width = 300)
+      ctl_colonnade(df_all(), width = 300)
     Output
       $body
             a     b c     d     e    
@@ -265,7 +265,7 @@
       
     Code
       options(width = 30)
-      ctl_colonnade(df_all, width = 300)
+      ctl_colonnade(df_all(), width = 300)
     Output
       $body
             a     b c     d    
@@ -294,7 +294,7 @@
       
     Code
       options(width = 20)
-      ctl_colonnade(df_all, width = 300)
+      ctl_colonnade(df_all(), width = 300)
     Output
       $body
             a     b c    
