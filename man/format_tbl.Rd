@@ -6,50 +6,25 @@
 \alias{format.tbl}
 \title{Formatting of tbl objects}
 \usage{
-\method{print}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
+\method{print}{tbl}(
+  x,
+  width = NULL,
+  ...,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL
+)
 
-\method{format}{tbl}(x, width = NULL, ..., n = NULL, n_extra = NULL)
-}
-\arguments{
-\item{x}{Object to format or print.}
-
-\item{width}{Width of text output to generate. This defaults to \code{NULL}, which
-means use the \code{width} \link[=pillar_options]{option}.}
-
-\item{...}{Passed on to \code{\link[=tbl_format_setup]{tbl_format_setup()}}.}
-
-\item{n}{Number of rows to show. If \code{NULL}, the default, will print all rows
-if less than the \code{print_max} \link[=pillar_options]{option}.
-Otherwise, will print as many rows as specified by the
-\code{print_min} \link[=pillar_options]{option}.}
-
-\item{n_extra}{Number of extra columns to print abbreviated information for,
-if the width is too small for the entire tibble. If \code{NULL},
-the \code{max_extra_cols} \link[=pillar_options]{option} is used.}
+\method{format}{tbl}(
+  x,
+  width = NULL,
+  ...,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL
+)
 }
 \description{
-These functions and methods are responsible for printing objects
-of the \code{"tbl"} class, which includes \link[tibble:tibble]{tibble}s
-and dbplyr lazy tables.
-See \link[tibble:formatting]{tibble::formatting} for user level documentation,
-and \code{vignette("customization")} for details.
-
-While it is possible to implement a custom \code{\link[=format]{format()}} or \code{\link[=print]{print()}} method
-for your tibble-like objects, it should never be necessary
-if your class inherits from \code{"tbl"}.
-In this case, the default methods offer many customization options
-at every level of detail.
-This means you only need to override or extend implementations for the parts
-that need change.
-
-The output uses color and highlighting according to the \code{"cli.num_colors"} option.
-Set it to \code{1} to suppress colored and highlighted output.
+See \link[tibble:formatting]{tibble::formatting} for details.
 }
-\examples{
-print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
-}
-\seealso{
-\itemize{
-\item \code{\link[=tbl_format_setup]{tbl_format_setup()}} for preparing an object for formatting
-}
-}
+\keyword{internal}

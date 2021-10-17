@@ -2,7 +2,7 @@
 
 #' @import rlang
 #' @import ellipsis
-#' @import lifecycle
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs obj_print_footer

@@ -1,3 +1,108 @@
+test_that("print_max", {
+  value <- 15L
+
+  orig <- get_pillar_option_print_max()
+  expect_identical(orig, pillar_options$print_max())
+
+  old <- set_pillar_option_print_max(value)
+  expect_equal(get_pillar_option_print_max(), value)
+  expect_equal(expect_invisible(set_pillar_option_print_max(old)), value)
+
+  old <- pillar_options$print_max(value)
+  expect_equal(pillar_options$print_max(), value)
+  expect_equal(expect_invisible(pillar_options$print_max(old)), value)
+
+  local({
+    expect_equal(expect_invisible(local_pillar_option_print_max(value)), old)
+    expect_equal(get_pillar_option_print_max(), value)
+  })
+  expect_equal(get_pillar_option_print_max(), orig)
+})
+
+test_that("print_min", {
+  value <- 5L
+
+  orig <- get_pillar_option_print_min()
+  expect_identical(orig, pillar_options$print_min())
+
+  old <- set_pillar_option_print_min(value)
+  expect_equal(get_pillar_option_print_min(), value)
+  expect_equal(expect_invisible(set_pillar_option_print_min(old)), value)
+
+  old <- pillar_options$print_min(value)
+  expect_equal(pillar_options$print_min(), value)
+  expect_equal(expect_invisible(pillar_options$print_min(old)), value)
+
+  local({
+    expect_equal(expect_invisible(local_pillar_option_print_min(value)), old)
+    expect_equal(get_pillar_option_print_min(), value)
+  })
+  expect_equal(get_pillar_option_print_min(), orig)
+})
+
+test_that("width", {
+  value <- 160L
+
+  orig <- get_pillar_option_width()
+  expect_identical(orig, pillar_options$width())
+
+  old <- set_pillar_option_width(value)
+  expect_equal(get_pillar_option_width(), value)
+  expect_equal(expect_invisible(set_pillar_option_width(old)), value)
+
+  old <- pillar_options$width(value)
+  expect_equal(pillar_options$width(), value)
+  expect_equal(expect_invisible(pillar_options$width(old)), value)
+
+  local({
+    expect_equal(expect_invisible(local_pillar_option_width(value)), old)
+    expect_equal(get_pillar_option_width(), value)
+  })
+  expect_equal(get_pillar_option_width(), orig)
+})
+
+test_that("max_footer_lines", {
+  value <- 15L
+
+  orig <- get_pillar_option_max_footer_lines()
+  expect_identical(orig, pillar_options$max_footer_lines())
+
+  old <- set_pillar_option_max_footer_lines(value)
+  expect_equal(get_pillar_option_max_footer_lines(), value)
+  expect_equal(expect_invisible(set_pillar_option_max_footer_lines(old)), value)
+
+  old <- pillar_options$max_footer_lines(value)
+  expect_equal(pillar_options$max_footer_lines(), value)
+  expect_equal(expect_invisible(pillar_options$max_footer_lines(old)), value)
+
+  local({
+    expect_equal(expect_invisible(local_pillar_option_max_footer_lines(value)), old)
+    expect_equal(get_pillar_option_max_footer_lines(), value)
+  })
+  expect_equal(get_pillar_option_max_footer_lines(), orig)
+})
+
+test_that("max_extra_cols", {
+  value <- 30L
+
+  orig <- get_pillar_option_max_extra_cols()
+  expect_identical(orig, pillar_options$max_extra_cols())
+
+  old <- set_pillar_option_max_extra_cols(value)
+  expect_equal(get_pillar_option_max_extra_cols(), value)
+  expect_equal(expect_invisible(set_pillar_option_max_extra_cols(old)), value)
+
+  old <- pillar_options$max_extra_cols(value)
+  expect_equal(pillar_options$max_extra_cols(), value)
+  expect_equal(expect_invisible(pillar_options$max_extra_cols(old)), value)
+
+  local({
+    expect_equal(expect_invisible(local_pillar_option_max_extra_cols(value)), old)
+    expect_equal(get_pillar_option_max_extra_cols(), value)
+  })
+  expect_equal(get_pillar_option_max_extra_cols(), orig)
+})
+
 test_that("bold", {
   value <- 0L
 
@@ -164,6 +269,27 @@ test_that("max_dec_width", {
     expect_equal(get_pillar_option_max_dec_width(), value)
   })
   expect_equal(get_pillar_option_max_dec_width(), orig)
+})
+
+test_that("bidi", {
+  value <- TRUE
+
+  orig <- get_pillar_option_bidi()
+  expect_identical(orig, pillar_options$bidi())
+
+  old <- set_pillar_option_bidi(value)
+  expect_equal(get_pillar_option_bidi(), value)
+  expect_equal(expect_invisible(set_pillar_option_bidi(old)), value)
+
+  old <- pillar_options$bidi(value)
+  expect_equal(pillar_options$bidi(), value)
+  expect_equal(expect_invisible(pillar_options$bidi(old)), value)
+
+  local({
+    expect_equal(expect_invisible(local_pillar_option_bidi(value)), old)
+    expect_equal(get_pillar_option_bidi(), value)
+  })
+  expect_equal(get_pillar_option_bidi(), orig)
 })
 
 test_that("print.tbl ignores max.print option", {
