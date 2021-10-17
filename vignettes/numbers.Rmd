@@ -127,7 +127,7 @@ FIXME
 
 ### units
 
-```{r numbers-17}
+xxx{r numbers-17}
 library(units)
 
 set_units.pillar_num <- function(x, ...) {
@@ -150,11 +150,11 @@ tibble(
   digits_int = set_num_opts(km, digits = 4) + m,
   sci_ext = set_units(num(1:3, notation = "sci"), m) + km
 )
-```
+xxx
 
 ### formattable
 
-```{r numbers-18, error = TRUE}
+xxx{r numbers-18, error = TRUE}
 library(formattable)
 
 pillar_shaft.formattable <- function(x, ...) {
@@ -198,11 +198,11 @@ tibble(
   percent = num_percent(1:3 * 0.1 + 0.001),
   scientific = num_scientific(1:3 * 0.1 + 0.001)
 )
-```
+xxx
 
 ### scales
 
-```{r numbers-scales, error = TRUE}
+xxx{r numbers-scales, error = TRUE}
 library(scales)
 
 x <- num(1:10 / 100, label = "%", scale = 100)
@@ -213,11 +213,11 @@ x < 0
 x < 0L
 
 scales::cscale(x, scales::rescale_pal())
-```
+xxx
 
 ### ggplot2
 
-```{r numbers-19}
+xxx{r numbers-19}
 library(ggplot2)
 
 scale_type.pillar_num <- function(x, ...) {
@@ -227,13 +227,13 @@ scale_type.pillar_num <- function(x, ...) {
 data.frame(x = x, y = 1:10) %>%
   ggplot(aes(x = x, y = y)) %>%
   + geom_point()
-```
+xxx
 
 ## Rule-based decoration
 
 
 
-```{r}
+xxx{r}
 library(dplyr)
 
 data_units <-
@@ -243,25 +243,25 @@ data_units <-
 
 data_units %>%
   mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island)
-```
+xxx
 
-```{r eval = FALSE}
+xxx{r eval = FALSE}
 data_decor <-
   data_units %>%
   decorate(year, digits = 0) %>%
   decorate(where(is.numeric), digits = 3)
-```
+xxx
 
-```{r eval = FALSE}
+xxx{r eval = FALSE}
 data_decor %>%
   mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island)
-```
+xxx
 
-```{r echo = FALSE}
+xxx{r echo = FALSE}
 data_units %>%
   mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island) %>%
   mutate(across(year, set_num_opts, digits = 0)) %>%
   mutate(across(where(is.numeric), set_num_opts, digits = 3))
-```
+xxx
 
 `````
