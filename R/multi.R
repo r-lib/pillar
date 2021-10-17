@@ -475,8 +475,7 @@ distribute_pillars_rev <- function(widths, tier_widths) {
   tier_widths <- tier_widths[seq_along(splits)]
 
   new_offset_after <- unlist(map2(splits, tier_widths, function(.x, .y) {
-    offset_afters <- ret$offset_after[.x]
-    new_offset_after <-  max(offset_afters) - offset_afters
+    new_offset_after <- cumsum(ret$width[.x] + 1)
     new_offset_after - max(new_offset_after) + .y
   }))
 

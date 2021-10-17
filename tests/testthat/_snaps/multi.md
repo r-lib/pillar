@@ -67,8 +67,8 @@
       colonnade_compute_tiered_col_widths_df(c(6, 5, 10), c(5, 5, 10), 22)
     Output
         id tier width offset_after max_widths
-      1  1    1     6            6          6
-      2  2    1     5           12          5
+      1  1    1     5            5          6
+      2  2    1     5           11          5
       3  3    1    10           22         10
     Code
       colonnade_compute_tiered_col_widths_df(c(6, 5, 10), c(5, 5, 10), 23)
@@ -89,7 +89,7 @@
     Output
         id tier width offset_after max_widths
       1  1    1     5            5          5
-      2  2    1     6           12          6
+      2  2    1     5           11          6
       3  3    1    10           22         10
     Code
       colonnade_compute_tiered_col_widths_df(c(5, 6, 10), c(5, 5, 10), 23)
@@ -152,8 +152,8 @@
       distribute_pillars_rev(1:3, 10)
     Output
         id tier width offset_after
-      1  1    1     1            5
-      2  2    1     2            7
+      1  1    1     1            3
+      2  2    1     2            6
       3  3    1     3           10
     Code
       distribute_pillars_rev(1:3, 5)
@@ -166,16 +166,16 @@
       distribute_pillars_rev(1:3, c(5, 5))
     Output
         id tier width offset_after
-      1  1    1     1            3
+      1  1    1     1            2
       2  2    1     2            5
       3  3    2     3            5
     Code
       distribute_pillars_rev(1:5, 7:9)
     Output
         id tier width offset_after
-      1  1    1     1            5
+      1  1    1     1            4
       2  2    1     2            7
-      3  3    2     3            4
+      3  3    2     3            3
       4  4    2     4            8
       5  5    3     5            9
     Code
@@ -183,13 +183,13 @@
     Output
         id tier width offset_after
       1  1    2     3            8
-      2  2    3     4            4
+      2  2    3     4            3
       3  3    3     5            9
     Code
       distribute_pillars_rev(5:3, 9:8)
     Output
         id tier width offset_after
       1  1    1     5            9
-      2  2    2     4            3
+      2  2    2     4            4
       3  3    2     3            8
 
