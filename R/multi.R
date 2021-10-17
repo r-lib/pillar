@@ -245,8 +245,6 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' @inheritParams ellipsis::dots_used
 #' @keywords internal
 #' @export
-#' @examples
-#' extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
 extra_cols <- function(x, ...) {
   deprecate_soft("1.5.0", "pillar::extra_cols()")
 
