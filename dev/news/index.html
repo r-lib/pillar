@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.3.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.3.9002</span>
       </span>
     </div>
 
@@ -72,6 +72,12 @@
       <small>Source: <a href="https://github.com/r-lib/pillar/blob/master/NEWS.md"><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="pillar-1639002" class="section level1">
+<h1 class="page-header" data-toc-text="1.6.3.9002">pillar 1.6.3.9002<a class="anchor" aria-label="anchor" href="#pillar-1639002"></a>
+<small> Unreleased </small></h1>
+<ul><li>
+<code>colonnade()</code> no longer exists, <code><a href="../reference/squeeze.html">squeeze()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> now raise an error (<a href="https://github.com/r-lib/pillar/issues/272">#272</a>).</li>
+</ul></div>
     <div id="pillar-1639001" class="section level1">
 <h1 class="page-header" data-toc-text="1.6.3.9001">pillar 1.6.3.9001<a class="anchor" aria-label="anchor" href="#pillar-1639001"></a>
 <small> Unreleased </small></h1>
@@ -236,7 +242,7 @@
 <li><p>New <code>format.pillar_ornament()</code> (<a href="https://github.com/r-lib/pillar/issues/228">#228</a>).</p></li>
 <li><p>Using testthat 3e (<a href="https://github.com/r-lib/pillar/issues/218">#218</a>).</p></li>
 <li><p>Avoid pillar.bold option in most tests (<a href="https://github.com/r-lib/pillar/issues/216">#216</a>).</p></li>
-<li><p>Change internal storage format for <code><a href="../reference/colonnade.html">colonnade()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> (<a href="https://github.com/r-lib/pillar/issues/204">#204</a>).</p></li>
+<li><p>Change internal storage format for <code>colonnade()</code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> (<a href="https://github.com/r-lib/pillar/issues/204">#204</a>).</p></li>
 </ul></div>
 </div>
     <div id="pillar-147" class="section level1">
@@ -324,7 +330,7 @@
 </h2>
 <ul><li>
 <code><a href="../reference/squeeze.html">squeeze()</a></code> is now faster (because the width computation in <code><a href="../reference/pillar_shaft.html">pillar_shaft.numeric()</a></code> now uses more arithmetics instead of string concatenation). Further speedups may require implementation of crucial parts in C (<a href="https://github.com/r-lib/pillar/issues/147">#147</a>).</li>
-<li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code><a href="../reference/colonnade.html">colonnade()</a></code>, and styling is implemented manually (<a href="https://github.com/r-lib/pillar/issues/133">#133</a>, <a href="https://github.com/jimhester">@jimhester</a>).</li>
+<li>Styling output is faster: an expensive check for availability of colored output is carried out only once per call to <code>colonnade()</code>, and styling is implemented manually (<a href="https://github.com/r-lib/pillar/issues/133">#133</a>, <a href="https://github.com/jimhester">@jimhester</a>).</li>
 </ul></div>
 <div id="internal-4" class="section level2">
 <h2>Internal<a class="anchor" aria-label="anchor" href="#internal-4"></a>
@@ -382,7 +388,7 @@
 <h2>Internal<a class="anchor" aria-label="anchor" href="#internal-5"></a>
 </h2>
 <ul><li><p><code><a href="../reference/pillar.html">pillar()</a></code> no longer adds backticks if <code>title</code> is non-syntactic.</p></li>
-<li><p><code><a href="../reference/colonnade.html">colonnade()</a></code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
+<li><p><code>colonnade()</code> supports data frames and matrices. When printing, each sub-column is shown individually, using a title that resembles the syntax used to access it. Also supports recursively nested data frames (with data frame or matrix columns).</p></li>
 <li><p>Added fuzz tests for character colonnades of varying widths.</p></li>
 <li><p>Use <code><a href="https://rdrr.io/pkg/fansi/man/substr_ctl.html" class="external-link">fansi::substr_ctl()</a></code> in favor of <code><a href="https://rdrr.io/pkg/crayon/man/col_substr.html" class="external-link">crayon::col_substr()</a></code>.</p></li>
 </ul></div>
@@ -393,7 +399,7 @@
 <ul><li>Eliminate CRAN check warning about undeclared withr dependency.</li>
 <li>More defensive test to address CRAN check failures on Solaris.</li>
 <li>
-<code><a href="../reference/colonnade.html">colonnade()</a></code> now handles pillars named <code>"sep"</code> (<a href="https://github.com/r-lib/pillar/issues/115">#115</a>).</li>
+<code>colonnade()</code> now handles pillars named <code>"sep"</code> (<a href="https://github.com/r-lib/pillar/issues/115">#115</a>).</li>
 <li>
 <code><a href="../reference/pillar_shaft.html">pillar_shaft.character()</a></code> gains <code>min_width</code> argument.</li>
 </ul></div>
