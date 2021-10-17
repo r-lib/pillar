@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.3.9002
+
+- `colonnade()` no longer exists, `squeeze()` and `extra_cols()` now raise an error (#272).
+
+
 # pillar 1.6.3.9001
 
 - Fix printing for some tibbles where a fixed-width column is followed by a column with variable width (#366).
