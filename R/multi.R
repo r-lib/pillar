@@ -414,7 +414,7 @@ combine_pillar_distributions <- function(max_fit, min_fit_rev, tier_widths) {
   #' 3. We consult the column offsets. The last column where the minimum assignment
   #'    has a greater or equal offset than the maximum assignment is our latest
   #'    cut point.
-  cut_point_candidate_idx <- which(max_fit$offset[cut_point_candidates] <= min_fit_rev$offset[cut_point_candidates])
+  cut_point_candidate_idx <- which(max_fit$offset_after[cut_point_candidates] <= min_fit_rev$offset_after[cut_point_candidates])
   if (length(cut_point_candidate_idx) > 0) {
     cut_point <- cut_point_candidates[max(cut_point_candidate_idx)]
   } else {
@@ -435,7 +435,7 @@ combine_pillar_distributions <- function(max_fit, min_fit_rev, tier_widths) {
 #' @aliases NULL
 distribute_pillars <- function(widths, tier_widths) {
   tier <- rep(NA_integer_, length(widths))
-  offset <- rep(NA_integer_, length(widths))
+  offset_after <- rep(NA_integer_, length(widths))
   current_tier <- 1L
   current_x <- 0L
 
@@ -458,11 +458,11 @@ distribute_pillars <- function(widths, tier_widths) {
 
     tier[[i]] <- current_tier
     current_x <- current_x + widths[[i]]
-    offset[[i]] <- current_x
+    offset_after[[i]] <- current_x
     current_x <- current_x + 1L
   }
 
-  data_frame(id = seq_along(widths), width = widths, tier = tier, offset = offset)
+  data_frame(id = seq_along(widths), width = widths, tier = tier, offset_after = offset_after)
 }
 
 distribute_pillars_rev <- function(widths, tier_widths) {
@@ -474,13 +474,13 @@ distribute_pillars_rev <- function(widths, tier_widths) {
   splits <- unname(split(seq_along(tier), tier))
   tier_widths <- tier_widths[seq_along(splits)]
 
-  new_offset <- unlist(map2(splits, tier_widths, function(.x, .y) {
-    offsets <- ret$offset[.x]
-    new_offset <-  max(offsets) - offsets
-    new_offset - max(new_offset) + .y
+  new_offset_after <- unlist(map2(splits, tier_widths, function(.x, .y) {
+    offset_afters <- ret$offset_after[.x]
+    new_offset_after <-  max(offset_afters) - offset_afters
+    new_offset_after - max(new_offset_after) + .y
   }))
 
-  ret$offset <- c(new_offset, rep(NA_integer_, sum(is.na(tier))))
+  ret$offset_after <- c(new_offset_after, rep(NA_integer_, sum(is.na(tier))))
 
   ret
 }
