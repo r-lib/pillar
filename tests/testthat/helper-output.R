@@ -3,7 +3,7 @@ show_output_in_terminal <- function() {
 }
 
 # A data frame with all major types
-df_all <- function() pillar:::new_tbl(list(
+df_all <- pillar:::new_tbl(list(
   a = c(1, 2.5, NA),
   b = c(1:2, NA),
   c = c(T, F, NA),

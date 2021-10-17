@@ -2,7 +2,7 @@
 
     Code
       # Various column types
-      tbl_format_body(tbl_format_setup(df_all(), width = 30))
+      tbl_format_body(tbl_format_setup(df_all, width = 30))
     Output
       <tbl_format_body(setup)>
             a     b c     d    
@@ -11,7 +11,7 @@
       2   2.5     2 FALSE b    
       3  NA      NA NA    <NA> 
     Code
-      tbl_format_body(tbl_format_setup(df_all(), width = 300))
+      tbl_format_body(tbl_format_setup(df_all, width = 300))
     Output
       <tbl_format_body(setup)>
             a     b c     d     e     f          g                   h        

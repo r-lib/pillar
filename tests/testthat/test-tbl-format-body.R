@@ -1,9 +1,9 @@
 test_that("tbl_format_body() results", {
   expect_snapshot({
     "Various column types"
-    tbl_format_body(tbl_format_setup(df_all(), width = 30))
+    tbl_format_body(tbl_format_setup(df_all, width = 30))
 
-    tbl_format_body(tbl_format_setup(df_all(), width = 300))
+    tbl_format_body(tbl_format_setup(df_all, width = 300))
 
     "POSIXct and POSIXlt"
     df <- new_tbl(list(x = as.POSIXct("2016-01-01 12:34:56 GMT") + 1:12))
