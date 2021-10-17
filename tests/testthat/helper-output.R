@@ -3,7 +3,7 @@ show_output_in_terminal <- function() {
 }
 
 # A data frame with all major types
-df_all <- function() new_tbl(list(
+df_all <- function() pillar:::new_tbl(list(
   a = c(1, 2.5, NA),
   b = c(1:2, NA),
   c = c(T, F, NA),
@@ -17,7 +17,7 @@ df_all <- function() new_tbl(list(
 
 # A data frame with strings of varying lengths
 long_str <- strrep("Abcdefghij", 5)
-df_str <- purrr::map(rlang::set_names(1:50), function(i) substr(long_str, 1, i))
+df_str <- pillar:::map(rlang::set_names(1:50), function(i) substr(long_str, 1, i))
 
 #' `add_special()` is not exported, and used only for initializing default
 #' values to `expect_pillar_output()`.
