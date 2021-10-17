@@ -2,25 +2,11 @@
 % Please edit documentation in R/multi.R
 \name{extra_cols}
 \alias{extra_cols}
-\alias{extra_cols.pillar_squeezed_colonnade}
 \title{Retrieve information about columns that didn't fit the available width}
 \usage{
 extra_cols(x, ...)
-
-\method{extra_cols}{pillar_squeezed_colonnade}(x, ..., n = Inf)
-}
-\arguments{
-\item{x}{The result of \code{\link[=squeeze]{squeeze()}} on a \link{colonnade} object}
-
-\item{...}{Arguments passed to methods.}
-
-\item{n}{The number of extra columns to return; the returned vector will
-always contain as many elements as there are extra columns, but elements
-beyond \code{n} will be \code{NA}.}
 }
 \description{
-Formatting a \link{colonnade} object may lead to some columns being omitted
-due to width restrictions. This method returns a character vector that
-describes each of the omitted columns.
+Defunct.
 }
 \keyword{internal}

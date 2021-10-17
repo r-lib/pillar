@@ -2,7 +2,7 @@
 
 #' @import rlang
 #' @import ellipsis
-#' @importFrom lifecycle deprecate_soft
+#' @importFrom lifecycle deprecate_soft deprecate_stop
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs obj_print_footer
@@ -35,8 +35,6 @@ NULL
 # nolint end
   # Can't use vctrs::s3_register() here with vctrs 0.1.0
   # https://github.com/r-lib/vctrs/pull/314
-  register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
-  register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
   register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
   register_s3_method("survival", "pillar_shaft", "Surv", gen_pkg = "pillar")
   register_s3_method("survival", "type_sum", "Surv", gen_pkg = "pillar")
