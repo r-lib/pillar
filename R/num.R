@@ -116,6 +116,7 @@ num <- function(x, ...,
                 extra_sigfig = NULL) {
 
   stopifnot(is.numeric(x))
+  stopifnot(is.null(digits) || is_integerish(digits))
   check_dots_empty()
 
   # FIXME: math and arith should also work for integers
