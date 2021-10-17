@@ -1,46 +1,10 @@
 #' Formatting of tbl objects
 #'
-#' @description
-#' These functions and methods are responsible for printing objects
-#' of the `"tbl"` class, which includes [tibble][tibble::tibble]s
-#' and dbplyr lazy tables.
-#' See [tibble::formatting] for user level documentation,
-#' and `vignette("customization")` for details.
-#'
-#' While it is possible to implement a custom [format()] or [print()] method
-#' for your tibble-like objects, it should never be necessary
-#' if your class inherits from `"tbl"`.
-#' In this case, the default methods offer many customization options
-#' at every level of detail.
-#' This means you only need to override or extend implementations for the parts
-#' that need change.
-#'
-#' The output uses color and highlighting according to the `"cli.num_colors"` option.
-#' Set it to `1` to suppress colored and highlighted output.
-#'
-#' @seealso
-#'
-#' - [tbl_format_setup()] for preparing an object for formatting
-#'
-#' @param x Object to format or print.
-#' @param ... Passed on to [tbl_format_setup()].
-#' @param n Number of rows to show. If `NULL`, the default, will print all rows
-#'   if less than the `print_max` [option][pillar_options].
-#'   Otherwise, will print as many rows as specified by the
-#'   `print_min` [option][pillar_options].
-#' @param width Width of text output to generate. This defaults to `NULL`, which
-#'   means use the `width` [option][pillar_options].
-#' @param max_extra_cols Number of extra columns to print abbreviated information for,
-#'   if the width is too small for the entire tibble. If `NULL`,
-#'   the `max_extra_cols` [option][pillar_options] is used.
-#'   The previously defined `n_extra` argument is soft-deprecated.
-#' @param max_footer_lines Maximum number of footer lines. If `NULL`,
-#'   the `max_footer_lines` [option][pillar_options] is used.
+#' See [tibble::formatting] for details.
 #'
 #' @name format_tbl
 #' @export
-#' @examples
-#' print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
+#' @keywords internal
 print.tbl <- function(x, width = NULL, ..., n = NULL, max_extra_cols = NULL,
                       max_footer_lines = NULL) {
   print_tbl(

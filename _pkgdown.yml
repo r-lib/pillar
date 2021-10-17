@@ -6,7 +6,6 @@ reference:
       Override or extend these methods if you want to customize the appearance
       of your tibble-like object.
     contents:
-      - format_tbl
       - tbl_format_setup
       - tbl_format_header
       - tbl_format_body
