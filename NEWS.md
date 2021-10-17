@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.4
+
+- Same as previous version.
+
+
 # pillar 1.6.3.9002
 
 - `colonnade()` no longer exists, `squeeze()` and `extra_cols()` now raise an error (#272).
