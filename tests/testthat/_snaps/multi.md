@@ -56,6 +56,48 @@
       8   8    5    15           28         30
       9   9    5    15           44         30
       10 10    5    15           60         30
+    Code
+      colonnade_compute_tiered_col_widths_df(c(6, 5, 10), c(5, 5, 10), 21)
+    Output
+        id tier width offset_after
+      1  1    1     5            5
+      2  2    1     5           11
+      3  3   NA    10           NA
+    Code
+      colonnade_compute_tiered_col_widths_df(c(6, 5, 10), c(5, 5, 10), 22)
+    Output
+        id tier width offset_after max_widths
+      1  1    1     6            6          6
+      2  2    1     5           12          5
+      3  3    1    10           22         10
+    Code
+      colonnade_compute_tiered_col_widths_df(c(6, 5, 10), c(5, 5, 10), 23)
+    Output
+        id tier width offset_after
+      1  1    1     6            6
+      2  2    1     5           12
+      3  3    1    10           23
+    Code
+      colonnade_compute_tiered_col_widths_df(c(5, 6, 10), c(5, 5, 10), 21)
+    Output
+        id tier width offset_after
+      1  1    1     5            5
+      2  2    1     5           11
+      3  3   NA    10           NA
+    Code
+      colonnade_compute_tiered_col_widths_df(c(5, 6, 10), c(5, 5, 10), 22)
+    Output
+        id tier width offset_after max_widths
+      1  1    1     5            5          5
+      2  2    1     6           12          6
+      3  3    1    10           22         10
+    Code
+      colonnade_compute_tiered_col_widths_df(c(5, 6, 10), c(5, 5, 10), 23)
+    Output
+        id tier width offset_after
+      1  1    1     5            5
+      2  2    1     6           12
+      3  3    1    10           23
 
 # distribute_pillars()
 
