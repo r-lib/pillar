@@ -16,4 +16,5 @@
 #' pillar(1:3)
 #' pillar(c(1, 2, 3))
 #' pillar(factor(letters[1:3]), title = "letters")
+#' colonnade(iris[1:3, ])
 "_PACKAGE"
