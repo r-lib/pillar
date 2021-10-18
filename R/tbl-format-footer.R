@@ -17,7 +17,7 @@
 #' @inherit tbl_format_body return
 #'
 #' @export
-#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' @examplesIf rlang::is_installed("palmerpenguins")
 #' setup <- tbl_format_setup(palmerpenguins::penguins)
 #' tbl_format_footer(palmerpenguins::penguins, setup)
 #'
@@ -39,8 +39,8 @@ tbl_format_footer.pillar_tbl_format_setup <- function(x, ...) {
 
 #' @export
 tbl_format_footer.tbl <- function(x, setup, ...) {
-  footer <- pre_dots(format_footer(x, setup))
-  footer_comment <- split_lines(format_comment(footer, width = setup$width))
+  footer <- format_footer(x, setup)
+  footer_comment <- wrap_footer(footer, setup)
   style_subtle(footer_comment)
 }
 
@@ -48,27 +48,34 @@ format_footer <- function(x, setup) {
   extra_rows <- format_footer_rows(x, setup)
   extra_cols <- format_footer_cols(x, setup)
 
-  extra <- c(extra_rows, extra_cols)
-  if (length(extra) >= 1) {
-    extra[[1]] <- paste0("with ", extra[[1]])
-    extra[-1] <- map_chr(extra[-1], function(ex) paste0("and ", ex))
-    collapse(extra)
+  if (is.null(extra_rows)) {
+    if (is.null(extra_cols)) {
+      return(character())
+    }
+    extra <- extra_cols
   } else {
-    character()
+    if (is.null(extra_cols)) {
+      extra <- extra_rows
+    } else {
+      extra_rows[[length(extra_rows)]] <- paste0(extra_rows[[length(extra_rows)]], ",")
+      extra <- c(extra_rows, "and", extra_cols)
+    }
   }
+
+  c("with", extra)
 }
 
 format_footer_rows <- function(x, setup) {
   if (ncol(setup$x) != 0) {
     if (is.na(setup$rows_missing)) {
-      "more rows"
+      c("more", "rows")
     } else if (setup$rows_missing > 0) {
-      paste0(big_mark(setup$rows_missing), pluralise_n(" more row(s)", setup$rows_missing))
+      c(big_mark(setup$rows_missing), "more", pluralise_n("row(s)", setup$rows_missing))
     }
   } else {
     rows_body <- nrow(setup$df)
     if (is.na(setup$rows_total) && rows_body > 0) {
-      paste0("at least ", big_mark(rows_body), pluralise_n(" row(s) total", rows_body))
+      c("at", "least", big_mark(rows_body), pluralise_n("row(s)", rows_body), "total")
     }
   }
 }
@@ -82,10 +89,11 @@ format_footer_cols <- function(x, setup) {
   extra_cols_total <- setup$extra_cols_total
 
   vars <- format_extra_vars(extra_cols, extra_cols_total)
-  paste0(
-    big_mark(extra_cols_total), " ",
-    if (!identical(setup$rows_total, 0L) && nrow(setup$df) > 0) "more ",
-    pluralise("variable(s)", extra_cols), vars
+  c(
+    big_mark(extra_cols_total),
+    if (!identical(setup$rows_total, 0L) && nrow(setup$df) > 0) "more",
+    pluralise("variable(s):", extra_cols),
+    vars
   )
 }
 
@@ -96,10 +104,52 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
     out <- c(out, cli::symbol$ellipsis)
   }
 
-  out <- gsub(NBSP, "\\\\U00a0", out)
-  out <- gsub(" ", NBSP, out)
+  out[-length(out)] <- paste0(out[-length(out)], ",")
+  out
+}
 
-  paste0(": ", collapse(out))
+wrap_footer <- function(footer, setup) {
+  if (length(footer) == 0) {
+    return(character())
+  }
+
+  # When asking for width = 80, use at most 79 characters
+  max_extent <- setup$width - 1L
+
+  tier_widths <- get_footer_tier_widths(
+    footer, max_extent,
+    setup$max_footer_lines
+  )
+
+  # show optuput even if too wide
+  widths <- pmin(get_extent(footer), max_extent - 4L)
+  wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
+
+  # truncate output that doesn't fit
+  truncated <- anyNA(wrap$tier)
+  split <- split(footer[wrap$id], wrap$tier)
+  if (truncated && length(split) > 0) {
+    split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
+  }
+  split <- imap(split, function(x, y) c("#", if (y == 1) cli::symbol$ellipsis else " ", x))
+
+  map_chr(split, paste, collapse = " ")
+}
+
+get_footer_tier_widths <- function(footer, max_extent, n_tiers) {
+  extra_width <- get_extent(cli::symbol$ellipsis) + 1L # space, ellipsis
+
+  n_tiers <- min(length(footer), n_tiers)
+
+  if (n_tiers == 1) {
+    max_extent - 2 - 2 * extra_width
+  } else {
+    c(
+      max_extent - 2 - extra_width,
+      rep(max_extent - 4, n_tiers - 2),
+      max_extent - 4 - extra_width
+    )
+  }
 }
 
 pre_dots <- function(x) {

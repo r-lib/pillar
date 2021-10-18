@@ -1,54 +1,63 @@
 #' Formatting of tbl objects
 #'
-#' @description
-#' These functions and methods are responsible for printing objects
-#' of the `"tbl"` class, which includes [tibble][tibble::tibble]s
-#' and dbplyr lazy tables.
-#' See [tibble::formatting] for user level documentation,
-#' and `vignette("customization")` for details.
-#'
-#' While it is possible to implement a custom [format()] or [print()] method
-#' for your tibble-like objects, it should never be necessary
-#' if your class inherits from `"tbl"`.
-#' In this case, the default methods offer many customization options
-#' at every level of detail.
-#' This means you only need to override or extend implementations for the parts
-#' that need change.
-#'
-#' The output uses color and highlighting according to the `"cli.num_colors"` option.
-#' Set it to `1` to suppress colored and highlighted output.
-#'
-#' @seealso
-#'
-#' - [tbl_format_setup()] for preparing an object for formatting
-#'
-#' @param x Object to format or print.
-#' @param ... Passed on to [tbl_format_setup()].
-#' @param n Number of rows to show. If `NULL`, the default, will print all rows
-#'   if less than option `tibble.print_max`. Otherwise, will print
-#'   `tibble.print_min` rows.
-#' @param width Width of text output to generate. This defaults to `NULL`, which
-#'   means use `getOption("tibble.width")` or (if also `NULL`)
-#'   `getOption("width")`; the latter displays only the columns that fit on one
-#'   screen. You can also set `options(tibble.width = Inf)` to override this
-#'   default and always print all columns.
-#' @param n_extra Number of extra columns to print abbreviated information for,
-#'   if the width is too small for the entire tibble. If `NULL`, the default,
-#'   the value of the [`tibble.max_extra_cols`][tibble::tibble-package] option is used.
+#' See [tibble::formatting] for details.
 #'
 #' @name format_tbl
 #' @export
-#' @examples
-#' print(vctrs::new_data_frame(list(a = 1), class = "tbl"))
-print.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
-  writeLines(format(x, width = width, ..., n = n, n_extra = n_extra))
+#' @keywords internal
+print.tbl <- function(x, width = NULL, ..., n = NULL, max_extra_cols = NULL,
+                      max_footer_lines = NULL) {
+  print_tbl(
+    x, width, ...,
+    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
+  )
+}
+
+print_tbl <- function(x, width = NULL, ...,
+                      n_extra = NULL,
+                      n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
+
+  if (!is.null(n_extra)) {
+    deprecate_soft(
+      "1.6.2", "pillar::print(n_extra = )", "pillar::print(max_extra_cols = )",
+      user_env = caller_env(2)
+    )
+    if (is.null(max_extra_cols)) {
+      max_extra_cols <- n_extra
+    }
+  }
+
+  writeLines(format(
+    x, width = width, ...,
+    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
+  ))
   invisible(x)
 }
 
 #' @export
 #' @rdname format_tbl
-format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
+format.tbl <- function(x, width = NULL, ...,
+                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
+  format_tbl(
+    x, width, ...,
+    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
+  )
+}
+
+format_tbl <- function(x, width = NULL, ...,
+                       n_extra = NULL,
+                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
   check_dots_empty(action = signal)
+
+  if (!is.null(n_extra)) {
+    deprecate_soft(
+      "1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )",
+      user_env = caller_env(2)
+    )
+    if (is.null(max_extra_cols)) {
+      max_extra_cols <- n_extra
+    }
+  }
 
   # Reset local cache for each new output
   force(x)
@@ -57,7 +66,8 @@ format.tbl <- function(x, width = NULL, ..., n = NULL, n_extra = NULL) {
   setup <- tbl_format_setup(x,
     width = width, ...,
     n = n,
-    max_extra_cols = n_extra
+    max_extra_cols = max_extra_cols,
+    max_footer_lines = max_footer_lines
   )
 
   header <- tbl_format_header(x, setup)

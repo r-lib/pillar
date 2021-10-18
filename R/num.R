@@ -40,14 +40,17 @@
 #'       using exponents that are a multiple of three.
 #'   - `"si"`: Use SI notation, prefixes between `1e-24` and `1e24` are supported.
 #' @param fixed_exponent
-#'   Use the same fixed_exponent for all numbers in scientific, engineering or SI notation.
+#'   Use the same exponent for all numbers in scientific, engineering or SI notation.
 #'   `-Inf` uses the smallest, `+Inf` the largest fixed_exponent present in the data.
-#'   The default is to use varying fixed_exponents.
+#'   The default is to use varying exponents.
+#' @param extra_sigfig
+#'   If `TRUE`, increase the number of significant digits if the data consists of
+#'   numbers of the same magnitude with subtle differences.
 #' @export
 #' @examples
 #' # Display as a vector
 #' num(9:11 * 100 + 0.5)
-#' @examplesIf requireNamespace("tibble", quietly = TRUE)
+#' @examplesIf rlang::is_installed("tibble")
 #'
 #' # Significant figures
 #' tibble::tibble(
@@ -97,13 +100,23 @@
 #'   scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
 #'   scimax   = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf)
 #' )
+#'
+#' #' Extra significant digits
+#' tibble::tibble(
+#'   default = num(100 + 1:3 * 0.001),
+#'   extra1 = num(100 + 1:3 * 0.001, extra_sigfig = TRUE),
+#'   extra2 = num(100 + 1:3 * 0.0001, extra_sigfig = TRUE),
+#'   extra3 = num(10000 + 1:3 * 0.00001, extra_sigfig = TRUE)
+#' )
 num <- function(x, ...,
                 sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL,
                 notation = c("fit", "dec", "sci", "eng", "si"),
-                fixed_exponent = NULL) {
+                fixed_exponent = NULL,
+                extra_sigfig = NULL) {
 
   stopifnot(is.numeric(x))
+  stopifnot(is.null(digits) || is_integerish(digits))
   check_dots_empty()
 
   # FIXME: math and arith should also work for integers
@@ -121,7 +134,8 @@ num <- function(x, ...,
     label = label,
     scale = scale,
     notation = notation,
-    fixed_exponent = fixed_exponent
+    fixed_exponent = fixed_exponent,
+    extra_sigfig = extra_sigfig
   )
 
   # FIXME: Include class(x) to support subclassing/mixin?
@@ -135,7 +149,7 @@ num <- function(x, ...,
 
 #' @export
 vec_ptype_abbr.pillar_num <- function(x, ...) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
   notation <- pillar_attr$notation
   if (is.null(notation)) {
     notation <- "num"
@@ -185,7 +199,7 @@ vec_arith.pillar_num <- function(op, x, y, ...) {
 vec_arith.pillar_num.default <- function(op, x, y, ...) {
   "!!!!DEBUG vec_arith.pillar_num.default(`v(op)`)"
   stopifnot(is.numeric(x), is.numeric(y))
-  out <- vec_arith_base(op, x, y)
+  out <- vec_arith_base(op, vec_proxy(x), vec_proxy(y))
 
   if (inherits(x, "pillar_num")) {
     vec_restore(out, x)
@@ -199,7 +213,7 @@ vec_arith.pillar_num.MISSING <- function(op, x, y, ...) {
   "!!!!DEBUG vec_arith.pillar_num.MISSING(`v(op)`)"
   stopifnot(is.numeric(x))
   # FIXME
-  out <- vec_arith_base(op, 0, x)
+  out <- vec_arith_base(op, 0, vec_proxy(x))
 
   vec_restore(out, x)
 }
@@ -214,7 +228,7 @@ vec_math.pillar_num <- function(op, x, ...) {
   "!!!!DEBUG vec_math(`v(op)`)"
 
   stopifnot(is.numeric(x))
-  out <- vec_math_base(op, x)
+  out <- vec_math_base(op, vec_proxy(x))
 
   if (is.numeric(out)) {
     out <- vec_restore(out, x)
@@ -234,7 +248,8 @@ set_num_opts <- function(x, ...,
                          sigfig = NULL, digits = NULL,
                          label = NULL, scale = NULL,
                          notation = c("fit", "dec", "sci", "eng", "si"),
-                         fixed_exponent = NULL) {
+                         fixed_exponent = NULL,
+                         extra_sigfig = NULL) {
 
   check_dots_empty()
 
@@ -254,6 +269,10 @@ set_num_opts <- function(x, ...,
     abort("Must set `label` if `scale` is provided.")
   }
 
+  if (!is.null(digits) && !is.null(extra_sigfig)) {
+    abort("Incompatible arguments: `extra_sigfig` and `digits`.")
+  }
+
   pillar_attr <- structure(
     list(
       sigfig = sigfig,
@@ -261,7 +280,8 @@ set_num_opts <- function(x, ...,
       label = label,
       scale = scale,
       notation = notation,
-      fixed_exponent = fixed_exponent
+      fixed_exponent = fixed_exponent,
+      extra_sigfig = extra_sigfig
     ),
     class = c("pillar_num_attr", "pillar_vctr_attr", "tibble_vec_attr")
   )
@@ -281,6 +301,7 @@ format.pillar_num_attr <- function(x, ...) {
   sigfig <- x$sigfig
   digits <- x$digits
   label <- x$label
+  extra_sigfig <- x$extra_sigfig
 
   if (!is.null(digits)) {
     if (digits >= 0) {
@@ -290,6 +311,12 @@ format.pillar_num_attr <- function(x, ...) {
     }
   } else if (!is.null(sigfig)) {
     out <- paste0(class, ":", sigfig)
+
+    if (isTRUE(extra_sigfig)) {
+      out <- paste0(out, "*")
+    }
+  } else if (isTRUE(extra_sigfig)) {
+    out <- paste0(class, "*")
   } else {
     out <- class
   }
@@ -337,8 +364,8 @@ vec_ptype2.integer.pillar_num <- function(x, y, ...) {
 
 #' @export
 vec_cast.pillar_num.pillar_num <- function(x, to, ...) {
-  pillar_x <- attr(x, "pillar")
-  pillar_to <- attr(to, "pillar")
+  pillar_x <- attr(x, "pillar", exact = TRUE)
+  pillar_to <- attr(to, "pillar", exact = TRUE)
 
   pillar_x_label <- pillar_x$label
   pillar_to_label <- pillar_to$label
@@ -358,7 +385,7 @@ vec_cast.double.pillar_num <- function(x, to, ...) {
 }
 #' @export
 vec_cast.pillar_num.double <- function(x, to, ...) {
-  vec_restore(x, to)
+  vec_restore(vec_proxy(x), to)
 }
 #' @export
 vec_cast.pillar_num.integer <- function(x, to, ...) {

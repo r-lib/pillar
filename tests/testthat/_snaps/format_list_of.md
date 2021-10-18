@@ -4,9 +4,9 @@
       pillar(v, width = 15)
     Output
       <pillar>
-          <list<int>>
-                  [1]
-                  [3]
+      <list<int>>
+              [1]
+              [3]
 
 ---
 
@@ -14,6 +14,6 @@
       pillar(v, width = 30)
     Output
       <pillar>
-                    <list<ovrrd_s_>>
-                                  SC
+      <list<ovrrd_s_>>
+                    SC
 

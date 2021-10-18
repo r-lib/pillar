@@ -352,8 +352,7 @@
       
       
     Code
-      ctl_colonnade(list(`
-      ` = c("\n", "\""), `` = factor(c("\n", "\n"))), width = 30)
+      ctl_colonnade(list(`\n` = c("\n", "\""), `\r` = factor(c("\n", "\n"))), width = 30)
     Output
       $body
         `\n`  `\r` 
@@ -807,4 +806,22 @@
       $extra_cols
       named list()
       
+
+# filling unused width (#331)
+
+    Code
+      data
+    Output
+      # A data frame: 1 x 3
+        month   sentences                                           blah              
+        <chr>   <foo>                                               <chr>             
+      1 January a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I~
+    Code
+      options(width = 60)
+      print(data)
+    Output
+      # A data frame: 1 x 3
+        month   sentences blah                                    
+        <chr>   <foo>     <chr>                                   
+      1 January a b c d~  A B C D E F G H I J K L M N O P Q R S T~
 

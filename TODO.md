@@ -2,11 +2,18 @@
 
 ## Next steps
 
-- CRAN release pillar
-- Add to awesome list
-- Reexport `num()` and `char()` in tibble
-- CRAN release tibble
-- Avoid `requireNamespace()` in `@examplesIf`
+- Pass `max_footer_lines` to `print.tbl()`, rethink option name
+- Test all options
+- Milestone: <https://github.com/r-lib/pillar/milestone/11>
+- CRAN release
+- triage issues
+
+
+- revdepcheck for adding ellipsis to methods
+
+- Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
+    - Get extra width?
+
 - Breaking changes
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
@@ -35,6 +42,7 @@
     - `shorten = "front"`: right-align?
     - control `NA` and zero characters: <https://github.com/r-lib/pillar/issues/151>
 - Resolve vctrs imports
+- Help with {errors} and {quantities}
 - Rethink tibble-local options for display: section "Rule-based formatting" in `numbers.Rmd`
     - What are the use cases, beyond databases?
     - Document pattern: helper function with `mutate(across(...))`

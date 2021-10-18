@@ -2,13 +2,12 @@
 
 #' @import rlang
 #' @import ellipsis
-#' @import lifecycle
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs obj_print_footer
 #' @importFrom vctrs obj_print_header
 #' @importFrom vctrs obj_print_data
-#' @importFrom vctrs s3_register
 #' @importFrom vctrs vec_arith
 #' @importFrom vctrs vec_arith.numeric
 #' @importFrom vctrs vec_arith_base
@@ -20,6 +19,7 @@
 #' @importFrom vctrs vec_is
 #' @importFrom vctrs vec_math
 #' @importFrom vctrs vec_math_base
+#' @importFrom vctrs vec_proxy
 #' @importFrom vctrs vec_proxy_compare
 #' @importFrom vctrs vec_proxy_order
 #' @importFrom vctrs vec_ptype_abbr
@@ -52,10 +52,15 @@ NULL
   }
 
   # Necessary to re-parse environment variable
-  if (Sys.getenv("DEBUGME") != "" && requireNamespace("debugme", quietly = TRUE)) {
+  if (Sys.getenv("DEBUGME") != "" && rlang::is_installed("debugme")) {
     # activate_debugme()
     debugme::debugme()
     debug_info()
+  }
+
+  # https://github.com/r-lib/pkgdown/issues/1540
+  if (Sys.getenv("IN_PKGDOWN") != "") {
+    register_s3_method("pillar", "type_sum", "accel")
   }
 
   invisible()

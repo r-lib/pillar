@@ -1,5 +1,5 @@
 get_width <- function(x) {
-  attr(x, "width")
+  attr(x, "width", exact = TRUE)
 }
 
 # Set width and minimum width information for an object
@@ -25,7 +25,7 @@ get_widths <- function(x) {
 }
 
 get_min_width <- function(x) {
-  attr(x, "min_width") %||% get_width(x)
+  attr(x, "min_width", exact = TRUE) %||% get_width(x)
 }
 
 # @rdname set_width

@@ -8,16 +8,12 @@
 is_vector_s3(x)
 }
 \description{
-\code{is_vector_s3()} returns \code{TRUE} if an object represents an S3 vector.
-The default implementation forwards to \code{\link[vctrs:vec_assert]{vctrs::vec_is()}}.
+\code{is_vector_s3()} forwards to \code{\link[vctrs:vec_assert]{vctrs::vec_is()}}.
 }
 \section{Lifecycle}{
 
-\code{is_vector_s3()} is soft-deprecated, because \code{\link[vctrs:vec_assert]{vctrs::vec_is()}}
-provides the same functionality based on a robust framework.
-The generic will remain available for a while but is no longer used.
-Users and implementers are encouraged to ensure that \code{vctrs::vec_is()}
-is \code{TRUE} for their class.
+\code{is_vector_s3()} is soft-deprecated and no longer generic,
+use \code{\link[vctrs:vec_assert]{vctrs::vec_is()}} instead.
 }
 
 \keyword{internal}

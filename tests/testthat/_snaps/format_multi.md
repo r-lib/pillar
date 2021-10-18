@@ -76,9 +76,37 @@
       3       3.23
     Code
       colonnade(x, width = 13)
+    Output
+        column_zer~
+              <dbl>
+      1        1.23
+      2        2.23
+      3        3.23
+    Code
       colonnade(x, width = 14)
+    Output
+        column_zero~
+               <dbl>
+      1         1.23
+      2         2.23
+      3         3.23
+    Code
       colonnade(x, width = 15)
+    Output
+        column_zero_~
+                <dbl>
+      1          1.23
+      2          2.23
+      3          3.23
+    Code
       colonnade(x, width = 16)
+    Output
+        column_zero_o~
+                 <dbl>
+      1           1.23
+      2           2.23
+      3           3.23
+    Code
       colonnade(x, width = 17)
     Output
         column_zero_one
@@ -497,8 +525,7 @@
       2 <list [1]>
       3 <list [1]>
     Code
-      colonnade(list(`
-      ` = c("\n", "\""), `` = factor("\n")), width = 30)
+      colonnade(list(`\n` = c("\n", "\""), `\r` = factor("\n")), width = 30)
     Output
         `\n`  `\r` 
         <chr> <fct>

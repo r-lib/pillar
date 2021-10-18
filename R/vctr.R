@@ -6,7 +6,7 @@ pillar_shaft.pillar_vctr <- function(x, ...) {
 
 #' @export
 vec_ptype_full.pillar_vctr <- function(x, ...) {
-  format(attr(x, "pillar"))
+  format(attr(x, "pillar", exact = TRUE))
 }
 
 #' @export

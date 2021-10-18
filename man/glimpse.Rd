@@ -9,8 +9,9 @@ glimpse(x, width = NULL, ...)
 \arguments{
 \item{x}{An object to glimpse at.}
 
-\item{width}{Width of output: defaults to the setting of the option
-\code{tibble.width} (if finite) or the width of the console.}
+\item{width}{Width of output: defaults to the setting of the
+\code{width} \link[=pillar_options]{option} (if finite)
+or the width of the console.}
 
 \item{...}{Unused, for extensibility.}
 }
@@ -38,7 +39,7 @@ See \code{\link[=format_glimpse]{format_glimpse()}} for details on the formattin
 \examples{
 glimpse(mtcars)
 
-\dontshow{if (requireNamespace("nycflights13", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("nycflights13")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 glimpse(nycflights13::flights)
 \dontshow{\}) # examplesIf}
 }
