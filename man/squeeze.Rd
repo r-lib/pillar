@@ -7,6 +7,9 @@
 squeeze(x, width = NULL, ...)
 }
 \description{
-Defunct.
+The \code{squeeze()} function usually doesn't need to be called manually.
+It returns an object suitable for printing and formatting at a fixed width
+with additional information about omitted columns, which can be retrieved
+via \code{\link[=extra_cols]{extra_cols()}}.
 }
 \keyword{internal}

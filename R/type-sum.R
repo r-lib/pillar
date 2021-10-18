@@ -58,6 +58,11 @@ type_sum.default <- function(x) {
   )
 }
 
+# Registered in .onLoad()
+vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
+  vec_ptype_abbr(x[[1]])
+}
+
 #' @description
 #' `obj_sum()` also includes the size (but not the shape) of the object
 #' if [vctrs::vec_is()] is `TRUE`.

@@ -71,6 +71,11 @@ pillar_shaft <- function(x, ...) {
   UseMethod("pillar_shaft")
 }
 
+#' @export
+pillar_shaft.pillar_empty_col <- function(x, ...) {
+  new_empty_shaft()
+}
+
 #' @param width Width for printing and formatting.
 #' @export
 #' @rdname pillar_shaft
