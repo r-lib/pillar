@@ -9,7 +9,6 @@
 
 ## Breaking changes
 
-- `colonnade()` no longer exists, `squeeze()` and `extra_cols()` now raise an error (#272).
 - `num()` requires an integerish `digits` argument (#362).
 
 ## Documentation
