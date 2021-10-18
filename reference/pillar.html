@@ -84,7 +84,7 @@ and <code>vec_size(x)</code> rows for the data.</p>
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">pillar</span><span class="op">(</span><span class="va">x</span>, title <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
+    <h2>Arguments</h2>
     <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
       <td><p>A vector to format.</p></td>
     </tr><tr><th>title</th>
@@ -97,7 +97,7 @@ used "as is", no quoting will be applied.</p></td>
     </tr></table></div>
 
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>A pillar consists of arbitrary components.
 The <code>pillar()</code> constructor uses <code>title</code>, <code>type</code>, and <code>data</code>.</p><ul><li><p><code>title</code> via <code><a href="new_pillar_title.html">new_pillar_title()</a></code></p></li>
 <li><p><code>type</code> via <code><a href="new_pillar_type.html">new_pillar_type()</a></code>, which calls <code><a href="type_sum.html">type_sum()</a></code>
@@ -110,7 +110,7 @@ to display the data.</p>
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> <span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">pillar</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>

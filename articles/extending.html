@@ -132,11 +132,11 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; attr(,"class")</span>
 <span class="co">#&gt; [1] "default"    "tbl"        "data.frame"</span></code></pre></div>
-<div id="header" class="section level2">
-<h2>Header<a class="anchor" aria-label="anchor" href="#header"></a>
+<div class="section level2">
+<h2 id="header">Header<a class="anchor" aria-label="anchor" href="#header"></a>
 </h2>
-<div id="tweak-header" class="section level3">
-<h3>Tweak header<a class="anchor" aria-label="anchor" href="#tweak-header"></a>
+<div class="section level3">
+<h3 id="tweak-header">Tweak header<a class="anchor" aria-label="anchor" href="#tweak-header"></a>
 </h3>
 <p>The easiest customization consists of tweaking the header. Implement a <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code> method to extend or replace the information shown in the header, keeping the original formatting.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -166,8 +166,8 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">2</span> b         2   5.5</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">3</span> c         3   6.5</span></code></pre></div>
 </div>
-<div id="restyle-header" class="section level3">
-<h3>Restyle header<a class="anchor" aria-label="anchor" href="#restyle-header"></a>
+<div class="section level3">
+<h3 id="restyle-header">Restyle header<a class="anchor" aria-label="anchor" href="#restyle-header"></a>
 </h3>
 <p>To style the header in a different way, implement a <code><a href="../reference/tbl_format_header.html">tbl_format_header()</a></code> method. The implementation is responsible for the entire formatting and styling, including the leading hash.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -184,11 +184,11 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">3</span> c         3   6.5</span></code></pre></div>
 </div>
 </div>
-<div id="footer" class="section level2">
-<h2>Footer<a class="anchor" aria-label="anchor" href="#footer"></a>
+<div class="section level2">
+<h2 id="footer">Footer<a class="anchor" aria-label="anchor" href="#footer"></a>
 </h2>
-<div id="restyle-footer" class="section level3">
-<h3>Restyle footer<a class="anchor" aria-label="anchor" href="#restyle-footer"></a>
+<div class="section level3">
+<h3 id="restyle-footer">Restyle footer<a class="anchor" aria-label="anchor" href="#restyle-footer"></a>
 </h3>
 <p>Similarly, to add information the footer, or to replace it entirely, implement a <code><a href="../reference/tbl_format_footer.html">tbl_format_footer()</a></code> method. Here, as in all <code>tbl_format_*()</code> methods, you can use the information contained in the setup object, see <code><a href="../reference/new_tbl_format_setup.html">?new_tbl_format_setup</a></code> for the available fields. Again, the implementation is responsible for the entire formatting and styling, including the leading hash if needed.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -222,8 +222,8 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">2</span> b         2   5.5</span>
 <span class="co">#&gt; The table has 3 rows in total.</span></code></pre></div>
 </div>
-<div id="compute-additional-info-beforehand" class="section level3">
-<h3>Compute additional info beforehand<a class="anchor" aria-label="anchor" href="#compute-additional-info-beforehand"></a>
+<div class="section level3">
+<h3 id="compute-additional-info-beforehand">Compute additional info beforehand<a class="anchor" aria-label="anchor" href="#compute-additional-info-beforehand"></a>
 </h3>
 <p>If the same information needs to be displayed in several parts (e.g., in both header and footer), it is useful to compute it in <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> and store it in the setup object. New elements may be added to the setup object, existing elements should not be overwritten. Exception: the <code>tbl_sum</code> element contains the output of <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code> and can be enhanced with additional elements.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -250,11 +250,11 @@
 <span class="co">#&gt; The table has 6 cells in total.</span></code></pre></div>
 </div>
 </div>
-<div id="body" class="section level2">
-<h2>Body<a class="anchor" aria-label="anchor" href="#body"></a>
+<div class="section level2">
+<h2 id="body">Body<a class="anchor" aria-label="anchor" href="#body"></a>
 </h2>
-<div id="tweak-pillar-composition" class="section level3">
-<h3>Tweak pillar composition<a class="anchor" aria-label="anchor" href="#tweak-pillar-composition"></a>
+<div class="section level3">
+<h3 id="tweak-pillar-composition">Tweak pillar composition<a class="anchor" aria-label="anchor" href="#tweak-pillar-composition"></a>
 </h3>
 <p>Pillars consist of components, see <code><a href="../reference/new_pillar_component.html">?new_pillar_component</a></code> for details. Extend or override the <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> method to alter the appearance. The example below adds table rules of constant width to the output.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -318,8 +318,8 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">3</span> c         3   6.5</span>
 <span class="co">#&gt;   ===== ===== =====</span></code></pre></div>
 </div>
-<div id="tweak-display-of-compound-pillars" class="section level3">
-<h3>Tweak display of compound pillars<a class="anchor" aria-label="anchor" href="#tweak-display-of-compound-pillars"></a>
+<div class="section level3">
+<h3 id="tweak-display-of-compound-pillars">Tweak display of compound pillars<a class="anchor" aria-label="anchor" href="#tweak-display-of-compound-pillars"></a>
 </h3>
 <p>Compound pillars are created by <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> for columns that contain a data frame, a matrix or an array. The default implementation also calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> shown above. The example</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -350,8 +350,8 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">2</span> b     b       </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">3</span> c     &lt;hidden&gt;</span></code></pre></div>
 </div>
-<div id="restyle-body" class="section level3">
-<h3>Restyle body<a class="anchor" aria-label="anchor" href="#restyle-body"></a>
+<div class="section level3">
+<h3 id="restyle-body">Restyle body<a class="anchor" aria-label="anchor" href="#restyle-body"></a>
 </h3>
 <p>Last but not least, it is also possible to completely alter the display of the body by overriding <code><a href="../reference/tbl_format_body.html">tbl_format_body()</a></code>. The example below uses plain data frame output for a tibble.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">

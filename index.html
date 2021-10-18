@@ -94,15 +94,15 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="pillar" class="section level1">
-<div class="page-header"><h1>pillar<a class="anchor" aria-label="anchor" href="#pillar"></a>
+<div class="section level1">
+<div class="page-header"><h1 id="pillar">pillar<a class="anchor" aria-label="anchor" href="#pillar"></a>
 </h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
 <p>pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.</p>
-<div id="installation" class="section level2">
-<h2>Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <pre class="chroma">
 <span class="c"># pillar is installed if you install the tidyverse package:</span>
@@ -111,8 +111,8 @@
 <span class="c"># Alternatively, install just pillar:</span>
 <span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"pillar"</span><span class="o">)</span></pre>
 </div>
-<div id="usage" class="section level2">
-<h2>Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>pillar is a developer-facing package that is not designed for end-users. It powers the <a href="https://rdrr.io/r/base/print.html" class="external-link"><code>print()</code></a> and <a href="https://rdrr.io/r/base/format.html" class="external-link"><code>format()</code></a> methods for <a href="https://tibble.tidyverse.org/" class="external-link">tibble</a>s. It also and defines generics and helpers that are useful for package authors who create custom vector classes (see <a href="https://github.com/krlmlr/awesome-vctrs#readme" class="external-link uri">https://github.com/krlmlr/awesome-vctrs#readme</a> for examples) or custom table classes (like <a href="https://dbplyr.tidyverse.org/" class="external-link">dbplyr</a> or <a href="https://r-spatial.github.io/sf/" class="external-link">sf</a>).</p>
 <pre class="chroma">
@@ -142,8 +142,8 @@
 <span class="c">#&gt; <span style="color: #555555;">5</span><span>      0.012</span><span style="text-decoration: underline;">3</span></span>
 <span class="c">#&gt; <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span></pre>
 </div>
-<div id="custom-vector-classes" class="section level2">
-<h2>Custom vector classes<a class="anchor" aria-label="anchor" href="#custom-vector-classes"></a>
+<div class="section level2">
+<h2 id="custom-vector-classes">Custom vector classes<a class="anchor" aria-label="anchor" href="#custom-vector-classes"></a>
 </h2>
 <p>The primary user of this package is <a href="https://github.com/tidyverse/tibble" class="external-link">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can customize the display by implementing a <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft()</code></a> method.</p>
 <pre class="chroma">
@@ -164,8 +164,8 @@
 <span class="c">#&gt;      11 <span style="color: #555555;">%</span></span></pre>
 <p>See <a href="https://vctrs.r-lib.org/articles/pillar.html" class="external-link"><code>vignette("pillar", package = "vctrs")</code></a> for details.</p>
 </div>
-<div id="custom-table-classes" class="section level2">
-<h2>Custom table classes<a class="anchor" aria-label="anchor" href="#custom-table-classes"></a>
+<div class="section level2">
+<h2 id="custom-table-classes">Custom table classes<a class="anchor" aria-label="anchor" href="#custom-table-classes"></a>
 </h2>
 <p>pillar provides various extension points for customizing how a tibble-like class is printed.</p>
 <pre class="chroma">
@@ -185,8 +185,8 @@
 <p>See <a href="https://pillar.r-lib.org/articles/extending.html"><code>vignette("extending", package = "pillar")</code></a> for a walkthrough of the options.</p>
 <hr>
 </div>
-<div id="code-of-conduct" class="section level2">
-<h2>Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
 <p>Please note that the pillar project is released with a <a href="https://pillar.r-lib.org/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>

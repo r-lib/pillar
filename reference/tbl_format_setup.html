@@ -115,7 +115,7 @@ override these methods instead.</p>
 <span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span><span class="op">)</span></code></pre></div>
 
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
+    <h2>Arguments</h2>
     <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
       <td><p>An object.</p></td>
     </tr><tr><th>width</th>
@@ -139,12 +139,12 @@ by implementations of this method.</p></td>
     </tr></table></div>
 
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>An object that can be passed as <code>setup</code> argument to
 <code><a href="tbl_format_header.html">tbl_format_header()</a></code>, <code><a href="tbl_format_body.html">tbl_format_body()</a></code>, and <code><a href="tbl_format_footer.html">tbl_format_footer()</a></code>.</p>
     </div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>Extend this method to prepare information that is used
 in several parts of the printed output of a tibble-like object,
 or to collect additional arguments passed via <code>...</code> to
@@ -164,7 +164,7 @@ See <code><a href="new_tbl_format_setup.html">new_tbl_format_setup()</a></code> 
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tbl_format_setup</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;pillar_tbl_format_setup&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;tbl_format_header(setup)&gt;</span></span>

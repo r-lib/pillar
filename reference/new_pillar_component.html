@@ -86,7 +86,7 @@ and extracts width and minimum width.</p>
 <span class="fu">pillar_component</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
+    <h2>Arguments</h2>
     <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
       <td><p>A bare list (for <code>new_pillar_component()</code>), or an object
 with attributes <code>"width"</code> and <code>"min_width"</code> attributes (for <code>pillar_component()</code>).</p></td>
@@ -98,7 +98,7 @@ If <code>min_width</code> is <code>NULL</code>, it is assumed to match <code>wid
     </tr></table></div>
 
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>Objects of class <code>"pillar"</code> are internally a named lists of their components.
 The default components are <code>title</code> (may be missing), <code>type</code>, and <code>data</code>.
 Each component is a <code>"pillar_component"</code>.</p>
@@ -111,7 +111,7 @@ The component object stores the width of the cells as an attribute.</p>
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">new_pillar_component</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a" "b" "c"</span>
