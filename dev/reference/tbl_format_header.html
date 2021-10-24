@@ -63,7 +63,7 @@ default method."><meta name="robots" content="noindex"><!-- mathjax --><script s
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -78,12 +78,12 @@ default method."><meta name="robots" content="noindex"><!-- mathjax --><script s
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Format the header of a tibble</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/tbl-format-header.R"><code>R/tbl-format-header.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/tbl-format-header.R" class="external-link"><code>R/tbl-format-header.R</code></a></small>
     <div class="hidden name"><code>tbl_format_header.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
 <p>For easier customization, the formatting of a tibble is split
 into three components: header, body, and footer.
 The <code>tbl_format_header()</code> method is responsible for formatting the header
@@ -97,25 +97,25 @@ default method.</p>
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">tbl_format_header</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>A tibble-like object.</p></td>
-    </tr><tr><th>setup</th>
-      <td><p>A setup object returned from <code><a href="tbl_format_setup.html">tbl_format_setup()</a></code>.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>x</dt><dd><p>A tibble-like object.</p></dd>
+</dl><dl><dt>setup</dt><dd><p>A setup object returned from <code><a href="tbl_format_setup.html">tbl_format_setup()</a></code>.</p></dd>
+</dl><dl><dt>...</dt><dd><p>These dots are for future extensions and must be empty.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>A character vector.</p>
+    </div>
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">tbl_format_header</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span>, <span class="va">setup</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">tbl_format_header</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span>, <span class="va">setup</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\033[38;5;246m# A tibble: 344 × 8\033[39m"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Shortcut for debugging</span></span>

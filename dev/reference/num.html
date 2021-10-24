@@ -66,7 +66,7 @@ useful for composing with other types."><meta name="robots" content="noindex"><!
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,12 +81,12 @@ useful for composing with other types."><meta name="robots" content="noindex"><!
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Format a numeric vector in a tibble</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/num.R"><code>R/num.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/num.R" class="external-link"><code>R/num.R</code></a></small>
     <div class="hidden name"><code>num.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
 <p>Constructs a numeric vector that can be formatted with predefined
 significant digits, or with a maximum or fixed number of digits
 after the decimal point.
@@ -96,7 +96,7 @@ If a label is given, it is shown in the header of a column.</p>
 <p>The formatting is applied when the vector is printed or formatted,
 and also in a tibble column.
 The formatting annotation and the class survives most arithmetic transformations,
-the most notable exceptions are <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> and <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>.</p>
+the most notable exceptions are <code><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var()</a></code> and <code><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd()</a></code>.</p>
 <p><code>set_num_opts()</code> adds formatting options to an arbitrary numeric vector,
 useful for composing with other types.</p>
     </div>
@@ -108,7 +108,7 @@ useful for composing with other types.</p>
   digits <span class="op">=</span> <span class="cn">NULL</span>,
   label <span class="op">=</span> <span class="cn">NULL</span>,
   scale <span class="op">=</span> <span class="cn">NULL</span>,
-  notation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fit"</span>, <span class="st">"dec"</span>, <span class="st">"sci"</span>, <span class="st">"eng"</span>, <span class="st">"si"</span><span class="op">)</span>,
+  notation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fit"</span>, <span class="st">"dec"</span>, <span class="st">"sci"</span>, <span class="st">"eng"</span>, <span class="st">"si"</span><span class="op">)</span>,
   fixed_exponent <span class="op">=</span> <span class="cn">NULL</span>,
   extra_sigfig <span class="op">=</span> <span class="cn">NULL</span>
 <span class="op">)</span>
@@ -120,67 +120,62 @@ useful for composing with other types.</p>
   digits <span class="op">=</span> <span class="cn">NULL</span>,
   label <span class="op">=</span> <span class="cn">NULL</span>,
   scale <span class="op">=</span> <span class="cn">NULL</span>,
-  notation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fit"</span>, <span class="st">"dec"</span>, <span class="st">"sci"</span>, <span class="st">"eng"</span>, <span class="st">"si"</span><span class="op">)</span>,
+  notation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fit"</span>, <span class="st">"dec"</span>, <span class="st">"sci"</span>, <span class="st">"eng"</span>, <span class="st">"si"</span><span class="op">)</span>,
   fixed_exponent <span class="op">=</span> <span class="cn">NULL</span>,
   extra_sigfig <span class="op">=</span> <span class="cn">NULL</span>
 <span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>A numeric vector.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
-    </tr><tr><th>sigfig</th>
-      <td><p>Define the number of significant digits to show. Must be one or greater.
+    <h2>Arguments</h2>
+    
+
+<dl><dt>x</dt><dd><p>A numeric vector.</p></dd>
+</dl><dl><dt>...</dt><dd><p>These dots are for future extensions and must be empty.</p></dd>
+</dl><dl><dt>sigfig</dt><dd><p>Define the number of significant digits to show. Must be one or greater.
 The <code>"pillar.sigfig"</code> option is not consulted.
-Can't be combined with <code>digits</code>.</p></td>
-    </tr><tr><th>digits</th>
-      <td><p>Number of digits after the decimal points to show.
+Can't be combined with <code>digits</code>.</p></dd>
+</dl><dl><dt>digits</dt><dd><p>Number of digits after the decimal points to show.
 Positive numbers specify the exact number of digits to show.
 Negative numbers specify (after negation) the maximum number of digits to show.
 With <code>digits = 2</code>, the numbers 1.2 and 1.234 are printed as 1.20 and 1.23,
 with <code>digits = -2</code> as 1.2 and 1.23, respectively.
-Can't be combined with <code>sigfig</code>.</p></td>
-    </tr><tr><th>label</th>
-      <td><p>A label to show instead of the type description.</p></td>
-    </tr><tr><th>scale</th>
-      <td><p>Multiplier to apply to the data before showing.
+Can't be combined with <code>sigfig</code>.</p></dd>
+</dl><dl><dt>label</dt><dd><p>A label to show instead of the type description.</p></dd>
+</dl><dl><dt>scale</dt><dd><p>Multiplier to apply to the data before showing.
 Useful for displaying e.g. percentages.
-Must be combined with <code>label</code>.</p></td>
-    </tr><tr><th>notation</th>
-      <td><p>One of <code>"fit"</code>, <code>"dec"</code>, <code>"sci"</code>, <code>"eng"</code>, or <code>"si"</code>.</p><ul><li><p><code>"fit"</code>: Use decimal notation if it fits and if it consumes 13 digits or less,
+Must be combined with <code>label</code>.</p></dd>
+</dl><dl><dt>notation</dt><dd><p>One of <code>"fit"</code>, <code>"dec"</code>, <code>"sci"</code>, <code>"eng"</code>, or <code>"si"</code>.
+</p><ul><li><p><code>"fit"</code>: Use decimal notation if it fits and if it consumes 13 digits or less,
 otherwise use scientific notation. (The default for numeric pillars.)</p></li>
 <li><p><code>"dec"</code>: Use decimal notation, regardless of width.</p></li>
 <li><p><code>"sci"</code>: Use scientific notation.</p></li>
 <li><p><code>"eng"</code>: Use engineering notation, i.e. scientific notation
 using exponents that are a multiple of three.</p></li>
 <li><p><code>"si"</code>: Use SI notation, prefixes between <code>1e-24</code> and <code>1e24</code> are supported.</p></li>
-</ul></td>
-    </tr><tr><th>fixed_exponent</th>
-      <td><p>Use the same exponent for all numbers in scientific, engineering or SI notation.
+</ul></dd>
+</dl><dl><dt>fixed_exponent</dt><dd><p>Use the same exponent for all numbers in scientific, engineering or SI notation.
 <code>-Inf</code> uses the smallest, <code>+Inf</code> the largest fixed_exponent present in the data.
-The default is to use varying exponents.</p></td>
-    </tr><tr><th>extra_sigfig</th>
-      <td><p>If <code>TRUE</code>, increase the number of significant digits if the data consists of
-numbers of the same magnitude with subtle differences.</p></td>
-    </tr></table></div>
-
+The default is to use varying exponents.</p></dd>
+</dl><dl><dt>extra_sigfig</dt><dd><p>If <code>TRUE</code>, increase the number of significant digits if the data consists of
+numbers of the same magnitude with subtle differences.</p></dd>
+</dl></div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>Other vector classes: 
 <code><a href="char.html">char</a>()</code></p></div>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Display as a vector</span></span>
 <span class="r-in"><span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar_num[3]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  900. 1000. 1100.</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Significant figures</span></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  x3 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, sigfig <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span>
 <span class="r-in">  x4 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, sigfig <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,</span>
 <span class="r-in">  x5 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, sigfig <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
@@ -193,7 +188,7 @@ numbers of the same magnitude with subtle differences.</p></td>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>   <span style="text-decoration: underline;">1</span>100.  <span style="text-decoration: underline;">1</span>100.   <span style="text-decoration: underline;">1</span>100.5</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Maximum digits after the decimal points</span></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  x0 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, digits <span class="op">=</span>  <span class="fl">0</span><span class="op">)</span>,</span>
 <span class="r-in">  x1 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, digits <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span class="r-in">  x2 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, digits <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">)</span>,</span>
@@ -206,7 +201,7 @@ numbers of the same magnitude with subtle differences.</p></td>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>    <span style="text-decoration: underline;">1</span>100.   <span style="text-decoration: underline;">1</span>100.5   <span style="text-decoration: underline;">1</span>100.5</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Use fixed digits and a currency label</span></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  usd <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, digits <span class="op">=</span> <span class="fl">2</span>, label <span class="op">=</span> <span class="st">"USD"</span><span class="op">)</span>,</span>
 <span class="r-in">  gbp <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, digits <span class="op">=</span> <span class="fl">2</span>, label <span class="op">=</span> <span class="st">"£"</span><span class="op">)</span>,</span>
 <span class="r-in">  chf <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.5</span>, digits <span class="op">=</span> <span class="fl">2</span>, label <span class="op">=</span> <span class="st">"SFr"</span><span class="op">)</span></span>
@@ -219,7 +214,7 @@ numbers of the same magnitude with subtle differences.</p></td>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> <span style="text-decoration: underline;">1</span>100.50 <span style="text-decoration: underline;">1</span>100.50 <span style="text-decoration: underline;">1</span>100.50</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Scale</span></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  small  <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">/</span> <span class="fl">1000</span> <span class="op">+</span> <span class="fl">0.00005</span>, label <span class="op">=</span> <span class="st">"%"</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
 <span class="r-in">  medium <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">/</span>  <span class="fl">100</span> <span class="op">+</span> <span class="fl">0.0005</span> , label <span class="op">=</span> <span class="st">"%"</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
 <span class="r-in">  large  <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">/</span>   <span class="fl">10</span> <span class="op">+</span> <span class="fl">0.005</span>  , label <span class="op">=</span> <span class="st">"%"</span>, scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
@@ -232,7 +227,7 @@ numbers of the same magnitude with subtle differences.</p></td>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 1.10   11.0  110. </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Notation</span></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  sci <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">13</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"sci"</span><span class="op">)</span>,</span>
 <span class="r-in">  eng <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">13</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"eng"</span><span class="op">)</span>,</span>
 <span class="r-in">  si  <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">13</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, notation <span class="op">=</span> <span class="st">"si"</span><span class="op">)</span>,</span>
@@ -263,7 +258,7 @@ numbers of the same magnitude with subtle differences.</p></td>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> 1<span style="color: #949494;">e</span>+ 6   1<span style="color: #949494;">e</span>+ 6    1M 1<span style="text-decoration: underline;">000</span>000              </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Fixed exponent</span></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  scimin <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">7</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">*</span> <span class="fl">123</span>, notation <span class="op">=</span> <span class="st">"sci"</span>, fixed_exponent <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span><span class="op">)</span>,</span>
 <span class="r-in">  engmin <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">7</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">*</span> <span class="fl">123</span>, notation <span class="op">=</span> <span class="st">"eng"</span>, fixed_exponent <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span><span class="op">)</span>,</span>
 <span class="r-in">  simin  <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">7</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">*</span> <span class="fl">123</span>, notation <span class="op">=</span> <span class="st">"si"</span>,  fixed_exponent <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span><span class="op">)</span></span>
@@ -286,7 +281,7 @@ numbers of the same magnitude with subtle differences.</p></td>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>  1<span style="text-decoration: underline;">230</span>000<span style="text-decoration: underline;">000</span>000   <span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span>  12<span style="text-decoration: underline;">300</span>000<span style="text-decoration: underline;">000</span>000  <span style="color: #949494;">e</span><span style="color: #BB0000;">-6</span>  12<span style="text-decoration: underline;">300</span>000<span style="text-decoration: underline;">000</span>000  µ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 12<span style="text-decoration: underline;">300</span>000<span style="text-decoration: underline;">000</span>000   <span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span> 123<span style="text-decoration: underline;">000</span>000<span style="text-decoration: underline;">000</span>000  <span style="color: #949494;">e</span><span style="color: #BB0000;">-6</span> 123<span style="text-decoration: underline;">000</span>000<span style="text-decoration: underline;">000</span>000  µ</span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  scismall <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">7</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">*</span> <span class="fl">123</span>, notation <span class="op">=</span> <span class="st">"sci"</span>, fixed_exponent <span class="op">=</span> <span class="op">-</span><span class="fl">3</span><span class="op">)</span>,</span>
 <span class="r-in">  scilarge <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">7</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">*</span> <span class="fl">123</span>, notation <span class="op">=</span> <span class="st">"sci"</span>, fixed_exponent <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span>
 <span class="r-in">  scimax   <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">7</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">*</span> <span class="fl">123</span>, notation <span class="op">=</span> <span class="st">"sci"</span>, fixed_exponent <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span>
@@ -310,7 +305,7 @@ numbers of the same magnitude with subtle differences.</p></td>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> <span style="text-decoration: underline;">123</span>000<span style="text-decoration: underline;">000</span>000     <span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span> <span style="text-decoration: underline;">123</span>000           <span style="color: #949494;">e</span>3 1.23             <span style="color: #949494;">e</span>8</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">#' Extra significant digits</span></span>
-<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span class="r-in"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span class="r-in">  default <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">100</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.001</span><span class="op">)</span>,</span>
 <span class="r-in">  extra1 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">100</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.001</span>, extra_sigfig <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span class="r-in">  extra2 <span class="op">=</span> <span class="fu">num</span><span class="op">(</span><span class="fl">100</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op">*</span> <span class="fl">0.0001</span>, extra_sigfig <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>

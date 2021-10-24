@@ -55,7 +55,7 @@ help implementers of formatters for custom data types."><meta name="robots" cont
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -70,7 +70,7 @@ help implementers of formatters for custom data types."><meta name="robots" cont
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Alignment helper</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/extent.R"><code>R/extent.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/extent.R" class="external-link"><code>R/extent.R</code></a></small>
     <div class="hidden name"><code>align.Rd</code></div>
     </div>
 
@@ -79,28 +79,27 @@ help implementers of formatters for custom data types."><meta name="robots" cont
 help implementers of formatters for custom data types.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">align</span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, align <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"right"</span><span class="op">)</span>, space <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">align</span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, align <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"right"</span><span class="op">)</span>, space <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>A character vector</p></td>
-    </tr><tr><th>width</th>
-      <td><p>The width that each string is padded to. If <code>NULL</code>, the maximum
-display width of the character vector is used (see <code><a href="get_extent.html">get_max_extent()</a></code>).</p></td>
-    </tr><tr><th>align</th>
-      <td><p>How should strings be aligned? If <code>align = left</code> then padding
-appears on the <code>right</code>, and vice versa.</p></td>
-    </tr><tr><th>space</th>
-      <td><p>What character should be used for the padding?</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>x</dt><dd><p>A character vector</p></dd>
+</dl><dl><dt>width</dt><dd><p>The width that each string is padded to. If <code>NULL</code>, the maximum
+display width of the character vector is used (see <code><a href="get_extent.html">get_max_extent()</a></code>).</p></dd>
+</dl><dl><dt>align</dt><dd><p>How should strings be aligned? If <code>align = left</code> then padding
+appears on the <code>right</code>, and vice versa.</p></dd>
+</dl><dl><dt>space</dt><dd><p>What character should be used for the padding?</p></dd>
+</dl></div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">align</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"de"</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">align</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"de"</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abc" "de "</span>
-<span class="r-in"><span class="fu">align</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"de"</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">align</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"de"</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "abc" " de"</span>
 </code></pre></div>
     </div>

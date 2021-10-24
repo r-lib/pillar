@@ -62,7 +62,7 @@ override vctrs::vec_ptype_abbr() and pillar_shaft() for this data type."><meta n
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -77,12 +77,12 @@ override vctrs::vec_ptype_abbr() and pillar_shaft() for this data type."><meta n
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Format the body of a tibble</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/tbl-format-body.R"><code>R/tbl-format-body.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/tbl-format-body.R" class="external-link"><code>R/tbl-format-body.R</code></a></small>
     <div class="hidden name"><code>tbl_format_body.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
 <p>For easier customization, the formatting of a tibble is split
 into three components: header, body, and footer.
 The <code>tbl_format_body()</code> method is responsible for formatting the body
@@ -90,30 +90,30 @@ of a tibble.</p>
 <p>Override this method if you need to change the appearance of all parts
 of the body.
 If you only need to change the appearance of a single data type,
-override <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code> and <code><a href="pillar_shaft.html">pillar_shaft()</a></code> for this data type.</p>
+override <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code> and <code><a href="pillar_shaft.html">pillar_shaft()</a></code> for this data type.</p>
     </div>
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">tbl_format_body</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>A tibble-like object.</p></td>
-    </tr><tr><th>setup</th>
-      <td><p>A setup object returned from <code><a href="tbl_format_setup.html">tbl_format_setup()</a></code>.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>x</dt><dd><p>A tibble-like object.</p></dd>
+</dl><dl><dt>setup</dt><dd><p>A setup object returned from <code><a href="tbl_format_setup.html">tbl_format_setup()</a></code>.</p></dd>
+</dl><dl><dt>...</dt><dd><p>These dots are for future extensions and must be empty.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>A character vector.</p>
+    </div>
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">tbl_format_body</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span>, <span class="va">setup</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">tbl_format_body</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span>, <span class="va">setup</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Adelie  Torgersen           39.1          18.7               181        <span style="text-decoration: underline;">3</span>750</span>

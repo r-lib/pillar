@@ -57,7 +57,7 @@ Provides various generics for making every aspect of the display customizable.">
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,21 +72,21 @@ Provides various generics for making every aspect of the display customizable.">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>pillar: Coloured Formatting for Columns</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/pillar-package.R"><code>R/pillar-package.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/pillar-package.R" class="external-link"><code>R/pillar-package.R</code></a></small>
     <div class="hidden name"><code>pillar-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="figures/lifecycle-stable.svg" alt="[Stable]"></a></p>
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="figures/lifecycle-stable.svg" alt="[Stable]"></a></p>
 <p>Formats tabular data in columns or rows
 using the full range of colours provided by modern terminals.
 Provides various generics for making every aspect of the display customizable.</p>
     </div>
 
 
-
+    <div id="ref-sections">
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index">
 <ul><li><p><code><a href="pillar.html">pillar()</a></code> for formatting a single column,</p></li>
 <li><p><code><a href="format_tbl.html">print.tbl()</a></code> for formatting data-frame-like objects,</p></li>
@@ -94,33 +94,40 @@ Provides various generics for making every aspect of the display customizable.</
 </ul></div>
     </div>
     <div id="author">
-    <h2>Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
+    <h2>Author</h2>
     <p><strong>Maintainer</strong>: Kirill Müller <a href="mailto:krlmlr+r@mailbox.org">krlmlr+r@mailbox.org</a></p>
 <p>Authors:</p><ul><li><p>Hadley Wickham</p></li>
 </ul><p>Other contributors:</p><ul><li><p>RStudio [copyright holder]</p></li>
 </ul></div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     3</span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     3</span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, title <span class="op">=</span> <span class="st">"letters"</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, title <span class="op">=</span> <span class="st">"letters"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> letters</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> a      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> b      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> c      </span>
+<span class="r-in"><span class="fu"><a href="colonnade.html">colonnade</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>          5.1         3.5          1.4         0.2 setosa </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>          4.9         3            1.4         0.2 setosa </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>          4.7         3.2          1.3         0.2 setosa </span>
 </code></pre></div>
     </div>
   </div>

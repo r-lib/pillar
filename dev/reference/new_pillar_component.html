@@ -56,7 +56,7 @@ and extracts width and minimum width.'><meta name="robots" content="noindex"><!-
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -71,7 +71,7 @@ and extracts width and minimum width.'><meta name="robots" content="noindex"><!-
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Components of a pillar</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/ctl_pillar_component.R"><code>R/ctl_pillar_component.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/ctl_pillar_component.R" class="external-link"><code>R/ctl_pillar_component.R</code></a></small>
     <div class="hidden name"><code>new_pillar_component.Rd</code></div>
     </div>
 
@@ -85,20 +85,19 @@ and extracts width and minimum width.</p>
 
 <span class="fu">pillar_component</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>A bare list (for <code>new_pillar_component()</code>), or an object
-with attributes <code>"width"</code> and <code>"min_width"</code> attributes (for <code>pillar_component()</code>).</p></td>
-    </tr><tr><th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
-    </tr><tr><th>width, min_width</th>
-      <td><p>Width and minimum width for the new component.
-If <code>min_width</code> is <code>NULL</code>, it is assumed to match <code>width</code>.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>x</dt><dd><p>A bare list (for <code>new_pillar_component()</code>), or an object
+with attributes <code>"width"</code> and <code>"min_width"</code> attributes (for <code>pillar_component()</code>).</p></dd>
+</dl><dl><dt>...</dt><dd><p>These dots are for future extensions and must be empty.</p></dd>
+</dl><dl><dt>width, min_width</dt><dd><p>Width and minimum width for the new component.
+If <code>min_width</code> is <code>NULL</code>, it is assumed to match <code>width</code>.</p></dd>
+</dl></div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>Objects of class <code>"pillar"</code> are internally a named lists of their components.
 The default components are <code>title</code> (may be missing), <code>type</code>, and <code>data</code>.
 Each component is a <code>"pillar_component"</code>.</p>
@@ -109,10 +108,11 @@ Each cell has a maximum (i.e., desired) width and may have a minimum width
 if the contents are compressible.
 The component object stores the width of the cells as an attribute.</p>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">new_pillar_component</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">new_pillar_component</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a" "b" "c"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>

@@ -66,7 +66,7 @@ this is what the default method does for scalars.'><meta name="robots" content="
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,18 +81,18 @@ this is what the default method does for scalars.'><meta name="robots" content="
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Provide a succinct summary of an object</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/type-sum.R"><code>R/type-sum.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/type-sum.R" class="external-link"><code>R/type-sum.R</code></a></small>
     <div class="hidden name"><code>type_sum.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
-For most inputs, the argument is forwarded to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code>.</p>
+For most inputs, the argument is forwarded to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code>.</p>
 <p><code>obj_sum()</code> also includes the size (but not the shape) of the object
-if <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html">vctrs::vec_is()</a></code> is <code>TRUE</code>.
+if <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html" class="external-link">vctrs::vec_is()</a></code> is <code>TRUE</code>.
 It should always return a string (a character vector of length one).
-As of pillar v1.6.1, the default method forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code>
+As of pillar v1.6.1, the default method forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code>
 for vectors and to <code>type_sum()</code> for other objects.
 Previous versions always forwarded to <code>type_sum()</code>.</p>
 <p><code>size_sum()</code> is called by <code>obj_sum()</code> to format the size of the object.
@@ -107,30 +107,32 @@ this is what the default method does for scalars.</p>
 
 <span class="fu">size_sum</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>an object to summarise. Generally only methods of atomic vectors
-and variants have been implemented.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>x</dt><dd><p>an object to summarise. Generally only methods of atomic vectors
+and variants have been implemented.</p></dd>
+</dl></div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>When formatting a pillar,
 <code>type_sum()</code> will be called on a slice of the column vector.
 The formatted type should only depend on the type and not on the data,
 to avoid confusion.</p>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int [10]"</span>
-<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int [10 × 1]"</span>
-<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "date [1]"</span>
-<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dttm [1]"</span>
 <span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "fn"</span>
