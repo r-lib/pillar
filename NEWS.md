@@ -1,15 +1,24 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# pillar 1.6.3.9001
-
-- Fix printing for some tibbles where a fixed-width column is followed by a column with variable width (#366).
-- `num()` requires an integerish `digits` argument (#362).
-- Avoid nested backtick blocks in vignette.
-- Link to tibble vignettes and documentation pages.
-
-# pillar 1.6.3.9000
+# pillar 1.6.4.9000
 
 - Same as previous version.
+
+
+# pillar 1.6.4
+
+## Bug fixes
+
+- Fix printing for some tibbles where a fixed-width column is followed by a column with variable width (#366).
+- Avoid nested backtick blocks in vignette.
+
+## Breaking changes
+
+- `num()` requires an integerish `digits` argument (#362).
+
+## Documentation
+
+- Link to tibble vignettes and documentation pages.
 
 
 # pillar 1.6.3

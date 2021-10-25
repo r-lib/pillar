@@ -60,5 +60,5 @@ style_na("NA")
 style_neg("123")
 }
 \seealso{
-\link{pillar-package} for a list of options
+\link{pillar_options} for a list of options
 }
