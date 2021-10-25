@@ -24,6 +24,12 @@ test_that("print() output", {
 
     print(as_tbl(mtcars), n = 100)
 
+    print(as_tbl(mtcars), width = 40, n_extra = 1)
+
+    print(as_tbl(mtcars), width = 40, max_extra_cols = 1)
+
+    print(as_tbl(mtcars), width = 30, max_footer_lines = 3)
+
     rlang::with_options(
       tibble.print_min = 5,
       as_tbl(mtcars)

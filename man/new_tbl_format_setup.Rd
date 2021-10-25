@@ -13,7 +13,8 @@ new_tbl_format_setup(
   rows_missing,
   rows_total,
   extra_cols,
-  extra_cols_total
+  extra_cols_total,
+  max_footer_lines
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ as a character vector of formatted column names and types.}
 
 \item{extra_cols_total}{The total number of columns, may be larger than
 \code{length(extra_cols)}.}
+
+\item{max_footer_lines}{The maximum number of lines in the footer.}
 }
 \description{
 The object returned from the default method of \code{\link[=tbl_format_setup]{tbl_format_setup()}}

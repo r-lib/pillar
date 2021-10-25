@@ -2,29 +2,46 @@
 
 ## Next steps
 
-- revdepcheck for adding ellipsis to methods
+- Pass `max_footer_lines` to `print.tbl()`, rethink option name
+- Test all options
 - Milestone: <https://github.com/r-lib/pillar/milestone/11>
+- CRAN release
+- triage issues
+
+- documentation cleanup from <https://github.com/tidyverse/tibble/issues/913>:
+    - relink digits vignette, shorten numbers vignette, replace ?num, ?char and print.tbl() with internal stubs
+- expand list columns
+
+- revdepcheck for adding ellipsis to methods
 
 - Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
+    - Easiest if focus columns are moved to the beginning
     - Get extra width?
 
-- Discuss:
-    - Add convenience arguments to `print.tbl()`? <https://github.com/tidyverse/tibble/issues/637>
 - Breaking changes
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
+        - Because the minimum character width is used here; this is just the default shaft. We can show only the type if there's lack of space and build a custom pillar shaft
+        - Abbreviate list columns at the left? <https://github.com/r-lib/pillar/issues/84>
     - Redundant information goes up into the header <https://github.com/r-lib/pillar/pull/307>
         - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
         - Search for `new_pillar_type()`
         - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
             - not sure, problems dealing with truncated vs. actual length
     - Avoid showing dimensions twice in `obj_sum()`, use `vec_ptype_abbr()` (with default handling of non-vctrs things) and not `type_sum()`
+        - Is this done already?
     - Shorter list columns: <https://github.com/r-lib/pillar/issues/168>
-    - Abbreviate list columns at the left: <https://github.com/r-lib/pillar/issues/84>
+- Prototype
     - Multi-stage (hierarchical) output for packed data frames
+        - Challenging with tiers
+        - Show number of columns in the parent stage?
+            - If too wide; also show ellipsis
+            - Perhaps show column names in footer?
+        - Can we agree that a packed data frame never spans multiple tiers?
     - Show column names that are abbreviated in full
-    - Packed data frames and matrices: if too wide, show ellipsis
+        - With their index if non-consecutive
     - Tick column title in extra columns
+        - It should be?
     - Second backtick if column name is abbreviated, <https://github.com/tidyverse/tibble/issues/838>
     - Simplify matrix formatting to format like an array: <https://github.com/r-lib/pillar/issues/142#issuecomment-489357664>
     - Show number of rows if known
@@ -32,7 +49,9 @@
     - `format_glimpse()` uses `pillar_shaft()` for numbers
     - Reduce minimum width to 1
     - Show time zone for times: <https://github.com/r-lib/vctrs/issues/709>
+        - refer to clock?
     - Class for numbers of same magnitude but with subtle differences? <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
+        - Subtle coloring for repetitive parts?
     - Highlight equal parts of a string column <https://github.com/r-lib/pillar/issues/97#issuecomment-363699335>
     - `shorten = "unique"`? <https://github.com/r-lib/pillar/issues/101>
     - `shorten = "front"`: right-align?

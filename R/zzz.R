@@ -2,7 +2,7 @@
 
 #' @import rlang
 #' @import ellipsis
-#' @import lifecycle
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs obj_print_footer
@@ -56,6 +56,11 @@ NULL
     # activate_debugme()
     debugme::debugme()
     debug_info()
+  }
+
+  # https://github.com/r-lib/pkgdown/issues/1540
+  if (Sys.getenv("IN_PKGDOWN") != "") {
+    register_s3_method("pillar", "type_sum", "accel")
   }
 
   invisible()

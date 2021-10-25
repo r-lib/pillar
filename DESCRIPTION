@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.6.1.9002
+Version: 1.6.4.9000
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -50,7 +50,7 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1.9001
+RoxygenNote: 7.1.2
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Config/testthat/start-first: 
@@ -60,6 +60,3 @@ Config/testthat/start-first:
     ctl_colonnade,
     ctl_colonnade_1,
     ctl_colonnade_2
-Remotes: 
-    r-lib/rlang#1243,
-    renkun-ken/formattable#154

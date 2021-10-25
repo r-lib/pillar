@@ -16,12 +16,7 @@
       [90m#   i <chr>, j <chr>,[39m
       [90m#   k <chr>, l <chr>,[39m
       [90m#   m <chr>, n <chr>,[39m
-      [90m#   o <chr>, p <chr>,[39m
-      [90m#   q <chr>, r <chr>,[39m
-      [90m#   s <chr>, t <chr>,[39m
-      [90m#   u <chr>, v <chr>,[39m
-      [90m#   w <chr>, x <chr>,[39m
-      [90m#   y <chr>, z <chr>[39m
+      [90m#   o <chr>, p <chr>, ...[39m
 
 # wrapping column names with spaces in the footer
 
@@ -66,17 +61,120 @@
       #   p <chr>, q <chr>, r <chr>, s <chr>, t <chr>, u <chr>, v <chr>,
       #   w <chr>, x <chr>, y <chr>, z <chr>, a <chr>, b <chr>, c <chr>,
       #   d <chr>, e <chr>, f <chr>, g <chr>, h <chr>, i <chr>, j <chr>,
-      #   k <chr>, l.1 <chr>, m.1 <chr>, n.1 <chr>, o.1 <chr>, p.1 <chr>,
-      #   q.1 <chr>, r.1 <chr>, s.1 <chr>, t.1 <chr>, u.1 <chr>, v.1 <chr>,
-      #   w.1 <chr>, x.1 <chr>, y.1 <chr>, z.1 <chr>, a.1 <chr>, b.1 <chr>,
-      #   c.1 <chr>, d.1 <chr>, e.1 <chr>, f.1 <chr>, g.1 <chr>, h.1 <chr>,
-      #   i.1 <chr>, j.1 <chr>, k.1 <chr>, l.2 <chr>, m.2 <chr>, n.2 <chr>,
-      #   o.2 <chr>, p.2 <chr>, q.2 <chr>, r.2 <chr>, s.2 <chr>, t.2 <chr>,
-      #   u.2 <chr>, v.2 <chr>, w.2 <chr>, x.2 <chr>, y.2 <chr>, z.2 <chr>,
-      #   a.2 <chr>, b.2 <chr>, c.2 <chr>, d.2 <chr>, e.2 <chr>, f.2 <chr>,
-      #   g.2 <chr>, h.2 <chr>, i.2 <chr>, j.2 <chr>, k.2 <chr>, l.3 <chr>,
-      #   m.3 <chr>, n.3 <chr>, o.3 <chr>, p.3 <chr>, q.3 <chr>, r.3 <chr>,
-      #   s.3 <chr>, t.3 <chr>, u.3 <chr>, v.3 <chr>, w.3 <chr>, x.3 <chr>,
-      #   y.3 <chr>, z.3 <chr>, a.3 <chr>, b.3 <chr>, c.3 <chr>, d.3 <chr>,
-      #   e.3 <chr>, f.3 <chr>, g.3 <chr>, ...
+      #   k <chr>, l <chr>, m <chr>, n <chr>, o <chr>, p <chr>, q <chr>,
+      #   r <chr>, s <chr>, t <chr>, u <chr>, v <chr>, w <chr>, x <chr>,
+      #   y <chr>, z <chr>, a <chr>, b <chr>, c <chr>, d <chr>, ...
+
+# max_footer_lines option
+
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("")))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
+      #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
+      #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>,
+      #   aq <int>, bq <int>, ar <int>, br <int>, as <int>, bs <int>, at <int>,
+      #   bt <int>, au <int>, bu <int>, av <int>, bv <int>, aw <int>, bw <int>,
+      #   ax <int>, bx <int>, ay <int>, by <int>, az <int>, bz <int>
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_")))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 45 more variables: prefix_bd <int>, prefix_ae <int>,
+      #   prefix_be <int>, prefix_af <int>, prefix_bf <int>, prefix_ag <int>,
+      #   prefix_bg <int>, prefix_ah <int>, prefix_bh <int>, prefix_ai <int>,
+      #   prefix_bi <int>, prefix_aj <int>, prefix_bj <int>, prefix_ak <int>,
+      #   prefix_bk <int>, prefix_al <int>, prefix_bl <int>, prefix_am <int>,
+      #   prefix_bm <int>, prefix_an <int>, prefix_bn <int>, prefix_ao <int>,
+      #   prefix_bo <int>, prefix_ap <int>, prefix_bp <int>, prefix_aq <int>, ...
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_")))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 48 more variables: a_very_long_prefix_ac <int>,
+      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
+      #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
+      #   a_very_long_prefix_be <int>, a_very_long_prefix_af <int>,
+      #   a_very_long_prefix_bf <int>, a_very_long_prefix_ag <int>,
+      #   a_very_long_prefix_bg <int>, a_very_long_prefix_ah <int>,
+      #   a_very_long_prefix_bh <int>, a_very_long_prefix_ai <int>, ...
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = 3))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
+      #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
+      #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>, ...
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = 3))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 45 more variables: prefix_bd <int>, prefix_ae <int>,
+      #   prefix_be <int>, prefix_af <int>, prefix_bf <int>, prefix_ag <int>,
+      #   prefix_bg <int>, prefix_ah <int>, prefix_bh <int>, prefix_ai <int>, ...
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_"),
+      max_footer_lines = 3))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 48 more variables: a_very_long_prefix_ac <int>,
+      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
+      #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>, ...
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = Inf))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
+      #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
+      #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>,
+      #   aq <int>, bq <int>, ar <int>, br <int>, as <int>, bs <int>, at <int>,
+      #   bt <int>, au <int>, bu <int>, av <int>, bv <int>, aw <int>, bw <int>,
+      #   ax <int>, bx <int>, ay <int>, by <int>, az <int>, bz <int>
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = Inf))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 45 more variables: prefix_bd <int>, prefix_ae <int>,
+      #   prefix_be <int>, prefix_af <int>, prefix_bf <int>, prefix_ag <int>,
+      #   prefix_bg <int>, prefix_ah <int>, prefix_bh <int>, prefix_ai <int>,
+      #   prefix_bi <int>, prefix_aj <int>, prefix_bj <int>, prefix_ak <int>,
+      #   prefix_bk <int>, prefix_al <int>, prefix_bl <int>, prefix_am <int>,
+      #   prefix_bm <int>, prefix_an <int>, prefix_bn <int>, prefix_ao <int>,
+      #   prefix_bo <int>, prefix_ap <int>, prefix_bp <int>, prefix_aq <int>,
+      #   prefix_bq <int>, prefix_ar <int>, prefix_br <int>, prefix_as <int>,
+      #   prefix_bs <int>, prefix_at <int>, prefix_bt <int>, prefix_au <int>,
+      #   prefix_bu <int>, prefix_av <int>, prefix_bv <int>, prefix_aw <int>,
+      #   prefix_bw <int>, prefix_ax <int>, prefix_bx <int>, prefix_ay <int>,
+      #   prefix_by <int>, prefix_az <int>, prefix_bz <int>
+    Code
+      tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_"),
+      max_footer_lines = Inf))
+    Output
+      <tbl_format_footer(setup)>
+      # ... with 48 more variables: a_very_long_prefix_ac <int>,
+      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
+      #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
+      #   a_very_long_prefix_be <int>, a_very_long_prefix_af <int>,
+      #   a_very_long_prefix_bf <int>, a_very_long_prefix_ag <int>,
+      #   a_very_long_prefix_bg <int>, a_very_long_prefix_ah <int>,
+      #   a_very_long_prefix_bh <int>, a_very_long_prefix_ai <int>,
+      #   a_very_long_prefix_bi <int>, a_very_long_prefix_aj <int>,
+      #   a_very_long_prefix_bj <int>, a_very_long_prefix_ak <int>,
+      #   a_very_long_prefix_bk <int>, a_very_long_prefix_al <int>,
+      #   a_very_long_prefix_bl <int>, a_very_long_prefix_am <int>,
+      #   a_very_long_prefix_bm <int>, a_very_long_prefix_an <int>,
+      #   a_very_long_prefix_bn <int>, a_very_long_prefix_ao <int>,
+      #   a_very_long_prefix_bo <int>, a_very_long_prefix_ap <int>,
+      #   a_very_long_prefix_bp <int>, a_very_long_prefix_aq <int>,
+      #   a_very_long_prefix_bq <int>, a_very_long_prefix_ar <int>,
+      #   a_very_long_prefix_br <int>, a_very_long_prefix_as <int>,
+      #   a_very_long_prefix_bs <int>, a_very_long_prefix_at <int>,
+      #   a_very_long_prefix_bt <int>, a_very_long_prefix_au <int>,
+      #   a_very_long_prefix_bu <int>, a_very_long_prefix_av <int>,
+      #   a_very_long_prefix_bv <int>, a_very_long_prefix_aw <int>,
+      #   a_very_long_prefix_bw <int>, a_very_long_prefix_ax <int>,
+      #   a_very_long_prefix_bx <int>, a_very_long_prefix_ay <int>,
+      #   a_very_long_prefix_by <int>, a_very_long_prefix_az <int>,
+      #   a_very_long_prefix_bz <int>
 
