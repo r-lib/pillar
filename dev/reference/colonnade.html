@@ -73,7 +73,7 @@ The implementations call squeeze() to create pillar objects and fit them to a gi
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Format multiple vectors in a tabular display</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/multi.R" class="external-link"><code>R/multi.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/multi.R" class="external-link"><code>R/multi.R</code></a></small>
     <div class="hidden name"><code>colonnade.Rd</code></div>
     </div>
 
@@ -90,15 +90,17 @@ The implementations call <code><a href="squeeze.html">squeeze()</a></code> to cr
     <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>x</dt><dd><p>A list, which can contain matrices or data frames.
+    <dl><dt>x</dt>
+<dd><p>A list, which can contain matrices or data frames.
 If named, the names will be used as title for the pillars. Non-syntactic names
 will be escaped.</p></dd>
-</dl><dl><dt>has_row_id</dt><dd><p>Include a column indicating row IDs? Pass <code>"*"</code> to mark
+<dt>has_row_id</dt>
+<dd><p>Include a column indicating row IDs? Pass <code>"*"</code> to mark
 the row ID column with a star.</p></dd>
-</dl><dl><dt>width</dt><dd><p>Default width of the entire output, optional.</p></dd>
-</dl><dl><dt>...</dt><dd><p>These dots are for future extensions and must be empty.</p></dd>
+<dt>width</dt>
+<dd><p>Default width of the entire output, optional.</p></dd>
+<dt>...</dt>
+<dd><p>These dots are for future extensions and must be empty.</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>

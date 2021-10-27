@@ -73,7 +73,7 @@ Do not modify existing elements.'><meta name="robots" content="noindex"><!-- mat
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Construct a setup object for formatting</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/tbl-format-setup.R" class="external-link"><code>R/tbl-format-setup.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/tbl-format-setup.R" class="external-link"><code>R/tbl-format-setup.R</code></a></small>
     <div class="hidden name"><code>new_tbl_format_setup.Rd</code></div>
     </div>
 
@@ -101,24 +101,32 @@ Do not modify existing elements.</p>
     <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>x</dt><dd><p>The input object unchanged.</p></dd>
-</dl><dl><dt>df</dt><dd><p>A data frame representation of the intended output,
+    <dl><dt>x</dt>
+<dd><p>The input object unchanged.</p></dd>
+<dt>df</dt>
+<dd><p>A data frame representation of the intended output,
 trimmed to the desired number of rows.</p></dd>
-</dl><dl><dt>width</dt><dd><p>The <code>width</code> argument unchanged.</p></dd>
-</dl><dl><dt>tbl_sum</dt><dd><p>A named character vector, as returned from <code><a href="tbl_sum.html">tbl_sum()</a></code>.</p></dd>
-</dl><dl><dt>body</dt><dd><p>A character vector with the formatted body,
+<dt>width</dt>
+<dd><p>The <code>width</code> argument unchanged.</p></dd>
+<dt>tbl_sum</dt>
+<dd><p>A named character vector, as returned from <code><a href="tbl_sum.html">tbl_sum()</a></code>.</p></dd>
+<dt>body</dt>
+<dd><p>A character vector with the formatted body,
 one element per line,</p></dd>
-</dl><dl><dt>rows_missing</dt><dd><p>The number of rows not shown from the body,
+<dt>rows_missing</dt>
+<dd><p>The number of rows not shown from the body,
 <code>NA</code> if unknown.</p></dd>
-</dl><dl><dt>rows_total</dt><dd><p>The total number of rows in the data,
+<dt>rows_total</dt>
+<dd><p>The total number of rows in the data,
 <code>NA</code> if unknown.</p></dd>
-</dl><dl><dt>extra_cols</dt><dd><p>Columns that did not fit into the body,
+<dt>extra_cols</dt>
+<dd><p>Columns that did not fit into the body,
 as a character vector of formatted column names and types.</p></dd>
-</dl><dl><dt>extra_cols_total</dt><dd><p>The total number of columns, may be larger than
+<dt>extra_cols_total</dt>
+<dd><p>The total number of columns, may be larger than
 <code>length(extra_cols)</code>.</p></dd>
-</dl><dl><dt>max_footer_lines</dt><dd><p>The maximum number of lines in the footer.</p></dd>
+<dt>max_footer_lines</dt>
+<dd><p>The maximum number of lines in the footer.</p></dd>
 </dl></div>
     </div>
 

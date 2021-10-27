@@ -83,7 +83,7 @@ override these methods instead."><meta name="robots" content="noindex"><!-- math
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Set up formatting</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/tbl-format-setup.R" class="external-link"><code>R/tbl-format-setup.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/tbl-format-setup.R" class="external-link"><code>R/tbl-format-setup.R</code></a></small>
     <div class="hidden name"><code>tbl_format_setup.Rd</code></div>
     </div>
 
@@ -117,20 +117,24 @@ override these methods instead.</p>
     <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>x</dt><dd><p>An object.</p></dd>
-</dl><dl><dt>width</dt><dd><p>Actual width for printing, a numeric greater than zero.
+    <dl><dt>x</dt>
+<dd><p>An object.</p></dd>
+<dt>width</dt>
+<dd><p>Actual width for printing, a numeric greater than zero.
 This argument is mandatory for all implementations of this method.</p></dd>
-</dl><dl><dt>...</dt><dd><p>Extra arguments to <code><a href="format_tbl.html">print.tbl()</a></code> or <code><a href="format_tbl.html">format.tbl()</a></code>.</p></dd>
-</dl><dl><dt>n</dt><dd><p>Actual number of rows to print.
+<dt>...</dt>
+<dd><p>Extra arguments to <code><a href="format_tbl.html">print.tbl()</a></code> or <code><a href="format_tbl.html">format.tbl()</a></code>.</p></dd>
+<dt>n</dt>
+<dd><p>Actual number of rows to print.
 No <a href="pillar_options.html">options</a> should be considered
 by implementations of this method.</p></dd>
-</dl><dl><dt>max_extra_cols</dt><dd><p>Number of columns to print abbreviated information for,
+<dt>max_extra_cols</dt>
+<dd><p>Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.
 No <a href="pillar_options.html">options</a> should be considered
 by implementations of this method.</p></dd>
-</dl><dl><dt>max_footer_lines</dt><dd><p>Maximum number of lines for the footer.
+<dt>max_footer_lines</dt>
+<dd><p>Maximum number of lines for the footer.
 No <a href="pillar_options.html">options</a> should be considered
 by implementations of this method.</p></dd>
 </dl></div>

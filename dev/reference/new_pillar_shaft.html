@@ -90,7 +90,7 @@ formatted argument."><meta name="robots" content="noindex"><!-- mathjax --><scri
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Constructor for column data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/shaft-.R" class="external-link"><code>R/shaft-.R</code></a>, <a href="https://github.com/r-lib/pillar/blob/master/R/shaft-simple.R" class="external-link"><code>R/shaft-simple.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/shaft-.R" class="external-link"><code>R/shaft-.R</code></a>, <a href="https://github.com/r-lib/pillar/blob/HEAD/R/shaft-simple.R" class="external-link"><code>R/shaft-simple.R</code></a></small>
     <div class="hidden name"><code>new_pillar_shaft.Rd</code></div>
     </div>
 
@@ -139,21 +139,29 @@ By default, the required width is computed from the natural width of the
     <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>x</dt><dd><p>An object</p></dd>
-</dl><dl><dt>...</dt><dd><p>Additional attributes.</p></dd>
-</dl><dl><dt>width</dt><dd><p>The maximum column width.</p></dd>
-</dl><dl><dt>min_width</dt><dd><p>The minimum allowed column width, <code>width</code> if omitted.</p></dd>
-</dl><dl><dt>class</dt><dd><p>The name of the subclass.</p></dd>
-</dl><dl><dt>subclass</dt><dd><p>Deprecated, pass the <code>class</code> argument instead.</p></dd>
-</dl><dl><dt>formatted</dt><dd><p>An object coercible to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>.</p></dd>
-</dl><dl><dt>align</dt><dd><p>Alignment of the column.</p></dd>
-</dl><dl><dt>na</dt><dd><p>String to use as <code>NA</code> value, defaults to <code>"NA"</code> styled with
+    <dl><dt>x</dt>
+<dd><p>An object</p></dd>
+<dt>...</dt>
+<dd><p>Additional attributes.</p></dd>
+<dt>width</dt>
+<dd><p>The maximum column width.</p></dd>
+<dt>min_width</dt>
+<dd><p>The minimum allowed column width, <code>width</code> if omitted.</p></dd>
+<dt>class</dt>
+<dd><p>The name of the subclass.</p></dd>
+<dt>subclass</dt>
+<dd><p>Deprecated, pass the <code>class</code> argument instead.</p></dd>
+<dt>formatted</dt>
+<dd><p>An object coercible to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>.</p></dd>
+<dt>align</dt>
+<dd><p>Alignment of the column.</p></dd>
+<dt>na</dt>
+<dd><p>String to use as <code>NA</code> value, defaults to <code>"NA"</code> styled with
 <code><a href="style_subtle.html">style_na()</a></code> with fallback if color is not available.</p></dd>
-</dl><dl><dt>na_indent</dt><dd><p>Indentation of <code>NA</code> values.</p></dd>
-</dl><dl><dt>shorten</dt><dd><p>How to abbreviate the data if necessary:
-</p><ul><li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
+<dt>na_indent</dt>
+<dd><p>Indentation of <code>NA</code> values.</p></dd>
+<dt>shorten</dt>
+<dd><p>How to abbreviate the data if necessary:</p><ul><li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
 <li><p><code>"front"</code>: add an ellipsis at the front</p></li>
 <li><p><code>"mid"</code>: add an ellipsis in the middle</p></li>
 <li><p><code>"abbreviate"</code>: use <code><a href="https://rdrr.io/r/base/abbreviate.html" class="external-link">abbreviate()</a></code></p></li>
