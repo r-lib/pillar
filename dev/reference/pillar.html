@@ -81,9 +81,10 @@ The output uses one row for a title (if given), one row for the type,
 and <code>vec_size(x)</code> rows for the data.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">pillar</span><span class="op">(</span><span class="va">x</span>, title <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pillar</span><span class="op">(</span><span class="va">x</span>, title <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
@@ -108,11 +109,10 @@ A <code>width</code> argument is passed to each <code><a href="https://rdrr.io/r
 <p>As of pillar 1.5.0, <code>pillar()</code> returns <code>NULL</code> if the width is insufficient
 to display the data.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> <span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> <span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">pillar</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -263,7 +263,7 @@ to display the data.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>
