@@ -133,7 +133,7 @@
       Columns: 0
     Code
       # Non-syntactic names
-      df <- tibble::tibble(`mean(x)` = 5, `var(x)` = 3)
+      df <- tibble::tibble(!!!set_names(c(5, 3), c("mean(x)", "var(x)")))
       glimpse(df, width = 28)
     Output
       Rows: 1

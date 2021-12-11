@@ -21,11 +21,8 @@
 # wrapping column names with spaces in the footer
 
     Code
-      tbl_format_footer(tbl_format_setup(new_tbl(list2(a = "a", b = "b", c = "c", d = "d",
-        e = "e", f = "f", g = "g", h = "h", i = "i", j = "j", k = "k", l = "l", m = "m",
-        n = "n", o = "o", p = "p", q = "q", r = "r", s = "s", t = "t", u = "u", v = "v",
-        w = "w", x = "x", y = "y", z = "z",
-        "a b c d e f g h i j k l m n o p q r s t u v w x y z" := 2)), width = 70))
+      tbl_format_footer(tbl_format_setup(new_tbl(list2(!!!set_names(letters), !!paste(
+        letters, collapse = " ") := 2)), width = 70))
     Output
       <tbl_format_footer(setup)>
       # ... with 16 more variables: l <chr>, m <chr>, n <chr>, o <chr>,
@@ -36,24 +33,7 @@
 # overflow
 
     Code
-      tbl_format_footer(tbl_format_setup(new_tbl(list2(a = "a", b = "b", c = "c", d = "d",
-        e = "e", f = "f", g = "g", h = "h", i = "i", j = "j", k = "k", l = "l", m = "m",
-        n = "n", o = "o", p = "p", q = "q", r = "r", s = "s", t = "t", u = "u", v = "v",
-        w = "w", x = "x", y = "y", z = "z", a = "a", b = "b", c = "c", d = "d", e = "e",
-        f = "f", g = "g", h = "h", i = "i", j = "j", k = "k", l = "l", m = "m", n = "n",
-        o = "o", p = "p", q = "q", r = "r", s = "s", t = "t", u = "u", v = "v", w = "w",
-        x = "x", y = "y", z = "z", a = "a", b = "b", c = "c", d = "d", e = "e", f = "f",
-        g = "g", h = "h", i = "i", j = "j", k = "k", l = "l", m = "m", n = "n", o = "o",
-        p = "p", q = "q", r = "r", s = "s", t = "t", u = "u", v = "v", w = "w", x = "x",
-        y = "y", z = "z", a = "a", b = "b", c = "c", d = "d", e = "e", f = "f", g = "g",
-        h = "h", i = "i", j = "j", k = "k", l = "l", m = "m", n = "n", o = "o", p = "p",
-        q = "q", r = "r", s = "s", t = "t", u = "u", v = "v", w = "w", x = "x", y = "y",
-        z = "z", a = "a", b = "b", c = "c", d = "d", e = "e", f = "f", g = "g", h = "h",
-        i = "i", j = "j", k = "k", l = "l", m = "m", n = "n", o = "o", p = "p", q = "q",
-        r = "r", s = "s", t = "t", u = "u", v = "v", w = "w", x = "x", y = "y", z = "z",
-        a = "a", b = "b", c = "c", d = "d", e = "e", f = "f", g = "g", h = "h", i = "i",
-        j = "j", k = "k", l = "l", m = "m", n = "n", o = "o", p = "p", q = "q", r = "r",
-        s = "s", t = "t", u = "u", v = "v", w = "w", x = "x", y = "y", z = "z")),
+      tbl_format_footer(tbl_format_setup(new_tbl(list2(!!!set_names(rep(letters, 6)))),
       width = 70))
     Output
       <tbl_format_footer(setup)>

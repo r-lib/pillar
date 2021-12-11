@@ -352,7 +352,8 @@
       
       
     Code
-      ctl_colonnade(list(`\n` = c("\n", "\""), `\r` = factor(c("\n", "\n"))), width = 30)
+      ctl_colonnade(list(`
+      ` = c("\n", "\""), `` = factor(c("\n", "\n"))), width = 30)
     Output
       $body
         `\n`  `\r` 
