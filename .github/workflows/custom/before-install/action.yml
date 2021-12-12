@@ -8,3 +8,5 @@ runs:
       if: runner.os == 'macOS'
       run: |
         brew install udunits
+      shell: bash
+
