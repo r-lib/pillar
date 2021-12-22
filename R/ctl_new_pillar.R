@@ -57,7 +57,6 @@
 #'
 #' # Packed array
 #' ctl_new_compound_pillar(tibble::tibble(), Titanic, width = 60)
-#'
 #' @examples
 #'
 #' # Customize output

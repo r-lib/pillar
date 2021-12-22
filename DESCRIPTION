@@ -60,3 +60,5 @@ Config/testthat/start-first:
     ctl_colonnade,
     ctl_colonnade_1,
     ctl_colonnade_2
+Config/autostyle/scope: spaces
+Config/autostyle/strict: false
