@@ -75,7 +75,7 @@ lipsum <- unlist(strsplit(stringi::stri_rand_lipsum(1), "(?<=[.]) +", perl = TRU
 tibble::tibble(
   back = char(lipsum, shorten = "back"),
   front = char(lipsum, shorten = "front"),
-  mid   = char(lipsum, shorten = "mid")
+  mid = char(lipsum, shorten = "mid")
 )
 tibble::tibble(abbr = char(lipsum, shorten = "abbreviate"))
 \dontshow{\}) # examplesIf}

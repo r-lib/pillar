@@ -101,7 +101,7 @@ tibble::tibble(
 
 # Maximum digits after the decimal points
 tibble::tibble(
-  x0 = num(9:11 * 100 + 0.5, digits =  0),
+  x0 = num(9:11 * 100 + 0.5, digits = 0),
   x1 = num(9:11 * 100 + 0.5, digits = -1),
   x2 = num(9:11 * 100 + 0.5, digits = -2),
 )
@@ -116,8 +116,8 @@ tibble::tibble(
 # Scale
 tibble::tibble(
   small  = num(9:11 / 1000 + 0.00005, label = "\%", scale = 100),
-  medium = num(9:11 /  100 + 0.0005, label = "\%", scale = 100),
-  large  = num(9:11 /   10 + 0.005, label = "\%", scale = 100)
+  medium = num(9:11 / 100 + 0.0005, label = "\%", scale = 100),
+  large  = num(9:11 / 10 + 0.005, label = "\%", scale = 100)
 )
 
 # Notation
@@ -132,7 +132,7 @@ tibble::tibble(
 tibble::tibble(
   scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
   engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
-  simin  = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = -Inf)
+  simin  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -Inf)
 )
 
 tibble::tibble(

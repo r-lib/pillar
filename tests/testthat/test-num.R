@@ -23,8 +23,8 @@ test_that("output test", {
     # Scale
     tibble::tibble(
       small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
-      medium = num(9:11 /  100 + 0.0005, label = "%", scale = 100),
-      large  = num(9:11 /   10 + 0.005, label = "%", scale = 100)
+      medium = num(9:11 / 100 + 0.0005, label = "%", scale = 100),
+      large  = num(9:11 / 10 + 0.005, label = "%", scale = 100)
     )
 
     # Notation
@@ -39,13 +39,13 @@ test_that("output test", {
     tibble::tibble(
       scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
       engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
-      simin  = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = -Inf)
+      simin  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -Inf)
     )
 
     tibble::tibble(
       scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
       scilarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
-      scimax   = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = Inf)
+      scimax   = num(10^(-7:6) * 123, notation = "si", fixed_exponent = Inf)
     )
 
     # Extra significant figures
