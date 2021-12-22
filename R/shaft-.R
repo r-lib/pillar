@@ -207,6 +207,10 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, ext
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
+  if (class(x)[[1]] != "integer64") {
+    return(NextMethod())
+  }
+
   pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL, extra_sigfig = NULL)
 }
 

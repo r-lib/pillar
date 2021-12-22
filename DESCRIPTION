@@ -36,6 +36,7 @@ Suggests:
     ggplot2,
     knitr,
     lubridate,
+    nanotime,
     nycflights13,
     palmerpenguins,
     rmarkdown,
