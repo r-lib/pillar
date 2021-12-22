@@ -33,6 +33,6 @@ test_that("strings with varying widths", {
     ctl_colonnade(df_str[c(6L, 49L, 26L, 45L, 25L, 15L, 31L, 20L, 21L, 44L, 23L, 48L, 37L, 36L, 5L, 43L, 11L, 14L, 13L, 39L, 16L, 12L, 4L, 18L, 42L, 3L, 10L, 28L, 40L, 24L, 29L, 17L, 35L, 47L, 2L, 38L, 34L, 9L, 7L, 8L, 50L, 33L, 32L, 27L, 46L, 19L, 22L, 41L, 30L, 1L)], width = { options(width = 55); 779 })
 
     ctl_colonnade(df_str[c(38L, 42L, 41L, 10L, 40L, 11L, 27L, 9L, 17L, 37L, 46L, 13L, 36L, 18L, 31L, 20L, 39L, 12L, 44L, 33L, 50L, 34L, 26L, 32L, 23L, 30L, 29L, 21L, 4L, 49L, 19L, 25L, 3L, 6L, 15L, 14L, 43L, 48L, 8L, 22L, 1L, 2L, 45L, 35L, 16L, 5L, 47L, 28L, 24L, 7L)], width = { options(width = 46); 694 })
-   })
+  })
   # nolint end
- })
+})

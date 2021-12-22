@@ -23,8 +23,8 @@ test_that("output test", {
     # Scale
     tibble::tibble(
       small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
-      medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
-      large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
+      medium = num(9:11 /  100 + 0.0005, label = "%", scale = 100),
+      large  = num(9:11 /   10 + 0.005, label = "%", scale = 100)
     )
 
     # Notation
@@ -60,18 +60,18 @@ test_that("output test", {
 
 test_that("many digits", {
   expect_snapshot({
-    num(123456789 * 10 ^ (-9:0))
-    num(123456789 * 10 ^ (-9:1))
-    num(123456789 * 10 ^ (-9:1), notation = "dec")
-    num(123456789 * 10 ^ (-9:1), notation = "sci")
-    num(123456789 * 10 ^ (-9:1), notation = "eng")
-    num(123456789 * 10 ^ (-9:1), notation = "si")
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "eng", fixed_exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "si", fixed_exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = -3)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = 3)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = Inf)
+    num(123456789 * 10^(-9:0))
+    num(123456789 * 10^(-9:1))
+    num(123456789 * 10^(-9:1), notation = "dec")
+    num(123456789 * 10^(-9:1), notation = "sci")
+    num(123456789 * 10^(-9:1), notation = "eng")
+    num(123456789 * 10^(-9:1), notation = "si")
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "eng", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "si", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -3)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = 3)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = Inf)
   })
 })
 
