@@ -48,7 +48,7 @@
 #' tibble::tibble(
 #'   back = char(lipsum, shorten = "back"),
 #'   front = char(lipsum, shorten = "front"),
-#'   mid   = char(lipsum, shorten = "mid")
+#'   mid = char(lipsum, shorten = "mid")
 #' )
 #' tibble::tibble(abbr = char(lipsum, shorten = "abbreviate"))
 char <- function(x, ..., min_chars = NULL,
