@@ -20,7 +20,7 @@ test_that("nanotime works (#378)", {
   skip_if_not_installed("nanotime")
 
   # 0 tests for NA warning too
-  x <- nanotime::nanotime('2011-12-05 08:30:00.000', format ="%Y-%m-%d %H:%M:%E9S", tz ="GMT")
+  x <- nanotime::nanotime('2011-12-05 08:30:00.000', format = "%Y-%m-%d %H:%M:%E9S", tz = "GMT")
   expect_snapshot({
     pillar(x, width = 16)
     pillar(x, width = 17)
