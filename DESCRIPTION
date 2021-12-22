@@ -60,5 +60,5 @@ Config/testthat/start-first:
     ctl_colonnade,
     ctl_colonnade_1,
     ctl_colonnade_2
-Config/autostyle/scope: line_breaks
+Config/autostyle/scope: indention
 Config/autostyle/strict: false
