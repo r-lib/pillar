@@ -76,8 +76,8 @@
 #' # Scale
 #' tibble::tibble(
 #'   small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
-#'   medium = num(9:11 /  100 + 0.0005, label = "%", scale = 100),
-#'   large  = num(9:11 /   10 + 0.005, label = "%", scale = 100)
+#'   medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
+#'   large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
 #' )
 #'
 #' # Notation

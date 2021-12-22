@@ -32,7 +32,7 @@ NULL
 
 # nolint start
 .onLoad <- function(libname, pkgname) {
-  # nolint end
+# nolint end
   # Can't use vctrs::s3_register() here with vctrs 0.1.0
   # https://github.com/r-lib/vctrs/pull/314
   register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")

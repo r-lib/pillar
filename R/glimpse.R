@@ -25,8 +25,10 @@
 #' @export
 #' @examples
 #' glimpse(mtcars)
+#'
 #' @examplesIf rlang::is_installed("nycflights13")
 #' glimpse(nycflights13::flights)
+#'
 glimpse <- function(x, width = NULL, ...) {
   UseMethod("glimpse")
 }
