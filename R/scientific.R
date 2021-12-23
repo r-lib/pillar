@@ -21,6 +21,7 @@ si <- function(x) {
   )
 
   idx <- (x / 3) + 9
+  idx[is.na(idx)] <- 9
   style_bold(si_prefixes[idx])
 }
 

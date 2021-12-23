@@ -114,6 +114,7 @@ rowidformat2 <- function(data, names, has_star) {
 
 #' Construct a custom pillar object
 #'
+#' @description
 #' `r lifecycle::badge("experimental")`
 #'
 #' `new_pillar()` is the low-level constructor for pillar objects.
@@ -172,7 +173,7 @@ format.pillar <- function(x, width = NULL, ...) {
     width <- sum(widths) - length(widths) + 1L
   }
 
-  new_vertical(pillar_format_parts_2(x, width))
+  new_vertical(pillar_format_parts_2(x, width)$aligned[[1]])
 }
 
 #' @export

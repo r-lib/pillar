@@ -68,16 +68,16 @@
       pillar(add_special(c("\t")), width = 10)
     Output
       <pillar>
-      <chr>     
-      "\t"      
-       <NA>     
+      <chr>
+      "\t" 
+       <NA>
     Code
       pillar(add_special(c("a\nb")), width = 10)
     Output
       <pillar>
-      <chr>     
-      "a\nb"    
-       <NA>     
+      <chr> 
+      "a\nb"
+       <NA> 
     Code
       pillar(add_special(c("a\001b")), width = 10)
     Output

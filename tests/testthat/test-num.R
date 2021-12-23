@@ -23,8 +23,8 @@ test_that("output test", {
     # Scale
     tibble::tibble(
       small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
-      medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
-      large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
+      medium = num(9:11 / 100 + 0.0005, label = "%", scale = 100),
+      large  = num(9:11 / 10 + 0.005, label = "%", scale = 100)
     )
 
     # Notation
@@ -37,10 +37,86 @@ test_that("output test", {
 
     # Fixed exponent notation
     tibble::tibble(
-      scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-      engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE),
-      sifix  = num(10^(-7:6) * 123, notation = "si",  fixed_magnitude = TRUE)
+      scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
+      engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
+      simin  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -Inf)
     )
+
+    tibble::tibble(
+      scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
+      scilarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
+      scimax   = num(10^(-7:6) * 123, notation = "si", fixed_exponent = Inf)
+    )
+
+    # Extra significant figures
+    tibble::tibble(
+      default = num(100 + 1:3 * 0.001),
+      extra1 = num(100 + 1:3 * 0.001, extra_sigfig = TRUE),
+      extra2 = num(100 + 1:3 * 0.0001, extra_sigfig = TRUE),
+      extra3 = num(10000 + 1:3 * 0.00001, extra_sigfig = TRUE)
+    )
+  })
+})
+
+test_that("many digits", {
+  expect_snapshot({
+    num(123456789 * 10^(-9:0))
+    num(123456789 * 10^(-9:1))
+    num(123456789 * 10^(-9:1), notation = "dec")
+    num(123456789 * 10^(-9:1), notation = "sci")
+    num(123456789 * 10^(-9:1), notation = "eng")
+    num(123456789 * 10^(-9:1), notation = "si")
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "eng", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "si", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -3)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = 3)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = Inf)
+  })
+})
+
+test_that("sigfig and digits", {
+  expect_snapshot({
+    num(c(578890.23, 240234.131, 40234.1))
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 6)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 7)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 8)
+    num(c(578890.23, 240234.131, 40234.1), sigfig = 9)
+    num(c(578890.23, 240234.131, 40234.1), digits = 2)
+    num(c(578890.23, 240234.131, 40234.1), digits = 3)
+    num(c(578890.23, 240234.131, 40234.1), digits = 4)
+    num(c(578890.23, 240234.131, 40234.1), digits = -2)
+    num(c(578890.23, 240234.131, 40234.1), digits = -3)
+    num(c(578890.23, 240234.131, 40234.1), digits = -4)
+  })
+})
+
+test_that("forced digits", {
+  expect_snapshot({
+    pillar(num(1:3, digits = 2))
+    pillar(num(1:3, digits = 5))
+  })
+})
+
+test_that("all NA", {
+  expect_snapshot({
+    pillar(num(NA_real_, digits = 2))
+    pillar(num(NA_real_, notation = "si"))
+    pillar(num(NA_real_, notation = "sci"))
+    pillar(num(NA_real_, notation = "eng"))
+    pillar(num(NA_real_, notation = "sci", fixed_exponent = -1))
+    pillar(num(NA_real_, notation = "sci", fixed_exponent = -Inf))
+  })
+})
+
+test_that("some NA", {
+  expect_snapshot({
+    pillar(num(c(NA_real_, 1000), digits = 2))
+    pillar(num(c(NA_real_, 1000), notation = "si"))
+    pillar(num(c(NA_real_, 1000), notation = "sci"))
+    pillar(num(c(NA_real_, 1000), notation = "eng"))
+    pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -1))
+    pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
   })
 })
 
@@ -94,7 +170,7 @@ test_that("formatting", {
 
 test_that("attribute", {
   expect_snapshot({
-    set_num_opts(1, sigfig = 2, fixed_magnitude = TRUE)
+    set_num_opts(1, sigfig = 2, fixed_exponent = -Inf)
     set_num_opts(1000, digits = 2, notation = "eng")
   })
 })

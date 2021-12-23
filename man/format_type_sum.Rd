@@ -40,6 +40,7 @@ pillar(1)
 type_sum.accel <- function(x) {
   I("kg m/s^2")
 }
+
 accel <- structure(9.81, class = "accel")
 pillar(accel)
 }

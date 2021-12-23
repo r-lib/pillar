@@ -17,12 +17,12 @@ new_pillar(components, ..., width = NULL, class = NULL)
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-}
-\details{
+
 \code{new_pillar()} is the low-level constructor for pillar objects.
 It supports arbitrary components.
 See \code{\link[=pillar]{pillar()}} for the high-level constructor with default components.
-
+}
+\details{
 Arbitrary components are supported.
 If your tibble subclass needs more or different components in its pillars,
 override or extend \code{\link[=ctl_new_pillar]{ctl_new_pillar()}}

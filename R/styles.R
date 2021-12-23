@@ -14,16 +14,16 @@ keep_empty <- function(fun) {
 #' Functions that allow implementers of formatters for custom data types to
 #' maintain a consistent style with the default data types.
 #'
-#' `style_subtle()` is affected by the `pillar.subtle` option.
+#' `style_subtle()` is affected by the `subtle` [option][pillar_options].
 #'
 #' @param x The character vector to style.
 #' @export
-#' @seealso [pillar-package] for a list of options
+#' @seealso [pillar_options] for a list of options
 #' @examples
 #' style_subtle("text")
 style_subtle <- keep_empty(function(x) {
   force(x)
-  if (isTRUE(getOption("pillar.subtle", TRUE))) {
+  if (isTRUE(get_pillar_option_subtle())) {
     crayon_grey_0.6(x)
   } else {
     x
@@ -32,14 +32,15 @@ style_subtle <- keep_empty(function(x) {
 
 #' @rdname style_subtle
 #' @details
-#' `style_subtle_num()` is affected by the `pillar.subtle_num` option, which is
-#' `FALSE` by default.
+#' `style_subtle_num()` is affected by the
+#' `subtle_num` [option][pillar_options],
+#' which is `FALSE` by default.
 #'
 #' @export
 #' @examples
 #' style_subtle_num(0.01 * 1:3, c(TRUE, FALSE, TRUE))
 style_subtle_num <- function(x, negative) {
-  if (isTRUE(getOption("pillar.subtle_num", FALSE))) {
+  if (isTRUE(get_pillar_option_subtle_num())) {
     style_subtle(x)
   } else {
     ifelse(negative, style_neg(x), x)
@@ -48,7 +49,7 @@ style_subtle_num <- function(x, negative) {
 
 style_hint <- keep_empty(function(x) {
   force(x)
-  if (isTRUE(getOption("pillar.subtle", TRUE))) {
+  if (isTRUE(get_pillar_option_subtle())) {
     crayon_grey_0.8(x)
   } else {
     x
@@ -60,19 +61,20 @@ style_spark_na <- function(x) {
 }
 
 #' @details
-#' `style_bold()` is affected by the `pillar.bold` option.
+#' `style_bold()` is affected by the `bold` [option][pillar_options],
+#' which is `FALSE` by default.
 #'
 #' @rdname style_subtle
 #' @export
 #' @examples
 #' style_bold("Petal.Width")
-style_bold <- function(x) {
-  if (isTRUE(getOption("pillar.bold", FALSE))) {
+style_bold <- keep_empty(function(x) {
+  if (isTRUE(get_pillar_option_bold())) {
     crayon_bold(x)
   } else {
     x
   }
-}
+})
 
 #' @rdname style_subtle
 #' @export
@@ -83,14 +85,14 @@ style_na <- function(x) {
 }
 
 #' @details
-#' `style_neg()` is affected by the `pillar.neg` option.
+#' `style_neg()` is affected by the `pillar.neg` [option][pillar_options].
 #'
 #' @rdname style_subtle
 #' @export
 #' @examples
 #' style_neg("123")
 style_neg <- keep_empty(function(x) {
-  if (isTRUE(getOption("pillar.neg", TRUE))) {
+  if (isTRUE(get_pillar_option_neg())) {
     crayon_red(x)
   } else {
     x

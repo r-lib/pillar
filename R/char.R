@@ -1,6 +1,8 @@
 #' Format a character vector in a tibble
 #'
 #' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' Constructs a character vector that can be formatted with predefined minimum width
 #' or without width restrictions, and where the abbreviation style can be configured.
 #'
@@ -46,7 +48,7 @@
 #' tibble::tibble(
 #'   back = char(lipsum, shorten = "back"),
 #'   front = char(lipsum, shorten = "front"),
-#'   mid   = char(lipsum, shorten = "mid")
+#'   mid = char(lipsum, shorten = "mid")
 #' )
 #' tibble::tibble(abbr = char(lipsum, shorten = "abbreviate"))
 char <- function(x, ..., min_chars = NULL,
@@ -65,26 +67,15 @@ char <- function(x, ..., min_chars = NULL,
     shorten = shorten
   )
 
-  new_class <- c("tibble_char", "vctrs_vctr", "character")
+  new_class <- c("pillar_char", "pillar_vctr", "vctrs_vctr", "character")
   class(out) <- new_class
 
   out
 }
 
 #' @export
-pillar_shaft.tibble_char <- function(x, ...) {
-  # still seems necessary
-  pillar_shaft(unclass(x))
-}
-
-#' @export
-vec_ptype_full.tibble_char <- function(x, ...) {
-  format(attr(x, "pillar"))
-}
-
-#' @export
-vec_ptype_abbr.tibble_char <- function(x, ...) {
-  pillar_attr <- attr(x, "pillar")
+vec_ptype_abbr.pillar_char <- function(x, ...) {
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
 
   out <- "char"
 
@@ -97,8 +88,8 @@ vec_ptype_abbr.tibble_char <- function(x, ...) {
 }
 
 #' @export
-format.tibble_char <- function(x, trim = FALSE, ...) {
-  "!!!!DEBUG format.tibble_char()"
+format.pillar_char <- function(x, trim = FALSE, ...) {
+  "!!!!DEBUG format.pillar_char()"
 
   shaft <- pillar_shaft(x)
   out <- format(shaft, width = get_width(shaft))
@@ -108,18 +99,6 @@ format.tibble_char <- function(x, trim = FALSE, ...) {
     out <- format(out, align = "left")
   }
   out
-}
-
-#' @export
-obj_print_data.tibble_char <- function(x, ...) {
-  if (length(x) == 0) {
-    return(invisible(x))
-  }
-
-  # FIXME: base::print.default() can't use color, roll own implementation?
-  out <- stats::setNames(strip_sgr(format(x), warn = FALSE), names(x))
-  print(out, quote = FALSE)
-  invisible(x)
 }
 
 #' set_char_opts
@@ -145,15 +124,15 @@ set_char_opts <- function(x, ..., min_chars = NULL,
       min_chars = min_chars,
       shorten = shorten
     ),
-    class = c("tibble_char_attr", "tibble_vec_attr")
+    class = c("pillar_char_attr", "pillar_vctr_attr", "tibble_vec_attr")
   )
   attr(x, "pillar") <- pillar_attr
   x
 }
 
 #' @export
-format.tibble_char_attr <- function(x, ...) {
-  out <- "tibble_char"
+format.pillar_char_attr <- function(x, ...) {
+  out <- "pillar_char"
 
   min_chars <- x$min_chars
   if (!is.null(min_chars)) {
@@ -177,35 +156,29 @@ format.tibble_char_attr <- function(x, ...) {
 }
 
 #' @export
-print.tibble_char_attr <- function(x, ...) {
-  writeLines(format(x))
-  invisible(x)
-}
-
-#' @export
-vec_ptype2.tibble_char.tibble_char <- function(x, y, ...) {
+vec_ptype2.pillar_char.pillar_char <- function(x, y, ...) {
   x
 }
 #' @export
-vec_ptype2.tibble_char.character <- function(x, y, ...) {
+vec_ptype2.pillar_char.character <- function(x, y, ...) {
   x
 }
 #' @export
-vec_ptype2.character.tibble_char <- function(x, y, ...) {
+vec_ptype2.character.pillar_char <- function(x, y, ...) {
   y
 }
 
 #' @export
-vec_cast.tibble_char.tibble_char <- function(x, to, ...) {
-  pillar_x <- attr(x, "pillar")
-  pillar_to <- attr(to, "pillar")
+vec_cast.pillar_char.pillar_char <- function(x, to, ...) {
+  pillar_x <- attr(x, "pillar", exact = TRUE)
+  pillar_to <- attr(to, "pillar", exact = TRUE)
 
   pillar_x_shorten <- pillar_x$shorten
   pillar_to_shorten <- pillar_to$shorten
 
   if (!is.null(pillar_x_shorten) && !is.null(pillar_to_shorten)) {
     if (!identical(pillar_x$shorten, pillar_to$shorten)) {
-      abort("Only `tibble_char` objects with the same shortening setting can be combined.")
+      abort("Only `pillar_char` objects with the same shortening setting can be combined.")
     }
   }
 
@@ -220,19 +193,10 @@ vec_cast.tibble_char.tibble_char <- function(x, to, ...) {
   x
 }
 #' @export
-vec_cast.character.tibble_char <- function(x, to, ...) {
+vec_cast.character.pillar_char <- function(x, to, ...) {
   vec_data(x)
 }
 #' @export
-vec_cast.tibble_char.character <- function(x, to, ...) {
-  vec_restore(x, to)
-}
-
-#' @export
-vec_proxy_compare.tibble_char <- function(x, ...) {
-  vec_data(x)
-}
-#' @export
-vec_proxy_order.tibble_char <- function(x, ...) {
-  vec_data(x)
+vec_cast.pillar_char.character <- function(x, to, ...) {
+  vec_restore(vec_proxy(x), to)
 }

@@ -24,69 +24,74 @@
 # split_decimal(1.5:3.5, sci_mod = 1)
 # split_decimal(1e9)
 # split_decimal(1e9, sci_mod = 1)
-split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, fixed_magnitude = FALSE) {
+split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
+                          fixed_exponent = NULL) {
+  "!!!!!!DEBUG split_decimal(`v(x)`, `v(sigfig)`, `v(digits)`, `v(sci_mod)`, `v(si)`, `v(fixed_exponent)`"
+
   stopifnot(is.numeric(x))
   sigfig <- check_sigfig(sigfig)
 
-  abs_x <- abs(x)
-
   num <- is.finite(x)
+  "!!!!!!DEBUG `v(num)`"
   dec <- num
 
   # Do we need negative signs?
   neg <- !is.na(x) & x < 0
+  "!!!!!!DEBUG `v(neg)`"
+
+  abs_x <- abs(x)
+  mnt <- abs_x
+  "!!!!!!DEBUG `v(mnt)`"
 
   if (!is.null(sci_mod)) {
-    # Compute exponent and mantissa
-    exp <- compute_exp(abs_x, sigfig)
-
-    if (fixed_magnitude) {
-      exp <- rep_along(exp, as.integer(round(min(exp))))
-    }
-    if (sci_mod != 1) {
-      exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
-    }
-    if (si) {
-      # Truncate very small and very large exponents
-      exp <- pmax(exp, -24L)
-      exp <- pmin(exp, 24L)
-    }
+    exp <- fix_exp(num, compute_exp(mnt, sigfig, digits), fixed_exponent, sci_mod, si)
+    "!!!!!!DEBUG `v(exp)`"
 
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
-    mnt <- abs_x
-    mnt_idx <- which(num & abs_x != 0)
-    mnt[mnt_idx] <- abs_x[mnt_idx] / (10^exp[mnt_idx])
-    if (is.null(digits)) {
-      round_x <- safe_signif(mnt, sigfig)
-      rhs_digits <- ifelse(num & abs_x != 0, sigfig - 1, 0)
-    } else if (digits >= 0) {
-      round_x <- round(mnt, digits)
-      rhs_digits <- digits
-    } else {
-      round_x <- round(mnt, sigfig)
-      rhs_digits <- compute_rhs_digits(mnt - floor(mnt), -digits)
-    }
+    mnt_idx <- which(num & mnt != 0)
+    mnt[mnt_idx] <- safe_divide_10_to(mnt[mnt_idx], exp[mnt_idx])
+    "!!!!!!DEBUG `v(mnt)`"
+
     exp_display <- exp
   } else {
-    if (is.null(digits)) {
-      min_sigfig <- compute_min_sigfig(abs_x)
-      round_x <- safe_signif(abs_x, pmax(sigfig, min_sigfig, na.rm = TRUE))
-      rhs_digits <- compute_rhs_digits(abs_x, sigfig)
-    } else if (digits >= 0) {
-      round_x <- round(abs_x, digits)
-      rhs_digits <- digits
-    } else {
-      round_x <- round(abs_x, -digits)
-      rhs_digits <- compute_rhs_digits(abs_x - floor(abs_x), -digits)
-    }
+    exp <- 0
+    "!!!!!!DEBUG `v(exp)`"
     exp_display <- rep_along(x, NA_integer_)
   }
 
-  lhs <- trunc(round_x)
-  rhs <- round_x - lhs
-  if (is.null(sci_mod)) {
-    dec[diff_to_trunc(x) == 0] <- FALSE
+  if (is.null(digits)) {
+    "!!!!!!DEBUG `v(sigfig)`"
+    min_sigfig <- compute_min_sigfig(mnt)
+    round_mnt <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
+    rhs_digits <- compute_rhs_digits(mnt, sigfig)
+  } else if (digits >= 0) {
+    "!!!!!!DEBUG `v(digits)`"
+    round_mnt <- round(mnt, digits)
+    rhs_digits <- digits
+  } else {
+    "!!!!!!DEBUG `v(-digits)`"
+    round_mnt <- round(mnt, -digits)
+    trunc_mnt <- trunc(mnt)
+    rhs_digits <- compute_rhs_digits(mnt - trunc_mnt, -digits, trunc_mnt)
+  }
+
+  "!!!!!!DEBUG `v(round_mnt)`"
+  "!!!!!!DEBUG `v(rhs_digits)`"
+
+  lhs <- trunc(round_mnt)
+  "!!!!!!DEBUG `v(lhs)`"
+
+  rhs <- round_mnt - lhs
+  "!!!!!!DEBUG `v(rhs)`"
+
+  if (is.null(digits) || digits < 0) {
+    "!!!!!!DEBUG `v(lhs * 10^exp - abs_x)`"
+    reset_dec <- (mnt == 0 | (rhs == 0 & within_tolerance(lhs * 10^exp, abs_x)))
+    "!!!!!!DEBUG `v(reset_dec)`"
+
+    dec[reset_dec] <- FALSE
+    "!!!!!!DEBUG `v(dec)`"
   }
 
   ret <- list(
@@ -105,14 +110,51 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE, 
   set_width(ret, get_decimal_width(ret))
 }
 
+fix_exp <- function(num, exp, fixed_exponent, sci_mod, si) {
+  "!!!!!!DEBUG fix_exp(`v(num)`, `v(exp)`, `v(fixed_exponent)`, `v(sci_mod)`, `v(si)`"
+  if (!is.null(fixed_exponent)) {
+    if (is.finite(fixed_exponent)) {
+      exp <- fixed_exponent
+    } else if (all(is.na(exp))) {
+      exp <- NA_real_
+    } else if (fixed_exponent < 0) {
+      exp <- min(exp, na.rm = TRUE)
+    } else {
+      exp <- max(exp, na.rm = TRUE)
+    }
+    "!!!!!!DEBUG `v(exp)`"
+    exp <- rep_along(num, as.integer(round(exp)))
+    exp[!num] <- NA_integer_
+    "!!!!!!DEBUG `v(exp)`"
+  }
+
+  if (sci_mod != 1) {
+    exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
+    "!!!!!!DEBUG `v(exp)`"
+  }
+  if (si) {
+    # Truncate very small and very large exponents
+    exp <- pmax(exp, -24L)
+    exp <- pmin(exp, 24L)
+    "!!!!!!DEBUG `v(exp)`"
+  }
+
+  exp
+}
+
 get_decimal_width <- function(x) {
   exp <- x$exp[!is.na(x$exp)]
+
+  if (x$si) {
+    exp_digits <- any(exp != 0)
+  } else {
+    exp_digits <- any(exp < 0) + max(2 + trunc(log10(abs(exp) + 0.5)), 0)
+  }
 
   max(x$neg + nchar(x$lhs), 0) +
     any(x$dec, na.rm = TRUE) +
     max(x$rhs_digits, 0) +
-    any(exp < 0) +
-    max(2 + trunc(log10(abs(exp) + 0.5)), 0)
+    exp_digits
 }
 
 safe_signif <- function(x, digits) {
@@ -122,24 +164,57 @@ safe_signif <- function(x, digits) {
   signif(x, digits)
 }
 
-sqrt_eps <- sqrt(.Machine$double.eps)
+safe_divide_10_to <- function(x, y) {
+  # Computes x / 10^y in a robust way
 
-compute_rhs_digits <- function(x, sigfig) {
+  x / (10^y)
+}
+
+eps_2 <- 2 * .Machine$double.eps
+
+within_tolerance <- function(x, y) {
+  "!!!!!!DEBUG within_tolerance(`v(x)`, `v(y)`)"
+  l2x <- round(log2(x))
+  "!!!!!!DEBUG `v(l2x)`"
+  l2y <- round(log2(y))
+  "!!!!!!DEBUG `v(l2y)`"
+
+  equal <- (l2x == l2y)
+  equal[is.na(equal)] <- FALSE
+  out <- equal
+
+  # Work around integer64 problem
+  equal[x == y] <- FALSE
+  "!!!!!!DEBUG `v(abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]))`"
+  out[equal] <- abs((x[equal] - y[equal]) * 2^-l2x[equal]) <= eps_2
+  out
+}
+
+compute_rhs_digits <- function(x, sigfig, offset = rep_along(x, 0)) {
+  "!!!!!!DEBUG compute_rhs_digits(`v(x)`, `v(sigfig)`)"
   # If already bigger than sigfig, can round to zero.
   # Otherwise ensure we have sigfig digits shown
   exp <- compute_exp(x, sigfig)
   exp[is.na(exp)] <- Inf
+  "!!!!!!DEBUG `v(exp)"
   rhs_digits <- rep_along(x, 0)
+  "!!!!!!DEBUG `v(rhs_digits)"
+
   if (!is.integer(x) && !all(x == trunc(x), na.rm = TRUE)) {
     has_rhs <- (exp <= sigfig)
     rhs_digits[has_rhs] <- sigfig - 1 - exp[has_rhs]
 
     to_check <- rhs_digits > 0
     while (any(to_check, na.rm = TRUE)) {
+      "!!!!!!DEBUG `v(to_check)"
+      "!!!!!!DEBUG `v(rhs_digits)"
+
       which_to_check <- which(to_check)
-      val <- x[which_to_check] * 10^(rhs_digits[which_to_check] - 1)
-      resid <- diff_to_trunc(val)
-      resid_zero <- abs(resid) < sqrt_eps
+      val <- (x[which_to_check] + offset[which_to_check]) * 10^(rhs_digits[which_to_check] - 1)
+      "!!!!!!DEBUG `v(val)"
+      "!!!!!!DEBUG `v(val - round(val))"
+
+      resid_zero <- within_tolerance(val, round(val))
       resid_zero[is.na(resid_zero)] <- FALSE
 
       rhs_digits[which_to_check][resid_zero] <-
@@ -149,6 +224,8 @@ compute_rhs_digits <- function(x, sigfig) {
       to_check[rhs_digits == 0] <- FALSE
     }
   }
+
+  "!!!!!!DEBUG `v(rhs_digits)"
   rhs_digits
 }
 
@@ -159,9 +236,26 @@ compute_min_sigfig <- function(x) {
   ret
 }
 
+compute_extra_sigfig <- function(x) {
+  x <- sort(abs(x))
+  delta <- diff(x)
+  x <- x[-1]
+
+  keep <- which((delta != 0) & is.finite(delta))
+  if (length(keep) == 0) {
+    return(0)
+  }
+
+  ceiling(log10(max(x[keep] / delta[keep]))) - 1
+}
+
 LOG_10 <- log(10)
 
-compute_exp <- function(x, sigfig) {
+compute_exp <- function(x, sigfig, digits) {
+  if (is.null(sigfig)) {
+    sigfig <- abs(digits)
+  }
+
   # With 3 significant digits:
   # 0.9994 -> 0.999 -> exp == -1
   # 0.9995 -> 1.00 -> exp == 0

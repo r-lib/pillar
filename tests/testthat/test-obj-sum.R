@@ -19,7 +19,7 @@ test_that("data frames and common data vectors have size summary", {
 
   expect_obj_sum_is_ptype <- function(x) {
     obj_sum <- obj_sum(x)
-    ptype <- type_sum(x)
+    ptype <- vec_ptype_abbr(x, suffix_shape = FALSE)
 
     expect_equal(obj_sum, !!paste_with_space_if_needed(ptype, size_sum(x)))
   }

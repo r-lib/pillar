@@ -48,82 +48,359 @@
       notation = "si"), )
     Output
       # A tibble: 20 x 4
-              sci        eng                   dec         si
-            <sci>      <eng>                 <dec>       <si>
-       1 1.00e-13 100.00e-15       0.0000000000001    100.00f
-       2 1.00e-12   1.00e-12       0.000000000001       1.00p
-       3 1.00e-11  10.00e-12       0.000000000010      10.00p
-       4 1.00e-10 100.00e-12       0.0000000001       100.00p
-       5 1.00e- 9   1.00e- 9       0.000000001          1.00n
-       6 1.00e- 8  10.00e- 9       0.00000001          10.00n
-       7 1.00e- 7 100.00e- 9       0.0000001          100.00n
-       8 1.00e- 6   1.00e- 6       0.000001             1.00µ
-       9 1.00e- 5  10.00e- 6       0.00001             10.00µ
-      10 1.00e- 4 100.00e- 6       0.0001             100.00µ
-      11 1.00e- 3   1.00e- 3       0.001                1.00m
-      12 1.00e- 2  10.00e- 3       0.01                10.00m
-      13 1.00e- 1 100.00e- 3       0.1                100.00m
-      14 1.00e+ 0   1.00e+ 0       1                    1.00 
-      15 1.00e+ 1  10.00e+ 0      10                   10.00 
-      16 1.00e+ 2 100.00e+ 0     100                  100.00 
-      17 1.00e+ 3   1.00e+ 3    1000                    1.00k
-      18 1.00e+ 4  10.00e+ 3   10000                   10.00k
-      19 1.00e+ 5 100.00e+ 3  100000                  100.00k
-      20 1.00e+ 6   1.00e+ 6 1000000                    1.00M
+           sci     eng                   dec    si
+         <sci>   <eng>                 <dec>  <si>
+       1 1e-13 100e-15       0.0000000000001  100f
+       2 1e-12   1e-12       0.000000000001     1p
+       3 1e-11  10e-12       0.00000000001     10p
+       4 1e-10 100e-12       0.0000000001     100p
+       5 1e- 9   1e- 9       0.000000001        1n
+       6 1e- 8  10e- 9       0.00000001        10n
+       7 1e- 7 100e- 9       0.0000001        100n
+       8 1e- 6   1e- 6       0.000001           1µ
+       9 1e- 5  10e- 6       0.00001           10µ
+      10 1e- 4 100e- 6       0.0001           100µ
+      11 1e- 3   1e- 3       0.001              1m
+      12 1e- 2  10e- 3       0.01              10m
+      13 1e- 1 100e- 3       0.1              100m
+      14 1e+ 0   1e+ 0       1                  1 
+      15 1e+ 1  10e+ 0      10                 10 
+      16 1e+ 2 100e+ 0     100                100 
+      17 1e+ 3   1e+ 3    1000                  1k
+      18 1e+ 4  10e+ 3   10000                 10k
+      19 1e+ 5 100e+ 3  100000                100k
+      20 1e+ 6   1e+ 6 1000000                  1M
     Code
-      tibble::tibble(scifix = num(10^(-7:6) * 123, notation = "sci", fixed_magnitude = TRUE),
-      engfix = num(10^(-7:6) * 123, notation = "eng", fixed_magnitude = TRUE), sifix = num(
-        10^(-7:6) * 123, notation = "si", fixed_magnitude = TRUE))
+      tibble::tibble(scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -
+      Inf), engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
+      simin = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -Inf))
     Output
       # A tibble: 14 x 3
-                       scifix                engfix                 sifix
-                        <sci>                 <eng>                  <si>
-       1              1.23e-5              12.30e-6                12.30µ
-       2             12.30e-5             123.00e-6               123.00µ
-       3            123.00e-5            1230.00e-6              1230.00µ
-       4           1230.00e-5           12300.00e-6             12300.00µ
-       5          12300.00e-5          123000.00e-6            123000.00µ
-       6         123000.00e-5         1230000.00e-6           1230000.00µ
-       7        1230000.00e-5        12300000.00e-6          12300000.00µ
-       8       12300000.00e-5       123000000.00e-6         123000000.00µ
-       9      123000000.00e-5      1230000000.00e-6        1230000000.00µ
-      10     1230000000.00e-5     12300000000.00e-6       12300000000.00µ
-      11    12300000000.00e-5    123000000000.00e-6      123000000000.00µ
-      12   123000000000.00e-5   1230000000000.00e-6     1230000000000.00µ
-      13  1230000000000.00e-5  12300000000000.00e-6    12300000000000.00µ
-      14 12300000000000.00e-5 123000000000000.00e-6   123000000000000.00µ
+                       scimin               engmin              simin
+                        <sci>                <eng>               <si>
+       1              1.23e-5              12.3e-6              12.3µ
+       2             12.3 e-5             123  e-6             123  µ
+       3            123   e-5            1230  e-6            1230  µ
+       4           1230   e-5           12300  e-6           12300  µ
+       5          12300   e-5          123000  e-6          123000  µ
+       6         123000   e-5         1230000  e-6         1230000  µ
+       7        1230000   e-5        12300000  e-6        12300000  µ
+       8       12300000   e-5       123000000  e-6       123000000  µ
+       9      123000000   e-5      1230000000  e-6      1230000000  µ
+      10     1230000000   e-5     12300000000  e-6     12300000000  µ
+      11    12300000000   e-5    123000000000  e-6    123000000000  µ
+      12   123000000000   e-5   1230000000000  e-6   1230000000000  µ
+      13  1230000000000   e-5  12300000000000  e-6  12300000000000  µ
+      14 12300000000000   e-5 123000000000000  e-6 123000000000000  µ
+    Code
+      tibble::tibble(scismall = num(10^(-7:6) * 123, notation = "sci",
+      fixed_exponent = -3), scilarge = num(10^(-7:6) * 123, notation = "eng",
+      fixed_exponent = 3), scimax = num(10^(-7:6) * 123, notation = "si",
+      fixed_exponent = Inf))
+    Output
+      # A tibble: 14 x 3
+                     scismall            scilarge             scimax
+                        <sci>               <eng>               <si>
+       1            0.0123e-3      0.0000000123e3   0.0000000000123M
+       2            0.123 e-3      0.000000123 e3   0.000000000123 M
+       3            1.23  e-3      0.00000123  e3   0.00000000123  M
+       4           12.3   e-3      0.0000123   e3   0.0000000123   M
+       5          123     e-3      0.000123    e3   0.000000123    M
+       6         1230     e-3      0.00123     e3   0.00000123     M
+       7        12300     e-3      0.0123      e3   0.0000123      M
+       8       123000     e-3      0.123       e3   0.000123       M
+       9      1230000     e-3      1.23        e3   0.00123        M
+      10     12300000     e-3     12.3         e3   0.0123         M
+      11    123000000     e-3    123           e3   0.123          M
+      12   1230000000     e-3   1230           e3   1.23           M
+      13  12300000000     e-3  12300           e3  12.3            M
+      14 123000000000     e-3 123000           e3 123              M
+    Code
+      tibble::tibble(default = num(100 + 1:3 * 0.001), extra1 = num(100 + 1:3 * 0.001,
+      extra_sigfig = TRUE), extra2 = num(100 + 1:3 * 1e-04, extra_sigfig = TRUE),
+      extra3 = num(10000 + 1:3 * 1e-05, extra_sigfig = TRUE))
+    Output
+      # A tibble: 3 x 4
+        default  extra1   extra2      extra3
+          <num>   <num>    <num>       <num>
+      1    100. 100.001 100.0001 10000.00001
+      2    100. 100.002 100.0002 10000.00002
+      3    100. 100.003 100.0003 10000.00003
+
+# many digits
+
+    Code
+      num(123456789 * 10^(-9:0))
+    Output
+      <pillar_num[10]>
+       [1]         0.123         1.23         12.3         123.         1235.   
+       [6]     12346.       123457.      1234568.     12345679.    123456789    
+    Code
+      num(123456789 * 10^(-9:1))
+    Output
+      <pillar_num[11]>
+       [1] 1.23e-1 1.23e+0 1.23e+1 1.23e+2 1.23e+3 1.23e+4 1.23e+5 1.23e+6 1.23e+7
+      [10] 1.23e+8 1.23e+9
+    Code
+      num(123456789 * 10^(-9:1), notation = "dec")
+    Output
+      <pillar_num(dec)[11]>
+       [1]          0.123          1.23          12.3          123.          1235.   
+       [6]      12346.        123457.       1234568.      12345679.     123456789    
+      [11] 1234567890    
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci")
+    Output
+      <pillar_num(sci)[11]>
+       [1] 1.23e-1 1.23e+0 1.23e+1 1.23e+2 1.23e+3 1.23e+4 1.23e+5 1.23e+6 1.23e+7
+      [10] 1.23e+8 1.23e+9
+    Code
+      num(123456789 * 10^(-9:1), notation = "eng")
+    Output
+      <pillar_num(eng)[11]>
+       [1] 123.  e-3   1.23e+0  12.3 e+0 123.  e+0   1.23e+3  12.3 e+3 123.  e+3
+       [8]   1.23e+6  12.3 e+6 123.  e+6   1.23e+9
+    Code
+      num(123456789 * 10^(-9:1), notation = "si")
+    Output
+      <pillar_num(si)[11]>
+       [1] 123.  m   1.23   12.3   123.      1.23k  12.3 k 123.  k   1.23M  12.3 M
+      [10] 123.  M   1.23G
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -Inf)
+    Output
+      <pillar_num(sci)|-Inf[11]>
+       [1]           1.23e-1          12.3 e-1         123.  e-1        1235.  e-1
+       [5]       12346.  e-1      123457.  e-1     1234568.  e-1    12345679.  e-1
+       [9]   123456789   e-1  1234567890   e-1 12345678900   e-1
+    Code
+      num(123456789 * 10^(-9:1), notation = "eng", fixed_exponent = -Inf)
+    Output
+      <pillar_num(eng)|-Inf[11]>
+       [1]           123.e-3          1235.e-3         12346.e-3        123457.e-3
+       [5]       1234568.e-3      12345679.e-3     123456789 e-3    1234567890 e-3
+       [9]   12345678900 e-3  123456789000 e-3 1234567890000 e-3
+    Code
+      num(123456789 * 10^(-9:1), notation = "si", fixed_exponent = -Inf)
+    Output
+      <pillar_num(si)|-Inf[11]>
+       [1]           123.m          1235.m         12346.m        123457.m
+       [5]       1234568.m      12345679.m     123456789 m    1234567890 m
+       [9]   12345678900 m  123456789000 m 1234567890000 m
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -3)
+    Output
+      <pillar_num(sci)|-3[11]>
+       [1]           123.e-3          1235.e-3         12346.e-3        123457.e-3
+       [5]       1234568.e-3      12345679.e-3     123456789 e-3    1234567890 e-3
+       [9]   12345678900 e-3  123456789000 e-3 1234567890000 e-3
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = 3)
+    Output
+      <pillar_num(sci)|3[11]>
+       [1]       0.000123e3       0.00123 e3       0.0123  e3       0.123   e3
+       [5]       1.23    e3      12.3     e3     123.      e3    1235.      e3
+       [9]   12346.      e3  123457.      e3 1234568.      e3
+    Code
+      num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = Inf)
+    Output
+      <pillar_num(sci)|Inf[11]>
+       [1] 0.000000000123e9 0.00000000123 e9 0.0000000123  e9 0.000000123   e9
+       [5] 0.00000123    e9 0.0000123     e9 0.000123      e9 0.00123       e9
+       [9] 0.0123        e9 0.123         e9 1.23          e9
+
+# sigfig and digits
+
+    Code
+      num(c(578890.23, 240234.131, 40234.1))
+    Output
+      <pillar_num[3]>
+      [1] 578890. 240234.  40234.
+    Code
+      num(c(578890.23, 240234.131, 40234.1), sigfig = 6)
+    Output
+      <pillar_num:6[3]>
+      [1] 578890.  240234.   40234.1
+    Code
+      num(c(578890.23, 240234.131, 40234.1), sigfig = 7)
+    Output
+      <pillar_num:7[3]>
+      [1] 578890.2 240234.1  40234.1
+    Code
+      num(c(578890.23, 240234.131, 40234.1), sigfig = 8)
+    Output
+      <pillar_num:8[3]>
+      [1] 578890.23 240234.13  40234.1 
+    Code
+      num(c(578890.23, 240234.131, 40234.1), sigfig = 9)
+    Output
+      <pillar_num:9[3]>
+      [1] 578890.23  240234.131  40234.1  
+    Code
+      num(c(578890.23, 240234.131, 40234.1), digits = 2)
+    Output
+      <pillar_num:.2![3]>
+      [1] 578890.23 240234.13  40234.10
+    Code
+      num(c(578890.23, 240234.131, 40234.1), digits = 3)
+    Output
+      <pillar_num:.3![3]>
+      [1] 578890.230 240234.131  40234.100
+    Code
+      num(c(578890.23, 240234.131, 40234.1), digits = 4)
+    Output
+      <pillar_num:.4![3]>
+      [1] 578890.2300 240234.1310  40234.1000
+    Code
+      num(c(578890.23, 240234.131, 40234.1), digits = -2)
+    Output
+      <pillar_num:.2[3]>
+      [1] 578890.23 240234.13  40234.1 
+    Code
+      num(c(578890.23, 240234.131, 40234.1), digits = -3)
+    Output
+      <pillar_num:.3[3]>
+      [1] 578890.23  240234.131  40234.1  
+    Code
+      num(c(578890.23, 240234.131, 40234.1), digits = -4)
+    Output
+      <pillar_num:.4[3]>
+      [1] 578890.23  240234.131  40234.1  
+
+# forced digits
+
+    Code
+      pillar(num(1:3, digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+           1.00
+           2.00
+           3.00
+    Code
+      pillar(num(1:3, digits = 5))
+    Output
+      <pillar>
+      <num:.5!>
+        1.00000
+        2.00000
+        3.00000
+
+# all NA
+
+    Code
+      pillar(num(NA_real_, digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+           NA  
+    Code
+      pillar(num(NA_real_, notation = "si"))
+    Output
+      <pillar>
+       <si>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "sci"))
+    Output
+      <pillar>
+      <sci>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "eng"))
+    Output
+      <pillar>
+      <eng>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "sci", fixed_exponent = -1))
+    Output
+      <pillar>
+      <sci>
+         NA
+    Code
+      pillar(num(NA_real_, notation = "sci", fixed_exponent = -Inf))
+    Output
+      <pillar>
+      <sci>
+         NA
+
+# some NA
+
+    Code
+      pillar(num(c(NA_real_, 1000), digits = 2))
+    Output
+      <pillar>
+      <num:.2!>
+          NA   
+        1000.00
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "si"))
+    Output
+      <pillar>
+       <si>
+        NA 
+         1k
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "sci"))
+    Output
+      <pillar>
+      <sci>
+       NA  
+        1e3
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "eng"))
+    Output
+      <pillar>
+      <eng>
+       NA  
+        1e3
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -1))
+    Output
+      <pillar>
+         <sci>
+         NA   
+      10000e-1
+    Code
+      pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
+    Output
+      <pillar>
+      <sci>
+       NA  
+        1e3
 
 # arithmetics
 
     Code
       num(1) + 2
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] 3
     Code
       1 + num(2)
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] 3
     Code
       1L + num(2)
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] 3
     Code
       num(3.23456, sigfig = 4) - num(2)
     Output
-      <tibble_num:4[1]>
+      <pillar_num:4[1]>
       [1] 1.235
     Code
       num(3, digits = 2) * num(4, sigfig = 2)
     Output
-      <tibble_num:.2![1]>
-      [1] 12  
+      <pillar_num:.2![1]>
+      [1] 12.00
     Code
       -num(2)
     Output
-      <tibble_num[1]>
+      <pillar_num[1]>
       [1] -2
 
 # mathematics
@@ -131,17 +408,17 @@
     Code
       min(num(1:3, label = "$"))
     Output
-      <tibble_num{$}[1]>
+      <pillar_num{$}[1]>
       [1] 1
     Code
       mean(num(1:3, notation = "eng"))
     Output
-      <tibble_num(eng)[1]>
-      [1] 2.00e0
+      <pillar_num(eng)[1]>
+      [1] 2e0
     Code
       sin(num(1:3, label = "%", scale = 100))
     Output
-      <tibble_num{%}*100[3]>
+      <pillar_num{%}*100[3]>
       [1] 84.1 90.9 14.1
 
 # formatting
@@ -158,15 +435,15 @@
 # attribute
 
     Code
-      set_num_opts(1, sigfig = 2, fixed_magnitude = TRUE)
+      set_num_opts(1, sigfig = 2, fixed_exponent = -Inf)
     Output
       [1] 1
       attr(,"pillar")
-      tibble_num:2|
+      pillar_num:2|-Inf
     Code
       set_num_opts(1000, digits = 2, notation = "eng")
     Output
       [1] 1000
       attr(,"pillar")
-      tibble_num(eng):.2!
+      pillar_num(eng):.2!
 

@@ -33,7 +33,7 @@
 #' @param title The title, derived from the name of the column in the data
 #'
 #' @export
-#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE) && requireNamespace("tibble", quietly = TRUE)
+#' @examplesIf rlang::is_installed("palmerpenguins") && requireNamespace("tibble")
 #' # Create pillar objects
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,
@@ -57,7 +57,6 @@
 #'
 #' # Packed array
 #' ctl_new_compound_pillar(tibble::tibble(), Titanic, width = 60)
-#'
 #' @examples
 #'
 #' # Customize output

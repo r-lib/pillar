@@ -36,6 +36,8 @@ The \code{"pillar.min_chars"} option is not consulted.}
 }}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Constructs a character vector that can be formatted with predefined minimum width
 or without width restrictions, and where the abbreviation style can be configured.
 
@@ -73,7 +75,7 @@ lipsum <- unlist(strsplit(stringi::stri_rand_lipsum(1), "(?<=[.]) +", perl = TRU
 tibble::tibble(
   back = char(lipsum, shorten = "back"),
   front = char(lipsum, shorten = "front"),
-  mid   = char(lipsum, shorten = "mid")
+  mid = char(lipsum, shorten = "mid")
 )
 tibble::tibble(abbr = char(lipsum, shorten = "abbreviate"))
 \dontshow{\}) # examplesIf}

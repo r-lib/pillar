@@ -13,8 +13,9 @@ test_that("negative values displayed correct", {
 })
 
 test_that("exponents correct in presence of NA", {
-  f <- split_decimal_bw(c(NA, 1e-5))
-  expect_equal(unname(format(f, justify = "right")), c("NA      ", " 1.00e-5"))
+  expect_snapshot({
+    format(split_decimal_bw(c(NA, 1e-5)), justify = "right")
+  })
 })
 
 test_that("corner cases", {

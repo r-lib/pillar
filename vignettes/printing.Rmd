@@ -60,7 +60,7 @@ Boxes are functions and methods.
 Solid lines are function calls.
 Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.
 
-```{r echo = FALSE}
+```{r echo = FALSE, error = TRUE}
 DiagrammeR::mermaid("format.mmd")
 ```
 

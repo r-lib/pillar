@@ -108,11 +108,19 @@ remove_as_is_class <- function(x) {
   x
 }
 
-diff_to_trunc <- function(x) {
-  x - trunc(x)
-}
-
 v <- function(x) {
   expr <- rlang::expr_deparse(substitute(x), width = Inf)
   paste0(expr, " = ", rlang::expr_deparse(x, width = 80)[[1]])
+}
+
+# Needed for R 3.4 and earlier
+safe_is_na <- function(x) {
+  if (is.null(x)) {
+    return(logical())
+  }
+  is.na(x)
+}
+
+safe_any_na <- function(x) {
+  anyNA(x)
 }

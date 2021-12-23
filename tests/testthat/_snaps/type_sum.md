@@ -14,9 +14,9 @@
       new_tbl(new_tbl(list(foo = foo, bar = bar)))
     Output
       # A data frame: 3 x 2
-        foo   bar  
-        AsIs  SC   
-      1 2011  2011 
-      2 2012  2012 
-      3 2013  2013 
+        foo  bar 
+        AsIs SC  
+      1 2011 2011
+      2 2012 2012
+      3 2013 2013
 

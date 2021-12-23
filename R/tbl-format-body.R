@@ -21,7 +21,7 @@
 #'   A character vector.
 #'
 #' @export
-#' @examplesIf requireNamespace("palmerpenguins", quietly = TRUE)
+#' @examplesIf rlang::is_installed("palmerpenguins")
 #' setup <- tbl_format_setup(palmerpenguins::penguins)
 #' tbl_format_body(palmerpenguins::penguins, setup)
 #'
