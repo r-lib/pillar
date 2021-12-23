@@ -335,5 +335,5 @@ pillar_shaft.default <- function(x, ...) {
   #' @details
   #' The default method will currently format via [format()],
   #' but you should not rely on this behavior.
-  pillar_shaft(new_vertical(format(x)), ...)
+  pillar_shaft(as_glue(format(x)), ...)
 }
