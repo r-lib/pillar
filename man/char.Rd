@@ -25,7 +25,7 @@ set_char_opts(
 \item{...}{These dots are for future extensions and must be empty.}
 
 \item{min_chars}{The minimum width to allocate to this column, defaults to 15.
-The \code{"pillar.min_chars"} option is not consulted.}
+The \code{"pillar.min_chars"} \link[pillar:pillar_options]{option} is not consulted.}
 
 \item{shorten}{How to abbreviate the data if necessary:
 \itemize{
@@ -38,50 +38,8 @@ The \code{"pillar.min_chars"} option is not consulted.}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Constructs a character vector that can be formatted with predefined minimum width
-or without width restrictions, and where the abbreviation style can be configured.
-
-The formatting is applied when the vector is printed or formatted,
-and also in a tibble column.
+These functions are reexported as \code{\link[tibble:char]{tibble::char()}} and \code{\link[tibble:char]{tibble::set_char_opts()}}.
 
 \code{set_char_opts()} adds formatting options to an arbitrary character vector,
 useful for composing with other types.
 }
-\examples{
-# Display as a vector:
-char(letters[1:3])
-\dontshow{if ({ set.seed(20210331); rlang::is_installed("stringi") }) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Space constraints:
-rand_strings <- stringi::stri_rand_strings(10, seq(40, 22, by = -2))
-
-# Plain character vectors get truncated if space is limited:
-data_with_id <- function(id) {
-  tibble::tibble(
-    id,
-    some_number_1 = 1, some_number_2 = 2, some_number_3 = 3,
-    some_number_4 = 4, some_number_5 = 5, some_number_6 = 6,
-    some_number_7 = 7, some_number_8 = 8, some_number_9 = 9
-  )
-}
-data_with_id(rand_strings)
-
-# Use char() to avoid or control truncation
-data_with_id(char(rand_strings, min_chars = 24))
-data_with_id(char(rand_strings, min_chars = Inf))
-data_with_id(char(rand_strings, min_chars = 24, shorten = "mid"))
-
-# Lorem Ipsum, one sentence per row.
-lipsum <- unlist(strsplit(stringi::stri_rand_lipsum(1), "(?<=[.]) +", perl = TRUE))
-tibble::tibble(
-  back = char(lipsum, shorten = "back"),
-  front = char(lipsum, shorten = "front"),
-  mid = char(lipsum, shorten = "mid")
-)
-tibble::tibble(abbr = char(lipsum, shorten = "abbreviate"))
-\dontshow{\}) # examplesIf}
-}
-\seealso{
-Other vector classes: 
-\code{\link{num}()}
-}
-\concept{vector classes}
