@@ -316,7 +316,7 @@
 ---
 
     Code
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
     Output
       col_02 <chr>
       col_03 <fct>
@@ -325,7 +325,7 @@
 ---
 
     Code
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
     Output
       col_02 <chr>
       col_03 <fct>
@@ -334,7 +334,7 @@
 ---
 
     Code
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
     Output
       col_03 <fct>
       col_04 <ord>
@@ -342,14 +342,14 @@
 ---
 
     Code
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
     Output
       col_04 <ord>
 
 ---
 
     Code
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
 
 # tests from tibble
 

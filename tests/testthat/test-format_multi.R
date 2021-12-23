@@ -67,30 +67,30 @@ test_that("output test", {
   # Spurious warnings on Windows
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
     })
   )
 
   expect_snapshot({
-    new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
+    as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
   })
 })
 
