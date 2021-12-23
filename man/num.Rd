@@ -29,48 +29,7 @@ set_num_opts(
   extra_sigfig = NULL
 )
 }
-\arguments{
-\item{x}{A numeric vector.}
-
-\item{...}{These dots are for future extensions and must be empty.}
-
-\item{sigfig}{Define the number of significant digits to show. Must be one or greater.
-The \code{"pillar.sigfig"} \link[pillar:pillar_options]{option} is not consulted.
-Can't be combined with \code{digits}.}
-
-\item{digits}{Number of digits after the decimal points to show.
-Positive numbers specify the exact number of digits to show.
-Negative numbers specify (after negation) the maximum number of digits to show.
-With \code{digits = 2}, the numbers 1.2 and 1.234 are printed as 1.20 and 1.23,
-with \code{digits = -2} as 1.2 and 1.23, respectively.
-Can't be combined with \code{sigfig}.}
-
-\item{label}{A label to show instead of the type description.}
-
-\item{scale}{Multiplier to apply to the data before showing.
-Useful for displaying e.g. percentages.
-Must be combined with \code{label}.}
-
-\item{notation}{One of \code{"fit"}, \code{"dec"}, \code{"sci"}, \code{"eng"}, or \code{"si"}.
-\itemize{
-\item \code{"fit"}: Use decimal notation if it fits and if it consumes 13 digits or less,
-otherwise use scientific notation. (The default for numeric pillars.)
-\item \code{"dec"}: Use decimal notation, regardless of width.
-\item \code{"sci"}: Use scientific notation.
-\item \code{"eng"}: Use engineering notation, i.e. scientific notation
-using exponents that are a multiple of three.
-\item \code{"si"}: Use SI notation, prefixes between \code{1e-24} and \code{1e24} are supported.
-}}
-
-\item{fixed_exponent}{Use the same exponent for all numbers in scientific, engineering or SI notation.
-\code{-Inf} uses the smallest, \code{+Inf} the largest fixed_exponent present in the data.
-The default is to use varying exponents.}
-
-\item{extra_sigfig}{If \code{TRUE}, increase the number of significant digits if the data consists of
-numbers of the same magnitude with subtle differences.}
-}
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 These functions are reexported as \code{\link[tibble:num]{tibble::num()}} and \code{\link[tibble:num]{tibble::set_num_opts()}}.
 }
+\keyword{internal}

@@ -1,12 +1,8 @@
 #' Format a character vector in a tibble
 #'
-#' @description
-#' `r lifecycle::badge("experimental")`
-#'
 #' These functions are reexported as [tibble::char()] and [tibble::set_char_opts()].
 #'
-#' @inheritParams tibble::char
-#' @inheritParams tibble::set_char_opts
+#' @keywords internal
 #' @export
 char <- function(x, ..., min_chars = NULL,
                  shorten = c("back", "front", "mid", "abbreviate")) {

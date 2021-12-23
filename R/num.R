@@ -1,12 +1,8 @@
 #' Format a numeric vector in a tibble
 #'
-#' @description
-#' `r lifecycle::badge("experimental")`
-#'
 #' These functions are reexported as [tibble::num()] and [tibble::set_num_opts()].
 #'
-#' @inheritParams tibble::num
-#' @inheritParams tibble::set_num_opts
+#' @keywords internal
 #' @export
 num <- function(x, ...,
                 sigfig = NULL, digits = NULL,

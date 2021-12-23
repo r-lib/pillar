@@ -19,24 +19,7 @@ set_char_opts(
   shorten = c("back", "front", "mid", "abbreviate")
 )
 }
-\arguments{
-\item{x}{A character vector.}
-
-\item{...}{These dots are for future extensions and must be empty.}
-
-\item{min_chars}{The minimum width to allocate to this column, defaults to 15.
-The \code{"pillar.min_chars"} \link[pillar:pillar_options]{option} is not consulted.}
-
-\item{shorten}{How to abbreviate the data if necessary:
-\itemize{
-\item \code{"back"} (default): add an ellipsis at the end
-\item \code{"front"}: add an ellipsis at the front
-\item \code{"mid"}: add an ellipsis in the middle
-\item \code{"abbreviate"}: use \code{\link[=abbreviate]{abbreviate()}}
-}}
-}
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 These functions are reexported as \code{\link[tibble:char]{tibble::char()}} and \code{\link[tibble:char]{tibble::set_char_opts()}}.
 }
+\keyword{internal}

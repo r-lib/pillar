@@ -10,7 +10,7 @@
 #' The `formatted` argument may also contain ANSI escapes to change color
 #' or other attributes of the text, see [crayon].
 #'
-#' @inheritParams char
+#' @inheritParams tibble::char
 #' @param formatted An object coercible to [character].
 #' @param align Alignment of the column.
 #' @param na String to use as `NA` value, defaults to `"NA"` styled with
