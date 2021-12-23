@@ -58,11 +58,6 @@ format.pillar_char <- function(x, trim = FALSE, ...) {
   out
 }
 
-#' set_char_opts
-#'
-#' `set_char_opts()` adds formatting options to an arbitrary character vector,
-#' useful for composing with other types.
-#'
 #' @export
 #' @rdname char
 set_char_opts <- function(x, ..., min_chars = NULL,

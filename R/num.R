@@ -137,11 +137,6 @@ vec_math.pillar_num <- function(op, x, ...) {
   out
 }
 
-#' set_num_opts
-#'
-#' `set_num_opts()` adds formatting options to an arbitrary numeric vector,
-#' useful for composing with other types.
-#'
 #' @export
 #' @rdname num
 set_num_opts <- function(x, ...,
