@@ -50,16 +50,16 @@ new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left"
 
 #' @export
 format.pillar_shaft_simple <- function(x, width, ...) {
-  align <- attr(x, "align")
-  shorten <- attr(x, "shorten")
+  align <- attr(x, "align", exact = TRUE)
+  shorten <- attr(x, "shorten", exact = TRUE)
   desired_width <- get_width(x)
   shaft <- as.character(x[[1]])
   if (width < desired_width) {
     shaft <- str_trunc(shaft, width, shorten)
   }
   shaft[is.na(shaft)] <- paste0(
-    strrep(" ", attr(x, "na_indent")),
-    attr(x, "na")
+    strrep(" ", attr(x, "na_indent", exact = TRUE)),
+    attr(x, "na", exact = TRUE)
   )
 
   new_ornament(shaft, width = width, align = align)

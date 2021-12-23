@@ -7,66 +7,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r numbers-1, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  cache = TRUE,
-  comment = "#>"
-)
-```
+This content has moved to `vignette("numbes", packages = "tibble)`.
 
-Tibbles print numbers with three significant digits by default, switching to scientific notation if the available space is too small.
-Underlines are used to highlight groups of three digits.
-This display works for many, but not for all use cases.
-
-```{r numbers-2}
-library(pillar)
-```
-
-## Showing `num`
-
-```{r numbers-4}
-library(tibble)
-```
-
-
-### Example
-
-```{r numbers-5}
-num(-1:3, notation = "sci")
-
-tibble(
-  x4 = num(8:12 * 100 + 0.5, digits = 4),
-  x1 = num(8:12 * 100 + 0.5, digits = -1),
-  usd = num(8:12 * 100 + 0.5, digits = 2, label = "USD"),
-  percent = num(8:12 / 100 + 0.0005, label = "%", scale = 100),
-  eng = num(10^(-3:1), notation = "eng", fixed_exponent = -Inf),
-  si = num(10^(-3:1) * 123, notation = "si")
-)
-```
-
-
-## Computing on `num`
-
-### Arithmetics
-
-```{r numbers-13}
-num(1) + 2
-1 + num(2)
-1L + num(2)
-num(3.23456, sigfig = 4) - num(2)
-num(4, sigfig = 2) * num(3, digits = 2)
-num(3, digits = 2) * num(4, sigfig = 2)
--num(2)
-```
-
-### Mathematics
-
-```{r numbers-16}
-min(num(1:3, label = "$"))
-mean(num(1:3, notation = "eng"))
-sin(num(1:3, label = "%", scale = 100))
-```
+`````{asis echo = FALSE}
 
 ## Integrating with other classes
 
@@ -78,7 +21,7 @@ FIXME
 
 ### units
 
-```{r numbers-17}
+xxx{r numbers-17}
 library(units)
 
 set_units.pillar_num <- function(x, ...) {
@@ -101,11 +44,11 @@ tibble(
   digits_int = set_num_opts(km, digits = 4) + m,
   sci_ext = set_units(num(1:3, notation = "sci"), m) + km
 )
-```
+xxx
 
 ### formattable
 
-```{r numbers-18}
+xxx{r numbers-18, error = TRUE}
 library(formattable)
 
 pillar_shaft.formattable <- function(x, ...) {
@@ -113,13 +56,13 @@ pillar_shaft.formattable <- function(x, ...) {
 }
 
 pillar_shaft.formattable_currency <- function(x, ...) {
-  formattable <- attr(x, "formattable")
+  formattable <- attr(x, "formattable", exact = TRUE)
 
   pillar_shaft(num(unclass(x), digits = formattable$digits))
 }
 
 pillar_shaft.formattable_percent <- function(x, ...) {
-  formattable <- attr(x, "formattable")
+  formattable <- attr(x, "formattable", exact = TRUE)
 
   pillar_shaft(num(unclass(x), digits = formattable$digits, label = "%", scale = 100))
 }
@@ -129,7 +72,7 @@ pillar_shaft.formattable_scientific <- function(x, ...) {
 }
 
 type_sum.formattable <- function(x) {
-  formattable <- attr(x, "formattable")
+  formattable <- attr(x, "formattable", exact = TRUE)
 
   if (inherits(x, "formattable_currency")) {
     I(sub("^formattable_", "", class(x)[[1]]))
@@ -149,11 +92,11 @@ tibble(
   percent = num_percent(1:3 * 0.1 + 0.001),
   scientific = num_scientific(1:3 * 0.1 + 0.001)
 )
-```
+xxx
 
 ### scales
 
-```{r numbers-scales, error = TRUE}
+xxx{r numbers-scales, error = TRUE}
 library(scales)
 
 x <- num(1:10 / 100, label = "%", scale = 100)
@@ -164,11 +107,11 @@ x < 0
 x < 0L
 
 scales::cscale(x, scales::rescale_pal())
-```
+xxx
 
 ### ggplot2
 
-```{r numbers-19}
+xxx{r numbers-19}
 library(ggplot2)
 
 scale_type.pillar_num <- function(x, ...) {
@@ -178,30 +121,13 @@ scale_type.pillar_num <- function(x, ...) {
 data.frame(x = x, y = 1:10) %>%
   ggplot(aes(x = x, y = y)) %>%
   + geom_point()
-```
+xxx
 
-## Recovery
+## Rule-based decoration
 
-```{r}
-num_ <- function(f) {
-  force(f)
-  function(x, ...) {
-    vctrs::vec_restore(f(x, ...), x)
-  }
-}
 
-x <- num(1:3)
 
-var(x)
-num_(var)(x)
-
-var <- num_(var)
-var(x)
-```
-
-## Sketch: Rule-based decoration
-
-```{r}
+xxx{r}
 library(dplyr)
 
 data_units <-
@@ -211,23 +137,25 @@ data_units <-
 
 data_units %>%
   mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island)
-```
+xxx
 
-```{r eval = FALSE}
+xxx{r eval = FALSE}
 data_decor <-
   data_units %>%
   decorate(year, digits = 0) %>%
   decorate(where(is.numeric), digits = 3)
-```
+xxx
 
-```{r eval = FALSE}
+xxx{r eval = FALSE}
 data_decor %>%
   mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island)
-```
+xxx
 
-```{r echo = FALSE}
+xxx{r echo = FALSE}
 data_units %>%
   mutate(bill_area = bill_length_mm * bill_depth_mm, .after = island) %>%
   mutate(across(year, set_num_opts, digits = 0)) %>%
   mutate(across(where(is.numeric), set_num_opts, digits = 3))
-```
+xxx
+
+`````

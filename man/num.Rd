@@ -13,7 +13,8 @@ num(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  fixed_exponent = NULL
+  fixed_exponent = NULL,
+  extra_sigfig = NULL
 )
 
 set_num_opts(
@@ -24,7 +25,8 @@ set_num_opts(
   label = NULL,
   scale = NULL,
   notation = c("fit", "dec", "sci", "eng", "si"),
-  fixed_exponent = NULL
+  fixed_exponent = NULL,
+  extra_sigfig = NULL
 )
 }
 \arguments{
@@ -57,12 +59,15 @@ otherwise use scientific notation. (The default for numeric pillars.)
 \item \code{"sci"}: Use scientific notation.
 \item \code{"eng"}: Use engineering notation, i.e. scientific notation
 using exponents that are a multiple of three.
-\item \code{"si"}: Use SI notation, prefixes between \code{10e-24} and \code{10e24} are supported.
+\item \code{"si"}: Use SI notation, prefixes between \code{1e-24} and \code{1e24} are supported.
 }}
 
-\item{fixed_exponent}{Use the same fixed_exponent for all numbers in scientific, engineering or SI notation.
+\item{fixed_exponent}{Use the same exponent for all numbers in scientific, engineering or SI notation.
 \code{-Inf} uses the smallest, \code{+Inf} the largest fixed_exponent present in the data.
-The default is to use varying fixed_exponents.}
+The default is to use varying exponents.}
+
+\item{extra_sigfig}{If \code{TRUE}, increase the number of significant digits if the data consists of
+numbers of the same magnitude with subtle differences.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -85,7 +90,7 @@ useful for composing with other types.
 \examples{
 # Display as a vector
 num(9:11 * 100 + 0.5)
-\dontshow{if (requireNamespace("tibble", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("tibble")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # Significant figures
 tibble::tibble(
@@ -96,7 +101,7 @@ tibble::tibble(
 
 # Maximum digits after the decimal points
 tibble::tibble(
-  x0 = num(9:11 * 100 + 0.5, digits =  0),
+  x0 = num(9:11 * 100 + 0.5, digits = 0),
   x1 = num(9:11 * 100 + 0.5, digits = -1),
   x2 = num(9:11 * 100 + 0.5, digits = -2),
 )
@@ -111,8 +116,8 @@ tibble::tibble(
 # Scale
 tibble::tibble(
   small  = num(9:11 / 1000 + 0.00005, label = "\%", scale = 100),
-  medium = num(9:11 /  100 + 0.0005 , label = "\%", scale = 100),
-  large  = num(9:11 /   10 + 0.005  , label = "\%", scale = 100)
+  medium = num(9:11 / 100 + 0.0005, label = "\%", scale = 100),
+  large  = num(9:11 / 10 + 0.005, label = "\%", scale = 100)
 )
 
 # Notation
@@ -127,13 +132,21 @@ tibble::tibble(
 tibble::tibble(
   scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
   engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
-  simin  = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = -Inf)
+  simin  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -Inf)
 )
 
 tibble::tibble(
   scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
   scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
   scimax   = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf)
+)
+
+#' Extra significant digits
+tibble::tibble(
+  default = num(100 + 1:3 * 0.001),
+  extra1 = num(100 + 1:3 * 0.001, extra_sigfig = TRUE),
+  extra2 = num(100 + 1:3 * 0.0001, extra_sigfig = TRUE),
+  extra3 = num(10000 + 1:3 * 0.00001, extra_sigfig = TRUE)
 )
 \dontshow{\}) # examplesIf}
 }

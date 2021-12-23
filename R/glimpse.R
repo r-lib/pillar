@@ -16,28 +16,27 @@
 #' `data.frames`, and a default method that calls [str()].
 #'
 #' @param x An object to glimpse at.
-#' @param width Width of output: defaults to the setting of the option
-#'   `tibble.width` (if finite) or the width of the console.
+#' @param width Width of output: defaults to the setting of the
+#'   `width` [option][pillar_options] (if finite)
+#'   or the width of the console.
 #' @param ... Unused, for extensibility.
 #' @return x original x is (invisibly) returned, allowing `glimpse()` to be
 #'   used within a data pipe line.
 #' @export
 #' @examples
 #' glimpse(mtcars)
-#'
-#' @examplesIf requireNamespace("nycflights13", quietly = TRUE)
+#' @examplesIf rlang::is_installed("nycflights13")
 #' glimpse(nycflights13::flights)
-#'
 glimpse <- function(x, width = NULL, ...) {
   UseMethod("glimpse")
 }
 
 #' @export
 glimpse.tbl <- function(x, width = NULL, ...) {
-  width <- get_width_glimpse(width)
-  if (!is.finite(width)) {
+  if (!is.null(width) && !is.finite(width)) {
     abort("`width` must be finite.")
   }
+  width <- get_width_glimpse(width)
 
   cli::cat_line("Rows: ", big_mark(nrow(x)))
 

@@ -148,11 +148,16 @@ fix_exp <- function(num, exp, fixed_exponent, sci_mod, si) {
 get_decimal_width <- function(x) {
   exp <- x$exp[!is.na(x$exp)]
 
+  if (x$si) {
+    exp_digits <- any(exp != 0)
+  } else {
+    exp_digits <- any(exp < 0) + max(2 + trunc(log10(abs(exp) + 0.5)), 0)
+  }
+
   max(x$neg + nchar(x$lhs), 0) +
     any(x$dec, na.rm = TRUE) +
     max(x$rhs_digits, 0) +
-    any(exp < 0) +
-    max(2 + trunc(log10(abs(exp) + 0.5)), 0)
+    exp_digits
 }
 
 safe_signif <- function(x, digits) {
@@ -180,8 +185,11 @@ within_tolerance <- function(x, y) {
   equal <- (l2x == l2y)
   equal[is.na(equal)] <- FALSE
   out <- equal
+
+  # Work around integer64 problem
+  equal[x == y] <- FALSE
   "!!!!!!DEBUG `v(abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]))`"
-  out[equal] <- abs((x[equal] - y[equal]) * 2 ^ -l2x[equal]) <= eps_2
+  out[equal] <- abs((x[equal] - y[equal]) * 2^-l2x[equal]) <= eps_2
   out
 }
 
@@ -229,6 +237,19 @@ compute_min_sigfig <- function(x) {
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero]))) + 1L
   ret
+}
+
+compute_extra_sigfig <- function(x) {
+  x <- sort(abs(x))
+  delta <- diff(x)
+  x <- x[-1]
+
+  keep <- which((delta != 0) & is.finite(delta))
+  if (length(keep) == 0) {
+    return(0)
+  }
+
+  ceiling(log10(max(x[keep] / delta[keep]))) - 1
 }
 
 LOG_10 <- log(10)

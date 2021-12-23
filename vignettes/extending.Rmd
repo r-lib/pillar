@@ -193,7 +193,7 @@ example_tbl("pillar_rule_adaptive")
 ```
 
 
-### Tweak display of compund pillars
+### Tweak display of compound pillars
 
 Compound pillars are created by `ctl_new_compound_pillar()` for columns that contain a data frame, a matrix or an array.
 The default implementation also calls `ctl_new_pillar()` shown above.

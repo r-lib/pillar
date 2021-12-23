@@ -31,7 +31,7 @@ override or extend \code{\link[=tbl_sum]{tbl_sum()}} for your class which is cal
 default method.
 }
 \examples{
-\dontshow{if (requireNamespace("palmerpenguins", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("palmerpenguins")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 setup <- tbl_format_setup(palmerpenguins::penguins)
 tbl_format_header(palmerpenguins::penguins, setup)
 

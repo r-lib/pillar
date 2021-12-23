@@ -24,3 +24,5 @@
 ^TODO\.md$
 ^\.lintr$
 _cache$
+^\.vscode$
+^vignettes/.*\.html$

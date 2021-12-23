@@ -48,7 +48,7 @@
 #' tibble::tibble(
 #'   back = char(lipsum, shorten = "back"),
 #'   front = char(lipsum, shorten = "front"),
-#'   mid   = char(lipsum, shorten = "mid")
+#'   mid = char(lipsum, shorten = "mid")
 #' )
 #' tibble::tibble(abbr = char(lipsum, shorten = "abbreviate"))
 char <- function(x, ..., min_chars = NULL,
@@ -75,7 +75,7 @@ char <- function(x, ..., min_chars = NULL,
 
 #' @export
 vec_ptype_abbr.pillar_char <- function(x, ...) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
 
   out <- "char"
 
@@ -170,8 +170,8 @@ vec_ptype2.character.pillar_char <- function(x, y, ...) {
 
 #' @export
 vec_cast.pillar_char.pillar_char <- function(x, to, ...) {
-  pillar_x <- attr(x, "pillar")
-  pillar_to <- attr(to, "pillar")
+  pillar_x <- attr(x, "pillar", exact = TRUE)
+  pillar_to <- attr(to, "pillar", exact = TRUE)
 
   pillar_x_shorten <- pillar_x$shorten
   pillar_to_shorten <- pillar_to$shorten
@@ -198,5 +198,5 @@ vec_cast.character.pillar_char <- function(x, to, ...) {
 }
 #' @export
 vec_cast.pillar_char.character <- function(x, to, ...) {
-  vec_restore(x, to)
+  vec_restore(vec_proxy(x), to)
 }

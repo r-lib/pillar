@@ -1,31 +1,104 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# pillar 1.5.1.9003
+# pillar 1.6.4.9001
 
-- More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (#298).
+- Fix support for `nanotime::nanotime()` classes (#378, #380).
+
+
+# pillar 1.6.4.9000
+
+- Same as previous version.
+
+
+# pillar 1.6.4
+
+## Bug fixes
+
+- Fix printing for some tibbles where a fixed-width column is followed by a column with variable width (#366).
+- Avoid nested backtick blocks in vignette.
+
+## Breaking changes
+
+- `num()` requires an integerish `digits` argument (#362).
+
+## Documentation
+
+- Link to tibble vignettes and documentation pages.
+
+
+# pillar 1.6.3
+
+- Avoid blanket import for lifecycle package for compatibility with upcoming rlang (#368, @romainfrancois).
+
+
+# pillar 1.6.2
+
+## Options
+
+- Options `pillar.print_max`, `pillar.print_min`, `pillar.width` and `pillar.max_extra_cols` are now queried before the corresponding `tibble.` or `dplyr.` options are consulted, the latter will be soft-deprecated in pillar v2.0.0 (#353).
+- New `pillar.bidi` option. When active, control characters are inserted to improve display of data with right-to-left text (#333).
+- The new `pillar.max_footer_lines` option (default: 7) allows controlling the maximum number of footer lines shown. It is applied in addition to the existing `tibble.max_extra_cols` option (#263).
+
+## Formatting
+
+- If a column doesn't make use of all horizontal width offered to it, the excess width is distributed over other columns (#331).
+- Improved allocation of free space in multi-tier tables with `getOption("tibble.width") > getOption("width")` (#344).
+- All pillars are shown with their true horizontal extent, irrespective of the indicated `width`. This simplifies the implementation of custom `pillar_shaft()` methods (#347).
+
+## Features
+
+- `num()` gains `extra_sigfig` argument to automatically show more significant figures for numbers of the same magnitude with subtle differences (#97).
+- `print.tbl()` and `format.tbl()` support the `max_extra_cols` and `max_footer_lines` arguments that override the corresponding options (#360).
+- `print.tbl()` and `format.tbl()` maps the now deprecated `n_extra` argument to `max_extra_cols` for consistency (#360).
+
+## Bug fixes
+
+- Avoid mangling of duplicate column names in footer (#332).
+- Fix warning with zero of type `bit64::integer64()` (#319).
+
+## Documentation
+
+- All package options are now documented in `?pillar_options` (#339).
+- `obj_sum()` no longer calls `type_sum()` for vectors since pillar v1.6.1, this is now documented (#321).
+- Fix documentation on usage of `vctrs::vec_proxy()` and `vctrs::vec_restore()` (#322).
+
+## Internal
+
+- Using `attr(exact = TRUE)` everywhere.
+- `is_vector_s3()` is no longer generic (#181).
+- Fix internal logic around `vec_proxy()` and `vec_restore()` (#316).
+
+
+# pillar 1.6.1
+
+- Bump required versions of ellipsis and vctrs to avoid warning during package load.
+- `obj_sum()` no longer includes shape twice (#315).
+
+
+# pillar 1.6.0
+
+## Features
+
+- New `num()` and `char()` offer a flexible way to customize the display of numeric and character columns (#191, #84).
+- New `"pillar.max_dec_width"` option (#308).
+- New `format_type_sum.AsIs()` avoids the need to implement your own `format_type_sum()` method (#286).
+- `align()` gains `space` argument to control the character used for filling (#285).
 - Numbers in scientific and decimal notation are formatted with the same rules regarding significant or decimal digits (#297).
 
+## Bug fixes
 
-# pillar 1.5.1.9002
-
-- New `char()` offers a flexible way to customize the display of character columns (#84).
-- Use display width instead of number of characters when truncating character columns.
-- New `num()` offers a flexible way to customize the display of numeric columns (#191).
-- Compatibility with vctrs 0.3.7 (#291).
 - Load the debugme package only if the `DEBUGME` environment variable is set.
-- New `format_type_sum.AsIs()` avoids the need to implement your own `format_type_sum()` method (#286).
+- More accurate detection if the decimal dot is necessary, and how many digits to show after the decimal dot (#298).
+- Use display width instead of number of characters when truncating character columns.
+
+## Documentation
+
+- New `vignette("numbers")` and `vignette("digits")` (#308).
+
+## Internal
+
+- Compatibility with vctrs 0.3.7 (#291).
 - `format.pillar_shaft_simple()` requires `"na"` attribute and no longer defaults to `pillar_na()` (#273).
-- `align()` gains `space` argument to control the character used for filling (#285).
-
-
-# pillar 1.5.1.9001
-
-- Internal changes only.
-
-
-# pillar 1.5.1.9000
-
-- Internal changes only.
 
 
 # pillar 1.5.1

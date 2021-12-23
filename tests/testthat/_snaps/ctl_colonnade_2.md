@@ -1,11 +1,13 @@
 # strings with varying widths
 
     Code
-      options(width = 54)
       ctl_colonnade(df_str[c(28L, 34L, 16L, 29L, 47L, 25L, 42L, 27L, 44L, 20L, 14L,
         36L, 43L, 41L, 26L, 45L, 22L, 9L, 13L, 32L, 31L, 12L, 19L, 48L, 49L, 35L, 3L,
         11L, 23L, 24L, 40L, 15L, 38L, 10L, 46L, 5L, 50L, 18L, 21L, 6L, 30L, 2L, 7L,
-        1L, 4L, 8L, 17L, 33L, 39L, 37L)], width = 516)
+        1L, 4L, 8L, 17L, 33L, 39L, 37L)], width = {
+        options(width = 54)
+        516
+      })
     Output
       $body
         `28`                        
@@ -20,34 +22,36 @@
         `47`                                           
         <chr>                                          
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcdefg
-        `25`   `42`   `27`   `44`   `20`   `14`  `36`  `43` 
-        <chr>  <chr>  <chr>  <chr>  <chr>  <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `41`    `26`   `45`    `22`  `9`   `13`  `32`  `31` 
-        <chr>   <chr>  <chr>   <chr> <chr> <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcdef~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `12`   `19`   `48`    `49`   `35`  `3`   `11`  `23` 
-        <chr>  <chr>  <chr>   <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcdef~ Abcde~ Abcd~ Abc   Abcd~ Abcd~
-        `24`   `40`   `15`   `38`  `10`  `46`   `5`   `50`  
-        <chr>  <chr>  <chr>  <chr> <chr> <chr>  <chr> <chr> 
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcde~ Abcde Abcde~
-        `18`    `21`   `6`   `30`    `2`   `7`   `1`   `4`  
-        <chr>   <chr>  <chr> <chr>   <chr> <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcd~ Abcdef~ Ab    Abcd~ A     Abcd 
-        `8`    `17`     `33`        `39`         `37`       
-        <chr>  <chr>    <chr>       <chr>        <chr>      
-      1 Abcde~ Abcdefg~ Abcdefghij~ AbcdefghijA~ Abcdefghij~
+        `25`                      `42`   `27`   `44`   `20` 
+        <chr>                     <chr>  <chr>  <chr>  <chr>
+      1 AbcdefghijAbcdefghijAbcde Abcde~ Abcde~ Abcde~ Abcd~
+        `14`   `36`   `43`   `41`   `26`  `45`   `22`  `9`  
+        <chr>  <chr>  <chr>  <chr>  <chr> <chr>  <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~ Abcd~
+        `13`   `32`   `31`   `12`  `19`  `48`   `49`   `35` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr>  <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcde~ Abcde~ Abcd~
+        `3`   `11`   `23`   `24`   `40`   `15`  `38`   `10` 
+        <chr> <chr>  <chr>  <chr>  <chr>  <chr> <chr>  <chr>
+      1 Abc   Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~
+        `46`    `5`   `50`    `18`   `21`  `6`   `30`  `2`  
+        <chr>   <chr> <chr>   <chr>  <chr> <chr> <chr> <chr>
+      1 Abcdef~ Abcde Abcdef~ Abcde~ Abcd~ Abcd~ Abcd~ Ab   
+        `7`    `1`   `4`   `8`    `17`  `33`   `39`   `37`  
+        <chr>  <chr> <chr> <chr>  <chr> <chr>  <chr>  <chr> 
+      1 Abcde~ A     Abcd  Abcde~ Abcd~ Abcde~ Abcde~ Abcde~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 42)
       ctl_colonnade(df_str[c(28L, 41L, 12L, 29L, 13L, 43L, 24L, 50L, 48L, 35L, 44L,
         21L, 33L, 45L, 47L, 34L, 25L, 14L, 18L, 23L, 7L, 3L, 42L, 36L, 11L, 2L, 20L,
         31L, 1L, 4L, 38L, 9L, 27L, 40L, 32L, 17L, 6L, 49L, 16L, 19L, 15L, 22L, 39L,
-        10L, 46L, 5L, 30L, 8L, 26L, 37L)], width = 1365)
+        10L, 46L, 5L, 30L, 8L, 26L, 37L)], width = {
+        options(width = 42)
+        1365
+      })
     Output
       $body
         `28`                        
@@ -143,22 +147,24 @@
         `16`             `19`               
         <chr>            <chr>              
       1 AbcdefghijAbcdef AbcdefghijAbcdefghi
-        `15`   `22`   `39`    `10`  `46`   `5`  
-        <chr>  <chr>  <chr>   <chr> <chr>  <chr>
-      1 Abcde~ Abcde~ Abcdef~ Abcd~ Abcde~ Abcde
-        `30`        `8`    `26`      `37`       
-        <chr>       <chr>  <chr>     <chr>      
-      1 Abcdefghij~ Abcde~ Abcdefgh~ Abcdefghij~
+        `15`            `22`     `39`      `10` 
+        <chr>           <chr>    <chr>     <chr>
+      1 AbcdefghijAbcde Abcdefg~ Abcdefgh~ Abcd~
+        `46`    `5`   `30`    `8`   `26`  `37`  
+        <chr>   <chr> <chr>   <chr> <chr> <chr> 
+      1 Abcdef~ Abcde Abcdef~ Abcd~ Abcd~ Abcde~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 39)
       ctl_colonnade(df_str[c(40L, 17L, 13L, 23L, 22L, 2L, 18L, 3L, 29L, 45L, 14L, 19L,
         33L, 37L, 47L, 43L, 44L, 10L, 31L, 27L, 34L, 35L, 41L, 21L, 4L, 25L, 38L, 48L,
         9L, 24L, 26L, 39L, 20L, 36L, 42L, 16L, 6L, 11L, 7L, 12L, 1L, 46L, 15L, 5L, 8L,
-        50L, 32L, 30L, 49L, 28L)], width = 934)
+        50L, 32L, 30L, 49L, 28L)], width = {
+        options(width = 39)
+        934
+      })
     Output
       $body
         `40`                                 
@@ -218,31 +224,33 @@
         `41`                                 
         <chr>                                
       1 AbcdefghijAbcdefghijAbcdefghijAbcdef~
-        `21`   `4`   `25`   `38`  `48`  `9`  
-        <chr>  <chr> <chr>  <chr> <chr> <chr>
-      1 Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~
-        `24`   `26`   `39`  `20`  `36`  `42` 
+        `21`                  `4`   `25`     
+        <chr>                 <chr> <chr>    
+      1 AbcdefghijAbcdefghijA Abcd  Abcdefgh~
+        `38`   `48`   `9`   `24`  `26`  `39` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `16`   `6`    `11`  `7`   `12`  `1`  
+        `20`   `36`   `42`  `16`  `6`   `11` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcdef Abcd~ Abcd~ Abcd~ A    
-        `46`   `15`   `5`   `8`   `50`  `32` 
+      1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
+        `7`    `12`  `1`   `46`   `15`  `5`  
+        <chr>  <chr> <chr> <chr>  <chr> <chr>
+      1 Abcde~ Abcd~ A     Abcde~ Abcd~ Abcde
+        `8`    `50`   `32`  `30`  `49`  `28` 
         <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde Abcd~ Abcd~ Abcd~
-        `30`         `49`          `28`      
-        <chr>        <chr>         <chr>     
-      1 AbcdefghijA~ AbcdefghijAb~ Abcdefghi~
+      1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 32)
       ctl_colonnade(df_str[c(11L, 36L, 17L, 14L, 31L, 35L, 23L, 13L, 6L, 44L, 45L,
         22L, 21L, 18L, 33L, 10L, 43L, 2L, 46L, 34L, 3L, 19L, 1L, 38L, 9L, 37L, 5L, 8L,
         25L, 49L, 27L, 29L, 15L, 39L, 24L, 40L, 48L, 26L, 47L, 42L, 41L, 12L, 28L,
-        30L, 7L, 16L, 4L, 50L, 20L, 32L)], width = 565)
+        30L, 7L, 16L, 4L, 50L, 20L, 32L)], width = {
+        options(width = 32)
+        565
+      })
     Output
       $body
         `11`       
@@ -275,40 +283,42 @@
         `45`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `22`   `21`  `18`  `33`  `10` 
+        `22`    `21`    `18`   `33`   
+        <chr>   <chr>   <chr>  <chr>  
+      1 Abcdef~ Abcdef~ Abcde~ Abcdef~
+        `10`   `43`  `2`   `46`  `34` 
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `43`   `2`   `46`  `34`  `3`  
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Ab    Abcd~ Abcd~ Abc  
-        `19`   `1`   `38`  `9`   `37` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ A     Abcd~ Abcd~ Abcd~
-        `5`   `8`    `25`  `49`  `27` 
+      1 Abcde~ Abcd~ Ab    Abcd~ Abcd~
+        `3`   `19`   `1`   `38`  `9`  
         <chr> <chr>  <chr> <chr> <chr>
-      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
-        `29`   `15`  `39`  `24`  `40` 
+      1 Abc   Abcde~ A     Abcd~ Abcd~
+        `37`   `5`   `8`   `25`  `49` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde Abcd~ Abcd~ Abcd~
+        `27`   `29`  `15`  `39`  `24` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `48`   `26`  `47`  `42`  `41` 
+        `40`   `48`  `26`  `47`  `42` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `12`   `28`  `30`  `7`   `16` 
+        `41`   `12`  `28`  `30`  `7`  
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `4`   `50`     `20`    `32`   
-        <chr> <chr>    <chr>   <chr>  
-      1 Abcd  Abcdefg~ Abcdef~ Abcdef~
+        `16`   `4`   `50`  `20`  `32` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd  Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 35)
       ctl_colonnade(df_str[c(18L, 46L, 11L, 43L, 31L, 47L, 48L, 44L, 50L, 15L, 28L,
         33L, 13L, 4L, 22L, 3L, 37L, 32L, 40L, 9L, 25L, 16L, 45L, 23L, 21L, 6L, 49L,
         36L, 27L, 38L, 14L, 34L, 8L, 24L, 29L, 1L, 12L, 2L, 20L, 17L, 35L, 5L, 19L,
-        30L, 7L, 26L, 42L, 41L, 39L, 10L)], width = 1121)
+        30L, 7L, 26L, 42L, 41L, 39L, 10L)], width = {
+        options(width = 35)
+        1121
+      })
     Output
       $body
         `18`              
@@ -398,28 +408,30 @@
         `34`                             
         <chr>                            
       1 AbcdefghijAbcdefghijAbcdefghijAb~
-        `8`    `24`    `29`   `1`   `12` 
-        <chr>  <chr>   <chr>  <chr> <chr>
-      1 Abcde~ Abcdef~ Abcde~ A     Abcd~
-        `2`   `20`    `17`  `35`    `5`  
-        <chr> <chr>   <chr> <chr>   <chr>
-      1 Ab    Abcdef~ Abcd~ Abcdef~ Abcde
-        `19`   `30`    `7`   `26`  `42`  
-        <chr>  <chr>   <chr> <chr> <chr> 
-      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
-        `41`          `39`         `10`  
-        <chr>         <chr>        <chr> 
-      1 AbcdefghijAb~ AbcdefghijA~ Abcde~
+        `8`      `24`        `29`        
+        <chr>    <chr>       <chr>       
+      1 Abcdefgh Abcdefghij~ AbcdefghijA~
+        `1`   `12`   `2`   `20`    `17`  
+        <chr> <chr>  <chr> <chr>   <chr> 
+      1 A     Abcde~ Ab    Abcdef~ Abcde~
+        `35`    `5`   `19`   `30`   `7`  
+        <chr>   <chr> <chr>  <chr>  <chr>
+      1 Abcdef~ Abcde Abcde~ Abcde~ Abcd~
+        `26`   `42`   `41`   `39`   `10` 
+        <chr>  <chr>  <chr>  <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 32)
       ctl_colonnade(df_str[c(43L, 1L, 3L, 15L, 28L, 12L, 46L, 34L, 31L, 7L, 11L, 4L,
         44L, 8L, 9L, 5L, 36L, 22L, 17L, 39L, 18L, 45L, 37L, 13L, 29L, 6L, 30L, 16L,
         20L, 10L, 19L, 26L, 33L, 40L, 35L, 48L, 38L, 25L, 2L, 47L, 42L, 41L, 27L, 14L,
-        21L, 24L, 50L, 49L, 23L, 32L)], width = 446)
+        21L, 24L, 50L, 49L, 23L, 32L)], width = {
+        options(width = 32)
+        446
+      })
     Output
       $body
         `43`                          
@@ -437,43 +449,45 @@
         `46`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `34`   `31`  `7`   `11`  `4`  
+        `34`         `31`        `7`  
+        <chr>        <chr>       <chr>
+      1 AbcdefghijA~ Abcdefghij~ Abcd~
+        `11`   `4`   `44`  `8`   `9`  
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd 
-        `44`   `8`   `9`   `5`   `36` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcde Abcd~
-        `22`   `17`  `39`  `18`  `45` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `37`   `13`  `29`  `6`   `30` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `16`   `20`  `10`  `19`  `26` 
+      1 Abcde~ Abcd  Abcd~ Abcd~ Abcd~
+        `5`   `36`   `22`  `17`  `39` 
+        <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `18`   `45`  `37`  `13`  `29` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `33`   `40`  `35`  `48`  `38` 
+        `6`    `30`  `16`  `20`  `10` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcdef Abcd~ Abcd~ Abcd~ Abcd~
+        `19`   `26`  `33`  `40`  `35` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `25`   `2`   `47`  `42`  `41` 
+        `48`   `38`  `25`  `2`   `47` 
         <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Ab    Abcd~ Abcd~ Abcd~
-        `27`   `14`  `21`  `24`  `50` 
+      1 Abcde~ Abcd~ Abcd~ Ab    Abcd~
+        `42`   `41`  `27`  `14`  `21` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `49`       `23`      `32`     
-        <chr>      <chr>     <chr>    
-      1 Abcdefghi~ Abcdefgh~ Abcdefgh~
+        `24`   `50`  `49`  `23`  `32` 
+        <chr>  <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 31)
       ctl_colonnade(df_str[c(37L, 46L, 21L, 3L, 16L, 39L, 34L, 33L, 10L, 17L, 19L,
         36L, 45L, 49L, 11L, 50L, 14L, 29L, 44L, 13L, 30L, 38L, 32L, 40L, 42L, 1L, 31L,
         41L, 7L, 23L, 35L, 28L, 6L, 25L, 2L, 9L, 12L, 15L, 5L, 18L, 20L, 27L, 43L, 8L,
-        47L, 4L, 48L, 24L, 26L, 22L)], width = 1166)
+        47L, 4L, 48L, 24L, 26L, 22L)], width = {
+        options(width = 31)
+        1166
+      })
     Output
       $body
         `37`                         
@@ -584,22 +598,24 @@
         `20`                
         <chr>               
       1 AbcdefghijAbcdefghij
-        `27`  `43`  `8`   `47`  `4`  
-        <chr> <chr> <chr> <chr> <chr>
-      1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd 
-        `48`    `24`    `26`   `22`  
+        `27`    `43`    `8`    `47`  
         <chr>   <chr>   <chr>  <chr> 
       1 Abcdef~ Abcdef~ Abcde~ Abcde~
+        `4`   `48`  `24`  `26`  `22` 
+        <chr> <chr> <chr> <chr> <chr>
+      1 Abcd  Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 58)
       ctl_colonnade(df_str[c(31L, 39L, 40L, 30L, 10L, 21L, 9L, 16L, 46L, 25L, 15L,
         24L, 3L, 50L, 35L, 1L, 12L, 34L, 48L, 4L, 29L, 23L, 37L, 36L, 28L, 43L, 11L,
         17L, 32L, 8L, 41L, 13L, 44L, 7L, 38L, 26L, 33L, 20L, 19L, 2L, 18L, 49L, 27L,
-        47L, 22L, 14L, 6L, 5L, 45L, 42L)], width = 546)
+        47L, 22L, 14L, 6L, 5L, 45L, 42L)], width = {
+        options(width = 58)
+        546
+      })
     Output
       $body
         `31`                           
@@ -617,31 +633,33 @@
         `21`                  `9`       `16`            
         <chr>                 <chr>     <chr>           
       1 AbcdefghijAbcdefghijA Abcdefghi AbcdefghijAbcdef
-        `46`   `25`   `15`   `24`  `3`   `50`  `35`  `1`   `12` 
-        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Abc   Abcd~ Abcd~ A     Abcd~
-        `34`   `48`   `4`   `29`   `23`  `37`  `36`  `28`  `43` 
-        <chr>  <chr>  <chr> <chr>  <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `11`   `17`   `32`   `8`   `41`  `13`  `44`  `7`   `38` 
+        `46`         `25`      `15`   `24`    `3`   `50`        
+        <chr>        <chr>     <chr>  <chr>   <chr> <chr>       
+      1 AbcdefghijA~ Abcdefgh~ Abcde~ Abcdef~ Abc   AbcdefghijA~
+        `35`   `1`   `12`   `34`   `48`  `4`   `29`  `23`  `37` 
+        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ A     Abcde~ Abcde~ Abcd~ Abcd  Abcd~ Abcd~ Abcd~
+        `36`   `28`   `43`   `11`  `17`  `32`  `8`   `41`  `13` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `26`   `33`   `20`   `19`  `2`   `18`  `49`  `27`  `47` 
+        `44`   `7`    `38`   `26`  `33`  `20`  `19`  `2`   `18` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcd~ Ab    Abcd~ Abcd~ Abcd~ Abcd~
-        `22`      `14`    `6`   `5`   `45`          `42`        
-        <chr>     <chr>   <chr> <chr> <chr>         <chr>       
-      1 Abcdefgh~ Abcdef~ Abcd~ Abcde AbcdefghijAb~ AbcdefghijA~
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Ab    Abcd~
+        `49`   `27`   `47`   `22`  `14`  `6`   `5`   `45`  `42` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 57)
       ctl_colonnade(df_str[c(43L, 21L, 41L, 48L, 22L, 25L, 2L, 8L, 1L, 24L, 6L, 39L,
         38L, 20L, 49L, 45L, 47L, 12L, 9L, 13L, 36L, 26L, 44L, 11L, 46L, 28L, 7L, 18L,
         50L, 16L, 29L, 30L, 4L, 23L, 17L, 40L, 33L, 14L, 27L, 19L, 34L, 32L, 3L, 37L,
-        15L, 10L, 5L, 35L, 31L, 42L)], width = 1035)
+        15L, 10L, 5L, 35L, 31L, 42L)], width = {
+        options(width = 57)
+        1035
+      })
     Output
       $body
         `43`                                       
@@ -689,28 +707,30 @@
         `26`                      
         <chr>                     
       1 AbcdefghijAbcdefghijAbcdef
-        `44`   `11`   `46`  `28`  `7`   `18`  `50`  `16`  `29` 
+        `44`                                        
+        <chr>                                       
+      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcd
+        `11`   `46`   `28`  `7`   `18`  `50`  `16`  `29`  `30` 
         <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `30`   `4`   `23`   `17`  `40`  `33`  `14`  `27`  `19` 
+        `4`   `23`   `17`   `40`  `33`  `14`  `27`  `19`  `34` 
+        <chr> <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
+      1 Abcd  Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
+        `32`   `3`   `37`   `15`  `10`  `5`   `35`  `31`  `42` 
         <chr>  <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd  Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
-        `34`   `32`   `3`   `37`  `15`  `10`  `5`   `35`  `31` 
-        <chr>  <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcde~ Abc   Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abcd~
-        `42`                                      
-        <chr>                                     
-      1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAb
+      1 Abcde~ Abc   Abcde~ Abcd~ Abcd~ Abcde Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 33)
       ctl_colonnade(df_str[c(40L, 6L, 25L, 5L, 26L, 17L, 19L, 2L, 11L, 34L, 45L, 24L,
         22L, 44L, 35L, 7L, 4L, 49L, 1L, 36L, 12L, 41L, 39L, 13L, 48L, 27L, 18L, 30L,
         42L, 28L, 3L, 46L, 21L, 20L, 16L, 29L, 50L, 10L, 9L, 8L, 47L, 31L, 14L, 38L,
-        33L, 32L, 43L, 23L, 15L, 37L)], width = 1217)
+        33L, 32L, 43L, 23L, 15L, 37L)], width = {
+        options(width = 33)
+        1217
+      })
     Output
       $body
         `40`                           
@@ -815,25 +835,27 @@
         `50`                           
         <chr>                          
       1 AbcdefghijAbcdefghijAbcdefghij~
-        `10`   `9`    `8`   `47`  `31` 
+        `10`       `9`       `8`     
+        <chr>      <chr>     <chr>   
+      1 Abcdefghij Abcdefghi Abcdefgh
+        `47`   `31`   `14`  `38`  `33` 
         <chr>  <chr>  <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `14`   `38`   `33`  `32`  `43` 
+        `32`   `43`   `23`  `15`  `37` 
         <chr>  <chr>  <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcd~ Abcd~ Abcd~
-        `23`       `15`     `37`       
-        <chr>      <chr>    <chr>      
-      1 Abcdefghi~ Abcdefg~ Abcdefghij~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 32)
       ctl_colonnade(df_str[c(43L, 23L, 22L, 11L, 6L, 26L, 48L, 17L, 7L, 42L, 36L, 21L,
         35L, 50L, 13L, 19L, 29L, 8L, 15L, 4L, 2L, 27L, 49L, 47L, 30L, 31L, 25L, 28L,
         46L, 12L, 32L, 39L, 24L, 10L, 45L, 5L, 37L, 14L, 40L, 20L, 41L, 44L, 33L, 18L,
-        38L, 3L, 1L, 34L, 16L, 9L)], width = 770)
+        38L, 3L, 1L, 34L, 16L, 9L)], width = {
+        options(width = 32)
+        770
+      })
     Output
       $body
         `43`                          
@@ -893,34 +915,36 @@
         `49`                          
         <chr>                         
       1 AbcdefghijAbcdefghijAbcdefghi~
-        `47`   `30`  `31`  `25`  `28` 
+        `47`            `30`          
+        <chr>           <chr>         
+      1 AbcdefghijAbcd~ AbcdefghijAbc~
+        `31`   `25`  `28`  `46`  `12` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `46`   `12`  `32`  `39`  `24` 
+        `32`   `39`  `24`  `10`  `45` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `10`   `45`  `5`   `37`  `14` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abcde Abcd~ Abcd~
-        `40`   `20`  `41`  `44`  `33` 
+        `5`   `37`   `14`  `40`  `20` 
+        <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `41`   `44`  `33`  `18`  `38` 
         <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `18`   `38`  `3`   `1`   `34` 
-        <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ Abcd~ Abc   A     Abcd~
-        `16`             `9`      
-        <chr>            <chr>    
-      1 AbcdefghijAbcdef Abcdefghi
+        `3`   `1`   `34`   `16`  `9`  
+        <chr> <chr> <chr>  <chr> <chr>
+      1 Abc   A     Abcde~ Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 46)
       ctl_colonnade(df_str[c(5L, 24L, 43L, 46L, 35L, 39L, 18L, 26L, 8L, 27L, 2L, 50L,
         6L, 14L, 29L, 47L, 9L, 16L, 36L, 4L, 13L, 41L, 3L, 28L, 37L, 33L, 38L, 31L,
         34L, 19L, 42L, 32L, 1L, 45L, 15L, 7L, 11L, 49L, 23L, 12L, 48L, 20L, 21L, 44L,
-        25L, 10L, 22L, 30L, 40L, 17L)], width = 1439)
+        25L, 10L, 22L, 30L, 40L, 17L)], width = {
+        options(width = 46)
+        1439
+      })
     Output
       $body
         `5`   `24`                    
@@ -1013,22 +1037,24 @@
         `48`                                        
         <chr>                                       
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbc~
-        `20`   `21`   `44`   `25`  `10`  `22`  `30` 
+        `20`                 `21`                 
+        <chr>                <chr>                
+      1 AbcdefghijAbcdefghij AbcdefghijAbcdefghijA
+        `44`   `25`   `10`   `22`  `30`  `40`  `17` 
         <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
       1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `40`                           `17`         
-        <chr>                          <chr>        
-      1 AbcdefghijAbcdefghijAbcdefghi~ AbcdefghijAb~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 52)
       ctl_colonnade(df_str[c(7L, 44L, 19L, 21L, 18L, 35L, 23L, 50L, 33L, 37L, 25L,
         26L, 10L, 39L, 2L, 47L, 42L, 14L, 9L, 41L, 45L, 6L, 4L, 11L, 24L, 43L, 32L,
         3L, 38L, 5L, 49L, 27L, 17L, 8L, 22L, 40L, 12L, 15L, 1L, 28L, 31L, 29L, 13L,
-        48L, 34L, 36L, 30L, 20L, 16L, 46L)], width = 1065)
+        48L, 34L, 36L, 30L, 20L, 16L, 46L)], width = {
+        options(width = 52)
+        1065
+      })
     Output
       $body
         `7`    
@@ -1082,28 +1108,30 @@
         `45`                                         
         <chr>                                        
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefghijAbcde
-        `6`    `4`   `11`   `24`   `43`  `32`  `3`   `38` 
-        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcdef Abcd  Abcde~ Abcde~ Abcd~ Abcd~ Abc   Abcd~
-        `5`   `49`   `27`   `17`   `8`   `22`  `40`  `12` 
-        <chr> <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `15`   `1`   `28`   `31`   `29`  `13`  `48`  `34` 
-        <chr>  <chr> <chr>  <chr>  <chr> <chr> <chr> <chr>
-      1 Abcde~ A     Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~
-        `36`        `30`       `20`    `16`   `46`        
-        <chr>       <chr>      <chr>   <chr>  <chr>       
-      1 Abcdefghij~ Abcdefghi~ Abcdef~ Abcde~ AbcdefghijA~
+        `6`    `4`   `11`        `24`       `43`          
+        <chr>  <chr> <chr>       <chr>      <chr>         
+      1 Abcdef Abcd  AbcdefghijA Abcdefghi~ AbcdefghijAbc~
+        `32`   `3`   `38`   `5`   `49`   `27`  `17`  `8`  
+        <chr>  <chr> <chr>  <chr> <chr>  <chr> <chr> <chr>
+      1 Abcde~ Abc   Abcde~ Abcde Abcde~ Abcd~ Abcd~ Abcd~
+        `22`   `40`   `12`   `15`  `1`   `28`  `31`  `29` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ A     Abcd~ Abcd~ Abcd~
+        `13`   `48`   `34`   `36`  `30`  `20`  `16`  `46` 
+        <chr>  <chr>  <chr>  <chr> <chr> <chr> <chr> <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
       named list()
       
     Code
-      options(width = 35)
       ctl_colonnade(df_str[c(38L, 18L, 23L, 36L, 35L, 20L, 44L, 19L, 13L, 41L, 31L,
         7L, 11L, 29L, 2L, 14L, 26L, 46L, 40L, 45L, 9L, 34L, 33L, 22L, 1L, 17L, 28L,
         10L, 21L, 30L, 47L, 49L, 6L, 12L, 4L, 25L, 32L, 15L, 43L, 24L, 48L, 3L, 37L,
-        50L, 42L, 39L, 16L, 8L, 27L, 5L)], width = 393)
+        50L, 42L, 39L, 16L, 8L, 27L, 5L)], width = {
+        options(width = 35)
+        393
+      })
     Output
       $body
         `38`                             
@@ -1112,46 +1140,48 @@
         `18`              
         <chr>             
       1 AbcdefghijAbcdefgh
-        `23`   `36`   `35`   `20`   `44` 
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `19`   `13`   `41`   `31`   `7`  
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `11`   `29`    `2`   `14`  `26`  
+        `23`      `36`        `35`       
+        <chr>     <chr>       <chr>      
+      1 Abcdefgh~ Abcdefghij~ Abcdefghij~
+        `20`   `44`    `19`  `13`  `41`  
         <chr>  <chr>   <chr> <chr> <chr> 
-      1 Abcde~ Abcdef~ Ab    Abcd~ Abcde~
-        `46`   `40`   `45`   `9`    `34` 
+      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
+        `31`    `7`    `11`  `29`   `2`  
+        <chr>   <chr>  <chr> <chr>  <chr>
+      1 Abcdef~ Abcde~ Abcd~ Abcde~ Ab   
+        `14`   `26`   `46`   `40`   `45` 
         <chr>  <chr>  <chr>  <chr>  <chr>
       1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `33`    `22`   `1`   `17`  `28`  
-        <chr>   <chr>  <chr> <chr> <chr> 
-      1 Abcdef~ Abcde~ A     Abcd~ Abcde~
-        `10`   `21`   `30`  `47`   `49`  
-        <chr>  <chr>  <chr> <chr>  <chr> 
-      1 Abcde~ Abcde~ Abcd~ Abcde~ Abcde~
-        `6`    `12`   `4`   `25`   `32`  
-        <chr>  <chr>  <chr> <chr>  <chr> 
-      1 Abcdef Abcde~ Abcd  Abcde~ Abcde~
-        `15`   `43`    `24`  `48`   `3`  
+        `9`    `34`    `33`   `22`  `1`  
+        <chr>  <chr>   <chr>  <chr> <chr>
+      1 Abcde~ Abcdef~ Abcde~ Abcd~ A    
+        `17`   `28`    `10`  `21`  `30`  
+        <chr>  <chr>   <chr> <chr> <chr> 
+      1 Abcde~ Abcdef~ Abcd~ Abcd~ Abcde~
+        `47`    `49`    `6`   `12`  `4`  
+        <chr>   <chr>   <chr> <chr> <chr>
+      1 Abcdef~ Abcdef~ Abcd~ Abcd~ Abcd 
+        `25`   `32`    `15`  `43`   `24` 
         <chr>  <chr>   <chr> <chr>  <chr>
-      1 Abcde~ Abcdef~ Abcd~ Abcde~ Abc  
-        `37`   `50`   `42`   `39`   `16` 
-        <chr>  <chr>  <chr>  <chr>  <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~
-        `8`     `27`                `5`  
-        <chr>   <chr>               <chr>
-      1 Abcdef~ AbcdefghijAbcdefgh~ Abcde
+      1 Abcde~ Abcdef~ Abcd~ Abcde~ Abcd~
+        `48`   `3`   `37`   `50`   `42`  
+        <chr>  <chr> <chr>  <chr>  <chr> 
+      1 Abcde~ Abc   Abcde~ Abcde~ Abcde~
+        `39`    `16`   `8`   `27`   `5`  
+        <chr>   <chr>  <chr> <chr>  <chr>
+      1 Abcdef~ Abcde~ Abcd~ Abcde~ Abcde
       
       $extra_cols
       named list()
       
     Code
-      options(width = 41)
       ctl_colonnade(df_str[c(22L, 9L, 11L, 26L, 19L, 16L, 32L, 25L, 1L, 30L, 31L, 6L,
         24L, 10L, 39L, 21L, 50L, 7L, 29L, 12L, 46L, 43L, 15L, 35L, 20L, 40L, 49L, 38L,
         36L, 48L, 34L, 3L, 8L, 4L, 27L, 42L, 44L, 33L, 45L, 18L, 5L, 2L, 13L, 47L,
-        28L, 17L, 37L, 14L, 41L, 23L)], width = 999)
+        28L, 17L, 37L, 14L, 41L, 23L)], width = {
+        options(width = 41)
+        999
+      })
     Output
       $body
         `22`                   `9`      
@@ -1217,18 +1247,18 @@
         `38`                                  
         <chr>                                 
       1 AbcdefghijAbcdefghijAbcdefghijAbcdefgh
-        `36`    `48`   `34`   `3`   `8`   `4`  
-        <chr>   <chr>  <chr>  <chr> <chr> <chr>
-      1 Abcdef~ Abcde~ Abcde~ Abc   Abcd~ Abcd 
-        `27`   `42`   `44`   `33`   `45`  `18` 
-        <chr>  <chr>  <chr>  <chr>  <chr> <chr>
-      1 Abcde~ Abcde~ Abcde~ Abcde~ Abcd~ Abcd~
-        `5`   `2`   `13`   `47`    `28`   `17` 
-        <chr> <chr> <chr>  <chr>   <chr>  <chr>
-      1 Abcde Ab    Abcde~ Abcdef~ Abcde~ Abcd~
-        `37`        `14`    `41`       `23`    
-        <chr>       <chr>   <chr>      <chr>   
-      1 Abcdefghij~ Abcdef~ Abcdefghi~ Abcdefg~
+        `36`        `48`        `34`      `3`  
+        <chr>       <chr>       <chr>     <chr>
+      1 Abcdefghij~ Abcdefghij~ Abcdefgh~ Abc  
+        `8`    `4`   `27`   `42`   `44`   `33` 
+        <chr>  <chr> <chr>  <chr>  <chr>  <chr>
+      1 Abcde~ Abcd  Abcde~ Abcde~ Abcde~ Abcd~
+        `45`    `18`   `5`   `2`   `13`  `47`  
+        <chr>   <chr>  <chr> <chr> <chr> <chr> 
+      1 Abcdef~ Abcde~ Abcde Ab    Abcd~ Abcde~
+        `28`   `17`   `37`   `14`  `41`   `23` 
+        <chr>  <chr>  <chr>  <chr> <chr>  <chr>
+      1 Abcde~ Abcde~ Abcde~ Abcd~ Abcde~ Abcd~
       
       $extra_cols
       named list()

@@ -23,7 +23,4 @@ Formatting a \link{colonnade} object may lead to some columns being omitted
 due to width restrictions. This method returns a character vector that
 describes each of the omitted columns.
 }
-\examples{
-extra_cols(squeeze(colonnade(list(a = 1:3, b = 4:6), width = 8)))
-}
 \keyword{internal}

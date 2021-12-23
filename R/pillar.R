@@ -46,7 +46,7 @@ pillar_get_width <- function(x, width) {
 pillar_format_parts <- function(x, width, ...) {
   capital_format <- format(x$capital, width = width, ...)
   shaft_format <- format(x$shaft, width = width, ...)
-  align <- attr(shaft_format, "align")
+  align <- attr(shaft_format, "align", exact = TRUE)
 
   capital_format <- align(capital_format, width = width, align = align)
   shaft_format <- align(shaft_format, width = width, align = align)

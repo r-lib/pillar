@@ -12,9 +12,4 @@ It returns an object suitable for printing and formatting at a fixed width
 with additional information about omitted columns, which can be retrieved
 via \code{\link[=extra_cols]{extra_cols()}}.
 }
-\examples{
-long_string <- list(paste(letters, collapse = " "))
-squeeze(colonnade(long_string), width = 40)
-squeeze(colonnade(long_string), width = 20)
-}
 \keyword{internal}

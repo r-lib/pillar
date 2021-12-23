@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.5.1.9003
+Version: 1.6.4.9001
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -20,13 +20,13 @@ BugReports: https://github.com/r-lib/pillar/issues
 Imports: 
     cli,
     crayon (>= 1.3.4),
-    ellipsis,
+    ellipsis (>= 0.3.2),
     fansi,
     lifecycle,
     rlang (>= 0.3.0),
     utf8 (>= 1.1.0),
     utils,
-    vctrs (>= 0.2.0)
+    vctrs (>= 0.3.8)
 Suggests: 
     bit64,
     debugme,
@@ -36,6 +36,7 @@ Suggests:
     ggplot2,
     knitr,
     lubridate,
+    nanotime,
     nycflights13,
     palmerpenguins,
     rmarkdown,
@@ -44,13 +45,13 @@ Suggests:
     survival,
     testthat (>= 3.0.2),
     tibble,
-    units,
+    units (>= 0.7.2),
     withr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1.9001
+RoxygenNote: 7.1.2
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Config/testthat/start-first: 
@@ -60,6 +61,5 @@ Config/testthat/start-first:
     ctl_colonnade,
     ctl_colonnade_1,
     ctl_colonnade_2
-Remotes: 
-    renkun-ken/formattable#154,
-    r-quantities/units
+Config/autostyle/scope: spaces
+Config/autostyle/strict: true

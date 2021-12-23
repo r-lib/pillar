@@ -116,9 +116,9 @@ pillar_shaft.logical <- function(x, ...) {
 #' @param sigfig
 #'   Deprecated, use [num()] or [set_num_opts()] on the data instead.
 pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
 
-  if (is.null(pillar_attr) && !is.null(attr(x, "class"))) {
+  if (is.null(pillar_attr) && !is.null(attr(x, "class", exact = TRUE))) {
     ret <- format(x)
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
@@ -134,34 +134,34 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     sigfig %||% pillar_attr$sigfig,
     pillar_attr$digits,
     pillar_attr$notation,
-    pillar_attr$fixed_exponent
+    pillar_attr$fixed_exponent,
+    pillar_attr$extra_sigfig
   )
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent) {
+pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, extra_sigfig) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1) {
       abort("`digits` must be a number.")
     }
   }
   if (is.null(sigfig)) {
-    sigfig <- getOption("pillar.sigfig", 3)
-    if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
-      inform("Option pillar.sigfig must be a positive number greater or equal 1. Resetting to 1.")
-      sigfig <- 1L
-      options(pillar.sigfig = sigfig)
-    }
+    sigfig <- get_pillar_option_sigfig()
+  }
+
+  if (isTRUE(extra_sigfig)) {
+    sigfig <- sigfig + compute_extra_sigfig(x)
   }
 
   if (is.null(notation) || notation == "fit") {
     dec <- split_decimal(x, sigfig = sigfig, digits = digits)
     sci <- split_decimal(x, sigfig = sigfig, digits = digits, sci_mod = 1, fixed_exponent = fixed_exponent)
 
-    MAX_DEC_WIDTH <- 13
+    max_dec_width <- get_pillar_option_max_dec_width()
     dec_width <- get_width(dec)
     "!!!!!!DEBUG `v(dec_width)`"
 
-    if (dec_width > MAX_DEC_WIDTH) {
+    if (dec_width > max_dec_width) {
       dec <- NULL
     }
   } else if (notation == "dec") {
@@ -207,7 +207,11 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent) {
 
 # registered in .onLoad()
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
-  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL)
+  if (class(x)[[1]] != "integer64") {
+    return(NextMethod())
+  }
+
+  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL, extra_sigfig = NULL)
 }
 
 # registered in .onLoad()
@@ -262,7 +266,7 @@ pillar_shaft.POSIXt <- function(x, ...) {
 #' @param min_width
 #'   Deprecated, use [char()] or [set_char_opts()] on the data instead.
 pillar_shaft.character <- function(x, ..., min_width = NULL) {
-  pillar_attr <- attr(x, "pillar")
+  pillar_attr <- attr(x, "pillar", exact = TRUE)
 
   min_chars <- min_width %||% pillar_attr$min_chars
 
@@ -281,12 +285,7 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
 
   # determine width based on width of characters in the vector
   if (is.null(min_chars)) {
-    min_chars <- getOption("pillar.min_chars", 3L)
-    if (!is.numeric(min_chars) || length(min_chars) != 1 || min_chars < 3L) {
-      inform("Option pillar.min_chars must be a nonnegative number greater or equal 3. Resetting to 3.")
-      min_chars <- 3L
-      options(pillar.min_chars = min_chars)
-    }
+    min_chars <- get_pillar_option_min_chars()
   }
 
   pillar_shaft(new_vertical(out), ..., min_width = min_chars, na_indent = na_indent, shorten = pillar_attr$shorten)

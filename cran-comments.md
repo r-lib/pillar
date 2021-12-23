@@ -1,16 +1,16 @@
-pillar 1.5.1
+pillar 1.6.4
 
 ## Cran Repository Policy
 
-- [x] Reviewed CRP last edited 2020-10-29.
+- [x] Reviewed CRP last edited 2021-09-25.
 
 ## R CMD check results
 
-- [x] Checked locally, R 4.0.4
-- [x] Checked on CI system, R 4.0.4
+- [x] Checked locally, R 4.1.1
+- [x] Checked on CI system, R 4.1.1
 - [x] Checked on win-builder, R devel
 
 ## Current CRAN check results
 
-- [x] Checked on 2021-03-05, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
-- [x] WARN: r-patched-solaris-x86, r-release-macos-x86_64, r-oldrel-macos-x86_64: pandoc problems
+- [x] Checked on 2021-10-17, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
+- [x] WARN: r-devel-linux-x86_64-debian-clang, r-devel-linux-x86_64-debian-gcc, r-patched-linux-x86_64, r-release-linux-x86_64, r-devel-linux-x86_64-fedora-clang, r-devel-linux-x86_64-fedora-gcc, r-devel-windows-x86_64, r-devel-windows-x86_64-gcc10-UCRT, r-release-windows-ix86+x86_64, r-oldrel-windows-ix86+x86_64: fixed vignette building errors
