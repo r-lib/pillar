@@ -2,17 +2,9 @@
 
 ## Next steps
 
-- Pass `max_footer_lines` to `print.tbl()`, rethink option name
-- Test all options
-- Milestone: <https://github.com/r-lib/pillar/milestone/11>
-- CRAN release
-- triage issues
-
 - documentation cleanup from <https://github.com/tidyverse/tibble/issues/913>:
     - relink digits vignette, shorten numbers vignette, replace ?num, ?char and print.tbl() with internal stubs
 - expand list columns
-
-- revdepcheck for adding ellipsis to methods
 
 - Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
     - Easiest if focus columns are moved to the beginning
@@ -22,7 +14,6 @@
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
         - Because the minimum character width is used here; this is just the default shaft. We can show only the type if there's lack of space and build a custom pillar shaft
-        - Abbreviate list columns at the left? <https://github.com/r-lib/pillar/issues/84>
     - Redundant information goes up into the header <https://github.com/r-lib/pillar/pull/307>
         - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
         - Search for `new_pillar_type()`
