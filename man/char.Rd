@@ -39,7 +39,4 @@ The \code{"pillar.min_chars"} \link[pillar:pillar_options]{option} is not consul
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 These functions are reexported as \code{\link[tibble:char]{tibble::char()}} and \code{\link[tibble:char]{tibble::set_char_opts()}}.
-
-\code{set_char_opts()} adds formatting options to an arbitrary character vector,
-useful for composing with other types.
 }

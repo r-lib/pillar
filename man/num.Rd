@@ -73,7 +73,4 @@ numbers of the same magnitude with subtle differences.}
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 These functions are reexported as \code{\link[tibble:num]{tibble::num()}} and \code{\link[tibble:num]{tibble::set_num_opts()}}.
-
-\code{set_num_opts()} adds formatting options to an arbitrary numeric vector,
-useful for composing with other types.
 }
