@@ -30,7 +30,7 @@
 # vertical
 
     Code
-      new_vertical(c("abc", "de"))
+      as_glue(c("abc", "de"))
     Output
       abc
       de

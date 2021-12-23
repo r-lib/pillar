@@ -40,21 +40,3 @@ format.pillar_ornament <- function(x, width = NULL, ...) {
   align <- attr(x, "align", exact = TRUE)
   align(x, width = width %||% get_width(x), align = align)
 }
-
-# FIXME: Replace with as_glue(),
-# requires https://github.com/tidyverse/glue/issues/214
-new_vertical <- function(x) {
-  ret <- structure(
-    x,
-    class = "pillar_vertical"
-  )
-  ret
-}
-
-#' @export
-print.pillar_vertical <- function(x, ...) {
-  if (length(x) > 0) {
-    cat_line(paste(x, collapse = "\n"))
-  }
-  invisible(x)
-}

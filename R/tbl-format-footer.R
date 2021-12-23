@@ -31,7 +31,7 @@ tbl_format_footer <- function(x, setup, ...) {
 
 #' @export
 tbl_format_footer.pillar_tbl_format_setup <- function(x, ...) {
-  new_vertical(c(
+  as_glue(c(
     cli::style_bold("<tbl_format_footer(setup)>"),
     tbl_format_footer(x$x, setup = x)
   ))

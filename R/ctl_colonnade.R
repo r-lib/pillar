@@ -106,7 +106,7 @@ format_colonnade_tier_2 <- function(x, bidi = FALSE) {
 new_colonnade_body <- function(x, extra_cols) {
   "!!!!!DEBUG new_colonnade_body()"
 
-  body <- new_vertical(as.character(unlist(x)))
+  body <- as_glue(as.character(unlist(x)))
   extra_cols <- as.list(extra_cols)
 
   list(body = body, extra_cols = extra_cols)

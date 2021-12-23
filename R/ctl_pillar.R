@@ -173,7 +173,7 @@ format.pillar <- function(x, width = NULL, ...) {
     width <- sum(widths) - length(widths) + 1L
   }
 
-  new_vertical(pillar_format_parts_2(x, width)$aligned[[1]])
+  as_glue(pillar_format_parts_2(x, width)$aligned[[1]])
 }
 
 #' @export
