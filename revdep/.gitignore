@@ -7,3 +7,4 @@ checks.noindex
 library.noindex
 *.html
 cloud.noindex
+cloud
