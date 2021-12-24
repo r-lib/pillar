@@ -288,13 +288,13 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
     min_chars <- get_pillar_option_min_chars()
   }
 
-  pillar_shaft(new_vertical(out), ..., min_width = min_chars, na_indent = na_indent, shorten = pillar_attr$shorten)
+  pillar_shaft(as_glue(out), ..., min_width = min_chars, na_indent = na_indent, shorten = pillar_attr$shorten)
 }
 
 #' @export
 #' @inheritParams new_pillar_shaft_simple
 #' @rdname pillar_shaft
-pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0L, shorten = NULL) {
+pillar_shaft.glue <- function(x, ..., min_width = NULL, na_indent = 0L, shorten = NULL) {
   min_width <- max(min_width, 3L)
   width <- get_max_extent(x)
 
@@ -335,5 +335,5 @@ pillar_shaft.default <- function(x, ...) {
   #' @details
   #' The default method will currently format via [format()],
   #' but you should not rely on this behavior.
-  pillar_shaft(new_vertical(format(x)), ...)
+  pillar_shaft(as_glue(format(x)), ...)
 }

@@ -51,7 +51,7 @@ tbl_format_header.tbl <- function(x, setup, ...) {
 
 #' @export
 tbl_format_header.pillar_tbl_format_setup <- function(x, ...) {
-  new_vertical(c(
+  as_glue(c(
     cli::style_bold("<tbl_format_header(setup)>"),
     tbl_format_header(x$x, setup = x)
   ))

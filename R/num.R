@@ -1,113 +1,9 @@
 #' Format a numeric vector in a tibble
 #'
-#' @description
-#' `r lifecycle::badge("experimental")`
+#' These functions are reexported as [tibble::num()] and [tibble::set_num_opts()].
 #'
-#' Constructs a numeric vector that can be formatted with predefined
-#' significant digits, or with a maximum or fixed number of digits
-#' after the decimal point.
-#' Scaling is supported, as well as forcing a decimal, scientific
-#' or engineering notation.
-#' If a label is given, it is shown in the header of a column.
-#'
-#' The formatting is applied when the vector is printed or formatted,
-#' and also in a tibble column.
-#' The formatting annotation and the class survives most arithmetic transformations,
-#' the most notable exceptions are [var()] and [sd()].
-#'
-#' @family vector classes
-#' @inheritParams ellipsis::dots_empty
-#' @param x A numeric vector.
-#' @param sigfig Define the number of significant digits to show. Must be one or greater.
-#'   The `"pillar.sigfig"` option is not consulted.
-#'   Can't be combined with `digits`.
-#' @param digits Number of digits after the decimal points to show.
-#'   Positive numbers specify the exact number of digits to show.
-#'   Negative numbers specify (after negation) the maximum number of digits to show.
-#'   With `digits = 2`, the numbers 1.2 and 1.234 are printed as 1.20 and 1.23,
-#'   with `digits = -2` as 1.2 and 1.23, respectively.
-#'   Can't be combined with `sigfig`.
-#' @param label A label to show instead of the type description.
-#' @param scale Multiplier to apply to the data before showing.
-#'   Useful for displaying e.g. percentages.
-#'   Must be combined with `label`.
-#' @param notation One of `"fit"`, `"dec"`, `"sci"`, `"eng"`, or `"si"`.
-#'   - `"fit"`: Use decimal notation if it fits and if it consumes 13 digits or less,
-#'     otherwise use scientific notation. (The default for numeric pillars.)
-#'   - `"dec"`: Use decimal notation, regardless of width.
-#'   - `"sci"`: Use scientific notation.
-#'   - `"eng"`: Use engineering notation, i.e. scientific notation
-#'       using exponents that are a multiple of three.
-#'   - `"si"`: Use SI notation, prefixes between `1e-24` and `1e24` are supported.
-#' @param fixed_exponent
-#'   Use the same exponent for all numbers in scientific, engineering or SI notation.
-#'   `-Inf` uses the smallest, `+Inf` the largest fixed_exponent present in the data.
-#'   The default is to use varying exponents.
-#' @param extra_sigfig
-#'   If `TRUE`, increase the number of significant digits if the data consists of
-#'   numbers of the same magnitude with subtle differences.
+#' @keywords internal
 #' @export
-#' @examples
-#' # Display as a vector
-#' num(9:11 * 100 + 0.5)
-#' @examplesIf rlang::is_installed("tibble")
-#'
-#' # Significant figures
-#' tibble::tibble(
-#'   x3 = num(9:11 * 100 + 0.5, sigfig = 3),
-#'   x4 = num(9:11 * 100 + 0.5, sigfig = 4),
-#'   x5 = num(9:11 * 100 + 0.5, sigfig = 5),
-#' )
-#'
-#' # Maximum digits after the decimal points
-#' tibble::tibble(
-#'   x0 = num(9:11 * 100 + 0.5, digits = 0),
-#'   x1 = num(9:11 * 100 + 0.5, digits = -1),
-#'   x2 = num(9:11 * 100 + 0.5, digits = -2),
-#' )
-#'
-#' # Use fixed digits and a currency label
-#' tibble::tibble(
-#'   usd = num(9:11 * 100 + 0.5, digits = 2, label = "USD"),
-#'   gbp = num(9:11 * 100 + 0.5, digits = 2, label = "£"),
-#'   chf = num(9:11 * 100 + 0.5, digits = 2, label = "SFr")
-#' )
-#'
-#' # Scale
-#' tibble::tibble(
-#'   small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
-#'   medium = num(9:11 / 100 + 0.0005, label = "%", scale = 100),
-#'   large  = num(9:11 / 10 + 0.005, label = "%", scale = 100)
-#' )
-#'
-#' # Notation
-#' tibble::tibble(
-#'   sci = num(10^(-13:6), notation = "sci"),
-#'   eng = num(10^(-13:6), notation = "eng"),
-#'   si  = num(10^(-13:6), notation = "si"),
-#'   dec = num(10^(-13:6), notation = "dec")
-#' )
-#'
-#' # Fixed exponent
-#' tibble::tibble(
-#'   scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
-#'   engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
-#'   simin  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -Inf)
-#' )
-#'
-#' tibble::tibble(
-#'   scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
-#'   scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
-#'   scimax   = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf)
-#' )
-#'
-#' #' Extra significant digits
-#' tibble::tibble(
-#'   default = num(100 + 1:3 * 0.001),
-#'   extra1 = num(100 + 1:3 * 0.001, extra_sigfig = TRUE),
-#'   extra2 = num(100 + 1:3 * 0.0001, extra_sigfig = TRUE),
-#'   extra3 = num(10000 + 1:3 * 0.00001, extra_sigfig = TRUE)
-#' )
 num <- function(x, ...,
                 sigfig = NULL, digits = NULL,
                 label = NULL, scale = NULL,
@@ -237,11 +133,6 @@ vec_math.pillar_num <- function(op, x, ...) {
   out
 }
 
-#' set_num_opts
-#'
-#' `set_num_opts()` adds formatting options to an arbitrary numeric vector,
-#' useful for composing with other types.
-#'
 #' @export
 #' @rdname num
 set_num_opts <- function(x, ...,

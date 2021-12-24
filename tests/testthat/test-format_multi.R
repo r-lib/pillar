@@ -67,30 +67,30 @@ test_that("output test", {
   # Spurious warnings on Windows
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
     })
   )
 
   expect_snapshot({
-    new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
+    as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
   })
 })
 
@@ -125,11 +125,11 @@ test_that("tests from tibble", {
 test_that("empty", {
   expect_equal(
     format(colonnade(list(a = character(), b = logical()), width = 30)),
-    structure(character(), class = "pillar_vertical")
+    as_glue(character())
   )
   expect_equal(
     format(colonnade(iris[1:5, character()], width = 30)),
-    structure(character(), class = "pillar_vertical")
+    as_glue(character())
   )
 })
 
