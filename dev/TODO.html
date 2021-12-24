@@ -75,38 +75,6 @@
 
 <div class="section level2">
 <h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a></h2>
-<ul><li>
-<p>documentation cleanup from <a href="https://github.com/tidyverse/tibble/issues/913" class="external-link uri">https://github.com/tidyverse/tibble/issues/913</a>:</p>
-<ul><li>relink digits vignette, shorten numbers vignette, replace ?num, ?char and print.tbl() with internal stubs</li>
-</ul></li>
-<li><p>expand list columns</p></li>
-<li>
-<p>Focus columns at their native position, with … or subtle vertical pipe inbetween (1 char wide)</p>
-<ul><li>Easiest if focus columns are moved to the beginning</li>
-<li>Get extra width?</li>
-</ul></li>
-<li>
-<p>Breaking changes</p>
-<ul><li>Wide character + list column: why does the character column take up all the space?
-<ul><li><code>tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))</code></li>
-<li>Because the minimum character width is used here; this is just the default shaft. We can show only the type if there’s lack of space and build a custom pillar shaft</li>
-</ul></li>
-<li>Redundant information goes up into the header <a href="https://github.com/r-lib/pillar/pull/307" class="external-link uri">https://github.com/r-lib/pillar/pull/307</a>
-<ul><li>call <code><a href="reference/type_sum.html">type_sum()</a></code> on the pillar shaft – if it returns <code>NULL</code> (as in the default method) call it on the vector</li>
-<li>Search for <code><a href="reference/new_pillar_type.html">new_pillar_type()</a></code>
-</li>
-<li>Maybe it’s easier to recompute in <code><a href="reference/type_sum.html">type_sum()</a></code> and <code>vec_ptype_abbr()</code>
-<ul><li>not sure, problems dealing with truncated vs. actual length</li>
-</ul></li>
-</ul></li>
-<li>Avoid showing dimensions twice in <code><a href="reference/type_sum.html">obj_sum()</a></code>, use <code>vec_ptype_abbr()</code> (with default handling of non-vctrs things) and not <code><a href="reference/type_sum.html">type_sum()</a></code>
-<ul><li>Is this done already?</li>
-</ul></li>
-<li>Shorter list columns: <a href="https://github.com/r-lib/pillar/issues/168" class="external-link uri">https://github.com/r-lib/pillar/issues/168</a>
-</li>
-</ul></li>
-<li>
-<p>Prototype</p>
 <ul><li>Multi-stage (hierarchical) output for packed data frames
 <ul><li>Challenging with tiers</li>
 <li>Show number of columns in the parent stage?
@@ -115,7 +83,24 @@
 </ul></li>
 <li>Can we agree that a packed data frame never spans multiple tiers?</li>
 </ul></li>
-<li>Show column names that are abbreviated in full
+<li>Focus columns at their native position, with … or subtle vertical pipe inbetween (1 char wide)
+<ul><li>Easiest if focus columns are moved to the beginning</li>
+<li>Requires multi-stage output?</li>
+<li>Get extra width?</li>
+</ul></li>
+<li>Breaking changes
+<ul><li>Wide character + list column: why does the character column take up all the space?
+<ul><li><code>tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))</code></li>
+<li>Because the minimum character width is used here; this is just the default shaft. We can show only the type if there’s lack of space and build a custom pillar shaft</li>
+</ul></li>
+<li>Avoid showing dimensions twice in <code><a href="reference/type_sum.html">obj_sum()</a></code>, use <code>vec_ptype_abbr()</code> (with default handling of non-vctrs things) and not <code><a href="reference/type_sum.html">type_sum()</a></code>
+<ul><li>Is this done already?</li>
+</ul></li>
+<li>Shorter list columns: <a href="https://github.com/r-lib/pillar/issues/168" class="external-link uri">https://github.com/r-lib/pillar/issues/168</a>
+</li>
+</ul></li>
+<li>Prototype
+<ul><li>Show column names that are abbreviated in full
 <ul><li>With their index if non-consecutive</li>
 </ul></li>
 <li>Tick column title in extra columns
@@ -147,21 +132,19 @@
 <li>control <code>NA</code> and zero characters: <a href="https://github.com/r-lib/pillar/issues/151" class="external-link uri">https://github.com/r-lib/pillar/issues/151</a>
 </li>
 </ul></li>
-<li><p>Resolve vctrs imports</p></li>
-<li><p>Help with {errors} and {quantities}</p></li>
-<li>
-<p>Rethink tibble-local options for display: section “Rule-based formatting” in <code>numbers.Rmd</code></p>
+<li>Resolve vctrs imports</li>
+<li>Help with {errors} and {quantities}</li>
+<li>Rethink tibble-local options for display: section “Rule-based formatting” in <code>numbers.Rmd</code>
 <ul><li>What are the use cases, beyond databases?</li>
 <li>Document pattern: helper function with <code>mutate(across(...))</code>
 </li>
 <li>Define class that applies this?</li>
 </ul></li>
-<li><p>Format and truncate in {utf8}</p></li>
-<li><p>Test coverage per file</p></li>
-<li><p>Use penguins</p></li>
-<li><p>Blog post?</p></li>
-<li>
-<p>Benchmark and profile again</p>
+<li>Format and truncate in {utf8}</li>
+<li>Test coverage per file</li>
+<li>Use penguins</li>
+<li>Blog post?</li>
+<li>Benchmark and profile again
 <ul><li><code>bench.R</code></li>
 <li><a href="https://github.com/tidyverse/tibble/issues/598" class="external-link uri">https://github.com/tidyverse/tibble/issues/598</a></li>
 </ul></li>
