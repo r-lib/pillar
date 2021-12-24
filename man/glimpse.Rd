@@ -38,6 +38,7 @@ See \code{\link[=format_glimpse]{format_glimpse()}} for details on the formattin
 
 \examples{
 glimpse(mtcars)
+
 \dontshow{if (rlang::is_installed("nycflights13")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 glimpse(nycflights13::flights)
 \dontshow{\}) # examplesIf}
