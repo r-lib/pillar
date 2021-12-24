@@ -74,11 +74,6 @@ pillar_from_shaft <- function(title, type, data, width) {
     return(NULL)
   }
 
-  if (get_min_width(type) > my_width) {
-    "!!!!!DEBUG Early exit, (`v(get_min_width(type))`) > (`v(my_width)`)"
-    return(NULL)
-  }
-
   data_min_width <- get_min_width(data)
   if (data_min_width > my_width) {
     "!!!!!DEBUG Early exit, (`v(get_min_width(data))`) > (`v(my_width)`)"
@@ -87,6 +82,20 @@ pillar_from_shaft <- function(title, type, data, width) {
   data_width <- get_width(data)
 
   data_component <- new_pillar_component(list(data), width = data_width, min_width = data_min_width)
+
+  shaft_type <- attr(data, "type", exact = TRUE)
+  if (!is.null(shaft_type)) {
+    type <- shaft_type
+  } else {
+    force(type)
+  }
+
+  # Delay querying width of type until it is decided if we take the type_sum
+  # from the data or from the argument provided
+  if (get_min_width(type) > my_width) {
+    "!!!!!DEBUG Early exit, (`v(get_min_width(type))`) > (`v(my_width)`)"
+    return(NULL)
+  }
 
   new_pillar(
     list(

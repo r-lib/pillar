@@ -204,10 +204,17 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, ext
   ret$dec <- dec
   ret$sci <- sci
 
+  if (!is.null(ret$sci$unit) && ret$sci$unit != 0) {
+    type_sum <- format_exp(ret$sci$unit, (notation == "si"))
+  } else {
+    type_sum <- NULL
+  }
+
   new_pillar_shaft(
     ret,
     width = get_width(ret$dec %||% ret$sci),
     min_width = min(get_min_widths(ret)),
+    type_sum = type_sum,
     class = "pillar_shaft_decimal"
   )
 }

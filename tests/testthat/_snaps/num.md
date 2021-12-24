@@ -77,7 +77,7 @@
     Output
       # A tibble: 14 x 3
                     scimin            engmin             simin
-                     <sci>             <eng>              <si>
+                     <e-5>             <e-5>               <µ>
        1              1.23              12.3              12.3
        2             12.3              123               123  
        3            123               1230              1230  
@@ -100,7 +100,7 @@
     Output
       # A tibble: 14 x 3
                   scismall          scilarge            scimax
-                     <sci>             <eng>              <si>
+                     <e-3>              <e3>               <M>
        1            0.0123      0.0000000123   0.0000000000123
        2            0.123       0.000000123    0.000000000123 
        3            1.23        0.00000123     0.00000000123  
@@ -316,7 +316,7 @@
       pillar(num(NA_real_, notation = "sci", fixed_exponent = -1))
     Output
       <pillar>
-      <sci>
+      <e-1>
          NA
     Code
       pillar(num(NA_real_, notation = "sci", fixed_exponent = -Inf))
@@ -359,14 +359,14 @@
       pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -1))
     Output
       <pillar>
-      <sci>
+      <e-1>
          NA
       10000
     Code
       pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
     Output
       <pillar>
-      <sci>
+       <e3>
          NA
           1
 

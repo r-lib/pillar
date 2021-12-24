@@ -46,6 +46,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   if (!is.null(sci_mod)) {
     exp <- fix_exp(num, compute_exp(mnt, sigfig, digits), fixed_exponent, sci_mod, si)
     "!!!!!!DEBUG `v(exp)`"
+    unit <- attr(exp, "unit")
 
     # Must divide by 10^exp, because 10^-exp may not be representable
     # for very large values of exp
@@ -55,6 +56,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   } else {
     exp <- 0
     "!!!!!!DEBUG `v(exp)`"
+    unit <- NULL
   }
 
   if (is.null(sci_mod) || !is.null(fixed_exponent)) {
@@ -107,6 +109,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
     rhs_digits = rhs_digits,
     dec = dec,
     exp = exp_display,
+    unit = unit,
     si = si
   )
 
@@ -126,19 +129,19 @@ fix_exp <- function(num, exp, fixed_exponent, sci_mod, si) {
       exp <- max(exp, na.rm = TRUE)
     }
     "!!!!!!DEBUG `v(exp)`"
-    exp <- rep_along(num, as.integer(round(exp)))
+    exp <- as.integer(round(exp))
+    exp <- structure(rep_along(num, exp), unit = exp %|% 0L)
     exp[!num] <- NA_integer_
     "!!!!!!DEBUG `v(exp)`"
   }
 
   if (sci_mod != 1) {
-    exp <- as.integer(round(floor(exp / sci_mod) * sci_mod))
+    exp[] <- as.integer(round(floor(exp / sci_mod) * sci_mod))
     "!!!!!!DEBUG `v(exp)`"
   }
   if (si) {
     # Truncate very small and very large exponents
-    exp <- pmax(exp, -24L)
-    exp <- pmin(exp, 24L)
+    exp[] <- pmin(pmax(exp, -24L), 24L)
     "!!!!!!DEBUG `v(exp)`"
   }
 
