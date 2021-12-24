@@ -6,7 +6,6 @@
 #' @export
 char <- function(x, ..., min_chars = NULL,
                  shorten = c("back", "front", "mid", "abbreviate")) {
-
   stopifnot(is.character(x))
   check_dots_empty()
 
@@ -58,7 +57,6 @@ format.pillar_char <- function(x, trim = FALSE, ...) {
 #' @rdname char
 set_char_opts <- function(x, ..., min_chars = NULL,
                           shorten = c("back", "front", "mid", "abbreviate")) {
-
   check_dots_empty()
 
   if (missing(shorten)) {

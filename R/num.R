@@ -10,7 +10,6 @@ num <- function(x, ...,
                 notation = c("fit", "dec", "sci", "eng", "si"),
                 fixed_exponent = NULL,
                 extra_sigfig = NULL) {
-
   stopifnot(is.numeric(x))
   stopifnot(is.null(digits) || is_integerish(digits))
   check_dots_empty()
@@ -141,7 +140,6 @@ set_num_opts <- function(x, ...,
                          notation = c("fit", "dec", "sci", "eng", "si"),
                          fixed_exponent = NULL,
                          extra_sigfig = NULL) {
-
   check_dots_empty()
 
   if (missing(notation)) {
