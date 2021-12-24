@@ -34,7 +34,7 @@ new_pillar_type_obj <- function(type) {
   ret
 }
 
-get_pillar_type <- function(x, shaft) {
+get_pillar_type <- function(x) {
   type <- type_sum(x)
   if (length(type) == 0L) type <- "?"
   # Can return a classed object to be formatted by format_type_sum()
