@@ -407,7 +407,7 @@ style_num <- function(x, negative, significant = rep_along(x, TRUE)) {
 
 assemble_decimal <- function(x) {
   mantissa <- format_mantissa(x)
-  exp <- format_exp(x)
+  exp <- format_exp(x$exp, x$si)
 
   paste0(mantissa, exp)
 }
