@@ -46,7 +46,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width,
   ret <- structure(
     x,
     ...,
-    type_sum = type_sum,
+    type = if (!is.null(type_sum)) new_pillar_type_obj(type_sum),
     class = c(class, "pillar_shaft")
   )
   ret <- set_width(ret, width)
