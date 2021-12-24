@@ -2,8 +2,16 @@
 
 ## Next steps
 
+- Multi-stage (hierarchical) output for packed data frames
+    - Challenging with tiers
+    - Show number of columns in the parent stage?
+        - If too wide; also show ellipsis
+        - Perhaps show column names in footer?
+    - Can we agree that a packed data frame never spans multiple tiers?
+
 - Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
     - Easiest if focus columns are moved to the beginning
+    - Requires multi-stage output?
     - Get extra width?
 
 - Breaking changes
@@ -14,12 +22,6 @@
         - Is this done already?
     - Shorter list columns: <https://github.com/r-lib/pillar/issues/168>
 - Prototype
-    - Multi-stage (hierarchical) output for packed data frames
-        - Challenging with tiers
-        - Show number of columns in the parent stage?
-            - If too wide; also show ellipsis
-            - Perhaps show column names in footer?
-        - Can we agree that a packed data frame never spans multiple tiers?
     - Show column names that are abbreviated in full
         - With their index if non-consecutive
     - Tick column title in extra columns
