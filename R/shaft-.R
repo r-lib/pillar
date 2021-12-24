@@ -23,11 +23,17 @@
 #' @param ... Additional attributes.
 #' @param width The maximum column width.
 #' @param min_width The minimum allowed column width, `width` if omitted.
+#' @param type_sum `r lifecycle::badge("experimental")`
+#'
+#'   Override the type summary displayed at the top of the data.
+#'   This argument, if given, takes precedence over the type summary provided by
+#'   [type_sum()].
 #' @param class The name of the subclass.
 #' @param subclass Deprecated, pass the `class` argument instead.
 #' @name new_pillar_shaft
 #' @export
-new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NULL, subclass = NULL) {
+new_pillar_shaft <- function(x, ..., width = NULL, min_width = width,
+                             type_sum = NULL, class = NULL, subclass = NULL) {
   if (!is.null(subclass)) {
     deprecate_soft("1.4.0", "pillar::new_pillar_shaft(subclass = )", "new_pillar_shaft(class = )")
     class <- subclass
@@ -40,6 +46,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width, class = NU
   ret <- structure(
     x,
     ...,
+    type_sum = type_sum,
     class = c(class, "pillar_shaft")
   )
   ret <- set_width(ret, width)
