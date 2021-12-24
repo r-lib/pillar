@@ -46,6 +46,10 @@ num <- function(x, ...,
 #' @export
 vec_ptype_abbr.pillar_num <- function(x, ...) {
   pillar_attr <- attr(x, "pillar", exact = TRUE)
+  vec_ptype_abbr_num_attr(pillar_attr)
+}
+
+vec_ptype_abbr_num_attr <- function(pillar_attr) {
   notation <- pillar_attr$notation
   if (is.null(notation)) {
     notation <- "num"

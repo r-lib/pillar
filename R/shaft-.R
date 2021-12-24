@@ -142,11 +142,14 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     pillar_attr$digits,
     pillar_attr$notation,
     pillar_attr$fixed_exponent,
-    pillar_attr$extra_sigfig
+    pillar_attr$extra_sigfig,
+    # Deferred evaluation
+    vec_ptype_abbr_num_attr(pillar_attr)
   )
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, extra_sigfig) {
+pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent,
+                                extra_sigfig, type_sum) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1) {
       abort("`digits` must be a number.")
@@ -225,7 +228,14 @@ pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
     return(NextMethod())
   }
 
-  pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL, extra_sigfig = NULL)
+  pillar_shaft_number(
+    x, sigfig,
+    digits = NULL,
+    notation = NULL,
+    fixed_exponent = NULL,
+    extra_sigfig = NULL,
+    type_sum = NULL
+  )
 }
 
 # registered in .onLoad()
