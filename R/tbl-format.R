@@ -16,7 +16,6 @@ print.tbl <- function(x, width = NULL, ..., n = NULL, max_extra_cols = NULL,
 print_tbl <- function(x, width = NULL, ...,
                       n_extra = NULL,
                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
-
   if (!is.null(n_extra)) {
     deprecate_soft(
       "1.6.2", "pillar::print(n_extra = )", "pillar::print(max_extra_cols = )",
@@ -28,7 +27,8 @@ print_tbl <- function(x, width = NULL, ...,
   }
 
   writeLines(format(
-    x, width = width, ...,
+    x,
+    width = width, ...,
     n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
   ))
   invisible(x)
