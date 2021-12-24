@@ -37,7 +37,8 @@
 #' # Create pillar objects
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,
-#'   palmerpenguins::penguins$species[1:3], width = 60
+#'   palmerpenguins::penguins$species[1:3],
+#'   width = 60
 #' )
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,
@@ -57,6 +58,7 @@
 #'
 #' # Packed array
 #' ctl_new_compound_pillar(tibble::tibble(), Titanic, width = 60)
+#'
 #' @examples
 #'
 #' # Customize output

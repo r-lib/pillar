@@ -44,8 +44,20 @@ test_that("output test", {
 
     tibble::tibble(
       scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
-      scilarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
-      scimax   = num(10^(-7:6) * 123, notation = "si", fixed_exponent = Inf)
+      engsmall = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -3),
+      sismall  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -3)
+    )
+
+    tibble::tibble(
+      scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
+      englarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
+      silarge  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = 3)
+    )
+
+    tibble::tibble(
+      scimax = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf),
+      engmax = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = Inf),
+      simax  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = Inf)
     )
 
     # Extra significant figures
