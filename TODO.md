@@ -2,10 +2,6 @@
 
 ## Next steps
 
-- documentation cleanup from <https://github.com/tidyverse/tibble/issues/913>:
-    - relink digits vignette, shorten numbers vignette, replace ?num, ?char and print.tbl() with internal stubs
-- expand list columns
-
 - Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
     - Easiest if focus columns are moved to the beginning
     - Get extra width?
@@ -14,11 +10,6 @@
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
         - Because the minimum character width is used here; this is just the default shaft. We can show only the type if there's lack of space and build a custom pillar shaft
-    - Redundant information goes up into the header <https://github.com/r-lib/pillar/pull/307>
-        - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
-        - Search for `new_pillar_type()`
-        - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
-            - not sure, problems dealing with truncated vs. actual length
     - Avoid showing dimensions twice in `obj_sum()`, use `vec_ptype_abbr()` (with default handling of non-vctrs things) and not `type_sum()`
         - Is this done already?
     - Shorter list columns: <https://github.com/r-lib/pillar/issues/168>
