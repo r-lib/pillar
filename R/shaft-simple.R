@@ -11,6 +11,7 @@
 #' or other attributes of the text, see [crayon].
 #'
 #' @inheritParams tibble::char
+#' @param ... Passed on to [new_pillar_shaft()].
 #' @param formatted An object coercible to [character].
 #' @param align Alignment of the column.
 #' @param na String to use as `NA` value, defaults to `"NA"` styled with
