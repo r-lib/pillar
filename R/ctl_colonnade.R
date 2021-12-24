@@ -1,5 +1,6 @@
 # Adapted from squeeze_impl()
-ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_tbl()) {
+ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
+                          controller = new_tbl(), focus = NULL) {
   "!!!!DEBUG ctl_colonnade()"
 
   x <- new_data_frame(x, names = names2(x))
@@ -21,8 +22,18 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     rowid_width <- 0L
   }
 
+  # Move focus columns to front
+  x_focus <- x
+  if (!is.null(focus)) {
+    focus <- match(focus, names(x))
+    stopifnot(!anyNA(focus))
+    idx <- seq_along(x)
+    idx <- c(focus, setdiff(idx, focus))
+    x_focus <- x[idx]
+  }
+
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
-  pillars <- new_packed_pillars(x, controller, tier_widths, title = NULL)
+  pillars <- new_packed_pillars(x_focus, controller, tier_widths, title = NULL)
 
   if (length(pillars) == 0) {
     return(new_colonnade_body(list(), extra_cols = x))
