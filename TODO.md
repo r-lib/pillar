@@ -2,42 +2,14 @@
 
 ## Next steps
 
-- Pass `max_footer_lines` to `print.tbl()`, rethink option name
-- Test all options
-- Milestone: <https://github.com/r-lib/pillar/milestone/11>
-- CRAN release
-- triage issues
-
-- documentation cleanup from <https://github.com/tidyverse/tibble/issues/913>:
-    - relink digits vignette, shorten numbers vignette, replace ?num, ?char and print.tbl() with internal stubs
-- expand list columns
-
-- revdepcheck for adding ellipsis to methods
-
-- Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
-    - Easiest if focus columns are moved to the beginning
-    - Get extra width?
-
 - Breaking changes
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
         - Because the minimum character width is used here; this is just the default shaft. We can show only the type if there's lack of space and build a custom pillar shaft
-        - Abbreviate list columns at the left? <https://github.com/r-lib/pillar/issues/84>
-    - Redundant information goes up into the header <https://github.com/r-lib/pillar/pull/307>
-        - call `type_sum()` on the pillar shaft -- if it returns `NULL` (as in the default method) call it on the vector
-        - Search for `new_pillar_type()`
-        - Maybe it's easier to recompute in `type_sum()` and `vec_ptype_abbr()`
-            - not sure, problems dealing with truncated vs. actual length
     - Avoid showing dimensions twice in `obj_sum()`, use `vec_ptype_abbr()` (with default handling of non-vctrs things) and not `type_sum()`
         - Is this done already?
     - Shorter list columns: <https://github.com/r-lib/pillar/issues/168>
 - Prototype
-    - Multi-stage (hierarchical) output for packed data frames
-        - Challenging with tiers
-        - Show number of columns in the parent stage?
-            - If too wide; also show ellipsis
-            - Perhaps show column names in footer?
-        - Can we agree that a packed data frame never spans multiple tiers?
     - Show column names that are abbreviated in full
         - With their index if non-consecutive
     - Tick column title in extra columns
@@ -56,6 +28,14 @@
     - `shorten = "unique"`? <https://github.com/r-lib/pillar/issues/101>
     - `shorten = "front"`: right-align?
     - control `NA` and zero characters: <https://github.com/r-lib/pillar/issues/151>
+    - Multi-stage (hierarchical) output for packed data frames
+        - Show number of columns in the parent stage?
+            - Search for `sub_title <- c(title, ticked_names[[i]])`
+            - If too wide; also show ellipsis
+            - Perhaps show column names in footer?
+        - Distribute compound pillars over multiple tiers
+            - Or can we agree that a packed data frame never spans multiple tiers?
+    - Focus columns: <https://github.com/r-lib/pillar/pull/384>
 - Resolve vctrs imports
 - Help with {errors} and {quantities}
 - Rethink tibble-local options for display: section "Rule-based formatting" in `numbers.Rmd`

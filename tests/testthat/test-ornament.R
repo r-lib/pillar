@@ -10,6 +10,6 @@ test_that("ornament", {
 
 test_that("vertical", {
   expect_snapshot({
-    new_vertical(c("abc", "de"))
+    as_glue(c("abc", "de"))
   })
 })

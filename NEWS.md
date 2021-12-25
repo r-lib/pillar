@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.4.9001
+
+- Fix support for `nanotime::nanotime()` classes (#378, #380).
+
+
 # pillar 1.6.4.9000
 
 - Same as previous version.

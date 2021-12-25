@@ -23,8 +23,8 @@ test_that("output test", {
     # Scale
     tibble::tibble(
       small  = num(9:11 / 1000 + 0.00005, label = "%", scale = 100),
-      medium = num(9:11 /  100 + 0.0005 , label = "%", scale = 100),
-      large  = num(9:11 /   10 + 0.005  , label = "%", scale = 100)
+      medium = num(9:11 / 100 + 0.0005, label = "%", scale = 100),
+      large  = num(9:11 / 10 + 0.005, label = "%", scale = 100)
     )
 
     # Notation
@@ -39,13 +39,25 @@ test_that("output test", {
     tibble::tibble(
       scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -Inf),
       engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
-      simin  = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = -Inf)
+      simin  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -Inf)
     )
 
     tibble::tibble(
       scismall = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -3),
-      scilarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
-      scimax   = num(10^(-7:6) * 123, notation = "si",  fixed_exponent = Inf)
+      engsmall = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -3),
+      sismall  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = -3)
+    )
+
+    tibble::tibble(
+      scilarge = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = 3),
+      englarge = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = 3),
+      silarge  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = 3)
+    )
+
+    tibble::tibble(
+      scimax = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = Inf),
+      engmax = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = Inf),
+      simax  = num(10^(-7:6) * 123, notation = "si", fixed_exponent = Inf)
     )
 
     # Extra significant figures
@@ -60,18 +72,18 @@ test_that("output test", {
 
 test_that("many digits", {
   expect_snapshot({
-    num(123456789 * 10 ^ (-9:0))
-    num(123456789 * 10 ^ (-9:1))
-    num(123456789 * 10 ^ (-9:1), notation = "dec")
-    num(123456789 * 10 ^ (-9:1), notation = "sci")
-    num(123456789 * 10 ^ (-9:1), notation = "eng")
-    num(123456789 * 10 ^ (-9:1), notation = "si")
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "eng", fixed_exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "si", fixed_exponent = -Inf)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = -3)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = 3)
-    num(123456789 * 10 ^ (-9:1), notation = "sci", fixed_exponent = Inf)
+    num(123456789 * 10^(-9:0))
+    num(123456789 * 10^(-9:1))
+    num(123456789 * 10^(-9:1), notation = "dec")
+    num(123456789 * 10^(-9:1), notation = "sci")
+    num(123456789 * 10^(-9:1), notation = "eng")
+    num(123456789 * 10^(-9:1), notation = "si")
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "eng", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "si", fixed_exponent = -Inf)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -3)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = 3)
+    num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = Inf)
   })
 })
 

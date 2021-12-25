@@ -53,7 +53,6 @@ type_sum.default <- function(x) {
       } else {
         "sym"
       },
-
     typeof(x)
   )
 }

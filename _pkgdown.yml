@@ -36,10 +36,6 @@ reference:
       - new_pillar_title
       - new_pillar_type
       - dim_desc
-  - title: Vector classes
-    contents:
-      - num
-      - char
   - title: Miscellaneous
     contents:
       - pillar_options

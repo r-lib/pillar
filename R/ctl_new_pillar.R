@@ -37,7 +37,8 @@
 #' # Create pillar objects
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,
-#'   palmerpenguins::penguins$species[1:3], width = 60
+#'   palmerpenguins::penguins$species[1:3],
+#'   width = 60
 #' )
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,
@@ -96,6 +97,21 @@ ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
   UseMethod("ctl_new_pillar")
 }
 
+#' @export
+ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
+  "!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"
+
+  pillar(x, title, if (!is.null(width)) max0(width))
+}
+
+max0 <- function(x) {
+  if (length(x) > 0) {
+    max(x)
+  } else {
+    0L
+  }
+}
+
 #' @rdname ctl_new_pillar
 #' @export
 ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
@@ -122,21 +138,6 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
     new_array_pillar(x, controller, width, title = title)
   } else {
     ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
-  }
-}
-
-#' @export
-ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
-  "!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"
-
-  pillar(x, title, if (!is.null(width)) max0(width))
-}
-
-max0 <- function(x) {
-  if (length(x) > 0) {
-    max(x)
-  } else {
-    0L
   }
 }
 
