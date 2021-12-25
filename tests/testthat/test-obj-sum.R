@@ -2,12 +2,12 @@
 
 test_that("forwards to vec_ptype_abbr() for S4", {
   x <- methods::setClass("A")
-  expect_equal(obj_sum(x), vctrs::vec_ptype_abbr(x))
+  expect_equal(obj_sum(x), vec_ptype_abbr(x))
 })
 
 test_that("forwards to vec_ptype_abbr() for S3", {
   x <- structure(list(), class = c("a", "b", "c"))
-  expect_equal(obj_sum(x), vctrs::vec_ptype_abbr(x))
+  expect_equal(obj_sum(x), vec_ptype_abbr(x))
 })
 
 test_that("NULL handled specially", {

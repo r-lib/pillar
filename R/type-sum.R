@@ -38,7 +38,7 @@ type_sum.default <- function(x) {
     return(I(label))
   }
 
-  if (is.object(x) || vctrs::vec_is(x)) {
+  if (is.object(x) || vec_is(x)) {
     return(vec_ptype_abbr(x))
   }
 
