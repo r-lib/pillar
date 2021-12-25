@@ -170,7 +170,7 @@ format.pillar <- function(x, width = NULL, ...) {
 
   if (is.null(width)) {
     widths <- pillar_get_widths(x)
-    width <- sum(widths) - length(widths) + 1L
+    width <- sum(widths) + length(widths) - 1L
   }
 
   as_glue(pillar_format_parts_2(x, width)$aligned[[1]])
