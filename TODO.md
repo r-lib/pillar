@@ -2,10 +2,6 @@
 
 ## Next steps
 
-- Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
-    - Easiest if focus columns are moved to the beginning
-    - Get extra width?
-
 - Breaking changes
     - Wide character + list column: why does the character column take up all the space?
         - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
@@ -39,6 +35,7 @@
             - Perhaps show column names in footer?
         - Distribute compound pillars over multiple tiers
             - Or can we agree that a packed data frame never spans multiple tiers?
+    - Focus columns: <https://github.com/r-lib/pillar/pull/384>
 - Resolve vctrs imports
 - Help with {errors} and {quantities}
 - Rethink tibble-local options for display: section "Rule-based formatting" in `numbers.Rmd`
