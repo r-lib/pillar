@@ -75,26 +75,13 @@
 
 <div class="section level2">
 <h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a></h2>
-<ul><li>Breaking changes
-<ul><li>Wide character + list column: why does the character column take up all the space?
-<ul><li><code>tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))</code></li>
-<li>Because the minimum character width is used here; this is just the default shaft. We can show only the type if there’s lack of space and build a custom pillar shaft</li>
-</ul></li>
-<li>Avoid showing dimensions twice in <code><a href="reference/type_sum.html">obj_sum()</a></code>, use <code>vec_ptype_abbr()</code> (with default handling of non-vctrs things) and not <code><a href="reference/type_sum.html">type_sum()</a></code>
-<ul><li>Is this done already?</li>
-</ul></li>
-<li>Shorter list columns: <a href="https://github.com/r-lib/pillar/issues/168" class="external-link uri">https://github.com/r-lib/pillar/issues/168</a>
-</li>
-</ul></li>
-<li>Prototype
+<ul><li>Prototype
 <ul><li>Show column names that are abbreviated in full
 <ul><li>With their index if non-consecutive</li>
 </ul></li>
 <li>Tick column title in extra columns
 <ul><li>It should be?</li>
 </ul></li>
-<li>Second backtick if column name is abbreviated, <a href="https://github.com/tidyverse/tibble/issues/838" class="external-link uri">https://github.com/tidyverse/tibble/issues/838</a>
-</li>
 <li>Simplify matrix formatting to format like an array: <a href="https://github.com/r-lib/pillar/issues/142#issuecomment-489357664" class="external-link uri">https://github.com/r-lib/pillar/issues/142#issuecomment-489357664</a>
 </li>
 <li>Show number of rows if known

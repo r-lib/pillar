@@ -8,6 +8,8 @@ It should always return a string (a character vector of length one).
 As of pillar v1.6.1, the default method forwards to vctrs::vec_ptype_abbr()
 for vectors and to type_sum() for other objects.
 Previous versions always forwarded to type_sum().
+An attribute named "short" in the return value will be picked up by
+the pillar_shaft() method for lists, and used if space is limited.
 size_sum() is called by obj_sum() to format the size of the object.
 It should always return a string (a character vector of length one),
 it can be an empty string "" to omit size information,
@@ -94,7 +96,9 @@ if <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html" class="exte
 It should always return a string (a character vector of length one).
 As of pillar v1.6.1, the default method forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code>
 for vectors and to <code>type_sum()</code> for other objects.
-Previous versions always forwarded to <code>type_sum()</code>.</p>
+Previous versions always forwarded to <code>type_sum()</code>.
+An attribute named <code>"short"</code> in the return value will be picked up by
+the <code><a href="pillar_shaft.html">pillar_shaft()</a></code> method for lists, and used if space is limited.</p>
 <p><code>size_sum()</code> is called by <code>obj_sum()</code> to format the size of the object.
 It should always return a string (a character vector of length one),
 it can be an empty string <code>""</code> to omit size information,
@@ -127,12 +131,24 @@ to avoid confusion.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int [10]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int"</span>
 <span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int [10 × 1]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int[…]"</span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "df [1 × 1]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "df"</span>
 <span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "date [1]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "date"</span>
 <span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dttm [1]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dttm"</span>
 <span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "fn"</span>
 <span class="r-in"></span>
