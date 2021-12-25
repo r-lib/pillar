@@ -149,14 +149,9 @@ test_that("sep argument", {
   })
 })
 
-# Run opposite test to snapshot output but not alter it
-if (!l10n_info()$`UTF-8`) {
-  test_that("color, options: UTF-8 is TRUE", {
-    skip("Symmetry")
-  })
-}
+test_that("color", {
+  skip_if_not_installed("testthat", "3.1.1")
 
-test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   local_colors()
   expect_true(crayon::has_color())
   expect_equal(crayon::num_colors(), 16)
@@ -166,9 +161,12 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   if (l10n_info()$`UTF-8`) {
     local_utf8()
     expect_true(cli::is_utf8_output())
+    variant <- "unicode"
+  } else {
+    variant <- "ansi"
   }
 
-  expect_snapshot({
+  expect_snapshot(variant = variant, {
     crayon::has_color()
     crayon::num_colors()
     has_color()
@@ -177,13 +175,13 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
     style_neg("-1")
   })
 
-  expect_snapshot({
+  expect_snapshot(variant = variant, {
     style_na("NA")
   })
 
   xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
 
-  expect_snapshot({
+  expect_snapshot(variant = variant, {
     print(xf)
     with_options(pillar.subtle_num = TRUE, print(xf))
     with_options(pillar.subtle = FALSE, print(xf))
@@ -192,17 +190,10 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
     with_options(pillar.bold = TRUE, print(xf))
   })
 
-  expect_snapshot({
+  expect_snapshot(variant = variant, {
     colonnade(list(a_very_long_column_name = 0), width = 15)
   })
 })
-
-# Run opposite test to snapshot output but not alter it
-if (l10n_info()$`UTF-8`) {
-  test_that("color, options: UTF-8 is FALSE", {
-    skip("Symmetry")
-  })
-}
 
 test_that("sanity check (2)", {
   expect_false(crayon::has_color())
