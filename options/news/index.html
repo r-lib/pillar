@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
       </span>
     </div>
 
@@ -69,9 +69,13 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href="https://github.com/r-lib/pillar/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.6.4.9001" id="pillar-1649001">pillar 1.6.4.9001<a class="anchor" aria-label="anchor" href="#pillar-1649001"></a></h2>
+<ul><li>Fix support for <code><a href="https://rdrr.io/pkg/nanotime/man/nanotime.html" class="external-link">nanotime::nanotime()</a></code> classes (<a href="https://github.com/r-lib/pillar/issues/378" class="external-link">#378</a>, <a href="https://github.com/r-lib/pillar/issues/380" class="external-link">#380</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.4.9000" id="pillar-1649000">pillar 1.6.4.9000<a class="anchor" aria-label="anchor" href="#pillar-1649000"></a></h2>
 <ul><li>Same as previous version.</li>
@@ -405,37 +409,37 @@
 <p>Initial release.</p>
 <div class="section level3">
 <h3 id="user-functions-1-0-0">User functions<a class="anchor" aria-label="anchor" href="#user-functions-1-0-0"></a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">pillar</span>(x, <span class="dt">title =</span> <span class="ot">NULL</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">colonnade</span>(x, <span class="dt">has_row_id =</span> <span class="ot">TRUE</span>, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">squeeze</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pillar</span>(x, <span class="at">title =</span> <span class="cn">NULL</span>, <span class="at">width =</span> <span class="cn">NULL</span>, ...)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnade</span>(x, <span class="at">has_row_id =</span> <span class="cn">TRUE</span>, <span class="at">width =</span> <span class="cn">NULL</span>, ...)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">squeeze</span>(x, <span class="at">width =</span> <span class="cn">NULL</span>, ...)</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="functions-for-implementers-of-data-types-1-0-0">Functions for implementers of data types<a class="anchor" aria-label="anchor" href="#functions-for-implementers-of-data-types-1-0-0"></a></h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">new_pillar_shaft_simple</span>(formatted, ..., <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="st">"left"</span>, <span class="dt">min_width =</span> <span class="ot">NULL</span>, <span class="dt">na_indent =</span> 0L)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">new_pillar_shaft</span>(x, ..., width, <span class="dt">min_width =</span> width, subclass)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">new_ornament</span>(x, <span class="dt">width =</span> <span class="ot">NULL</span>, <span class="dt">align =</span> <span class="ot">NULL</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">get_extent</span>(x)</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">get_max_extent</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">new_pillar_shaft_simple</span>(formatted, ..., <span class="at">width =</span> <span class="cn">NULL</span>, <span class="at">align =</span> <span class="st">"left"</span>, <span class="at">min_width =</span> <span class="cn">NULL</span>, <span class="at">na_indent =</span> 0L)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">new_pillar_shaft</span>(x, ..., width, <span class="at">min_width =</span> width, subclass)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">new_ornament</span>(x, <span class="at">width =</span> <span class="cn">NULL</span>, <span class="at">align =</span> <span class="cn">NULL</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_extent</span>(x)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_max_extent</span>(x)</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="utilities-1-0-0">Utilities<a class="anchor" aria-label="anchor" href="#utilities-1-0-0"></a></h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">dim_desc</span>(x)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">style_na</span>(x)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">style_neg</span>(x)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">style_num</span>(x, negative, <span class="dt">significant =</span> <span class="kw">rep_along</span>(x, <span class="ot">TRUE</span>))</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">style_subtle</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim_desc</span>(x)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">style_na</span>(x)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">style_neg</span>(x)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">style_num</span>(x, negative, <span class="at">significant =</span> <span class="fu">rep_along</span>(x, <span class="cn">TRUE</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">style_subtle</span>(x)</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="testing-helper-1-0-0">Testing helper<a class="anchor" aria-label="anchor" href="#testing-helper-1-0-0"></a></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">expect_known_display</span>(object, file, ..., <span class="dt">width =</span> 80L, <span class="dt">crayon =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">expect_known_display</span>(object, file, ..., <span class="at">width =</span> 80L, <span class="at">crayon =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="own-s3-methods-1-0-0">Own S3 methods<a class="anchor" aria-label="anchor" href="#own-s3-methods-1-0-0"></a></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">pillar_shaft</span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">type_sum</span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">is_vector_s3</span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">obj_sum</span>(x) <span class="co"># AsIs, POSIXlt, default, list</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">extra_cols</span>(x, ...) <span class="co"># squeezed_colonnade</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pillar_shaft</span>(x, ...) <span class="co"># AsIs, Date, POSIXt, character, default, list, logical, numeric</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">type_sum</span>(x) <span class="co"># AsIs, Date, POSIXct, data.frame, default, difftime, factor, ordered</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is_vector_s3</span>(x) <span class="co"># Date, POSIXct, data.frame, default, difftime, factor, ordered</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">obj_sum</span>(x) <span class="co"># AsIs, POSIXlt, default, list</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">extra_cols</span>(x, ...) <span class="co"># squeezed_colonnade</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -452,7 +456,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

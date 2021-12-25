@@ -20,7 +20,7 @@ See pillar() for the high-level constructor with default components."><meta name
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
       </span>
     </div>
 
@@ -72,7 +72,7 @@ See pillar() for the high-level constructor with default components."><meta name
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Construct a custom pillar object</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/ctl_pillar.R" class="external-link"><code>R/ctl_pillar.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/ctl_pillar.R" class="external-link"><code>R/ctl_pillar.R</code></a></small>
     <div class="hidden name"><code>new_pillar.Rd</code></div>
     </div>
 
@@ -83,17 +83,23 @@ It supports arbitrary components.
 See <code><a href="pillar.html">pillar()</a></code> for the high-level constructor with default components.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">new_pillar</span><span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, width <span class="op">=</span> <span class="cn">NULL</span>, class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">new_pillar</span><span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, width <span class="op">=</span> <span class="cn">NULL</span>, class <span class="op">=</span> <span class="cn">NULL</span>, extra <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>components</dt><dd><p>A named list of components constructed with <code><a href="new_pillar_component.html">pillar_component()</a></code>.</p></dd>
-</dl><dl><dt>...</dt><dd><p>These dots are for future extensions and must be empty.</p></dd>
-</dl><dl><dt>width</dt><dd><p>Default width, optional.</p></dd>
-</dl><dl><dt>class</dt><dd><p>Name of subclass.</p></dd>
+    <dl><dt>components</dt>
+<dd><p>A named list of components constructed with <code><a href="new_pillar_component.html">pillar_component()</a></code>.</p></dd>
+<dt>...</dt>
+<dd><p>These dots are for future extensions and must be empty.</p></dd>
+<dt>width</dt>
+<dd><p>Default width, optional.</p></dd>
+<dt>class</dt>
+<dd><p>Name of subclass.</p></dd>
+<dt>extra</dt>
+<dd><p>For compound pillars, indicate the names or indices of the
+sub-pillars that could not be shown due to width constraints.</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -102,11 +108,10 @@ If your tibble subclass needs more or different components in its pillars,
 override or extend <code><a href="ctl_new_pillar.html">ctl_new_pillar()</a></code>
 and perhaps <code><a href="ctl_new_pillar.html">ctl_new_compound_pillar()</a></code>.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">lines</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">char</span> <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span> <span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">lines</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">char</span> <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html" class="external-link">nchar</a></span><span class="op">(</span><span class="va">char</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="va">char</span>, class <span class="op">=</span> <span class="st">"lines"</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
@@ -137,7 +142,7 @@ and perhaps <code><a href="ctl_new_pillar.html">ctl_new_compound_pillar()</a></c
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

@@ -21,7 +21,7 @@ The implementations call squeeze() to create pillar objects and fit them to a gi
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@ The implementations call squeeze() to create pillar objects and fit them to a gi
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Format multiple vectors in a tabular display</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/multi.R" class="external-link"><code>R/multi.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/multi.R" class="external-link"><code>R/multi.R</code></a></small>
     <div class="hidden name"><code>colonnade.Rd</code></div>
     </div>
 
@@ -85,20 +85,23 @@ with a <code><a href="https://rdrr.io/r/base/format.html" class="external-link">
 The implementations call <code><a href="squeeze.html">squeeze()</a></code> to create <a href="pillar.html">pillar</a> objects and fit them to a given width.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">colonnade</span><span class="op">(</span><span class="va">x</span>, has_row_id <span class="op">=</span> <span class="cn">TRUE</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">colonnade</span><span class="op">(</span><span class="va">x</span>, has_row_id <span class="op">=</span> <span class="cn">TRUE</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>x</dt><dd><p>A list, which can contain matrices or data frames.
+    <dl><dt>x</dt>
+<dd><p>A list, which can contain matrices or data frames.
 If named, the names will be used as title for the pillars. Non-syntactic names
 will be escaped.</p></dd>
-</dl><dl><dt>has_row_id</dt><dd><p>Include a column indicating row IDs? Pass <code>"*"</code> to mark
+<dt>has_row_id</dt>
+<dd><p>Include a column indicating row IDs? Pass <code>"*"</code> to mark
 the row ID column with a star.</p></dd>
-</dl><dl><dt>width</dt><dd><p>Default width of the entire output, optional.</p></dd>
-</dl><dl><dt>...</dt><dd><p>These dots are for future extensions and must be empty.</p></dd>
+<dt>width</dt>
+<dd><p>Default width of the entire output, optional.</p></dd>
+<dt>...</dt>
+<dd><p>These dots are for future extensions and must be empty.</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -153,11 +156,10 @@ rounded down.
 Any space remaining after rounding is distributed from left to right,
 one space per column.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">colonnade</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">colonnade</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       a b    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 a    </span>
@@ -201,7 +203,7 @@ one space per column.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

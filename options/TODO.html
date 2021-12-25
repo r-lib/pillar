@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
       </span>
     </div>
 
@@ -71,41 +71,14 @@
       <h1>TODO</h1>
     </div>
 
-<div class="section level1">
+<div id="todo" class="section level1">
 
 <div class="section level2">
-<h2 id="problems">Next steps<a class="anchor" aria-label="anchor" href="#todo"></a></h2>
-<ul><li><p>Pass <code>max_footer_lines</code> to <code><a href="reference/format_tbl.html">print.tbl()</a></code>, rethink option name</p></li>
-<li><p>Test all options</p></li>
-<li><p>Milestone: <a href="https://github.com/r-lib/pillar/milestone/11" class="external-link uri">https://github.com/r-lib/pillar/milestone/11</a></p></li>
-<li><p>CRAN release</p></li>
-<li><p>triage issues</p></li>
-<li>
-<p>documentation cleanup from <a href="https://github.com/tidyverse/tibble/issues/913" class="external-link uri">https://github.com/tidyverse/tibble/issues/913</a>:</p>
-<ul><li>relink digits vignette, shorten numbers vignette, replace ?num, ?char and print.tbl() with internal stubs</li>
-</ul></li>
-<li><p>expand list columns</p></li>
-<li><p>revdepcheck for adding ellipsis to methods</p></li>
-<li>
-<p>Focus columns at their native position, with … or subtle vertical pipe inbetween (1 char wide)</p>
-<ul><li>Easiest if focus columns are moved to the beginning</li>
-<li>Get extra width?</li>
-</ul></li>
-<li>
-<p>Breaking changes</p>
+<h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a></h2>
+<ul><li>Breaking changes
 <ul><li>Wide character + list column: why does the character column take up all the space?
 <ul><li><code>tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))</code></li>
 <li>Because the minimum character width is used here; this is just the default shaft. We can show only the type if there’s lack of space and build a custom pillar shaft</li>
-<li>Abbreviate list columns at the left? <a href="https://github.com/r-lib/pillar/issues/84" class="external-link uri">https://github.com/r-lib/pillar/issues/84</a>
-</li>
-</ul></li>
-<li>Redundant information goes up into the header <a href="https://github.com/r-lib/pillar/pull/307" class="external-link uri">https://github.com/r-lib/pillar/pull/307</a>
-<ul><li>call <code><a href="reference/type_sum.html">type_sum()</a></code> on the pillar shaft – if it returns <code>NULL</code> (as in the default method) call it on the vector</li>
-<li>Search for <code><a href="reference/new_pillar_type.html">new_pillar_type()</a></code>
-</li>
-<li>Maybe it’s easier to recompute in <code><a href="reference/type_sum.html">type_sum()</a></code> and <code>vec_ptype_abbr()</code>
-<ul><li>not sure, problems dealing with truncated vs. actual length</li>
-</ul></li>
 </ul></li>
 <li>Avoid showing dimensions twice in <code><a href="reference/type_sum.html">obj_sum()</a></code>, use <code>vec_ptype_abbr()</code> (with default handling of non-vctrs things) and not <code><a href="reference/type_sum.html">type_sum()</a></code>
 <ul><li>Is this done already?</li>
@@ -113,17 +86,8 @@
 <li>Shorter list columns: <a href="https://github.com/r-lib/pillar/issues/168" class="external-link uri">https://github.com/r-lib/pillar/issues/168</a>
 </li>
 </ul></li>
-<li>
-<p>Prototype</p>
-<ul><li>Multi-stage (hierarchical) output for packed data frames
-<ul><li>Challenging with tiers</li>
-<li>Show number of columns in the parent stage?
-<ul><li>If too wide; also show ellipsis</li>
-<li>Perhaps show column names in footer?</li>
-</ul></li>
-<li>Can we agree that a packed data frame never spans multiple tiers?</li>
-</ul></li>
-<li>Show column names that are abbreviated in full
+<li>Prototype
+<ul><li>Show column names that are abbreviated in full
 <ul><li>With their index if non-consecutive</li>
 </ul></li>
 <li>Tick column title in extra columns
@@ -154,36 +118,47 @@
 <code>shorten = "front"</code>: right-align?</li>
 <li>control <code>NA</code> and zero characters: <a href="https://github.com/r-lib/pillar/issues/151" class="external-link uri">https://github.com/r-lib/pillar/issues/151</a>
 </li>
+<li>Multi-stage (hierarchical) output for packed data frames
+<ul><li>Show number of columns in the parent stage?
+<ul><li>Search for <code>sub_title &lt;- c(title, ticked_names[[i]])</code>
+</li>
+<li>If too wide; also show ellipsis</li>
+<li>Perhaps show column names in footer?</li>
 </ul></li>
-<li><p>Resolve vctrs imports</p></li>
-<li><p>Help with {errors} and {quantities}</p></li>
-<li>
-<p>Rethink tibble-local options for display: section “Rule-based formatting” in <code>numbers.Rmd</code></p>
+<li>Distribute compound pillars over multiple tiers
+<ul><li>Or can we agree that a packed data frame never spans multiple tiers?</li>
+</ul></li>
+</ul></li>
+<li>Focus columns: <a href="https://github.com/r-lib/pillar/pull/384" class="external-link uri">https://github.com/r-lib/pillar/pull/384</a>
+</li>
+</ul></li>
+<li>Resolve vctrs imports</li>
+<li>Help with {errors} and {quantities}</li>
+<li>Rethink tibble-local options for display: section “Rule-based formatting” in <code>numbers.Rmd</code>
 <ul><li>What are the use cases, beyond databases?</li>
 <li>Document pattern: helper function with <code>mutate(across(...))</code>
 </li>
 <li>Define class that applies this?</li>
 </ul></li>
-<li><p>Format and truncate in {utf8}</p></li>
-<li><p>Test coverage per file</p></li>
-<li><p>Use penguins</p></li>
-<li><p>Blog post?</p></li>
-<li>
-<p>Benchmark and profile again</p>
+<li>Format and truncate in {utf8}</li>
+<li>Test coverage per file</li>
+<li>Use penguins</li>
+<li>Blog post?</li>
+<li>Benchmark and profile again
 <ul><li><code>bench.R</code></li>
 <li><a href="https://github.com/tidyverse/tibble/issues/598" class="external-link uri">https://github.com/tidyverse/tibble/issues/598</a></li>
 </ul></li>
 </ul></div>
 <div class="section level2">
-<h2 id="next-steps">Challenges<a class="anchor" aria-label="anchor" href="#next-steps"></a></h2>
+<h2 id="challenges">Challenges<a class="anchor" aria-label="anchor" href="#challenges"></a></h2>
 <ul><li>scales support for num
 <ul><li>Needs at least <code><a href="https://rdrr.io/r/base/pretty.html" class="external-link">pretty()</a></code>, <code><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq()</a></code>, a generic <code><a href="https://rdrr.io/r/base/outer.html" class="external-link">outer()</a></code> (or a change to scales), and perhaps much more</li>
 </ul></li>
 </ul></div>
 <div class="section level2">
-<h2 id="challenges">Formatting numbers<a class="anchor" aria-label="anchor" href="#challenges"></a></h2>
+<h2 id="formatting-numbers">Formatting numbers<a class="anchor" aria-label="anchor" href="#formatting-numbers"></a></h2>
 <div class="section level3">
-<h3 id="formatting-numbers">Problems<a class="anchor" aria-label="anchor" href="#formatting-numbers"></a></h3>
+<h3 id="problems">Problems<a class="anchor" aria-label="anchor" href="#problems"></a></h3>
 <ul><li><p>Change formatting for all columns/containers: solved well enough</p></li>
 <li>
 <p>Specify distinct formatting (e.g. different number of significant figures, avoidance of scientific notation) per column or per container</p>
@@ -213,7 +188,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

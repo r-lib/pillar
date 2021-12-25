@@ -24,7 +24,7 @@ See format_glimpse() for details on the formatting."><meta name="robots" content
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
       </span>
     </div>
 
@@ -76,7 +76,7 @@ See format_glimpse() for details on the formatting."><meta name="robots" content
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get a glimpse of your data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/glimpse.R" class="external-link"><code>R/glimpse.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/glimpse.R" class="external-link"><code>R/glimpse.R</code></a></small>
     <div class="hidden name"><code>glimpse.Rd</code></div>
     </div>
 
@@ -91,18 +91,20 @@ to a remote data source.)</p>
 <p>See <code><a href="format_glimpse.html">format_glimpse()</a></code> for details on the formatting.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">glimpse</span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glimpse</span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>x</dt><dd><p>An object to glimpse at.</p></dd>
-</dl><dl><dt>width</dt><dd><p>Width of output: defaults to the setting of the
+    <dl><dt>x</dt>
+<dd><p>An object to glimpse at.</p></dd>
+<dt>width</dt>
+<dd><p>Width of output: defaults to the setting of the
 <code>width</code> <a href="pillar_options.html">option</a> (if finite)
 or the width of the console.</p></dd>
-</dl><dl><dt>...</dt><dd><p>Unused, for extensibility.</p></dd>
+<dt>...</dt>
+<dd><p>Unused, for extensibility.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -116,11 +118,10 @@ used within a data pipe line.</p>
 <p><code>glimpse</code> is an S3 generic with a customised method for <code>tbl</code>s and
 <code>data.frames</code>, and a default method that calls <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code>.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">glimpse</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">glimpse</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 32</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ mpg  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…</span>
@@ -171,7 +172,7 @@ used within a data pipe line.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

@@ -26,7 +26,7 @@ Your format() method can assume a valid value for the width argument."><meta nam
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
       </span>
     </div>
 
@@ -78,7 +78,7 @@ Your format() method can assume a valid value for the width argument."><meta nam
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Column data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/shaft-.R" class="external-link"><code>R/shaft-.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/shaft-.R" class="external-link"><code>R/shaft-.R</code></a></small>
     <div class="hidden name"><code>pillar_shaft.Rd</code></div>
     </div>
 
@@ -95,7 +95,8 @@ raises an error.
 Your <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> method can assume a valid value for the <code>width</code> argument.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S3 method for pillar_shaft</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
@@ -118,7 +119,7 @@ Your <code><a href="https://rdrr.io/r/base/format.html" class="external-link">fo
 <span class="co"># S3 method for character</span>
 <span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, min_width <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
-<span class="co"># S3 method for pillar_vertical</span>
+<span class="co"># S3 method for glue</span>
 <span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, min_width <span class="op">=</span> <span class="cn">NULL</span>, na_indent <span class="op">=</span> <span class="fl">0L</span>, shorten <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="co"># S3 method for list</span>
@@ -132,20 +133,24 @@ Your <code><a href="https://rdrr.io/r/base/format.html" class="external-link">fo
 
 <span class="co"># S3 method for default</span>
 <span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>x</dt><dd><p>A vector to format</p></dd>
-</dl><dl><dt>...</dt><dd><p>Arguments passed to methods.</p></dd>
-</dl><dl><dt>width</dt><dd><p>Width for printing and formatting.</p></dd>
-</dl><dl><dt>sigfig</dt><dd><p>Deprecated, use <code><a href="num.html">num()</a></code> or <code><a href="num.html">set_num_opts()</a></code> on the data instead.</p></dd>
-</dl><dl><dt>min_width</dt><dd><p>Deprecated, use <code><a href="char.html">char()</a></code> or <code><a href="char.html">set_char_opts()</a></code> on the data instead.</p></dd>
-</dl><dl><dt>na_indent</dt><dd><p>Indentation of <code>NA</code> values.</p></dd>
-</dl><dl><dt>shorten</dt><dd><p>How to abbreviate the data if necessary:
-</p><ul><li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
+    <dl><dt>x</dt>
+<dd><p>A vector to format</p></dd>
+<dt>...</dt>
+<dd><p>Arguments passed to methods.</p></dd>
+<dt>width</dt>
+<dd><p>Width for printing and formatting.</p></dd>
+<dt>sigfig</dt>
+<dd><p>Deprecated, use <code><a href="num.html">num()</a></code> or <code><a href="num.html">set_num_opts()</a></code> on the data instead.</p></dd>
+<dt>min_width</dt>
+<dd><p>Deprecated, use <code><a href="char.html">char()</a></code> or <code><a href="char.html">set_char_opts()</a></code> on the data instead.</p></dd>
+<dt>na_indent</dt>
+<dd><p>Indentation of <code>NA</code> values.</p></dd>
+<dt>shorten</dt>
+<dd><p>How to abbreviate the data if necessary:</p><ul><li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
 <li><p><code>"front"</code>: add an ellipsis at the front</p></li>
 <li><p><code>"mid"</code>: add an ellipsis in the middle</p></li>
 <li><p><code>"abbreviate"</code>: use <code><a href="https://rdrr.io/r/base/abbreviate.html" class="external-link">abbreviate()</a></code></p></li>
@@ -156,11 +161,10 @@ Your <code><a href="https://rdrr.io/r/base/format.html" class="external-link">fo
     <p>The default method will currently format via <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code>,
 but you should not rely on this behavior.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar_ornament&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2</span>
@@ -193,7 +197,7 @@ but you should not rely on this behavior.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

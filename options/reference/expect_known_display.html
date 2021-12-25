@@ -22,7 +22,7 @@ pillar, see examples for usage."><meta name="robots" content="noindex"><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
       </span>
     </div>
 
@@ -74,7 +74,7 @@ pillar, see examples for usage."><meta name="robots" content="noindex"><!-- math
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Test helpers</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/testthat.R" class="external-link"><code>R/testthat.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/testthat.R" class="external-link"><code>R/testthat.R</code></a></small>
     <div class="hidden name"><code>expect_known_display.Rd</code></div>
     </div>
 
@@ -87,18 +87,22 @@ Note that this expectation sets options that affect the formatting of the
 pillar, see examples for usage.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">expect_known_display</span><span class="op">(</span><span class="va">object</span>, <span class="va">file</span>, <span class="va">...</span>, width <span class="op">=</span> <span class="fl">80L</span>, crayon <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">expect_known_display</span><span class="op">(</span><span class="va">object</span>, <span class="va">file</span>, <span class="va">...</span>, width <span class="op">=</span> <span class="fl">80L</span>, crayon <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>object</dt><dd><p>An object to check.</p></dd>
-</dl><dl><dt>file</dt><dd><p>File path where known value/output will be stored.</p></dd>
-</dl><dl><dt>...</dt><dd><p>Unused.</p></dd>
-</dl><dl><dt>width</dt><dd><p>The width of the output.</p></dd>
-</dl><dl><dt>crayon</dt><dd><p>Color the output?</p></dd>
+    <dl><dt>object</dt>
+<dd><p>An object to check.</p></dd>
+<dt>file</dt>
+<dd><p>File path where known value/output will be stored.</p></dd>
+<dt>...</dt>
+<dd><p>Unused.</p></dd>
+<dt>width</dt>
+<dd><p>The width of the output.</p></dd>
+<dt>crayon</dt>
+<dd><p>Color the output?</p></dd>
 </dl></div>
     <div id="life-cycle">
     <h2>Life cycle</h2>
@@ -107,11 +111,10 @@ pillar, see examples for usage.</p>
 <p>This function is deprecated in favor of <code><a href="https://testthat.r-lib.org/reference/expect_snapshot.html" class="external-link">testthat::expect_snapshot()</a></code>.
 If your package uses the third edition of testthat, do not use this function.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"pillar"</span>, fileext <span class="op">=</span> <span class="st">".txt"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"pillar"</span>, fileext <span class="op">=</span> <span class="st">".txt"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># The pillar is constructed after options have been set</span></span>
 <span class="r-in"><span class="co"># (need two runs because reference file doesn't exist during the first run)</span></span>
@@ -144,7 +147,7 @@ If your package uses the third edition of testthat, do not use this function.</p
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>
