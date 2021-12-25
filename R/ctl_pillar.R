@@ -132,6 +132,8 @@ rowidformat2 <- function(data, names, has_star) {
 #' @inheritParams pillar
 #' @param components A named list of components constructed with [pillar_component()].
 #' @param class Name of subclass.
+#' @param extra For compound pillars, indicate the names or indices of the
+#'   sub-pillars that could not be shown due to width constraints.
 #'
 #' @export
 #' @examples
@@ -148,7 +150,8 @@ rowidformat2 <- function(data, names, has_star) {
 #'   title = pillar_component(new_ornament(c("abc", "de"), align = "right")),
 #'   lines = new_pillar_component(list(lines("=")), width = 1)
 #' ))
-new_pillar <- function(components, ..., width = NULL, class = NULL) {
+new_pillar <- function(components, ..., width = NULL, class = NULL,
+                       extra = NULL) {
   "!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"
 
   check_dots_empty()
@@ -159,7 +162,8 @@ new_pillar <- function(components, ..., width = NULL, class = NULL) {
   structure(
     components,
     width = width,
-    class = c(class, "pillar")
+    class = c(class, "pillar"),
+    extra = extra
   )
 }
 
