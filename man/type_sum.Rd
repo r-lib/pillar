@@ -27,6 +27,8 @@ It should always return a string (a character vector of length one).
 As of pillar v1.6.1, the default method forwards to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}
 for vectors and to \code{\link[=type_sum]{type_sum()}} for other objects.
 Previous versions always forwarded to \code{\link[=type_sum]{type_sum()}}.
+An attribute named \code{"short"} in the return value will be picked up by
+the \code{\link[=pillar_shaft]{pillar_shaft()}} method for lists, and used if space is limited.
 
 \code{size_sum()} is called by \code{obj_sum()} to format the size of the object.
 It should always return a string (a character vector of length one),
@@ -42,6 +44,7 @@ to avoid confusion.
 \examples{
 obj_sum(1:10)
 obj_sum(matrix(1:10))
+obj_sum(data.frame(a = 1))
 obj_sum(Sys.Date())
 obj_sum(Sys.time())
 obj_sum(mean)

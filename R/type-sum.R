@@ -69,10 +69,13 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' As of pillar v1.6.1, the default method forwards to [vctrs::vec_ptype_abbr()]
 #' for vectors and to [type_sum()] for other objects.
 #' Previous versions always forwarded to [type_sum()].
+#' An attribute named `"short"` in the return value will be picked up by
+#' the [pillar_shaft()] method for lists, and used if space is limited.
 #'
 #' @examples
 #' obj_sum(1:10)
 #' obj_sum(matrix(1:10))
+#' obj_sum(data.frame(a = 1))
 #' obj_sum(Sys.Date())
 #' obj_sum(Sys.time())
 #' obj_sum(mean)
@@ -87,7 +90,16 @@ obj_sum.default <- function(x) {
   if (!vec_is(x)) {
     type_sum(x)
   } else {
-    paste(vec_ptype_abbr(x, suffix_shape = FALSE), size_sum(x))
+    abbr <- vec_ptype_abbr(x, suffix_shape = FALSE)
+
+    out <- paste(abbr, size_sum(x))
+    if (is.array(x)) {
+      short <- paste0(abbr, "[", cli::symbol$ellipsis, "]")
+    } else {
+      short <- abbr
+    }
+
+    structure(out, short = short)
   }
 }
 
