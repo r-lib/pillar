@@ -26,6 +26,6 @@
       pillar(list(iris), width = 10)
     Output
       <pillar>
-      <list>    
-      <df [150 ~
+      <list>
+      <df>  
 
