@@ -4,6 +4,9 @@
 \name{pillar_options}
 \alias{pillar_options}
 \title{Package options}
+\format{
+An object of class \code{list} of length 14.
+}
 \usage{
 pillar_options
 }
