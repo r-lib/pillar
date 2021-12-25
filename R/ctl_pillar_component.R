@@ -108,10 +108,11 @@ pillar_format_parts_2 <- function(x, width) {
 
   flat <- unlist(formatted)
   extent <- get_extent(flat)
-  aligned <- align_impl(flat, min(width, max(extent)), align, " ", extent)
+  max_extent <- max(extent)
+  aligned <- align_impl(flat, min(width, max_extent), align, " ", extent)
 
   new_tbl(list(
     formatted = list(formatted), align = align, flat = list(flat),
-    max_extent = max(extent), aligned = list(aligned)
+    max_extent = max_extent, aligned = list(aligned)
   ))
 }
