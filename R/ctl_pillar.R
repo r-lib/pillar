@@ -194,8 +194,9 @@ print.compound_pillar <- function(x, ...) {
   writeLines(style_bold(desc))
   print(format(x, ...))
 
-  if (len > 1) {
-    writeLines(style_subtle(pre_dots(paste0("and ", len - 1, " more sub-pillars"))))
+  n_extra <- length(attr(x, "extra"))
+  if (n_extra > 0) {
+    writeLines(style_subtle(pre_dots(paste0("and ", n_extra, " more sub-pillars"))))
   }
 
   invisible(x)

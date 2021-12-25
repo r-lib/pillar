@@ -101,7 +101,22 @@ pillar_get_min_widths <- function(x) {
 }
 
 pillar_format_parts_2 <- function(x, width) {
-  pillar_format_sub_part(x, 1, width)
+  widths <- pillar_get_widths(x)
+
+  if (length(widths) == 1) {
+    # Special case: use actual width passed by caller
+    return(pillar_format_sub_part(x, 1, width))
+  }
+
+  # FIXME: Squeeze sub-pillars?
+
+  idx <- which(cumsum(widths + 1L) <= width + 1L)
+  parts <- map2(idx, widths[idx], function(.x, .y) pillar_format_sub_part(x, .x, .y))
+
+  max_extent <- sum(map_int(parts, `[[`, "max_extent")) + length(parts) - 1L
+  aligned <- exec(paste, !!!map(parts, function(.x) .x$aligned[[1]]))
+
+  new_tbl(list(max_extent = max_extent, aligned = list(aligned)))
 }
 
 pillar_format_sub_part <- function(x, i, width) {
