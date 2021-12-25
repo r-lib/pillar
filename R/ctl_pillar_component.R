@@ -124,7 +124,10 @@ pillar_format_parts_2 <- function(x, width) {
   parts <- map2(idx, widths[idx], function(.x, .y) pillar_format_sub_part(x, .x, .y))
 
   max_extent <- sum(map_int(parts, `[[`, "max_extent")) + length(parts) - 1L
-  aligned <- exec(paste, !!!map(parts, function(.x) .x$aligned[[1]]))
+  aligned <- format_colonnade_tier_2(
+    map(parts, function(.x) .x$aligned[[1]]),
+    bidi = get_pillar_option_bidi()
+  )
 
   new_tbl(list(max_extent = max_extent, aligned = list(aligned)))
 }
