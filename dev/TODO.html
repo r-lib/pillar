@@ -75,11 +75,7 @@
 
 <div class="section level2">
 <h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a></h2>
-<ul><li>Focus columns at their native position, with … or subtle vertical pipe inbetween (1 char wide)
-<ul><li>Easiest if focus columns are moved to the beginning</li>
-<li>Get extra width?</li>
-</ul></li>
-<li>Breaking changes
+<ul><li>Breaking changes
 <ul><li>Wide character + list column: why does the character column take up all the space?
 <ul><li><code>tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))</code></li>
 <li>Because the minimum character width is used here; this is just the default shaft. We can show only the type if there’s lack of space and build a custom pillar shaft</li>
@@ -133,6 +129,8 @@
 <ul><li>Or can we agree that a packed data frame never spans multiple tiers?</li>
 </ul></li>
 </ul></li>
+<li>Focus columns: <a href="https://github.com/r-lib/pillar/pull/384" class="external-link uri">https://github.com/r-lib/pillar/pull/384</a>
+</li>
 </ul></li>
 <li>Resolve vctrs imports</li>
 <li>Help with {errors} and {quantities}</li>
