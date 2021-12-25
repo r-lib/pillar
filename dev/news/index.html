@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9002</span>
       </span>
     </div>
 
@@ -72,6 +72,20 @@
       <small>Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.6.4.9002" id="pillar-1649002">pillar 1.6.4.9002<a class="anchor" aria-label="anchor" href="#pillar-1649002"></a></h2>
+<ul><li>List columns omit size information if horizontal space is insufficient (<a href="https://github.com/r-lib/pillar/issues/392" class="external-link">#392</a>).</li>
+<li>Extra columns in footer show backticks again if they are non-syntactic (<a href="https://github.com/r-lib/pillar/issues/393" class="external-link">#393</a>).</li>
+<li>If the column title of a backticked column is abbreviated, the trailing backtick is still printed (<a href="https://github.com/r-lib/pillar/issues/391" class="external-link">#391</a>).</li>
+<li>
+<code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple()</a></code> gains <code>short_formatted</code> argument that contains the data to be used if horizontal space is insufficient (<a href="https://github.com/r-lib/pillar/issues/389" class="external-link">#389</a>).</li>
+<li>Default <code><a href="../reference/type_sum.html">obj_sum()</a></code> method returns abbreviation in attribute of return value (<a href="https://github.com/r-lib/pillar/issues/390" class="external-link">#390</a>).</li>
+<li>Use snapshot variants, requires testthat &gt;= 3.1.1 (<a href="https://github.com/r-lib/pillar/issues/387" class="external-link">#387</a>).</li>
+<li>Breaking: packed columns are no longer distributed over multiple tiers (<a href="https://github.com/r-lib/pillar/issues/386" class="external-link">#386</a>).</li>
+<li>
+<code><a href="../reference/num.html">?num</a></code> and <code><a href="../reference/char.html">?char</a></code> now point to tibble (<a href="https://github.com/r-lib/pillar/issues/382" class="external-link">#382</a>).</li>
+<li>Replace internal <code>"pillar_vertical"</code> class with <code><a href="https://glue.tidyverse.org/reference/as_glue.html" class="external-link">glue::as_glue()</a></code> (<a href="https://github.com/r-lib/pillar/issues/279" class="external-link">#279</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.4.9001" id="pillar-1649001">pillar 1.6.4.9001<a class="anchor" aria-label="anchor" href="#pillar-1649001"></a></h2>
 <ul><li>Fix support for <code><a href="https://rdrr.io/pkg/nanotime/man/nanotime.html" class="external-link">nanotime::nanotime()</a></code> classes (<a href="https://github.com/r-lib/pillar/issues/378" class="external-link">#378</a>, <a href="https://github.com/r-lib/pillar/issues/380" class="external-link">#380</a>).</li>
