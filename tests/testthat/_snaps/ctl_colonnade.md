@@ -540,33 +540,3 @@
         <chr>   <foo>     <chr>                                   
       1 January a b c d~  A B C D E F G H I J K L M N O P Q R S T~
 
-# focus columns
-
-    Code
-      tbl_format_setup(x, width = 30, focus = "b")
-    Output
-      <pillar_tbl_format_setup>
-      <tbl_format_header(setup)>
-      # A data frame: 1 x 2
-      <tbl_format_body(setup)>
-            b║  a$x    $y
-        <dbl>║<dbl> <dbl>
-      1     3║    1     2
-      <tbl_format_footer(setup)>
-    Code
-      options(width = 15)
-      tbl_format_setup(x, width = 30, focus = "b")
-    Output
-      <pillar_tbl_format_setup>
-      <tbl_format_header(setup)>
-      # A data frame: 1 x 2
-      <tbl_format_body(setup)>
-            b
-        <dbl>
-      1     3
-      =============
-          a$x    $y
-        <dbl> <dbl>
-      1     1     2
-      <tbl_format_footer(setup)>
-
