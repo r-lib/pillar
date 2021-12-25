@@ -2,19 +2,11 @@
 
 ## Next steps
 
-- Breaking changes
-    - Wide character + list column: why does the character column take up all the space?
-        - `tibble(a = strrep("1234567890", 100), b = list(tibble(a = letters)))`
-        - Because the minimum character width is used here; this is just the default shaft. We can show only the type if there's lack of space and build a custom pillar shaft
-    - Avoid showing dimensions twice in `obj_sum()`, use `vec_ptype_abbr()` (with default handling of non-vctrs things) and not `type_sum()`
-        - Is this done already?
-    - Shorter list columns: <https://github.com/r-lib/pillar/issues/168>
 - Prototype
     - Show column names that are abbreviated in full
         - With their index if non-consecutive
     - Tick column title in extra columns
         - It should be?
-    - Second backtick if column name is abbreviated, <https://github.com/tidyverse/tibble/issues/838>
     - Simplify matrix formatting to format like an array: <https://github.com/r-lib/pillar/issues/142#issuecomment-489357664>
     - Show number of rows if known
         - requires `tbl_sum()` with ellipsis?
