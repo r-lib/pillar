@@ -50,6 +50,15 @@
           1     4
           2     5
           3     6
+    Code
+      ctl_new_compound_pillar(new_tbl(), matrix(1:6, ncol = 3), width = 10, title = "a")
+    Output
+      <compound_pillar[1]>
+      a[,1]
+      <int>
+          1
+          2
+      ... and 2 more sub-pillars
 
 # ctl_new_compound_pillar() for tables
 
