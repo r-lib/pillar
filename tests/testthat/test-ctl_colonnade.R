@@ -199,3 +199,15 @@ test_that("filling unused width (#331)", {
     print(data)
   })
 })
+
+test_that("focus columns", {
+  x <- new_tbl(list(a = new_tbl(list(x = 1, y = 2)), b = 3))
+
+  local_options(width = 80)
+
+  expect_snapshot({
+    tbl_format_setup(x, width = 30, focus = "b")
+    options(width = 15)
+    tbl_format_setup(x, width = 30, focus = "b")
+  })
+})
