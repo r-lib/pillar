@@ -2,16 +2,8 @@
 
 ## Next steps
 
-- Multi-stage (hierarchical) output for packed data frames
-    - Challenging with tiers
-    - Show number of columns in the parent stage?
-        - If too wide; also show ellipsis
-        - Perhaps show column names in footer?
-    - Can we agree that a packed data frame never spans multiple tiers?
-
 - Focus columns at their native position, with ... or subtle vertical pipe inbetween (1 char wide)
     - Easiest if focus columns are moved to the beginning
-    - Requires multi-stage output?
     - Get extra width?
 
 - Breaking changes
@@ -40,6 +32,13 @@
     - `shorten = "unique"`? <https://github.com/r-lib/pillar/issues/101>
     - `shorten = "front"`: right-align?
     - control `NA` and zero characters: <https://github.com/r-lib/pillar/issues/151>
+    - Multi-stage (hierarchical) output for packed data frames
+        - Show number of columns in the parent stage?
+            - Search for `sub_title <- c(title, ticked_names[[i]])`
+            - If too wide; also show ellipsis
+            - Perhaps show column names in footer?
+        - Distribute compound pillars over multiple tiers
+            - Or can we agree that a packed data frame never spans multiple tiers?
 - Resolve vctrs imports
 - Help with {errors} and {quantities}
 - Rethink tibble-local options for display: section "Rule-based formatting" in `numbers.Rmd`

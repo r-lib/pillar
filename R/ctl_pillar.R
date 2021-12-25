@@ -99,7 +99,8 @@ pillar_from_shaft <- function(title, type, data, width) {
 }
 
 rowidformat2 <- function(data, names, has_star) {
-  out <- map(set_names(names), function(.x) "")
+  empty_component <- pillar_component(set_width("", 0))
+  out <- map(set_names(names), function(.x) empty_component)
 
   if ("type" %in% names) {
     out$type <- pillar_component(rif_type(has_star))
@@ -109,7 +110,7 @@ rowidformat2 <- function(data, names, has_star) {
     out$data <- pillar_component(data)
   }
 
-  new_pillar(out)
+  new_pillar(out, width = get_width(data))
 }
 
 #' Construct a custom pillar object
@@ -131,6 +132,8 @@ rowidformat2 <- function(data, names, has_star) {
 #' @inheritParams pillar
 #' @param components A named list of components constructed with [pillar_component()].
 #' @param class Name of subclass.
+#' @param extra For compound pillars, indicate the names or indices of the
+#'   sub-pillars that could not be shown due to width constraints.
 #'
 #' @export
 #' @examples
@@ -147,7 +150,8 @@ rowidformat2 <- function(data, names, has_star) {
 #'   title = pillar_component(new_ornament(c("abc", "de"), align = "right")),
 #'   lines = new_pillar_component(list(lines("=")), width = 1)
 #' ))
-new_pillar <- function(components, ..., width = NULL, class = NULL) {
+new_pillar <- function(components, ..., width = NULL, class = NULL,
+                       extra = NULL) {
   "!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"
 
   check_dots_empty()
@@ -158,7 +162,8 @@ new_pillar <- function(components, ..., width = NULL, class = NULL) {
   structure(
     components,
     width = width,
-    class = c(class, "pillar")
+    class = c(class, "pillar"),
+    extra = extra
   )
 }
 
@@ -189,8 +194,9 @@ print.compound_pillar <- function(x, ...) {
   writeLines(style_bold(desc))
   print(format(x, ...))
 
-  if (len > 1) {
-    writeLines(style_subtle(pre_dots(paste0("and ", len - 1, " more sub-pillars"))))
+  n_extra <- length(attr(x, "extra"))
+  if (n_extra > 0) {
+    writeLines(style_subtle(pre_dots(paste0("and ", n_extra, " more sub-pillars"))))
   }
 
   invisible(x)
