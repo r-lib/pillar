@@ -2,7 +2,7 @@ on:
   push:
     paths:
       - .github/workflows/windows-tests.yaml
-      - tests/testthat/_snaps/*
+      - tests/testthat/_snaps/unicode/*
 
 name: windows-tests
 
