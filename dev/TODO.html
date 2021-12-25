@@ -75,17 +75,8 @@
 
 <div class="section level2">
 <h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a></h2>
-<ul><li>Multi-stage (hierarchical) output for packed data frames
-<ul><li>Challenging with tiers</li>
-<li>Show number of columns in the parent stage?
-<ul><li>If too wide; also show ellipsis</li>
-<li>Perhaps show column names in footer?</li>
-</ul></li>
-<li>Can we agree that a packed data frame never spans multiple tiers?</li>
-</ul></li>
-<li>Focus columns at their native position, with … or subtle vertical pipe inbetween (1 char wide)
+<ul><li>Focus columns at their native position, with … or subtle vertical pipe inbetween (1 char wide)
 <ul><li>Easiest if focus columns are moved to the beginning</li>
-<li>Requires multi-stage output?</li>
 <li>Get extra width?</li>
 </ul></li>
 <li>Breaking changes
@@ -131,6 +122,17 @@
 <code>shorten = "front"</code>: right-align?</li>
 <li>control <code>NA</code> and zero characters: <a href="https://github.com/r-lib/pillar/issues/151" class="external-link uri">https://github.com/r-lib/pillar/issues/151</a>
 </li>
+<li>Multi-stage (hierarchical) output for packed data frames
+<ul><li>Show number of columns in the parent stage?
+<ul><li>Search for <code>sub_title &lt;- c(title, ticked_names[[i]])</code>
+</li>
+<li>If too wide; also show ellipsis</li>
+<li>Perhaps show column names in footer?</li>
+</ul></li>
+<li>Distribute compound pillars over multiple tiers
+<ul><li>Or can we agree that a packed data frame never spans multiple tiers?</li>
+</ul></li>
+</ul></li>
 </ul></li>
 <li>Resolve vctrs imports</li>
 <li>Help with {errors} and {quantities}</li>
