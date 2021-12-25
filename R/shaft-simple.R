@@ -18,7 +18,7 @@
 #' @param na_indent Indentation of `NA` values.
 #' @param short_formatted If provided, a character vector of the same length as
 #'   `formatted`, to be used when the available width is insufficient to show
-#'   the full output
+#'   the full output.
 #' @export
 #' @rdname new_pillar_shaft
 new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left",
