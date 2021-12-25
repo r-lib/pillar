@@ -64,8 +64,3 @@ format.pillar_title <- function(x, width = NULL, ...) {
   title <- format_title(title, width)
   style_title(title)
 }
-
-format_full_pillar_title <- function(title) {
-  title <- format_title(title, Inf)
-  style_title(title)
-}

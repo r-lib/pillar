@@ -66,3 +66,8 @@ format_abbrev <- function(x, title = NULL, space = " ") {
     paste0(title_format, space, type_format)
   }
 }
+
+format_full_pillar_title <- function(title) {
+  title <- format_title(tick_if_needed(title), Inf)
+  style_title(title)
+}
