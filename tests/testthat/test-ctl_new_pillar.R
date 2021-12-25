@@ -10,6 +10,7 @@ test_that("ctl_new_compound_pillar()", {
     ctl_new_compound_pillar(new_tbl(), trees[1:3, ], width = 20, title = "a")
     ctl_new_compound_pillar(new_tbl(), as.matrix(trees[1:3, ]), width = 20, title = "a")
     ctl_new_compound_pillar(new_tbl(), matrix(1:6, ncol = 2), width = 20, title = "a")
+    ctl_new_compound_pillar(new_tbl(), matrix(1:6, ncol = 3), width = 10, title = "a")
   })
 })
 

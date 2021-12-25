@@ -324,11 +324,25 @@ pillar_shaft.glue <- function(x, ..., min_width = NULL, na_indent = 0L, shorten 
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.list <- function(x, ...) {
-  out <- paste0("<", map_chr(x, obj_sum), ">")
+  summary <- map(x, obj_sum)
 
-  width <- get_max_extent(out)
+  formatted <- paste0("<", unlist(summary), ">")
 
-  new_pillar_shaft_simple(style_list(out), width = width, align = "left", min_width = min(width, 3L))
+  short <- map(summary, attr, "short")
+  short_idx <- !map_lgl(short, is.null)
+  short_formatted <- formatted
+  short_formatted[short_idx] <- paste0("<", unlist(short[short_idx]), ">")
+
+  width <- get_max_extent(formatted)
+  min_width <- get_max_extent(short_formatted)
+
+  new_pillar_shaft_simple(
+    style_list(formatted),
+    width = width,
+    align = "left",
+    min_width = min_width,
+    short_formatted = short_formatted
+  )
 }
 
 #' @export

@@ -23,7 +23,8 @@ new_pillar_shaft_simple(
   min_width = NULL,
   na = NULL,
   na_indent = 0L,
-  shorten = c("back", "front", "mid", "abbreviate")
+  shorten = c("back", "front", "mid", "abbreviate"),
+  short_formatted = NULL
 )
 }
 \arguments{
@@ -45,7 +46,7 @@ This argument, if given, takes precedence over the type summary provided by
 
 \item{subclass}{Deprecated, pass the \code{class} argument instead.}
 
-\item{formatted}{An object coercible to \link{character}.}
+\item{formatted}{The data to show, an object coercible to \link{character}.}
 
 \item{align}{Alignment of the column.}
 
@@ -61,6 +62,10 @@ This argument, if given, takes precedence over the type summary provided by
 \item \code{"mid"}: add an ellipsis in the middle
 \item \code{"abbreviate"}: use \code{\link[=abbreviate]{abbreviate()}}
 }}
+
+\item{short_formatted}{If provided, a character vector of the same length as
+\code{formatted}, to be used when the available width is insufficient to show
+the full output.}
 }
 \description{
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}
