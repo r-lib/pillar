@@ -25,9 +25,7 @@ runs:
         path: |
           ~/.cache/R/R.cache
         key: ${{ runner.os }}-${{ github.run_id }}-
-        restore-keys:
-          - ${{ runner.os }}-${{ github.run_id }}-
-          - ${{ runner.os }}- ]
+        restore-keys: ${{ runner.os }}-
 
     - name: Run styler
       if: ${{ steps.check.outputs.scope }}
