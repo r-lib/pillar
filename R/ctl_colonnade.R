@@ -71,8 +71,14 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
 
   out <- map2(flat_tiers, vseps, format_colonnade_tier_2, bidi = get_pillar_option_bidi())
 
+  if (!is.null(focus) && nrow(col_widths) > length(focus) && col_widths$tier[[length(focus)]] < col_widths$tier[[length(focus) + 1]]) {
+    split_after <- col_widths$tier[[length(focus)]]
+  } else {
+    split_after <- NULL
+  }
+
   extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
-  new_colonnade_body(out, extra_cols = extra_cols)
+  new_colonnade_body(out, extra_cols = extra_cols, split_after = split_after)
 }
 
 pillar_format_tier <- function(pillars, widths, max_widths) {
@@ -146,8 +152,14 @@ format_colonnade_tier_2 <- function(x, vsep = NULL, bidi = FALSE) {
   out
 }
 
-new_colonnade_body <- function(x, extra_cols) {
+new_colonnade_body <- function(x, extra_cols, split_after = NULL) {
   "!!!!!DEBUG new_colonnade_body()"
+
+  if (!is.null(split_after)) {
+    width <- get_extent(c(x[[split_after]][[1]], x[[split_after + 1]][[1]]))
+    hbar <- style_subtle(strrep(cli::symbol$double_line, max(width)))
+    x <- c(x[seq_len(split_after)], hbar, x[seq2(split_after + 1, length(x))])
+  }
 
   body <- as_glue(as.character(unlist(x)))
   extra_cols <- as.list(extra_cols)
