@@ -28,8 +28,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     return(new_colonnade_body(list(), extra_cols = x))
   }
 
-  compound_pillar <- combine_pillars(pillars)
-  col_widths <- colonnade_get_width_2(compound_pillar, tier_widths)
+  col_widths <- colonnade_get_width_2(pillars, tier_widths)
 
   tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)
 
@@ -113,12 +112,12 @@ new_colonnade_body <- function(x, extra_cols) {
 }
 
 #' @noRd
-colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
+colonnade_get_width_2 <- function(pillars, tier_widths) {
   "!!!!!DEBUG colonnade_get_width_2(`v(tier_widths)`)"
 
   #' @details
-  #' Each pillar indiacates its maximum and minimum width.
-  min_max_widths <- colonnade_get_min_max_widths(compound_pillar)
+  #' Each pillar indicates its maximum and minimum width.
+  min_max_widths <- colonnade_get_min_max_widths(pillars)
   #'
   #' Pillars may be distributed over multiple tiers according to their width
   #' if `width > getOption("width")`.
@@ -134,15 +133,14 @@ colonnade_get_width_2 <- function(compound_pillar, tier_widths) {
   out <- colonnade_distribute_space_df(col_widths_df, tier_widths)
   # out <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
 
-  # FIXME: Defer split of compound pillars
-  out$pillar <- map(out$id, get_sub_pillar, x = compound_pillar)
+  out$pillar <- pillars
 
   new_tbl(out)
 }
 
-colonnade_get_min_max_widths <- function(compound_pillar) {
-  max_width <- exec(pmax, !!!unname(map(compound_pillar, get_cell_widths)))
-  min_width <- exec(pmax, !!!unname(map(compound_pillar, get_cell_min_widths)))
+colonnade_get_min_max_widths <- function(pillars) {
+  max_width <- map_int(pillars, pillar_get_total_widths)
+  min_width <- map_int(pillars, pillar_get_total_min_widths)
 
   new_tbl(list(min_width = min_width, max_width = max_width))
 }
