@@ -58,7 +58,7 @@ new_pillar_shaft_simple(
 
 \item{short_formatted}{If provided, a character vector of the same length as
 \code{formatted}, to be used when the available width is insufficient to show
-the full output}
+the full output.}
 }
 \description{
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}
