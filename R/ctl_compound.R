@@ -138,13 +138,13 @@ combine_pillars <- function(pillars) {
 
   t_pillars <- map(set_names(components), function(.x) {
     out <- map(pillars, function(.y) .y[[.x]])
-    widths <- unlist(map(out, get_cell_widths))
-    min_widths <- unlist(map(out, get_cell_min_widths))
+    widths <- map(out, get_cell_widths)
+    min_widths <- map(out, get_cell_min_widths)
 
     new_pillar_component(
       unlist(out, recursive = FALSE),
-      width = widths,
-      min_width = min_widths
+      width = unlist(widths),
+      min_width = unlist(min_widths)
     )
   })
 
