@@ -94,7 +94,7 @@ get_cells_for_hierarchy <- function(x, from, to) {
 
 pillar_get_total_widths <- function(x) {
   widths <- pillar_get_widths(x)
-  sum(widths) + length(widths) - 1L
+  as.integer(sum(widths) + length(widths) - 1L)
 }
 
 pillar_get_widths <- function(x) {
@@ -103,7 +103,7 @@ pillar_get_widths <- function(x) {
 
 pillar_get_total_min_widths <- function(x) {
   widths <- pillar_get_min_widths(x)
-  widths[[1]]
+  as.integer(widths[[1]])
 }
 
 pillar_get_min_widths <- function(x) {
