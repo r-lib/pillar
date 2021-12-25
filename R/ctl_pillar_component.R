@@ -101,8 +101,11 @@ pillar_get_min_widths <- function(x) {
 }
 
 pillar_format_parts_2 <- function(x, width) {
-  # Code is repeated in ctl_colonnade
-  formatted <- map(x, function(.x) format(.x[[1]], width = width))
+  pillar_format_sub_part(x, 1, width)
+}
+
+pillar_format_sub_part <- function(x, i, width) {
+  formatted <- map(x, function(.x) format(.x[[i]], width = width))
 
   align <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"
 
