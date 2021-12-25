@@ -109,9 +109,9 @@ test_that("tibble columns", {
 })
 
 test_that("tibble columns (nested)", {
-  x <- vctrs::data_frame(
+  x <- data_frame(
     a = 1:3,
-    b = vctrs::data_frame(
+    b = data_frame(
       c = 4:6, d = 7:9,
       e = data.frame(f = 10:12, g = 13:15)
     )
@@ -122,11 +122,11 @@ test_that("tibble columns (nested)", {
 })
 
 test_that("tibble columns (empty)", {
-  x <- vctrs::data_frame(
+  x <- data_frame(
     a = 1:3,
-    b = vctrs::data_frame(
+    b = data_frame(
       c = 4:6, d = 7:9,
-      e = vctrs::data_frame(f = 10:12)[, 0]
+      e = data_frame(f = 10:12)[, 0]
     ),
     c = 10:12
   )
@@ -160,8 +160,8 @@ test_that("matrix columns (empty)", {
 
 test_that("filling unused width (#331)", {
   new_foo <- function(x = character()) {
-    vctrs::vec_assert(x, character())
-    vctrs::new_vctr(x, class = "foo")
+    vec_assert(x, character())
+    new_vctr(x, class = "foo")
   }
 
   data <- new_tbl(list(

@@ -6,12 +6,16 @@
 #' @importFrom lifecycle deprecate_soft
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
+#' @importFrom vctrs new_list_of
+#' @importFrom vctrs new_vctr
 #' @importFrom vctrs obj_print_footer
 #' @importFrom vctrs obj_print_header
 #' @importFrom vctrs obj_print_data
+#' @importFrom vctrs unspecified
 #' @importFrom vctrs vec_arith
 #' @importFrom vctrs vec_arith.numeric
 #' @importFrom vctrs vec_arith_base
+#' @importFrom vctrs vec_assert
 #' @importFrom vctrs vec_c
 #' @importFrom vctrs vec_cast
 #' @importFrom vctrs vec_cast.double
@@ -29,6 +33,7 @@
 #' @importFrom vctrs vec_rbind
 #' @importFrom vctrs vec_restore
 #' @importFrom vctrs vec_size
+#' @importFrom vctrs vec_slice
 NULL
 
 # nolint start
