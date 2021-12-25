@@ -99,7 +99,8 @@ pillar_from_shaft <- function(title, type, data, width) {
 }
 
 rowidformat2 <- function(data, names, has_star) {
-  out <- map(set_names(names), function(.x) "")
+  empty_component <- pillar_component(set_width("", 0))
+  out <- map(set_names(names), function(.x) empty_component)
 
   if ("type" %in% names) {
     out$type <- pillar_component(rif_type(has_star))
@@ -109,7 +110,7 @@ rowidformat2 <- function(data, names, has_star) {
     out$data <- pillar_component(data)
   }
 
-  new_pillar(out)
+  new_pillar(out, width = get_width(data))
 }
 
 #' Construct a custom pillar object
