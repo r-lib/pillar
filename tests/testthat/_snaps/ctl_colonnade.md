@@ -549,9 +549,9 @@
       <tbl_format_header(setup)>
       # A data frame: 1 x 2
       <tbl_format_body(setup)>
-            b   a$x    $y
-        <dbl> <dbl> <dbl>
-      1     3     1     2
+            b║  a$x    $y
+        <dbl>║<dbl> <dbl>
+      1     3║    1     2
       <tbl_format_footer(setup)>
     Code
       options(width = 15)

@@ -50,13 +50,26 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     pillar_format_tier(pillars, widths, max_widths)
   })
 
+  vseps <- map(tiers, function(tier) {
+    ids <- col_widths$id[tier]
+    if (min(ids) <= length(focus) && max(ids) > length(focus)) {
+      seps <- rep_along(ids, " ")
+      seps[[length(seps)]] <- ""
+      seps[ids == length(focus)] <- style_subtle(vbar())
+      seps
+    } else {
+      NULL
+    }
+  })
+
   if (!is.null(rowid)) {
     rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
     rowid_formatted <- list(pillar_format_parts_2(rowid_pillar, rowid_width)$aligned[[1]])
     flat_tiers <- map(flat_tiers, function(.x) c(rowid_formatted, .x))
+    vseps <- map(vseps, function(.x) if (!is.null(.x)) c(" ", .x))
   }
 
-  out <- map(flat_tiers, format_colonnade_tier_2, bidi = get_pillar_option_bidi())
+  out <- map2(flat_tiers, vseps, format_colonnade_tier_2, bidi = get_pillar_option_bidi())
 
   extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
   new_colonnade_body(out, extra_cols = extra_cols)
@@ -99,18 +112,38 @@ lro <- function(x) {
   paste0("\u202d", x, "\u202c")
 }
 
-format_colonnade_tier_2 <- function(x, bidi = FALSE) {
+# hbar is cli::symbol$double_line
+vbar <- function() {
+  if (l10n_info()$`UTF-8`) {
+    "\u2551"
+  } else {
+    "|"
+  }
+}
+
+format_colonnade_tier_2 <- function(x, vsep = NULL, bidi = FALSE) {
   if (length(x) == 0) {
     return(character())
   }
 
   if (bidi) {
     x <- map(x, fsi)
-    out <- exec(paste, !!!x)
-    lro(out)
-  } else {
-    exec(paste, !!!x)
   }
+
+  if (is.null(vsep)) {
+    out <- exec(paste, !!!x)
+  } else {
+    stopifnot(length(x) == length(vsep))
+    args <- t(as.matrix(data.frame(I(x), I(vsep), stringsAsFactors = FALSE)))
+    dim(args) <- NULL
+
+    out <- exec(paste0, !!!args)
+  }
+
+  if (bidi) {
+    out <- lro(out)
+  }
+  out
 }
 
 new_colonnade_body <- function(x, extra_cols) {
