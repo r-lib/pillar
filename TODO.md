@@ -34,6 +34,7 @@
     - control `NA` and zero characters: <https://github.com/r-lib/pillar/issues/151>
     - Multi-stage (hierarchical) output for packed data frames
         - Show number of columns in the parent stage?
+            - Search for `sub_title <- c(title, ticked_names[[i]])`
             - If too wide; also show ellipsis
             - Perhaps show column names in footer?
         - Distribute compound pillars over multiple tiers
