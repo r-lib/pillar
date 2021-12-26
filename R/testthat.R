@@ -42,8 +42,10 @@
 #' expect_known_display(integer_pillar, file, crayon = FALSE)
 #' }
 expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) {
-  lifecycle::deprecate_soft("1.6.5", "pillar::expect_known_display()",
-    "testthat::expect_snapshot()")
+  lifecycle::deprecate_soft(
+    "1.6.5", "pillar::expect_known_display()",
+    "testthat::expect_snapshot()"
+  )
 
   object <- enquo(object)
 
