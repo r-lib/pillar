@@ -47,24 +47,22 @@ scale_y_num <- function(..., guide = ggplot2::waiver(),
 }
 
 MakeScaleContinuousPositionNum <- function() {
-  parent <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)
-
   ggplot2::ggproto("ScaleContinuousPositionNum", ggplot2::ScaleContinuousPosition,
     ptype = NULL,
     train = function(self, x) {
       self$ptype <- vec_ptype2(x, self$ptype)
-      parent$train(x)
+      ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$train(x)
     },
     get_breaks = function(self, limits = self$get_limits()) {
-      out <- parent$get_breaks(limits)
+      out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$get_breaks(limits)
       vec_cast(out, self$ptype)
     },
     get_labels = function(self, breaks = self$get_breaks()) {
-      out <- parent$get_labels(breaks)
+      out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$get_labels(breaks)
       fansi::strip_sgr(out)
     },
     make_title = function(self, title) {
-      out <- parent$make_title(title)
+      out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$make_title(title)
       pillar_attr <- attr(self$ptype, "pillar", exact = TRUE)
       label <- pillar_attr$label
       if (!is.null(label)) {
