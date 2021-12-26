@@ -1,12 +1,10 @@
 test_that("sanity check (1)", {
-  expect_false(crayon::has_color())
-  expect_equal(crayon::num_colors(), 1)
+  expect_equal(cli::num_ansi_colors(), 1)
   expect_false(has_color())
   expect_equal(num_colors(), 1)
 
   expect_snapshot({
-    crayon::has_color()
-    crayon::num_colors()
+    cli::num_ansi_colors()
     has_color()
     num_colors()
     style_na("NA")
@@ -153,8 +151,7 @@ test_that("color", {
   skip_if_not_installed("testthat", "3.1.1")
 
   local_colors()
-  expect_true(crayon::has_color())
-  expect_equal(crayon::num_colors(), 16)
+  expect_equal(cli::num_ansi_colors(), 16)
   expect_true(has_color())
   expect_equal(num_colors(), 16)
 
@@ -167,8 +164,7 @@ test_that("color", {
   }
 
   expect_snapshot(variant = variant, {
-    crayon::has_color()
-    crayon::num_colors()
+    cli::num_ansi_colors()
     has_color()
     num_colors()
     style_na("NA")
@@ -196,14 +192,12 @@ test_that("color", {
 })
 
 test_that("sanity check (2)", {
-  expect_false(crayon::has_color())
-  expect_equal(crayon::num_colors(), 1)
+  expect_equal(cli::num_ansi_colors(), 1)
   expect_false(has_color())
   expect_equal(num_colors(), 1)
 
   expect_snapshot({
-    crayon::has_color()
-    crayon::num_colors()
+    cli::num_ansi_colors()
     has_color()
     num_colors()
     style_na("NA")

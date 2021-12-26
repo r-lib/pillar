@@ -1,11 +1,7 @@
 # sanity check (1)
 
     Code
-      crayon::has_color()
-    Output
-      [1] FALSE
-    Code
-      crayon::num_colors()
+      cli::num_ansi_colors()
     Output
       [1] 1
     Code
@@ -575,11 +571,7 @@
 # sanity check (2)
 
     Code
-      crayon::has_color()
-    Output
-      [1] FALSE
-    Code
-      crayon::num_colors()
+      cli::num_ansi_colors()
     Output
       [1] 1
     Code
