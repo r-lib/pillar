@@ -111,3 +111,4 @@ transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
 \description{
 This scale is used by default in ggplot2 with columns created with \code{\link[=num]{num()}}.
 }
+\keyword{internal}

@@ -6,6 +6,7 @@
 #' @param guide,position Passed on to [ggplot2::continuous_scale()]
 #' @param rescaler,super Must remain `NULL`.
 #'
+#' @keywords internal
 #' @export
 scale_x_num <- function(..., position = "bottom", guide = ggplot2::waiver(),
                         rescaler = NULL, super = NULL) {
