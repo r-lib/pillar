@@ -41,6 +41,8 @@ NULL
   # nolint end
   # Can't use vctrs::s3_register() here with vctrs 0.1.0
   # https://github.com/r-lib/vctrs/pull/314
+  register_s3_method("scales", "rescale", "pillar_num")
+  register_s3_method("ggplot2", "scale_type", "pillar_num")
   register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
   register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
   register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
