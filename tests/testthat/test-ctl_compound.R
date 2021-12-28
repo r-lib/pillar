@@ -11,3 +11,11 @@ test_that("compound pillars and multiple tiers", {
     tbl_format_setup(x, width = 30)
   })
 })
+
+test_that("compound pillars with zero columns (#402)", {
+  expect_snapshot({
+    tbl_format_setup(new_tbl(list(x = 1:2, y = matrix(integer(), ncol = 0, nrow = 2))))
+
+    tbl_format_setup(new_tbl(list(x = 1:2, y = new_tbl(list(), n = 2L))))
+  })
+})
