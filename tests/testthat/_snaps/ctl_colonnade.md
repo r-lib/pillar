@@ -1,6 +1,10 @@
 # output test
 
     Code
+      FALSE
+    Output
+      [1] FALSE
+    Code
       ctl_colonnade(rep(list(paste(letters, collapse = " ")), 4), width = Inf)
     Output
       $body
