@@ -48,7 +48,7 @@ local_colors <- function(.local_envir = parent.frame()) {
   # We run this first, so this will run last by withr, to restore the
   # original options.
   withr::local_options(
-    list(crayon.enabled = TRUE, cli.num_colors = 16L),
+    list(cli.num_colors = 16L),
     .local_envir = .local_envir
   )
 

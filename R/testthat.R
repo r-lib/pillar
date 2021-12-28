@@ -59,7 +59,7 @@ expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) 
   old_unicode <- options(cli.unicode = l10n_info()$`UTF-8`)
 
   on.exit({
-    options(old_crayon)
+    options(old_cli)
     options(old_unicode)
     num_colors(forget = TRUE)
   })
