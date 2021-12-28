@@ -35,30 +35,32 @@
 #' # Good: Use tidyeval to defer construction
 #' pillar_quo <- rlang::quo(pillar(1:3))
 #' expect_known_display(!!pillar_quo, file, crayon = FALSE)
+#'
 #' \dontrun{
 #' # Bad: Options set in the active session may affect the display
 #' integer_pillar <- pillar(1:3)
 #' expect_known_display(integer_pillar, file, crayon = FALSE)
 #' }
 expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) {
+  lifecycle::deprecate_soft(
+    "1.6.5", "pillar::expect_known_display()",
+    "testthat::expect_snapshot()"
+  )
+
   object <- enquo(object)
 
   if (crayon) {
-    old_crayon <- options(cli.num_colors = 16L)
-    crayon::num_colors(forget = TRUE)
-    num_colors(forget = TRUE)
+    old_cli <- options(cli.num_ansi_colors = 16L)
   } else {
-    old_crayon <- options(cli.num_colors = 1L)
-    crayon::num_colors(forget = TRUE)
-    num_colors(forget = TRUE)
+    old_cli <- options(cli.num_ansi_colors = 1L)
   }
+  num_colors(forget = TRUE)
 
   old_unicode <- options(cli.unicode = l10n_info()$`UTF-8`)
 
   on.exit({
-    options(old_crayon)
+    options(old_cli)
     options(old_unicode)
-    crayon::num_colors(forget = TRUE)
     num_colors(forget = TRUE)
   })
 

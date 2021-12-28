@@ -92,8 +92,18 @@ get_cells_for_hierarchy <- function(x, from, to) {
   abort("NYI: get_cells_for_hierarchy()")
 }
 
+pillar_get_total_widths <- function(x) {
+  widths <- pillar_get_widths(x)
+  as.integer(sum(widths) + length(widths) - 1L)
+}
+
 pillar_get_widths <- function(x) {
   exec(pmax, !!!map(x, get_cell_widths))
+}
+
+pillar_get_total_min_widths <- function(x) {
+  widths <- pillar_get_min_widths(x)
+  as.integer(widths[[1]])
 }
 
 pillar_get_min_widths <- function(x) {
@@ -101,17 +111,36 @@ pillar_get_min_widths <- function(x) {
 }
 
 pillar_format_parts_2 <- function(x, width) {
-  # Code is repeated in ctl_colonnade
-  formatted <- map(x, function(.x) format(.x[[1]], width = width))
+  widths <- pillar_get_widths(x)
+
+  if (length(widths) == 1) {
+    # Special case: use actual width passed by caller
+    return(pillar_format_sub_part(x, 1, width))
+  }
+
+  # FIXME: Squeeze sub-pillars?
+
+  idx <- which(cumsum(widths + 1L) <= width + 1L)
+  parts <- map2(idx, widths[idx], function(.x, .y) pillar_format_sub_part(x, .x, .y))
+
+  max_extent <- sum(map_int(parts, `[[`, "max_extent")) + length(parts) - 1L
+  aligned <- format_colonnade_tier_2(
+    map(parts, function(.x) .x$aligned[[1]]),
+    bidi = get_pillar_option_bidi()
+  )
+
+  new_tbl(list(max_extent = max_extent, aligned = list(aligned)))
+}
+
+pillar_format_sub_part <- function(x, i, width) {
+  formatted <- map(x, function(.x) format(.x[[i]], width = width))
 
   align <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"
 
   flat <- unlist(formatted)
   extent <- get_extent(flat)
-  aligned <- align_impl(flat, min(width, max(extent)), align, " ", extent)
+  max_extent <- max(extent)
+  aligned <- align_impl(flat, min(width, max_extent), align, " ", extent)
 
-  new_tbl(list(
-    formatted = list(formatted), align = align, flat = list(flat),
-    max_extent = max(extent), aligned = list(aligned)
-  ))
+  new_tbl(list(max_extent = max_extent, aligned = list(aligned)))
 }

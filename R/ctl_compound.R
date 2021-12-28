@@ -1,6 +1,6 @@
 new_data_frame_pillar <- function(x, controller, width, title) {
   pillars <- new_packed_pillars(x, controller, width, title)
-  combine_pillars(pillars)
+  combine_pillars(pillars, extra = names(x)[-seq_along(pillars)])
 }
 
 new_packed_pillars <- function(x, controller, width, title) {
@@ -111,7 +111,13 @@ new_matrix_pillar <- function(x, controller, width, title) {
     pillars[[i]] <- pillar
   }
 
-  combine_pillars(compact(pillars))
+  compact_pillars <- compact(pillars)
+  if (length(compact_pillars) < ncol(x)) {
+    extra <- seq2(length(compact_pillars) + 1, ncol(x))
+  } else {
+    extra <- NULL
+  }
+  combine_pillars(compact_pillars, extra = extra)
 }
 
 new_array_pillar <- function(x, controller, width, title) {
@@ -127,7 +133,7 @@ new_array_pillar <- function(x, controller, width, title) {
   )
 }
 
-combine_pillars <- function(pillars) {
+combine_pillars <- function(pillars, extra = NULL) {
   "!!!!!DEBUG combine_pillars(`v(length(pillars))`)"
 
   if (length(pillars) == 0) {
@@ -138,17 +144,17 @@ combine_pillars <- function(pillars) {
 
   t_pillars <- map(set_names(components), function(.x) {
     out <- map(pillars, function(.y) .y[[.x]])
-    widths <- unlist(map(out, get_cell_widths))
-    min_widths <- unlist(map(out, get_cell_min_widths))
+    widths <- map(out, get_cell_widths)
+    min_widths <- map(out, get_cell_min_widths)
 
     new_pillar_component(
       unlist(out, recursive = FALSE),
-      width = widths,
-      min_width = min_widths
+      width = unlist(widths),
+      min_width = unlist(min_widths)
     )
   })
 
-  new_pillar(t_pillars, class = "compound_pillar")
+  new_pillar(t_pillars, class = "compound_pillar", extra = extra)
 }
 
 # Can be rewritten with a repeat loop

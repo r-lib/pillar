@@ -42,19 +42,17 @@ continue <- function(x) {
 local_colors <- function(.local_envir = parent.frame()) {
   # This is to restore crayon's cache. This runs after restoring the options.
   withr::defer(envir = .local_envir, {
-    crayon::num_colors(forget = TRUE)
     num_colors(forget = TRUE)
   })
 
   # We run this first, so this will run last by withr, to restore the
   # original options.
   withr::local_options(
-    list(crayon.enabled = TRUE, cli.num_colors = 16L),
+    list(cli.num_colors = 16L),
     .local_envir = .local_envir
   )
 
   # Added safety
-  crayon::num_colors(forget = TRUE)
   num_colors(forget = TRUE)
 }
 

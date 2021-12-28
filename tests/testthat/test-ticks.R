@@ -11,6 +11,6 @@ test_that("title ticks and width", {
   expect_equal(format_title("proper_title", 10), continue("proper_ti"))
   expect_equal(format_title("`a b`", 6), "`a b`")
   expect_equal(format_title("`a b`", 5), "`a b`")
-  expect_equal(format_title("`a b`", 4), continue("`a "))
-  expect_equal(format_title("`a b`", 3), continue("`a"))
+  expect_equal(format_title("`a b`", 4), tick(continue("a")))
+  expect_equal(format_title("`a b`", 3), tick(continue("")))
 })

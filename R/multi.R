@@ -188,7 +188,7 @@ get_rowid_from_colonnade <- function(x) {
 
 new_colonnade_squeezed <- function(x, colonnade, extra_cols) {
   formatted_tiers <- map(x, format_colonnade_tier)
-  formatted <- new_vertical(as.character(unlist(formatted_tiers)))
+  formatted <- as_glue(as.character(unlist(formatted_tiers)))
 
   structure(
     list(formatted),

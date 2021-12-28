@@ -78,7 +78,7 @@ The implementation is responsible for the entire formatting and styling, includi
 
 ```{r}
 tbl_format_header.custom_header_replace <- function(x, setup, ...) {
-  crayon::italic(paste0(names(setup$tbl_sum), " = ", setup$tbl_sum))
+  cli::style_italic(names(setup$tbl_sum), " = ", setup$tbl_sum)
 }
 
 example_tbl("custom_header_replace")

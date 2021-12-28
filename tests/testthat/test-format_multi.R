@@ -1,12 +1,10 @@
 test_that("sanity check (1)", {
-  expect_false(crayon::has_color())
-  expect_equal(crayon::num_colors(), 1)
+  expect_equal(cli::num_ansi_colors(), 1)
   expect_false(has_color())
   expect_equal(num_colors(), 1)
 
   expect_snapshot({
-    crayon::has_color()
-    crayon::num_colors()
+    cli::num_ansi_colors()
     has_color()
     num_colors()
     style_na("NA")
@@ -67,30 +65,30 @@ test_that("output test", {
   # Spurious warnings on Windows
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
     })
   )
 
   suppressWarnings(
     expect_snapshot({
-      new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
+      as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
     })
   )
 
   expect_snapshot({
-    new_vertical(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
+    as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
   })
 })
 
@@ -125,11 +123,11 @@ test_that("tests from tibble", {
 test_that("empty", {
   expect_equal(
     format(colonnade(list(a = character(), b = logical()), width = 30)),
-    structure(character(), class = "pillar_vertical")
+    as_glue(character())
   )
   expect_equal(
     format(colonnade(iris[1:5, character()], width = 30)),
-    structure(character(), class = "pillar_vertical")
+    as_glue(character())
   )
 })
 
@@ -149,41 +147,37 @@ test_that("sep argument", {
   })
 })
 
-# Run opposite test to snapshot output but not alter it
-if (!l10n_info()$`UTF-8`) {
-  test_that("color, options: UTF-8 is TRUE", {
-    skip("Symmetry")
-  })
-}
+test_that("color", {
+  skip_if_not_installed("testthat", "3.1.1")
 
-test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
   local_colors()
-  expect_true(crayon::has_color())
-  expect_equal(crayon::num_colors(), 16)
+  expect_equal(cli::num_ansi_colors(), 16)
   expect_true(has_color())
   expect_equal(num_colors(), 16)
 
   if (l10n_info()$`UTF-8`) {
     local_utf8()
     expect_true(cli::is_utf8_output())
+    variant <- "unicode"
+  } else {
+    variant <- "ansi"
   }
 
-  expect_snapshot({
-    crayon::has_color()
-    crayon::num_colors()
+  expect_snapshot(variant = variant, {
+    cli::num_ansi_colors()
     has_color()
     num_colors()
     style_na("NA")
     style_neg("-1")
   })
 
-  expect_snapshot({
+  expect_snapshot(variant = variant, {
     style_na("NA")
   })
 
   xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
 
-  expect_snapshot({
+  expect_snapshot(variant = variant, {
     print(xf)
     with_options(pillar.subtle_num = TRUE, print(xf))
     with_options(pillar.subtle = FALSE, print(xf))
@@ -192,27 +186,18 @@ test_that(paste0("color, options: UTF-8 is ", l10n_info()$`UTF-8`), {
     with_options(pillar.bold = TRUE, print(xf))
   })
 
-  expect_snapshot({
+  expect_snapshot(variant = variant, {
     colonnade(list(a_very_long_column_name = 0), width = 15)
   })
 })
 
-# Run opposite test to snapshot output but not alter it
-if (l10n_info()$`UTF-8`) {
-  test_that("color, options: UTF-8 is FALSE", {
-    skip("Symmetry")
-  })
-}
-
 test_that("sanity check (2)", {
-  expect_false(crayon::has_color())
-  expect_equal(crayon::num_colors(), 1)
+  expect_equal(cli::num_ansi_colors(), 1)
   expect_false(has_color())
   expect_equal(num_colors(), 1)
 
   expect_snapshot({
-    crayon::has_color()
-    crayon::num_colors()
+    cli::num_ansi_colors()
     has_color()
     num_colors()
     style_na("NA")

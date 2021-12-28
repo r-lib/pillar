@@ -6,7 +6,9 @@
 #' for this subclass call `new_ornament()`. See the implementation of
 #' `pillar_shaft.numeric()` and `format.pillar_shaft_decimal()` for an example.
 #'
-#' @param x A character vector with formatting, see [crayon]
+#' @param x A character vector with formatting,
+#'   can use ANYI styles e.g provided by the \pkg{cli} package.
+#'
 #' @param width An optional width of the resulting pillar, computed from `x` if
 #'   missing
 #' @param align Alignment, one of `"left"` or `"right"`
@@ -39,22 +41,4 @@ print.pillar_ornament <- function(x, ...) {
 format.pillar_ornament <- function(x, width = NULL, ...) {
   align <- attr(x, "align", exact = TRUE)
   align(x, width = width %||% get_width(x), align = align)
-}
-
-# FIXME: Replace with as_glue(),
-# requires https://github.com/tidyverse/glue/issues/214
-new_vertical <- function(x) {
-  ret <- structure(
-    x,
-    class = "pillar_vertical"
-  )
-  ret
-}
-
-#' @export
-print.pillar_vertical <- function(x, ...) {
-  if (length(x) > 0) {
-    cat_line(paste(x, collapse = "\n"))
-  }
-  invisible(x)
 }

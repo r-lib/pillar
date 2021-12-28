@@ -288,13 +288,13 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
     min_chars <- get_pillar_option_min_chars()
   }
 
-  pillar_shaft(new_vertical(out), ..., min_width = min_chars, na_indent = na_indent, shorten = pillar_attr$shorten)
+  pillar_shaft(as_glue(out), ..., min_width = min_chars, na_indent = na_indent, shorten = pillar_attr$shorten)
 }
 
 #' @export
 #' @inheritParams new_pillar_shaft_simple
 #' @rdname pillar_shaft
-pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0L, shorten = NULL) {
+pillar_shaft.glue <- function(x, ..., min_width = NULL, na_indent = 0L, shorten = NULL) {
   min_width <- max(min_width, 3L)
   width <- get_max_extent(x)
 
@@ -310,11 +310,25 @@ pillar_shaft.pillar_vertical <- function(x, ..., min_width = NULL, na_indent = 0
 #' @export
 #' @rdname pillar_shaft
 pillar_shaft.list <- function(x, ...) {
-  out <- paste0("<", map_chr(x, obj_sum), ">")
+  summary <- map(x, obj_sum)
 
-  width <- get_max_extent(out)
+  formatted <- paste0("<", unlist(summary), ">")
 
-  new_pillar_shaft_simple(style_list(out), width = width, align = "left", min_width = min(width, 3L))
+  short <- map(summary, attr, "short")
+  short_idx <- !map_lgl(short, is.null)
+  short_formatted <- formatted
+  short_formatted[short_idx] <- paste0("<", unlist(short[short_idx]), ">")
+
+  width <- get_max_extent(formatted)
+  min_width <- get_max_extent(short_formatted)
+
+  new_pillar_shaft_simple(
+    style_list(formatted),
+    width = width,
+    align = "left",
+    min_width = min_width,
+    short_formatted = short_formatted
+  )
 }
 
 #' @export
@@ -335,5 +349,5 @@ pillar_shaft.default <- function(x, ...) {
   #' @details
   #' The default method will currently format via [format()],
   #' but you should not rely on this behavior.
-  pillar_shaft(new_vertical(format(x)), ...)
+  pillar_shaft(as_glue(format(x)), ...)
 }
