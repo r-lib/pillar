@@ -1,6 +1,5 @@
 test_that("output test", {
   expect_snapshot({
-    FALSE
     ctl_colonnade(rep(list(paste(letters, collapse = " ")), 4), width = Inf)
   })
 })
