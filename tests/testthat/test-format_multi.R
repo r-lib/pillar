@@ -164,6 +164,7 @@ test_that("color", {
   }
 
   expect_snapshot(variant = variant, {
+    FALSE
     cli::num_ansi_colors()
     has_color()
     num_colors()
