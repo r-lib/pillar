@@ -52,6 +52,8 @@ jobs:
       - uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''
 
+      - uses: ./.github/workflows/update-snapshots
+
       - uses: ./.github/workflows/style
 
       - uses: ./.github/workflows/roxygenize
@@ -148,6 +150,8 @@ jobs:
       - uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''
 
+      - uses: ./.github/workflows/update-snapshots
+
       - uses: ./.github/workflows/check
         with:
           results: ${{ runner.os }}-r${{ matrix.config.r }}
@@ -207,6 +211,8 @@ jobs:
 
       - uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''
+
+      - uses: ./.github/workflows/update-snapshots
 
       - uses: ./.github/workflows/check
         with:
