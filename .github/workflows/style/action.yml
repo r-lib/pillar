@@ -25,7 +25,7 @@ runs:
       if: ${{ steps.check.outputs.scope }}
       run: |
         ls -l ~/.cache/R/R.cache/styler
-        ls -l ~/.cache/R/R.cache/styler/*
+        gdu -s --inodes ~/.cache/R/R.cache/styler/* || du -s --inodes ~/.cache/R/R.cache/styler/*
       shell: bash
 
     - name: Enable styler cache
@@ -43,3 +43,10 @@ runs:
         }
         styler::style_pkg(scope = "${{ steps.check.outputs.scope }}", strict = strict)
       shell: Rscript {0}
+
+    - name: Show cache again
+      if: ${{ steps.check.outputs.scope }}
+      run: |
+        ls -l ~/.cache/R/R.cache/styler
+        gdu -s --inodes ~/.cache/R/R.cache/styler/* || du -s --inodes ~/.cache/R/R.cache/styler/*
+      shell: bash
