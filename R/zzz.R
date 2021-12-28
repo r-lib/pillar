@@ -41,14 +41,14 @@ NULL
   # nolint end
   # Can't use vctrs::s3_register() here with vctrs 0.1.0
   # https://github.com/r-lib/vctrs/pull/314
-  register_s3_method("scales", "rescale", "pillar_num")
-  register_s3_method("ggplot2", "scale_type", "pillar_num")
-  register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
-  register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
-  register_s3_method("survival", "pillar_shaft", "Surv", gen_pkg = "pillar")
-  register_s3_method("survival", "type_sum", "Surv", gen_pkg = "pillar")
-  register_s3_method("survival", "pillar_shaft", "Surv2", gen_pkg = "pillar")
-  register_s3_method("survival", "type_sum", "Surv2", gen_pkg = "pillar")
+  s3_register("scales::rescale", "pillar_num")
+  s3_register("ggplot2::scale_type", "pillar_num")
+  s3_register("knitr::knit_print", "pillar_squeezed_colonnade")
+  s3_register("bit64::pillar_shaft", "integer64")
+  s3_register("survival::pillar_shaft", "Surv")
+  s3_register("survival::type_sum", "Surv")
+  s3_register("survival::pillar_shaft", "Surv2")
+  s3_register("survival::type_sum", "Surv2")
 
   assign_crayon_styles()
 
@@ -71,31 +71,6 @@ NULL
   }
 
   invisible()
-}
-
-register_s3_method <- function(pkg, generic, class, fun = NULL, gen_pkg = pkg) {
-  stopifnot(is.character(pkg), length(pkg) == 1)
-  stopifnot(is.character(generic), length(generic) == 1)
-  stopifnot(is.character(class), length(class) == 1)
-  if (is.null(fun)) {
-    fun <- get(paste0(generic, ".", class), envir = parent.frame())
-  }
-  stopifnot(is.function(fun))
-
-  if (pkg %in% loadedNamespaces()) {
-    envir <- asNamespace(gen_pkg)
-    registerS3method(generic, class, fun, envir = envir)
-  }
-
-  # Always register hook in case package is later unloaded & reloaded
-  setHook(
-    packageEvent(pkg, "onLoad"),
-    function(...) {
-      envir <- asNamespace(gen_pkg)
-      # FIXME: Need to work around base R bug, as mentioned by Carson?
-      registerS3method(generic, class, fun, envir = envir)
-    }
-  )
 }
 
 activate_debugme <- function(level = 2) {
