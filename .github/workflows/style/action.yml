@@ -48,7 +48,7 @@ runs:
         if (is.na(strict)) {
           strict = FALSE
         }
-        styler::style_pkg(scope = "${{ steps.check.outputs.scope }}", strict = strict)
+        if (FALSE) styler::style_pkg(scope = "${{ steps.check.outputs.scope }}", strict = strict)
       shell: Rscript {0}
 
     - name: Show cache again
