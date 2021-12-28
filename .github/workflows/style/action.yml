@@ -27,6 +27,13 @@ runs:
         key: ${{ runner.os }}-${{ github.run_id }}-
         restore-keys: ${{ runner.os }}-
 
+    - name: Show cache
+      if: ${{ steps.check.outputs.scope }}
+      run: |
+        ls -l ~/.cache/R/R.cache/styler
+        ls -l ~/.cache/R/R.cache/styler/*
+      shell: bash
+
     - name: Run styler
       if: ${{ steps.check.outputs.scope }}
       run: |
