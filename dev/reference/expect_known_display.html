@@ -123,10 +123,14 @@ If your package uses the third edition of testthat, do not use this function.</p
 <span class="r-in">  expectation_failure <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span class="r-in"><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`expect_known_display()` was deprecated in pillar 1.6.5.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `testthat::expect_snapshot()` instead.</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Good: Use tidyeval to defer construction</span></span>
 <span class="r-in"><span class="va">pillar_quo</span> <span class="op">&lt;-</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html" class="external-link">quo</a></span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="op">!</span><span class="op">!</span><span class="va">pillar_quo</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`expect_known_display()` was deprecated in pillar 1.6.5.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `testthat::expect_snapshot()` instead.</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="co"># Bad: Options set in the active session may affect the display</span></span>
