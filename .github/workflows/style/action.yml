@@ -18,8 +18,9 @@ runs:
       with:
         path: |
           ~/.cache/R/R.cache
-        key: ${{ runner.os }}-${{ github.run_id }}-
-        restore-keys: ${{ runner.os }}-
+        key: ${{ runner.os }}-2-${{ github.run_id }}-
+        restore-keys: |
+          ${{ runner.os }}-2-
 
     - name: Show cache
       if: ${{ steps.check.outputs.scope }}
