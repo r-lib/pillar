@@ -8,7 +8,7 @@
 #'
 #' @details
 #' The `formatted` argument may also contain ANSI escapes to change color
-#' or other attributes of the text, see [crayon].
+#' or other attributes of the text, provided e.g. by the \pkg{cli} package.
 #'
 #' @inheritParams tibble::char
 #' @param formatted The data to show, an object coercible to [character].

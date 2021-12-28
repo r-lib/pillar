@@ -116,7 +116,7 @@ num_colors <- local({
   num_colors <- NULL
   function(forget = FALSE) {
     if (is.null(num_colors) || forget) {
-      num_colors <<- crayon::num_colors(forget = forget)
+      num_colors <<- cli::num_ansi_colors()
     }
     num_colors
   }
@@ -127,30 +127,28 @@ has_color <- function() {
 }
 
 # nocov start
-# Crayon functions call crayon::num_colors() every call
+# Crayon functions call cli::num_ansi_colors() every call
 make_style_fast <- function(...) {
   # Force has_color to be true when making styles
   # Use prefix to avoid problems with empty NAMESPACE
   rlang::local_options(cli.num_colors = 16L)
 
-  style_16 <- crayon::make_style(..., colors = 16)
-  start_16 <- stats::start(style_16)
-  finish_16 <- crayon::finish(style_16)
+  style_16 <- attr(cli::make_ansi_style(..., colors = 16), "_styles")[[1]]
+  open_16 <- style_16$open
+  close_16 <- style_16$close
 
-  style_256 <- crayon::make_style(..., colors = 256)
-  start_256 <- stats::start(style_256)
-  finish_256 <- crayon::finish(style_256)
+  style_256 <- attr(cli::make_ansi_style(..., colors = 256), "_styles")[[1]]
+  open_256 <- style_256$open
+  close_256 <- style_256$close
 
   function(...) {
-    if (has_color()) {
-      colors <- num_colors()
-      if (colors >= 256) {
-        paste0(start_256, ..., finish_256)
-      } else {
-        paste0(start_16, ..., finish_16)
-      }
-    } else {
+    colors <- num_colors()
+    if (colors <= 1) {
       paste0(...)
+    } else if (colors >= 256) {
+      paste0(open_256, ..., close_256)
+    } else {
+      paste0(open_16, ..., close_16)
     }
   }
 }

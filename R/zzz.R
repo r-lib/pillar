@@ -44,7 +44,6 @@ NULL
   register_s3_method("scales", "rescale", "pillar_num")
   register_s3_method("ggplot2", "scale_type", "pillar_num")
   register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
-  register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
   register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
   register_s3_method("survival", "pillar_shaft", "Surv", gen_pkg = "pillar")
   register_s3_method("survival", "type_sum", "Surv", gen_pkg = "pillar")

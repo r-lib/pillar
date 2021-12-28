@@ -57,7 +57,7 @@ type_sum.default <- function(x) {
   )
 }
 
-# Registered in .onLoad()
+#' @export
 vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
   vec_ptype_abbr(x[[1]])
 }
