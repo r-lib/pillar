@@ -1,10 +1,6 @@
 # color
 
     Code
-      FALSE
-    Output
-      [1] FALSE
-    Code
       cli::num_ansi_colors()
     Output
       [1] 16
