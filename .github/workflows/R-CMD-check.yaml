@@ -73,7 +73,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          base: ${{ github.base_ref }}
+          base: ${{ github.head_ref }}
           branch: snapshot-${{ github.ref_name }}-${{ github.job }}
           delete-branch: true
           title: Snapshot updates for ${{ github.job }}
