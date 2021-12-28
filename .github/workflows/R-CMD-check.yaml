@@ -70,6 +70,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
           base: ${{ github.base_ref }}
@@ -78,6 +79,12 @@ jobs:
           title: Snapshot updates for ${{ github.job }}
           add-paths: |
             tests/testthat/_snaps
+
+      - name: Fail if pull request created
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          false
+        shell: bash
 
       - uses: ./.github/workflows/style
 
