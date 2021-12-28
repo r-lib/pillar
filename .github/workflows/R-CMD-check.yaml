@@ -73,6 +73,9 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           base: ${{ github.base_ref }}
+          branch: snapshot-${{ github.ref_name }}-${{ github.job }}
+          delete-branch: true
+          title: Snapshot updates for ${{ github.job }}
           add-paths: |
             tests/testthat/_snaps
 
