@@ -1,10 +1,10 @@
 new_data_frame_pillar <- function(x, controller, width, title) {
-  pillars <- new_packed_pillars(x, controller, width, title)
+  pillars <- new_data_frame_pillar_list(x, controller, width, title)
   combine_pillars(pillars, extra = names(x)[-seq_along(pillars)])
 }
 
-new_packed_pillars <- function(x, controller, width, title) {
-  "!!!!!DEBUG new_packed_pillars(`v(width)`, `v(title)`)"
+new_data_frame_pillar_list <- function(x, controller, width, title) {
+  "!!!!!DEBUG new_data_frame_pillar_list(`v(width)`, `v(title)`)"
 
   if (ncol(x) == 0) {
     return(compact(list(pillar_from_shaft(
