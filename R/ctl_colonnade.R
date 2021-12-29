@@ -56,14 +56,36 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
 emit_pillars <- function(x, controller, tier_widths) {
   # New-style code
+
+  pillars <- NULL
+  min_widths <- NULL
+  widths <- tier_widths
+
   for (col in seq_along(x)) {
+    # FIXME: Use a different method to get the leftmost leaf?
     pillar <- ctl_new_compound_pillar(controller, x[[col]], width = NULL, title = names(x)[[col]])
     min_width <- pillar_get_min_widths(pillar)
-    tier_widths <- deduct_width(tier_widths, min_width)
-    if (is.null(tier_widths)) {
+    widths <- deduct_width(widths, min_width)
+    if (is.null(widths)) {
       break
     }
-    # yield_compound_pillar()
+    pillars <- c(pillars, list(pillar))
+    min_widths <- c(min_widths, min_width)
+  }
+
+  if (length(min_widths) == 0) {
+    # FIXME: Avoid corner case
+    return()
+  }
+
+  rev <- distribute_pillars_rev(min_widths, tier_widths)
+
+  for (col in seq_along(pillars)) {
+    target_tier <- rev$tier[[col]]
+    sub_tier_widths <- c(tier_widths[seq_len(target_tier - 1L)], rev$offset_after[[col]])
+
+    # FIXME: Avoid creating first pillar twice
+    sub_pillar <- ctl_new_compound_pillar(controller, x[[col]], width = sub_tier_widths, title = names(x)[[col]])
   }
 }
 
