@@ -136,7 +136,7 @@ emit_pillars <- function(x, controller, tier_widths, title = NULL, first_pillar 
     }
 
     if (new_pos$tiers > 0) {
-      x_pos <- 0L
+      x_pos <- new_pos$x
       tier_pos <- tier_pos + new_pos$tiers
     } else {
       x_pos <- x_pos + new_pos$x
