@@ -63,13 +63,18 @@ new_data_frame_pillar_list <- function(x, controller, width, title) {
 }
 
 new_matrix_pillar <- function(x, controller, width, title) {
+  pillars <- new_matrix_pillar_list(x, controller, width, title)
+  combine_pillars(pillars, extra = seq2(length(pillars) + 1, ncol(x)))
+}
+
+new_matrix_pillar_list <- function(x, controller, width, title) {
   if (ncol(x) == 0) {
-    return(pillar_from_shaft(
+    return(list(pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
       new_pillar_type(x),
       new_empty_shaft(nrow(x)),
       width
-    ))
+    )))
   }
 
   max_n_pillars <- sum(width %/% 2)
@@ -106,7 +111,7 @@ new_matrix_pillar <- function(x, controller, width, title) {
     }
 
     if (is.null(width)) {
-      return(pillar)
+      return(list(pillar))
     }
 
     # Compute remaining width
@@ -119,13 +124,7 @@ new_matrix_pillar <- function(x, controller, width, title) {
     pillars[[i]] <- pillar
   }
 
-  compact_pillars <- compact(pillars)
-  if (length(compact_pillars) < ncol(x)) {
-    extra <- seq2(length(compact_pillars) + 1, ncol(x))
-  } else {
-    extra <- NULL
-  }
-  combine_pillars(compact_pillars, extra = extra)
+  compact(pillars)
 }
 
 new_array_pillar <- function(x, controller, width, title) {
