@@ -521,8 +521,7 @@
       2 <list [1]>
       3 <list [1]>
     Code
-      colonnade(list(`
-      ` = c("\n", "\""), `` = factor("\n")), width = 30)
+      colonnade(list(`\n` = c("\n", "\""), `\r` = factor("\n")), width = 30)
     Output
         `\n`  `\r` 
         <chr> <fct>
