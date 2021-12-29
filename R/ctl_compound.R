@@ -128,16 +128,21 @@ new_matrix_pillar_list <- function(x, controller, width, title) {
 }
 
 new_array_pillar <- function(x, controller, width, title) {
+  pillars <- new_array_pillar_list(x, controller, width, title)
+  pillars[[1]]
+}
+
+new_array_pillar_list <- function(x, controller, width, title) {
   first_slice <- head(as.vector(x), vec_size(x))
 
   body <- pillar_shaft(first_slice)
 
-  pillar_from_shaft(
+  list(pillar_from_shaft(
     new_pillar_title(title),
     new_pillar_type(x),
     new_continuation_shaft(body),
     width
-  )
+  ))
 }
 
 combine_pillars <- function(pillars, extra = NULL) {
