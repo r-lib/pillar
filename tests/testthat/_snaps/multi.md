@@ -145,6 +145,12 @@
       1  1    1     5            5
       2  2    2     4            4
       3  3    2     3            8
+    Code
+      distribute_pillars(c(5, 5), c(2, 8, 8))
+    Output
+        id tier width offset_after
+      1  1    2     5            5
+      2  2    3     5            5
 
 # distribute_pillars_rev()
 
@@ -192,4 +198,10 @@
       1  1    1     5            9
       2  2    2     4            4
       3  3    2     3            8
+    Code
+      distribute_pillars_rev(c(5, 5), c(8, 8, 2))
+    Output
+        id tier width offset_after
+      1  1    1     5            8
+      2  2    2     5            8
 

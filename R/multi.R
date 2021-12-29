@@ -436,13 +436,18 @@ distribute_pillars <- function(widths, tier_widths) {
   #' @details
   #' Fitting pillars into tiers is very similar to a word-wrapping algorithm.
   for (i in seq_along(widths)) {
+    current_width <- widths[[i]]
     #' In a loop, new tiers are opened if the current tier overflows.
-    if (current_x + widths[[i]] > tier_widths[[current_tier]]) {
+    if (current_x + current_width > tier_widths[[current_tier]]) {
       #' If a column is too wide to fit a single tier, it will never be
       #' displayed, and the colonnade will be truncated there.
       #' This case should never occur with reasonable display widths larger than
       #' 30 characters.
-      if (widths[[i]] > tier_widths[[current_tier]]) break
+      if (current_width > tier_widths[[current_tier]]) {
+        if (current_tier == length(tier_widths) || current_width > tier_widths[[current_tier + 1]]) {
+          break
+        }
+      }
 
       current_tier <- current_tier + 1L
       current_x <- 0L
@@ -451,7 +456,7 @@ distribute_pillars <- function(widths, tier_widths) {
     }
 
     tier[[i]] <- current_tier
-    current_x <- current_x + widths[[i]]
+    current_x <- current_x + current_width
     offset_after[[i]] <- current_x
     current_x <- current_x + 1L
   }
