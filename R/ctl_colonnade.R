@@ -108,11 +108,26 @@ emit_pillars <- function(x, controller, tier_widths, title = NULL, first_pillar 
   x_pos <- 0L
   tier_pos <- 1L
 
+  # FIXME: Replace with title vector
+  sub_title <- title
+  if (!is.null(sub_title)) {
+    sub_title[[length(sub_title)]] <- paste0(sub_title[[length(sub_title)]], "$")
+  }
+
+  # Advance column by column
   for (col in seq_along(pillar_list)) {
     target_tier <- rev$tier[[col]]
     sub_tier_widths <- c(tier_widths[seq2(tier_pos, target_tier - 1L)], rev$offset_after[[col]] - x_pos)
-    new_pos <- emit_pillars(x[[col]], controller, sub_tier_widths, c(title, names(x)[[col]]), pillar_list[[col]])
+
+    # FIXME: Replace with title vector
+    if (col == 2 && !is.null(sub_title)) {
+      sub_title[[length(sub_title)]] <- "$"
+    }
+
+    # Recurse
+    new_pos <- emit_pillars(x[[col]], controller, sub_tier_widths, c(sub_title, names(x)[[col]]), pillar_list[[col]])
     if (is.null(new_pos)) {
+      # FIXME: Invalid condition
       break
     }
 
@@ -124,7 +139,7 @@ emit_pillars <- function(x, controller, tier_widths, title = NULL, first_pillar 
     }
   }
 
-  # emit_extra_columns(attr(pillar_list, "extra"))
+  # emit_extra_columns(title, attr(pillar_list, "extra"))
 
   list(tiers = tier_pos - 1L, x = x_pos)
 }
