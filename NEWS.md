@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.4.9002
+
+- List columns omit size information if horizontal space is insufficient (#392).
+- Extra columns in footer show backticks again if they are non-syntactic (#393).
+- If the column title of a backticked column is abbreviated, the trailing backtick is still printed (#391).
+- `new_pillar_shaft_simple()` gains `short_formatted` argument that contains the data to be used if horizontal space is insufficient (#389).
+- Default `obj_sum()` method returns abbreviation in attribute of return value (#390).
+- Use snapshot variants, requires testthat >= 3.1.1 (#387).
+- Breaking: packed columns are no longer distributed over multiple tiers (#386).
+- `?num` and `?char` now point to tibble (#382).
+- Replace internal `"pillar_vertical"` class with `glue::as_glue()` (#279).
+
+
 # pillar 1.6.4.9001
 
 - Fix support for `nanotime::nanotime()` classes (#378, #380).

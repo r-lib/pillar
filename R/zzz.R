@@ -6,12 +6,16 @@
 #' @importFrom lifecycle deprecate_soft
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
+#' @importFrom vctrs new_list_of
+#' @importFrom vctrs new_vctr
 #' @importFrom vctrs obj_print_footer
 #' @importFrom vctrs obj_print_header
 #' @importFrom vctrs obj_print_data
+#' @importFrom vctrs unspecified
 #' @importFrom vctrs vec_arith
 #' @importFrom vctrs vec_arith.numeric
 #' @importFrom vctrs vec_arith_base
+#' @importFrom vctrs vec_assert
 #' @importFrom vctrs vec_c
 #' @importFrom vctrs vec_cast
 #' @importFrom vctrs vec_cast.double
@@ -29,6 +33,7 @@
 #' @importFrom vctrs vec_rbind
 #' @importFrom vctrs vec_restore
 #' @importFrom vctrs vec_size
+#' @importFrom vctrs vec_slice
 NULL
 
 # nolint start
@@ -37,7 +42,6 @@ NULL
   # Can't use vctrs::s3_register() here with vctrs 0.1.0
   # https://github.com/r-lib/vctrs/pull/314
   register_s3_method("knitr", "knit_print", "pillar_squeezed_colonnade")
-  register_s3_method("vctrs", "vec_ptype_abbr", "pillar_empty_col")
   register_s3_method("bit64", "pillar_shaft", "integer64", gen_pkg = "pillar")
   register_s3_method("survival", "pillar_shaft", "Surv", gen_pkg = "pillar")
   register_s3_method("survival", "type_sum", "Surv", gen_pkg = "pillar")
