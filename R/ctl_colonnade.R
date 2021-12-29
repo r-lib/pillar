@@ -23,6 +23,8 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
 
+  # Add zero-width tier for rowid
+  # emit_pillars(x, controller, c(0L, tier_widths))
   emit_pillars(x, controller, tier_widths)
 
   pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
@@ -54,82 +56,77 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   new_colonnade_body(out, extra_cols = extra_cols)
 }
 
-emit_pillars <- function(x, controller, tier_widths) {
+emit_pillars <- function(x, controller, tier_widths, title = NULL, first_pillar = NULL) {
   # New-style code
 
-  pillars <- NULL
-  min_widths <- NULL
-  widths <- tier_widths
+  pillar_list <- ctl_new_pillar_list(controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
 
-  # FIXME: Remove the two loops in this function
-  for (col in seq_along(x)) {
-    pillar_list <- ctl_new_pillar_list(controller, x[[col]], width = NULL, title = names(x)[[col]])
+  if (length(pillar_list) == 0) {
+    # Doesn't fit
+    return(NULL)
+  }
+
+  # Simple pillar: fit and proceed
+  if (length(pillar_list) == 1) {
     pillar <- pillar_list[[1]]
-    min_width <- pillar_get_min_widths(pillar)
-    widths <- deduct_width(widths, min_width)
-    if (is.null(widths)) {
-      break
+    width <- pillar_get_widths(pillar)
+    if (width <= max(tier_widths)) {
+      # Handle tier break
+      used_tier <- which(width <= tier_widths)[[1]]
+    } else {
+      used_tier <- which.max(tier_widths)
+      width <- tier_widths[[used_tier]]
     }
-    pillars <- c(pillars, list(pillar))
-    min_widths <- c(min_widths, min_width)
+
+    if (used_tier > 1) {
+      # emit_tier_break()
+      # emit_rowid_pillar()
+      # message("emit_tier_break()")
+    } else {
+      # emit_pillar_hspace()
+    }
+
+    # emit_pillar()
+    # print(width)
+    # print(pillar_list[[1]], width = width)
+
+    if (used_tier > 1) {
+      return(list(tiers = used_tier - 1L, x = width))
+    } else {
+      return(list(tiers = 0L, x = width + 1L))
+    }
   }
 
-  if (length(min_widths) == 0) {
-    # FIXME: Avoid corner case
-    return()
-  }
-
+  # We can proceed cautiously to the next level if space permits.
+  # For each sub-pillar we allow at most as much space so that
+  # we can print all first components of all remaining pillars
+  # with the minimum width
+  min_widths <- map_int(pillar_list, pillar_get_min_widths)
   rev <- distribute_pillars_rev(min_widths, tier_widths)
   stopifnot(!anyNA(rev$tier))
 
-  x_pos <- 1L
+  x_pos <- 0L
   tier_pos <- 1L
 
-  # FIXME: First tier should have width 0 to force emission of rowid pillar
-
-  for (col in seq_along(pillars)) {
+  for (col in seq_along(pillar_list)) {
     target_tier <- rev$tier[[col]]
-    sub_tier_widths <- c(tier_widths[seq2(tier_pos, target_tier - 1L)], rev$offset_after[[col]] - (x_pos - 1L))
+    sub_tier_widths <- c(tier_widths[seq2(tier_pos, target_tier - 1L)], rev$offset_after[[col]] - x_pos)
+    new_pos <- emit_pillars(x[[col]], controller, sub_tier_widths, c(title, names(x)[[col]]), pillar_list[[col]])
+    if (is.null(new_pos)) {
+      break
+    }
 
-    sub_pillar_list <- ctl_new_pillar_list(controller, x[[col]], width = sub_tier_widths, title = names(x)[[col]], first_pillar = pillars[[col]])
-
-    # Simple pillar: fit and proceed
-    if (length(sub_pillar_list) == 1) {
-      pillar <- sub_pillar_list[[1]]
-      width <- pillar_get_widths(pillar)
-      if (width <= max(sub_tier_widths)) {
-        # Handle tier break
-        used_tier <- which(width <= sub_tier_widths)[[1]]
-      } else {
-        used_tier <- which.max(sub_tier_widths)
-        width <- sub_tier_widths[[used_tier]]
-      }
-
-      if (used_tier > 1) {
-        # emit_tier_break()
-        # emit_rowid_pillar()
-        tier_pos <- tier_pos + (used_tier - 1L)
-        x_pos <- 1L
-      } else {
-        x_pos <- x_pos + width + 1L
-      }
-
-      # emit_pillar()
-      # print(sub_pillar_list[[1]], width = width)
+    if (new_pos$tiers > 0) {
+      x_pos <- 0L
+      tier_pos <- tier_pos + new_pos$tiers
     } else {
-      # No extra columns -- all sub-pillars fit -- we can proceed to the next level
-      if (is.data.frame(x[[col]]) && length(attr(sub_pillar_list, "extra")) == 0) {
-        # FIXME: After removing loops, this must be a loop itself
-        used_widths <- emit_pillars(x[[col]], controller, sub_tier_widths)
-        # FIXME: Update state
-      } else {
-        # FIXME: Distribute sub-pillars without recursing:
-        # - C
-      }
+      x_pos <- x_pos + new_pos$x
     }
   }
 
-  # FIXME: Return leftover or used width as vector
+  # emit_extra_columns(attr(pillar_list, "extra"))
+
+  list(tiers = tier_pos - 1L, x = x_pos)
 }
 
 pillar_format_tier <- function(pillars, widths, max_widths) {
