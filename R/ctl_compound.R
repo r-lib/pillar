@@ -1,6 +1,6 @@
 new_data_frame_pillar <- function(x, controller, width, title) {
   pillars <- new_data_frame_pillar_list(x, controller, width, title)
-  combine_pillars(pillars, extra = names(x)[-seq_along(pillars)])
+  combine_pillars(pillars, extra = attr(pillars, "extra"))
 }
 
 new_data_frame_pillar_list <- function(x, controller, width, title) {
@@ -59,12 +59,14 @@ new_data_frame_pillar_list <- function(x, controller, width, title) {
     pillars[[i]] <- pillar
   }
 
-  compact(pillars)
+  pillars <- compact(pillars)
+
+  structure(pillars, extra = names(x)[-seq_along(pillars)])
 }
 
 new_matrix_pillar <- function(x, controller, width, title) {
   pillars <- new_matrix_pillar_list(x, controller, width, title)
-  combine_pillars(pillars, extra = seq2(length(pillars) + 1, ncol(x)))
+  combine_pillars(pillars, extra = attr(pillars, "extra"))
 }
 
 new_matrix_pillar_list <- function(x, controller, width, title) {
@@ -124,7 +126,8 @@ new_matrix_pillar_list <- function(x, controller, width, title) {
     pillars[[i]] <- pillar
   }
 
-  compact(pillars)
+  pillars <- compact(pillars)
+  structure(pillars, extra = seq2(length(pillars) + 1, ncol(x)))
 }
 
 new_array_pillar <- function(x, controller, width, title) {
