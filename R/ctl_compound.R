@@ -45,6 +45,10 @@ new_packed_pillars <- function(x, controller, width, title) {
       break
     }
 
+    if (is.null(width)) {
+      return(list(pillar))
+    }
+
     # Compute remaining width
     width <- deduct_width(width, pillar_get_min_widths(pillar))
     if (is.null(width)) {
@@ -99,6 +103,10 @@ new_matrix_pillar <- function(x, controller, width, title) {
     if (is.null(pillar)) {
       # NULL return: doesn't fit
       break
+    }
+
+    if (is.null(width)) {
+      return(pillar)
     }
 
     # Compute remaining width
