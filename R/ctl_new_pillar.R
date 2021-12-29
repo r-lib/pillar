@@ -90,10 +90,6 @@ ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
 
   check_dots_empty()
 
-  if (length(width) == 0) {
-    return(NULL)
-  }
-
   UseMethod("ctl_new_pillar")
 }
 
@@ -118,10 +114,6 @@ ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
   "!!!!DEBUG ctl_new_compound_pillar(`v(width)`, `v(title)`)"
 
   check_dots_empty()
-
-  if (length(width) == 0) {
-    return(NULL)
-  }
 
   UseMethod("ctl_new_compound_pillar")
 }
