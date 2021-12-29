@@ -86,9 +86,9 @@ emit_pillars <- function(x, controller, tier_widths, title = NULL, first_pillar 
       # emit_pillar_hspace()
     }
 
-    # emit_pillar()
+    # emit_pillar(pillar, width)
     # print(width)
-    # print(pillar_list[[1]], width = width)
+    # print(pillar, width = width)
 
     if (used_tier > 1) {
       return(list(tiers = used_tier - 1L, x = width))
