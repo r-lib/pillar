@@ -133,6 +133,33 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
   }
 }
 
+#' @rdname ctl_new_pillar
+#' @export
+ctl_new_pillar_list <- function(controller, x, width, ..., title = NULL, first_pillar = NULL) {
+  "!!!!DEBUG ctl_new_pillar_list(`v(width)`, `v(title)`)"
+
+  check_dots_empty()
+
+  UseMethod("ctl_new_pillar_list")
+}
+
+#' @export
+ctl_new_pillar_list.tbl <- function(controller, x, width, ..., title = NULL, first_pillar = NULL) {
+  "!!!!DEBUG ctl_new_pillar_list.tbl(`v(width)`, `v(title)`)"
+
+  if (is.data.frame(x)) {
+    new_data_frame_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
+  } else if (is.matrix(x)) {
+    new_matrix_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
+  } else if (is.array(x) && length(dim(x)) > 1) {
+    new_array_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
+  } else if (is.null(first_pillar)) {
+    list(ctl_new_pillar(controller, x, width, ..., title = prepare_title(title)))
+  } else {
+    list(first_pillar)
+  }
+}
+
 # FIXME: Keep vectorized titles later
 prepare_title <- function(title) {
   paste(title, collapse = "")

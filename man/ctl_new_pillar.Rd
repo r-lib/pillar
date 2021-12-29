@@ -3,11 +3,21 @@
 \name{ctl_new_pillar}
 \alias{ctl_new_pillar}
 \alias{ctl_new_compound_pillar}
+\alias{ctl_new_pillar_list}
 \title{Customize your tibble subclass}
 \usage{
 ctl_new_pillar(controller, x, width, ..., title = NULL)
 
 ctl_new_compound_pillar(controller, x, width, ..., title = NULL)
+
+ctl_new_pillar_list(
+  controller,
+  x,
+  width,
+  ...,
+  title = NULL,
+  first_pillar = NULL
+)
 }
 \arguments{
 \item{controller}{The object of class \code{"tbl"} currently printed.}
