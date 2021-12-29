@@ -62,8 +62,8 @@ emit_pillars <- function(x, controller, tier_widths) {
   widths <- tier_widths
 
   for (col in seq_along(x)) {
-    # FIXME: Use a different method to get the leftmost leaf?
-    pillar <- ctl_new_compound_pillar(controller, x[[col]], width = NULL, title = names(x)[[col]])
+    pillar_list <- ctl_new_pillar_list(controller, x[[col]], width = NULL, title = names(x)[[col]])
+    pillar <- pillar_list[[1]]
     min_width <- pillar_get_min_widths(pillar)
     widths <- deduct_width(widths, min_width)
     if (is.null(widths)) {
@@ -84,8 +84,7 @@ emit_pillars <- function(x, controller, tier_widths) {
     target_tier <- rev$tier[[col]]
     sub_tier_widths <- c(tier_widths[seq_len(target_tier - 1L)], rev$offset_after[[col]])
 
-    # FIXME: Avoid creating first pillar twice
-    sub_pillar <- ctl_new_compound_pillar(controller, x[[col]], width = sub_tier_widths, title = names(x)[[col]])
+    sub_pillar_list <- ctl_new_pillar_list(controller, x[[col]], width = sub_tier_widths, title = names(x)[[col]], first_pillar = pillars[[col]])
   }
 }
 
