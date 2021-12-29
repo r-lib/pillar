@@ -22,6 +22,9 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   }
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
+
+  emit_pillars(x, controller, tier_widths)
+
   pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
 
   if (length(pillars) == 0) {
@@ -49,6 +52,19 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
   new_colonnade_body(out, extra_cols = extra_cols)
+}
+
+emit_pillars <- function(x, controller, tier_widths) {
+  # New-style code
+  for (col in seq_along(x)) {
+    pillar <- ctl_new_compound_pillar(controller, x[[col]], width = NULL, title = names(x)[[col]])
+    min_width <- pillar_get_min_widths(pillar)
+    tier_widths <- deduct_width(tier_widths, min_width)
+    if (is.null(tier_widths)) {
+      break
+    }
+    # yield_compound_pillar()
+  }
 }
 
 pillar_format_tier <- function(pillars, widths, max_widths) {
