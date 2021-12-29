@@ -352,8 +352,9 @@
       
       
     Code
-      ctl_colonnade(list(`
-      ` = c("\n", "\""), `` = factor(c("\n", "\n"))), width = 30)
+      list_with_ctl <- list(c("\n", "\""), factor(c("\n", "\n")))
+      names(list_with_ctl) <- c("\n", "\r")
+      ctl_colonnade(list_with_ctl, width = 30)
     Output
       $body
         `\n`  `\r` 
