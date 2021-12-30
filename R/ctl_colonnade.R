@@ -199,11 +199,16 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
 
     cb$on_pillar(pillar, width)
+    # Use true width
+    # FIXME: Pass formatted to cb_on_pillar()
+    formatted <- pillar_format_sub_part(pillar, 1L, width)
+    true_width <- formatted$max_extent
+    stopifnot(true_width <= width)
 
     if (used_tier > 1) {
-      return(list(tiers = used_tier - 1L, x = width))
+      return(list(tiers = used_tier - 1L, x = true_width))
     } else {
-      return(list(tiers = 0L, x = width))
+      return(list(tiers = 0L, x = true_width))
     }
   }
 
