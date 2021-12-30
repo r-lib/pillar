@@ -40,7 +40,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     # FIXME: Show for all levels
     is_top_level <- map_lgl(extra_cols$x, identical, x)
     if (any(is_top_level)) {
-      extra_cols <<- as.list(x)[ extra_cols$cols[is_top_level][[1]] ]
+      extra_cols <<- as.list(x)[extra_cols$cols[is_top_level][[1]]]
     }
   }
 
