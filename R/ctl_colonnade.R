@@ -176,11 +176,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     true_width <- formatted$max_extent
     stopifnot(true_width <= width)
 
-    if (used_tier > 1) {
-      return(list(tiers = used_tier - 1L, x = true_width))
-    } else {
-      return(list(tiers = 0L, x = true_width))
-    }
+    return(list(tiers = used_tier - 1L, width = true_width))
   }
 
   # We can proceed cautiously to the next level if space permits.
@@ -225,23 +221,23 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
 
     # Recurse
-    new_pos <- do_emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
-    "!!!!!DEBUG new_pos"
+    used <- do_emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
+    "!!!!!DEBUG used"
 
-    stopifnot(!is.null(new_pos))
+    stopifnot(!is.null(used))
 
-    if (new_pos$tiers > 0) {
-      x_pos <- new_pos$x
-      tier_pos <- tier_pos + new_pos$tiers
+    if (used$tiers > 0) {
+      x_pos <- used$width
+      tier_pos <- tier_pos + used$tiers
     } else {
       if (x_pos > 0) {
         x_pos <- x_pos + 1L
       }
-      x_pos <- x_pos + new_pos$x
+      x_pos <- x_pos + used$width
     }
   }
 
-  list(tiers = tier_pos - 1L, x = x_pos)
+  list(tiers = tier_pos - 1L, width = x_pos)
 }
 
 # Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
