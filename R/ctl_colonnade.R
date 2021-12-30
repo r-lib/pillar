@@ -66,11 +66,44 @@ new_emit_tiers_callbacks <- function(controller = controller) {
 }
 
 do_emit_tiers <- function(x, tier_widths, cb) {
-  emit_pillars(x, tier_widths, cb$controller)
+  current_tier <- NULL
+  extra_cols <- data_frame(x = list(), title = list(), cols = list())
+
+  start_tier <- function() {
+    # message("start_tier()")
+    current_tier <<- data_frame(pillar = list(), width = integer())
+  }
+
+  end_tier <- function() {
+    # message("end_tier()")
+    current_tier <- pillar_format_tier(current_tier$pillar, current_tier$width, current_tier$width)
+    cb$tier(current_tier)
+    current_tier <<- NULL
+  }
+
+  pillar <- function(pillar, width) {
+    # message("pillar()")
+    # print(width)
+    # print(pillar, width = width)
+    row <- data_frame(pillar = list(pillar), width)
+    current_tier <<- vec_rbind(current_tier, row)
+  }
+
+  extra_cols <- function(x, title, cols) {
+    # message("extra_cols()")
+    # print(title)
+    # print(cols)
+    extra_cols <<- vec_rbind(extra_cols, data_frame(
+      x = list(x), title = list(title), cols = list(cols)
+    ))
+  }
+
+  cb_pillars <- new_emit_pillars_callbacks(cb$controller)
+
+  emit_pillars(x, tier_widths, cb_pillars)
 }
 
-emit_pillars <- function(x, tier_widths, controller) {
-  cb <- new_emit_pillars_callbacks(controller)
+emit_pillars <- function(x, tier_widths, cb) {
   cb$start_tier()
   do_emit_pillars(x, tier_widths, cb)
   cb$end_tier()
@@ -80,20 +113,12 @@ new_emit_pillars_callbacks <- function(controller) {
   list(
     controller = controller,
     start_tier = function() {
-      # message("start_tier()")
     },
     end_tier = function() {
-      # message("end_tier()")
     },
     pillar = function(pillar, width) {
-      # message("pillar()")
-      # print(width)
-      # print(pillar, width = width)
     },
     extra_cols = function(x, title, cols) {
-      # message("extra_cols()")
-      # print(title)
-      # print(cols)
     }
   )
 }
