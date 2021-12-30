@@ -279,27 +279,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 }
 
 pillar_format_tier <- function(pillars, widths, max_widths) {
-  # First pass: formatting with the allocated width
   formatted <- map2(pillars, widths, pillar_format_parts_2)
-
-  extents <- map_int(formatted, `[[`, "max_extent")
-  extra <- sum(widths - extents)
-
-  # Second pass: trying to use the remaining width, starting at the left
-  if (extra > 0) {
-    for (col_idx in which(widths < max_widths)) {
-      new_formatted <- pillar_format_parts_2(pillars[[col_idx]], min(widths[[col_idx]] + extra, max_widths[[col_idx]]))
-      delta <- new_formatted$max_extent - formatted[[col_idx]]$max_extent
-      if (delta > 0) {
-        formatted[[col_idx]] <- new_formatted
-        extra <- extra - delta
-        if (extra <= 0) {
-          break
-        }
-      }
-      col_idx <- col_idx + 1L
-    }
-  }
 
   map(formatted, function(.x) {
     .x$aligned[[1]]
@@ -336,38 +316,4 @@ new_colonnade_body <- function(x, extra_cols) {
   extra_cols <- as.list(extra_cols)
 
   list(body = body, extra_cols = extra_cols)
-}
-
-#' @noRd
-colonnade_get_width_2 <- function(pillars, tier_widths) {
-  "!!!!!DEBUG colonnade_get_width_2(`v(tier_widths)`)"
-
-  #' @details
-  #' Each pillar indicates its maximum and minimum width.
-  min_max_widths <- colonnade_get_min_max_widths(pillars)
-  #'
-  #' Pillars may be distributed over multiple tiers according to their width
-  #' if `width > getOption("width")`.
-  #' In this case each tier is at most `getOption("width")` characters wide.
-  #' The very first step of formatting is to determine
-  #' how many tiers are shown at most,
-  #' and the width of each tier.
-  col_widths_df <- colonnade_compute_tiered_col_widths_df(min_max_widths$max_width, min_max_widths$min_width, tier_widths)
-  # col_widths_df <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
-
-  #' Remaining space is then distributed proportionally to pillars that do not
-  #' use their desired width.
-  out <- colonnade_distribute_space_df(col_widths_df, tier_widths)
-  # out <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
-
-  out$pillar <- pillars
-
-  new_tbl(out)
-}
-
-colonnade_get_min_max_widths <- function(pillars) {
-  max_width <- map_int(pillars, pillar_get_total_widths)
-  min_width <- map_int(pillars, pillar_get_total_min_widths)
-
-  new_tbl(list(min_width = min_width, max_width = max_width))
 }
