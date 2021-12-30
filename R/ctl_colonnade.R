@@ -21,40 +21,11 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
     rowid_width <- 0L
   }
 
+  has_star <- identical(has_row_id, "*")
+
+  # FIXME: Support for Inf?
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
 
-  return(emit_tiers(x, tier_widths, controller, rowid, rowid_width, has_star = identical(has_row_id, "*")))
-
-  pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
-
-  if (length(pillars) == 0) {
-    return(new_colonnade_body(list(), extra_cols = x))
-  }
-
-  col_widths <- colonnade_get_width_2(pillars, tier_widths)
-
-  tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)
-
-  flat_tiers <- map(tiers, function(tier) {
-    pillars <- col_widths$pillar[tier]
-    widths <- col_widths$width[tier]
-    max_widths <- col_widths$max_widths[tier]
-    pillar_format_tier(pillars, widths, max_widths)
-  })
-
-  if (!is.null(rowid)) {
-    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
-    rowid_formatted <- list(pillar_format_parts_2(rowid_pillar, rowid_width)$aligned)
-    flat_tiers <- map(flat_tiers, function(.x) c(rowid_formatted, .x))
-  }
-
-  out <- map(flat_tiers, format_colonnade_tier_2, bidi = get_pillar_option_bidi())
-
-  extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
-  new_colonnade_body(out, extra_cols = extra_cols)
-}
-
-emit_tiers <- function(x, tier_widths, controller, rowid, rowid_width, has_star) {
   formatted_tiers <- list()
   extra_cols <- list(a = 1)[0]
 
