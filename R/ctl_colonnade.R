@@ -160,7 +160,10 @@ emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) 
     }
   }
 
-  cb$extra_cols(x, title, attr(pillar_list, "extra"))
+  extra <- attr(pillar_list, "extra")
+  if (length(extra) > 0) {
+    cb$extra_cols(x, title, extra)
+  }
 
   list(tiers = tier_pos - 1L, x = x_pos)
 }
