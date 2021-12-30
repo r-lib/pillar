@@ -41,7 +41,7 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
       # Call ctl_new_compound_pillar() only for objects that can fit
       pillar <- ctl_new_compound_pillar(
         controller, x[[i]],
-        width = width,
+        width = NULL,
         title = sub_title
       )
     }
@@ -114,7 +114,7 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
       # Call ctl_new_pillar() only for objects that can fit
       pillar <- ctl_new_pillar(
         controller, x[, i],
-        width = width,
+        width = NULL,
         title = prepare_title(sub_title)
       )
     }
