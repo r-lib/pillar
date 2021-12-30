@@ -93,11 +93,11 @@ get_cells_for_hierarchy <- function(x, from, to) {
 }
 
 pillar_get_widths <- function(x) {
-  exec(pmax, !!!map(x, get_cell_widths))
+  as.integer(exec(pmax, !!!map(x, get_cell_widths)))
 }
 
 pillar_get_min_widths <- function(x) {
-  exec(pmax, !!!map(x, get_cell_min_widths))
+  as.integer(exec(pmax, !!!map(x, get_cell_min_widths)))
 }
 
 pillar_format_parts_2 <- function(x, width) {
