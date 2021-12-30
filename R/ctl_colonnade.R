@@ -203,7 +203,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     if (used_tier > 1) {
       return(list(tiers = used_tier - 1L, x = width))
     } else {
-      return(list(tiers = 0L, x = width + 1L))
+      return(list(tiers = 0L, x = width))
     }
   }
 
@@ -232,6 +232,9 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     } else {
       sub_tier_widths <- c(tier_widths[[tier_pos]] - x_pos, tier_widths[seq2(tier_pos + 1L, target_tier)])
     }
+    if (x_pos > 0) {
+      sub_tier_widths[[1]] <- sub_tier_widths[[1]] - 1L
+    }
 
     # FIXME: Replace with title vector
     if (col == 2 && !is.null(sub_title)) {
@@ -249,6 +252,9 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       x_pos <- new_pos$x
       tier_pos <- tier_pos + new_pos$tiers
     } else {
+      if (x_pos > 0) {
+        x_pos <- x_pos + 1L
+      }
       x_pos <- x_pos + new_pos$x
     }
   }
