@@ -100,7 +100,7 @@ do_emit_tiers <- function(x, tier_widths, cb) {
 
   on_start_tier <- function() {
     # message("on_start_tier()")
-    current_tier <<- data_frame(pillar = list(), width = integer())
+    current_tier <<- data_frame(pillar = list(), width = integer(), formatted = list())
   }
 
   on_end_tier <- function() {
@@ -109,25 +109,28 @@ do_emit_tiers <- function(x, tier_widths, cb) {
     if (nrow(current_tier) > 0) {
       pillars <- current_tier$pillar
       widths <- current_tier$width
+      formatted <- current_tier$formatted
       if (!is.null(cb$rowid)) {
         rowid_pillar <- rowidformat2(cb$rowid, names(pillars[[1]]), has_star = cb$has_star)
-        pillars <- c(list(rowid_pillar), pillars)
-        widths <- c(cb$rowid_width, widths)
+        formatted <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted)
       }
 
       # FIXME: Simplify
-      current_tier <- pillar_format_tier(pillars, widths)
-      formatted <- format_colonnade_tier_2(current_tier, bidi = get_pillar_option_bidi())
-      cb$on_tier(formatted)
+      aligned <- map(formatted, function(.x) {
+        .x$aligned[[1]]
+      })
+
+      tier <- format_colonnade_tier_2(aligned, bidi = get_pillar_option_bidi())
+      cb$on_tier(tier)
     }
     current_tier <<- NULL
   }
 
-  on_pillar <- function(pillar, width) {
+  on_pillar <- function(pillar, width, formatted) {
     # message("pillar()")
     # print(width)
     # print(pillar, width = width)
-    row <- data_frame(pillar = list(pillar), width = width)
+    row <- data_frame(pillar = list(pillar), width = width, formatted = list(formatted))
     current_tier <<- vec_rbind(current_tier, row)
   }
 
@@ -203,10 +206,11 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       cb$on_start_tier()
     }
 
-    cb$on_pillar(pillar, width)
-    # Use true width
     # FIXME: Pass formatted to cb_on_pillar()
     formatted <- pillar_format_parts_2(pillar, width)
+    cb$on_pillar(pillar, width, formatted)
+
+    # Use true width
     true_width <- formatted$max_extent
     stopifnot(true_width <= width)
 
