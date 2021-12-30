@@ -174,12 +174,17 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
   pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
 
+  # Extra columns are known early on, and remain fixed
+  extra <- attr(pillar_list, "extra")
+
+  if (length(extra) > 0) {
+    cb$extra_cols(x, title, extra)
+  }
+
   if (length(pillar_list) == 0) {
     # Doesn't fit
     return(NULL)
   }
-
-  extra <- attr(pillar_list, "extra")
 
   # Simple pillar: fit and proceed
   if (length(pillar_list) == 1 && length(extra) == 0) {
@@ -271,10 +276,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       }
       x_pos <- x_pos + new_pos$x
     }
-  }
-
-  if (length(extra) > 0) {
-    cb$extra_cols(x, title, extra)
   }
 
   list(tiers = tier_pos - 1L, x = x_pos)
