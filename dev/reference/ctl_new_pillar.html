@@ -88,7 +88,16 @@ Users will rarely need them.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ctl_new_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
-<span class="fu">ctl_new_compound_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<span class="fu">ctl_new_compound_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
+
+<span class="fu">ctl_new_pillar_list</span><span class="op">(</span>
+  <span class="va">controller</span>,
+  <span class="va">x</span>,
+  <span class="va">width</span>,
+  <span class="va">...</span>,
+  title <span class="op">=</span> <span class="cn">NULL</span>,
+  first_pillar <span class="op">=</span> <span class="cn">NULL</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -96,14 +105,19 @@ Users will rarely need them.</p>
     <dl><dt>controller</dt>
 <dd><p>The object of class <code>"tbl"</code> currently printed.</p></dd>
 <dt>x</dt>
-<dd><p>A vector, can also be a data frame, array or matrix
-in <code>ctl_new_compound_pillar()</code></p></dd>
+<dd><p>A vector, can also be a data frame, array or matrix.
+in <code>ctl_new_compound_pillar()</code> and <code>ctl_new_pillar_list()</code>.</p></dd>
 <dt>width</dt>
-<dd><p>The available width, can be a vector for multiple tiers</p></dd>
+<dd><p>The available width, can be a vector for multiple tiers.
+If <code>NULL</code>, compute only the first pillar.</p></dd>
 <dt>...</dt>
 <dd><p>These dots are for future extensions and must be empty.</p></dd>
 <dt>title</dt>
-<dd><p>The title, derived from the name of the column in the data</p></dd>
+<dd><p>The title, derived from the name of the column in the data.</p></dd>
+<dt>first_pillar</dt>
+<dd><p>Can be passed to this method if the first pillar
+for a compound pillar (or the pillar itself for a simple pillar)
+has been computed already.</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
