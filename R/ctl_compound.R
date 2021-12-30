@@ -1,8 +1,3 @@
-new_data_frame_pillar <- function(x, controller, width, title) {
-  pillars <- new_data_frame_pillar_list(x, controller, width, title)
-  combine_pillars(pillars, extra = attr(pillars, "extra"))
-}
-
 new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
   "!!!!!DEBUG new_data_frame_pillar_list(`v(width)`, `v(title)`)"
 
@@ -79,11 +74,6 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
   structure(pillars, extra = names(x)[seq2(length(pillars) + 1, length(x))])
 }
 
-new_matrix_pillar <- function(x, controller, width, title) {
-  pillars <- new_matrix_pillar_list(x, controller, width, title)
-  combine_pillars(pillars, extra = attr(pillars, "extra"))
-}
-
 new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
   if (ncol(x) == 0) {
     return(list(pillar_from_shaft(
@@ -151,11 +141,6 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
   structure(pillars, extra = seq2(length(pillars) + 1, ncol(x)))
 }
 
-new_array_pillar <- function(x, controller, width, title) {
-  pillars <- new_array_pillar_list(x, controller, width, title)
-  pillars[[1]]
-}
-
 new_array_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
   if (!is.null(first_pillar)) {
     return(list(first_pillar))
@@ -171,30 +156,6 @@ new_array_pillar_list <- function(x, controller, width, title, first_pillar = NU
     new_continuation_shaft(body),
     width
   ))
-}
-
-combine_pillars <- function(pillars, extra = NULL) {
-  "!!!!!DEBUG combine_pillars(`v(length(pillars))`)"
-
-  if (length(pillars) == 0) {
-    return(NULL)
-  }
-
-  components <- names(pillars[[1]])
-
-  t_pillars <- map(set_names(components), function(.x) {
-    out <- map(pillars, function(.y) .y[[.x]])
-    widths <- map(out, get_cell_widths)
-    min_widths <- map(out, get_cell_min_widths)
-
-    new_pillar_component(
-      unlist(out, recursive = FALSE),
-      width = unlist(widths),
-      min_width = unlist(min_widths)
-    )
-  })
-
-  new_pillar(t_pillars, class = "compound_pillar", extra = extra)
 }
 
 # Can be rewritten with a repeat loop

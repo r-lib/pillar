@@ -15,7 +15,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   # Reserve space for rowid column in each tier
   if (!is_false(has_row_id)) {
     rowid <- rif_shaft(n)
-    rowid_width <- get_cell_widths(rowid)
+    rowid_width <- get_width(rowid)
   } else {
     rowid <- NULL
     rowid_width <- 0L
