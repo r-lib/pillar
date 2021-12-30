@@ -206,7 +206,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     cb$on_pillar(pillar, width)
     # Use true width
     # FIXME: Pass formatted to cb_on_pillar()
-    formatted <- pillar_format_sub_part(pillar, 1L, width)
+    formatted <- pillar_format_parts_2(pillar, width)
     true_width <- formatted$max_extent
     stopifnot(true_width <= width)
 
