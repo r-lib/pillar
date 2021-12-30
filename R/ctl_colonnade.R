@@ -55,22 +55,29 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 }
 
 emit_tiers <- function(x, tier_widths, controller, rowid, rowid_width, has_star) {
-  cb <- new_emit_tiers_callbacks(controller, rowid, rowid_width, has_star)
+  on_tier <- function(formatted) {
+    # writeLines(formatted)
+  }
+  on_extra_cols <- function(extra_cols) {
+    # print(extra_cols)
+  }
+
+  cb <- new_emit_tiers_callbacks(
+    controller, rowid, rowid_width, has_star,
+    on_tier, on_extra_cols
+  )
   do_emit_tiers(x, tier_widths, cb)
 }
 
-new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star) {
+new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
+                                     on_tier, on_extra_cols) {
   list(
     controller = controller,
     rowid = rowid,
     rowid_width = rowid_width,
     has_star = has_star,
-    on_tier = function(formatted) {
-      # writeLines(formatted)
-    },
-    on_extra_cols = function(extra_cols) {
-      # print(extra_cols)
-    }
+    on_tier = on_tier,
+    on_extra_cols = on_extra_cols
   )
 }
 
@@ -122,10 +129,7 @@ do_emit_tiers <- function(x, tier_widths, cb) {
 
   cb_pillars <- new_emit_pillars_callbacks(
     cb$controller,
-    on_start_tier,
-    on_end_tier,
-    on_pillar,
-    on_extra_cols
+    on_start_tier, on_end_tier, on_pillar, on_extra_cols
   )
 
   emit_pillars(x, tier_widths, cb_pillars)
