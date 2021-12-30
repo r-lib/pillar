@@ -95,21 +95,18 @@ new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
 }
 
 do_emit_tiers <- function(x, tier_widths, cb) {
-  current_tier <- NULL
+  formatted <- NULL
   extra_cols <- data_frame(x = list(), title = list(), cols = list())
 
   on_start_tier <- function() {
     # message("on_start_tier()")
-    current_tier <<- data_frame(pillar = list(), width = integer(), formatted = list())
+    formatted <<- list()
   }
 
   on_end_tier <- function() {
     # message("on_end_tier()")
 
-    if (nrow(current_tier) > 0) {
-      pillars <- current_tier$pillar
-      widths <- current_tier$width
-      formatted <- current_tier$formatted
+    if (length(formatted) > 0) {
       if (!is.null(cb$rowid)) {
         rowid_pillar <- rowidformat2(cb$rowid, formatted[[1]]$components, has_star = cb$has_star)
         formatted <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted)
