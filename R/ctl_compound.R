@@ -67,7 +67,7 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
 
   pillars <- compact(pillars)
 
-  structure(pillars, extra = names(x)[-seq_along(pillars)])
+  structure(pillars, extra = names(x)[seq2(length(pillars) + 1, length(x))])
 }
 
 new_matrix_pillar <- function(x, controller, width, title) {
