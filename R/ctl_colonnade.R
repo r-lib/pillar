@@ -262,10 +262,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     new_pos <- do_emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
     "!!!!!DEBUG new_pos"
 
-    if (is.null(new_pos)) {
-      # FIXME: Invalid condition
-      break
-    }
+    stopifnot(!is.null(new_pos))
 
     if (new_pos$tiers > 0) {
       x_pos <- new_pos$x
