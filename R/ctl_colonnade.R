@@ -116,7 +116,7 @@ do_emit_tiers <- function(x, tier_widths, cb) {
       }
 
       # FIXME: Simplify
-      current_tier <- pillar_format_tier(pillars, widths, widths)
+      current_tier <- pillar_format_tier(pillars, widths)
       formatted <- format_colonnade_tier_2(current_tier, bidi = get_pillar_option_bidi())
       cb$on_tier(formatted)
     }
@@ -278,7 +278,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   list(tiers = tier_pos - 1L, x = x_pos)
 }
 
-pillar_format_tier <- function(pillars, widths, max_widths) {
+pillar_format_tier <- function(pillars, widths) {
   formatted <- map2(pillars, widths, pillar_format_parts_2)
 
   map(formatted, function(.x) {

@@ -38,7 +38,8 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
         sub_title <- c(title, sub_title)
       }
 
-      # Call ctl_new_compound_pillar() only for the first object
+      # Call ctl_new_pillar_list(), return only the first sub-pillar
+      # thanks to width = NULL
       new_pillars <- ctl_new_pillar_list(
         controller, x[[i]],
         width = NULL,

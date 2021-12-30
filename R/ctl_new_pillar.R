@@ -13,10 +13,18 @@
 #' implementation.
 #' Override this method to completely change the appearance of the pillars.
 #'
-#' `ctl_new_compound_pillar()` is called for compound pillars: columns
-#' that are data frames, matrices or arrays.
-#' The default implementation returns a compound pillar with suitable formatting
-#' for the titles and types of the sub-pillar.
+#' `ctl_new_pillar_list()` is called to construct a lists of pillars.
+#' It also works for compound pillars: columns that are data frames, matrices or
+#' arrays.
+#' This method is also called to initiate the construction of all pillars
+#' in the tibble to be printed.
+#' If called for a regular one-dimensional vector, it returns a list of length
+#' one.
+#' In any case, all pillars in the returned list of pillars represent only the
+#' first column.
+#' To print all columns of a packed data frame, `ctl_new_pillar_list()`
+#' eventually calls itself recursively.
+#' This ensures that only those pillars that are shown are constructed.
 #' Users will only rarely need to override this method if ever.
 #'
 #' All components must be of the same height.
@@ -28,7 +36,7 @@
 #' @inheritParams ellipsis::dots_empty
 #' @param controller The object of class `"tbl"` currently printed.
 #' @param x A vector, can also be a data frame, array or matrix.
-#'   in `ctl_new_compound_pillar()` and `ctl_new_pillar_list()`.
+#'   in `ctl_new_pillar_list()`.
 #' @param width The available width, can be a vector for multiple tiers.
 #'   If `NULL`, compute only the first pillar.
 #' @param title The title, derived from the name of the column in the data.
@@ -48,17 +56,17 @@
 #' )
 #'
 #' # Packed data frame
-#' ctl_new_compound_pillar(
+#' ctl_new_pillar_list(
 #'   tibble::tibble(),
 #'   palmerpenguins::penguins,
 #'   width = 60
 #' )
 #'
 #' # Packed matrix
-#' ctl_new_compound_pillar(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
+#' ctl_new_pillar_list(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
 #'
 #' # Packed array
-#' ctl_new_compound_pillar(tibble::tibble(), Titanic, width = 60)
+#' ctl_new_pillar_list(tibble::tibble(), Titanic, width = 60)
 #'
 #' @examples
 #'
@@ -106,31 +114,6 @@ max0 <- function(x) {
     max(x)
   } else {
     0L
-  }
-}
-
-#' @rdname ctl_new_pillar
-#' @export
-ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
-  "!!!!DEBUG ctl_new_compound_pillar(`v(width)`, `v(title)`)"
-
-  check_dots_empty()
-
-  UseMethod("ctl_new_compound_pillar")
-}
-
-#' @export
-ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
-  "!!!!DEBUG ctl_new_compound_pillar.tbl(`v(width)`, `v(title)`)"
-
-  if (is.data.frame(x)) {
-    new_data_frame_pillar(x, controller, width, title = title)
-  } else if (is.matrix(x)) {
-    new_matrix_pillar(x, controller, width, title = title)
-  } else if (is.array(x) && length(dim(x)) > 1) {
-    new_array_pillar(x, controller, width, title = title)
-  } else {
-    ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
   }
 }
 
