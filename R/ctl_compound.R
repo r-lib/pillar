@@ -38,12 +38,20 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
         sub_title <- c(title, sub_title)
       }
 
-      # Call ctl_new_compound_pillar() only for objects that can fit
-      pillar <- ctl_new_compound_pillar(
+      # Call ctl_new_compound_pillar() only for the first object
+      new_pillars <- ctl_new_pillar_list(
         controller, x[[i]],
         width = NULL,
         title = sub_title
       )
+
+      # Safety check:
+      if (length(new_pillars) == 0) {
+        # NULL return: doesn't fit
+        break
+      }
+
+      pillar <- new_pillars[[1]]
     }
 
     if (is.null(pillar)) {
