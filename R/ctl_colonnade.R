@@ -227,14 +227,20 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   # Advance column by column
   for (col in seq_along(pillar_list)) {
     target_tier <- rev$tier[[col]]
+    stopifnot(tier_pos <= target_tier)
     if (tier_pos == target_tier) {
       sub_tier_widths <- rev$offset_after[[col]] - x_pos
     } else {
-      sub_tier_widths <- c(tier_widths[[tier_pos]] - x_pos, tier_widths[seq2(tier_pos + 1L, target_tier)])
+      sub_tier_widths <- c(
+        tier_widths[[tier_pos]] - x_pos,
+        tier_widths[seq2(tier_pos + 1L, target_tier - 1L)],
+        rev$offset_after[[col]]
+      )
     }
     if (x_pos > 0) {
-      sub_tier_widths[[1]] <- sub_tier_widths[[1]] - 1L
+      sub_tier_widths[[1]] <- max(sub_tier_widths[[1]] - 1L, 0L)
     }
+    stopifnot(sub_tier_widths >= 0)
     "!!!!!DEBUG sub_tier_widths"
 
     # FIXME: Replace with title vector
