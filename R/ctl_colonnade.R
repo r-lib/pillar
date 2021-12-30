@@ -15,68 +15,229 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   # Reserve space for rowid column in each tier
   if (!is_false(has_row_id)) {
     rowid <- rif_shaft(n)
-    rowid_width <- get_cell_widths(rowid)
+    rowid_width <- get_width(rowid)
   } else {
     rowid <- NULL
     rowid_width <- 0L
   }
 
+  has_star <- identical(has_row_id, "*")
+
+  # FIXME: Support for Inf?
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
-  pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
 
-  if (length(pillars) == 0) {
-    return(new_colonnade_body(list(), extra_cols = x))
+  formatted_tiers <- list()
+  extra_cols <- list(a = 1)[0]
+
+  on_tier <- function(formatted) {
+    # writeLines(formatted)
+    formatted_tiers <<- c(formatted_tiers, list(formatted))
   }
+  on_extra_cols <- function(extra_cols) {
+    # print(extra_cols)
 
-  col_widths <- colonnade_get_width_2(pillars, tier_widths)
-
-  tiers <- split(seq_len(nrow(col_widths)), col_widths$tier)
-
-  flat_tiers <- map(tiers, function(tier) {
-    pillars <- col_widths$pillar[tier]
-    widths <- col_widths$width[tier]
-    max_widths <- col_widths$max_widths[tier]
-    pillar_format_tier(pillars, widths, max_widths)
-  })
-
-  if (!is.null(rowid)) {
-    rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
-    rowid_formatted <- list(pillar_format_parts_2(rowid_pillar, rowid_width)$aligned[[1]])
-    flat_tiers <- map(flat_tiers, function(.x) c(rowid_formatted, .x))
-  }
-
-  out <- map(flat_tiers, format_colonnade_tier_2, bidi = get_pillar_option_bidi())
-
-  extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
-  new_colonnade_body(out, extra_cols = extra_cols)
-}
-
-pillar_format_tier <- function(pillars, widths, max_widths) {
-  # First pass: formatting with the allocated width
-  formatted <- map2(pillars, widths, pillar_format_parts_2)
-
-  extents <- map_int(formatted, `[[`, "max_extent")
-  extra <- sum(widths - extents)
-
-  # Second pass: trying to use the remaining width, starting at the left
-  if (extra > 0) {
-    for (col_idx in which(widths < max_widths)) {
-      new_formatted <- pillar_format_parts_2(pillars[[col_idx]], min(widths[[col_idx]] + extra, max_widths[[col_idx]]))
-      delta <- new_formatted$max_extent - formatted[[col_idx]]$max_extent
-      if (delta > 0) {
-        formatted[[col_idx]] <- new_formatted
-        extra <- extra - delta
-        if (extra <= 0) {
-          break
-        }
-      }
-      col_idx <- col_idx + 1L
+    # FIXME: Show for abbreviated
+    # FIXME: Show for all levels
+    is_top_level <- map_lgl(extra_cols$x, identical, x)
+    if (any(is_top_level)) {
+      extra_cols <<- as.list(x)[extra_cols$cols[is_top_level][[1]]]
     }
   }
 
-  map(formatted, function(.x) {
-    .x$aligned[[1]]
-  })
+  cb <- new_emit_tiers_callbacks(
+    controller, rowid, rowid_width, has_star,
+    on_tier, on_extra_cols
+  )
+  do_emit_tiers(x, tier_widths, cb)
+
+  new_colonnade_body(formatted_tiers, extra_cols = extra_cols)
+}
+
+new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
+                                     on_tier, on_extra_cols) {
+  list(
+    controller = controller,
+    rowid = rowid,
+    rowid_width = rowid_width,
+    has_star = has_star,
+    on_tier = on_tier,
+    on_extra_cols = on_extra_cols
+  )
+}
+
+do_emit_tiers <- function(x, tier_widths, cb) {
+  formatted_list <- NULL
+  extra_cols <- data_frame(x = list(), title = list(), cols = list())
+
+  on_start_tier <- function() {
+    # message("on_start_tier()")
+    formatted_list <<- list()
+  }
+
+  on_end_tier <- function() {
+    # message("on_end_tier()")
+
+    if (length(formatted_list) > 0) {
+      if (!is.null(cb$rowid)) {
+        rowid_pillar <- rowidformat2(cb$rowid, formatted_list[[1]]$components, has_star = cb$has_star)
+        formatted_list <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted_list)
+      }
+
+      aligned <- map(formatted_list, `[[`, "aligned")
+      tier <- format_colonnade_tier_2(aligned, bidi = get_pillar_option_bidi())
+      cb$on_tier(tier)
+    }
+    formatted_list <<- NULL
+  }
+
+  on_pillar <- function(formatted) {
+    # message("pillar()")
+    # print(formatted)
+    # print(pillar, width = width)
+    formatted_list <<- c(formatted_list, list(formatted))
+  }
+
+  on_extra_cols <- function(x, title, cols) {
+    # message("extra_cols()")
+    # print(title)
+    # print(cols)
+    extra_cols <<- vec_rbind(extra_cols, data_frame(
+      x = list(x), title = list(title), cols = list(cols)
+    ))
+  }
+
+  cb_pillars <- new_emit_pillars_callbacks(
+    cb$controller,
+    on_start_tier, on_end_tier, on_pillar, on_extra_cols
+  )
+
+  emit_pillars(x, tier_widths, cb_pillars)
+  cb$on_extra_cols(extra_cols)
+}
+
+emit_pillars <- function(x, tier_widths, cb) {
+  cb$on_start_tier()
+  do_emit_pillars(x, tier_widths, cb)
+  cb$on_end_tier()
+}
+
+new_emit_pillars_callbacks <- function(controller,
+                                       on_start_tier,
+                                       on_end_tier,
+                                       on_pillar,
+                                       extra_cols) {
+  list(
+    controller = controller,
+    on_start_tier = on_start_tier,
+    on_end_tier = on_end_tier,
+    on_pillar = on_pillar,
+    extra_cols = extra_cols
+  )
+}
+
+do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) {
+  # New-style code
+
+  pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
+
+  # Extra columns are known early on, and remain fixed
+  extra <- attr(pillar_list, "extra")
+
+  if (length(extra) > 0) {
+    cb$extra_cols(x, title, extra)
+  }
+
+  if (length(pillar_list) == 0) {
+    # Doesn't fit
+    return(NULL)
+  }
+
+  # Simple pillar: fit and proceed
+  if (length(pillar_list) == 1 && length(extra) == 0) {
+    pillar <- pillar_list[[1]]
+    width <- pillar_get_widths(pillar)
+    if (width <= max(tier_widths)) {
+      # Handle tier break
+      used_tier <- which(width <= tier_widths)[[1]]
+    } else {
+      used_tier <- which.max(tier_widths)
+      width <- tier_widths[[used_tier]]
+    }
+
+    if (used_tier > 1) {
+      cb$on_end_tier()
+      cb$on_start_tier()
+    }
+
+    formatted <- pillar_format_parts_2(pillar, width)
+    cb$on_pillar(formatted)
+
+    # Use true width
+    true_width <- formatted$max_extent
+    stopifnot(true_width <= width)
+
+    return(list(tiers = used_tier - 1L, width = true_width))
+  }
+
+  # We can proceed cautiously to the next level if space permits.
+  # For each sub-pillar we allow at most as much space so that
+  # we can print all first components of all remaining pillars
+  # with the minimum width
+  min_widths <- map_int(pillar_list, pillar_get_min_widths)
+  rev <- distribute_pillars_rev(min_widths, tier_widths)
+  stopifnot(!anyNA(rev$tier))
+
+  x_pos <- 0L
+  tier_pos <- 1L
+
+  # FIXME: Replace with title vector
+  sub_title <- title
+  if (!is.null(sub_title)) {
+    sub_title[[length(sub_title)]] <- paste0(sub_title[[length(sub_title)]], "$")
+  }
+
+  # Advance column by column
+  for (col in seq_along(pillar_list)) {
+    target_tier <- rev$tier[[col]]
+    stopifnot(tier_pos <= target_tier)
+    if (tier_pos == target_tier) {
+      sub_tier_widths <- rev$offset_after[[col]] - x_pos
+    } else {
+      sub_tier_widths <- c(
+        tier_widths[[tier_pos]] - x_pos,
+        tier_widths[seq2(tier_pos + 1L, target_tier - 1L)],
+        rev$offset_after[[col]]
+      )
+    }
+    if (x_pos > 0) {
+      sub_tier_widths[[1]] <- max(sub_tier_widths[[1]] - 1L, 0L)
+    }
+    stopifnot(sub_tier_widths >= 0)
+    "!!!!!DEBUG sub_tier_widths"
+
+    # FIXME: Replace with title vector
+    if (col == 2 && !is.null(sub_title)) {
+      sub_title[[length(sub_title)]] <- "$"
+    }
+
+    # Recurse
+    used <- do_emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
+    "!!!!!DEBUG used"
+
+    stopifnot(!is.null(used))
+
+    if (used$tiers > 0) {
+      x_pos <- used$width
+      tier_pos <- tier_pos + used$tiers
+    } else {
+      if (x_pos > 0) {
+        x_pos <- x_pos + 1L
+      }
+      x_pos <- x_pos + used$width
+    }
+  }
+
+  list(tiers = tier_pos - 1L, width = x_pos)
 }
 
 # Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
@@ -109,38 +270,4 @@ new_colonnade_body <- function(x, extra_cols) {
   extra_cols <- as.list(extra_cols)
 
   list(body = body, extra_cols = extra_cols)
-}
-
-#' @noRd
-colonnade_get_width_2 <- function(pillars, tier_widths) {
-  "!!!!!DEBUG colonnade_get_width_2(`v(tier_widths)`)"
-
-  #' @details
-  #' Each pillar indicates its maximum and minimum width.
-  min_max_widths <- colonnade_get_min_max_widths(pillars)
-  #'
-  #' Pillars may be distributed over multiple tiers according to their width
-  #' if `width > getOption("width")`.
-  #' In this case each tier is at most `getOption("width")` characters wide.
-  #' The very first step of formatting is to determine
-  #' how many tiers are shown at most,
-  #' and the width of each tier.
-  col_widths_df <- colonnade_compute_tiered_col_widths_df(min_max_widths$max_width, min_max_widths$min_width, tier_widths)
-  # col_widths_df <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
-
-  #' Remaining space is then distributed proportionally to pillars that do not
-  #' use their desired width.
-  out <- colonnade_distribute_space_df(col_widths_df, tier_widths)
-  # out <- data.frame(id = numeric(), widths = numeric(), tier = numeric())
-
-  out$pillar <- pillars
-
-  new_tbl(out)
-}
-
-colonnade_get_min_max_widths <- function(pillars) {
-  max_width <- map_int(pillars, pillar_get_total_widths)
-  min_width <- map_int(pillars, pillar_get_total_min_widths)
-
-  new_tbl(list(min_width = min_width, max_width = max_width))
 }

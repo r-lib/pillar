@@ -28,8 +28,7 @@ See \code{\link[=pillar]{pillar()}} for the high-level constructor with default 
 \details{
 Arbitrary components are supported.
 If your tibble subclass needs more or different components in its pillars,
-override or extend \code{\link[=ctl_new_pillar]{ctl_new_pillar()}}
-and perhaps \code{\link[=ctl_new_compound_pillar]{ctl_new_compound_pillar()}}.
+override or extend \code{\link[=ctl_new_pillar]{ctl_new_pillar()}} and perhaps \code{\link[=ctl_new_pillar_list]{ctl_new_pillar_list()}}.
 }
 \examples{
 lines <- function(char = "-") {

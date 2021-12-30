@@ -10,61 +10,93 @@
                          2
                          3
 
-# ctl_new_compound_pillar()
+# ctl_new_pillar_list()
 
     Code
-      ctl_new_compound_pillar(new_tbl(), 1:3, width = 20, title = "a")
+      ctl_new_pillar_list(new_tbl(), 1:3, width = 20, title = "a")
     Output
+      [[1]]
       <pillar>
                          a
                      <int>
                          1
                          2
                          3
+      
     Code
-      ctl_new_compound_pillar(new_tbl(), trees[1:3, ], width = 20, title = "a")
+      ctl_new_pillar_list(new_tbl(), trees[1:3, ], width = 20, title = "a")
     Output
-      <compound_pillar[2]>
-      a$Girth $Height
-        <dbl>   <dbl>
-          8.3      70
-          8.6      65
-          8.8      63
-      ... and 1 more sub-pillars
+      [[1]]
+      <pillar>
+      a$Girth
+        <dbl>
+          8.3
+          8.6
+          8.8
+      
+      [[2]]
+      <pillar>
+      $Height
+        <dbl>
+           70
+           65
+           63
+      
+      attr(,"extra")
+      [1] "Volume"
     Code
-      ctl_new_compound_pillar(new_tbl(), as.matrix(trees[1:3, ]), width = 20, title = "a")
+      ctl_new_pillar_list(new_tbl(), as.matrix(trees[1:3, ]), width = 20, title = "a")
     Output
-      <compound_pillar[1]>
+      [[1]]
+      <pillar>
       a[,"Girth"]
             <dbl>
               8.3
               8.6
               8.8
-      ... and 2 more sub-pillars
+      
+      attr(,"extra")
+      [1] 2 3
     Code
-      ctl_new_compound_pillar(new_tbl(), matrix(1:6, ncol = 2), width = 20, title = "a")
+      ctl_new_pillar_list(new_tbl(), matrix(1:6, ncol = 2), width = 20, title = "a")
     Output
-      <compound_pillar[2]>
-      a[,1]  [,2]
-      <int> <int>
-          1     4
-          2     5
-          3     6
-    Code
-      ctl_new_compound_pillar(new_tbl(), matrix(1:6, ncol = 3), width = 10, title = "a")
-    Output
-      <compound_pillar[1]>
+      [[1]]
+      <pillar>
       a[,1]
       <int>
           1
           2
-      ... and 2 more sub-pillars
+          3
+      
+      [[2]]
+      <pillar>
+       [,2]
+      <int>
+          4
+          5
+          6
+      
+      attr(,"extra")
+      integer(0)
+    Code
+      ctl_new_pillar_list(new_tbl(), matrix(1:6, ncol = 3), width = 10, title = "a")
+    Output
+      [[1]]
+      <pillar>
+      a[,1]
+      <int>
+          1
+          2
+      
+      attr(,"extra")
+      [1] 2 3
 
-# ctl_new_compound_pillar() for tables
+# ctl_new_pillar_list() for tables
 
     Code
-      ctl_new_compound_pillar(new_tbl(), Titanic, width = 20, title = "a")
+      ctl_new_pillar_list(new_tbl(), Titanic, width = 20, title = "a")
     Output
+      [[1]]
       <pillar>
                          a
            <table[,2,2,2]>
@@ -72,4 +104,5 @@
                      0 ...
                     35 ...
                      0 ...
+      
 
