@@ -97,12 +97,17 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
   ticked_names <- paste0("[,", idx, "]")
 
   for (i in seq_along(ticked_names)) {
-    # FIXME
-    # sub_title <- c(title, ticked_names[[i]])
-    sub_title <- ticked_names[[i]]
-    if (!is.null(title)) {
-      if (i > 1) {
-        title[[length(title)]] <- ""
+    if (i == 1 && !is.null(first_pillar)) {
+      pillar <- first_pillar
+    } else {
+      # FIXME
+      # sub_title <- c(title, ticked_names[[i]])
+      sub_title <- ticked_names[[i]]
+      if (!is.null(title)) {
+        if (i > 1) {
+          title[[length(title)]] <- ""
+        }
+        sub_title <- c(title, sub_title)
       }
 
       # Call ctl_new_pillar() only for objects that can fit
