@@ -23,7 +23,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
 
-  emit_tiers(x, tier_widths, controller)
+  emit_tiers(x, tier_widths, controller, rowid, rowid_width, has_star = identical(has_row_id, "*"))
 
   pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
 
@@ -54,14 +54,17 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   new_colonnade_body(out, extra_cols = extra_cols)
 }
 
-emit_tiers <- function(x, tier_widths, controller) {
-  cb <- new_emit_tiers_callbacks(controller)
+emit_tiers <- function(x, tier_widths, controller, rowid, rowid_width, has_star) {
+  cb <- new_emit_tiers_callbacks(controller, rowid, rowid_width, has_star)
   do_emit_tiers(x, tier_widths, cb)
 }
 
-new_emit_tiers_callbacks <- function(controller = controller) {
+new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star) {
   list(
     controller = controller,
+    rowid = rowid,
+    rowid_width = rowid_width,
+    has_star = has_star,
     on_tier = function(formatted) {
       # writeLines(formatted)
     },
@@ -82,9 +85,21 @@ do_emit_tiers <- function(x, tier_widths, cb) {
 
   on_end_tier <- function() {
     # message("on_end_tier()")
-    current_tier <- pillar_format_tier(current_tier$pillar, current_tier$width, current_tier$width)
-    formatted <- format_colonnade_tier_2(current_tier, bidi = get_pillar_option_bidi())
-    cb$on_tier(formatted)
+
+    if (nrow(current_tier) > 0) {
+      pillars <- current_tier$pillar
+      widths <- current_tier$width
+      if (!is.null(cb$rowid)) {
+        rowid_pillar <- rowidformat2(cb$rowid, names(pillars[[1]]), has_star = cb$has_star)
+        pillars <- c(list(rowid_pillar), pillars)
+        widths <- c(cb$rowid_width, widths)
+      }
+
+      # FIXME: Simplify
+      current_tier <- pillar_format_tier(pillars, widths, widths)
+      formatted <- format_colonnade_tier_2(current_tier, bidi = get_pillar_option_bidi())
+      cb$on_tier(formatted)
+    }
     current_tier <<- NULL
   }
 
