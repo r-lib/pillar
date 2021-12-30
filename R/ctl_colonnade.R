@@ -61,7 +61,13 @@ emit_tiers <- function(x, tier_widths, controller) {
 
 new_emit_tiers_callbacks <- function(controller = controller) {
   list(
-    controller = controller
+    controller = controller,
+    on_tier = function(formatted) {
+      # writeLines(formatted)
+    },
+    on_extra_cols = function(extra_cols) {
+      # print(extra_cols)
+    }
   )
 }
 
@@ -77,7 +83,8 @@ do_emit_tiers <- function(x, tier_widths, cb) {
   end_tier <- function() {
     # message("end_tier()")
     current_tier <- pillar_format_tier(current_tier$pillar, current_tier$width, current_tier$width)
-    cb$tier(current_tier)
+    formatted <- format_colonnade_tier_2(current_tier, bidi = get_pillar_option_bidi())
+    cb$on_tier(formatted)
     current_tier <<- NULL
   }
 
@@ -85,11 +92,11 @@ do_emit_tiers <- function(x, tier_widths, cb) {
     # message("pillar()")
     # print(width)
     # print(pillar, width = width)
-    row <- data_frame(pillar = list(pillar), width)
+    row <- data_frame(pillar = list(pillar), width = width)
     current_tier <<- vec_rbind(current_tier, row)
   }
 
-  extra_cols <- function(x, title, cols) {
+  on_extra_cols <- function(x, title, cols) {
     # message("extra_cols()")
     # print(title)
     # print(cols)
@@ -98,9 +105,16 @@ do_emit_tiers <- function(x, tier_widths, cb) {
     ))
   }
 
-  cb_pillars <- new_emit_pillars_callbacks(cb$controller)
+  cb_pillars <- new_emit_pillars_callbacks(
+    cb$controller,
+    start_tier,
+    end_tier,
+    pillar,
+    on_extra_cols
+  )
 
   emit_pillars(x, tier_widths, cb_pillars)
+  cb$on_extra_cols(extra_cols)
 }
 
 emit_pillars <- function(x, tier_widths, cb) {
@@ -109,17 +123,17 @@ emit_pillars <- function(x, tier_widths, cb) {
   cb$end_tier()
 }
 
-new_emit_pillars_callbacks <- function(controller) {
+new_emit_pillars_callbacks <- function(controller,
+                                       start_tier,
+                                       end_tier,
+                                       pillar,
+                                       extra_cols) {
   list(
     controller = controller,
-    start_tier = function() {
-    },
-    end_tier = function() {
-    },
-    pillar = function(pillar, width) {
-    },
-    extra_cols = function(x, title, cols) {
-    }
+    start_tier = start_tier,
+    end_tier = end_tier,
+    pillar = pillar,
+    extra_cols = extra_cols
   )
 }
 
