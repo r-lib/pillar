@@ -55,11 +55,22 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 }
 
 emit_tiers <- function(x, tier_widths, controller, rowid, rowid_width, has_star) {
+  formatted_tiers <- list()
+  extra_cols <- NULL
+
   on_tier <- function(formatted) {
     # writeLines(formatted)
+    formatted_tiers <<- c(formatted_tiers, list(formatted))
   }
   on_extra_cols <- function(extra_cols) {
     # print(extra_cols)
+
+    # FIXME: Show for abbreviated
+    # FIXME: Show for all levels
+    is_top_level <- map_lgl(extra_cols$x, identical, x)
+    if (any(is_top_level)) {
+      extra_cols <<- as.list(x)[ extra_cols$cols[is_top_level][[1]] ]
+    }
   }
 
   cb <- new_emit_tiers_callbacks(
@@ -67,6 +78,8 @@ emit_tiers <- function(x, tier_widths, controller, rowid, rowid_width, has_star)
     on_tier, on_extra_cols
   )
   do_emit_tiers(x, tier_widths, cb)
+
+  new_colonnade_body(formatted_tiers, extra_cols = extra_cols)
 }
 
 new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
