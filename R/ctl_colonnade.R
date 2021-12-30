@@ -235,6 +235,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     if (x_pos > 0) {
       sub_tier_widths[[1]] <- sub_tier_widths[[1]] - 1L
     }
+    "!!!!!DEBUG sub_tier_widths"
 
     # FIXME: Replace with title vector
     if (col == 2 && !is.null(sub_title)) {
@@ -243,6 +244,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
     # Recurse
     new_pos <- do_emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
+    "!!!!!DEBUG new_pos"
+
     if (is.null(new_pos)) {
       # FIXME: Invalid condition
       break
