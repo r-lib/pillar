@@ -75,20 +75,20 @@ do_emit_tiers <- function(x, tier_widths, cb) {
   current_tier <- NULL
   extra_cols <- data_frame(x = list(), title = list(), cols = list())
 
-  start_tier <- function() {
-    # message("start_tier()")
+  on_start_tier <- function() {
+    # message("on_start_tier()")
     current_tier <<- data_frame(pillar = list(), width = integer())
   }
 
-  end_tier <- function() {
-    # message("end_tier()")
+  on_end_tier <- function() {
+    # message("on_end_tier()")
     current_tier <- pillar_format_tier(current_tier$pillar, current_tier$width, current_tier$width)
     formatted <- format_colonnade_tier_2(current_tier, bidi = get_pillar_option_bidi())
     cb$on_tier(formatted)
     current_tier <<- NULL
   }
 
-  pillar <- function(pillar, width) {
+  on_pillar <- function(pillar, width) {
     # message("pillar()")
     # print(width)
     # print(pillar, width = width)
@@ -107,9 +107,9 @@ do_emit_tiers <- function(x, tier_widths, cb) {
 
   cb_pillars <- new_emit_pillars_callbacks(
     cb$controller,
-    start_tier,
-    end_tier,
-    pillar,
+    on_start_tier,
+    on_end_tier,
+    on_pillar,
     on_extra_cols
   )
 
@@ -118,21 +118,21 @@ do_emit_tiers <- function(x, tier_widths, cb) {
 }
 
 emit_pillars <- function(x, tier_widths, cb) {
-  cb$start_tier()
+  cb$on_start_tier()
   do_emit_pillars(x, tier_widths, cb)
-  cb$end_tier()
+  cb$on_end_tier()
 }
 
 new_emit_pillars_callbacks <- function(controller,
-                                       start_tier,
-                                       end_tier,
-                                       pillar,
+                                       on_start_tier,
+                                       on_end_tier,
+                                       on_pillar,
                                        extra_cols) {
   list(
     controller = controller,
-    start_tier = start_tier,
-    end_tier = end_tier,
-    pillar = pillar,
+    on_start_tier = on_start_tier,
+    on_end_tier = on_end_tier,
+    on_pillar = on_pillar,
     extra_cols = extra_cols
   )
 }
@@ -160,11 +160,11 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
 
     if (used_tier > 1) {
-      cb$end_tier()
-      cb$start_tier()
+      cb$on_end_tier()
+      cb$on_start_tier()
     }
 
-    cb$pillar(pillar, width)
+    cb$on_pillar(pillar, width)
 
     if (used_tier > 1) {
       return(list(tiers = used_tier - 1L, x = width))
