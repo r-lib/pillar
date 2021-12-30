@@ -185,18 +185,3 @@ print.pillar <- function(x, ...) {
   writeLines(style_bold("<pillar>"))
   print(format(x, ...))
 }
-
-#' @export
-print.compound_pillar <- function(x, ...) {
-  len <- length(x[1][[1]])
-  desc <- paste0("<compound_pillar[", len, "]>")
-  writeLines(style_bold(desc))
-  print(format(x, ...))
-
-  n_extra <- length(attr(x, "extra"))
-  if (n_extra > 0) {
-    writeLines(style_subtle(pre_dots(paste0("and ", n_extra, " more sub-pillars"))))
-  }
-
-  invisible(x)
-}
