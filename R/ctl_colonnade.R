@@ -56,7 +56,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
 emit_tiers <- function(x, tier_widths, controller, rowid, rowid_width, has_star) {
   formatted_tiers <- list()
-  extra_cols <- NULL
+  extra_cols <- list(a = 1)[0]
 
   on_tier <- function(formatted) {
     # writeLines(formatted)
