@@ -95,36 +95,35 @@ new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
 }
 
 do_emit_tiers <- function(x, tier_widths, cb) {
-  formatted <- NULL
+  formatted_list <- NULL
   extra_cols <- data_frame(x = list(), title = list(), cols = list())
 
   on_start_tier <- function() {
     # message("on_start_tier()")
-    formatted <<- list()
+    formatted_list <<- list()
   }
 
   on_end_tier <- function() {
     # message("on_end_tier()")
 
-    if (length(formatted) > 0) {
+    if (length(formatted_list) > 0) {
       if (!is.null(cb$rowid)) {
-        rowid_pillar <- rowidformat2(cb$rowid, formatted[[1]]$components, has_star = cb$has_star)
-        formatted <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted)
+        rowid_pillar <- rowidformat2(cb$rowid, formatted_list[[1]]$components, has_star = cb$has_star)
+        formatted_list <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted_list)
       }
 
-      aligned <- map(formatted, `[[`, "aligned")
+      aligned <- map(formatted_list, `[[`, "aligned")
       tier <- format_colonnade_tier_2(aligned, bidi = get_pillar_option_bidi())
       cb$on_tier(tier)
     }
-    current_tier <<- NULL
+    formatted_list <<- NULL
   }
 
-  on_pillar <- function(pillar, width, formatted) {
+  on_pillar <- function(formatted) {
     # message("pillar()")
-    # print(width)
+    # print(formatted)
     # print(pillar, width = width)
-    row <- data_frame(pillar = list(pillar), width = width, formatted = list(formatted))
-    current_tier <<- vec_rbind(current_tier, row)
+    formatted_list <<- c(formatted_list, list(formatted))
   }
 
   on_extra_cols <- function(x, title, cols) {
@@ -199,9 +198,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       cb$on_start_tier()
     }
 
-    # FIXME: Pass formatted to cb_on_pillar()
     formatted <- pillar_format_parts_2(pillar, width)
-    cb$on_pillar(pillar, width, formatted)
+    cb$on_pillar(formatted)
 
     # Use true width
     true_width <- formatted$max_extent
@@ -273,14 +271,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   }
 
   list(tiers = tier_pos - 1L, x = x_pos)
-}
-
-pillar_format_tier <- function(pillars, widths) {
-  formatted <- map2(pillars, widths, pillar_format_parts_2)
-
-  map(formatted, function(.x) {
-    .x$aligned
-  })
 }
 
 # Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
