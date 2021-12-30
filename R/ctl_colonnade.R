@@ -23,9 +23,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
 
-  # Add zero-width tier for rowid
-  # emit_pillars(x, controller, c(0L, tier_widths))
-  emit_pillars(x, tier_widths, new_emit_pillars_callbacks(controller))
+  emit_pillars(x, tier_widths, controller)
 
   pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
 
@@ -56,6 +54,13 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   new_colonnade_body(out, extra_cols = extra_cols)
 }
 
+emit_pillars <- function(x, tier_widths, controller) {
+  cb <- new_emit_pillars_callbacks(controller)
+  cb$start_tier()
+  do_emit_pillars(x, tier_widths, cb)
+  cb$end_tier()
+}
+
 new_emit_pillars_callbacks <- function(controller) {
   list(
     controller = controller,
@@ -78,7 +83,7 @@ new_emit_pillars_callbacks <- function(controller) {
   )
 }
 
-emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) {
+do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) {
   # New-style code
 
   pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
@@ -146,7 +151,7 @@ emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) 
     }
 
     # Recurse
-    new_pos <- emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
+    new_pos <- do_emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
     if (is.null(new_pos)) {
       # FIXME: Invalid condition
       break
