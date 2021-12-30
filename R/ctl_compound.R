@@ -25,21 +25,26 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
 
     # FIXME
     # sub_title <- c(title, ticked_names[[i]])
-    sub_title <- ticked_names[[i]]
-    if (!is.null(title)) {
-      if (i == 1) {
-        title[[length(title)]] <- paste0(title[[length(title)]], "$")
-      } else {
-        title[[length(title)]] <- "$"
+    if (i == 1 && !is.null(first_pillar)) {
+      pillar <- first_pillar
+    } else {
+      sub_title <- ticked_names[[i]]
+      if (!is.null(title)) {
+        if (i == 1) {
+          title[[length(title)]] <- paste0(title[[length(title)]], "$")
+        } else {
+          title[[length(title)]] <- "$"
+        }
+        sub_title <- c(title, sub_title)
       }
-      sub_title <- c(title, sub_title)
+
+      # Call ctl_new_compound_pillar() only for objects that can fit
+      pillar <- ctl_new_compound_pillar(
+        controller, x[[i]], width = width,
+        title = sub_title
+      )
     }
 
-    # Call ctl_new_compound_pillar() only for objects that can fit
-    pillar <- ctl_new_compound_pillar(
-      controller, x[[i]], width,
-      title = sub_title
-    )
     if (is.null(pillar)) {
       # NULL return: doesn't fit
       break
@@ -99,14 +104,14 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
       if (i > 1) {
         title[[length(title)]] <- ""
       }
-      sub_title <- c(title, sub_title)
+
+      # Call ctl_new_pillar() only for objects that can fit
+      pillar <- ctl_new_pillar(
+        controller, x[, i], width = width,
+        title = prepare_title(sub_title)
+      )
     }
 
-    # Call ctl_new_pillar() only for objects that can fit
-    pillar <- ctl_new_pillar(
-      controller, x[, i], width,
-      title = prepare_title(sub_title)
-    )
     if (is.null(pillar)) {
       # NULL return: doesn't fit
       break
@@ -136,6 +141,10 @@ new_array_pillar <- function(x, controller, width, title) {
 }
 
 new_array_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
+  if (!is.null(first_pillar)) {
+    return(list(first_pillar))
+  }
+
   first_slice <- head(as.vector(x), vec_size(x))
 
   body <- pillar_shaft(first_slice)
