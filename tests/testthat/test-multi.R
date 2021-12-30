@@ -24,6 +24,7 @@ test_that("distribute_pillars()", {
     distribute_pillars(3:5, 8:10)
     distribute_pillars(5:3, 9:8)
     distribute_pillars(c(5, 5), c(2, 8, 8))
+    distribute_pillars(c(5, 5), c(8, 8, 2))
   })
 })
 
@@ -36,5 +37,6 @@ test_that("distribute_pillars_rev()", {
     distribute_pillars_rev(3:5, 8:10)
     distribute_pillars_rev(5:3, 9:8)
     distribute_pillars_rev(c(5, 5), c(8, 8, 2))
+    distribute_pillars_rev(c(5, 5), c(2, 8, 8))
   })
 })

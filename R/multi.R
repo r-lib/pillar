@@ -470,10 +470,10 @@ distribute_pillars_rev <- function(widths, tier_widths) {
   tier <- length(tier_widths) + 1L - ret$tier
   ret$tier <- tier
 
-  splits <- unname(split(seq_along(tier), tier))
-  tier_widths <- tier_widths[seq_along(splits)]
+  splits <- split(seq_along(tier), tier)
+  tier_widths <- tier_widths[stats::na.omit(unique(tier))]
 
-  new_offset_after <- unlist(map2(splits, tier_widths, function(.x, .y) {
+  new_offset_after <- unlist(map2(unname(splits), tier_widths, function(.x, .y) {
     new_offset_after <- cumsum(ret$width[.x] + 1)
     new_offset_after - max(new_offset_after) + .y
   }))
