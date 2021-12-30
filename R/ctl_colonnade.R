@@ -44,7 +44,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   if (!is.null(rowid)) {
     rowid_pillar <- rowidformat2(rowid, names(pillars[[1]]), has_star = identical(has_row_id, "*"))
-    rowid_formatted <- list(pillar_format_parts_2(rowid_pillar, rowid_width)$aligned[[1]])
+    rowid_formatted <- list(pillar_format_parts_2(rowid_pillar, rowid_width)$aligned)
     flat_tiers <- map(flat_tiers, function(.x) c(rowid_formatted, .x))
   }
 
@@ -115,11 +115,7 @@ do_emit_tiers <- function(x, tier_widths, cb) {
         formatted <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted)
       }
 
-      # FIXME: Simplify
-      aligned <- map(formatted, function(.x) {
-        .x$aligned[[1]]
-      })
-
+      aligned <- map(formatted, `[[`, "aligned")
       tier <- format_colonnade_tier_2(aligned, bidi = get_pillar_option_bidi())
       cb$on_tier(tier)
     }
@@ -286,7 +282,7 @@ pillar_format_tier <- function(pillars, widths) {
   formatted <- map2(pillars, widths, pillar_format_parts_2)
 
   map(formatted, function(.x) {
-    .x$aligned[[1]]
+    .x$aligned
   })
 }
 
