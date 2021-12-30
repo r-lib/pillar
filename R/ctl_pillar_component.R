@@ -29,9 +29,9 @@ new_pillar_component <- function(x, ..., width, min_width = NULL) {
 
   check_dots_empty()
   stopifnot(rlang::is_bare_list(x))
-  stopifnot(is_integerish(width), length(width) == length(x))
+  stopifnot(is_integerish(width), length(width) == 1L)
   if (!is.null(min_width)) {
-    stopifnot(is_integerish(min_width), length(min_width) == length(x))
+    stopifnot(is_integerish(min_width), length(min_width) == 1L)
   }
 
   structure(
@@ -55,11 +55,11 @@ pillar_component <- function(x) {
 }
 
 pillar_get_widths <- function(x) {
-  as.integer(exec(pmax, !!!map(x, get_width)))
+  as.integer(exec(max, !!!map(x, get_width)))
 }
 
 pillar_get_min_widths <- function(x) {
-  as.integer(exec(pmax, !!!map(x, get_min_width)))
+  as.integer(exec(max, !!!map(x, get_min_width)))
 }
 
 pillar_format_parts_2 <- function(x, width) {
