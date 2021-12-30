@@ -27,10 +27,11 @@
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @param controller The object of class `"tbl"` currently printed.
-#' @param x A vector, can also be a data frame, array or matrix
-#'   in `ctl_new_compound_pillar()`
-#' @param width The available width, can be a vector for multiple tiers
-#' @param title The title, derived from the name of the column in the data
+#' @param x A vector, can also be a data frame, array or matrix.
+#'   in `ctl_new_compound_pillar()` and `ctl_new_pillar_list()`.
+#' @param width The available width, can be a vector for multiple tiers.
+#'   If `NULL`, compute only the first pillar.
+#' @param title The title, derived from the name of the column in the data.
 #'
 #' @export
 #' @examplesIf rlang::is_installed("palmerpenguins") && requireNamespace("tibble")
@@ -133,6 +134,9 @@ ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL)
   }
 }
 
+#' @param first_pillar Can be passed to this method if the first pillar
+#'   for a compound pillar (or the pillar itself for a simple pillar)
+#'   has been computed already.
 #' @rdname ctl_new_pillar
 #' @export
 ctl_new_pillar_list <- function(controller, x, width, ..., title = NULL, first_pillar = NULL) {
