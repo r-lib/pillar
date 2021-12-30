@@ -13,7 +13,7 @@
 #' implementation.
 #' Override this method to completely change the appearance of the pillars.
 #'
-#' `ctl_new_pillar_list()` is called to construct a lists of pillars.
+#' `ctl_new_pillar_list()` is called to construct a list of pillars.
 #' It also works for compound pillars: columns that are data frames, matrices or
 #' arrays.
 #' This method is also called to initiate the construction of all pillars
@@ -21,10 +21,10 @@
 #' If called for a regular one-dimensional vector, it returns a list of length
 #' one.
 #' In any case, all pillars in the returned list of pillars represent only the
-#' first column.
+#' first column in case of compound columns.
+#' This ensures that only those pillars that are shown are constructed.
 #' To print all columns of a packed data frame, `ctl_new_pillar_list()`
 #' eventually calls itself recursively.
-#' This ensures that only those pillars that are shown are constructed.
 #' Users will only rarely need to override this method if ever.
 #'
 #' All components must be of the same height.
