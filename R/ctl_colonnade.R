@@ -23,7 +23,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
 
-  emit_tiers(x, tier_widths, controller, rowid, rowid_width, has_star = identical(has_row_id, "*"))
+  return(emit_tiers(x, tier_widths, controller, rowid, rowid_width, has_star = identical(has_row_id, "*")))
 
   pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
 

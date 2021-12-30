@@ -433,11 +433,11 @@
       ctl_colonnade(x, width = 30)
     Output
       $body
-            a   b$c
-        <int> <int>
-      1     1     4
-      2     2     5
-      3     3     6
+            a   b$c    $d
+        <int> <int> <int>
+      1     1     4     7
+      2     2     5     8
+      3     3     6     9
       
       $extra_cols
       named list()
@@ -449,11 +449,11 @@
       ctl_colonnade(x, width = 40)
     Output
       $body
-            a   b$c
-        <int> <int>
-      1     1     4
-      2     2     5
-      3     3     6
+            a   b$c    $d  $e$f   $$g
+        <int> <int> <int> <int> <int>
+      1     1     4     7    10    13
+      2     2     5     8    11    14
+      3     3     6     9    12    15
       
       $extra_cols
       named list()
@@ -465,11 +465,11 @@
       ctl_colonnade(x, width = 40)
     Output
       $body
-            a   b$c     c
-        <int> <int> <int>
-      1     1     4    10
-      2     2     5    11
-      3     3     6    12
+            a   b$c    $d $e           c
+        <int> <int> <int> <df[,0]> <int>
+      1     1     4     7             10
+      2     2     5     8             11
+      3     3     6     9             12
       
       $extra_cols
       named list()
@@ -481,11 +481,11 @@
       ctl_colonnade(x, width = 30)
     Output
       $body
-            a b[,1]
-        <int> <int>
-      1     1     4
-      2     2     5
-      3     3     6
+            a b[,1]  [,2]
+        <int> <int> <int>
+      1     1     4     7
+      2     2     5     8
+      3     3     6     9
       
       $extra_cols
       named list()
@@ -497,11 +497,11 @@
       ctl_colonnade(x, width = 30)
     Output
       $body
-            a b[,"c"]
-        <int>   <int>
-      1     1       4
-      2     2       5
-      3     3       6
+            a b[,"c"] [,"d"]
+        <int>   <int>  <int>
+      1     1       4      7
+      2     2       5      8
+      3     3       6      9
       
       $extra_cols
       named list()
