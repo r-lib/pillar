@@ -179,8 +179,10 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     return(NULL)
   }
 
+  extra <- attr(pillar_list, "extra")
+
   # Simple pillar: fit and proceed
-  if (length(pillar_list) == 1) {
+  if (length(pillar_list) == 1 && length(extra) == 0) {
     pillar <- pillar_list[[1]]
     width <- pillar_get_widths(pillar)
     if (width <= max(tier_widths)) {
@@ -251,7 +253,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
   }
 
-  extra <- attr(pillar_list, "extra")
   if (length(extra) > 0) {
     cb$extra_cols(x, title, extra)
   }
