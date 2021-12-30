@@ -25,7 +25,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   # Add zero-width tier for rowid
   # emit_pillars(x, controller, c(0L, tier_widths))
-  emit_pillars(x, tier_widths, new_emit_pillars_callback(controller))
+  emit_pillars(x, tier_widths, new_emit_pillars_callbacks(controller))
 
   pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
 
@@ -56,8 +56,26 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
   new_colonnade_body(out, extra_cols = extra_cols)
 }
 
-new_emit_pillars_callback <- function(controller) {
-  list(controller = controller)
+new_emit_pillars_callbacks <- function(controller) {
+  list(
+    controller = controller,
+    start_tier = function() {
+      # message("start_tier()")
+    },
+    end_tier = function() {
+      # message("end_tier()")
+    },
+    pillar = function(pillar, width) {
+      # message("pillar()")
+      # print(width)
+      # print(pillar, width = width)
+    },
+    extra_cols = function(x, title, cols) {
+      # message("extra_cols()")
+      # print(title)
+      # print(cols)
+    }
+  )
 }
 
 emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) {
@@ -83,16 +101,11 @@ emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) 
     }
 
     if (used_tier > 1) {
-      # emit_tier_break()
-      # emit_rowid_pillar()
-      # message("emit_tier_break()")
-    } else {
-      # emit_pillar_hspace()
+      cb$end_tier()
+      cb$start_tier()
     }
 
-    # emit_pillar(pillar, width)
-    # print(width)
-    # print(pillar, width = width)
+    cb$pillar(pillar, width)
 
     if (used_tier > 1) {
       return(list(tiers = used_tier - 1L, x = width))
@@ -147,7 +160,7 @@ emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) 
     }
   }
 
-  # emit_extra_columns(title, attr(pillar_list, "extra"))
+  cb$extra_cols(x, title, attr(pillar_list, "extra"))
 
   list(tiers = tier_pos - 1L, x = x_pos)
 }
