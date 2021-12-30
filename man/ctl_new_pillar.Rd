@@ -3,23 +3,38 @@
 \name{ctl_new_pillar}
 \alias{ctl_new_pillar}
 \alias{ctl_new_compound_pillar}
+\alias{ctl_new_pillar_list}
 \title{Customize your tibble subclass}
 \usage{
 ctl_new_pillar(controller, x, width, ..., title = NULL)
 
 ctl_new_compound_pillar(controller, x, width, ..., title = NULL)
+
+ctl_new_pillar_list(
+  controller,
+  x,
+  width,
+  ...,
+  title = NULL,
+  first_pillar = NULL
+)
 }
 \arguments{
 \item{controller}{The object of class \code{"tbl"} currently printed.}
 
-\item{x}{A vector, can also be a data frame, array or matrix
-in \code{ctl_new_compound_pillar()}}
+\item{x}{A vector, can also be a data frame, array or matrix.
+in \code{ctl_new_compound_pillar()} and \code{ctl_new_pillar_list()}.}
 
-\item{width}{The available width, can be a vector for multiple tiers}
+\item{width}{The available width, can be a vector for multiple tiers.
+If \code{NULL}, compute only the first pillar.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
-\item{title}{The title, derived from the name of the column in the data}
+\item{title}{The title, derived from the name of the column in the data.}
+
+\item{first_pillar}{Can be passed to this method if the first pillar
+for a compound pillar (or the pillar itself for a simple pillar)
+has been computed already.}
 }
 \description{
 Gain full control over the appearance of the pillars of your tibble subclass
