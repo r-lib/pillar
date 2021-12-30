@@ -23,7 +23,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   tier_widths <- get_tier_widths(width, nc, rowid_width + 1L)
 
-  emit_pillars(x, tier_widths, controller)
+  emit_tiers(x, tier_widths, controller)
 
   pillars <- new_data_frame_pillar_list(x, controller, tier_widths, title = NULL)
 
@@ -52,6 +52,21 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL, controller = new_t
 
   extra_cols <- as.list(x)[seq2(length(pillars) + 1L, nc)]
   new_colonnade_body(out, extra_cols = extra_cols)
+}
+
+emit_tiers <- function(x, tier_widths, controller) {
+  cb <- new_emit_tiers_callbacks(controller)
+  do_emit_tiers(x, tier_widths, cb)
+}
+
+new_emit_tiers_callbacks <- function(controller = controller) {
+  list(
+    controller = controller
+  )
+}
+
+do_emit_tiers <- function(x, tier_widths, cb) {
+  emit_pillars(x, tier_widths, cb$controller)
 }
 
 emit_pillars <- function(x, tier_widths, controller) {
