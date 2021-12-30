@@ -111,7 +111,7 @@ do_emit_tiers <- function(x, tier_widths, cb) {
       widths <- current_tier$width
       formatted <- current_tier$formatted
       if (!is.null(cb$rowid)) {
-        rowid_pillar <- rowidformat2(cb$rowid, names(pillars[[1]]), has_star = cb$has_star)
+        rowid_pillar <- rowidformat2(cb$rowid, formatted[[1]]$components, has_star = cb$has_star)
         formatted <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted)
       }
 
