@@ -117,7 +117,11 @@ emit_pillars <- function(x, controller, tier_widths, title = NULL, first_pillar 
   # Advance column by column
   for (col in seq_along(pillar_list)) {
     target_tier <- rev$tier[[col]]
-    sub_tier_widths <- c(tier_widths[seq2(tier_pos, target_tier - 1L)], rev$offset_after[[col]] - x_pos)
+    if (tier_pos == target_tier) {
+      sub_tier_widths <- rev$offset_after[[col]] - x_pos
+    } else {
+      sub_tier_widths <- c(tier_widths[[tier_pos]] - x_pos, tier_widths[seq2(tier_pos + 1L, target_tier)])
+    }
 
     # FIXME: Replace with title vector
     if (col == 2 && !is.null(sub_title)) {
