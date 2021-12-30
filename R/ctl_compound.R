@@ -3,7 +3,7 @@ new_data_frame_pillar <- function(x, controller, width, title) {
   combine_pillars(pillars, extra = attr(pillars, "extra"))
 }
 
-new_data_frame_pillar_list <- function(x, controller, width, title) {
+new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
   "!!!!!DEBUG new_data_frame_pillar_list(`v(width)`, `v(title)`)"
 
   if (ncol(x) == 0) {
@@ -69,7 +69,7 @@ new_matrix_pillar <- function(x, controller, width, title) {
   combine_pillars(pillars, extra = attr(pillars, "extra"))
 }
 
-new_matrix_pillar_list <- function(x, controller, width, title) {
+new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
   if (ncol(x) == 0) {
     return(list(pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
@@ -135,7 +135,7 @@ new_array_pillar <- function(x, controller, width, title) {
   pillars[[1]]
 }
 
-new_array_pillar_list <- function(x, controller, width, title) {
+new_array_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
   first_slice <- head(as.vector(x), vec_size(x))
 
   body <- pillar_shaft(first_slice)
