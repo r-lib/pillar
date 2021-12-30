@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9003</span>
       </span>
     </div>
 
@@ -72,6 +72,13 @@
       <small>Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.6.4.9003" id="pillar-1649003">pillar 1.6.4.9003<a class="anchor" aria-label="anchor" href="#pillar-1649003"></a></h2>
+<ul><li>Reworked formatting routine, now using an event-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space if space is limited has slightly improved (<a href="https://github.com/r-lib/pillar/issues/435" class="external-link">#435</a>).</li>
+<li>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code>, supersedes <code>ctl_new_compound_pillar()</code> (<a href="https://github.com/r-lib/pillar/issues/433" class="external-link">#433</a>).</li>
+<li>Fixed some cases for combinations of printed width and <code>getOption("width")</code> (<a href="https://github.com/r-lib/pillar/issues/432" class="external-link">#432</a>).</li>
+<li>Remove dependency on the crayon package (<a href="https://github.com/r-lib/pillar/issues/233" class="external-link">#233</a>, <a href="https://github.com/r-lib/pillar/issues/406" class="external-link">#406</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.4.9002" id="pillar-1649002">pillar 1.6.4.9002<a class="anchor" aria-label="anchor" href="#pillar-1649002"></a></h2>
 <ul><li>List columns omit size information if horizontal space is insufficient (<a href="https://github.com/r-lib/pillar/issues/392" class="external-link">#392</a>).</li>
@@ -219,7 +226,7 @@
 <div class="section level3">
 <h3 id="extensibility-1-5-0">Extensibility<a class="anchor" aria-label="anchor" href="#extensibility-1-5-0"></a></h3>
 <ul><li><p>New <code><a href="../reference/type_sum.html">size_sum()</a></code> generic (<a href="https://github.com/r-lib/pillar/issues/239" class="external-link">#239</a>).</p></li>
-<li><p>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> used via <code><a href="../reference/format_tbl.html">print.tbl()</a></code>, <code><a href="../reference/format_tbl.html">format.tbl()</a></code> and <code><a href="../reference/tbl_format_setup.html">tbl_format_setup.tbl()</a></code> (<a href="https://github.com/r-lib/pillar/issues/230" class="external-link">#230</a>).</p></li>
+<li><p>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and <code>ctl_new_compound_pillar()</code> used via <code><a href="../reference/format_tbl.html">print.tbl()</a></code>, <code><a href="../reference/format_tbl.html">format.tbl()</a></code> and <code><a href="../reference/tbl_format_setup.html">tbl_format_setup.tbl()</a></code> (<a href="https://github.com/r-lib/pillar/issues/230" class="external-link">#230</a>).</p></li>
 <li><p>New <code><a href="../reference/new_pillar.html">new_pillar()</a></code> low-level constructor (<a href="https://github.com/r-lib/pillar/issues/230" class="external-link">#230</a>).</p></li>
 <li><p>New <code><a href="../reference/new_pillar_component.html">new_pillar_component()</a></code> and <code><a href="../reference/new_pillar_component.html">pillar_component()</a></code> (<a href="https://github.com/r-lib/pillar/issues/230" class="external-link">#230</a>).</p></li>
 <li><p>New articles <code><a href="../articles/extending.html">vignette("extending")</a></code> and <code><a href="../articles/printing.html">vignette("printing")</a></code> (<a href="https://github.com/r-lib/pillar/issues/251" class="external-link">#251</a>).</p></li>
