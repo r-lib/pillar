@@ -150,9 +150,9 @@
       [1m<tbl_format_header(setup)>[22m
       [90m# A data frame: 1 × 2[39m
       [1m<tbl_format_body(setup)>[22m
-            b[90m║[39m  a$x    $y
-        [3m[90m<dbl>[39m[23m[90m║[39m[3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
-      [90m1[39m     3[90m║[39m    1     2
+        b          [90m║[39m  a$x    $y
+        [3m[90m<chr>[39m[23m      [90m║[39m[3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+      [90m1[39m long enough[90m║[39m    1     2
       [1m<tbl_format_footer(setup)>[22m
     Code
       options(width = 15)
@@ -162,9 +162,9 @@
       [1m<tbl_format_header(setup)>[22m
       [90m# A data frame: 1 × 2[39m
       [1m<tbl_format_body(setup)>[22m
-            b
-        [3m[90m<dbl>[39m[23m
-      [90m1[39m     3
+        b          
+        [3m[90m<chr>[39m[23m      
+      [90m1[39m long enough
       [90m═════════════[39m
           a$x    $y
         [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m

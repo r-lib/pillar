@@ -216,7 +216,7 @@ test_that("focus columns", {
     variant <- "ansi"
   }
 
-  x <- new_tbl(list(a = new_tbl(list(x = 1, y = 2)), b = 3))
+  x <- new_tbl(list(a = new_tbl(list(x = 1, y = 2)), b = "long enough"))
 
   local_options(width = 80)
 
