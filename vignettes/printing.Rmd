@@ -166,7 +166,7 @@ pillar:::tbl_format_footer.tbl
 The internal function `ctl_colonnade()` composes the body.
 It performs the following tasks:
 
-1. Create a pillar object for every column that fits, using `ctl_new_compound_pillar()`, `ctl_new_pillar()` and ultimately `pillar()` and `pillar_shaft()`
+1. Create a pillar object for every top-level column that fits, using the minimum width, via `ctl_new_pillar_list()`, `ctl_new_pillar()` and ultimately `pillar()` and `pillar_shaft()`
 1. Determine the number of tiers and the width for each tier
 1. Distribute the pillars across the tiers, assigning a width to each pillar.
 1. Format each pillar via its `format()` function, passing the now known width.
@@ -178,25 +178,27 @@ In the following, the first and the fourth steps are discussed.
 
 ## Creating pillar objects
 
-Each column in the tibble is passed to `ctl_new_compound_pillar()`, which eventually calls `ctl_new_pillar()` once or several times.
+The initial tibble is passed to `ctl_new_pillar_list()`, which eventually calls `ctl_new_pillar()` once or several times.
+For each top-level column, one pillar object is constructed.
+The loop is terminated when the available width is exhausted even considering the minimum width.
 
 
-### Compound pillars
+### Pillar lists
 
-The `ctl_new_compound_pillar()` generic dispatches on the container:
+The `ctl_new_pillar_list()` generic dispatches on the container:
 
 ```{r}
-ctl_new_compound_pillar(tbl, tbl$a, width = 20)
-ctl_new_compound_pillar(tbl, tbl$b, width = 20)
+ctl_new_pillar_list(tbl, tbl$a, width = 20)
+ctl_new_pillar_list(tbl, tbl$b, width = 20)
 ```
 
-The default method distinguishes between compound and simple pillars.
-Data frame, matrix, and array columns are decomposed into sub-pillars and returned as a compound pillar.
-Regular vectors are forwarded to `ctl_new_pillar()`.
+In a tibble, each column can be a data frame, matrix, or even array itself, such columns are called *compound columns*.
+Such columns are decomposed into sub-pillars and returned as a list of pillars.
+Regular vectors are forwarded to `ctl_new_pillar()` and returned as list of length one.
 Implementers of `"tbl"` subclasses will rarely if ever need to extend or override this method.
 
 ```{r show_source = TRUE}
-pillar:::ctl_new_compound_pillar.tbl
+pillar:::ctl_new_pillar_list.tbl
 ```
 
 
@@ -205,7 +207,7 @@ pillar:::ctl_new_compound_pillar.tbl
 The `ctl_new_pillar()` method is called for columns that are not data frames or arrays, and also dispatches over the container.
 
 ```{r}
-ctl_new_compound_pillar(tbl, tbl$a, width = 20)
+ctl_new_pillar(tbl, tbl$a, width = 20)
 ```
 
 ```{r show_source = TRUE}
@@ -228,23 +230,19 @@ It is possible to change the appearance of pillars by overriding or extending `c
 
 ### Components
 
-Both compound and simple pillar objects share the same structure and are ultimately constructed with `new_pillar()`.
+Pillar objects share the same structure and are ultimately constructed with `new_pillar()`.
 
 ```{r show_source = TRUE}
 new_pillar
 ```
 
 A pillar is stored as a list of components.
-For simple pillars each component has length one, for compound pillars all components have the same length.
-In the future, this restriction may be levied to support nested components, e.g. for column titles spanning multiple sub-pillars for compound pillars.
-The maximum width available for the simple pillar of for each sub-pillar of a compound pillar is also recorded.
-
-![Layout of the objects contained in a pillar](pillar-objects.png)
+Each pillar represents only one simple (atomic) column, compound columns are always represented as multiple pillar objects.
 
 
 ## Formatting pillars
 
-When a pillar object is constructed, it has a minimum a desired (maximum) width.
+When a pillar object is constructed, it has a minimum and a desired (maximum) width.
 Because it depends on the number and width of other pillar objects that may not be even constructed, the final width is not known yet.
 It is passed to `format()`, which uses the desired width if empty:
 

@@ -1,11 +1,7 @@
 # color
 
     Code
-      crayon::has_color()
-    Output
-      [1] TRUE
-    Code
-      crayon::num_colors()
+      cli::num_ansi_colors()
     Output
       [1] 16
     Code

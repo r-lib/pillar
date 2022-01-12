@@ -1,11 +1,7 @@
 # sanity check (1)
 
     Code
-      crayon::has_color()
-    Output
-      [1] FALSE
-    Code
-      crayon::num_colors()
+      cli::num_ansi_colors()
     Output
       [1] 1
     Code
@@ -525,8 +521,9 @@
       2 <list [1]>
       3 <list [1]>
     Code
-      colonnade(list(`
-      ` = c("\n", "\""), `` = factor("\n")), width = 30)
+      list_with_ctl <- list(c("\n", "\""), factor(c("\n", "\n")))
+      names(list_with_ctl) <- c("\n", "\r")
+      colonnade(list_with_ctl, width = 30)
     Output
         `\n`  `\r` 
         <chr> <fct>
@@ -575,11 +572,7 @@
 # sanity check (2)
 
     Code
-      crayon::has_color()
-    Output
-      [1] FALSE
-    Code
-      crayon::num_colors()
+      cli::num_ansi_colors()
     Output
       [1] 1
     Code

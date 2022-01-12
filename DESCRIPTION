@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.6.4.9001
+Version: 1.6.4.9003
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -18,8 +18,7 @@ License: MIT + file LICENSE
 URL: https://pillar.r-lib.org/, https://github.com/r-lib/pillar
 BugReports: https://github.com/r-lib/pillar/issues
 Imports: 
-    cli,
-    crayon (>= 1.3.4),
+    cli (>= 2.3.0),
     ellipsis (>= 0.3.2),
     fansi,
     glue,
@@ -47,6 +46,7 @@ Suggests:
     testthat (>= 3.1.1),
     tibble,
     units (>= 0.7.2),
+    vdiffr,
     withr
 VignetteBuilder: 
     knitr

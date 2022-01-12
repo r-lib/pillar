@@ -96,5 +96,5 @@ By default, the required width is computed from the natural width of the
 }
 \details{
 The \code{formatted} argument may also contain ANSI escapes to change color
-or other attributes of the text, see \link{crayon}.
+or other attributes of the text, provided e.g. by the \pkg{cli} package.
 }

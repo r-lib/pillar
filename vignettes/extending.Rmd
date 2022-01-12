@@ -78,7 +78,7 @@ The implementation is responsible for the entire formatting and styling, includi
 
 ```{r}
 tbl_format_header.custom_header_replace <- function(x, setup, ...) {
-  crayon::italic(paste0(names(setup$tbl_sum), " = ", setup$tbl_sum))
+  cli::style_italic(names(setup$tbl_sum), " = ", setup$tbl_sum)
 }
 
 example_tbl("custom_header_replace")
@@ -195,13 +195,12 @@ example_tbl("pillar_rule_adaptive")
 
 ### Tweak display of compound pillars
 
-Compound pillars are created by `ctl_new_compound_pillar()` for columns that contain a data frame, a matrix or an array.
+Compound pillars are created by `ctl_new_pillar_list()` for columns that contain a data frame, a matrix or an array.
 The default implementation also calls `ctl_new_pillar()` shown above.
-The example 
-
+The (somewhat artificial) example hides all data frame columns in a column with the type `"<hidden>"`.
 
 ```{r}
-ctl_new_compound_pillar.hide_df <- function(controller, x, width, ..., title = NULL) {
+ctl_new_pillar_list.hide_df <- function(controller, x, width, ..., title = NULL) {
   if (!is.data.frame(x)) {
     return(NextMethod())
   }
@@ -210,14 +209,14 @@ ctl_new_compound_pillar.hide_df <- function(controller, x, width, ..., title = N
     return(NULL)
   }
 
-  new_pillar(
+  list(new_pillar(
     list(
       title = pillar_component(new_pillar_title(title)),
       type = new_pillar_component(list("<hidden>"), width = 8),
       data = new_pillar_component(list(""), width = 1)
     ),
     width = 8
-  )
+  ))
 }
 
 example_tbl("hide_df")

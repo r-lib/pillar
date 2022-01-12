@@ -38,7 +38,7 @@ type_sum.default <- function(x) {
     return(I(label))
   }
 
-  if (is.object(x) || vctrs::vec_is(x)) {
+  if (is.object(x) || vec_is(x)) {
     return(vec_ptype_abbr(x))
   }
 
@@ -57,7 +57,7 @@ type_sum.default <- function(x) {
   )
 }
 
-# Registered in .onLoad()
+#' @export
 vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
   vec_ptype_abbr(x[[1]])
 }

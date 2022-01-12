@@ -6,7 +6,9 @@
 #' for this subclass call `new_ornament()`. See the implementation of
 #' `pillar_shaft.numeric()` and `format.pillar_shaft_decimal()` for an example.
 #'
-#' @param x A character vector with formatting, see [crayon]
+#' @param x A character vector with formatting,
+#'   can use ANYI styles e.g provided by the \pkg{cli} package.
+#'
 #' @param width An optional width of the resulting pillar, computed from `x` if
 #'   missing
 #' @param align Alignment, one of `"left"` or `"right"`

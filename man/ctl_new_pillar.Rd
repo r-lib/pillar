@@ -2,24 +2,36 @@
 % Please edit documentation in R/ctl_new_pillar.R
 \name{ctl_new_pillar}
 \alias{ctl_new_pillar}
-\alias{ctl_new_compound_pillar}
+\alias{ctl_new_pillar_list}
 \title{Customize your tibble subclass}
 \usage{
 ctl_new_pillar(controller, x, width, ..., title = NULL)
 
-ctl_new_compound_pillar(controller, x, width, ..., title = NULL)
+ctl_new_pillar_list(
+  controller,
+  x,
+  width,
+  ...,
+  title = NULL,
+  first_pillar = NULL
+)
 }
 \arguments{
 \item{controller}{The object of class \code{"tbl"} currently printed.}
 
-\item{x}{A vector, can also be a data frame, array or matrix
-in \code{ctl_new_compound_pillar()}}
+\item{x}{A vector, can also be a data frame, array or matrix.
+in \code{ctl_new_pillar_list()}.}
 
-\item{width}{The available width, can be a vector for multiple tiers}
+\item{width}{The available width, can be a vector for multiple tiers.
+If \code{NULL}, compute only the first pillar.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
-\item{title}{The title, derived from the name of the column in the data}
+\item{title}{The title, derived from the name of the column in the data.}
+
+\item{first_pillar}{Can be passed to this method if the first pillar
+for a compound pillar (or the pillar itself for a simple pillar)
+has been computed already.}
 }
 \description{
 Gain full control over the appearance of the pillars of your tibble subclass
@@ -36,10 +48,18 @@ Extend this method to tweak pillar components returned from the default
 implementation.
 Override this method to completely change the appearance of the pillars.
 
-\code{ctl_new_compound_pillar()} is called for compound pillars: columns
-that are data frames, matrices or arrays.
-The default implementation returns a compound pillar with suitable formatting
-for the titles and types of the sub-pillar.
+\code{ctl_new_pillar_list()} is called to construct a list of pillars.
+It also works for compound pillars: columns that are data frames, matrices or
+arrays.
+This method is also called to initiate the construction of all pillars
+in the tibble to be printed.
+If called for a regular one-dimensional vector, it returns a list of length
+one.
+In any case, all pillars in the returned list of pillars represent only the
+first column in case of compound columns.
+This ensures that only those pillars that are shown are constructed.
+To print all columns of a packed data frame, \code{ctl_new_pillar_list()}
+eventually calls itself recursively.
 Users will only rarely need to override this method if ever.
 
 All components must be of the same height.
@@ -63,17 +83,17 @@ ctl_new_pillar(
 )
 
 # Packed data frame
-ctl_new_compound_pillar(
+ctl_new_pillar_list(
   tibble::tibble(),
   palmerpenguins::penguins,
   width = 60
 )
 
 # Packed matrix
-ctl_new_compound_pillar(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
+ctl_new_pillar_list(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
 
 # Packed array
-ctl_new_compound_pillar(tibble::tibble(), Titanic, width = 60)
+ctl_new_pillar_list(tibble::tibble(), Titanic, width = 60)
 \dontshow{\}) # examplesIf}
 
 # Customize output

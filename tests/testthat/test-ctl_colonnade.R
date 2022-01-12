@@ -26,7 +26,9 @@ test_that("tests from tibble", {
     ctl_colonnade(df_all, width = 300)
     options(width = 20)
     ctl_colonnade(df_all, width = 300)
-    ctl_colonnade(list(`\n` = c("\n", '"'), `\r` = factor(c("\n", "\n"))), width = 30)
+    list_with_ctl <- list(c("\n", '"'), factor(c("\n", "\n")))
+    names(list_with_ctl) <- c("\n", "\r")
+    ctl_colonnade(list_with_ctl, width = 30)
     ctl_colonnade(list(a = c("", " ", "a ", " a")), width = 30)
     ctl_colonnade(list("mean(x)" = 5, "var(x)" = 3), width = 30)
   })
@@ -63,8 +65,7 @@ test_that("color", {
   skip_if_not_installed("testthat", "3.1.1")
 
   local_colors()
-  expect_true(crayon::has_color())
-  expect_equal(crayon::num_colors(), 16)
+  expect_equal(cli::num_ansi_colors(), 16)
 
   if (l10n_info()$`UTF-8`) {
     local_utf8()
@@ -109,9 +110,9 @@ test_that("tibble columns", {
 })
 
 test_that("tibble columns (nested)", {
-  x <- vctrs::data_frame(
+  x <- data_frame(
     a = 1:3,
-    b = vctrs::data_frame(
+    b = data_frame(
       c = 4:6, d = 7:9,
       e = data.frame(f = 10:12, g = 13:15)
     )
@@ -122,11 +123,11 @@ test_that("tibble columns (nested)", {
 })
 
 test_that("tibble columns (empty)", {
-  x <- vctrs::data_frame(
+  x <- data_frame(
     a = 1:3,
-    b = vctrs::data_frame(
+    b = data_frame(
       c = 4:6, d = 7:9,
-      e = vctrs::data_frame(f = 10:12)[, 0]
+      e = data_frame(f = 10:12)[, 0]
     ),
     c = 10:12
   )
@@ -160,8 +161,8 @@ test_that("matrix columns (empty)", {
 
 test_that("filling unused width (#331)", {
   new_foo <- function(x = character()) {
-    vctrs::vec_assert(x, character())
-    vctrs::new_vctr(x, class = "foo")
+    vec_assert(x, character())
+    new_vctr(x, class = "foo")
   }
 
   data <- new_tbl(list(

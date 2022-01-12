@@ -7,7 +7,8 @@
 new_ornament(x, width = NULL, align = NULL)
 }
 \arguments{
-\item{x}{A character vector with formatting, see \link{crayon}}
+\item{x}{A character vector with formatting,
+can use ANYI styles e.g provided by the \pkg{cli} package.}
 
 \item{width}{An optional width of the resulting pillar, computed from \code{x} if
 missing}
