@@ -91,15 +91,15 @@ do_emit_tiers <- function(x, tier_widths, cb) {
     formatted_list <<- NULL
   }
 
-  on_top_level_pillar <- function() {
-    n_top_level_pillars <<- n_top_level_pillars + 1L
-  }
-
   on_pillar <- function(formatted) {
     # message("pillar()")
     # print(formatted)
     # print(pillar, width = width)
     formatted_list <<- c(formatted_list, list(formatted))
+  }
+
+  on_top_level_pillar <- function() {
+    n_top_level_pillars <<- n_top_level_pillars + 1L
   }
 
   on_extra_cols <- function(x, title, cols) {
@@ -245,10 +245,10 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       }
       x_pos <- x_pos + used$width
     }
-  }
 
-  if (top_level) {
-    cb$on_top_level_pillar()
+    if (top_level) {
+      cb$on_top_level_pillar()
+    }
   }
 
   list(tiers = tier_pos - 1L, width = x_pos)
