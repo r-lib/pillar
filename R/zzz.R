@@ -67,7 +67,7 @@ NULL
 
   # https://github.com/r-lib/pkgdown/issues/1540
   if (Sys.getenv("IN_PKGDOWN") != "") {
-    register_s3_method("pillar", "type_sum", "accel")
+    s3_register("pillar::type_sum", "accel")
   }
 
   invisible()
