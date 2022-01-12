@@ -13,10 +13,18 @@
 #' implementation.
 #' Override this method to completely change the appearance of the pillars.
 #'
-#' `ctl_new_compound_pillar()` is called for compound pillars: columns
-#' that are data frames, matrices or arrays.
-#' The default implementation returns a compound pillar with suitable formatting
-#' for the titles and types of the sub-pillar.
+#' `ctl_new_pillar_list()` is called to construct a list of pillars.
+#' It also works for compound pillars: columns that are data frames, matrices or
+#' arrays.
+#' This method is also called to initiate the construction of all pillars
+#' in the tibble to be printed.
+#' If called for a regular one-dimensional vector, it returns a list of length
+#' one.
+#' In any case, all pillars in the returned list of pillars represent only the
+#' first column in case of compound columns.
+#' This ensures that only those pillars that are shown are constructed.
+#' To print all columns of a packed data frame, `ctl_new_pillar_list()`
+#' eventually calls itself recursively.
 #' Users will only rarely need to override this method if ever.
 #'
 #' All components must be of the same height.
@@ -27,10 +35,11 @@
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @param controller The object of class `"tbl"` currently printed.
-#' @param x A vector, can also be a data frame, array or matrix
-#'   in `ctl_new_compound_pillar()`
-#' @param width The available width, can be a vector for multiple tiers
-#' @param title The title, derived from the name of the column in the data
+#' @param x A vector, can also be a data frame, array or matrix.
+#'   in `ctl_new_pillar_list()`.
+#' @param width The available width, can be a vector for multiple tiers.
+#'   If `NULL`, compute only the first pillar.
+#' @param title The title, derived from the name of the column in the data.
 #'
 #' @export
 #' @examplesIf rlang::is_installed("palmerpenguins") && requireNamespace("tibble")
@@ -47,17 +56,17 @@
 #' )
 #'
 #' # Packed data frame
-#' ctl_new_compound_pillar(
+#' ctl_new_pillar_list(
 #'   tibble::tibble(),
 #'   palmerpenguins::penguins,
 #'   width = 60
 #' )
 #'
 #' # Packed matrix
-#' ctl_new_compound_pillar(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
+#' ctl_new_pillar_list(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
 #'
 #' # Packed array
-#' ctl_new_compound_pillar(tibble::tibble(), Titanic, width = 60)
+#' ctl_new_pillar_list(tibble::tibble(), Titanic, width = 60)
 #'
 #' @examples
 #'
@@ -90,10 +99,6 @@ ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
 
   check_dots_empty()
 
-  if (length(width) == 0) {
-    return(NULL)
-  }
-
   UseMethod("ctl_new_pillar")
 }
 
@@ -112,32 +117,33 @@ max0 <- function(x) {
   }
 }
 
+#' @param first_pillar Can be passed to this method if the first pillar
+#'   for a compound pillar (or the pillar itself for a simple pillar)
+#'   has been computed already.
 #' @rdname ctl_new_pillar
 #' @export
-ctl_new_compound_pillar <- function(controller, x, width, ..., title = NULL) {
-  "!!!!DEBUG ctl_new_compound_pillar(`v(width)`, `v(title)`)"
+ctl_new_pillar_list <- function(controller, x, width, ..., title = NULL, first_pillar = NULL) {
+  "!!!!DEBUG ctl_new_pillar_list(`v(width)`, `v(title)`)"
 
   check_dots_empty()
 
-  if (length(width) == 0) {
-    return(NULL)
-  }
-
-  UseMethod("ctl_new_compound_pillar")
+  UseMethod("ctl_new_pillar_list")
 }
 
 #' @export
-ctl_new_compound_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
-  "!!!!DEBUG ctl_new_compound_pillar.tbl(`v(width)`, `v(title)`)"
+ctl_new_pillar_list.tbl <- function(controller, x, width, ..., title = NULL, first_pillar = NULL) {
+  "!!!!DEBUG ctl_new_pillar_list.tbl(`v(width)`, `v(title)`)"
 
   if (is.data.frame(x)) {
-    new_data_frame_pillar(x, controller, width, title = title)
+    new_data_frame_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
   } else if (is.matrix(x)) {
-    new_matrix_pillar(x, controller, width, title = title)
+    new_matrix_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
   } else if (is.array(x) && length(dim(x)) > 1) {
-    new_array_pillar(x, controller, width, title = title)
+    new_array_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
+  } else if (is.null(first_pillar)) {
+    list(ctl_new_pillar(controller, x, width, ..., title = prepare_title(title)))
   } else {
-    ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
+    list(first_pillar)
   }
 }
 

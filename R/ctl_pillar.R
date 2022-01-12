@@ -125,8 +125,7 @@ rowidformat2 <- function(data, names, has_star) {
 #' @details
 #' Arbitrary components are supported.
 #' If your tibble subclass needs more or different components in its pillars,
-#' override or extend [ctl_new_pillar()]
-#' and perhaps [ctl_new_compound_pillar()].
+#' override or extend [ctl_new_pillar()] and perhaps [ctl_new_pillar_list()].
 #'
 #' @inheritParams ellipsis::dots_empty
 #' @inheritParams pillar
@@ -178,26 +177,11 @@ format.pillar <- function(x, width = NULL, ...) {
     width <- sum(widths) + length(widths) - 1L
   }
 
-  as_glue(pillar_format_parts_2(x, width)$aligned[[1]])
+  as_glue(pillar_format_parts_2(x, width)$aligned)
 }
 
 #' @export
 print.pillar <- function(x, ...) {
   writeLines(style_bold("<pillar>"))
   print(format(x, ...))
-}
-
-#' @export
-print.compound_pillar <- function(x, ...) {
-  len <- length(x[1][[1]])
-  desc <- paste0("<compound_pillar[", len, "]>")
-  writeLines(style_bold(desc))
-  print(format(x, ...))
-
-  n_extra <- length(attr(x, "extra"))
-  if (n_extra > 0) {
-    writeLines(style_subtle(pre_dots(paste0("and ", n_extra, " more sub-pillars"))))
-  }
-
-  invisible(x)
 }

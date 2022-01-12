@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.4.9003
+
+- Reworked formatting routine, now using an event-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space if space is limited has slightly improved (#435).
+- New `ctl_new_pillar_list()`, supersedes `ctl_new_compound_pillar()` (#433).
+- Fixed some cases for combinations of printed width and `getOption("width")` (#432).
+- Remove dependency on the crayon package (#233, #406).
+
+
 # pillar 1.6.4.9002
 
 - List columns omit size information if horizontal space is insufficient (#392).
