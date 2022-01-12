@@ -42,7 +42,6 @@
 #'   `devtools::load_all()`, the function will keep inheriting from
 #'   the old namespace. This might cause crashes because of dangling
 #'   `.Call()` pointers.
-#' @export
 #' @examples
 #' # A typical use case is to dynamically register tibble/pillar methods
 #' # for your class. That way you avoid creating a hard dependency on packages
@@ -54,6 +53,7 @@
 #'   s3_register("tibble::type_sum", "vctrs_vctr")
 #' }
 #' @keywords internal
+#' @noRd
 # nocov start
 s3_register <- function(generic, class, method = NULL) {
   stopifnot(is.character(generic), length(generic) == 1)
