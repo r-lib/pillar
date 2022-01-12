@@ -46,6 +46,7 @@ Suggests:
     testthat (>= 3.1.1),
     tibble,
     units (>= 0.7.2),
+    vdiffr,
     withr
 VignetteBuilder: 
     knitr
