@@ -521,8 +521,9 @@
       2 <list [1]>
       3 <list [1]>
     Code
-      colonnade(list(`
-      ` = c("\n", "\""), `` = factor("\n")), width = 30)
+      list_with_ctl <- list(c("\n", "\""), factor(c("\n", "\n")))
+      names(list_with_ctl) <- c("\n", "\r")
+      colonnade(list_with_ctl, width = 30)
     Output
         `\n`  `\r` 
         <chr> <fct>

@@ -8,12 +8,12 @@
       <tbl_format_header(setup)>
       # A data frame: 1 x 2
       <tbl_format_body(setup)>
-            a
-        <dbl>
-      1     3
-          b$x    $y
+            a   b$x
         <dbl> <dbl>
-      1     1     2
+      1     3     1
+           $y
+        <dbl>
+      1     2
       <tbl_format_footer(setup)>
     Code
       options(width = 10)
@@ -29,6 +29,9 @@
           b$x
         <dbl>
       1     1
+           $y
+        <dbl>
+      1     2
       <tbl_format_footer(setup)>
 
 # compound pillars with zero columns (#402)
