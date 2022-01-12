@@ -205,8 +205,6 @@ test_that("focus columns", {
   skip_if_not_installed("testthat", "3.1.1")
 
   local_colors()
-  expect_true(crayon::has_color())
-  expect_equal(crayon::num_colors(), 16)
 
   if (l10n_info()$`UTF-8`) {
     local_utf8()
