@@ -160,7 +160,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   }
 
   # Simple pillar: fit and proceed
-  if (length(pillar_list) == 1 && length(extra) == 0) {
+  if (!top_level && length(pillar_list) == 1 && length(extra) == 0) {
     pillar <- pillar_list[[1]]
     width <- pillar_get_widths(pillar)
     if (width <= max(tier_widths)) {
@@ -178,9 +178,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
     formatted <- pillar_format_parts_2(pillar, width)
     cb$on_pillar(formatted)
-    if (top_level) {
-      cb$on_top_level_pillar()
-    }
 
     # Use true width
     true_width <- formatted$max_extent
