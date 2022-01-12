@@ -68,6 +68,7 @@ new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
 do_emit_tiers <- function(x, tier_widths, cb) {
   formatted_list <- NULL
   extra_cols <- data_frame(x = list(), title = list(), cols = list())
+  n_top_level_pillars <- 0L
 
   on_start_tier <- function() {
     # message("on_start_tier()")
@@ -90,6 +91,10 @@ do_emit_tiers <- function(x, tier_widths, cb) {
     formatted_list <<- NULL
   }
 
+  on_top_level_pillar <- function() {
+    n_top_level_pillars <<- n_top_level_pillars + 1L
+  }
+
   on_pillar <- function(formatted) {
     # message("pillar()")
     # print(formatted)
@@ -108,7 +113,7 @@ do_emit_tiers <- function(x, tier_widths, cb) {
 
   cb_pillars <- new_emit_pillars_callbacks(
     cb$controller,
-    on_start_tier, on_end_tier, on_pillar, on_extra_cols
+    on_start_tier, on_end_tier, on_pillar, on_top_level_pillar, on_extra_cols
   )
 
   emit_pillars(x, tier_widths, cb_pillars)
@@ -125,18 +130,20 @@ new_emit_pillars_callbacks <- function(controller,
                                        on_start_tier,
                                        on_end_tier,
                                        on_pillar,
+                                       on_top_level_pillar,
                                        extra_cols) {
   list(
     controller = controller,
     on_start_tier = on_start_tier,
     on_end_tier = on_end_tier,
     on_pillar = on_pillar,
+    on_top_level_pillar = on_top_level_pillar,
     extra_cols = extra_cols
   )
 }
 
 do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) {
-  # New-style code
+  top_level <- is.null(first_pillar)
 
   pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
 
@@ -171,6 +178,9 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
     formatted <- pillar_format_parts_2(pillar, width)
     cb$on_pillar(formatted)
+    if (top_level) {
+      cb$on_top_level_pillar()
+    }
 
     # Use true width
     true_width <- formatted$max_extent
@@ -235,6 +245,10 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       }
       x_pos <- x_pos + used$width
     }
+  }
+
+  if (top_level) {
+    cb$on_top_level_pillar()
   }
 
   list(tiers = tier_pos - 1L, width = x_pos)
