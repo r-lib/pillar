@@ -109,11 +109,12 @@ override these methods instead.</p>
   <span class="va">...</span>,
   n <span class="op">=</span> <span class="cn">NULL</span>,
   max_extra_cols <span class="op">=</span> <span class="cn">NULL</span>,
-  max_footer_lines <span class="op">=</span> <span class="cn">NULL</span>
+  max_footer_lines <span class="op">=</span> <span class="cn">NULL</span>,
+  focus <span class="op">=</span> <span class="cn">NULL</span>
 <span class="op">)</span>
 
 <span class="co"># S3 method for tbl</span>
-<span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span><span class="op">)</span></code></pre></div>
+<span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -138,6 +139,9 @@ by implementations of this method.</p></dd>
 <dd><p>Maximum number of lines for the footer.
 No <a href="pillar_options.html">options</a> should be considered
 by implementations of this method.</p></dd>
+<dt>focus</dt>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
+<p>Names of columns to show preferentially if space is tight.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
