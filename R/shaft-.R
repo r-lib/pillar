@@ -205,7 +205,13 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, ext
   ret$sci <- sci
 
   if (!is.null(ret$sci$unit) && ret$sci$unit != 0) {
-    type_sum <- format_exp(ret$sci$unit, (notation == "si"))
+    type_sum <- I(paste0(
+      # Turn off subtle styling for units
+      sub(" ", "", style_subtle(" ")),
+      "[",
+      format_exp(ret$sci$unit, (notation == "si")),
+      "]"
+    ))
   } else {
     type_sum <- NULL
   }
