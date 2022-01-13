@@ -130,7 +130,10 @@ pillar_shaft.numeric <- function(x, ..., sigfig = NULL) {
     return(new_pillar_shaft_simple(ret, width = get_max_extent(ret), align = "left"))
   }
 
-  data <- unclass(x)
+  pillar_shaft_number_attr(unclass(x), pillar_attr, sigfig)
+}
+
+pillar_shaft_number_attr <- function(data, pillar_attr, sigfig = NULL) {
   scale <- pillar_attr$scale
   if (!is.null(scale)) {
     data <- data * scale
