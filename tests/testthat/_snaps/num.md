@@ -77,7 +77,7 @@
     Output
       # A tibble: 14 x 3
                     scimin            engmin             simin
-                     <e-5>             <e-5>               <µ>
+                     [e-5]             [e-5]               [µ]
        1              1.23              12.3              12.3
        2             12.3              123               123  
        3            123               1230              1230  
@@ -100,7 +100,7 @@
     Output
       # A tibble: 14 x 3
                   scismall          engsmall           sismall
-                     <e-3>             <e-3>               <m>
+                     [e-3]             [e-3]               [m]
        1            0.0123            0.0123            0.0123
        2            0.123             0.123             0.123 
        3            1.23              1.23              1.23  
@@ -123,7 +123,7 @@
     Output
       # A tibble: 14 x 3
                   scilarge          englarge           silarge
-                      <e3>              <e3>               <k>
+                      [e3]              [e3]               [k]
        1      0.0000000123      0.0000000123      0.0000000123
        2      0.000000123       0.000000123       0.000000123 
        3      0.00000123        0.00000123        0.00000123  
@@ -145,7 +145,7 @@
     Output
       # A tibble: 14 x 3
                     scimax            engmax             simax
-                      <e8>              <e8>               <M>
+                      [e8]              [e8]               [M]
        1 0.000000000000123   0.0000000000123   0.0000000000123
        2 0.00000000000123    0.000000000123    0.000000000123 
        3 0.0000000000123     0.00000000123     0.00000000123  
@@ -236,6 +236,7 @@
       num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -3)
     Output
       <pillar_num(sci)|-3[11]>
+      Fixed exponent: [e-3]
        [1]           123.          1235.         12346.        123457.       1234568.
        [6]      12345679.     123456789     1234567890    12345678900   123456789000 
       [11] 1234567890000 
@@ -243,6 +244,7 @@
       num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = 3)
     Output
       <pillar_num(sci)|3[11]>
+      Fixed exponent: [e3]
        [1]       0.000123       0.00123        0.0123         0.123          1.23    
        [6]      12.3          123.          1235.         12346.        123457.      
       [11] 1234568.      
@@ -361,7 +363,7 @@
       pillar(num(NA_real_, notation = "sci", fixed_exponent = -1))
     Output
       <pillar>
-      <e-1>
+      [e-1]
          NA
     Code
       pillar(num(NA_real_, notation = "sci", fixed_exponent = -Inf))
@@ -404,14 +406,14 @@
       pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -1))
     Output
       <pillar>
-      <e-1>
+      [e-1]
          NA
       10000
     Code
       pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
     Output
       <pillar>
-       <e3>
+       [e3]
          NA
           1
 
