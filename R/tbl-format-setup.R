@@ -54,7 +54,9 @@
 #'   Maximum number of lines for the footer.
 #'   No [options][pillar_options] should be considered
 #'   by implementations of this method.
+#' @param focus `r lifecycle::badge("experimental")`
 #'
+#'   Names of columns to show preferentially if space is tight.
 #' @return
 #'   An object that can be passed as `setup` argument to
 #'   [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()].
@@ -63,7 +65,8 @@
 #' tbl_format_setup(palmerpenguins::penguins)
 tbl_format_setup <- function(x, width = NULL, ...,
                              n = NULL, max_extra_cols = NULL,
-                             max_footer_lines = NULL) {
+                             max_footer_lines = NULL,
+                             focus = NULL) {
   "!!!!DEBUG tbl_format_setup()"
 
   width <- get_width_print(width)
@@ -77,13 +80,14 @@ tbl_format_setup <- function(x, width = NULL, ...,
   # allows using default values in S3 dispatch
   out <- tbl_format_setup_(
     x, width, ...,
-    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
+    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines,
+    focus = focus
   )
   return(out)
   UseMethod("tbl_format_setup")
 }
 
-tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols, max_footer_lines) {
+tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols, max_footer_lines, focus = NULL) {
   UseMethod("tbl_format_setup")
 }
 
@@ -95,7 +99,7 @@ tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols, max_footer_lines
 #' @rdname tbl_format_setup
 #' @export
 tbl_format_setup.tbl <- function(x, width, ...,
-                                 n, max_extra_cols, max_footer_lines) {
+                                 n, max_extra_cols, max_footer_lines, focus) {
   "!!!!DEBUG tbl_format_setup.tbl()"
 
   # Number of rows
@@ -136,7 +140,8 @@ tbl_format_setup.tbl <- function(x, width, ...,
     df,
     has_row_id = if (.row_names_info(x) > 0) "*" else TRUE,
     width = width,
-    controller = x
+    controller = x,
+    focus = focus
   )
 
   body <- colonnade$body

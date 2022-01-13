@@ -200,3 +200,27 @@ test_that("filling unused width (#331)", {
     print(data)
   })
 })
+
+test_that("focus columns", {
+  skip_if_not_installed("testthat", "3.1.1")
+
+  local_colors()
+
+  if (l10n_info()$`UTF-8`) {
+    local_utf8()
+    expect_true(cli::is_utf8_output())
+    variant <- "unicode"
+  } else {
+    variant <- "ansi"
+  }
+
+  x <- new_tbl(list(a = new_tbl(list(x = 1, y = 2)), b = "long enough"))
+
+  local_options(width = 80)
+
+  expect_snapshot(variant = variant, {
+    tbl_format_setup(x, width = 30, focus = "b")
+    options(width = 15)
+    tbl_format_setup(x, width = 30, focus = "b")
+  })
+})

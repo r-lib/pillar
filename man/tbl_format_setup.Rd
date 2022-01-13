@@ -11,10 +11,11 @@ tbl_format_setup(
   ...,
   n = NULL,
   max_extra_cols = NULL,
-  max_footer_lines = NULL
+  max_footer_lines = NULL,
+  focus = NULL
 )
 
-\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols, max_footer_lines)
+\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols, max_footer_lines, focus)
 }
 \arguments{
 \item{x}{An object.}
@@ -36,6 +37,10 @@ by implementations of this method.}
 \item{max_footer_lines}{Maximum number of lines for the footer.
 No \link[=pillar_options]{options} should be considered
 by implementations of this method.}
+
+\item{focus}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+Names of columns to show preferentially if space is tight.}
 }
 \value{
 An object that can be passed as \code{setup} argument to
