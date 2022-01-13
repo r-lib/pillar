@@ -61,7 +61,7 @@
 <text x='383.47' y='510.87' text-anchor='middle' style='font-size: 28.80px; fill: #4D4D4D; font-family: sans;' textLength='32.04px' lengthAdjust='spacingAndGlyphs'>50</text>
 <text x='529.61' y='510.87' text-anchor='middle' style='font-size: 28.80px; fill: #4D4D4D; font-family: sans;' textLength='32.04px' lengthAdjust='spacingAndGlyphs'>75</text>
 <text x='675.76' y='510.87' text-anchor='middle' style='font-size: 28.80px; fill: #4D4D4D; font-family: sans;' textLength='48.06px' lengthAdjust='spacingAndGlyphs'>100</text>
-<text x='412.70' y='550.59' text-anchor='middle' style='font-size: 36.00px; font-family: sans;' textLength='18.01px' lengthAdjust='spacingAndGlyphs'>x</text>
+<text x='412.70' y='550.59' text-anchor='middle' style='font-size: 36.00px; font-family: sans;' textLength='100.05px' lengthAdjust='spacingAndGlyphs'>x [e-3]</text>
 <text transform='translate(42.71,274.74) rotate(-90)' text-anchor='middle' style='font-size: 36.00px; font-family: sans;' textLength='80.03px' lengthAdjust='spacingAndGlyphs'>y [%]</text>
 <text x='123.33' y='47.66' style='font-size: 43.20px; font-family: sans;' textLength='100.88px' lengthAdjust='spacingAndGlyphs'>basic</text>
 </g>
