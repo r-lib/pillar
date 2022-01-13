@@ -83,6 +83,8 @@ pillar_from_shaft <- function(title, type, data, width) {
 
   data_component <- new_pillar_component(list(data), width = data_width, min_width = data_min_width)
 
+  # The type is taken either from the shaft (e.g. in the case of num() with
+  # common exponents) or from the type provided by the caller
   shaft_type <- attr(data, "type", exact = TRUE)
   if (!is.null(shaft_type)) {
     type <- shaft_type
