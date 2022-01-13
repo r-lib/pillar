@@ -141,3 +141,33 @@
       named list()
       
 
+# focus columns
+
+    Code
+      tbl_format_setup(x, width = 30, focus = "b")
+    Output
+      [1m<pillar_tbl_format_setup>[22m
+      [1m<tbl_format_header(setup)>[22m
+      [90m# A data frame: 1 x 2[39m
+      [1m<tbl_format_body(setup)>[22m
+        b          [90m|[39m  a$x    $y
+        [3m[90m<chr>[39m[23m      [90m|[39m[3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+      [90m1[39m long enough[90m|[39m    1     2
+      [1m<tbl_format_footer(setup)>[22m
+    Code
+      options(width = 15)
+      tbl_format_setup(x, width = 30, focus = "b")
+    Output
+      [1m<pillar_tbl_format_setup>[22m
+      [1m<tbl_format_header(setup)>[22m
+      [90m# A data frame: 1 x 2[39m
+      [1m<tbl_format_body(setup)>[22m
+        b          
+        [3m[90m<chr>[39m[23m      
+      [90m1[39m long enough
+      [90m=============[39m
+          a$x    $y
+        [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+      [90m1[39m     1     2
+      [1m<tbl_format_footer(setup)>[22m
+
