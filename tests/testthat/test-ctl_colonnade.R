@@ -114,7 +114,7 @@ test_that("tibble columns (nested)", {
     a = 1:3,
     b = data_frame(
       c = 4:6, d = 7:9,
-      e = data.frame(f = 10:12, g = 13:15)
+      e = data_frame(f = data_frame(g = 10:12, h = 13:15))
     )
   )
   expect_snapshot({

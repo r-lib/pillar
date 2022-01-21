@@ -449,11 +449,11 @@
       ctl_colonnade(x, width = 40)
     Output
       $body
-            a   b$c    $d  $e$f   $$g
-        <int> <int> <int> <int> <int>
-      1     1     4     7    10    13
-      2     2     5     8    11    14
-      3     3     6     9    12    15
+            a   b$c    $d $e$f$g $e$$h
+        <int> <int> <int>  <int> <int>
+      1     1     4     7     10    13
+      2     2     5     8     11    14
+      3     3     6     9     12    15
       
       $extra_cols
       named list()
