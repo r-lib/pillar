@@ -65,9 +65,22 @@ MakeScaleContinuousPositionNum <- function() {
     make_title = function(self, title) {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$make_title(title)
       pillar_attr <- attr(self$ptype, "pillar", exact = TRUE)
-      label <- pillar_attr$label
-      if (!is.null(label)) {
-        out <- paste0(out, " [", label, "]")
+      if (!is.null(pillar_attr$fixed_exponent)) {
+        shaft <- pillar_shaft_number_attr(numeric(), pillar_attr)
+        if (pillar_attr$notation == "si") {
+          type <- attr(shaft, "type")
+          if (!is.null(type)) {
+            out <- paste0(out, " ", cli::ansi_strip(type[[1]]))
+          }
+        } else {
+          # paste0() doesn't work here, paste() works like paste0()
+          out <- quo_squash(quo(paste(!!out, " [", 10^!!shaft$sci$unit, "]")))
+        }
+      } else {
+        label <- pillar_attr$label
+        if (!is.null(label)) {
+          out <- paste0(out, " [", label, "]")
+        }
       }
       out
     }

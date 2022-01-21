@@ -10,6 +10,7 @@ new_pillar_shaft(
   ...,
   width = NULL,
   min_width = width,
+  type_sum = NULL,
   class = NULL,
   subclass = NULL
 )
@@ -29,11 +30,17 @@ new_pillar_shaft_simple(
 \arguments{
 \item{x}{An object}
 
-\item{...}{Additional attributes.}
+\item{...}{Passed on to \code{\link[=new_pillar_shaft]{new_pillar_shaft()}}.}
 
 \item{width}{The maximum column width.}
 
 \item{min_width}{The minimum allowed column width, \code{width} if omitted.}
+
+\item{type_sum}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+Override the type summary displayed at the top of the data.
+This argument, if given, takes precedence over the type summary provided by
+\code{\link[=type_sum]{type_sum()}}.}
 
 \item{class}{The name of the subclass.}
 

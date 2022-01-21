@@ -11,6 +11,7 @@
 #' or other attributes of the text, provided e.g. by the \pkg{cli} package.
 #'
 #' @inheritParams tibble::char
+#' @param ... Passed on to [new_pillar_shaft()].
 #' @param formatted The data to show, an object coercible to [character].
 #' @param align Alignment of the column.
 #' @param na String to use as `NA` value, defaults to `"NA"` styled with

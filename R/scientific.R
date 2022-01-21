@@ -1,8 +1,8 @@
-format_exp <- function(x) {
-  if (x$si) {
-    si(x$exp)
+format_exp <- function(exp, si) {
+  if (si) {
+    si(exp)
   } else {
-    supernum(x$exp)
+    supernum(exp)
   }
 }
 

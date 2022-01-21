@@ -27,6 +27,14 @@ print.pillar_vctr <- function(x, ..., max = NULL) {
 #' @export
 obj_print_header.pillar_vctr <- function(x, ..., .size) {
   writeLines(paste0("<", vec_ptype_full(x), "[", .size, "]>"))
+  pillar_attr <- attr(x, "pillar")
+  if (!is.null(pillar_attr$fixed_exponent)) {
+    shaft <- pillar_shaft_number_attr(numeric(), pillar_attr)
+    type <- attr(shaft, "type")
+    if (!is.null(type)) {
+      writeLines(paste0("Fixed exponent: ", type[[1]]))
+    }
+  }
   invisible(x)
 }
 
