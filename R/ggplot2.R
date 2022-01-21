@@ -74,7 +74,7 @@ MakeScaleContinuousPositionNum <- function() {
           }
         } else {
           # paste0() doesn't work here, paste() works like paste0()
-          out <- quo_squash(quo(paste(!!out, " [", 10^ !!shaft$sci$unit, "]")))
+          out <- quo_squash(quo(paste(!!out, " [", 10^!!shaft$sci$unit, "]")))
         }
       } else {
         label <- pillar_attr$label
