@@ -1,8 +1,8 @@
 test_that("output test", {
   x <- new_tbl(list(
     column_zero_zero = 1:3 + 0.23,
-    col_01 = new_tbl(list(col_02 = letters[1:3], col_03 = factor(letters[1:3]))),
-    col_04 = ordered(letters[1:3])
+    `col 01` = new_tbl(list(`col 02` = letters[1:3], `col 03` = factor(letters[1:3]))),
+    `col 04` = ordered(letters[1:3])
   ))
 
   expect_snapshot({
