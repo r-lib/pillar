@@ -67,9 +67,14 @@ MakeScaleContinuousPositionNum <- function() {
       pillar_attr <- attr(self$ptype, "pillar", exact = TRUE)
       if (!is.null(pillar_attr$fixed_exponent)) {
         shaft <- pillar_shaft_number_attr(numeric(), pillar_attr)
-        type <- attr(shaft, "type")
-        if (!is.null(type)) {
-          out <- paste0(out, " ", cli::ansi_strip(type[[1]]))
+        if (pillar_attr$notation == "si") {
+          type <- attr(shaft, "type")
+          if (!is.null(type)) {
+            out <- paste0(out, " ", cli::ansi_strip(type[[1]]))
+          }
+        } else {
+          # paste0() doesn't work here, paste() works like paste0()
+          out <- quo_squash(quo(paste(!!out, " [", 10^ !!shaft$sci$unit, "]")))
         }
       } else {
         label <- pillar_attr$label
