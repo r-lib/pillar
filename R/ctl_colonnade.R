@@ -177,14 +177,14 @@ new_emit_pillars_callbacks <- function(controller,
                                        on_end_tier,
                                        on_pillar,
                                        on_top_level_pillar,
-                                       extra_cols) {
+                                       on_extra_cols) {
   list(
     controller = controller,
     on_start_tier = on_start_tier,
     on_end_tier = on_end_tier,
     on_pillar = on_pillar,
     on_top_level_pillar = on_top_level_pillar,
-    extra_cols = extra_cols
+    on_extra_cols = on_extra_cols
   )
 }
 
@@ -197,7 +197,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   extra <- attr(pillar_list, "extra")
 
   if (length(extra) > 0) {
-    cb$extra_cols(x, title, extra)
+    cb$on_extra_cols(x, title, extra)
   }
 
   if (length(pillar_list) == 0) {
