@@ -22,6 +22,11 @@ format_title <- function(x, width) {
   out
 }
 
+tick_names_if_needed <- function(x) {
+  names(x) <- tick_if_needed(names(x))
+  x
+}
+
 tick_if_needed <- function(x) {
   needs_ticks <- !is_syntactic(x)
   x[needs_ticks] <- tick(x[needs_ticks])
