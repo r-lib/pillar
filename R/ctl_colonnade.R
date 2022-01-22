@@ -286,7 +286,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       x[[col]],
       sub_tier_widths,
       cb,
-      c(sub_title, tick_if_needed(names(x)[[col]])),
+      c(title, tick_if_needed(names(x)[[col]])),
       pillar_list[[col]],
       col
     )
