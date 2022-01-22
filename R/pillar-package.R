@@ -16,5 +16,5 @@
 #' pillar(1:3)
 #' pillar(c(1, 2, 3))
 #' pillar(factor(letters[1:3]), title = "letters")
-#' colonnade(iris[1:3, ])
+#' tbl_format_setup(tibble::as_tibble(mtcars), width = 60)
 "_PACKAGE"

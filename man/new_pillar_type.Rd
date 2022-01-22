@@ -16,5 +16,6 @@ Calls \code{\link[=type_sum]{type_sum()}} to format the type.
 Call \code{\link[=format]{format()}} on the result to render column types.
 }
 \examples{
-format(new_pillar_type(iris$Species))
+format(new_pillar_type("a"))
+format(new_pillar_type(factor("a")))
 }
