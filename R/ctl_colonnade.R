@@ -279,7 +279,13 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
 
     # Recurse
-    used <- do_emit_pillars(x[[col]], sub_tier_widths, cb, c(sub_title, names(x)[[col]]), pillar_list[[col]])
+    used <- do_emit_pillars(
+      x[[col]],
+      sub_tier_widths,
+      cb,
+      c(sub_title, tick_if_needed(names(x)[[col]])),
+      pillar_list[[col]]
+    )
     "!!!!!DEBUG used"
 
     stopifnot(!is.null(used))
