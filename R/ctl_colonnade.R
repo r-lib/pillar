@@ -52,14 +52,14 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     }
   }
 
-  on_extra_cols <- function(extra_cols) {
+  on_extra_cols <- function(my_extra_cols) {
     # print(extra_cols)
 
-    # FIXME: Show for abbreviated
     # FIXME: Show for all levels
-    is_top_level <- map_lgl(extra_cols$x, identical, x)
+    is_top_level <- map_lgl(my_extra_cols$x, identical, x)
     if (any(is_top_level)) {
-      extra_cols <<- as.list(x)[extra_cols$cols[is_top_level][[1]]]
+      extra_cols <<- as.list(x)[my_extra_cols$cols[is_top_level][[1]]]
+      names(extra_cols) <<- tick_if_needed(names(extra_cols))
     }
   }
 
