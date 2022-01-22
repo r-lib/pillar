@@ -192,10 +192,16 @@ new_emit_pillars_callbacks <- function(controller,
   )
 }
 
-do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = 1L) {
+do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = NULL) {
   top_level <- is.null(first_pillar)
 
-  pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
+  # Only tweaking sub-title, because full title is needed for extra-cols
+  sub_title <- title
+  if (!is.null(sub_title)) {
+    sub_title[-length(sub_title)][parent_col_idx[-1] != 1] <- ""
+  }
+
+  pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = sub_title, first_pillar = first_pillar)
 
   # Extra columns are known early on, and remain fixed
   extra <- attr(pillar_list, "extra")
@@ -252,16 +258,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   x_pos <- 0L
   tier_pos <- 1L
 
-  # FIXME: Replace with title vector
-  sub_title <- title
-  if (!is.null(sub_title)) {
-    if (parent_col_idx >= 2) {
-      sub_title[[length(sub_title)]] <- "$"
-    } else {
-      sub_title[[length(sub_title)]] <- paste0(sub_title[[length(sub_title)]], "$")
-    }
-  }
-
   # Advance column by column
   for (col in seq_along(pillar_list)) {
     target_tier <- rev$tier[[col]]
@@ -288,7 +284,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       cb,
       c(title, tick_if_needed(names(x)[[col]])),
       pillar_list[[col]],
-      col
+      c(parent_col_idx, col)
     )
     "!!!!!DEBUG used"
 

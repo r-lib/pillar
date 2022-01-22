@@ -18,27 +18,15 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
   for (i in seq_along(x)) {
     "!!!!!DEBUG i = `i`, width = `width`"
 
-    # FIXME
-    # sub_title <- c(title, ticked_names[[i]])
     if (i == 1 && !is.null(first_pillar)) {
       pillar <- first_pillar
     } else {
-      sub_title <- ticked_names[[i]]
-      if (!is.null(title)) {
-        if (i == 1) {
-          title[[length(title)]] <- paste0(title[[length(title)]], "$")
-        } else {
-          title[[length(title)]] <- "$"
-        }
-        sub_title <- c(title, sub_title)
-      }
-
       # Call ctl_new_pillar_list(), return only the first sub-pillar
       # thanks to width = NULL
       new_pillars <- ctl_new_pillar_list(
         controller, x[[i]],
         width = NULL,
-        title = sub_title
+        title = c(title, ticked_names[[i]])
       )
 
       # Safety check:
@@ -67,6 +55,10 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
     }
 
     pillars[[i]] <- pillar
+
+    if (!is.null(title)) {
+      title[] <- ""
+    }
   }
 
   pillars <- compact(pillars)
