@@ -1,7 +1,7 @@
 test_that("can format new_pillar_title()", {
   expect_equal(
-    format(new_pillar_title(names(iris))),
-    format_full_pillar_title(names(iris))
+    format(new_pillar_title(tick_if_needed(c("a", "b c")))),
+    format_full_pillar_title(tick_if_needed(c("a", "b c")))
   )
   expect_equal(
     format(new_pillar_title(names(mtcars))),
