@@ -3,11 +3,12 @@ test_that("output test", {
     column_zero_zero = 1:3 + 0.23,
     `col 01` = new_tbl(list(
       `col 02` = letters[1:3],
-      `col 03` = new_tbl(list(
+      `col 03` = LETTERS[1:3],
+      `col 04` = new_tbl(list(
         a = factor(letters[1:3]), b = 3:1
       ))
     )),
-    `col 04` = ordered(letters[1:3])
+    `col 05` = ordered(letters[1:3])
   ))
 
   expect_snapshot({
@@ -77,6 +78,16 @@ test_that("output test", {
     tbl_format_setup(x, width = 67)
     tbl_format_setup(x, width = 68)
     tbl_format_setup(x, width = 69)
+    tbl_format_setup(x, width = 70)
+    tbl_format_setup(x, width = 71)
+    tbl_format_setup(x, width = 72)
+    tbl_format_setup(x, width = 73)
+    tbl_format_setup(x, width = 74)
+    tbl_format_setup(x, width = 75)
+    tbl_format_setup(x, width = 76)
+    tbl_format_setup(x, width = 77)
+    tbl_format_setup(x, width = 78)
+    tbl_format_setup(x, width = 79)
     tbl_format_setup(x, width = Inf)
   })
 })
