@@ -138,6 +138,6 @@
       15 "\""           Quote             
       
       $extra_cols
-      named list()
+      list()
       
 

@@ -69,6 +69,10 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   )
   do_emit_tiers(x_focus, tier_widths, length(focus), cb)
 
+  if (length(extra_cols) == 0) {
+    extra_cols <- list()
+  }
+
   new_colonnade_body(formatted_tiers, split_after = split_after, extra_cols = extra_cols)
 }
 
