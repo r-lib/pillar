@@ -57,7 +57,7 @@
           3
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(list(a = 1:3))
@@ -70,7 +70,7 @@
       3     3
       
       $extra_cols
-      named list()
+      list()
       
 
 # body: output for wide characters

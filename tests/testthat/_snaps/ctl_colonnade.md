@@ -18,7 +18,7 @@
       1 a b c d e f g h i j k l m n o p q r s t u v w x y z
       
       $extra_cols
-      named list()
+      list()
       
 
 # tests from tibble
@@ -180,7 +180,7 @@
       3 <list [1]>
       
       $extra_cols
-      named list()
+      list()
       
     Code
       options(width = 70)
@@ -199,7 +199,7 @@
       3 <int [1]> <list [1]>
       
       $extra_cols
-      named list()
+      list()
       
     Code
       options(width = 60)
@@ -218,7 +218,7 @@
       3 NA                  <int [1]> <list [1]>
       
       $extra_cols
-      named list()
+      list()
       
     Code
       options(width = 50)
@@ -237,7 +237,7 @@
       3 NA                  <int [1]> <list [1]>
       
       $extra_cols
-      named list()
+      list()
       
     Code
       options(width = 40)
@@ -261,7 +261,7 @@
       3 <int [1]> <list [1]>
       
       $extra_cols
-      named list()
+      list()
       
     Code
       options(width = 30)
@@ -290,7 +290,7 @@
       3 <int [1]> <list [1]>
       
       $extra_cols
-      named list()
+      list()
       
     Code
       options(width = 20)
@@ -363,7 +363,7 @@
       2 "\""  "\n" 
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(list(a = c("", " ", "a ", " a")), width = 30)
@@ -377,7 +377,7 @@
       4 " a" 
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(list(`mean(x)` = 5, `var(x)` = 3), width = 30)
@@ -388,7 +388,7 @@
       1         5        3
       
       $extra_cols
-      named list()
+      list()
       
 
 # NA names
@@ -406,7 +406,7 @@
       3     3     6
       
       $extra_cols
-      named list()
+      list()
       
 
 # sep argument
@@ -422,7 +422,7 @@
       3     3
       
       $extra_cols
-      named list()
+      list()
       
     Code
       # dummy
@@ -440,7 +440,7 @@
       3     3     6     9
       
       $extra_cols
-      named list()
+      list()
       
 
 # tibble columns (nested)
@@ -456,7 +456,7 @@
       3     3     6     9     12    15
       
       $extra_cols
-      named list()
+      list()
       
 
 # tibble columns (empty)
@@ -472,7 +472,7 @@
       3     3     6     9             12
       
       $extra_cols
-      named list()
+      list()
       
 
 # matrix columns (unnamed)
@@ -488,7 +488,7 @@
       3     3     6     9
       
       $extra_cols
-      named list()
+      list()
       
 
 # matrix columns (named)
@@ -504,7 +504,7 @@
       3     3       6      9
       
       $extra_cols
-      named list()
+      list()
       
 
 # matrix columns (empty)
@@ -520,7 +520,7 @@
       3     3               6
       
       $extra_cols
-      named list()
+      list()
       
 
 # filling unused width (#331)

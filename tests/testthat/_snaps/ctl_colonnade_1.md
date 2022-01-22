@@ -84,7 +84,7 @@
       1 Ab    Abcdefgh~ Abcd~ Abcd~ Abcd~ Abcd~ Abcde Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(40L, 28L, 7L, 16L, 48L, 6L, 21L, 1L, 20L, 17L, 47L, 45L,
@@ -146,7 +146,7 @@
       1 Abcdefghi~ Abcd~ Abcd~ Abcd~ Abcd~ Ab    Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(47L, 42L, 4L, 46L, 9L, 34L, 19L, 39L, 8L, 32L, 36L, 12L,
@@ -205,7 +205,7 @@
       1 A     Abcde~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(41L, 4L, 25L, 31L, 8L, 22L, 19L, 10L, 29L, 21L, 34L, 5L,
@@ -267,7 +267,7 @@
       1 A     Abcd~ Abc   Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(27L, 22L, 9L, 23L, 16L, 19L, 25L, 31L, 44L, 1L, 28L, 46L,
@@ -314,7 +314,7 @@
       1 Abcdefghi~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(32L, 24L, 18L, 25L, 26L, 13L, 33L, 2L, 50L, 38L, 37L,
@@ -394,7 +394,7 @@
       1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(44L, 34L, 49L, 9L, 15L, 16L, 1L, 10L, 40L, 29L, 26L, 22L,
@@ -444,7 +444,7 @@
       1 Abcde~ Abcd~ Abcd~ Abc   Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(21L, 26L, 8L, 22L, 41L, 24L, 13L, 5L, 47L, 37L, 4L, 42L,
@@ -494,7 +494,7 @@
       1 Abcdefghi~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(23L, 49L, 13L, 37L, 3L, 25L, 36L, 4L, 9L, 7L, 27L, 48L,
@@ -625,7 +625,7 @@
       1 AbcdefghijAbcdefg Ab   
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(45L, 14L, 49L, 24L, 22L, 31L, 42L, 18L, 16L, 47L, 25L,
@@ -687,7 +687,7 @@
       1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(38L, 46L, 17L, 11L, 24L, 18L, 16L, 39L, 50L, 42L, 6L,
@@ -767,7 +767,7 @@
       1 Abcdefg~ Abcd~ Abcd~ Abc   Abcd~ Abcd~ Abcd~ Ab   
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(17L, 28L, 29L, 27L, 20L, 31L, 43L, 30L, 32L, 48L, 10L,
@@ -850,7 +850,7 @@
       1 Ab    Abcdefg~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(1L, 26L, 20L, 12L, 49L, 16L, 24L, 4L, 15L, 47L, 8L, 11L,
@@ -897,7 +897,7 @@
       1 Abcdefgh~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(6L, 49L, 26L, 45L, 25L, 15L, 31L, 20L, 21L, 44L, 23L,
@@ -956,7 +956,7 @@
       1 Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ Abcd~ A    
       
       $extra_cols
-      named list()
+      list()
       
     Code
       ctl_colonnade(df_str[c(38L, 42L, 41L, 10L, 40L, 11L, 27L, 9L, 17L, 37L, 46L,
@@ -1018,6 +1018,6 @@
       1 Abcdefg~ Abcd~ Abcde Abcd~ Abcd~ Abcd~ Abcd~
       
       $extra_cols
-      named list()
+      list()
       
 
