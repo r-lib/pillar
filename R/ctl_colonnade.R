@@ -192,7 +192,7 @@ new_emit_pillars_callbacks <- function(controller,
   )
 }
 
-do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL) {
+do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = 1L) {
   top_level <- is.null(first_pillar)
 
   pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
@@ -255,7 +255,11 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   # FIXME: Replace with title vector
   sub_title <- title
   if (!is.null(sub_title)) {
-    sub_title[[length(sub_title)]] <- paste0(sub_title[[length(sub_title)]], "$")
+    if (parent_col_idx >= 2) {
+      sub_title[[length(sub_title)]] <- "$"
+    } else {
+      sub_title[[length(sub_title)]] <- paste0(sub_title[[length(sub_title)]], "$")
+    }
   }
 
   # Advance column by column
@@ -277,18 +281,14 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     stopifnot(sub_tier_widths >= 0)
     "!!!!!DEBUG sub_tier_widths"
 
-    # FIXME: Replace with title vector
-    if (col == 2 && !is.null(sub_title)) {
-      sub_title[[length(sub_title)]] <- "$"
-    }
-
     # Recurse
     used <- do_emit_pillars(
       x[[col]],
       sub_tier_widths,
       cb,
       c(sub_title, tick_if_needed(names(x)[[col]])),
-      pillar_list[[col]]
+      pillar_list[[col]],
+      col
     )
     "!!!!!DEBUG used"
 
