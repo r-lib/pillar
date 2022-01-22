@@ -1,7 +1,12 @@
 test_that("output test", {
   x <- new_tbl(list(
     column_zero_zero = 1:3 + 0.23,
-    `col 01` = new_tbl(list(`col 02` = letters[1:3], `col 03` = factor(letters[1:3]))),
+    `col 01` = new_tbl(list(
+      `col 02` = letters[1:3],
+      `col 03` = new_tbl(list(
+        a = factor(letters[1:3]), b = 3:1
+      ))
+    )),
     `col 04` = ordered(letters[1:3])
   ))
 
@@ -52,6 +57,26 @@ test_that("output test", {
     tbl_format_setup(x, width = 47)
     tbl_format_setup(x, width = 48)
     tbl_format_setup(x, width = 49)
+    tbl_format_setup(x, width = 50)
+    tbl_format_setup(x, width = 51)
+    tbl_format_setup(x, width = 52)
+    tbl_format_setup(x, width = 53)
+    tbl_format_setup(x, width = 54)
+    tbl_format_setup(x, width = 55)
+    tbl_format_setup(x, width = 56)
+    tbl_format_setup(x, width = 57)
+    tbl_format_setup(x, width = 58)
+    tbl_format_setup(x, width = 59)
+    tbl_format_setup(x, width = 60)
+    tbl_format_setup(x, width = 61)
+    tbl_format_setup(x, width = 62)
+    tbl_format_setup(x, width = 63)
+    tbl_format_setup(x, width = 64)
+    tbl_format_setup(x, width = 65)
+    tbl_format_setup(x, width = 66)
+    tbl_format_setup(x, width = 67)
+    tbl_format_setup(x, width = 68)
+    tbl_format_setup(x, width = 69)
     tbl_format_setup(x, width = Inf)
   })
 })
