@@ -449,7 +449,7 @@
       ctl_colonnade(x, width = 40)
     Output
       $body
-            a   b$c    $d $e$f$g $e$$h
+            a   b$c    $d $e$f$g  $$$h
         <int> <int> <int>  <int> <int>
       1     1     4     7     10    13
       2     2     5     8     11    14
