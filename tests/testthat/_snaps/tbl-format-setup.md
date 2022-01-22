@@ -13,7 +13,7 @@
       #   3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      #   with 3 more variables: column_zero_zero <dbl>, `col 01` <tbl[,2]>, `col 04` <ord>
+      #   with 3 more variables not shown: column_zero_zero <dbl>, `col 01` <tbl[,2]>, `col 04` <ord>
     Code
       tbl_format_setup(x, width = 5)
     Output
@@ -30,7 +30,7 @@
       #   with
       #   3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>, ...
     Code
@@ -49,7 +49,7 @@
       #   with
       #   3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>, ...
     Code
@@ -68,7 +68,7 @@
       #   with
       #   3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>, ...
     Code
@@ -86,7 +86,7 @@
       #   with
       #   3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>, ...
     Code
@@ -103,7 +103,7 @@
       #   with
       #   3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>, ...
     Code
@@ -119,7 +119,7 @@
       #   with
       #   3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>, ...
     Code
@@ -134,7 +134,7 @@
       <tbl_format_footer(setup)>
       # ... with
       #   3 more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
@@ -150,7 +150,7 @@
       <tbl_format_footer(setup)>
       # ... with
       #   3 more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
@@ -166,7 +166,7 @@
       <tbl_format_footer(setup)>
       # ... with 3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
@@ -182,7 +182,7 @@
       <tbl_format_footer(setup)>
       # ... with 3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
@@ -198,7 +198,7 @@
       <tbl_format_footer(setup)>
       # ... with 3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
@@ -213,7 +213,7 @@
       <tbl_format_footer(setup)>
       # ... with 3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
@@ -228,7 +228,7 @@
       <tbl_format_footer(setup)>
       # ... with 3
       #   more
-      #   variables:
+      #   variables not shown:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
@@ -247,7 +247,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -265,7 +265,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -283,7 +283,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -301,7 +301,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -318,7 +318,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -335,7 +335,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -352,7 +352,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -369,7 +369,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -386,7 +386,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -403,7 +403,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -420,7 +420,7 @@
       3             3.23
       <tbl_format_footer(setup)>
       # ... with 2 more
-      #   variables:
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -436,7 +436,8 @@
       2             2.23
       3             3.23
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
+      # ... with 2 more
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -452,7 +453,8 @@
       2             2.23
       3             3.23
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
+      # ... with 2 more
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -468,7 +470,8 @@
       2             2.23
       3             3.23
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
+      # ... with 2 more
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -484,7 +487,8 @@
       2             2.23
       3             3.23
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
+      # ... with 2 more
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -500,7 +504,8 @@
       2             2.23
       3             3.23
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
+      # ... with 2 more
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -516,7 +521,8 @@
       2             2.23
       3             3.23
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
+      # ... with 2 more
+      #   variables not shown:
       #   `col 01` <tbl[,2]>,
       #   `col 04` <ord>
     Code
@@ -532,7 +538,8 @@
       2             2.23 b               
       3             3.23 c               
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more
+      #   variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 36)
@@ -547,7 +554,8 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more
+      #   variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 37)
@@ -562,7 +570,8 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more
+      #   variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 38)
@@ -577,7 +586,7 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 39)
@@ -592,7 +601,7 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 40)
@@ -607,7 +616,7 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 41)
@@ -622,7 +631,7 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 42)
@@ -637,7 +646,7 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
+      # ... with 1 more variable not shown:
       #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 43)
@@ -652,7 +661,8 @@
       2             2.23 b                
       3             3.23 c                
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 04` <ord>
+      # ... with 1 more variable not shown:
+      #   `col 04` <ord>
     Code
       tbl_format_setup(x, width = 44)
     Output
@@ -787,7 +797,8 @@
       8  24.4     4  147.    62
       <tbl_format_footer(setup)>
       # ... with 24 more rows, and
-      #   7 more variables:
+      #   7 more
+      #   variables not shown:
       #   drat <dbl>, wt <dbl>,
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>,
@@ -903,7 +914,8 @@
       # A data frame: 0 x 2
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with 2 variables:
+      # ... with 2
+      #   variables not shown:
       #   a <chr>, b <lgl>
     Code
       # No columns
@@ -923,7 +935,8 @@
       # A data frame: ?? x 3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with 3 variables:
+      # ... with 3
+      #   variables not shown:
       #   Girth <dbl>,
       #   Height <dbl>,
       #   Volume <dbl>

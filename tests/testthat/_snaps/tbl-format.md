@@ -63,7 +63,8 @@
       7  14.3     8  360    245
       8  24.4     4  147.    62
       # ... with 24 more rows, and
-      #   7 more variables:
+      #   7 more
+      #   variables not shown:
       #   drat <dbl>, wt <dbl>,
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>,
@@ -163,7 +164,7 @@
        9  22.8     4  141.    95  3.92  3.15
       10  19.2     6  168.   123  3.92  3.44
       # ... with 22 more rows, and 5 more
-      #   variable: qsec <dbl>, ...
+      #   variable not shown: qsec <dbl>, ...
     Code
       print(as_tbl(mtcars), width = 40, max_extra_cols = 1)
     Output
@@ -181,7 +182,7 @@
        9  22.8     4  141.    95  3.92  3.15
       10  19.2     6  168.   123  3.92  3.44
       # ... with 22 more rows, and 5 more
-      #   variable: qsec <dbl>, ...
+      #   variable not shown: qsec <dbl>, ...
     Code
       print(as_tbl(mtcars), width = 30, max_footer_lines = 3)
     Output
@@ -199,8 +200,8 @@
        9  22.8     4  141.    95
       10  19.2     6  168.   123
       # ... with 22 more rows, and
-      #   7 more variables:
-      #   drat <dbl>, wt <dbl>, ...
+      #   7 more
+      #   variables not shown: ...
     Code
       rlang::with_options(tibble.print_min = 5, as_tbl(mtcars))
     Output
