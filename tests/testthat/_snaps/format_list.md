@@ -23,7 +23,7 @@
       <int [3]>
       <NULL>   
     Code
-      pillar(list(iris), width = 10)
+      pillar(list(trees), width = 10)
     Output
       <pillar>
       <list>

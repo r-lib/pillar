@@ -363,23 +363,23 @@
       7  14.3     8  360    245
       8  24.4     4  147.    62
     Code
-      colonnade(iris[1:5, ], width = 30)
+      colonnade(trees[1:5, ], width = 20)
     Output
-        Sepal.Length Sepal.Width
-               <dbl>       <dbl>
-      1          5.1         3.5
-      2          4.9         3  
-      3          4.7         3.2
-      4          4.6         3.1
-      5          5           3.6
+        Girth Height
+        <dbl>  <dbl>
+      1   8.3     70
+      2   8.6     65
+      3   8.8     63
+      4  10.5     72
+      5  10.7     81
     Code
-      colonnade(iris[1:3, ], width = 20)
+      colonnade(trees[1:3, ], width = 10)
     Output
-        Sepal.Length
-               <dbl>
-      1          5.1
-      2          4.9
-      3          4.7
+        Girth
+        <dbl>
+      1   8.3
+      2   8.6
+      3   8.8
     Code
       colonnade(df_all, width = 30)
     Output

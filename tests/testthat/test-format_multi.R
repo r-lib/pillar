@@ -98,8 +98,8 @@ test_that("tests from tibble", {
 
   expect_snapshot({
     colonnade(mtcars[1:8, ], has_row_id = "*", width = 30)
-    colonnade(iris[1:5, ], width = 30)
-    colonnade(iris[1:3, ], width = 20)
+    colonnade(trees[1:5, ], width = 20)
+    colonnade(trees[1:3, ], width = 10)
     colonnade(df_all, width = 30)
     colonnade(df_all, width = 300)
     options(width = 70)
@@ -128,7 +128,7 @@ test_that("empty", {
     as_glue(character())
   )
   expect_equal(
-    format(colonnade(iris[1:5, character()], width = 30)),
+    format(colonnade(trees[1:5, character()], width = 30)),
     as_glue(character())
   )
 })

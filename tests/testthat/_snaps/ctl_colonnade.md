@@ -62,52 +62,38 @@
       
       
     Code
-      ctl_colonnade(iris[1:5, ], width = 30)
+      ctl_colonnade(trees[1:5, ], width = 20)
     Output
       $body
-        Sepal.Length Sepal.Width
-               <dbl>       <dbl>
-      1          5.1         3.5
-      2          4.9         3  
-      3          4.7         3.2
-      4          4.6         3.1
-      5          5           3.6
+        Girth Height
+        <dbl>  <dbl>
+      1   8.3     70
+      2   8.6     65
+      3   8.8     63
+      4  10.5     72
+      5  10.7     81
       
       $extra_cols
-      $extra_cols$Petal.Length
-      [1] 1.4 1.4 1.3 1.5 1.4
-      
-      $extra_cols$Petal.Width
-      [1] 0.2 0.2 0.2 0.2 0.2
-      
-      $extra_cols$Species
-      [1] setosa setosa setosa setosa setosa
-      Levels: setosa versicolor virginica
+      $extra_cols$Volume
+      [1] 10.3 10.3 10.2 16.4 18.8
       
       
     Code
-      ctl_colonnade(iris[1:3, ], width = 20)
+      ctl_colonnade(trees[1:3, ], width = 10)
     Output
       $body
-        Sepal.Length
-               <dbl>
-      1          5.1
-      2          4.9
-      3          4.7
+        Girth
+        <dbl>
+      1   8.3
+      2   8.6
+      3   8.8
       
       $extra_cols
-      $extra_cols$Sepal.Width
-      [1] 3.5 3.0 3.2
+      $extra_cols$Height
+      [1] 70 65 63
       
-      $extra_cols$Petal.Length
-      [1] 1.4 1.4 1.3
-      
-      $extra_cols$Petal.Width
-      [1] 0.2 0.2 0.2
-      
-      $extra_cols$Species
-      [1] setosa setosa setosa
-      Levels: setosa versicolor virginica
+      $extra_cols$Volume
+      [1] 10.3 10.3 10.2
       
       
     Code

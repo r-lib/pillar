@@ -46,10 +46,10 @@ test_that("glimpse calls tbl_sum() (#550)", {
 
   local_override_tbl_sum()
 
-  iris2 <- as_override_tbl_sum(iris)
+  trees2 <- as_override_tbl_sum(trees)
 
   expect_output(
-    glimpse(iris2),
+    glimpse(trees2),
     "Overridden: tbl_sum",
     fixed = TRUE
   )
@@ -61,10 +61,10 @@ test_that("output test for glimpse()", {
   expect_snapshot({
     glimpse(as_tbl(mtcars), width = 70L)
 
-    glimpse(as_tbl(iris), width = 70L)
+    glimpse(as_tbl(trees), width = 70L)
 
     "No columns"
-    glimpse(as_tbl(iris[integer()]), width = 70L)
+    glimpse(as_tbl(trees[integer()]), width = 70L)
 
     "Non-syntactic names"
     df <- tibble::tibble(!!!set_names(c(5, 3), c("mean(x)", "var(x)")))
@@ -87,16 +87,16 @@ test_that("output test for glimpse()", {
     "non-tibble"
     glimpse(5)
 
-    iris2 <- as_unknown_rows(iris)
-    glimpse(iris2, width = 70L)
+    trees2 <- as_unknown_rows(trees)
+    glimpse(trees2, width = 70L)
 
-    species <- unique(iris$Species)
-    data <- unname(split(iris, iris$Species))
-    nested_iris_df <- tibble::tibble(species, data)
-    glimpse(nested_iris_df, width = 70L)
+    cyl <- unique(mtcars$cyl)
+    data <- unname(split(mtcars, mtcars$cyl))
+    nested_mtcars_df <- tibble::tibble(cyl, data)
+    glimpse(nested_mtcars_df, width = 70L)
 
     data <- map(data, as_tbl)
-    nested_iris_tbl <- tibble::tibble(species, data)
-    glimpse(nested_iris_tbl, width = 70L)
+    nested_mtcars_tbl <- tibble::tibble(cyl, data)
+    glimpse(nested_mtcars_tbl, width = 70L)
   })
 })
