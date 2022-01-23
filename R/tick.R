@@ -22,13 +22,26 @@ format_title <- function(x, width) {
   out
 }
 
+tick_names_if_needed <- function(x) {
+  names(x) <- tick_if_needed(names(x))
+  x
+}
+
 tick_if_needed <- function(x) {
+  # Compatibility with R 3.4
+  if (is.null(x)) {
+    return(NULL)
+  }
   needs_ticks <- !is_syntactic(x)
   x[needs_ticks] <- tick(x[needs_ticks])
   x
 }
 
 is_syntactic <- function(x) {
+  # Compatibility with R 3.4
+  if (is.null(x)) {
+    return(logical())
+  }
   ret <- make.names(x) == x
   ret[is.na(x)] <- FALSE
   ret

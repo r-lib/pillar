@@ -55,12 +55,25 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   on_extra_cols <- function(my_extra_cols) {
     # print(extra_cols)
 
-    # FIXME: Show for all levels
-    is_top_level <- map_lgl(my_extra_cols$x, identical, x)
-    if (any(is_top_level)) {
-      extra_cols <<- as.list(x)[my_extra_cols$cols[is_top_level][[1]]]
-      names(extra_cols) <<- tick_if_needed(names(extra_cols))
-    }
+    out <- pmap(my_extra_cols, function(x, title, cols) {
+      out <- as.list(x)[cols]
+      if (is.null(title)) {
+        return(out)
+      }
+
+      if (length(out) > 1) {
+        title_empty <- rep_along(title, "")
+        new_names <- paste0(paste0(title_empty, "$", collapse = ""), names(out))
+        new_names[[1]] <- paste0(paste0(title, "$", collapse = ""), names(out)[[1]])
+        names(out) <- new_names
+      } else {
+        # Also account for the case of packed matrices here
+        names(out) <- prepare_title(c(title, names(out)))
+      }
+      out
+    })
+
+    extra_cols <<- unlist(out, recursive = FALSE)
   }
 
   cb <- new_emit_tiers_callbacks(
@@ -68,10 +81,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     on_tier, on_hsep, on_extra_cols
   )
   do_emit_tiers(x_focus, tier_widths, length(focus), cb)
-
-  if (length(extra_cols) == 0) {
-    extra_cols <- list()
-  }
 
   new_colonnade_body(formatted_tiers, split_after = split_after, extra_cols = extra_cols)
 }
@@ -156,9 +165,11 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb) {
     # message("extra_cols()")
     # print(title)
     # print(cols)
-    extra_cols <<- vec_rbind(extra_cols, data_frame(
+    new_extra_cols <- data_frame(
       x = list(x), title = list(title), cols = list(cols)
-    ))
+    )
+    # Add to the front, because top-level columns are emitted first:
+    extra_cols <<- vec_rbind(new_extra_cols, extra_cols)
   }
 
   cb_pillars <- new_emit_pillars_callbacks(
@@ -192,16 +203,36 @@ new_emit_pillars_callbacks <- function(controller,
   )
 }
 
-do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = 1L) {
+do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = NULL) {
   top_level <- is.null(first_pillar)
 
-  pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = title, first_pillar = first_pillar)
+  # Only tweaking sub-title, because full title is needed for extra-cols
+  sub_title <- title
+  if (!is.null(sub_title)) {
+    sub_title[-length(sub_title)][parent_col_idx[-1] != 1] <- ""
+  }
+
+  pillar_list <- ctl_new_pillar_list(cb$controller, x, width = tier_widths, title = sub_title, first_pillar = first_pillar)
 
   # Extra columns are known early on, and remain fixed
   extra <- attr(pillar_list, "extra")
 
+  # We emit early, this means that top-level columns are emitted before
+  # nested columns. We reverse in the callback.
   if (length(extra) > 0) {
-    cb$on_extra_cols(x, title, extra)
+    if (is.numeric(extra)) {
+      if (length(extra) == 1) {
+        extra <- paste0("[", extra, "]")
+      } else {
+        extra <- paste0("[", min(extra), ":", max(extra), "]")
+      }
+      x_extra <- set_names(list(x[1, ]), extra)
+    } else {
+      extra <- tick_if_needed(extra)
+      x_extra <- tick_names_if_needed(x)
+    }
+
+    cb$on_extra_cols(x_extra, title, extra)
   }
 
   if (length(pillar_list) == 0) {
@@ -252,16 +283,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   x_pos <- 0L
   tier_pos <- 1L
 
-  # FIXME: Replace with title vector
-  sub_title <- title
-  if (!is.null(sub_title)) {
-    if (parent_col_idx >= 2) {
-      sub_title[[length(sub_title)]] <- "$"
-    } else {
-      sub_title[[length(sub_title)]] <- paste0(sub_title[[length(sub_title)]], "$")
-    }
-  }
-
   # Advance column by column
   for (col in seq_along(pillar_list)) {
     target_tier <- rev$tier[[col]]
@@ -286,9 +307,9 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       x[[col]],
       sub_tier_widths,
       cb,
-      c(sub_title, tick_if_needed(names(x)[[col]])),
+      c(title, tick_if_needed(names(x)[[col]])),
       pillar_list[[col]],
-      col
+      c(parent_col_idx, if (!is.null(names(x))) col)
     )
     "!!!!!DEBUG used"
 

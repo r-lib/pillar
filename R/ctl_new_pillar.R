@@ -147,7 +147,13 @@ ctl_new_pillar_list.tbl <- function(controller, x, width, ..., title = NULL, fir
   }
 }
 
-# FIXME: Keep vectorized titles later
 prepare_title <- function(title) {
-  paste(title, collapse = "")
+  n_title <- length(title)
+  if (n_title == 0) {
+    title
+  } else if (grepl("^[[]", title[[n_title]])) {
+    paste0(paste(title[-n_title], collapse = "$"), title[[n_title]])
+  } else {
+    paste(title, collapse = "$")
+  }
 }
