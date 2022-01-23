@@ -45,7 +45,11 @@ get_pillar_type <- function(x) {
 
 #' @export
 format.pillar_type <- function(x, width = NULL, ...) {
-  format_type_sum(x[[1]], width)
+  out <- format_type_sum(x[[1]], width)
+  if (!is.null(width) && get_extent(out) > width) {
+    out <- str_trunc(out, width)
+  }
+  out
 }
 
 format_full_pillar_type <- function(x) {
