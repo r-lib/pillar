@@ -267,7 +267,10 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
     # Use true width
     true_width <- formatted$max_extent
-    stopifnot(true_width <= width)
+    if (true_width > width) {
+      formatted <- str_trunc(formatted)
+      true_width <- width
+    }
 
     return(list(tiers = used_tier - 1L, width = true_width))
   }
