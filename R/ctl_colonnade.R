@@ -226,7 +226,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       } else {
         extra <- paste0("[", min(extra), ":", max(extra), "]")
       }
-      x_extra <- set_names(list(x[1,]), extra)
+      x_extra <- set_names(list(x[1, ]), extra)
     } else {
       extra <- tick_if_needed(extra)
       x_extra <- tick_names_if_needed(x)
