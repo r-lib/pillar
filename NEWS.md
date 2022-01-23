@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.4.9004
+
+- If some but not all sub-columns of a data frame or matrix column are shown, the names and types of the remaining columns are displayed in the footer (#365, #444).
+- Fix corner case for display of packed columns (#443).
+- `num(fixed_exponent = ...)` is now represented with the fixed exponent in the pillar header, and in the title in ggplot2 (#307).
+- `tbl_format_setup()` gains `focus` argument that expects a character vector of column names. Focus columns are moved to the front and separated from the main columns by a subtle vertical line (#384).
+- New `scale_x_num()` and `scale_y_num()`. If a column created with `num()` is used in a ggplot, the x and y scale will be formatted automatically according to to the specification (#400, #404).
+
+
 # pillar 1.6.4.9003
 
 - Reworked formatting routine, now using an event-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space if space is limited has slightly improved (#435).
