@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9004</span>
       </span>
     </div>
 
@@ -72,6 +72,16 @@
       <small>Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.6.4.9004" id="pillar-1649004">pillar 1.6.4.9004<a class="anchor" aria-label="anchor" href="#pillar-1649004"></a></h2>
+<ul><li>If some but not all sub-columns of a data frame or matrix column are shown, the names and types of the remaining columns are displayed in the footer (<a href="https://github.com/r-lib/pillar/issues/365" class="external-link">#365</a>, <a href="https://github.com/r-lib/pillar/issues/444" class="external-link">#444</a>).</li>
+<li>Fix corner case for display of packed columns (<a href="https://github.com/r-lib/pillar/issues/443" class="external-link">#443</a>).</li>
+<li>
+<code>num(fixed_exponent = ...)</code> is now represented with the fixed exponent in the pillar header, and in the title in ggplot2 (<a href="https://github.com/r-lib/pillar/issues/307" class="external-link">#307</a>).</li>
+<li>
+<code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> gains <code>focus</code> argument that expects a character vector of column names. Focus columns are moved to the front and separated from the main columns by a subtle vertical line (<a href="https://github.com/r-lib/pillar/issues/384" class="external-link">#384</a>).</li>
+<li>New <code><a href="../reference/scale_x_num.html">scale_x_num()</a></code> and <code><a href="../reference/scale_x_num.html">scale_y_num()</a></code>. If a column created with <code><a href="../reference/num.html">num()</a></code> is used in a ggplot, the x and y scale will be formatted automatically according to to the specification (<a href="https://github.com/r-lib/pillar/issues/400" class="external-link">#400</a>, <a href="https://github.com/r-lib/pillar/issues/404" class="external-link">#404</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.4.9003" id="pillar-1649003">pillar 1.6.4.9003<a class="anchor" aria-label="anchor" href="#pillar-1649003"></a></h2>
 <ul><li>Reworked formatting routine, now using an event-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space if space is limited has slightly improved (<a href="https://github.com/r-lib/pillar/issues/435" class="external-link">#435</a>).</li>
