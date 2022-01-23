@@ -17,14 +17,14 @@ local_override_type_sum <- function(frame = caller_env()) {
       as_override_type_sum_asis(NextMethod())
     },
     type_sum.override_type_sum_custom = function(x, ...) {
-      structure("SC", class = "override_format_type_sum")
+      structure("VeryLong", class = "override_format_type_sum")
     },
     # Needed for head()
     `[.override_type_sum_custom` = function(x, ...) {
       as_override_type_sum_custom(NextMethod())
     },
     format_type_sum.override_format_type_sum = function(x, ...) {
-      "SC"
+      "VeryLong"
     }
   )
 }
