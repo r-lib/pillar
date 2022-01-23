@@ -29,7 +29,7 @@
       [90m9[39m    [31mNA[39m    
       
       $extra_cols
-      named list()
+      list()
       
     Code
       with_options(pillar.subtle_num = TRUE, print(xf()))
@@ -48,7 +48,7 @@
       [90m9[39m    [31mNA[39m    
       
       $extra_cols
-      named list()
+      list()
       
     Code
       with_options(pillar.subtle = FALSE, print(xf()))
@@ -67,7 +67,7 @@
       9    [31mNA[39m    
       
       $extra_cols
-      named list()
+      list()
       
     Code
       with_options(pillar.neg = FALSE, print(xf()))
@@ -86,7 +86,7 @@
       [90m9[39m    [31mNA[39m    
       
       $extra_cols
-      named list()
+      list()
       
     Code
       with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf()))
@@ -105,7 +105,7 @@
       9    [31mNA[39m    
       
       $extra_cols
-      named list()
+      list()
       
     Code
       with_options(pillar.bold = TRUE, print(xf()))
@@ -124,7 +124,7 @@
       [90m9[39m    [31mNA[39m    
       
       $extra_cols
-      named list()
+      list()
       
 
 ---
@@ -138,7 +138,7 @@
       [90m1[39m                  0
       
       $extra_cols
-      named list()
+      list()
       
 
 # focus columns
