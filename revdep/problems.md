@@ -1,205 +1,158 @@
-# crossmap
+# dplyr
 
 <details>
 
-* Version: 0.2.0
-* GitHub: https://github.com/rossellhayes/crossmap
-* Source code: https://github.com/cran/crossmap
-* Date/Publication: 2020-09-24 07:30:02 UTC
-* Number of recursive dependencies: 60
+* Version: 1.0.7
+* GitHub: https://github.com/tidyverse/dplyr
+* Source code: https://github.com/cran/dplyr
+* Date/Publication: 2021-06-18 23:20:01 UTC
+* Number of recursive dependencies: 78
 
-Run `cloud_details(, "crossmap")` for more info
+Run `cloud_details(, "dplyr")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking whether package ‘crossmap’ can be installed ... ERROR
+*   checking S3 generic/method consistency ... WARNING
     ```
-    Installation failed.
-    See ‘/tmp/workdir/crossmap/new/crossmap.Rcheck/00install.out’ for details.
-    ```
-
-## Newly fixed
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘crossmap’ ...
-** package ‘crossmap’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** byte-compile and prepare package for lazy loading
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘crossmap’ ...
-** package ‘crossmap’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-*** copying figures
-** building package indices
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (crossmap)
-
-
-```
-# intensegRid
-
-<details>
-
-* Version: 0.1.0
-* GitHub: https://github.com/KKulma/intensegRid
-* Source code: https://github.com/cran/intensegRid
-* Date/Publication: 2020-11-12 10:00:11 UTC
-* Number of recursive dependencies: 59
-
-Run `cloud_details(, "intensegRid")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      > library(testthat)
-      > library(intensegRid)
-      > 
-      > test_check("intensegRid")
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error (test-intensity.R:23:3): get_national_ci() works ──────────────────────
-      Error: ERROR: The status call is 500
-      Backtrace:
-          █
-       1. └─intensegRid::get_national_ci() test-intensity.R:23:2
-       2.   └─intensegRid:::get_data(call)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 49 ]
-      Error: Test failures
-      Execution halted
+    tbl_sum:
+      function(x, ...)
+    tbl_sum.grouped_df:
+      function(x)
+    
+    tbl_sum:
+      function(x, ...)
+    tbl_sum.rowwise_df:
+      function(x)
+    
+    See section ‘Generic functions and methods’ in the ‘Writing R
+    Extensions’ manual.
     ```
 
 ## In both
 
-*   checking dependencies in R code ... NOTE
+*   checking data for non-ASCII characters ... NOTE
     ```
-    Namespace in Imports field not imported from: ‘purrr’
-      All declared Imports should be used.
+      Note: found 4 marked UTF-8 strings
     ```
 
-# prt
+# pmdplyr
 
 <details>
 
-* Version: 0.1.2
-* GitHub: https://github.com/nbenn/prt
-* Source code: https://github.com/cran/prt
-* Date/Publication: 2020-09-29 13:40:02 UTC
-* Number of recursive dependencies: 62
+* Version: 0.3.3
+* GitHub: https://github.com/NickCH-K/pmdplyr
+* Source code: https://github.com/cran/pmdplyr
+* Date/Publication: 2020-05-30 07:30:02 UTC
+* Number of recursive dependencies: 110
 
-Run `cloud_details(, "prt")` for more info
+Run `cloud_details(, "pmdplyr")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking examples ... ERROR
+*   checking S3 generic/method consistency ... WARNING
     ```
-    Running examples in ‘prt-Ex.R’ failed
-    The error most likely occurred in:
+    tbl_sum:
+      function(x, ...)
+    tbl_sum.tbl_pb:
+      function(x)
     
-    > ### Name: print.prt
-    > ### Title: Printing prt
-    > ### Aliases: print.prt format.prt trunc_dt
-    > 
-    > ### ** Examples
-    > 
-    > cars <- as_prt(mtcars)
-    > 
-    > print(cars)
-    Error in x[[1L]][[1L]][["shaft_format"]] : subscript out of bounds
-    Calls: print ... format -> format.trunc_dt -> squeeze_dt -> add_empty_row
-    Execution halted
+    type_sum:
+      function(x, ...)
+    type_sum.tbl_pb:
+      function(x)
+    
+    See section ‘Generic functions and methods’ in the ‘Writing R
+    Extensions’ manual.
     ```
+
+# tibble
+
+<details>
+
+* Version: 3.1.2
+* GitHub: https://github.com/tidyverse/tibble
+* Source code: https://github.com/cran/tibble
+* Date/Publication: 2021-05-16 08:00:02 UTC
+* Number of recursive dependencies: 96
+
+Run `cloud_details(, "tibble")` for more info
+
+</details>
+
+## Newly broken
 
 *   checking tests ... ERROR
     ```
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      - "  成交日期 合同录入日期"
-      + "list(capital_format = c(\" \", \" \"), shaft_format = c(\"1\", \"2\", \"3\"))"
-      - "     <int>        <int>"
-      + "成交日期 合同录入日期"
-      - "1        1            4"
-      + "   <int>        <int>"
-      - "2        2            5"
-      + "       1            4"
-      - "3        3            6"
-      + "       2            5"
-      + "       3            6"
+       [9] "#   147"                  | "#   147"                  [8] 
+      [10] "#   more"                 | "#   more"                 [9] 
+      [11] "#   rows,"                | "#   rows,"                [10]
+      Backtrace:
+          ▆
+       1. └─tibble:::expect_output_file_rel(...) test-zzz-trunc-mat.R:51:2
+       2.   ├─withr::with_options(...) tests/testthat/helper-zzz.R:166:2
+       3.   │ └─base::force(code)
+       4.   ├─base::suppressWarnings(...)
+       5.   │ └─base::withCallingHandlers(...)
+       6.   └─testthat::expect_output_file(x, output_file(filename), update = TRUE)
       
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 257 ]
+      [ FAIL 1 | WARN 0 | SKIP 131 | PASS 1336 ]
       Error: Test failures
       Execution halted
     ```
 
-# ricu
+*   checking S3 generic/method consistency ... WARNING
+    ```
+    tbl_sum:
+      function(x, ...)
+    tbl_sum.tbl_df:
+      function(x)
+    
+    See section ‘Generic functions and methods’ in the ‘Writing R
+    Extensions’ manual.
+    ```
+
+# unpivotr
 
 <details>
 
-* Version: 0.1.3
-* GitHub: https://github.com/septic-tank/ricu
-* Source code: https://github.com/cran/ricu
-* Date/Publication: 2021-01-29 23:40:02 UTC
-* Number of recursive dependencies: 83
+* Version: 0.6.1
+* GitHub: https://github.com/nacnudus/unpivotr
+* Source code: https://github.com/cran/unpivotr
+* Date/Publication: 2020-08-03 22:50:02 UTC
+* Number of recursive dependencies: 82
 
-Run `cloud_details(, "ricu")` for more info
+Run `cloud_details(, "unpivotr")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking examples ... ERROR
+*   checking tests ... ERROR
     ```
-    Running examples in ‘ricu-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: change_id
-    > ### Title: Switch between id types
-    > ### Aliases: change_id upgrade_id downgrade_id upgrade_id.ts_tbl
-    > ###   upgrade_id.id_tbl downgrade_id.ts_tbl downgrade_id.id_tbl
-    > 
-    > ### ** Examples
-    > 
-    ...
-    + tbl <- mimic_demo$labevents
-    + dat <- load_difftime(tbl, itemid == 50809, c("charttime", "valuenum"))
-    + dat
-    + 
-    + change_id(dat, "icustay_id", tbl, keep_old_id = FALSE)
-    + }
-    Loading required package: mimic.demo
-    Error in x[[1L]][[1L]][["shaft_format"]] : subscript out of bounds
-    Calls: <Anonymous> ... format -> format.trunc_dt -> squeeze_dt -> add_empty_row
-    Execution halted
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+        1. ├─testthat::expect_true(...) test-tibble.R:24:2
+        2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+        4. ├─tibble::is_tibble(enhead(data_cells, col_headers$`1`, "ABOVE"))
+        5. ├─unpivotr::enhead(data_cells, col_headers$`1`, "ABOVE")
+        6. └─unpivotr:::enhead.data.frame(data_cells, col_headers$`1`, "ABOVE")
+        7.   ├─base::do.call(direction, list(data_cells, header_cells))
+        8.   └─unpivotr:::`up-ish`(...)
+        9.     └─unpivotr:::side_join(data_cells, header_cells, "up-left", drop)
+       10.       └─rlang::as_function(corner)
+       11.         └─base::get(x, envir = env, mode = "function")
+      
+      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 237 ]
+      Error: Test failures
+      Execution halted
     ```
 

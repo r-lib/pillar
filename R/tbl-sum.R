@@ -13,17 +13,20 @@
 #'
 #' @seealso [pillar::type_sum()]
 #' @param x Object to summarise.
+#' @param ... Unused, for extensibility.
 #' @export
-tbl_sum <- function(x) {
+tbl_sum <- function(x, ...) {
+  check_dots_empty()
+
   UseMethod("tbl_sum", x)
 }
 
 #' @export
-tbl_sum.default <- function(x) {
+tbl_sum.default <- function(x, ...) {
   c("Description" = obj_sum(x))
 }
 
 #' @export
-tbl_sum.tbl <- function(x) {
+tbl_sum.tbl <- function(x, ...) {
   c("A data frame" = dim_desc(x))
 }
