@@ -55,14 +55,20 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   on_extra_cols <- function(my_extra_cols) {
     # print(extra_cols)
 
-    # FIXME: Show for all levels
     out <- pmap(my_extra_cols, function(x, title, cols) {
       out <- as.list(x)[cols]
-      if (!is.null(title)) {
+      if (is.null(title)) {
+        return(out)
+      }
+
+      if (length(out) > 1) {
         title_empty <- rep_along(title, "")
         new_names <- paste0(paste0(title_empty, "$", collapse = ""), names(out))
         new_names[[1]] <- paste0(paste0(title, "$", collapse = ""), names(out)[[1]])
         names(out) <- new_names
+      } else {
+        # Also account for the case of packed matrices here
+        names(out) <- prepare_title(c(title, names(out)))
       }
       out
     })
@@ -214,7 +220,19 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   # We emit early, this means that top-level columns are emitted before
   # nested columns. We reverse in the callback.
   if (length(extra) > 0) {
-    cb$on_extra_cols(tick_names_if_needed(x), title, tick_if_needed(extra))
+    if (is.numeric(extra)) {
+      if (length(extra) == 1) {
+        extra <- paste0("[", extra, "]")
+      } else {
+        extra <- paste0("[", min(extra), ":", max(extra), "]")
+      }
+      x_extra <- set_names(list(x[1,]), extra)
+    } else {
+      extra <- tick_if_needed(extra)
+      x_extra <- tick_names_if_needed(x)
+    }
+
+    cb$on_extra_cols(x_extra, title, extra)
   }
 
   if (length(pillar_list) == 0) {
@@ -291,7 +309,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       cb,
       c(title, tick_if_needed(names(x)[[col]])),
       pillar_list[[col]],
-      c(parent_col_idx, col)
+      c(parent_col_idx, if (!is.null(names(x))) col)
     )
     "!!!!!DEBUG used"
 

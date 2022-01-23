@@ -1023,8 +1023,6 @@
       # ... with 1 more variable: `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 68)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1036,11 +1034,9 @@
       2             2.23 b                B                     2 b       
       3             3.23 c                C                     3 c       
       <tbl_format_footer(setup)>
-      # ... with 2 more variables: `col 01`$`col 04`$ <NULL>, NA <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 69)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1052,11 +1048,9 @@
       2             2.23 b                 B                     2 b       
       3             3.23 c                 C                     3 c       
       <tbl_format_footer(setup)>
-      # ... with 2 more variables: `col 01`$`col 04`$ <NULL>, NA <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 70)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1068,11 +1062,9 @@
       2             2.23 b                 B                     2 b       
       3             3.23 c                 C                     3 c       
       <tbl_format_footer(setup)>
-      # ... with 2 more variables: `col 01`$`col 04`$ <NULL>, NA <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 71)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1084,11 +1076,9 @@
       2             2.23 b                 B                     2 b       
       3             3.23 c                 C                     3 c       
       <tbl_format_footer(setup)>
-      # ... with 2 more variables: `col 01`$`col 04`$ <NULL>, NA <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 72)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1100,11 +1090,9 @@
       2             2.23 b                 B                     2 b       
       3             3.23 c                 C                     3 c       
       <tbl_format_footer(setup)>
-      # ... with 2 more variables: `col 01`$`col 04`$ <NULL>, NA <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 73)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1116,11 +1104,9 @@
       2             2.23 b                 B                     2 b       
       3             3.23 c                 C                     3 c       
       <tbl_format_footer(setup)>
-      # ... with 2 more variables: `col 01`$`col 04`$ <NULL>, NA <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 74)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1132,12 +1118,9 @@
       2             2.23 b                 B                     2 b       
       3             3.23 c                 C                     3 c       
       <tbl_format_footer(setup)>
-      # ... with 2 more variables: `col 01`$`col 04`$ <NULL>, NA <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 75)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1149,12 +1132,9 @@
       2             2.23 b                 B                     2     5 b       
       3             3.23 c                 C                     3     6 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`$ <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 76)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1166,12 +1146,9 @@
       2             2.23 b                 B                     2     5 b       
       3             3.23 c                 C                     3     6 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`$ <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 77)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1183,12 +1160,9 @@
       2             2.23 b                 B                     2     5 b       
       3             3.23 c                 C                     3     6 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`$ <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 78)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1200,12 +1174,9 @@
       2             2.23 b                 B                     2     5 b       
       3             3.23 c                 C                     3     6 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`$ <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 79)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1217,12 +1188,9 @@
       2             2.23 b                 B                     2     5 b       
       3             3.23 c                 C                     3     6 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`$ <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 80)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1234,13 +1202,9 @@
       2             2.23 b                 B                     2     5 b       
       3             3.23 c                 C                     3     6 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`$ <NULL>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 81)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1259,10 +1223,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 82)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1281,10 +1241,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 83)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1303,10 +1259,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 84)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1325,10 +1277,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 85)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1347,10 +1295,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 86)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1369,10 +1313,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 87)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1391,10 +1331,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 88)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1413,10 +1349,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 89)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
@@ -1435,10 +1367,6 @@
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = Inf)
-    Warning <simpleWarning>
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
-      number of items to replace is not a multiple of replacement length
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
