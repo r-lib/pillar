@@ -1,6 +1,7 @@
 # output test
 
     Code
+      options(width = 100)
       tbl_format_setup(x, width = 4)
     Output
       <pillar_tbl_format_setup>
@@ -1028,13 +1029,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col ~` $`col 03` $`col 04`[,1] `col 05`
-                   <dbl> <chr>            <chr>             <int> <ord>   
-      1             1.23 a                A                     1 a       
-      2             2.23 b                B                     2 b       
-      3             3.23 c                C                     3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` `col 05`
+                   <dbl> <chr>             <chr>     <ord>   
+      1             1.23 a                 A         a       
+      2             2.23 b                 B         b       
+      3             3.23 c                 C         c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
+      # ... with 1 more variable: `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 69)
     Output
@@ -1042,13 +1043,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] `col 05`
-                   <dbl> <chr>             <chr>             <int> <ord>   
-      1             1.23 a                 A                     1 a       
-      2             2.23 b                 B                     2 b       
-      3             3.23 c                 C                     3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` `col 05`
+                   <dbl> <chr>             <chr>     <ord>   
+      1             1.23 a                 A         a       
+      2             2.23 b                 B         b       
+      3             3.23 c                 C         c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
+      # ... with 1 more variable: `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 70)
     Output
@@ -1056,11 +1057,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] `col 05`
-                   <dbl> <chr>             <chr>             <int> <ord>   
-      1             1.23 a                 A                     1 a       
-      2             2.23 b                 B                     2 b       
-      3             3.23 c                 C                     3 c       
+        column_zero_zero `col 01`$`col ~` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>            <chr>               <int> <ord>   
+      1             1.23 a                A                       1 a       
+      2             2.23 b                B                       2 b       
+      3             3.23 c                C                       3 c       
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
@@ -1070,11 +1071,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] `col 05`
-                   <dbl> <chr>             <chr>             <int> <ord>   
-      1             1.23 a                 A                     1 a       
-      2             2.23 b                 B                     2 b       
-      3             3.23 c                 C                     3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
@@ -1084,11 +1085,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] `col 05`
-                   <dbl> <chr>             <chr>             <int> <ord>   
-      1             1.23 a                 A                     1 a       
-      2             2.23 b                 B                     2 b       
-      3             3.23 c                 C                     3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
@@ -1098,11 +1099,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] `col 05`
-                   <dbl> <chr>             <chr>             <int> <ord>   
-      1             1.23 a                 A                     1 a       
-      2             2.23 b                 B                     2 b       
-      3             3.23 c                 C                     3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
@@ -1112,11 +1113,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] `col 05`
-                   <dbl> <chr>             <chr>             <int> <ord>   
-      1             1.23 a                 A                     1 a       
-      2             2.23 b                 B                     2 b       
-      3             3.23 c                 C                     3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
@@ -1126,13 +1127,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] `col 05`
-                   <dbl> <chr>             <chr>             <int> <int> <ord>   
-      1             1.23 a                 A                     1     4 a       
-      2             2.23 b                 B                     2     5 b       
-      3             3.23 c                 C                     3     6 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 76)
     Output
@@ -1140,13 +1141,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] `col 05`
-                   <dbl> <chr>             <chr>             <int> <int> <ord>   
-      1             1.23 a                 A                     1     4 a       
-      2             2.23 b                 B                     2     5 b       
-      3             3.23 c                 C                     3     6 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 77)
     Output
@@ -1154,13 +1155,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] `col 05`
-                   <dbl> <chr>             <chr>             <int> <int> <ord>   
-      1             1.23 a                 A                     1     4 a       
-      2             2.23 b                 B                     2     5 b       
-      3             3.23 c                 C                     3     6 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 78)
     Output
@@ -1168,13 +1169,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] `col 05`
-                   <dbl> <chr>             <chr>             <int> <int> <ord>   
-      1             1.23 a                 A                     1     4 a       
-      2             2.23 b                 B                     2     5 b       
-      3             3.23 c                 C                     3     6 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] `col 05`
+                   <dbl> <chr>             <chr>               <int> <ord>   
+      1             1.23 a                 A                       1 a       
+      2             2.23 b                 B                       2 b       
+      3             3.23 c                 C                       3 c       
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
+      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 79)
     Output
@@ -1182,11 +1183,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] `col 05`
-                   <dbl> <chr>             <chr>             <int> <int> <ord>   
-      1             1.23 a                 A                     1     4 a       
-      2             2.23 b                 B                     2     5 b       
-      3             3.23 c                 C                     3     6 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
@@ -1196,11 +1197,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] `col 05`
-                   <dbl> <chr>             <chr>             <int> <int> <ord>   
-      1             1.23 a                 A                     1     4 a       
-      2             2.23 b                 B                     2     5 b       
-      3             3.23 c                 C                     3     6 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
@@ -1210,17 +1211,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 82)
     Output
@@ -1228,17 +1225,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 83)
     Output
@@ -1246,17 +1239,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 84)
     Output
@@ -1264,17 +1253,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 85)
     Output
@@ -1282,17 +1267,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 86)
     Output
@@ -1300,17 +1281,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4 a       
+      2             2.23 b                 B                       2       5 b       
+      3             3.23 c                 C                       3       6 c       
       <tbl_format_footer(setup)>
+      # ... with 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 87)
     Output
@@ -1318,16 +1295,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4       7 a       
+      2             2.23 b                 B                       2       5       8 b       
+      3             3.23 c                 C                       3       6       9 c       
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 88)
@@ -1336,16 +1308,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4       7 a       
+      2             2.23 b                 B                       2       5       8 b       
+      3             3.23 c                 C                       3       6       9 c       
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = 89)
@@ -1354,16 +1321,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4       7 a       
+      2             2.23 b                 B                       2       5       8 b       
+      3             3.23 c                 C                       3       6       9 c       
       <tbl_format_footer(setup)>
     Code
       tbl_format_setup(x, width = Inf)
@@ -1372,16 +1334,11 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,1] $[,2] $[,3]
-                   <dbl> <chr>             <chr>             <int> <int> <int>
-      1             1.23 a                 A                     1     4     7
-      2             2.23 b                 B                     2     5     8
-      3             3.23 c                 C                     3     6     9
-        `col 05`
-        <ord>   
-      1 a       
-      2 b       
-      3 c       
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] `col 05`
+                   <dbl> <chr>             <chr>               <int>   <int>   <int> <ord>   
+      1             1.23 a                 A                       1       4       7 a       
+      2             2.23 b                 B                       2       5       8 b       
+      3             3.23 c                 C                       3       6       9 c       
       <tbl_format_footer(setup)>
 
 # tbl_format_setup() results
