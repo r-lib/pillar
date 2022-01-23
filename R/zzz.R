@@ -34,6 +34,7 @@
 #' @importFrom vctrs vec_restore
 #' @importFrom vctrs vec_size
 #' @importFrom vctrs vec_slice
+#' @importFrom crayon black
 NULL
 
 # nolint start
