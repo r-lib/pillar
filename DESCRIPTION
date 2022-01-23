@@ -19,6 +19,7 @@ URL: https://pillar.r-lib.org/, https://github.com/r-lib/pillar
 BugReports: https://github.com/r-lib/pillar/issues
 Imports: 
     cli (>= 2.3.0),
+    crayon,
     ellipsis (>= 0.3.2),
     fansi,
     glue,
