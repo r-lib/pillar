@@ -59,7 +59,10 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     out <- pmap(my_extra_cols, function(x, title, cols) {
       out <- as.list(x)[cols]
       if (!is.null(title)) {
-        names(out) <- paste0(paste0(title, "$", collapse = ""), names(out))
+        title_empty <- rep_along(title, "")
+        new_names <- paste0(paste0(title_empty, "$", collapse = ""), names(out))
+        new_names[[1]] <- paste0(paste0(title, "$", collapse = ""), names(out)[[1]])
+        names(out) <- new_names
       }
       out
     })
