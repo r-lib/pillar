@@ -15,7 +15,8 @@ style_type <- function(x) {
 #' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples
-#' format(new_pillar_type(iris$Species))
+#' format(new_pillar_type("a"))
+#' format(new_pillar_type(factor("a")))
 new_pillar_type <- function(x, ...) {
   "!!!!DEBUG new_pillar_type(`v(class(x))`)"
   if (!missing(...)) {

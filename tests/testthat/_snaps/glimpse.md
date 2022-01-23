@@ -116,20 +116,18 @@
       $ gear <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4~
       $ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2~
     Code
-      glimpse(as_tbl(iris), width = 70L)
+      glimpse(as_tbl(trees), width = 70L)
     Output
-      Rows: 150
-      Columns: 5
-      $ Sepal.Length <dbl> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.~
-      $ Sepal.Width  <dbl> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.~
-      $ Petal.Length <dbl> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.~
-      $ Petal.Width  <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.~
-      $ Species      <fct> setosa, setosa, setosa, setosa, setosa, setosa,~
+      Rows: 31
+      Columns: 3
+      $ Girth  <dbl> 8.3, 8.6, 8.8, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11~
+      $ Height <dbl> 70, 65, 63, 72, 81, 83, 66, 75, 80, 75, 79, 76, 76, 6~
+      $ Volume <dbl> 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6,~
     Code
       # No columns
-      glimpse(as_tbl(iris[integer()]), width = 70L)
+      glimpse(as_tbl(trees[integer()]), width = 70L)
     Output
-      Rows: 150
+      Rows: 31
       Columns: 0
     Code
       # Non-syntactic names
@@ -190,33 +188,31 @@
     Output
        num 5
     Code
-      iris2 <- as_unknown_rows(iris)
-      glimpse(iris2, width = 70L)
+      trees2 <- as_unknown_rows(trees)
+      glimpse(trees2, width = 70L)
     Output
       Rows: ??
-      Columns: 5
-      $ Sepal.Length <dbl> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.~
-      $ Sepal.Width  <dbl> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.~
-      $ Petal.Length <dbl> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.~
-      $ Petal.Width  <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.~
-      $ Species      <fct> setosa, setosa, setosa, setosa, setosa, setosa,~
+      Columns: 3
+      $ Girth  <dbl> 8.3, 8.6, 8.8, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11~
+      $ Height <dbl> 70, 65, 63, 72, 81, 83, 66, 75, 80, 75, 79, 76, 76, 6~
+      $ Volume <dbl> 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6,~
     Code
-      species <- unique(iris$Species)
-      data <- unname(split(iris, iris$Species))
-      nested_iris_df <- tibble::tibble(species, data)
-      glimpse(nested_iris_df, width = 70L)
+      cyl <- unique(mtcars$cyl)
+      data <- unname(split(mtcars, mtcars$cyl))
+      nested_mtcars_df <- tibble::tibble(cyl, data)
+      glimpse(nested_mtcars_df, width = 70L)
     Output
       Rows: 3
       Columns: 2
-      $ species <fct> setosa, versicolor, virginica
-      $ data    <list> [<data.frame[50 x 5]>], [<data.frame[50 x 5]>], [<da~
+      $ cyl  <dbl> 6, 4, 8
+      $ data <list> [<data.frame[11 x 11]>], [<data.frame[7 x 11]>], [<data~
     Code
       data <- map(data, as_tbl)
-      nested_iris_tbl <- tibble::tibble(species, data)
-      glimpse(nested_iris_tbl, width = 70L)
+      nested_mtcars_tbl <- tibble::tibble(cyl, data)
+      glimpse(nested_mtcars_tbl, width = 70L)
     Output
       Rows: 3
       Columns: 2
-      $ species <fct> setosa, versicolor, virginica
-      $ data    <list> [<tbl[50 x 5]>], [<tbl[50 x 5]>], [<tbl[50 x 5]>]
+      $ cyl  <dbl> 6, 4, 8
+      $ data <list> [<tbl[11 x 11]>], [<tbl[7 x 11]>], [<tbl[14 x 11]>]
 

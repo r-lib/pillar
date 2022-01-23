@@ -15,5 +15,5 @@ new_pillar_title(x, ...)
 Call \code{\link[=format]{format()}} on the result to render column titles.
 }
 \examples{
-format(new_pillar_title(names(iris)))
+format(new_pillar_title(names(trees)))
 }

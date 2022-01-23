@@ -8,7 +8,7 @@ style_title <- style_bold
 #' @inheritParams ellipsis::dots_empty
 #' @export
 #' @examples
-#' format(new_pillar_title(names(iris)))
+#' format(new_pillar_title(names(trees)))
 new_pillar_title <- function(x, ...) {
   "!!!!DEBUG new_pillar_title(`v(x)`)"
   if (!missing(...)) {

@@ -3,6 +3,6 @@ test_that("output test", {
     pillar(as.list(1:3))
     pillar(list(1:3, NULL))
     pillar(add_special(list(1:3)))
-    pillar(list(iris), width = 10)
+    pillar(list(trees), width = 10)
   })
 })
