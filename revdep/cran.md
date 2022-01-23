@@ -1,133 +1,49 @@
 ## revdepcheck results
 
-We checked 2783 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 21 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 3 new problems
- * We failed to check 109 packages
+ * We saw 7 new problems
+ * We failed to check 13 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* intensegRid
-  checking tests ... ERROR
-
-* prt
+* epocakir
   checking examples ... ERROR
-  checking tests ... ERROR
+  checking re-building of vignette outputs ... WARNING
 
-* ricu
+* healthyR.ai
+  checking loading without being on the library search path ... WARNING
+
+* jstor
+  checking examples ... ERROR
+
+* RNeXML
+  checking whether the namespace can be unloaded cleanly ... WARNING
+
+* tealeaves
+  checking examples ... ERROR
+
+* TidyDensity
+  checking loading without being on the library search path ... WARNING
+
+* wrappedtools
   checking examples ... ERROR
 
 ### Failed to check
 
-* AeRobiology            (NA)
-* BaseSet                (NA)
-* bayesdfa               (NA)
-* BED                    (NA)
-* BIS                    (NA)
-* BNPdensity             (NA)
-* butcher                (NA)
-* CausalImpact           (NA)
-* CausalQueries          (NA)
-* CB2                    (NA)
-* cbar                   (NA)
-* CityWaterBalance       (NA)
-* ClusterBootstrap       (NA)
-* CohortPlat             (NA)
-* Conigrave              (NA)
-* CoordinateCleaner      (NA)
-* CovidMutations         (NA)
-* crossmap               (NA)
-* CTP                    (NA)
-* ctsem                  (NA)
-* DCPO                   (NA)
-* DecisionAnalysis       (NA)
-* DeclareDesign          (NA)
-* DepthProc              (NA)
-* DescrTab2              (NA)
-* DevTreatRules          (NA)
-* diceR                  (NA)
-* Distance               (NA)
-* DiversityOccupancy     (NA)
-* DMCfun                 (NA)
-* DSAIDE                 (NA)
-* DSpoty                 (NA)
-* DTAT                   (NA)
-* DynNom                 (NA)
-* Ecfun                  (NA)
-* EpiCurve               (NA)
-* EpiNow2                (NA)
-* ERSA                   (NA)
-* EvaluateCore           (NA)
-* EValue                 (NA)
-* FLAME                  (NA)
-* FunnelPlotR            (NA)
-* gastempt               (NA)
-* GeneBook               (NA)
-* GenomicMating          (NA)
-* GGally                 (NA)
-* glmmfields             (NA)
-* GOxploreR              (NA)
-* GuessCompx             (NA)
-* HierDpart              (NA)
-* IATscores              (NA)
-* IBMPopSim              (NA)
-* IETD                   (NA)
-* IMP                    (NA)
-* IPDfromKM              (NA)
-* ISRaD                  (NA)
-* JamendoR               (NA)
-* KCSNBShiny             (NA)
-* LBSPR                  (NA)
-* LexisNexisTools        (NA)
-* LifeInsuranceContracts (NA)
-* LLSR                   (NA)
-* LocFDRPois             (NA)
-* MachineShop            (NA)
-* Mapinguari             (NA)
-* MarketMatching         (NA)
-* MatchThem              (NA)
-* MazamaLocationUtils    (NA)
-* MBNMAdose              (NA)
-* metagam                (NA)
-* MetaIntegrator         (NA)
-* Momocs                 (NA)
-* MtreeRing              (NA)
-* multinma               (NA)
-* MXM                    (NA)
-* NBShiny3               (NA)
-* Neighboot              (NA)
-* NPMLEmix               (NA)
-* OTrecod                (NA)
-* OutliersO3             (NA)
-* PakPMICS2018hh         (NA)
-* pencal                 (NA)
-* PhenotypeSimulator     (NA)
-* phylopath              (NA)
-* PKNCA                  (NA)
-* Plasmidprofiler        (NA)
-* PLNmodels              (NA)
-* PML                    (NA)
-* PREPShiny              (NA)
-* R2019nCoV              (NA)
-* RadialVisGadgets       (NA)
-* Relectoral             (NA)
-* Rfssa                  (NA)
-* rmdcev                 (NA)
-* RNHANES                (NA)
-* RSSL                   (NA)
-* rstap                  (NA)
-* Rthingsboard           (NA)
-* SanFranBeachWater      (NA)
-* SDLfilter              (NA)
-* SEERaBomb              (NA)
-* SEIRfansy              (NA)
-* Seurat                 (NA)
-* ShinyItemAnalysis      (NA)
-* SUNGEO                 (NA)
-* SwimmeR                (NA)
-* SWMPrExtension         (NA)
-* trackr                 (NA)
-* wrswoR                 (NA)
+* accept             (NA)
+* bayesmodels        (NA)
+* cbar               (NA)
+* diveR              (NA)
+* geocmeans          (NA)
+* ImputeRobust       (NA)
+* lidaRtRee          (NA)
+* loon.ggplot        (NA)
+* loon.shiny         (NA)
+* loon.tourr         (NA)
+* MarketMatching     (NA)
+* referenceIntervals (NA)
+* vivid              (NA)
