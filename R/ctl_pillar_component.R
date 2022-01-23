@@ -71,7 +71,11 @@ pillar_format_parts_2 <- function(x, width) {
   flat <- unlist(formatted)
   extent <- get_extent(flat)
   max_extent <- max(extent)
-  aligned <- align_impl(flat, min(width, max_extent), align, " ", extent)
+  if (max_extent > width) {
+    flat <- str_trunc(flat, width)
+    max_extent <- width
+  }
+  aligned <- align_impl(flat, max_extent, align, " ", extent)
 
   list(max_extent = max_extent, aligned = aligned, components = names(x))
 }
