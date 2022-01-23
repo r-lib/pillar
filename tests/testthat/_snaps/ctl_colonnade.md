@@ -465,6 +465,11 @@
 
     Code
       ctl_colonnade(x, width = 30)
+    Warning <simpleWarning>
+      is.na() applied to non-(list or vector) of type 'NULL'
+      is.na() applied to non-(list or vector) of type 'NULL'
+      is.na() applied to non-(list or vector) of type 'NULL'
+      is.na() applied to non-(list or vector) of type 'NULL'
     Output
       $body
             a b[,1]  [,2]
@@ -481,6 +486,11 @@
 
     Code
       ctl_colonnade(x, width = 30)
+    Warning <simpleWarning>
+      is.na() applied to non-(list or vector) of type 'NULL'
+      is.na() applied to non-(list or vector) of type 'NULL'
+      is.na() applied to non-(list or vector) of type 'NULL'
+      is.na() applied to non-(list or vector) of type 'NULL'
     Output
       $body
             a b[,"c"] [,"d"]
