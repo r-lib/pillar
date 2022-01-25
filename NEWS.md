@@ -2,54 +2,38 @@
 
 # pillar 1.6.5
 
-- Same as previous version.
+## Breaking changes
 
+- New `ctl_new_pillar_list()`, supersedes `ctl_new_compound_pillar()` (#433).
 
-# pillar 1.6.4.9005
-
-- Work around clash between cli and RNeXML.
-- Use eager registration via `NAMESPACE` for own methods for classes from other packages.
-- Protect against `format_type_sum()` returning strings too wide, e.g. from the units package.
-
-
-# pillar 1.6.4.9004
+## Features
 
 - If some but not all sub-columns of a data frame or matrix column are shown, the names and types of the remaining columns are displayed in the footer (#365, #444).
-- Fix corner case for display of packed columns (#443).
 - `num(fixed_exponent = ...)` is now represented with the fixed exponent in the pillar header, and in the title in ggplot2 (#307).
 - `tbl_format_setup()` gains `focus` argument that expects a character vector of column names. Focus columns are moved to the front and separated from the main columns by a subtle vertical line (#384).
 - New `scale_x_num()` and `scale_y_num()`. If a column created with `num()` is used in a ggplot, the x and y scale will be formatted automatically according to to the specification (#400, #404).
-
-
-# pillar 1.6.4.9003
-
-- Reworked formatting routine, now using an event-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space if space is limited has slightly improved (#435).
-- New `ctl_new_pillar_list()`, supersedes `ctl_new_compound_pillar()` (#433).
-- Fixed some cases for combinations of printed width and `getOption("width")` (#432).
-- Remove dependency on the crayon package (#233, #406).
-
-
-# pillar 1.6.4.9002
-
 - List columns omit size information if horizontal space is insufficient (#392).
-- Extra columns in footer show backticks again if they are non-syntactic (#393).
 - If the column title of a backticked column is abbreviated, the trailing backtick is still printed (#391).
 - `new_pillar_shaft_simple()` gains `short_formatted` argument that contains the data to be used if horizontal space is insufficient (#389).
 - Default `obj_sum()` method returns abbreviation in attribute of return value (#390).
-- Use snapshot variants, requires testthat >= 3.1.1 (#387).
-- Breaking: packed columns are no longer distributed over multiple tiers (#386).
-- `?num` and `?char` now point to tibble (#382).
-- Replace internal `"pillar_vertical"` class with `glue::as_glue()` (#279).
 
+## Bug fixes
 
-# pillar 1.6.4.9001
-
+- Extra columns in footer show backticks again if they are non-syntactic (#393).
+- Fixed some cases for combinations of printed width and `getOption("width")` (#432).
 - Fix support for `nanotime::nanotime()` classes (#378, #380).
 
+## Documentation
 
-# pillar 1.6.4.9000
+- `?num` and `?char` now point to tibble (#382).
 
-- Same as previous version.
+## Internal
+
+- Use eager registration via `NAMESPACE` for own methods for classes from other packages.
+- Reworked formatting routine, now using a visitor-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space (in the case of limited space) has slightly improved (#435).
+- Prepared removal of dependency on the crayon package (#233, #406).
+- Use snapshot variants, requires testthat >= 3.1.1 (#387).
+- Replace internal `"pillar_vertical"` class with `glue::as_glue()` (#279).
 
 
 # pillar 1.6.4
