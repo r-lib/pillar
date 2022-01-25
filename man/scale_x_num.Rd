@@ -109,6 +109,8 @@ transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
 \item{rescaler, super}{Must remain \code{NULL}.}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 This scale is used by default in ggplot2 with columns created with \code{\link[=num]{num()}}.
 }
 \keyword{internal}

@@ -1,5 +1,8 @@
 #' Scale that supports formatted numbers
 #'
+#' @description
+#'  `r lifecycle::badge("experimental")`
+#'
 #' This scale is used by default in ggplot2 with columns created with [num()].
 #'
 #' @inheritDotParams ggplot2::continuous_scale
