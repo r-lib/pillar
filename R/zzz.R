@@ -45,11 +45,6 @@ NULL
   s3_register("scales::rescale", "pillar_num")
   s3_register("ggplot2::scale_type", "pillar_num")
   s3_register("knitr::knit_print", "pillar_squeezed_colonnade")
-  s3_register("bit64::pillar_shaft", "integer64")
-  s3_register("survival::pillar_shaft", "Surv")
-  s3_register("survival::type_sum", "Surv")
-  s3_register("survival::pillar_shaft", "Surv2")
-  s3_register("survival::type_sum", "Surv2")
 
   assign_crayon_styles()
 

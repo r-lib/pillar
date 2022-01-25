@@ -228,7 +228,7 @@ pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, ext
   )
 }
 
-# registered in .onLoad()
+#' @export
 pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
   if (class(x)[[1]] != "integer64") {
     return(NextMethod())
@@ -237,22 +237,22 @@ pillar_shaft.integer64 <- function(x, ..., sigfig = NULL) {
   pillar_shaft_number(x, sigfig, digits = NULL, notation = NULL, fixed_exponent = NULL, extra_sigfig = NULL)
 }
 
-# registered in .onLoad()
+#' @export
 pillar_shaft.Surv <- function(x, ...) {
   new_pillar_shaft_simple(format(x), align = "right")
 }
 
-# registered in .onLoad()
+#' @export
 pillar_shaft.Surv2 <- function(x, ...) {
   new_pillar_shaft_simple(format(x), align = "right")
 }
 
-# registered in .onLoad()
+#' @export
 type_sum.Surv <- function(x) {
   "Surv"
 }
 
-# registered in .onLoad()
+#' @export
 type_sum.Surv2 <- function(x) {
   "Surv2"
 }
