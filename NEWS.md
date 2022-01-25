@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.5
+
+- Same as previous version.
+
+
 # pillar 1.6.4.9005
 
 - Work around clash between cli and RNeXML.
