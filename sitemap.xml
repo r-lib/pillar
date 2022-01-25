@@ -13,9 +13,6 @@
     <loc>https://pillar.r-lib.org/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/TODO.html</loc>
-  </url>
-  <url>
     <loc>https://pillar.r-lib.org/articles/debugme.html</loc>
   </url>
   <url>
@@ -119,6 +116,9 @@
   </url>
   <url>
     <loc>https://pillar.r-lib.org/reference/pillar_shaft.html</loc>
+  </url>
+  <url>
+    <loc>https://pillar.r-lib.org/reference/scale_x_num.html</loc>
   </url>
   <url>
     <loc>https://pillar.r-lib.org/reference/squeeze.html</loc>

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.5</span>
       </span>
     </div>
 
@@ -90,15 +90,15 @@
 
       
 
-      </header><script src="printing_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="printing_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="printing_files/d3-3.3.8/d3.min.js"></script><script src="printing_files/dagre-0.4.0/dagre-d3.min.js"></script><link href="printing_files/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
+      </header><script src="printing_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="printing_files/d3-3.3.8/d3.min.js"></script><script src="printing_files/dagre-0.4.0/dagre-d3.min.js"></script><link href="printing_files/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
 <script src="printing_files/mermaid-0.3.0/dist/mermaid.slim.min.js"></script><link href="printing_files/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="printing_files/chromatography-0.1/chromatography.js"></script><script src="printing_files/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script><div class="row">
+<script src="printing_files/chromatography-0.1/chromatography.js"></script><script src="printing_files/DiagrammeR-binding-1.0.7/DiagrammeR.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Printing a tibble: Control and data flow</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/vignettes/printing.Rmd" class="external-link"><code>vignettes/printing.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/vignettes/printing.Rmd" class="external-link"><code>vignettes/printing.Rmd</code></a></small>
       <div class="hidden name"><code>printing.Rmd</code></div>
 
     </div>
@@ -141,8 +141,8 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-38ee97e439ba00dbc519" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-38ee97e439ba00dbc519">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-e40029f7073484f615d8" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e40029f7073484f615d8">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div class="section level2">
 <h2 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
@@ -152,13 +152,14 @@
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>c <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, d <span class="op">=</span> <span class="fl">7</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>, e <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tbl</span>, width <span class="op">=</span> <span class="fl">23</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span>
-<span class="co">#&gt;       a   b$c    $d</span>
+<span class="co">#&gt;       a   b$c     e</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     4     7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5     8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6     9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     4    10</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span>
 <span class="co">#&gt; <span style="color: #949494;"># … with 1 more</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   variable: e &lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   variable:</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   b$d &lt;int&gt;</span></span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span>
 <span class="co">#&gt; tibble [3 × 3] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ a: int [1:3] 1 2 3</span>
@@ -166,8 +167,9 @@
 <span class="co">#&gt;   ..$ c: int [1:3] 4 5 6</span>
 <span class="co">#&gt;   ..$ d: int [1:3] 7 8 9</span>
 <span class="co">#&gt;  $ e: int [1:3] 10 11 12</span></code></pre></div>
-<details><p><summary>Source code of <code>pillar:::print.tbl()</code></summary></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<details><summary>
+Source code of <code>pillar:::print.tbl()</code>
+</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">print.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,
                       <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">print_tbl</span><span class="op">(</span>
@@ -176,8 +178,9 @@
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>The <code><a href="../reference/format_tbl.html">format.tbl()</a></code> method creates a setup object, and uses that object to format header, body and footer.</p>
-<details><p><summary>Source code of <code>pillar:::format.tbl()</code></summary></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<details><summary>
+Source code of <code>pillar:::format.tbl()</code>
+</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,
                        <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/format_tbl.html">format_tbl</a></span><span class="op">(</span>
@@ -198,21 +201,23 @@
 <span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_header(setup)&gt;</span></span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span>
 <span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_body(setup)&gt;</span></span>
-<span class="co">#&gt;       a   b$c    $d</span>
+<span class="co">#&gt;       a   b$c     e</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     4     7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5     8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6     9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     4    10</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span>
 <span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span>
 <span class="co">#&gt; <span style="color: #949494;"># … with 1 more</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   variable: e &lt;int&gt;</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;">#   variable: b$d &lt;int&gt;</span></span></code></pre></div>
 <p>A setup object is required here to avoid computing information twice. For instance, the dimensions shown in the header or the extra columns displayed in the footer are available only after the body has been computed.</p>
 <p>The generic dispatches over the container, so that you can override it if necessary. It is responsible for assigning default values to arguments before passing them on to the method.</p>
-<details><p><summary>Source code of <code>tbl_format_setup()</code></summary></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<details><summary>
+Source code of <code>tbl_format_setup()</code>
+</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,
                              <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,
-                             <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+                             <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span>,
+                             <span class="va">focus</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG tbl_format_setup()"</span>
 
   <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width_print</span><span class="op">(</span><span class="va">width</span><span class="op">)</span>
@@ -226,16 +231,18 @@
   <span class="co"># allows using default values in S3 dispatch</span>
   <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_</span><span class="op">(</span>
     <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
-    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>
+    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>,
+    focus <span class="op">=</span> <span class="va">focus</span>
   <span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"tbl_format_setup"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>The default implementation converts the input to a data frame via <code>as.data.frame(head(x))</code>, and returns an object constructed with <code><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup()</a></code> that contains the data frame and additional information. If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.</p>
-<details><p><summary>Source code of <code>pillar:::tbl_format_setup.tbl()</code></summary></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<details><summary>
+Source code of <code>pillar:::tbl_format_setup.tbl()</code>
+</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
-                                 <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span><span class="op">)</span> <span class="op">{</span>
+                                 <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG tbl_format_setup.tbl()"</span>
 
   <span class="co"># Number of rows</span>
@@ -276,7 +283,8 @@
     <span class="va">df</span>,
     has_row_id <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.row_names_info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="st">"*"</span> <span class="kw">else</span> <span class="cn">TRUE</span>,
     width <span class="op">=</span> <span class="va">width</span>,
-    controller <span class="op">=</span> <span class="va">x</span>
+    controller <span class="op">=</span> <span class="va">x</span>,
+    focus <span class="op">=</span> <span class="va">focus</span>
   <span class="op">)</span>
 
   <span class="va">body</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">body</span>
@@ -313,23 +321,24 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/tbl_format_header.html">tbl_format_header</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span>
 <span class="co">#&gt; [1] "\033[38;5;246m# A tibble: 3 × 3\033[39m"</span>
 <span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span>
-<span class="co">#&gt;       a   b$c    $d</span>
+<span class="co">#&gt;       a   b$c     e</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     4     7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5     8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6     9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     4    10</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span>
 <span class="fu"><a href="../reference/tbl_format_footer.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span>
-<span class="co">#&gt; [1] "\033[38;5;246m# … with 1 more\033[39m"      </span>
-<span class="co">#&gt; [2] "\033[38;5;246m#   variable: e &lt;int&gt;\033[39m"</span></code></pre></div>
+<span class="co">#&gt; [1] "\033[38;5;246m# … with 1 more\033[39m"        </span>
+<span class="co">#&gt; [2] "\033[38;5;246m#   variable: b$d &lt;int&gt;\033[39m"</span></code></pre></div>
 <p>(The body is returned as a classed object with a <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> method, it is still a <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> under the hood.)</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] "pillar_vertical"</span>
+<span class="co">#&gt; [1] "glue"      "character"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "character"</span></code></pre></div>
 <p>Since most of the work already has been carried out in <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code>, the default implementations mostly consist of code that styles and wraps the output.</p>
-<details><p><summary>Source code of <code>pillar:::tbl_format_header.tbl()</code></summary></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details><summary>
+Source code of <code>pillar:::tbl_format_header.tbl()</code>
+</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_header.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">named_header</span> <span class="op">&lt;-</span> <span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span>
 
@@ -347,14 +356,16 @@
 
   <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu">format_comment</span><span class="op">(</span><span class="va">header</span>, width <span class="op">=</span> <span class="va">setup</span><span class="op">$</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-</details><details><p><summary>Source code of <code>pillar:::tbl_format_body.tbl()</code></summary></p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+</details><details><summary>
+Source code of <code>pillar:::tbl_format_body.tbl()</code>
+</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_body.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/force.html" class="external-link">force</a></span><span class="op">(</span><span class="va">setup</span><span class="op">)</span>
   <span class="va">setup</span><span class="op">$</span><span class="va">body</span>
 <span class="op">}</span></code></pre></div>
-</details><details><p><summary>Source code of <code>pillar:::tbl_format_footer.tbl()</code></summary></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+</details><details><summary>
+Source code of <code>pillar:::tbl_format_footer.tbl()</code>
+</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_footer.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span>
   <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer</span><span class="op">(</span><span class="va">footer</span>, <span class="va">setup</span><span class="op">)</span>
@@ -367,7 +378,7 @@
 </h2>
 <p>The internal function <code>ctl_colonnade()</code> composes the body. It performs the following tasks:</p>
 <ol style="list-style-type: decimal">
-<li>Create a pillar object for every column that fits, using <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code>, <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and ultimately <code><a href="../reference/pillar.html">pillar()</a></code> and <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code>
+<li>Create a pillar object for every top-level column that fits, using the minimum width, via <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code>, <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and ultimately <code><a href="../reference/pillar.html">pillar()</a></code> and <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code>
 </li>
 <li>Determine the number of tiers and the width for each tier</li>
 <li>Distribute the pillars across the tiers, assigning a width to each pillar.</li>
@@ -381,40 +392,55 @@
 <div class="section level2">
 <h2 id="creating-pillar-objects">Creating pillar objects<a class="anchor" aria-label="anchor" href="#creating-pillar-objects"></a>
 </h2>
-<p>Each column in the tibble is passed to <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code>, which eventually calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> once or several times.</p>
+<p>The initial tibble is passed to <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code>, which eventually calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> once or several times. For each top-level column, one pillar object is constructed. The loop is terminated when the available width is exhausted even considering the minimum width.</p>
 <div class="section level3">
-<h3 id="compound-pillars">Compound pillars<a class="anchor" aria-label="anchor" href="#compound-pillars"></a>
+<h3 id="pillar-lists">Pillar lists<a class="anchor" aria-label="anchor" href="#pillar-lists"></a>
 </h3>
-<p>The <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> generic dispatches on the container:</p>
+<p>The <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code> generic dispatches on the container:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
 <span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="co">#&gt;                    1</span>
 <span class="co">#&gt;                    2</span>
 <span class="co">#&gt;                    3</span>
-<span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">b</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
-<span class="co">#&gt; &lt;compound_pillar[2]&gt;</span>
-<span class="co">#&gt;         c</span>
-<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt;         4</span>
-<span class="co">#&gt;         5</span>
-<span class="co">#&gt;         6</span>
-<span class="co">#&gt; <span style="color: #949494;">… and 1 more sub-pillars</span></span></code></pre></div>
-<p>The default method distinguishes between compound and simple pillars. Data frame, matrix, and array columns are decomposed into sub-pillars and returned as a compound pillar. Regular vectors are forwarded to <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code>. Implementers of <code>"tbl"</code> subclasses will rarely if ever need to extend or override this method.</p>
-<details><p><summary>Source code of <code>pillar:::ctl_new_compound_pillar.tbl()</code></summary></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ctl_new_compound_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
-  <span class="st">"!!!!DEBUG ctl_new_compound_pillar.tbl(`v(width)`, `v(title)`)"</span>
+<span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">b</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; &lt;pillar&gt;</span>
+<span class="co">#&gt;     c</span>
+<span class="co">#&gt; <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt;     4</span>
+<span class="co">#&gt;     5</span>
+<span class="co">#&gt;     6</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; &lt;pillar&gt;</span>
+<span class="co">#&gt;     d</span>
+<span class="co">#&gt; <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt;     7</span>
+<span class="co">#&gt;     8</span>
+<span class="co">#&gt;     9</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"extra")</span>
+<span class="co">#&gt; character(0)</span></code></pre></div>
+<p>In a tibble, each column can be a data frame, matrix, or even array itself, such columns are called <em>compound columns</em>. Such columns are decomposed into sub-pillars and returned as a list of pillars. Regular vectors are forwarded to <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and returned as list of length one. Implementers of <code>"tbl"</code> subclasses will rarely if ever need to extend or override this method.</p>
+<details><summary>
+Source code of <code>pillar:::ctl_new_pillar_list.tbl()</code>
+</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ctl_new_pillar_list.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">first_pillar</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+  <span class="st">"!!!!DEBUG ctl_new_pillar_list.tbl(`v(width)`, `v(title)`)"</span>
 
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu">new_data_frame_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
+    <span class="fu">new_data_frame_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu">new_matrix_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
+    <span class="fu">new_matrix_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu">new_array_pillar</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
+    <span class="fu">new_array_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">first_pillar</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="fu">prepare_title</span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="fu">prepare_title</span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">first_pillar</span><span class="op">)</span>
   <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
 </details>
@@ -424,22 +450,24 @@
 </h3>
 <p>The <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> method is called for columns that are not data frames or arrays, and also dispatches over the container.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
 <span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="co">#&gt;                    1</span>
 <span class="co">#&gt;                    2</span>
 <span class="co">#&gt;                    3</span></code></pre></div>
-<details><p><summary>Source code of <code>pillar:::ctl_new_pillar.tbl()</code></summary></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<details><summary>
+Source code of <code>pillar:::ctl_new_pillar.tbl()</code>
+</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ctl_new_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"</span>
 
   <span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="fu">max0</span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>The default method calls <code><a href="../reference/pillar.html">pillar()</a></code> directly, passing the maximum width available.</p>
-<details><p><summary>Source code of <code>pillar()</code></summary></p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<details><summary>
+Source code of <code>pillar()</code>
+</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG pillar(`v(class(x))`, `v(title)`, `v(width)`)"</span>
 
@@ -456,10 +484,12 @@
 <div class="section level3">
 <h3 id="components">Components<a class="anchor" aria-label="anchor" href="#components"></a>
 </h3>
-<p>Both compound and simple pillar objects share the same structure and are ultimately constructed with <code><a href="../reference/new_pillar.html">new_pillar()</a></code>.</p>
-<details><p><summary>Source code of <code>new_pillar()</code></summary></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+<p>Pillar objects share the same structure and are ultimately constructed with <code><a href="../reference/new_pillar.html">new_pillar()</a></code>.</p>
+<details><summary>
+Source code of <code>new_pillar()</code>
+</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span>,
+                       <span class="va">extra</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="st">"!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"</span>
 
   <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span>
@@ -470,21 +500,20 @@
   <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span>
     <span class="va">components</span>,
     width <span class="op">=</span> <span class="va">width</span>,
-    class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">"pillar"</span><span class="op">)</span>
+    class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">"pillar"</span><span class="op">)</span>,
+    extra <span class="op">=</span> <span class="va">extra</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-</details><p>A pillar is stored as a list of components. For simple pillars each component has length one, for compound pillars all components have the same length. In the future, this restriction may be levied to support nested components, e.g. for column titles spanning multiple sub-pillars for compound pillars. The maximum width available for the simple pillar of for each sub-pillar of a compound pillar is also recorded.</p>
-<div class="figure">
-<img src="pillar-objects.png" alt=""><p class="caption">Layout of the objects contained in a pillar</p>
-</div>
+</details><p>A pillar is stored as a list of components. Each pillar represents only one simple (atomic) column, compound columns are always represented as multiple pillar objects.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="formatting-pillars">Formatting pillars<a class="anchor" aria-label="anchor" href="#formatting-pillars"></a>
 </h2>
-<p>When a pillar object is constructed, it has a minimum a desired (maximum) width. Because it depends on the number and width of other pillar objects that may not be even constructed, the final width is not known yet. It is passed to <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code>, which uses the desired width if empty:</p>
-<details><p><summary>Source code of <code>pillar:::format.pillar()</code></summary></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<p>When a pillar object is constructed, it has a minimum and a desired (maximum) width. Because it depends on the number and width of other pillar objects that may not be even constructed, the final width is not known yet. It is passed to <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code>, which uses the desired width if empty:</p>
+<details><summary>
+Source code of <code>pillar:::format.pillar()</code>
+</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">format.pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -492,10 +521,10 @@
 
   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">widths</span> <span class="op">&lt;-</span> <span class="fu">pillar_get_widths</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-    <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1L</span>
+    <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">widths</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>
   <span class="op">}</span>
 
-  <span class="fu">new_vertical</span><span class="op">(</span><span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span><span class="op">$</span><span class="va">aligned</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
+  <span class="fu">as_glue</span><span class="op">(</span><span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span><span class="op">$</span><span class="va">aligned</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details>
 </div>
@@ -513,12 +542,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>.</p>
+<p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, Hadley Wickham.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer>

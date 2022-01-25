@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.5</span>
       </span>
     </div>
 
@@ -90,13 +90,13 @@
 
       
 
-      </header><script src="extending_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Custom formatting</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
       <div class="hidden name"><code>extending.Rmd</code></div>
 
     </div>
@@ -172,7 +172,7 @@
 <p>To style the header in a different way, implement a <code><a href="../reference/tbl_format_header.html">tbl_format_header()</a></code> method. The implementation is responsible for the entire formatting and styling, including the leading hash.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_format_header.custom_header_replace</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">crayon</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/crayon/man/crayon.html" class="external-link">italic</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span><span class="op">)</span>, <span class="st">" = "</span>, <span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/ansi-styles.html" class="external-link">style_italic</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span><span class="op">)</span>, <span class="st">" = "</span>, <span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="fu">example_tbl</span><span class="op">(</span><span class="st">"custom_header_replace"</span><span class="op">)</span>
@@ -321,9 +321,9 @@
 <div class="section level3">
 <h3 id="tweak-display-of-compound-pillars">Tweak display of compound pillars<a class="anchor" aria-label="anchor" href="#tweak-display-of-compound-pillars"></a>
 </h3>
-<p>Compound pillars are created by <code><a href="../reference/ctl_new_pillar.html">ctl_new_compound_pillar()</a></code> for columns that contain a data frame, a matrix or an array. The default implementation also calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> shown above. The example</p>
+<p>Compound pillars are created by <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code> for columns that contain a data frame, a matrix or an array. The default implementation also calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> shown above. The (somewhat artificial) example hides all data frame columns in a column with the type <code>"&lt;hidden&gt;"</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ctl_new_compound_pillar.hide_df</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
+<code class="sourceCode R"><span class="va">ctl_new_pillar_list.hide_df</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
     <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">NextMethod</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
   <span class="op">}</span>
@@ -332,23 +332,23 @@
     <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
   <span class="op">}</span>
 
-  <span class="fu"><a href="../reference/new_pillar.html">new_pillar</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/new_pillar.html">new_pillar</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
       title <span class="op">=</span> <span class="fu"><a href="../reference/new_pillar_component.html">pillar_component</a></span><span class="op">(</span><span class="fu"><a href="../reference/new_pillar_title.html">new_pillar_title</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span>,
       type <span class="op">=</span> <span class="fu"><a href="../reference/new_pillar_component.html">new_pillar_component</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"&lt;hidden&gt;"</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,
       data <span class="op">=</span> <span class="fu"><a href="../reference/new_pillar_component.html">new_pillar_component</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
     <span class="op">)</span>,
     width <span class="op">=</span> <span class="fl">8</span>
-  <span class="op">)</span>
+  <span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="fu">example_tbl</span><span class="op">(</span><span class="st">"hide_df"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A data frame: 3 × 2</span></span>
-<span class="co">#&gt;   a     b       </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> &lt;hidden&gt;</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> a             </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> b     b       </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> c     &lt;hidden&gt;</span></code></pre></div>
+<span class="co">#&gt;   &lt;hidden&gt;</span>
+<span class="co">#&gt;           </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> &lt;hidden&gt;</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>         </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> &lt;hidden&gt;</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="restyle-body">Restyle body<a class="anchor" aria-label="anchor" href="#restyle-body"></a>
@@ -382,12 +382,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>.</p>
+<p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, Hadley Wickham.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer>

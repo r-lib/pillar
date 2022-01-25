@@ -8,6 +8,8 @@ It should always return a string (a character vector of length one).
 As of pillar v1.6.1, the default method forwards to vctrs::vec_ptype_abbr()
 for vectors and to type_sum() for other objects.
 Previous versions always forwarded to type_sum().
+An attribute named "short" in the return value will be picked up by
+the pillar_shaft() method for lists, and used if space is limited.
 size_sum() is called by obj_sum() to format the size of the object.
 It should always return a string (a character vector of length one),
 it can be an empty string "" to omit size information,
@@ -29,7 +31,7 @@ this is what the default method does for scalars.'><!-- mathjax --><script src="
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.5</span>
       </span>
     </div>
 
@@ -66,7 +68,7 @@ this is what the default method does for scalars.'><!-- mathjax --><script src="
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,39 +83,42 @@ this is what the default method does for scalars.'><!-- mathjax --><script src="
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Provide a succinct summary of an object</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/type-sum.R"><code>R/type-sum.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/type-sum.R" class="external-link"><code>R/type-sum.R</code></a></small>
     <div class="hidden name"><code>type_sum.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><code>type_sum()</code> gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
-For most inputs, the argument is forwarded to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code>.</p>
+For most inputs, the argument is forwarded to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code>.</p>
 <p><code>obj_sum()</code> also includes the size (but not the shape) of the object
-if <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html">vctrs::vec_is()</a></code> is <code>TRUE</code>.
+if <code><a href="https://vctrs.r-lib.org/reference/vec_assert.html" class="external-link">vctrs::vec_is()</a></code> is <code>TRUE</code>.
 It should always return a string (a character vector of length one).
-As of pillar v1.6.1, the default method forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code>
+As of pillar v1.6.1, the default method forwards to <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code>
 for vectors and to <code>type_sum()</code> for other objects.
-Previous versions always forwarded to <code>type_sum()</code>.</p>
+Previous versions always forwarded to <code>type_sum()</code>.
+An attribute named <code>"short"</code> in the return value will be picked up by
+the <code><a href="pillar_shaft.html">pillar_shaft()</a></code> method for lists, and used if space is limited.</p>
 <p><code>size_sum()</code> is called by <code>obj_sum()</code> to format the size of the object.
 It should always return a string (a character vector of length one),
 it can be an empty string <code>""</code> to omit size information,
 this is what the default method does for scalars.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">type_sum</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">type_sum</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
 <span class="fu">obj_sum</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 
 <span class="fu">size_sum</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>an object to summarise. Generally only methods of atomic vectors
-and variants have been implemented.</p></td>
-    </tr></table></div>
-
+    <dl><dt>x</dt>
+<dd><p>an object to summarise. Generally only methods of atomic vectors
+and variants have been implemented.</p></dd>
+</dl></div>
     <div id="details">
     <h2>Details</h2>
     <p>When formatting a pillar,
@@ -122,16 +127,28 @@ The formatted type should only depend on the type and not on the data,
 to avoid confusion.</p>
     </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int [10]"</span>
-<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int"</span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int [10 × 1]"</span>
-<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "int[…]"</span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "df [1 × 1]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "df"</span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "date [1]"</span>
-<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "date"</span>
+<span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dttm [1]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"short")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dttm"</span>
 <span class="r-in"><span class="fu">obj_sum</span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "fn"</span>
 <span class="r-in"></span>
@@ -151,11 +168,11 @@ to avoid confusion.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
+  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, Hadley Wickham.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer></div>

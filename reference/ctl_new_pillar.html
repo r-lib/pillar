@@ -21,7 +21,7 @@ Users will rarely need them.'><!-- mathjax --><script src="https://cdnjs.cloudfl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.5</span>
       </span>
     </div>
 
@@ -58,7 +58,7 @@ Users will rarely need them.'><!-- mathjax --><script src="https://cdnjs.cloudfl
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -73,7 +73,7 @@ Users will rarely need them.'><!-- mathjax --><script src="https://cdnjs.cloudfl
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Customize your tibble subclass</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/ctl_new_pillar.R"><code>R/ctl_new_pillar.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/ctl_new_pillar.R" class="external-link"><code>R/ctl_new_pillar.R</code></a></small>
     <div class="hidden name"><code>ctl_new_pillar.Rd</code></div>
     </div>
 
@@ -85,25 +85,38 @@ class.
 Users will rarely need them.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">ctl_new_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ctl_new_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
-<span class="fu">ctl_new_compound_pillar</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<span class="fu">ctl_new_pillar_list</span><span class="op">(</span>
+  <span class="va">controller</span>,
+  <span class="va">x</span>,
+  <span class="va">width</span>,
+  <span class="va">...</span>,
+  title <span class="op">=</span> <span class="cn">NULL</span>,
+  first_pillar <span class="op">=</span> <span class="cn">NULL</span>
+<span class="op">)</span></code></pre></div>
+    </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>controller</th>
-      <td><p>The object of class <code>"tbl"</code> currently printed.</p></td>
-    </tr><tr><th>x</th>
-      <td><p>A vector, can also be a data frame, array or matrix
-in <code>ctl_new_compound_pillar()</code></p></td>
-    </tr><tr><th>width</th>
-      <td><p>The available width, can be a vector for multiple tiers</p></td>
-    </tr><tr><th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
-    </tr><tr><th>title</th>
-      <td><p>The title, derived from the name of the column in the data</p></td>
-    </tr></table></div>
-
+    <dl><dt>controller</dt>
+<dd><p>The object of class <code>"tbl"</code> currently printed.</p></dd>
+<dt>x</dt>
+<dd><p>A vector, can also be a data frame, array or matrix.
+in <code>ctl_new_pillar_list()</code>.</p></dd>
+<dt>width</dt>
+<dd><p>The available width, can be a vector for multiple tiers.
+If <code>NULL</code>, compute only the first pillar.</p></dd>
+<dt>...</dt>
+<dd><p>These dots are for future extensions and must be empty.</p></dd>
+<dt>title</dt>
+<dd><p>The title, derived from the name of the column in the data.</p></dd>
+<dt>first_pillar</dt>
+<dd><p>Can be passed to this method if the first pillar
+for a compound pillar (or the pillar itself for a simple pillar)
+has been computed already.</p></dd>
+</dl></div>
     <div id="details">
     <h2>Details</h2>
     <p><code>ctl_new_pillar()</code> is called to construct pillars for regular (one-dimensional)
@@ -112,10 +125,18 @@ The default implementation returns an object constructed with <code><a href="pil
 Extend this method to tweak pillar components returned from the default
 implementation.
 Override this method to completely change the appearance of the pillars.</p>
-<p><code>ctl_new_compound_pillar()</code> is called for compound pillars: columns
-that are data frames, matrices or arrays.
-The default implementation returns a compound pillar with suitable formatting
-for the titles and types of the sub-pillar.
+<p><code>ctl_new_pillar_list()</code> is called to construct a list of pillars.
+It also works for compound pillars: columns that are data frames, matrices or
+arrays.
+This method is also called to initiate the construction of all pillars
+in the tibble to be printed.
+If called for a regular one-dimensional vector, it returns a list of length
+one.
+In any case, all pillars in the returned list of pillars represent only the
+first column in case of compound columns.
+This ensures that only those pillars that are shown are constructed.
+To print all columns of a packed data frame, <code>ctl_new_pillar_list()</code>
+eventually calls itself recursively.
 Users will only rarely need to override this method if ever.</p>
 <p>All components must be of the same height.
 This restriction may be levied in the future.</p>
@@ -123,12 +144,13 @@ This restriction may be levied in the future.</p>
 fits the available width.</p>
     </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Create pillar objects</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Create pillar objects</span></span>
 <span class="r-in"><span class="fu">ctl_new_pillar</span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span>,</span>
-<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span><span class="op">$</span><span class="va">species</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, width <span class="op">=</span> <span class="fl">60</span></span>
+<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span>,</span>
+<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">$</span><span class="va">species</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
+<span class="r-in">  width <span class="op">=</span> <span class="fl">60</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> </span>
@@ -136,8 +158,8 @@ fits the available width.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Adelie</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Adelie</span>
 <span class="r-in"><span class="fu">ctl_new_pillar</span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span>,</span>
-<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span><span class="op">$</span><span class="va">bill_length_mm</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
+<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span>,</span>
+<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">$</span><span class="va">bill_length_mm</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
 <span class="r-in">  width <span class="op">=</span> <span class="fl">60</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
@@ -147,12 +169,13 @@ fits the available width.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         40.3</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Packed data frame</span></span>
-<span class="r-in"><span class="fu">ctl_new_compound_pillar</span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span>,</span>
+<span class="r-in"><span class="fu">ctl_new_pillar_list</span><span class="op">(</span></span>
+<span class="r-in">  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span class="r-in">  <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span>,</span>
 <span class="r-in">  width <span class="op">=</span> <span class="fl">60</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;compound_pillar[5]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> species  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Adelie   </span>
@@ -499,50 +522,1461 @@ fits the available width.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chinstrap</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chinstrap</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chinstrap</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">… and 4 more sub-pillars</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> island   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Torgersen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Biscoe   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dream    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> bill_length_mm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           34.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           34.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           34.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           34.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           33.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           34.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           34  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           33.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           38.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           35.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           32.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           39.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           37.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           36  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           59.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           54.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           55.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           41.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           53.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           55.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           44.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           58  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           40.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           54.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           47.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           53.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           48.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           42.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           52.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           51.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           46.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           45.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           55.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           43.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           49.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           50.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> bill_depth_mm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          21.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          21.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          21.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          21.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          21.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          21.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          13.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          14.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          20.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          16.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          17  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          19  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          18.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[5]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> flipper_length_mm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               174</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               179</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               209</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               209</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               209</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               231</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               209</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               209</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               206</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"extra")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "body_mass_g" "sex"         "year"       </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Packed matrix</span></span>
-<span class="r-in"><span class="fu">ctl_new_compound_pillar</span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">60</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;compound_pillar[2]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">… and 1 more sub-pillars</span></span>
+<span class="r-in"><span class="fu">ctl_new_pillar_list</span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">60</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"extra")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Packed array</span></span>
-<span class="r-in"><span class="fu">ctl_new_compound_pillar</span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">Titanic</span>, width <span class="op">=</span> <span class="fl">60</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">ctl_new_pillar_list</span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">Titanic</span>, width <span class="op">=</span> <span class="fl">60</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                              <span style="color: #949494; font-style: italic;">&lt;table[,2,2,2]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                          0 …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                          0 …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                         35 …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                          0 …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Customize output</span></span>
 <span class="r-in"><span class="va">lines</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">char</span> <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">char</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span><span class="va">char</span>, class <span class="op">=</span> <span class="st">"lines"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html" class="external-link">nchar</a></span><span class="op">(</span><span class="va">char</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="va">char</span>, class <span class="op">=</span> <span class="st">"lines"</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">format.lines</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">ctl_new_pillar.line_tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">out</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html">NextMethod</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="new_pillar.html">new_pillar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span class="r-in">  <span class="va">out</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">NextMethod</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="new_pillar.html">new_pillar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span class="r-in">    title <span class="op">=</span> <span class="va">out</span><span class="op">$</span><span class="va">title</span>,</span>
 <span class="r-in">    type <span class="op">=</span> <span class="va">out</span><span class="op">$</span><span class="va">type</span>,</span>
-<span class="r-in">    lines <span class="op">=</span> <span class="fu"><a href="new_pillar_component.html">new_pillar_component</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="st">"="</span><span class="op">)</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span class="r-in">    lines <span class="op">=</span> <span class="fu"><a href="new_pillar_component.html">new_pillar_component</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="st">"="</span><span class="op">)</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
 <span class="r-in">    data <span class="op">=</span> <span class="va">out</span><span class="op">$</span><span class="va">data</span></span>
 <span class="r-in">  <span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/new_data_frame.html">new_data_frame</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>,</span>
-<span class="r-in">  class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"line_tbl"</span>, <span class="st">"tbl"</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/new_data_frame.html" class="external-link">new_data_frame</a></span><span class="op">(</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>,</span>
+<span class="r-in">  class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"line_tbl"</span>, <span class="st">"tbl"</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A data frame: 3 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       a b    </span>
@@ -560,11 +1994,11 @@ fits the available width.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
+  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, Hadley Wickham.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer></div>

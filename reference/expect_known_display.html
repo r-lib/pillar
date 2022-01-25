@@ -22,7 +22,7 @@ pillar, see examples for usage."><!-- mathjax --><script src="https://cdnjs.clou
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.5</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@ pillar, see examples for usage."><!-- mathjax --><script src="https://cdnjs.clou
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -74,12 +74,12 @@ pillar, see examples for usage."><!-- mathjax --><script src="https://cdnjs.clou
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Test helpers</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/testthat.R"><code>R/testthat.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/testthat.R" class="external-link"><code>R/testthat.R</code></a></small>
     <div class="hidden name"><code>expect_known_display.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#superseded"><img src="figures/lifecycle-superseded.svg" alt="[Superseded]"></a></p>
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html#superseded" class="external-link"><img src="figures/lifecycle-superseded.svg" alt="[Superseded]"></a></p>
 <p>Expectation for packages that implement a data type with pillar support.
 Allows storing the desired result in a file,
 and comparing the output with the file contents.
@@ -87,53 +87,31 @@ Note that this expectation sets options that affect the formatting of the
 pillar, see examples for usage.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">expect_known_display</span><span class="op">(</span><span class="va">object</span>, <span class="va">file</span>, <span class="va">...</span>, width <span class="op">=</span> <span class="fl">80L</span>, crayon <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">expect_known_display</span><span class="op">(</span><span class="va">object</span>, <span class="va">file</span>, <span class="va">...</span>, width <span class="op">=</span> <span class="fl">80L</span>, crayon <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>object</th>
-      <td><p>An object to check.</p></td>
-    </tr><tr><th>file</th>
-      <td><p>File path where known value/output will be stored.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Unused.</p></td>
-    </tr><tr><th>width</th>
-      <td><p>The width of the output.</p></td>
-    </tr><tr><th>crayon</th>
-      <td><p>Color the output?</p></td>
-    </tr></table></div>
-
+    <dl><dt>object</dt>
+<dd><p>An object to check.</p></dd>
+<dt>file</dt>
+<dd><p>File path where known value/output will be stored.</p></dd>
+<dt>...</dt>
+<dd><p>Unused.</p></dd>
+<dt>width</dt>
+<dd><p>The width of the output.</p></dd>
+<dt>crayon</dt>
+<dd><p>Color the output?</p></dd>
+</dl></div>
     <div id="life-cycle">
     <h2>Life cycle</h2>
     
 
-<p>This function is deprecated in favor of <code><a href="https://testthat.r-lib.org/reference/expect_snapshot.html">testthat::expect_snapshot()</a></code>.
+<p>This function is deprecated in favor of <code><a href="https://testthat.r-lib.org/reference/expect_snapshot.html" class="external-link">testthat::expect_snapshot()</a></code>.
 If your package uses the third edition of testthat, do not use this function.</p>
     </div>
 
-    <div id="examples">
-    <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="st">"pillar"</span>, fileext <span class="op">=</span> <span class="st">".txt"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The pillar is constructed after options have been set</span></span>
-<span class="r-in"><span class="co"># (need two runs because reference file doesn't exist during the first run)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/warning.html">suppressWarnings</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu">expect_known_display</span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
-<span class="r-in">  expectation_failure <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
-<span class="r-in"><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Good: Use tidyeval to defer construction</span></span>
-<span class="r-in"><span class="va">pillar_quo</span> <span class="op">&lt;-</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html">quo</a></span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="op">!</span><span class="op">!</span><span class="va">pillar_quo</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Bad: Options set in the active session may affect the display</span></span>
-<span class="r-in"><span class="va">integer_pillar</span> <span class="op">&lt;-</span> <span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="va">integer_pillar</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-</code></pre></div>
-    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
@@ -142,11 +120,11 @@ If your package uses the third edition of testthat, do not use this function.</p
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
+  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, Hadley Wickham.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ Call format() on the result to render column types."><!-- mathjax --><script src
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.5</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@ Call format() on the result to render column types."><!-- mathjax --><script src
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -70,29 +70,32 @@ Call format() on the result to render column types."><!-- mathjax --><script src
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Prepare a column type for formatting</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/type.R"><code>R/type.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/type.R" class="external-link"><code>R/type.R</code></a></small>
     <div class="hidden name"><code>new_pillar_type.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Calls <code><a href="type_sum.html">type_sum()</a></code> to format the type.
-Call <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> on the result to render column types.</p>
+Call <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> on the result to render column types.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">new_pillar_type</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">new_pillar_type</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>A vector for which the type is to be retrieved.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>These dots are for future extensions and must be empty.</p></td>
-    </tr></table></div>
+    <dl><dt>x</dt>
+<dd><p>A vector for which the type is to be retrieved.</p></dd>
+<dt>...</dt>
+<dd><p>These dots are for future extensions and must be empty.</p></dd>
+</dl></div>
 
-
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu">new_pillar_type</span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu">new_pillar_type</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\033[3m\033[38;5;246m&lt;chr&gt;\033[39m\033[23m"</span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu">new_pillar_type</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\033[3m\033[38;5;246m&lt;fct&gt;\033[39m\033[23m"</span>
 </code></pre></div>
     </div>
@@ -104,11 +107,11 @@ Call <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> on t
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
+  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, Hadley Wickham.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer></div>

@@ -31,7 +31,7 @@ override these methods instead."><!-- mathjax --><script src="https://cdnjs.clou
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.5</span>
       </span>
     </div>
 
@@ -68,7 +68,7 @@ override these methods instead."><!-- mathjax --><script src="https://cdnjs.clou
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-lib/pillar/">
+  <a href="https://github.com/r-lib/pillar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,7 +83,7 @@ override these methods instead."><!-- mathjax --><script src="https://cdnjs.clou
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Set up formatting</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/master/R/tbl-format-setup.R"><code>R/tbl-format-setup.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/HEAD/R/tbl-format-setup.R" class="external-link"><code>R/tbl-format-setup.R</code></a></small>
     <div class="hidden name"><code>tbl_format_setup.Rd</code></div>
     </div>
 
@@ -102,42 +102,47 @@ If you need to customize parts of the printed output independently,
 override these methods instead.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">tbl_format_setup</span><span class="op">(</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tbl_format_setup</span><span class="op">(</span>
   <span class="va">x</span>,
   width <span class="op">=</span> <span class="cn">NULL</span>,
   <span class="va">...</span>,
   n <span class="op">=</span> <span class="cn">NULL</span>,
   max_extra_cols <span class="op">=</span> <span class="cn">NULL</span>,
-  max_footer_lines <span class="op">=</span> <span class="cn">NULL</span>
+  max_footer_lines <span class="op">=</span> <span class="cn">NULL</span>,
+  focus <span class="op">=</span> <span class="cn">NULL</span>
 <span class="op">)</span>
 
 <span class="co"># S3 method for tbl</span>
-<span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span><span class="op">)</span></code></pre></div>
+<span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span></code></pre></div>
+    </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>An object.</p></td>
-    </tr><tr><th>width</th>
-      <td><p>Actual width for printing, a numeric greater than zero.
-This argument is mandatory for all implementations of this method.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Extra arguments to <code><a href="format_tbl.html">print.tbl()</a></code> or <code><a href="format_tbl.html">format.tbl()</a></code>.</p></td>
-    </tr><tr><th>n</th>
-      <td><p>Actual number of rows to print.
+    <dl><dt>x</dt>
+<dd><p>An object.</p></dd>
+<dt>width</dt>
+<dd><p>Actual width for printing, a numeric greater than zero.
+This argument is mandatory for all implementations of this method.</p></dd>
+<dt>...</dt>
+<dd><p>Extra arguments to <code><a href="format_tbl.html">print.tbl()</a></code> or <code><a href="format_tbl.html">format.tbl()</a></code>.</p></dd>
+<dt>n</dt>
+<dd><p>Actual number of rows to print.
 No <a href="pillar_options.html">options</a> should be considered
-by implementations of this method.</p></td>
-    </tr><tr><th>max_extra_cols</th>
-      <td><p>Number of columns to print abbreviated information for,
+by implementations of this method.</p></dd>
+<dt>max_extra_cols</dt>
+<dd><p>Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.
 No <a href="pillar_options.html">options</a> should be considered
-by implementations of this method.</p></td>
-    </tr><tr><th>max_footer_lines</th>
-      <td><p>Maximum number of lines for the footer.
+by implementations of this method.</p></dd>
+<dt>max_footer_lines</dt>
+<dd><p>Maximum number of lines for the footer.
 No <a href="pillar_options.html">options</a> should be considered
-by implementations of this method.</p></td>
-    </tr></table></div>
-
+by implementations of this method.</p></dd>
+<dt>focus</dt>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
+<p>Names of columns to show preferentially if space is tight.</p></dd>
+</dl></div>
     <div id="value">
     <h2>Value</h2>
     <p>An object that can be passed as <code>setup</code> argument to
@@ -156,16 +161,16 @@ If you override this method, you must also implement
 for your class.</p>
 <p>Implementing a method
 allows to override printing and formatting of the entire object
-without overriding the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> and <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> methods directly.
+without overriding the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> and <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> methods directly.
 This allows to keep the logic of the <code>width</code> and <code>n</code> arguments.</p>
 <p>The default method for the <code>"tbl"</code> class collects information for
 standard printing for tibbles.
 See <code><a href="new_tbl_format_setup.html">new_tbl_format_setup()</a></code> for details on the returned object.</p>
     </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tbl_format_setup</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tbl_format_setup</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;pillar_tbl_format_setup&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;tbl_format_header(setup)&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 344 × 8</span></span>
@@ -194,11 +199,11 @@ See <code><a href="new_tbl_format_setup.html">new_tbl_format_setup()</a></code> 
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>.</p>
+  <p></p><p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, Hadley Wickham.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer></div>
