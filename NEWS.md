@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.4.9005
+
+- Work around clash between cli and RNeXML.
+- Use eager registration via `NAMESPACE` for own methods for classes from other packages.
+- Protect against `format_type_sum()` returning strings too wide, e.g. from the units package.
+
+
 # pillar 1.6.4.9004
 
 - If some but not all sub-columns of a data frame or matrix column are shown, the names and types of the remaining columns are displayed in the footer (#365, #444).
