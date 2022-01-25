@@ -32,25 +32,4 @@ This function is deprecated in favor of \code{\link[testthat:expect_snapshot]{te
 If your package uses the third edition of testthat, do not use this function.
 }
 
-\examples{
-file <- tempfile("pillar", fileext = ".txt")
-
-# The pillar is constructed after options have been set
-# (need two runs because reference file doesn't exist during the first run)
-suppressWarnings(tryCatch(
-  expect_known_display(pillar(1:3), file, crayon = FALSE),
-  expectation_failure = function(e) {}
-))
-expect_known_display(pillar(1:3), file, crayon = FALSE)
-
-# Good: Use tidyeval to defer construction
-pillar_quo <- rlang::quo(pillar(1:3))
-expect_known_display(!!pillar_quo, file, crayon = FALSE)
-
-\dontrun{
-# Bad: Options set in the active session may affect the display
-integer_pillar <- pillar(1:3)
-expect_known_display(integer_pillar, file, crayon = FALSE)
-}
-}
 \keyword{internal}
