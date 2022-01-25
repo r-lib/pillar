@@ -22,7 +22,7 @@ pillar, see examples for usage."><meta name="robots" content="noindex"><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.4.9005</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.5.9000</span>
       </span>
     </div>
 
@@ -112,33 +112,6 @@ pillar, see examples for usage.</p>
 If your package uses the third edition of testthat, do not use this function.</p>
     </div>
 
-    <div id="ref-examples">
-    <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"pillar"</span>, fileext <span class="op">=</span> <span class="st">".txt"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The pillar is constructed after options have been set</span></span>
-<span class="r-in"><span class="co"># (need two runs because reference file doesn't exist during the first run)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu">expect_known_display</span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
-<span class="r-in">  expectation_failure <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
-<span class="r-in"><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`expect_known_display()` was deprecated in pillar 1.6.5.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `testthat::expect_snapshot()` instead.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Good: Use tidyeval to defer construction</span></span>
-<span class="r-in"><span class="va">pillar_quo</span> <span class="op">&lt;-</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/nse-defuse.html" class="external-link">quo</a></span><span class="op">(</span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="op">!</span><span class="op">!</span><span class="va">pillar_quo</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`expect_known_display()` was deprecated in pillar 1.6.5.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `testthat::expect_snapshot()` instead.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Bad: Options set in the active session may affect the display</span></span>
-<span class="r-in"><span class="va">integer_pillar</span> <span class="op">&lt;-</span> <span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">expect_known_display</span><span class="op">(</span><span class="va">integer_pillar</span>, <span class="va">file</span>, crayon <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-</code></pre></div>
-    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
