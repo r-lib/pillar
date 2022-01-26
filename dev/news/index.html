@@ -77,54 +77,45 @@
 <ul><li>Same as previous version.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6.5" id="pillar-165">pillar 1.6.5<a class="anchor" aria-label="anchor" href="#pillar-165"></a></h2>
-<ul><li>Same as previous version.</li>
+<h2 class="page-header" data-toc-text="1.6.5" id="pillar-165">pillar 1.6.5<small>2022-01-25</small><a class="anchor" aria-label="anchor" href="#pillar-165"></a></h2>
+<div class="section level3">
+<h3 id="breaking-changes-1-6-5">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-6-5"></a></h3>
+<ul><li>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code>, supersedes <code>ctl_new_compound_pillar()</code> (<a href="https://github.com/r-lib/pillar/issues/433" class="external-link">#433</a>).</li>
 </ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6.4.9005" id="pillar-1649005">pillar 1.6.4.9005<a class="anchor" aria-label="anchor" href="#pillar-1649005"></a></h2>
-<ul><li>Work around clash between cli and RNeXML.</li>
-<li>Use eager registration via <code>NAMESPACE</code> for own methods for classes from other packages.</li>
-<li>Protect against <code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> returning strings too wide, e.g. from the units package.</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6.4.9004" id="pillar-1649004">pillar 1.6.4.9004<a class="anchor" aria-label="anchor" href="#pillar-1649004"></a></h2>
+<div class="section level3">
+<h3 id="features-1-6-5">Features<a class="anchor" aria-label="anchor" href="#features-1-6-5"></a></h3>
 <ul><li>If some but not all sub-columns of a data frame or matrix column are shown, the names and types of the remaining columns are displayed in the footer (<a href="https://github.com/r-lib/pillar/issues/365" class="external-link">#365</a>, <a href="https://github.com/r-lib/pillar/issues/444" class="external-link">#444</a>).</li>
-<li>Fix corner case for display of packed columns (<a href="https://github.com/r-lib/pillar/issues/443" class="external-link">#443</a>).</li>
 <li>
 <code>num(fixed_exponent = ...)</code> is now represented with the fixed exponent in the pillar header, and in the title in ggplot2 (<a href="https://github.com/r-lib/pillar/issues/307" class="external-link">#307</a>).</li>
 <li>
 <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> gains <code>focus</code> argument that expects a character vector of column names. Focus columns are moved to the front and separated from the main columns by a subtle vertical line (<a href="https://github.com/r-lib/pillar/issues/384" class="external-link">#384</a>).</li>
 <li>New <code><a href="../reference/scale_x_num.html">scale_x_num()</a></code> and <code><a href="../reference/scale_x_num.html">scale_y_num()</a></code>. If a column created with <code><a href="../reference/num.html">num()</a></code> is used in a ggplot, the x and y scale will be formatted automatically according to to the specification (<a href="https://github.com/r-lib/pillar/issues/400" class="external-link">#400</a>, <a href="https://github.com/r-lib/pillar/issues/404" class="external-link">#404</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6.4.9003" id="pillar-1649003">pillar 1.6.4.9003<a class="anchor" aria-label="anchor" href="#pillar-1649003"></a></h2>
-<ul><li>Reworked formatting routine, now using an event-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space if space is limited has slightly improved (<a href="https://github.com/r-lib/pillar/issues/435" class="external-link">#435</a>).</li>
-<li>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code>, supersedes <code>ctl_new_compound_pillar()</code> (<a href="https://github.com/r-lib/pillar/issues/433" class="external-link">#433</a>).</li>
-<li>Fixed some cases for combinations of printed width and <code>getOption("width")</code> (<a href="https://github.com/r-lib/pillar/issues/432" class="external-link">#432</a>).</li>
-<li>Remove dependency on the crayon package (<a href="https://github.com/r-lib/pillar/issues/233" class="external-link">#233</a>, <a href="https://github.com/r-lib/pillar/issues/406" class="external-link">#406</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6.4.9002" id="pillar-1649002">pillar 1.6.4.9002<a class="anchor" aria-label="anchor" href="#pillar-1649002"></a></h2>
-<ul><li>List columns omit size information if horizontal space is insufficient (<a href="https://github.com/r-lib/pillar/issues/392" class="external-link">#392</a>).</li>
-<li>Extra columns in footer show backticks again if they are non-syntactic (<a href="https://github.com/r-lib/pillar/issues/393" class="external-link">#393</a>).</li>
+<li>List columns omit size information if horizontal space is insufficient (<a href="https://github.com/r-lib/pillar/issues/392" class="external-link">#392</a>).</li>
 <li>If the column title of a backticked column is abbreviated, the trailing backtick is still printed (<a href="https://github.com/r-lib/pillar/issues/391" class="external-link">#391</a>).</li>
 <li>
 <code><a href="../reference/new_pillar_shaft.html">new_pillar_shaft_simple()</a></code> gains <code>short_formatted</code> argument that contains the data to be used if horizontal space is insufficient (<a href="https://github.com/r-lib/pillar/issues/389" class="external-link">#389</a>).</li>
 <li>Default <code><a href="../reference/type_sum.html">obj_sum()</a></code> method returns abbreviation in attribute of return value (<a href="https://github.com/r-lib/pillar/issues/390" class="external-link">#390</a>).</li>
-<li>Use snapshot variants, requires testthat &gt;= 3.1.1 (<a href="https://github.com/r-lib/pillar/issues/387" class="external-link">#387</a>).</li>
-<li>Breaking: packed columns are no longer distributed over multiple tiers (<a href="https://github.com/r-lib/pillar/issues/386" class="external-link">#386</a>).</li>
-<li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-1-6-5">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-6-5"></a></h3>
+<ul><li>Extra columns in footer show backticks again if they are non-syntactic (<a href="https://github.com/r-lib/pillar/issues/393" class="external-link">#393</a>).</li>
+<li>Fixed some cases for combinations of printed width and <code>getOption("width")</code> (<a href="https://github.com/r-lib/pillar/issues/432" class="external-link">#432</a>).</li>
+<li>Fix support for <code><a href="https://rdrr.io/pkg/nanotime/man/nanotime.html" class="external-link">nanotime::nanotime()</a></code> classes (<a href="https://github.com/r-lib/pillar/issues/378" class="external-link">#378</a>, <a href="https://github.com/r-lib/pillar/issues/380" class="external-link">#380</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-1-6-5">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-6-5"></a></h3>
+<ul><li>
 <code><a href="../reference/num.html">?num</a></code> and <code><a href="../reference/char.html">?char</a></code> now point to tibble (<a href="https://github.com/r-lib/pillar/issues/382" class="external-link">#382</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="internal-1-6-5">Internal<a class="anchor" aria-label="anchor" href="#internal-1-6-5"></a></h3>
+<ul><li>Use eager registration via <code>NAMESPACE</code> for own methods for classes from other packages.</li>
+<li>Reworked formatting routine, now using a visitor-based approach with in-order iteration over all pillars. The only visible changes are that usage of free space (in the case of limited space) has slightly improved (<a href="https://github.com/r-lib/pillar/issues/435" class="external-link">#435</a>).</li>
+<li>Prepared removal of dependency on the crayon package (<a href="https://github.com/r-lib/pillar/issues/233" class="external-link">#233</a>, <a href="https://github.com/r-lib/pillar/issues/406" class="external-link">#406</a>).</li>
+<li>Use snapshot variants, requires testthat &gt;= 3.1.1 (<a href="https://github.com/r-lib/pillar/issues/387" class="external-link">#387</a>).</li>
 <li>Replace internal <code>"pillar_vertical"</code> class with <code><a href="https://glue.tidyverse.org/reference/as_glue.html" class="external-link">glue::as_glue()</a></code> (<a href="https://github.com/r-lib/pillar/issues/279" class="external-link">#279</a>).</li>
 </ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6.4.9001" id="pillar-1649001">pillar 1.6.4.9001<a class="anchor" aria-label="anchor" href="#pillar-1649001"></a></h2>
-<ul><li>Fix support for <code><a href="https://rdrr.io/pkg/nanotime/man/nanotime.html" class="external-link">nanotime::nanotime()</a></code> classes (<a href="https://github.com/r-lib/pillar/issues/378" class="external-link">#378</a>, <a href="https://github.com/r-lib/pillar/issues/380" class="external-link">#380</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6.4.9000" id="pillar-1649000">pillar 1.6.4.9000<a class="anchor" aria-label="anchor" href="#pillar-1649000"></a></h2>
-<ul><li>Same as previous version.</li>
-</ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.4" id="pillar-164">pillar 1.6.4<small>2021-10-18</small><a class="anchor" aria-label="anchor" href="#pillar-164"></a></h2>
 <div class="section level3">
