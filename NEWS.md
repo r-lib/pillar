@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.5.9001
+
+- Update `s3_register()` to use new implementation from rlang (#462).
+
+
 # pillar 1.6.5.9000
 
 - Same as previous version.
