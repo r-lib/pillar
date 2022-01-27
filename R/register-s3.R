@@ -123,8 +123,7 @@ s3_register <- function(generic, class, method = NULL) {
 
 .rlang_s3_register_compat <- function(fn, try_rlang = TRUE) {
   # Compats that behave the same independently of rlang's presence
-  out <- switch(
-    fn,
+  out <- switch(fn,
     is_installed = return(function(pkg) requireNamespace(pkg, quietly = TRUE))
   )
 
@@ -133,15 +132,13 @@ s3_register <- function(generic, class, method = NULL) {
     # hook and exports are not initialised at this point
     ns <- asNamespace("rlang")
 
-    switch(
-      fn,
+    switch(fn,
       is_interactive = return(get("is_interactive", envir = ns))
     )
 
     # Make sure rlang knows about "x" and "i" bullets
     if (utils::packageVersion("rlang") >= "0.4.2") {
-      switch(
-        fn,
+      switch(fn,
         abort = return(get("abort", envir = ns)),
         warn = return(get("warn", envir = ns)),
         inform = return(get("inform", envir = ns))
@@ -161,8 +158,7 @@ s3_register <- function(generic, class, method = NULL) {
   }
 
   format_msg <- function(x) paste(x, collapse = "\n")
-  switch(
-    fn,
+  switch(fn,
     is_interactive = return(is_interactive_compat),
     abort = return(function(msg) stop(format_msg(msg), call. = FALSE)),
     warn = return(function(msg) warning(format_msg(msg), call. = FALSE)),
