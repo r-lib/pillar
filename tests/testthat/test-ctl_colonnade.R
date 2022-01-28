@@ -220,7 +220,7 @@ test_that("focus columns", {
 
   expect_snapshot(variant = variant, {
     tbl_format_setup(x, width = 30, focus = "b")
-    options(width = 15)
-    tbl_format_setup(x, width = 30, focus = "b")
+    tbl_format_setup(x, width = 15, focus = "b")
+    tbl_format_setup(x, width = 10, focus = "b")
   })
 })

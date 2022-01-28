@@ -13,16 +13,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     return(new_colonnade_body(list(), extra_cols = x))
   }
 
-  # Move focus columns to front
-  x_focus <- x
-  if (!is.null(focus)) {
-    focus <- match(focus, names(x))
-    stopifnot(!anyNA(focus))
-    idx <- seq_along(x)
-    idx <- c(focus, setdiff(idx, focus))
-    x_focus <- x[idx]
-  }
-
   # Reserve space for rowid column in each tier
   if (!is_false(has_row_id)) {
     rowid <- rif_shaft(n)
@@ -47,9 +37,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   }
 
   on_hsep <- function(extent) {
-    if (!is.null(focus)) {
-      split_after <<- length(formatted_tiers)
-    }
   }
 
   on_extra_cols <- function(my_extra_cols) {
@@ -80,7 +67,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     controller, rowid, rowid_width, has_star,
     on_tier, on_hsep, on_extra_cols
   )
-  do_emit_tiers(x_focus, tier_widths, length(focus), cb, focus)
+  do_emit_tiers(x, tier_widths, length(focus), cb, focus)
 
   new_colonnade_body(formatted_tiers, split_after = split_after, extra_cols = extra_cols)
 }
@@ -128,15 +115,7 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
 
       aligned <- map(formatted_list, `[[`, "aligned")
 
-      if (!is.null(vsep_pos) && vsep_pos < length(aligned)) {
-        vsep <- rep_along(aligned, " ")
-        vsep[[length(aligned)]] <- ""
-        vsep[[vsep_pos]] <- style_subtle(vbar())
-      } else {
-        vsep <- NULL
-      }
-
-      tier <- format_colonnade_tier_2(aligned, vsep = vsep, bidi = get_pillar_option_bidi())
+      tier <- format_colonnade_tier_2(aligned, bidi = get_pillar_option_bidi())
 
       cb$on_tier(tier)
 
@@ -204,10 +183,88 @@ emit_pillars <- function(x, tier_widths, cb, focus) {
 }
 
 do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
-  do_emit_pillars(x, tier_widths, cb)
+  stopifnot(is.data.frame(x))
+
+  focus <- sort(match(focus, names(x)))
+  # Shortcut
+  if (length(focus) == 0) {
+    do_emit_pillars(x, tier_widths, cb)
+    return()
+  }
+
+  pillar_list_focus <- ctl_new_pillar_list(cb$controller, x[focus], width = tier_widths)
+  extra_focus <- attr(pillar_list_focus, "extra")
+
+  # Can't show focus pillars that don't fit
+  focus <- focus[seq_along(pillar_list_focus)]
+
+  before_start_idx <- vec_lag(focus + 1L, default = 1L)
+  before_end_idx <- focus - 1L
+
+  # Apply similar strategy as in do_emit_pillars(), but ensure that
+  # focus pillars are shown
+  min_widths_focus <- map_int(pillar_list_focus, pillar_get_min_widths)
+  rev <- distribute_pillars_rev(min_widths_focus, tier_widths)
+  stopifnot(!anyNA(rev$tier))
+  rev$offset_before <- pmax(rev$offset_after - rev$width - 1L, 0L)
+
+  x_pos <- 0L
+  tier_pos <- 1L
+
+  for (col in seq_along(focus)) {
+    start <- before_start_idx[[col]]
+    end <- before_end_idx[[col]]
+
+    # Emit non-focus pillars that fit: use offset_before
+    if (start <= end) {
+      sub_tier_widths <- compute_sub_tier_widths(
+        tier_widths, x_pos, tier_pos,
+        rev$offset_before[[col]], rev$tier[[col]]
+      )
+
+      adv <- advance_emit_pillars(x_pos, tier_pos, x[seq2(start, end)], sub_tier_widths, cb)
+      x_pos <- adv$x_pos
+      tier_pos <- adv$tier_pos
+    }
+
+    # Emit focus pillar: use offset_after
+    sub_tier_widths <- compute_sub_tier_widths(
+      tier_widths, x_pos, tier_pos,
+      rev$offset_after[[col]], rev$tier[[col]]
+    )
+
+    adv <- advance_emit_pillars(x_pos, tier_pos, x[focus[[col]]], sub_tier_widths, cb, first_pillar = pillar_list_focus[[col]], is_focus = TRUE)
+    x_pos <- adv$x_pos
+    tier_pos <- adv$tier_pos
+  }
+
+  # Emit pillars after focus pillar
+  if (length(focus) > 0) {
+    start <- focus[[length(focus)]] + 1L
+  } else {
+    start <- 1L
+  }
+  end <- length(x)
+
+  # Emit non-focus pillars that fit: use offset_before
+  if (start <= end) {
+    sub_tier_widths <- compute_sub_tier_widths(
+      tier_widths, x_pos, tier_pos,
+      tier_widths[[length(tier_widths)]], length(tier_widths)
+    )
+
+    adv <- advance_emit_pillars(x_pos, tier_pos, x[seq2(start, end)], sub_tier_widths, cb)
+    x_pos <- adv$x_pos
+    tier_pos <- adv$tier_pos
+  }
 }
 
-do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = NULL) {
+advance_emit_pillars <- function(x_pos, tier_pos, ...) {
+  used <- do_emit_pillars(...)
+  advance_pos(x_pos, tier_pos, used)
+}
+
+do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = NULL, is_focus = FALSE) {
   top_level <- is.null(first_pillar)
 
   # Only tweaking sub-title, because full title is needed for extra-cols
@@ -234,7 +291,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
     used <- compute_used_width(tier_widths, width)
 
-    formatted <- pillar_format_parts_2(pillar, used$width)
+    formatted <- pillar_format_parts_2(pillar, used$width, is_focus)
     true_width <- formatted$max_extent
     stopifnot(true_width <= width)
 
@@ -273,7 +330,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       cb,
       c(title, tick_if_needed(names(x)[[col]])),
       pillar_list[[col]],
-      c(parent_col_idx, if (!is.null(names(x))) col)
+      c(parent_col_idx, if (!is.null(names(x))) col),
+      is_focus
     )
     "!!!!!DEBUG used"
 
@@ -324,16 +382,16 @@ compute_sub_tier_widths <- function(tier_widths, x_pos, tier_pos, x_target, tier
 }
 
 advance_pos <- function(x_pos, tier_pos, used) {
-  stopifnot(!is.null(used))
-
-  if (used$tiers > 0) {
-    x_pos <- used$width
-    tier_pos <- tier_pos + used$tiers
-  } else {
-    if (x_pos > 0) {
-      x_pos <- x_pos + 1L
+  if (!is.null(used)) {
+    if (used$tiers > 0) {
+      x_pos <- used$width
+      tier_pos <- tier_pos + used$tiers
+    } else {
+      if (x_pos > 0) {
+        x_pos <- x_pos + 1L
+      }
+      x_pos <- x_pos + used$width
     }
-    x_pos <- x_pos + used$width
   }
   list(x_pos = x_pos, tier_pos = tier_pos)
 }

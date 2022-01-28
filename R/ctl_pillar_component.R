@@ -62,9 +62,19 @@ pillar_get_min_widths <- function(x) {
   as.integer(exec(max, !!!map(x, get_min_width)))
 }
 
-pillar_format_parts_2 <- function(x, width) {
+pillar_format_parts_2 <- function(x, width, is_focus = FALSE) {
   widths <- pillar_get_widths(x)
   formatted <- map(x, function(.x) format(.x[[1L]], width = width))
+
+  # FIXME: Support missing type component
+  flat_focus_pos <- integer()
+  if (is_focus) {
+    type_idx <- which(names(x) == "type")
+    if (length(type_idx) > 0) {
+      before_type <- seq_len(type_idx[[1]])
+      flat_focus_pos <- sum(lengths(formatted[before_type]))
+    }
+  }
 
   align <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"
 
@@ -76,6 +86,8 @@ pillar_format_parts_2 <- function(x, width) {
     max_extent <- width
   }
   aligned <- align_impl(flat, max_extent, align, " ", extent)
+
+  aligned[flat_focus_pos] <- crayon_underline(aligned[flat_focus_pos])
 
   list(max_extent = max_extent, aligned = aligned, components = names(x))
 }
