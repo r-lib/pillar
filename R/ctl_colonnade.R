@@ -297,17 +297,9 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     )
     "!!!!!DEBUG used"
 
-    stopifnot(!is.null(used))
-
-    if (used$tiers > 0) {
-      x_pos <- used$width
-      tier_pos <- tier_pos + used$tiers
-    } else {
-      if (x_pos > 0) {
-        x_pos <- x_pos + 1L
-      }
-      x_pos <- x_pos + used$width
-    }
+    adv <- advance_pos(x_pos, tier_pos, used)
+    x_pos <- adv$x_pos
+    tier_pos <- adv$tier_pos
 
     if (top_level) {
       cb$on_top_level_pillar()
@@ -334,6 +326,21 @@ compute_sub_tier_widths <- function(tier_widths, x_pos, tier_pos, x_target, tier
   }
   stopifnot(sub_tier_widths >= 0)
   sub_tier_widths
+}
+
+advance_pos <- function(x_pos, tier_pos, used) {
+  stopifnot(!is.null(used))
+
+  if (used$tiers > 0) {
+    x_pos <- used$width
+    tier_pos <- tier_pos + used$tiers
+  } else {
+    if (x_pos > 0) {
+      x_pos <- x_pos + 1L
+    }
+    x_pos <- x_pos + used$width
+  }
+  list(x_pos = x_pos, tier_pos = tier_pos)
 }
 
 # Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
