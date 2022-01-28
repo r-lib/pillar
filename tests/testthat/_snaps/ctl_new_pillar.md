@@ -44,6 +44,8 @@
       
       attr(,"extra")
       [1] "Volume"
+      attr(,"remaining_width")
+      [1] 4
     Code
       ctl_new_pillar_list(new_tbl(), as.matrix(trees[1:3, ]), width = 20, title = "a")
     Output

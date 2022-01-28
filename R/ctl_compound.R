@@ -48,13 +48,14 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
     }
 
     # Compute remaining width
-    width <- deduct_width(width, pillar_get_min_widths(pillar))
-    if (is.null(width)) {
+    new_width <- deduct_width(width, pillar_get_min_widths(pillar))
+    if (is.null(new_width)) {
       # NULL return: current pillar doesn't fit
       break
     }
 
     pillars[[i]] <- pillar
+    width <- new_width
 
     if (!is.null(title)) {
       title[] <- ""
@@ -63,7 +64,11 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
 
   pillars <- compact(pillars)
 
-  structure(pillars, extra = names(x)[seq2(length(pillars) + 1, length(x))])
+  new_pillar_fit(
+    pillars,
+    extra = names(x)[seq2(length(pillars) + 1, length(x))],
+    remaining_width = width
+  )
 }
 
 new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
