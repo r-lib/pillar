@@ -241,13 +241,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   }
 
   # Simple pillar: fit and proceed
-  if (!is.null(first_pillar)) {
-    # Harmonize for the case of a zero-column packed column
-    attr(first_pillar, "width") <- attr(pillar_list[[1]], "width")
-    attr(pillar_list, "remaining_width") <- NULL
-  }
-
-  if (identical(list(first_pillar), pillar_list)) {
+  if (isTRUE(attr(pillar_list, "simple"))) {
     pillar <- pillar_list[[1]]
     width <- pillar_get_widths(pillar)
     if (width <= max(tier_widths)) {

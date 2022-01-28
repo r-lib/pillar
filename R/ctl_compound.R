@@ -193,13 +193,19 @@ new_single_pillar_list <- function(pillar, width) {
     new_width <- deduct_width(width, pillar_width)
     stopifnot(!is.null(new_width))
   }
-  new_pillar_list(list(pillar), extra = NULL, remaining_width = new_width)
+  new_pillar_list(
+    list(pillar),
+    extra = NULL,
+    remaining_width = new_width,
+    simple = TRUE
+  )
 }
 
-new_pillar_list <- function(pillar_list, extra, remaining_width) {
+new_pillar_list <- function(pillar_list, extra, remaining_width, simple = FALSE) {
   structure(
     pillar_list,
     extra = extra,
-    remaining_width = remaining_width
+    remaining_width = remaining_width,
+    simple = simple
   )
 }
