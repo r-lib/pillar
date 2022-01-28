@@ -140,10 +140,11 @@ ctl_new_pillar_list.tbl <- function(controller, x, width, ..., title = NULL, fir
     new_matrix_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
   } else if (is.array(x) && length(dim(x)) > 1) {
     new_array_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
-  } else if (is.null(first_pillar)) {
-    list(ctl_new_pillar(controller, x, width, ..., title = prepare_title(title)))
   } else {
-    list(first_pillar)
+    if (is.null(first_pillar)) {
+      first_pillar <- ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
+    }
+    new_single_pillar_list(first_pillar, width)
   }
 }
 
