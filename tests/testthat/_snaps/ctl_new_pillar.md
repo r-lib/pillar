@@ -25,6 +25,8 @@
       
       attr(,"remaining_width")
       [1] 14
+      attr(,"simple")
+      [1] TRUE
     Code
       ctl_new_pillar_list(new_tbl(), trees[1:3, ], width = 20, title = "a")
     Output
@@ -48,6 +50,8 @@
       [1] "Volume"
       attr(,"remaining_width")
       [1] 4
+      attr(,"simple")
+      [1] FALSE
     Code
       ctl_new_pillar_list(new_tbl(), as.matrix(trees[1:3, ]), width = 20, title = "a")
     Output
@@ -63,6 +67,8 @@
       [1] 2 3
       attr(,"remaining_width")
       [1] 8
+      attr(,"simple")
+      [1] FALSE
     Code
       ctl_new_pillar_list(new_tbl(), matrix(1:6, ncol = 2), width = 20, title = "a")
     Output
@@ -86,6 +92,8 @@
       integer(0)
       attr(,"remaining_width")
       [1] 8
+      attr(,"simple")
+      [1] FALSE
     Code
       ctl_new_pillar_list(new_tbl(), matrix(1:6, ncol = 3), width = 10, title = "a")
     Output
@@ -100,6 +108,8 @@
       [1] 2 3
       attr(,"remaining_width")
       [1] 4
+      attr(,"simple")
+      [1] FALSE
 
 # ctl_new_pillar_list() for tables
 
@@ -117,4 +127,6 @@
       
       attr(,"remaining_width")
       [1] 13
+      attr(,"simple")
+      [1] TRUE
 
