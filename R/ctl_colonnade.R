@@ -199,8 +199,12 @@ new_emit_pillars_callbacks <- function(controller,
 
 emit_pillars <- function(x, tier_widths, cb, focus) {
   cb$on_start_tier()
-  do_emit_pillars(x, tier_widths, cb)
+  do_emit_focus_pillars(x, tier_widths, cb, focus)
   cb$on_end_tier()
+}
+
+do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
+  do_emit_pillars(x, tier_widths, cb)
 }
 
 do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = NULL) {
