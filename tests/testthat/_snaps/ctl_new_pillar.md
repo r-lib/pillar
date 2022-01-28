@@ -59,6 +59,8 @@
       
       attr(,"extra")
       [1] 2 3
+      attr(,"remaining_width")
+      [1] 8
     Code
       ctl_new_pillar_list(new_tbl(), matrix(1:6, ncol = 2), width = 20, title = "a")
     Output
@@ -80,6 +82,8 @@
       
       attr(,"extra")
       integer(0)
+      attr(,"remaining_width")
+      [1] 8
     Code
       ctl_new_pillar_list(new_tbl(), matrix(1:6, ncol = 3), width = 10, title = "a")
     Output
@@ -92,6 +96,8 @@
       
       attr(,"extra")
       [1] 2 3
+      attr(,"remaining_width")
+      [1] 4
 
 # ctl_new_pillar_list() for tables
 

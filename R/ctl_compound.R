@@ -125,17 +125,22 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
     }
 
     # Compute remaining width
-    width <- deduct_width(width, pillar_get_min_widths(pillar))
-    if (is.null(width)) {
+    new_width <- deduct_width(width, pillar_get_min_widths(pillar))
+    if (is.null(new_width)) {
       # NULL return: current pillar doesn't fit
       break
     }
 
     pillars[[i]] <- pillar
+    width <- new_width
   }
 
   pillars <- compact(pillars)
-  structure(pillars, extra = seq2(length(pillars) + 1, ncol(x)))
+  new_pillar_fit(
+    pillars,
+    extra = seq2(length(pillars) + 1, ncol(x)),
+    remaining_width = width
+  )
 }
 
 new_array_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
