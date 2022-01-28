@@ -181,12 +181,6 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
   cb$on_extra_cols(extra_cols)
 }
 
-emit_pillars <- function(x, tier_widths, cb, focus) {
-  cb$on_start_tier()
-  do_emit_pillars(x, tier_widths, cb)
-  cb$on_end_tier()
-}
-
 new_emit_pillars_callbacks <- function(controller,
                                        on_start_tier,
                                        on_end_tier,
@@ -201,6 +195,12 @@ new_emit_pillars_callbacks <- function(controller,
     on_top_level_pillar = on_top_level_pillar,
     on_extra_cols = on_extra_cols
   )
+}
+
+emit_pillars <- function(x, tier_widths, cb, focus) {
+  cb$on_start_tier()
+  do_emit_pillars(x, tier_widths, cb)
+  cb$on_end_tier()
 }
 
 do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NULL, parent_col_idx = NULL) {
