@@ -171,3 +171,22 @@ deduct_width <- function(width, consumed_widths) {
     deduct_width(width[-1], consumed_widths)
   }
 }
+
+new_single_pillar_fit <- function(pillar, width) {
+  pillar_width <- pillar_get_min_widths(pillar)
+  if (is.null(width)) {
+    new_width <- NULL
+  } else {
+    new_width <- deduct_width(width, pillar_width)
+    stopifnot(!is.null(new_width))
+  }
+  new_pillar_fit(list(pillar), extra = NULL, remaining_width = new_width)
+}
+
+new_pillar_fit <- function(pillar_list, extra, remaining_width) {
+  structure(
+    pillar_list,
+    extra = extra,
+    remaining_width = remaining_width
+  )
+}
