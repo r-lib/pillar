@@ -113,4 +113,6 @@
                     35 ...
                      0 ...
       
+      attr(,"remaining_width")
+      [1] 13
 

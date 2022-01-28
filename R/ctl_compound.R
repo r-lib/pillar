@@ -2,12 +2,13 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
   "!!!!!DEBUG new_data_frame_pillar_list(`v(width)`, `v(title)`)"
 
   if (ncol(x) == 0) {
-    return(list(pillar_from_shaft(
+    pillar <- pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
       new_pillar_type(x),
       new_empty_shaft(nrow(x)),
       width
-    )))
+    )
+    return(new_single_pillar_fit(pillar, width))
   }
 
   max_n_pillars <- sum(width %/% 2)
@@ -73,12 +74,13 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
 
 new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = NULL) {
   if (ncol(x) == 0) {
-    return(list(pillar_from_shaft(
+    pillar <- pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
       new_pillar_type(x),
       new_empty_shaft(nrow(x)),
       width
-    )))
+    )
+    return(new_single_pillar_fit(pillar, width))
   }
 
   max_n_pillars <- sum(width %/% 2)
@@ -152,12 +154,13 @@ new_array_pillar_list <- function(x, controller, width, title, first_pillar = NU
 
   body <- pillar_shaft(first_slice)
 
-  list(pillar_from_shaft(
+  pillar <- pillar_from_shaft(
     new_pillar_title(title),
     new_pillar_type(x),
     new_continuation_shaft(body),
     width
-  ))
+  )
+  new_single_pillar_fit(pillar, width)
 }
 
 # Can be rewritten with a repeat loop
