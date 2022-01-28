@@ -2,12 +2,12 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
   "!!!!!DEBUG new_data_frame_pillar_list(`v(width)`, `v(title)`)"
 
   if (ncol(x) == 0) {
-    return(compact(list(pillar_from_shaft(
+    return(list(pillar_from_shaft(
       new_pillar_title(prepare_title(title)),
       new_pillar_type(x),
       new_empty_shaft(nrow(x)),
       width
-    ))))
+    )))
   }
 
   max_n_pillars <- sum(width %/% 2)
