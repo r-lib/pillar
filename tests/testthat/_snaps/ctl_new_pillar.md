@@ -23,6 +23,8 @@
                          2
                          3
       
+      attr(,"remaining_width")
+      [1] 14
     Code
       ctl_new_pillar_list(new_tbl(), trees[1:3, ], width = 20, title = "a")
     Output

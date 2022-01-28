@@ -144,7 +144,7 @@ ctl_new_pillar_list.tbl <- function(controller, x, width, ..., title = NULL, fir
     if (is.null(first_pillar)) {
       first_pillar <- ctl_new_pillar(controller, x, width, ..., title = prepare_title(title))
     }
-    list(first_pillar)
+    new_single_pillar_fit(first_pillar, width)
   }
 }
 
