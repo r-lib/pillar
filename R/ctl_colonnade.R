@@ -80,7 +80,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     controller, rowid, rowid_width, has_star,
     on_tier, on_hsep, on_extra_cols
   )
-  do_emit_tiers(x_focus, tier_widths, length(focus), cb)
+  do_emit_tiers(x_focus, tier_widths, length(focus), cb, focus)
 
   new_colonnade_body(formatted_tiers, split_after = split_after, extra_cols = extra_cols)
 }
@@ -98,7 +98,7 @@ new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
   )
 }
 
-do_emit_tiers <- function(x, tier_widths, n_focus, cb) {
+do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
   formatted_list <- NULL
   extra_cols <- data_frame(x = list(), title = list(), cols = list())
   n_top_level_pillars <- 0L
@@ -177,11 +177,11 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb) {
     on_start_tier, on_end_tier, on_pillar, on_top_level_pillar, on_extra_cols
   )
 
-  emit_pillars(x, tier_widths, cb_pillars)
+  emit_pillars(x, tier_widths, cb_pillars, focus)
   cb$on_extra_cols(extra_cols)
 }
 
-emit_pillars <- function(x, tier_widths, cb) {
+emit_pillars <- function(x, tier_widths, cb, focus) {
   cb$on_start_tier()
   do_emit_pillars(x, tier_widths, cb)
   cb$on_end_tier()
