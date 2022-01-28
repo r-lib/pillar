@@ -198,7 +198,7 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
   # Can't show focus pillars that don't fit
   focus <- focus[seq_along(pillar_list_focus)]
 
-  before_start_idx <- lag(focus + 1L, default = 1L)
+  before_start_idx <- vec_lag(focus + 1L, default = 1L)
   before_end_idx <- focus - 1L
 
   # Apply similar strategy as in do_emit_pillars(), but ensure that
