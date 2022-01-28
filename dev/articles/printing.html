@@ -142,8 +142,8 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-ecda6a0dcc1221a01d19" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ecda6a0dcc1221a01d19">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-4b15e59c8cdd545d2665" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b15e59c8cdd545d2665">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div class="section level2">
 <h2 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
@@ -406,6 +406,9 @@ Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 <span class="co">#&gt;                    1</span>
 <span class="co">#&gt;                    2</span>
 <span class="co">#&gt;                    3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; attr(,"remaining_width")</span>
+<span class="co">#&gt; [1] 14</span>
 <span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">b</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
@@ -424,7 +427,9 @@ Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 <span class="co">#&gt;     9</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; attr(,"extra")</span>
-<span class="co">#&gt; character(0)</span></code></pre></div>
+<span class="co">#&gt; character(0)</span>
+<span class="co">#&gt; attr(,"remaining_width")</span>
+<span class="co">#&gt; [1] 8</span></code></pre></div>
 <p>In a tibble, each column can be a data frame, matrix, or even array itself, such columns are called <em>compound columns</em>. Such columns are decomposed into sub-pillars and returned as a list of pillars. Regular vectors are forwarded to <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and returned as list of length one. Implementers of <code>"tbl"</code> subclasses will rarely if ever need to extend or override this method.</p>
 <details><summary>
 Source code of <code>pillar:::ctl_new_pillar_list.tbl()</code>
@@ -438,10 +443,11 @@ Source code of <code>pillar:::ctl_new_pillar_list.tbl()</code>
     <span class="fu">new_matrix_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span>
     <span class="fu">new_array_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">first_pillar</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="fu">prepare_title</span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">first_pillar</span><span class="op">)</span>
+    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">first_pillar</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+      <span class="va">first_pillar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="fu">prepare_title</span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span>
+    <span class="op">}</span>
+    <span class="fu">new_single_pillar_list</span><span class="op">(</span><span class="va">first_pillar</span>, <span class="va">width</span><span class="op">)</span>
   <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
 </details>
