@@ -8,7 +8,7 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
       new_empty_shaft(nrow(x)),
       width
     )
-    return(new_single_pillar_fit(pillar, width))
+    return(new_single_pillar_list(pillar, width))
   }
 
   max_n_pillars <- sum(width %/% 2)
@@ -65,7 +65,7 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
 
   pillars <- compact(pillars)
 
-  new_pillar_fit(
+  new_pillar_list(
     pillars,
     extra = names(x)[seq2(length(pillars) + 1, length(x))],
     remaining_width = width
@@ -80,7 +80,7 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
       new_empty_shaft(nrow(x)),
       width
     )
-    return(new_single_pillar_fit(pillar, width))
+    return(new_single_pillar_list(pillar, width))
   }
 
   max_n_pillars <- sum(width %/% 2)
@@ -138,7 +138,7 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
   }
 
   pillars <- compact(pillars)
-  new_pillar_fit(
+  new_pillar_list(
     pillars,
     extra = seq2(length(pillars) + 1, ncol(x)),
     remaining_width = width
@@ -160,7 +160,7 @@ new_array_pillar_list <- function(x, controller, width, title, first_pillar = NU
     new_continuation_shaft(body),
     width
   )
-  new_single_pillar_fit(pillar, width)
+  new_single_pillar_list(pillar, width)
 }
 
 # Can be rewritten with a repeat loop
@@ -185,7 +185,7 @@ deduct_width <- function(width, consumed_widths) {
   }
 }
 
-new_single_pillar_fit <- function(pillar, width) {
+new_single_pillar_list <- function(pillar, width) {
   pillar_width <- pillar_get_min_widths(pillar)
   if (is.null(width)) {
     new_width <- NULL
@@ -193,10 +193,10 @@ new_single_pillar_fit <- function(pillar, width) {
     new_width <- deduct_width(width, pillar_width)
     stopifnot(!is.null(new_width))
   }
-  new_pillar_fit(list(pillar), extra = NULL, remaining_width = new_width)
+  new_pillar_list(list(pillar), extra = NULL, remaining_width = new_width)
 }
 
-new_pillar_fit <- function(pillar_list, extra, remaining_width) {
+new_pillar_list <- function(pillar_list, extra, remaining_width) {
   structure(
     pillar_list,
     extra = extra,
