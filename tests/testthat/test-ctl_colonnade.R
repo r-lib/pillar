@@ -222,5 +222,8 @@ test_that("focus columns", {
     tbl_format_setup(x, width = 30, focus = "b")
     tbl_format_setup(x, width = 15, focus = "b")
     tbl_format_setup(x, width = 10, focus = "b")
+    tbl_format_setup(x[2:1], width = 30, focus = "a")
+    tbl_format_setup(x[2:1], width = 15, focus = "a")
+    tbl_format_setup(x[2:1], width = 10, focus = "a")
   })
 })
