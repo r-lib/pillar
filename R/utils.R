@@ -124,3 +124,25 @@ safe_is_na <- function(x) {
 safe_any_na <- function(x) {
   anyNA(x)
 }
+
+vec_lead <- function(x, default = NULL) {
+  n <- vec_size(x)
+  if (n == 0) {
+    return(x)
+  }
+  if (is.null(default)) {
+    default <- vec_slice(x, NA_integer_)
+  }
+  vec_c(vec_slice(x, -1), default)
+}
+
+vec_lag <- function(x, default = vec_slice(x, NA_integer_)) {
+  n <- vec_size(x)
+  if (n == 0) {
+    return(x)
+  }
+  if (is.null(default)) {
+    default <- vec_slice(x, NA_integer_)
+  }
+  vec_c(default, vec_slice(x, -n))
+}

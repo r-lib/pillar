@@ -280,21 +280,10 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
   # Advance column by column
   for (col in seq_along(pillar_list)) {
-    target_tier <- rev$tier[[col]]
-    stopifnot(tier_pos <= target_tier)
-    if (tier_pos == target_tier) {
-      sub_tier_widths <- rev$offset_after[[col]] - x_pos
-    } else {
-      sub_tier_widths <- c(
-        tier_widths[[tier_pos]] - x_pos,
-        tier_widths[seq2(tier_pos + 1L, target_tier - 1L)],
-        rev$offset_after[[col]]
-      )
-    }
-    if (x_pos > 0) {
-      sub_tier_widths[[1]] <- max(sub_tier_widths[[1]] - 1L, 0L)
-    }
-    stopifnot(sub_tier_widths >= 0)
+    sub_tier_widths <- compute_sub_tier_widths(
+      tier_widths, x_pos, tier_pos,
+      rev$offset_after[[col]], rev$tier[[col]]
+    )
     "!!!!!DEBUG sub_tier_widths"
 
     # Recurse
@@ -308,17 +297,9 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     )
     "!!!!!DEBUG used"
 
-    stopifnot(!is.null(used))
-
-    if (used$tiers > 0) {
-      x_pos <- used$width
-      tier_pos <- tier_pos + used$tiers
-    } else {
-      if (x_pos > 0) {
-        x_pos <- x_pos + 1L
-      }
-      x_pos <- x_pos + used$width
-    }
+    adv <- advance_pos(x_pos, tier_pos, used)
+    x_pos <- adv$x_pos
+    tier_pos <- adv$tier_pos
 
     if (top_level) {
       cb$on_top_level_pillar()
@@ -326,6 +307,40 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   }
 
   list(tiers = tier_pos - 1L, width = x_pos)
+}
+
+compute_sub_tier_widths <- function(tier_widths, x_pos, tier_pos, x_target, tier_target) {
+  stopifnot(tier_pos <= tier_target)
+
+  if (tier_pos == tier_target) {
+    sub_tier_widths <- x_target - x_pos
+  } else {
+    sub_tier_widths <- c(
+      tier_widths[[tier_pos]] - x_pos,
+      tier_widths[seq2(tier_pos + 1L, tier_target - 1L)],
+      x_target
+    )
+  }
+  if (x_pos > 0) {
+    sub_tier_widths[[1]] <- max(sub_tier_widths[[1]] - 1L, 0L)
+  }
+  stopifnot(sub_tier_widths >= 0)
+  sub_tier_widths
+}
+
+advance_pos <- function(x_pos, tier_pos, used) {
+  stopifnot(!is.null(used))
+
+  if (used$tiers > 0) {
+    x_pos <- used$width
+    tier_pos <- tier_pos + used$tiers
+  } else {
+    if (x_pos > 0) {
+      x_pos <- x_pos + 1L
+    }
+    x_pos <- x_pos + used$width
+  }
+  list(x_pos = x_pos, tier_pos = tier_pos)
 }
 
 # Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
