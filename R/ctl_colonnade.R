@@ -31,7 +31,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
 
   formatted_tiers <- list()
   extra_cols <- list(a = 1)[0]
-  split_after <- NULL
 
   on_tier <- function(formatted) {
     # writeLines(formatted)
@@ -68,7 +67,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   )
   do_emit_tiers(x, tier_widths, length(focus), cb, focus)
 
-  new_colonnade_body(formatted_tiers, split_after = split_after, extra_cols = extra_cols)
+  new_colonnade_body(formatted_tiers, extra_cols = extra_cols)
 }
 
 new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
@@ -487,15 +486,6 @@ lro <- function(x) {
   paste0("\u202d", x, "\u202c")
 }
 
-# hbar is cli::symbol$double_line
-vbar <- function() {
-  if (l10n_info()$`UTF-8`) {
-    "\u2551"
-  } else {
-    "|"
-  }
-}
-
 format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   if (length(x) == 0) {
     return(character())
@@ -514,14 +504,8 @@ format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   out
 }
 
-new_colonnade_body <- function(x, extra_cols, split_after = NULL) {
+new_colonnade_body <- function(x, extra_cols) {
   "!!!!!DEBUG new_colonnade_body()"
-
-  if (!is.null(split_after)) {
-    width <- get_extent(c(x[[split_after]][[1]], x[[split_after + 1]][[1]]))
-    hbar <- style_subtle(strrep(cli::symbol$double_line, max(width)))
-    x <- c(x[seq_len(split_after)], hbar, x[seq2(split_after + 1, length(x))])
-  }
 
   body <- as_glue(as.character(unlist(x)))
   extra_cols <- as.list(extra_cols)
