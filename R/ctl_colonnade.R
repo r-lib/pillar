@@ -168,8 +168,8 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb) {
     new_extra_cols <- data_frame(
       x = list(x), title = list(title), cols = list(cols)
     )
-    # Add to the front, because top-level columns are emitted first:
-    extra_cols <<- vec_rbind(new_extra_cols, extra_cols)
+    # Add to the back, extra columns are emitted in order:
+    extra_cols <<- vec_rbind(extra_cols, new_extra_cols)
   }
 
   cb_pillars <- new_emit_pillars_callbacks(
@@ -217,25 +217,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   # Extra columns are known early on, and remain fixed
   extra <- attr(pillar_list, "extra")
 
-  # We emit early, this means that top-level columns are emitted before
-  # nested columns. We reverse in the callback.
-  if (length(extra) > 0) {
-    if (is.numeric(extra)) {
-      if (length(extra) == 1) {
-        extra <- paste0("[", extra, "]")
-      } else {
-        extra <- paste0("[", min(extra), ":", max(extra), "]")
-      }
-      x_extra <- set_names(list(x[1, ]), extra)
-    } else {
-      extra <- tick_if_needed(extra)
-      x_extra <- tick_names_if_needed(x)
-    }
-
-    cb$on_extra_cols(x_extra, title, extra)
-  }
-
   if (length(pillar_list) == 0) {
+    emit_extra_cols(extra, x, title, cb)
     # Doesn't fit
     return(NULL)
   }
@@ -299,6 +282,10 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
   }
 
+  # We emit late to ensure that extra columns of compound pillars
+  # appear before top-level extra columns.
+  emit_extra_cols(extra, x, title, cb)
+
   list(tiers = tier_pos - 1L, width = x_pos)
 }
 
@@ -345,6 +332,26 @@ advance_pos <- function(x_pos, tier_pos, used) {
     x_pos <- x_pos + used$width
   }
   list(x_pos = x_pos, tier_pos = tier_pos)
+}
+
+emit_extra_cols <- function(extra, x, title, cb) {
+  if (length(extra) == 0) {
+    return()
+  }
+
+  if (is.numeric(extra)) {
+    if (length(extra) == 1) {
+      extra <- paste0("[", extra, "]")
+    } else {
+      extra <- paste0("[", min(extra), ":", max(extra), "]")
+    }
+    x_extra <- set_names(list(x[1, ]), extra)
+  } else {
+    extra <- tick_if_needed(extra)
+    x_extra <- tick_names_if_needed(x)
+  }
+
+  cb$on_extra_cols(x_extra, title, extra)
 }
 
 # Reference: https://www.w3.org/International/questions/qa-bidi-unicode-controls
