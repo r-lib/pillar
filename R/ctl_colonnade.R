@@ -248,9 +248,18 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
   widths_focus <- map_int(focus_formatted_list, `[[`, "max_extent")
   rev <- distribute_pillars_rev(widths_focus, tier_widths)
   stopifnot(!anyNA(rev$tier))
-  rev <- rev[focus_top_level_end_idx, ]
-  stopifnot(nrow(rev) == n_focus_shown)
+
+  # This indicates the limit until which we expand non-focus column
+  # before the current focus column:
   rev$offset_before <- pmax(rev$offset_after - rev$width - 1L, 0L)
+  rev_before <- rev[focus_top_level_start_idx, ]
+  stopifnot(nrow(rev_before) == n_focus_shown)
+
+  # This indicates how far the current focus column (with all sub-pillars)
+  # can extend. We use it for convenience to use the same logic as
+  # do_emit_pillars().
+  rev_after <- rev[focus_top_level_end_idx, ]
+  stopifnot(nrow(rev_after) == n_focus_shown)
 
   x_pos <- 0L
   tier_pos <- 1L
@@ -274,7 +283,7 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
     if (start <= end) {
       sub_tier_widths <- compute_sub_tier_widths(
         tier_widths, x_pos, tier_pos,
-        rev$offset_before[[col]], rev$tier[[col]]
+        rev_before$offset_before[[col]], rev_before$tier[[col]]
       )
 
       adv <- advance_emit_pillars(x_pos, tier_pos, x[seq2(start, end)], sub_tier_widths, cb)
@@ -293,7 +302,7 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
       # Deduct widths: use offset_after
       sub_tier_widths <- compute_sub_tier_widths(
         tier_widths, x_pos, tier_pos,
-        rev$offset_after[[col]], rev$tier[[col]]
+        rev_after$offset_after[[col]], rev_after$tier[[col]]
       )
 
       used <- compute_used_width(sub_tier_widths, widths_focus[[focus_pillar]])

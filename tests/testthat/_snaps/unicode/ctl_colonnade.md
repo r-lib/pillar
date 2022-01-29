@@ -223,9 +223,9 @@
       [90m# A data frame: 1 ×
       #   2[39m
       [1m<tbl_format_body(setup)>[22m
-        b             a$x    $y
-        [3m[90m<chr>[39m[23m       [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m
-      [90m1[39m long enough     1     2
+        b        a$x    $y
+        [3m[90m<chr>[39m[23m  [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m
+      [90m1[39m long …     1     2
       [1m<tbl_format_footer(setup)>[22m
     Code
       tbl_format_setup(x[2:1], width = 15, focus = "a")
@@ -236,10 +236,14 @@
       #   frame: 1 ×
       #   2[39m
       [1m<tbl_format_body(setup)>[22m
-        b         a$x    $y
-        [3m[90m<chr>[39m[23m   [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m
-      [90m1[39m long e…     1     2
+          a$x    $y
+        [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m
+      [90m1[39m     1     2
       [1m<tbl_format_footer(setup)>[22m
+      [90m# … with 1[39m
+      [90m#   more[39m
+      [90m#   variable:[39m
+      [90m#   b <chr>[39m
     Code
       tbl_format_setup(x[2:1], width = 10, focus = "a")
     Output
