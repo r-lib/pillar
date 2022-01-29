@@ -6,6 +6,8 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   x <- new_data_frame(x, names = names2(x))
   width <- get_width_print(width)
 
+  stopifnot(all(focus %in% names(x)))
+
   n <- nrow(x)
   nc <- ncol(x)
 
@@ -29,14 +31,10 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
 
   formatted_tiers <- list()
   extra_cols <- list(a = 1)[0]
-  split_after <- NULL
 
   on_tier <- function(formatted) {
     # writeLines(formatted)
     formatted_tiers <<- c(formatted_tiers, list(formatted))
-  }
-
-  on_hsep <- function(extent) {
   }
 
   on_extra_cols <- function(my_extra_cols) {
@@ -65,22 +63,21 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
 
   cb <- new_emit_tiers_callbacks(
     controller, rowid, rowid_width, has_star,
-    on_tier, on_hsep, on_extra_cols
+    on_tier, on_extra_cols
   )
   do_emit_tiers(x, tier_widths, length(focus), cb, focus)
 
-  new_colonnade_body(formatted_tiers, split_after = split_after, extra_cols = extra_cols)
+  new_colonnade_body(formatted_tiers, extra_cols = extra_cols)
 }
 
 new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
-                                     on_tier, on_hsep, on_extra_cols) {
+                                     on_tier, on_extra_cols) {
   list(
     controller = controller,
     rowid = rowid,
     rowid_width = rowid_width,
     has_star = has_star,
     on_tier = on_tier,
-    on_hsep = on_hsep,
     on_extra_cols = on_extra_cols
   )
 }
@@ -88,29 +85,18 @@ new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
 do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
   formatted_list <- NULL
   extra_cols <- data_frame(x = list(), title = list(), cols = list())
-  n_top_level_pillars <- 0L
-  n_top_level_pillars_at_start <- NULL
-  n_top_level_pillars_at_end <- NULL
-  vsep_pos <- NULL
 
   on_start_tier <- function() {
     # message("on_start_tier()")
     formatted_list <<- list()
-    n_top_level_pillars_at_start <<- n_top_level_pillars
-    vsep_pos <<- NULL
   }
 
   on_end_tier <- function() {
     # message("on_end_tier()")
-    n_top_level_pillars_at_end <<- n_top_level_pillars
-
     if (length(formatted_list) > 0) {
       if (!is.null(cb$rowid)) {
         rowid_pillar <- rowidformat2(cb$rowid, formatted_list[[1]]$components, has_star = cb$has_star)
         formatted_list <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted_list)
-        if (!is.null(vsep_pos)) {
-          vsep_pos <<- vsep_pos + 1L
-        }
       }
 
       aligned <- map(formatted_list, `[[`, "aligned")
@@ -118,10 +104,6 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
       tier <- format_colonnade_tier_2(aligned, bidi = get_pillar_option_bidi())
 
       cb$on_tier(tier)
-
-      if (!is.null(vsep_pos) && vsep_pos == length(aligned)) {
-        cb$on_hsep(get_extent(tier[[1]]))
-      }
     }
     formatted_list <<- NULL
   }
@@ -131,13 +113,6 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
     # print(formatted)
     # print(pillar, width = width)
     formatted_list <<- c(formatted_list, list(formatted))
-  }
-
-  on_top_level_pillar <- function() {
-    n_top_level_pillars <<- n_top_level_pillars + 1L
-    if (!is.null(n_focus) && n_top_level_pillars == n_focus) {
-      vsep_pos <<- length(formatted_list)
-    }
   }
 
   on_extra_cols <- function(x, title, cols) {
@@ -153,7 +128,11 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
 
   cb_pillars <- new_emit_pillars_callbacks(
     cb$controller,
-    on_start_tier, on_end_tier, on_pillar, on_top_level_pillar, on_extra_cols
+    on_start_tier = on_start_tier,
+    on_end_tier = on_end_tier,
+    on_pillar = on_pillar,
+    on_top_level_pillar = function(...) {},
+    on_extra_cols = on_extra_cols
   )
 
   emit_pillars(x, tier_widths, cb_pillars, focus)
@@ -507,16 +486,7 @@ lro <- function(x) {
   paste0("\u202d", x, "\u202c")
 }
 
-# hbar is cli::symbol$double_line
-vbar <- function() {
-  if (l10n_info()$`UTF-8`) {
-    "\u2551"
-  } else {
-    "|"
-  }
-}
-
-format_colonnade_tier_2 <- function(x, vsep = NULL, bidi = FALSE) {
+format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   if (length(x) == 0) {
     return(character())
   }
@@ -525,30 +495,17 @@ format_colonnade_tier_2 <- function(x, vsep = NULL, bidi = FALSE) {
     x <- map(x, fsi)
   }
 
-  if (is.null(vsep)) {
-    out <- exec(paste, !!!x)
-  } else {
-    stopifnot(length(x) == length(vsep))
-    args <- t(as.matrix(data.frame(I(x), I(vsep), stringsAsFactors = FALSE)))
-    dim(args) <- NULL
-
-    out <- exec(paste0, !!!args)
-  }
+  out <- exec(paste, !!!x)
 
   if (bidi) {
     out <- lro(out)
   }
+
   out
 }
 
-new_colonnade_body <- function(x, extra_cols, split_after = NULL) {
+new_colonnade_body <- function(x, extra_cols) {
   "!!!!!DEBUG new_colonnade_body()"
-
-  if (!is.null(split_after)) {
-    width <- get_extent(c(x[[split_after]][[1]], x[[split_after + 1]][[1]]))
-    hbar <- style_subtle(strrep(cli::symbol$double_line, max(width)))
-    x <- c(x[seq_len(split_after)], hbar, x[seq2(split_after + 1, length(x))])
-  }
 
   body <- as_glue(as.character(unlist(x)))
   extra_cols <- as.list(extra_cols)
