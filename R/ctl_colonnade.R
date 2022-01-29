@@ -496,7 +496,7 @@ vbar <- function() {
   }
 }
 
-format_colonnade_tier_2 <- function(x, vsep = NULL, bidi = FALSE) {
+format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   if (length(x) == 0) {
     return(character())
   }
@@ -505,19 +505,12 @@ format_colonnade_tier_2 <- function(x, vsep = NULL, bidi = FALSE) {
     x <- map(x, fsi)
   }
 
-  if (is.null(vsep)) {
-    out <- exec(paste, !!!x)
-  } else {
-    stopifnot(length(x) == length(vsep))
-    args <- t(as.matrix(data.frame(I(x), I(vsep), stringsAsFactors = FALSE)))
-    dim(args) <- NULL
-
-    out <- exec(paste0, !!!args)
-  }
+  out <- exec(paste, !!!x)
 
   if (bidi) {
     out <- lro(out)
   }
+
   out
 }
 
