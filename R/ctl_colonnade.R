@@ -244,27 +244,20 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   if (isTRUE(attr(pillar_list, "simple"))) {
     pillar <- pillar_list[[1]]
     width <- pillar_get_widths(pillar)
-    if (width <= max(tier_widths)) {
-      # Handle tier break
-      used_tier <- which(width <= tier_widths)[[1]]
-    } else {
-      used_tier <- which.max(tier_widths)
-      width <- tier_widths[[used_tier]]
-    }
 
-    if (used_tier > 1) {
+    used <- compute_used_width(tier_widths, width)
+
+    formatted <- pillar_format_parts_2(pillar, used$width)
+    true_width <- formatted$max_extent
+    stopifnot(true_width <= width)
+
+    if (used$tiers > 0) {
       cb$on_end_tier()
       cb$on_start_tier()
     }
 
-    formatted <- pillar_format_parts_2(pillar, width)
     cb$on_pillar(formatted)
-
-    # Use true width
-    true_width <- formatted$max_extent
-    stopifnot(true_width <= width)
-
-    return(list(tiers = used_tier - 1L, width = true_width))
+    return(compute_used_width(tier_widths, true_width))
   }
 
   # We can proceed cautiously to the next level if space permits.
@@ -307,6 +300,17 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   }
 
   list(tiers = tier_pos - 1L, width = x_pos)
+}
+
+compute_used_width <- function(tier_widths, width) {
+  if (width <= max(tier_widths)) {
+    # Handle tier break
+    used_tier <- which(width <= tier_widths)[[1]]
+  } else {
+    used_tier <- which.max(tier_widths)
+    width <- tier_widths[[used_tier]]
+  }
+  list(tiers = used_tier - 1L, width = width)
 }
 
 compute_sub_tier_widths <- function(tier_widths, x_pos, tier_pos, x_target, tier_target) {
