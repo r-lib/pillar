@@ -194,7 +194,7 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
 
   focus_formatted_list <- list()
   focus_top_level_end_idx <- integer()
-  focus_extra_cols <- data_frame(x = list(), title = list(), cols = list())
+  focus_extra_cols <- list()
 
   on_focus_pillar <- function(formatted) {
     # message("pillar()")
@@ -211,11 +211,14 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
     # message("extra_cols()")
     # print(title)
     # print(cols)
-    new_extra_cols <- data_frame(
-      x = list(x), title = list(title), cols = list(cols)
-    )
-    # Add to the front, because top-level columns are emitted first:
-    focus_extra_cols <<- vec_rbind(new_extra_cols, focus_extra_cols)
+    new_extra_cols <- data_frame(x = list(x), title = list(title), cols = list(cols))
+    n_focus_formatted_list <- length(focus_formatted_list)
+
+    if (n_focus_formatted_list <= length(focus_extra_cols)) {
+      focus_extra_cols[[n_focus_formatted_list]] <<- vec_rbind(focus_extra_cols[[n_focus_formatted_list]], new_extra_cols)
+    } else {
+      focus_extra_cols[[n_focus_formatted_list]] <<- new_extra_cols
+    }
   }
 
   cb_focus <- new_emit_pillars_callbacks(
@@ -230,8 +233,10 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
   # Side effect: populates focus_formatted_list and focus_extra_cols
   do_emit_pillars(x[focus], tier_widths, cb_focus, is_focus = TRUE)
 
-  # Can't show focus pillars that don't fit
-  focus <- focus[seq_along(focus_top_level_end_idx)]
+  # Can't show focus pillars that don't fit, but need to iterate
+  # to emit extra columns in the correct order
+  length(focus_extra_cols) <- length(focus)
+  n_focus_shown <- length(focus_top_level_end_idx)
 
   before_start_idx <- vec_lag(focus + 1L, default = 1L)
   before_end_idx <- focus - 1L
@@ -244,13 +249,24 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
   rev <- distribute_pillars_rev(widths_focus, tier_widths)
   stopifnot(!anyNA(rev$tier))
   rev <- rev[focus_top_level_end_idx, ]
-  stopifnot(nrow(rev) == length(focus))
+  stopifnot(nrow(rev) == n_focus_shown)
   rev$offset_before <- pmax(rev$offset_after - rev$width - 1L, 0L)
 
   x_pos <- 0L
   tier_pos <- 1L
 
   for (col in seq_along(focus)) {
+    # Emit extra columns for focus pillars before processing non-focus pillars,
+    # to keep extra columns in order between focus and non-focus pillars:
+    my_extra_cols <- focus_extra_cols[[col]]
+    for (extra_cols_row in seq_len(NROW(my_extra_cols))) {
+      cb$on_extra_cols(
+        my_extra_cols$x[[extra_cols_row]],
+        my_extra_cols$title[[extra_cols_row]],
+        my_extra_cols$cols[[extra_cols_row]]
+      )
+    }
+
     start <- before_start_idx[[col]]
     end <- before_end_idx[[col]]
 
@@ -266,8 +282,14 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
       tier_pos <- adv$tier_pos
     }
 
-    # Emit already formatted focus pillar(s)
-    for (focus_pillar in seq2(focus_top_level_start_idx[[col]], focus_top_level_end_idx[[col]])) {
+    # Emit already formatted focus pillar(s):
+    if (col <= length(focus_top_level_start_idx)) {
+      focus_pillars <- seq2(focus_top_level_start_idx[[col]], focus_top_level_end_idx[[col]])
+    } else {
+      focus_pillars <- integer()
+    }
+
+    for (focus_pillar in focus_pillars) {
       # Deduct widths: use offset_after
       sub_tier_widths <- compute_sub_tier_widths(
         tier_widths, x_pos, tier_pos,
