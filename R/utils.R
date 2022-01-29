@@ -23,7 +23,7 @@ str_trunc <- function(x, width, shorten = NULL) {
     return(x)
   }
 
-  str_width <- utf8_width(strip_sgr(x), encode = FALSE)
+  str_width <- get_extent(x)
 
   too_wide <- which(!is.na(x) & str_width > width)
   if (any(too_wide)) {
