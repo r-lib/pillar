@@ -151,7 +151,7 @@
       [90m# A data frame: 1 × 2[39m
       [1m<tbl_format_body(setup)>[22m
           a$x    $y b          
-        [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m [4m[3m[90m<chr>[39m[23m      [24m
+        [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m [4m[3m[90m<chr>[39m[23m[24m      
       [90m1[39m     1     2 long enough
       [1m<tbl_format_footer(setup)>[22m
     Code
@@ -164,7 +164,7 @@
       #   2[39m
       [1m<tbl_format_body(setup)>[22m
         b          
-        [4m[3m[90m<chr>[39m[23m      [24m
+        [4m[3m[90m<chr>[39m[23m[24m      
       [90m1[39m long enough
       [1m<tbl_format_footer(setup)>[22m
       [90m# … with 1[39m
@@ -181,7 +181,7 @@
       #   1 × 2[39m
       [1m<tbl_format_body(setup)>[22m
         b       
-        [4m[3m[90m<chr>[39m[23m   [24m
+        [4m[3m[90m<chr>[39m[23m[24m   
       [90m1[39m long en…
       [1m<tbl_format_footer(setup)>[22m
       [90m# … with[39m
@@ -240,7 +240,7 @@
       [90m# A data frame: 1 × 2[39m
       [1m<tbl_format_body(setup)>[22m
           a$x    $y b          
-        [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<chr>[39m[23m      [24m
+        [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<chr>[39m[23m[24m      
       [90m1[39m     1     2 long enough
       [1m<tbl_format_footer(setup)>[22m
     Code
@@ -253,7 +253,7 @@
       #   2[39m
       [1m<tbl_format_body(setup)>[22m
           a$x b      
-        [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<chr>[39m[23m  [24m
+        [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<chr>[39m[23m[24m  
       [90m1[39m     1 long e…
       [1m<tbl_format_footer(setup)>[22m
       [90m# … with 1[39m
@@ -287,7 +287,7 @@
       [90m# A data frame: 1 × 2[39m
       [1m<tbl_format_body(setup)>[22m
         b             a$x    $y
-        [4m[3m[90m<chr>[39m[23m      [24m [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m
+        [4m[3m[90m<chr>[39m[23m[24m       [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m
       [90m1[39m long enough     1     2
       [1m<tbl_format_footer(setup)>[22m
     Code
@@ -300,7 +300,7 @@
       #   2[39m
       [1m<tbl_format_body(setup)>[22m
         b         a$x
-        [4m[3m[90m<chr>[39m[23m  [24m [4m[3m[90m<dbl>[39m[23m[24m
+        [4m[3m[90m<chr>[39m[23m[24m   [4m[3m[90m<dbl>[39m[23m[24m
       [90m1[39m long e…     1
       [1m<tbl_format_footer(setup)>[22m
       [90m# … with 1[39m
@@ -317,7 +317,7 @@
       #   1 × 2[39m
       [1m<tbl_format_body(setup)>[22m
         b       
-        [4m[3m[90m<chr>[39m[23m   [24m
+        [4m[3m[90m<chr>[39m[23m[24m   
       [90m1[39m long en…
       [1m<tbl_format_footer(setup)>[22m
       [90m# … with[39m

@@ -71,8 +71,7 @@ pillar_format_parts_2 <- function(x, width, is_focus = FALSE) {
   if (is_focus) {
     type_idx <- which(names(x) == "type")
     if (length(type_idx) > 0) {
-      before_type <- seq_len(type_idx[[1]])
-      flat_focus_pos <- sum(lengths(formatted[before_type]))
+      formatted[[type_idx]] <- crayon_underline(formatted[[type_idx]])
     }
   }
 
@@ -86,8 +85,6 @@ pillar_format_parts_2 <- function(x, width, is_focus = FALSE) {
     max_extent <- width
   }
   aligned <- align_impl(flat, max_extent, align, " ", extent)
-
-  aligned[flat_focus_pos] <- crayon_underline(aligned[flat_focus_pos])
 
   list(max_extent = max_extent, aligned = aligned, components = names(x))
 }
