@@ -6,6 +6,8 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   x <- new_data_frame(x, names = names2(x))
   width <- get_width_print(width)
 
+  stopifnot(all(focus %in% names(x)))
+
   n <- nrow(x)
   nc <- ncol(x)
 
