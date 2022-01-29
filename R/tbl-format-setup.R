@@ -78,7 +78,7 @@ tbl_format_setup <- function(x, width = NULL, ...,
 
   # Calls UseMethod("tbl_format_setup"),
   # allows using default values in S3 dispatch
-  out <- tbl_format_setup_(
+  out <- tbl_format_setup_dispatch(
     x, width, ...,
     n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines,
     focus = focus
@@ -87,7 +87,7 @@ tbl_format_setup <- function(x, width = NULL, ...,
   UseMethod("tbl_format_setup")
 }
 
-tbl_format_setup_ <- function(x, width, ..., n, max_extra_cols, max_footer_lines, focus = NULL) {
+tbl_format_setup_dispatch <- function(x, width, ..., n, max_extra_cols, max_footer_lines, focus = NULL) {
   UseMethod("tbl_format_setup")
 }
 
