@@ -6,11 +6,11 @@
 \alias{size_sum}
 \title{Provide a succinct summary of an object}
 \usage{
-type_sum(x)
+type_sum(x, ...)
 
-obj_sum(x)
+obj_sum(x, ...)
 
-size_sum(x)
+size_sum(x, ...)
 }
 \arguments{
 \item{x}{an object to summarise. Generally only methods of atomic vectors
