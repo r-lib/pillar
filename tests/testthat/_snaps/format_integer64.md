@@ -76,11 +76,11 @@
       pillar(add_special(x), width = 14)
     Output
       <pillar>
-             <int64>
-                   0
-        100000000001
-       1000000000002
-                  NA
+            <int64>
+                  0
+       100000000001
+      1000000000002
+                 NA
 
 # nanotime works (#378)
 

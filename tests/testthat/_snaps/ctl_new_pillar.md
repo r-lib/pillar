@@ -4,11 +4,11 @@
       ctl_new_pillar(new_tbl(), 1:3, width = 20, title = "a")
     Output
       <pillar>
-                         a
-                     <int>
-                         1
-                         2
-                         3
+          a
+      <int>
+          1
+          2
+          3
 
 # ctl_new_pillar_list()
 
@@ -17,11 +17,11 @@
     Output
       [[1]]
       <pillar>
-                         a
-                     <int>
-                         1
-                         2
-                         3
+          a
+      <int>
+          1
+          2
+          3
       
       attr(,"remaining_width")
       [1] 14
@@ -118,12 +118,12 @@
     Output
       [[1]]
       <pillar>
-                         a
-           <table[,2,2,2]>
-                     0 ...
-                     0 ...
-                    35 ...
-                     0 ...
+                    a
+      <table[,2,2,2]>
+                0 ...
+                0 ...
+               35 ...
+                0 ...
       
       attr(,"remaining_width")
       [1] 13

@@ -48,28 +48,28 @@
       notation = "si"), )
     Output
       # A tibble: 20 x 4
-           sci     eng                   dec    si
-         <sci>   <eng>                 <dec>  <si>
-       1 1e-13 100e-15       0.0000000000001  100f
-       2 1e-12   1e-12       0.000000000001     1p
-       3 1e-11  10e-12       0.00000000001     10p
-       4 1e-10 100e-12       0.0000000001     100p
-       5 1e- 9   1e- 9       0.000000001        1n
-       6 1e- 8  10e- 9       0.00000001        10n
-       7 1e- 7 100e- 9       0.0000001        100n
-       8 1e- 6   1e- 6       0.000001           1µ
-       9 1e- 5  10e- 6       0.00001           10µ
-      10 1e- 4 100e- 6       0.0001           100µ
-      11 1e- 3   1e- 3       0.001              1m
-      12 1e- 2  10e- 3       0.01              10m
-      13 1e- 1 100e- 3       0.1              100m
-      14 1e+ 0   1e+ 0       1                  1 
-      15 1e+ 1  10e+ 0      10                 10 
-      16 1e+ 2 100e+ 0     100                100 
-      17 1e+ 3   1e+ 3    1000                  1k
-      18 1e+ 4  10e+ 3   10000                 10k
-      19 1e+ 5 100e+ 3  100000                100k
-      20 1e+ 6   1e+ 6 1000000                  1M
+           sci     eng                   dec   si
+         <sci>   <eng>                 <dec> <si>
+       1 1e-13 100e-15       0.0000000000001 100f
+       2 1e-12   1e-12       0.000000000001    1p
+       3 1e-11  10e-12       0.00000000001    10p
+       4 1e-10 100e-12       0.0000000001    100p
+       5 1e- 9   1e- 9       0.000000001       1n
+       6 1e- 8  10e- 9       0.00000001       10n
+       7 1e- 7 100e- 9       0.0000001       100n
+       8 1e- 6   1e- 6       0.000001          1µ
+       9 1e- 5  10e- 6       0.00001          10µ
+      10 1e- 4 100e- 6       0.0001          100µ
+      11 1e- 3   1e- 3       0.001             1m
+      12 1e- 2  10e- 3       0.01             10m
+      13 1e- 1 100e- 3       0.1             100m
+      14 1e+ 0   1e+ 0       1                 1 
+      15 1e+ 1  10e+ 0      10                10 
+      16 1e+ 2 100e+ 0     100               100 
+      17 1e+ 3   1e+ 3    1000                 1k
+      18 1e+ 4  10e+ 3   10000                10k
+      19 1e+ 5 100e+ 3  100000               100k
+      20 1e+ 6   1e+ 6 1000000                 1M
     Code
       tibble::tibble(scimin = num(10^(-7:6) * 123, notation = "sci", fixed_exponent = -
       Inf), engmin = num(10^(-7:6) * 123, notation = "eng", fixed_exponent = -Inf),
@@ -345,8 +345,8 @@
       pillar(num(NA_real_, notation = "si"))
     Output
       <pillar>
-       <si>
-         NA
+      <si>
+        NA
     Code
       pillar(num(NA_real_, notation = "sci"))
     Output
@@ -385,9 +385,9 @@
       pillar(num(c(NA_real_, 1000), notation = "si"))
     Output
       <pillar>
-       <si>
-        NA 
-         1k
+      <si>
+       NA 
+        1k
     Code
       pillar(num(c(NA_real_, 1000), notation = "sci"))
     Output
@@ -413,9 +413,9 @@
       pillar(num(c(NA_real_, 1000), notation = "sci", fixed_exponent = -Inf))
     Output
       <pillar>
-       [e3]
-         NA
-          1
+      [e3]
+        NA
+         1
 
 # arithmetics
 

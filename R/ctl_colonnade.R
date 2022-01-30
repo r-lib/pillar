@@ -385,11 +385,11 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
     title_width <- get_width(pillar[["title"]]) %||% 0L
 
-    used <- compute_used_width(tier_widths, width)
-
-    formatted <- pillar_format_parts_2(pillar, used$width, is_focus)
+    formatted <- pillar_format_parts_2(pillar, max(tier_widths), is_focus)
     true_width <- formatted$max_extent
-    stopifnot(true_width <= width)
+    stopifnot(true_width <= max(tier_widths))
+
+    used <- compute_used_width(tier_widths, true_width)
 
     if (used$tiers > 0) {
       cb$on_end_tier()
@@ -402,7 +402,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
       cb$on_abbrev_col(title)
     }
 
-    return(compute_used_width(tier_widths, true_width))
+    return(used)
   }
 
   # We can proceed cautiously to the next level if space permits.
