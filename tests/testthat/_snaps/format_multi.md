@@ -430,9 +430,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_02 <chr>
       col_03 <fct>
@@ -442,9 +439,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_02 <chr>
       col_03 <fct>
@@ -454,9 +448,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_03 <fct>
       col_04 <ord>
@@ -465,9 +456,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_04 <ord>
 
@@ -478,246 +466,6 @@
     Warning <lifecycle_warning_deprecated>
       `colonnade()` was deprecated in pillar 1.6.6.
       Please use `tbl_format_setup()` instead.
-
-# tests from tibble
-
-    Code
-      colonnade(mtcars[1:8, ], has_row_id = "*", width = 30)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-          mpg   cyl  disp    hp
-      * <dbl> <dbl> <dbl> <dbl>
-      1  21       6  160    110
-      2  21       6  160    110
-      3  22.8     4  108     93
-      4  21.4     6  258    110
-      5  18.7     8  360    175
-      6  18.1     6  225    105
-      7  14.3     8  360    245
-      8  24.4     4  147.    62
-    Code
-      colonnade(trees[1:5, ], width = 20)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-        Girth Height
-        <dbl>  <dbl>
-      1   8.3     70
-      2   8.6     65
-      3   8.8     63
-      4  10.5     72
-      5  10.7     81
-    Code
-      colonnade(trees[1:3, ], width = 10)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-        Girth
-        <dbl>
-      1   8.3
-      2   8.6
-      3   8.8
-    Code
-      colonnade(df_all, width = 30)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c     d    
-        <dbl> <int> <lgl> <chr>
-      1   1       1 TRUE  a    
-      2   2.5     2 FALSE b    
-      3  NA      NA NA    <NA> 
-    Code
-      colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c     d     e     f          g                   h        
-        <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
-      1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35 <int [1]>
-      2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36 <int [1]>
-      3  NA      NA NA    <NA>  <NA>  NA         NA                  <int [1]>
-        i         
-        <list>    
-      1 <list [2]>
-      2 <list [1]>
-      3 <list [1]>
-    Code
-      options(width = 70)
-      colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c     d     e     f          g                  
-        <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>             
-      1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35
-      2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36
-      3  NA      NA NA    <NA>  <NA>  NA         NA                 
-        h         i         
-        <list>    <list>    
-      1 <int [1]> <list [2]>
-      2 <int [1]> <list [1]>
-      3 <int [1]> <list [1]>
-    Code
-      options(width = 60)
-      colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c     d     e     f         
-        <dbl> <int> <lgl> <chr> <fct> <date>    
-      1   1       1 TRUE  a     a     2015-12-10
-      2   2.5     2 FALSE b     b     2015-12-11
-      3  NA      NA NA    <NA>  <NA>  NA        
-        g                   h         i         
-        <dttm>              <list>    <list>    
-      1 2015-12-09 10:51:35 <int [1]> <list [2]>
-      2 2015-12-09 10:51:36 <int [1]> <list [1]>
-      3 NA                  <int [1]> <list [1]>
-    Code
-      options(width = 50)
-      colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c     d     e     f         
-        <dbl> <int> <lgl> <chr> <fct> <date>    
-      1   1       1 TRUE  a     a     2015-12-10
-      2   2.5     2 FALSE b     b     2015-12-11
-      3  NA      NA NA    <NA>  <NA>  NA        
-        g                   h         i         
-        <dttm>              <list>    <list>    
-      1 2015-12-09 10:51:35 <int [1]> <list [2]>
-      2 2015-12-09 10:51:36 <int [1]> <list [1]>
-      3 NA                  <int [1]> <list [1]>
-    Code
-      options(width = 40)
-      colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c     d     e    
-        <dbl> <int> <lgl> <chr> <fct>
-      1   1       1 TRUE  a     a    
-      2   2.5     2 FALSE b     b    
-      3  NA      NA NA    <NA>  <NA> 
-        f          g                  
-        <date>     <dttm>             
-      1 2015-12-10 2015-12-09 10:51:35
-      2 2015-12-11 2015-12-09 10:51:36
-      3 NA         NA                 
-        h         i         
-        <list>    <list>    
-      1 <int [1]> <list [2]>
-      2 <int [1]> <list [1]>
-      3 <int [1]> <list [1]>
-    Code
-      options(width = 30)
-      colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c     d    
-        <dbl> <int> <lgl> <chr>
-      1   1       1 TRUE  a    
-      2   2.5     2 FALSE b    
-      3  NA      NA NA    <NA> 
-        e     f         
-        <fct> <date>    
-      1 a     2015-12-10
-      2 b     2015-12-11
-      3 <NA>  NA        
-        g                  
-        <dttm>             
-      1 2015-12-09 10:51:35
-      2 2015-12-09 10:51:36
-      3 NA                 
-        h         i         
-        <list>    <list>    
-      1 <int [1]> <list [2]>
-      2 <int [1]> <list [1]>
-      3 <int [1]> <list [1]>
-    Code
-      options(width = 20)
-      colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-            a     b c    
-        <dbl> <int> <lgl>
-      1   1       1 TRUE 
-      2   2.5     2 FALSE
-      3  NA      NA NA   
-        d     e    
-        <chr> <fct>
-      1 a     a    
-      2 b     b    
-      3 <NA>  <NA> 
-        f         
-        <date>    
-      1 2015-12-10
-      2 2015-12-11
-      3 NA        
-        g                 
-        <dttm>            
-      1 2015-12-09 10:51:~
-      2 2015-12-09 10:51:~
-      3 NA                
-        h        
-        <list>   
-      1 <int [1]>
-      2 <int [1]>
-      3 <int [1]>
-        i         
-        <list>    
-      1 <list [2]>
-      2 <list [1]>
-      3 <list [1]>
-    Code
-      list_with_ctl <- list(c("\n", "\""), factor(c("\n", "\n")))
-      names(list_with_ctl) <- c("\n", "\r")
-      colonnade(list_with_ctl, width = 30)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-        `\n`  `\r` 
-        <chr> <fct>
-      1 "\n"  "\n" 
-      2 "\""  "\n" 
-    Code
-      colonnade(list(a = c("", " ", "a ", " a")), width = 30)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-        a    
-        <chr>
-      1 ""   
-      2 " "  
-      3 "a " 
-      4 " a" 
-    Code
-      colonnade(list(`mean(x)` = 5, `var(x)` = 3), width = 30)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
-    Output
-        `mean(x)` `var(x)`
-            <dbl>    <dbl>
-      1         5        3
 
 # NA names
 
