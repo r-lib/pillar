@@ -430,9 +430,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_02 <chr>
       col_03 <fct>
@@ -442,9 +439,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_02 <chr>
       col_03 <fct>
@@ -454,9 +448,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_03 <fct>
       col_04 <ord>
@@ -465,9 +456,6 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
-      Please use `tbl_format_setup()` instead.
     Output
       col_04 <ord>
 
