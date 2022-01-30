@@ -17,18 +17,6 @@
 #' @inheritParams ellipsis::dots_empty
 #' @keywords internal
 #' @export
-#' @examples
-#' colonnade(list(a = 1:3, b = letters[1:3]))
-#'
-#' long_string <- list(paste(letters, collapse = " "))
-#' colonnade(long_string, width = 20)
-#' colonnade(long_string, has_row_id = FALSE, width = 20)
-#'
-#' # The width can also be overridden when calling format() or print():
-#' print(colonnade(long_string), width = 20)
-#'
-#' # If width is larger than getOption("width"), multiple tiers are created:
-#' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
   deprecate_stop("1.6.6", "pillar::colonnade()", "pillar::tbl_format_setup()")
 
