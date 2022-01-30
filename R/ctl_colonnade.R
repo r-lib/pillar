@@ -12,7 +12,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   nc <- ncol(x)
 
   if (n == 0 || nc == 0) {
-    return(new_colonnade_body(list(), extra_cols = x))
+    return(new_colonnade_body(list(), extra_cols = x, abbrev_cols = character()))
   }
 
   # Reserve space for rowid column in each tier
@@ -31,6 +31,8 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
 
   formatted_tiers <- list()
   extra_cols <- list(a = 1)[0]
+  last_abbrev_title <- NULL
+  abbrev_cols <- character()
 
   on_tier <- function(formatted) {
     # writeLines(formatted)
@@ -40,7 +42,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   on_extra_cols <- function(my_extra_cols) {
     # print(extra_cols)
 
-    out <- pmap(my_extra_cols, function(x, title, cols) {
+    new_extra_cols <- pmap(my_extra_cols, function(x, title, cols) {
       out <- as.list(x)[cols]
       if (is.null(title)) {
         return(out)
@@ -58,27 +60,51 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
       out
     })
 
-    extra_cols <<- unlist(out, recursive = FALSE)
+    # Called at most once:
+    stopifnot(length(extra_cols) == 0)
+    extra_cols <<- unlist(new_extra_cols, recursive = FALSE)
+  }
+
+  on_abbrev_col <- function(title) {
+    my_title <- title
+    my_last_abbrev_title <- last_abbrev_title
+    if (length(my_title) < length(my_last_abbrev_title)) {
+      length(my_last_abbrev_title) <- length(my_title)
+    } else {
+      length(my_title) <- length(my_last_abbrev_title)
+    }
+
+    my_full_title <- title
+    my_full_title[which(my_title == my_last_abbrev_title)] <- ""
+
+    cols <- paste0(my_full_title, collapse = "$")
+
+    abbrev_cols <<- c(abbrev_cols, cols)
+
+    last_abbrev_title <<- title
   }
 
   cb <- new_emit_tiers_callbacks(
     controller, rowid, rowid_width, has_star,
-    on_tier, on_extra_cols
+    on_tier, on_extra_cols, on_abbrev_col
   )
+
+  # Side effect: populate formatted_tiers, extra_cols, and abbrev_cols
   do_emit_tiers(x, tier_widths, length(focus), cb, focus)
 
-  new_colonnade_body(formatted_tiers, extra_cols = extra_cols)
+  new_colonnade_body(formatted_tiers, extra_cols, abbrev_cols)
 }
 
 new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
-                                     on_tier, on_extra_cols) {
+                                     on_tier, on_extra_cols, on_abbrev_col) {
   list(
     controller = controller,
     rowid = rowid,
     rowid_width = rowid_width,
     has_star = has_star,
     on_tier = on_tier,
-    on_extra_cols = on_extra_cols
+    on_extra_cols = on_extra_cols,
+    on_abbrev_col = on_abbrev_col
   )
 }
 
@@ -132,10 +158,14 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
     on_end_tier = on_end_tier,
     on_pillar = on_pillar,
     on_top_level_pillar = function(...) {},
-    on_extra_cols = on_extra_cols
+    on_extra_cols = on_extra_cols,
+    on_abbrev_col = cb$on_abbrev_col
   )
 
+  # Side effect: populate `extra_cols`,
+  # aggregate and forward calls to higher-level callbacks in `cb`
   emit_pillars(x, tier_widths, cb_pillars, focus)
+
   cb$on_extra_cols(extra_cols)
 }
 
@@ -144,14 +174,16 @@ new_emit_pillars_callbacks <- function(controller,
                                        on_end_tier,
                                        on_pillar,
                                        on_top_level_pillar,
-                                       on_extra_cols) {
+                                       on_extra_cols,
+                                       on_abbrev_col) {
   list(
     controller = controller,
     on_start_tier = on_start_tier,
     on_end_tier = on_end_tier,
     on_pillar = on_pillar,
     on_top_level_pillar = on_top_level_pillar,
-    on_extra_cols = on_extra_cols
+    on_extra_cols = on_extra_cols,
+    on_abbrev_col = on_abbrev_col
   )
 }
 
@@ -206,7 +238,8 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
     on_end_tier = function(...) {},
     on_pillar = on_focus_pillar,
     on_top_level_pillar = on_focus_top_level_pillar,
-    on_extra_cols = on_focus_extra_cols
+    on_extra_cols = on_focus_extra_cols,
+    on_abbrev_col = cb$on_abbrev_col
   )
 
   # Side effect: populates focus_formatted_list and focus_extra_cols
@@ -350,6 +383,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     pillar <- pillar_list[[1]]
     width <- pillar_get_widths(pillar)
 
+    title_width <- get_width(pillar[["title"]]) %||% 0L
+
     used <- compute_used_width(tier_widths, width)
 
     formatted <- pillar_format_parts_2(pillar, used$width, is_focus)
@@ -362,6 +397,11 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
 
     cb$on_pillar(formatted)
+
+    if (true_width < title_width) {
+      cb$on_abbrev_col(title)
+    }
+
     return(compute_used_width(tier_widths, true_width))
   }
 
@@ -504,11 +544,11 @@ format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   out
 }
 
-new_colonnade_body <- function(x, extra_cols) {
+new_colonnade_body <- function(x, extra_cols, abbrev_cols) {
   "!!!!!DEBUG new_colonnade_body()"
 
   body <- as_glue(as.character(unlist(x)))
   extra_cols <- as.list(extra_cols)
 
-  list(body = body, extra_cols = extra_cols)
+  list(body = body, extra_cols = extra_cols, abbrev_cols = abbrev_cols)
 }

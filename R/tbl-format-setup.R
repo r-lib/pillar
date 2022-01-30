@@ -154,6 +154,9 @@ tbl_format_setup.tbl <- function(x, width, ...,
     length(extra_cols) <- max_extra_cols
   }
 
+  # Abbreviated columns
+  abbrev_cols <- colonnade$abbrev_cols
+
   # Result
   new_tbl_format_setup(
     x = x,
@@ -165,7 +168,8 @@ tbl_format_setup.tbl <- function(x, width, ...,
     rows_total = rows,
     extra_cols = extra_cols,
     extra_cols_total = extra_cols_total,
-    max_footer_lines = max_footer_lines
+    max_footer_lines = max_footer_lines,
+    abbrev_cols = abbrev_cols
   )
 }
 
@@ -195,12 +199,15 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #' @param extra_cols_total The total number of columns, may be larger than
 #'   `length(extra_cols)`.
 #' @param max_footer_lines The maximum number of lines in the footer.
+#' @param abbrev_cols Formatted names of the columns that are shown abbreviated
+#'   in the body.
 #'
 #' @keywords internal
 new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
                                  rows_missing, rows_total,
                                  extra_cols, extra_cols_total,
-                                 max_footer_lines) {
+                                 max_footer_lines,
+                                 abbrev_cols) {
   trunc_info <- list(
     x = x,
     df = df,
@@ -211,7 +218,8 @@ new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
     rows_total = rows_total,
     extra_cols = extra_cols,
     extra_cols_total = extra_cols_total,
-    max_footer_lines = max_footer_lines
+    max_footer_lines = max_footer_lines,
+    abbrev_cols = abbrev_cols
   )
 
   structure(trunc_info, class = "pillar_tbl_format_setup")
