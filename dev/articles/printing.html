@@ -142,8 +142,8 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-73342f94d86b919f8489" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-73342f94d86b919f8489">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-4fee6dac511c470ff46b" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4fee6dac511c470ff46b">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div class="section level2">
 <h2 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
@@ -230,7 +230,7 @@ Source code of <code>tbl_format_setup()</code>
 
   <span class="co"># Calls UseMethod("tbl_format_setup"),</span>
   <span class="co"># allows using default values in S3 dispatch</span>
-  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_</span><span class="op">(</span>
+  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_dispatch</span><span class="op">(</span>
     <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,
     n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>,
     focus <span class="op">=</span> <span class="va">focus</span>
@@ -298,6 +298,9 @@ Source code of <code>pillar:::tbl_format_setup.tbl()</code>
     <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">extra_cols</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">max_extra_cols</span>
   <span class="op">}</span>
 
+  <span class="co"># Abbreviated columns</span>
+  <span class="va">abbrev_cols</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">abbrev_cols</span>
+
   <span class="co"># Result</span>
   <span class="fu"><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup</a></span><span class="op">(</span>
     x <span class="op">=</span> <span class="va">x</span>,
@@ -309,7 +312,8 @@ Source code of <code>pillar:::tbl_format_setup.tbl()</code>
     rows_total <span class="op">=</span> <span class="va">rows</span>,
     extra_cols <span class="op">=</span> <span class="va">extra_cols</span>,
     extra_cols_total <span class="op">=</span> <span class="va">extra_cols_total</span>,
-    max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>
+    max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>,
+    abbrev_cols <span class="op">=</span> <span class="va">abbrev_cols</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </details><p>At the core, the internal function <code>ctl_colonnade()</code> composes the body. Its functionality and the customization points it offers are detailed in the “Colonnade” section below.</p>
