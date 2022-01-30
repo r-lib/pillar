@@ -45,27 +45,30 @@ tbl_format_footer.tbl <- function(x, setup, ...) {
 }
 
 format_footer <- function(x, setup) {
-  extra_rows <- format_footer_rows(x, setup)
-  extra_cols <- format_footer_cols(x, setup)
+  extra_rows <- format_footer_extra_rows(x, setup)
+  extra_cols <- format_footer_extra_cols(x, setup)
 
-  if (is.null(extra_rows)) {
-    if (is.null(extra_cols)) {
-      return(character())
-    }
-    extra <- extra_cols
-  } else {
-    if (is.null(extra_cols)) {
-      extra <- extra_rows
-    } else {
-      extra_rows[[length(extra_rows)]] <- paste0(extra_rows[[length(extra_rows)]], ",")
-      extra <- c(extra_rows, "and", extra_cols)
-    }
+  footer <- compact(list(extra_rows, extra_cols))
+  if (length(footer) == 0) {
+    return(character())
   }
+
+  if (length(footer) > 1) {
+    footer_len <- length(footer)
+    idx_all_but_last <- seq.int(footer_len - 1)
+    footer[idx_all_but_last] <- map(footer[idx_all_but_last], function(x) {
+      x[[length(x)]] <- paste0(x[[length(x)]], ",")
+      x
+    })
+    footer <- c(footer[idx_all_but_last], "and", footer[footer_len])
+  }
+
+  extra <- unlist(footer, recursive = FALSE)
 
   c("with", extra)
 }
 
-format_footer_rows <- function(x, setup) {
+format_footer_extra_rows <- function(x, setup) {
   if (ncol(setup$x) != 0) {
     if (is.na(setup$rows_missing)) {
       c("more", "rows")
@@ -80,7 +83,7 @@ format_footer_rows <- function(x, setup) {
   }
 }
 
-format_footer_cols <- function(x, setup) {
+format_footer_extra_cols <- function(x, setup) {
   extra_cols <- setup$extra_cols
   if (length(extra_cols) == 0) {
     return(NULL)
