@@ -72,13 +72,13 @@
       tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_")))
     Output
       <tbl_format_footer(setup)>
-      # ... with 48 more variables: a_very_long_prefix_ac <int>,
+      # ... with abbreviated variable names a_very_long_prefix_ab,
+      #   a_very_long_prefix_bb, and 48 more variables: a_very_long_prefix_ac <int>,
       #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
       #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
       #   a_very_long_prefix_be <int>, a_very_long_prefix_af <int>,
       #   a_very_long_prefix_bf <int>, a_very_long_prefix_ag <int>,
-      #   a_very_long_prefix_bg <int>, a_very_long_prefix_ah <int>,
-      #   a_very_long_prefix_bh <int>, a_very_long_prefix_ai <int>, ...
+      #   a_very_long_prefix_bg <int>, a_very_long_prefix_ah <int>, ...
     Code
       tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = 3))
     Output
@@ -98,9 +98,9 @@
       max_footer_lines = 3))
     Output
       <tbl_format_footer(setup)>
-      # ... with 48 more variables: a_very_long_prefix_ac <int>,
-      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
-      #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>, ...
+      # ... with abbreviated variable names a_very_long_prefix_ab,
+      #   a_very_long_prefix_bb, and 48 more variables: a_very_long_prefix_ac <int>,
+      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>, ...
     Code
       tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = Inf))
     Output
@@ -132,7 +132,8 @@
       max_footer_lines = Inf))
     Output
       <tbl_format_footer(setup)>
-      # ... with 48 more variables: a_very_long_prefix_ac <int>,
+      # ... with abbreviated variable names a_very_long_prefix_ab,
+      #   a_very_long_prefix_bb, and 48 more variables: a_very_long_prefix_ac <int>,
       #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
       #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
       #   a_very_long_prefix_be <int>, a_very_long_prefix_af <int>,
