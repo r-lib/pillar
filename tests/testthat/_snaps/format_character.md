@@ -140,4 +140,7 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
 
