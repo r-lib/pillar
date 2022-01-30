@@ -59,6 +59,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(list(a = 1:3))
     Output
@@ -71,6 +74,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
 
 # body: output for wide characters

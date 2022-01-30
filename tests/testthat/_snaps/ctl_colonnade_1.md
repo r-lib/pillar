@@ -86,6 +86,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_str[c(40L, 28L, 7L, 16L, 48L, 6L, 21L, 1L, 20L, 17L, 47L, 45L,
         29L, 41L, 49L, 34L, 4L, 39L, 18L, 36L, 26L, 38L, 10L, 8L, 5L, 15L, 44L, 24L,
@@ -148,6 +151,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_str[c(47L, 42L, 4L, 46L, 9L, 34L, 19L, 39L, 8L, 32L, 36L, 12L,
         29L, 5L, 15L, 11L, 31L, 27L, 33L, 28L, 43L, 6L, 13L, 22L, 14L, 16L, 35L, 50L,
@@ -206,6 +212,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_str[c(41L, 4L, 25L, 31L, 8L, 22L, 19L, 10L, 29L, 21L, 34L, 5L,
@@ -269,6 +278,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_str[c(27L, 22L, 9L, 23L, 16L, 19L, 25L, 31L, 44L, 1L, 28L, 46L,
         12L, 20L, 43L, 37L, 5L, 2L, 18L, 41L, 26L, 33L, 11L, 49L, 24L, 35L, 4L, 47L,
@@ -315,6 +327,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_str[c(32L, 24L, 18L, 25L, 26L, 13L, 33L, 2L, 50L, 38L, 37L,
@@ -396,6 +411,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_str[c(44L, 34L, 49L, 9L, 15L, 16L, 1L, 10L, 40L, 29L, 26L, 22L,
         4L, 43L, 20L, 17L, 46L, 33L, 35L, 32L, 2L, 12L, 8L, 37L, 23L, 39L, 7L, 18L,
@@ -446,6 +464,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_str[c(21L, 26L, 8L, 22L, 41L, 24L, 13L, 5L, 47L, 37L, 4L, 42L,
         19L, 34L, 11L, 43L, 38L, 3L, 33L, 20L, 31L, 2L, 18L, 48L, 27L, 44L, 9L, 35L,
@@ -495,6 +516,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_str[c(23L, 49L, 13L, 37L, 3L, 25L, 36L, 4L, 9L, 7L, 27L, 48L,
@@ -627,6 +651,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_str[c(45L, 14L, 49L, 24L, 22L, 31L, 42L, 18L, 16L, 47L, 25L,
         4L, 37L, 8L, 26L, 21L, 50L, 5L, 41L, 30L, 2L, 33L, 34L, 3L, 44L, 19L, 43L, 6L,
@@ -688,6 +715,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_str[c(38L, 46L, 17L, 11L, 24L, 18L, 16L, 39L, 50L, 42L, 6L,
@@ -768,6 +798,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_str[c(17L, 28L, 29L, 27L, 20L, 31L, 43L, 30L, 32L, 48L, 10L,
@@ -852,6 +885,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_str[c(1L, 26L, 20L, 12L, 49L, 16L, 24L, 4L, 15L, 47L, 8L, 11L,
         14L, 50L, 17L, 2L, 44L, 30L, 36L, 45L, 25L, 38L, 18L, 29L, 5L, 13L, 3L, 23L,
@@ -898,6 +934,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_str[c(6L, 49L, 26L, 45L, 25L, 15L, 31L, 20L, 21L, 44L, 23L,
@@ -957,6 +996,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_str[c(38L, 42L, 41L, 10L, 40L, 11L, 27L, 9L, 17L, 37L, 46L,
@@ -1019,5 +1061,8 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
 
