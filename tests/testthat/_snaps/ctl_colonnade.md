@@ -20,6 +20,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
 
 # tests from tibble
 
@@ -61,6 +64,9 @@
       [1] 4 4 1 1 2 1 4 2
       
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(trees[1:5, ], width = 20)
     Output
@@ -77,6 +83,9 @@
       $extra_cols$Volume
       [1] 10.3 10.3 10.2 16.4 18.8
       
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(trees[1:3, ], width = 10)
@@ -95,6 +104,9 @@
       $extra_cols$Volume
       [1] 10.3 10.3 10.2
       
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(df_all, width = 30)
@@ -150,6 +162,9 @@
       
       
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(df_all, width = 300)
     Output
@@ -167,6 +182,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       options(width = 70)
@@ -187,6 +205,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       options(width = 60)
       ctl_colonnade(df_all, width = 300)
@@ -206,6 +227,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       options(width = 50)
       ctl_colonnade(df_all, width = 300)
@@ -224,6 +248,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       options(width = 40)
@@ -248,6 +275,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       options(width = 30)
@@ -277,6 +307,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       options(width = 20)
@@ -337,6 +370,9 @@
       
       
       
+      $abbrev_cols
+      character(0)
+      
     Code
       list_with_ctl <- list(c("\n", "\""), factor(c("\n", "\n")))
       names(list_with_ctl) <- c("\n", "\r")
@@ -350,6 +386,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       ctl_colonnade(list(a = c("", " ", "a ", " a")), width = 30)
@@ -365,6 +404,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
     Code
       ctl_colonnade(list(`mean(x)` = 5, `var(x)` = 3), width = 30)
     Output
@@ -375,6 +417,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
 
 # NA names
@@ -394,6 +439,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
 
 # sep argument
 
@@ -409,6 +457,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
     Code
       # dummy
@@ -428,6 +479,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
 
 # tibble columns (nested)
 
@@ -443,6 +497,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
 
 # tibble columns (empty)
@@ -460,6 +517,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
 
 # matrix columns (unnamed)
 
@@ -475,6 +535,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
 
 # matrix columns (named)
@@ -492,6 +555,9 @@
       $extra_cols
       list()
       
+      $abbrev_cols
+      character(0)
+      
 
 # matrix columns (empty)
 
@@ -507,6 +573,9 @@
       
       $extra_cols
       list()
+      
+      $abbrev_cols
+      character(0)
       
 
 # filling unused width (#331)

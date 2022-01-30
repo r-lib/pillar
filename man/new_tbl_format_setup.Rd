@@ -14,7 +14,8 @@ new_tbl_format_setup(
   rows_total,
   extra_cols,
   extra_cols_total,
-  max_footer_lines
+  max_footer_lines,
+  abbrev_cols
 )
 }
 \arguments{
@@ -43,6 +44,9 @@ as a character vector of formatted column names and types.}
 \code{length(extra_cols)}.}
 
 \item{max_footer_lines}{The maximum number of lines in the footer.}
+
+\item{abbrev_cols}{Formatted names of the columns that are shown abbreviated
+in the body.}
 }
 \description{
 The object returned from the default method of \code{\link[=tbl_format_setup]{tbl_format_setup()}}
