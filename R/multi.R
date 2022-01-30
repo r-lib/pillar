@@ -30,6 +30,8 @@
 #' # If width is larger than getOption("width"), multiple tiers are created:
 #' colonnade(rep(long_string, 4), width = Inf)
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
+  deprecate_soft("1.6.6", "pillar::colonnade()", "pillar::tbl_format_setup()")
+
   if (!missing(...)) {
     check_dots_empty(action = warn)
   }
