@@ -119,6 +119,9 @@
 
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
+    Warning <lifecycle_warning_deprecated>
+      `colonnade()` was deprecated in pillar 1.6.6.
+      Please use `tbl_format_setup()` instead.
     Output
         a_very_long_~
                 [3m[90m<dbl>[39m[23m
