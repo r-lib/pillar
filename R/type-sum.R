@@ -12,8 +12,12 @@
 #' @param x an object to summarise. Generally only methods of atomic vectors
 #'   and variants have been implemented.
 #'
+#' @param ... Must be empty.
+#'
 #' @export
 type_sum <- function(x, ...) {
+  check_dots_empty()
+
   UseMethod("type_sum")
 }
 

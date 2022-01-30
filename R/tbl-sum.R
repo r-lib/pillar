@@ -11,6 +11,7 @@
 #' @return A named character vector, describing the dimensions in the first element
 #'   and the data source in the name of the first element.
 #'
+#' @inheritParams type_sum
 #' @seealso [pillar::type_sum()]
 #' @param x Object to summarise.
 #' @export

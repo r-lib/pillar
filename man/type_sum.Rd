@@ -15,6 +15,8 @@ size_sum(x, ...)
 \arguments{
 \item{x}{an object to summarise. Generally only methods of atomic vectors
 and variants have been implemented.}
+
+\item{...}{Must be empty.}
 }
 \description{
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
