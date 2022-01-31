@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.5.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.5.9002</span>
       </span>
     </div>
 
@@ -142,8 +142,8 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-4fee6dac511c470ff46b" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4fee6dac511c470ff46b">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-4496f8507c405d02f91b" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4496f8507c405d02f91b">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div class="section level2">
 <h2 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
@@ -406,10 +406,10 @@ Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 <code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
-<span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt;                    1</span>
-<span class="co">#&gt;                    2</span>
-<span class="co">#&gt;                    3</span>
+<span class="co">#&gt; <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt;     1</span>
+<span class="co">#&gt;     2</span>
+<span class="co">#&gt;     3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; attr(,"remaining_width")</span>
 <span class="co">#&gt; [1] 14</span>
@@ -467,10 +467,10 @@ Source code of <code>pillar:::ctl_new_pillar_list.tbl()</code>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
-<span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt;                    1</span>
-<span class="co">#&gt;                    2</span>
-<span class="co">#&gt;                    3</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt;     1</span>
+<span class="co">#&gt;     2</span>
+<span class="co">#&gt;     3</span></code></pre></div>
 <details><summary>
 Source code of <code>pillar:::ctl_new_pillar.tbl()</code>
 </summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
