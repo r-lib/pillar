@@ -248,12 +248,12 @@ pillar_shaft.Surv2 <- function(x, ...) {
 }
 
 #' @export
-type_sum.Surv <- function(x) {
+type_sum.Surv <- function(x, ...) {
   "Surv"
 }
 
 #' @export
-type_sum.Surv2 <- function(x) {
+type_sum.Surv2 <- function(x, ...) {
   "Surv2"
 }
 
