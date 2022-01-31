@@ -184,7 +184,7 @@ format.pillar <- function(x, width = NULL, ...) {
   }
 
   if (is.null(width)) {
-    widths <- pillar_get_widths(x)
+    widths <- pillar_get_ideal_widths(x)
     width <- sum(widths) + length(widths) - 1L
   }
 

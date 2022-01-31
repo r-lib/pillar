@@ -406,11 +406,16 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   }
 
   # We can proceed cautiously to the next level if space permits.
-  # For each sub-pillar we allow at most as much space so that
-  # we can print all first components of all remaining pillars
-  # with the minimum width
+  # First we decide for each pillar if it perhaps fits with its desired width.
+  max_widths <- map_int(pillar_list, pillar_get_widths)
   min_widths <- map_int(pillar_list, pillar_get_min_widths)
-  rev <- distribute_pillars_rev(min_widths, tier_widths)
+  pillar_pos <- colonnade_compute_tiered_col_widths_df(max_widths, min_widths, tier_widths)
+
+  # Based on this width, we compute, for each pillar, the maximum width
+  # that the other pillars before that pillar may consume.
+  # This allows pillars to stretch beyond their declared width (e.g. for
+  # compound pillars or for long column titles)
+  rev <- distribute_pillars_rev(pillar_pos$width, tier_widths)
   stopifnot(!anyNA(rev$tier))
 
   x_pos <- 0L
