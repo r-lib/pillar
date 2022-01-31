@@ -26,9 +26,9 @@
       pillar(add_special(x), width = 9)
     Output
       <pillar>
-          <int>
-       10000001
-       10000002
-       10000003
-             NA
+         <int>
+      10000001
+      10000002
+      10000003
+            NA
 

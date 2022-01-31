@@ -26,18 +26,18 @@
       pillar(v, width = 15)
     Output
       <pillar>
-                <dbl>
-              0.00001
-              0.01   
-           1000      
-        1000000      
+              <dbl>
+            0.00001
+            0.01   
+         1000      
+      1000000      
     Code
       pillar(v, width = 22)
     Output
       <pillar>
-                       <dbl>
-                     0.00001
-                     0.01   
-                  1000      
-               1000000      
+              <dbl>
+            0.00001
+            0.01   
+         1000      
+      1000000      
 
