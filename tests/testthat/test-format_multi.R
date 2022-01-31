@@ -12,6 +12,8 @@ test_that("sanity check (1)", {
 })
 
 test_that("output test", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(
     column_zero_one = 1:3 + 0.23,
     col_02 = letters[1:3],
@@ -93,6 +95,8 @@ test_that("output test", {
 })
 
 test_that("tests from tibble", {
+  skip_if(getRversion() < "4.0")
+
   skip_if_not_installed("rlang", "0.4.11.9000")
   local_options(width = 80)
 
@@ -123,6 +127,8 @@ test_that("tests from tibble", {
 })
 
 test_that("empty", {
+  skip_if(getRversion() < "4.0")
+
   expect_equal(
     format(colonnade(list(a = character(), b = logical()), width = 30)),
     as_glue(character())
@@ -134,6 +140,8 @@ test_that("empty", {
 })
 
 test_that("NA names", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(`NA` = 1:3, set_to_NA = 4:6)
   names(x)[[2]] <- NA_character_
   expect_snapshot({
@@ -142,6 +150,8 @@ test_that("NA names", {
 })
 
 test_that("sep argument", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(sep = 1:3)
   expect_snapshot({
     colonnade(x, width = 30)
@@ -188,6 +198,8 @@ test_that("color", {
     with_options(pillar.bold = TRUE, print(xf))
   })
 
+  skip_if(getRversion() < "4.0")
+
   expect_snapshot(variant = variant, {
     colonnade(list(a_very_long_column_name = 0), width = 15)
   })
@@ -207,6 +219,8 @@ test_that("sanity check (2)", {
 })
 
 test_that("tibble columns", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(a = 1:3, b = data.frame(c = 4:6, d = 7:9))
   expect_snapshot({
     colonnade(x, width = 30)
@@ -214,6 +228,8 @@ test_that("tibble columns", {
 })
 
 test_that("tibble columns (nested)", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(
     a = 1:3,
     b = structure(
@@ -230,6 +246,8 @@ test_that("tibble columns (nested)", {
 })
 
 test_that("tibble columns (empty)", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(
     a = 1:3,
     b = structure(
@@ -247,6 +265,8 @@ test_that("tibble columns (empty)", {
 })
 
 test_that("matrix columns (unnamed)", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(a = 1:3, b = matrix(4:9, ncol = 2))
   expect_snapshot({
     colonnade(x, width = 30)
@@ -254,6 +274,8 @@ test_that("matrix columns (unnamed)", {
 })
 
 test_that("matrix columns (named)", {
+  skip_if(getRversion() < "4.0")
+
   x <- list(a = 1:3, b = matrix(4:9, ncol = 2, dimnames = list(NULL, c("c", "d"))))
   expect_snapshot({
     colonnade(x, width = 30)
