@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.5.9002
+
+- Pillars use only as much width as required when printing (#484).
+- Focus columns specified via the `focus` argument to `tbl_format_setup()` are kept in their original place and shown with the maximum width and with the "type" component underlined (#465).
+
+
 # pillar 1.6.5.9001
 
 - Update `s3_register()` to use new implementation from rlang (#462).
