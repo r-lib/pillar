@@ -46,10 +46,18 @@
            65
            63
       
+      [[3]]
+      <pillar>
+      $Volume
+        <dbl>
+         10.3
+         10.3
+         10.2
+      
       attr(,"extra")
-      [1] "Volume"
+      character(0)
       attr(,"remaining_width")
-      [1] 4
+      [1] 2
       attr(,"simple")
       [1] FALSE
     Code
@@ -63,10 +71,26 @@
               8.6
               8.8
       
+      [[2]]
+      <pillar>
+      [,"Height"]
+            <dbl>
+               70
+               65
+               63
+      
+      [[3]]
+      <pillar>
+      [,"Volume"]
+            <dbl>
+             10.3
+             10.3
+             10.2
+      
       attr(,"extra")
-      [1] 2 3
+      integer(0)
       attr(,"remaining_width")
-      [1] 8
+      [1] 2
       attr(,"simple")
       [1] FALSE
     Code

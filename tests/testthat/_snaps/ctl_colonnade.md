@@ -71,21 +71,19 @@
       ctl_colonnade(trees[1:5, ], width = 20)
     Output
       $body
-        Girth Height
-        <dbl>  <dbl>
-      1   8.3     70
-      2   8.6     65
-      3   8.8     63
-      4  10.5     72
-      5  10.7     81
+        Girth Height Vol~1
+        <dbl>  <dbl> <dbl>
+      1   8.3     70  10.3
+      2   8.6     65  10.3
+      3   8.8     63  10.2
+      4  10.5     72  16.4
+      5  10.7     81  18.8
       
       $extra_cols
-      $extra_cols$Volume
-      [1] 10.3 10.3 10.2 16.4 18.8
-      
+      list()
       
       $abbrev_cols
-      character(0)
+      [1] "Volume"
       
     Code
       ctl_colonnade(trees[1:3, ], width = 10)

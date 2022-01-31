@@ -187,7 +187,7 @@ format.pillar <- function(x, width = NULL, ...) {
   }
 
   if (is.null(width)) {
-    width <- pillar_get_width(x)
+    width <- pillar_get_ideal_width(x)
   }
 
   as_glue(pillar_format_parts_2(x, width)$aligned)

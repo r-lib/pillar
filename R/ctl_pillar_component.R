@@ -60,12 +60,20 @@ pillar_component <- function(x) {
   new_pillar_component(list(x), width = get_width(x), min_width = get_min_width(x))
 }
 
+pillar_get_ideal_width <- function(x) {
+  max(MIN_PILLAR_WIDTH, as.integer(max(map_int(x, get_width))))
+}
+
 pillar_get_width <- function(x) {
-  as.integer(max(map_int(x, get_width)))
+  max(MIN_PILLAR_WIDTH, as.integer(
+    get_width(x[["data"]]) %||% max(map_int(x, get_width))
+  ))
 }
 
 pillar_get_min_width <- function(x) {
-  as.integer(max(map_int(x, get_min_width)))
+  max(MIN_PILLAR_WIDTH, as.integer(
+    get_min_width(x[["data"]]) %||% max(map_int(x, get_min_width))
+  ))
 }
 
 pillar_format_parts_2 <- function(x, width, is_focus = FALSE, footnote_idx = 1L) {
