@@ -13,5 +13,4 @@ NULL
 #' @rdname deprecated
 is_vector_s3 <- function(x) {
   deprecate_stop("1.7.0", "pillar::is_vector_s3()", "vctrs::vec_is()")
-  vec_is(x)
 }
