@@ -1,25 +1,14 @@
 # nocov start - expect_known_display()
 #' Test helpers
 #'
-#' @description
-#' `r lifecycle::badge("superseded")`
-#'
-#' Expectation for packages that implement a data type with pillar support.
-#' Allows storing the desired result in a file,
-#' and comparing the output with the file contents.
-#' Note that this expectation sets options that affect the formatting of the
-#' pillar, see examples for usage.
-#'
-#' @section Life cycle:
-#' This function is deprecated in favor of [testthat::expect_snapshot()].
-#' If your package uses the third edition of testthat, do not use this function.
+#' Use [testthat::expect_snapshot()] instead of `expect_known_display()`.
 #'
 #' @inheritParams testthat::expect_known_output
 #' @param object An object to check.
 #' @param ... Unused.
 #' @param width The width of the output.
 #' @param crayon Color the output?
-#' @keywords internal
+#' @rdname deprecated
 #' @export
 expect_known_display <- function(object, file, ..., width = 80L, crayon = TRUE) {
   lifecycle::deprecate_stop(
