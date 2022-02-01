@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.5.9004
+
+- `expect_known_display()` and `is_vector_s3()` are now deprecated (#460, #501).
+
+
 # pillar 1.6.5.9003
 
 - `new_pillar()` loses `extra` argument, it is no longer supported (#497).
