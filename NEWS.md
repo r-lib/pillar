@@ -7,34 +7,23 @@
 
 # pillar 1.7.0
 
-- Same as previous version.
+## Breaking changes
 
-
-# pillar 1.6.5.9004
-
+- `colonnade()` is now soft-deprecated (#485).
 - `expect_known_display()` and `is_vector_s3()` are now deprecated (#460, #501).
+- `new_pillar()` deprecates `extra` argument (#497).
 
+## Features
 
-# pillar 1.6.5.9003
-
-- `new_pillar()` loses `extra` argument, it is no longer supported (#497).
-- `colonnade()` is soft-deprecated (#485).
-
-
-# pillar 1.6.5.9002
-
-- Pillars use only as much width as required when printing (#484).
 - Focus columns specified via the `focus` argument to `tbl_format_setup()` are kept in their original place and shown with the maximum width and with the "type" component underlined (#465).
 
+## Bug fixes
 
-# pillar 1.6.5.9001
+- Update `s3_register()` to use new implementation from rlang, this fixes CRAN checks related to `scale_type()` (#462).
 
-- Update `s3_register()` to use new implementation from rlang (#462).
+## Internal
 
-
-# pillar 1.6.5.9000
-
-- Same as previous version.
+- Single pillars constructed with `pillar()` use only as much width as required when printing (#484).
 
 
 # pillar 1.6.5
