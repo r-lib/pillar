@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.7.0.9000
+
+- Same as previous version.
+
+
 # pillar 1.7.0
 
 - Same as previous version.
