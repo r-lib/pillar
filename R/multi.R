@@ -18,7 +18,7 @@
 #' @keywords internal
 #' @export
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
-  deprecate_soft("1.6.6", "pillar::colonnade()", "pillar::tbl_format_setup()")
+  deprecate_soft("1.7.0", "pillar::colonnade()", "pillar::tbl_format_setup()")
 
   if (!missing(...)) {
     check_dots_empty(action = warn)

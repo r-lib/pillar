@@ -165,7 +165,7 @@ new_pillar <- function(components, ..., width = NULL, class = NULL,
 
   if (is_present(extra)) {
     # Signal the deprecation to the user
-    deprecate_warn("1.6.6", "pillar::new_pillar(extra = )")
+    deprecate_warn("1.7.0", "pillar::new_pillar(extra = )")
   }
 
   check_dots_empty()
