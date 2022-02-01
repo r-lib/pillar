@@ -21,7 +21,7 @@ The implementations call squeeze() to create pillar objects and fit them to a gi
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.6.5.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.7.0.9000</span>
       </span>
     </div>
 
@@ -157,50 +157,6 @@ Any space remaining after rounding is distributed from left to right,
 one space per column.</p>
     </div>
 
-    <div id="ref-examples">
-    <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">colonnade</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`colonnade()` was deprecated in pillar 1.6.6.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `tbl_format_setup()` instead.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       a b    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 a    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 b    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 c    </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">long_string</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">letters</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">colonnade</span><span class="op">(</span><span class="va">long_string</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`colonnade()` was deprecated in pillar 1.6.6.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `tbl_format_setup()` instead.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a b c d e f g h i…</span>
-<span class="r-in"><span class="fu">colonnade</span><span class="op">(</span><span class="va">long_string</span>, has_row_id <span class="op">=</span> <span class="cn">FALSE</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`colonnade()` was deprecated in pillar 1.6.6.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `tbl_format_setup()` instead.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a b c d e f g h i j…</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The width can also be overridden when calling format() or print():</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">colonnade</span><span class="op">(</span><span class="va">long_string</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`colonnade()` was deprecated in pillar 1.6.6.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `tbl_format_setup()` instead.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a b c d e f g h i…</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># If width is larger than getOption("width"), multiple tiers are created:</span></span>
-<span class="r-in"><span class="fu">colonnade</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">long_string</span>, <span class="fl">4</span><span class="op">)</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`colonnade()` was deprecated in pillar 1.6.6.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `tbl_format_setup()` instead.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a b c d e f g h i j k l m n o p q r s t u v w x y z</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a b c d e f g h i j k l m n o p q r s t u v w x y z</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a b c d e f g h i j k l m n o p q r s t u v w x y z</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a b c d e f g h i j k l m n o p q r s t u v w x y z</span>
-</code></pre></div>
-    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
