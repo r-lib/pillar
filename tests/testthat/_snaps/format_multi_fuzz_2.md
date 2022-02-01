@@ -7,7 +7,7 @@
         23L, 24L, 40L, 15L, 38L, 10L, 46L, 5L, 50L, 18L, 21L, 6L, 30L, 2L, 7L, 1L, 4L,
         8L, 17L, 33L, 39L, 37L)], width = 516)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `28`                        
@@ -47,7 +47,7 @@
         1L, 4L, 38L, 9L, 27L, 40L, 32L, 17L, 6L, 49L, 16L, 19L, 15L, 22L, 39L, 10L,
         46L, 5L, 30L, 8L, 26L, 37L)], width = 1365)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `28`                        
@@ -156,7 +156,7 @@
         9L, 24L, 26L, 39L, 20L, 36L, 42L, 16L, 6L, 11L, 7L, 12L, 1L, 46L, 15L, 5L, 8L,
         50L, 32L, 30L, 49L, 28L)], width = 934)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `40`                                 
@@ -238,7 +238,7 @@
         49L, 27L, 29L, 15L, 39L, 24L, 40L, 48L, 26L, 47L, 42L, 41L, 12L, 28L, 30L, 7L,
         16L, 4L, 50L, 20L, 32L)], width = 565)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `11`       
@@ -302,7 +302,7 @@
         27L, 38L, 14L, 34L, 8L, 24L, 29L, 1L, 12L, 2L, 20L, 17L, 35L, 5L, 19L, 30L,
         7L, 26L, 42L, 41L, 39L, 10L)], width = 1121)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `18`              
@@ -411,7 +411,7 @@
         10L, 19L, 26L, 33L, 40L, 35L, 48L, 38L, 25L, 2L, 47L, 42L, 41L, 27L, 14L, 21L,
         24L, 50L, 49L, 23L, 32L)], width = 446)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `43`                          
@@ -463,7 +463,7 @@
         7L, 23L, 35L, 28L, 6L, 25L, 2L, 9L, 12L, 15L, 5L, 18L, 20L, 27L, 43L, 8L, 47L,
         4L, 48L, 24L, 26L, 22L)], width = 1166)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `37`                         
@@ -587,7 +587,7 @@
         32L, 8L, 41L, 13L, 44L, 7L, 38L, 26L, 33L, 20L, 19L, 2L, 18L, 49L, 27L, 47L,
         22L, 14L, 6L, 5L, 45L, 42L)], width = 546)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `31`                           
@@ -627,7 +627,7 @@
         16L, 29L, 30L, 4L, 23L, 17L, 40L, 33L, 14L, 27L, 19L, 34L, 32L, 3L, 37L, 15L,
         10L, 5L, 35L, 31L, 42L)], width = 1035)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `43`                                       
@@ -694,7 +694,7 @@
         28L, 3L, 46L, 21L, 20L, 16L, 29L, 50L, 10L, 9L, 8L, 47L, 31L, 14L, 38L, 33L,
         32L, 43L, 23L, 15L, 37L)], width = 1217)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `40`                           
@@ -815,7 +815,7 @@
         46L, 12L, 32L, 39L, 24L, 10L, 45L, 5L, 37L, 14L, 40L, 20L, 41L, 44L, 33L, 18L,
         38L, 3L, 1L, 34L, 16L, 9L)], width = 770)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `43`                          
@@ -900,7 +900,7 @@
         19L, 42L, 32L, 1L, 45L, 15L, 7L, 11L, 49L, 23L, 12L, 48L, 20L, 21L, 44L, 25L,
         10L, 22L, 30L, 40L, 17L)], width = 1439)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `5`   `24`                    
@@ -1006,7 +1006,7 @@
         38L, 5L, 49L, 27L, 17L, 8L, 22L, 40L, 12L, 15L, 1L, 28L, 31L, 29L, 13L, 48L,
         34L, 36L, 30L, 20L, 16L, 46L)], width = 1065)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `7`    
@@ -1079,7 +1079,7 @@
         21L, 30L, 47L, 49L, 6L, 12L, 4L, 25L, 32L, 15L, 43L, 24L, 48L, 3L, 37L, 50L,
         42L, 39L, 16L, 8L, 27L, 5L)], width = 393)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `38`                             
@@ -1125,7 +1125,7 @@
         48L, 34L, 3L, 8L, 4L, 27L, 42L, 44L, 33L, 45L, 18L, 5L, 2L, 13L, 47L, 28L,
         17L, 37L, 14L, 41L, 23L)], width = 999)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         `22`                   `9`      
