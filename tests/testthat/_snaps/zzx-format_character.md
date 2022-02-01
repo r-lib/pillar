@@ -3,7 +3,7 @@
     Code
       colonnade(chartype_frame(), width = 50)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
          chars          desc              
