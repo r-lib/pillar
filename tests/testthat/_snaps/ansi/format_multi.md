@@ -120,7 +120,7 @@
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
     Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.6.6.
+      `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
         a_very_long_~
