@@ -1,3 +1,66 @@
+# akc
+
+<details>
+
+* Version: 0.9.6
+* GitHub: https://github.com/hope-data-science/akc
+* Source code: https://github.com/cran/akc
+* Date/Publication: 2022-01-10 03:22:40 UTC
+* Number of recursive dependencies: 109
+
+Run `cloud_details(, "akc")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking examples ... ERROR
+    ```
+    Running examples in ‘akc-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: doc_group
+    > ### Title: Construct network of documents based on keyword co-occurrence
+    > ### Aliases: doc_group
+    > 
+    > ### ** Examples
+    > 
+    >  library(akc)
+    >  bibli_data_table %>%
+    +    keyword_clean(id = "id",keyword = "keyword") %>%
+    +    doc_group(id = "id",keyword = "keyword") -> grouped_doc
+    > 
+    >  grouped_doc
+    Error: `colonnade()` was deprecated in pillar 1.6.6 and is now defunct.
+    Please use `tbl_format_setup()` instead.
+    Execution halted
+    ```
+
+*   checking re-building of vignette outputs ... WARNING
+    ```
+    Error(s) in re-building vignettes:
+      ...
+    --- re-building ‘akc_vignette.Rmd’ using rmarkdown
+    Quitting from lines 75-79 (akc_vignette.Rmd) 
+    Error: processing vignette 'akc_vignette.Rmd' failed with diagnostics:
+    `colonnade()` was deprecated in pillar 1.6.6 and is now defunct.
+    Please use `tbl_format_setup()` instead.
+    --- failed re-building ‘akc_vignette.Rmd’
+    
+    --- re-building ‘tutorial_raw_text.Rmd’ using rmarkdown
+    ...
+      Some words could not fit on page. They have been placed at their original positions.
+    Warning in wordcloud_boxes(data_points = points_valid_first, boxes = boxes,  :
+      Some words could not fit on page. They have been placed at their original positions.
+    --- finished re-building ‘tutorial_raw_text.Rmd’
+    
+    SUMMARY: processing the following file failed:
+      ‘akc_vignette.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
+    ```
+
 # anomalize
 
 <details>
@@ -564,11 +627,6 @@ Run `cloud_details(, "malan")` for more info
 
 ## In both
 
-*   checking package dependencies ... NOTE
-    ```
-    Packages suggested but not available for checking: 'ggraph', 'dirmult'
-    ```
-
 *   checking installed package size ... NOTE
     ```
       installed size is 23.1Mb
@@ -607,9 +665,9 @@ Run `cloud_details(, "migraph")` for more info
     ...
     C 1 1 0
     > as_igraph(test)
-    IGRAPH bf9ec6b DN-B 6 5 -- 
+    IGRAPH 8a972d2 DN-B 6 5 -- 
     + attr: name (v/c), type (v/l)
-    + edges from bf9ec6b (vertex names):
+    + edges from 8a972d2 (vertex names):
     [1] A->I B->G B->I C->G C->H
     > as_tidygraph(test)
     Error: `colonnade()` was deprecated in pillar 1.6.6 and is now defunct.
@@ -640,54 +698,6 @@ Run `cloud_details(, "migraph")` for more info
     
     Error: Vignette re-building failed.
     Execution halted
-    ```
-
-# muHVT
-
-<details>
-
-* Version: 1.0.2
-* GitHub: https://github.com/Mu-Sigma/muHVT
-* Source code: https://github.com/cran/muHVT
-* Date/Publication: 2020-08-03 20:10:03 UTC
-* Number of recursive dependencies: 110
-
-Run `cloud_details(, "muHVT")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking re-building of vignette outputs ... WARNING
-    ```
-    Error(s) in re-building vignettes:
-      ...
-    --- re-building ‘muHVT.Rmd’ using rmarkdown
-    Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  :
-      URL 'https://raw.githubusercontent.com/SangeetM/dataset/master/Computers.csv': status was 'Failure when receiving data from the peer'
-    Quitting from lines 247-250 (muHVT.Rmd) 
-    Error: processing vignette 'muHVT.Rmd' failed with diagnostics:
-    cannot read from connection
-    --- failed re-building ‘muHVT.Rmd’
-    
-    SUMMARY: processing the following file failed:
-      ‘muHVT.Rmd’
-    
-    Error: Vignette re-building failed.
-    Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘gtools’
-      All declared Imports should be used.
-    ```
-
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
     ```
 
 # multidplyr
@@ -1347,44 +1357,6 @@ Run `cloud_details(, "photobiologyWavebands")` for more info
     Execution halted
     ```
 
-# portalr
-
-<details>
-
-* Version: 0.3.9
-* GitHub: https://github.com/weecology/portalr
-* Source code: https://github.com/cran/portalr
-* Date/Publication: 2021-12-03 05:20:02 UTC
-* Number of recursive dependencies: 106
-
-Run `cloud_details(, "portalr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-       5. ├─base::as.data.frame(.)
-       6. ├─tidyr::complete(., !!!grouping, fill = list(presence = 0))
-       7. ├─dplyr::mutate(., presence = 1)
-       8. ├─dplyr::distinct(.)
-       9. └─dplyr::select(., !!!grouping)
-      ── Error (test-11-phenocam.R:6:1): (code run outside of `test_that()`) ─────────
-      Error in `-nrow(moon_dates)`: invalid argument to unary operator
-      Backtrace:
-          ▆
-       1. └─portalr::phenocam("newmoon", path = portal_data_path) at test-11-phenocam.R:6:0
-       2.   └─base::as.Date(moon_dates$newmoondate[-nrow(moon_dates)])
-      
-      [ FAIL 13 | WARN 43 | SKIP 41 | PASS 13 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # prt
 
 <details>
@@ -1738,45 +1710,6 @@ Run `cloud_details(, "sfnetworks")` for more info
       ‘sfn03_join_filter.Rmd’ ‘sfn04_routing.Rmd’ ‘sfn05_morphers.Rmd’
     
     Error: Vignette re-building failed.
-    Execution halted
-    ```
-
-# studentlife
-
-<details>
-
-* Version: 1.1.0
-* GitHub: https://github.com/Frycast/studentlife
-* Source code: https://github.com/cran/studentlife
-* Date/Publication: 2020-11-01 05:30:03 UTC
-* Number of recursive dependencies: 76
-
-Run `cloud_details(, "studentlife")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘studentlife-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: is_SL_tibble
-    > ### Title: is_SL_tibble
-    > ### Aliases: is_SL_tibble
-    > 
-    > ### ** Examples
-    > 
-    > d <- tempdir()
-    > download_studentlife(location = d, url = "testdata")
-    Downloading the small sample dataset...
-    trying URL 'https://raw.githubusercontent.com/frycast/studentlife/master/tests/testthat/testdata/sample/sample_dataset.tar.bz2'
-    Warning in utils::download.file(url = url, destfile = p, cacheOK = FALSE) :
-      URL 'https://raw.githubusercontent.com/frycast/studentlife/master/tests/testthat/testdata/sample/sample_dataset.tar.bz2': status was 'SSL connect error'
-    Error in utils::download.file(url = url, destfile = p, cacheOK = FALSE) : 
-      cannot open URL 'https://raw.githubusercontent.com/frycast/studentlife/master/tests/testthat/testdata/sample/sample_dataset.tar.bz2'
-    Calls: download_studentlife -> <Anonymous>
     Execution halted
     ```
 

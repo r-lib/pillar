@@ -1,14 +1,18 @@
 ## revdepcheck results
 
-We checked 6567 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 143 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 36 new problems
- * We failed to check 108 packages
+ * We saw 34 new problems
+ * We failed to check 20 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
+
+* akc
+  checking examples ... ERROR
+  checking re-building of vignette outputs ... WARNING
 
 * anomalize
   checking examples ... ERROR
@@ -47,9 +51,6 @@ Issues with CRAN packages are summarised below.
 
 * migraph
   checking examples ... ERROR
-  checking re-building of vignette outputs ... WARNING
-
-* muHVT
   checking re-building of vignette outputs ... WARNING
 
 * multidplyr
@@ -93,9 +94,6 @@ Issues with CRAN packages are summarised below.
 * photobiologyWavebands
   checking re-building of vignette outputs ... WARNING
 
-* portalr
-  checking tests ... ERROR
-
 * prt
   checking examples ... ERROR
   checking tests ... ERROR
@@ -118,9 +116,6 @@ Issues with CRAN packages are summarised below.
   checking examples ... ERROR
   checking re-building of vignette outputs ... WARNING
 
-* studentlife
-  checking examples ... ERROR
-
 * tibble
   checking tests ... ERROR
 
@@ -141,111 +136,23 @@ Issues with CRAN packages are summarised below.
 
 ### Failed to check
 
-* abstractr              (NA)
-* accelerometry          (NA)
-* accelmissing           (NA)
-* accept                 (NA)
-* activatr               (NA)
-* adepro                 (NA)
-* adept                  (NA)
-* adespatial             (NA)
-* agriTutorial           (NA)
-* akc                    (NA)
-* ammistability          (NA)
-* analysisPipelines      (NA)
-* angstroms              (NA)
-* autoCovariateSelection (NA)
-* aws.alexa              (NA)
-* bayefdr                (NA)
-* bayesmodels            (NA)
-* bayesZIB               (NA)
-* baystability           (NA)
-* bbw                    (NA)
-* bdscale                (NA)
-* binsreg                (NA)
-* biplotbootGUI          (NA)
-* blavaan                (NA)
-* boostmtree             (NA)
-* bootcluster            (NA)
-* bootf2                 (NA)
-* cartools               (NA)
-* cati                   (NA)
-* cbar                   (NA)
-* conos                  (NA)
-* ctsem                  (NA)
-* densEstBayes           (NA)
-* diveR                  (NA)
-* EFDR                   (NA)
-* EventDetectGUI         (NA)
-* geocmeans              (NA)
-* ggalluvial             (NA)
-* ggseg3d                (NA)
-* ImputeRobust           (NA)
-* ivpack                 (NA)
-* jstor                  (NA)
-* LDAShiny               (NA)
-* lidaRtRee              (NA)
-* lifecourse             (NA)
-* lillies                (NA)
-* loon.ggplot            (NA)
-* loon.shiny             (NA)
-* loon.tourr             (NA)
-* macleish               (NA)
-* mand                   (NA)
-* MapeBay                (NA)
-* MarketMatching         (NA)
-* mccf1                  (NA)
-* mcmcr                  (NA)
-* MESS                   (NA)
-* metaprotr              (NA)
-* MetaStan               (NA)
-* migest                 (NA)
-* missSBM                (NA)
-* mssm                   (NA)
-* NFP                    (NA)
-* nntrf                  (NA)
-* nprcgenekeepr          (NA)
-* o2plsda                (NA)
-* oaPlots                (NA)
-* OpenStreetMap          (NA)
-* PDtoolkit              (NA)
-* phylosignal            (NA)
-* PLNmodels              (NA)
-* predict3d              (NA)
-* qmix                   (NA)
-* RandPro                (NA)
-* RcmdrPlugin.HH         (NA)
-* RcmdrPlugin.KMggplot2  (NA)
-* RcmdrPlugin.MA         (NA)
-* RcmdrPlugin.RiskDemo   (NA)
-* RcmdrPlugin.steepness  (NA)
-* referenceIntervals     (NA)
-* REST                   (NA)
-* Rphylopars             (NA)
-* SAEval                 (NA)
-* sbfc                   (NA)
-* see                    (NA)
-* SigTree                (NA)
-* smacpod                (NA)
-* SortedEffects          (NA)
-* SpaDES.core            (NA)
-* SpiceFP                (NA)
-* SPORTSCausal           (NA)
-* SSNbayes               (NA)
-* survxai                (NA)
-* swag                   (NA)
-* swgee                  (NA)
-* swirlify               (NA)
-* temperatureresponse    (NA)
-* texteffect             (NA)
-* tipr                   (NA)
-* TopKLists              (NA)
-* TSGS                   (NA)
-* valse                  (NA)
-* VarSelLCM              (NA)
-* vhcub                  (NA)
-* vivid                  (NA)
-* vlad                   (NA)
-* VOSONDash              (NA)
-* WASP                   (NA)
-* WRSS                   (NA)
+* accept             (NA)
+* bayesZIB           (NA)
+* conos              (NA)
+* ctsem              (NA)
+* densEstBayes       (NA)
+* diveR              (NA)
+* geocmeans          (NA)
+* ImputeRobust       (NA)
+* lidaRtRee          (NA)
+* loon.ggplot        (NA)
+* loon.shiny         (NA)
+* loon.tourr         (NA)
+* MarketMatching     (NA)
+* missSBM            (NA)
+* PLNmodels          (NA)
+* qmix               (NA)
+* referenceIntervals (NA)
+* SPORTSCausal       (NA)
+* valse              (NA)
+* vivid              (NA)
