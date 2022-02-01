@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.6.5.9003
+
+- `new_pillar()` loses `extra` argument, it is no longer supported (#497).
+- `colonnade()` is soft-deprecated (#485).
+
+
 # pillar 1.6.5.9002
 
 - Pillars use only as much width as required when printing (#484).
