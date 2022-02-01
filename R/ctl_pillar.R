@@ -142,8 +142,7 @@ rowidformat2 <- function(data, names, has_star) {
 #' @inheritParams pillar
 #' @param components A named list of components constructed with [pillar_component()].
 #' @param class Name of subclass.
-#' @param extra For compound pillars, indicate the names or indices of the
-#'   sub-pillars that could not be shown due to width constraints.
+#' @param extra Deprecated.
 #'
 #' @export
 #' @examples
@@ -161,8 +160,13 @@ rowidformat2 <- function(data, names, has_star) {
 #'   lines = new_pillar_component(list(lines("=")), width = 1)
 #' ))
 new_pillar <- function(components, ..., width = NULL, class = NULL,
-                       extra = NULL) {
+                       extra = deprecated()) {
   "!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"
+
+  if (is_present(extra)) {
+    # Signal the deprecation to the user
+    deprecate_warn("1.6.6", "pillar::new_pillar(extra = )")
+  }
 
   check_dots_empty()
   if (length(components) > 0 && !is_named(components)) {
@@ -172,8 +176,7 @@ new_pillar <- function(components, ..., width = NULL, class = NULL,
   structure(
     components,
     width = width,
-    class = c(class, "pillar"),
-    extra = extra
+    class = c(class, "pillar")
   )
 }
 

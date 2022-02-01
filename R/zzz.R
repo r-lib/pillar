@@ -3,7 +3,7 @@
 #' @import rlang
 #' @import ellipsis
 #' @importFrom glue as_glue
-#' @importFrom lifecycle deprecate_soft
+#' @importFrom lifecycle deprecate_soft deprecate_warn is_present deprecated
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs new_list_of
