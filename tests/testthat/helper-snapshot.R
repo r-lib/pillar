@@ -9,7 +9,7 @@ snapshot_variant <- function(...) {
   variant <- NULL
 
   if ("testthat" %in% matrix) {
-    variant <- c(variant, paste0("testthat_", packageVersion("testthat")))
+    #variant <- c(variant, paste0("testthat_", packageVersion("testthat")))
   }
 
   if ("os" %in% matrix) {

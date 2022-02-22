@@ -24,7 +24,7 @@ Imports:
     fansi,
     glue,
     lifecycle,
-    rlang (>= 0.3.0),
+    rlang (>= 1.0.1),
     utf8 (>= 1.1.0),
     utils,
     vctrs (>= 0.3.8)

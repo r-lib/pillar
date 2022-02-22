@@ -2,7 +2,8 @@
 
     Code
       print(as_tbl(mtcars), width = 40, n_extra = 1)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       The `n_extra` argument of `print()` is deprecated as of pillar 1.6.2.
       Please use the `max_extra_cols` argument instead.
     Output
