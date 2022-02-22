@@ -24,13 +24,6 @@
 ---
 
     Code
-      style_na("NA")
-    Output
-      [1] "\033[31mNA\033[39m"
-
----
-
-    Code
       print(xf)
     Output
                 x
@@ -119,7 +112,8 @@
 
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      [1m[33mWarning[39m:[22m
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
