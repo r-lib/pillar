@@ -2,22 +2,26 @@
 
     Code
       colonnade(x, width = 4)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Code
       colonnade(x, width = 5)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Code
       colonnade(x, width = 6)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Code
       colonnade(x, width = 7)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -28,7 +32,8 @@
       3  3.23
     Code
       colonnade(x, width = 8)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -39,7 +44,8 @@
       3   3.23
     Code
       colonnade(x, width = 9)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -50,7 +56,8 @@
       3    3.23
     Code
       colonnade(x, width = 10)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -61,7 +68,8 @@
       3     3.23
     Code
       colonnade(x, width = 11)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -72,7 +80,8 @@
       3      3.23
     Code
       colonnade(x, width = 12)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -83,7 +92,8 @@
       3       3.23
     Code
       colonnade(x, width = 13)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -94,7 +104,8 @@
       3        3.23
     Code
       colonnade(x, width = 14)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -105,7 +116,8 @@
       3         3.23
     Code
       colonnade(x, width = 15)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -116,7 +128,8 @@
       3          3.23
     Code
       colonnade(x, width = 16)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -127,7 +140,8 @@
       3           3.23
     Code
       colonnade(x, width = 17)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -138,7 +152,8 @@
       3            3.23
     Code
       colonnade(x, width = 18)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -149,7 +164,8 @@
       3            3.23
     Code
       colonnade(x, width = 19)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -160,7 +176,8 @@
       3            3.23
     Code
       colonnade(x, width = 20)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -171,7 +188,8 @@
       3            3.23
     Code
       colonnade(x, width = 21)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -182,7 +200,8 @@
       3            3.23
     Code
       colonnade(x, width = 22)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -193,7 +212,8 @@
       3            3.23
     Code
       colonnade(x, width = 23)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -204,7 +224,8 @@
       3            3.23
     Code
       colonnade(x, width = 24)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -215,7 +236,8 @@
       3            3.23 c     
     Code
       colonnade(x, width = 25)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -226,7 +248,8 @@
       3            3.23 c     
     Code
       colonnade(x, width = 26)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -237,7 +260,8 @@
       3            3.23 c     
     Code
       colonnade(x, width = 27)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -248,7 +272,8 @@
       3            3.23 c     
     Code
       colonnade(x, width = 28)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -259,7 +284,8 @@
       3            3.23 c     
     Code
       colonnade(x, width = 29)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -270,7 +296,8 @@
       3            3.23 c     
     Code
       colonnade(x, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -281,7 +308,8 @@
       3            3.23 c     
     Code
       colonnade(x, width = 31)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -292,7 +320,8 @@
       3            3.23 c      c     
     Code
       colonnade(x, width = 32)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -303,7 +332,8 @@
       3            3.23 c      c     
     Code
       colonnade(x, width = 33)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -314,7 +344,8 @@
       3            3.23 c      c     
     Code
       colonnade(x, width = 34)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -325,7 +356,8 @@
       3            3.23 c      c     
     Code
       colonnade(x, width = 35)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -336,7 +368,8 @@
       3            3.23 c      c     
     Code
       colonnade(x, width = 36)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -347,7 +380,8 @@
       3            3.23 c      c     
     Code
       colonnade(x, width = 37)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -358,7 +392,8 @@
       3            3.23 c      c     
     Code
       colonnade(x, width = 38)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -369,7 +404,8 @@
       3            3.23 c      c      c     
     Code
       colonnade(x, width = 39)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -380,7 +416,8 @@
       3            3.23 c      c      c     
     Code
       colonnade(x, width = Inf)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -394,7 +431,8 @@
 
     Code
       colonnade(rep(list(paste(letters, collapse = " ")), 4), width = Inf)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -411,7 +449,8 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -423,7 +462,8 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -435,7 +475,8 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -446,7 +487,8 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -456,7 +498,8 @@
 
     Code
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
 
@@ -464,7 +507,8 @@
 
     Code
       colonnade(mtcars[1:8, ], has_row_id = "*", width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -480,7 +524,8 @@
       8  24.4     4  147.    62
     Code
       colonnade(trees[1:5, ], width = 20)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -493,7 +538,8 @@
       5  10.7     81
     Code
       colonnade(trees[1:3, ], width = 10)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -504,7 +550,8 @@
       3   8.8
     Code
       colonnade(df_all, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -515,7 +562,8 @@
       3  NA      NA NA    <NA> 
     Code
       colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -532,7 +580,8 @@
     Code
       options(width = 70)
       colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -549,7 +598,8 @@
     Code
       options(width = 60)
       colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -566,7 +616,8 @@
     Code
       options(width = 50)
       colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -583,7 +634,8 @@
     Code
       options(width = 40)
       colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -605,7 +657,8 @@
     Code
       options(width = 30)
       colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -632,7 +685,8 @@
     Code
       options(width = 20)
       colonnade(df_all, width = 300)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -670,7 +724,8 @@
       list_with_ctl <- list(c("\n", "\""), factor(c("\n", "\n")))
       names(list_with_ctl) <- c("\n", "\r")
       colonnade(list_with_ctl, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -680,7 +735,8 @@
       2 "\""  "\n" 
     Code
       colonnade(list(a = c("", " ", "a ", " a")), width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -692,7 +748,8 @@
       4 " a" 
     Code
       colonnade(list(`mean(x)` = 5, `var(x)` = 3), width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -704,7 +761,8 @@
 
     Code
       colonnade(x, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -718,7 +776,8 @@
 
     Code
       colonnade(x, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -734,7 +793,8 @@
 
     Code
       colonnade(x, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -748,7 +808,8 @@
 
     Code
       colonnade(x, width = 40)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -762,7 +823,8 @@
 
     Code
       colonnade(x, width = 40)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -776,7 +838,8 @@
 
     Code
       colonnade(x, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -790,7 +853,8 @@
 
     Code
       colonnade(x, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
@@ -804,7 +868,8 @@
 
     Code
       colonnade(x, width = 30)
-    Warning <lifecycle_warning_deprecated>
+    Condition
+      Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output

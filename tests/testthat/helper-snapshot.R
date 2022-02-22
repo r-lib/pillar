@@ -1,16 +1,12 @@
 snapshot_variant <- function(...) {
   matrix <- c(...)
 
-  bad_variants <- setdiff(matrix, c("testthat", "os", "output-enc"))
+  bad_variants <- setdiff(matrix, c("os", "output-enc"))
   if (length(bad_variants) > 0) {
     abort(paste0("Unknown variant selector: ", bad_variants[[1]]))
   }
 
   variant <- NULL
-
-  if ("testthat" %in% matrix) {
-    variant <- c(variant, paste0("testthat_", packageVersion("testthat")))
-  }
 
   if ("os" %in% matrix) {
     variant <- c(variant, testthat_os())

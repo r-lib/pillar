@@ -44,7 +44,7 @@ test_that("print() output", {
     )
   })
 
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     print(as_tbl(mtcars), width = 40, n_extra = 1)
   })
 })

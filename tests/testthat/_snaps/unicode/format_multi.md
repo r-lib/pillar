@@ -24,13 +24,6 @@
 ---
 
     Code
-      style_na("NA")
-    Output
-      [1] "\033[31mNA\033[39m"
-
----
-
-    Code
       print(xf)
     Output
                 x
