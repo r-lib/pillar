@@ -127,6 +127,7 @@ test_that("tests from tibble", {
 })
 
 test_that("empty", {
+  scoped_lifecycle_silence()
   skip_if(getRversion() < "4.0")
 
   expect_equal(
@@ -180,7 +181,9 @@ test_that("color", {
     style_neg("-1")
   })
 
-  xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
+  with_lifecycle_silence({
+    xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
+  })
 
   expect_snapshot(variant = snapshot_variant("testthat", "output-enc"), {
     print(xf)
