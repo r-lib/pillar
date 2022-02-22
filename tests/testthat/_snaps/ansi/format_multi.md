@@ -24,13 +24,6 @@
 ---
 
     Code
-      style_na("NA")
-    Output
-      [1] "\033[31mNA\033[39m"
-
----
-
-    Code
       print(xf)
     Output
                 x
@@ -114,16 +107,4 @@
       [90m7[39m -[31m[4m1[24m00[39m[31m0[39m    
       [90m8[39m [4m1[24m[4m0[24m000    
       [90m9[39m    [31mNA[39m    
-
----
-
-    Code
-      colonnade(list(a_very_long_column_name = 0), width = 15)
-    Warning <lifecycle_warning_deprecated>
-      `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
-    Output
-        a_very_long_~
-                [3m[90m<dbl>[39m[23m
-      [90m1[39m             0
 
