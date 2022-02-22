@@ -76,7 +76,7 @@ test_that("output test (not on Windows)", {
 
   # Spurious warnings on Windows
   suppressWarnings(
-    expect_snapshot(variant = snapshot_variant("testthat"), {
+    expect_snapshot({
       colonnade(chartype_frame(), width = 50)
     })
   )

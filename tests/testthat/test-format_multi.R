@@ -20,7 +20,7 @@ test_that("output test", {
     col_03 = factor(letters[1:3]),
     col_04 = ordered(letters[1:3])
   )
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 4)
     colonnade(x, width = 5)
     colonnade(x, width = 6)
@@ -60,36 +60,36 @@ test_that("output test", {
     colonnade(x, width = Inf)
   })
 
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(rep(list(paste(letters, collapse = " ")), 4), width = Inf)
   })
 
   # Spurious warnings on Windows
   suppressWarnings(
-    expect_snapshot(variant = snapshot_variant("testthat"), {
+    expect_snapshot({
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 10)))
     })
   )
 
   suppressWarnings(
-    expect_snapshot(variant = snapshot_variant("testthat"), {
+    expect_snapshot({
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 20)))
     })
   )
 
   suppressWarnings(
-    expect_snapshot(variant = snapshot_variant("testthat"), {
+    expect_snapshot({
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 30)))
     })
   )
 
   suppressWarnings(
-    expect_snapshot(variant = snapshot_variant("testthat"), {
+    expect_snapshot({
       as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 35)))
     })
   )
 
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     as_glue(extra_cols_impl(squeeze_impl(colonnade(x), width = 40)))
   })
 })
@@ -100,7 +100,7 @@ test_that("tests from tibble", {
   skip_if_not_installed("rlang", "0.4.11.9000")
   local_options(width = 80)
 
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(mtcars[1:8, ], has_row_id = "*", width = 30)
     colonnade(trees[1:5, ], width = 20)
     colonnade(trees[1:3, ], width = 10)
@@ -145,7 +145,7 @@ test_that("NA names", {
 
   x <- list(`NA` = 1:3, set_to_NA = 4:6)
   names(x)[[2]] <- NA_character_
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 30)
   })
 })
@@ -154,7 +154,7 @@ test_that("sep argument", {
   skip_if(getRversion() < "4.0")
 
   x <- list(sep = 1:3)
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 30)
     "dummy"
   })
@@ -173,7 +173,7 @@ test_that("color", {
     expect_true(cli::is_utf8_output())
   }
 
-  expect_snapshot(variant = snapshot_variant("testthat", "output-enc"), {
+  expect_snapshot(variant = snapshot_variant("output-enc"), {
     cli::num_ansi_colors()
     has_color()
     num_colors()
@@ -185,7 +185,7 @@ test_that("color", {
     xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
   })
 
-  expect_snapshot(variant = snapshot_variant("testthat", "output-enc"), {
+  expect_snapshot(variant = snapshot_variant("output-enc"), {
     print(xf)
     with_options(pillar.subtle_num = TRUE, print(xf))
     with_options(pillar.subtle = FALSE, print(xf))
@@ -196,7 +196,7 @@ test_that("color", {
 
   skip_if(getRversion() < "4.0")
 
-  expect_snapshot(variant = snapshot_variant("testthat", "output-enc"), {
+  expect_snapshot(variant = snapshot_variant("output-enc"), {
     colonnade(list(a_very_long_column_name = 0), width = 15)
   })
 })
@@ -218,7 +218,7 @@ test_that("tibble columns", {
   skip_if(getRversion() < "4.0")
 
   x <- list(a = 1:3, b = data.frame(c = 4:6, d = 7:9))
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 30)
   })
 })
@@ -236,7 +236,7 @@ test_that("tibble columns (nested)", {
       class = "data.frame"
     )
   )
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 40)
   })
 })
@@ -255,7 +255,7 @@ test_that("tibble columns (empty)", {
       class = "data.frame"
     )
   )
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 40)
   })
 })
@@ -264,7 +264,7 @@ test_that("matrix columns (unnamed)", {
   skip_if(getRversion() < "4.0")
 
   x <- list(a = 1:3, b = matrix(4:9, ncol = 2))
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 30)
   })
 })
@@ -273,14 +273,14 @@ test_that("matrix columns (named)", {
   skip_if(getRversion() < "4.0")
 
   x <- list(a = 1:3, b = matrix(4:9, ncol = 2, dimnames = list(NULL, c("c", "d"))))
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 30)
   })
 })
 
 test_that("matrix columns (empty)", {
   x <- list(a = 1:3, b = matrix(4:6, ncol = 1)[, 0], c = 4:6)
-  expect_snapshot(variant = snapshot_variant("testthat"), {
+  expect_snapshot({
     colonnade(x, width = 30)
   })
 })
