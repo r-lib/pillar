@@ -24,8 +24,6 @@ test_that("print() output", {
 
     print(as_tbl(mtcars), n = 100)
 
-    print(as_tbl(mtcars), width = 40, n_extra = 1)
-
     print(as_tbl(mtcars), width = 40, max_extra_cols = 1)
 
     print(as_tbl(mtcars), width = 30, max_footer_lines = 3)
@@ -44,6 +42,10 @@ test_that("print() output", {
       tibble.width = 30,
       as_tbl(mtcars)
     )
+  })
+
+  expect_snapshot({
+    print(as_tbl(mtcars), width = 40, n_extra = 1)
   })
 })
 

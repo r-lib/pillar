@@ -1,19 +1,29 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# pillar 1.6.5.9002
-
-- Pillars use only as much width as required when printing (#484).
-- Focus columns specified via the `focus` argument to `tbl_format_setup()` are kept in their original place and shown with the maximum width and with the "type" component underlined (#465).
-
-
-# pillar 1.6.5.9001
-
-- Update `s3_register()` to use new implementation from rlang (#462).
-
-
-# pillar 1.6.5.9000
+# pillar 1.7.0.9000
 
 - Same as previous version.
+
+
+# pillar 1.7.0
+
+## Breaking changes
+
+- `colonnade()` is now soft-deprecated (#485).
+- `expect_known_display()` and `is_vector_s3()` are now deprecated (#460, #501).
+- `new_pillar()` deprecates `extra` argument (#497).
+
+## Features
+
+- Focus columns specified via the `focus` argument to `tbl_format_setup()` are kept in their original place and shown with the maximum width and with the "type" component underlined (#465).
+
+## Bug fixes
+
+- Update `s3_register()` to use new implementation from rlang, this fixes CRAN checks related to `scale_type()` (#462).
+
+## Internal
+
+- Single pillars constructed with `pillar()` use only as much width as required when printing (#484).
 
 
 # pillar 1.6.5

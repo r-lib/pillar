@@ -2,8 +2,8 @@
 
 #' @import rlang
 #' @import ellipsis
+#' @import lifecycle
 #' @importFrom glue as_glue
-#' @importFrom lifecycle deprecate_soft
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs new_list_of

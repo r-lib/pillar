@@ -112,12 +112,11 @@
 
     Code
       colonnade(list(a_very_long_column_name = 0), width = 15)
-    Condition
-      [1m[33mWarning[39m:[22m
+    Warning <lifecycle_warning_deprecated>
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        a_very_long_…
+        a_very_long_~
                 [3m[90m<dbl>[39m[23m
       [90m1[39m             0
 

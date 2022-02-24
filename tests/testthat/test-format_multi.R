@@ -127,6 +127,7 @@ test_that("tests from tibble", {
 })
 
 test_that("empty", {
+  scoped_lifecycle_silence()
   skip_if(getRversion() < "4.0")
 
   expect_equal(
@@ -170,12 +171,9 @@ test_that("color", {
   if (l10n_info()$`UTF-8`) {
     local_utf8()
     expect_true(cli::is_utf8_output())
-    variant <- "unicode"
-  } else {
-    variant <- "ansi"
   }
 
-  expect_snapshot(variant = variant, {
+  expect_snapshot(variant = snapshot_variant("output-enc"), {
     cli::num_ansi_colors()
     has_color()
     num_colors()
@@ -183,13 +181,11 @@ test_that("color", {
     style_neg("-1")
   })
 
-  expect_snapshot(variant = variant, {
-    style_na("NA")
+  with_lifecycle_silence({
+    xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
   })
 
-  xf <- colonnade(list(x = c((10^(-3:4)) * c(-1, 1), NA)))
-
-  expect_snapshot(variant = variant, {
+  expect_snapshot(variant = snapshot_variant("output-enc"), {
     print(xf)
     with_options(pillar.subtle_num = TRUE, print(xf))
     with_options(pillar.subtle = FALSE, print(xf))
@@ -200,7 +196,7 @@ test_that("color", {
 
   skip_if(getRversion() < "4.0")
 
-  expect_snapshot(variant = variant, {
+  expect_snapshot(variant = snapshot_variant("output-enc"), {
     colonnade(list(a_very_long_column_name = 0), width = 15)
   })
 })

@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.6.5.9002
+Version: 1.7.0.9000
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -24,7 +24,7 @@ Imports:
     fansi,
     glue,
     lifecycle,
-    rlang (>= 0.3.0),
+    rlang (>= 1.0.1),
     utf8 (>= 1.1.0),
     utils,
     vctrs (>= 0.3.8)

@@ -1,4 +1,4 @@
-pillar 1.6.5
+pillar 1.7.0
 
 ## Cran Repository Policy
 
@@ -12,4 +12,4 @@ pillar 1.6.5
 
 ## Current CRAN check results
 
-- [x] Checked on 2022-01-25, no problems found.
+- [x] Checked on 2022-02-01, no problems found.

@@ -72,6 +72,7 @@ chartype_frame <- function() {
 test_that("output test (not on Windows)", {
   skip_if(getRversion() < "4.0")
   skip_on_os("windows")
+  skip_if_not_installed("testthat", "1.3.3")
 
   # Spurious warnings on Windows
   suppressWarnings(
