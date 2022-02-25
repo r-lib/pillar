@@ -41,25 +41,12 @@
 #'   palmerpenguins::penguins$species[1:3],
 #'   width = 60
 #' )
+#'
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,
 #'   palmerpenguins::penguins$bill_length_mm[1:3],
 #'   width = 60
 #' )
-#'
-#' # Packed data frame
-#' ctl_new_pillar_list(
-#'   tibble::tibble(),
-#'   palmerpenguins::penguins,
-#'   width = 60
-#' )
-#'
-#' # Packed matrix
-#' ctl_new_pillar_list(tibble::tibble(), matrix(1:6, ncol = 2), width = 60)
-#'
-#' # Packed array
-#' ctl_new_pillar_list(tibble::tibble(), Titanic, width = 60)
-#'
 #' @examples
 #'
 #' # Customize output

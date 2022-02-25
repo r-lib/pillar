@@ -80,7 +80,6 @@
 #'
 #' # Packed array
 #' ctl_new_pillar_list(tibble::tibble(), Titanic, width = 60)
-#'
 ctl_new_pillar_list <- function(controller, x, width, ..., title = NULL, first_pillar = NULL) {
   "!!!!DEBUG ctl_new_pillar_list(`v(width)`, `v(title)`)"
 
