@@ -36,8 +36,8 @@ new_pillar_component <- function(x, ..., width, min_width = NULL) {
 
   structure(
     x,
-    width = width,
-    min_width = min_width,
+    width = as.integer(width),
+    min_width = as.integer(min_width %||% width),
     class = "pillar_component"
   )
 }
