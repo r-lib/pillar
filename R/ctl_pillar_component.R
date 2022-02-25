@@ -34,6 +34,7 @@ new_pillar_component <- function(x, ..., width, min_width = NULL) {
 
   check_dots_empty()
   stopifnot(rlang::is_bare_list(x))
+  stopifnot(length(x) == 1)
   stopifnot(is_integerish(width), length(width) == 1L)
   if (!is.null(min_width)) {
     stopifnot(is_integerish(min_width), length(min_width) == 1L)
