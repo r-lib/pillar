@@ -11,6 +11,7 @@ reference:
       - tbl_format_body
       - tbl_format_footer
       - ctl_new_pillar
+      - ctl_new_pillar_list
       - tbl_sum
       - glimpse
       - format_glimpse
