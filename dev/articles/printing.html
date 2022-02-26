@@ -142,8 +142,8 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-25a9e801dfaed04a069a" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-25a9e801dfaed04a069a">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-c75ebafd79934df6a9f0" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c75ebafd79934df6a9f0">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div class="section level2">
 <h2 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
@@ -383,7 +383,7 @@ Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 </h2>
 <p>The internal function <code>ctl_colonnade()</code> composes the body. It performs the following tasks:</p>
 <ol style="list-style-type: decimal">
-<li>Create a pillar object for every top-level column that fits, using the minimum width, via <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code>, <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and ultimately <code><a href="../reference/pillar.html">pillar()</a></code> and <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code>
+<li>Create a pillar object for every top-level column that fits, using the minimum width, via <code><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list()</a></code>, <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> and ultimately <code><a href="../reference/pillar.html">pillar()</a></code> and <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code>
 </li>
 <li>Determine the number of tiers and the width for each tier</li>
 <li>Distribute the pillars across the tiers, assigning a width to each pillar.</li>
@@ -397,13 +397,13 @@ Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 <div class="section level2">
 <h2 id="creating-pillar-objects">Creating pillar objects<a class="anchor" aria-label="anchor" href="#creating-pillar-objects"></a>
 </h2>
-<p>The initial tibble is passed to <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code>, which eventually calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> once or several times. For each top-level column, one pillar object is constructed. The loop is terminated when the available width is exhausted even considering the minimum width.</p>
+<p>The initial tibble is passed to <code><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list()</a></code>, which eventually calls <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar()</a></code> once or several times. For each top-level column, one pillar object is constructed. The loop is terminated when the available width is exhausted even considering the minimum width.</p>
 <div class="section level3">
 <h3 id="pillar-lists">Pillar lists<a class="anchor" aria-label="anchor" href="#pillar-lists"></a>
 </h3>
-<p>The <code><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list()</a></code> generic dispatches on the container:</p>
+<p>The <code><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list()</a></code> generic dispatches on the container:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">a</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
 <span class="co">#&gt; <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
@@ -415,7 +415,7 @@ Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 <span class="co">#&gt; [1] 14</span>
 <span class="co">#&gt; attr(,"simple")</span>
 <span class="co">#&gt; [1] TRUE</span>
-<span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">b</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+<span class="fu"><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">b</span>, width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; &lt;pillar&gt;</span>
 <span class="co">#&gt;     c</span>
