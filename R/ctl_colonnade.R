@@ -381,7 +381,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   # Simple pillar: fit and proceed
   if (isTRUE(attr(pillar_list, "simple"))) {
     pillar <- pillar_list[[1]]
-    width <- pillar_get_widths(pillar)
 
     title_width <- get_width(pillar[["title"]]) %||% 0L
 
@@ -409,7 +408,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   # For each sub-pillar we allow at most as much space so that
   # we can print all first components of all remaining pillars
   # with the minimum width
-  min_widths <- map_int(pillar_list, pillar_get_min_widths)
+  min_widths <- map_int(pillar_list, pillar_get_min_width)
   rev <- distribute_pillars_rev(min_widths, tier_widths)
   stopifnot(!anyNA(rev$tier))
 

@@ -42,8 +42,8 @@ new_pillar_component <- function(x, ..., width, min_width = NULL) {
 
   structure(
     x,
-    width = width,
-    min_width = min_width,
+    width = as.integer(width),
+    min_width = as.integer(min_width %||% width),
     class = "pillar_component"
   )
 }
@@ -60,16 +60,15 @@ pillar_component <- function(x) {
   new_pillar_component(list(x), width = get_width(x), min_width = get_min_width(x))
 }
 
-pillar_get_widths <- function(x) {
-  as.integer(exec(max, !!!map(x, get_width)))
+pillar_get_width <- function(x) {
+  as.integer(max(map_int(x, get_width)))
 }
 
-pillar_get_min_widths <- function(x) {
-  as.integer(exec(max, !!!map(x, get_min_width)))
+pillar_get_min_width <- function(x) {
+  as.integer(max(map_int(x, get_min_width)))
 }
 
 pillar_format_parts_2 <- function(x, width, is_focus = FALSE) {
-  widths <- pillar_get_widths(x)
   formatted <- map(x, function(.x) format(.x[[1L]], width = min(width, get_width(.x))))
 
   # FIXME: Support missing type component
