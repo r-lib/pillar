@@ -10,8 +10,9 @@ new_pillar_component(x, ..., width, min_width = NULL)
 pillar_component(x)
 }
 \arguments{
-\item{x}{A bare list (for \code{new_pillar_component()}), or an object
-with attributes \code{"width"} and \code{"min_width"} attributes (for \code{pillar_component()}).}
+\item{x}{A bare list of length one (for \code{new_pillar_component()}),
+or an object with \code{"width"} and \code{"min_width"} attributes
+(for \code{pillar_component()}).}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
@@ -19,22 +20,24 @@ with attributes \code{"width"} and \code{"min_width"} attributes (for \code{pill
 If \code{min_width} is \code{NULL}, it is assumed to match \code{width}.}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 \code{new_pillar_component()} constructs an object of class \code{"pillar_component"}.
+It is used by custom \code{\link[=ctl_new_pillar]{ctl_new_pillar()}} methods to create pillars with
+nonstandard components.
 
 \code{pillar_component()} is a convenience helper that wraps the input in a list
 and extracts width and minimum width.
 }
 \details{
 Objects of class \code{"pillar"} are internally a named lists of their components.
-The default components are \code{title} (may be missing), \code{type}, and \code{data}.
-Each component is a \code{"pillar_component"}.
+The default components for pillars created by \code{\link[=pillar]{pillar()}} are:
+\code{title} (may be missing), \code{type}, and \code{data}.
+Each component is a \code{"pillar_component"} object.
 
-This class captures contents that can be fitted in a rectangle.
-Each component consists of one or multiple cells that
-are aligned horizontally (with one space in between) when printed.
-Each cell has a maximum (i.e., desired) width and may have a minimum width
-if the contents are compressible.
-The component object stores the width of the cells as an attribute.
+This class captures contents that can be fitted in a simple column.
+Compound columns are represented by multiple pillar objects, each with their
+own components.
 }
 \examples{
 new_pillar_component(list(letters[1:3]), width = 1)

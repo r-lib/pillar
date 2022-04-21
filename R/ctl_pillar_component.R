@@ -1,21 +1,26 @@
 #' Components of a pillar
 #'
+#' @description
+#' `r lifecycle::badge("experimental")`
+#'
 #' `new_pillar_component()` constructs an object of class `"pillar_component"`.
+#' It is used by custom [ctl_new_pillar()] methods to create pillars with
+#' nonstandard components.
 #'
+#' @details
 #' Objects of class `"pillar"` are internally a named lists of their components.
-#' The default components are `title` (may be missing), `type`, and `data`.
-#' Each component is a `"pillar_component"`.
+#' The default components for pillars created by [pillar()] are:
+#' `title` (may be missing), `type`, and `data`.
+#' Each component is a `"pillar_component"` object.
 #'
-#' This class captures contents that can be fitted in a rectangle.
-#' Each component consists of one or multiple cells that
-#' are aligned horizontally (with one space in between) when printed.
-#' Each cell has a maximum (i.e., desired) width and may have a minimum width
-#' if the contents are compressible.
-#' The component object stores the width of the cells as an attribute.
+#' This class captures contents that can be fitted in a simple column.
+#' Compound columns are represented by multiple pillar objects, each with their
+#' own components.
 #'
 #' @inheritParams ellipsis::dots_empty
-#' @param x A bare list (for `new_pillar_component()`), or an object
-#'   with attributes `"width"` and `"min_width"` attributes (for `pillar_component()`).
+#' @param x A bare list of length one (for `new_pillar_component()`),
+#'   or an object with `"width"` and `"min_width"` attributes
+#'   (for `pillar_component()`).
 #' @param width,min_width Width and minimum width for the new component.
 #'   If `min_width` is `NULL`, it is assumed to match `width`.
 #' @export
@@ -29,6 +34,7 @@ new_pillar_component <- function(x, ..., width, min_width = NULL) {
 
   check_dots_empty()
   stopifnot(rlang::is_bare_list(x))
+  stopifnot(length(x) == 1)
   stopifnot(is_integerish(width), length(width) == 1L)
   if (!is.null(min_width)) {
     stopifnot(is_integerish(min_width), length(min_width) == 1L)
