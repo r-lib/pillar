@@ -381,7 +381,6 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   # Simple pillar: fit and proceed
   if (isTRUE(attr(pillar_list, "simple"))) {
     pillar <- pillar_list[[1]]
-    width <- pillar_get_widths(pillar)
 
     title_width <- get_width(pillar[["title"]]) %||% 0L
 
@@ -407,8 +406,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
 
   # We can proceed cautiously to the next level if space permits.
   # First we decide for each pillar if it perhaps fits with its desired width.
-  max_widths <- map_int(pillar_list, pillar_get_widths)
-  min_widths <- map_int(pillar_list, pillar_get_min_widths)
+  max_widths <- map_int(pillar_list, pillar_get_width)
+  min_widths <- map_int(pillar_list, pillar_get_min_width)
   pillar_pos <- colonnade_compute_tiered_col_widths_df(max_widths, min_widths, tier_widths)
 
   # Based on this width, we compute, for each pillar, the maximum width

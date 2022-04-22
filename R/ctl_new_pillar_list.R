@@ -157,7 +157,7 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
     }
 
     # Compute remaining width
-    new_width <- deduct_width(width, pillar_get_min_widths(pillar))
+    new_width <- deduct_width(width, pillar_get_min_width(pillar))
     if (is.null(new_width)) {
       # NULL return: current pillar doesn't fit
       break
@@ -235,7 +235,7 @@ new_matrix_pillar_list <- function(x, controller, width, title, first_pillar = N
     }
 
     # Compute remaining width
-    new_width <- deduct_width(width, pillar_get_min_widths(pillar))
+    new_width <- deduct_width(width, pillar_get_min_width(pillar))
     if (is.null(new_width)) {
       # NULL return: current pillar doesn't fit
       break
@@ -294,7 +294,7 @@ deduct_width <- function(width, consumed_widths) {
 }
 
 new_single_pillar_list <- function(pillar, width) {
-  pillar_width <- pillar_get_min_widths(pillar)
+  pillar_width <- pillar_get_min_width(pillar)
   if (is.null(width)) {
     new_width <- NULL
   } else {
