@@ -186,7 +186,7 @@ superdigit <- function(x) {
 
 superdigit_pre <- function(x) {
   if (cli::is_utf8_output()) {
-    superdigit(x)
+    paste0(superdigit(x), " ")
   } else {
     paste0(superdigit(x), ": ")
   }
