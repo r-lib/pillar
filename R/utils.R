@@ -43,6 +43,8 @@ str_add_ellipsis <- function(x, str_width, width, shorten) {
       abbr <- substr2_ctl(x, 1, width - 1, type = "width")
       paste0(abbr, get_ellipsis())
     },
+    untick = str_add_ellipsis_untick(x, str_width, width),
+    untick_footnote = str_add_ellipsis_untick(x, str_width, width, footnote = TRUE),
     front = {
       abbr <- substr2_ctl(x, str_width - width + 2, str_width, type = "width")
       paste0(get_ellipsis(), abbr)
@@ -58,6 +60,27 @@ str_add_ellipsis <- function(x, str_width, width, shorten) {
       abbreviate(x, minlength = width, strict = TRUE)
     }
   )
+}
+
+str_add_ellipsis_untick <- function(x, str_width, width, footnote = FALSE) {
+  if (footnote) {
+    width <- width - 1L
+  }
+
+  rx <- "^(.*[^`])(`?)$"
+  match <- gsub(rx, "\\1", x)
+  rest <- gsub(rx, "\\2", x)
+
+  short <- substr2_ctl(match, 1, width - 1L + get_extent(match) - str_width, type = "width")
+  abbr <- paste0(short, get_ellipsis(), rest)
+
+  if (footnote) {
+    # Placeholder, regular title can't end with this string,
+    # we can use this to detect a footnote
+    abbr <- paste0(abbr, "\u02df")
+  }
+
+  abbr
 }
 
 paste_with_space_if_needed <- function(x, y) {
