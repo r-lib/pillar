@@ -527,7 +527,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col~`˟
+        column_zero_zero `col 01`$`col~`1
                    <dbl> <chr>           
       1             1.23 a               
       2             2.23 b               
@@ -678,7 +678,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col~`˟ `col 05`
+        column_zero_zero `col 01`$`col~`1 `col 05`
                    <dbl> <chr>            <ord>   
       1             1.23 a                a       
       2             2.23 b                b       
@@ -834,7 +834,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col~`˟ $`col 03` `col 05`
+        column_zero_zero `col 01`$`col~`1 $`col 03` `col 05`
                    <dbl> <chr>            <chr>     <ord>   
       1             1.23 a                A         a       
       2             2.23 b                B         b       
@@ -1061,7 +1061,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col~`˟ $`col 03` $`col 04`[,"A"] `col 05`
+        column_zero_zero `col 01`$`col~`1 $`col 03` $`col 04`[,"A"] `col 05`
                    <dbl> <chr>            <chr>               <int> <ord>   
       1             1.23 a                A                       1 a       
       2             2.23 b                B                       2 b       
@@ -1557,4 +1557,24 @@
       5     5
       <tbl_format_footer(setup)>
       # ... with more rows
+
+# tbl_format_setup() for footnotes
+
+    Code
+      tbl_format_setup(width = 73, as_tbl(data_frame(xxxabc = 1, xxxdef = 1, xxxghi = 1,
+        xxxjkl = 1, xxxmno = 1, xxxpqr = 1, xxxstu = 1, xxxvwx = 1, xxxyza = 1,
+        xxxbcd = 1, xxxefg = 1, xxxhij = 1, xxxklm = 1, xxxnop = 1)))
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 1 x 14
+      <tbl_format_body(setup)>
+        xxx~1 xxx~2 xxx~3 xxx~4 xxx~5 xxx~6 xxx~7 xxx~8 xxx~9 xxx~* xxx~* xxx~*
+        <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+      1     1     1     1     1     1     1     1     1     1     1     1     1
+      <tbl_format_footer(setup)>
+      # ... with abbreviated variable names 1: xxxabc, 2: xxxdef, 3: xxxghi,
+      #   4: xxxjkl, 5: xxxmno, 6: xxxpqr, 7: xxxstu, 8: xxxvwx, 9: xxxyza,
+      #   *: xxxbcd, *: xxxefg, *: xxxhij, and 2 more variables: xxxklm <dbl>,
+      #   xxxnop <dbl>
 

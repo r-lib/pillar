@@ -117,7 +117,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        a_very_long…˟
+        a_very_long…¹
                 [3m[90m<dbl>[39m[23m
       [90m1[39m             0
 

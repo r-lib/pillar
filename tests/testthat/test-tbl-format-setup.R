@@ -138,3 +138,26 @@ test_that("tbl_format_setup() results", {
     )
   })
 })
+
+test_that("tbl_format_setup() for footnotes", {
+  local_pillar_option_min_title_chars(3)
+
+  expect_snapshot({
+    tbl_format_setup(width = 73, as_tbl(data_frame(
+      xxxabc = 1,
+      xxxdef = 1,
+      xxxghi = 1,
+      xxxjkl = 1,
+      xxxmno = 1,
+      xxxpqr = 1,
+      xxxstu = 1,
+      xxxvwx = 1,
+      xxxyza = 1,
+      xxxbcd = 1,
+      xxxefg = 1,
+      xxxhij = 1,
+      xxxklm = 1,
+      xxxnop = 1
+    )))
+  })
+})

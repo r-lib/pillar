@@ -79,7 +79,7 @@
       width = 18)
     Output
       <pillar>
-      absolutely_break~˟
+      absolutely_break~1
                    <dbl>
                       10
                      100
