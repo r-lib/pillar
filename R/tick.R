@@ -1,25 +1,5 @@
-format_title <- function(x, width) {
-  out <- align(str_trunc(x, width))
-
-  # HACK: Abbreviating text inbetween ticks
-  ticked <- grepl("^`", x)
-  if (!any(ticked)) {
-    return(out)
-  }
-
-  ticked[which(get_extent(x[ticked]) <= width)] <- FALSE
-  if (!any(ticked)) {
-    return(out)
-  }
-
-  x_ticked <- x[ticked]
-  rx <- "^`(.*)(`[^`]*)$"
-  match <- gsub(rx, "\\1", x[ticked])
-  rest <- gsub(rx, "\\2", x[ticked])
-
-  short <- str_trunc(match, width + get_extent(match) - get_extent(x_ticked))
-  out[ticked] <- align(paste0("`", short, rest))
-  out
+format_title <- function(x, width, footnote = FALSE) {
+  align(str_trunc(x, width, if (footnote) "untick_footnote" else "untick"))
 }
 
 tick_names_if_needed <- function(x) {
