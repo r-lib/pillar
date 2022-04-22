@@ -72,7 +72,6 @@ pillar_format_parts_2 <- function(x, width, is_focus = FALSE) {
   formatted <- map(x, function(.x) format(.x[[1L]], width = min(width, get_width(.x))))
 
   # FIXME: Support missing type component
-  flat_focus_pos <- integer()
   if (is_focus) {
     type_idx <- which(names(x) == "type")
     if (length(type_idx) > 0) {
