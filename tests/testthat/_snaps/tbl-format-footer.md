@@ -72,13 +72,13 @@
       tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_")))
     Output
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names a_very_long_prefix_ab,
-      #   a_very_long_prefix_bb, and 48 more variables: a_very_long_prefix_ac <int>,
-      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
-      #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
-      #   a_very_long_prefix_be <int>, a_very_long_prefix_af <int>,
-      #   a_very_long_prefix_bf <int>, a_very_long_prefix_ag <int>,
-      #   a_very_long_prefix_bg <int>, a_very_long_prefix_ah <int>, ...
+      # ... with abbreviated variable names 1: a_very_long_prefix_ab,
+      #   2: a_very_long_prefix_bb, and 48 more variables:
+      #   a_very_long_prefix_ac <int>, a_very_long_prefix_bc <int>,
+      #   a_very_long_prefix_ad <int>, a_very_long_prefix_bd <int>,
+      #   a_very_long_prefix_ae <int>, a_very_long_prefix_be <int>,
+      #   a_very_long_prefix_af <int>, a_very_long_prefix_bf <int>,
+      #   a_very_long_prefix_ag <int>, a_very_long_prefix_bg <int>, ...
     Code
       tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = 3))
     Output
@@ -98,9 +98,9 @@
       max_footer_lines = 3))
     Output
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names a_very_long_prefix_ab,
-      #   a_very_long_prefix_bb, and 48 more variables: a_very_long_prefix_ac <int>,
-      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>, ...
+      # ... with abbreviated variable names 1: a_very_long_prefix_ab,
+      #   2: a_very_long_prefix_bb, and 48 more variables:
+      #   a_very_long_prefix_ac <int>, a_very_long_prefix_bc <int>, ...
     Code
       tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = Inf))
     Output
@@ -132,30 +132,30 @@
       max_footer_lines = Inf))
     Output
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names a_very_long_prefix_ab,
-      #   a_very_long_prefix_bb, and 48 more variables: a_very_long_prefix_ac <int>,
-      #   a_very_long_prefix_bc <int>, a_very_long_prefix_ad <int>,
-      #   a_very_long_prefix_bd <int>, a_very_long_prefix_ae <int>,
-      #   a_very_long_prefix_be <int>, a_very_long_prefix_af <int>,
-      #   a_very_long_prefix_bf <int>, a_very_long_prefix_ag <int>,
-      #   a_very_long_prefix_bg <int>, a_very_long_prefix_ah <int>,
-      #   a_very_long_prefix_bh <int>, a_very_long_prefix_ai <int>,
-      #   a_very_long_prefix_bi <int>, a_very_long_prefix_aj <int>,
-      #   a_very_long_prefix_bj <int>, a_very_long_prefix_ak <int>,
-      #   a_very_long_prefix_bk <int>, a_very_long_prefix_al <int>,
-      #   a_very_long_prefix_bl <int>, a_very_long_prefix_am <int>,
-      #   a_very_long_prefix_bm <int>, a_very_long_prefix_an <int>,
-      #   a_very_long_prefix_bn <int>, a_very_long_prefix_ao <int>,
-      #   a_very_long_prefix_bo <int>, a_very_long_prefix_ap <int>,
-      #   a_very_long_prefix_bp <int>, a_very_long_prefix_aq <int>,
-      #   a_very_long_prefix_bq <int>, a_very_long_prefix_ar <int>,
-      #   a_very_long_prefix_br <int>, a_very_long_prefix_as <int>,
-      #   a_very_long_prefix_bs <int>, a_very_long_prefix_at <int>,
-      #   a_very_long_prefix_bt <int>, a_very_long_prefix_au <int>,
-      #   a_very_long_prefix_bu <int>, a_very_long_prefix_av <int>,
-      #   a_very_long_prefix_bv <int>, a_very_long_prefix_aw <int>,
-      #   a_very_long_prefix_bw <int>, a_very_long_prefix_ax <int>,
-      #   a_very_long_prefix_bx <int>, a_very_long_prefix_ay <int>,
-      #   a_very_long_prefix_by <int>, a_very_long_prefix_az <int>,
-      #   a_very_long_prefix_bz <int>
+      # ... with abbreviated variable names 1: a_very_long_prefix_ab,
+      #   2: a_very_long_prefix_bb, and 48 more variables:
+      #   a_very_long_prefix_ac <int>, a_very_long_prefix_bc <int>,
+      #   a_very_long_prefix_ad <int>, a_very_long_prefix_bd <int>,
+      #   a_very_long_prefix_ae <int>, a_very_long_prefix_be <int>,
+      #   a_very_long_prefix_af <int>, a_very_long_prefix_bf <int>,
+      #   a_very_long_prefix_ag <int>, a_very_long_prefix_bg <int>,
+      #   a_very_long_prefix_ah <int>, a_very_long_prefix_bh <int>,
+      #   a_very_long_prefix_ai <int>, a_very_long_prefix_bi <int>,
+      #   a_very_long_prefix_aj <int>, a_very_long_prefix_bj <int>,
+      #   a_very_long_prefix_ak <int>, a_very_long_prefix_bk <int>,
+      #   a_very_long_prefix_al <int>, a_very_long_prefix_bl <int>,
+      #   a_very_long_prefix_am <int>, a_very_long_prefix_bm <int>,
+      #   a_very_long_prefix_an <int>, a_very_long_prefix_bn <int>,
+      #   a_very_long_prefix_ao <int>, a_very_long_prefix_bo <int>,
+      #   a_very_long_prefix_ap <int>, a_very_long_prefix_bp <int>,
+      #   a_very_long_prefix_aq <int>, a_very_long_prefix_bq <int>,
+      #   a_very_long_prefix_ar <int>, a_very_long_prefix_br <int>,
+      #   a_very_long_prefix_as <int>, a_very_long_prefix_bs <int>,
+      #   a_very_long_prefix_at <int>, a_very_long_prefix_bt <int>,
+      #   a_very_long_prefix_au <int>, a_very_long_prefix_bu <int>,
+      #   a_very_long_prefix_av <int>, a_very_long_prefix_bv <int>,
+      #   a_very_long_prefix_aw <int>, a_very_long_prefix_bw <int>,
+      #   a_very_long_prefix_ax <int>, a_very_long_prefix_bx <int>,
+      #   a_very_long_prefix_ay <int>, a_very_long_prefix_by <int>,
+      #   a_very_long_prefix_az <int>, a_very_long_prefix_bz <int>
 

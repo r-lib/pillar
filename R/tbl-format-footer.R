@@ -91,6 +91,7 @@ format_footer_abbrev_cols <- function(x, setup) {
     return(NULL)
   }
 
+  abbrev_cols <- paste0(map_chr(seq_along(abbrev_cols), superdigit_pre), abbrev_cols)
   idx_all_but_last <- seq_len(abbrev_cols_total - 1)
   abbrev_cols[idx_all_but_last] <- paste0(abbrev_cols[idx_all_but_last], ",")
 
