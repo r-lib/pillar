@@ -1578,3 +1578,23 @@
       #   *: xxxbcd, *: xxxefg, *: xxxhij, and 2 more variables: xxxklm <dbl>,
       #   xxxnop <dbl>
 
+# tbl_format_setup() for footnotes with UTF-8 output
+
+    Code
+      tbl_format_setup(width = 73, as_tbl(data_frame(xxxabc = 1, xxxdef = 1, xxxghi = 1,
+        xxxjkl = 1, xxxmno = 1, xxxpqr = 1, xxxstu = 1, xxxvwx = 1, xxxyza = 1,
+        xxxbcd = 1, xxxefg = 1, xxxhij = 1, xxxklm = 1, xxxnop = 1)))
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: 1 × 14
+      <tbl_format_body(setup)>
+        xxx…¹ xxx…² xxx…³ xxx…⁴ xxx…⁵ xxx…⁶ xxx…⁷ xxx…⁸ xxx…⁹ xxx…˟ xxx…˟ xxx…˟
+        <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+      1     1     1     1     1     1     1     1     1     1     1     1     1
+      <tbl_format_footer(setup)>
+      # … with abbreviated variable names ¹ xxxabc, ² xxxdef, ³ xxxghi,
+      #   ⁴ xxxjkl, ⁵ xxxmno, ⁶ xxxpqr, ⁷ xxxstu, ⁸ xxxvwx, ⁹ xxxyza,
+      #   ˟ xxxbcd, ˟ xxxefg, ˟ xxxhij, and 2 more variables: xxxklm <dbl>,
+      #   xxxnop <dbl>
+
