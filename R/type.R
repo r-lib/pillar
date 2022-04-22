@@ -44,8 +44,12 @@ get_pillar_type <- function(x) {
 }
 
 #' @export
-format.pillar_type <- function(x, width = NULL, ...) {
-  format_type_sum(x[[1]], width)
+format.pillar_type <- function(x, width = NULL, ..., is_focus = FALSE) {
+  out <- format_type_sum(x[[1]], width)
+  if (is_focus) {
+    out <- crayon_underline(out)
+  }
+  out
 }
 
 format_full_pillar_type <- function(x) {
