@@ -11,7 +11,7 @@
     Code
       format_title("proper_title", 10)
     Output
-      [1] "proper_ti~"
+      [1] "proper_t~˟"
     Code
       format_title("proper_title", 10, footnote = FALSE)
     Output
@@ -27,7 +27,7 @@
     Code
       format_title("`a b`", 4)
     Output
-      [1] "`a~`"
+      [1] "`~`˟"
     Code
       format_title("`a b`", 4, footnote = FALSE)
     Output
@@ -35,7 +35,7 @@
     Code
       format_title("`a b`", 3)
     Output
-      [1] "`~`"
+      [1] "~`˟"
     Code
       format_title("`a b`", 3, footnote = FALSE)
     Output

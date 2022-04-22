@@ -44,7 +44,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        colu~
+        col~˟
         <dbl>
       1  1.23
       2  2.23
@@ -56,7 +56,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        colum~
+        colu~˟
          <dbl>
       1   1.23
       2   2.23
@@ -68,7 +68,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column~
+        colum~˟
           <dbl>
       1    1.23
       2    2.23
@@ -80,7 +80,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column_~
+        column~˟
            <dbl>
       1     1.23
       2     2.23
@@ -92,7 +92,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column_z~
+        column_~˟
             <dbl>
       1      1.23
       2      2.23
@@ -104,7 +104,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column_ze~
+        column_z~˟
              <dbl>
       1       1.23
       2       2.23
@@ -116,7 +116,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column_zer~
+        column_ze~˟
               <dbl>
       1        1.23
       2        2.23
@@ -128,7 +128,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column_zero~
+        column_zer~˟
                <dbl>
       1         1.23
       2         2.23
@@ -140,7 +140,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column_zero_~
+        column_zero~˟
                 <dbl>
       1          1.23
       2          2.23
@@ -152,7 +152,7 @@
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
     Output
-        column_zero_o~
+        column_zero_~˟
                  <dbl>
       1           1.23
       2           2.23

@@ -527,7 +527,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col ~`
+        column_zero_zero `col 01`$`col~`˟
                    <dbl> <chr>           
       1             1.23 a               
       2             2.23 b               
@@ -678,7 +678,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col ~` `col 05`
+        column_zero_zero `col 01`$`col~`˟ `col 05`
                    <dbl> <chr>            <ord>   
       1             1.23 a                a       
       2             2.23 b                b       
@@ -834,7 +834,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col ~` $`col 03` `col 05`
+        column_zero_zero `col 01`$`col~`˟ $`col 03` `col 05`
                    <dbl> <chr>            <chr>     <ord>   
       1             1.23 a                A         a       
       2             2.23 b                B         b       
@@ -1061,7 +1061,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col ~` $`col 03` $`col 04`[,"A"] `col 05`
+        column_zero_zero `col 01`$`col~`˟ $`col 03` $`col 04`[,"A"] `col 05`
                    <dbl> <chr>            <chr>               <int> <ord>   
       1             1.23 a                A                       1 a       
       2             2.23 b                B                       2 b       
