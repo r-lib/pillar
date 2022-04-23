@@ -68,11 +68,12 @@ pillar_get_min_width <- function(x) {
   as.integer(max(map_int(x, get_min_width)))
 }
 
-pillar_format_parts_2 <- function(x, width, is_focus = FALSE) {
+pillar_format_parts_2 <- function(x, width, is_focus = FALSE, footnote_idx = 1L) {
   formatted <- map(x, function(.x) format(
     .x[[1L]],
     width = min(width, get_width(.x)),
-    is_focus = is_focus
+    is_focus = is_focus,
+    footnote_idx = footnote_idx
   ))
 
   align <- attr(formatted[["data"]], "align", exact = TRUE) %||% "left"

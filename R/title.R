@@ -51,7 +51,7 @@ get_min_title_width <- function(width) {
 }
 
 #' @export
-format.pillar_title <- function(x, width = NULL, ...) {
+format.pillar_title <- function(x, width = NULL, ..., footnote_idx = 1L) {
   title <- x[[1]]
   if (is.null(title)) {
     return(character())
@@ -61,6 +61,10 @@ format.pillar_title <- function(x, width = NULL, ...) {
     width <- get_width(x)
   }
 
-  title <- format_title(title, width)
+  footnote <- (footnote_idx > 0L)
+  title <- format_title(title, width, footnote)
+  if (footnote) {
+    title <- gsub("\u02df$", superdigit(footnote_idx), title)
+  }
   style_title(title)
 }

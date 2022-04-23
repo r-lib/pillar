@@ -169,3 +169,25 @@ vec_lag <- function(x, default = vec_slice(x, NA_integer_)) {
   }
   vec_c(default, vec_slice(x, -n))
 }
+
+super <- c(
+  "\u00b9", "\u00b2", "\u00b3", "\u2074",
+  "\u2075", "\u2076", "\u2077", "\u2078", "\u2079",
+  "\u02df"
+)
+
+superdigit <- function(x) {
+  if (cli::is_utf8_output()) {
+    super[[min(x, 10)]]
+  } else {
+    if (x >= 10) "*" else as.character(x)
+  }
+}
+
+superdigit_pre <- function(x) {
+  if (cli::is_utf8_output()) {
+    paste0(superdigit(x), " ")
+  } else {
+    paste0(superdigit(x), ": ")
+  }
+}

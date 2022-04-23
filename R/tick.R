@@ -1,4 +1,4 @@
-format_title <- function(x, width, footnote = FALSE) {
+format_title <- function(x, width, footnote = TRUE) {
   align(str_trunc(x, width, if (footnote) "untick_footnote" else "untick"))
 }
 

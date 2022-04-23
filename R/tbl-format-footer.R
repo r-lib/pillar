@@ -46,16 +46,17 @@ tbl_format_footer.tbl <- function(x, setup, ...) {
 
 format_footer <- function(x, setup) {
   extra_rows <- format_footer_extra_rows(x, setup)
+  abbrev_cols <- format_footer_abbrev_cols(x, setup)
   extra_cols <- format_footer_extra_cols(x, setup)
 
-  footer <- compact(list(extra_rows, extra_cols))
+  footer <- compact(list(extra_rows, abbrev_cols, extra_cols))
   if (length(footer) == 0) {
     return(character())
   }
 
   if (length(footer) > 1) {
     footer_len <- length(footer)
-    idx_all_but_last <- seq.int(footer_len - 1)
+    idx_all_but_last <- seq2(1, footer_len - 1)
     footer[idx_all_but_last] <- map(footer[idx_all_but_last], function(x) {
       x[[length(x)]] <- paste0(x[[length(x)]], ",")
       x
@@ -81,6 +82,24 @@ format_footer_extra_rows <- function(x, setup) {
       c("at", "least", big_mark(rows_body), pluralise_n("row(s)", rows_body), "total")
     }
   }
+}
+
+format_footer_abbrev_cols <- function(x, setup) {
+  abbrev_cols <- setup$abbrev_cols
+  abbrev_cols_total <- length(abbrev_cols)
+  if (abbrev_cols_total == 0) {
+    return(NULL)
+  }
+
+  abbrev_cols <- paste0(map_chr(seq_along(abbrev_cols), superdigit_pre), abbrev_cols)
+  idx_all_but_last <- seq_len(abbrev_cols_total - 1)
+  abbrev_cols[idx_all_but_last] <- paste0(abbrev_cols[idx_all_but_last], ",")
+
+  c(
+    "abbreviated", "variable",
+    pluralise("name(s)", abbrev_cols),
+    abbrev_cols
+  )
 }
 
 format_footer_extra_cols <- function(x, setup) {
