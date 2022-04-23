@@ -63,16 +63,23 @@ str_add_ellipsis <- function(x, str_width, width, shorten) {
 }
 
 str_add_ellipsis_untick <- function(x, str_width, width, footnote = FALSE) {
+  stopifnot(length(x) == 1)
+  stopifnot(str_width > width)
+
   if (footnote) {
     width <- width - 1L
   }
 
-  rx <- "^(.*[^`])(`?)$"
-  match <- gsub(rx, "\\1", x)
-  rest <- gsub(rx, "\\2", x)
+  # Removing ticks due to https://github.com/tidyverse/tibble/issues/838
+  x_unticked <- gsub("`", "", x, fixed = TRUE)
+  if (x_unticked != x) {
+    x <- x_unticked
+    str_width <- get_extent(x)
+  }
 
-  short <- substr2_ctl(match, 1, width - 1L + get_extent(match) - str_width, type = "width")
-  abbr <- paste0(short, get_ellipsis(), rest)
+  # Add ellipsis even if short enough after removal of ticks
+  abbr <- substr2_ctl(x, 1, width - 1L, type = "width")
+  abbr <- paste0(abbr, get_ellipsis())
 
   if (footnote) {
     # Placeholder, regular title can't end with this string,

@@ -23,13 +23,13 @@
     Code
       format_title("`a b`", 4, footnote = FALSE)
     Output
-      [1] "`a~`"
+      [1] "a b~"
     Code
       format_title("`a b`", 3, footnote = FALSE)
     Output
-      [1] "`~`"
+      [1] "a ~"
     Code
       format_title("`a b`", 3, footnote = FALSE)
     Output
-      [1] "`~`"
+      [1] "a ~"
 
