@@ -60,6 +60,11 @@ runs:
       with:
         limit-access-to-actor: true
 
+    - name: Add pkg.lock to .gitignore
+      run: |
+        sleep 7200
+      shell: bash
+
     - uses: r-lib/actions/setup-r-dependencies@v2
       env:
         GITHUB_PAT: ${{ inputs.token }}
