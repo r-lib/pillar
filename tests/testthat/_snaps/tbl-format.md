@@ -160,7 +160,7 @@
        9  22.8     4  141.    95  3.92  3.15
       10  19.2     6  168.   123  3.92  3.44
       # ... with 22 more rows, and 5 more
-      #   variable: qsec <dbl>, ...
+      #   variables: qsec <dbl>, ...
     Code
       print(as_tbl(mtcars), width = 30, max_footer_lines = 3)
     Output
@@ -255,5 +255,5 @@
        9  22.8     4  141.    95  3.92  3.15
       10  19.2     6  168.   123  3.92  3.44
       # ... with 22 more rows, and 5 more
-      #   variable: qsec <dbl>, ...
+      #   variables: qsec <dbl>, ...
 
