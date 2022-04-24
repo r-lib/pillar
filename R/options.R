@@ -103,13 +103,6 @@ pillar_options <- list2(
     }
     sigfig
   }),
-  #' - `min_title_chars`: The minimum number of characters for the column
-  #'     title, default: `15`.  Column titles may be truncated up to that width to
-  #'     save horizontal space. Set to `Inf` to turn off truncation of column
-  #'     titles.
-  min_title_chars = make_option_impl(
-    getOption("pillar.min_title_chars", default = 15L)
-  ),
   #' - `min_chars`: The minimum number of characters wide to
   #'     display character columns, default: `3`.  Character columns may be
   #'     truncated up to that width to save horizontal space. Set to `Inf` to

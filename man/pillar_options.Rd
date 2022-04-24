@@ -56,10 +56,6 @@ Default: \code{TRUE}.
 \item \code{sigfig}: The number of significant digits that will be printed and
 highlighted, default: \code{3}. Set the \code{subtle} option to \code{FALSE} to
 turn off highlighting of significant digits.
-\item \code{min_title_chars}: The minimum number of characters for the column
-title, default: \code{15}.  Column titles may be truncated up to that width to
-save horizontal space. Set to \code{Inf} to turn off truncation of column
-titles.
 \item \code{min_chars}: The minimum number of characters wide to
 display character columns, default: \code{3}.  Character columns may be
 truncated up to that width to save horizontal space. Set to \code{Inf} to

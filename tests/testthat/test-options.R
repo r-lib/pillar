@@ -208,27 +208,6 @@ test_that("sigfig", {
   expect_equal(get_pillar_option_sigfig(), orig)
 })
 
-test_that("min_title_chars", {
-  value <- 12L
-
-  orig <- get_pillar_option_min_title_chars()
-  expect_identical(orig, pillar_options$min_title_chars())
-
-  old <- set_pillar_option_min_title_chars(value)
-  expect_equal(get_pillar_option_min_title_chars(), value)
-  expect_equal(expect_invisible(set_pillar_option_min_title_chars(old)), value)
-
-  old <- pillar_options$min_title_chars(value)
-  expect_equal(pillar_options$min_title_chars(), value)
-  expect_equal(expect_invisible(pillar_options$min_title_chars(old)), value)
-
-  local({
-    expect_equal(expect_invisible(local_pillar_option_min_title_chars(value)), old)
-    expect_equal(get_pillar_option_min_title_chars(), value)
-  })
-  expect_equal(get_pillar_option_min_title_chars(), orig)
-})
-
 test_that("min_chars", {
   value <- 5L
 
