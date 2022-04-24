@@ -57,7 +57,7 @@ Default: \code{TRUE}.
 highlighted, default: \code{3}. Set the \code{subtle} option to \code{FALSE} to
 turn off highlighting of significant digits.
 \item \code{min_title_chars}: The minimum number of characters for the column
-title, default: \code{4}.  Column titles may be truncated up to that width to
+title, default: \code{3}.  Column titles may be truncated up to that width to
 save horizontal space. Set to \code{Inf} to turn off truncation of column
 titles.
 \item \code{min_chars}: The minimum number of characters wide to
