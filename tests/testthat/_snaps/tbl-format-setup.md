@@ -1593,8 +1593,7 @@
         <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
       1     1     1     1     1     1     1     1     1     1     1     1     1
       <tbl_format_footer(setup)>
-      # … with abbreviated variable names ¹ xxxabc, ² xxxdef, ³ xxxghi,
-      #   ⁴ xxxjkl, ⁵ xxxmno, ⁶ xxxpqr, ⁷ xxxstu, ⁸ xxxvwx, ⁹ xxxyza,
-      #   ˟ xxxbcd, ˟ xxxefg, ˟ xxxhij, and 2 more variables: xxxklm <dbl>,
-      #   xxxnop <dbl>
+      # … with abbreviated variable names ¹​xxxabc, ²​xxxdef, ³​xxxghi, ⁴​xxxjkl,
+      #   ⁵​xxxmno, ⁶​xxxpqr, ⁷​xxxstu, ⁸​xxxvwx, ⁹​xxxyza, ˟​xxxbcd, ˟​xxxefg,
+      #   ˟​xxxhij, and 2 more variables: xxxklm <dbl>, xxxnop <dbl>
 
