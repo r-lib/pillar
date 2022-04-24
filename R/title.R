@@ -28,7 +28,7 @@ new_pillar_title <- function(x, ...) {
   ret <- structure(list(x), class = "pillar_title")
 
   ret <- set_width(ret, width)
-  ret <- set_min_width(ret, get_min_title_width(width))
+  ret <- set_min_width(ret, min(width, get_min_title_width(width)))
   ret
 }
 
