@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.7.0.9001
+
+- The default value of the `pillar.min_title_width` option is changed to 3. This means that effectively the width of a pillar is decided only by the data. Use `options(pillar.min_title_width = 15)` to restore the previous default, see also `?pillar_options` for details (#531).
+- Remove excess underlines for `bit64::integer64()` data of different magnitude (#517, #529).
+- If a column name in the header is abbreviated, all backticks are removed (#525).
+- Column names that are abbreviated in the header gain a footnote and are printed in full in the footer (#483).
+- `ctl_new_pillar_list()` is documented on a separate help page (#516).
+- Require rlang 1.0.1 (#512).
+- Skip test that requires lubridate if it's not installed (#505, @MichaelChirico).
+
+
 # pillar 1.7.0.9000
 
 - Same as previous version.
