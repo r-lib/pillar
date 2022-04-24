@@ -114,7 +114,7 @@ format_footer_extra_cols <- function(x, setup) {
   c(
     big_mark(extra_cols_total),
     if (!identical(setup$rows_total, 0L) && nrow(setup$df) > 0) "more",
-    pluralise("variable(s):", extra_cols),
+    pluralise_n("variable(s):", extra_cols_total),
     vars
   )
 }
