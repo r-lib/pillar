@@ -51,7 +51,7 @@ get_min_title_width <- function(width) {
 }
 
 #' @export
-format.pillar_title <- function(x, width = NULL, ..., footnote_idx = 1L) {
+format.pillar_title <- function(x, width = NULL, ..., footnote_idx = 0L) {
   title <- x[[1]]
   if (is.null(title)) {
     return(character())
