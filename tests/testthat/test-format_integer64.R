@@ -16,6 +16,16 @@ test_that("integer64 output will use scientific if necessary", {
   })
 })
 
+test_that("integer64 output uses underlines correctly", {
+  skip_if_not_installed("bit64")
+
+  local_colors()
+
+  expect_snapshot({
+    pillar(bit64::as.integer64(c(1, 10000)))
+  })
+})
+
 test_that("nanotime works (#378)", {
   skip_if_not_installed("nanotime")
 
