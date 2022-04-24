@@ -8,3 +8,7 @@ test_that("with and without title", {
     pillar(add_special(10^(1:6)), title = "absolutely_breaking_all_sensible_boundaries", width = 18)
   })
 })
+
+test_that("ellipsis has width 1", {
+  expect_equal(get_extent(get_ellipsis()), 1)
+})

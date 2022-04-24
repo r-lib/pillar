@@ -47,7 +47,7 @@ get_min_title_width <- function(width) {
   if (width <= title_chars) {
     return(width)
   }
-  title_chars + get_extent(get_ellipsis())
+  title_chars + 2L
 }
 
 #' @export

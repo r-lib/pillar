@@ -11,6 +11,7 @@ test_that("tests from tibble", {
   expect_snapshot({
     ctl_colonnade(mtcars[1:8, ], has_row_id = "*", width = 30)
     ctl_colonnade(trees[1:5, ], width = 20)
+    ctl_colonnade(trees[1:5, ], width = 10)
     ctl_colonnade(trees[1:3, ], width = 10)
     ctl_colonnade(df_all, width = 30)
     ctl_colonnade(df_all, width = 300)
