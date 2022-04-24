@@ -46,10 +46,10 @@ tbl_format_footer.tbl <- function(x, setup, ...) {
 
 format_footer <- function(x, setup) {
   extra_rows <- format_footer_extra_rows(x, setup)
-  abbrev_cols <- format_footer_abbrev_cols(x, setup)
-  extra_cols <- format_footer_extra_cols(x, setup)
+  abbrev_colnames <- format_footer_abbrev_colnames(x, setup)
+  extra_colnames <- format_footer_extra_colnames(x, setup)
 
-  footer <- compact(list(extra_rows, abbrev_cols, extra_cols))
+  footer <- compact(list(extra_rows, abbrev_colnames, extra_colnames))
   if (length(footer) == 0) {
     return(character())
   }
@@ -84,7 +84,7 @@ format_footer_extra_rows <- function(x, setup) {
   }
 }
 
-format_footer_abbrev_cols <- function(x, setup) {
+format_footer_abbrev_colnames <- function(x, setup) {
   abbrev_cols <- setup$abbrev_cols
   abbrev_cols_total <- length(abbrev_cols)
   if (abbrev_cols_total == 0) {
@@ -102,7 +102,7 @@ format_footer_abbrev_cols <- function(x, setup) {
   )
 }
 
-format_footer_extra_cols <- function(x, setup) {
+format_footer_extra_colnames <- function(x, setup) {
   extra_cols <- setup$extra_cols
   if (length(extra_cols) == 0) {
     return(NULL)
