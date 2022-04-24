@@ -187,3 +187,15 @@ test_that("tbl_format_setup() for footnotes with UTF-8 output", {
     )))
   })
 })
+
+test_that("row numbers of lazy tables if known (#399)", {
+  skip_if_not_installed("dbplyr")
+  skip_if_not_installed("RSQLite")
+
+  expect_snapshot({
+    x <- dbplyr::memdb_frame(a = 1:3)
+    fix_dbplyr_header(tbl_sum(x), 3)["Source"]
+    x <- dbplyr::memdb_frame(a = 1:11)
+    fix_dbplyr_header(tbl_sum(x), NA_integer_)["Source"]
+  })
+})

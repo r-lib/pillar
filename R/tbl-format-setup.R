@@ -132,6 +132,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 
   # Header
   tbl_sum <- tbl_sum(x)
+  tbl_sum <- fix_dbplyr_header(tbl_sum, rows)
 
   # Body
   rownames(df) <- NULL
@@ -245,4 +246,13 @@ format.pillar_tbl_format_setup <- function(x, ...) {
     tbl_format_body(x),
     tbl_format_footer(x)
   )
+}
+
+fix_dbplyr_header <- function(tbl_sum, rows) {
+  if (is.na(rows) || !("Source" %in% names2(tbl_sum))) {
+    return(tbl_sum)
+  }
+
+  tbl_sum[["Source"]] <- gsub("[[][?][?] ", paste0("[", rows, " "), tbl_sum[["Source"]])
+  tbl_sum
 }

@@ -30,6 +30,7 @@ Imports:
     vctrs (>= 0.3.8)
 Suggests: 
     bit64,
+    dbplyr,
     debugme,
     DiagrammeR,
     dplyr,
@@ -41,6 +42,7 @@ Suggests:
     nycflights13,
     palmerpenguins,
     rmarkdown,
+    RSQLite,
     scales,
     stringi,
     survival,

@@ -1597,3 +1597,18 @@
       #   ⁵​xxxmno, ⁶​xxxpqr, ⁷​xxxstu, ⁸​xxxvwx, ⁹​xxxyza, ˟​xxxbcd, ˟​xxxefg,
       #   ˟​xxxhij, and 2 more variables: xxxklm <dbl>, xxxnop <dbl>
 
+# row numbers of lazy tables if known (#399)
+
+    Code
+      x <- dbplyr::memdb_frame(a = 1:3)
+      fix_dbplyr_header(tbl_sum(x), 3)["Source"]
+    Output
+                           Source 
+      "table<dbplyr_001> [3 x 1]" 
+    Code
+      x <- dbplyr::memdb_frame(a = 1:11)
+      fix_dbplyr_header(tbl_sum(x), NA_integer_)["Source"]
+    Output
+                            Source 
+      "table<dbplyr_002> [?? x 1]" 
+
