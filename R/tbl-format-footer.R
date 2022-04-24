@@ -46,10 +46,11 @@ tbl_format_footer.tbl <- function(x, setup, ...) {
 
 format_footer <- function(x, setup) {
   extra_rows <- format_footer_extra_rows(x, setup)
+  extra_cols <- format_footer_extra_cols(x, setup)
   abbrev_colnames <- format_footer_abbrev_colnames(x, setup)
   extra_colnames <- format_footer_extra_colnames(x, setup)
 
-  footer <- compact(list(extra_rows, abbrev_colnames, extra_colnames))
+  footer <- compact(list(extra_rows, extra_cols, abbrev_colnames, extra_colnames))
   if (length(footer) == 0) {
     return(character())
   }
@@ -84,6 +85,18 @@ format_footer_extra_rows <- function(x, setup) {
   }
 }
 
+format_footer_extra_cols <- function(x, setup) {
+  extra_cols_total <- setup$extra_cols_total
+
+  if (extra_cols_total > 0) {
+    c(
+      big_mark(extra_cols_total),
+      if (!identical(setup$rows_total, 0L) && nrow(setup$df) > 0) "more",
+      pluralise_n("variable(s)", extra_cols_total)
+    )
+  }
+}
+
 format_footer_abbrev_colnames <- function(x, setup) {
   abbrev_cols <- setup$abbrev_cols
   abbrev_cols_total <- length(abbrev_cols)
@@ -112,9 +125,7 @@ format_footer_extra_colnames <- function(x, setup) {
 
   vars <- format_extra_vars(extra_cols, extra_cols_total)
   c(
-    big_mark(extra_cols_total),
-    if (!identical(setup$rows_total, 0L) && nrow(setup$df) > 0) "more",
-    pluralise_n("variable(s):", extra_cols_total),
+    pluralise_n("variable name(s):", extra_cols_total),
     vars
   )
 }
