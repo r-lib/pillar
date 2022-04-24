@@ -31,7 +31,6 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
 
   formatted_tiers <- list()
   extra_cols <- list(a = 1)[0]
-  last_abbrev_title <- NULL
   abbrev_cols <- character()
 
   on_tier <- function(formatted) {
@@ -66,22 +65,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   }
 
   on_abbrev_col <- function(title) {
-    my_title <- title
-    my_last_abbrev_title <- last_abbrev_title
-    if (length(my_title) < length(my_last_abbrev_title)) {
-      length(my_last_abbrev_title) <- length(my_title)
-    } else {
-      length(my_title) <- length(my_last_abbrev_title)
-    }
-
-    my_full_title <- title
-    my_full_title[which(my_title == my_last_abbrev_title)] <- ""
-
-    cols <- paste0(my_full_title, collapse = "$")
-
-    abbrev_cols <<- c(abbrev_cols, cols)
-
-    last_abbrev_title <<- title
+    abbrev_cols <<- c(abbrev_cols, title)
   }
 
   on_get_n_abbrev_cols <- function() {
@@ -391,7 +375,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   if (isTRUE(attr(pillar_list, "simple"))) {
     pillar <- pillar_list[[1]]
 
-    title_width <- get_width(pillar[["title"]]) %||% 0L
+    pillar_title <- pillar[["title"]]
+    title_width <- get_width(pillar_title) %||% 0L
 
     formatted <- pillar_format_parts_2(
       pillar,
@@ -412,7 +397,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     cb$on_pillar(formatted)
 
     if (true_width < title_width) {
-      cb$on_abbrev_col(title)
+      cb$on_abbrev_col(format(pillar_title))
     }
 
     return(used)
