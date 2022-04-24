@@ -3,7 +3,7 @@
 #' @import rlang
 #' @import ellipsis
 #' @import lifecycle
-#' @importFrom glue as_glue
+#' @importFrom glue as_glue glue_collapse
 #' @importFrom vctrs data_frame
 #' @importFrom vctrs new_data_frame
 #' @importFrom vctrs new_list_of

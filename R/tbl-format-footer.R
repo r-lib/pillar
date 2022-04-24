@@ -41,7 +41,9 @@ tbl_format_footer.pillar_tbl_format_setup <- function(x, ...) {
 tbl_format_footer.tbl <- function(x, setup, ...) {
   footer <- format_footer(x, setup)
   footer_comment <- wrap_footer(footer, setup)
-  style_subtle(footer_comment)
+
+  # style_subtle() has no effect at this point
+  footer_comment
 }
 
 format_footer <- function(x, setup) {
@@ -50,24 +52,30 @@ format_footer <- function(x, setup) {
   abbrev_colnames <- format_footer_abbrev_colnames(x, setup)
   extra_colnames <- format_footer_extra_colnames(x, setup)
 
-  footer <- compact(list(extra_rows, extra_cols, abbrev_colnames, extra_colnames))
-  if (length(footer) == 0) {
+  bullets <- c(
+    "*" = glue_collapse(extra_rows, sep = " "),
+    "*" = glue_collapse(extra_cols, sep = " "),
+    "*" = glue_collapse(abbrev_colnames, sep = " "),
+    "*" = glue_collapse(extra_colnames, sep = " ")
+  )
+
+  if (is.null(bullets)) {
     return(character())
   }
 
-  if (length(footer) > 1) {
-    footer_len <- length(footer)
-    idx_all_but_last <- seq2(1, footer_len - 1)
-    footer[idx_all_but_last] <- map(footer[idx_all_but_last], function(x) {
-      x[[length(x)]] <- paste0(x[[length(x)]], ",")
-      x
-    })
-    footer <- c(footer[idx_all_but_last], "and", footer[footer_len])
-  }
+  local_options(cli.width = setup$width)
 
-  extra <- unlist(footer, recursive = FALSE)
-
-  c("with", extra)
+  tryCatch(
+    cli::cli(cli::cli_bullets(bullets)),
+    message = function(e) {
+      out <- conditionMessage(e)
+      if (identical(out, "")) {
+        NULL
+      } else {
+        sub("\n$", "", out)
+      }
+    }
+  )
 }
 
 format_footer_extra_rows <- function(x, setup) {
@@ -146,27 +154,23 @@ wrap_footer <- function(footer, setup) {
     return(character())
   }
 
-  # When asking for width = 80, use at most 79 characters
-  max_extent <- setup$width - 1L
+  lines <- split_lines(footer)
 
-  tier_widths <- get_footer_tier_widths(
-    footer, max_extent,
-    setup$max_footer_lines
-  )
-
-  # show optuput even if too wide
-  widths <- pmin(get_extent(footer), max_extent - 4L)
-  wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
-
-  # truncate output that doesn't fit
-  truncated <- anyNA(wrap$tier)
-  split <- split(footer[wrap$id], wrap$tier)
-  if (truncated && length(split) > 0) {
-    split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
+  if (length(lines) <= setup$max_footer_lines) {
+    return(footer)
   }
-  split <- imap(split, function(x, y) c("#", if (y == 1) cli::symbol$ellipsis else " ", x))
 
-  map_chr(split, paste, collapse = " ")
+  length(lines) <- setup$max_footer_lines
+  last_line <- lines[[setup$max_footer_lines]]
+  ellipsis_width <- get_extent(cli::symbol$ellipsis)
+  if (get_extent(last_line) + ellipsis_width + 1L > setup$width) {
+    last_line <- substr2_ctl(last_line, 1, setup$width - 1L - ellipsis_width)
+  }
+  last_line <- paste0(last_line, " ", cli::symbol$ellipsis)
+
+  lines[[setup$max_footer_lines]] <- last_line
+
+  glue_collapse(lines, "\n")
 }
 
 get_footer_tier_widths <- function(footer, max_extent, n_tiers) {
