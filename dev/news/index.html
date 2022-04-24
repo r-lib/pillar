@@ -85,8 +85,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.7.0.9000" id="pillar-1709000">pillar 1.7.0.9000<a class="anchor" aria-label="anchor" href="#pillar-1709000"></a></h2>
-<ul><li>Same as previous version.</li>
-</ul></div>
+<ul><li>Same as previous version.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.7.0" id="pillar-170">pillar 1.7.0<small>2022-02-01</small><a class="anchor" aria-label="anchor" href="#pillar-170"></a></h2>
 <div class="section level3">
@@ -100,23 +99,19 @@
 </ul></div>
 <div class="section level3">
 <h3 id="features-1-7-0">Features<a class="anchor" aria-label="anchor" href="#features-1-7-0"></a></h3>
-<ul><li>Focus columns specified via the <code>focus</code> argument to <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> are kept in their original place and shown with the maximum width and with the “type” component underlined (<a href="https://github.com/r-lib/pillar/issues/465" class="external-link">#465</a>).</li>
-</ul></div>
+<ul><li>Focus columns specified via the <code>focus</code> argument to <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> are kept in their original place and shown with the maximum width and with the “type” component underlined (<a href="https://github.com/r-lib/pillar/issues/465" class="external-link">#465</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-7-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-7-0"></a></h3>
-<ul><li>Update <code>s3_register()</code> to use new implementation from rlang, this fixes CRAN checks related to <code>scale_type()</code> (<a href="https://github.com/r-lib/pillar/issues/462" class="external-link">#462</a>).</li>
-</ul></div>
+<ul><li>Update <code>s3_register()</code> to use new implementation from rlang, this fixes CRAN checks related to <code>scale_type()</code> (<a href="https://github.com/r-lib/pillar/issues/462" class="external-link">#462</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="internal-1-7-0">Internal<a class="anchor" aria-label="anchor" href="#internal-1-7-0"></a></h3>
-<ul><li>Single pillars constructed with <code><a href="../reference/pillar.html">pillar()</a></code> use only as much width as required when printing (<a href="https://github.com/r-lib/pillar/issues/484" class="external-link">#484</a>).</li>
-</ul></div>
+<ul><li>Single pillars constructed with <code><a href="../reference/pillar.html">pillar()</a></code> use only as much width as required when printing (<a href="https://github.com/r-lib/pillar/issues/484" class="external-link">#484</a>).</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.5" id="pillar-165">pillar 1.6.5<small>2022-01-25</small><a class="anchor" aria-label="anchor" href="#pillar-165"></a></h2>
 <div class="section level3">
 <h3 id="breaking-changes-1-6-5">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-6-5"></a></h3>
-<ul><li>New <code><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list()</a></code>, supersedes <code>ctl_new_compound_pillar()</code> (<a href="https://github.com/r-lib/pillar/issues/433" class="external-link">#433</a>).</li>
-</ul></div>
+<ul><li>New <code><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list()</a></code>, supersedes <code>ctl_new_compound_pillar()</code> (<a href="https://github.com/r-lib/pillar/issues/433" class="external-link">#433</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="features-1-6-5">Features<a class="anchor" aria-label="anchor" href="#features-1-6-5"></a></h3>
 <ul><li>If some but not all sub-columns of a data frame or matrix column are shown, the names and types of the remaining columns are displayed in the footer (<a href="https://github.com/r-lib/pillar/issues/365" class="external-link">#365</a>, <a href="https://github.com/r-lib/pillar/issues/444" class="external-link">#444</a>).</li>
@@ -140,8 +135,7 @@
 <div class="section level3">
 <h3 id="documentation-1-6-5">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-6-5"></a></h3>
 <ul><li>
-<code><a href="../reference/num.html">?num</a></code> and <code><a href="../reference/char.html">?char</a></code> now point to tibble (<a href="https://github.com/r-lib/pillar/issues/382" class="external-link">#382</a>).</li>
-</ul></div>
+<code><a href="../reference/num.html">?num</a></code> and <code><a href="../reference/char.html">?char</a></code> now point to tibble (<a href="https://github.com/r-lib/pillar/issues/382" class="external-link">#382</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="internal-1-6-5">Internal<a class="anchor" aria-label="anchor" href="#internal-1-6-5"></a></h3>
 <ul><li>Use eager registration via <code>NAMESPACE</code> for own methods for classes from other packages.</li>
@@ -161,17 +155,14 @@
 <div class="section level3">
 <h3 id="breaking-changes-1-6-4">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-6-4"></a></h3>
 <ul><li>
-<code><a href="../reference/num.html">num()</a></code> requires an integerish <code>digits</code> argument (<a href="https://github.com/r-lib/pillar/issues/362" class="external-link">#362</a>).</li>
-</ul></div>
+<code><a href="../reference/num.html">num()</a></code> requires an integerish <code>digits</code> argument (<a href="https://github.com/r-lib/pillar/issues/362" class="external-link">#362</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="documentation-1-6-4">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-6-4"></a></h3>
-<ul><li>Link to tibble vignettes and documentation pages.</li>
-</ul></div>
+<ul><li>Link to tibble vignettes and documentation pages.</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.3" id="pillar-163">pillar 1.6.3<small>2021-09-26</small><a class="anchor" aria-label="anchor" href="#pillar-163"></a></h2>
-<ul><li>Avoid blanket import for lifecycle package for compatibility with upcoming rlang (<a href="https://github.com/r-lib/pillar/issues/368" class="external-link">#368</a>, <a href="https://github.com/romainfrancois" class="external-link">@romainfrancois</a>).</li>
-</ul></div>
+<ul><li>Avoid blanket import for lifecycle package for compatibility with upcoming rlang (<a href="https://github.com/r-lib/pillar/issues/368" class="external-link">#368</a>, <a href="https://github.com/romainfrancois" class="external-link">@romainfrancois</a>).</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.6.2" id="pillar-162">pillar 1.6.2<small>2021-07-29</small><a class="anchor" aria-label="anchor" href="#pillar-162"></a></h2>
 <div class="section level3">
@@ -240,8 +231,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-1-6-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-6-0"></a></h3>
-<ul><li>New <code><a href="../articles/numbers.html">vignette("numbers")</a></code> and <code><a href="../articles/digits.html">vignette("digits")</a></code> (<a href="https://github.com/r-lib/pillar/issues/308" class="external-link">#308</a>).</li>
-</ul></div>
+<ul><li>New <code><a href="../articles/numbers.html">vignette("numbers")</a></code> and <code><a href="../articles/digits.html">vignette("digits")</a></code> (<a href="https://github.com/r-lib/pillar/issues/308" class="external-link">#308</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="internal-1-6-0">Internal<a class="anchor" aria-label="anchor" href="#internal-1-6-0"></a></h3>
 <ul><li>Compatibility with vctrs 0.3.7 (<a href="https://github.com/r-lib/pillar/issues/291" class="external-link">#291</a>).</li>
@@ -253,12 +243,10 @@
 <h2 class="page-header" data-toc-text="1.5.1" id="pillar-151">pillar 1.5.1<small>2021-03-05</small><a class="anchor" aria-label="anchor" href="#pillar-151"></a></h2>
 <div class="section level3">
 <h3 id="features-1-5-1">Features<a class="anchor" aria-label="anchor" href="#features-1-5-1"></a></h3>
-<ul><li>New <code><a href="../reference/format_glimpse.html">format_glimpse()</a></code> (<a href="https://github.com/r-lib/pillar/issues/177" class="external-link">#177</a>).</li>
-</ul></div>
+<ul><li>New <code><a href="../reference/format_glimpse.html">format_glimpse()</a></code> (<a href="https://github.com/r-lib/pillar/issues/177" class="external-link">#177</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-5-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-5-1"></a></h3>
-<ul><li>Color and formatting can now be reliably turned off by setting the <code>"cli.num_colors"</code> option to 1 (<a href="https://github.com/r-lib/pillar/issues/269" class="external-link">#269</a>).</li>
-</ul></div>
+<ul><li>Color and formatting can now be reliably turned off by setting the <code>"cli.num_colors"</code> option to 1 (<a href="https://github.com/r-lib/pillar/issues/269" class="external-link">#269</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="documentation-1-5-1">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-5-1"></a></h3>
 <ul><li>Add examples for new functions (<a href="https://github.com/r-lib/pillar/issues/264" class="external-link">#264</a>).</li>
@@ -300,12 +288,10 @@
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.4.7" id="pillar-147">pillar 1.4.7<small>2020-11-20</small><a class="anchor" aria-label="anchor" href="#pillar-147"></a></h2>
-<ul><li>Adapt to changed environment on CRAN’s Solaris machine.</li>
-</ul></div>
+<ul><li>Adapt to changed environment on CRAN’s Solaris machine.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.4.6" id="pillar-146">pillar 1.4.6<small>2020-07-10</small><a class="anchor" aria-label="anchor" href="#pillar-146"></a></h2>
-<ul><li>Restore compatibility with R 3.2.</li>
-</ul></div>
+<ul><li>Restore compatibility with R 3.2.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.4.5" id="pillar-145">pillar 1.4.5<small>2020-07-09</small><a class="anchor" aria-label="anchor" href="#pillar-145"></a></h2>
 <div class="section level3">
@@ -381,8 +367,7 @@
 <h2 class="page-header" data-toc-text="1.3.1" id="pillar-131">pillar 1.3.1<small>2018-12-15</small><a class="anchor" aria-label="anchor" href="#pillar-131"></a></h2>
 <div class="section level3">
 <h3 id="bug-fixes-1-3-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-3-1"></a></h3>
-<ul><li>Fix off-by-one error in distribution of empty space (<a href="https://github.com/r-lib/pillar/issues/141" class="external-link">#141</a>).</li>
-</ul></div>
+<ul><li>Fix off-by-one error in distribution of empty space (<a href="https://github.com/r-lib/pillar/issues/141" class="external-link">#141</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="visible-changes-1-3-1">Visible changes<a class="anchor" aria-label="anchor" href="#visible-changes-1-3-1"></a></h3>
 <ul><li>
@@ -406,8 +391,7 @@
 <div class="section level3">
 <h3 id="interface-changes-1-3-0">Interface changes<a class="anchor" aria-label="anchor" href="#interface-changes-1-3-0"></a></h3>
 <ul><li>
-<code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> gains <code>width</code> argument (<a href="https://github.com/r-lib/pillar/issues/73" class="external-link">#73</a>).</li>
-</ul></div>
+<code><a href="../reference/format_type_sum.html">format_type_sum()</a></code> gains <code>width</code> argument (<a href="https://github.com/r-lib/pillar/issues/73" class="external-link">#73</a>).</li></ul></div>
 <div class="section level3">
 <h3 id="performance-improvements-1-3-0">Performance improvements<a class="anchor" aria-label="anchor" href="#performance-improvements-1-3-0"></a></h3>
 <ul><li><p>Printing large multi-tier colonnades is much faster, the code that distributes pillars over tiers uses a much simpler and much faster algorithm (tidyverse/tibble#422).</p></li>
@@ -455,8 +439,7 @@
 <h2 class="page-header" data-toc-text="1.1.0" id="pillar-110">pillar 1.1.0<small>2018-01-14</small><a class="anchor" aria-label="anchor" href="#pillar-110"></a></h2>
 <ul><li>
 <code>NA</code> values are now shown in plain red, without changing the background color (<a href="https://github.com/r-lib/pillar/issues/70" class="external-link">#70</a>).</li>
-<li>New options to control the output, with defaults that match the current behavior unless stated otherwise:
-<ul><li>
+<li>New options to control the output, with defaults that match the current behavior unless stated otherwise:<ul><li>
 <code>pillar.sigfig</code> to control the number of significant digits, for highlighting and truncation (<a href="https://github.com/r-lib/pillar/issues/72" class="external-link">#72</a>),</li>
 <li>
 <code>pillar.subtle</code> to specify if insignificant digits should be printed in gray (<a href="https://github.com/r-lib/pillar/issues/72" class="external-link">#72</a>),</li>
@@ -473,8 +456,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.1" id="pillar-101">pillar 1.0.1<small>2017-11-27</small><a class="anchor" aria-label="anchor" href="#pillar-101"></a></h2>
-<ul><li>Work around failing CRAN tests on Windows.</li>
-</ul></div>
+<ul><li>Work around failing CRAN tests on Windows.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.0" id="pillar-100">pillar 1.0.0<small>2017-11-20</small><a class="anchor" aria-label="anchor" href="#pillar-100"></a></h2>
 <p>Initial release.</p>
