@@ -103,7 +103,9 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
     sigfig = sigfig,
     num = num,
     neg = neg,
-    lhs = format(lhs, scientific = FALSE, trim = TRUE),
+    # integer64 doesn't support format(trim = FALSE)
+    # trimws() is unnecessarily slow
+    lhs = sub("^ +", "", format(lhs, scientific = FALSE)),
     lhs_zero = (lhs == 0),
     rhs = rhs,
     rhs_digits = rhs_digits,

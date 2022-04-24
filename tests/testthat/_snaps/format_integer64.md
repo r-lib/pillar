@@ -89,7 +89,7 @@
     Output
       <pillar>
       [3m[90m<int64>[39m[23m
-        [4m [24m[4m [24m  1
+            1
         [4m1[24m[4m0[24m000
 
 # nanotime works (#378)
