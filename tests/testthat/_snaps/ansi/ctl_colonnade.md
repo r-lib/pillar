@@ -188,7 +188,8 @@
       [90m1[39m     1 long enough
       [1m<tbl_format_footer(setup)>[22m
       [90m# ... with 1 more[39m
-      [90m#   variable:[39m
+      [90m#   variable, and[39m
+      [90m#   variable name:[39m
       [90m#   a$y <dbl>[39m
     Code
       tbl_format_setup(x, width = 15, focus = "b")
@@ -205,7 +206,9 @@
       [1m<tbl_format_footer(setup)>[22m
       [90m# ... with 1[39m
       [90m#   more[39m
-      [90m#   variable:[39m
+      [90m#   variable,[39m
+      [90m#   and[39m
+      [90m#   variable name:[39m
       [90m#   a <tbl[,2]>[39m
     Code
       tbl_format_setup(x, width = 10, focus = "b")
@@ -223,7 +226,9 @@
       [90m#   with[39m
       [90m#   1[39m
       [90m#   more[39m
-      [90m#   variable: ...[39m
+      [90m#   variable,[39m
+      [90m#   and[39m
+      [90m#   variable name: ...[39m
     Code
       tbl_format_setup(x[2:1], width = 30, focus = "a")
     Output
@@ -262,7 +267,9 @@
       [1m<tbl_format_footer(setup)>[22m
       [90m# ... with 1[39m
       [90m#   more[39m
-      [90m#   variable:[39m
+      [90m#   variable,[39m
+      [90m#   and[39m
+      [90m#   variable name:[39m
       [90m#   b <chr>[39m
     Code
       tbl_format_setup(x[2:1], width = 10, focus = "a")
@@ -280,8 +287,9 @@
       [90m#   with[39m
       [90m#   2[39m
       [90m#   more[39m
-      [90m#   variables:[39m
-      [90m#   a$y <dbl>, ...[39m
+      [90m#   variables,[39m
+      [90m#   and[39m
+      [90m#   variable names: ...[39m
     Code
       tbl_format_setup(x, width = 30, focus = c("a", "b"))
     Output
@@ -320,7 +328,9 @@
       [1m<tbl_format_footer(setup)>[22m
       [90m# ... with 1[39m
       [90m#   more[39m
-      [90m#   variable:[39m
+      [90m#   variable,[39m
+      [90m#   and[39m
+      [90m#   variable name:[39m
       [90m#   a$y <dbl>[39m
     Code
       tbl_format_setup(x, width = 10, focus = c("a", "b"))
@@ -338,8 +348,9 @@
       [90m#   with[39m
       [90m#   2[39m
       [90m#   more[39m
-      [90m#   variables:[39m
-      [90m#   a$y <dbl>, ...[39m
+      [90m#   variables,[39m
+      [90m#   and[39m
+      [90m#   variable names: ...[39m
     Code
       tbl_format_setup(x[2:1], width = 30, focus = c("a", "b"))
     Output
@@ -364,7 +375,8 @@
       [90m1[39m long enough     1
       [1m<tbl_format_footer(setup)>[22m
       [90m# ... with 1 more[39m
-      [90m#   variable:[39m
+      [90m#   variable, and[39m
+      [90m#   variable name:[39m
       [90m#   a$y <dbl>[39m
     Code
       tbl_format_setup(x[2:1], width = 15, focus = c("a", "b"))
@@ -381,7 +393,9 @@
       [1m<tbl_format_footer(setup)>[22m
       [90m# ... with 1[39m
       [90m#   more[39m
-      [90m#   variable:[39m
+      [90m#   variable,[39m
+      [90m#   and[39m
+      [90m#   variable name:[39m
       [90m#   a$y <dbl>[39m
     Code
       tbl_format_setup(x[2:1], width = 10, focus = c("a", "b"))
@@ -399,5 +413,7 @@
       [90m#   with[39m
       [90m#   1[39m
       [90m#   more[39m
-      [90m#   variable: ...[39m
+      [90m#   variable,[39m
+      [90m#   and[39m
+      [90m#   variable name: ...[39m
 
