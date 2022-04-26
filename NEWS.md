@@ -206,6 +206,10 @@
 
 - All printing code has been moved from tibble to pillar (#179), including `glimpse()` (#234). This concentrates the printing code in one package and allows for better extensibility.
 
+- New experimental generics `tbl_format_setup()`, `tbl_format_header()`, `tbl_format_body()` and `tbl_format_footer()` (#179).
+
+- Move definition of `tbl_sum()` to this package (#179).
+
 - Improve formatting for `"Surv"` and `"Surv2"` classes from the survival package (#199).
 
 - Vectors of the `vctrs_unspecified()` class are formatted better (#256).
