@@ -272,6 +272,8 @@
 <div class="section level3">
 <h3 id="formatting-1-5-0">Formatting<a class="anchor" aria-label="anchor" href="#formatting-1-5-0"></a></h3>
 <ul><li><p>All printing code has been moved from tibble to pillar (<a href="https://github.com/r-lib/pillar/issues/179" class="external-link">#179</a>), including <code><a href="../reference/glimpse.html">glimpse()</a></code> (<a href="https://github.com/r-lib/pillar/issues/234" class="external-link">#234</a>). This concentrates the printing code in one package and allows for better extensibility.</p></li>
+<li><p>New experimental generics <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code>, <code><a href="../reference/tbl_format_header.html">tbl_format_header()</a></code>, <code><a href="../reference/tbl_format_body.html">tbl_format_body()</a></code> and <code><a href="../reference/tbl_format_footer.html">tbl_format_footer()</a></code> (<a href="https://github.com/r-lib/pillar/issues/179" class="external-link">#179</a>).</p></li>
+<li><p>Move definition of <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code> to this package (<a href="https://github.com/r-lib/pillar/issues/179" class="external-link">#179</a>).</p></li>
 <li><p>Improve formatting for <code>"Surv"</code> and <code>"Surv2"</code> classes from the survival package (<a href="https://github.com/r-lib/pillar/issues/199" class="external-link">#199</a>).</p></li>
 <li><p>Vectors of the <code>vctrs_unspecified()</code> class are formatted better (<a href="https://github.com/r-lib/pillar/issues/256" class="external-link">#256</a>).</p></li>
 <li><p>Arrays are now formatted by showing only their first slice (<a href="https://github.com/r-lib/pillar/issues/142" class="external-link">#142</a>).</p></li>
