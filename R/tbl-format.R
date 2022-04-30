@@ -67,7 +67,8 @@ format_tbl <- function(x, width = NULL, ...,
     width = width, ...,
     n = n,
     max_extra_cols = max_extra_cols,
-    max_footer_lines = max_footer_lines
+    max_footer_lines = max_footer_lines,
+    focus = attr(x, "pillar_focus")
   )
 
   header <- tbl_format_header(x, setup)
