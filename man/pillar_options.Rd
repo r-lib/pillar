@@ -61,7 +61,7 @@ title, default: \code{3}.  Column titles may be truncated up to that width to
 save horizontal space. Set to \code{Inf} to turn off truncation of column
 titles.
 \item \code{min_chars}: The minimum number of characters wide to
-display character columns, default: \code{3}.  Character columns may be
+display character columns, default: \code{5}.  Character columns may be
 truncated up to that width to save horizontal space. Set to \code{Inf} to
 turn off truncation of character columns.
 \item \code{max_dec_width}: The maximum allowed width for decimal notation,

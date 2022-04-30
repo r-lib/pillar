@@ -108,10 +108,10 @@ pillar_options <- list2(
   #'     save horizontal space. Set to `Inf` to turn off truncation of column
   #'     titles.
   min_title_chars = make_option_impl(
-    getOption("pillar.min_title_chars", default = 3L)
+    getOption("pillar.min_title_chars", default = 5L)
   ),
   #' - `min_chars`: The minimum number of characters wide to
-  #'     display character columns, default: `3`.  Character columns may be
+  #'     display character columns, default: `5`.  Character columns may be
   #'     truncated up to that width to save horizontal space. Set to `Inf` to
   #'     turn off truncation of character columns.
   min_chars = make_option_impl(option_name = "pillar.min_chars", {
