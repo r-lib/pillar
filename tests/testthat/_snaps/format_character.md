@@ -143,4 +143,7 @@
       $abbrev_cols
       character(0)
       
+      $abbrev_col_idxs
+      numeric(0)
+      
 

@@ -12,7 +12,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   nc <- ncol(x)
 
   if (n == 0 || nc == 0) {
-    return(new_colonnade_body(list(), extra_cols = x, abbrev_cols = character()))
+    return(new_colonnade_body(list(), extra_cols = x, abbrev_cols = character(), abbrev_col_idxs = numeric()))
   }
 
   # Reserve space for rowid column in each tier
@@ -32,6 +32,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   formatted_tiers <- list()
   extra_cols <- list(a = 1)[0]
   abbrev_cols <- character()
+  abbrev_col_idxs <- numeric()
 
   on_tier <- function(formatted) {
     # writeLines(formatted)
@@ -80,7 +81,7 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   # Side effect: populate formatted_tiers, extra_cols, and abbrev_cols
   do_emit_tiers(x, tier_widths, length(focus), cb, focus)
 
-  new_colonnade_body(formatted_tiers, extra_cols, abbrev_cols)
+  new_colonnade_body(formatted_tiers, extra_cols, abbrev_cols, abbrev_col_idxs)
 }
 
 new_emit_tiers_callbacks <- function(controller, rowid, rowid_width, has_star,
@@ -542,11 +543,16 @@ format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   out
 }
 
-new_colonnade_body <- function(x, extra_cols, abbrev_cols) {
+new_colonnade_body <- function(x, extra_cols, abbrev_cols, abbrev_col_idxs = numeric()) {
   "!!!!!DEBUG new_colonnade_body()"
 
   body <- as_glue(as.character(unlist(x)))
   extra_cols <- as.list(extra_cols)
 
-  list(body = body, extra_cols = extra_cols, abbrev_cols = abbrev_cols)
+  list(
+    body = body,
+    extra_cols = extra_cols,
+    abbrev_cols = abbrev_cols,
+    abbrev_col_idxs = abbrev_col_idxs
+  )
 }

@@ -34,6 +34,9 @@
       $abbrev_cols
       character(0)
       
+      $abbrev_col_idxs
+      numeric(0)
+      
     Code
       with_options(pillar.subtle_num = TRUE, print(xf()))
     Output
@@ -55,6 +58,9 @@
       
       $abbrev_cols
       character(0)
+      
+      $abbrev_col_idxs
+      numeric(0)
       
     Code
       with_options(pillar.subtle = FALSE, print(xf()))
@@ -78,6 +84,9 @@
       $abbrev_cols
       character(0)
       
+      $abbrev_col_idxs
+      numeric(0)
+      
     Code
       with_options(pillar.neg = FALSE, print(xf()))
     Output
@@ -99,6 +108,9 @@
       
       $abbrev_cols
       character(0)
+      
+      $abbrev_col_idxs
+      numeric(0)
       
     Code
       with_options(pillar.subtle = FALSE, pillar.neg = FALSE, print(xf()))
@@ -122,6 +134,9 @@
       $abbrev_cols
       character(0)
       
+      $abbrev_col_idxs
+      numeric(0)
+      
     Code
       with_options(pillar.bold = TRUE, print(xf()))
     Output
@@ -144,6 +159,9 @@
       $abbrev_cols
       character(0)
       
+      $abbrev_col_idxs
+      numeric(0)
+      
 
 ---
 
@@ -160,6 +178,9 @@
       
       $abbrev_cols
       [1] "a_very_long_column_name"
+      
+      $abbrev_col_idxs
+      numeric(0)
       
 
 # focus columns
