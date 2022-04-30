@@ -196,7 +196,7 @@
       #   frame: 3
       #   x 3
       <tbl_format_body(setup)>
-        col~1 col~2
+        col~1 col~*
         <dbl> <chr>
       1  1.23 a    
       2  2.23 b    
@@ -207,7 +207,7 @@
       #   variable
       #   names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   and ...
     Code
       tbl_format_setup(x, width = 14)
@@ -218,7 +218,7 @@
       #   frame: 3
       #   x 3
       <tbl_format_body(setup)>
-        colu~1 col~2
+        colu~1 col~*
          <dbl> <chr>
       1   1.23 a    
       2   2.23 b    
@@ -229,7 +229,7 @@
       #   variable
       #   names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   and 3 ...
     Code
       tbl_format_setup(x, width = 15)
@@ -240,7 +240,7 @@
       #   frame: 3 x
       #   3
       <tbl_format_body(setup)>
-        colum~1 col~2
+        colum~1 col~*
           <dbl> <chr>
       1    1.23 a    
       2    2.23 b    
@@ -251,7 +251,7 @@
       #   variable
       #   names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   and 3 ...
     Code
       tbl_format_setup(x, width = 16)
@@ -261,7 +261,7 @@
       # A data frame:
       #   3 x 3
       <tbl_format_body(setup)>
-        column~1 col~2
+        column~1 col~*
            <dbl> <chr>
       1     1.23 a    
       2     2.23 b    
@@ -272,7 +272,7 @@
       #   variable
       #   names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   and 3 ...
     Code
       tbl_format_setup(x, width = 17)
@@ -282,7 +282,7 @@
       # A data frame:
       #   3 x 3
       <tbl_format_body(setup)>
-        column_~1 col~2
+        column_~1 col~*
             <dbl> <chr>
       1      1.23 a    
       2      2.23 b    
@@ -293,7 +293,7 @@
       #   variable
       #   names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   and 3 ...
     Code
       tbl_format_setup(x, width = 18)
@@ -303,7 +303,7 @@
       # A data frame: 3
       #   x 3
       <tbl_format_body(setup)>
-        column_z~1 col~2
+        column_z~1 col~*
              <dbl> <chr>
       1       1.23 a    
       2       2.23 b    
@@ -314,7 +314,7 @@
       #   variable
       #   names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   and 3 ...
     Code
       tbl_format_setup(x, width = 19)
@@ -324,7 +324,7 @@
       # A data frame: 3
       #   x 3
       <tbl_format_body(setup)>
-        col~1 col~2 col~3
+        col~1 col~* col~3
         <dbl> <chr> <ord>
       1  1.23 a     a    
       2  2.23 b     b    
@@ -334,7 +334,7 @@
       #   abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`,
       #   and 2 more ...
     Code
@@ -345,7 +345,7 @@
       # A data frame: 3 x
       #   3
       <tbl_format_body(setup)>
-        colu~1 col~2 col~3
+        colu~1 col~* col~3
          <dbl> <chr> <ord>
       1   1.23 a     a    
       2   2.23 b     b    
@@ -355,7 +355,7 @@
       #   abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`,
       #   and 2 more ...
     Code
@@ -366,7 +366,7 @@
       # A data frame: 3 x
       #   3
       <tbl_format_body(setup)>
-        colum~1 col~2 col~3
+        colum~1 col~* col~3
           <dbl> <chr> <ord>
       1    1.23 a     a    
       2    2.23 b     b    
@@ -376,7 +376,7 @@
       #   abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and
       #   2 more ...
     Code
@@ -386,7 +386,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column~1 col~2 col~3
+        column~1 col~* col~3
            <dbl> <chr> <ord>
       1     1.23 a     a    
       2     2.23 b     b    
@@ -396,7 +396,7 @@
       #   abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and
       #   2 more ...
     Code
@@ -406,7 +406,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_~1 col~2 col~3
+        column_~1 col~* col~3
             <dbl> <chr> <ord>
       1      1.23 a     a    
       2      2.23 b     b    
@@ -415,7 +415,7 @@
       # ... with abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and 2
       #   more variables:
       #   `col 01`$`col 03` <chr>, ...
@@ -426,7 +426,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_z~1 col~2 col~3
+        column_z~1 col~* col~3
              <dbl> <chr> <ord>
       1       1.23 a     a    
       2       2.23 b     b    
@@ -435,7 +435,7 @@
       # ... with abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and 2
       #   more variables:
       #   `col 01`$`col 03` <chr>, ...
@@ -446,7 +446,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_ze~1 col~2 col~3
+        column_ze~1 col~* col~3
               <dbl> <chr> <ord>
       1        1.23 a     a    
       2        2.23 b     b    
@@ -455,7 +455,7 @@
       # ... with abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and 2
       #   more variables:
       #   `col 01`$`col 03` <chr>, ...
@@ -466,7 +466,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zer~1 col~2 col~3
+        column_zer~1 col~* col~3
                <dbl> <chr> <ord>
       1         1.23 a     a    
       2         2.23 b     b    
@@ -475,7 +475,7 @@
       # ... with abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and 2
       #   more variables:
       #   `col 01`$`col 03` <chr>, ...
@@ -486,7 +486,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero~1 col~2 col~3
+        column_zero~1 col~* col~3
                 <dbl> <chr> <ord>
       1          1.23 a     a    
       2          2.23 b     b    
@@ -495,7 +495,7 @@
       # ... with abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and 2
       #   more variables:
       #   `col 01`$`col 03` <chr>, ...
@@ -506,7 +506,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_~1 col~2 col~3
+        column_zero_~1 col~* col~3
                  <dbl> <chr> <ord>
       1           1.23 a     a    
       2           2.23 b     b    
@@ -515,7 +515,7 @@
       # ... with abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>, ...
@@ -526,7 +526,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_z~1 col~2 col~3
+        column_zero_z~1 col~* col~3
                   <dbl> <chr> <ord>
       1            1.23 a     a    
       2            2.23 b     b    
@@ -535,7 +535,7 @@
       # ... with abbreviated
       #   variable names
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`,
+      #   *: `col 01`$`col 02`,
       #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>, ...
@@ -546,7 +546,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col~1 col~2
+        column_zero_zero col~* col~3
                    <dbl> <chr> <ord>
       1             1.23 a     a    
       2             2.23 b     b    
@@ -554,8 +554,8 @@
       <tbl_format_footer(setup)>
       # ... with abbreviated
       #   variable names
-      #   1: `col 01`$`col 02`,
-      #   2: `col 05`, and 2 more
+      #   *: `col 01`$`col 02`,
+      #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>
@@ -566,7 +566,7 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col ~1 col~2
+        column_zero_zero col ~* col~3
                    <dbl> <chr>  <ord>
       1             1.23 a      a    
       2             2.23 b      b    
@@ -574,8 +574,8 @@
       <tbl_format_footer(setup)>
       # ... with abbreviated
       #   variable names
-      #   1: `col 01`$`col 02`,
-      #   2: `col 05`, and 2 more
+      #   *: `col 01`$`col 02`,
+      #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>
@@ -586,15 +586,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 0~1 col~2
+        column_zero_zero col 0~* col~3
                    <dbl> <chr>   <ord>
       1             1.23 a       a    
       2             2.23 b       b    
       3             3.23 c       c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable
-      #   names 1: `col 01`$`col 02`,
-      #   2: `col 05`, and 2 more
+      #   names *: `col 01`$`col 02`,
+      #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>
@@ -605,15 +605,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01~1 col~2
+        column_zero_zero col 01~* col~3
                    <dbl> <chr>    <ord>
       1             1.23 a        a    
       2             2.23 b        b    
       3             3.23 c        c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable
-      #   names 1: `col 01`$`col 02`,
-      #   2: `col 05`, and 2 more
+      #   names *: `col 01`$`col 02`,
+      #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>
@@ -624,15 +624,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$~1 col~2
+        column_zero_zero col 01$~* col~3
                    <dbl> <chr>     <ord>
       1             1.23 a         a    
       2             2.23 b         b    
       3             3.23 c         c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable
-      #   names 1: `col 01`$`col 02`,
-      #   2: `col 05`, and 2 more
+      #   names *: `col 01`$`col 02`,
+      #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>
@@ -643,15 +643,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$c~1 col~2
+        column_zero_zero col 01$c~* col~3
                    <dbl> <chr>      <ord>
       1             1.23 a          a    
       2             2.23 b          b    
       3             3.23 c          c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable
-      #   names 1: `col 01`$`col 02`,
-      #   2: `col 05`, and 2 more
+      #   names *: `col 01`$`col 02`,
+      #   3: `col 05`, and 2 more
       #   variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>
@@ -662,15 +662,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col~1 $co~2 col~3
+        column_zero_zero col~* $co~* col~3
                    <dbl> <chr> <chr> <ord>
       1             1.23 a     A     a    
       2             2.23 b     B     b    
       3             3.23 c     C     c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable
-      #   names 1: `col 01`$`col 02`,
-      #   2: $`col 03`, 3: `col 05`, and
+      #   names *: `col 01`$`col 02`,
+      #   *: $`col 03`, 3: `col 05`, and
       #   1 more variable:
       #   `col 01`$`col 04` <int[,3]>
     Code
@@ -680,15 +680,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col ~1 $co~2 col~3
+        column_zero_zero col ~* $co~* col~3
                    <dbl> <chr>  <chr> <ord>
       1             1.23 a      A     a    
       2             2.23 b      B     b    
       3             3.23 c      C     c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable
-      #   names 1: `col 01`$`col 02`,
-      #   2: $`col 03`, 3: `col 05`, and 1
+      #   names *: `col 01`$`col 02`,
+      #   *: $`col 03`, 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04` <int[,3]>
     Code
@@ -698,15 +698,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 0~1 $co~2 col~3
+        column_zero_zero col 0~* $co~* col~3
                    <dbl> <chr>   <chr> <ord>
       1             1.23 a       A     a    
       2             2.23 b       B     b    
       3             3.23 c       C     c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`,
-      #   2: $`col 03`, 3: `col 05`, and 1
+      #   *: `col 01`$`col 02`,
+      #   *: $`col 03`, 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04` <int[,3]>
     Code
@@ -716,15 +716,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01~1 $co~2 col~3
+        column_zero_zero col 01~* $co~* col~3
                    <dbl> <chr>    <chr> <ord>
       1             1.23 a        A     a    
       2             2.23 b        B     b    
       3             3.23 c        C     c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`,
-      #   2: $`col 03`, 3: `col 05`, and 1
+      #   *: `col 01`$`col 02`,
+      #   *: $`col 03`, 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04` <int[,3]>
     Code
@@ -734,14 +734,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$~1 $co~2 col~3
+        column_zero_zero col 01$~* $co~* col~3
                    <dbl> <chr>     <chr> <ord>
       1             1.23 a         A     a    
       2             2.23 b         B     b    
       3             3.23 c         C     c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
+      #   *: `col 01`$`col 02`, *: $`col 03`,
       #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04` <int[,3]>
     Code
@@ -751,14 +751,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$c~1 $co~2 col~3
+        column_zero_zero col 01$c~* $co~* col~3
                    <dbl> <chr>      <chr> <ord>
       1             1.23 a          A     a    
       2             2.23 b          B     b    
       3             3.23 c          C     c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
+      #   *: `col 01`$`col 02`, *: $`col 03`,
       #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04` <int[,3]>
     Code
@@ -768,15 +768,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col~1 $co~2 $co~3 col~4
+        column_zero_zero col~* $co~* $co~* col~3
                    <dbl> <chr> <chr> <int> <ord>
       1             1.23 a     A         1 a    
       2             2.23 b     B         2 b    
       3             3.23 c     C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and
       #   1 more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
@@ -786,15 +786,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col ~1 $co~2 $co~3 col~4
+        column_zero_zero col ~* $co~* $co~* col~3
                    <dbl> <chr>  <chr> <int> <ord>
       1             1.23 a      A         1 a    
       2             2.23 b      B         2 b    
       3             3.23 c      C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
@@ -804,15 +804,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 0~1 $co~2 $co~3 col~4
+        column_zero_zero col 0~* $co~* $co~* col~3
                    <dbl> <chr>   <chr> <int> <ord>
       1             1.23 a       A         1 a    
       2             2.23 b       B         2 b    
       3             3.23 c       C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
@@ -822,15 +822,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01~1 $co~2 $co~3 col~4
+        column_zero_zero col 01~* $co~* $co~* col~3
                    <dbl> <chr>    <chr> <int> <ord>
       1             1.23 a        A         1 a    
       2             2.23 b        B         2 b    
       3             3.23 c        C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
@@ -840,15 +840,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$~1 $co~2 $co~3 col~4
+        column_zero_zero col 01$~* $co~* $co~* col~3
                    <dbl> <chr>     <chr> <int> <ord>
       1             1.23 a         A         1 a    
       2             2.23 b         B         2 b    
       3             3.23 c         C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
@@ -858,15 +858,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$c~1 $co~2 $co~3 col~4
+        column_zero_zero col 01$c~* $co~* $co~* col~3
                    <dbl> <chr>      <chr> <int> <ord>
       1             1.23 a          A         1 a    
       2             2.23 b          B         2 b    
       3             3.23 c          C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1
       #   more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
@@ -876,15 +876,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$co~1 $co~2 $co~3 col~4
+        column_zero_zero col 01$co~* $co~* $co~* col~3
                    <dbl> <chr>       <chr> <int> <ord>
       1             1.23 a           A         1 a    
       2             2.23 b           B         2 b    
       3             3.23 c           C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1 more
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 49)
@@ -893,15 +893,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$col~1 $co~2 $co~3 col~4
+        column_zero_zero col 01$col~* $co~* $co~* col~3
                    <dbl> <chr>        <chr> <int> <ord>
       1             1.23 a            A         1 a    
       2             2.23 b            B         2 b    
       3             3.23 c            C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1 more
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 50)
@@ -910,15 +910,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$col ~1 $co~2 $co~3 col~4
+        column_zero_zero col 01$col ~* $co~* $co~* col~3
                    <dbl> <chr>         <chr> <int> <ord>
       1             1.23 a             A         1 a    
       2             2.23 b             B         2 b    
       3             3.23 c             C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1 more
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 51)
@@ -927,15 +927,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$col 0~1 $co~2 $co~3 col~4
+        column_zero_zero col 01$col 0~* $co~* $co~* col~3
                    <dbl> <chr>          <chr> <int> <ord>
       1             1.23 a              A         1 a    
       2             2.23 b              B         2 b    
       3             3.23 c              C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1 more
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 52)
@@ -944,15 +944,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$col 02~1 $co~2 $co~3 col~4
+        column_zero_zero col 01$col 02~* $co~* $co~* col~3
                    <dbl> <chr>           <chr> <int> <ord>
       1             1.23 a               A         1 a    
       2             2.23 b               B         2 b    
       3             3.23 c               C         3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1 more
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 53)
@@ -961,15 +961,15 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero col 01$col 02~1 $col~2 $co~3 col~4
+        column_zero_zero col 01$col 02~* $col~* $co~* col~3
                    <dbl> <chr>           <chr>  <int> <ord>
       1             1.23 a               A          1 a    
       2             2.23 b               B          2 b    
       3             3.23 c               C          3 c    
       <tbl_format_footer(setup)>
       # ... with abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`, and 1 more
+      #   *: `col 01`$`col 02`, *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 54)
@@ -978,14 +978,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $co~1 $co~2 col~3
+        column_zero_zero `col 01`$`col 02` $co~* $co~* col~3
                    <dbl> <chr>             <chr> <int> <ord>
       1             1.23 a                 A         1 a    
       2             2.23 b                 B         2 b    
       3             3.23 c                 C         3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 03`,
-      #   2: $`col 04`[,"A"], 3: `col 05`, and 1 more
+      # ... with abbreviated variable names *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 55)
@@ -994,14 +994,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $col~1 $co~2 col~3
+        column_zero_zero `col 01`$`col 02` $col~* $co~* col~3
                    <dbl> <chr>             <chr>  <int> <ord>
       1             1.23 a                 A          1 a    
       2             2.23 b                 B          2 b    
       3             3.23 c                 C          3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 03`,
-      #   2: $`col 04`[,"A"], 3: `col 05`, and 1 more
+      # ... with abbreviated variable names *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 56)
@@ -1010,14 +1010,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $col ~1 $co~2 col~3
+        column_zero_zero `col 01`$`col 02` $col ~* $co~* col~3
                    <dbl> <chr>             <chr>   <int> <ord>
       1             1.23 a                 A           1 a    
       2             2.23 b                 B           2 b    
       3             3.23 c                 C           3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 03`,
-      #   2: $`col 04`[,"A"], 3: `col 05`, and 1 more
+      # ... with abbreviated variable names *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 57)
@@ -1026,14 +1026,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $col 0~1 $co~2 col~3
+        column_zero_zero `col 01`$`col 02` $col 0~* $co~* col~3
                    <dbl> <chr>             <chr>    <int> <ord>
       1             1.23 a                 A            1 a    
       2             2.23 b                 B            2 b    
       3             3.23 c                 C            3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 03`,
-      #   2: $`col 04`[,"A"], 3: `col 05`, and 1 more
+      # ... with abbreviated variable names *: $`col 03`,
+      #   *: $`col 04`[,"A"], 3: `col 05`, and 1 more
       #   variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 58)
@@ -1042,14 +1042,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $co~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $co~* col~3
                    <dbl> <chr>             <chr>     <int> <ord>
       1             1.23 a                 A             1 a    
       2             2.23 b                 B             2 b    
       3             3.23 c                 C             3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 59)
@@ -1058,14 +1058,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $col~* col~3
                    <dbl> <chr>             <chr>      <int> <ord>
       1             1.23 a                 A              1 a    
       2             2.23 b                 B              2 b    
       3             3.23 c                 C              3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 60)
@@ -1074,14 +1074,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col ~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $col ~* col~3
                    <dbl> <chr>             <chr>       <int> <ord>
       1             1.23 a                 A               1 a    
       2             2.23 b                 B               2 b    
       3             3.23 c                 C               3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 61)
@@ -1090,14 +1090,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 0~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 0~* col~3
                    <dbl> <chr>             <chr>        <int> <ord>
       1             1.23 a                 A                1 a    
       2             2.23 b                 B                2 b    
       3             3.23 c                 C                3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 62)
@@ -1106,14 +1106,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04~* col~3
                    <dbl> <chr>             <chr>         <int> <ord>
       1             1.23 a                 A                 1 a    
       2             2.23 b                 B                 2 b    
       3             3.23 c                 C                 3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 63)
@@ -1122,14 +1122,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[~* col~3
                    <dbl> <chr>             <chr>          <int> <ord>
       1             1.23 a                 A                  1 a    
       2             2.23 b                 B                  2 b    
       3             3.23 c                 C                  3 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 64)
@@ -1138,14 +1138,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $co~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $co~* $[,~* col~3
                    <dbl> <chr>             <chr>     <int> <int> <ord>
       1             1.23 a                 A             1     4 a    
       2             2.23 b                 B             2     5 b    
       3             3.23 c                 C             3     6 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: $[,"B"], 3: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   *: $[,"B"], 3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 65)
@@ -1154,14 +1154,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $col~* $[,~* col~3
                    <dbl> <chr>             <chr>      <int> <int> <ord>
       1             1.23 a                 A              1     4 a    
       2             2.23 b                 B              2     5 b    
       3             3.23 c                 C              3     6 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: $[,"B"], 3: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   *: $[,"B"], 3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 66)
@@ -1170,14 +1170,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col ~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $col ~* $[,~* col~3
                    <dbl> <chr>             <chr>       <int> <int> <ord>
       1             1.23 a                 A               1     4 a    
       2             2.23 b                 B               2     5 b    
       3             3.23 c                 C               3     6 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: $[,"B"], 3: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   *: $[,"B"], 3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 67)
@@ -1186,14 +1186,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 0~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 0~* $[,~* col~3
                    <dbl> <chr>             <chr>        <int> <int> <ord>
       1             1.23 a                 A                1     4 a    
       2             2.23 b                 B                2     5 b    
       3             3.23 c                 C                3     6 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: $[,"B"], 3: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   *: $[,"B"], 3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 68)
@@ -1202,14 +1202,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04~* $[,~* col~3
                    <dbl> <chr>             <chr>         <int> <int> <ord>
       1             1.23 a                 A                 1     4 a    
       2             2.23 b                 B                 2     5 b    
       3             3.23 c                 C                 3     6 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: $[,"B"], 3: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   *: $[,"B"], 3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 69)
@@ -1218,14 +1218,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[~* $[,~* col~3
                    <dbl> <chr>             <chr>          <int> <int> <ord>
       1             1.23 a                 A                  1     4 a    
       2             2.23 b                 B                  2     5 b    
       3             3.23 c                 C                  3     6 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: $[,"B"], 3: `col 05`, and 1 more variable:
+      # ... with abbreviated variable names *: $`col 04`[,"A"],
+      #   *: $[,"B"], 3: `col 05`, and 1 more variable:
       #   `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 70)
@@ -1234,14 +1234,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $co~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $co~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>     <int> <int> <int> <ord>
       1             1.23 a                 A             1     4     7 a    
       2             2.23 b                 B             2     5     8 b    
       3             3.23 c                 C             3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 71)
     Output
@@ -1249,14 +1249,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>      <int> <int> <int> <ord>
       1             1.23 a                 A              1     4     7 a    
       2             2.23 b                 B              2     5     8 b    
       3             3.23 c                 C              3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 72)
     Output
@@ -1264,14 +1264,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col ~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col ~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>       <int> <int> <int> <ord>
       1             1.23 a                 A               1     4     7 a    
       2             2.23 b                 B               2     5     8 b    
       3             3.23 c                 C               3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 73)
     Output
@@ -1279,14 +1279,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 0~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 0~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>        <int> <int> <int> <ord>
       1             1.23 a                 A                1     4     7 a    
       2             2.23 b                 B                2     5     8 b    
       3             3.23 c                 C                3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 74)
     Output
@@ -1294,14 +1294,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>         <int> <int> <int> <ord>
       1             1.23 a                 A                 1     4     7 a    
       2             2.23 b                 B                 2     5     8 b    
       3             3.23 c                 C                 3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 75)
     Output
@@ -1309,14 +1309,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>          <int> <int> <int> <ord>
       1             1.23 a                 A                  1     4     7 a    
       2             2.23 b                 B                  2     5     8 b    
       3             3.23 c                 C                  3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 76)
     Output
@@ -1324,14 +1324,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>           <int> <int> <int> <ord>
       1             1.23 a                 A                   1     4     7 a    
       2             2.23 b                 B                   2     5     8 b    
       3             3.23 c                 C                   3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 77)
     Output
@@ -1339,14 +1339,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,"~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,"~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>            <int> <int> <int> <ord>
       1             1.23 a                 A                    1     4     7 a    
       2             2.23 b                 B                    2     5     8 b    
       3             3.23 c                 C                    3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 78)
     Output
@@ -1354,14 +1354,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,"A~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,"A~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>             <int> <int> <int> <ord>
       1             1.23 a                 A                     1     4     7 a    
       2             2.23 b                 B                     2     5     8 b    
       3             3.23 c                 C                     3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 79)
     Output
@@ -1369,14 +1369,14 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,"A"~1 $[,~2 $[,~3 col~4
+        column_zero_zero `col 01`$`col 02` $`col 03` $col 04[,"A"~* $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>              <int> <int> <int> <ord>
       1             1.23 a                 A                      1     4     7 a    
       2             2.23 b                 B                      2     5     8 b    
       3             3.23 c                 C                      3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: $[,"B"],
-      #   3: $[,"C"], 4: `col 05`
+      # ... with abbreviated variable names *: $`col 04`[,"A"], *: $[,"B"],
+      #   *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 80)
     Output
@@ -1384,13 +1384,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,~* $[,~* col~3
                    <dbl> <chr>             <chr>               <int> <int> <int> <ord>
       1             1.23 a                 A                       1     4     7 a    
       2             2.23 b                 B                       2     5     8 b    
       3             3.23 c                 C                       3     6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $[,"B"], 2: $[,"C"], 3: `col 05`
+      # ... with abbreviated variable names *: $[,"B"], *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 81)
     Output
@@ -1398,13 +1398,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"~1 $[,~2 col~3
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"~* $[,~* col~3
                    <dbl> <chr>             <chr>               <int>  <int> <int> <ord>
       1             1.23 a                 A                       1      4     7 a    
       2             2.23 b                 B                       2      5     8 b    
       3             3.23 c                 C                       3      6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $[,"B"], 2: $[,"C"], 3: `col 05`
+      # ... with abbreviated variable names *: $[,"B"], *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 82)
     Output
@@ -1412,13 +1412,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,~* col~3
                    <dbl> <chr>             <chr>               <int>   <int> <int> <ord>
       1             1.23 a                 A                       1       4     7 a    
       2             2.23 b                 B                       2       5     8 b    
       3             3.23 c                 C                       3       6     9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $[,"C"], 2: `col 05`
+      # ... with abbreviated variable names *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 83)
     Output
@@ -1426,13 +1426,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"~1 col~2
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"~* col~3
                    <dbl> <chr>             <chr>               <int>   <int>  <int> <ord>
       1             1.23 a                 A                       1       4      7 a    
       2             2.23 b                 B                       2       5      8 b    
       3             3.23 c                 C                       3       6      9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $[,"C"], 2: `col 05`
+      # ... with abbreviated variable names *: $[,"C"], 3: `col 05`
     Code
       tbl_format_setup(x, width = 84)
     Output
@@ -1440,13 +1440,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] col~1
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] col~3
                    <dbl> <chr>             <chr>               <int>   <int>   <int> <ord>
       1             1.23 a                 A                       1       4       7 a    
       2             2.23 b                 B                       2       5       8 b    
       3             3.23 c                 C                       3       6       9 c    
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable name 1: `col 05`
+      # ... with abbreviated variable name 3: `col 05`
     Code
       tbl_format_setup(x, width = 85)
     Output
@@ -1454,13 +1454,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] col ~1
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] col ~3
                    <dbl> <chr>             <chr>               <int>   <int>   <int> <ord> 
       1             1.23 a                 A                       1       4       7 a     
       2             2.23 b                 B                       2       5       8 b     
       3             3.23 c                 C                       3       6       9 c     
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable name 1: `col 05`
+      # ... with abbreviated variable name 3: `col 05`
     Code
       tbl_format_setup(x, width = 86)
     Output
@@ -1468,13 +1468,13 @@
       <tbl_format_header(setup)>
       # A data frame: 3 x 3
       <tbl_format_body(setup)>
-        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] col 0~1
+        column_zero_zero `col 01`$`col 02` $`col 03` $`col 04`[,"A"] $[,"B"] $[,"C"] col 0~3
                    <dbl> <chr>             <chr>               <int>   <int>   <int> <ord>  
       1             1.23 a                 A                       1       4       7 a      
       2             2.23 b                 B                       2       5       8 b      
       3             3.23 c                 C                       3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable name 1: `col 05`
+      # ... with abbreviated variable name 3: `col 05`
     Code
       tbl_format_setup(x, width = 87)
     Output

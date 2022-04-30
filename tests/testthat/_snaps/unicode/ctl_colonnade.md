@@ -180,7 +180,7 @@
       [1] "a_very_long_column_name"
       
       $abbrev_col_idxs
-      numeric(0)
+      [1] 1
       
 
 # focus columns
