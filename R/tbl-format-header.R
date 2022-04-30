@@ -33,6 +33,10 @@ tbl_format_header <- function(x, setup, ...) {
 #' @export
 tbl_format_header.tbl <- function(x, setup, ...) {
   named_header <- setup$tbl_sum
+  focus <- attr(x, "pillar_focus")
+  if (!is.null(focus)) {
+    named_header <- c(named_header, "Focus columns" = collapse(tick_if_needed(focus)))
+  }
 
   if (all(names2(named_header) == "")) {
     header <- named_header
