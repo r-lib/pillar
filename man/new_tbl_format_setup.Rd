@@ -15,7 +15,8 @@ new_tbl_format_setup(
   extra_cols,
   extra_cols_total,
   max_footer_lines,
-  abbrev_cols
+  abbrev_cols,
+  abbrev_col_idxs
 )
 }
 \arguments{
