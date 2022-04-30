@@ -65,8 +65,9 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     extra_cols <<- unlist(new_extra_cols, recursive = FALSE)
   }
 
-  on_abbrev_col <- function(title) {
+  on_abbrev_col <- function(title, idx) {
     abbrev_cols <<- c(abbrev_cols, title)
+    abbrev_col_idxs <<- c(abbrev_col_idxs, idx)
   }
 
   on_get_n_abbrev_cols <- function() {
@@ -379,11 +380,17 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     pillar_title <- pillar[["title"]]
     title_width <- get_width(pillar_title) %||% 0L
 
+    if (length(parent_col_idx) > 1) {
+      footnote_idx <- Inf
+    } else {
+      footnote_idx <- parent_col_idx
+    }
+
     formatted <- pillar_format_parts_2(
       pillar,
       max(tier_widths),
       is_focus,
-      cb$on_get_n_abbrev_cols() + 1L
+      footnote_idx
     )
     true_width <- formatted$max_extent
     stopifnot(true_width <= max(tier_widths))
@@ -398,7 +405,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     cb$on_pillar(formatted)
 
     if (true_width < title_width) {
-      cb$on_abbrev_col(format(pillar_title))
+      cb$on_abbrev_col(format(pillar_title), footnote_idx)
     }
 
     return(used)
@@ -543,7 +550,7 @@ format_colonnade_tier_2 <- function(x, bidi = FALSE) {
   out
 }
 
-new_colonnade_body <- function(x, extra_cols, abbrev_cols, abbrev_col_idxs = numeric()) {
+new_colonnade_body <- function(x, extra_cols, abbrev_cols, abbrev_col_idxs) {
   "!!!!!DEBUG new_colonnade_body()"
 
   body <- as_glue(as.character(unlist(x)))

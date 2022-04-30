@@ -156,6 +156,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 
   # Abbreviated columns
   abbrev_cols <- colonnade$abbrev_cols
+  abbrev_col_idxs <- colonnade$abbrev_col_idxs
 
   # Result
   new_tbl_format_setup(
@@ -169,7 +170,8 @@ tbl_format_setup.tbl <- function(x, width, ...,
     extra_cols = extra_cols,
     extra_cols_total = extra_cols_total,
     max_footer_lines = max_footer_lines,
-    abbrev_cols = abbrev_cols
+    abbrev_cols = abbrev_cols,
+    abbrev_col_idxs = abbrev_col_idxs
   )
 }
 
@@ -207,7 +209,7 @@ new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
                                  rows_missing, rows_total,
                                  extra_cols, extra_cols_total,
                                  max_footer_lines,
-                                 abbrev_cols) {
+                                 abbrev_cols, abbrev_col_idxs) {
   trunc_info <- list(
     x = x,
     df = df,
@@ -219,7 +221,8 @@ new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
     extra_cols = extra_cols,
     extra_cols_total = extra_cols_total,
     max_footer_lines = max_footer_lines,
-    abbrev_cols = abbrev_cols
+    abbrev_cols = abbrev_cols,
+    abbrev_col_idxs = abbrev_col_idxs
   )
 
   structure(trunc_info, class = "pillar_tbl_format_setup")

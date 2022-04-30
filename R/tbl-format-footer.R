@@ -86,12 +86,13 @@ format_footer_extra_rows <- function(x, setup) {
 
 format_footer_abbrev_cols <- function(x, setup) {
   abbrev_cols <- setup$abbrev_cols
+  abbrev_col_idxs <- setup$abbrev_col_idxs
   abbrev_cols_total <- length(abbrev_cols)
   if (abbrev_cols_total == 0) {
     return(NULL)
   }
 
-  abbrev_cols <- paste0(map_chr(seq_along(abbrev_cols), superdigit_pre), abbrev_cols)
+  abbrev_cols <- paste0(map_chr(abbrev_col_idxs, superdigit_pre), abbrev_cols)
   idx_all_but_last <- seq_len(abbrev_cols_total - 1)
   abbrev_cols[idx_all_but_last] <- paste0(abbrev_cols[idx_all_but_last], ",")
 
