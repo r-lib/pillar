@@ -49,7 +49,7 @@ format_footer <- function(x, setup) {
   abbrev_cols <- format_footer_abbrev_cols(x, setup)
   extra_cols <- format_footer_extra_cols(x, setup)
 
-  footer <- compact(list(extra_rows, abbrev_cols, extra_cols))
+  footer <- compact(list(extra_rows, extra_cols, abbrev_cols))
   if (length(footer) == 0) {
     return(character())
   }
