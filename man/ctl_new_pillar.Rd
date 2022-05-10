@@ -2,9 +2,12 @@
 % Please edit documentation in R/ctl_new_pillar.R
 \name{ctl_new_pillar}
 \alias{ctl_new_pillar}
+\alias{ctl_new_rowid_pillar}
 \title{Customize the appearance of simple pillars in your tibble subclass}
 \usage{
 ctl_new_pillar(controller, x, width, ..., title = NULL)
+
+ctl_new_rowid_pillar(controller, x, width, has_row_id, ..., title = NULL)
 }
 \arguments{
 \item{controller}{The object of class \code{"tbl"} currently printed.}
@@ -16,6 +19,9 @@ ctl_new_pillar(controller, x, width, ..., title = NULL)
 \item{...}{These dots are for future extensions and must be empty.}
 
 \item{title}{The title, derived from the name of the column in the data.}
+
+\item{has_row_id}{Logical flag indicating whether to construct a row ID
+pillar}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -66,20 +72,48 @@ format.lines <- function(x, width, ...) {
   paste(rep(x, width), collapse = "")
 }
 
-ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
+ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
   out <- NextMethod()
-  new_pillar(list(
-    title = out$title,
-    type = out$type,
-    lines = new_pillar_component(list(lines("=")), width = 1),
-    data = out$data
-  ))
+  new_pillar(
+    list(
+      title = out$title,
+      type = out$type,
+      lines = new_pillar_component(list(lines("=")), width = 1),
+      data = out$data
+    ),
+    width = as.integer(floor(log10(max(nrow(x), 1))) + 1)
+  )
 }
 
 vctrs::new_data_frame(
   list(a = 1:3, b = letters[1:3]),
   class = c("line_tbl", "tbl")
 )
+
+ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+  out <- NextMethod()
+  rowid <- utils::as.roman(seq_len(nrow(x)))
+  width <- max(nchar(as.character(rowid)))
+  new_pillar(
+    list(
+      title = out$title,
+      type = out$type,
+      data = pillar_component(
+        new_pillar_shaft(list(row_ids = rowid),
+          width = width,
+          class = c("tbl_rif_shaft", "pillar_rif_shaft")
+        )
+      )
+    ),
+    width = width
+  )
+}
+
+vctrs::new_data_frame(
+  list(a = 1:3, b = letters[1:3]),
+  class = c("roman_tbl", "tbl")
+)
+
 }
 \seealso{
 See \code{\link[=ctl_new_pillar_list]{ctl_new_pillar_list()}} for creating pillar objects for compound columns:
