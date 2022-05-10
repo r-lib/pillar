@@ -9,8 +9,6 @@ test_that("rowids for line-style", {
     paste(rep(x, width), collapse = "")
   }
 
-  .S3method("format", "lines", format_lines)
-
   ctl_new_pillar_line_tbl <- function(controller, x, width, ..., title = NULL) {
     out <- NextMethod()
     new_pillar(list(
@@ -20,8 +18,6 @@ test_that("rowids for line-style", {
       data = out$data
     ))
   }
-
-  .S3method("ctl_new_pillar", "line_tbl", ctl_new_pillar_line_tbl)
 
   ctl_new_rowid_pillar_line_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
     out <- NextMethod()
@@ -36,7 +32,11 @@ test_that("rowids for line-style", {
     )
   }
 
-  .S3method("ctl_new_rowid_pillar", "line_tbl", ctl_new_rowid_pillar_line_tbl)
+  local_methods(
+    format.lines = format_lines,
+    ctl_new_pillar.line_tbl = ctl_new_pillar_line_tbl,
+    ctl_new_rowid_pillar.line_tbl = ctl_new_rowid_pillar_line_tbl
+  )
 
   expect_snapshot({
     vctrs::new_data_frame(
@@ -67,7 +67,9 @@ test_that("roman rowids", {
     )
   }
 
-  .S3method("ctl_new_rowid_pillar", "roman_tbl", ctl_new_rowid_pillar_roman_tbl)
+  local_methods(
+    ctl_new_rowid_pillar.roman_tbl = ctl_new_rowid_pillar_roman_tbl
+  )
 
   expect_snapshot({
     vctrs::new_data_frame(
