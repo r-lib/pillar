@@ -2,9 +2,12 @@
 % Please edit documentation in R/ctl_new_pillar.R
 \name{ctl_new_pillar}
 \alias{ctl_new_pillar}
+\alias{ctl_new_rowid_pillar}
 \title{Customize the appearance of simple pillars in your tibble subclass}
 \usage{
 ctl_new_pillar(controller, x, width, ..., title = NULL)
+
+ctl_new_rowid_pillar(controller, x, width, ..., title = NULL, type = NULL)
 }
 \arguments{
 \item{controller}{The object of class \code{"tbl"} currently printed.}
@@ -16,6 +19,9 @@ ctl_new_pillar(controller, x, width, ..., title = NULL)
 \item{...}{These dots are for future extensions and must be empty.}
 
 \item{title}{The title, derived from the name of the column in the data.}
+
+\item{type}{String for specifying a row ID type. Current values in use are
+\code{NULL} and \code{"*"}.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -33,6 +39,8 @@ Extend this method to modify the pillar components returned from the default
 implementation.
 Override this method to completely change the appearance of the pillars.
 Components are created with \code{\link[=new_pillar_component]{new_pillar_component()}} or \code{\link[=pillar_component]{pillar_component()}}.
+In order to customize printing of row IDs, a method can be supplied for the
+\code{ctl_new_rowid_pillar()} generic.
 
 All components must be of the same height.
 This restriction may be levied in the future.
@@ -66,7 +74,7 @@ format.lines <- function(x, width, ...) {
   paste(rep(x, width), collapse = "")
 }
 
-ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
+ctl_new_pillar.line_tbl <- function(controller, x, width, ...) {
   out <- NextMethod()
   new_pillar(list(
     title = out$title,
@@ -76,10 +84,48 @@ ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
   ))
 }
 
+ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, ...) {
+  out <- NextMethod()
+  new_pillar(
+    list(
+      title = out$title,
+      type = out$type,
+      lines = new_pillar_component(list(lines("=")), width = 1),
+      data = out$data
+    ),
+    width = as.integer(floor(log10(max(nrow(x), 1))) + 1)
+  )
+}
+
 vctrs::new_data_frame(
   list(a = 1:3, b = letters[1:3]),
   class = c("line_tbl", "tbl")
 )
+
+ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, ...) {
+  out <- NextMethod()
+  rowid <- utils::as.roman(seq_len(nrow(x)))
+  width <- max(nchar(as.character(rowid)))
+  new_pillar(
+    list(
+      title = out$title,
+      type = out$type,
+      data = pillar_component(
+        new_pillar_shaft(list(row_ids = rowid),
+          width = width,
+          class = "pillar_rif_shaft"
+        )
+      )
+    ),
+    width = width
+  )
+}
+
+vctrs::new_data_frame(
+  list(a = 1:3, b = letters[1:3]),
+  class = c("roman_tbl", "tbl")
+)
+
 }
 \seealso{
 See \code{\link[=ctl_new_pillar_list]{ctl_new_pillar_list()}} for creating pillar objects for compound columns:

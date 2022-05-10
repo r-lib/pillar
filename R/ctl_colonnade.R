@@ -15,13 +15,18 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
     return(new_colonnade_body(list(), extra_cols = x, abbrev_cols = character(), abbrev_col_idxs = numeric()))
   }
 
-  # Reserve space for rowid column in each tier
-  if (!is_false(has_row_id)) {
-    rowid <- rif_shaft(n)
-    rowid_width <- get_width(rowid)
-  } else {
+  if (is_false(has_row_id)) {
     rowid <- NULL
+  } else {
+    rowid <- ctl_new_rowid_pillar(controller, x, width, title = NULL,
+      type = if (isTRUE(has_row_id)) NULL else has_row_id)
+  }
+
+  # Reserve space for rowid column in each tier
+  if (is.null(rowid)) {
     rowid_width <- 0L
+  } else {
+    rowid_width <- get_width(rowid)
   }
 
   has_star <- identical(has_row_id, "*")
@@ -111,8 +116,7 @@ do_emit_tiers <- function(x, tier_widths, n_focus, cb, focus) {
     # message("on_end_tier()")
     if (length(formatted_list) > 0) {
       if (!is.null(cb$rowid)) {
-        rowid_pillar <- rowidformat2(cb$rowid, formatted_list[[1]]$components, has_star = cb$has_star)
-        formatted_list <- c(list(pillar_format_parts_2(rowid_pillar, cb$rowid_width)), formatted_list)
+        formatted_list <- c(list(pillar_format_parts_2(cb$rowid, cb$rowid_width)), formatted_list)
       }
 
       aligned <- map(formatted_list, `[[`, "aligned")

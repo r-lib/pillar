@@ -136,6 +136,33 @@ example_tbl("extra_info")
 ```
 
 
+## Row IDs
+
+By implementing the generic `ctl_new_rowid_pillar()`, printing of the row ID column can be customized. In order to print Roman instead of Arabic numerals, one could use `utils::as.roman()` to generate the corresponding sequence and build up a row ID pillar using `new_pillar()` and associated methods as has been introduced previously.
+
+```{r}
+ctl_new_rowid_pillar.pillar_roman <- function(controller, x, width, ...) {
+  out <- NextMethod()
+  rowid <- utils::as.roman(seq_len(nrow(x)))
+  width <- max(nchar(as.character(rowid)))
+  new_pillar(
+    list(
+      title = out$title,
+      type = out$type,
+      data = pillar_component(
+        new_pillar_shaft(list(row_ids = rowid),
+          width = width,
+          class = "pillar_rif_shaft"
+        )
+      )
+    ),
+    width = width
+  )
+}
+
+example_tbl("pillar_roman")
+```
+
 
 ## Body
 

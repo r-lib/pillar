@@ -16,6 +16,8 @@
 #' implementation.
 #' Override this method to completely change the appearance of the pillars.
 #' Components are created with [new_pillar_component()] or [pillar_component()].
+#' In order to customize printing of row IDs, a method can be supplied for the
+#' `ctl_new_rowid_pillar()` generic.
 #'
 #' All components must be of the same height.
 #' This restriction may be levied in the future.
@@ -59,7 +61,7 @@
 #'   paste(rep(x, width), collapse = "")
 #' }
 #'
-#' ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
+#' ctl_new_pillar.line_tbl <- function(controller, x, width, ...) {
 #'   out <- NextMethod()
 #'   new_pillar(list(
 #'     title = out$title,
@@ -69,10 +71,48 @@
 #'   ))
 #' }
 #'
+#' ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, ...) {
+#'   out <- NextMethod()
+#'   new_pillar(
+#'     list(
+#'       title = out$title,
+#'       type = out$type,
+#'       lines = new_pillar_component(list(lines("=")), width = 1),
+#'       data = out$data
+#'     ),
+#'     width = as.integer(floor(log10(max(nrow(x), 1))) + 1)
+#'   )
+#' }
+#'
 #' vctrs::new_data_frame(
 #'   list(a = 1:3, b = letters[1:3]),
 #'   class = c("line_tbl", "tbl")
 #' )
+#'
+#' ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, ...) {
+#'   out <- NextMethod()
+#'   rowid <- utils::as.roman(seq_len(nrow(x)))
+#'   width <- max(nchar(as.character(rowid)))
+#'   new_pillar(
+#'     list(
+#'       title = out$title,
+#'       type = out$type,
+#'       data = pillar_component(
+#'         new_pillar_shaft(list(row_ids = rowid),
+#'           width = width,
+#'           class = "pillar_rif_shaft"
+#'         )
+#'       )
+#'     ),
+#'     width = width
+#'   )
+#' }
+#'
+#' vctrs::new_data_frame(
+#'   list(a = 1:3, b = letters[1:3]),
+#'   class = c("roman_tbl", "tbl")
+#' )
+#'
 ctl_new_pillar <- function(controller, x, width, ..., title = NULL) {
   "!!!!DEBUG ctl_new_pillar(`v(width)`, `v(title)`)"
 
@@ -86,6 +126,47 @@ ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   "!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"
 
   pillar(x, title, if (!is.null(width)) max0(width))
+}
+
+#' @param type String for specifying a row ID type. Current values in use are
+#' `NULL` and `"*"`.
+#' @rdname ctl_new_pillar
+#' @export
+ctl_new_rowid_pillar <- function(controller, x, width, ..., title = NULL, type = NULL) {
+  "!!!!DEBUG ctl_new_rowid_pillar(`v(width)`, `v(title)`)"
+
+  check_dots_empty()
+
+  if (length(width) == 0) {
+    return(NULL)
+  }
+
+  UseMethod("ctl_new_rowid_pillar")
+}
+
+#' @export
+ctl_new_rowid_pillar.tbl <- function(controller, x, width, ..., title = NULL, type = NULL) {
+  "!!!!DEBUG ctl_new_rowid_pillar.tbl(`v(width)`, `v(title)`)"
+
+  template <- names(ctl_new_pillar(controller, vector(), width, title = title))
+
+  if (!length(template)) {
+    return(NULL)
+  }
+
+  data <- rif_shaft(nrow(x))
+
+  out <- map(set_names(template), function(.x) "")
+
+  if ("type" %in% template) {
+    out$type <- pillar_component(rif_type(identical(type, "*")))
+  }
+
+  if ("data" %in% template) {
+    out$data <- pillar_component(data)
+  }
+
+  new_pillar(out, width = get_width(data))
 }
 
 max0 <- function(x) {
