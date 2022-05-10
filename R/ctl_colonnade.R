@@ -18,8 +18,10 @@ ctl_colonnade <- function(x, has_row_id = TRUE, width = NULL,
   if (is_false(has_row_id)) {
     rowid <- NULL
   } else {
-    rowid <- ctl_new_rowid_pillar(controller, x, width, title = NULL,
-      type = if (isTRUE(has_row_id)) NULL else has_row_id)
+    rowid <- ctl_new_rowid_pillar(controller, x, width,
+      title = NULL,
+      type = if (isTRUE(has_row_id)) NULL else has_row_id
+    )
   }
 
   # Reserve space for rowid column in each tier

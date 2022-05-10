@@ -1,5 +1,4 @@
 test_that("rowids for line-style", {
-
   lines <- function(char = "-") {
     stopifnot(nchar(char) == 1)
     structure(char, class = "lines")
@@ -47,7 +46,6 @@ test_that("rowids for line-style", {
 })
 
 test_that("roman rowids", {
-
   ctl_new_rowid_pillar_roman_tbl <- function(controller, x, width, ...) {
     out <- NextMethod()
     rowid <- utils::as.roman(seq_len(nrow(x)))
