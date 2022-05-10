@@ -19,7 +19,7 @@ test_that("rowids for line-style", {
     ))
   }
 
-  ctl_new_rowid_pillar_line_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+  ctl_new_rowid_pillar_line_tbl <- function(controller, x, width, ...) {
     out <- NextMethod()
     new_pillar(
       list(
@@ -48,7 +48,7 @@ test_that("rowids for line-style", {
 
 test_that("roman rowids", {
 
-  ctl_new_rowid_pillar_roman_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+  ctl_new_rowid_pillar_roman_tbl <- function(controller, x, width, ...) {
     out <- NextMethod()
     rowid <- utils::as.roman(seq_len(nrow(x)))
     width <- max(nchar(as.character(rowid)))

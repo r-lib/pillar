@@ -244,7 +244,7 @@ If you really need to change the output for the entire body, consider providing 
 By implementing the generic `ctl_new_rowid_pillar()`, printing of the row ID column can be customized. In order to print Roman instead of Arabic numerals, one could use `utils::as.roman()` to generate the corresponding sequence and build up a row ID pillar using `new_pillar()` and associated methods as has been introduced previously.
 
 ```{r}
-ctl_new_rowid_pillar.pillar_roman <- function(controller, x, width, has_row_id, ..., title = NULL) {
+ctl_new_rowid_pillar.pillar_roman <- function(controller, x, width, ...) {
   out <- NextMethod()
   rowid <- utils::as.roman(seq_len(nrow(x)))
   width <- max(nchar(as.character(rowid)))

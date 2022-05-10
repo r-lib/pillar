@@ -7,7 +7,7 @@
 \usage{
 ctl_new_pillar(controller, x, width, ..., title = NULL)
 
-ctl_new_rowid_pillar(controller, x, width, has_row_id, ..., title = NULL)
+ctl_new_rowid_pillar(controller, x, width, ..., title = NULL, type = NULL)
 }
 \arguments{
 \item{controller}{The object of class \code{"tbl"} currently printed.}
@@ -20,8 +20,8 @@ ctl_new_rowid_pillar(controller, x, width, has_row_id, ..., title = NULL)
 
 \item{title}{The title, derived from the name of the column in the data.}
 
-\item{has_row_id}{Logical flag indicating whether to construct a row ID
-pillar}
+\item{type}{String for specifying a row ID type. Current values in use are
+\code{NULL} and \code{"*"}.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -74,7 +74,7 @@ format.lines <- function(x, width, ...) {
   paste(rep(x, width), collapse = "")
 }
 
-ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
+ctl_new_pillar.line_tbl <- function(controller, x, width, ...) {
   out <- NextMethod()
   new_pillar(list(
     title = out$title,
@@ -84,7 +84,7 @@ ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
   ))
 }
 
-ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, ...) {
   out <- NextMethod()
   new_pillar(
     list(
@@ -102,7 +102,7 @@ vctrs::new_data_frame(
   class = c("line_tbl", "tbl")
 )
 
-ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, ...) {
   out <- NextMethod()
   rowid <- utils::as.roman(seq_len(nrow(x)))
   width <- max(nchar(as.character(rowid)))

@@ -61,7 +61,7 @@
 #'   paste(rep(x, width), collapse = "")
 #' }
 #'
-#' ctl_new_pillar.line_tbl <- function(controller, x, width, ..., title = NULL) {
+#' ctl_new_pillar.line_tbl <- function(controller, x, width, ...) {
 #'   out <- NextMethod()
 #'   new_pillar(list(
 #'     title = out$title,
@@ -71,7 +71,7 @@
 #'   ))
 #' }
 #'
-#' ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+#' ctl_new_rowid_pillar.line_tbl <- function(controller, x, width, ...) {
 #'   out <- NextMethod()
 #'   new_pillar(
 #'     list(
@@ -89,7 +89,7 @@
 #'   class = c("line_tbl", "tbl")
 #' )
 #'
-#' ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+#' ctl_new_rowid_pillar.roman_tbl <- function(controller, x, width, ...) {
 #'   out <- NextMethod()
 #'   rowid <- utils::as.roman(seq_len(nrow(x)))
 #'   width <- max(nchar(as.character(rowid)))
@@ -128,11 +128,11 @@ ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   pillar(x, title, if (!is.null(width)) max0(width))
 }
 
-#' @param has_row_id Logical flag indicating whether to construct a row ID
-#' pillar
+#' @param type String for specifying a row ID type. Current values in use are
+#' `NULL` and `"*"`.
 #' @rdname ctl_new_pillar
 #' @export
-ctl_new_rowid_pillar <- function(controller, x, width, has_row_id, ..., title = NULL) {
+ctl_new_rowid_pillar <- function(controller, x, width, ..., title = NULL, type = NULL) {
   "!!!!DEBUG ctl_new_rowid_pillar(`v(width)`, `v(title)`)"
 
   check_dots_empty()
@@ -141,15 +141,11 @@ ctl_new_rowid_pillar <- function(controller, x, width, has_row_id, ..., title = 
     return(NULL)
   }
 
-  if (is_false(has_row_id)) {
-    return(NULL)
-  }
-
   UseMethod("ctl_new_rowid_pillar")
 }
 
 #' @export
-ctl_new_rowid_pillar.tbl <- function(controller, x, width, has_row_id, ..., title = NULL) {
+ctl_new_rowid_pillar.tbl <- function(controller, x, width, ..., title = NULL, type = NULL) {
   "!!!!DEBUG ctl_new_rowid_pillar.tbl(`v(width)`, `v(title)`)"
 
   template <- names(ctl_new_pillar(controller, vector(), width, title = title))
@@ -163,7 +159,7 @@ ctl_new_rowid_pillar.tbl <- function(controller, x, width, has_row_id, ..., titl
   out <- map(set_names(template), function(.x) "")
 
   if ("type" %in% template) {
-    out$type <- pillar_component(rif_type(identical(has_row_id, "*")))
+    out$type <- pillar_component(rif_type(identical(type, "*")))
   }
 
   if ("data" %in% template) {
