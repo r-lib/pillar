@@ -39,8 +39,8 @@ Extend this method to modify the pillar components returned from the default
 implementation.
 Override this method to completely change the appearance of the pillars.
 Components are created with \code{\link[=new_pillar_component]{new_pillar_component()}} or \code{\link[=pillar_component]{pillar_component()}}.
-In order to customize printing of row IDs, the generic a method can be
-supplied for the \code{ctl_new_rowid_pillar()} generic.
+In order to customize printing of row IDs, a method can be supplied for the
+\code{ctl_new_rowid_pillar()} generic.
 
 All components must be of the same height.
 This restriction may be levied in the future.
