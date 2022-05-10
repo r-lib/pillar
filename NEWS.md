@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.7.0.9002
+
+- Extra columns are shown before abbreviated columns (#548).
+- By default, at least 5 characters from the column name are shown in the header (#546).
+- Fix wording for corner case `max_extra_cols = 1` (#535).
+
+
 # pillar 1.7.0.9001
 
 - The default value of the `pillar.min_title_width` option is changed to 3. This means that effectively the width of a pillar is decided only by the data. Use `options(pillar.min_title_width = 15)` to restore the previous default, see also `?pillar_options` for details (#531).
