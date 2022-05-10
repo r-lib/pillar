@@ -9,7 +9,7 @@ rif_shaft <- function(n, ...) {
   )
 }
 
- #' @export
+#' @export
 format.pillar_rif_shaft <- function(x, width, ...) {
   new_ornament(
     style_rowid(format(x$row_ids, width = width)),

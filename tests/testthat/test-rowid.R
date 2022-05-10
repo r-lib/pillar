@@ -59,7 +59,7 @@ test_that("roman rowids", {
         data = pillar_component(
           new_pillar_shaft(list(row_ids = rowid),
             width = width,
-            class = c("tbl_rif_shaft", "pillar_rif_shaft")
+            class = "pillar_rif_shaft"
           )
         )
       ),

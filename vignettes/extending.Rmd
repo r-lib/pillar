@@ -238,3 +238,30 @@ print(example_tbl("oldskool"), n = 2)
 
 Note that default printed output is computed in `tbl_format_setup()`, this takes a considerable amount of time.
 If you really need to change the output for the entire body, consider providing your own `tbl_format_setup()` method.
+
+## Row IDs
+
+By implementing the generic `ctl_new_rowid_pillar()`, printing of the row ID column can be customized. In order to print Roman instead of Arabic numerals, one could use `utils::as.roman()` to generate the corresponding sequence and build up a row ID pillar using `new_pillar()` and associated methods as has been introduced previously.
+
+```{r}
+ctl_new_rowid_pillar.pillar_roman <- function(controller, x, width, has_row_id, ..., title = NULL) {
+  out <- NextMethod()
+  rowid <- utils::as.roman(seq_len(nrow(x)))
+  width <- max(nchar(as.character(rowid)))
+  new_pillar(
+    list(
+      title = out$title,
+      type = out$type,
+      data = pillar_component(
+        new_pillar_shaft(list(row_ids = rowid),
+          width = width,
+          class = "pillar_rif_shaft"
+        )
+      )
+    ),
+    width = width
+  )
+}
+
+example_tbl("pillar_roman")
+```
