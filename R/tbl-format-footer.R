@@ -93,7 +93,7 @@ format_footer_abbrev_cols <- function(x, setup) {
 
   abbrev_cols <- paste0(
     map_chr(seq_along(abbrev_cols), superdigit),
-    superdigit_sep(),
+    pillar_options$superdigit_sep(),
     abbrev_cols
   )
 

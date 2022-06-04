@@ -191,10 +191,6 @@ superdigit <- function(x) {
   }
 }
 
-superdigit_sep <- function() {
-  superdigit_sep_default()
-}
-
 superdigit_sep_default <- function() {
   if (cli::is_utf8_output()) {
     "\u200b"
