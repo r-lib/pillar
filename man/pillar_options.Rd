@@ -72,6 +72,9 @@ and "first strong isolate"
 \href{https://www.w3.org/International/questions/qa-bidi-unicode-controls}{Unicode controls}
 are inserted to ensure that text appears in its intended direction
 and that the column headings correspond to the correct columns.
+\item \code{superdigit_sep}: The string inserted between superscript digits
+and column names in the footnote. Defaults to a \code{"\\u200b"}, a zero-width
+space, on UTF-8 platforms, and to \code{": "} on non-UTF-8 platforms.
 }
 }
 

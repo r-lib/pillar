@@ -191,10 +191,10 @@ superdigit <- function(x) {
   }
 }
 
-superdigit_pre <- function(x) {
+superdigit_sep_default <- function() {
   if (cli::is_utf8_output()) {
-    paste0(superdigit(x), "\u200b")
+    "\u200b"
   } else {
-    paste0(superdigit(x), ": ")
+    ": "
   }
 }

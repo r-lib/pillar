@@ -137,6 +137,12 @@ pillar_options <- list2(
   bidi = make_option_impl(
     getOption("pillar.bidi", default = FALSE)
   ),
+  #' - `superdigit_sep`: The string inserted between superscript digits
+  #'   and column names in the footnote. Defaults to a `"\u200b"`, a zero-width
+  #'   space, on UTF-8 platforms, and to `": "` on non-UTF-8 platforms.
+  superdigit_sep = make_option_impl(
+    getOption("pillar.superdigit_sep", default = superdigit_sep_default())
+  ),
 )
 
 tibble_opt <- function(x, default) {
