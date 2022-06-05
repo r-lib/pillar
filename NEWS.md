@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.7.0.9004
+
+## Options 
+
+- New `"pillar.superdigit_sep"` option that determines the string used to separate footnote from column name in the footer (#553)
+
+
 # pillar 1.7.0.9003
 
 - New `ctl_new_rowid_pillar()` generic and default method for customizing the appearance of row IDs (#260, #550, @nbenn).
