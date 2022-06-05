@@ -4,7 +4,7 @@
 
 ## Options 
 
-- New `"pillar.superdigit_sep"` option that determines the string used to separate footnote from column name in the footer (#553)
+- New `"pillar.superdigit_sep"` option that determines the string used to separate footnote from column name in the footer (#553).
 
 
 # pillar 1.7.0.9003
