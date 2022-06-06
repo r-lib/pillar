@@ -25,7 +25,7 @@
 #' Implementations should return `NULL` if none of the data
 #' fits the available width.
 #'
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #' @param controller The object of class `"tbl"` currently printed.
 #' @param x A simple (one-dimensional) vector.
 #' @param width The available width, can be a vector for multiple tiers.

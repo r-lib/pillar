@@ -12,7 +12,7 @@ style_type <- function(x) {
 #' Call [format()] on the result to render column types.
 #'
 #' @param x A vector for which the type is to be retrieved.
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #' @export
 #' @examples
 #' format(new_pillar_type("a"))
@@ -71,7 +71,7 @@ format_full_pillar_type <- function(x) {
 #' @param x A return value from `type_sum()`
 #' @param width The desired total width. If the returned string still is
 #'   wider, it will be trimmed. Can be `NULL`.
-#' @inheritParams ellipsis::dots_used
+#' @inheritParams rlang::args_dots_used
 #'
 #' @export
 #' @examples

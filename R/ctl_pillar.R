@@ -123,7 +123,7 @@ pillar_from_shaft <- function(title, type, data, width) {
 #' If your tibble subclass needs more or different components in its pillars,
 #' override or extend [ctl_new_pillar()] and perhaps [ctl_new_pillar_list()].
 #'
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #' @inheritParams pillar
 #' @param components A named list of components constructed with [pillar_component()].
 #' @param class Name of subclass.

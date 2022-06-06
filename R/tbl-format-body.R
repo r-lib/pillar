@@ -13,7 +13,7 @@
 #' If you only need to change the appearance of a single data type,
 #' override [vctrs::vec_ptype_abbr()] and [pillar_shaft()] for this data type.
 #'
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #' @param x A tibble-like object.
 #' @param setup A setup object returned from [tbl_format_setup()].
 #'

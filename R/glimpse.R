@@ -100,7 +100,7 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 #' Empty vectors are shown as `<>`.
 #'
 #' @return A character vector of the same length as `x`.
-#' @inheritParams ellipsis::dots_used
+#' @inheritParams rlang::args_dots_used
 #' @param x A vector.
 #' @export
 #' @examples
