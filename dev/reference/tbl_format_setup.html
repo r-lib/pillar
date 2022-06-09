@@ -119,14 +119,43 @@ override these methods instead.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-    </div>
+    <dl><dt>x</dt>
+<dd><p>An object.</p></dd>
+
+
+<dt>width</dt>
+<dd><p>Actual width for printing, a numeric greater than zero.
+This argument is mandatory for all implementations of this method.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>Extra arguments to <code><a href="format_tbl.html">print.tbl()</a></code> or <code><a href="format_tbl.html">format.tbl()</a></code>.</p></dd>
+
+
+<dt>n</dt>
+<dd><p>Actual number of rows to print.
+No <a href="pillar_options.html">options</a> should be considered
+by implementations of this method.</p></dd>
+
+
+<dt>max_extra_cols</dt>
+<dd><p>Number of columns to print abbreviated information for,
+if the width is too small for the entire tibble.
+No <a href="pillar_options.html">options</a> should be considered
+by implementations of this method.</p></dd>
+
+
+<dt>max_footer_lines</dt>
+<dd><p>Maximum number of lines for the footer.
+No <a href="pillar_options.html">options</a> should be considered
+by implementations of this method.</p></dd>
+
+
+<dt>focus</dt>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
+<p>Names of columns to show preferentially if space is tight.</p></dd>
+
+</dl></div>
     <div id="value">
     <h2>Value</h2>
     

@@ -103,18 +103,57 @@ Do not modify existing elements.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-    </div>
+    <dl><dt>x</dt>
+<dd><p>The input object unchanged.</p></dd>
+
+
+<dt>df</dt>
+<dd><p>A data frame representation of the intended output,
+trimmed to the desired number of rows.</p></dd>
+
+
+<dt>width</dt>
+<dd><p>The <code>width</code> argument unchanged.</p></dd>
+
+
+<dt>tbl_sum</dt>
+<dd><p>A named character vector, as returned from <code><a href="tbl_sum.html">tbl_sum()</a></code>.</p></dd>
+
+
+<dt>body</dt>
+<dd><p>A character vector with the formatted body,
+one element per line,</p></dd>
+
+
+<dt>rows_missing</dt>
+<dd><p>The number of rows not shown from the body,
+<code>NA</code> if unknown.</p></dd>
+
+
+<dt>rows_total</dt>
+<dd><p>The total number of rows in the data,
+<code>NA</code> if unknown.</p></dd>
+
+
+<dt>extra_cols</dt>
+<dd><p>Columns that did not fit into the body,
+as a character vector of formatted column names and types.</p></dd>
+
+
+<dt>extra_cols_total</dt>
+<dd><p>The total number of columns, may be larger than
+<code>length(extra_cols)</code>.</p></dd>
+
+
+<dt>max_footer_lines</dt>
+<dd><p>The maximum number of lines in the footer.</p></dd>
+
+
+<dt>abbrev_cols</dt>
+<dd><p>Formatted names of the columns that are shown abbreviated
+in the body.</p></dd>
+
+</dl></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
