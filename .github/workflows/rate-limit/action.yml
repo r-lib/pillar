@@ -4,10 +4,13 @@ inputs:
     description: GitHub token, pass secrets.GITHUB_TOKEN
     required: true
 
+defaults:
+  run:
+    shell: bash
+
 runs:
   using: "composite"
   steps:
     - name: Check rate limits
       run: |
         curl -s --header "authorization: Bearer ${{ inputs.token }}" https://api.github.com/rate_limit
-      shell: bash
