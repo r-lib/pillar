@@ -1,7 +1,6 @@
 # nocov start - zzz.R
 
 #' @import rlang
-#' @import ellipsis
 #' @import lifecycle
 #' @importFrom glue as_glue
 #' @importFrom vctrs data_frame

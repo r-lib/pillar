@@ -17,7 +17,7 @@
 #' Compound columns are represented by multiple pillar objects, each with their
 #' own components.
 #'
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #' @param x A bare list of length one (for `new_pillar_component()`),
 #'   or an object with `"width"` and `"min_width"` attributes
 #'   (for `pillar_component()`).

@@ -61,7 +61,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width,
 #' for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
-#' @inheritParams ellipsis::dots_used
+#' @inheritParams rlang::args_dots_used
 #' @export
 #' @examples
 #' pillar_shaft(1:3)

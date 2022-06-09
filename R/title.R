@@ -5,7 +5,7 @@ style_title <- style_bold
 #' Call [format()] on the result to render column titles.
 #'
 #' @param x A character vector of column titles.
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #' @export
 #' @examples
 #' format(new_pillar_title(names(trees)))
