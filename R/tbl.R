@@ -1,6 +1,5 @@
 new_tbl <- function(x = list(), n = NULL, ..., class = NULL) {
-  check_dots_empty()
-  new_data_frame(x, n, class = c(class, "tbl"))
+  new_data_frame(x, n, class = c(class, "tbl"), ...)
 }
 
 as_tbl <- function(x, ...) {

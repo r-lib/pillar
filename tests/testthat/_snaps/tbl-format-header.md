@@ -26,4 +26,12 @@
       <tbl_format_header(setup)>
       # A data frame: 0 x 0
       # foo:          bar
+    Code
+      # Focus columns
+      tbl_format_header(tbl_format_setup(new_tbl(trees, pillar_focus = "Volume"),
+      width = 30))
+    Output
+      <tbl_format_header(setup)>
+      # A data frame:  31 x 3
+      # Focus columns: Volume
 
