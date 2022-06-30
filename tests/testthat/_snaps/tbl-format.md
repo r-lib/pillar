@@ -256,4 +256,26 @@
       10  19.2     6  168.   123  3.92  3.44
       # ... with 22 more rows, and 5 more
       #   variables: qsec <dbl>, ...
+    Code
+      print(tbl_format_setup(new_tbl(trees, pillar_focus = "Volume"), width = 30))
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame:  31 x 3
+      # Focus columns: Volume
+      <tbl_format_body(setup)>
+         Girth Height Volume
+         <dbl>  <dbl>  <dbl>
+       1   8.3     70   10.3
+       2   8.6     65   10.3
+       3   8.8     63   10.2
+       4  10.5     72   16.4
+       5  10.7     81   18.8
+       6  10.8     83   19.7
+       7  11       66   15.6
+       8  11       75   18.2
+       9  11.1     80   22.6
+      10  11.2     75   19.9
+      <tbl_format_footer(setup)>
+      # ... with 21 more rows
 

@@ -12,5 +12,8 @@ test_that("tbl_format_header() results", {
 
     "Custom tbl_sum()"
     tbl_format_header(tbl_format_setup(new_foo_tbl(), width = 30))
+
+    "Focus columns"
+    tbl_format_header(tbl_format_setup(new_tbl(trees, pillar_focus = "Volume"), width = 30))
   })
 })
