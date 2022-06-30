@@ -94,9 +94,9 @@ ctl_new_pillar_list.tbl <- function(controller, x, width, ..., title = NULL, fir
 
   if (is.data.frame(x)) {
     new_data_frame_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
-  } else if (is.matrix(x)) {
+  } else if (is.matrix(x) && !inherits(x, c("Surv", "Surv2"))) {
     new_matrix_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
-  } else if (is.array(x) && length(dim(x)) > 1) {
+  } else if (is.array(x) && length(dim(x)) > 2) {
     new_array_pillar_list(x, controller, width, title = title, first_pillar = first_pillar)
   } else {
     if (is.null(first_pillar)) {
