@@ -1,5 +1,28 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.7.0.9005
+
+## Bug fixes
+
+- Fix printing of `Surv` and `Surv2` objects (#561).
+
+## Features
+
+- Avoid aligning NA inside quotes for very short character vectors (#562).
+
+- Pick up `"pillar_focus"` attribute on printing to define focus columns (#549).
+
+## Chore
+
+- Drop crayon dependency (#559).
+
+- Import ellipsis from rlang (#554).
+
+## API
+
+- Soft-deprecate `colonnade()`, `squeeze()` and `extra_cols()` (#496).
+
+
 # pillar 1.7.0.9004
 
 ## Options 
