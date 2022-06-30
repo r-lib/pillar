@@ -78,7 +78,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">pillar_options</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">pillar_options</span></span></code></pre></div>
     </div>
 
     <div id="details">
@@ -152,37 +152,37 @@ space, on UTF-8 platforms, and to <code>": "</code> on non-UTF-8 platforms.</p><
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Default setting:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"pillar.sigfig"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Default setting:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"pillar.sigfig"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1.23</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change for the duration of the session:</span></span>
-<span class="r-in"><span class="va">old</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change for the duration of the session:</span></span></span>
+<span class="r-in"><span><span class="va">old</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.234<span style="text-decoration: underline;">57</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change back to the original value:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change back to the original value:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1.23</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Local scope:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span>
-<span class="r-in">  <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/local_options.html" class="external-link">local_options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Local scope:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/local_options.html" class="external-link">local_options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.234<span style="text-decoration: underline;">57</span></span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1.23</span>
@@ -200,7 +200,7 @@ space, on UTF-8 platforms, and to <code>": "</code> on non-UTF-8 platforms.</p><
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>
