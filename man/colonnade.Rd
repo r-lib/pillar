@@ -19,6 +19,8 @@ the row ID column with a star.}
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#soft-deprecated}{\figure{lifecycle-soft-deprecated.svg}{options: alt='[Soft-deprecated]'}}}{\strong{[Soft-deprecated]}}
+
 The vectors are formatted to fit horizontally into a user-supplied number of
 characters per row.
 

@@ -7,6 +7,8 @@
 squeeze(x, width = NULL, ...)
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#soft-deprecated}{\figure{lifecycle-soft-deprecated.svg}{options: alt='[Soft-deprecated]'}}}{\strong{[Soft-deprecated]}}
+
 The \code{squeeze()} function usually doesn't need to be called manually.
 It returns an object suitable for printing and formatting at a fixed width
 with additional information about omitted columns, which can be retrieved
