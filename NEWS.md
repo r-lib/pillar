@@ -8,7 +8,7 @@
 
 ## Features
 
-- Avoid aligning NA inside quotes for very short character vectors (#562).
+- Avoid aligning `NA` inside quotes for very short character vectors (#562).
 
 - Pick up `"pillar_focus"` attribute on printing to define focus columns (#549).
 
