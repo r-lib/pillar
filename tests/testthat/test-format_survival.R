@@ -4,6 +4,7 @@ test_that("survival output", {
   x <- head(survival::Surv(survival::lung$time, survival::lung$status))
   expect_snapshot({
     pillar(x, width = 20)
+    new_tbl(list(x = x))
   })
 
   skip_if_not(exists("Surv2", asNamespace("survival"), mode = "function"))
@@ -11,5 +12,6 @@ test_that("survival output", {
   x <- head(survival::Surv2(survival::lung$time, survival::lung$status))
   expect_snapshot({
     pillar(x, width = 20)
+    new_tbl(list(x = x))
   })
 })
