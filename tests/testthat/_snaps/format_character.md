@@ -35,28 +35,28 @@
       <pillar>
       <chr>
       ""   
-       <NA>
+      <NA> 
     Code
       pillar(add_special(c(" ")), width = 5)
     Output
       <pillar>
       <chr>
       " "  
-       <NA>
+      <NA> 
     Code
       pillar(add_special(c(" a")), width = 5)
     Output
       <pillar>
       <chr>
       " a" 
-       <NA>
+      <NA> 
     Code
       pillar(add_special(c("a ")), width = 5)
     Output
       <pillar>
       <chr>
       "a " 
-       <NA>
+      <NA> 
     Code
       pillar(add_special(c("a b")), width = 5)
     Output
@@ -70,7 +70,7 @@
       <pillar>
       <chr>
       "\t" 
-       <NA>
+      <NA> 
     Code
       pillar(add_special(c("a\nb")), width = 10)
     Output

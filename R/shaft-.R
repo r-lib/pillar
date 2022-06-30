@@ -299,8 +299,10 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
   # Add subtle quotes if necessary
   needs_quotes <- which(is_ambiguous_string(x))
   if (has_length(needs_quotes)) {
-    out[needs_quotes] <- gsub('"', '\\"', x[needs_quotes], fixed = TRUE)
-    out[!is.na(x)] <- paste0(style_subtle('"'), out[!is.na(x)], style_subtle('"'))
+    quoted <- gsub('"', '\\"', x[needs_quotes], fixed = TRUE)
+    out[needs_quotes] <- quoted
+    valid <- paste0(style_subtle('"'), out[!is.na(x)], style_subtle('"'))
+    out[!is.na(x)] <- valid
     na_indent <- 1
   } else {
     na_indent <- 0
@@ -320,12 +322,14 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
 pillar_shaft.glue <- function(x, ..., min_width = NULL, na_indent = 0L, shorten = NULL) {
   min_width <- max(min_width, 3L)
   width <- get_max_extent(x)
+  na <- pillar_na(use_brackets_if_no_color = TRUE)
+  force(na_indent)
 
   new_pillar_shaft_simple(
     x,
     width = width, align = "left", min_width = min(width, min_width),
-    na = pillar_na(use_brackets_if_no_color = TRUE),
-    na_indent = na_indent,
+    na = na,
+    na_indent = if (width > get_extent(na)) na_indent else 0,
     shorten = shorten
   )
 }
