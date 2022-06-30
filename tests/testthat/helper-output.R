@@ -35,7 +35,7 @@ add_special <- function(x) {
 }
 
 continue <- function(x) {
-  paste0(x, cli::symbol$continue)
+  paste0(x, symbol$continue)
 }
 
 # from pkgdepends

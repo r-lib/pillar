@@ -1,5 +1,5 @@
 new_continuation_shaft <- function(parent) {
-  extra_width <- get_extent(cli::symbol$ellipsis) + 1L
+  extra_width <- get_extent(symbol$ellipsis) + 1L
 
   new_pillar_shaft(
     list(parent, extra_width),
@@ -17,7 +17,7 @@ format.pillar_continuation_shaft <- function(x, width, ...) {
   parent_format <- format(parent, width = width - extra_width)
 
   new_ornament(
-    paste0(parent_format, " ", cli::symbol$ellipsis),
+    paste0(parent_format, " ", symbol$ellipsis),
     width = width,
     align = attr(parent_format, "align", exact = TRUE)
   )

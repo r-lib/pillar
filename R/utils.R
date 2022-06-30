@@ -120,7 +120,7 @@ bind_rows <- function(x) {
 }
 
 get_ellipsis <- function() {
-  cli::symbol$continue
+  symbol$continue
 }
 
 is_latex_output <- function() {

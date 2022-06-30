@@ -174,7 +174,7 @@ test_that("filling unused width (#331)", {
 
   pillar_shaft.foo <- function(x, ...) {
     full <- format(x)
-    trunc <- format(paste0(substr(x, 1, 7), cli::symbol$continue))
+    trunc <- format(paste0(substr(x, 1, 7), symbol$continue))
     pillar::new_pillar_shaft(
       list(full = full, trunc = trunc),
       width = pillar::get_max_extent(full),

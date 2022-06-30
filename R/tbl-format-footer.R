@@ -128,7 +128,7 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
   out <- imap(extra_cols, format_abbrev)
 
   if (extra_cols_total > length(extra_cols)) {
-    out <- c(out, cli::symbol$ellipsis)
+    out <- c(out, symbol$ellipsis)
   }
 
   out[-length(out)] <- paste0(out[-length(out)], ",")
@@ -156,15 +156,15 @@ wrap_footer <- function(footer, setup) {
   truncated <- anyNA(wrap$tier)
   split <- split(footer[wrap$id], wrap$tier)
   if (truncated && length(split) > 0) {
-    split[[length(split)]] <- c(split[[length(split)]], cli::symbol$ellipsis)
+    split[[length(split)]] <- c(split[[length(split)]], symbol$ellipsis)
   }
-  split <- imap(split, function(x, y) c("#", if (y == 1) cli::symbol$ellipsis else " ", x))
+  split <- imap(split, function(x, y) c("#", if (y == 1) symbol$ellipsis else " ", x))
 
   map_chr(split, paste, collapse = " ")
 }
 
 get_footer_tier_widths <- function(footer, max_extent, n_tiers) {
-  extra_width <- get_extent(cli::symbol$ellipsis) + 1L # space, ellipsis
+  extra_width <- get_extent(symbol$ellipsis) + 1L # space, ellipsis
 
   n_tiers <- min(length(footer), n_tiers)
 
@@ -181,7 +181,7 @@ get_footer_tier_widths <- function(footer, max_extent, n_tiers) {
 
 pre_dots <- function(x) {
   if (length(x) > 0) {
-    paste0(cli::symbol$ellipsis, " ", x)
+    paste0(symbol$ellipsis, " ", x)
   } else {
     character()
   }
