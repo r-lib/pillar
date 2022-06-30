@@ -94,7 +94,7 @@ obj_sum.default <- function(x) {
 
     out <- paste(abbr, size_sum(x))
     if (is.array(x)) {
-      short <- paste0(abbr, "[", cli::symbol$ellipsis, "]")
+      short <- paste0(abbr, "[", symbol$ellipsis, "]")
     } else {
       short <- abbr
     }

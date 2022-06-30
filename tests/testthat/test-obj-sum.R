@@ -58,8 +58,8 @@ test_that("object summary has short version", {
   expect_obj_sum_short_is_ptype(Sys.time() - Sys.time() + 1:3)
   expect_obj_sum_short_is_ptype(as.POSIXlt(Sys.time() + 1:3))
   expect_obj_sum_short_is_ptype(list(1, 2:3))
-  expect_obj_sum_short_is_ptype(matrix(1:10, ncol = 2), paste0("[", cli::symbol$ellipsis, "]"))
-  expect_obj_sum_short_is_ptype(Titanic, paste0("[", cli::symbol$ellipsis, "]"))
+  expect_obj_sum_short_is_ptype(matrix(1:10, ncol = 2), paste0("[", symbol$ellipsis, "]"))
+  expect_obj_sum_short_is_ptype(Titanic, paste0("[", symbol$ellipsis, "]"))
   expect_obj_sum_short_is_ptype(as_override_size_sum(1:3))
 })
 

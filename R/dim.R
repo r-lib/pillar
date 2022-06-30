@@ -22,7 +22,7 @@ dim2 <- function(x) {
 }
 
 mult_sign <- function() {
-  cli::symbol$times
+  symbol$times
 }
 
 spaces_around <- function(x) {
