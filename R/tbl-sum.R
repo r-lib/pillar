@@ -5,11 +5,16 @@
 #' and additional information in the other elements (such as grouping for \pkg{dplyr}).
 #' The default implementation forwards to [pillar::obj_sum()].
 #'
-#' This generic will be moved to \pkg{pillar}, and reexported from there
-#' as soon as it becomes available.
-#'
 #' @return A named character vector, describing the dimensions in the first element
 #'   and the data source in the name of the first element.
+#'
+#' @examples
+#' tbl_sum(1:10)
+#' tbl_sum(matrix(1:10))
+#' tbl_sum(data.frame(a = 1))
+#' tbl_sum(Sys.Date())
+#' tbl_sum(Sys.time())
+#' tbl_sum(mean)
 #'
 #' @seealso [pillar::type_sum()]
 #' @param x Object to summarise.
