@@ -19,9 +19,14 @@ which should include the dimensions and the data source in the first element,
 and additional information in the other elements (such as grouping for \pkg{dplyr}).
 The default implementation forwards to \code{\link[=obj_sum]{obj_sum()}}.
 }
-\details{
-This generic will be moved to \pkg{pillar}, and reexported from there
-as soon as it becomes available.
+\examples{
+tbl_sum(1:10)
+tbl_sum(matrix(1:10))
+tbl_sum(data.frame(a = 1))
+tbl_sum(Sys.Date())
+tbl_sum(Sys.time())
+tbl_sum(mean)
+
 }
 \seealso{
 \code{\link[=type_sum]{type_sum()}}
