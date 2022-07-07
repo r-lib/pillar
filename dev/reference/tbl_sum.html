@@ -100,16 +100,34 @@ The default implementation forwards to <code><a href="type_sum.html">obj_sum()</
 <p>A named character vector, describing the dimensions in the first element
 and the data source in the name of the first element.</p>
     </div>
-    <div id="details">
-    <h2>Details</h2>
-    <p>This generic will be moved to <span class="pkg">pillar</span>, and reexported from there
-as soon as it becomes available.</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="type_sum.html">type_sum()</a></code></p></div>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tbl_sum</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Description </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  "int [10]" </span>
+<span class="r-in"><span><span class="fu">tbl_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Description </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "int [10 × 1]" </span>
+<span class="r-in"><span><span class="fu">tbl_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "df [1 × 1]" </span>
+<span class="r-in"><span><span class="fu">tbl_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Description </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  "date [1]" </span>
+<span class="r-in"><span><span class="fu">tbl_sum</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Description </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  "dttm [1]" </span>
+<span class="r-in"><span><span class="fu">tbl_sum</span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Description </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        "fn" </span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
