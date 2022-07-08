@@ -41,7 +41,9 @@ tbl_format_footer.pillar_tbl_format_setup <- function(x, ...) {
 tbl_format_footer.tbl <- function(x, setup, ...) {
   footer <- format_footer(x, setup)
   footer_comment <- wrap_footer(footer, setup)
-  style_subtle(footer_comment)
+  footer_advice <- format_footer_advice(x, setup)
+  footer_advice_comment <- wrap_footer(footer_advice, setup, lines = 1, ellipsis = FALSE)
+  style_subtle(c(footer_comment, footer_advice_comment))
 }
 
 format_footer <- function(x, setup) {
@@ -54,17 +56,9 @@ format_footer <- function(x, setup) {
     return(character())
   }
 
-  if (length(footer) > 1) {
-    footer_len <- length(footer)
-    idx_all_but_last <- seq2(1, footer_len - 1)
-    footer[idx_all_but_last] <- map(footer[idx_all_but_last], function(x) {
-      x[[length(x)]] <- paste0(x[[length(x)]], ",")
-      x
-    })
-    footer <- c(footer[idx_all_but_last], "and", footer[footer_len])
-  }
+  footer_enum <- enum_collapse(footer)
 
-  extra <- unlist(footer, recursive = FALSE)
+  extra <- unlist(footer_enum, recursive = FALSE)
 
   c("with", extra)
 }
@@ -135,7 +129,12 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
   out
 }
 
-wrap_footer <- function(footer, setup) {
+format_footer_advice <- function(x, setup) {
+  paste0(symbol$info, " Use more")
+  NULL
+}
+
+wrap_footer <- function(footer, setup, lines = setup$max_footer_lines, ellipsis = TRUE) {
   if (length(footer) == 0) {
     return(character())
   }
@@ -144,8 +143,7 @@ wrap_footer <- function(footer, setup) {
   max_extent <- setup$width - 1L
 
   tier_widths <- get_footer_tier_widths(
-    footer, max_extent,
-    setup$max_footer_lines
+    footer, max_extent, lines, ellipsis
   )
 
   # show optuput even if too wide
@@ -155,16 +153,29 @@ wrap_footer <- function(footer, setup) {
   # truncate output that doesn't fit
   truncated <- anyNA(wrap$tier)
   split <- split(footer[wrap$id], wrap$tier)
-  if (truncated && length(split) > 0) {
+  if (ellipsis && truncated && length(split) > 0) {
     split[[length(split)]] <- c(split[[length(split)]], symbol$ellipsis)
   }
-  split <- imap(split, function(x, y) c("#", if (y == 1) symbol$ellipsis else " ", x))
+  split <- imap(split, function(.x, .y) {
+    if (!ellipsis) {
+      header <- NULL
+    } else if (.y == 1) {
+      header <- symbol$ellipsis
+    } else {
+      header <- " "
+    }
+    c("#", header, .x)
+  })
 
   map_chr(split, paste, collapse = " ")
 }
 
-get_footer_tier_widths <- function(footer, max_extent, n_tiers) {
-  extra_width <- get_extent(symbol$ellipsis) + 1L # space, ellipsis
+get_footer_tier_widths <- function(footer, max_extent, n_tiers, ellipsis = TRUE) {
+  if (ellipsis) {
+    extra_width <- get_extent(symbol$ellipsis) + 1L # space, ellipsis
+  } else {
+    extra_width <- FALSE
+  }
 
   n_tiers <- min(length(footer), n_tiers)
 
@@ -196,4 +207,18 @@ split_lines <- function(x) {
   }
 
   unlist(strsplit(x, "\n", fixed = TRUE))
+}
+
+enum_collapse <- function(x) {
+  if (length(x) > 1) {
+    x_len <- length(x)
+    idx_all_but_last <- seq2(1, x_len - 1)
+    x[idx_all_but_last] <- map(x[idx_all_but_last], function(x) {
+      x[[length(x)]] <- paste0(x[[length(x)]], ",")
+      x
+    })
+    x <- c(x[idx_all_but_last], "and", x[x_len])
+  }
+
+  x
 }
