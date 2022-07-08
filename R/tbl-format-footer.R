@@ -56,17 +56,9 @@ format_footer <- function(x, setup) {
     return(character())
   }
 
-  if (length(footer) > 1) {
-    footer_len <- length(footer)
-    idx_all_but_last <- seq2(1, footer_len - 1)
-    footer[idx_all_but_last] <- map(footer[idx_all_but_last], function(x) {
-      x[[length(x)]] <- paste0(x[[length(x)]], ",")
-      x
-    })
-    footer <- c(footer[idx_all_but_last], "and", footer[footer_len])
-  }
+  footer_enum <- enum_collapse(footer)
 
-  extra <- unlist(footer, recursive = FALSE)
+  extra <- unlist(footer_enum, recursive = FALSE)
 
   c("with", extra)
 }
@@ -215,4 +207,18 @@ split_lines <- function(x) {
   }
 
   unlist(strsplit(x, "\n", fixed = TRUE))
+}
+
+enum_collapse <- function(x) {
+  if (length(x) > 1) {
+    x_len <- length(x)
+    idx_all_but_last <- seq2(1, x_len - 1)
+    x[idx_all_but_last] <- map(x[idx_all_but_last], function(x) {
+      x[[length(x)]] <- paste0(x[[length(x)]], ",")
+      x
+    })
+    x <- c(x[idx_all_but_last], "and", x[x_len])
+  }
+
+  x
 }
