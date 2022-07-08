@@ -68,6 +68,7 @@
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>,
       #   carb <dbl>
+      # i Use `colnames()` to see all variable names
     Code
       print(as_tbl(mtcars), n = 30)
     Output
@@ -161,6 +162,7 @@
       10  19.2     6  168.   123  3.92  3.44
       # ... with 22 more rows, and 5 more
       #   variables: qsec <dbl>, ...
+      # i Use `colnames()` to see all variable names
     Code
       print(as_tbl(mtcars), width = 30, max_footer_lines = 3)
     Output
@@ -180,6 +182,7 @@
       # ... with 22 more rows, and
       #   7 more variables:
       #   drat <dbl>, wt <dbl>, ...
+      # i Use `colnames()` to see all variable names
     Code
       rlang::with_options(tibble.print_min = 5, as_tbl(mtcars))
     Output
@@ -256,6 +259,7 @@
       10  19.2     6  168.   123  3.92  3.44
       # ... with 22 more rows, and 5 more
       #   variables: qsec <dbl>, ...
+      # i Use `colnames()` to see all variable names
     Code
       print(tbl_format_setup(new_tbl(trees, pillar_focus = "Volume"), width = 30))
     Output

@@ -130,8 +130,9 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
 }
 
 format_footer_advice <- function(x, setup) {
-  paste0(symbol$info, " Use more")
-  NULL
+  if (length(setup$extra_cols) > 0) {
+    paste0(symbol$info, " Use `colnames()` to see all variable names")
+  }
 }
 
 wrap_footer <- function(footer, setup, lines = setup$max_footer_lines, ellipsis = TRUE) {

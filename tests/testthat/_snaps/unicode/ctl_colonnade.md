@@ -211,6 +211,7 @@
       [90m# … with 1 more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x, width = 15, focus = "b")
     Output
@@ -228,6 +229,7 @@
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   a <tbl[,2]>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x, width = 10, focus = "b")
     Output
@@ -246,6 +248,7 @@
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   a <tbl[,2]>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x[2:1], width = 30, focus = "a")
     Output
@@ -286,6 +289,7 @@
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   b <chr>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x[2:1], width = 10, focus = "a")
     Output
@@ -305,6 +309,7 @@
       [90m#   variables:[39m
       [90m#   a$y <dbl>,[39m
       [90m#   b <chr>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x, width = 30, focus = c("a", "b"))
     Output
@@ -345,6 +350,7 @@
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x, width = 10, focus = c("a", "b"))
     Output
@@ -364,6 +370,7 @@
       [90m#   variables:[39m
       [90m#   a$y <dbl>,[39m
       [90m#   b <chr>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x[2:1], width = 30, focus = c("a", "b"))
     Output
@@ -390,6 +397,7 @@
       [90m# … with 1 more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x[2:1], width = 15, focus = c("a", "b"))
     Output
@@ -407,6 +415,7 @@
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
     Code
       tbl_format_setup(x[2:1], width = 10, focus = c("a", "b"))
     Output
@@ -425,4 +434,5 @@
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   a <tbl[,2]>[39m
+      [90m# ℹ Use `colnames()` to see all variable names[39m
 
