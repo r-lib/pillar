@@ -26,7 +26,7 @@ Your format() method can assume a valid value for the width argument."><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.0</span>
       </span>
     </div>
 
@@ -44,7 +44,7 @@ Your format() method can assume a valid value for the width argument."><!-- math
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -96,65 +96,78 @@ Your <code><a href="https://rdrr.io/r/base/format.html" class="external-link">fo
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for pillar_shaft</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for pillar_shaft</span>
-<span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for logical</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for numeric</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, sigfig <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="co"># S3 method for Date</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for POSIXt</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for character</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, min_width <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="co"># S3 method for glue</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, min_width <span class="op">=</span> <span class="cn">NULL</span>, na_indent <span class="op">=</span> <span class="fl">0L</span>, shorten <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="co"># S3 method for list</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for factor</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for AsIs</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for default</span>
-<span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for pillar_shaft</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for pillar_shaft</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for logical</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for numeric</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, sigfig <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for Date</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for POSIXt</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for character</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, min_width <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for glue</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, min_width <span class="op">=</span> <span class="cn">NULL</span>, na_indent <span class="op">=</span> <span class="fl">0L</span>, shorten <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for list</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for factor</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for AsIs</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector to format</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Arguments passed to methods.</p></dd>
+
+
 <dt>width</dt>
 <dd><p>Width for printing and formatting.</p></dd>
+
+
 <dt>sigfig</dt>
 <dd><p>Deprecated, use <code><a href="num.html">num()</a></code> or <code><a href="num.html">set_num_opts()</a></code> on the data instead.</p></dd>
+
+
 <dt>min_width</dt>
 <dd><p>Deprecated, use <code><a href="char.html">char()</a></code> or <code><a href="char.html">set_char_opts()</a></code> on the data instead.</p></dd>
+
+
 <dt>na_indent</dt>
 <dd><p>Indentation of <code>NA</code> values.</p></dd>
+
+
 <dt>shorten</dt>
 <dd><p>How to abbreviate the data if necessary:</p><ul><li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
 <li><p><code>"front"</code>: add an ellipsis at the front</p></li>
 <li><p><code>"mid"</code>: add an ellipsis in the middle</p></li>
 <li><p><code>"abbreviate"</code>: use <code><a href="https://rdrr.io/r/base/abbreviate.html" class="external-link">abbreviate()</a></code></p></li>
 </ul></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -164,20 +177,20 @@ but you should not rely on this behavior.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar_ornament&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3</span>
-<span class="r-in"><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fl">1.5</span><span class="op">:</span><span class="fl">3.5</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fl">1.5</span><span class="op">:</span><span class="fl">3.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar_ornament&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3.5</span>
-<span class="r-in"><span class="fu">pillar_shaft</span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar_ornament&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-in"><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">pillar_shaft</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar_ornament&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2</span>
@@ -197,7 +210,7 @@ but you should not rely on this behavior.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

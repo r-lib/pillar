@@ -21,7 +21,7 @@ Do not modify existing elements.'><!-- mathjax --><script src="https://cdnjs.clo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.0</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@ Do not modify existing elements.'><!-- mathjax --><script src="https://cdnjs.clo
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -86,52 +86,73 @@ Do not modify existing elements.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">new_tbl_format_setup</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">df</span>,
-  <span class="va">width</span>,
-  <span class="va">tbl_sum</span>,
-  <span class="va">body</span>,
-  <span class="va">rows_missing</span>,
-  <span class="va">rows_total</span>,
-  <span class="va">extra_cols</span>,
-  <span class="va">extra_cols_total</span>,
-  <span class="va">max_footer_lines</span>,
-  <span class="va">abbrev_cols</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">new_tbl_format_setup</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">df</span>,</span>
+<span>  <span class="va">width</span>,</span>
+<span>  <span class="va">tbl_sum</span>,</span>
+<span>  <span class="va">body</span>,</span>
+<span>  <span class="va">rows_missing</span>,</span>
+<span>  <span class="va">rows_total</span>,</span>
+<span>  <span class="va">extra_cols</span>,</span>
+<span>  <span class="va">extra_cols_total</span>,</span>
+<span>  <span class="va">max_footer_lines</span>,</span>
+<span>  <span class="va">abbrev_cols</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>The input object unchanged.</p></dd>
+
+
 <dt>df</dt>
 <dd><p>A data frame representation of the intended output,
 trimmed to the desired number of rows.</p></dd>
+
+
 <dt>width</dt>
 <dd><p>The <code>width</code> argument unchanged.</p></dd>
+
+
 <dt>tbl_sum</dt>
 <dd><p>A named character vector, as returned from <code><a href="tbl_sum.html">tbl_sum()</a></code>.</p></dd>
+
+
 <dt>body</dt>
 <dd><p>A character vector with the formatted body,
 one element per line,</p></dd>
+
+
 <dt>rows_missing</dt>
 <dd><p>The number of rows not shown from the body,
 <code>NA</code> if unknown.</p></dd>
+
+
 <dt>rows_total</dt>
 <dd><p>The total number of rows in the data,
 <code>NA</code> if unknown.</p></dd>
+
+
 <dt>extra_cols</dt>
 <dd><p>Columns that did not fit into the body,
 as a character vector of formatted column names and types.</p></dd>
+
+
 <dt>extra_cols_total</dt>
 <dd><p>The total number of columns, may be larger than
 <code>length(extra_cols)</code>.</p></dd>
+
+
 <dt>max_footer_lines</dt>
 <dd><p>The maximum number of lines in the footer.</p></dd>
+
+
 <dt>abbrev_cols</dt>
 <dd><p>Formatted names of the columns that are shown abbreviated
 in the body.</p></dd>
+
 </dl></div>
 
   </div>
@@ -146,7 +167,7 @@ in the body.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

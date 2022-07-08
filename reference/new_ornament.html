@@ -21,7 +21,7 @@ pillar_shaft.numeric() and format.pillar_shaft_decimal() for an example.'><!-- m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.0</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@ pillar_shaft.numeric() and format.pillar_shaft_decimal() for an example.'><!-- m
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -86,7 +86,7 @@ for this subclass call <code>new_ornament()</code>. See the implementation of
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">new_ornament</span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, align <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">new_ornament</span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="cn">NULL</span>, align <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -94,16 +94,21 @@ for this subclass call <code>new_ornament()</code>. See the implementation of
     <dl><dt>x</dt>
 <dd><p>A character vector with formatting,
 can use ANYI styles e.g provided by the <span class="pkg">cli</span> package.</p></dd>
+
+
 <dt>width</dt>
 <dd><p>An optional width of the resulting pillar, computed from <code>x</code> if
 missing</p></dd>
+
+
 <dt>align</dt>
 <dd><p>Alignment, one of <code>"left"</code> or <code>"right"</code></p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">new_ornament</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"de"</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">new_ornament</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"de"</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar_ornament&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> abc</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  de</span>
@@ -121,7 +126,7 @@ missing</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

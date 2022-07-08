@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.0</span>
       </span>
     </div>
 
@@ -35,7 +35,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -78,7 +78,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">pillar_options</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">pillar_options</span></span></code></pre></div>
     </div>
 
     <div id="details">
@@ -130,11 +130,11 @@ Default: <code>TRUE</code>.</p></li>
 highlighted, default: <code>3</code>. Set the <code>subtle</code> option to <code>FALSE</code> to
 turn off highlighting of significant digits.</p></li>
 <li><p><code>min_title_chars</code>: The minimum number of characters for the column
-title, default: <code>15</code>.  Column titles may be truncated up to that width to
+title, default: <code>3</code>.  Column titles may be truncated up to that width to
 save horizontal space. Set to <code>Inf</code> to turn off truncation of column
 titles.</p></li>
 <li><p><code>min_chars</code>: The minimum number of characters wide to
-display character columns, default: <code>3</code>.  Character columns may be
+display character columns, default: <code>5</code>.  Character columns may be
 truncated up to that width to save horizontal space. Set to <code>Inf</code> to
 turn off truncation of character columns.</p></li>
 <li><p><code>max_dec_width</code>: The maximum allowed width for decimal notation,
@@ -145,41 +145,44 @@ and "first strong isolate"
 <a href="https://www.w3.org/International/questions/qa-bidi-unicode-controls" class="external-link">Unicode controls</a>
 are inserted to ensure that text appears in its intended direction
 and that the column headings correspond to the correct columns.</p></li>
+<li><p><code>superdigit_sep</code>: The string inserted between superscript digits
+and column names in the footnote. Defaults to a <code>"\u200b"</code>, a zero-width
+space, on UTF-8 platforms, and to <code>": "</code> on non-UTF-8 platforms.</p></li>
 </ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Default setting:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"pillar.sigfig"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Default setting:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"pillar.sigfig"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1.23</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change for the duration of the session:</span></span>
-<span class="r-in"><span class="va">old</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change for the duration of the session:</span></span></span>
+<span class="r-in"><span><span class="va">old</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.234<span style="text-decoration: underline;">57</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change back to the original value:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change back to the original value:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="va">old</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1.23</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Local scope:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span>
-<span class="r-in">  <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/local_options.html" class="external-link">local_options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Local scope:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/local_options.html" class="external-link">local_options</a></span><span class="op">(</span>pillar.sigfig <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.234<span style="text-decoration: underline;">57</span></span>
-<span class="r-in"><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1.234567</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1.23</span>
@@ -197,7 +200,7 @@ and that the column headings correspond to the correct columns.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

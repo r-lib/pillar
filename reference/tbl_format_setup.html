@@ -31,7 +31,7 @@ override these methods instead."><!-- mathjax --><script src="https://cdnjs.clou
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.0</span>
       </span>
     </div>
 
@@ -49,7 +49,7 @@ override these methods instead."><!-- mathjax --><script src="https://cdnjs.clou
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -103,49 +103,64 @@ override these methods instead.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tbl_format_setup</span><span class="op">(</span>
-  <span class="va">x</span>,
-  width <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>,
-  n <span class="op">=</span> <span class="cn">NULL</span>,
-  max_extra_cols <span class="op">=</span> <span class="cn">NULL</span>,
-  max_footer_lines <span class="op">=</span> <span class="cn">NULL</span>,
-  focus <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="co"># S3 method for tbl</span>
-<span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tbl_format_setup</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  n <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max_extra_cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max_footer_lines <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  focus <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for tbl</span></span>
+<span><span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>An object.</p></dd>
+
+
 <dt>width</dt>
 <dd><p>Actual width for printing, a numeric greater than zero.
 This argument is mandatory for all implementations of this method.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Extra arguments to <code><a href="format_tbl.html">print.tbl()</a></code> or <code><a href="format_tbl.html">format.tbl()</a></code>.</p></dd>
+
+
 <dt>n</dt>
 <dd><p>Actual number of rows to print.
 No <a href="pillar_options.html">options</a> should be considered
 by implementations of this method.</p></dd>
+
+
 <dt>max_extra_cols</dt>
 <dd><p>Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.
 No <a href="pillar_options.html">options</a> should be considered
 by implementations of this method.</p></dd>
+
+
 <dt>max_footer_lines</dt>
 <dd><p>Maximum number of lines for the footer.
 No <a href="pillar_options.html">options</a> should be considered
 by implementations of this method.</p></dd>
+
+
 <dt>focus</dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
 <p>Names of columns to show preferentially if space is tight.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object that can be passed as <code>setup</code> argument to
+    
+
+<p>An object that can be passed as <code>setup</code> argument to
 <code><a href="tbl_format_header.html">tbl_format_header()</a></code>, <code><a href="tbl_format_body.html">tbl_format_body()</a></code>, and <code><a href="tbl_format_footer.html">tbl_format_footer()</a></code>.</p>
     </div>
     <div id="details">
@@ -170,25 +185,27 @@ See <code><a href="new_tbl_format_setup.html">new_tbl_format_setup()</a></code> 
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tbl_format_setup</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tbl_format_setup</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;pillar_tbl_format_setup&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;tbl_format_header(setup)&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 344 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;tbl_format_body(setup)&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Adelie  Torgersen           39.1          18.7               181        <span style="text-decoration: underline;">3</span>750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Adelie  Torgersen           39.5          17.4               186        <span style="text-decoration: underline;">3</span>800</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Adelie  Torgersen           40.3          18                 195        <span style="text-decoration: underline;">3</span>250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Adelie  Torgersen           <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>                  <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Adelie  Torgersen           36.7          19.3               193        <span style="text-decoration: underline;">3</span>450</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Adelie  Torgersen           39.3          20.6               190        <span style="text-decoration: underline;">3</span>650</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Adelie  Torgersen           38.9          17.8               181        <span style="text-decoration: underline;">3</span>625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Adelie  Torgersen           39.2          19.6               195        <span style="text-decoration: underline;">4</span>675</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Adelie  Torgersen           34.1          18.1               193        <span style="text-decoration: underline;">3</span>475</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Adelie  Torgersen           42            20.2               190        <span style="text-decoration: underline;">4</span>250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Adelie  Torgersen           39.1          18.7        181    <span style="text-decoration: underline;">3</span>750 male   <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Adelie  Torgersen           39.5          17.4        186    <span style="text-decoration: underline;">3</span>800 fema…  <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Adelie  Torgersen           40.3          18          195    <span style="text-decoration: underline;">3</span>250 fema…  <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Adelie  Torgersen           <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Adelie  Torgersen           36.7          19.3        193    <span style="text-decoration: underline;">3</span>450 fema…  <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Adelie  Torgersen           39.3          20.6        190    <span style="text-decoration: underline;">3</span>650 male   <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Adelie  Torgersen           38.9          17.8        181    <span style="text-decoration: underline;">3</span>625 fema…  <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Adelie  Torgersen           39.2          19.6        195    <span style="text-decoration: underline;">4</span>675 male   <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Adelie  Torgersen           34.1          18.1        193    <span style="text-decoration: underline;">3</span>475 <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">2</span>007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Adelie  Torgersen           42            20.2        190    <span style="text-decoration: underline;">4</span>250 <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">2</span>007</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 334 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​body_mass_g</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -203,7 +220,7 @@ See <code><a href="new_tbl_format_setup.html">new_tbl_format_setup()</a></code> 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

@@ -38,7 +38,7 @@ formatted argument."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.0</span>
       </span>
     </div>
 
@@ -56,7 +56,7 @@ formatted argument."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -117,67 +117,92 @@ By default, the required width is computed from the natural width of the
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">new_pillar_shaft</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">...</span>,
-  width <span class="op">=</span> <span class="cn">NULL</span>,
-  min_width <span class="op">=</span> <span class="va">width</span>,
-  type_sum <span class="op">=</span> <span class="cn">NULL</span>,
-  class <span class="op">=</span> <span class="cn">NULL</span>,
-  subclass <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">new_pillar_shaft_simple</span><span class="op">(</span>
-  <span class="va">formatted</span>,
-  <span class="va">...</span>,
-  width <span class="op">=</span> <span class="cn">NULL</span>,
-  align <span class="op">=</span> <span class="st">"left"</span>,
-  min_width <span class="op">=</span> <span class="cn">NULL</span>,
-  na <span class="op">=</span> <span class="cn">NULL</span>,
-  na_indent <span class="op">=</span> <span class="fl">0L</span>,
-  shorten <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"back"</span>, <span class="st">"front"</span>, <span class="st">"mid"</span>, <span class="st">"abbreviate"</span><span class="op">)</span>,
-  short_formatted <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">new_pillar_shaft</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min_width <span class="op">=</span> <span class="va">width</span>,</span>
+<span>  type_sum <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  class <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  subclass <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">new_pillar_shaft_simple</span><span class="op">(</span></span>
+<span>  <span class="va">formatted</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  align <span class="op">=</span> <span class="st">"left"</span>,</span>
+<span>  min_width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  na <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  na_indent <span class="op">=</span> <span class="fl">0L</span>,</span>
+<span>  shorten <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"back"</span>, <span class="st">"front"</span>, <span class="st">"mid"</span>, <span class="st">"abbreviate"</span><span class="op">)</span>,</span>
+<span>  short_formatted <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>An object</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Passed on to <code>new_pillar_shaft()</code>.</p></dd>
+
+
 <dt>width</dt>
 <dd><p>The maximum column width.</p></dd>
+
+
 <dt>min_width</dt>
 <dd><p>The minimum allowed column width, <code>width</code> if omitted.</p></dd>
+
+
 <dt>type_sum</dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
 <p>Override the type summary displayed at the top of the data.
 This argument, if given, takes precedence over the type summary provided by
 <code><a href="type_sum.html">type_sum()</a></code>.</p></dd>
+
+
 <dt>class</dt>
 <dd><p>The name of the subclass.</p></dd>
+
+
 <dt>subclass</dt>
 <dd><p>Deprecated, pass the <code>class</code> argument instead.</p></dd>
+
+
 <dt>formatted</dt>
 <dd><p>The data to show, an object coercible to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>.</p></dd>
+
+
 <dt>align</dt>
 <dd><p>Alignment of the column.</p></dd>
+
+
 <dt>na</dt>
 <dd><p>String to use as <code>NA</code> value, defaults to <code>"NA"</code> styled with
 <code><a href="style_subtle.html">style_na()</a></code> with fallback if color is not available.</p></dd>
+
+
 <dt>na_indent</dt>
 <dd><p>Indentation of <code>NA</code> values.</p></dd>
+
+
 <dt>shorten</dt>
 <dd><p>How to abbreviate the data if necessary:</p><ul><li><p><code>"back"</code> (default): add an ellipsis at the end</p></li>
 <li><p><code>"front"</code>: add an ellipsis at the front</p></li>
 <li><p><code>"mid"</code>: add an ellipsis in the middle</p></li>
 <li><p><code>"abbreviate"</code>: use <code><a href="https://rdrr.io/r/base/abbreviate.html" class="external-link">abbreviate()</a></code></p></li>
 </ul></dd>
+
+
 <dt>short_formatted</dt>
 <dd><p>If provided, a character vector of the same length as
 <code>formatted</code>, to be used when the available width is insufficient to show
 the full output.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -197,7 +222,7 @@ or other attributes of the text, provided e.g. by the <span class="pkg">cli</spa
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

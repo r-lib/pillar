@@ -25,7 +25,7 @@ that are not shown in the body."><!-- mathjax --><script src="https://cdnjs.clou
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pillar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.0</span>
       </span>
     </div>
 
@@ -43,7 +43,7 @@ that are not shown in the body."><!-- mathjax --><script src="https://cdnjs.clou
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -94,33 +94,44 @@ that are not shown in the body.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tbl_format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tbl_format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A tibble-like object.</p></dd>
+
+
 <dt>setup</dt>
 <dd><p>A setup object returned from <code><a href="tbl_format_setup.html">tbl_format_setup()</a></code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>These dots are for future extensions and must be empty.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A character vector.</p>
+    
+
+<p>A character vector.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">tbl_format_footer</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span>, <span class="va">setup</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\033[38;5;246m# … with 334 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\033[39m"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Shortcut for debugging</span></span>
-<span class="r-in"><span class="fu">tbl_format_footer</span><span class="op">(</span><span class="va">setup</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">setup</span> <span class="op">&lt;-</span> <span class="fu"><a href="tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">tbl_format_footer</span><span class="op">(</span><span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html" class="external-link">penguins</a></span>, <span class="va">setup</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\033[38;5;246m# … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,\033[39m"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "\033[38;5;246m#   ²​body_mass_g\033[39m"                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "\033[38;5;246m# ℹ Use `print(n = ...)` to see more rows\033[39m"                                 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Shortcut for debugging</span></span></span>
+<span class="r-in"><span><span class="fu">tbl_format_footer</span><span class="op">(</span><span class="va">setup</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 334 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​body_mass_g</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -135,7 +146,7 @@ that are not shown in the body.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>
