@@ -1617,6 +1617,7 @@
       10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
       <tbl_format_footer(setup)>
       # ... with 22 more rows
+      # i Use `print(n = ...)` to see more rows
     Code
       tbl_format_setup(as_tbl(mtcars), width = 30, n = 8)
     Output
@@ -1641,7 +1642,7 @@
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>,
       #   carb <dbl>
-      # i Use `colnames()` to see all variable names
+      # i Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
     Code
       tbl_format_setup(as_tbl(trees), width = 30, n = 100)
     Output
@@ -1744,6 +1745,7 @@
       10  11.2     75   19.9
       <tbl_format_footer(setup)>
       # ... with more rows
+      # i Use `print(n = ...)` to see more rows
     Code
       # No rows
       tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
@@ -1765,6 +1767,7 @@
       # A data frame: 31 x 0
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
+      # i Use `print(n = ...)` to see more rows
     Code
       # No rows, unknown
       tbl_format_setup(as_unknown_rows(trees[integer(), ]), width = 30, n = 5L)
@@ -1790,6 +1793,7 @@
       <tbl_format_footer(setup)>
       # ... with at least 5 rows
       #   total
+      # i Use `print(n = ...)` to see more rows
     Code
       # Long table, unknown
       tbl_format_setup(as_unknown_rows(new_tbl(list(a = seq.int(10000)))), n = 5L,
@@ -1808,6 +1812,7 @@
       5     5
       <tbl_format_footer(setup)>
       # ... with more rows
+      # i Use `print(n = ...)` to see more rows
 
 # tbl_format_setup() for footnotes
 
