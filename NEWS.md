@@ -1,5 +1,20 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.7.0.9006
+
+## Features
+
+- Offer advice on how to print everything (#567).
+
+## Chore
+
+- Prepare for giving advice (#555) (#566).
+
+## Documentation
+
+- Remove outdated detail in `tbl_sum()` docs (@IndrajeetPatil, #565).
+
+
 # pillar 1.7.0.9005
 
 ## Bug fixes
