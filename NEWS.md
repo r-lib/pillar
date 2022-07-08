@@ -2,35 +2,36 @@
 
 # pillar 1.8.0
 
-- Same as previous version.
+## Display
 
+- Column names that are abbreviated in the header gain a footnote and are printed in full in the footer (#483), 
+after the extra columns (#548). If a column name in the header is abbreviated, all backticks are removed (#525). The new `"pillar.superdigit_sep"` option that determines the string used to separate footnote from column name in the footer (#553).
 
-# pillar 1.7.0.9006
+- The default value of the `pillar.min_title_width` option is changed to 5. This means that effectively the width of a pillar is decided only by the data. Use `options(pillar.min_title_width = 15)` to restore the previous default, see also `?pillar_options` for details (#531).
+
+- Offer advice in the footer on how to print all columns or rows (#567).
+
+- Avoid aligning `NA` inside quotes for very short character vectors (#562).
 
 ## Features
 
-- Offer advice on how to print everything (#567).
+- Pick up `"pillar_focus"` attribute on printing to define focus columns (#549).
 
-## Chore
-
-- Prepare for giving advice (#555) (#566).
-
-## Documentation
-
-- Remove outdated detail in `tbl_sum()` docs (@IndrajeetPatil, #565).
-
-
-# pillar 1.7.0.9005
+- New `ctl_new_rowid_pillar()` generic and default method for customizing the appearance of row IDs (#260, #550, @nbenn).
 
 ## Bug fixes
 
 - Fix printing of `Surv` and `Surv2` objects (#561).
 
-## Features
+- Fix wording for corner case `max_extra_cols = 1` (#535).
 
-- Avoid aligning `NA` inside quotes for very short character vectors (#562).
+- Remove excess underlines for `bit64::integer64()` data of different magnitude (#517, #529).
 
-- Pick up `"pillar_focus"` attribute on printing to define focus columns (#549).
+## Documentation
+
+- `ctl_new_pillar_list()` is documented on a separate help page (#516).
+
+- Remove outdated detail in `?tbl_sum` (@IndrajeetPatil, #565).
 
 ## Chore
 
@@ -38,44 +39,13 @@
 
 - Import ellipsis from rlang (#554).
 
+- Skip test that requires lubridate if it's not installed (#505, @MichaelChirico).
+
 ## API
 
 - Soft-deprecate `colonnade()`, `squeeze()` and `extra_cols()` (#496).
 
-
-# pillar 1.7.0.9004
-
-## Options 
-
-- New `"pillar.superdigit_sep"` option that determines the string used to separate footnote from column name in the footer (#553).
-
-
-# pillar 1.7.0.9003
-
-- New `ctl_new_rowid_pillar()` generic and default method for customizing the appearance of row IDs (#260, #550, @nbenn).
-
-
-# pillar 1.7.0.9002
-
-- Extra columns are shown before abbreviated columns (#548).
-- By default, at least 5 characters from the column name are shown in the header (#546).
-- Fix wording for corner case `max_extra_cols = 1` (#535).
-
-
-# pillar 1.7.0.9001
-
-- The default value of the `pillar.min_title_width` option is changed to 3. This means that effectively the width of a pillar is decided only by the data. Use `options(pillar.min_title_width = 15)` to restore the previous default, see also `?pillar_options` for details (#531).
-- Remove excess underlines for `bit64::integer64()` data of different magnitude (#517, #529).
-- If a column name in the header is abbreviated, all backticks are removed (#525).
-- Column names that are abbreviated in the header gain a footnote and are printed in full in the footer (#483).
-- `ctl_new_pillar_list()` is documented on a separate help page (#516).
 - Require rlang 1.0.1 (#512).
-- Skip test that requires lubridate if it's not installed (#505, @MichaelChirico).
-
-
-# pillar 1.7.0.9000
-
-- Same as previous version.
 
 
 # pillar 1.7.0
@@ -466,14 +436,14 @@
 - The decimal dot is now always printed for numbers of type `numeric`. Trailing zeros are not shown anymore if all displayed numbers are whole numbers (#62).
 - Decimal values longer than 13 characters always print in scientific notation.
 
-# Bug fixes
+## Bug fixes
 
 - Numeric values with a `"class"` attribute (e.g., `Duration` from lubridate) are now formatted using `format()` if the `pillar_shaft()` method is not implemented for that class (#88).
 - Very small numbers (like `1e-310`) are now printed correctly (tidyverse/tibble#377).
 - Fix representation of right-hand side for `getOption("pillar.sigfig") >= 6` (tidyverse/tibble#380).
 - Fix computation of significant figures for numbers with absolute value >= 1 (#98).
 
-# New functions
+## New functions
 
 - New styling helper `style_subtle_num()`, formatting depends on the `pillar.subtle_num` option.
 
