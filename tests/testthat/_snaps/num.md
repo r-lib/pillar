@@ -189,53 +189,53 @@
     Code
       num(123456789 * 10^(-9:1), notation = "dec")
     Output
-      <pillar_num(dec)[11]>
+      <pillar_num[11]>
        [1]          0.123          1.23          12.3          123.          1235.   
        [6]      12346.        123457.       1234568.      12345679.     123456789    
       [11] 1234567890    
     Code
       num(123456789 * 10^(-9:1), notation = "sci")
     Output
-      <pillar_num(sci)[11]>
+      <pillar_num[11]>
        [1] 1.23e-1 1.23e+0 1.23e+1 1.23e+2 1.23e+3 1.23e+4 1.23e+5 1.23e+6 1.23e+7
       [10] 1.23e+8 1.23e+9
     Code
       num(123456789 * 10^(-9:1), notation = "eng")
     Output
-      <pillar_num(eng)[11]>
+      <pillar_num[11]>
        [1] 123.  e-3   1.23e+0  12.3 e+0 123.  e+0   1.23e+3  12.3 e+3 123.  e+3
        [8]   1.23e+6  12.3 e+6 123.  e+6   1.23e+9
     Code
       num(123456789 * 10^(-9:1), notation = "si")
     Output
-      <pillar_num(si)[11]>
+      <pillar_num[11]>
        [1] 123.  m   1.23   12.3   123.      1.23k  12.3 k 123.  k   1.23M  12.3 M
       [10] 123.  M   1.23G
     Code
       num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -Inf)
     Output
-      <pillar_num(sci)|-Inf[11]>
+      <pillar_num[11]>
        [1]           1.23          12.3          123.          1235.         12346.  
        [6]      123457.       1234568.      12345679.     123456789     1234567890   
       [11] 12345678900   
     Code
       num(123456789 * 10^(-9:1), notation = "eng", fixed_exponent = -Inf)
     Output
-      <pillar_num(eng)|-Inf[11]>
+      <pillar_num[11]>
        [1]           123.          1235.         12346.        123457.       1234568.
        [6]      12345679.     123456789     1234567890    12345678900   123456789000 
       [11] 1234567890000 
     Code
       num(123456789 * 10^(-9:1), notation = "si", fixed_exponent = -Inf)
     Output
-      <pillar_num(si)|-Inf[11]>
+      <pillar_num[11]>
        [1]           123.          1235.         12346.        123457.       1234568.
        [6]      12345679.     123456789     1234567890    12345678900   123456789000 
       [11] 1234567890000 
     Code
       num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = -3)
     Output
-      <pillar_num(sci)|-3[11]>
+      <pillar_num[11]>
       Fixed exponent: [e-3]
        [1]           123.          1235.         12346.        123457.       1234568.
        [6]      12345679.     123456789     1234567890    12345678900   123456789000 
@@ -243,7 +243,7 @@
     Code
       num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = 3)
     Output
-      <pillar_num(sci)|3[11]>
+      <pillar_num[11]>
       Fixed exponent: [e3]
        [1]       0.000123       0.00123        0.0123         0.123          1.23    
        [6]      12.3          123.          1235.         12346.        123457.      
@@ -251,7 +251,7 @@
     Code
       num(123456789 * 10^(-9:1), notation = "sci", fixed_exponent = Inf)
     Output
-      <pillar_num(sci)|Inf[11]>
+      <pillar_num[11]>
        [1] 0.000000000123 0.00000000123  0.0000000123   0.000000123    0.00000123    
        [6] 0.0000123      0.000123       0.00123        0.0123         0.123         
       [11] 1.23          
@@ -266,52 +266,52 @@
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 6)
     Output
-      <pillar_num:6[3]>
+      <pillar_num[3]>
       [1] 578890.  240234.   40234.1
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 7)
     Output
-      <pillar_num:7[3]>
+      <pillar_num[3]>
       [1] 578890.2 240234.1  40234.1
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 8)
     Output
-      <pillar_num:8[3]>
+      <pillar_num[3]>
       [1] 578890.23 240234.13  40234.1 
     Code
       num(c(578890.23, 240234.131, 40234.1), sigfig = 9)
     Output
-      <pillar_num:9[3]>
+      <pillar_num[3]>
       [1] 578890.23  240234.131  40234.1  
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = 2)
     Output
-      <pillar_num:.2![3]>
+      <pillar_num[3]>
       [1] 578890.23 240234.13  40234.10
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = 3)
     Output
-      <pillar_num:.3![3]>
+      <pillar_num[3]>
       [1] 578890.230 240234.131  40234.100
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = 4)
     Output
-      <pillar_num:.4![3]>
+      <pillar_num[3]>
       [1] 578890.2300 240234.1310  40234.1000
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = -2)
     Output
-      <pillar_num:.2[3]>
+      <pillar_num[3]>
       [1] 578890.23 240234.13  40234.1 
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = -3)
     Output
-      <pillar_num:.3[3]>
+      <pillar_num[3]>
       [1] 578890.23  240234.131  40234.1  
     Code
       num(c(578890.23, 240234.131, 40234.1), digits = -4)
     Output
-      <pillar_num:.4[3]>
+      <pillar_num[3]>
       [1] 578890.23  240234.131  40234.1  
 
 # forced digits
@@ -437,12 +437,12 @@
     Code
       num(3.23456, sigfig = 4) - num(2)
     Output
-      <pillar_num:4[1]>
+      <pillar_num[1]>
       [1] 1.235
     Code
       num(3, digits = 2) * num(4, sigfig = 2)
     Output
-      <pillar_num:.2![1]>
+      <pillar_num[1]>
       [1] 12.00
     Code
       -num(2)
@@ -455,17 +455,17 @@
     Code
       min(num(1:3, label = "$"))
     Output
-      <pillar_num{$}[1]>
+      <pillar_num[1]>
       [1] 1
     Code
       mean(num(1:3, notation = "eng"))
     Output
-      <pillar_num(eng)[1]>
+      <pillar_num[1]>
       [1] 2e0
     Code
       sin(num(1:3, label = "%", scale = 100))
     Output
-      <pillar_num{%}*100[3]>
+      <pillar_num[3]>
       [1] 84.1 90.9 14.1
 
 # formatting
