@@ -28,6 +28,7 @@ test_that("integer64 output uses underlines correctly", {
 
 test_that("nanotime works (#378)", {
   skip_if_not_installed("nanotime")
+  skip_if_not_installed("vctrs", "0.4.1.9000")
 
   # 0 tests for NA warning too
   x <- nanotime::nanotime('2011-12-05 08:30:00.000', format = "%Y-%m-%d %H:%M:%E9S", tz = "GMT")

@@ -26,6 +26,13 @@ char <- function(x, ..., min_chars = NULL,
 }
 
 #' @export
+vec_ptype_full.pillar_char <- function(x, ...) {
+  # No longer inherited in vctrs > 0.4.1,
+  # https://github.com/r-lib/vctrs/pull/1571
+  format(attr(x, "pillar", exact = TRUE))
+}
+
+#' @export
 vec_ptype_abbr.pillar_char <- function(x, ...) {
   pillar_attr <- attr(x, "pillar", exact = TRUE)
 
