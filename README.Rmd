@@ -48,7 +48,7 @@ It also and defines generics and helpers that are useful for package authors who
 ```{r}
 library(pillar)
 
-x <- 123456789 * (10 ^ c(-3, -5, NA, -8, -10))
+x <- 123456789 * (10^c(-3, -5, NA, -8, -10))
 pillar(x)
 
 tbl_format_setup(tibble::tibble(x))
