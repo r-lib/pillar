@@ -75,3 +75,18 @@ test_that("max_footer_lines option", {
     )
   })
 })
+
+test_that("pillar.advice option (#575)", {
+  local_options(pillar.advice = TRUE)
+  expect_snapshot({
+    tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters))), width = 80))
+  })
+})
+
+test_that("advice when interactive (#575)", {
+  local_interactive()
+  expect_snapshot({
+    tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters))), width = 80))
+    tbl_format_footer(tbl_format_setup(new_tbl(list(a = 1:30)), width = 80))
+  })
+})
