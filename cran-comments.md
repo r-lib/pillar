@@ -1,15 +1,20 @@
-pillar 1.7.0
+pillar 1.8.0
 
 ## Cran Repository Policy
 
-- [x] Reviewed CRP last edited 2021-09-25.
+- [x] Reviewed CRP last edited 2022-05-03.
 
 ## R CMD check results
 
-- [x] Checked locally, R 4.1.2
-- [x] Checked on CI system, R 4.1.2
+- [x] Checked locally, R 4.1.3
+- [x] Checked on CI system, R 4.2.1
 - [x] Checked on win-builder, R devel
+
+Check the boxes above after successful execution and remove this line. Then run `fledge::release()`.
 
 ## Current CRAN check results
 
-- [x] Checked on 2022-02-01, no problems found.
+- [x] Checked on 2022-07-08, problems found: https://cran.r-project.org/web/checks/check_results_pillar.html
+- [x] NOTE: r-devel-linux-x86_64-debian-gcc, r-devel-linux-x86_64-fedora-clang, r-devel-linux-x86_64-fedora-gcc, r-devel-windows-x86_64: Edited NEWS.md .
+
+Check results at: https://cran.r-project.org/web/checks/check_results_pillar.html
