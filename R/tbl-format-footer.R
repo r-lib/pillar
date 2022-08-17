@@ -130,6 +130,10 @@ format_extra_vars <- function(extra_cols, extra_cols_total) {
 }
 
 format_footer_advice <- function(x, setup) {
+  if (!isTRUE(pillar_options$advice())) {
+    return()
+  }
+
   if (length(setup$extra_cols) > 0) {
     cols <- "`colnames()` to see all variable names"
   } else {

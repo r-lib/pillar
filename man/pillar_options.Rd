@@ -75,6 +75,9 @@ and that the column headings correspond to the correct columns.
 \item \code{superdigit_sep}: The string inserted between superscript digits
 and column names in the footnote. Defaults to a \code{"\\u200b"}, a zero-width
 space, on UTF-8 platforms, and to \code{": "} on non-UTF-8 platforms.
+\item \code{advice}: Should advice be displayed in the footer when columns or rows
+are missing from the output? Defaults to \code{TRUE} for interactive sessions,
+and to \code{FALSE} otherwise.
 }
 }
 
