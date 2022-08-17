@@ -77,67 +77,41 @@
 <ul><li>Internal changes only.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.8.0" id="pillar-180">pillar 1.8.0<small>2022-07-18</small><a class="anchor" aria-label="anchor" href="#pillar-180"></a></h2>
-<ul><li>Same as previous version.</li></ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.0.9006" id="pillar-1709006">pillar 1.7.0.9006<a class="anchor" aria-label="anchor" href="#pillar-1709006"></a></h2>
 <div class="section level3">
-<h3 id="features-1-7-0-9006">Features<a class="anchor" aria-label="anchor" href="#features-1-7-0-9006"></a></h3>
-<ul><li>Offer advice on how to print everything (<a href="https://github.com/r-lib/pillar/issues/567" class="external-link">#567</a>).</li></ul></div>
-<div class="section level3">
-<h3 id="chore-1-7-0-9006">Chore<a class="anchor" aria-label="anchor" href="#chore-1-7-0-9006"></a></h3>
-<ul><li>Prepare for giving advice (<a href="https://github.com/r-lib/pillar/issues/555" class="external-link">#555</a>) (<a href="https://github.com/r-lib/pillar/issues/566" class="external-link">#566</a>).</li></ul></div>
-<div class="section level3">
-<h3 id="documentation-1-7-0-9006">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-7-0-9006"></a></h3>
-<ul><li>Remove outdated detail in <code><a href="../reference/tbl_sum.html">tbl_sum()</a></code> docs (<a href="https://github.com/IndrajeetPatil" class="external-link">@IndrajeetPatil</a>, <a href="https://github.com/r-lib/pillar/issues/565" class="external-link">#565</a>).</li></ul></div>
-</div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.0.9005" id="pillar-1709005">pillar 1.7.0.9005<a class="anchor" aria-label="anchor" href="#pillar-1709005"></a></h2>
-<div class="section level3">
-<h3 id="bug-fixes-1-7-0-9005">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-7-0-9005"></a></h3>
-<ul><li>Fix printing of <code>Surv</code> and <code>Surv2</code> objects (<a href="https://github.com/r-lib/pillar/issues/561" class="external-link">#561</a>).</li></ul></div>
-<div class="section level3">
-<h3 id="features-1-7-0-9005">Features<a class="anchor" aria-label="anchor" href="#features-1-7-0-9005"></a></h3>
-<ul><li><p>Avoid aligning <code>NA</code> inside quotes for very short character vectors (<a href="https://github.com/r-lib/pillar/issues/562" class="external-link">#562</a>).</p></li>
-<li><p>Pick up <code>"pillar_focus"</code> attribute on printing to define focus columns (<a href="https://github.com/r-lib/pillar/issues/549" class="external-link">#549</a>).</p></li>
+<h3 id="display-1-8-0">Display<a class="anchor" aria-label="anchor" href="#display-1-8-0"></a></h3>
+<ul><li><p>Column names that are abbreviated in the header gain a footnote and are printed in full in the footer (<a href="https://github.com/r-lib/pillar/issues/483" class="external-link">#483</a>), after the extra columns (<a href="https://github.com/r-lib/pillar/issues/548" class="external-link">#548</a>). If a column name in the header is abbreviated, all backticks are removed (<a href="https://github.com/r-lib/pillar/issues/525" class="external-link">#525</a>). The new <code>"pillar.superdigit_sep"</code> option that determines the string used to separate footnote from column name in the footer (<a href="https://github.com/r-lib/pillar/issues/553" class="external-link">#553</a>).</p></li>
+<li><p>The default value of the <code>pillar.min_title_width</code> option is changed to 5. This means that effectively the width of a pillar is decided only by the data. Use <code>options(pillar.min_title_width = 15)</code> to restore the previous default, see also <code><a href="../reference/pillar_options.html">?pillar_options</a></code> for details (<a href="https://github.com/r-lib/pillar/issues/531" class="external-link">#531</a>).</p></li>
+<li><p>Offer advice in the footer on how to print all columns or rows (<a href="https://github.com/r-lib/pillar/issues/567" class="external-link">#567</a>).</p></li>
+<li><p>Avoid aligning <code>NA</code> inside quotes for very short character vectors (<a href="https://github.com/r-lib/pillar/issues/562" class="external-link">#562</a>).</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="chore-1-7-0-9005">Chore<a class="anchor" aria-label="anchor" href="#chore-1-7-0-9005"></a></h3>
+<h3 id="features-1-8-0">Features<a class="anchor" aria-label="anchor" href="#features-1-8-0"></a></h3>
+<ul><li><p>Pick up <code>"pillar_focus"</code> attribute on printing to define focus columns (<a href="https://github.com/r-lib/pillar/issues/549" class="external-link">#549</a>).</p></li>
+<li><p>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_rowid_pillar()</a></code> generic and default method for customizing the appearance of row IDs (<a href="https://github.com/r-lib/pillar/issues/260" class="external-link">#260</a>, <a href="https://github.com/r-lib/pillar/issues/550" class="external-link">#550</a>, <a href="https://github.com/nbenn" class="external-link">@nbenn</a>).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-1-8-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-0"></a></h3>
+<ul><li><p>Fix printing of <code>Surv</code> and <code>Surv2</code> objects (<a href="https://github.com/r-lib/pillar/issues/561" class="external-link">#561</a>).</p></li>
+<li><p>Fix wording for corner case <code>max_extra_cols = 1</code> (<a href="https://github.com/r-lib/pillar/issues/535" class="external-link">#535</a>).</p></li>
+<li><p>Remove excess underlines for <code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html" class="external-link">bit64::integer64()</a></code> data of different magnitude (<a href="https://github.com/r-lib/pillar/issues/517" class="external-link">#517</a>, <a href="https://github.com/r-lib/pillar/issues/529" class="external-link">#529</a>).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-1-8-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-8-0"></a></h3>
+<ul><li><p><code><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list()</a></code> is documented on a separate help page (<a href="https://github.com/r-lib/pillar/issues/516" class="external-link">#516</a>).</p></li>
+<li><p>Remove outdated detail in <code><a href="../reference/tbl_sum.html">?tbl_sum</a></code> (<a href="https://github.com/IndrajeetPatil" class="external-link">@IndrajeetPatil</a>, <a href="https://github.com/r-lib/pillar/issues/565" class="external-link">#565</a>).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="chore-1-8-0">Chore<a class="anchor" aria-label="anchor" href="#chore-1-8-0"></a></h3>
 <ul><li><p>Drop crayon dependency (<a href="https://github.com/r-lib/pillar/issues/559" class="external-link">#559</a>).</p></li>
 <li><p>Import ellipsis from rlang (<a href="https://github.com/r-lib/pillar/issues/554" class="external-link">#554</a>).</p></li>
+<li><p>Skip test that requires lubridate if it’s not installed (<a href="https://github.com/r-lib/pillar/issues/505" class="external-link">#505</a>, <a href="https://github.com/MichaelChirico" class="external-link">@MichaelChirico</a>).</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="api-1-7-0-9005">API<a class="anchor" aria-label="anchor" href="#api-1-7-0-9005"></a></h3>
-<ul><li>Soft-deprecate <code><a href="../reference/colonnade.html">colonnade()</a></code>, <code><a href="../reference/squeeze.html">squeeze()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> (<a href="https://github.com/r-lib/pillar/issues/496" class="external-link">#496</a>).</li></ul></div>
-</div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.0.9004" id="pillar-1709004">pillar 1.7.0.9004<a class="anchor" aria-label="anchor" href="#pillar-1709004"></a></h2>
-<div class="section level3">
-<h3 id="options-1-7-0-9004">Options<a class="anchor" aria-label="anchor" href="#options-1-7-0-9004"></a></h3>
-<ul><li>New <code>"pillar.superdigit_sep"</code> option that determines the string used to separate footnote from column name in the footer (<a href="https://github.com/r-lib/pillar/issues/553" class="external-link">#553</a>).</li></ul></div>
-</div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.0.9003" id="pillar-1709003">pillar 1.7.0.9003<a class="anchor" aria-label="anchor" href="#pillar-1709003"></a></h2>
-<ul><li>New <code><a href="../reference/ctl_new_pillar.html">ctl_new_rowid_pillar()</a></code> generic and default method for customizing the appearance of row IDs (<a href="https://github.com/r-lib/pillar/issues/260" class="external-link">#260</a>, <a href="https://github.com/r-lib/pillar/issues/550" class="external-link">#550</a>, <a href="https://github.com/nbenn" class="external-link">@nbenn</a>).</li></ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.0.9002" id="pillar-1709002">pillar 1.7.0.9002<a class="anchor" aria-label="anchor" href="#pillar-1709002"></a></h2>
-<ul><li>Extra columns are shown before abbreviated columns (<a href="https://github.com/r-lib/pillar/issues/548" class="external-link">#548</a>).</li>
-<li>By default, at least 5 characters from the column name are shown in the header (<a href="https://github.com/r-lib/pillar/issues/546" class="external-link">#546</a>).</li>
-<li>Fix wording for corner case <code>max_extra_cols = 1</code> (<a href="https://github.com/r-lib/pillar/issues/535" class="external-link">#535</a>).</li>
+<h3 id="api-1-8-0">API<a class="anchor" aria-label="anchor" href="#api-1-8-0"></a></h3>
+<ul><li><p>Soft-deprecate <code><a href="../reference/colonnade.html">colonnade()</a></code>, <code><a href="../reference/squeeze.html">squeeze()</a></code> and <code><a href="../reference/extra_cols.html">extra_cols()</a></code> (<a href="https://github.com/r-lib/pillar/issues/496" class="external-link">#496</a>).</p></li>
+<li><p>Require rlang 1.0.1 (<a href="https://github.com/r-lib/pillar/issues/512" class="external-link">#512</a>).</p></li>
 </ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.0.9001" id="pillar-1709001">pillar 1.7.0.9001<a class="anchor" aria-label="anchor" href="#pillar-1709001"></a></h2>
-<ul><li>The default value of the <code>pillar.min_title_width</code> option is changed to 3. This means that effectively the width of a pillar is decided only by the data. Use <code>options(pillar.min_title_width = 15)</code> to restore the previous default, see also <code><a href="../reference/pillar_options.html">?pillar_options</a></code> for details (<a href="https://github.com/r-lib/pillar/issues/531" class="external-link">#531</a>).</li>
-<li>Remove excess underlines for <code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html" class="external-link">bit64::integer64()</a></code> data of different magnitude (<a href="https://github.com/r-lib/pillar/issues/517" class="external-link">#517</a>, <a href="https://github.com/r-lib/pillar/issues/529" class="external-link">#529</a>).</li>
-<li>If a column name in the header is abbreviated, all backticks are removed (<a href="https://github.com/r-lib/pillar/issues/525" class="external-link">#525</a>).</li>
-<li>Column names that are abbreviated in the header gain a footnote and are printed in full in the footer (<a href="https://github.com/r-lib/pillar/issues/483" class="external-link">#483</a>).</li>
-<li>
-<code><a href="../reference/ctl_new_pillar_list.html">ctl_new_pillar_list()</a></code> is documented on a separate help page (<a href="https://github.com/r-lib/pillar/issues/516" class="external-link">#516</a>).</li>
-<li>Require rlang 1.0.1 (<a href="https://github.com/r-lib/pillar/issues/512" class="external-link">#512</a>).</li>
-<li>Skip test that requires lubridate if it’s not installed (<a href="https://github.com/r-lib/pillar/issues/505" class="external-link">#505</a>, <a href="https://github.com/MichaelChirico" class="external-link">@MichaelChirico</a>).</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.0.9000" id="pillar-1709000">pillar 1.7.0.9000<a class="anchor" aria-label="anchor" href="#pillar-1709000"></a></h2>
-<ul><li>Same as previous version.</li></ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.7.0" id="pillar-170">pillar 1.7.0<small>2022-02-01</small><a class="anchor" aria-label="anchor" href="#pillar-170"></a></h2>
 <div class="section level3">
@@ -488,6 +462,16 @@
 <li>The decimal dot is now always printed for numbers of type <code>numeric</code>. Trailing zeros are not shown anymore if all displayed numbers are whole numbers (<a href="https://github.com/r-lib/pillar/issues/62" class="external-link">#62</a>).</li>
 <li>Decimal values longer than 13 characters always print in scientific notation.</li>
 </ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-1-2-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-2-1"></a></h3>
+<ul><li>Numeric values with a <code>"class"</code> attribute (e.g., <code>Duration</code> from lubridate) are now formatted using <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> if the <code><a href="../reference/pillar_shaft.html">pillar_shaft()</a></code> method is not implemented for that class (<a href="https://github.com/r-lib/pillar/issues/88" class="external-link">#88</a>).</li>
+<li>Very small numbers (like <code>1e-310</code>) are now printed correctly (tidyverse/tibble#377).</li>
+<li>Fix representation of right-hand side for <code>getOption("pillar.sigfig") &gt;= 6</code> (tidyverse/tibble#380).</li>
+<li>Fix computation of significant figures for numbers with absolute value &gt;= 1 (<a href="https://github.com/r-lib/pillar/issues/98" class="external-link">#98</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-functions-1-2-1">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-2-1"></a></h3>
+<ul><li>New styling helper <code><a href="../reference/style_subtle.html">style_subtle_num()</a></code>, formatting depends on the <code>pillar.subtle_num</code> option.</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.1.0" id="pillar-110">pillar 1.1.0<small>2018-01-14</small><a class="anchor" aria-label="anchor" href="#pillar-110"></a></h2>
