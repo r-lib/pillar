@@ -2,19 +2,9 @@
 
 # pillar 1.8.1
 
-- Same as previous version.
-
-
-# pillar 1.8.0.9001
-
 ## Features
 
 - New `pillar.advice` option to turn off advice in the footer, see `?pillar_options`. Now off by default in non-interactive mode (#577).
-
-
-# pillar 1.8.0.9000
-
-- Internal changes only.
 
 
 # pillar 1.8.0
