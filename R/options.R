@@ -143,6 +143,12 @@ pillar_options <- list2(
   superdigit_sep = make_option_impl(
     getOption("pillar.superdigit_sep", default = superdigit_sep_default())
   ),
+  #' - `advice`: Should advice be displayed in the footer when columns or rows
+  #'   are missing from the output? Defaults to `TRUE` for interactive sessions,
+  #'   and to `FALSE` otherwise.
+  advice = make_option_impl(
+    getOption("pillar.advice", default = is_interactive())
+  ),
 )
 
 tibble_opt <- function(x, default) {

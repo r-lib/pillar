@@ -15,7 +15,6 @@
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
       #   with 3 more variables: column_zero_zero <dbl>, `col 01` <tbl[,3]>, `col 05` <ord>
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 5)
     Output
@@ -35,7 +34,6 @@
       #   variables:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,3]>, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 6)
     Output
@@ -55,7 +53,6 @@
       #   variables:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,3]>, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 7)
     Output
@@ -75,7 +72,6 @@
       #   variables:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,3]>, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 8)
     Output
@@ -94,7 +90,6 @@
       #   variables:
       #   column_zero_zero <dbl>,
       #   `col 01` <tbl[,3]>, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 9)
     Output
@@ -117,7 +112,6 @@
       #   variables:
       #   `col 01` <tbl[,3]>,
       #   `col 05` <ord>, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 10)
     Output
@@ -139,7 +133,6 @@
       #   variables:
       #   `col 01` <tbl[,3]>,
       #   `col 05` <ord>, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 11)
     Output
@@ -162,7 +155,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 12)
     Output
@@ -185,7 +177,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 13)
     Output
@@ -208,7 +199,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 14)
     Output
@@ -231,7 +221,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 15)
     Output
@@ -254,7 +243,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 16)
     Output
@@ -276,7 +264,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 17)
     Output
@@ -298,7 +285,6 @@
       #   $`col 04` <int[,3]>,
       #   `col 05` <ord>,
       #   and ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 18)
     Output
@@ -320,7 +306,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 19)
     Output
@@ -342,7 +327,6 @@
       #   `col 05` <ord>,
       #   and
       #   abbreviated ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 20)
     Output
@@ -364,7 +348,6 @@
       #   `col 05` <ord>,
       #   and abbreviated
       #   variable ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 21)
     Output
@@ -386,7 +369,6 @@
       #   `col 05` <ord>,
       #   and abbreviated
       #   variable ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 22)
     Output
@@ -407,7 +389,6 @@
       #   `col 05` <ord>,
       #   and abbreviated
       #   variable ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 23)
     Output
@@ -428,7 +409,6 @@
       #   `col 05` <ord>,
       #   and abbreviated
       #   variable names ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 24)
     Output
@@ -449,7 +429,6 @@
       #   `col 05` <ord>, and
       #   abbreviated
       #   variable names ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 25)
     Output
@@ -470,7 +449,6 @@
       #   and abbreviated
       #   variable names
       #   1: column_zero_zero, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 26)
     Output
@@ -491,7 +469,6 @@
       #   and abbreviated
       #   variable names
       #   1: column_zero_zero, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 27)
     Output
@@ -512,7 +489,6 @@
       #   and abbreviated
       #   variable names
       #   1: column_zero_zero, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 28)
     Output
@@ -533,7 +509,6 @@
       #   and abbreviated
       #   variable names
       #   1: column_zero_zero, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 29)
     Output
@@ -554,7 +529,6 @@
       #   names
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 30)
     Output
@@ -575,7 +549,6 @@
       #   names
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`, ...
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 31)
     Output
@@ -596,7 +569,6 @@
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 32)
     Output
@@ -617,7 +589,6 @@
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 33)
     Output
@@ -638,7 +609,6 @@
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 34)
     Output
@@ -658,7 +628,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 35)
     Output
@@ -678,7 +647,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 36)
     Output
@@ -698,7 +666,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 37)
     Output
@@ -718,7 +685,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 38)
     Output
@@ -737,7 +703,6 @@
       #   $`col 04` <int[,3]>, and
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 39)
     Output
@@ -756,7 +721,6 @@
       #   $`col 04` <int[,3]>, and
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 40)
     Output
@@ -775,7 +739,6 @@
       #   $`col 04` <int[,3]>, and
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 41)
     Output
@@ -794,7 +757,6 @@
       #   $`col 04` <int[,3]>, and abbreviated
       #   variable names 1: `col 01`$`col 02`,
       #   2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 42)
     Output
@@ -813,7 +775,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 43)
     Output
@@ -832,7 +793,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 44)
     Output
@@ -851,7 +811,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 45)
     Output
@@ -870,7 +829,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 46)
     Output
@@ -889,7 +847,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 47)
     Output
@@ -908,7 +865,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 48)
     Output
@@ -927,7 +883,6 @@
       #   abbreviated variable names
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 49)
     Output
@@ -945,7 +900,6 @@
       #   `col 01`$`col 04` <int[,3]>, and abbreviated
       #   variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 50)
     Output
@@ -963,7 +917,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 51)
     Output
@@ -981,7 +934,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 52)
     Output
@@ -999,7 +951,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 53)
     Output
@@ -1017,7 +968,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 54)
     Output
@@ -1035,7 +985,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 55)
     Output
@@ -1053,7 +1002,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 56)
     Output
@@ -1071,7 +1019,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 57)
     Output
@@ -1089,7 +1036,6 @@
       #   `col 01`$`col 04`[2:3] <int>, and abbreviated
       #   variable names 1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 58)
     Output
@@ -1106,7 +1052,6 @@
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
       #   and abbreviated variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 59)
     Output
@@ -1123,7 +1068,6 @@
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
       #   and abbreviated variable names 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 60)
     Output
@@ -1140,7 +1084,6 @@
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
       #   and abbreviated variable names 1: $`col 03`,
       #   2: $`col 04`[,"A"], 3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 61)
     Output
@@ -1157,7 +1100,6 @@
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
       #   and abbreviated variable names 1: $`col 03`,
       #   2: $`col 04`[,"A"], 3: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 62)
     Output
@@ -1174,7 +1116,6 @@
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"],
       #   2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 63)
     Output
@@ -1190,7 +1131,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 64)
     Output
@@ -1206,7 +1146,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 65)
     Output
@@ -1222,7 +1161,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 66)
     Output
@@ -1238,7 +1176,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 67)
     Output
@@ -1254,7 +1191,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 68)
     Output
@@ -1270,7 +1206,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 69)
     Output
@@ -1286,7 +1221,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 70)
     Output
@@ -1302,7 +1236,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 71)
     Output
@@ -1318,7 +1251,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and
       #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 72)
     Output
@@ -1334,7 +1266,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
       #   variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 73)
     Output
@@ -1350,7 +1281,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
       #   variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 74)
     Output
@@ -1366,7 +1296,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
       #   variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 75)
     Output
@@ -1382,7 +1311,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
       #   variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 76)
     Output
@@ -1398,7 +1326,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
       #   variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 77)
     Output
@@ -1414,7 +1341,6 @@
       <tbl_format_footer(setup)>
       # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
       #   variable names 1: $`col 04`[,"A"], 2: `col 05`
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_setup(x, width = 78)
     Output
@@ -1617,7 +1543,6 @@
       10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
       <tbl_format_footer(setup)>
       # ... with 22 more rows
-      # i Use `print(n = ...)` to see more rows
     Code
       tbl_format_setup(as_tbl(mtcars), width = 30, n = 8)
     Output
@@ -1642,7 +1567,6 @@
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>,
       #   carb <dbl>
-      # i Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
     Code
       tbl_format_setup(as_tbl(trees), width = 30, n = 100)
     Output
@@ -1745,7 +1669,6 @@
       10  11.2     75   19.9
       <tbl_format_footer(setup)>
       # ... with more rows
-      # i Use `print(n = ...)` to see more rows
     Code
       # No rows
       tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
@@ -1757,7 +1680,6 @@
       <tbl_format_footer(setup)>
       # ... with 2 variables:
       #   a <chr>, b <lgl>
-      # i Use `colnames()` to see all variable names
     Code
       # No columns
       tbl_format_setup(as_tbl(trees[character()]), width = 30, n = 5L)
@@ -1767,7 +1689,6 @@
       # A data frame: 31 x 0
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # i Use `print(n = ...)` to see more rows
     Code
       # No rows, unknown
       tbl_format_setup(as_unknown_rows(trees[integer(), ]), width = 30, n = 5L)
@@ -1781,7 +1702,6 @@
       #   Girth <dbl>,
       #   Height <dbl>,
       #   Volume <dbl>
-      # i Use `colnames()` to see all variable names
     Code
       # No columns, unknown
       tbl_format_setup(as_unknown_rows(trees[, character()]), width = 30, n = 5L)
@@ -1793,7 +1713,6 @@
       <tbl_format_footer(setup)>
       # ... with at least 5 rows
       #   total
-      # i Use `print(n = ...)` to see more rows
     Code
       # Long table, unknown
       tbl_format_setup(as_unknown_rows(new_tbl(list(a = seq.int(10000)))), n = 5L,
@@ -1812,7 +1731,6 @@
       5     5
       <tbl_format_footer(setup)>
       # ... with more rows
-      # i Use `print(n = ...)` to see more rows
 
 # tbl_format_setup() for footnotes
 
@@ -1831,7 +1749,6 @@
       <tbl_format_footer(setup)>
       # ... with 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
       #   xxxnop <dbl>
-      # i Use `colnames()` to see all variable names
 
 # tbl_format_setup() for footnotes with min_title_chars = 4
 
@@ -1850,7 +1767,6 @@
       <tbl_format_footer(setup)>
       # ... with 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
       #   xxxnop <dbl>
-      # i Use `colnames()` to see all variable names
 
 # tbl_format_setup() for footnotes with UTF-8 output
 
@@ -1869,5 +1785,4 @@
       <tbl_format_footer(setup)>
       # … with 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
       #   xxxnop <dbl>
-      # ℹ Use `colnames()` to see all variable names
 
