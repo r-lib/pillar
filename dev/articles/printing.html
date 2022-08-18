@@ -142,8 +142,8 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>The overall control and data flow are illustrated in the diagram below. Boxes are functions and methods. Solid lines are function calls. Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.</p>
-<div id="htmlwidget-711db213e9ba9d989afa" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-711db213e9ba9d989afa">{"x":{"diagram":["graph TD","  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]","  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]","  options(Options: n and n_extra) -.-> tbl_format_setup","  format.tbl --> tbl_format_header[\"tbl_format_header()\"]","  format.tbl --> tbl_format_body[\"tbl_format_body()\"]","  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]","  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]","  tbl_sum -.-> setup(Setup object)","  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]","  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]","  ctl_new_pillar -.-> setup(Setup object)","  setup -.-> tbl_format_header","  setup -.-> tbl_format_body","  setup -.-> tbl_format_footer","  tbl_format_header -.-> print(Printed output)","  tbl_format_body -.-> print","  tbl_format_footer -.-> print"]},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
+<div id="htmlwidget-f3b4dfaeac6ef7c2b59c" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f3b4dfaeac6ef7c2b59c">{"x":{"diagram":["graph TD","  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]","  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]","  options(Options: n and n_extra) -.-> tbl_format_setup","  format.tbl --> tbl_format_header[\"tbl_format_header()\"]","  format.tbl --> tbl_format_body[\"tbl_format_body()\"]","  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]","  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]","  tbl_sum -.-> setup(Setup object)","  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]","  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]","  ctl_new_pillar -.-> setup(Setup object)","  setup -.-> tbl_format_header","  setup -.-> tbl_format_body","  setup -.-> tbl_format_footer","  tbl_format_header -.-> print(Printed output)","  tbl_format_body -.-> print","  tbl_format_footer -.-> print"]},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging for pillar is another way to track the control flow, see <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
 <div class="section level2">
 <h2 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
@@ -161,7 +161,6 @@
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   variable:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   b$d &lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span></span>
 <span><span class="co">#&gt; tibble [3 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
 <span><span class="co">#&gt;  $ a: int [1:3] 1 2 3</span></span>
@@ -210,8 +209,7 @@ Source code of <code>pillar:::format.tbl()</code>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   variable: b$d &lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   variable: b$d &lt;int&gt;</span></span></span></code></pre></div>
 <p>A setup object is required here to avoid computing information twice. For instance, the dimensions shown in the header or the extra columns displayed in the footer are available only after the body has been computed.</p>
 <p>The generic dispatches over the container, so that you can override it if necessary. It is responsible for assigning default values to arguments before passing them on to the method.</p>
 <details><summary>
@@ -334,9 +332,8 @@ Source code of <code>pillar:::tbl_format_setup.tbl()</code>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5    11</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span></span>
 <span><span class="fu"><a href="../reference/tbl_format_footer.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "\033[38;5;246m# … with 1 more\033[39m"                               </span></span>
-<span><span class="co">#&gt; [2] "\033[38;5;246m#   variable: b$d &lt;int&gt;\033[39m"                       </span></span>
-<span><span class="co">#&gt; [3] "\033[38;5;246m# ℹ Use `colnames()` to see all variable names\033[39m"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "\033[38;5;246m# … with 1 more\033[39m"        </span></span>
+<span><span class="co">#&gt; [2] "\033[38;5;246m#   variable: b$d &lt;int&gt;\033[39m"</span></span></code></pre></div>
 <p>(The body is returned as a classed object with a <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> method, it is still a <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> under the hood.)</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="fu"><a href="../reference/tbl_format_body.html">tbl_format_body</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span><span class="op">)</span></span>
