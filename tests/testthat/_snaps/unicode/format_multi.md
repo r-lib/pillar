@@ -116,6 +116,7 @@
       [1m[33mWarning[39m:[22m
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      [90mCall `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.[39m
     Output
         a_very_long_…
                 [3m[90m<dbl>[39m[23m

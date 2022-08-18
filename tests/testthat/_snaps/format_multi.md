@@ -25,24 +25,28 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Code
       colonnade(x, width = 5)
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Code
       colonnade(x, width = 6)
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Code
       colonnade(x, width = 7)
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         colu~
         <dbl>
@@ -55,6 +59,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         colum~
          <dbl>
@@ -67,6 +72,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~
           <dbl>
@@ -79,6 +85,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_~
            <dbl>
@@ -91,6 +98,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_z~
             <dbl>
@@ -103,6 +111,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_ze~
              <dbl>
@@ -115,6 +124,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~
           <dbl>
@@ -127,6 +137,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~
           <dbl>
@@ -139,6 +150,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~
           <dbl>
@@ -151,6 +163,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02
           <dbl> <chr> 
@@ -163,6 +176,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_~ col_02
            <dbl> <chr> 
@@ -175,6 +189,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_z~ col_02
             <dbl> <chr> 
@@ -187,6 +202,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02
           <dbl> <chr> 
@@ -199,6 +215,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02
           <dbl> <chr> 
@@ -211,6 +228,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02
           <dbl> <chr> 
@@ -223,6 +241,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02
           <dbl> <chr> 
@@ -235,6 +254,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02 col_03
           <dbl> <chr>  <fct> 
@@ -247,6 +267,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_~ col_02 col_03
            <dbl> <chr>  <fct> 
@@ -259,6 +280,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02 col_03
           <dbl> <chr>  <fct> 
@@ -271,6 +293,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02 col_03
           <dbl> <chr>  <fct> 
@@ -283,6 +306,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02 col_03
           <dbl> <chr>  <fct> 
@@ -295,6 +319,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02 col_03
           <dbl> <chr>  <fct> 
@@ -307,6 +332,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02 col_03
           <dbl> <chr>  <fct> 
@@ -319,6 +345,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column~ col_02 col_03 col_04
           <dbl> <chr>  <fct>  <ord> 
@@ -331,6 +358,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_~ col_02 col_03 col_04
            <dbl> <chr>  <fct>  <ord> 
@@ -343,6 +371,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_z~ col_02 col_03 col_04
             <dbl> <chr>  <fct>  <ord> 
@@ -355,6 +384,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_ze~ col_02 col_03 col_04
              <dbl> <chr>  <fct>  <ord> 
@@ -367,6 +397,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_zer~ col_02 col_03 col_04
               <dbl> <chr>  <fct>  <ord> 
@@ -379,6 +410,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_zero~ col_02 col_03 col_04
                <dbl> <chr>  <fct>  <ord> 
@@ -391,6 +423,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_zero_~ col_02 col_03 col_04
                 <dbl> <chr>  <fct>  <ord> 
@@ -403,6 +436,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_zero_o~ col_02 col_03 col_04
                  <dbl> <chr>  <fct>  <ord> 
@@ -415,6 +449,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_zero_one col_02 col_03 col_04
                   <dbl> <chr>  <fct>  <ord> 
@@ -427,6 +462,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_zero_one col_02 col_03 col_04
                   <dbl> <chr>  <fct>  <ord> 
@@ -439,6 +475,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         column_zero_one col_02 col_03 col_04
                   <dbl> <chr>  <fct>  <ord> 
@@ -454,6 +491,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         <chr>                                              
       1 a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -472,6 +510,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
       col_02 <chr>
       col_03 <fct>
@@ -485,6 +524,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
       col_03 <fct>
       col_04 <ord>
@@ -497,6 +537,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 
 ---
 
@@ -506,6 +547,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 
 ---
 
@@ -515,6 +557,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 
 # tests from tibble
 
@@ -524,6 +567,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
           mpg   cyl  disp    hp
       * <dbl> <dbl> <dbl> <dbl>
@@ -541,6 +585,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         Girth Height
         <dbl>  <dbl>
@@ -555,6 +600,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         Girth
         <dbl>
@@ -567,6 +613,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c     d    
         <dbl> <int> <lgl> <chr>
@@ -579,6 +626,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c     d     e     f          g                   h        
         <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
@@ -597,6 +645,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c     d     e     f          g                  
         <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>             
@@ -615,6 +664,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c     d     e     f         
         <dbl> <int> <lgl> <chr> <fct> <date>    
@@ -633,6 +683,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c     d     e     f         
         <dbl> <int> <lgl> <chr> <fct> <date>    
@@ -651,6 +702,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c     d     e    
         <dbl> <int> <lgl> <chr> <fct>
@@ -674,6 +726,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c     d    
         <dbl> <int> <lgl> <chr>
@@ -702,6 +755,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a     b c    
         <dbl> <int> <lgl>
@@ -741,6 +795,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         `\n`  `\r` 
         <chr> <fct>
@@ -752,6 +807,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         a    
         <chr>
@@ -765,6 +821,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
         `mean(x)` `var(x)`
             <dbl>    <dbl>
@@ -778,6 +835,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
          `NA` <int>
         <int> <int>
@@ -793,6 +851,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
           sep
         <int>
@@ -829,6 +888,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a   b$c    $d
         <int> <int> <int>
@@ -844,6 +904,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a   b$c    $d  $e$f   $$g
         <int> <int> <int> <int> <int>
@@ -859,6 +920,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a   b$c    $d $e          $f
         <int> <int> <int> <df[,0]> <int>
@@ -874,6 +936,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a b[,1]  [,2]
         <int> <int> <int>
@@ -889,6 +952,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a b[,"c"] [,"d"]
         <int>   <int>  <int>
@@ -904,6 +968,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
             a b             c
         <int> <int[,0]> <int>
