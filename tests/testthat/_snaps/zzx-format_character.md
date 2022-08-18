@@ -6,6 +6,7 @@
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
       Please use `tbl_format_setup()` instead.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
          chars          desc              
          <chr>          <chr>             
