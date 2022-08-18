@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.8.0.9001
+
+## Features
+
+- New `pillar.advice` option to turn off advice in the footer, see `?pillar_options`. Now off by default in non-interactive mode (#577).
+
+
 # pillar 1.8.0.9000
 
 - Internal changes only.
