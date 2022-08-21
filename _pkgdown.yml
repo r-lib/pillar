@@ -1,3 +1,11 @@
+template:
+  package: tidytemplate
+  bootstrap: 5
+
+  includes:
+    in_header: |
+      <script defer data-domain="pillar.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
+
 url: https://pillar.r-lib.org/
 
 reference:
@@ -42,10 +50,22 @@ reference:
       - pillar_options
       - pillar-package
 
+articles:
+  - title: Articles
+    navbar: ~
+    contents:
+    - extending
+    - printing
+    - debugme
+
+  - title: Moved elsewhere
+    contents:
+    - digits
+    - numbers
+
 navbar:
   structure:
     left:
-    - home
     - options
     - reference
     - articles
@@ -53,30 +73,9 @@ navbar:
     - news
     right: github
   components:
-    home:
-      icon: fas fa-home fa-lg
-      href: index.html
     options:
       text: Options
       href: "reference/pillar_options.html"
-    reference:
-      text: Reference
-      href: reference/index.html
-    news:
-      text: Changelog
-      href: news/index.html
-    github:
-      icon: fab fa-github fa-lg
-      href: https://github.com/r-lib/pillar/
-    articles:
-      text: Articles
-      menu:
-      - text: Custom formatting
-        href: articles/extending.html
-      - text: 'Printing a tibble: Control and data flow'
-        href: articles/printing.html
-      - text: 'Printing a tibble: Tracking control flow'
-        href: articles/debugme.html
 
 development:
   mode: auto
