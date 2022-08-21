@@ -1,144 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://pillar.r-lib.org/CODE_OF_CONDUCT.html</loc>
+    <loc>https://pillar.r-lib.org/dev/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/LICENSE-text.html</loc>
+    <loc>https://pillar.r-lib.org/dev/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/LICENSE.html</loc>
+    <loc>https://pillar.r-lib.org/dev/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/articles/debugme.html</loc>
+    <loc>https://pillar.r-lib.org/dev/articles/debugme.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/articles/digits.html</loc>
+    <loc>https://pillar.r-lib.org/dev/articles/digits.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/articles/extending.html</loc>
+    <loc>https://pillar.r-lib.org/dev/articles/extending.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/articles/index.html</loc>
+    <loc>https://pillar.r-lib.org/dev/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/articles/numbers.html</loc>
+    <loc>https://pillar.r-lib.org/dev/articles/numbers.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/articles/printing.html</loc>
+    <loc>https://pillar.r-lib.org/dev/articles/printing.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/authors.html</loc>
+    <loc>https://pillar.r-lib.org/dev/authors.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/index.html</loc>
+    <loc>https://pillar.r-lib.org/dev/index.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/news/index.html</loc>
+    <loc>https://pillar.r-lib.org/dev/news/index.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/align.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/align.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/char.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/char.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/colonnade.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/colonnade.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/ctl_new_pillar.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/ctl_new_pillar.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/ctl_new_pillar_list.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/ctl_new_pillar_list.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/deprecated.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/deprecated.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/dim_desc.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/dim_desc.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/extra_cols.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/extra_cols.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/format_glimpse.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/format_glimpse.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/format_tbl.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/format_tbl.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/format_type_sum.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/format_type_sum.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/get_extent.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/get_extent.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/glimpse.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/glimpse.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/index.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/new_ornament.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/new_ornament.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/new_pillar.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/new_pillar.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/new_pillar_component.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/new_pillar_component.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/new_pillar_shaft.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/new_pillar_shaft.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/new_pillar_title.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/new_pillar_title.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/new_pillar_type.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/new_pillar_type.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/new_tbl_format_setup.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/new_tbl_format_setup.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/num.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/num.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/pillar-package.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/pillar-package.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/pillar.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/pillar.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/pillar_options.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/pillar_options.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/pillar_shaft.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/pillar_shaft.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/scale_x_num.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/scale_x_num.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/squeeze.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/squeeze.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/style_subtle.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/style_subtle.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/tbl_format_body.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/tbl_format_body.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/tbl_format_footer.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/tbl_format_footer.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/tbl_format_header.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/tbl_format_header.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/tbl_format_setup.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/tbl_format_setup.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/tbl_sum.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/tbl_sum.html</loc>
   </url>
   <url>
-    <loc>https://pillar.r-lib.org/reference/type_sum.html</loc>
+    <loc>https://pillar.r-lib.org/dev/reference/type_sum.html</loc>
   </url>
 </urlset>
