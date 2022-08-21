@@ -80,6 +80,7 @@ navbar:
 
 development:
   mode: auto
+  destination: options
 
 authors:
   Kirill Müller:
