@@ -281,9 +281,9 @@ vec_cast.double.pillar_num <- function(x, to, ...) {
 }
 #' @export
 vec_cast.pillar_num.double <- function(x, to, ...) {
-  vec_restore(vec_proxy(x), to)
+  num(x)
 }
 #' @export
 vec_cast.pillar_num.integer <- function(x, to, ...) {
-  vec_restore(as.numeric(x), to)
+  num(x)
 }
