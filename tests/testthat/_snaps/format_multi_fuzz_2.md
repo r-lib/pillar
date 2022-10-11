@@ -9,7 +9,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `28`                        
         <chr>                       
@@ -50,7 +50,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `28`                        
         <chr>                       
@@ -160,7 +160,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `40`                                 
         <chr>                                
@@ -243,7 +243,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `11`       
         <chr>      
@@ -308,7 +308,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `18`              
         <chr>             
@@ -418,7 +418,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `43`                          
         <chr>                         
@@ -471,7 +471,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `37`                         
         <chr>                        
@@ -596,7 +596,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `31`                           
         <chr>                          
@@ -637,7 +637,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `43`                                       
         <chr>                                      
@@ -705,7 +705,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `40`                           
         <chr>                          
@@ -827,7 +827,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `43`                          
         <chr>                         
@@ -913,7 +913,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `5`   `24`                    
         <chr> <chr>                   
@@ -1020,7 +1020,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `7`    
         <chr>  
@@ -1094,7 +1094,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `38`                             
         <chr>                            
@@ -1141,7 +1141,7 @@
     Condition
       Warning:
       `colonnade()` was deprecated in pillar 1.7.0.
-      Please use `tbl_format_setup()` instead.
+      i Please use `tbl_format_setup()` instead.
     Output
         `22`                   `9`      
         <chr>                  <chr>    
