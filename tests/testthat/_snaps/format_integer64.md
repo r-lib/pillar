@@ -98,66 +98,66 @@
       pillar(x, width = 16)
     Output
       <pillar>
-      <nanotime>      
+      <int64>         
       2011-12-05T08:3~
     Code
       pillar(x, width = 17)
     Output
       <pillar>
-      <nanotime>       
+      <int64>          
       2011-12-05T08:30~
     Code
       pillar(x, width = 18)
     Output
       <pillar>
-      <nanotime>        
+      <int64>           
       2011-12-05T08:30:~
     Code
       pillar(x, width = 19)
     Output
       <pillar>
-      <nanotime>         
+      <int64>            
       2011-12-05T08:30:0~
     Code
       pillar(x, width = 20)
     Output
       <pillar>
-      <nanotime>          
+      <int64>             
       2011-12-05T08:30:00~
     Code
       pillar(x, width = 21)
     Output
       <pillar>
-      <nanotime>           
+      <int64>              
       2011-12-05T08:30:00+~
     Code
       pillar(x, width = 22)
     Output
       <pillar>
-      <nanotime>            
+      <int64>               
       2011-12-05T08:30:00+0~
     Code
       pillar(x, width = 23)
     Output
       <pillar>
-      <nanotime>             
+      <int64>                
       2011-12-05T08:30:00+00~
     Code
       pillar(x, width = 24)
     Output
       <pillar>
-      <nanotime>              
+      <int64>                 
       2011-12-05T08:30:00+00:~
     Code
       pillar(x, width = 25)
     Output
       <pillar>
-      <nanotime>               
+      <int64>                  
       2011-12-05T08:30:00+00:00
     Code
       pillar(x, width = 26)
     Output
       <pillar>
-      <nanotime>               
+      <int64>                  
       2011-12-05T08:30:00+00:00
 
