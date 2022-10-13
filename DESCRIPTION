@@ -19,11 +19,11 @@ License: MIT + file LICENSE
 URL: https://pillar.r-lib.org/, https://github.com/r-lib/pillar
 BugReports: https://github.com/r-lib/pillar/issues
 Imports: 
-    cli (>= 2.3.0),
+    cli (>= 3.2.0),
     fansi,
     glue,
     lifecycle,
-    rlang (>= 1.0.6),
+    rlang (>= 1.0.2),
     utf8 (>= 1.1.0),
     utils,
     vctrs (>= 0.4.2)
