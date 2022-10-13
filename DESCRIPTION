@@ -23,10 +23,10 @@ Imports:
     fansi,
     glue,
     lifecycle,
-    rlang (>= 1.0.2),
+    rlang (>= 1.0.6),
     utf8 (>= 1.1.0),
     utils,
-    vctrs (>= 0.3.8)
+    vctrs (>= 0.4.2)
 Suggests: 
     bit64,
     debugme,
