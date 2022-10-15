@@ -239,7 +239,7 @@
     Condition
       Warning:
       The `n_extra` argument of `print()` is deprecated as of pillar 1.6.2.
-      Please use the `max_extra_cols` argument instead.
+      i Please use the `max_extra_cols` argument instead.
     Output
       # A data frame: 32 x 11
            mpg   cyl  disp    hp  drat    wt
