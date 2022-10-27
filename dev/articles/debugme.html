@@ -90,9 +90,15 @@
 
     
     
-<p>What happens when a tibble is printed? This vignette shows the actual control flow, powered by the <a href="https://github.com/r-lib/debugme#readme" class="external-link">debugme package</a>. See <code><a href="../articles/printing.html">vignette("printing")</a></code> for a detailed description of the control and data flows.</p>
-<p>To activate debugging, we need to set an environment variable before loading the pillar package. As a result, debug strings in pillar’s code are replaced with calls to a logging function.</p>
-<p>By default, debugme also shows timestamps. This is disabled to keep the output stable.</p>
+<p>What happens when a tibble is printed? This vignette shows the actual
+control flow, powered by the <a href="https://github.com/r-lib/debugme#readme" class="external-link">debugme package</a>. See
+<code><a href="../articles/printing.html">vignette("printing")</a></code> for a detailed description of the
+control and data flows.</p>
+<p>To activate debugging, we need to set an environment variable before
+loading the pillar package. As a result, debug strings in pillar’s code
+are replaced with calls to a logging function.</p>
+<p>By default, debugme also shows timestamps. This is disabled to keep
+the output stable.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>DEBUGME <span class="op">=</span> <span class="st">"!!!!pillar"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>DEBUGME_SHOW_TIMESTAMP <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span></span>
