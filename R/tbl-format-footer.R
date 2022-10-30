@@ -40,7 +40,7 @@ tbl_format_footer.pillar_tbl_format_setup <- function(x, ...) {
 #' @export
 tbl_format_footer.tbl <- function(x, setup, ...) {
   footer <- format_footer(x, setup)
-  footer_comment <- wrap_footer(footer, setup)
+  footer_comment <- wrap_footer_bullet(footer, setup)
   footer_advice <- format_footer_advice(x, setup)
   footer_advice_comment <- wrap_footer(footer_advice, setup, lines = 1, ellipsis = FALSE)
   style_subtle(c(footer_comment, footer_advice_comment))
@@ -51,16 +51,7 @@ format_footer <- function(x, setup) {
   abbrev_cols <- format_footer_abbrev_cols(x, setup)
   extra_cols <- format_footer_extra_cols(x, setup)
 
-  footer <- compact(list(extra_rows, extra_cols, abbrev_cols))
-  if (length(footer) == 0) {
-    return(character())
-  }
-
-  footer_enum <- enum_collapse(footer)
-
-  extra <- unlist(footer_enum, recursive = FALSE)
-
-  c("with", extra)
+  compact(list(extra_rows, abbrev_cols, extra_cols))
 }
 
 format_footer_extra_rows <- function(x, setup) {
@@ -95,8 +86,8 @@ format_footer_abbrev_cols <- function(x, setup) {
   abbrev_cols[idx_all_but_last] <- paste0(abbrev_cols[idx_all_but_last], ",")
 
   c(
-    "abbreviated", "variable",
-    pluralise("name(s)", abbrev_cols),
+    "abbreviated",
+    pluralise("name(s):", abbrev_cols),
     abbrev_cols
   )
 }
@@ -191,6 +182,50 @@ wrap_footer <- function(footer, setup, lines = setup$max_footer_lines, ellipsis 
   map_chr(split, paste, collapse = " ")
 }
 
+wrap_footer_bullet <- function(footers, setup, lines = setup$max_footer_lines, ellipsis = TRUE) {
+  if (length(footers) == 0) {
+    return(character())
+  }
+
+  first <- wrap_footer_bullet_one(footers[[1]], setup, lines, ellipsis)
+  if (length(first) >= lines) {
+    return(first)
+  }
+
+  remaining <- wrap_footer_bullet(footers[-1], setup, lines - length(first), ellipsis)
+  c(first, remaining)
+}
+
+wrap_footer_bullet_one <- function(footer, setup, lines, ellipsis) {
+  # When asking for width = 80, use at most 79 characters
+  max_extent <- setup$width - 1L
+
+  tier_widths <- get_footer_tier_widths_bullets(
+    footer, max_extent, lines, ellipsis
+  )
+
+  # show optuput even if too wide
+  widths <- pmin(get_extent(footer), max_extent - 4L)
+  wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
+
+  # truncate output that doesn't fit
+  truncated <- anyNA(wrap$tier)
+  split <- split(footer[wrap$id], wrap$tier)
+  if (ellipsis && truncated && length(split) > 0) {
+    split[[length(split)]] <- c(split[[length(split)]], symbol$ellipsis)
+  }
+  split <- imap(split, function(.x, .y) {
+    if (.y == 1) {
+      header <- symbol$bullet
+    } else {
+      header <- " "
+    }
+    c("#", header, .x)
+  })
+
+  map_chr(split, paste, collapse = " ")
+}
+
 get_footer_tier_widths <- function(footer, max_extent, n_tiers, ellipsis = TRUE) {
   if (ellipsis) {
     extra_width <- get_extent(symbol$ellipsis) + 1L # space, ellipsis
@@ -209,6 +244,21 @@ get_footer_tier_widths <- function(footer, max_extent, n_tiers, ellipsis = TRUE)
       max_extent - 4 - extra_width
     )
   }
+}
+
+get_footer_tier_widths_bullets <- function(footer, max_extent, n_tiers, ellipsis = TRUE) {
+  if (ellipsis) {
+    extra_width <- get_extent(symbol$ellipsis) + 1L # space, ellipsis
+  } else {
+    extra_width <- FALSE
+  }
+
+  n_tiers <- min(length(footer), n_tiers)
+
+  c(
+    rep(max_extent - 4, n_tiers - 1),
+    max_extent - 4 - extra_width
+  )
 }
 
 pre_dots <- function(x) {

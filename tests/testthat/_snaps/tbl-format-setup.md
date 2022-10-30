@@ -14,7 +14,7 @@
       #   3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      #   with 3 more variables: column_zero_zero <dbl>, `col 01` <tbl[,3]>, `col 05` <ord>
+      # * 3 more variables: column_zero_zero <dbl>, `col 01` <tbl[,3]>, `col 05` <ord>
     Code
       tbl_format_setup(x, width = 5)
     Output
@@ -28,12 +28,12 @@
       #   3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      #   with
-      #   3
+      # * 3
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   `col 01` <tbl[,3]>, ...
+      #   `col 01` <tbl[,3]>,
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 6)
     Output
@@ -47,12 +47,12 @@
       #   3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      #   with
-      #   3
+      # * 3
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   `col 01` <tbl[,3]>, ...
+      #   `col 01` <tbl[,3]>,
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 7)
     Output
@@ -66,12 +66,12 @@
       #   3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      #   with
-      #   3
+      # * 3
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   `col 01` <tbl[,3]>, ...
+      #   `col 01` <tbl[,3]>,
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 8)
     Output
@@ -84,12 +84,12 @@
       #   3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      #   with
-      #   3
+      # * 3
       #   more
       #   variables:
       #   column_zero_zero <dbl>,
-      #   `col 01` <tbl[,3]>, ...
+      #   `col 01` <tbl[,3]>,
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 9)
     Output
@@ -106,12 +106,13 @@
       2    2.23
       3    3.23
       <tbl_format_footer(setup)>
-      #   with
-      #   2
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2
       #   more
       #   variables:
-      #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>, ...
+      #   `col 01` <tbl[,3]>, ...
     Code
       tbl_format_setup(x, width = 10)
     Output
@@ -127,12 +128,13 @@
       2     2.23
       3     3.23
       <tbl_format_footer(setup)>
-      #   with
-      #   2
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2
       #   more
       #   variables:
-      #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>, ...
+      #   `col 01` <tbl[,3]>, ...
     Code
       tbl_format_setup(x, width = 11)
     Output
@@ -148,13 +150,13 @@
       2      2.23
       3      3.23
       <tbl_format_footer(setup)>
-      # ... with
-      #   2 more
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2 more
       #   variables:
       #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 12)
     Output
@@ -170,13 +172,13 @@
       2       2.23
       3       3.23
       <tbl_format_footer(setup)>
-      # ... with
-      #   2 more
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2 more
       #   variables:
       #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 13)
     Output
@@ -192,13 +194,13 @@
       2        2.23
       3        3.23
       <tbl_format_footer(setup)>
-      # ... with 2
-      #   more
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2 more
       #   variables:
       #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 14)
     Output
@@ -214,13 +216,13 @@
       2         2.23
       3         3.23
       <tbl_format_footer(setup)>
-      # ... with 2
-      #   more
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2 more
       #   variables:
       #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 15)
     Output
@@ -236,13 +238,13 @@
       2          2.23
       3          3.23
       <tbl_format_footer(setup)>
-      # ... with 2
-      #   more
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2 more
       #   variables:
       #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 16)
     Output
@@ -257,13 +259,13 @@
       2           2.23
       3           3.23
       <tbl_format_footer(setup)>
-      # ... with 2
-      #   more
+      # * abbreviated
+      #   name:
+      #   1: column_zero_zero
+      # * 2 more
       #   variables:
       #   `col 01` <tbl[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 17)
     Output
@@ -278,13 +280,13 @@
       2    2.23 b      
       3    3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3
-      #   more
+      # * abbreviated
+      #   names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more
       #   variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>,
-      #   and ...
+      #   `col 01`$`col 03` <chr>, ...
     Code
       tbl_format_setup(x, width = 18)
     Output
@@ -299,13 +301,13 @@
       2     2.23 b      
       3     3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3 more
+      # * abbreviated
+      #   names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more
       #   variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 01`$`col 03` <chr>, ...
     Code
       tbl_format_setup(x, width = 19)
     Output
@@ -320,13 +322,13 @@
       2      2.23 b      
       3      3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3 more
+      # * abbreviated
+      #   names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more
       #   variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>,
-      #   and
-      #   abbreviated ...
+      #   `col 01`$`col 03` <chr>, ...
     Code
       tbl_format_setup(x, width = 20)
     Output
@@ -341,13 +343,13 @@
       2       2.23 b      
       3       3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3 more
+      # * abbreviated
+      #   names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more
       #   variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>,
-      #   and abbreviated
-      #   variable ...
+      #   `col 01`$`col 03` <chr>, ...
     Code
       tbl_format_setup(x, width = 21)
     Output
@@ -362,13 +364,13 @@
       2        2.23 b      
       3        3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3 more
+      # * abbreviated
+      #   names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more
       #   variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>,
-      #   and abbreviated
-      #   variable ...
+      #   `col 01`$`col 03` <chr>, ...
     Code
       tbl_format_setup(x, width = 22)
     Output
@@ -382,13 +384,13 @@
       2         2.23 b      
       3         3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3 more
-      #   variables:
+      # * abbreviated
+      #   names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more variables:
       #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>,
-      #   and abbreviated
-      #   variable ...
+      #   $`col 04` <int[,3]>, ...
     Code
       tbl_format_setup(x, width = 23)
     Output
@@ -402,13 +404,13 @@
       2          2.23 b      
       3          3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3 more
-      #   variables:
+      # * abbreviated names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>,
-      #   and abbreviated
-      #   variable names ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 24)
     Output
@@ -422,13 +424,13 @@
       2           2.23 b      
       3           3.23 c      
       <tbl_format_footer(setup)>
-      # ... with 3 more
-      #   variables:
+      # * abbreviated names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`
+      # * 3 more variables:
       #   `col 01`$`col 03` <chr>,
       #   $`col 04` <int[,3]>,
-      #   `col 05` <ord>, and
-      #   abbreviated
-      #   variable names ...
+      #   `col 05` <ord>
     Code
       tbl_format_setup(x, width = 25)
     Output
@@ -442,13 +444,13 @@
       2    2.23 b       b      
       3    3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more
-      #   variables:
+      # * abbreviated names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`,
+      #   3: `col 05`
+      # * 2 more variables:
       #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   and abbreviated
-      #   variable names
-      #   1: column_zero_zero, ...
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 26)
     Output
@@ -462,13 +464,13 @@
       2     2.23 b       b      
       3     3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more
-      #   variables:
+      # * abbreviated names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`,
+      #   3: `col 05`
+      # * 2 more variables:
       #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   and abbreviated
-      #   variable names
-      #   1: column_zero_zero, ...
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 27)
     Output
@@ -482,13 +484,13 @@
       2      2.23 b       b      
       3      3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more
-      #   variables:
+      # * abbreviated names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`,
+      #   3: `col 05`
+      # * 2 more variables:
       #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   and abbreviated
-      #   variable names
-      #   1: column_zero_zero, ...
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 28)
     Output
@@ -502,13 +504,13 @@
       2       2.23 b       b      
       3       3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more
-      #   variables:
+      # * abbreviated names:
+      #   1: column_zero_zero,
+      #   2: `col 01`$`col 02`,
+      #   3: `col 05`
+      # * 2 more variables:
       #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>,
-      #   and abbreviated
-      #   variable names
-      #   1: column_zero_zero, ...
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 29)
     Output
@@ -522,13 +524,13 @@
       2        2.23 b       b      
       3        3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable
-      #   names
+      # * abbreviated names:
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`, ...
+      #   2: `col 01`$`col 02`,
+      #   3: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 30)
     Output
@@ -542,13 +544,13 @@
       2         2.23 b       b      
       3         3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable
-      #   names
+      # * abbreviated names:
       #   1: column_zero_zero,
-      #   2: `col 01`$`col 02`, ...
+      #   2: `col 01`$`col 02`,
+      #   3: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 31)
     Output
@@ -562,13 +564,13 @@
       2          2.23 b       b      
       3          3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`,
       #   3: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 32)
     Output
@@ -582,13 +584,13 @@
       2           2.23 b       b      
       3           3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`,
       #   3: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 33)
     Output
@@ -602,13 +604,13 @@
       2            2.23 b       b      
       3            3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: column_zero_zero,
       #   2: `col 01`$`col 02`,
       #   3: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 34)
     Output
@@ -622,12 +624,12 @@
       2             2.23 b       b      
       3             3.23 c       c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 35)
     Output
@@ -641,12 +643,12 @@
       2             2.23 b        b      
       3             3.23 c        c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 36)
     Output
@@ -660,12 +662,12 @@
       2             2.23 b         b      
       3             3.23 c         c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 37)
     Output
@@ -679,12 +681,12 @@
       2             2.23 b          b      
       3             3.23 c          c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`,
       #   2: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 38)
     Output
@@ -698,11 +700,11 @@
       2             2.23 b           b      
       3             3.23 c           c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`, 2: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 39)
     Output
@@ -716,11 +718,11 @@
       2             2.23 b            b      
       3             3.23 c            c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`, 2: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 40)
     Output
@@ -734,11 +736,11 @@
       2             2.23 b             b      
       3             3.23 c             c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
-      #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`, 2: `col 05`
+      # * 2 more variables:
+      #   `col 01`$`col 03` <chr>,
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 41)
     Output
@@ -752,11 +754,11 @@
       2             2.23 b              b      
       3             3.23 c              c      
       <tbl_format_footer(setup)>
-      # ... with 2 more variables:
+      # * abbreviated names:
+      #   1: `col 01`$`col 02`, 2: `col 05`
+      # * 2 more variables:
       #   `col 01`$`col 03` <chr>,
-      #   $`col 04` <int[,3]>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`,
-      #   2: `col 05`
+      #   $`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 42)
     Output
@@ -770,11 +772,11 @@
       2             2.23 b       B       b      
       3             3.23 c       C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
+      # * 1 more variable:
+      #   `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 43)
     Output
@@ -788,11 +790,11 @@
       2             2.23 b        B       b      
       3             3.23 c        C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
+      # * 1 more variable:
+      #   `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 44)
     Output
@@ -806,11 +808,11 @@
       2             2.23 b         B       b      
       3             3.23 c         C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and
-      #   abbreviated variable names
+      # * abbreviated names:
       #   1: `col 01`$`col 02`, 2: $`col 03`,
       #   3: `col 05`
+      # * 1 more variable:
+      #   `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 45)
     Output
@@ -824,11 +826,10 @@
       2             2.23 b          B       b      
       3             3.23 c          C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and
-      #   abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`,
+      #   2: $`col 03`, 3: `col 05`
+      # * 1 more variable:
+      #   `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 46)
     Output
@@ -842,11 +843,10 @@
       2             2.23 b           B       b      
       3             3.23 c           C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and
-      #   abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`,
+      #   2: $`col 03`, 3: `col 05`
+      # * 1 more variable:
+      #   `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 47)
     Output
@@ -860,11 +860,10 @@
       2             2.23 b            B       b      
       3             3.23 c            C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and
-      #   abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`,
+      #   2: $`col 03`, 3: `col 05`
+      # * 1 more variable:
+      #   `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 48)
     Output
@@ -878,11 +877,10 @@
       2             2.23 b             B       b      
       3             3.23 c             C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and
-      #   abbreviated variable names
-      #   1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`,
+      #   2: $`col 03`, 3: `col 05`
+      # * 1 more variable:
+      #   `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 49)
     Output
@@ -896,10 +894,9 @@
       2             2.23 b              B       b      
       3             3.23 c              C       c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04` <int[,3]>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`,
+      # * abbreviated names: 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: `col 05`
+      # * 1 more variable: `col 01`$`col 04` <int[,3]>
     Code
       tbl_format_setup(x, width = 50)
     Output
@@ -913,10 +910,9 @@
       2             2.23 b       B             2 b      
       3             3.23 c       C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`,
+      # * abbreviated names: 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 51)
     Output
@@ -930,10 +926,9 @@
       2             2.23 b        B             2 b      
       3             3.23 c        C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`,
+      # * abbreviated names: 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 52)
     Output
@@ -947,10 +942,9 @@
       2             2.23 b         B             2 b      
       3             3.23 c         C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`,
+      # * abbreviated names: 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 53)
     Output
@@ -964,10 +958,9 @@
       2             2.23 b          B             2 b      
       3             3.23 c          C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`,
+      # * abbreviated names: 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 54)
     Output
@@ -981,10 +974,9 @@
       2             2.23 b           B             2 b      
       3             3.23 c           C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`,
+      # * abbreviated names: 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 55)
     Output
@@ -998,10 +990,9 @@
       2             2.23 b            B             2 b      
       3             3.23 c            C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`,
+      #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 56)
     Output
@@ -1015,10 +1006,9 @@
       2             2.23 b             B             2 b      
       3             3.23 c             C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`,
+      #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 57)
     Output
@@ -1032,10 +1022,9 @@
       2             2.23 b              B             2 b      
       3             3.23 c              C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable:
-      #   `col 01`$`col 04`[2:3] <int>, and abbreviated
-      #   variable names 1: `col 01`$`col 02`, 2: $`col 03`,
-      #   3: $`col 04`[,"A"], 4: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`,
+      #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 58)
     Output
@@ -1049,9 +1038,9 @@
       2             2.23 b               B             2 b      
       3             3.23 c               C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
-      #   and abbreviated variable names 1: `col 01`$`col 02`,
+      # * abbreviated names: 1: `col 01`$`col 02`,
       #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 59)
     Output
@@ -1065,9 +1054,9 @@
       2             2.23 b               B              2 b      
       3             3.23 c               C              3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
-      #   and abbreviated variable names 1: `col 01`$`col 02`,
-      #   2: $`col 03`, 3: $`col 04`[,"A"], 4: `col 05`
+      # * abbreviated names: 1: `col 01`$`col 02`, 2: $`col 03`,
+      #   3: $`col 04`[,"A"], 4: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 60)
     Output
@@ -1081,9 +1070,9 @@
       2             2.23 b                 B             2 b      
       3             3.23 c                 C             3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
-      #   and abbreviated variable names 1: $`col 03`,
-      #   2: $`col 04`[,"A"], 3: `col 05`
+      # * abbreviated names: 1: $`col 03`, 2: $`col 04`[,"A"],
+      #   3: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 61)
     Output
@@ -1097,9 +1086,9 @@
       2             2.23 b                 B              2 b      
       3             3.23 c                 C              3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>,
-      #   and abbreviated variable names 1: $`col 03`,
-      #   2: $`col 04`[,"A"], 3: `col 05`
+      # * abbreviated names: 1: $`col 03`, 2: $`col 04`[,"A"],
+      #   3: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 62)
     Output
@@ -1113,9 +1102,8 @@
       2             2.23 b                 B               2 b      
       3             3.23 c                 C               3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"],
-      #   2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 63)
     Output
@@ -1129,8 +1117,8 @@
       2             2.23 b                 B                2 b      
       3             3.23 c                 C                3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 64)
     Output
@@ -1144,8 +1132,8 @@
       2             2.23 b                 B                 2 b      
       3             3.23 c                 C                 3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 65)
     Output
@@ -1159,8 +1147,8 @@
       2             2.23 b                 B                  2 b      
       3             3.23 c                 C                  3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 66)
     Output
@@ -1174,8 +1162,8 @@
       2             2.23 b                 B                   2 b      
       3             3.23 c                 C                   3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 67)
     Output
@@ -1189,8 +1177,8 @@
       2             2.23 b                 B                    2 b      
       3             3.23 c                 C                    3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 68)
     Output
@@ -1204,8 +1192,8 @@
       2             2.23 b                 B                     2 b      
       3             3.23 c                 C                     3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 69)
     Output
@@ -1219,8 +1207,8 @@
       2             2.23 b                 B                      2 b      
       3             3.23 c                 C                      3 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[2:3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[2:3] <int>
     Code
       tbl_format_setup(x, width = 70)
     Output
@@ -1234,8 +1222,8 @@
       2             2.23 b                 B               2       5 b      
       3             3.23 c                 C               3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 71)
     Output
@@ -1249,8 +1237,8 @@
       2             2.23 b                 B                2       5 b      
       3             3.23 c                 C                3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and
-      #   abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 72)
     Output
@@ -1264,8 +1252,8 @@
       2             2.23 b                 B                 2       5 b      
       3             3.23 c                 C                 3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
-      #   variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 73)
     Output
@@ -1279,8 +1267,8 @@
       2             2.23 b                 B                  2       5 b      
       3             3.23 c                 C                  3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
-      #   variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 74)
     Output
@@ -1294,8 +1282,8 @@
       2             2.23 b                 B                   2       5 b      
       3             3.23 c                 C                   3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
-      #   variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 75)
     Output
@@ -1309,8 +1297,8 @@
       2             2.23 b                 B                    2       5 b      
       3             3.23 c                 C                    3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
-      #   variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 76)
     Output
@@ -1324,8 +1312,8 @@
       2             2.23 b                 B                     2       5 b      
       3             3.23 c                 C                     3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
-      #   variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 77)
     Output
@@ -1339,8 +1327,8 @@
       2             2.23 b                 B                      2       5 b      
       3             3.23 c                 C                      3       6 c      
       <tbl_format_footer(setup)>
-      # ... with 1 more variable: `col 01`$`col 04`[3] <int>, and abbreviated
-      #   variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
+      # * 1 more variable: `col 01`$`col 04`[3] <int>
     Code
       tbl_format_setup(x, width = 78)
     Output
@@ -1354,7 +1342,7 @@
       2             2.23 b                 B               2       5       8 b      
       3             3.23 c                 C               3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 79)
     Output
@@ -1368,7 +1356,7 @@
       2             2.23 b                 B                2       5       8 b      
       3             3.23 c                 C                3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 80)
     Output
@@ -1382,7 +1370,7 @@
       2             2.23 b                 B                 2       5       8 b      
       3             3.23 c                 C                 3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 81)
     Output
@@ -1396,7 +1384,7 @@
       2             2.23 b                 B                  2       5       8 b      
       3             3.23 c                 C                  3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 82)
     Output
@@ -1410,7 +1398,7 @@
       2             2.23 b                 B                   2       5       8 b      
       3             3.23 c                 C                   3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 83)
     Output
@@ -1424,7 +1412,7 @@
       2             2.23 b                 B                    2       5       8 b      
       3             3.23 c                 C                    3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 84)
     Output
@@ -1438,7 +1426,7 @@
       2             2.23 b                 B                     2       5       8 b      
       3             3.23 c                 C                     3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 85)
     Output
@@ -1452,7 +1440,7 @@
       2             2.23 b                 B                      2       5       8 b      
       3             3.23 c                 C                      3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable names 1: $`col 04`[,"A"], 2: `col 05`
+      # * abbreviated names: 1: $`col 04`[,"A"], 2: `col 05`
     Code
       tbl_format_setup(x, width = 86)
     Output
@@ -1466,7 +1454,7 @@
       2             2.23 b                 B                       2       5       8 b      
       3             3.23 c                 C                       3       6       9 c      
       <tbl_format_footer(setup)>
-      # ... with abbreviated variable name 1: `col 05`
+      # * abbreviated name: 1: `col 05`
     Code
       tbl_format_setup(x, width = 87)
     Output
@@ -1542,7 +1530,7 @@
        9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
       10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
       <tbl_format_footer(setup)>
-      # ... with 22 more rows
+      # * 22 more rows
     Code
       tbl_format_setup(as_tbl(mtcars), width = 30, n = 8)
     Output
@@ -1561,8 +1549,8 @@
       7  14.3     8  360    245
       8  24.4     4  147.    62
       <tbl_format_footer(setup)>
-      # ... with 24 more rows, and
-      #   7 more variables:
+      # * 24 more rows
+      # * 7 more variables:
       #   drat <dbl>, wt <dbl>,
       #   qsec <dbl>, vs <dbl>,
       #   am <dbl>, gear <dbl>,
@@ -1668,7 +1656,7 @@
        9  11.1     80   22.6
       10  11.2     75   19.9
       <tbl_format_footer(setup)>
-      # ... with more rows
+      # * more rows
     Code
       # No rows
       tbl_format_setup(new_tbl(list(a = character(), b = logical())), width = 30)
@@ -1678,8 +1666,8 @@
       # A data frame: 0 x 2
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with 2 variables:
-      #   a <chr>, b <lgl>
+      # * 2 variables: a <chr>,
+      #   b <lgl>
     Code
       # No columns
       tbl_format_setup(as_tbl(trees[character()]), width = 30, n = 5L)
@@ -1698,8 +1686,7 @@
       # A data frame: ?? x 3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with 3 variables:
-      #   Girth <dbl>,
+      # * 3 variables: Girth <dbl>,
       #   Height <dbl>,
       #   Volume <dbl>
     Code
@@ -1711,8 +1698,7 @@
       # A data frame: ?? x 0
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
-      # ... with at least 5 rows
-      #   total
+      # * at least 5 rows total
     Code
       # Long table, unknown
       tbl_format_setup(as_unknown_rows(new_tbl(list(a = seq.int(10000)))), n = 5L,
@@ -1730,7 +1716,7 @@
       4     4
       5     5
       <tbl_format_footer(setup)>
-      # ... with more rows
+      # * more rows
 
 # tbl_format_setup() for footnotes
 
@@ -1747,7 +1733,7 @@
          <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
       1      1      1      1      1      1      1      1      1      1      1
       <tbl_format_footer(setup)>
-      # ... with 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
+      # * 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
       #   xxxnop <dbl>
 
 # tbl_format_setup() for footnotes with min_title_chars = 4
@@ -1765,7 +1751,7 @@
          <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
       1      1      1      1      1      1      1      1      1      1      1
       <tbl_format_footer(setup)>
-      # ... with 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
+      # * 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
       #   xxxnop <dbl>
 
 # tbl_format_setup() for footnotes with UTF-8 output
@@ -1783,6 +1769,6 @@
          <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
       1      1      1      1      1      1      1      1      1      1      1
       <tbl_format_footer(setup)>
-      # … with 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
+      # • 4 more variables: xxxefg <dbl>, xxxhij <dbl>, xxxklm <dbl>,
       #   xxxnop <dbl>
 
