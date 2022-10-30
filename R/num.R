@@ -281,9 +281,13 @@ vec_cast.double.pillar_num <- function(x, to, ...) {
 }
 #' @export
 vec_cast.pillar_num.double <- function(x, to, ...) {
-  num(x)
+  out <- num(x)
+  attr(out, "pillar") <- attr(to, "pillar")
+  out
 }
 #' @export
 vec_cast.pillar_num.integer <- function(x, to, ...) {
-  num(x)
+  out <- num(as.numeric(x))
+  attr(out, "pillar") <- attr(to, "pillar")
+  out
 }

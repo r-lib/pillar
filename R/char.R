@@ -151,5 +151,7 @@ vec_cast.character.pillar_char <- function(x, to, ...) {
 }
 #' @export
 vec_cast.pillar_char.character <- function(x, to, ...) {
-  char(x)
+  out <- char(x)
+  attr(out, "pillar") <- attr(to, "pillar")
+  out
 }
