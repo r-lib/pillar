@@ -175,7 +175,7 @@ safe_signif <- function(x, digits) {
 safe_divide_10_to <- function(x, y) {
   # Computes x / 10^y in a robust way
 
-  x / (10^y)
+  10 ^ (log10(x) - y)
 }
 
 eps_2 <- 2 * .Machine$double.eps
