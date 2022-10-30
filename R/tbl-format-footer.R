@@ -119,7 +119,7 @@ format_footer_extra_cols <- function(x, setup) {
 }
 
 format_extra_vars <- function(extra_cols, extra_cols_total) {
-  out <- imap(extra_cols, format_abbrev)
+  out <- unname(map2_chr(extra_cols, names(extra_cols), format_abbrev))
 
   if (extra_cols_total > length(extra_cols)) {
     out <- c(out, symbol$ellipsis)
