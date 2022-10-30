@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.8.1.9001
+
+## Bug fixes
+
+- Fix printing of very small numbers (#615, #619).
+
+## Chore
+
+- Use constructors in `vec_cast()` (#587).
+
+- Require vctrs >= 0.5.0
+
+## Documentation
+
+- Polish `?pillar_options` (#583).
+
+
 # pillar 1.8.1.9000
 
 - Internal changes only.
