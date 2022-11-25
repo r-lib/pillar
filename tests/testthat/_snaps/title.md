@@ -78,16 +78,5 @@
       pillar(add_special(10^(1:6)), title = "absolutely_breaking_all_sensible_boundaries",
       width = 18)
     Output
-      <pillar>
-      absolutely_break~1
-                   <dbl>
-                      10
-                     100
-                    1000
-                   10000
-                  100000
-                 1000000
-                      NA
-                    -Inf
-                     Inf
+      NULL
 

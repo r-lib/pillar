@@ -72,18 +72,11 @@
     Code
       ctl_new_pillar_list(new_tbl(), as.matrix(trees[1:3, ]), width = 8, title = "a")
     Output
-      [[1]]
-      <pillar>
-      a[,"Girth"]
-            <dbl>
-              8.3
-              8.6
-              8.8
-      
+      list()
       attr(,"extra")
-      [1] 2 3
+      [1] 1 2 3
       attr(,"remaining_width")
-      [1] 0
+      [1] 8
       attr(,"simple")
       [1] FALSE
     Code
@@ -97,18 +90,10 @@
               8.6
               8.8
       
-      [[2]]
-      <pillar>
-      [,"Height"]
-            <dbl>
-               70
-               65
-               63
-      
       attr(,"extra")
-      [1] 3
+      [1] 2 3
       attr(,"remaining_width")
-      [1] 4
+      [1] 8
       attr(,"simple")
       [1] FALSE
     Code

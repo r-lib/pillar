@@ -6,6 +6,9 @@
 
 - Fix printing of very small numbers (#615, #619).
 
+- The default for `pillar.min_title_chars` has been bumped up to 20 characters
+  so that title truncuation only affects very long variables (#582).
+
 ## Chore
 
 - Use constructors in `vec_cast()` (#587).
