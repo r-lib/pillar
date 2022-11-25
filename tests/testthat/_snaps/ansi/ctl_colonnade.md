@@ -169,15 +169,14 @@
       ctl_colonnade(list(a_very_long_column_name = 0), width = 20)
     Output
       $body
-        a_very_long_colu~1
-                     [3m[90m<dbl>[39m[23m
-      [90m1[39m                  0
       
       $extra_cols
-      list()
+      $extra_cols$a_very_long_column_name
+      [1] 0
+      
       
       $abbrev_cols
-      [1] "a_very_long_column_name"
+      character(0)
       
       $abbrev_col_idxs
       numeric(0)

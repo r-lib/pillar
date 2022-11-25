@@ -1,5 +1,25 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.8.1.9001
+
+## Bug fixes
+
+- Fix printing of very small numbers (#615, #619).
+
+- The default for `pillar.min_title_chars` has been bumped up to 20 characters
+  so that title truncuation only affects very long variables (#582).
+
+## Chore
+
+- Use constructors in `vec_cast()` (#587).
+
+- Require vctrs >= 0.5.0
+
+## Documentation
+
+- Polish `?pillar_options` (#583).
+
+
 # pillar 1.8.1.9000
 
 - Internal changes only.
