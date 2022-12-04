@@ -1,13 +1,19 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.8.1.9002
+
+## Features
+
+- Use bullets to format details (#582, #617).
+
+- The default for `pillar.min_title_chars` has been bumped up to 20 characters so that title truncuation only affects very long variables (#582, #620).
+
+
 # pillar 1.8.1.9001
 
 ## Bug fixes
 
 - Fix printing of very small numbers (#615, #619).
-
-- The default for `pillar.min_title_chars` has been bumped up to 20 characters
-  so that title truncuation only affects very long variables (#582).
 
 ## Chore
 
