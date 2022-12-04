@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# pillar 1.8.1.9003
+
+## Bug fixes
+
+- Show colnames() hint only when needed (tidyverse/tibble#1488, #622).
+
+
 # pillar 1.8.1.9002
 
 ## Features
