@@ -152,13 +152,11 @@ format_footer_advice <- function(x, setup) {
   paste0("Use ", paste(advice, collapse = " "))
 }
 
-wrap_footer_bullet <- function(
-    footers,
-    setup,
-    lines = setup$max_footer_lines,
-    ellipsis = TRUE,
-    bullet = symbol$bullet
-) {
+wrap_footer_bullet <- function(footers,
+                               setup,
+                               lines = setup$max_footer_lines,
+                               ellipsis = TRUE,
+                               bullet = symbol$bullet) {
   out <- character()
 
   for (footer in footers) {
@@ -173,13 +171,11 @@ wrap_footer_bullet <- function(
   out
 }
 
-wrap_footer_bullet_one <- function(
-    footer,
-    setup,
-    lines,
-    ellipsis,
-    bullet
-) {
+wrap_footer_bullet_one <- function(footer,
+                                   setup,
+                                   lines,
+                                   ellipsis,
+                                   bullet) {
   # When asking for width = 80, use at most 79 characters
   max_extent <- setup$width - 1L
 
