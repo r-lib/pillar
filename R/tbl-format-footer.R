@@ -42,7 +42,13 @@ tbl_format_footer.tbl <- function(x, setup, ...) {
   footer <- format_footer(x, setup)
   footer_comment <- wrap_footer_bullet(footer, setup)
   footer_advice <- format_footer_advice(x, setup)
-  footer_advice_comment <- wrap_footer(footer_advice, setup, lines = 1, ellipsis = FALSE)
+  footer_advice_comment <- wrap_footer_bullet(
+    footer_advice,
+    setup,
+    lines = 1,
+    ellipsis = FALSE,
+    bullet = symbol$info
+  )
   style_subtle(c(footer_comment, footer_advice_comment))
 }
 
@@ -143,7 +149,7 @@ format_footer_advice <- function(x, setup) {
     return()
   }
 
-  paste0(symbol$info, " Use ", paste(advice, collapse = " "))
+  paste0("Use ", paste(advice, collapse = " "))
 }
 
 wrap_footer <- function(footer, setup, lines = setup$max_footer_lines, ellipsis = TRUE) {
@@ -182,21 +188,33 @@ wrap_footer <- function(footer, setup, lines = setup$max_footer_lines, ellipsis 
   map_chr(split, paste, collapse = " ")
 }
 
-wrap_footer_bullet <- function(footers, setup, lines = setup$max_footer_lines, ellipsis = TRUE) {
+wrap_footer_bullet <- function(
+    footers,
+    setup,
+    lines = setup$max_footer_lines,
+    ellipsis = TRUE,
+    bullet = symbol$bullet
+) {
   if (length(footers) == 0) {
     return(character())
   }
 
-  first <- wrap_footer_bullet_one(footers[[1]], setup, lines, ellipsis)
+  first <- wrap_footer_bullet_one(footers[[1]], setup, lines, ellipsis, bullet)
   if (length(first) >= lines) {
     return(first)
   }
 
-  remaining <- wrap_footer_bullet(footers[-1], setup, lines - length(first), ellipsis)
+  remaining <- wrap_footer_bullet(footers[-1], setup, lines - length(first), ellipsis, bullet)
   c(first, remaining)
 }
 
-wrap_footer_bullet_one <- function(footer, setup, lines, ellipsis) {
+wrap_footer_bullet_one <- function(
+    footer,
+    setup,
+    lines,
+    ellipsis,
+    bullet
+) {
   # When asking for width = 80, use at most 79 characters
   max_extent <- setup$width - 1L
 
@@ -216,7 +234,7 @@ wrap_footer_bullet_one <- function(footer, setup, lines, ellipsis) {
   }
   split <- imap(split, function(.x, .y) {
     if (.y == 1) {
-      header <- symbol$bullet
+      header <- bullet
     } else {
       header <- " "
     }
