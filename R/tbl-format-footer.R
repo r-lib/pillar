@@ -159,17 +159,18 @@ wrap_footer_bullet <- function(
     ellipsis = TRUE,
     bullet = symbol$bullet
 ) {
-  if (length(footers) == 0) {
-    return(character())
+  out <- character()
+
+  for (footer in footers) {
+    if (lines <= 0) {
+      break
+    }
+    current <- wrap_footer_bullet_one(footer, setup, lines, ellipsis, bullet)
+    out <- c(out, current)
+    lines <- lines - length(current)
   }
 
-  first <- wrap_footer_bullet_one(footers[[1]], setup, lines, ellipsis, bullet)
-  if (length(first) >= lines) {
-    return(first)
-  }
-
-  remaining <- wrap_footer_bullet(footers[-1], setup, lines - length(first), ellipsis, bullet)
-  c(first, remaining)
+  out
 }
 
 wrap_footer_bullet_one <- function(
