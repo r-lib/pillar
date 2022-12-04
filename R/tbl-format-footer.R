@@ -125,7 +125,7 @@ format_footer_advice <- function(x, setup) {
     return()
   }
 
-  if (length(setup$extra_cols) > setup$extra_cols_total) {
+  if (setup$extra_cols_total > length(setup$extra_cols)) {
     cols <- "`colnames()` to see all variable names"
   } else {
     cols <- NULL
