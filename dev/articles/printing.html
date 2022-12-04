@@ -143,8 +143,8 @@ characters printed, and be “fast enough”.</p></li>
 below. Boxes are functions and methods. Solid lines are function calls.
 Dotted lines represent information that a function obtains via argument
 or (in the case of options) queries actively.</p>
-<div id="htmlwidget-7d6ae8de1a8e6cc0b8d2" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7d6ae8de1a8e6cc0b8d2">{"x":{"diagram":["graph TD","  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]","  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]","  options(Options: n and n_extra) -.-> tbl_format_setup","  format.tbl --> tbl_format_header[\"tbl_format_header()\"]","  format.tbl --> tbl_format_body[\"tbl_format_body()\"]","  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]","  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]","  tbl_sum -.-> setup(Setup object)","  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]","  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]","  ctl_new_pillar -.-> setup(Setup object)","  setup -.-> tbl_format_header","  setup -.-> tbl_format_body","  setup -.-> tbl_format_footer","  tbl_format_header -.-> print(Printed output)","  tbl_format_body -.-> print","  tbl_format_footer -.-> print"]},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging
+<div id="htmlwidget-0ab7950535c38ff76495" style="width:700px;height:432.632880098888px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0ab7950535c38ff76495">{"x":{"diagram":["graph TD","  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]","  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]","  options(Options: n and n_extra) -.-> tbl_format_setup","  format.tbl --> tbl_format_header[\"tbl_format_header()\"]","  format.tbl --> tbl_format_body[\"tbl_format_body()\"]","  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]","  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]","  tbl_sum -.-> setup(Setup object)","  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]","  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]","  ctl_new_pillar -.-> setup(Setup object)","  setup -.-> tbl_format_header","  setup -.-> tbl_format_body","  setup -.-> tbl_format_footer","  tbl_format_header -.-> print(Printed output)","  tbl_format_body -.-> print","  tbl_format_footer -.-> print"]},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging
 for pillar is another way to track the control flow, see
 <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
@@ -165,8 +165,7 @@ output.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     4    10</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5    11</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   variable:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># • 1 more variable:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   b$d &lt;int&gt;</span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span></span>
 <span><span class="co">#&gt; tibble [3 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
@@ -222,8 +221,8 @@ footer.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5    11</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   variable: b$d &lt;int&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># • 1 more variable:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   b$d &lt;int&gt;</span></span></span></code></pre></div>
 <p>A setup object is required here to avoid computing information twice.
 For instance, the dimensions shown in the header or the extra columns
 displayed in the footer are available only after the body has been
@@ -362,8 +361,8 @@ required.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     5    11</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     6    12</span></span>
 <span><span class="fu"><a href="../reference/tbl_format_footer.html">tbl_format_footer</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="va">setup</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "\033[38;5;246m# … with 1 more\033[39m"        </span></span>
-<span><span class="co">#&gt; [2] "\033[38;5;246m#   variable: b$d &lt;int&gt;\033[39m"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "\033[38;5;246m# • 1 more variable:\033[39m"</span></span>
+<span><span class="co">#&gt; [2] "\033[38;5;246m#   b$d &lt;int&gt;\033[39m"</span></span></code></pre></div>
 <p>(The body is returned as a classed object with a <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code>
 method, it is still a <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> under the hood.)</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -410,7 +409,7 @@ Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 </summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl_format_footer.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span></span>
-<span>  <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer</span><span class="op">(</span><span class="va">footer</span>, <span class="va">setup</span><span class="op">)</span></span>
+<span>  <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer_bullet</span><span class="op">(</span><span class="va">footer</span>, <span class="va">setup</span><span class="op">)</span></span>
 <span>  <span class="va">footer_advice</span> <span class="op">&lt;-</span> <span class="fu">format_footer_advice</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span></span>
 <span>  <span class="va">footer_advice_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer</span><span class="op">(</span><span class="va">footer_advice</span>, <span class="va">setup</span>, lines <span class="op">=</span> <span class="fl">1</span>, ellipsis <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">footer_comment</span>, <span class="va">footer_advice_comment</span><span class="op">)</span><span class="op">)</span></span>
