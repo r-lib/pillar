@@ -166,7 +166,6 @@
       <tbl_format_footer(setup)>
       # * 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,
       #   t <chr>, u <chr>, v <chr>, w <chr>, x <chr>, y <chr>, z <chr>
-      # i Use `colnames()` to see all variable names
 
 # advice when interactive (#575)
 
@@ -176,7 +175,6 @@
       <tbl_format_footer(setup)>
       # * 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,
       #   t <chr>, u <chr>, v <chr>, w <chr>, x <chr>, y <chr>, z <chr>
-      # i Use `colnames()` to see all variable names
     Code
       tbl_format_footer(tbl_format_setup(new_tbl(list(a = 1:30)), width = 80))
     Output
