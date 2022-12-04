@@ -83,6 +83,14 @@ test_that("pillar.advice option (#575)", {
   })
 })
 
+test_that("colnames() hint (#622)", {
+  local_options(pillar.advice = TRUE)
+  letters2 <- do.call(paste0, expand.grid(letters, letters))
+  expect_snapshot({
+    tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters2))), width = 80))
+  })
+})
+
 test_that("advice when interactive (#575)", {
   local_interactive()
   expect_snapshot({

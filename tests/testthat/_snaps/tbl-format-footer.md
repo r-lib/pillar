@@ -167,6 +167,22 @@
       # * 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,
       #   t <chr>, u <chr>, v <chr>, w <chr>, x <chr>, y <chr>, z <chr>
 
+# colnames() hint (#622)
+
+    Code
+      tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters2))),
+      width = 80))
+    Output
+      <tbl_format_footer(setup)>
+      # * 663 more variables: na <chr>, oa <chr>, pa <chr>, qa <chr>, ra <chr>,
+      #   sa <chr>, ta <chr>, ua <chr>, va <chr>, wa <chr>, xa <chr>, ya <chr>,
+      #   za <chr>, ab <chr>, bb <chr>, cb <chr>, db <chr>, eb <chr>, fb <chr>,
+      #   gb <chr>, hb <chr>, ib <chr>, jb <chr>, kb <chr>, lb <chr>, mb <chr>,
+      #   nb <chr>, ob <chr>, pb <chr>, qb <chr>, rb <chr>, sb <chr>, tb <chr>,
+      #   ub <chr>, vb <chr>, wb <chr>, xb <chr>, yb <chr>, zb <chr>, ac <chr>,
+      #   bc <chr>, cc <chr>, dc <chr>, ec <chr>, fc <chr>, gc <chr>, hc <chr>, ...
+      # i Use `colnames()` to see all variable names
+
 # advice when interactive (#575)
 
     Code
