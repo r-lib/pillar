@@ -29,6 +29,7 @@ Imports:
     vctrs (>= 0.5.0)
 Suggests: 
     bit64,
+    DBI,
     debugme,
     DiagrammeR,
     dplyr,

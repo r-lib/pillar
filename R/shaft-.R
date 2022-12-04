@@ -313,6 +313,11 @@ pillar_shaft.character <- function(x, ..., min_width = NULL) {
     min_chars <- get_pillar_option_min_chars()
   }
 
+  if (isS4(out)) {
+    # Remove S4 bit:
+    out <- unclass(out)[seq_along(out)]
+  }
+
   pillar_shaft(as_glue(out), ..., min_width = min_chars, na_indent = na_indent, shorten = pillar_attr$shorten)
 }
 
