@@ -152,42 +152,6 @@ format_footer_advice <- function(x, setup) {
   paste0("Use ", paste(advice, collapse = " "))
 }
 
-wrap_footer <- function(footer, setup, lines = setup$max_footer_lines, ellipsis = TRUE) {
-  if (length(footer) == 0) {
-    return(character())
-  }
-
-  # When asking for width = 80, use at most 79 characters
-  max_extent <- setup$width - 1L
-
-  tier_widths <- get_footer_tier_widths(
-    footer, max_extent, lines, ellipsis
-  )
-
-  # show optuput even if too wide
-  widths <- pmin(get_extent(footer), max_extent - 4L)
-  wrap <- colonnade_compute_tiered_col_widths_df(widths, widths, tier_widths)
-
-  # truncate output that doesn't fit
-  truncated <- anyNA(wrap$tier)
-  split <- split(footer[wrap$id], wrap$tier)
-  if (ellipsis && truncated && length(split) > 0) {
-    split[[length(split)]] <- c(split[[length(split)]], symbol$ellipsis)
-  }
-  split <- imap(split, function(.x, .y) {
-    if (!ellipsis) {
-      header <- NULL
-    } else if (.y == 1) {
-      header <- symbol$ellipsis
-    } else {
-      header <- " "
-    }
-    c("#", header, .x)
-  })
-
-  map_chr(split, paste, collapse = " ")
-}
-
 wrap_footer_bullet <- function(
     footers,
     setup,
@@ -242,26 +206,6 @@ wrap_footer_bullet_one <- function(
   })
 
   map_chr(split, paste, collapse = " ")
-}
-
-get_footer_tier_widths <- function(footer, max_extent, n_tiers, ellipsis = TRUE) {
-  if (ellipsis) {
-    extra_width <- get_extent(symbol$ellipsis) + 1L # space, ellipsis
-  } else {
-    extra_width <- FALSE
-  }
-
-  n_tiers <- min(length(footer), n_tiers)
-
-  if (n_tiers == 1) {
-    max_extent - 2 - 2 * extra_width
-  } else {
-    c(
-      max_extent - 2 - extra_width,
-      rep(max_extent - 4, n_tiers - 2),
-      max_extent - 4 - extra_width
-    )
-  }
 }
 
 get_footer_tier_widths_bullets <- function(footer, max_extent, n_tiers, ellipsis = TRUE) {
