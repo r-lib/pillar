@@ -29,3 +29,18 @@
       <list>
       <df>  
 
+---
+
+    Code
+      pillar(list(data.frame()), width = 11)
+    Output
+      <pillar>
+      [3m[90m<list>[39m[23m
+      <df>  
+    Code
+      pillar(list(data.frame()), width = 12)
+    Output
+      <pillar>
+      [3m[90m<list>[39m[23m      
+      [90m<df [0 x 0]>[39m
+
