@@ -36,7 +36,7 @@
     Output
       <pillar>
       [3m[90m<list>[39m[23m
-      <df>  
+      [90m<df>[39m  
     Code
       pillar(list(data.frame()), width = 12)
     Output
