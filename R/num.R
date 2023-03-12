@@ -124,13 +124,13 @@ vec_arith.numeric.pillar_num <- vec_arith.pillar_num.default
 
 
 #' @export
-vec_math.pillar_num <- function(op, x, ...) {
-  "!!!!DEBUG vec_math(`v(op)`)"
+vec_math.pillar_num <- function(.fn, .x, ...) {
+  "!!!!DEBUG vec_math(`v(.fn)`)"
 
-  out <- vec_math_base(op, vec_proxy(x))
+  out <- vec_math_base(.fn, vec_proxy(.x))
 
   if (is.numeric(out)) {
-    out <- vec_restore(out, x)
+    out <- vec_restore(out, .x)
   }
 
   out
