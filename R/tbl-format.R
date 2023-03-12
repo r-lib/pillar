@@ -61,7 +61,7 @@ format_tbl <- function(x, width = NULL, ...,
   num_colors(forget = TRUE)
 
   setup <- tbl_format_setup(x,
-    width = width, ...,
+    width = width,
     n = n,
     max_extra_cols = max_extra_cols,
     max_footer_lines = max_footer_lines,
