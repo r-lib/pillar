@@ -100,7 +100,6 @@ vec_arith.pillar_num <- function(op, x, y, ...) {
 #' @export
 vec_arith.pillar_num.default <- function(op, x, y, ...) {
   "!!!!DEBUG vec_arith.pillar_num.default(`v(op)`)"
-  stopifnot(is.numeric(x), is.numeric(y))
   out <- vec_arith_base(op, vec_proxy(x), vec_proxy(y))
 
   if (inherits(x, "pillar_num")) {
@@ -113,7 +112,6 @@ vec_arith.pillar_num.default <- function(op, x, y, ...) {
 #' @export
 vec_arith.pillar_num.MISSING <- function(op, x, y, ...) {
   "!!!!DEBUG vec_arith.pillar_num.MISSING(`v(op)`)"
-  stopifnot(is.numeric(x))
   # FIXME
   out <- vec_arith_base(op, 0, vec_proxy(x))
 
@@ -129,7 +127,6 @@ vec_arith.numeric.pillar_num <- vec_arith.pillar_num.default
 vec_math.pillar_num <- function(op, x, ...) {
   "!!!!DEBUG vec_math(`v(op)`)"
 
-  stopifnot(is.numeric(x))
   out <- vec_math_base(op, vec_proxy(x))
 
   if (is.numeric(out)) {
