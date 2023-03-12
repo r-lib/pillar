@@ -45,7 +45,7 @@ test_that("print() output", {
   })
 
   expect_snapshot({
-    print(as_tbl(mtcars), width = 40, n_extra = 1)
+    print(as_tbl(mtcars), width = 40, max_extra_cols = 1)
 
     print(tbl_format_setup(new_tbl(trees, pillar_focus = "Volume"), width = 30))
   })

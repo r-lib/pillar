@@ -233,11 +233,7 @@
 ---
 
     Code
-      print(as_tbl(mtcars), width = 40, n_extra = 1)
-    Condition
-      Warning:
-      The `n_extra` argument of `print()` is deprecated as of pillar 1.6.2.
-      i Please use the `max_extra_cols` argument instead.
+      print(as_tbl(mtcars), width = 40, max_extra_cols = 1)
     Output
       # A data frame: 32 x 11
            mpg   cyl  disp    hp  drat    wt
