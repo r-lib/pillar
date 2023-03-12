@@ -156,7 +156,7 @@ wrap_footer_bullet <- function(footers,
                                setup,
                                lines = setup$max_footer_lines,
                                ellipsis = TRUE,
-                               bullet = symbol$bullet) {
+                               bullet = symbol$info) {
   out <- character()
 
   for (footer in footers) {
