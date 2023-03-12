@@ -359,7 +359,7 @@ pillar_shaft.list <- function(x, ...) {
     width = width,
     align = "left",
     min_width = min_width,
-    short_formatted = short_formatted
+    short_formatted = style_list(short_formatted)
   )
 }
 

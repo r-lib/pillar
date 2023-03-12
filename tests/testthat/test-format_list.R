@@ -5,4 +5,11 @@ test_that("output test", {
     pillar(add_special(list(1:3)))
     pillar(list(trees), width = 10)
   })
+
+  local_colors()
+
+  expect_snapshot({
+    pillar(list(data.frame()), width = 11)
+    pillar(list(data.frame()), width = 12)
+  })
 })
