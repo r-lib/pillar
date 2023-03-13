@@ -1,5 +1,26 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.8.1.9009
+
+## Bug fixes
+
+- Shortened list columns are also shown with a subtle style (#628, #634).
+
+- Fix method consistency, checked by R-devel (#633).
+
+## Features
+
+- Math operations on `num()` objects no longer perform type checks. This allows, e.g., multiplying a `num()` with a logical (#630, #632).
+
+## Chore
+
+- Breaking change: Hard-deprecate old API (#272, #374, #631).
+
+## Breaking changes
+
+- Breaking change: Hard-deprecate old API (#272, #374, #631).
+
+
 # pillar 1.8.1.9008
 
 ## Documentation
