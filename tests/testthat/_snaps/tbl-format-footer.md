@@ -4,13 +4,13 @@
       tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters))), width = 80))
     Output
       [1m<tbl_format_footer(setup)>[22m
-      [90m# * 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,[39m
+      [90m# i 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,[39m
       [90m#   t <chr>, u <chr>, v <chr>, w <chr>, x <chr>, y <chr>, z <chr>[39m
     Code
       tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters))), width = 30))
     Output
       [1m<tbl_format_footer(setup)>[22m
-      [90m# * 22 more variables:[39m
+      [90m# i 22 more variables:[39m
       [90m#   e <chr>, f <chr>,[39m
       [90m#   g <chr>, h <chr>,[39m
       [90m#   i <chr>, j <chr>,[39m
@@ -25,7 +25,7 @@
         letters, collapse = " ") := 2)), width = 70))
     Output
       <tbl_format_footer(setup)>
-      # * 16 more variables: l <chr>, m <chr>, n <chr>, o <chr>, p <chr>,
+      # i 16 more variables: l <chr>, m <chr>, n <chr>, o <chr>, p <chr>,
       #   q <chr>, r <chr>, s <chr>, t <chr>, u <chr>, v <chr>, w <chr>,
       #   x <chr>, y <chr>, z <chr>,
       #   `a b c d e f g h i j k l m n o p q r s t u v w x y z` <dbl>
@@ -37,7 +37,7 @@
       width = 70))
     Output
       <tbl_format_footer(setup)>
-      # * 145 more variables: l <chr>, m <chr>, n <chr>, o <chr>, p <chr>,
+      # i 145 more variables: l <chr>, m <chr>, n <chr>, o <chr>, p <chr>,
       #   q <chr>, r <chr>, s <chr>, t <chr>, u <chr>, v <chr>, w <chr>,
       #   x <chr>, y <chr>, z <chr>, a <chr>, b <chr>, c <chr>, d <chr>,
       #   e <chr>, f <chr>, g <chr>, h <chr>, i <chr>, j <chr>, k <chr>,
@@ -51,7 +51,7 @@
       tbl_format_footer(tbl_format_setup(new_footer_tbl("")))
     Output
       <tbl_format_footer(setup)>
-      # * 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
+      # i 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
       #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
       #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>,
       #   aq <int>, bq <int>, ar <int>, br <int>, as <int>, bs <int>, at <int>,
@@ -61,7 +61,7 @@
       tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_")))
     Output
       <tbl_format_footer(setup)>
-      # * 45 more variables: prefix_bd <int>, prefix_ae <int>, prefix_be <int>,
+      # i 45 more variables: prefix_bd <int>, prefix_ae <int>, prefix_be <int>,
       #   prefix_af <int>, prefix_bf <int>, prefix_ag <int>, prefix_bg <int>,
       #   prefix_ah <int>, prefix_bh <int>, prefix_ai <int>, prefix_bi <int>,
       #   prefix_aj <int>, prefix_bj <int>, prefix_ak <int>, prefix_bk <int>,
@@ -72,7 +72,7 @@
       tbl_format_footer(tbl_format_setup(new_footer_tbl("a_very_long_prefix_")))
     Output
       <tbl_format_footer(setup)>
-      # * 49 more variables: a_very_long_prefix_bb <int>,
+      # i 49 more variables: a_very_long_prefix_bb <int>,
       #   a_very_long_prefix_ac <int>, a_very_long_prefix_bc <int>,
       #   a_very_long_prefix_ad <int>, a_very_long_prefix_bd <int>,
       #   a_very_long_prefix_ae <int>, a_very_long_prefix_be <int>,
@@ -83,14 +83,14 @@
       tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = 3))
     Output
       <tbl_format_footer(setup)>
-      # * 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
+      # i 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
       #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
       #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>, ...
     Code
       tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = 3))
     Output
       <tbl_format_footer(setup)>
-      # * 45 more variables: prefix_bd <int>, prefix_ae <int>, prefix_be <int>,
+      # i 45 more variables: prefix_bd <int>, prefix_ae <int>, prefix_be <int>,
       #   prefix_af <int>, prefix_bf <int>, prefix_ag <int>, prefix_bg <int>,
       #   prefix_ah <int>, prefix_bh <int>, prefix_ai <int>, prefix_bi <int>, ...
     Code
@@ -98,14 +98,14 @@
       max_footer_lines = 3))
     Output
       <tbl_format_footer(setup)>
-      # * 49 more variables: a_very_long_prefix_bb <int>,
+      # i 49 more variables: a_very_long_prefix_bb <int>,
       #   a_very_long_prefix_ac <int>, a_very_long_prefix_bc <int>,
       #   a_very_long_prefix_ad <int>, a_very_long_prefix_bd <int>, ...
     Code
       tbl_format_footer(tbl_format_setup(new_footer_tbl(""), max_footer_lines = Inf))
     Output
       <tbl_format_footer(setup)>
-      # * 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
+      # i 39 more variables: bg <int>, ah <int>, bh <int>, ai <int>, bi <int>,
       #   aj <int>, bj <int>, ak <int>, bk <int>, al <int>, bl <int>, am <int>,
       #   bm <int>, an <int>, bn <int>, ao <int>, bo <int>, ap <int>, bp <int>,
       #   aq <int>, bq <int>, ar <int>, br <int>, as <int>, bs <int>, at <int>,
@@ -115,7 +115,7 @@
       tbl_format_footer(tbl_format_setup(new_footer_tbl("prefix_"), max_footer_lines = Inf))
     Output
       <tbl_format_footer(setup)>
-      # * 45 more variables: prefix_bd <int>, prefix_ae <int>, prefix_be <int>,
+      # i 45 more variables: prefix_bd <int>, prefix_ae <int>, prefix_be <int>,
       #   prefix_af <int>, prefix_bf <int>, prefix_ag <int>, prefix_bg <int>,
       #   prefix_ah <int>, prefix_bh <int>, prefix_ai <int>, prefix_bi <int>,
       #   prefix_aj <int>, prefix_bj <int>, prefix_ak <int>, prefix_bk <int>,
@@ -132,7 +132,7 @@
       max_footer_lines = Inf))
     Output
       <tbl_format_footer(setup)>
-      # * 49 more variables: a_very_long_prefix_bb <int>,
+      # i 49 more variables: a_very_long_prefix_bb <int>,
       #   a_very_long_prefix_ac <int>, a_very_long_prefix_bc <int>,
       #   a_very_long_prefix_ad <int>, a_very_long_prefix_bd <int>,
       #   a_very_long_prefix_ae <int>, a_very_long_prefix_be <int>,
@@ -164,7 +164,7 @@
       tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters))), width = 80))
     Output
       <tbl_format_footer(setup)>
-      # * 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,
+      # i 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,
       #   t <chr>, u <chr>, v <chr>, w <chr>, x <chr>, y <chr>, z <chr>
 
 # colnames() hint (#622)
@@ -174,7 +174,7 @@
       width = 80))
     Output
       <tbl_format_footer(setup)>
-      # * 663 more variables: na <chr>, oa <chr>, pa <chr>, qa <chr>, ra <chr>,
+      # i 663 more variables: na <chr>, oa <chr>, pa <chr>, qa <chr>, ra <chr>,
       #   sa <chr>, ta <chr>, ua <chr>, va <chr>, wa <chr>, xa <chr>, ya <chr>,
       #   za <chr>, ab <chr>, bb <chr>, cb <chr>, db <chr>, eb <chr>, fb <chr>,
       #   gb <chr>, hb <chr>, ib <chr>, jb <chr>, kb <chr>, lb <chr>, mb <chr>,
@@ -189,12 +189,12 @@
       tbl_format_footer(tbl_format_setup(new_tbl(as.list(set_names(letters))), width = 80))
     Output
       <tbl_format_footer(setup)>
-      # * 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,
+      # i 13 more variables: n <chr>, o <chr>, p <chr>, q <chr>, r <chr>, s <chr>,
       #   t <chr>, u <chr>, v <chr>, w <chr>, x <chr>, y <chr>, z <chr>
     Code
       tbl_format_footer(tbl_format_setup(new_tbl(list(a = 1:30)), width = 80))
     Output
       <tbl_format_footer(setup)>
-      # * 20 more rows
+      # i 20 more rows
       # i Use `print(n = ...)` to see more rows
 

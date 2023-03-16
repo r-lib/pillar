@@ -207,7 +207,7 @@
         [3m[90m<dbl>[39m[23m [4m[3m[90m<chr>[39m[23m[24m      
       [90m1[39m     1 long enough
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1 more[39m
+      [90m# ℹ 1 more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
     Code
@@ -223,7 +223,7 @@
         [4m[3m[90m<chr>[39m[23m[24m      
       [90m1[39m long enough
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1 more[39m
+      [90m# ℹ 1 more[39m
       [90m#   variable:[39m
       [90m#   a <tbl[,2]>[39m
     Code
@@ -239,7 +239,7 @@
         [4m[3m[90m<chr>[39m[23m[24m   
       [90m1[39m long en…
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1[39m
+      [90m# ℹ 1[39m
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   a <tbl[,2]>[39m
@@ -279,7 +279,7 @@
         [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<dbl>[39m[23m[24m
       [90m1[39m     1     2
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1 more[39m
+      [90m# ℹ 1 more[39m
       [90m#   variable:[39m
       [90m#   b <chr>[39m
     Code
@@ -295,7 +295,7 @@
         [4m[3m[90m<dbl>[39m[23m[24m
       [90m1[39m     1
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 2[39m
+      [90m# ℹ 2[39m
       [90m#   more[39m
       [90m#   variables:[39m
       [90m#   a$y <dbl>,[39m
@@ -336,7 +336,7 @@
         [4m[3m[90m<dbl>[39m[23m[24m [4m[3m[90m<chr>[39m[23m[24m  
       [90m1[39m     1 long e…
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1 more[39m
+      [90m# ℹ 1 more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
     Code
@@ -352,7 +352,7 @@
         [4m[3m[90m<dbl>[39m[23m[24m
       [90m1[39m     1
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 2[39m
+      [90m# ℹ 2[39m
       [90m#   more[39m
       [90m#   variables:[39m
       [90m#   a$y <dbl>,[39m
@@ -380,7 +380,7 @@
         [4m[3m[90m<chr>[39m[23m[24m       [4m[3m[90m<dbl>[39m[23m[24m
       [90m1[39m long enough     1
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1 more[39m
+      [90m# ℹ 1 more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
     Code
@@ -396,7 +396,7 @@
         [4m[3m[90m<chr>[39m[23m[24m   [4m[3m[90m<dbl>[39m[23m[24m
       [90m1[39m long e…     1
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1 more[39m
+      [90m# ℹ 1 more[39m
       [90m#   variable:[39m
       [90m#   a$y <dbl>[39m
     Code
@@ -412,7 +412,7 @@
         [4m[3m[90m<chr>[39m[23m[24m   
       [90m1[39m long en…
       [1m<tbl_format_footer(setup)>[22m
-      [90m# • 1[39m
+      [90m# ℹ 1[39m
       [90m#   more[39m
       [90m#   variable:[39m
       [90m#   a <tbl[,2]>[39m
