@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.8.1.9010
+
+## Features
+
+- Use info symbol in footer (#627, #635).
+
+
 # pillar 1.8.1.9009
 
 ## Bug fixes
