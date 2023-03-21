@@ -2,102 +2,41 @@
 
 # pillar 1.9.0
 
-- Same as previous version.
-
-
-# pillar 1.8.1.9010
-
-## Features
-
-- Use info symbol in footer (#627, #635).
-
-
-# pillar 1.8.1.9009
-
-## Bug fixes
-
-- Shortened list columns are also shown with a subtle style (#628, #634).
-
-- Fix method consistency, checked by R-devel (#633).
-
 ## Features
 
 - Math operations on `num()` objects no longer perform type checks. This allows, e.g., multiplying a `num()` with a logical (#630, #632).
 
-## Chore
+## Printing
 
-- Breaking change: Hard-deprecate old API (#272, #374, #631).
+- The default for the `pillar.min_title_chars` option has been bumped up to 20 characters so that title truncuation only affects very long variables. Use `options(pillar.min_title_chars = 5)` to reset to the previous default (#582, #620).
+
+- Use info bullets to format details (#582, #617, #627, #635).
 
 ## Breaking changes
 
-- Breaking change: Hard-deprecate old API (#272, #374, #631).
-
-
-# pillar 1.8.1.9008
-
-## Documentation
-
-- Fix typo & missing quote in digits vignette stub (@gavinsimpson, #629).
-
-
-# pillar 1.8.1.9007
-
-- Internal changes only.
-
-
-# pillar 1.8.1.9006
-
-- Internal changes only.
-
-
-# pillar 1.8.1.9005
-
-- Internal changes only.
-
-
-# pillar 1.8.1.9004
+- `colonnade()`, `extra_cols()` and `squeeze()` are now hard-deprecated (#272, #374, #631).
 
 ## Bug fixes
 
-- Avoid warning with S4 character classes (tidyverse/tibble#1367, #625).
-
-
-# pillar 1.8.1.9003
-
-## Bug fixes
-
-- Show colnames() hint only when needed (tidyverse/tibble#1488, #622).
-
-
-# pillar 1.8.1.9002
-
-## Features
-
-- Use bullets to format details (#582, #617).
-
-- The default for `pillar.min_title_chars` has been bumped up to 20 characters so that title truncuation only affects very long variables (#582, #620).
-
-
-# pillar 1.8.1.9001
-
-## Bug fixes
+- Show `colnames()` hint only when needed (tidyverse/tibble#1488, #622).
 
 - Fix printing of very small numbers (#615, #619).
 
-## Chore
+- Shortened list columns are also shown with a subtle style (#628, #634).
 
-- Use constructors in `vec_cast()` (#587).
+- Avoid warning with S4 character classes (tidyverse/tibble#1367, #625).
 
-- Require vctrs >= 0.5.0
+- Fix method consistency, checked by R-devel (#633).
 
 ## Documentation
 
 - Polish `?pillar_options` (#583).
 
+- Fix typo & missing quote in digits vignette stub (@gavinsimpson, #629).
 
-# pillar 1.8.1.9000
+## Internal
 
-- Internal changes only.
+- Require vctrs >= 0.5.0
 
 
 # pillar 1.8.1
