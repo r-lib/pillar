@@ -59,96 +59,38 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.9.0" id="pillar-190">pillar 1.9.0<a class="anchor" aria-label="anchor" href="#pillar-190"></a></h2>
-<ul><li>Same as previous version.</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9010" id="pillar-1819010">pillar 1.8.1.9010<a class="anchor" aria-label="anchor" href="#pillar-1819010"></a></h2>
 <div class="section level3">
-<h3 id="features-1-8-1-9010">Features<a class="anchor" aria-label="anchor" href="#features-1-8-1-9010"></a></h3>
-<ul><li>Use info symbol in footer (<a href="https://github.com/r-lib/pillar/issues/627" class="external-link">#627</a>, <a href="https://github.com/r-lib/pillar/issues/635" class="external-link">#635</a>).</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9009" id="pillar-1819009">pillar 1.8.1.9009<a class="anchor" aria-label="anchor" href="#pillar-1819009"></a></h2>
-<div class="section level3">
-<h3 id="bug-fixes-1-8-1-9009">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-1-9009"></a></h3>
-<ul><li><p>Shortened list columns are also shown with a subtle style (<a href="https://github.com/r-lib/pillar/issues/628" class="external-link">#628</a>, <a href="https://github.com/r-lib/pillar/issues/634" class="external-link">#634</a>).</p></li>
-<li><p>Fix method consistency, checked by R-devel (<a href="https://github.com/r-lib/pillar/issues/633" class="external-link">#633</a>).</p></li>
-</ul></div>
-<div class="section level3">
-<h3 id="features-1-8-1-9009">Features<a class="anchor" aria-label="anchor" href="#features-1-8-1-9009"></a></h3>
+<h3 id="features-1-9-0">Features<a class="anchor" aria-label="anchor" href="#features-1-9-0"></a></h3>
 <ul><li>Math operations on <code><a href="../reference/num.html">num()</a></code> objects no longer perform type checks. This allows, e.g., multiplying a <code><a href="../reference/num.html">num()</a></code> with a logical (<a href="https://github.com/r-lib/pillar/issues/630" class="external-link">#630</a>, <a href="https://github.com/r-lib/pillar/issues/632" class="external-link">#632</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="chore-1-8-1-9009">Chore<a class="anchor" aria-label="anchor" href="#chore-1-8-1-9009"></a></h3>
-<ul><li>Breaking change: Hard-deprecate old API (<a href="https://github.com/r-lib/pillar/issues/272" class="external-link">#272</a>, <a href="https://github.com/r-lib/pillar/issues/374" class="external-link">#374</a>, <a href="https://github.com/r-lib/pillar/issues/631" class="external-link">#631</a>).</li>
+<h3 id="printing-1-9-0">Printing<a class="anchor" aria-label="anchor" href="#printing-1-9-0"></a></h3>
+<ul><li><p>The default for the <code>pillar.min_title_chars</code> option has been bumped up to 20 characters so that title truncuation only affects very long variables. Use <code>options(pillar.min_title_chars = 5)</code> to reset to the previous default (<a href="https://github.com/r-lib/pillar/issues/582" class="external-link">#582</a>, <a href="https://github.com/r-lib/pillar/issues/620" class="external-link">#620</a>).</p></li>
+<li><p>Use info bullets to format details (<a href="https://github.com/r-lib/pillar/issues/582" class="external-link">#582</a>, <a href="https://github.com/r-lib/pillar/issues/617" class="external-link">#617</a>, <a href="https://github.com/r-lib/pillar/issues/627" class="external-link">#627</a>, <a href="https://github.com/r-lib/pillar/issues/635" class="external-link">#635</a>).</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="breaking-changes-1-8-1-9009">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-8-1-9009"></a></h3>
-<ul><li>Breaking change: Hard-deprecate old API (<a href="https://github.com/r-lib/pillar/issues/272" class="external-link">#272</a>, <a href="https://github.com/r-lib/pillar/issues/374" class="external-link">#374</a>, <a href="https://github.com/r-lib/pillar/issues/631" class="external-link">#631</a>).</li>
+<h3 id="breaking-changes-1-9-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-9-0"></a></h3>
+<ul><li>
+<code><a href="../reference/colonnade.html">colonnade()</a></code>, <code><a href="../reference/extra_cols.html">extra_cols()</a></code> and <code><a href="../reference/squeeze.html">squeeze()</a></code> are now hard-deprecated (<a href="https://github.com/r-lib/pillar/issues/272" class="external-link">#272</a>, <a href="https://github.com/r-lib/pillar/issues/374" class="external-link">#374</a>, <a href="https://github.com/r-lib/pillar/issues/631" class="external-link">#631</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-1-9-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-9-0"></a></h3>
+<ul><li><p>Show <code><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames()</a></code> hint only when needed (tidyverse/tibble#1488, <a href="https://github.com/r-lib/pillar/issues/622" class="external-link">#622</a>).</p></li>
+<li><p>Fix printing of very small numbers (<a href="https://github.com/r-lib/pillar/issues/615" class="external-link">#615</a>, <a href="https://github.com/r-lib/pillar/issues/619" class="external-link">#619</a>).</p></li>
+<li><p>Shortened list columns are also shown with a subtle style (<a href="https://github.com/r-lib/pillar/issues/628" class="external-link">#628</a>, <a href="https://github.com/r-lib/pillar/issues/634" class="external-link">#634</a>).</p></li>
+<li><p>Avoid warning with S4 character classes (tidyverse/tibble#1367, <a href="https://github.com/r-lib/pillar/issues/625" class="external-link">#625</a>).</p></li>
+<li><p>Fix method consistency, checked by R-devel (<a href="https://github.com/r-lib/pillar/issues/633" class="external-link">#633</a>).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-1-9-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-9-0"></a></h3>
+<ul><li><p>Polish <code><a href="../reference/pillar_options.html">?pillar_options</a></code> (<a href="https://github.com/r-lib/pillar/issues/583" class="external-link">#583</a>).</p></li>
+<li><p>Fix typo &amp; missing quote in digits vignette stub (<a href="https://github.com/gavinsimpson" class="external-link">@gavinsimpson</a>, <a href="https://github.com/r-lib/pillar/issues/629" class="external-link">#629</a>).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="internal-1-9-0">Internal<a class="anchor" aria-label="anchor" href="#internal-1-9-0"></a></h3>
+<ul><li>Require vctrs &gt;= 0.5.0</li>
 </ul></div>
 </div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9008" id="pillar-1819008">pillar 1.8.1.9008<a class="anchor" aria-label="anchor" href="#pillar-1819008"></a></h2>
-<div class="section level3">
-<h3 id="documentation-1-8-1-9008">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-8-1-9008"></a></h3>
-<ul><li>Fix typo &amp; missing quote in digits vignette stub (<a href="https://github.com/gavinsimpson" class="external-link">@gavinsimpson</a>, <a href="https://github.com/r-lib/pillar/issues/629" class="external-link">#629</a>).</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9007" id="pillar-1819007">pillar 1.8.1.9007<a class="anchor" aria-label="anchor" href="#pillar-1819007"></a></h2>
-<ul><li>Internal changes only.</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9006" id="pillar-1819006">pillar 1.8.1.9006<a class="anchor" aria-label="anchor" href="#pillar-1819006"></a></h2>
-<ul><li>Internal changes only.</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9005" id="pillar-1819005">pillar 1.8.1.9005<a class="anchor" aria-label="anchor" href="#pillar-1819005"></a></h2>
-<ul><li>Internal changes only.</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9004" id="pillar-1819004">pillar 1.8.1.9004<a class="anchor" aria-label="anchor" href="#pillar-1819004"></a></h2>
-<div class="section level3">
-<h3 id="bug-fixes-1-8-1-9004">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-1-9004"></a></h3>
-<ul><li>Avoid warning with S4 character classes (tidyverse/tibble#1367, <a href="https://github.com/r-lib/pillar/issues/625" class="external-link">#625</a>).</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9003" id="pillar-1819003">pillar 1.8.1.9003<a class="anchor" aria-label="anchor" href="#pillar-1819003"></a></h2>
-<div class="section level3">
-<h3 id="bug-fixes-1-8-1-9003">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-1-9003"></a></h3>
-<ul><li>Show colnames() hint only when needed (tidyverse/tibble#1488, <a href="https://github.com/r-lib/pillar/issues/622" class="external-link">#622</a>).</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9002" id="pillar-1819002">pillar 1.8.1.9002<a class="anchor" aria-label="anchor" href="#pillar-1819002"></a></h2>
-<div class="section level3">
-<h3 id="features-1-8-1-9002">Features<a class="anchor" aria-label="anchor" href="#features-1-8-1-9002"></a></h3>
-<ul><li><p>Use bullets to format details (<a href="https://github.com/r-lib/pillar/issues/582" class="external-link">#582</a>, <a href="https://github.com/r-lib/pillar/issues/617" class="external-link">#617</a>).</p></li>
-<li><p>The default for <code>pillar.min_title_chars</code> has been bumped up to 20 characters so that title truncuation only affects very long variables (<a href="https://github.com/r-lib/pillar/issues/582" class="external-link">#582</a>, <a href="https://github.com/r-lib/pillar/issues/620" class="external-link">#620</a>).</p></li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9001" id="pillar-1819001">pillar 1.8.1.9001<a class="anchor" aria-label="anchor" href="#pillar-1819001"></a></h2>
-<div class="section level3">
-<h3 id="bug-fixes-1-8-1-9001">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-1-9001"></a></h3>
-<ul><li>Fix printing of very small numbers (<a href="https://github.com/r-lib/pillar/issues/615" class="external-link">#615</a>, <a href="https://github.com/r-lib/pillar/issues/619" class="external-link">#619</a>).</li>
-</ul></div>
-<div class="section level3">
-<h3 id="chore-1-8-1-9001">Chore<a class="anchor" aria-label="anchor" href="#chore-1-8-1-9001"></a></h3>
-<ul><li><p>Use constructors in <code>vec_cast()</code> (<a href="https://github.com/r-lib/pillar/issues/587" class="external-link">#587</a>).</p></li>
-<li><p>Require vctrs &gt;= 0.5.0</p></li>
-</ul></div>
-<div class="section level3">
-<h3 id="documentation-1-8-1-9001">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-8-1-9001"></a></h3>
-<ul><li>Polish <code><a href="../reference/pillar_options.html">?pillar_options</a></code> (<a href="https://github.com/r-lib/pillar/issues/583" class="external-link">#583</a>).</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.1.9000" id="pillar-1819000">pillar 1.8.1.9000<a class="anchor" aria-label="anchor" href="#pillar-1819000"></a></h2>
-<ul><li>Internal changes only.</li>
-</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.1" id="pillar-181">pillar 1.8.1<a class="anchor" aria-label="anchor" href="#pillar-181"></a></h2><p class="text-muted">CRAN release: 2022-08-19</p>
 <div class="section level3">
