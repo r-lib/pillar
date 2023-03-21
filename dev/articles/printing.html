@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">pillar</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.8.1.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.9.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
 
 
 
-<script src="printing_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="printing_files/d3-3.3.8/d3.min.js"></script><script src="printing_files/dagre-0.4.0/dagre-d3.min.js"></script><link href="printing_files/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
+<script src="printing_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="printing_files/d3-3.3.8/d3.min.js"></script><script src="printing_files/dagre-0.4.0/dagre-d3.min.js"></script><link href="printing_files/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
 <script src="printing_files/mermaid-0.3.0/dist/mermaid.slim.min.js"></script><link href="printing_files/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
 <script src="printing_files/chromatography-0.1/chromatography.js"></script><script src="printing_files/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
@@ -143,8 +143,8 @@ characters printed, and be “fast enough”.</p></li>
 below. Boxes are functions and methods. Solid lines are function calls.
 Dotted lines represent information that a function obtains via argument
 or (in the case of options) queries actively.</p>
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2e407cfd9bdbff16aead" style="width:700px;height:432.632880098888px;"></div>
-<script type="application/json" data-for="htmlwidget-2e407cfd9bdbff16aead">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1c2ea2ad4514a0ba6e5c" style="width:700px;height:432.632880098888px;"></div>
+<script type="application/json" data-for="htmlwidget-1c2ea2ad4514a0ba6e5c">{"x":{"diagram":"graph TD\n  print.tbl[\"print.tbl()\"] --> format.tbl[\"format.tbl()\"]\n  format.tbl --> tbl_format_setup[\"tbl_format_setup()\"]\n  options(Options: n and n_extra) -.-> tbl_format_setup\n  format.tbl --> tbl_format_header[\"tbl_format_header()\"]\n  format.tbl --> tbl_format_body[\"tbl_format_body()\"]\n  format.tbl --> tbl_format_footer[\"tbl_format_footer()\"]\n  tbl_format_setup -.-> tbl_sum[\"tbl_sum()\"]\n  tbl_sum -.-> setup(Setup object)\n  tbl_format_setup -.-> ctl_new_compound_pillar[\"ctl_new_compound_pillar()\"]\n  ctl_new_compound_pillar -.-> ctl_new_pillar[\"ctl_new_pillar()\"]\n  ctl_new_pillar -.-> setup(Setup object)\n  setup -.-> tbl_format_header\n  setup -.-> tbl_format_body\n  setup -.-> tbl_format_footer\n  tbl_format_header -.-> print(Printed output)\n  tbl_format_body -.-> print\n  tbl_format_footer -.-> print"},"evals":[],"jsHooks":[]}</script><p>The pillar package uses debugme for debugging. Activating debugging
 for pillar is another way to track the control flow, see
 <code><a href="../articles/debugme.html">vignette("debugme")</a></code> for details.</p>
 </div>
