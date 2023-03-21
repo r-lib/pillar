@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9000
+
+- Internal changes only.
+
+
 # pillar 1.9.0
 
 - Same as previous version.
