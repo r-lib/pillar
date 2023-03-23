@@ -1,3 +1,59 @@
+# tbl_format_setup --------------------------------------------------------------------
+
+test_that("`tbl_format_setup()` snapshot test", {
+  expect_snapshot({
+    tbl_format_setup()
+  })
+})
+
+
+# tbl_format_setup_dispatch -----------------------------------------------------------
+
+test_that("`tbl_format_setup_dispatch()` snapshot test", {
+  expect_snapshot({
+    tbl_format_setup_dispatch()
+  })
+})
+
+
+# new_tbl_format_setup ----------------------------------------------------------------
+
+test_that("`new_tbl_format_setup()` snapshot test", {
+  expect_snapshot({
+    new_tbl_format_setup()
+  })
+})
+
+
+# is_tbl_format_setup -----------------------------------------------------------------
+
+test_that("`is_tbl_format_setup()` snapshot test", {
+  expect_snapshot({
+    is_tbl_format_setup()
+  })
+})
+
+
+# print -------------------------------------------------------------------------------
+
+test_that("`print()` snapshot test", {
+  expect_snapshot({
+    print()
+  })
+})
+
+
+# format ------------------------------------------------------------------------------
+
+test_that("`format()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("output test", {
   x <- new_tbl(list(
     column_zero_zero = 1:3 + 0.23,

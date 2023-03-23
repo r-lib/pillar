@@ -1,3 +1,68 @@
+# print -------------------------------------------------------------------------------
+
+test_that("`print()` snapshot test", {
+  expect_snapshot({
+    print()
+  })
+})
+
+
+# print_tbl ---------------------------------------------------------------------------
+
+test_that("`print_tbl()` snapshot test", {
+  expect_snapshot({
+    print_tbl()
+  })
+})
+
+
+# format ------------------------------------------------------------------------------
+
+test_that("`format()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# format_tbl --------------------------------------------------------------------------
+
+test_that("`format_tbl()` snapshot test", {
+  expect_snapshot({
+    format_tbl()
+  })
+})
+
+
+# format_comment ----------------------------------------------------------------------
+
+test_that("`format_comment()` snapshot test", {
+  expect_snapshot({
+    format_comment()
+  })
+})
+
+
+# wrap --------------------------------------------------------------------------------
+
+test_that("`wrap()` snapshot test", {
+  expect_snapshot({
+    wrap()
+  })
+})
+
+
+# strwrap2 ----------------------------------------------------------------------------
+
+test_that("`strwrap2()` snapshot test", {
+  expect_snapshot({
+    strwrap2()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("print() returns output invisibly", {
   expect_output(ret <- withVisible(print(as_tbl(trees))))
   expect_false(ret$visible)

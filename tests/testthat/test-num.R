@@ -1,3 +1,122 @@
+# num ---------------------------------------------------------------------------------
+
+test_that("`num()` snapshot test", {
+  expect_snapshot({
+    num()
+  })
+})
+
+
+# vec_ptype_full ----------------------------------------------------------------------
+
+test_that("`vec_ptype_full()` snapshot test", {
+  expect_snapshot({
+    vec_ptype_full()
+  })
+})
+
+
+# vec_ptype_abbr ----------------------------------------------------------------------
+
+test_that("`vec_ptype_abbr()` snapshot test", {
+  expect_snapshot({
+    vec_ptype_abbr()
+  })
+})
+
+
+# format ------------------------------------------------------------------------------
+
+test_that("`format()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# vec_arith ---------------------------------------------------------------------------
+
+test_that("`vec_arith()` snapshot test", {
+  expect_snapshot({
+    vec_arith()
+  })
+})
+
+
+# vec_arith.pillar_num ----------------------------------------------------------------
+
+test_that("`vec_arith.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_arith.pillar_num()
+  })
+})
+
+
+# vec_math ----------------------------------------------------------------------------
+
+test_that("`vec_math()` snapshot test", {
+  expect_snapshot({
+    vec_math()
+  })
+})
+
+
+# set_num_opts ------------------------------------------------------------------------
+
+test_that("`set_num_opts()` snapshot test", {
+  expect_snapshot({
+    set_num_opts()
+  })
+})
+
+
+# vec_ptype2.pillar_num ---------------------------------------------------------------
+
+test_that("`vec_ptype2.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.pillar_num()
+  })
+})
+
+
+# vec_ptype2.double -------------------------------------------------------------------
+
+test_that("`vec_ptype2.double()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.double()
+  })
+})
+
+
+# vec_ptype2.integer ------------------------------------------------------------------
+
+test_that("`vec_ptype2.integer()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.integer()
+  })
+})
+
+
+# vec_cast.pillar_num -----------------------------------------------------------------
+
+test_that("`vec_cast.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_cast.pillar_num()
+  })
+})
+
+
+# vec_cast.double ---------------------------------------------------------------------
+
+test_that("`vec_cast.double()` snapshot test", {
+  expect_snapshot({
+    vec_cast.double()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("output test", {
   expect_snapshot({
     tibble::tibble(

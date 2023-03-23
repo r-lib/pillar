@@ -1,3 +1,41 @@
+# glimpse -----------------------------------------------------------------------------
+
+test_that("`glimpse()` snapshot test", {
+  expect_snapshot({
+    glimpse()
+  })
+})
+
+
+# format_glimpse ----------------------------------------------------------------------
+
+test_that("`format_glimpse()` snapshot test", {
+  expect_snapshot({
+    format_glimpse()
+  })
+})
+
+
+# format_glimpse_1 --------------------------------------------------------------------
+
+test_that("`format_glimpse_1()` snapshot test", {
+  expect_snapshot({
+    format_glimpse_1()
+  })
+})
+
+
+# format_glimpse_ ---------------------------------------------------------------------
+
+test_that("`format_glimpse_()` snapshot test", {
+  expect_snapshot({
+    format_glimpse_()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("format_glimpse() output test", {
   expect_snapshot({
     "# Atomic numbers"
