@@ -7,18 +7,18 @@ test_that("`new_ornament()` snapshot test", {
 })
 
 
-# print -------------------------------------------------------------------------------
+# print.pillar_ornament ---------------------------------------------------------------
 
-test_that("`print()` snapshot test", {
+test_that("`print.pillar_ornament()` snapshot test", {
   expect_snapshot({
     print()
   })
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_ornament --------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_ornament()` snapshot test", {
   expect_snapshot({
     format()
   })

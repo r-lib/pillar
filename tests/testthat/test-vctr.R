@@ -1,69 +1,78 @@
-# pillar_shaft ------------------------------------------------------------------------
+# pillar_shaft.pillar_vctr ------------------------------------------------------------
 
-test_that("`pillar_shaft()` snapshot test", {
+test_that("`pillar_shaft.pillar_vctr()` snapshot test", {
   expect_snapshot({
     pillar_shaft()
   })
 })
 
 
-# vec_ptype_full ----------------------------------------------------------------------
+# vec_ptype_full.pillar_vctr ----------------------------------------------------------
 
-test_that("`vec_ptype_full()` snapshot test", {
+test_that("`vec_ptype_full.pillar_vctr()` snapshot test", {
   expect_snapshot({
     vec_ptype_full()
   })
 })
 
 
-# print -------------------------------------------------------------------------------
+# print.pillar_vctr -------------------------------------------------------------------
 
-test_that("`print()` snapshot test", {
+test_that("`print.pillar_vctr()` snapshot test", {
   expect_snapshot({
     print()
   })
 })
 
 
-# obj_print_header --------------------------------------------------------------------
+# obj_print_header.pillar_vctr --------------------------------------------------------
 
-test_that("`obj_print_header()` snapshot test", {
+test_that("`obj_print_header.pillar_vctr()` snapshot test", {
   expect_snapshot({
     obj_print_header()
   })
 })
 
 
-# obj_print_data ----------------------------------------------------------------------
+# obj_print_data.pillar_vctr ----------------------------------------------------------
 
-test_that("`obj_print_data()` snapshot test", {
+test_that("`obj_print_data.pillar_vctr()` snapshot test", {
   expect_snapshot({
     obj_print_data()
   })
 })
 
 
-# obj_print_footer --------------------------------------------------------------------
+# obj_print_footer.pillar_vctr --------------------------------------------------------
 
-test_that("`obj_print_footer()` snapshot test", {
+test_that("`obj_print_footer.pillar_vctr()` snapshot test", {
   expect_snapshot({
     obj_print_footer()
   })
 })
 
 
-# vec_proxy_compare -------------------------------------------------------------------
+# print.pillar_vctr_attr --------------------------------------------------------------
 
-test_that("`vec_proxy_compare()` snapshot test", {
+test_that("`print.pillar_vctr_attr()` snapshot test", {
+  expect_snapshot({
+    print()
+  })
+})
+
+
+# vec_proxy_compare.pillar_vctr -------------------------------------------------------
+
+test_that("`vec_proxy_compare.pillar_vctr()` snapshot test", {
   expect_snapshot({
     vec_proxy_compare()
   })
 })
 
 
-# vec_proxy_order ---------------------------------------------------------------------
+# vec_proxy_order.pillar_vctr ---------------------------------------------------------
 
-test_that("`vec_proxy_order()` snapshot test", {
+test_that("`vec_proxy_order.pillar_vctr()` snapshot test", {
   expect_snapshot({
     vec_proxy_order()
   })

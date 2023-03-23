@@ -7,6 +7,24 @@ test_that("`tbl_format_body()` snapshot test", {
 })
 
 
+# tbl_format_body.tbl -----------------------------------------------------------------
+
+test_that("`tbl_format_body.tbl()` snapshot test", {
+  expect_snapshot({
+    tbl_format_body()
+  })
+})
+
+
+# tbl_format_body.pillar_tbl_format_setup ---------------------------------------------
+
+test_that("`tbl_format_body.pillar_tbl_format_setup()` snapshot test", {
+  expect_snapshot({
+    tbl_format_body()
+  })
+})
+
+
 # Legacy tests ------------------------------------------------------------------------
 
 test_that("tbl_format_body() results", {

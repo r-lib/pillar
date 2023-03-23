@@ -25,18 +25,18 @@ test_that("`MakeScaleContinuousPositionNum()` snapshot test", {
 })
 
 
-# scale_type --------------------------------------------------------------------------
+# scale_type.pillar_num ---------------------------------------------------------------
 
-test_that("`scale_type()` snapshot test", {
+test_that("`scale_type.pillar_num()` snapshot test", {
   expect_snapshot({
     scale_type()
   })
 })
 
 
-# rescale -----------------------------------------------------------------------------
+# rescale.pillar_num ------------------------------------------------------------------
 
-test_that("`rescale()` snapshot test", {
+test_that("`rescale.pillar_num()` snapshot test", {
   expect_snapshot({
     rescale()
   })

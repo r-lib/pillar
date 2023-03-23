@@ -7,9 +7,27 @@ test_that("`ctl_new_pillar()` snapshot test", {
 })
 
 
+# ctl_new_pillar.tbl ------------------------------------------------------------------
+
+test_that("`ctl_new_pillar.tbl()` snapshot test", {
+  expect_snapshot({
+    ctl_new_pillar()
+  })
+})
+
+
 # ctl_new_rowid_pillar ----------------------------------------------------------------
 
 test_that("`ctl_new_rowid_pillar()` snapshot test", {
+  expect_snapshot({
+    ctl_new_rowid_pillar()
+  })
+})
+
+
+# ctl_new_rowid_pillar.tbl ------------------------------------------------------------
+
+test_that("`ctl_new_rowid_pillar.tbl()` snapshot test", {
   expect_snapshot({
     ctl_new_rowid_pillar()
   })

@@ -16,9 +16,9 @@ test_that("`as_tbl()` snapshot test", {
 })
 
 
-# as_tbl.data -------------------------------------------------------------------------
+# as_tbl.data.frame -------------------------------------------------------------------
 
-test_that("`as_tbl.data()` snapshot test", {
+test_that("`as_tbl.data.frame()` snapshot test", {
   expect_snapshot({
     as_tbl.data()
   })

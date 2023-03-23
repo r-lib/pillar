@@ -97,27 +97,27 @@ test_that("`format_colonnade_tier()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_squeezed_colonnade ----------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_squeezed_colonnade()` snapshot test", {
   expect_snapshot({
     format()
   })
 })
 
 
-# print -------------------------------------------------------------------------------
+# print.pillar_squeezed_colonnade -----------------------------------------------------
 
-test_that("`print()` snapshot test", {
+test_that("`print.pillar_squeezed_colonnade()` snapshot test", {
   expect_snapshot({
     print()
   })
 })
 
 
-# knit_print --------------------------------------------------------------------------
+# knit_print.pillar_squeezed_colonnade ------------------------------------------------
 
-test_that("`knit_print()` snapshot test", {
+test_that("`knit_print.pillar_squeezed_colonnade()` snapshot test", {
   expect_snapshot({
     knit_print()
   })
@@ -142,11 +142,38 @@ test_that("`extra_cols()` snapshot test", {
 })
 
 
+# extra_cols.pillar_squeezed_colonnade ------------------------------------------------
+
+test_that("`extra_cols.pillar_squeezed_colonnade()` snapshot test", {
+  expect_snapshot({
+    extra_cols()
+  })
+})
+
+
 # extra_cols_impl ---------------------------------------------------------------------
 
 test_that("`extra_cols_impl()` snapshot test", {
   expect_snapshot({
     extra_cols_impl()
+  })
+})
+
+
+# format.pillar_colonnade -------------------------------------------------------------
+
+test_that("`format.pillar_colonnade()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# print.pillar_colonnade --------------------------------------------------------------
+
+test_that("`print.pillar_colonnade()` snapshot test", {
+  expect_snapshot({
+    print()
   })
 })
 

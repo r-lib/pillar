@@ -34,9 +34,9 @@ test_that("`get_pillar_type()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_type ------------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_type()` snapshot test", {
   expect_snapshot({
     format()
   })
@@ -61,10 +61,28 @@ test_that("`format_type_sum()` snapshot test", {
 })
 
 
-# type_sum ----------------------------------------------------------------------------
+# type_sum.accel ----------------------------------------------------------------------
 
-test_that("`type_sum()` snapshot test", {
+test_that("`type_sum.accel()` snapshot test", {
   expect_snapshot({
     type_sum()
+  })
+})
+
+
+# format_type_sum.default -------------------------------------------------------------
+
+test_that("`format_type_sum.default()` snapshot test", {
+  expect_snapshot({
+    format_type_sum()
+  })
+})
+
+
+# format_type_sum.AsIs ----------------------------------------------------------------
+
+test_that("`format_type_sum.AsIs()` snapshot test", {
+  expect_snapshot({
+    format_type_sum()
   })
 })

@@ -16,9 +16,9 @@ test_that("`get_min_title_width()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_title -----------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_title()` snapshot test", {
   expect_snapshot({
     format()
   })

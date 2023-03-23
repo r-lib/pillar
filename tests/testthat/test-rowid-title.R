@@ -7,9 +7,9 @@ test_that("`rif_title()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_rif_title -------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_rif_title()` snapshot test", {
   expect_snapshot({
     format()
   })

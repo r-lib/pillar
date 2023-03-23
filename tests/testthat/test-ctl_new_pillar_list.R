@@ -7,6 +7,15 @@ test_that("`ctl_new_pillar_list()` snapshot test", {
 })
 
 
+# ctl_new_pillar_list.tbl -------------------------------------------------------------
+
+test_that("`ctl_new_pillar_list.tbl()` snapshot test", {
+  expect_snapshot({
+    ctl_new_pillar_list()
+  })
+})
+
+
 # new_data_frame_pillar_list ----------------------------------------------------------
 
 test_that("`new_data_frame_pillar_list()` snapshot test", {
