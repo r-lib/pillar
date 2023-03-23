@@ -25,18 +25,18 @@ test_that("`new_pillar()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar -----------------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar()` snapshot test", {
   expect_snapshot({
     format()
   })
 })
 
 
-# print -------------------------------------------------------------------------------
+# print.pillar ------------------------------------------------------------------------
 
-test_that("`print()` snapshot test", {
+test_that("`print.pillar()` snapshot test", {
   expect_snapshot({
     print()
   })

@@ -16,9 +16,9 @@ test_that("`rif_type()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_rif_type --------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_rif_type()` snapshot test", {
   expect_snapshot({
     format()
   })

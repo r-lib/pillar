@@ -1,6 +1,6 @@
-# print -------------------------------------------------------------------------------
+# print.tbl ---------------------------------------------------------------------------
 
-test_that("`print()` snapshot test", {
+test_that("`print.tbl()` snapshot test", {
   expect_snapshot({
     print()
   })
@@ -16,9 +16,9 @@ test_that("`print_tbl()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.tbl --------------------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.tbl()` snapshot test", {
   expect_snapshot({
     format()
   })

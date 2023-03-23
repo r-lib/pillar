@@ -7,27 +7,27 @@ test_that("`char()` snapshot test", {
 })
 
 
-# vec_ptype_full ----------------------------------------------------------------------
+# vec_ptype_full.pillar_char ----------------------------------------------------------
 
-test_that("`vec_ptype_full()` snapshot test", {
+test_that("`vec_ptype_full.pillar_char()` snapshot test", {
   expect_snapshot({
     vec_ptype_full()
   })
 })
 
 
-# vec_ptype_abbr ----------------------------------------------------------------------
+# vec_ptype_abbr.pillar_char ----------------------------------------------------------
 
-test_that("`vec_ptype_abbr()` snapshot test", {
+test_that("`vec_ptype_abbr.pillar_char()` snapshot test", {
   expect_snapshot({
     vec_ptype_abbr()
   })
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_char ------------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_char()` snapshot test", {
   expect_snapshot({
     format()
   })
@@ -43,37 +43,64 @@ test_that("`set_char_opts()` snapshot test", {
 })
 
 
-# vec_ptype2.pillar_char --------------------------------------------------------------
+# format.pillar_char_attr -------------------------------------------------------------
 
-test_that("`vec_ptype2.pillar_char()` snapshot test", {
+test_that("`format.pillar_char_attr()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# vec_ptype2.pillar_char.pillar_char --------------------------------------------------
+
+test_that("`vec_ptype2.pillar_char.pillar_char()` snapshot test", {
   expect_snapshot({
     vec_ptype2.pillar_char()
   })
 })
 
 
-# vec_ptype2.character ----------------------------------------------------------------
+# vec_ptype2.pillar_char.character ----------------------------------------------------
 
-test_that("`vec_ptype2.character()` snapshot test", {
+test_that("`vec_ptype2.pillar_char.character()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.pillar_char()
+  })
+})
+
+
+# vec_ptype2.character.pillar_char ----------------------------------------------------
+
+test_that("`vec_ptype2.character.pillar_char()` snapshot test", {
   expect_snapshot({
     vec_ptype2.character()
   })
 })
 
 
-# vec_cast.pillar_char ----------------------------------------------------------------
+# vec_cast.pillar_char.pillar_char ----------------------------------------------------
 
-test_that("`vec_cast.pillar_char()` snapshot test", {
+test_that("`vec_cast.pillar_char.pillar_char()` snapshot test", {
   expect_snapshot({
     vec_cast.pillar_char()
   })
 })
 
 
-# vec_cast.character ------------------------------------------------------------------
+# vec_cast.character.pillar_char ------------------------------------------------------
 
-test_that("`vec_cast.character()` snapshot test", {
+test_that("`vec_cast.character.pillar_char()` snapshot test", {
   expect_snapshot({
     vec_cast.character()
+  })
+})
+
+
+# vec_cast.pillar_char.character ------------------------------------------------------
+
+test_that("`vec_cast.pillar_char.character()` snapshot test", {
+  expect_snapshot({
+    vec_cast.pillar_char()
   })
 })

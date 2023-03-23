@@ -115,9 +115,18 @@ test_that("`crayon_bold()` snapshot test", {
 })
 
 
-# crayon_grey_0 -----------------------------------------------------------------------
+# crayon_grey_0.6 ---------------------------------------------------------------------
 
-test_that("`crayon_grey_0()` snapshot test", {
+test_that("`crayon_grey_0.6()` snapshot test", {
+  expect_snapshot({
+    crayon_grey_0()
+  })
+})
+
+
+# crayon_grey_0.8 ---------------------------------------------------------------------
+
+test_that("`crayon_grey_0.8()` snapshot test", {
   expect_snapshot({
     crayon_grey_0()
   })

@@ -169,9 +169,9 @@ test_that("`assemble_decimal()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_shaft_decimal ---------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_shaft_decimal()` snapshot test", {
   expect_snapshot({
     format()
   })

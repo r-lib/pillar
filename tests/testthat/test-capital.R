@@ -16,9 +16,9 @@ test_that("`new_pillar_capital()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_capital ---------------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_capital()` snapshot test", {
   expect_snapshot({
     format()
   })

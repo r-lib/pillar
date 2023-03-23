@@ -7,6 +7,24 @@ test_that("`tbl_format_footer()` snapshot test", {
 })
 
 
+# tbl_format_footer.pillar_tbl_format_setup -------------------------------------------
+
+test_that("`tbl_format_footer.pillar_tbl_format_setup()` snapshot test", {
+  expect_snapshot({
+    tbl_format_footer()
+  })
+})
+
+
+# tbl_format_footer.tbl ---------------------------------------------------------------
+
+test_that("`tbl_format_footer.tbl()` snapshot test", {
+  expect_snapshot({
+    tbl_format_footer()
+  })
+})
+
+
 # format_footer -----------------------------------------------------------------------
 
 test_that("`format_footer()` snapshot test", {

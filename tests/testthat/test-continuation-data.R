@@ -7,9 +7,9 @@ test_that("`new_continuation_shaft()` snapshot test", {
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_continuation_shaft ----------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_continuation_shaft()` snapshot test", {
   expect_snapshot({
     format()
   })

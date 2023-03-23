@@ -16,6 +16,15 @@ test_that("`tbl_format_setup_dispatch()` snapshot test", {
 })
 
 
+# tbl_format_setup.tbl ----------------------------------------------------------------
+
+test_that("`tbl_format_setup.tbl()` snapshot test", {
+  expect_snapshot({
+    tbl_format_setup()
+  })
+})
+
+
 # new_tbl_format_setup ----------------------------------------------------------------
 
 test_that("`new_tbl_format_setup()` snapshot test", {
@@ -34,18 +43,18 @@ test_that("`is_tbl_format_setup()` snapshot test", {
 })
 
 
-# print -------------------------------------------------------------------------------
+# print.pillar_tbl_format_setup -------------------------------------------------------
 
-test_that("`print()` snapshot test", {
+test_that("`print.pillar_tbl_format_setup()` snapshot test", {
   expect_snapshot({
     print()
   })
 })
 
 
-# format ------------------------------------------------------------------------------
+# format.pillar_tbl_format_setup ------------------------------------------------------
 
-test_that("`format()` snapshot test", {
+test_that("`format.pillar_tbl_format_setup()` snapshot test", {
   expect_snapshot({
     format()
   })
