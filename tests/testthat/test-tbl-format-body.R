@@ -1,3 +1,14 @@
+# tbl_format_body ---------------------------------------------------------------------
+
+test_that("`tbl_format_body()` snapshot test", {
+  expect_snapshot({
+    tbl_format_body()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("tbl_format_body() results", {
   expect_snapshot({
     "Various column types"

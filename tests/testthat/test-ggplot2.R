@@ -1,3 +1,50 @@
+# scale_x_num -------------------------------------------------------------------------
+
+test_that("`scale_x_num()` snapshot test", {
+  expect_snapshot({
+    scale_x_num()
+  })
+})
+
+
+# scale_y_num -------------------------------------------------------------------------
+
+test_that("`scale_y_num()` snapshot test", {
+  expect_snapshot({
+    scale_y_num()
+  })
+})
+
+
+# MakeScaleContinuousPositionNum ------------------------------------------------------
+
+test_that("`MakeScaleContinuousPositionNum()` snapshot test", {
+  expect_snapshot({
+    MakeScaleContinuousPositionNum()
+  })
+})
+
+
+# scale_type --------------------------------------------------------------------------
+
+test_that("`scale_type()` snapshot test", {
+  expect_snapshot({
+    scale_type()
+  })
+})
+
+
+# rescale -----------------------------------------------------------------------------
+
+test_that("`rescale()` snapshot test", {
+  expect_snapshot({
+    rescale()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("ggplot2 snapshot tests", {
   skip_if_not_installed("ggplot2")
   skip_if_not_installed("vdiffr")

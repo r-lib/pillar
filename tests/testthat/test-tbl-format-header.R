@@ -1,3 +1,14 @@
+# tbl_format_header -------------------------------------------------------------------
+
+test_that("`tbl_format_header()` snapshot test", {
+  expect_snapshot({
+    tbl_format_header()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("tbl_format_header() results", {
   local_unknown_rows()
   local_foo_tbl()

@@ -1,3 +1,32 @@
+# new_pillar_title --------------------------------------------------------------------
+
+test_that("`new_pillar_title()` snapshot test", {
+  expect_snapshot({
+    new_pillar_title()
+  })
+})
+
+
+# get_min_title_width -----------------------------------------------------------------
+
+test_that("`get_min_title_width()` snapshot test", {
+  expect_snapshot({
+    get_min_title_width()
+  })
+})
+
+
+# format ------------------------------------------------------------------------------
+
+test_that("`format()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("with and without title", {
   expect_snapshot({
     pillar(add_special(10^(1:6)))
