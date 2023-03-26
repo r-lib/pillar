@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9002
+
+- Merged cran-1.9.0 into main.
+
+
 # pillar 1.9.0.9001
 
 - Internal changes only.
