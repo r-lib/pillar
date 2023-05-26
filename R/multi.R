@@ -1,7 +1,7 @@
 #' Format multiple vectors in a tabular display
 #'
 #' @description
-#' `r lifecycle::badge("soft-deprecated")`
+#' `r lifecycle::badge("deprecated")`
 #'
 #' The vectors are formatted to fit horizontally into a user-supplied number of
 #' characters per row.
@@ -110,7 +110,7 @@ new_empty_col_sentinel <- function(type) {
 #' Squeeze a colonnade to a fixed width
 #'
 #' @description
-#' `r lifecycle::badge("soft-deprecated")`
+#' `r lifecycle::badge("deprecated")`
 #'
 #' The `squeeze()` function usually doesn't need to be called manually.
 #' It returns an object suitable for printing and formatting at a fixed width
@@ -229,7 +229,7 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' Retrieve information about columns that didn't fit the available width
 #'
 #' @description
-#' `r lifecycle::badge("soft-deprecated")`
+#' `r lifecycle::badge("deprecated")`
 #'
 #' Formatting a [colonnade] object may lead to some columns being omitted
 #' due to width restrictions. This method returns a character vector that
