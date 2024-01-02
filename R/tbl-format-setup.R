@@ -130,6 +130,8 @@ tbl_format_setup.tbl <- function(x, width, ...,
     rows_missing <- 0L
   }
 
+  focus <- update_focus(focus, x)
+
   # Header
   tbl_sum <- tbl_sum(x)
 
@@ -169,8 +171,20 @@ tbl_format_setup.tbl <- function(x, width, ...,
     extra_cols = extra_cols,
     extra_cols_total = extra_cols_total,
     max_footer_lines = max_footer_lines,
-    abbrev_cols = abbrev_cols
+    abbrev_cols = abbrev_cols,
+    focus = focus
   )
+}
+
+update_focus <- function(focus, x) {
+  if (is_null(focus)) {
+    focus <- attr(x, "pillar_focus")
+  }
+  focus <- intersect(focus, names(x))
+  if (is_empty(focus)) {
+    return(NULL)
+  }
+  focus
 }
 
 #' Construct a setup object for formatting
@@ -207,7 +221,8 @@ new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
                                  rows_missing, rows_total,
                                  extra_cols, extra_cols_total,
                                  max_footer_lines,
-                                 abbrev_cols) {
+                                 abbrev_cols,
+                                 focus) {
   trunc_info <- list(
     x = x,
     df = df,
@@ -219,7 +234,8 @@ new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
     extra_cols = extra_cols,
     extra_cols_total = extra_cols_total,
     max_footer_lines = max_footer_lines,
-    abbrev_cols = abbrev_cols
+    abbrev_cols = abbrev_cols,
+    focus = focus
   )
 
   structure(trunc_info, class = "pillar_tbl_format_setup")
