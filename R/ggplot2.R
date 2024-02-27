@@ -5,7 +5,7 @@
 #'
 #' This scale is used by default in ggplot2 with columns created with [num()].
 #'
-#' @inheritDotParams ggplot2::continuous_scale
+#' @inheritDotParams ggplot2::continuous_scale -scale_name
 #' @param guide,position Passed on to [ggplot2::continuous_scale()]
 #' @param rescaler,super Must remain `NULL`.
 #'
