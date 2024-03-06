@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9007
+
+## Documentation
+
+- Avoid displaying deprecated argument in `@inheritDotParams` (@olivroy, #657).
+
+
 # pillar 1.9.0.9006
 
 - Internal changes only.
