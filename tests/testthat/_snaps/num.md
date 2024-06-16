@@ -467,6 +467,11 @@
     Output
       <pillar_num{%}*100[3]>
       [1] 84.1 90.9 14.1
+    Code
+      sum(num(c(1:3, NA)), na.rm = TRUE)
+    Output
+      <pillar_num[1]>
+      [1] 6
 
 # formatting
 
