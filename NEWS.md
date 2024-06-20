@@ -2,9 +2,8 @@
 
 # pillar 1.9.0.9008
 
-## Bug fixes
+- Internal changes only.
 
-- Math operations on `num()` objects now pass additional arguments to the mathematical function (@gvelasq, #660).
 
 # pillar 1.9.0.9007
 
