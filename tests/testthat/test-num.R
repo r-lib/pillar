@@ -170,6 +170,7 @@ test_that("mathematics", {
     min(num(1:3, label = "$"))
     mean(num(1:3, notation = "eng"))
     sin(num(1:3, label = "%", scale = 100))
+    sum(num(c(1:3, NA)), na.rm = TRUE)
   })
 })
 
