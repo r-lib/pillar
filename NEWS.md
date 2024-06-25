@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9009
+
+## Features
+
+- Math operations on `num()` objects now pass additional arguments to the mathematical function (@gvelasq, #659, #660).
+
+
 # pillar 1.9.0.9008
 
 - Internal changes only.
