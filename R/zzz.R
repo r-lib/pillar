@@ -36,6 +36,13 @@
 #' @importFrom cli symbol
 NULL
 
+# https://github.com/r-lib/pkgdown/issues/1540
+if (Sys.getenv("IN_PKGDOWN") != "") {
+  type_sum.accel <- function(x) {
+    I("kg m/s^2")
+  }
+}
+
 # nolint start
 .onLoad <- function(libname, pkgname) {
   # nolint end
