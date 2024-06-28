@@ -17,7 +17,7 @@ cat_line <- function(...) {
 }
 
 #' @importFrom utf8 utf8_width
-#' @importFrom fansi substr2_ctl
+#' @importFrom cli ansi_substr
 str_trunc <- function(x, width, shorten = NULL) {
   if (all(is.infinite(width))) {
     return(x)
@@ -39,28 +39,29 @@ str_add_ellipsis <- function(x, str_width, width, shorten) {
   }
   shorten <- shorten %||% "back"
 
-  switch(shorten,
+  thing <- switch(shorten,
     back = {
-      abbr <- substr2_ctl(x, 1, width - 1, type = "width")
+      abbr <- ansi_substr(x, 1, width - 1)
       paste0(abbr, get_ellipsis())
     },
     untick = str_add_ellipsis_untick(x, str_width, width),
     untick_footnote = str_add_ellipsis_untick(x, str_width, width, footnote = TRUE),
     front = {
-      abbr <- substr2_ctl(x, str_width - width + 2, str_width, type = "width")
+      abbr <- ansi_substr(x, str_width - width + 2, str_width)
       paste0(get_ellipsis(), abbr)
     },
     mid = {
       front_width <- ceiling(width / 2) - 1
       back_width <- width - front_width - 1
-      abbr_front <- substr2_ctl(x, 1, front_width, type = "width")
-      abbr_back <- substr2_ctl(x, str_width - back_width + 1, str_width, type = "width")
+      abbr_front <- ansi_substr(x, 1, front_width)
+      abbr_back <- ansi_substr(x, str_width - back_width + 1, str_width)
       paste0(abbr_front, get_ellipsis(), abbr_back)
     },
     abbreviate = {
       abbreviate(x, minlength = width, strict = TRUE)
     }
   )
+  thing
 }
 
 str_add_ellipsis_untick <- function(x, str_width, width, footnote = FALSE) {
@@ -79,7 +80,8 @@ str_add_ellipsis_untick <- function(x, str_width, width, footnote = FALSE) {
   }
 
   # Add ellipsis even if short enough after removal of ticks
-  abbr <- substr2_ctl(x, 1, width - 1L, type = "width")
+  # TODO use ansi_strim()
+  abbr <- ansi_substr(x, 1, width - 1L)
   abbr <- paste0(abbr, get_ellipsis())
 
   if (footnote) {
