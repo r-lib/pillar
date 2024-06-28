@@ -45,7 +45,7 @@ obj_print_data.pillar_vctr <- function(x, ..., .size) {
   }
 
   # FIXME: base::print.default() can't use color, roll own implementation?
-  out <- stats::setNames(strip_ctl(format(x), warn = FALSE), names(x))
+  out <- stats::setNames(ansi_strip(format(x)), names(x))
   print(out, quote = FALSE, max = vec_size(x))
   invisible(x)
 }

@@ -17,7 +17,7 @@ cat_line <- function(...) {
 }
 
 #' @importFrom utf8 utf8_width
-#' @importFrom fansi strip_ctl substr2_ctl
+#' @importFrom fansi substr2_ctl
 str_trunc <- function(x, width, shorten = NULL) {
   if (all(is.infinite(width))) {
     return(x)

@@ -63,7 +63,7 @@ MakeScaleContinuousPositionNum <- function() {
     },
     get_labels = function(self, breaks = self$get_breaks()) {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$get_labels(breaks)
-      fansi::strip_ctl(out)
+      ansi_strip(out)
     },
     make_title = function(self, title) {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$make_title(title)
@@ -73,7 +73,7 @@ MakeScaleContinuousPositionNum <- function() {
         if (pillar_attr$notation == "si") {
           type <- attr(shaft, "type")
           if (!is.null(type)) {
-            out <- paste0(out, " ", cli::ansi_strip(type[[1]]))
+            out <- paste0(out, " ", ansi_strip(type[[1]]))
           }
         } else {
           # paste0() doesn't work here, paste() works like paste0()
