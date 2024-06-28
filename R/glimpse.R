@@ -144,7 +144,10 @@ format_glimpse.default <- function(x, ...) {
     dims_out <- paste0(dims, collapse = " x ")
     paste0("<", class(x)[[1]], "[", dims_out, "]>")
   } else {
-    format(x, trim = TRUE, justify = "none")
+    out <- format(x, trim = TRUE, justify = "none")
+    out[is.na(x)] <- crayon_red(NA)
+
+    out
   }
 }
 
@@ -169,14 +172,20 @@ format_glimpse.list <- function(x, ..., .inner = FALSE) {
 
 #' @export
 format_glimpse.character <- function(x, ...) {
-  encodeString(x, quote = '"')
+  out <- encodeString(as.character(x), quote = '"')
+  out[is.na(x)] <- crayon_red(NA)
+
+  out
 }
 
 #' @export
 format_glimpse.factor <- function(x, ...) {
   if (any(grepl(",", levels(x), fixed = TRUE))) {
-    encodeString(as.character(x), quote = '"')
+    out <- encodeString(as.character(x), quote = '"')
   } else {
-    format(x, trim = TRUE, justify = "none")
+    out <- format(x, trim = TRUE, justify = "none")
   }
+  out[is.na(x)] <- crayon_red(NA)
+
+  out
 }
