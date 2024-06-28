@@ -16,7 +16,6 @@ cat_line <- function(...) {
   cat(..., "\n", sep = "")
 }
 
-#' @importFrom utf8 utf8_width
 #' @importFrom cli ansi_substr
 str_trunc <- function(x, width, shorten = NULL) {
   if (all(is.infinite(width))) {
