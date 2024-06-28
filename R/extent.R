@@ -13,7 +13,7 @@
 get_extent <- function(x) {
   force(x)
   x <- ansi_strip(x)
-  width <- cli::utf8_nchar(x, "width")
+  width <- utf8_nchar(x, "width")
   if (anyNA(width)) {
     is_na <- which(is.na(width))
     width[is_na] <- nchar(x[is_na], type = "width")
