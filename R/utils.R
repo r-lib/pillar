@@ -34,9 +34,10 @@ str_trunc <- function(x, width, shorten = NULL) {
 }
 
 str_add_ellipsis <- function(x, str_width, width, shorten) {
-  if (is.null(shorten)) {
-    shorten <- "back"
+  if (length(x) == 0L) {
+    return(x)
   }
+  shorten <- shorten %||% "back"
 
   switch(shorten,
     back = {
