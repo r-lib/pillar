@@ -33,7 +33,7 @@
 #' @importFrom vctrs vec_restore
 #' @importFrom vctrs vec_size
 #' @importFrom vctrs vec_slice
-#' @importFrom cli symbol
+#' @importFrom cli symbol ansi_strwrap
 NULL
 
 # https://github.com/r-lib/pkgdown/issues/1540

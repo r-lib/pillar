@@ -92,5 +92,5 @@ wrap <- function(..., indent = 0, prefix = "", width) {
 }
 
 strwrap2 <- function(x, width, indent) {
-  fansi::strwrap_ctl(x, width = max(width, 0), indent = indent, exdent = indent + 2)
+  cli::ansi_strwrap(x, width = max(width, 0), indent = indent, exdent = indent + 2, simplify = FALSE)
 }
