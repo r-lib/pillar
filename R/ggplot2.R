@@ -63,7 +63,7 @@ MakeScaleContinuousPositionNum <- function() {
     },
     get_labels = function(self, breaks = self$get_breaks()) {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$get_labels(breaks)
-      fansi::strip_sgr(out)
+      fansi::strip_ctl(out)
     },
     make_title = function(self, title) {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$make_title(title)

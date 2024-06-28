@@ -5,14 +5,14 @@
 #'
 #' @param x A character vector.
 #' @export
-#' @importFrom fansi strip_sgr
+#' @importFrom fansi strip_ctl
 #' @importFrom utf8 utf8_width
 #' @examples
 #' get_extent(c("abc", "de"))
 #' get_extent("\u904b\u6c23")
 get_extent <- function(x) {
   force(x)
-  x <- strip_sgr(x, warn = FALSE)
+  x <- strip_ctl(x, warn = FALSE)
   width <- utf8_width(x, encode = FALSE, utf8 = TRUE)
   if (anyNA(width)) {
     is_na <- which(is.na(width))
