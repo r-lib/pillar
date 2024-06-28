@@ -1,5 +1,24 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9010
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/9691618335
+
+## Continuous integration
+
+- Avoid checking bashisms on Windows.
+
+- Better commit message.
+
+- Bump versions, better default, consume custom matrix.
+
+- Recent updates.
+
+
 # pillar 1.9.0.9009
 
 ## Features
