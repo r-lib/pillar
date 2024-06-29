@@ -145,9 +145,7 @@ format_glimpse.default <- function(x, ...) {
     paste0("<", class(x)[[1]], "[", dims_out, "]>")
   } else {
     out <- format(x, trim = TRUE, justify = "none")
-    out[is.na(x)] <- crayon_red(NA)
-
-    out
+    style_na_if(out, is.na(x))
   }
 }
 
@@ -173,9 +171,7 @@ format_glimpse.list <- function(x, ..., .inner = FALSE) {
 #' @export
 format_glimpse.character <- function(x, ...) {
   out <- encodeString(as.character(x), quote = '"')
-  out[is.na(x)] <- crayon_red(NA)
-
-  out
+  style_na_if(out, is.na(x))
 }
 
 #' @export
@@ -185,7 +181,5 @@ format_glimpse.factor <- function(x, ...) {
   } else {
     out <- format(x, trim = TRUE, justify = "none")
   }
-  out[is.na(x)] <- crayon_red(NA)
-
-  out
+  style_na_if(out, is.na(x))
 }

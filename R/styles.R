@@ -84,6 +84,11 @@ style_na <- function(x) {
   crayon_red(x)
 }
 
+style_na_if <- function(x, p) {
+  x[p] <- style_na("NA")
+  x
+}
+
 #' @details
 #' `style_neg()` is affected by the `pillar.neg` [option][pillar_options].
 #'
