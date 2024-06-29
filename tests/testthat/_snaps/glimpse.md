@@ -216,3 +216,72 @@
       $ cyl  <dbl> 6, 4, 8
       $ data <list> [<tbl[11 x 11]>], [<tbl[7 x 11]>], [<tbl[14 x 11]>]
 
+# color test for missing values
+
+    Code
+      # individual data types
+      format_glimpse(df_all$a)
+    Output
+      [1] "1.0"                "2.5"                "\033[31mNA\033[39m"
+    Code
+      format_glimpse(df_all$b)
+    Output
+      [1] "1"                  "2"                  "\033[31mNA\033[39m"
+    Code
+      format_glimpse(df_all$c)
+    Output
+      [1] "TRUE"               "FALSE"              "\033[31mNA\033[39m"
+    Code
+      format_glimpse(df_all$d)
+    Output
+      [1] "\"a\""              "\"b\""              "\033[31mNA\033[39m"
+    Code
+      format_glimpse(df_all$e)
+    Output
+      [1] "a"                  "b"                  "\033[31mNA\033[39m"
+    Code
+      format_glimpse(df_all$f)
+    Output
+      [1] "2015-12-10"         "2015-12-11"         "\033[31mNA\033[39m"
+    Code
+      format_glimpse(df_all$g)
+    Output
+      [1] "2015-12-09 10:51:35" "2015-12-09 10:51:36" "\033[31mNA\033[39m" 
+    Code
+      format_glimpse(df_all$h)
+    Output
+      [1] "1"                  "2"                  "\033[31mNA\033[39m"
+    Code
+      format_glimpse(df_all$i)
+    Output
+      [1] "[1, <2, 3>]"          "[<4, 5, 6>]"          "[\033[31mNA\033[39m]"
+    Code
+      # tables
+      glimpse(df_all)
+    Output
+      Rows: 3
+      Columns: 9
+      $ a [3m[90m<dbl>[39m[23m 1.0, 2.5, [31mNA[39m
+      $ b [3m[90m<int>[39m[23m 1, 2, [31mNA[39m
+      $ c [3m[90m<lgl>[39m[23m TRUE, FALSE, [31mNA[39m
+      $ d [3m[90m<chr>[39m[23m "a", "b", [31mNA[39m
+      $ e [3m[90m<fct>[39m[23m a, b, [31mNA[39m
+      $ f [3m[90m<date>[39m[23m 2015-12-10, 2015-12-11, [31mNA[39m
+      $ g [3m[90m<dttm>[39m[23m 2015-12-09 10:51:35, 2015-12-09 10:51:36, [31mNA[39m
+      $ h [3m[90m<list>[39m[23m 1, 2, [31mNA[39m
+      $ i [3m[90m<list>[39m[23m [1, <2, 3>], [<4, 5, 6>], [[31mNA[39m]
+    Code
+      glimpse(as.data.frame(df_all))
+    Output
+      Rows: 3
+      Columns: 9
+      $ a [3m[90m<dbl>[39m[23m 1.0, 2.5, [31mNA[39m
+      $ b [3m[90m<int>[39m[23m 1, 2, [31mNA[39m
+      $ c [3m[90m<lgl>[39m[23m TRUE, FALSE, [31mNA[39m
+      $ d [3m[90m<chr>[39m[23m "a", "b", [31mNA[39m
+      $ e [3m[90m<fct>[39m[23m a, b, [31mNA[39m
+      $ f [3m[90m<date>[39m[23m 2015-12-10, 2015-12-11, [31mNA[39m
+      $ g [3m[90m<dttm>[39m[23m 2015-12-09 10:51:35, 2015-12-09 10:51:36, [31mNA[39m
+      $ h [3m[90m<list>[39m[23m 1, 2, [31mNA[39m
+      $ i [3m[90m<list>[39m[23m [1, <2, 3>], [<4, 5, 6>], [[31mNA[39m]
+
