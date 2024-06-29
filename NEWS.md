@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9011
+
+## Documentation
+
+- Only implement `type_sum.accel()` in pkgdown mode (#661).
+
+
 # pillar 1.9.0.9010
 
 ## Chore
