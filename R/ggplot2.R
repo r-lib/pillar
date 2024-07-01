@@ -17,7 +17,7 @@ scale_x_num <- function(..., position = "bottom", guide = ggplot2::waiver(),
   stopifnot(is.null(super))
   check_installed("ggplot2")
   ggplot2::continuous_scale(
-    aesthetics =  c(
+    aesthetics = c(
       "x", "xmin", "xmax", "xend", "xintercept", "xmin_final", "xmax_final",
       "xlower", "xmiddle", "xupper"
     ),
