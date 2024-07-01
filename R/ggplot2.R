@@ -15,13 +15,13 @@ scale_x_num <- function(..., position = "bottom", guide = ggplot2::waiver(),
                         rescaler = NULL, super = NULL) {
   stopifnot(is.null(rescaler))
   stopifnot(is.null(super))
-  stopifnot(is_installed("ggplot2"))
+  check_installed("ggplot2")
   ggplot2::continuous_scale(
-    c(
+    aesthetics =  c(
       "x", "xmin", "xmax", "xend", "xintercept", "xmin_final", "xmax_final",
       "xlower", "xmiddle", "xupper"
     ),
-    "position_c", identity,
+    palette = "position_c",
     ...,
     guide = guide,
     position = position,
@@ -36,13 +36,13 @@ scale_y_num <- function(..., guide = ggplot2::waiver(),
                         rescaler = NULL, super = NULL) {
   stopifnot(is.null(rescaler))
   stopifnot(is.null(super))
-  stopifnot(is_installed("ggplot2"))
+  check_installed("ggplot2")
   ggplot2::continuous_scale(
-    c(
+    aesthetics = c(
       "y", "ymin", "ymax", "yend", "yintercept", "ymin_final", "ymax_final",
       "lower", "middle", "upper"
     ),
-    "position_c", identity,
+    palette = "position_c",
     ...,
     guide = guide,
     rescaler = scales::rescale,
@@ -63,7 +63,7 @@ MakeScaleContinuousPositionNum <- function() {
     },
     get_labels = function(self, breaks = self$get_breaks()) {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$get_labels(breaks)
-      fansi::strip_sgr(out)
+      ansi_strip(out)
     },
     make_title = function(self, title) {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$make_title(title)
@@ -73,7 +73,7 @@ MakeScaleContinuousPositionNum <- function() {
         if (pillar_attr$notation == "si") {
           type <- attr(shaft, "type")
           if (!is.null(type)) {
-            out <- paste0(out, " ", cli::ansi_strip(type[[1]]))
+            out <- paste0(out, " ", ansi_strip(type[[1]]))
           }
         } else {
           # paste0() doesn't work here, paste() works like paste0()
