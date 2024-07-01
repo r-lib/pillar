@@ -85,7 +85,11 @@ style_na <- function(x) {
 }
 
 style_na_if <- function(x, p) {
-  x[p] <- style_na("NA")
+  idx <- which(p)
+  if (length(idx) == 0) {
+    return(x)
+  }
+  x[p] <- style_na(x[idx[[1]]])
   x
 }
 
