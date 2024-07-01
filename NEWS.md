@@ -1,5 +1,21 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9012
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/9728438554
+
+
+# pillar 1.9.0.9011
+
+## Documentation
+
+- Only implement `type_sum.accel()` in pkgdown mode (#661).
+
+
 # pillar 1.9.0.9010
 
 ## Chore
