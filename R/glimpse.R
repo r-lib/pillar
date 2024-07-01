@@ -140,12 +140,12 @@ format_glimpse_ <- function(x, ...) {
 format_glimpse.default <- function(x, ...) {
   dims <- dim(x)
 
-  if (!is.null(dims)) {
-    dims_out <- paste0(dims, collapse = " x ")
-    paste0("<", class(x)[[1]], "[", dims_out, "]>")
-  } else {
+  if (is.null(dims)) {
     out <- format(x, trim = TRUE, justify = "none")
     style_na_if(out, is.na(x))
+  } else {
+    dims_out <- paste0(dims, collapse = " x ")
+    paste0("<", class(x)[[1]], "[", dims_out, "]>")
   }
 }
 
