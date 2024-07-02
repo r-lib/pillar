@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9013
+
+## Chore
+
+- Add Aviator configuration.
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/9748527745
+
+- Drop `scale_name` ggplot2 arg and drop fansi dep (@olivroy, #663).
+
+## Continuous integration
+
+- Fix on Windows, tweak lock workflow.
+
+
 # pillar 1.9.0.9012
 
 ## Chore
