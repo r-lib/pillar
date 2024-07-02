@@ -100,3 +100,25 @@ test_that("output test for glimpse()", {
     glimpse(nested_mtcars_tbl, width = 70L)
   })
 })
+
+test_that("color test for missing values", {
+  local_colors()
+
+  expect_snapshot({
+
+    "individual data types"
+    format_glimpse(df_all$a)
+    format_glimpse(df_all$b)
+    format_glimpse(df_all$c)
+    format_glimpse(df_all$d)
+    format_glimpse(df_all$e)
+    format_glimpse(df_all$f)
+    format_glimpse(df_all$g)
+    format_glimpse(df_all$h)
+    format_glimpse(df_all$i)
+
+    "tables"
+    glimpse(df_all)
+    glimpse(as.data.frame(df_all))
+  })
+})
