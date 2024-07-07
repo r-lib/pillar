@@ -105,7 +105,6 @@ test_that("color test for missing values", {
   local_colors()
 
   expect_snapshot({
-
     "individual data types"
     format_glimpse(df_all$a)
     format_glimpse(df_all$b)
