@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9014
+
+## Features
+
+- Show missing values in red in `glimpse()` (@ryanzomorrodi, #662).
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/9830060650
+
+
 # pillar 1.9.0.9013
 
 ## Chore
