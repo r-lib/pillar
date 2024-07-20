@@ -71,7 +71,6 @@ navbar:
     - articles
     - tutorials
     - news
-    right: github
   components:
     options:
       text: Options
