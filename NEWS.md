@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9016
+
+## Documentation
+
+- Update \_pkgdown.yml to bring back search bar (@olivroy, #667).
+
+
 # pillar 1.9.0.9015
 
 ## Testing
