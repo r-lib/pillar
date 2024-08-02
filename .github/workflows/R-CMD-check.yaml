@@ -59,6 +59,9 @@ jobs:
       - uses: ./.github/workflows/versions-matrix
         if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
 
+      - uses: ./.github/workflows/dep-suggests-matrix
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+
       - uses: ./.github/workflows/update-snapshots
         if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
 
@@ -212,7 +215,7 @@ jobs:
           use-public-rspm: true
 
       - id: set-matrix
-        uses: ./.github/workflows/dep-matrix-suggests
+        uses: ./.github/workflows/dep-suggests-matrix-read
 
   check-suggests-matrix:
     runs-on: ubuntu-22.04
