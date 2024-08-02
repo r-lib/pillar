@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9017
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/10200114378
+
+## Continuous integration
+
+- Use dev roxygen2 and decor.
+
+
 # pillar 1.9.0.9016
 
 ## Documentation
