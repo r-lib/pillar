@@ -65,7 +65,7 @@ and with \code{first_pillar} set to the pillar object constructed in the
 first call.
 }
 \examples{
-\dontshow{if (rlang::is_installed("palmerpenguins") && requireNamespace("tibble")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("palmerpenguins") && requireNamespace("tibble")) withAutoprint(\{ # examplesIf}
 # Simple column
 ctl_new_pillar_list(
   tibble::tibble(),
