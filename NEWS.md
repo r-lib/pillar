@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9018
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/10224241696
+
+## Continuous integration
+
+- Refactor dep-suggests-matrix, avoid killing base and recommended packages.
+
+
 # pillar 1.9.0.9017
 
 ## Chore
