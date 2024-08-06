@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9019
+
+## Continuous integration
+
+- Inline action.
+
+
 # pillar 1.9.0.9018
 
 ## Chore
