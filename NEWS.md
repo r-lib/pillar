@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9020
+
+## Continuous integration
+
+- Fix edge case of no suggested packages.
+
+- Use v2 instead of master.
+
+
 # pillar 1.9.0.9019
 
 ## Continuous integration
