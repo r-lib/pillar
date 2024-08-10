@@ -14,8 +14,11 @@ runs:
 
     - id: set-matrix
       run: |
-        matrix=$(cat .github/dep-suggests-matrix.json || echo '{"package":[]}')
-        echo $matrix | jq .
-        echo $matrix | json2yaml
+        # Empty contents if no suggested packages
+        matrix=$(cat .github/dep-suggests-matrix.json || true)
+        if [ -n "$matrix" ]; then
+          echo $matrix | jq .
+          echo $matrix | json2yaml
+        fi
         echo "matrix=$matrix" | tee -a $GITHUB_OUTPUT
       shell: bash

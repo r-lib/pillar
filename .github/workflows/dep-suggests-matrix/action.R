@@ -33,10 +33,15 @@ if (Sys.getenv("GITHUB_BASE_REF") != "") {
   packages <- get_deps()
 }
 
-json <- paste0(
-  '{"package":[',
-  if (length(packages) > 0) paste0('"', packages, '"', collapse = ","),
-  ']}'
-)
+if (length(packages) > 0) {
+  json <- paste0(
+    '{"package":[',
+    paste0('"', packages, '"', collapse = ","),
+    ']}'
+  )
+} else {
+  json <- character()
+}
+
 writeLines(json, ".github/dep-suggests-matrix.json")
 writeLines(json)
