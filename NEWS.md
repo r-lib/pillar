@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9021
+
+## Continuous integration
+
+- Sync with latest developments.
+
+
 # pillar 1.9.0.9020
 
 ## Continuous integration
