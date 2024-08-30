@@ -162,22 +162,24 @@ output.</p>
 <details><summary>
 Source code of <code>pillar:::print.tbl()</code>
 </summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">print.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>    <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="fu">print_tbl</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, </span>
-<span>        max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">print.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                      <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">print_tbl</span><span class="op">(</span></span>
+<span>    <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,</span>
+<span>    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><p>The <code><a href="../reference/format_tbl.html">format.tbl()</a></code> method creates a setup object, and uses
 that object to format header, body and footer.</p>
 <details><summary>
 Source code of <code>pillar:::format.tbl()</code>
 </summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>    <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="../reference/format_tbl.html">format_tbl</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, </span>
-<span>        max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">format.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,</span>
+<span>                       <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/format_tbl.html">format_tbl</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,</span>
+<span>    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><p>While it’s possible to extend or override these methods for your
 <code>"tbl"</code> subclass, often overriding the more specialized
@@ -216,18 +218,28 @@ arguments before passing them on to the method.</p>
 <details><summary>
 Source code of <code>tbl_format_setup()</code>
 </summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>, <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>    <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">focus</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="st">"!!!!DEBUG tbl_format_setup()"</span></span>
-<span>    <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width_print</span><span class="op">(</span><span class="va">width</span><span class="op">)</span></span>
-<span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">get_n_print</span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="va">max_extra_cols</span> <span class="op">&lt;-</span> <span class="fu">get_max_extra_cols</span><span class="op">(</span><span class="va">max_extra_cols</span><span class="op">)</span></span>
-<span>    <span class="va">max_footer_lines</span> <span class="op">&lt;-</span> <span class="fu">get_max_footer_lines</span><span class="op">(</span><span class="va">max_footer_lines</span><span class="op">)</span></span>
-<span>    <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_dispatch</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, </span>
-<span>        max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>, focus <span class="op">=</span> <span class="va">focus</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"tbl_format_setup"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,</span>
+<span>                             <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                             <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                             <span class="va">focus</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="st">"!!!!DEBUG tbl_format_setup()"</span></span>
+<span></span>
+<span>  <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width_print</span><span class="op">(</span><span class="va">width</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">get_n_print</span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">max_extra_cols</span> <span class="op">&lt;-</span> <span class="fu">get_max_extra_cols</span><span class="op">(</span><span class="va">max_extra_cols</span><span class="op">)</span></span>
+<span>  <span class="va">max_footer_lines</span> <span class="op">&lt;-</span> <span class="fu">get_max_footer_lines</span><span class="op">(</span><span class="va">max_footer_lines</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Calls UseMethod("tbl_format_setup"),</span></span>
+<span>  <span class="co"># allows using default values in S3 dispatch</span></span>
+<span>  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_dispatch</span><span class="op">(</span></span>
+<span>    <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,</span>
+<span>    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>,</span>
+<span>    focus <span class="op">=</span> <span class="va">focus</span></span>
+<span>  <span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/UseMethod.html" class="external-link">UseMethod</a></span><span class="op">(</span><span class="st">"tbl_format_setup"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><p>The default implementation converts the input to a data frame via
 <code>as.data.frame(head(x))</code>, and returns an object constructed
@@ -238,52 +250,79 @@ object, but you should not overwrite existing items.</p>
 <details><summary>
 Source code of <code>pillar:::tbl_format_setup.tbl()</code>
 </summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, </span>
-<span>    <span class="va">focus</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="st">"!!!!DEBUG tbl_format_setup.tbl()"</span></span>
-<span>    <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">df_head</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
-<span>        <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>            <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
-<span>        <span class="op">}</span></span>
-<span>        <span class="kw">else</span> <span class="op">{</span></span>
-<span>            <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">vec_head</span><span class="op">(</span><span class="va">df</span>, <span class="va">n</span><span class="op">)</span></span>
-<span>        <span class="op">}</span></span>
+<code class="sourceCode R"><span><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,</span>
+<span>                                 <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="st">"!!!!DEBUG tbl_format_setup.tbl()"</span></span>
+<span></span>
+<span>  <span class="co"># Number of rows</span></span>
+<span>  <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">df_head</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>      <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">vec_head</span><span class="op">(</span><span class="va">df</span>, <span class="va">n</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="op">{</span></span>
-<span>        <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">df_head</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">needs_dots</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="va">n</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="op">{</span></span>
-<span>        <span class="va">needs_dots</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">rows</span> <span class="op">&gt;</span> <span class="va">n</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">needs_dots</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">rows_missing</span> <span class="op">&lt;-</span> <span class="va">rows</span> <span class="op">-</span> <span class="va">n</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="op">{</span></span>
-<span>        <span class="va">rows_missing</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="va">tbl_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
-<span>    <span class="va">colonnade</span> <span class="op">&lt;-</span> <span class="fu">ctl_colonnade</span><span class="op">(</span><span class="va">df</span>, has_row_id <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.row_names_info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> </span>
-<span>        <span class="fl">0</span><span class="op">)</span> </span>
-<span>        <span class="st">"*"</span></span>
-<span>    <span class="kw">else</span> <span class="cn">TRUE</span>, width <span class="op">=</span> <span class="va">width</span>, controller <span class="op">=</span> <span class="va">x</span>, focus <span class="op">=</span> <span class="va">focus</span><span class="op">)</span></span>
-<span>    <span class="va">body</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">body</span></span>
-<span>    <span class="va">extra_cols</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">extra_cols</span></span>
-<span>    <span class="va">extra_cols_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">extra_cols</span><span class="op">)</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">extra_cols_total</span> <span class="op">&gt;</span> <span class="va">max_extra_cols</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">extra_cols</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">max_extra_cols</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="va">abbrev_cols</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">abbrev_cols</span></span>
-<span>    <span class="fu"><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, df <span class="op">=</span> <span class="va">df</span>, width <span class="op">=</span> <span class="va">width</span>, tbl_sum <span class="op">=</span> <span class="va">tbl_sum</span>, </span>
-<span>        body <span class="op">=</span> <span class="va">body</span>, rows_missing <span class="op">=</span> <span class="va">rows_missing</span>, rows_total <span class="op">=</span> <span class="va">rows</span>, </span>
-<span>        extra_cols <span class="op">=</span> <span class="va">extra_cols</span>, extra_cols_total <span class="op">=</span> <span class="va">extra_cols_total</span>, </span>
-<span>        max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>, abbrev_cols <span class="op">=</span> <span class="va">abbrev_cols</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">df_head</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># Lazy table with too many rows</span></span>
+<span>    <span class="va">needs_dots</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="co"># Lazy table with few rows, or regular data frame</span></span>
+<span>    <span class="va">needs_dots</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">rows</span> <span class="op">&gt;</span> <span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">needs_dots</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">rows_missing</span> <span class="op">&lt;-</span> <span class="va">rows</span> <span class="op">-</span> <span class="va">n</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">rows_missing</span> <span class="op">&lt;-</span> <span class="fl">0L</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="co"># Header</span></span>
+<span>  <span class="va">tbl_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Body</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span></span>
+<span>  <span class="va">colonnade</span> <span class="op">&lt;-</span> <span class="fu">ctl_colonnade</span><span class="op">(</span></span>
+<span>    <span class="va">df</span>,</span>
+<span>    has_row_id <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.row_names_info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="st">"*"</span> <span class="kw">else</span> <span class="cn">TRUE</span>,</span>
+<span>    width <span class="op">=</span> <span class="va">width</span>,</span>
+<span>    controller <span class="op">=</span> <span class="va">x</span>,</span>
+<span>    focus <span class="op">=</span> <span class="va">focus</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">body</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">body</span></span>
+<span></span>
+<span>  <span class="co"># Extra columns</span></span>
+<span>  <span class="va">extra_cols</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">extra_cols</span></span>
+<span>  <span class="va">extra_cols_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">extra_cols</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">extra_cols_total</span> <span class="op">&gt;</span> <span class="va">max_extra_cols</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">extra_cols</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">max_extra_cols</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="co"># Abbreviated columns</span></span>
+<span>  <span class="va">abbrev_cols</span> <span class="op">&lt;-</span> <span class="va">colonnade</span><span class="op">$</span><span class="va">abbrev_cols</span></span>
+<span></span>
+<span>  <span class="co"># Result</span></span>
+<span>  <span class="fu"><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">x</span>,</span>
+<span>    df <span class="op">=</span> <span class="va">df</span>,</span>
+<span>    width <span class="op">=</span> <span class="va">width</span>,</span>
+<span>    tbl_sum <span class="op">=</span> <span class="va">tbl_sum</span>,</span>
+<span>    body <span class="op">=</span> <span class="va">body</span>,</span>
+<span>    rows_missing <span class="op">=</span> <span class="va">rows_missing</span>,</span>
+<span>    rows_total <span class="op">=</span> <span class="va">rows</span>,</span>
+<span>    extra_cols <span class="op">=</span> <span class="va">extra_cols</span>,</span>
+<span>    extra_cols_total <span class="op">=</span> <span class="va">extra_cols_total</span>,</span>
+<span>    max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>,</span>
+<span>    abbrev_cols <span class="op">=</span> <span class="va">abbrev_cols</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><p>At the core, the internal function <code>ctl_colonnade()</code>
 composes the body. Its functionality and the customization points it
@@ -322,41 +361,49 @@ consist of code that styles and wraps the output.</p>
 <details><summary>
 Source code of <code>pillar:::tbl_format_header.tbl()</code>
 </summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tbl_format_header.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="va">named_header</span> <span class="op">&lt;-</span> <span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span></span>
-<span>    <span class="va">focus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_focus"</span><span class="op">)</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">focus</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">named_header</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">named_header</span>, `Focus columns` <span class="op">=</span> <span class="fu">collapse</span><span class="op">(</span><span class="fu">tick_if_needed</span><span class="op">(</span><span class="va">focus</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu">names2</span><span class="op">(</span><span class="va">named_header</span><span class="op">)</span> <span class="op">==</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">header</span> <span class="op">&lt;-</span> <span class="va">named_header</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="op">{</span></span>
-<span>        <span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/align.html">align</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu">names2</span><span class="op">(</span><span class="va">named_header</span><span class="op">)</span>, <span class="st">":"</span><span class="op">)</span>, </span>
-<span>            space <span class="op">=</span> <span class="va">NBSP</span><span class="op">)</span>, <span class="st">" "</span>, <span class="va">named_header</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu">format_comment</span><span class="op">(</span><span class="va">header</span>, width <span class="op">=</span> <span class="va">setup</span><span class="op">$</span><span class="va">width</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">tbl_format_header.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">named_header</span> <span class="op">&lt;-</span> <span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span></span>
+<span>  <span class="va">focus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"pillar_focus"</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">focus</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">named_header</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">named_header</span>, <span class="st">"Focus columns"</span> <span class="op">=</span> <span class="fu">collapse</span><span class="op">(</span><span class="fu">tick_if_needed</span><span class="op">(</span><span class="va">focus</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu">names2</span><span class="op">(</span><span class="va">named_header</span><span class="op">)</span> <span class="op">==</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">header</span> <span class="op">&lt;-</span> <span class="va">named_header</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">header</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="../reference/align.html">align</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu">names2</span><span class="op">(</span><span class="va">named_header</span><span class="op">)</span>, <span class="st">":"</span><span class="op">)</span>, space <span class="op">=</span> <span class="va">NBSP</span><span class="op">)</span>,</span>
+<span>      <span class="co"># We add a space after the NBSP inserted by align()</span></span>
+<span>      <span class="co"># so that wrapping occurs at the right location for very narrow outputs</span></span>
+<span>      <span class="st">" "</span>,</span>
+<span>      <span class="va">named_header</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu">format_comment</span><span class="op">(</span><span class="va">header</span>, width <span class="op">=</span> <span class="va">setup</span><span class="op">$</span><span class="va">width</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><details><summary>
 Source code of <code>pillar:::tbl_format_body.tbl()</code>
 </summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tbl_format_body.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/force.html" class="external-link">force</a></span><span class="op">(</span><span class="va">setup</span><span class="op">)</span></span>
-<span>    <span class="va">setup</span><span class="op">$</span><span class="va">body</span></span>
+<code class="sourceCode R"><span><span class="va">tbl_format_body.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/force.html" class="external-link">force</a></span><span class="op">(</span><span class="va">setup</span><span class="op">)</span></span>
+<span>  <span class="va">setup</span><span class="op">$</span><span class="va">body</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><details><summary>
 Source code of <code>pillar:::tbl_format_footer.tbl()</code>
 </summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tbl_format_footer.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span></span>
-<span>    <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer_bullet</span><span class="op">(</span><span class="va">footer</span>, <span class="va">setup</span><span class="op">)</span></span>
-<span>    <span class="va">footer_advice</span> <span class="op">&lt;-</span> <span class="fu">format_footer_advice</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span></span>
-<span>    <span class="va">footer_advice_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer_bullet</span><span class="op">(</span><span class="va">footer_advice</span>, </span>
-<span>        <span class="va">setup</span>, lines <span class="op">=</span> <span class="fl">1</span>, ellipsis <span class="op">=</span> <span class="cn">FALSE</span>, bullet <span class="op">=</span> <span class="va">symbol</span><span class="op">$</span><span class="va">info</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">footer_comment</span>, <span class="va">footer_advice_comment</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">tbl_format_footer.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">footer</span> <span class="op">&lt;-</span> <span class="fu">format_footer</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span></span>
+<span>  <span class="va">footer_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer_bullet</span><span class="op">(</span><span class="va">footer</span>, <span class="va">setup</span><span class="op">)</span></span>
+<span>  <span class="va">footer_advice</span> <span class="op">&lt;-</span> <span class="fu">format_footer_advice</span><span class="op">(</span><span class="va">x</span>, <span class="va">setup</span><span class="op">)</span></span>
+<span>  <span class="va">footer_advice_comment</span> <span class="op">&lt;-</span> <span class="fu">wrap_footer_bullet</span><span class="op">(</span></span>
+<span>    <span class="va">footer_advice</span>,</span>
+<span>    <span class="va">setup</span>,</span>
+<span>    lines <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    ellipsis <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    bullet <span class="op">=</span> <span class="va">symbol</span><span class="op">$</span><span class="va">info</span></span>
+<span>  <span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">footer_comment</span>, <span class="va">footer_advice_comment</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details>
 </div>
@@ -441,28 +488,21 @@ method.</p>
 <details><summary>
 Source code of <code>pillar:::ctl_new_pillar_list.tbl()</code>
 </summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ctl_new_pillar_list.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">first_pillar</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="st">"!!!!DEBUG ctl_new_pillar_list.tbl(`v(width)`, `v(title)`)"</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="fu">new_data_frame_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, </span>
-<span>            first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">ctl_new_pillar_list.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">first_pillar</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="st">"!!!!DEBUG ctl_new_pillar_list.tbl(`v(width)`, `v(title)`)"</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">new_data_frame_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Surv"</span>, <span class="st">"Surv2"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">new_matrix_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">new_array_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">first_pillar</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">first_pillar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="fu">prepare_title</span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Surv"</span>, <span class="st">"Surv2"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="fu">new_matrix_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, </span>
-<span>            first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">is.array</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="fu">new_array_pillar_list</span><span class="op">(</span><span class="va">x</span>, <span class="va">controller</span>, <span class="va">width</span>, title <span class="op">=</span> <span class="va">title</span>, </span>
-<span>            first_pillar <span class="op">=</span> <span class="va">first_pillar</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="op">{</span></span>
-<span>        <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">first_pillar</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>            <span class="va">first_pillar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ctl_new_pillar.html">ctl_new_pillar</a></span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, </span>
-<span>                <span class="va">...</span>, title <span class="op">=</span> <span class="fu">prepare_title</span><span class="op">(</span><span class="va">title</span><span class="op">)</span><span class="op">)</span></span>
-<span>        <span class="op">}</span></span>
-<span>        <span class="fu">new_single_pillar_list</span><span class="op">(</span><span class="va">first_pillar</span>, <span class="va">width</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
+<span>    <span class="fu">new_single_pillar_list</span><span class="op">(</span><span class="va">first_pillar</span>, <span class="va">width</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details>
 </div>
@@ -482,22 +522,25 @@ container.</p>
 <details><summary>
 Source code of <code>pillar:::ctl_new_pillar.tbl()</code>
 </summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ctl_new_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="st">"!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"</span></span>
-<span>    <span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> </span>
-<span>        <span class="fu">max0</span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">ctl_new_pillar.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">controller</span>, <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="st">"!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"</span></span>
+<span></span>
+<span>  <span class="fu"><a href="../reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span>, <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="fu">max0</span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><p>The default method calls <code><a href="../reference/pillar.html">pillar()</a></code> directly, passing the
 maximum width available.</p>
 <details><summary>
 Source code of <code>pillar()</code>
 </summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="st">"!!!!DEBUG pillar(`v(class(x))`, `v(title)`, `v(width)`)"</span></span>
-<span>    <span class="fu">pillar_from_shaft</span><span class="op">(</span><span class="fu"><a href="../reference/new_pillar_title.html">new_pillar_title</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span>, <span class="fu"><a href="../reference/new_pillar_type.html">new_pillar_type</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, </span>
-<span>        <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>, <span class="va">width</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">title</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="st">"!!!!DEBUG pillar(`v(class(x))`, `v(title)`, `v(width)`)"</span></span>
+<span></span>
+<span>  <span class="fu">pillar_from_shaft</span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/new_pillar_title.html">new_pillar_title</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="../reference/new_pillar_type.html">new_pillar_type</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="../reference/pillar_shaft.html">pillar_shaft</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>,</span>
+<span>    <span class="va">width</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><p>Formatting for title and type is provided by
 <code><a href="../reference/new_pillar_title.html">new_pillar_title()</a></code> and <code><a href="../reference/new_pillar_type.html">new_pillar_type()</a></code>. The
@@ -518,17 +561,25 @@ constructed with <code><a href="../reference/new_pillar.html">new_pillar()</a></
 <details><summary>
 Source code of <code>new_pillar()</code>
 </summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">extra</span> <span class="op">=</span> <span class="fu"><a href="../reference/deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="st">"!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu">is_present</span><span class="op">(</span><span class="va">extra</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="fu">deprecate_warn</span><span class="op">(</span><span class="st">"1.7.0"</span>, <span class="st">"pillar::new_pillar(extra = )"</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">components</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu">is_named</span><span class="op">(</span><span class="va">components</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="fu">abort</span><span class="op">(</span><span class="st">"All components must have names."</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="va">components</span>, width <span class="op">=</span> <span class="va">width</span>, class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">"pillar"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">new_pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">components</span>, <span class="va">...</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                       <span class="va">extra</span> <span class="op">=</span> <span class="fu"><a href="../reference/deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="st">"!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu">is_present</span><span class="op">(</span><span class="va">extra</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># Signal the deprecation to the user</span></span>
+<span>    <span class="fu">deprecate_warn</span><span class="op">(</span><span class="st">"1.7.0"</span>, <span class="st">"pillar::new_pillar(extra = )"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="fu">check_dots_empty</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">components</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu">is_named</span><span class="op">(</span><span class="va">components</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">abort</span><span class="op">(</span><span class="st">"All components must have names."</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span></span>
+<span>    <span class="va">components</span>,</span>
+<span>    width <span class="op">=</span> <span class="va">width</span>,</span>
+<span>    class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">class</span>, <span class="st">"pillar"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details><p>A pillar is stored as a list of components. Each pillar represents
 only one simple (atomic) column, compound columns are always represented
@@ -546,15 +597,16 @@ width if empty:</p>
 <details><summary>
 Source code of <code>pillar:::format.pillar()</code>
 </summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">format.pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> </span>
-<span><span class="op">{</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">pillar_get_width</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="fu">as_glue</span><span class="op">(</span><span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span><span class="op">$</span><span class="va">aligned</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">format.pillar</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">width</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">pillar_get_width</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="fu">as_glue</span><span class="op">(</span><span class="fu">pillar_format_parts_2</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span><span class="op">)</span><span class="op">$</span><span class="va">aligned</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </details>
 </div>
