@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9023
+
+## Continuous integration
+
+  - Install via R CMD INSTALL ., not pak (#672).
+    
+      - ci: Install via R CMD INSTALL ., not pak
+    
+      - ci: Bump version of upload-artifact action
+
+
 # pillar 1.9.0.9022
 
 ## Continuous integration
