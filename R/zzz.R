@@ -36,11 +36,8 @@
 #' @importFrom cli symbol ansi_strwrap
 NULL
 
-# https://github.com/r-lib/pkgdown/issues/1540
-if (Sys.getenv("IN_PKGDOWN") != "") {
-  type_sum.accel <- function(x) {
-    I("kg m/s^2")
-  }
+type_sum.accel <- function(x) {
+  I("kg m/s^2")
 }
 
 # nolint start
@@ -67,10 +64,7 @@ if (Sys.getenv("IN_PKGDOWN") != "") {
     debug_info()
   }
 
-  # https://github.com/r-lib/pkgdown/issues/1540
-  if (Sys.getenv("IN_PKGDOWN") != "") {
-    s3_register("pillar::type_sum", "accel")
-  }
+  s3_register("pillar::type_sum", "accel")
 
   invisible()
 }
