@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   debugme: debugme.html
@@ -7,7 +7,7 @@ articles:
   extending: extending.html
   numbers: numbers.html
   printing: printing.html
-last_built: 2024-09-14T08:43Z
+last_built: 2024-10-19T16:41Z
 urls:
   reference: https://pillar.r-lib.org/reference
   article: https://pillar.r-lib.org/articles
