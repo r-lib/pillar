@@ -1,23 +1,23 @@
-# incidence2
+# tidyseurat
 
 <details>
 
-* Version: 1.2.3
-* GitHub: https://github.com/reconverse/incidence2
-* Source code: https://github.com/cran/incidence2
-* Date/Publication: 2021-11-07 22:00:02 UTC
-* Number of recursive dependencies: 87
+* Version: 0.8.0
+* GitHub: https://github.com/stemangiola/tidyseurat
+* Source code: https://github.com/cran/tidyseurat
+* Date/Publication: 2024-01-10 04:50:02 UTC
+* Number of recursive dependencies: 195
 
-Run `revdepcheck::cloud_details(, "incidence2")` for more info
+Run `revdepcheck::cloud_details(, "tidyseurat")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘incidence2’ can be installed ... ERROR
+*   checking whether package ‘tidyseurat’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/incidence2/new/incidence2.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/tidyseurat/new/tidyseurat.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -25,38 +25,38 @@ Run `revdepcheck::cloud_details(, "incidence2")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘incidence2’ ...
-** package ‘incidence2’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘tidyseurat’ ...
+** package ‘tidyseurat’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
 ** data
 *** moving datasets to lazyload DB
 ** inst
 ** byte-compile and prepare package for lazy loading
-Error : The `x` argument of `as_tibble()` can't be missing as of tibble 3.0.0.
-Error: unable to load R code in package ‘incidence2’
+Error: package or namespace load failed for ‘SeuratObject’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘Matrix’ 1.5-4.1 is already loaded, but >= 1.6.4 is required
 Execution halted
-ERROR: lazy loading failed for package ‘incidence2’
-* removing ‘/tmp/workdir/incidence2/new/incidence2.Rcheck/incidence2’
+ERROR: lazy loading failed for package ‘tidyseurat’
+* removing ‘/tmp/workdir/tidyseurat/new/tidyseurat.Rcheck/tidyseurat’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘incidence2’ ...
-** package ‘incidence2’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘tidyseurat’ ...
+** package ‘tidyseurat’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
 ** data
 *** moving datasets to lazyload DB
 ** inst
 ** byte-compile and prepare package for lazy loading
-Error : The `x` argument of `as_tibble()` can't be missing as of tibble 3.0.0.
-Error: unable to load R code in package ‘incidence2’
+Error: package or namespace load failed for ‘SeuratObject’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘Matrix’ 1.5-4.1 is already loaded, but >= 1.6.4 is required
 Execution halted
-ERROR: lazy loading failed for package ‘incidence2’
-* removing ‘/tmp/workdir/incidence2/old/incidence2.Rcheck/incidence2’
+ERROR: lazy loading failed for package ‘tidyseurat’
+* removing ‘/tmp/workdir/tidyseurat/old/tidyseurat.Rcheck/tidyseurat’
 
 
 ```
