@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9024
+
+## Chore
+
+  - Revdepcheck results.
+
+
 # pillar 1.9.0.9023
 
 ## Continuous integration
