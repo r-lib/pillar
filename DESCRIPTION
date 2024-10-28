@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.9.0.9015
+Version: 1.9.0.9025
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -52,7 +52,7 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.2.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Config/testthat/start-first: 

@@ -1,4 +1,4 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Also included in R-CMD-check.yaml, this workflow only listens to pushes to branches
 # that start with "docs*"
 on:
@@ -42,7 +42,7 @@ jobs:
           install-r: false
           cache-version: pkgdown-2
           needs: website
-          extra-packages: r-lib/pkgdown local::.
+          extra-packages: r-lib/pkgdown@f-readme-tweak local::.
 
       - uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''

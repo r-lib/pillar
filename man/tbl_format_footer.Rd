@@ -30,7 +30,7 @@ The default implementation adds information about rows and columns
 that are not shown in the body.
 }
 \examples{
-\dontshow{if (rlang::is_installed("palmerpenguins")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_installed("palmerpenguins")) withAutoprint(\{ # examplesIf}
 setup <- tbl_format_setup(palmerpenguins::penguins)
 tbl_format_footer(palmerpenguins::penguins, setup)
 

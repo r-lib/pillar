@@ -1,5 +1,103 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9025
+
+## Continuous integration
+
+  - Trigger run (#675).
+
+  - Use pkgdown branch (#674).
+    
+      - ci: Use pkgdown branch
+    
+      - ci: Updates from duckdb
+
+
+# pillar 1.9.0.9024
+
+## Chore
+
+  - Revdepcheck results.
+
+
+# pillar 1.9.0.9023
+
+## Continuous integration
+
+  - Install via R CMD INSTALL ., not pak (#672).
+    
+      - ci: Install via R CMD INSTALL ., not pak
+    
+      - ci: Bump version of upload-artifact action
+
+
+# pillar 1.9.0.9022
+
+## Continuous integration
+
+  - Install local package for pkgdown builds.
+
+  - Improve support for protected branches with fledge.
+
+  - Improve support for protected branches, without fledge.
+
+
+# pillar 1.9.0.9021
+
+## Continuous integration
+
+- Sync with latest developments.
+
+
+# pillar 1.9.0.9020
+
+## Continuous integration
+
+- Fix edge case of no suggested packages.
+
+- Use v2 instead of master.
+
+
+# pillar 1.9.0.9019
+
+## Continuous integration
+
+- Inline action.
+
+
+# pillar 1.9.0.9018
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/10224241696
+
+## Continuous integration
+
+- Refactor dep-suggests-matrix, avoid killing base and recommended packages.
+
+
+# pillar 1.9.0.9017
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-lib/pillar/actions/runs/10200114378
+
+## Continuous integration
+
+- Use dev roxygen2 and decor.
+
+
+# pillar 1.9.0.9016
+
+## Documentation
+
+- Update \_pkgdown.yml to bring back search bar (@olivroy, #667).
+
+
 # pillar 1.9.0.9015
 
 ## Testing
