@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9025
+
+## Continuous integration
+
+  - Trigger run (#675).
+
+  - Use pkgdown branch (#674).
+    
+      - ci: Use pkgdown branch
+    
+      - ci: Updates from duckdb
+
+
 # pillar 1.9.0.9024
 
 ## Chore
