@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9026
+
+## Continuous integration
+
+  - Trigger run (#676).
+    
+      - ci: Trigger run
+    
+      - ci: Latest changes
+
+
 # pillar 1.9.0.9025
 
 ## Continuous integration
