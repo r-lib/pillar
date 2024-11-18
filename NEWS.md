@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9027
+
+## Continuous integration
+
+  - Use stable pak (#677).
+
+
 # pillar 1.9.0.9026
 
 ## Continuous integration
