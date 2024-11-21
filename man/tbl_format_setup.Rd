@@ -9,13 +9,23 @@ tbl_format_setup(
   x,
   width = NULL,
   ...,
+  setup = list(tbl_sum = tbl_sum(x)),
   n = NULL,
   max_extra_cols = NULL,
   max_footer_lines = NULL,
   focus = NULL
 )
 
-\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols, max_footer_lines, focus)
+\method{tbl_format_setup}{tbl}(
+  x,
+  width,
+  ...,
+  setup,
+  n,
+  max_extra_cols,
+  max_footer_lines,
+  focus
+)
 }
 \arguments{
 \item{x}{An object.}
@@ -24,6 +34,14 @@ tbl_format_setup(
 This argument is mandatory for all implementations of this method.}
 
 \item{...}{Extra arguments to \code{\link[=print.tbl]{print.tbl()}} or \code{\link[=format.tbl]{format.tbl()}}.}
+
+\item{setup}{This method is first called with \code{setup = NULL} .
+If the method \emph{evaluates} this argument, the return value
+will only be used in a call to \code{\link[=tbl_format_header]{tbl_format_header()}},
+and after that, a second call to this method will be made
+with the return value of the first call as \code{setup}.
+This allows displaying the header before starting the computation
+required for the body and footer.}
 
 \item{n}{Actual number of rows to print.
 No \link[=pillar_options]{options} should be considered

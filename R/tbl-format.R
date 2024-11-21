@@ -60,8 +60,16 @@ format_tbl <- function(
   force(x)
   num_colors(forget = TRUE)
 
-  setup <- tbl_format_setup(x,
-    width = width, ...,
+  setup_used <- FALSE
+
+  setup <- tbl_format_setup(
+    x,
+    width = width,
+    ...,
+    setup = {
+      setup_used <- TRUE
+      NULL
+    },
     n = n,
     max_extra_cols = max_extra_cols,
     max_footer_lines = max_footer_lines,
@@ -69,6 +77,20 @@ format_tbl <- function(
   )
 
   header <- transform(tbl_format_header(x, setup))
+
+  if (setup_used) {
+    setup <- tbl_format_setup(
+      x,
+      width = width,
+      ...,
+      setup = setup,
+      n = n,
+      max_extra_cols = max_extra_cols,
+      max_footer_lines = max_footer_lines,
+      focus = attr(x, "pillar_focus")
+    )
+  }
+
   body <- transform(tbl_format_body(x, setup))
   footer <- transform(tbl_format_footer(x, setup))
   c(header, body, footer)

@@ -41,6 +41,14 @@
 #'   This argument is mandatory for all implementations of this method.
 #' @param ...
 #'   Extra arguments to [print.tbl()] or [format.tbl()].
+#' @param setup
+#'   This method is first called with `setup = NULL` .
+#'   If the method _evaluates_ this argument, the return value
+#'   will only be used in a call to [tbl_format_header()],
+#'   and after that, a second call to this method will be made
+#'   with the return value of the first call as `setup`.
+#'   This allows displaying the header before starting the computation
+#'   required for the body and footer.
 #' @param n
 #'   Actual number of rows to print.
 #'   No [options][pillar_options] should be considered
@@ -67,6 +75,7 @@ tbl_format_setup <- function(
   x,
   width = NULL,
   ...,
+  setup = list(tbl_sum = tbl_sum(x)),
   n = NULL,
   max_extra_cols = NULL,
   max_footer_lines = NULL,
@@ -87,6 +96,7 @@ tbl_format_setup <- function(
     x,
     width,
     ...,
+    setup = setup,
     n = n,
     max_extra_cols = max_extra_cols,
     max_footer_lines = max_footer_lines,
@@ -107,9 +117,25 @@ tbl_format_setup_dispatch <- function(x, width, ..., n, max_extra_cols, max_foot
 #'
 #' @rdname tbl_format_setup
 #' @export
-tbl_format_setup.tbl <- function(x, width, ...,
-                                 n, max_extra_cols, max_footer_lines, focus) {
+tbl_format_setup.tbl <- function(
+  x,
+  width,
+  ...,
+  setup,
+  n,
+  max_extra_cols,
+  max_footer_lines,
+  focus
+) {
   "!!!!DEBUG tbl_format_setup.tbl()"
+
+  if (is.null(setup)) {
+    # Header with early exit
+    tbl_sum <- tbl_sum(x)
+    return(new_tbl_format_setup(width, tbl_sum))
+  } else {
+    tbl_sum <- setup$tbl_sum
+  }
 
   # Number of rows
   rows <- tbl_nrow(x)
@@ -139,9 +165,6 @@ tbl_format_setup.tbl <- function(x, width, ...,
   } else {
     rows_missing <- 0L
   }
-
-  # Header
-  tbl_sum <- tbl_sum(x)
 
   # Body
   rownames(df) <- NULL
@@ -233,17 +256,17 @@ tbl_nrow.tbl <- function(x, ...) {
 #'
 #' @keywords internal
 new_tbl_format_setup <- function(
-  x,
-  df,
   width,
   tbl_sum,
-  body,
-  rows_missing,
-  rows_total,
-  extra_cols,
-  extra_cols_total,
-  max_footer_lines,
-  abbrev_cols
+  x = NULL,
+  df = NULL,
+  body = NULL,
+  rows_missing = NULL,
+  rows_total = NULL,
+  extra_cols = NULL,
+  extra_cols_total = NULL,
+  max_footer_lines = NULL,
+  abbrev_cols = NULL
 ) {
   trunc_info <- list(
     x = x,
