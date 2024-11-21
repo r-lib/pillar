@@ -54,9 +54,6 @@ format_tbl <- function(
 
   if (!is.null(n_extra)) {
     deprecate_stop("1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )")
-    if (is.null(max_extra_cols)) {
-      max_extra_cols <- n_extra
-    }
   }
 
   # Reset local cache for each new output
