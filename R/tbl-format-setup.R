@@ -63,10 +63,15 @@
 #' @export
 #' @examplesIf rlang::is_installed("palmerpenguins")
 #' tbl_format_setup(palmerpenguins::penguins)
-tbl_format_setup <- function(x, width = NULL, ...,
-                             n = NULL, max_extra_cols = NULL,
-                             max_footer_lines = NULL,
-                             focus = NULL) {
+tbl_format_setup <- function(
+  x,
+  width = NULL,
+  ...,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL,
+  focus = NULL
+) {
   "!!!!DEBUG tbl_format_setup()"
 
   width <- get_width_print(width)
@@ -79,8 +84,12 @@ tbl_format_setup <- function(x, width = NULL, ...,
   # Calls UseMethod("tbl_format_setup"),
   # allows using default values in S3 dispatch
   out <- tbl_format_setup_dispatch(
-    x, width, ...,
-    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines,
+    x,
+    width,
+    ...,
+    n = n,
+    max_extra_cols = max_extra_cols,
+    max_footer_lines = max_footer_lines,
     focus = focus
   )
   return(out)
@@ -203,11 +212,19 @@ tbl_format_setup.tbl <- function(x, width, ...,
 #'   in the body.
 #'
 #' @keywords internal
-new_tbl_format_setup <- function(x, df, width, tbl_sum, body,
-                                 rows_missing, rows_total,
-                                 extra_cols, extra_cols_total,
-                                 max_footer_lines,
-                                 abbrev_cols) {
+new_tbl_format_setup <- function(
+  x,
+  df,
+  width,
+  tbl_sum,
+  body,
+  rows_missing,
+  rows_total,
+  extra_cols,
+  extra_cols_total,
+  max_footer_lines,
+  abbrev_cols
+) {
   trunc_info <- list(
     x = x,
     df = df,
