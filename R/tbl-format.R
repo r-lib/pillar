@@ -18,16 +18,15 @@ print_tbl <- function(x, width = NULL, ...,
                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
   if (!is.null(n_extra)) {
     deprecate_stop("1.6.2", "pillar::print(n_extra = )", "pillar::print(max_extra_cols = )")
-    if (is.null(max_extra_cols)) {
-      max_extra_cols <- n_extra
-    }
   }
 
-  writeLines(format(
+  format_tbl(
     x,
     width = width, ...,
-    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
-  ))
+    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines,
+    transform = writeLines
+  )
+
   invisible(x)
 }
 
@@ -48,7 +47,8 @@ format_tbl <- function(
   n_extra = NULL,
   n = NULL,
   max_extra_cols = NULL,
-  max_footer_lines = NULL
+  max_footer_lines = NULL,
+  transform = identity
 ) {
   check_dots_empty(action = signal)
 
@@ -68,9 +68,9 @@ format_tbl <- function(
     focus = attr(x, "pillar_focus")
   )
 
-  header <- tbl_format_header(x, setup)
-  body <- tbl_format_body(x, setup)
-  footer <- tbl_format_footer(x, setup)
+  header <- transform(tbl_format_header(x, setup))
+  body <- transform(tbl_format_body(x, setup))
+  footer <- transform(tbl_format_footer(x, setup))
   c(header, body, footer)
 }
 
