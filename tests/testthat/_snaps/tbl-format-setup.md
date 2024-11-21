@@ -1420,7 +1420,7 @@
       # A data frame: ?? x 3
       <tbl_format_body(setup)>
         Girth Height Volume
-      * <dbl>  <dbl>  <dbl>
+        <dbl>  <dbl>  <dbl>
       1   8.3     70   10.3
       2   8.6     65   10.3
       3   8.8     63   10.2
@@ -1439,7 +1439,7 @@
       # A data frame: ?? x 3
       <tbl_format_body(setup)>
          Girth Height Volume
-       * <dbl>  <dbl>  <dbl>
+         <dbl>  <dbl>  <dbl>
        1   8.3     70   10.3
        2   8.6     65   10.3
        3   8.8     63   10.2
@@ -1459,7 +1459,7 @@
       # A data frame: ?? x 3
       <tbl_format_body(setup)>
          Girth Height Volume
-       * <dbl>  <dbl>  <dbl>
+         <dbl>  <dbl>  <dbl>
        1   8.3     70   10.3
        2   8.6     65   10.3
        3   8.8     63   10.2

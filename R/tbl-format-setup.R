@@ -114,8 +114,9 @@ tbl_format_setup.tbl <- function(x, width, ...,
   # Number of rows
   rows <- nrow(x)
 
-  if (is.na(rows)) {
-    df <- df_head(x, n + 1)
+  lazy <- is.na(rows)
+  if (lazy) {
+    df <- as.data.frame(head(x, n + 1))
     if (nrow(df) <= n) {
       rows <- nrow(df)
     } else {
@@ -147,7 +148,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
 
   colonnade <- ctl_colonnade(
     df,
-    has_row_id = if (.row_names_info(x) > 0) "*" else TRUE,
+    has_row_id = if (!lazy && .row_names_info(x) > 0) "*" else TRUE,
     width = width,
     controller = x,
     focus = focus
