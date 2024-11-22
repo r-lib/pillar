@@ -86,7 +86,7 @@ standard printing for tibbles.
 See \code{\link[=new_tbl_format_setup]{new_tbl_format_setup()}} for details on the returned object.
 }
 \examples{
-\dontshow{if (rlang::is_installed("palmerpenguins")) withAutoprint(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("palmerpenguins", "tibble"))) withAutoprint(\{ # examplesIf}
 tbl_format_setup(palmerpenguins::penguins)
 \dontshow{\}) # examplesIf}
 }

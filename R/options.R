@@ -7,7 +7,7 @@
 #' @usage NULL
 #' @format NULL
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("tibble")
 #' df <- tibble::tibble(x = c(1.234567, NA, 5:10))
 #' df
 #'
