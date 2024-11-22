@@ -231,7 +231,7 @@ Source code of <code>tbl_format_setup()</code>
 <span></span>
 <span>  <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width_print</span><span class="op">(</span><span class="va">width</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">get_n_print</span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">get_n_print</span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="../reference/tbl_nrow.html">tbl_nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">max_extra_cols</span> <span class="op">&lt;-</span> <span class="fu">get_max_extra_cols</span><span class="op">(</span><span class="va">max_extra_cols</span><span class="op">)</span></span>
 <span>  <span class="va">max_footer_lines</span> <span class="op">&lt;-</span> <span class="fu">get_max_footer_lines</span><span class="op">(</span><span class="va">max_footer_lines</span><span class="op">)</span></span>
@@ -264,7 +264,7 @@ Source code of <code>pillar:::tbl_format_setup.tbl()</code>
 <span>  <span class="st">"!!!!DEBUG tbl_format_setup.tbl()"</span></span>
 <span></span>
 <span>  <span class="co"># Number of rows</span></span>
-<span>  <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_nrow.html">tbl_nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">lazy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">lazy</span><span class="op">)</span> <span class="op">{</span></span>
