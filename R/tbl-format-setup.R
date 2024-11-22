@@ -76,7 +76,7 @@ tbl_format_setup <- function(
 
   width <- get_width_print(width)
 
-  n <- get_n_print(n, nrow(x))
+  n <- get_n_print(n, tbl_nrow(x))
 
   max_extra_cols <- get_max_extra_cols(max_extra_cols)
   max_footer_lines <- get_max_footer_lines(max_footer_lines)
@@ -112,7 +112,7 @@ tbl_format_setup.tbl <- function(x, width, ...,
   "!!!!DEBUG tbl_format_setup.tbl()"
 
   # Number of rows
-  rows <- nrow(x)
+  rows <- tbl_nrow(x)
 
   lazy <- is.na(rows)
   if (lazy) {
@@ -182,6 +182,25 @@ tbl_format_setup.tbl <- function(x, width, ...,
     abbrev_cols = abbrev_cols
   )
 }
+
+#' Number of rows in a tbl object
+#'
+#' This generic will be called by [tbl_format_setup()] to determine the number
+#' of rows in a tbl object.
+#'
+#' @param x A tbl object.
+#' @inheritParams rlang::args_dots_empty
+#' @export
+tbl_nrow <- function(x, ...) {
+  check_dots_empty0(...)
+  UseMethod("tbl_nrow")
+}
+
+#' @export
+tbl_nrow.tbl <- function(x, ...) {
+  nrow(x)
+}
+
 
 #' Construct a setup object for formatting
 #'
