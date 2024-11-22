@@ -1,4 +1,6 @@
 test_that("output test", {
+  skip_if_not_installed("tibble")
+
   expect_snapshot({
     tibble::tibble(
       x0 = num(9:11 * 100 + 0.5, sigfig = 3),
