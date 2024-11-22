@@ -1,3 +1,10 @@
+# `format_footer_advice()` snapshot test
+
+    Code
+      format_footer_advice()
+    Output
+      NULL
+
 # tbl_format_footer() results
 
     Code
