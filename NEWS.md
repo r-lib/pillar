@@ -1,5 +1,24 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9028
+
+## Features
+
+- New `tbl_nrow()` to support lazy data frames (#679).
+
+## Chore
+
+- Fix vignette building if tibble is missing (#681).
+
+- Refactorings to improve duckplyr support (#682).
+
+## Continuous integration
+
+- Use styler from PR.
+
+- Correctly detect branch protection (#678).
+
+
 # pillar 1.9.0.9027
 
 ## Continuous integration
