@@ -1,3 +1,10 @@
+# `wrap()` snapshot test
+
+    Code
+      wrap()
+    Output
+      [1] ""
+
 # format() reacts on cli.num_colors option
 
     Code
