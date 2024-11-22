@@ -30,7 +30,7 @@ If you only need to change the appearance of a single data type,
 override \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}} and \code{\link[=pillar_shaft]{pillar_shaft()}} for this data type.
 }
 \examples{
-\dontshow{if (rlang::is_installed("palmerpenguins")) withAutoprint(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("palmerpenguins", "tibble"))) withAutoprint(\{ # examplesIf}
 setup <- tbl_format_setup(palmerpenguins::penguins)
 tbl_format_body(palmerpenguins::penguins, setup)
 

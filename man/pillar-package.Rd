@@ -12,10 +12,12 @@ using the full range of colours provided by modern terminals.
 Provides various generics for making every aspect of the display customizable.
 }
 \examples{
+\dontshow{if (rlang::is_installed("tibble")) withAutoprint(\{ # examplesIf}
 pillar(1:3)
 pillar(c(1, 2, 3))
 pillar(factor(letters[1:3]), title = "letters")
 tbl_format_setup(tibble::as_tibble(mtcars), width = 60)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \itemize{

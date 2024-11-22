@@ -61,7 +61,7 @@
 #'   An object that can be passed as `setup` argument to
 #'   [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()].
 #' @export
-#' @examplesIf rlang::is_installed("palmerpenguins")
+#' @examplesIf rlang::is_installed(c("palmerpenguins", "tibble"))
 #' tbl_format_setup(palmerpenguins::penguins)
 tbl_format_setup <- function(x, width = NULL, ...,
                              n = NULL, max_extra_cols = NULL,

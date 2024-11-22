@@ -17,7 +17,7 @@
 #' @inherit tbl_format_body return
 #'
 #' @export
-#' @examplesIf rlang::is_installed("palmerpenguins")
+#' @examplesIf rlang::is_installed(c("palmerpenguins", "tibble"))
 #' setup <- tbl_format_setup(palmerpenguins::penguins)
 #' tbl_format_footer(palmerpenguins::penguins, setup)
 #'

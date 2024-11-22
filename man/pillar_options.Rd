@@ -75,6 +75,7 @@ and to \code{FALSE} otherwise.
 }
 
 \examples{
+\dontshow{if (rlang::is_installed("tibble")) withAutoprint(\{ # examplesIf}
 df <- tibble::tibble(x = c(1.234567, NA, 5:10))
 df
 
@@ -90,6 +91,6 @@ df
 # Change back to the original value:
 options(old)
 df
-
+\dontshow{\}) # examplesIf}
 }
 \keyword{datasets}
