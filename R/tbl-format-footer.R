@@ -61,7 +61,7 @@ format_footer <- function(x, setup) {
 }
 
 format_footer_extra_rows <- function(x, setup) {
-  if (ncol(setup$x) != 0) {
+  if (length(setup$df) != 0) {
     if (is.na(setup$rows_missing)) {
       c("more", "rows")
     } else if (setup$rows_missing > 0) {

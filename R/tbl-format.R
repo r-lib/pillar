@@ -41,16 +41,19 @@ format.tbl <- function(x, width = NULL, ...,
   )
 }
 
-format_tbl <- function(x, width = NULL, ...,
-                       n_extra = NULL,
-                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
+format_tbl <- function(
+  x,
+  width = NULL,
+  ...,
+  n_extra = NULL,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL
+) {
   check_dots_empty(action = signal)
 
   if (!is.null(n_extra)) {
     deprecate_stop("1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )")
-    if (is.null(max_extra_cols)) {
-      max_extra_cols <- n_extra
-    }
   }
 
   # Reset local cache for each new output
