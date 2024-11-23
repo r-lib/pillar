@@ -1,3 +1,38 @@
+# dibble
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/dibble
+* Number of recursive dependencies: 51
+
+Run `revdepcheck::cloud_details(, "dibble")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
 # tidyseurat
 
 <details>
