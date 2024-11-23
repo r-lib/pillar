@@ -132,7 +132,7 @@ tbl_format_setup.tbl <- function(
   if (is.null(setup)) {
     # Header with early exit
     tbl_sum <- tbl_sum(x)
-    return(new_tbl_format_setup(width, tbl_sum))
+    return(new_tbl_format_setup(width, tbl_sum, rows_total = NA_integer_))
   } else {
     tbl_sum <- setup$tbl_sum
   }
