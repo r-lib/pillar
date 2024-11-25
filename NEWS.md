@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9029
+
+## Continuous integration
+
+- Need to install R on Ubuntu 24.04 (#689).
+
+- Use Ubuntu 24.04 and styler PR (#687).
+
+
 # pillar 1.9.0.9028
 
 ## Features
