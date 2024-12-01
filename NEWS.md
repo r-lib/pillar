@@ -1,5 +1,20 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9035
+
+## Continuous integration
+
+- Ignore errors when removing pkg-config on macOS (#695).
+
+- Explicit permissions (#693).
+
+- Use styler from main branch (#691).
+
+- Need to install R on Ubuntu 24.04 (#689).
+
+- Use Ubuntu 24.04 and styler PR (#687).
+
+
 # pillar 1.9.0.9034
 
 ## Continuous integration
