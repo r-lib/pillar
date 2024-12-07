@@ -10,12 +10,17 @@
 #' and (implicitly) in the footer of a tibble;
 #' - the columns shown in the body decide which columns are shown in the footer.
 #'
-#' This information is computed once in `tbl_format_setup()`.
+#' This information is computed in `tbl_format_setup()`.
 #' The result is passed on to the
 #' [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()]
 #' methods.
 #' If you need to customize parts of the printed output independently,
 #' override these methods instead.
+#'
+#' By checking the `setup` argument, you can return an object that is
+#' suitable for a call to [tbl_format_header()] if `setup` is `NULL`.
+#' In this case, the method is called a second time with the return value
+#' of the first call as `setup`.
 #'
 #' @details
 #' Extend this method to prepare information that is used
@@ -42,11 +47,12 @@
 #' @param ...
 #'   Extra arguments to [print.tbl()] or [format.tbl()].
 #' @param setup
-#'   This method is first called with `setup = NULL` .
+#'   This generic is first called with `setup = NULL` .
 #'   If the method _evaluates_ this argument, the return value
 #'   will only be used in a call to [tbl_format_header()],
-#'   and after that, a second call to this method will be made
-#'   with the return value of the first call as `setup`.
+#'   and after that, a second call to this generic will be made
+#'   with the return value of the first call as `setup`
+#'   which then will be used in calls to [tbl_format_body()] and [tbl_format_footer()].
 #'   This allows displaying the header before starting the computation
 #'   required for the body and footer.
 #' @param n
