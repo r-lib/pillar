@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9036
+
+## Continuous integration
+
+- Use larger retry count for lock-threads workflow (#701).
+
+
 # pillar 1.9.0.9035
 
 ## Continuous integration
