@@ -5,28 +5,28 @@
 \title{Construct a setup object for formatting}
 \usage{
 new_tbl_format_setup(
-  x,
-  df,
   width,
   tbl_sum,
-  body,
-  rows_missing,
-  rows_total,
-  extra_cols,
-  extra_cols_total,
-  max_footer_lines,
-  abbrev_cols
+  x = NULL,
+  df = NULL,
+  body = NULL,
+  rows_missing = NULL,
+  rows_total = NULL,
+  extra_cols = NULL,
+  extra_cols_total = NULL,
+  max_footer_lines = NULL,
+  abbrev_cols = NULL
 )
 }
 \arguments{
+\item{width}{The \code{width} argument unchanged.}
+
+\item{tbl_sum}{A named character vector, as returned from \code{\link[=tbl_sum]{tbl_sum()}}.}
+
 \item{x}{The input object unchanged.}
 
 \item{df}{A data frame representation of the intended output,
 trimmed to the desired number of rows.}
-
-\item{width}{The \code{width} argument unchanged.}
-
-\item{tbl_sum}{A named character vector, as returned from \code{\link[=tbl_sum]{tbl_sum()}}.}
 
 \item{body}{A character vector with the formatted body,
 one element per line,}
