@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9038
+
+## Continuous integration
+
+- Avoid failure in fledge workflow if no changes (#705).
+
+
 # pillar 1.9.0.9037
 
 ## Continuous integration
