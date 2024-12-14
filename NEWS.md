@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.0.9039
+
+## Features
+
+- `tbl_format_setup()` gains a `setup` argument that supports printing the header before the data for the body is available, e.g., for remote backends such as databases (#686).
+
+## Chore
+
+- Results.
+
+
 # pillar 1.9.0.9038
 
 ## Continuous integration
