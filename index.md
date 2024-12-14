@@ -1,49 +1,7 @@
----
-output:
-  github_document:
-    html_preview: false
----
 
 <!-- README.md and index.md are generated from README.Rmd. Please edit that file. -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
 
-pkgload::load_all()
-
-set.seed(20230702)
-
-clean_output <- function(x, options) {
-  x <- gsub("0x[0-9a-f]+", "0xdeadbeef", x)
-  x <- gsub("dataframe_[0-9]*_[0-9]*", "      dataframe_42_42      ", x)
-  x <- gsub("[0-9]*\\.___row_number ASC", "42.___row_number ASC", x)
-
-  index <- x
-  index <- gsub("─", "-", index)
-  index <- strsplit(paste(index, collapse = "\n"), "\n---\n")[[1]][[2]]
-  writeLines(index, "index.md")
-
-  x <- fansi::strip_sgr(x)
-  x
-}
-
-options(
-  cli.num_colors = 256,
-  cli.width = 80,
-  width = 80,
-  pillar.bold = TRUE
-)
-
-local({
-  hook_source <- knitr::knit_hooks$get("document")
-  knitr::knit_hooks$set(document = clean_output)
-})
-```
 
 
 # pillar
@@ -61,7 +19,8 @@ pillar provides tools for styling columns of data, artfully using colour and uni
 
 ## Installation
 
-```{r, eval = FALSE}
+
+``` r
 # pillar is installed if you install the tidyverse package:
 install.packages("tidyverse")
 
@@ -76,13 +35,33 @@ pillar is a developer-facing package that is not designed for end-users.
 It powers the `print()` and `format()` methods for [tibble](https://tibble.tidyverse.org/)s.
 It also and defines generics and helpers that are useful for package authors who create custom vector classes (see https://github.com/krlmlr/awesome-vctrs#readme for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or [sf](https://r-spatial.github.io/sf/)).
 
-```{r}
+
+``` r
 library(pillar)
 
 x <- 123456789 * (10^c(-3, -5, NA, -8, -10))
 pillar(x)
+#> [1m<pillar>[22m
+#>       [3m[38;5;246m<dbl>[39m[23m
+#> [4m1[24m[4m2[24m[4m3[24m457.    
+#>   [4m1[24m235.    
+#>     [31mNA[39m     
+#>      1.23  
+#>      0.012[4m3[24m
 
 tbl_format_setup(tibble::tibble(x))
+#> [1m<pillar_tbl_format_setup>[22m
+#> [1m<tbl_format_header(setup)>[22m
+#> [38;5;246m# A tibble: 5 × 1[39m
+#> [1m<tbl_format_body(setup)>[22m
+#>             [1mx[22m
+#>         [3m[38;5;246m<dbl>[39m[23m
+#> [38;5;250m1[39m [4m1[24m[4m2[24m[4m3[24m457.    
+#> [38;5;250m2[39m   [4m1[24m235.    
+#> [38;5;250m3[39m     [31mNA[39m     
+#> [38;5;250m4[39m      1.23  
+#> [38;5;250m5[39m      0.012[4m3[24m
+#> [1m<tbl_format_footer(setup)>[22m
 ```
 
 ## Custom vector classes
@@ -90,7 +69,8 @@ tbl_format_setup(tibble::tibble(x))
 The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which lets pillar do all the formatting work.
 Packages that implement a data type to be used in a tibble column can customize the display by implementing a `pillar_shaft()` method.
 
-```{r}
+
+``` r
 library(pillar)
 
 percent <- vctrs::new_vctr(9:11 * 0.01, class = "percent")
@@ -101,6 +81,11 @@ pillar_shaft.percent <- function(x, ...) {
 }
 
 pillar(percent)
+#> [1m<pillar>[22m
+#> [3m[38;5;246m<percent>[39m[23m
+#>       9 [38;5;246m%[39m
+#>      10 [38;5;246m%[39m
+#>      11 [38;5;246m%[39m
 ```
 
 See `vignette("pillar", package = "vctrs")` for details.
@@ -110,7 +95,8 @@ See `vignette("pillar", package = "vctrs")` for details.
 
 pillar provides various extension points for customizing how a tibble-like class is printed.
 
-```{r}
+
+``` r
 tbl <- vctrs::new_data_frame(list(a = 1:3), class = c("my_tbl", "tbl"))
 
 tbl_sum.my_tbl <- function(x, ...) {
@@ -118,13 +104,13 @@ tbl_sum.my_tbl <- function(x, ...) {
 }
 
 tbl
+#> [38;5;246m# Hello: world![39m
+#>       [1ma[22m
+#>   [3m[38;5;246m<int>[39m[23m
+#> [38;5;250m1[39m     1
+#> [38;5;250m2[39m     2
+#> [38;5;250m3[39m     3
 ```
 
 See `vignette("extending", package = "pillar")` for a walkthrough of the options.
 
----
-
-## Code of Conduct
-
-Please note that the pillar project is released with a [Contributor Code of Conduct](https://pillar.r-lib.org/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
