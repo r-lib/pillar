@@ -25,6 +25,11 @@
 #' df
 #'
 #' @section Options for the pillar package:
+#'
+#' - `width`: The width option controls the output width.
+#'   Setting `options(pillar.width = )` to a larger value
+#'   will lead to printing in multiple tiers (stacks).
+#'
 pillar_options <- list2(
   #' - `pillar.print_max`: Maximum number of rows printed, default: `20`.
   #'   Set to \code{Inf} to always print all rows.
