@@ -8,12 +8,16 @@ and (implicitly) in the footer of a tibble;
 the columns shown in the body decide which columns are shown in the footer.
 
 
-This information is computed once in tbl_format_setup().
+This information is computed in tbl_format_setup().
 The result is passed on to the
 tbl_format_header(), tbl_format_body(), and tbl_format_footer()
 methods.
 If you need to customize parts of the printed output independently,
-override these methods instead."><meta property="og:description" content="tbl_format_setup() is called by format.tbl().
+override these methods instead.
+By checking the setup argument, you can return an object that is
+suitable for a call to tbl_format_header() if setup is NULL.
+In this case, the method is called a second time with the return value
+of the first call as setup."><meta property="og:description" content="tbl_format_setup() is called by format.tbl().
 This method collects information that is common to the header, body,
 and footer parts of a tibble.
 Examples:
@@ -22,12 +26,16 @@ and (implicitly) in the footer of a tibble;
 the columns shown in the body decide which columns are shown in the footer.
 
 
-This information is computed once in tbl_format_setup().
+This information is computed in tbl_format_setup().
 The result is passed on to the
 tbl_format_header(), tbl_format_body(), and tbl_format_footer()
 methods.
 If you need to customize parts of the printed output independently,
-override these methods instead."><meta name="robots" content="noindex"><script defer data-domain="pillar.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script></head><body>
+override these methods instead.
+By checking the setup argument, you can return an object that is
+suitable for a call to tbl_format_header() if setup is NULL.
+In this case, the method is called a second time with the return value
+of the first call as setup."><meta name="robots" content="noindex"><script defer data-domain="pillar.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script></head><body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
 
 
@@ -35,7 +43,7 @@ override these methods instead."><meta name="robots" content="noindex"><script d
 
     <a class="navbar-brand me-2" href="../index.html">pillar</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.9.0.9037</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.9.0.9038</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,12 +85,16 @@ and footer parts of a tibble.
 Examples:</p><ul><li><p>the dimensions sometimes are reported both in the header
 and (implicitly) in the footer of a tibble;</p></li>
 <li><p>the columns shown in the body decide which columns are shown in the footer.</p></li>
-</ul><p>This information is computed once in <code>tbl_format_setup()</code>.
+</ul><p>This information is computed in <code>tbl_format_setup()</code>.
 The result is passed on to the
 <code><a href="tbl_format_header.html">tbl_format_header()</a></code>, <code><a href="tbl_format_body.html">tbl_format_body()</a></code>, and <code><a href="tbl_format_footer.html">tbl_format_footer()</a></code>
 methods.
 If you need to customize parts of the printed output independently,
 override these methods instead.</p>
+<p>By checking the <code>setup</code> argument, you can return an object that is
+suitable for a call to <code><a href="tbl_format_header.html">tbl_format_header()</a></code> if <code>setup</code> is <code>NULL</code>.
+In this case, the method is called a second time with the return value
+of the first call as <code>setup</code>.</p>
     </div>
 
     <div class="section level2">
@@ -91,6 +103,7 @@ override these methods instead.</p>
 <span>  <span class="va">x</span>,</span>
 <span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span>,</span>
+<span>  setup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>tbl_sum <span class="op">=</span> <span class="fu"><a href="tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  n <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  max_extra_cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  max_footer_lines <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -98,7 +111,16 @@ override these methods instead.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for class 'tbl'</span></span>
-<span><span class="fu">tbl_format_setup</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>, <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">tbl_format_setup</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">width</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  <span class="va">setup</span>,</span>
+<span>  <span class="va">n</span>,</span>
+<span>  <span class="va">max_extra_cols</span>,</span>
+<span>  <span class="va">max_footer_lines</span>,</span>
+<span>  <span class="va">focus</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -116,6 +138,17 @@ This argument is mandatory for all implementations of this method.</p></dd>
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Extra arguments to <code><a href="format_tbl.html">print.tbl()</a></code> or <code><a href="format_tbl.html">format.tbl()</a></code>.</p></dd>
+
+
+<dt id="arg-setup">setup<a class="anchor" aria-label="anchor" href="#arg-setup"></a></dt>
+<dd><p>This generic is first called with <code>setup = NULL</code> .
+If the method <em>evaluates</em> this argument, the return value
+will only be used in a call to <code><a href="tbl_format_header.html">tbl_format_header()</a></code>,
+and after that, a second call to this generic will be made
+with the return value of the first call as <code>setup</code>
+which then will be used in calls to <code><a href="tbl_format_body.html">tbl_format_body()</a></code> and <code><a href="tbl_format_footer.html">tbl_format_footer()</a></code>.
+This allows displaying the header before starting the computation
+required for the body and footer.</p></dd>
 
 
 <dt id="arg-n">n<a class="anchor" aria-label="anchor" href="#arg-n"></a></dt>
