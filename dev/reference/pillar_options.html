@@ -55,7 +55,10 @@
     <h2 id="options-for-the-pillar-package">Options for the pillar package<a class="anchor" aria-label="anchor" href="#options-for-the-pillar-package"></a></h2>
 
 
-<ul><li><p><code>pillar.print_max</code>: Maximum number of rows printed, default: <code>20</code>.
+<ul><li><p><code>width</code>: The width option controls the output width.
+Setting <code>options(pillar.width = )</code> to a larger value
+will lead to printing in multiple tiers (stacks).</p></li>
+<li><p><code>pillar.print_max</code>: Maximum number of rows printed, default: <code>20</code>.
 Set to <code>Inf</code> to always print all rows.
 For compatibility reasons, <code>getOption("tibble.print_max")</code> and
 <code>getOption("dplyr.print_max")</code> are also consulted,
