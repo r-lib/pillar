@@ -7,3 +7,12 @@
       <SQL>
       x    
 
+# Infinite times (#645)
+
+    Code
+      pillar(.POSIXct(Inf))
+    Output
+      <pillar>
+      <dttm>
+      Inf   
+
