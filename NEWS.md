@@ -1,327 +1,108 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.9.0.9039
+# pillar 1.9.99.9900
 
 ## Features
 
 - `tbl_format_setup()` gains a `setup` argument that supports printing the header before the data for the body is available, e.g., for remote backends such as databases (#686).
 
+- New `tbl_nrow()` to support lazy data frames (#679).
+
+- Show missing values in red in `glimpse()` (@ryanzomorrodi, #662).
+
+- Math operations on `num()` objects now pass additional arguments to the mathematical function (@gvelasq, #659, #660).
+
 ## Chore
 
 - Results.
-
-
-# pillar 1.9.0.9038
-
-## Continuous integration
-
-- Avoid failure in fledge workflow if no changes (#705).
-
-
-# pillar 1.9.0.9037
-
-## Continuous integration
-
-- Fetch tags for fledge workflow to avoid unnecessary NEWS entries (#703).
-
-
-# pillar 1.9.0.9036
-
-## Continuous integration
-
-- Use larger retry count for lock-threads workflow (#701).
-
-
-# pillar 1.9.0.9035
-
-## Continuous integration
-
-- Ignore errors when removing pkg-config on macOS (#695).
-
-- Explicit permissions (#693).
-
-- Use styler from main branch (#691).
-
-- Need to install R on Ubuntu 24.04 (#689).
-
-- Use Ubuntu 24.04 and styler PR (#687).
-
-
-# pillar 1.9.0.9034
-
-## Continuous integration
-
-- Ignore errors when removing pkg-config on macOS (#695).
-
-- Explicit permissions (#693).
-
-- Use styler from main branch (#691).
-
-- Need to install R on Ubuntu 24.04 (#689).
-
-- Use Ubuntu 24.04 and styler PR (#687).
-
-
-# pillar 1.9.0.9033
-
-## Continuous integration
-
-- Ignore errors when removing pkg-config on macOS (#695).
-
-- Explicit permissions (#693).
-
-- Use styler from main branch (#691).
-
-- Need to install R on Ubuntu 24.04 (#689).
-
-- Use Ubuntu 24.04 and styler PR (#687).
-
-
-# pillar 1.9.0.9032
-
-## Continuous integration
-
-- Ignore errors when removing pkg-config on macOS (#695).
-
-- Explicit permissions (#693).
-
-- Use styler from main branch (#691).
-
-- Need to install R on Ubuntu 24.04 (#689).
-
-- Use Ubuntu 24.04 and styler PR (#687).
-
-
-# pillar 1.9.0.9031
-
-## Continuous integration
-
-- Explicit permissions (#693).
-
-- Use styler from main branch (#691).
-
-- Need to install R on Ubuntu 24.04 (#689).
-
-- Use Ubuntu 24.04 and styler PR (#687).
-
-
-# pillar 1.9.0.9030
-
-## Continuous integration
-
-- Use styler from main branch (#691).
-
-- Need to install R on Ubuntu 24.04 (#689).
-
-- Use Ubuntu 24.04 and styler PR (#687).
-
-
-# pillar 1.9.0.9029
-
-## Continuous integration
-
-- Need to install R on Ubuntu 24.04 (#689).
-
-- Use Ubuntu 24.04 and styler PR (#687).
-
-
-# pillar 1.9.0.9028
-
-## Features
-
-- New `tbl_nrow()` to support lazy data frames (#679).
-
-## Chore
 
 - Fix vignette building if tibble is missing (#681).
 
 - Refactorings to improve duckplyr support (#682).
 
-## Continuous integration
-
-- Use styler from PR.
-
-- Correctly detect branch protection (#678).
-
-
-# pillar 1.9.0.9027
-
-## Continuous integration
-
-  - Use stable pak (#677).
-
-
-# pillar 1.9.0.9026
-
-## Continuous integration
-
-  - Trigger run (#676).
-    
-      - ci: Trigger run
-    
-      - ci: Latest changes
-
-
-# pillar 1.9.0.9025
-
-## Continuous integration
-
-  - Trigger run (#675).
-
-  - Use pkgdown branch (#674).
-    
-      - ci: Use pkgdown branch
-    
-      - ci: Updates from duckdb
-
-
-# pillar 1.9.0.9024
-
-## Chore
-
-  - Revdepcheck results.
-
-
-# pillar 1.9.0.9023
-
-## Continuous integration
-
-  - Install via R CMD INSTALL ., not pak (#672).
-    
-      - ci: Install via R CMD INSTALL ., not pak
-    
-      - ci: Bump version of upload-artifact action
-
-
-# pillar 1.9.0.9022
-
-## Continuous integration
-
-  - Install local package for pkgdown builds.
-
-  - Improve support for protected branches with fledge.
-
-  - Improve support for protected branches, without fledge.
-
-
-# pillar 1.9.0.9021
-
-## Continuous integration
-
-- Sync with latest developments.
-
-
-# pillar 1.9.0.9020
-
-## Continuous integration
-
-- Fix edge case of no suggested packages.
-
-- Use v2 instead of master.
-
-
-# pillar 1.9.0.9019
-
-## Continuous integration
-
-- Inline action.
-
-
-# pillar 1.9.0.9018
-
-## Chore
+- Revdepcheck results.
 
 - Auto-update from GitHub Actions.
 
   Run: https://github.com/r-lib/pillar/actions/runs/10224241696
 
-## Continuous integration
-
-- Refactor dep-suggests-matrix, avoid killing base and recommended packages.
-
-
-# pillar 1.9.0.9017
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
   Run: https://github.com/r-lib/pillar/actions/runs/10200114378
-
-## Continuous integration
-
-- Use dev roxygen2 and decor.
-
-
-# pillar 1.9.0.9016
-
-## Documentation
-
-- Update \_pkgdown.yml to bring back search bar (@olivroy, #667).
-
-
-# pillar 1.9.0.9015
-
-## Testing
-
-- Remove empty snapshot tests (#664).
-
-
-# pillar 1.9.0.9014
-
-## Features
-
-- Show missing values in red in `glimpse()` (@ryanzomorrodi, #662).
-
-## Chore
-
-- Auto-update from GitHub Actions.
 
   Run: https://github.com/r-lib/pillar/actions/runs/9830060650
 
-
-# pillar 1.9.0.9013
-
-## Chore
-
 - Add Aviator configuration.
-
-- Auto-update from GitHub Actions.
 
   Run: https://github.com/r-lib/pillar/actions/runs/9748527745
 
 - Drop `scale_name` ggplot2 arg and drop fansi dep (@olivroy, #663).
 
-## Continuous integration
-
-- Fix on Windows, tweak lock workflow.
-
-
-# pillar 1.9.0.9012
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
   Run: https://github.com/r-lib/pillar/actions/runs/9728438554
-
-
-# pillar 1.9.0.9011
-
-## Documentation
-
-- Only implement `type_sum.accel()` in pkgdown mode (#661).
-
-
-# pillar 1.9.0.9010
-
-## Chore
-
-- Auto-update from GitHub Actions.
 
   Run: https://github.com/r-lib/pillar/actions/runs/9691618335
 
 ## Continuous integration
+
+- Avoid failure in fledge workflow if no changes (#705).
+
+- Fetch tags for fledge workflow to avoid unnecessary NEWS entries (#703).
+
+- Use larger retry count for lock-threads workflow (#701).
+
+- Ignore errors when removing pkg-config on macOS (#695).
+
+- Explicit permissions (#693).
+
+- Use styler from main branch (#691).
+
+- Need to install R on Ubuntu 24.04 (#689).
+
+- Use Ubuntu 24.04 and styler PR (#687).
+
+- Use styler from PR.
+
+- Correctly detect branch protection (#678).
+
+- Use stable pak (#677).
+
+- Trigger run (#676).
+
+  - ci: Trigger run
+
+  - ci: Latest changes
+
+- Trigger run (#675).
+
+- Use pkgdown branch (#674).
+
+  - ci: Use pkgdown branch
+
+  - ci: Updates from duckdb
+
+- Install via R CMD INSTALL ., not pak (#672).
+
+  - ci: Install via R CMD INSTALL ., not pak
+
+  - ci: Bump version of upload-artifact action
+
+- Install local package for pkgdown builds.
+
+- Improve support for protected branches with fledge.
+
+- Improve support for protected branches, without fledge.
+
+- Sync with latest developments.
+
+- Fix edge case of no suggested packages.
+
+- Use v2 instead of master.
+
+- Inline action.
+
+- Refactor dep-suggests-matrix, avoid killing base and recommended packages.
+
+- Use dev roxygen2 and decor.
+
+- Fix on Windows, tweak lock workflow.
 
 - Avoid checking bashisms on Windows.
 
@@ -331,59 +112,23 @@
 
 - Recent updates.
 
-
-# pillar 1.9.0.9009
-
-## Features
-
-- Math operations on `num()` objects now pass additional arguments to the mathematical function (@gvelasq, #659, #660).
-
-
-# pillar 1.9.0.9008
-
-- Internal changes only.
-
-
-# pillar 1.9.0.9007
-
 ## Documentation
+
+- Update \_pkgdown.yml to bring back search bar (@olivroy, #667).
+
+- Only implement `type_sum.accel()` in pkgdown mode (#661).
 
 - Avoid displaying deprecated argument in `@inheritDotParams` (@olivroy, #657).
 
+## Testing
 
-# pillar 1.9.0.9006
+- Remove empty snapshot tests (#664).
 
-- Internal changes only.
-
-
-# pillar 1.9.0.9005
+## Uncategorized
 
 - Internal changes only.
-
-
-# pillar 1.9.0.9004
-
-- Internal changes only.
-
-
-# pillar 1.9.0.9003
-
-- Internal changes only.
-
-
-# pillar 1.9.0.9002
 
 - Merged cran-1.9.0 into main.
-
-
-# pillar 1.9.0.9001
-
-- Internal changes only.
-
-
-# pillar 1.9.0.9000
-
-- Internal changes only.
 
 
 # pillar 1.9.0
