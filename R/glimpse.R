@@ -140,11 +140,12 @@ format_glimpse_ <- function(x, ...) {
 format_glimpse.default <- function(x, ...) {
   dims <- dim(x)
 
-  if (!is.null(dims)) {
+  if (is.null(dims)) {
+    out <- format(x, trim = TRUE, justify = "none")
+    style_na_if(out, if (is.atomic(x)) is.na(x) else FALSE)
+  } else {
     dims_out <- paste0(dims, collapse = " x ")
     paste0("<", class(x)[[1]], "[", dims_out, "]>")
-  } else {
-    format(x, trim = TRUE, justify = "none")
   }
 }
 
@@ -169,14 +170,16 @@ format_glimpse.list <- function(x, ..., .inner = FALSE) {
 
 #' @export
 format_glimpse.character <- function(x, ...) {
-  encodeString(x, quote = '"')
+  out <- encodeString(as.character(x), quote = '"')
+  style_na_if(out, is.na(x))
 }
 
 #' @export
 format_glimpse.factor <- function(x, ...) {
   if (any(grepl(",", levels(x), fixed = TRUE))) {
-    encodeString(as.character(x), quote = '"')
+    out <- encodeString(as.character(x), quote = '"')
   } else {
-    format(x, trim = TRUE, justify = "none")
+    out <- format(x, trim = TRUE, justify = "none")
   }
+  style_na_if(out, is.na(x))
 }

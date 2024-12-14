@@ -27,3 +27,5 @@ _cache$
 ^\.vscode$
 ^vignettes/.*\.html$
 ^CRAN-SUBMISSION$
+^\.aviator/config\.yml$
+^index\.md$

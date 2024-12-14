@@ -21,6 +21,7 @@ reference:
       - ctl_new_pillar
       - ctl_new_pillar_list
       - tbl_sum
+      - tbl_nrow
       - glimpse
       - format_glimpse
   - title: Formatting pillars
@@ -71,7 +72,6 @@ navbar:
     - articles
     - tutorials
     - news
-    right: github
   components:
     options:
       text: Options

@@ -13,6 +13,9 @@ These options can be set via \code{\link[=options]{options()}} and queried via \
 \section{Options for the pillar package}{
 
 \itemize{
+\item \code{width}: The width option controls the output width.
+Setting \code{options(pillar.width = )} to a larger value
+will lead to printing in multiple tiers (stacks).
 \item \code{pillar.print_max}: Maximum number of rows printed, default: \code{20}.
 Set to \code{Inf} to always print all rows.
 For compatibility reasons, \code{getOption("tibble.print_max")} and
@@ -75,6 +78,7 @@ and to \code{FALSE} otherwise.
 }
 
 \examples{
+\dontshow{if (rlang::is_installed("tibble")) withAutoprint(\{ # examplesIf}
 df <- tibble::tibble(x = c(1.234567, NA, 5:10))
 df
 
@@ -90,6 +94,6 @@ df
 # Change back to the original value:
 options(old)
 df
-
+\dontshow{\}) # examplesIf}
 }
 \keyword{datasets}

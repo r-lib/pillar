@@ -12,7 +12,7 @@
 #' - [print.tbl()] for formatting data-frame-like objects,
 #' - [pillar_options] for a list of package options.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("tibble")
 #' pillar(1:3)
 #' pillar(c(1, 2, 3))
 #' pillar(factor(letters[1:3]), title = "letters")

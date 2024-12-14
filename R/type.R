@@ -94,11 +94,6 @@ format_type_sum <- function(x, width, ...) {
   UseMethod("format_type_sum")
 }
 
-# https://github.com/r-lib/pkgdown/issues/1540
-type_sum.accel <- function(x) {
-  I("kg m/s^2")
-}
-
 #' @export
 #' @rdname format_type_sum
 format_type_sum.default <- function(x, width, ...) {

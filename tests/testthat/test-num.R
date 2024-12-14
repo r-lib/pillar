@@ -1,4 +1,6 @@
 test_that("output test", {
+  skip_if_not_installed("tibble")
+
   expect_snapshot({
     tibble::tibble(
       x0 = num(9:11 * 100 + 0.5, sigfig = 3),
@@ -170,6 +172,7 @@ test_that("mathematics", {
     min(num(1:3, label = "$"))
     mean(num(1:3, notation = "eng"))
     sin(num(1:3, label = "%", scale = 100))
+    sum(num(c(1:3, NA)), na.rm = TRUE)
   })
 })
 
