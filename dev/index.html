@@ -66,96 +66,89 @@
 </h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
 <p>pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<pre class="chroma">
-<span><span class="c"># pillar is installed if you install the tidyverse package:</span></span>
-<span><span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"tidyverse"</span><span class="o">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># pillar is installed if you install the tidyverse package:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="c"># Alternatively, install just pillar:</span></span>
-<span><span class="nf"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="o">(</span><span class="s">"pillar"</span><span class="o">)</span></span></pre>
+<span><span class="co"># Alternatively, install just pillar:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pillar"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>pillar is a developer-facing package that is not designed for end-users. It powers the <a href="https://rdrr.io/r/base/print.html" class="external-link"><code>print()</code></a> and <a href="https://rdrr.io/r/base/format.html" class="external-link"><code>format()</code></a> methods for <a href="https://tibble.tidyverse.org/" class="external-link">tibble</a>s. It also and defines generics and helpers that are useful for package authors who create custom vector classes (see <a href="https://github.com/krlmlr/awesome-vctrs#readme" class="external-link uri">https://github.com/krlmlr/awesome-vctrs#readme</a> for examples) or custom table classes (like <a href="https://dbplyr.tidyverse.org/" class="external-link">dbplyr</a> or <a href="https://r-spatial.github.io/sf/" class="external-link">sf</a>).</p>
-<pre class="chroma">
-<span><span class="kr"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span></span>
+<p>pillar is a developer-facing package that is not designed for end-users. It powers the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> and <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> methods for <a href="https://tibble.tidyverse.org/" class="external-link">tibble</a>s. It also and defines generics and helpers that are useful for package authors who create custom vector classes (see <a href="https://github.com/krlmlr/awesome-vctrs#readme" class="external-link uri">https://github.com/krlmlr/awesome-vctrs#readme</a> for examples) or custom table classes (like <a href="https://dbplyr.tidyverse.org/" class="external-link">dbplyr</a> or <a href="https://r-spatial.github.io/sf/" class="external-link">sf</a>).</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="nv">x</span> <span class="o">&lt;-</span> <span class="m">123456789</span> <span class="o">*</span> <span class="o">(</span><span class="m">10</span><span class="o">^</span><span class="nf"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="o">(</span><span class="o">-</span><span class="m">3</span>, <span class="o">-</span><span class="m">5</span>, <span class="kc">NA</span>, <span class="o">-</span><span class="m">8</span>, <span class="o">-</span><span class="m">10</span><span class="o">)</span><span class="o">)</span></span>
-<span><span class="nf"><a href="https://pillar.r-lib.org/reference/pillar.html">pillar</a></span><span class="o">(</span><span class="nv">x</span><span class="o">)</span></span>
-<span><span class="c">#&gt; <span style="font-weight: bold;">&lt;pillar&gt;</span></span></span>
-<span><span class="c">#&gt;       <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="c">#&gt; <span style="text-decoration: underline;">123</span>457.    </span></span>
-<span><span class="c">#&gt;   <span style="text-decoration: underline;">1</span>235.    </span></span>
-<span><span class="c">#&gt;     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="c">#&gt;      1.23  </span></span>
-<span><span class="c">#&gt;      0.012<span style="text-decoration: underline;">3</span></span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123456789</span> <span class="op">*</span> <span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">&lt;pillar&gt;</span></span></span>
+<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="text-decoration: underline;">123</span>457.    </span></span>
+<span><span class="co">#&gt;   <span style="text-decoration: underline;">1</span>235.    </span></span>
+<span><span class="co">#&gt;     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">#&gt;      1.23  </span></span>
+<span><span class="co">#&gt;      0.012<span style="text-decoration: underline;">3</span></span></span>
 <span></span>
-<span><span class="nf"><a href="https://pillar.r-lib.org/reference/tbl_format_setup.html">tbl_format_setup</a></span><span class="o">(</span><span class="nf">tibble</span><span class="nf">::</span><span class="nf"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="o">(</span><span class="nv">x</span><span class="o">)</span><span class="o">)</span></span>
-<span><span class="c">#&gt; <span style="font-weight: bold;">&lt;pillar_tbl_format_setup&gt;</span></span></span>
-<span><span class="c">#&gt; <span style="font-weight: bold;">&lt;tbl_format_header(setup)&gt;</span></span></span>
-<span><span class="c">#&gt; <span style="color: #555555;"># A tibble: 5 × 1</span></span></span>
-<span><span class="c">#&gt; <span style="font-weight: bold;">&lt;tbl_format_body(setup)&gt;</span></span></span>
-<span><span class="c">#&gt;             <span style="font-weight: bold;">x</span></span></span>
-<span><span class="c">#&gt;         <span style="color: #555555; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">1</span> <span style="text-decoration: underline;">123</span>457.    </span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">2</span>   <span style="text-decoration: underline;">1</span>235.    </span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">3</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">4</span>      1.23  </span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">5</span>      0.012<span style="text-decoration: underline;">3</span></span></span>
-<span><span class="c">#&gt; <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span></span></pre>
+<span><span class="fu"><a href="reference/tbl_format_setup.html">tbl_format_setup</a></span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">&lt;pillar_tbl_format_setup&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_header(setup)&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 1</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_body(setup)&gt;</span></span></span>
+<span><span class="co">#&gt;             <span style="font-weight: bold;">x</span></span></span>
+<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="text-decoration: underline;">123</span>457.    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>   <span style="text-decoration: underline;">1</span>235.    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      1.23  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>      0.012<span style="text-decoration: underline;">3</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">&lt;tbl_format_footer(setup)&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="custom-vector-classes">Custom vector classes<a class="anchor" aria-label="anchor" href="#custom-vector-classes"></a>
 </h2>
-<p>The primary user of this package is <a href="https://github.com/tidyverse/tibble" class="external-link">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can customize the display by implementing a <a href="https://pillar.r-lib.org/reference/pillar_shaft.html"><code>pillar_shaft()</code></a> method.</p>
-<pre class="chroma">
-<span><span class="kr"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="o">(</span><span class="nv"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="o">)</span></span>
+<p>The primary user of this package is <a href="https://github.com/tidyverse/tibble" class="external-link">tibble</a>, which lets pillar do all the formatting work. Packages that implement a data type to be used in a tibble column can customize the display by implementing a <code><a href="reference/pillar_shaft.html">pillar_shaft()</a></code> method.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pillar.r-lib.org/">pillar</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="nv">percent</span> <span class="o">&lt;-</span> <span class="nf">vctrs</span><span class="nf">::</span><span class="nf"><a href="https://vctrs.r-lib.org/reference/new_vctr.html" class="external-link">new_vctr</a></span><span class="o">(</span><span class="m">9</span><span class="o">:</span><span class="m">11</span> <span class="o">*</span> <span class="m">0.01</span>, class <span class="o">=</span> <span class="s">"percent"</span><span class="o">)</span></span>
+<span><span class="va">percent</span> <span class="op">&lt;-</span> <span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/new_vctr.html" class="external-link">new_vctr</a></span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">11</span> <span class="op">*</span> <span class="fl">0.01</span>, class <span class="op">=</span> <span class="st">"percent"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="nv">pillar_shaft.percent</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="o">(</span><span class="nv">x</span>, <span class="nv">...</span><span class="o">)</span> <span class="o">{</span></span>
-<span>  <span class="nv">fmt</span> <span class="o">&lt;-</span> <span class="nf"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="o">(</span><span class="nf">vctrs</span><span class="nf">::</span><span class="nf"><a href="https://vctrs.r-lib.org/reference/vec_data.html" class="external-link">vec_data</a></span><span class="o">(</span><span class="nv">x</span><span class="o">)</span> <span class="o">*</span> <span class="m">100</span><span class="o">)</span></span>
-<span>  <span class="nf"><a href="https://pillar.r-lib.org/reference/new_pillar_shaft.html">new_pillar_shaft_simple</a></span><span class="o">(</span><span class="nf"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="o">(</span><span class="nv">fmt</span>, <span class="s">" "</span>, <span class="nf"><a href="https://pillar.r-lib.org/reference/style_subtle.html">style_subtle</a></span><span class="o">(</span><span class="s">"%"</span><span class="o">)</span><span class="o">)</span>, align <span class="o">=</span> <span class="s">"right"</span><span class="o">)</span></span>
-<span><span class="o">}</span></span>
+<span><span class="va">pillar_shaft.percent</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">fmt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/vec_data.html" class="external-link">vec_data</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="reference/new_pillar_shaft.html">new_pillar_shaft_simple</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">fmt</span>, <span class="st">" "</span>, <span class="fu"><a href="reference/style_subtle.html">style_subtle</a></span><span class="op">(</span><span class="st">"%"</span><span class="op">)</span><span class="op">)</span>, align <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="nf"><a href="https://pillar.r-lib.org/reference/pillar.html">pillar</a></span><span class="o">(</span><span class="nv">percent</span><span class="o">)</span></span>
-<span><span class="c">#&gt; <span style="font-weight: bold;">&lt;pillar&gt;</span></span></span>
-<span><span class="c">#&gt; <span style="color: #555555; font-style: italic;">&lt;percent&gt;</span></span></span>
-<span><span class="c">#&gt;       9 <span style="color: #555555;">%</span></span></span>
-<span><span class="c">#&gt;      10 <span style="color: #555555;">%</span></span></span>
-<span><span class="c">#&gt;      11 <span style="color: #555555;">%</span></span></span></pre>
-<p>See <a href="https://vctrs.r-lib.org/articles/pillar.html" class="external-link"><code>vignette("pillar", package = "vctrs")</code></a> for details.</p>
+<span><span class="fu"><a href="reference/pillar.html">pillar</a></span><span class="op">(</span><span class="va">percent</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">&lt;pillar&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494; font-style: italic;">&lt;percent&gt;</span></span></span>
+<span><span class="co">#&gt;       9 <span style="color: #949494;">%</span></span></span>
+<span><span class="co">#&gt;      10 <span style="color: #949494;">%</span></span></span>
+<span><span class="co">#&gt;      11 <span style="color: #949494;">%</span></span></span></code></pre></div>
+<p>See <code><a href="https://vctrs.r-lib.org/articles/pillar.html" class="external-link">vignette("pillar", package = "vctrs")</a></code> for details.</p>
 </div>
 <div class="section level2">
 <h2 id="custom-table-classes">Custom table classes<a class="anchor" aria-label="anchor" href="#custom-table-classes"></a>
 </h2>
 <p>pillar provides various extension points for customizing how a tibble-like class is printed.</p>
-<pre class="chroma">
-<span><span class="nv">tbl</span> <span class="o">&lt;-</span> <span class="nf">vctrs</span><span class="nf">::</span><span class="nf"><a href="https://vctrs.r-lib.org/reference/new_data_frame.html" class="external-link">new_data_frame</a></span><span class="o">(</span><span class="nf"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="o">(</span>a <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="o">)</span>, class <span class="o">=</span> <span class="nf"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="o">(</span><span class="s">"my_tbl"</span>, <span class="s">"tbl"</span><span class="o">)</span><span class="o">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tbl</span> <span class="op">&lt;-</span> <span class="fu">vctrs</span><span class="fu">::</span><span class="fu"><a href="https://vctrs.r-lib.org/reference/new_data_frame.html" class="external-link">new_data_frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"my_tbl"</span>, <span class="st">"tbl"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="nv">tbl_sum.my_tbl</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="o">(</span><span class="nv">x</span>, <span class="nv">...</span><span class="o">)</span> <span class="o">{</span></span>
-<span>  <span class="nf"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="o">(</span><span class="s">"Hello"</span> <span class="o">=</span> <span class="s">"world!"</span><span class="o">)</span></span>
-<span><span class="o">}</span></span>
+<span><span class="va">tbl_sum.my_tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Hello"</span> <span class="op">=</span> <span class="st">"world!"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="nv">tbl</span></span>
-<span><span class="c">#&gt; <span style="color: #555555;"># Hello: world!</span></span></span>
-<span><span class="c">#&gt;       <span style="font-weight: bold;">a</span></span></span>
-<span><span class="c">#&gt;   <span style="color: #555555; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">1</span>     1</span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">2</span>     2</span></span>
-<span><span class="c">#&gt; <span style="color: #555555;">3</span>     3</span></span></pre>
-<p>See <a href="https://pillar.r-lib.org/articles/extending.html"><code>vignette("extending", package = "pillar")</code></a> for a walkthrough of the options.</p>
-<hr>
-</div>
-<div class="section level2">
-<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
-</h2>
-<p>Please note that the pillar project is released with a <a href="https://pillar.r-lib.org/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<span><span class="va">tbl</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Hello: world!</span></span></span>
+<span><span class="co">#&gt;       <span style="font-weight: bold;">a</span></span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3</span></span></code></pre></div>
+<p>See <code><a href="articles/extending.html">vignette("extending", package = "pillar")</a></code> for a walkthrough of the options.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
