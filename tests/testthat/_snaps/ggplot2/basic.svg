@@ -41,16 +41,16 @@
 <polyline points='383.47,456.54 383.47,74.56 ' style='stroke-width: 3.49; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='529.61,456.54 529.61,74.56 ' style='stroke-width: 3.49; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='675.76,456.54 675.76,74.56 ' style='stroke-width: 3.49; stroke: #EBEBEB; stroke-linecap: butt;' />
-<circle cx='149.63' cy='439.17' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='208.09' cy='400.59' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='266.55' cy='362.01' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='325.01' cy='323.43' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='383.47' cy='284.84' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='441.93' cy='246.26' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='500.38' cy='207.68' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='558.84' cy='169.09' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='617.30' cy='130.51' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
-<circle cx='675.76' cy='91.93' r='6.40' style='stroke-width: 2.32; fill: #000000;' />
+<circle cx='149.63' cy='439.17' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='208.09' cy='400.59' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='266.55' cy='362.01' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='325.01' cy='323.43' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='383.47' cy='284.84' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='441.93' cy='246.26' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='500.38' cy='207.68' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='558.84' cy='169.09' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='617.30' cy='130.51' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='675.76' cy='91.93' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <text x='107.19' y='391.21' text-anchor='end' style='font-size: 28.80px; fill: #4D4D4D; font-family: sans;' textLength='40.04px' lengthAdjust='spacingAndGlyphs'>2.5</text>
