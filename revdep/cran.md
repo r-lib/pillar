@@ -1,8 +1,8 @@
 ## revdepcheck results
 
-We checked 124 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 3 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 3 new problems
+ * We saw 2 new problems
  * We failed to check 0 packages
 
 Issues with CRAN packages are summarised below.
@@ -13,9 +13,6 @@ Issues with CRAN packages are summarised below.
 * egor
   checking examples ... ERROR
   checking re-building of vignette outputs ... ERROR
-
-* posterior
-  checking examples ... ERROR
 
 * unpivotr
   checking re-building of vignette outputs ... ERROR

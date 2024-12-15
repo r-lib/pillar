@@ -56,10 +56,16 @@ Run `revdepcheck::cloud_details(, "egor")` for more info
      11.           └─pillar:::print.tbl(...)
      12.             └─pillar:::print_tbl(...)
      13.               └─pillar:::format_tbl(...)
-     14.                 └─rlang::check_dots_empty()
+     14.                 └─rlang::check_dots_empty(error = warning)
      15.                   └─rlang:::action_dots(...)
-     16.                     ├─base (local) try_dots(...)
-     17.                     └─rlang (local) action(...)
+     16.                     ├─rlang (local) try_dots(...)
+     17.                     │ └─rlang::try_fetch(expr, error = error)
+     18.                     │   ├─base::tryCatch(...)
+     19.                     │   │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+     20.                     │   │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+     21.                     │   │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
+     22.                     │   └─base::withCallingHandlers(...)
+     23.                     └─rlang (local) action(...)
     Execution halted
     ```
 
@@ -67,73 +73,6 @@ Run `revdepcheck::cloud_details(, "egor")` for more info
     ```
     Error(s) in re-building vignettes:
     --- re-building ‘egor_allbus.Rmd’ using rmarkdown
-    ```
-
-# posterior
-
-<details>
-
-* Version: 1.6.0
-* GitHub: https://github.com/stan-dev/posterior
-* Source code: https://github.com/cran/posterior
-* Date/Publication: 2024-07-03 23:00:02 UTC
-* Number of recursive dependencies: 118
-
-Run `revdepcheck::cloud_details(, "posterior")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘posterior-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: print.draws_summary
-    > ### Title: Print summaries of 'draws' objects
-    > ### Aliases: print.draws_summary
-    > 
-    > ### ** Examples
-    > 
-    > x <- example_draws("eight_schools")
-    > 
-    > # adjust how summaries are printed when calling summarise_draws()...
-    > summarise_draws(x, .num_args = list(sigfig = 2, notation = "dec"))
-    # A tibble: 10 × 10
-       variable  mean median    sd   mad     q5   q95  rhat ess_bulk ess_tail
-       <chr>    <dbl>  <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>    <dbl>    <dbl>
-     1 mu         4.2    4.2   3.4   3.6  -0.85   9.4   1.0     558.     322.
-     2 tau        4.2    3.1   3.6   2.9   0.31  11.    1.0     246.     202.
-     3 theta[1]   6.7    6.0   6.3   4.9  -1.2   19.    1.0     400.     254.
-     4 theta[2]   5.3    5.1   4.6   4.3  -2.0   13.    1.0     564.     372.
-     5 theta[3]   3.0    4.0   6.8   4.9 -10.    12.    1.0     312.     205.
-     6 theta[4]   4.9    5.0   4.9   4.5  -3.6   12.    1.0     695.     252.
-     7 theta[5]   3.2    3.7   5.1   4.4  -5.9   11.    1.0     523.     306.
-     8 theta[6]   4.0    4.1   5.2   4.8  -4.3   12.    1.0     548.     205.
-     9 theta[7]   6.5    5.9   5.3   4.5  -1.2   15.    1.0     434.     308.
-    10 theta[8]   4.6    4.6   5.3   4.9  -3.8   12.    1.0     355.     146.
-    > 
-    > # ... or when printing
-    > s <- summarise_draws(x)
-    > print(s, num_args = list(sigfig = 2, notation = "dec"))
-    Error in `format_tbl()`:
-    ! `...` must be empty.
-    ✖ Problematic argument:
-    • num_args = num_args
-    Backtrace:
-         ▆
-      1. ├─base::print(s, num_args = list(sigfig = 2, notation = "dec"))
-      2. ├─posterior:::print.draws_summary(...)
-      3. ├─base::NextMethod()
-      4. └─pillar:::print.tbl(s, num_args = list(sigfig = 2, notation = "dec"))
-      5.   └─pillar:::print_tbl(...)
-      6.     └─pillar:::format_tbl(...)
-      7.       └─rlang::check_dots_empty()
-      8.         └─rlang:::action_dots(...)
-      9.           ├─base (local) try_dots(...)
-     10.           └─rlang (local) action(...)
-    Execution halted
     ```
 
 # unpivotr
