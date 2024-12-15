@@ -6,6 +6,7 @@ test_that("S4 character class (tidyverse/tibble#1367)", {
 })
 
 test_that("Infinite times (#645)", {
+  skip_if(getRversion() < "4.3")
   expect_snapshot({
     pillar(.POSIXct(Inf))
   })
