@@ -52,7 +52,7 @@ format_tbl <- function(
   max_footer_lines = NULL,
   transform = identity
 ) {
-  check_dots_empty(action = signal)
+  check_dots_empty(error = function(cnd) warn("`...` must be empty in `format.tbl()`", parent = cnd))
 
   if (!is.null(n_extra)) {
     deprecate_stop("1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )")
