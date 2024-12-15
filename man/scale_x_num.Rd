@@ -20,11 +20,9 @@ scale_y_num(..., guide = ggplot2::waiver(), rescaler = NULL, super = NULL)
   Arguments passed on to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale}}
   \describe{
     \item{\code{aesthetics}}{The names of the aesthetics that this scale works with.}
-    \item{\code{scale_name}}{The name of the scale that should be used for error messages
-associated with this scale.}
     \item{\code{palette}}{A palette function that when called with a numeric vector with
 values between 0 and 1 returns the corresponding output values
-(e.g., \code{\link[scales:area_pal]{scales::area_pal()}}).}
+(e.g., \code{\link[scales:pal_area]{scales::pal_area()}}).}
     \item{\code{name}}{The name of the scale. Used as the axis or legend title. If
 \code{waiver()}, the default, the name of the scale is taken from the first
 mapping used for that aesthetic. If \code{NULL}, the legend title will be
@@ -33,10 +31,11 @@ omitted.}
 \itemize{
 \item \code{NULL} for no breaks
 \item \code{waiver()} for the default breaks computed by the
-\link[scales:trans_new]{transformation object}
+\link[scales:new_transform]{transformation object}
 \item A numeric vector of positions
 \item A function that takes the limits as input and returns breaks
 as output (e.g., a function returned by \code{\link[scales:breaks_extended]{scales::extended_breaks()}}).
+Note that for position scales, limits are provided after scale expansion.
 Also accepts rlang \link[rlang:as_function]{lambda} function notation.
 }}
     \item{\code{minor_breaks}}{One of:
@@ -46,7 +45,9 @@ Also accepts rlang \link[rlang:as_function]{lambda} function notation.
 each major break)
 \item A numeric vector of positions
 \item A function that given the limits returns a vector of minor breaks. Also
-accepts rlang \link[rlang:as_function]{lambda} function notation.
+accepts rlang \link[rlang:as_function]{lambda} function notation. When
+the function has two arguments, it will be given the limits and major
+breaks.
 }}
     \item{\code{n.breaks}}{An integer guiding the number of major breaks. The algorithm
 may choose a slightly different number to ensure nice break labels. Will
@@ -92,7 +93,7 @@ to generate the values for the \code{expand} argument. The defaults are to
 expand the scale by 5\% on each side for continuous variables, and by
 0.6 units on each side for discrete variables.}
     \item{\code{na.value}}{Missing values will be replaced with this value.}
-    \item{\code{trans}}{For continuous scales, the name of a transformation object
+    \item{\code{transform}}{For continuous scales, the name of a transformation object
 or the object itself. Built-in transformations include "asn", "atanh",
 "boxcox", "date", "exp", "hms", "identity", "log", "log10", "log1p", "log2",
 "logit", "modulus", "probability", "probit", "pseudo_log", "reciprocal",
@@ -100,9 +101,13 @@ or the object itself. Built-in transformations include "asn", "atanh",
 
 A transformation object bundles together a transform, its inverse,
 and methods for generating breaks and labels. Transformation objects
-are defined in the scales package, and are called \verb{<name>_trans} (e.g.,
-\code{\link[scales:boxcox_trans]{scales::boxcox_trans()}}). You can create your own
-transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
+are defined in the scales package, and are called \verb{transform_<name>}. If
+transformations require arguments, you can call them from the scales
+package, e.g. \code{\link[scales:transform_boxcox]{scales::transform_boxcox(p = 2)}}.
+You can create your own transformation with \code{\link[scales:new_transform]{scales::new_transform()}}.}
+    \item{\code{trans}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Deprecated in favour of
+\code{transform}.}
+    \item{\code{call}}{The \code{call} used to construct the scale for reporting messages.}
   }}
 
 \item{guide, position}{Passed on to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}}

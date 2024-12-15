@@ -36,7 +36,7 @@
 #' packed data frames, matrices, or arrays.
 #'
 #' @export
-#' @examplesIf rlang::is_installed("palmerpenguins") && requireNamespace("tibble")
+#' @examplesIf rlang::is_installed(c("palmerpenguins", "tibble"))
 #' # Create pillar objects
 #' ctl_new_pillar(
 #'   palmerpenguins::penguins,

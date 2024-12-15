@@ -42,7 +42,7 @@
 #'   for a compound pillar (or the pillar itself for a simple pillar)
 #'   has been constructed already.
 #' @export
-#' @examplesIf rlang::is_installed("palmerpenguins") && requireNamespace("tibble")
+#' @examplesIf rlang::is_installed(c("palmerpenguins", "tibble")) && requireNamespace("tibble")
 #' # Simple column
 #' ctl_new_pillar_list(
 #'   tibble::tibble(),

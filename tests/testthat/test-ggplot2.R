@@ -19,7 +19,7 @@ test_that("ggplot2 snapshot tests", {
   log_scale <-
     ggplot2::ggplot(data, ggplot2::aes(x, z)) +
     ggplot2::geom_point() +
-    scale_y_num(trans = "log10") +
+    scale_y_num(transform = "log10") +
     ggplot2::theme_minimal(36)
 
   vdiffr::expect_doppelganger("log_scale", log_scale)

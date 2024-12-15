@@ -5,15 +5,15 @@
 #'
 #' @param x A character vector.
 #' @export
-#' @importFrom fansi strip_sgr
-#' @importFrom utf8 utf8_width
+#' @importFrom cli ansi_strip
+#' @importFrom cli utf8_nchar
 #' @examples
 #' get_extent(c("abc", "de"))
 #' get_extent("\u904b\u6c23")
 get_extent <- function(x) {
   force(x)
-  x <- strip_sgr(x, warn = FALSE)
-  width <- utf8_width(x, encode = FALSE, utf8 = TRUE)
+  x <- ansi_strip(x)
+  width <- utf8_nchar(x, "width")
   if (anyNA(width)) {
     is_na <- which(is.na(width))
     width[is_na] <- nchar(x[is_na], type = "width")

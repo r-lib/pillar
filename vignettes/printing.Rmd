@@ -10,6 +10,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  eval = rlang::is_installed("tibble"),
   comment = "#>"
 )
 
@@ -61,7 +62,11 @@ Solid lines are function calls.
 Dotted lines represent information that a function obtains via argument or (in the case of options) queries actively.
 
 ```{r echo = FALSE, error = TRUE}
-DiagrammeR::mermaid("format.mmd")
+text <- paste(
+  readLines("format.mmd"),
+  collapse = "\n"
+)
+DiagrammeR::mermaid(text)
 ```
 
 The pillar package uses debugme for debugging.

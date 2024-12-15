@@ -20,7 +20,7 @@
 #' @keywords internal
 #' @export
 colonnade <- function(x, has_row_id = TRUE, width = NULL, ...) {
-  deprecate_soft("1.7.0", "pillar::colonnade()", "pillar::tbl_format_setup()")
+  deprecate_stop("1.9.0", "pillar::colonnade()", "pillar::tbl_format_setup()")
 
   if (!missing(...)) {
     check_dots_empty(action = warn)
@@ -120,7 +120,7 @@ new_empty_col_sentinel <- function(type) {
 #' @keywords internal
 #' @export
 squeeze <- function(x, width = NULL, ...) {
-  deprecate_soft("1.5.0", "pillar::squeeze()")
+  deprecate_stop("1.5.0", "pillar::squeeze()")
 
   squeeze_impl(x, width, ...)
 }
@@ -240,7 +240,7 @@ knit_print_squeezed_colonnade_tier <- function(x) {
 #' @keywords internal
 #' @export
 extra_cols <- function(x, ...) {
-  deprecate_soft("1.5.0", "pillar::extra_cols()")
+  deprecate_stop("1.5.0", "pillar::extra_cols()")
 
   if (!missing(...)) {
     check_dots_used(action = warn)
