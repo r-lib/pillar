@@ -277,7 +277,13 @@ pillar_shaft.POSIXt <- function(x, ...) {
   date <- format(x, format = "%Y-%m-%d")
   time <- format(x, format = "%H:%M:%OS")
 
-  datetime <- paste0(date, ifelse(is.finite(x), paste0(" ", style_subtle(time)), ""))
+  # R < 4.3 don't support is.finite() for POSIXlt
+  time_styled <- paste0(" ", style_subtle(time))
+  if (inherits(x, "POSIXct")) {
+    time_styled[!is.finite(x)] <- ""
+  }
+
+  datetime <- paste0(date, time_styled)
   datetime[is.na(x)] <- NA
 
   new_pillar_shaft_simple(datetime, width = width, align = "left")
