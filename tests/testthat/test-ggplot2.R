@@ -1,5 +1,5 @@
 test_that("ggplot2 snapshot tests", {
-  skip_if_not_installed("ggplot2")
+  skip_if_not_installed("ggplot2", "3.5.1.9000")
   skip_if_not_installed("vdiffr")
   skip_if_not_installed("tibble")
 
