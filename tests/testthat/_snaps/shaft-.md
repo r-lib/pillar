@@ -14,5 +14,5 @@
     Output
       <pillar>
       <dttm>
-      Inf   
+      NA    
 
