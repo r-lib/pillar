@@ -1,5 +1,20 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.99.9901
+
+## Bug fixes
+
+- Fix printing of infinite times (#645, #710).
+
+- Fix tibble tests (#665, #709).
+
+## Documentation
+
+- Add `index.md`.
+
+- Describe `getOption("width")` (#671, #708).
+
+
 # pillar 1.9.99.9900
 
 ## Features
