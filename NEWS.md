@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.9.99.9902
+
+## Chore
+
+- Breaking change: Hard-deprecate ellipsis for printing and formatting (#585, #637).
+
+## Testing
+
+- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#670).
+
+- Fix tests for older R versions.
+
+## Breaking changes
+
+- Breaking change: Hard-deprecate ellipsis for printing and formatting (#585, #637).
+
+
 # pillar 1.9.99.9901
 
 ## Bug fixes
