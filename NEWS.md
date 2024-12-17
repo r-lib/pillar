@@ -1,45 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.9.99.9903
-
-## Chore
-
-- IDE.
-
-
-# pillar 1.9.99.9902
-
-## Chore
-
-- Breaking change: Hard-deprecate ellipsis for printing and formatting (#585, #637).
-
-## Testing
-
-- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#670).
-
-- Fix tests for older R versions.
+# pillar 1.10.0
 
 ## Breaking changes
 
 - Breaking change: Hard-deprecate ellipsis for printing and formatting (#585, #637).
-
-
-# pillar 1.9.99.9901
 
 ## Bug fixes
 
 - Fix printing of infinite times (#645, #710).
 
 - Fix tibble tests (#665, #709).
-
-## Documentation
-
-- Add `index.md`.
-
-- Describe `getOption("width")` (#671, #708).
-
-
-# pillar 1.9.99.9900
 
 ## Features
 
@@ -51,13 +22,29 @@
 
 - Math operations on `num()` objects now pass additional arguments to the mathematical function (@gvelasq, #659, #660).
 
+## Chore
+
+- IDE.
+
+- Breaking change: Hard-deprecate ellipsis for printing and formatting (#585, #637).
+
 ## Documentation
+
+- Add `index.md`.
+
+- Describe `getOption("width")` (#671, #708).
 
 - Update `_pkgdown.yml` to bring back search bar (@olivroy, #667).
 
 - Only implement `type_sum.accel()` in pkgdown mode (#661).
 
 - Avoid displaying deprecated argument in `@inheritDotParams` (@olivroy, #657).
+
+## Testing
+
+- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#670).
+
+- Fix tests for older R versions.
 
 
 # pillar 1.9.0
