@@ -10,8 +10,8 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/Source_Code_Pro-0.4.9/font.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Printing a tibble: Control and data flow">
 <script defer data-domain="pillar.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 </head>
@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pillar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.9.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.10.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
       <h1>Printing a tibble: Control and data flow</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/docs/vignettes/printing.Rmd" class="external-link"><code>vignettes/printing.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/pillar/blob/cran-1.10.0/vignettes/printing.Rmd" class="external-link"><code>vignettes/printing.Rmd</code></a></small>
       <div class="d-none name"><code>printing.Rmd</code></div>
     </div>
 
@@ -217,15 +217,21 @@ arguments before passing them on to the method.</p>
 <details><summary>
 Source code of <code>tbl_format_setup()</code>
 </summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span>,</span>
-<span>                             <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>                             <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>                             <span class="va">focus</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">tbl_format_setup</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">width</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  <span class="va">setup</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>tbl_sum <span class="op">=</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="va">n</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">max_extra_cols</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">max_footer_lines</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">focus</span> <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="st">"!!!!DEBUG tbl_format_setup()"</span></span>
 <span></span>
 <span>  <span class="va">width</span> <span class="op">&lt;-</span> <span class="fu">get_width_print</span><span class="op">(</span><span class="va">width</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">get_n_print</span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">get_n_print</span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="../reference/tbl_nrow.html">tbl_nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">max_extra_cols</span> <span class="op">&lt;-</span> <span class="fu">get_max_extra_cols</span><span class="op">(</span><span class="va">max_extra_cols</span><span class="op">)</span></span>
 <span>  <span class="va">max_footer_lines</span> <span class="op">&lt;-</span> <span class="fu">get_max_footer_lines</span><span class="op">(</span><span class="va">max_footer_lines</span><span class="op">)</span></span>
@@ -233,8 +239,13 @@ Source code of <code>tbl_format_setup()</code>
 <span>  <span class="co"># Calls UseMethod("tbl_format_setup"),</span></span>
 <span>  <span class="co"># allows using default values in S3 dispatch</span></span>
 <span>  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">tbl_format_setup_dispatch</span><span class="op">(</span></span>
-<span>    <span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,</span>
-<span>    n <span class="op">=</span> <span class="va">n</span>, max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>, max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>,</span>
+<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">width</span>,</span>
+<span>    <span class="va">...</span>,</span>
+<span>    setup <span class="op">=</span> <span class="va">setup</span>,</span>
+<span>    n <span class="op">=</span> <span class="va">n</span>,</span>
+<span>    max_extra_cols <span class="op">=</span> <span class="va">max_extra_cols</span>,</span>
+<span>    max_footer_lines <span class="op">=</span> <span class="va">max_footer_lines</span>,</span>
 <span>    focus <span class="op">=</span> <span class="va">focus</span></span>
 <span>  <span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
@@ -249,15 +260,32 @@ object, but you should not overwrite existing items.</p>
 <details><summary>
 Source code of <code>pillar:::tbl_format_setup.tbl()</code>
 </summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">width</span>, <span class="va">...</span>,</span>
-<span>                                 <span class="va">n</span>, <span class="va">max_extra_cols</span>, <span class="va">max_footer_lines</span>, <span class="va">focus</span><span class="op">)</span> <span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">tbl_format_setup.tbl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">width</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  <span class="va">setup</span>,</span>
+<span>  <span class="va">n</span>,</span>
+<span>  <span class="va">max_extra_cols</span>,</span>
+<span>  <span class="va">max_footer_lines</span>,</span>
+<span>  <span class="va">focus</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="st">"!!!!DEBUG tbl_format_setup.tbl()"</span></span>
 <span></span>
-<span>  <span class="co"># Number of rows</span></span>
-<span>  <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">setup</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># Header with early exit</span></span>
+<span>    <span class="va">tbl_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/new_tbl_format_setup.html">new_tbl_format_setup</a></span><span class="op">(</span><span class="va">width</span>, <span class="va">tbl_sum</span>, rows_total <span class="op">=</span> <span class="cn">NA_integer_</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">tbl_sum</span> <span class="op">&lt;-</span> <span class="va">setup</span><span class="op">$</span><span class="va">tbl_sum</span></span>
+<span>  <span class="op">}</span></span>
 <span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">df_head</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="co"># Number of rows</span></span>
+<span>  <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_nrow.html">tbl_nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">lazy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rows</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">lazy</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="va">rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
@@ -281,15 +309,12 @@ Source code of <code>pillar:::tbl_format_setup.tbl()</code>
 <span>    <span class="va">rows_missing</span> <span class="op">&lt;-</span> <span class="fl">0L</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
-<span>  <span class="co"># Header</span></span>
-<span>  <span class="va">tbl_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tbl_sum.html">tbl_sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span></span>
 <span>  <span class="co"># Body</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span></span>
 <span>  <span class="va">colonnade</span> <span class="op">&lt;-</span> <span class="fu">ctl_colonnade</span><span class="op">(</span></span>
 <span>    <span class="va">df</span>,</span>
-<span>    has_row_id <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.row_names_info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="st">"*"</span> <span class="kw">else</span> <span class="cn">TRUE</span>,</span>
+<span>    has_row_id <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">lazy</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/base-internal.html" class="external-link">.row_names_info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="st">"*"</span> <span class="kw">else</span> <span class="cn">TRUE</span>,</span>
 <span>    width <span class="op">=</span> <span class="va">width</span>,</span>
 <span>    controller <span class="op">=</span> <span class="va">x</span>,</span>
 <span>    focus <span class="op">=</span> <span class="va">focus</span></span>
@@ -622,7 +647,7 @@ Source code of <code>pillar:::format.pillar()</code>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000.</p>
 </div>
 
   </div></footer>
