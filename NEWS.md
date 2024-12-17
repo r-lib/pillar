@@ -1,30 +1,20 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.9.99.9903
+# pillar 1.10.0
 
-## Chore
+## Features
 
-- IDE.
+- `tbl_format_setup()` gains a `setup` argument that supports printing the header before the data for the body is available, e.g., for remote backends such as databases (#686).
 
+- New `tbl_nrow()` generic to support lazy data frames (#679).
 
-# pillar 1.9.99.9902
+- Show missing values in red in `glimpse()` (@ryanzomorrodi, #662).
 
-## Chore
-
-- Breaking change: Hard-deprecate ellipsis for printing and formatting (#585, #637).
-
-## Testing
-
-- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#670).
-
-- Fix tests for older R versions.
+- Math operations on `num()` objects now pass additional arguments to the mathematical function (@gvelasq, #659, #660).
 
 ## Breaking changes
 
 - Breaking change: Hard-deprecate ellipsis for printing and formatting (#585, #637).
-
-
-# pillar 1.9.99.9901
 
 ## Bug fixes
 
@@ -34,28 +24,9 @@
 
 ## Documentation
 
-- Add `index.md`.
-
 - Describe `getOption("width")` (#671, #708).
 
-
-# pillar 1.9.99.9900
-
-## Features
-
-- `tbl_format_setup()` gains a `setup` argument that supports printing the header before the data for the body is available, e.g., for remote backends such as databases (#686).
-
-- New `tbl_nrow()` to support lazy data frames (#679).
-
-- Show missing values in red in `glimpse()` (@ryanzomorrodi, #662).
-
-- Math operations on `num()` objects now pass additional arguments to the mathematical function (@gvelasq, #659, #660).
-
-## Documentation
-
 - Update `_pkgdown.yml` to bring back search bar (@olivroy, #667).
-
-- Only implement `type_sum.accel()` in pkgdown mode (#661).
 
 - Avoid displaying deprecated argument in `@inheritDotParams` (@olivroy, #657).
 
