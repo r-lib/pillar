@@ -56,6 +56,7 @@ test_that("glimpse calls tbl_sum() (#550)", {
 })
 
 test_that("output test for glimpse()", {
+  skip_if_not_installed("tibble")
   local_unknown_rows()
 
   expect_snapshot({

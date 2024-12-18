@@ -142,7 +142,7 @@ format_glimpse.default <- function(x, ...) {
 
   if (is.null(dims)) {
     out <- format(x, trim = TRUE, justify = "none")
-    style_na_if(out, is.na(x))
+    style_na_if(out, if (is.atomic(x)) is.na(x) else FALSE)
   } else {
     dims_out <- paste0(dims, collapse = " x ")
     paste0("<", class(x)[[1]], "[", dims_out, "]>")

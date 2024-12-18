@@ -18,16 +18,17 @@ print_tbl <- function(x, width = NULL, ...,
                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
   if (!is.null(n_extra)) {
     deprecate_stop("1.6.2", "pillar::print(n_extra = )", "pillar::print(max_extra_cols = )")
-    if (is.null(max_extra_cols)) {
-      max_extra_cols <- n_extra
-    }
   }
 
-  writeLines(format(
+  # Printing happens as a side effect thanks to `transform = writeLines` .
+  # For formatting, the default `transform = identity` returns the data instead.
+  format_tbl(
     x,
     width = width, ...,
-    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines
-  ))
+    n = n, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines,
+    transform = writeLines
+  )
+
   invisible(x)
 }
 
@@ -41,33 +42,73 @@ format.tbl <- function(x, width = NULL, ...,
   )
 }
 
-format_tbl <- function(x, width = NULL, ...,
-                       n_extra = NULL,
-                       n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
-  check_dots_empty(action = signal)
+format_tbl <- function(
+  x,
+  width = NULL,
+  ...,
+  n_extra = NULL,
+  n = NULL,
+  max_extra_cols = NULL,
+  max_footer_lines = NULL,
+  transform = identity
+) {
+  check_dots_empty(error = function(cnd) warn("`...` must be empty in `format.tbl()`", parent = cnd))
 
   if (!is.null(n_extra)) {
     deprecate_stop("1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )")
-    if (is.null(max_extra_cols)) {
-      max_extra_cols <- n_extra
-    }
   }
 
   # Reset local cache for each new output
   force(x)
   num_colors(forget = TRUE)
 
-  setup <- tbl_format_setup(x,
-    width = width, ...,
+  # This is a bit of a hack to allow the setup function to be called twice
+  # if the implementer is prepared to handle that.
+  # We detect that by checking if the `setup` argument has been evaluated.
+  setup_used <- FALSE
+
+  # In either case, we expect a `setup` object that can be passed to `tbl_format_header()`
+  # as a return from this call.
+  setup <- tbl_format_setup(
+    x,
+    width = width,
+    ...,
+    setup = {
+      # This construct updates the `setup_used` variable in the parent scope
+      # when the `setup` argument is evaluated.
+      setup_used <- TRUE
+      NULL
+    },
     n = n,
     max_extra_cols = max_extra_cols,
     max_footer_lines = max_footer_lines,
     focus = attr(x, "pillar_focus")
   )
 
-  header <- tbl_format_header(x, setup)
-  body <- tbl_format_body(x, setup)
-  footer <- tbl_format_footer(x, setup)
+  header <- transform(tbl_format_header(x, setup))
+
+  # If the implementation did not request the `setup` argument in the first call,
+  # the default behavior before 1.9.1 is used: the first call already
+  # has returned the full setup object.
+  # Otherwise, we assume that a second call is required, and we pass it the
+  # setup object returned from the first call.
+  if (setup_used) {
+    setup <- tbl_format_setup(
+      x,
+      width = width,
+      ...,
+      setup = setup,
+      n = n,
+      max_extra_cols = max_extra_cols,
+      max_footer_lines = max_footer_lines,
+      focus = attr(x, "pillar_focus")
+    )
+  }
+
+  # In either case, the `setup` object is now complete and can be used to format the body
+  # and the footer.
+  body <- transform(tbl_format_body(x, setup))
+  footer <- transform(tbl_format_footer(x, setup))
   c(header, body, footer)
 }
 

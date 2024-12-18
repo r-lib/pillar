@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   pkgdown:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     name: "pkgdown"
 
@@ -39,10 +39,9 @@ jobs:
       - uses: ./.github/workflows/install
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          install-r: false
           cache-version: pkgdown-2
           needs: website
-          extra-packages: r-lib/pkgdown@f-readme-tweak local::.
+          extra-packages: r-lib/pkgdown local::.
 
       - uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''

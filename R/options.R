@@ -7,7 +7,7 @@
 #' @usage NULL
 #' @format NULL
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("tibble")
 #' df <- tibble::tibble(x = c(1.234567, NA, 5:10))
 #' df
 #'
@@ -25,6 +25,11 @@
 #' df
 #'
 #' @section Options for the pillar package:
+#'
+#' - `width`: The width option controls the output width.
+#'   Setting `options(pillar.width = )` to a larger value
+#'   will lead to printing in multiple tiers (stacks).
+#'
 pillar_options <- list2(
   #' - `pillar.print_max`: Maximum number of rows printed, default: `20`.
   #'   Set to \code{Inf} to always print all rows.

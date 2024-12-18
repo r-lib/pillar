@@ -9,13 +9,23 @@ tbl_format_setup(
   x,
   width = NULL,
   ...,
+  setup = list(tbl_sum = tbl_sum(x)),
   n = NULL,
   max_extra_cols = NULL,
   max_footer_lines = NULL,
   focus = NULL
 )
 
-\method{tbl_format_setup}{tbl}(x, width, ..., n, max_extra_cols, max_footer_lines, focus)
+\method{tbl_format_setup}{tbl}(
+  x,
+  width,
+  ...,
+  setup,
+  n,
+  max_extra_cols,
+  max_footer_lines,
+  focus
+)
 }
 \arguments{
 \item{x}{An object.}
@@ -24,6 +34,15 @@ tbl_format_setup(
 This argument is mandatory for all implementations of this method.}
 
 \item{...}{Extra arguments to \code{\link[=print.tbl]{print.tbl()}} or \code{\link[=format.tbl]{format.tbl()}}.}
+
+\item{setup}{This generic is first called with \code{setup = NULL} .
+If the method \emph{evaluates} this argument, the return value
+will only be used in a call to \code{\link[=tbl_format_header]{tbl_format_header()}},
+and after that, a second call to this generic will be made
+with the return value of the first call as \code{setup}
+which then will be used in calls to \code{\link[=tbl_format_body]{tbl_format_body()}} and \code{\link[=tbl_format_footer]{tbl_format_footer()}}.
+This allows displaying the header before starting the computation
+required for the body and footer.}
 
 \item{n}{Actual number of rows to print.
 No \link[=pillar_options]{options} should be considered
@@ -57,12 +76,17 @@ and (implicitly) in the footer of a tibble;
 \item the columns shown in the body decide which columns are shown in the footer.
 }
 
-This information is computed once in \code{tbl_format_setup()}.
+This information is computed in \code{tbl_format_setup()}.
 The result is passed on to the
 \code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}}
 methods.
 If you need to customize parts of the printed output independently,
 override these methods instead.
+
+By checking the \code{setup} argument, you can return an object that is
+suitable for a call to \code{\link[=tbl_format_header]{tbl_format_header()}} if \code{setup} is \code{NULL}.
+In this case, the method is called a second time with the return value
+of the first call as \code{setup}.
 }
 \details{
 Extend this method to prepare information that is used
@@ -86,7 +110,7 @@ standard printing for tibbles.
 See \code{\link[=new_tbl_format_setup]{new_tbl_format_setup()}} for details on the returned object.
 }
 \examples{
-\dontshow{if (rlang::is_installed("palmerpenguins")) withAutoprint(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("palmerpenguins", "tibble"))) withAutoprint(\{ # examplesIf}
 tbl_format_setup(palmerpenguins::penguins)
 \dontshow{\}) # examplesIf}
 }
