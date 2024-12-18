@@ -291,14 +291,25 @@ pillar_shaft.POSIXt <- function(x, ...) {
   datetime[is.na(x)] <- NA
   datetime_short[is.na(x)] <- NA
 
-  new_pillar_shaft_simple(
-    datetime,
-   #  width = width,
-    align = "left",
-    short_formatted = datetime_short
+  new_pillar_shaft(
+    list(datetime = datetime, datetime_min = datetime_short),
+    #align = "left",
+    width = get_max_extent(datetime_short),
+    min_width = get_max_extent(datetime),
+    class = "pillar_shaft_posixt"
   )
 }
 
+#' @export
+format.pillar_shaft_posixt <- function(x, width, ...) {
+  if (get_max_extent(x$datetime_min) <= width) {
+    ornament <- x$datetime_min
+  } else {
+    ornament <- x$datetime
+  }
+
+  new_ornament(ornament, align = "left")
+}
 
 #' @export
 #' @rdname pillar_shaft
