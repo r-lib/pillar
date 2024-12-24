@@ -33,13 +33,17 @@ For even more control over the formatting, implement your own method.
 }
 \examples{
 # Default method: show the type with angle brackets
-format_type_sum(1, NULL)
+writeLines(format_type_sum("dbl", width = NULL))
 pillar(1)
 
 # AsIs method: show the type without angle brackets
 type_sum.accel <- function(x) {
   I("kg m/s^2")
 }
+
+# Typically done through NAMESPACE
+# (perhaps with an @export directive in roxygen2)
+registerS3method("type_sum", "accel", type_sum.accel)
 
 accel <- structure(9.81, class = "accel")
 pillar(accel)
