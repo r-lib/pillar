@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.10.0.9000
+
+## Documentation
+
+- Define `type_sum.accel()` only in help page to avoid silent errors when loading (#720, #721).
+
+
 # pillar 1.10.0
 
 ## Features
