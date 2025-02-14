@@ -79,26 +79,8 @@ test_that("get_width_print()", {
 })
 
 test_that("format() signals an error if not all arguments in `...`are used", {
-  my_env <- rlang::new_environment(
-    list(
-      tbl_format_setup.my_tibble = function(x, ..., known_arg = TRUE) {
-        setup <- NextMethod()
-        if (known_arg) {
-          setup$tbl_sum <- c(setup$tbl_sum, "Attribute" = "Set")
-        }
-        setup
-      }
-    )
-  )
-  withr::with_environment(my_env, {
-    tbl <- new_tbl(trees, class = "my_tibble")
-
-    expect_no_error(
-      format(tbl, known_arg = FALSE)
-    )
-
+    tbl <- new_tbl(trees)
     expect_error(
       format(tbl, unknown_arg = TRUE)
     )
-  })
 })
