@@ -136,6 +136,13 @@ test_that("tbl_format_setup() results", {
       n = 5L,
       width = 30L
     )
+
+    "Long table, unknown, default"
+    tbl_format_setup(
+      as_unknown_rows(new_tbl(list(a = seq.int(5)))),
+      n = structure(3, max = 6),
+      width = 60L
+    )
   })
 })
 
