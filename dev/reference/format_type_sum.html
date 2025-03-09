@@ -9,7 +9,7 @@ in the capital."><meta name="robots" content="noindex"><script defer data-domain
 
     <a class="navbar-brand me-2" href="../index.html">pillar</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.9.99.9902</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.10.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,8 +89,8 @@ For even more control over the formatting, implement your own method.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Default method: show the type with angle brackets</span></span></span>
-<span class="r-in"><span><span class="fu">format_type_sum</span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NULL</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\033[3m\033[38;5;246m&lt;1&gt;\033[39m\033[23m"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="fu">format_type_sum</span><span class="op">(</span><span class="st">"dbl"</span>, width <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -101,11 +101,15 @@ For even more control over the formatting, implement your own method.</p>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="st">"kg m/s^2"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Typically done through NAMESPACE</span></span></span>
+<span class="r-in"><span><span class="co"># (perhaps with an @export directive in roxygen2)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/ns-internal.html" class="external-link">registerS3method</a></span><span class="op">(</span><span class="st">"type_sum"</span>, <span class="st">"accel"</span>, <span class="va">type_sum.accel</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">accel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="fl">9.81</span>, class <span class="op">=</span> <span class="st">"accel"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="pillar.html">pillar</a></span><span class="op">(</span><span class="va">accel</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;pillar&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">&lt;accel&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.81   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494; font-style: italic;">kg m/s^2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.81    </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
