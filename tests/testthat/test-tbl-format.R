@@ -86,3 +86,23 @@ test_that("format() signals an error if not all arguments in `...` are used", {
     format(tbl, unknown_arg = TRUE)
   )
 })
+
+test_that("print() and format() can pass down arguments in `...`", {
+  local_methods(
+    tbl_format_setup.my_tibble = function(x, ..., known_arg = TRUE) {
+      setup <- NextMethod()
+      if (known_arg) {
+        setup$tbl_sum <- c(setup$tbl_sum, "Attribute" = "Set")
+      }
+      setup
+    }
+  )
+
+  tbl <- new_tbl(trees, class = "my_tibble")
+
+  expect_snapshot({
+    format(tbl, known_arg = TRUE)
+    print(tbl, known_arg = TRUE)
+    print(tbl, known_arg = FALSE)
+  })
+})

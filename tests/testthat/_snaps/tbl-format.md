@@ -273,3 +273,49 @@
       <tbl_format_footer(setup)>
       # i 21 more rows
 
+# print() and format() can pass down arguments in `...`
+
+    Code
+      format(tbl, known_arg = TRUE)
+    Output
+       [1] "# A data frame: 31 x 3" "# Attribute:    Set"    "   Girth Height Volume"
+       [4] "   <dbl>  <dbl>  <dbl>" " 1   8.3     70   10.3" " 2   8.6     65   10.3"
+       [7] " 3   8.8     63   10.2" " 4  10.5     72   16.4" " 5  10.7     81   18.8"
+      [10] " 6  10.8     83   19.7" " 7  11       66   15.6" " 8  11       75   18.2"
+      [13] " 9  11.1     80   22.6" "10  11.2     75   19.9" "# i 21 more rows"      
+    Code
+      print(tbl, known_arg = TRUE)
+    Output
+      # A data frame: 31 x 3
+      # Attribute:    Set
+         Girth Height Volume
+         <dbl>  <dbl>  <dbl>
+       1   8.3     70   10.3
+       2   8.6     65   10.3
+       3   8.8     63   10.2
+       4  10.5     72   16.4
+       5  10.7     81   18.8
+       6  10.8     83   19.7
+       7  11       66   15.6
+       8  11       75   18.2
+       9  11.1     80   22.6
+      10  11.2     75   19.9
+      # i 21 more rows
+    Code
+      print(tbl, known_arg = FALSE)
+    Output
+      # A data frame: 31 x 3
+         Girth Height Volume
+         <dbl>  <dbl>  <dbl>
+       1   8.3     70   10.3
+       2   8.6     65   10.3
+       3   8.8     63   10.2
+       4  10.5     72   16.4
+       5  10.7     81   18.8
+       6  10.8     83   19.7
+       7  11       66   15.6
+       8  11       75   18.2
+       9  11.1     80   22.6
+      10  11.2     75   19.9
+      # i 21 more rows
+
