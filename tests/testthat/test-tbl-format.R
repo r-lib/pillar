@@ -80,9 +80,9 @@ test_that("get_width_print()", {
   expect_equal(get_width_print(140), 140)
 })
 
-test_that("format() signals an error if not all arguments in `...`are used", {
-    tbl <- new_tbl(trees)
-    expect_error(
-      format(tbl, unknown_arg = TRUE)
-    )
+test_that("format() signals an error if not all arguments in `...` are used", {
+  tbl <- new_tbl(trees)
+  expect_error(
+    format(tbl, unknown_arg = TRUE)
+  )
 })
