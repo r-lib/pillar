@@ -148,9 +148,11 @@ tbl_format_setup.tbl <- function(
 
   lazy <- is.na(rows)
   if (lazy) {
-    df <- as.data.frame(head(x, n + 1))
-    if (nrow(df) <= n) {
+    max <- attr(n, "max") %||% n
+    df <- as.data.frame(head(x, max + 1))
+    if (nrow(df) <= max) {
       rows <- nrow(df)
+      n <- rows
     } else {
       df <- vec_head(df, n)
     }
