@@ -190,7 +190,9 @@ get_n_print <- function(n, rows) {
     return(n)
   }
 
-  if (is.na(rows) || rows > get_pillar_option_print_max()) {
+  if (is.na(rows)) {
+    structure(get_pillar_option_print_min(), max = get_pillar_option_print_max())
+  } else if (rows > get_pillar_option_print_max()) {
     get_pillar_option_print_min()
   } else {
     rows
