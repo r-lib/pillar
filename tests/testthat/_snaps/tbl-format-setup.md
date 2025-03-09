@@ -1532,6 +1532,23 @@
       5     5
       <tbl_format_footer(setup)>
       # i more rows
+    Code
+      # Long table, unknown, default
+      tbl_format_setup(as_unknown_rows(new_tbl(list(a = seq.int(5)))), n = structure(
+        3, max = 6), width = 60L)
+    Output
+      <pillar_tbl_format_setup>
+      <tbl_format_header(setup)>
+      # A data frame: ?? x 1
+      <tbl_format_body(setup)>
+            a
+        <int>
+      1     1
+      2     2
+      3     3
+      4     4
+      5     5
+      <tbl_format_footer(setup)>
 
 # tbl_format_setup() for footnotes
 

@@ -67,6 +67,8 @@ test_that("get_n_print()", {
   expect_equal(get_n_print(NULL, 5), 5)
   expect_equal(get_n_print(NULL, 6), 6)
   expect_equal(get_n_print(NULL, 7), 3)
+
+  expect_equal(get_n_print(NULL, NA), structure(3, max = 6))
 })
 
 test_that("get_width_print()", {

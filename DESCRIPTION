@@ -64,5 +64,7 @@ Config/testthat/start-first:
     ctl_colonnade_2
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: true
-Config/gha/extra-packages: DiagrammeR=?ignore-before-r=3.5.0
+Config/gha/extra-packages: 
+    DiagrammeR=?ignore-before-r=3.5.0,
+    udunits2=?ignore
 Config/Needs/website: tidyverse/tidytemplate
