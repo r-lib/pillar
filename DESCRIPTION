@@ -66,5 +66,5 @@ Config/autostyle/scope: line_breaks
 Config/autostyle/strict: true
 Config/gha/extra-packages: 
     DiagrammeR=?ignore-before-r=3.5.0,
-    udunits2=?ignore
+    units=?ignore-before-r=4.3.0,
 Config/Needs/website: tidyverse/tidytemplate
