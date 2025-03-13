@@ -1,6 +1,6 @@
 Package: pillar
 Title: Coloured Formatting for Columns
-Version: 1.10.1.9000
+Version: 1.10.1.9001
 Authors@R: 
     c(person(given = "Kirill",
              family = "M\u00fcller",
@@ -64,7 +64,5 @@ Config/testthat/start-first:
     ctl_colonnade_2
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: true
-Config/gha/extra-packages: 
-    DiagrammeR=?ignore-before-r=3.5.0,
-    udunits2=?ignore
+Config/gha/extra-packages: units=?ignore-before-r=4.3.0
 Config/Needs/website: tidyverse/tidytemplate
