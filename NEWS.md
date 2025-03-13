@@ -1,29 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.10.1.9001
+# pillar 1.10.1.9900
 
 ## Bug fixes
 
 - Show up to 20 rows by default for lazy tables again, regression introduced in pillar 1.10.0 (#727).
-
-## Continuous integration
-
-- Must be on one line.
-
-- Fix package name for R \< 4.3.
-
-- Hard ignore.
-
-- Ignore udunits2 for R \< 4.3.0.
-
-## Testing
-
-- Add tests for regression.
-
-
-# pillar 1.10.1.9000
-
-- Switching to development version.
 
 
 # pillar 1.10.1
