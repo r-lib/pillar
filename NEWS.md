@@ -6,24 +6,6 @@
 
 - Show up to 20 rows by default for lazy tables again, regression introduced in pillar 1.10.0 (#727).
 
-## Continuous integration
-
-- Must be on one line.
-
-- Fix package name for R \< 4.3.
-
-- Hard ignore.
-
-- Ignore udunits2 for R \< 4.3.0.
-
-## Testing
-
-- Add tests for regression.
-
-## Uncategorized
-
-- Switching to development version.
-
 
 # pillar 1.10.1
 
