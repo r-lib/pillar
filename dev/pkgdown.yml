@@ -7,7 +7,7 @@ articles:
   extending: extending.html
   numbers: numbers.html
   printing: printing.html
-last_built: 2025-03-13T08:25Z
+last_built: 2025-03-13T08:53Z
 urls:
   reference: https://pillar.r-lib.org/reference
   article: https://pillar.r-lib.org/articles
