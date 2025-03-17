@@ -65,8 +65,8 @@ MakeScaleContinuousPositionNum <- function() {
       out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$get_labels(breaks)
       ansi_strip(out)
     },
-    make_title = function(self, title) {
-      out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$make_title(title)
+    make_title = function(self, title, ...) {
+      out <- ggplot2::ggproto_parent(ggplot2::ScaleContinuousPosition, self)$make_title(title, ...)
       pillar_attr <- attr(self$ptype, "pillar", exact = TRUE)
       if (!is.null(pillar_attr$fixed_exponent)) {
         shaft <- pillar_shaft_number_attr(numeric(), pillar_attr)
