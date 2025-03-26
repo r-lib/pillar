@@ -128,6 +128,10 @@ format_glimpse <- function(x, ...) {
 
 # A variant with collapse and without checks, for format_glimpse.list()
 format_glimpse_1 <- function(x, ...) {
+  paste0(format_glimpse_(x, ...), collapse = crayon_grey_0.6(", "))
+}
+
+format_glimpse_list <- function(x, ...) {
   collapse(format_glimpse_(x, ...))
 }
 
@@ -155,8 +159,7 @@ format_glimpse.list <- function(x, ..., .inner = FALSE) {
     return("list()")
   }
 
-  out <- map_chr(x, format_glimpse_1, .inner = TRUE)
-
+  out <- map_chr(x, format_glimpse_list, .inner = TRUE)
   # Surround vectors by <>
   # Only surround inner lists by []
   list <- map_lgl(x, is.list)
