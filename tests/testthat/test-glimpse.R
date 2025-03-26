@@ -124,7 +124,6 @@ test_that("format_glimpse_list() handles nested lists without coloring internal 
   local_colors()
 
   expect_snapshot({
-
     "# Simple list elements"
     format_glimpse_list(1:3)
     format_glimpse_list(letters[1:3])
