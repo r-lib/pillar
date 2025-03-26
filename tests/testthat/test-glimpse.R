@@ -102,6 +102,47 @@ test_that("output test for glimpse()", {
   })
 })
 
+test_that("format_glimpse_1() handles commas correctly", {
+  local_colors()
+
+  expect_snapshot({
+    "# Vector with commas"
+    format_glimpse_1(1:3)
+    format_glimpse_1(c("a", "b", "c"))
+    format_glimpse_1(c(1, NA, 3))
+
+    "# Empty and single-element vectors"
+    format_glimpse_1(integer())
+    format_glimpse_1(1)
+
+    "# Mixed content with commas"
+    format_glimpse_1(list(1:3, "a, b", NA))
+  })
+})
+
+test_that("format_glimpse_list() handles nested lists without coloring internal commas", {
+  local_colors()
+
+  expect_snapshot({
+
+    "# Simple list elements"
+    format_glimpse_list(1:3)
+    format_glimpse_list(letters[1:3])
+
+    "# Nested lists"
+    format_glimpse_list(list(1:3))
+    format_glimpse_list(list(list(1:3), list(4:6)))
+
+    "# Mixed content"
+    format_glimpse_list(list(1:3, "a,b,c"))
+    format_glimpse_list(list(list(1,2,3), letters[1:3]))
+
+    "# Empty and NULL"
+    format_glimpse_list(list())
+    format_glimpse_list(NULL)
+  })
+})
+
 test_that("color test for missing values", {
   local_colors()
 
