@@ -245,43 +245,40 @@
       format_glimpse_1(list(1:3, "a, b", NA))
     Output
       [1] "<1, 2, 3>\033[90m, \033[39m\"a, b\"\033[90m, \033[39m\033[31mNA\033[39m"
-
-# format_glimpse_list() handles nested lists without coloring internal commas
-
     Code
       # # Simple list elements
-      format_glimpse_list(1:3)
+      format_glimpse_1(1:3, .inner = TRUE)
     Output
       [1] "1, 2, 3"
     Code
-      format_glimpse_list(letters[1:3])
+      format_glimpse_1(letters[1:3], .inner = TRUE)
     Output
       [1] "\"a\", \"b\", \"c\""
     Code
       # # Nested lists
-      format_glimpse_list(list(1:3))
+      format_glimpse_1(list(1:3), .inner = TRUE)
     Output
       [1] "<1, 2, 3>"
     Code
-      format_glimpse_list(list(list(1:3), list(4:6)))
+      format_glimpse_1(list(list(1:3), list(4:6)), .inner = TRUE)
     Output
       [1] "[<1, 2, 3>], [<4, 5, 6>]"
     Code
       # # Mixed content
-      format_glimpse_list(list(1:3, "a,b,c"))
+      format_glimpse_1(list(1:3, "a,b,c"), .inner = TRUE)
     Output
       [1] "<1, 2, 3>, \"a,b,c\""
     Code
-      format_glimpse_list(list(list(1, 2, 3), letters[1:3]))
+      format_glimpse_1(list(list(1, 2, 3), letters[1:3]), .inner = TRUE)
     Output
       [1] "[1, 2, 3], <\"a\", \"b\", \"c\">"
     Code
       # # Empty and NULL
-      format_glimpse_list(list())
+      format_glimpse_1(list(), .inner = TRUE)
     Output
-      [1] "list()"
+      [1] ""
     Code
-      format_glimpse_list(NULL)
+      format_glimpse_1(NULL, .inner = TRUE)
     Output
       [1] "NULL"
 

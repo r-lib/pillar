@@ -117,28 +117,23 @@ test_that("format_glimpse_1() handles commas correctly", {
 
     "# Mixed content with commas"
     format_glimpse_1(list(1:3, "a, b", NA))
-  })
-})
 
-test_that("format_glimpse_list() handles nested lists without coloring internal commas", {
-  local_colors()
-
-  expect_snapshot({
+    # format_glimpse_1 with .inner = TRUE
     "# Simple list elements"
-    format_glimpse_list(1:3)
-    format_glimpse_list(letters[1:3])
+    format_glimpse_1(1:3, .inner = TRUE)
+    format_glimpse_1(letters[1:3], .inner = TRUE)
 
     "# Nested lists"
-    format_glimpse_list(list(1:3))
-    format_glimpse_list(list(list(1:3), list(4:6)))
+    format_glimpse_1(list(1:3), .inner = TRUE)
+    format_glimpse_1(list(list(1:3), list(4:6)), .inner = TRUE)
 
     "# Mixed content"
-    format_glimpse_list(list(1:3, "a,b,c"))
-    format_glimpse_list(list(list(1,2,3), letters[1:3]))
+    format_glimpse_1(list(1:3, "a,b,c"), .inner = TRUE)
+    format_glimpse_1(list(list(1,2,3), letters[1:3]), .inner = TRUE)
 
     "# Empty and NULL"
-    format_glimpse_list(list())
-    format_glimpse_list(NULL)
+    format_glimpse_1(list(), .inner = TRUE)
+    format_glimpse_1(NULL, .inner = TRUE)
   })
 })
 
