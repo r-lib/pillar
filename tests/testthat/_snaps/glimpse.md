@@ -216,6 +216,72 @@
       $ cyl  <dbl> 6, 4, 8
       $ data <list> [<tbl[11 x 11]>], [<tbl[7 x 11]>], [<tbl[14 x 11]>]
 
+# format_glimpse_1() handles commas correctly
+
+    Code
+      # # Vector with commas
+      format_glimpse_1(1:3)
+    Output
+      [1] "1\033[90m, \033[39m2\033[90m, \033[39m3"
+    Code
+      format_glimpse_1(c("a", "b", "c"))
+    Output
+      [1] "\"a\"\033[90m, \033[39m\"b\"\033[90m, \033[39m\"c\""
+    Code
+      format_glimpse_1(c(1, NA, 3))
+    Output
+      [1] "1\033[90m, \033[39m\033[31mNA\033[39m\033[90m, \033[39m3"
+    Code
+      # # Empty and single-element vectors
+      format_glimpse_1(integer())
+    Output
+      [1] ""
+    Code
+      format_glimpse_1(1)
+    Output
+      [1] "1"
+    Code
+      # # Mixed content with commas
+      format_glimpse_1(list(1:3, "a, b", NA))
+    Output
+      [1] "<1, 2, 3>\033[90m, \033[39m\"a, b\"\033[90m, \033[39m\033[31mNA\033[39m"
+    Code
+      # # Simple list elements
+      format_glimpse_1(1:3, .inner = TRUE)
+    Output
+      [1] "1, 2, 3"
+    Code
+      format_glimpse_1(letters[1:3], .inner = TRUE)
+    Output
+      [1] "\"a\", \"b\", \"c\""
+    Code
+      # # Nested lists
+      format_glimpse_1(list(1:3), .inner = TRUE)
+    Output
+      [1] "<1, 2, 3>"
+    Code
+      format_glimpse_1(list(list(1:3), list(4:6)), .inner = TRUE)
+    Output
+      [1] "[<1, 2, 3>], [<4, 5, 6>]"
+    Code
+      # # Mixed content
+      format_glimpse_1(list(1:3, "a,b,c"), .inner = TRUE)
+    Output
+      [1] "<1, 2, 3>, \"a,b,c\""
+    Code
+      format_glimpse_1(list(list(1, 2, 3), letters[1:3]), .inner = TRUE)
+    Output
+      [1] "[1, 2, 3], <\"a\", \"b\", \"c\">"
+    Code
+      # # Empty and NULL
+      format_glimpse_1(list(), .inner = TRUE)
+    Output
+      [1] ""
+    Code
+      format_glimpse_1(NULL, .inner = TRUE)
+    Output
+      [1] "NULL"
+
 # color test for missing values
 
     Code
@@ -261,27 +327,27 @@
     Output
       Rows: 3
       Columns: 9
-      $ a [3m[90m<dbl>[39m[23m 1.0, 2.5, [31mNA[39m
-      $ b [3m[90m<int>[39m[23m 1, 2, [31mNA[39m
-      $ c [3m[90m<lgl>[39m[23m TRUE, FALSE, [31mNA[39m
-      $ d [3m[90m<chr>[39m[23m "a", "b", [31mNA[39m
-      $ e [3m[90m<fct>[39m[23m a, b, [31mNA[39m
-      $ f [3m[90m<date>[39m[23m 2015-12-10, 2015-12-11, [31mNA[39m
-      $ g [3m[90m<dttm>[39m[23m 2015-12-09 10:51:35, 2015-12-09 10:51:36, [31mNA[39m
-      $ h [3m[90m<list>[39m[23m 1, 2, [31mNA[39m
-      $ i [3m[90m<list>[39m[23m [1, <2, 3>], [<4, 5, 6>], [[31mNA[39m]
+      $ a [3m[90m<dbl>[39m[23m 1.0[90m, [39m2.5[90m, [39m[31mNA[39m
+      $ b [3m[90m<int>[39m[23m 1[90m, [39m2[90m, [39m[31mNA[39m
+      $ c [3m[90m<lgl>[39m[23m TRUE[90m, [39mFALSE[90m, [39m[31mNA[39m
+      $ d [3m[90m<chr>[39m[23m "a"[90m, [39m"b"[90m, [39m[31mNA[39m
+      $ e [3m[90m<fct>[39m[23m a[90m, [39mb[90m, [39m[31mNA[39m
+      $ f [3m[90m<date>[39m[23m 2015-12-10[90m, [39m2015-12-11[90m, [39m[31mNA[39m
+      $ g [3m[90m<dttm>[39m[23m 2015-12-09 10:51:35[90m, [39m2015-12-09 10:51:36[90m, [39m[31mNA[39m
+      $ h [3m[90m<list>[39m[23m 1[90m, [39m2[90m, [39m[31mNA[39m
+      $ i [3m[90m<list>[39m[23m [1, <2, 3>][90m, [39m[<4, 5, 6>][90m, [39m[[31mNA[39m]
     Code
       glimpse(as.data.frame(df_all))
     Output
       Rows: 3
       Columns: 9
-      $ a [3m[90m<dbl>[39m[23m 1.0, 2.5, [31mNA[39m
-      $ b [3m[90m<int>[39m[23m 1, 2, [31mNA[39m
-      $ c [3m[90m<lgl>[39m[23m TRUE, FALSE, [31mNA[39m
-      $ d [3m[90m<chr>[39m[23m "a", "b", [31mNA[39m
-      $ e [3m[90m<fct>[39m[23m a, b, [31mNA[39m
-      $ f [3m[90m<date>[39m[23m 2015-12-10, 2015-12-11, [31mNA[39m
-      $ g [3m[90m<dttm>[39m[23m 2015-12-09 10:51:35, 2015-12-09 10:51:36, [31mNA[39m
-      $ h [3m[90m<list>[39m[23m 1, 2, [31mNA[39m
-      $ i [3m[90m<list>[39m[23m [1, <2, 3>], [<4, 5, 6>], [[31mNA[39m]
+      $ a [3m[90m<dbl>[39m[23m 1.0[90m, [39m2.5[90m, [39m[31mNA[39m
+      $ b [3m[90m<int>[39m[23m 1[90m, [39m2[90m, [39m[31mNA[39m
+      $ c [3m[90m<lgl>[39m[23m TRUE[90m, [39mFALSE[90m, [39m[31mNA[39m
+      $ d [3m[90m<chr>[39m[23m "a"[90m, [39m"b"[90m, [39m[31mNA[39m
+      $ e [3m[90m<fct>[39m[23m a[90m, [39mb[90m, [39m[31mNA[39m
+      $ f [3m[90m<date>[39m[23m 2015-12-10[90m, [39m2015-12-11[90m, [39m[31mNA[39m
+      $ g [3m[90m<dttm>[39m[23m 2015-12-09 10:51:35[90m, [39m2015-12-09 10:51:36[90m, [39m[31mNA[39m
+      $ h [3m[90m<list>[39m[23m 1[90m, [39m2[90m, [39m[31mNA[39m
+      $ i [3m[90m<list>[39m[23m [1, <2, 3>][90m, [39m[<4, 5, 6>][90m, [39m[[31mNA[39m]
 
