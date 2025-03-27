@@ -127,9 +127,9 @@ format_glimpse <- function(x, ...) {
 }
 
 # A variant with collapse and without checks, for format_glimpse.list()
-format_glimpse_1 <- function(x, ...) {
-  if (!is_null(list2(...)[[".inner"]]) && list2(...)[[".inner"]]) {
-    collapse(format_glimpse_(x, ...))
+format_glimpse_1 <- function(x, ..., .inner = NULL) {
+  if (!is_null(.inner) && .inner) {
+    collapse(format_glimpse_(x, ..., .inner = .inner))
   } else {
     paste0(format_glimpse_(x, ...), collapse = crayon_grey_0.6(", "))
   }
