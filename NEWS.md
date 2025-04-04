@@ -1,6 +1,6 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.10.1.9902
+# pillar 1.10.2
 
 ## Bug fixes
 
