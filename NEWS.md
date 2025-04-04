@@ -20,12 +20,6 @@
 
 - Fix introductory example in `vignette("extending")` (#732, #736).
 
-## Testing
-
-- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#733).
-
-- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#730).
-
 
 # pillar 1.10.1
 
