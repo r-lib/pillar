@@ -129,7 +129,7 @@ test_that("format_glimpse_1() handles commas correctly", {
 
     "# Mixed content"
     format_glimpse_1(list(1:3, "a,b,c"), .inner = TRUE)
-    format_glimpse_1(list(list(1,2,3), letters[1:3]), .inner = TRUE)
+    format_glimpse_1(list(list(1, 2, 3), letters[1:3]), .inner = TRUE)
 
     "# Empty and NULL"
     format_glimpse_1(list(), .inner = TRUE)
