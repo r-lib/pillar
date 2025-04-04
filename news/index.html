@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pillar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.10.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.10.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,11 +38,31 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/r-lib/pillar/blob/cran-1.10.1/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/r-lib/pillar/blob/cran-1.10.2/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.10.1" id="pillar-1101">pillar 1.10.1<a class="anchor" aria-label="anchor" href="#pillar-1101"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.10.2" id="pillar-1102">pillar 1.10.2<a class="anchor" aria-label="anchor" href="#pillar-1102"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-1-10-2">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-10-2"></a></h3>
+<ul><li><p><code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> and <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> pass on <code>...</code> to <code><a href="../reference/tbl_format_setup.html">tbl_format_setup()</a></code> again, as documented (<a href="https://github.com/thothal" class="external-link">@thothal</a>, <a href="https://github.com/r-lib/pillar/issues/726" class="external-link">#726</a>).</p></li>
+<li><p>Show up to 20 rows by default for lazy tables again, regression introduced in pillar 1.10.0 (<a href="https://github.com/r-lib/pillar/issues/727" class="external-link">#727</a>).</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="features-1-10-2">Features<a class="anchor" aria-label="anchor" href="#features-1-10-2"></a></h3>
+<ul><li>Add color to commas for <code><a href="https://pillar.r-lib.org/reference/glimpse.html">tibble::glimpse()</a></code> (<a href="https://github.com/TSchiefer" class="external-link">@TSchiefer</a>, <a href="https://github.com/r-lib/pillar/issues/658" class="external-link">#658</a>, <a href="https://github.com/r-lib/pillar/issues/734" class="external-link">#734</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="chore-1-10-2">Chore<a class="anchor" aria-label="anchor" href="#chore-1-10-2"></a></h3>
+<ul><li>Compatibility with upcoming ggplot2 (<a href="https://github.com/teunbrand" class="external-link">@teunbrand</a>, tidyverse/ggplot2#6361, <a href="https://github.com/r-lib/pillar/issues/729" class="external-link">#729</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-1-10-2">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-10-2"></a></h3>
+<ul><li>Fix introductory example in <code><a href="../articles/extending.html">vignette("extending")</a></code> (<a href="https://github.com/r-lib/pillar/issues/732" class="external-link">#732</a>, <a href="https://github.com/r-lib/pillar/issues/736" class="external-link">#736</a>).</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.10.1" id="pillar-1101">pillar 1.10.1<a class="anchor" aria-label="anchor" href="#pillar-1101"></a></h2><p class="text-muted">CRAN release: 2025-01-07</p>
 <div class="section level3">
 <h3 id="documentation-1-10-1">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-10-1"></a></h3>
 <ul><li>Define <code>type_sum.accel()</code> only in help page to avoid silent errors when loading (<a href="https://github.com/r-lib/pillar/issues/720" class="external-link">#720</a>, <a href="https://github.com/r-lib/pillar/issues/721" class="external-link">#721</a>).</li>
