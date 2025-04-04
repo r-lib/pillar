@@ -1,10 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.10.1.9901
+# pillar 1.10.1.9902
 
 ## Bug fixes
 
 - `print()` and `format()` pass on `...` to `tbl_format_setup()` again, as documented (@thothal, #726).
+
+- Show up to 20 rows by default for lazy tables again, regression introduced in pillar 1.10.0 (#727).
 
 ## Features
 
@@ -23,13 +25,6 @@
 - Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#733).
 
 - Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#730).
-
-
-# pillar 1.10.1.9900
-
-## Bug fixes
-
-- Show up to 20 rows by default for lazy tables again, regression introduced in pillar 1.10.0 (#727).
 
 
 # pillar 1.10.1
