@@ -52,7 +52,7 @@ format_tbl <- function(
   max_footer_lines = NULL,
   transform = identity
 ) {
-  check_dots_used()
+  # check_dots_used() gave revdepcheck errors
 
   if (!is.null(n_extra)) {
     deprecate_stop("1.6.2", "pillar::format(n_extra = )", "pillar::format(max_extra_cols = )")
