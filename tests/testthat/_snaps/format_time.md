@@ -4,16 +4,16 @@
       pillar(add_special(as.POSIXct("2017-07-28 18:04:35 +0200")))
     Output
       <pillar>
-      <dttm>             
-      2017-07-28 18:04:35
-      NA                 
+      <dttm>          
+      2017-07-28 18:04
+      NA              
     Code
       pillar(add_special(as.POSIXlt("2017-07-28 18:04:35 +0200")))
     Output
       <pillar>
-      <dttm>             
-      2017-07-28 18:04:35
-      NA                 
+      <dttm>          
+      2017-07-28 18:04
+      NA              
 
 ---
 
@@ -21,9 +21,9 @@
       pillar(add_special(as.POSIXlt("2017-07-28 18:04:35 +0200")))
     Output
       <pillar>
-      <dttm>                  
-      2017-07-28 18:04:35.0000
-      NA                      
+      <dttm>          
+      2017-07-28 18:04
+      NA              
 
 ---
 
