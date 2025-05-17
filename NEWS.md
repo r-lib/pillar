@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.10.2.9001
+
+## Continuous integration
+
+- Correct installation of xml2 (#747).
+
+- Import from actions-sync, check carefully (#745).
+
+- Sync (#744).
+
+## Testing
+
+- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#748).
+
+- Snapshot updates for rcc-smoke (null) (#743).
+
+
 # pillar 1.10.2.9000
 
 - Switching to development version.
