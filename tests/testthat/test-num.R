@@ -1,3 +1,176 @@
+# num ---------------------------------------------------------------------------------
+
+test_that("`num()` snapshot test", {
+  expect_snapshot({
+    num()
+  })
+})
+
+
+# vec_ptype_full.pillar_num -----------------------------------------------------------
+
+test_that("`vec_ptype_full.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_ptype_full()
+  })
+})
+
+
+# vec_ptype_abbr.pillar_num -----------------------------------------------------------
+
+test_that("`vec_ptype_abbr.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_ptype_abbr()
+  })
+})
+
+
+# format.pillar_num -------------------------------------------------------------------
+
+test_that("`format.pillar_num()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# vec_arith.pillar_num ----------------------------------------------------------------
+
+test_that("`vec_arith.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_arith()
+  })
+})
+
+
+# vec_arith.pillar_num.default --------------------------------------------------------
+
+test_that("`vec_arith.pillar_num.default()` snapshot test", {
+  expect_snapshot({
+    vec_arith.pillar_num()
+  })
+})
+
+
+# vec_arith.pillar_num.MISSING --------------------------------------------------------
+
+test_that("`vec_arith.pillar_num.MISSING()` snapshot test", {
+  expect_snapshot({
+    vec_arith.pillar_num()
+  })
+})
+
+
+# vec_math.pillar_num -----------------------------------------------------------------
+
+test_that("`vec_math.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_math()
+  })
+})
+
+
+# set_num_opts ------------------------------------------------------------------------
+
+test_that("`set_num_opts()` snapshot test", {
+  expect_snapshot({
+    set_num_opts()
+  })
+})
+
+
+# format.pillar_num_attr --------------------------------------------------------------
+
+test_that("`format.pillar_num_attr()` snapshot test", {
+  expect_snapshot({
+    format()
+  })
+})
+
+
+# vec_ptype2.pillar_num.pillar_num ----------------------------------------------------
+
+test_that("`vec_ptype2.pillar_num.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.pillar_num()
+  })
+})
+
+
+# vec_ptype2.pillar_num.double --------------------------------------------------------
+
+test_that("`vec_ptype2.pillar_num.double()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.pillar_num()
+  })
+})
+
+
+# vec_ptype2.double.pillar_num --------------------------------------------------------
+
+test_that("`vec_ptype2.double.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.double()
+  })
+})
+
+
+# vec_ptype2.pillar_num.integer -------------------------------------------------------
+
+test_that("`vec_ptype2.pillar_num.integer()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.pillar_num()
+  })
+})
+
+
+# vec_ptype2.integer.pillar_num -------------------------------------------------------
+
+test_that("`vec_ptype2.integer.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_ptype2.integer()
+  })
+})
+
+
+# vec_cast.pillar_num.pillar_num ------------------------------------------------------
+
+test_that("`vec_cast.pillar_num.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_cast.pillar_num()
+  })
+})
+
+
+# vec_cast.double.pillar_num ----------------------------------------------------------
+
+test_that("`vec_cast.double.pillar_num()` snapshot test", {
+  expect_snapshot({
+    vec_cast.double()
+  })
+})
+
+
+# vec_cast.pillar_num.double ----------------------------------------------------------
+
+test_that("`vec_cast.pillar_num.double()` snapshot test", {
+  expect_snapshot({
+    vec_cast.pillar_num()
+  })
+})
+
+
+# vec_cast.pillar_num.integer ---------------------------------------------------------
+
+test_that("`vec_cast.pillar_num.integer()` snapshot test", {
+  expect_snapshot({
+    vec_cast.pillar_num()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("output test", {
   skip_if_not_installed("tibble")
 
