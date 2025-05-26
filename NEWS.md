@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.10.2.9002
+
+## Testing
+
+- Fix dev ggplot2 compatibility.
+
+
 # pillar 1.10.2.9001
 
 ## Continuous integration
