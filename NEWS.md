@@ -1,6 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.10.99.9901
+# pillar 1.11.0
+
+## fledge
+
+- CRAN pre-release v1.10.99.9900 (#787).
+
+## Bug fixes
+
+- Fix formatting of numbers of the form 9.99...995 (#785).
 
 ## Features
 
@@ -9,19 +17,6 @@
 ## Chore
 
 - Results and test.
-
-## fledge
-
-- CRAN pre-release v1.10.99.9900 (#787).
-
-
-# pillar 1.10.99.9900
-
-## Bug fixes
-
-- Fix formatting of numbers of the form 9.99...995 (#785).
-
-## Chore
 
 - Refactor and comment formatting routine (#786).
 
