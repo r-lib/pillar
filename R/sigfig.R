@@ -361,7 +361,10 @@ format_rhs <- function(s) {
   rhs_digits <- s$rhs_digits
 
   # Digits on RHS of .
-  rhs_num <- sprintf("%.0f", abs(round(s$rhs * 10^(s$rhs_digits))))
+  # s$rhs * 10^(s$rhs_digits) should be almost an integer
+  rhs_val <- s$rhs * 10^(s$rhs_digits)
+  stopifnot(abs(round(rhs_val)) - abs(rhs_val) < 1e-6)
+  rhs_num <- sprintf("%.0f", abs(round(rhs_val)))
   rhs_num[rhs_num == "0"] <- ""
 
   n_zeros <- pmax(0, rhs_digits - get_extent(rhs_num))
