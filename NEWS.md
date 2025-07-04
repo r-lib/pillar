@@ -1,5 +1,20 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.10.99.9901
+
+## Features
+
+- Checking `sigfig` argument to be 15 or less (#788).
+
+## Chore
+
+- Results and test.
+
+## fledge
+
+- CRAN pre-release v1.10.99.9900 (#787).
+
+
 # pillar 1.10.99.9900
 
 ## Bug fixes
