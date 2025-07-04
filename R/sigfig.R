@@ -44,7 +44,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   "!!!!!!DEBUG `v(mnt)`"
 
   if (!is.null(sci_mod)) {
-    exp <- fix_exp(num, compute_exp(mnt, sigfig, digits), fixed_exponent, sci_mod, si)
+    exp <- compute_exp(mnt, sigfig, digits)
+    exp <- fix_exp(num, exp, fixed_exponent, sci_mod, si)
     "!!!!!!DEBUG `v(exp)`"
     unit <- attr(exp, "unit")
 
