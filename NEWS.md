@@ -10,29 +10,9 @@
 
 - Refactor and comment formatting routine (#786).
 
-## Continuous integration
-
-- Always use `_R_CHECK_FORCE_SUGGESTS_=false` (#751).
-
-- Correct installation of xml2 (#747).
-
-- Import from actions-sync, check carefully (#745).
-
-- Sync (#744).
-
 ## Testing
 
 - Fix dev ggplot2 compatibility.
-
-- Snapshot updates for R-CMD-check-base (null) (#742).
-
-- Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#748).
-
-- Snapshot updates for rcc-smoke (null) (#743).
-
-## Uncategorized
-
-- Switching to development version.
 
 
 # pillar 1.10.2
