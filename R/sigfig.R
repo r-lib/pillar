@@ -210,6 +210,7 @@ compute_rhs_digits <- function(x, sigfig, offset = rep_along(x, 0)) {
 
   if (!is.integer(x) && !all(x == trunc(x), na.rm = TRUE)) {
     has_rhs <- (exp <= sigfig)
+    "!!!!!!DEBUG `v(has_rhs)`"
     rhs_digits[has_rhs] <- sigfig - 1 - exp[has_rhs]
 
     to_check <- rhs_digits > 0
@@ -231,6 +232,9 @@ compute_rhs_digits <- function(x, sigfig, offset = rep_along(x, 0)) {
       to_check[which_to_check][!resid_zero] <- FALSE
       to_check[rhs_digits == 0] <- FALSE
     }
+
+    "!!!!!!DEBUG `v(to_check)"
+    "!!!!!!DEBUG `v(rhs_digits)"
   }
 
   "!!!!!!DEBUG `v(rhs_digits)"
@@ -259,7 +263,8 @@ compute_extra_sigfig <- function(x) {
 
 LOG_10 <- log(10)
 
-compute_exp <- function(x, sigfig, digits) {
+compute_exp <- function(x, sigfig, digits = NULL) {
+  "!!!!!!DEBUG compute_exp(`v(x)`, `v(sigfig)`, `v(digits)`)"
   if (is.null(sigfig)) {
     sigfig <- abs(digits)
   }
@@ -272,10 +277,12 @@ compute_exp <- function(x, sigfig, digits) {
   # Division before log is the same as subtraction after log.
   # Using log1p for numerical stability.
   offset <- log1p(-5 * 10^(-sigfig - 1)) / LOG_10
+  "!!!!!!DEBUG `v(offset)`"
 
   ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero]) - offset))
+  "!!!!!!DEBUG `v(ret)`"
   ret
 }
 
