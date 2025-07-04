@@ -68,7 +68,9 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   if (is.null(digits)) {
     "!!!!!!DEBUG `v(sigfig)`"
     min_sigfig <- compute_min_sigfig(mnt)
+    "!!!!!!DEBUG `v(min_sigfig)`"
     round_mnt <- safe_signif(mnt, pmax(sigfig, min_sigfig, na.rm = TRUE))
+    "!!!!!!DEBUG `v(round_mnt)`"
     rhs_digits <- compute_rhs_digits(mnt, sigfig)
   } else if (digits >= 0) {
     "!!!!!!DEBUG `v(digits)`"
@@ -224,6 +226,7 @@ compute_rhs_digits <- function(x, sigfig, offset = rep_along(x, 0)) {
       "!!!!!!DEBUG `v(val - round(val))"
 
       resid_zero <- within_tolerance(val, round(val))
+      "!!!!!!DEBUG `v(resid_zero)`"
       resid_zero[is.na(resid_zero)] <- FALSE
 
       rhs_digits[which_to_check][resid_zero] <-
