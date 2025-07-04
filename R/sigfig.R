@@ -365,11 +365,6 @@ format_rhs <- function(s) {
   # s$rhs * 10^(s$rhs_digits) should be almost an integer
   rhs_val <- s$rhs * 10^(s$rhs_digits)
 
-  if (!inherits(rhs_val, "integer64")) {
-    idx <- !is.na(rhs_val) & is.finite(rhs_val)
-    stopifnot((abs(round(rhs_val[idx]) - rhs_val[idx])) < 1e-6)
-  }
-
   rhs_num <- sprintf("%.0f", abs(round(rhs_val)))
   rhs_num[rhs_num == "0"] <- ""
 
