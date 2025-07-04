@@ -45,11 +45,11 @@ test_that("compute_exp() respects significant digits for rhs computation (#1648)
 test_that("scientific notation handles rounding edge cases correctly", {
   # 9.995 with 4 sigfig -> 9.99, should be displayed as 9.999e0, not 10.0e0
   f <- split_decimal(9.995, sigfig = 4, sci_mod = 1)
-  expect_equal(f$exp, 0)  # Should be 0 for 9.99e0 display
+  expect_equal(f$exp, 0) # Should be 0 for 9.99e0 display
 
   # 9.9995 with 4 sigfig -> 10.0, should be displayed as 1.00e1
   f2 <- split_decimal(9.9995, sigfig = 4, sci_mod = 1)
-  expect_equal(f2$exp, 1)  # Should be 1 for 1.00e1 display
+  expect_equal(f2$exp, 1) # Should be 1 for 1.00e1 display
 })
 
 test_that("special values appear in LHS", {
