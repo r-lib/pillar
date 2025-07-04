@@ -359,7 +359,7 @@ format_dec <- function(s) {
 
   # Decimal column
   if (any(dec)) {
-    dec_col <- ifelse(dec, style_num(".", neg, !lhs_zero), " ")
+    dec_col <- ifelse(dec, style_num(getOption("OutDec", "."), neg, !lhs_zero), " ")
   } else {
     dec_col <- rep_along(neg, "")
   }
