@@ -1,6 +1,6 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.10.2.9003
+# pillar 1.10.99.9900
 
 ## Bug fixes
 
@@ -9,16 +9,6 @@
 ## Chore
 
 - Refactor and comment formatting routine (#786).
-
-
-# pillar 1.10.2.9002
-
-## Testing
-
-- Fix dev ggplot2 compatibility.
-
-
-# pillar 1.10.2.9001
 
 ## Continuous integration
 
@@ -32,14 +22,15 @@
 
 ## Testing
 
+- Fix dev ggplot2 compatibility.
+
 - Snapshot updates for R-CMD-check-base (null) (#742).
 
 - Snapshot updates for R-CMD-check-dev ({"package":"ggplot2"}) (#748).
 
 - Snapshot updates for rcc-smoke (null) (#743).
 
-
-# pillar 1.10.2.9000
+## Uncategorized
 
 - Switching to development version.
 
