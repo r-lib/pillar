@@ -91,38 +91,49 @@
 # 9.99...95 (tidyverse/tibble#1648)
 
     Code
-      num(9.995, sigfig = 3)
+      format(x)
     Output
-      <pillar_num:3[1]>
-      [1] 9.1
+      [1] "9.1"
+
+---
+
     Code
-      num(9.999995, sigfig = 6)
+      format(x)
     Output
-      <pillar_num:6[1]>
-      [1] 10.0000
+      [1] "9.1000"
+
+---
+
     Code
-      num(9.9999995, sigfig = 7)
+      format(x)
     Output
-      <pillar_num:7[1]>
-      [1] 10.00000
+      [1] "9.10000"
+
+---
+
     Code
-      num(9.99999999995, sigfig = 11)
+      format(x)
     Output
-      <pillar_num:11[1]>
-      [1] 10.000000000
+      [1] "10.000000"
+
+---
+
     Code
-      num(9.99999999999995, sigfig = 14)
+      format(x)
     Output
-      <pillar_num:14[1]>
-      [1] 1.0000000000000e1
+      [1] "0.99999999999999e1"
+
+---
+
     Code
-      num(10, sigfig = 16)
+      format(x)
     Output
-      <pillar_num:16[1]>
-      [1] 10
+      [1] "9."
+
+---
+
     Code
-      num(10, sigfig = 16)
+      format(x)
     Output
-      <pillar_num:16[1]>
-      [1] 10
+      [1] "9."
 

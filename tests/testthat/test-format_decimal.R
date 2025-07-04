@@ -140,13 +140,38 @@ test_that("width computation", {
 })
 
 test_that("9.99...95 (tidyverse/tibble#1648)", {
+  x <- num(0x1.3fd70a3d70a3dp+3, sigfig = 3)
   expect_snapshot({
-    format(num(0x1.3fd70a3d70a3dp+3, sigfig = 3))
-    format(num(0x1.3ffff583a53b8p+3, sigfig = 6))
-    format(num(0x1.3ffffef39085ep+3, sigfig = 7))
-    format(num(0x1.3ffffffff920cp+3, sigfig = 11))
-    format(num(0x1.3ffffffffffe3p+3, sigfig = 14))
-    format(num(0x1.3fffffffffffep+3, sigfig = 16))
-    format(num(0x1.3ffffffffffffp+3, sigfig = 16))
+    format(x)
+  })
+
+  x <- num(0x1.3ffff583a53b8p+3, sigfig = 6)
+  expect_snapshot({
+    format(x)
+  })
+
+  x <- num(0x1.3ffffef39085ep+3, sigfig = 7)
+  expect_snapshot({
+    format(x)
+  })
+
+  x <- num(0x1.3ffffffff920cp+3, sigfig = 8)
+  expect_snapshot({
+    format(x)
+  })
+
+  x <- num(0x1.3ffffffffffe3p+3, sigfig = 14)
+  expect_snapshot({
+    format(x)
+  })
+
+  x <- num(0x1.3fffffffffffep+3, sigfig = 16)
+  expect_snapshot({
+    format(x)
+  })
+
+  x <- num(0x1.3ffffffffffffp+3, sigfig = 16)
+  expect_snapshot({
+    format(x)
   })
 })
