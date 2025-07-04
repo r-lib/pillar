@@ -104,7 +104,10 @@ check_sigfig <- function(x) {
   stopifnot(is.numeric(x), length(x) == 1)
   x <- as.integer(x)
   if (x < 1L) {
-    stop("Must show at least one significant figure", call. = FALSE)
+    cli::cli_abort("Must show at least one significant figure")
+  }
+  if (x > 15L) {
+    cli::cli_abort("{.arg sigfig} cannot be larger than {.val {15}}.")
   }
 
   x
