@@ -140,38 +140,24 @@ test_that("width computation", {
 })
 
 test_that("9.99...95 (tidyverse/tibble#1648)", {
-  x <- num(0x1.3fd70a3d70a3dp+3, sigfig = 3)
-  expect_snapshot({
-    format(x)
-  })
+  # Declaring the constants inside expect_snapshot() perturbs the input
+  x <- c(
+    0x1.3fd70a3d70a3dp+3,
+    0x1.3ffff583a53b8p+3,
+    0x1.3ffffef39085ep+3,
+    0x1.3ffffffff920cp+3,
+    0x1.3ffffffffffe3p+3,
+    0x1.3fffffffffffep+3,
+    0x1.3ffffffffffffp+3
+  )
 
-  x <- num(0x1.3ffff583a53b8p+3, sigfig = 6)
   expect_snapshot({
-    format(x)
-  })
-
-  x <- num(0x1.3ffffef39085ep+3, sigfig = 7)
-  expect_snapshot({
-    format(x)
-  })
-
-  x <- num(0x1.3ffffffff920cp+3, sigfig = 8)
-  expect_snapshot({
-    format(x)
-  })
-
-  x <- num(0x1.3ffffffffffe3p+3, sigfig = 14)
-  expect_snapshot({
-    format(x)
-  })
-
-  x <- num(0x1.3fffffffffffep+3, sigfig = 16)
-  expect_snapshot({
-    format(x)
-  })
-
-  x <- num(0x1.3ffffffffffffp+3, sigfig = 16)
-  expect_snapshot({
-    format(x)
+    format(num(x[1], sigfig = 3))
+    format(num(x[2], sigfig = 6))
+    format(num(x[3], sigfig = 7))
+    format(num(x[4], sigfig = 11))
+    format(num(x[5], sigfig = 14))
+    format(num(x[6], sigfig = 16))
+    format(num(x[7], sigfig = 16))
   })
 })

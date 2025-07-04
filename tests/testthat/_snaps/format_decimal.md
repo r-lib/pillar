@@ -91,49 +91,31 @@
 # 9.99...95 (tidyverse/tibble#1648)
 
     Code
-      format(x)
+      format(num(x[1], sigfig = 3))
     Output
       [1] "9.1"
-
----
-
     Code
-      format(x)
+      format(num(x[2], sigfig = 6))
     Output
       [1] "9.1000"
-
----
-
     Code
-      format(x)
+      format(num(x[3], sigfig = 7))
     Output
       [1] "9.10000"
-
----
-
     Code
-      format(x)
+      format(num(x[4], sigfig = 11))
     Output
-      [1] "10.000000"
-
----
-
+      [1] "9.100000000"
     Code
-      format(x)
+      format(num(x[5], sigfig = 14))
     Output
       [1] "0.99999999999999e1"
-
----
-
     Code
-      format(x)
+      format(num(x[6], sigfig = 16))
     Output
       [1] "9."
-
----
-
     Code
-      format(x)
+      format(num(x[7], sigfig = 16))
     Output
       [1] "9."
 
