@@ -8,15 +8,13 @@
 
 ## Bug fixes
 
-- Fix formatting of numbers of the form 9.99...995 (#785).
+- Fix formatting of numbers of the form 9.99...995 (#785, tidyverse/tibble#1648).
 
 ## Features
 
 - Checking `sigfig` argument to be 15 or less (#788).
 
 ## Chore
-
-- Results and test.
 
 - Refactor and comment formatting routine (#786).
 
