@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.10.2.9003
+
+## Bug fixes
+
+- Fix formatting of numbers of the form 9.99...995 (#785).
+
+## Chore
+
+- Refactor and comment formatting routine (#786).
+
+
 # pillar 1.10.2.9002
 
 ## Testing
