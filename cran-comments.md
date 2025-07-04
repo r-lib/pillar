@@ -1,4 +1,4 @@
-pillar 1.10.99.9900
+pillar 1.11.0
 
 ## Cran Repository Policy
 
