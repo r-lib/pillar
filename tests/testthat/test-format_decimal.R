@@ -138,3 +138,15 @@ test_that("width computation", {
   expect_decimal_width(c(1.2, -Inf))
   expect_decimal_width(c(1, Inf))
 })
+
+test_that("9.99...95 (tidyverse/tibble#1648)", {
+  expect_snapshot({
+    format(num(0x1.3fd70a3d70a3dp+3, sigfig = 3))
+    format(num(0x1.3ffff583a53b8p+3, sigfig = 6))
+    format(num(0x1.3ffffef39085ep+3, sigfig = 7))
+    format(num(0x1.3ffffffff920cp+3, sigfig = 11))
+    format(num(0x1.3ffffffffffe3p+3, sigfig = 14))
+    format(num(0x1.3fffffffffffep+3, sigfig = 16))
+    format(num(0x1.3ffffffffffffp+3, sigfig = 16))
+  })
+})

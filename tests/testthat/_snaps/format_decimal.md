@@ -88,3 +88,41 @@
        -Inf       
         Inf       
 
+# 9.99...95 (tidyverse/tibble#1648)
+
+    Code
+      num(9.995, sigfig = 3)
+    Output
+      <pillar_num:3[1]>
+      [1] 9.1
+    Code
+      num(9.999995, sigfig = 6)
+    Output
+      <pillar_num:6[1]>
+      [1] 10.0000
+    Code
+      num(9.9999995, sigfig = 7)
+    Output
+      <pillar_num:7[1]>
+      [1] 10.00000
+    Code
+      num(9.99999999995, sigfig = 11)
+    Output
+      <pillar_num:11[1]>
+      [1] 10.000000000
+    Code
+      num(9.99999999999995, sigfig = 14)
+    Output
+      <pillar_num:14[1]>
+      [1] 1.0000000000000e1
+    Code
+      num(10, sigfig = 16)
+    Output
+      <pillar_num:16[1]>
+      [1] 10
+    Code
+      num(10, sigfig = 16)
+    Output
+      <pillar_num:16[1]>
+      [1] 10
+
