@@ -278,6 +278,7 @@ compute_exp_display <- function(x, sigfig, digits = NULL) {
   ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero]) - offset))
+  "!!!!!!DEBUG `v(ret)`"
   ret
 }
 
@@ -286,6 +287,7 @@ compute_exp <- function(x, sigfig) {
   ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
+  "!!!!!!DEBUG `v(ret)`"
   ret
 }
 
