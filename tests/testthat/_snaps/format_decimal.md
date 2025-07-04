@@ -107,9 +107,9 @@
     Output
       [1] "9.100000000"
     Code
-      format(num(x[5], sigfig = 14))
+      format(num(x[5], sigfig = 14, notation = "dec"))
     Output
-      [1] "0.99999999999999e1"
+      [1] "9.100000000000"
     Code
       format(num(x[6], sigfig = 16))
     Output

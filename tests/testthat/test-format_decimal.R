@@ -156,7 +156,7 @@ test_that("9.99...95 (tidyverse/tibble#1648)", {
     format(num(x[2], sigfig = 6))
     format(num(x[3], sigfig = 7))
     format(num(x[4], sigfig = 11))
-    format(num(x[5], sigfig = 14))
+    format(num(x[5], sigfig = 14, notation = "dec"))
     format(num(x[6], sigfig = 16))
     format(num(x[7], sigfig = 16))
   })
