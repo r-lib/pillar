@@ -22,14 +22,24 @@ test_that("compute_rhs_digits() works", {
   )
 })
 
+test_that("compute_exp_display() returns NA if not relevant", {
+  x <- c(NA, NaN, Inf, 0, 1, 100, 0.001)
+  expect_equal(compute_exp_display(x, 6), c(NA, NA, NA, NA, 0, 2, -3))
+})
+
 test_that("compute_exp() returns NA if not relevant", {
   x <- c(NA, NaN, Inf, 0, 1, 100, 0.001)
   expect_equal(compute_exp(x, 6), c(NA, NA, NA, NA, 0, 2, -3))
 })
 
-test_that("compute_exp() respectis significant digits", {
+test_that("compute_exp_display() respects significant digits (#174)", {
   x <- c(0.9, 0.99, 0.999, 0.99949, 0.9995, 0.99951, 0.9999, 0.99999, 0.999999)
-  expect_equal(compute_exp(x, 3), c(-1, -1, -1, -1, 0, 0, 0, 0, 0))
+  expect_equal(compute_exp_display(x, 3), c(-1, -1, -1, -1, 0, 0, 0, 0, 0))
+})
+
+test_that("compute_exp() respects significant digits for rhs computation (#1648)", {
+  x <- c(0.9, 0.99, 0.999, 0.99949, 0.9995, 0.99951, 0.9999, 0.99999, 0.999999)
+  expect_equal(compute_exp(x, 3), c(-1, -1, -1, -1, -1, -1, -1, -1, -1))
 })
 
 test_that("special values appear in LHS", {
@@ -137,4 +147,27 @@ test_that("width computation", {
   expect_decimal_width(c(1.234, 1.2345))
   expect_decimal_width(c(1.2, -Inf))
   expect_decimal_width(c(1, Inf))
+})
+
+test_that("9.99...95 (tidyverse/tibble#1648)", {
+  # Declaring the constants inside expect_snapshot() perturbs the input
+  x <- c(
+    0x1.3fd70a3d70a3dp+3,
+    0x1.3ffff583a53b8p+3,
+    0x1.3ffffef39085ep+3,
+    0x1.3ffffffff920cp+3,
+    0x1.3ffffffffffe3p+3,
+    0x1.3fffffffffffep+3,
+    0x1.3ffffffffffffp+3
+  )
+
+  expect_snapshot({
+    format(num(x[1], sigfig = 3))
+    format(num(x[2], sigfig = 6))
+    format(num(x[3], sigfig = 7))
+    format(num(x[4], sigfig = 11))
+    format(num(x[5], sigfig = 14, notation = "dec"))
+    format(num(x[6], sigfig = 16))
+    format(num(x[7], sigfig = 16))
+  })
 })

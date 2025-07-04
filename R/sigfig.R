@@ -44,7 +44,8 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
   "!!!!!!DEBUG `v(mnt)`"
 
   if (!is.null(sci_mod)) {
-    exp <- fix_exp(num, compute_exp(mnt, sigfig, digits), fixed_exponent, sci_mod, si)
+    exp <- compute_exp_display(mnt, sigfig, digits)
+    exp <- fix_exp(num, exp, fixed_exponent, sci_mod, si)
     "!!!!!!DEBUG `v(exp)`"
     unit <- attr(exp, "unit")
 
@@ -266,7 +267,8 @@ compute_extra_sigfig <- function(x) {
 
 LOG_10 <- log(10)
 
-compute_exp <- function(x, sigfig, digits) {
+compute_exp_display <- function(x, sigfig, digits = NULL) {
+  "!!!!!!DEBUG compute_exp_display(`v(x)`, `v(sigfig)`, `v(digits)`)"
   if (is.null(sigfig)) {
     sigfig <- abs(digits)
   }
@@ -284,6 +286,16 @@ compute_exp <- function(x, sigfig, digits) {
   ret <- rep_along(x, NA_integer_)
   nonzero <- which(x != 0 & is.finite(x))
   ret[nonzero] <- as.integer(floor(log10(x[nonzero]) - offset))
+  "!!!!!!DEBUG `v(ret)`"
+  ret
+}
+
+compute_exp <- function(x, sigfig) {
+  "!!!!!!DEBUG compute_exp(`v(x)`, `v(sigfig)`)"
+  ret <- rep_along(x, NA_integer_)
+  nonzero <- which(x != 0 & is.finite(x))
+  ret[nonzero] <- as.integer(floor(log10(x[nonzero])))
+  "!!!!!!DEBUG `v(ret)`"
   ret
 }
 

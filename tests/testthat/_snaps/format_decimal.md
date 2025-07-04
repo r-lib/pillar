@@ -88,3 +88,34 @@
        -Inf       
         Inf       
 
+# 9.99...95 (tidyverse/tibble#1648)
+
+    Code
+      format(num(x[1], sigfig = 3))
+    Output
+      [1] "9.99"
+    Code
+      format(num(x[2], sigfig = 6))
+    Output
+      [1] "9.99999"
+    Code
+      format(num(x[3], sigfig = 7))
+    Output
+      [1] "9.999999"
+    Code
+      format(num(x[4], sigfig = 11))
+    Output
+      [1] "9.9999999999"
+    Code
+      format(num(x[5], sigfig = 14, notation = "dec"))
+    Output
+      [1] "9.9999999999999"
+    Code
+      format(num(x[6], sigfig = 16))
+    Output
+      [1] "9."
+    Code
+      format(num(x[7], sigfig = 16))
+    Output
+      [1] "9."
+
