@@ -370,17 +370,18 @@ format_rhs <- function(s) {
   neg <- s$neg
   dec <- s$dec
   lhs_zero <- s$lhs_zero
-  rhs_num <- s$rhs_num
   rhs_digits <- s$rhs_digits
 
   # Digits on RHS of .
 
-  # s$rhs * 10^(s$rhs_digits) should be almost an integer
-  rhs_val <- s$rhs * 10^(s$rhs_digits)
+  # s$rhs * 10^(rhs_digits) should be almost an integer
+  rhs_val <- s$rhs * 10^rhs_digits
 
   rhs_num <- sprintf("%.0f", abs(round(rhs_val)))
   rhs_num[rhs_num == "0"] <- ""
 
+  # Special treatment for leading zeros for some formatting,
+  # hand-rolling
   n_zeros <- pmax(0, rhs_digits - get_extent(rhs_num))
   rhs_zero <- strrep("0", n_zeros)
 
@@ -398,7 +399,7 @@ format_rhs <- function(s) {
 
   rhs_col <- ifelse(dec,
     paste0(
-      style_num(rhs_underlined_zero, neg, !lhs_zero),
+      style_num(rhs_underlined_zero, neg, significant = !lhs_zero),
       style_num(rhs_underlined_num, neg)
     ),
     ""
