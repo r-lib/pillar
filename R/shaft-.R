@@ -149,7 +149,14 @@ pillar_shaft_number_attr <- function(data, pillar_attr, sigfig = NULL) {
   )
 }
 
-pillar_shaft_number <- function(x, sigfig, digits, notation, fixed_exponent, extra_sigfig) {
+pillar_shaft_number <- function(
+  x,
+  sigfig = NULL,
+  digits = NULL,
+  notation = NULL,
+  fixed_exponent = NULL,
+  extra_sigfig = NULL
+) {
   if (!is.null(digits)) {
     if (!is.numeric(digits) || length(digits) != 1) {
       abort("`digits` must be a number.")
