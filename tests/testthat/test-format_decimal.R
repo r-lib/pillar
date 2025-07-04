@@ -156,9 +156,7 @@ test_that("9.99...95 (tidyverse/tibble#1648)", {
     0x1.3ffff583a53b8p+3,
     0x1.3ffffef39085ep+3,
     0x1.3ffffffff920cp+3,
-    0x1.3ffffffffffe3p+3,
-    0x1.3fffffffffffep+3,
-    0x1.3ffffffffffffp+3
+    0x1.3ffffffffffe3p+3
   )
 
   expect_snapshot({
@@ -167,7 +165,11 @@ test_that("9.99...95 (tidyverse/tibble#1648)", {
     format(num(x[3], sigfig = 7))
     format(num(x[4], sigfig = 11))
     format(num(x[5], sigfig = 14, notation = "dec"))
-    format(num(x[6], sigfig = 16))
-    format(num(x[7], sigfig = 16))
+  })
+})
+
+test_that("sigfig > 15 fails", {
+  expect_snapshot(error = TRUE, {
+    format(num(0, sigfig = 16))
   })
 })

@@ -110,12 +110,12 @@
       format(num(x[5], sigfig = 14, notation = "dec"))
     Output
       [1] "9.9999999999999"
+
+# sigfig > 15 fails
+
     Code
-      format(num(x[6], sigfig = 16))
-    Output
-      [1] "9."
-    Code
-      format(num(x[7], sigfig = 16))
-    Output
-      [1] "9."
+      format(num(0, sigfig = 16))
+    Condition
+      Error in `check_sigfig()`:
+      ! `sigfig` cannot be larger than 15.
 
