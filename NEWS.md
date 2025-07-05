@@ -2,10 +2,6 @@
 
 # pillar 1.11.0
 
-## fledge
-
-- CRAN pre-release v1.10.99.9900 (#787).
-
 ## Bug fixes
 
 - Fix formatting of numbers of the form 9.99...995 (#785, tidyverse/tibble#1648).
