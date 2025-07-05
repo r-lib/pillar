@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.0.9000
+
+## Chore
+
+- Auto-update from GitHub Actions (#790).
+
+## fledge
+
+- CRAN release v1.11.0 (#789).
+
+
 # pillar 1.11.0
 
 ## fledge
