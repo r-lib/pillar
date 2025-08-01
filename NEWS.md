@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.0.9002
+
+## Continuous integration
+
+- Format with air, check detritus, better handling of `extra-packages` (#794).
+
+
 # pillar 1.11.0.9001
 
 - Merge branch 'docs'.
