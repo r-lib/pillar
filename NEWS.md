@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.0.9003
+
+## Continuous integration
+
+- Cleanup and fix macOS (#796).
+
+
 # pillar 1.11.0.9002
 
 ## Continuous integration
