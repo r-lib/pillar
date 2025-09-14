@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.0.9006
+
+## Chore
+
+- Auto-update from GitHub Actions (#803).
+
+
 # pillar 1.11.0.9005
 
 ## Continuous integration
