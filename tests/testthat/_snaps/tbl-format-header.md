@@ -9,7 +9,7 @@
       tbl_format_header(tbl_format_setup(as_unknown_rows(trees), width = 30, n = 10))
     Output
       <tbl_format_header(setup)>
-      # A data frame: ?? x 3
+      # Unknown rows: ?? x 3
     Code
       # Narrow
       tbl_format_header(tbl_format_setup(as_tbl(mtcars), width = 10))

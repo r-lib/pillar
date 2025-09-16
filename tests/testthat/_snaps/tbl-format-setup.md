@@ -1417,7 +1417,7 @@
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
-      # A data frame: ?? x 3
+      # Unknown rows: ?? x 3
       <tbl_format_body(setup)>
         Girth Height Volume
         <dbl>  <dbl>  <dbl>
@@ -1436,7 +1436,7 @@
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
-      # A data frame: ?? x 3
+      # Unknown rows: ?? x 3
       <tbl_format_body(setup)>
          Girth Height Volume
          <dbl>  <dbl>  <dbl>
@@ -1456,7 +1456,7 @@
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
-      # A data frame: ?? x 3
+      # Unknown rows: ?? x 3
       <tbl_format_body(setup)>
          Girth Height Volume
          <dbl>  <dbl>  <dbl>
@@ -1498,7 +1498,7 @@
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
-      # A data frame: ?? x 3
+      # Unknown rows: ?? x 3
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
       # i 3 variables: Girth <dbl>,
@@ -1510,7 +1510,7 @@
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
-      # A data frame: ?? x 0
+      # Unknown rows: ?? x 0
       <tbl_format_body(setup)>
       <tbl_format_footer(setup)>
       # i at least 5 rows total
@@ -1521,7 +1521,7 @@
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
-      # A data frame: ?? x 1
+      # Unknown rows: ?? x 1
       <tbl_format_body(setup)>
             a
         <int>
@@ -1539,7 +1539,7 @@
     Output
       <pillar_tbl_format_setup>
       <tbl_format_header(setup)>
-      # A data frame: ?? x 1
+      # Unknown rows: ?? x 1
       <tbl_format_body(setup)>
             a
         <int>

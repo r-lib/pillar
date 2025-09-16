@@ -15,11 +15,14 @@ local_unknown_rows <- function(frame = caller_env()) {
       x
     },
     dim.unknown_rows = function(x) {
-      c(NA_integer_, length(x))
+      stop("Do not query dim()")
     },
     head.unknown_rows = function(x, n) {
       class(x) <- "data.frame"
       head(x, n)
+    },
+    tbl_sum.unknown_rows = function(x) {
+      c("Unknown rows" = paste0("?? x ", length(unclass(x))))
     }
   )
 }

@@ -232,6 +232,10 @@ tbl_nrow.tbl <- function(x, ...) {
   nrow(x)
 }
 
+# For glimpse()
+#' @export
+tbl_nrow.data.frame <- tbl_nrow.tbl
+
 
 #' Construct a setup object for formatting
 #'

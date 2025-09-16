@@ -40,12 +40,19 @@ glimpse.tbl <- function(x, width = NULL, ...) {
   }
   width <- get_width_glimpse(width)
 
-  cli::cat_line("Rows: ", big_mark(nrow(x)))
+  rows_total <- tbl_nrow(x)
+  cli::cat_line("Rows: ", big_mark(rows_total))
 
-  # this is an overestimate, but shouldn't be too expensive.
-  # every type needs at least three characters: "x, "
+  # Needed early because we don't have tbl_ncol() yet.
+  # This is an overestimate, but shouldn't be too expensive.
+  # Every type needs at least three characters: "x, "
   rows <- as.integer(width / 3)
-  df <- df_head(x, rows)
+  if (is.na(rows_total)) {
+    df <- as.data.frame(head(x, rows))
+  } else {
+    df <- df_head(x, rows)
+  }
+
   cli::cat_line("Columns: ", big_mark(ncol(df)))
 
   summary <- tbl_sum(x)
