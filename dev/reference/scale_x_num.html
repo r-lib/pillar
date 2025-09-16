@@ -9,7 +9,7 @@ This scale is used by default in ggplot2 with columns created with num()."><meta
 
     <a class="navbar-brand me-2" href="../index.html">pillar</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.11.0.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.11.0.9006</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,13 +94,13 @@ Also accepts rlang <a href="https://rlang.r-lib.org/reference/as_function.html" 
 
     <dt><code>minor_breaks</code></dt>
 <dd><p>One of:</p><ul><li><p><code>NULL</code> for no minor breaks</p></li>
-<li><p><code>waiver()</code> for the default breaks (one minor break between
-each major break)</p></li>
+<li><p><code>waiver()</code> for the default breaks (none for discrete, one minor break
+between each major break for continuous)</p></li>
 <li><p>A numeric vector of positions</p></li>
 <li><p>A function that given the limits returns a vector of minor breaks. Also
 accepts rlang <a href="https://rlang.r-lib.org/reference/as_function.html" class="external-link">lambda</a> function notation. When
 the function has two arguments, it will be given the limits and major
-breaks.</p></li>
+break positions.</p></li>
 </ul></dd>
 
     <dt><code>n.breaks</code></dt>
@@ -110,7 +110,9 @@ only have an effect if <code>breaks = waiver()</code>. Use <code>NULL</code> to 
 number of breaks given by the transformation.</p></dd>
 
     <dt><code>labels</code></dt>
-<dd><p>One of:</p><ul><li><p><code>NULL</code> for no labels</p></li>
+<dd><p>One of the options below. Please note that when <code>labels</code> is a
+vector, it is highly recommended to also set the <code>breaks</code> argument as a
+vector to protect against unintended mismatches.</p><ul><li><p><code>NULL</code> for no labels</p></li>
 <li><p><code>waiver()</code> for the default labels computed by the
 transformation object</p></li>
 <li><p>A character vector giving labels (must be same length as <code>breaks</code>)</p></li>
