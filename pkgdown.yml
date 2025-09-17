@@ -1,13 +1,13 @@
 pandoc: 3.1.11
 pkgdown: 2.1.3.9000
-pkgdown_sha: 824ab4a4f20ecd895282b434d8652120e1f62ba4
+pkgdown_sha: fe04924b3df129bea60ac871614b01d87bcae147
 articles:
   debugme: debugme.html
   digits: digits.html
   extending: extending.html
   numbers: numbers.html
   printing: printing.html
-last_built: 2025-07-04T22:01Z
+last_built: 2025-09-17T03:45Z
 urls:
   reference: https://pillar.r-lib.org/reference
   article: https://pillar.r-lib.org/articles
