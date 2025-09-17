@@ -1,61 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# pillar 1.11.0.9007
+# pillar 1.11.1
 
 ## Features
 
 - `glimpse()` also works for stingy duckplyr data frames.
-
-
-# pillar 1.11.0.9006
-
-## Chore
-
-- Auto-update from GitHub Actions (#803).
-
-
-# pillar 1.11.0.9005
-
-## Continuous integration
-
-- Use reviewdog for external PRs (#801).
-
-
-# pillar 1.11.0.9004
-
-## Chore
-
-- Auto-update from GitHub Actions (#799).
-
-
-# pillar 1.11.0.9003
-
-## Continuous integration
-
-- Cleanup and fix macOS (#796).
-
-
-# pillar 1.11.0.9002
-
-## Continuous integration
-
-- Format with air, check detritus, better handling of `extra-packages` (#794).
-
-
-# pillar 1.11.0.9001
-
-- Merge branch 'docs'.
-
-
-# pillar 1.11.0.9000
-
-## Chore
-
-- Auto-update from GitHub Actions (#790).
-
-## fledge
-
-- CRAN release v1.11.0 (#789).
 
 
 # pillar 1.11.0
