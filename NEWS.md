@@ -2,33 +2,9 @@
 
 # pillar 1.11.1
 
-## fledge
-
-- CRAN release v1.11.0 (#789).
-
 ## Features
 
 - `glimpse()` also works for stingy duckplyr data frames.
-
-## Chore
-
-- Auto-update from GitHub Actions (#803).
-
-- Auto-update from GitHub Actions (#799).
-
-- Auto-update from GitHub Actions (#790).
-
-## Continuous integration
-
-- Use reviewdog for external PRs (#801).
-
-- Cleanup and fix macOS (#796).
-
-- Format with air, check detritus, better handling of `extra-packages` (#794).
-
-## Uncategorized
-
-- Merge branch 'docs'.
 
 
 # pillar 1.11.0
