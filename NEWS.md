@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.0.9007
+
+## Features
+
+- `glimpse()` also works for stingy duckplyr data frames.
+
+
 # pillar 1.11.0.9006
 
 ## Chore
