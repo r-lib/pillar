@@ -1,5 +1,11 @@
 # Changelog
 
+## pillar 1.11.1.9001
+
+### Continuous integration
+
+- Sync ([\#810](https://github.com/r-lib/pillar/issues/810)).
+
 ## pillar 1.11.1.9000
 
 ### fledge
