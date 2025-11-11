@@ -1,5 +1,12 @@
 # Changelog
 
+## pillar 1.11.1.9002
+
+### Continuous integration
+
+- Use workflows for fledge
+  ([\#812](https://github.com/r-lib/pillar/issues/812)).
+
 ## pillar 1.11.1.9001
 
 ### Continuous integration
