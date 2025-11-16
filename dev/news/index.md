@@ -1,5 +1,12 @@
 # Changelog
 
+## pillar 1.11.1.9003
+
+### Continuous integration
+
+- Fix reviewdog and add commenting workflow
+  ([\#815](https://github.com/r-lib/pillar/issues/815)).
+
 ## pillar 1.11.1.9002
 
 ### Continuous integration
