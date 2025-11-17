@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9004
+
+## Continuous integration
+
+- Install binaries from r-universe for dev workflow (#817).
+
+
 # pillar 1.11.1.9003
 
 ## Continuous integration
