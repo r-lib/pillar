@@ -109,6 +109,8 @@ package, e.g. \code{\link[scales:transform_boxcox]{scales::transform_boxcox(p = 
 You can create your own transformation with \code{\link[scales:new_transform]{scales::new_transform()}}.}
     \item{\code{trans}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Deprecated in favour of
 \code{transform}.}
+    \item{\code{fallback.palette}}{Function to use when \code{palette = NULL} and the
+palette is not represented in the theme.}
     \item{\code{call}}{The \code{call} used to construct the scale for reporting messages.}
   }}
 
