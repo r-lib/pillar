@@ -181,6 +181,11 @@ scale_y_num(..., guide = ggplot2::waiver(), rescaler = NULL, super = NULL)
 
   :   **\[deprecated\]** Deprecated in favour of `transform`.
 
+  `fallback.palette`
+
+  :   Function to use when `palette = NULL` and the palette is not
+      represented in the theme.
+
   `call`
 
   :   The `call` used to construct the scale for reporting messages.

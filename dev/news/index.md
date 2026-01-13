@@ -1,5 +1,19 @@
 # Changelog
 
+## pillar 1.11.1.9005
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#819](https://github.com/r-lib/pillar/issues/819)).
+
+## pillar 1.11.1.9004
+
+### Continuous integration
+
+- Install binaries from r-universe for dev workflow
+  ([\#817](https://github.com/r-lib/pillar/issues/817)).
+
 ## pillar 1.11.1.9003
 
 ### Continuous integration
