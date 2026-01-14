@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9006
+
+## Continuous integration
+
+- Fix comment (#824).
+
+- Tweaks (#823).
+
+- Test all R versions on branches that start with cran- (#822).
+
+
 # pillar 1.11.1.9005
 
 ## Chore
