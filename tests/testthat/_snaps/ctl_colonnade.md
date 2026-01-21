@@ -210,11 +210,31 @@
       ctl_colonnade(df_all, width = 300)
     Output
       $body
-            a     b c     d     e     f          g                   h        
-        <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>              <list>   
-      1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35 <int [1]>
-      2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36 <int [1]>
-      3  NA      NA NA    <NA>  <NA>  NA         NA                  <int [1]>
+            a     b c     d     e     f          g                h         i         
+        <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>           <list>    <list>    
+      1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51 <int [1]> <list [2]>
+      2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51 <int [1]> <list [1]>
+      3  NA      NA NA    <NA>  <NA>  NA         NA               <int [1]> <list [1]>
+      
+      $extra_cols
+      list()
+      
+      $abbrev_cols
+      character(0)
+      
+      $abbrev_col_idxs
+      numeric(0)
+      
+    Code
+      options(width = 70)
+      ctl_colonnade(df_all, width = 300)
+    Output
+      $body
+            a     b c     d     e     f          g                h        
+        <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>           <list>   
+      1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51 <int [1]>
+      2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51 <int [1]>
+      3  NA      NA NA    <NA>  <NA>  NA         NA               <int [1]>
         i         
         <list>    
       1 <list [2]>
@@ -231,45 +251,20 @@
       numeric(0)
       
     Code
-      options(width = 70)
+      options(width = 60)
       ctl_colonnade(df_all, width = 300)
     Output
       $body
-            a     b c     d     e     f          g                  
-        <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>             
-      1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51:35
-      2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51:36
-      3  NA      NA NA    <NA>  <NA>  NA         NA                 
+            a     b c     d     e     f          g               
+        <dbl> <int> <lgl> <chr> <fct> <date>     <dttm>          
+      1   1       1 TRUE  a     a     2015-12-10 2015-12-09 10:51
+      2   2.5     2 FALSE b     b     2015-12-11 2015-12-09 10:51
+      3  NA      NA NA    <NA>  <NA>  NA         NA              
         h         i         
         <list>    <list>    
       1 <int [1]> <list [2]>
       2 <int [1]> <list [1]>
       3 <int [1]> <list [1]>
-      
-      $extra_cols
-      list()
-      
-      $abbrev_cols
-      character(0)
-      
-      $abbrev_col_idxs
-      numeric(0)
-      
-    Code
-      options(width = 60)
-      ctl_colonnade(df_all, width = 300)
-    Output
-      $body
-            a     b c     d     e     f         
-        <dbl> <int> <lgl> <chr> <fct> <date>    
-      1   1       1 TRUE  a     a     2015-12-10
-      2   2.5     2 FALSE b     b     2015-12-11
-      3  NA      NA NA    <NA>  <NA>  NA        
-        g                   h         i         
-        <dttm>              <list>    <list>    
-      1 2015-12-09 10:51:35 <int [1]> <list [2]>
-      2 2015-12-09 10:51:36 <int [1]> <list [1]>
-      3 NA                  <int [1]> <list [1]>
       
       $extra_cols
       list()
@@ -290,11 +285,11 @@
       1   1       1 TRUE  a     a     2015-12-10
       2   2.5     2 FALSE b     b     2015-12-11
       3  NA      NA NA    <NA>  <NA>  NA        
-        g                   h         i         
-        <dttm>              <list>    <list>    
-      1 2015-12-09 10:51:35 <int [1]> <list [2]>
-      2 2015-12-09 10:51:36 <int [1]> <list [1]>
-      3 NA                  <int [1]> <list [1]>
+        g                h         i         
+        <dttm>           <list>    <list>    
+      1 2015-12-09 10:51 <int [1]> <list [2]>
+      2 2015-12-09 10:51 <int [1]> <list [1]>
+      3 NA               <int [1]> <list [1]>
       
       $extra_cols
       list()
@@ -315,16 +310,16 @@
       1   1       1 TRUE  a     a    
       2   2.5     2 FALSE b     b    
       3  NA      NA NA    <NA>  <NA> 
-        f          g                  
-        <date>     <dttm>             
-      1 2015-12-10 2015-12-09 10:51:35
-      2 2015-12-11 2015-12-09 10:51:36
-      3 NA         NA                 
-        h         i         
-        <list>    <list>    
-      1 <int [1]> <list [2]>
-      2 <int [1]> <list [1]>
-      3 <int [1]> <list [1]>
+        f          g                h        
+        <date>     <dttm>           <list>   
+      1 2015-12-10 2015-12-09 10:51 <int [1]>
+      2 2015-12-11 2015-12-09 10:51 <int [1]>
+      3 NA         NA               <int [1]>
+        i         
+        <list>    
+      1 <list [2]>
+      2 <list [1]>
+      3 <list [1]>
       
       $extra_cols
       list()
@@ -350,16 +345,16 @@
       1 a     2015-12-10
       2 b     2015-12-11
       3 <NA>  NA        
-        g                  
-        <dttm>             
-      1 2015-12-09 10:51:35
-      2 2015-12-09 10:51:36
-      3 NA                 
-        h         i         
-        <list>    <list>    
-      1 <int [1]> <list [2]>
-      2 <int [1]> <list [1]>
-      3 <int [1]> <list [1]>
+        g                h        
+        <dttm>           <list>   
+      1 2015-12-09 10:51 <int [1]>
+      2 2015-12-09 10:51 <int [1]>
+      3 NA               <int [1]>
+        i         
+        <list>    
+      1 <list [2]>
+      2 <list [1]>
+      3 <list [1]>
       
       $extra_cols
       list()
