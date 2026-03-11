@@ -24,7 +24,7 @@ expect_known_display(object, file, ..., width = 80L, crayon = TRUE)
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-Use \code{\link[vctrs:vec_assert]{vctrs::vec_is()}} instead of \code{is_vector_s3()}.
+Use \code{\link[vctrs:vec_is]{vctrs::vec_is()}} instead of \code{is_vector_s3()}.
 
 Use \code{\link[testthat:expect_snapshot]{testthat::expect_snapshot()}} instead of \code{expect_known_display()}.
 }

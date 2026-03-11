@@ -20,6 +20,6 @@ set_char_opts(
 )
 }
 \description{
-These functions are reexported as \code{\link[tibble:char]{tibble::char()}} and \code{\link[tibble:char]{tibble::set_char_opts()}}.
+These functions are reexported as \code{\link[tibble:char]{tibble::char()}} and \code{\link[tibble:set_char_opts]{tibble::set_char_opts()}}.
 }
 \keyword{internal}

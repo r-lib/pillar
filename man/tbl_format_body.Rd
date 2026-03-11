@@ -27,7 +27,7 @@ of a tibble.
 Override this method if you need to change the appearance of all parts
 of the body.
 If you only need to change the appearance of a single data type,
-override \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}} and \code{\link[=pillar_shaft]{pillar_shaft()}} for this data type.
+override \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}} and \code{\link[=pillar_shaft]{pillar_shaft()}} for this data type.
 }
 \examples{
 \dontshow{if (rlang::is_installed(c("palmerpenguins", "tibble"))) withAutoprint(\{ # examplesIf}
