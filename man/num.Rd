@@ -30,6 +30,6 @@ set_num_opts(
 )
 }
 \description{
-These functions are reexported as \code{\link[tibble:num]{tibble::num()}} and \code{\link[tibble:num]{tibble::set_num_opts()}}.
+These functions are reexported as \code{\link[tibble:num]{tibble::num()}} and \code{\link[tibble:set_num_opts]{tibble::set_num_opts()}}.
 }
 \keyword{internal}

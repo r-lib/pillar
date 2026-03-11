@@ -19,12 +19,12 @@ and variants have been implemented.}
 \description{
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.
-For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}.
+For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}.
 
 \code{obj_sum()} also includes the size (but not the shape) of the object
-if \code{\link[vctrs:vec_assert]{vctrs::vec_is()}} is \code{TRUE}.
+if \code{\link[vctrs:vec_is]{vctrs::vec_is()}} is \code{TRUE}.
 It should always return a string (a character vector of length one).
-As of pillar v1.6.1, the default method forwards to \code{\link[vctrs:vec_ptype_full]{vctrs::vec_ptype_abbr()}}
+As of pillar v1.6.1, the default method forwards to \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}
 for vectors and to \code{\link[=type_sum]{type_sum()}} for other objects.
 Previous versions always forwarded to \code{\link[=type_sum]{type_sum()}}.
 An attribute named \code{"short"} in the return value will be picked up by
