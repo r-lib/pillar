@@ -4,6 +4,4 @@ set -euo pipefail
 # Install all hard and soft dependencies for the pillar R package
 # This ensures all packages needed for development and testing are available
 
-Rscript \
-  -e 'remotes::install_deps(dependencies = TRUE, quiet = TRUE)' \
-  -e 'testthat::test_local()'
+Rscript -e 'pak::pak()'
