@@ -1,5 +1,44 @@
 # Changelog
 
+## pillar 1.11.1.9010
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#833](https://github.com/r-lib/pillar/issues/833)).
+
+## pillar 1.11.1.9009
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#831](https://github.com/r-lib/pillar/issues/831)).
+
+## pillar 1.11.1.9008
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#829](https://github.com/r-lib/pillar/issues/829)).
+
+## pillar 1.11.1.9007
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#827](https://github.com/r-lib/pillar/issues/827)).
+
+## pillar 1.11.1.9006
+
+### Continuous integration
+
+- Fix comment ([\#824](https://github.com/r-lib/pillar/issues/824)).
+
+- Tweaks ([\#823](https://github.com/r-lib/pillar/issues/823)).
+
+- Test all R versions on branches that start with cran-
+  ([\#822](https://github.com/r-lib/pillar/issues/822)).
+
 ## pillar 1.11.1.9005
 
 ### Chore

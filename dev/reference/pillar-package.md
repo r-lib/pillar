@@ -24,6 +24,9 @@ aspect of the display customizable.
 
 Authors:
 
+- Kirill Müller <kirill@cynkra.com>
+  ([ORCID](https://orcid.org/0000-0002-1416-3412))
+
 - Hadley Wickham
 
 Other contributors:
