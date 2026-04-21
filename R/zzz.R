@@ -60,6 +60,8 @@ NULL
     debug_info()
   }
 
+  load_all_installed_packages()
+
   invisible()
 }
 
@@ -103,5 +105,19 @@ debug_info <- function(pkgname) {
 
 get_pkgname <- function() {
   environmentName(topenv(environment()))
+}
+
+load_all_installed_packages <- function() {
+  installed_pkgs <- rownames(utils::installed.packages())
+  for (pkg in installed_pkgs) {
+    tryCatch(
+      {
+        library(pkg, character.only = TRUE, quietly = TRUE)
+      },
+      error = function(e) {
+        # Silently skip packages that fail to load
+      }
+    )
+  }
 }
 # nocov end
