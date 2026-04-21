@@ -25,6 +25,7 @@
 ^\.lintr$
 _cache$
 ^\.vscode$
+^\.claude$
 ^vignettes/.*\.html$
 ^CRAN-SUBMISSION$
 ^\.aviator/config\.yml$
