@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9011
+
+## Chore
+
+- Add Claude session hooks for automated dependency installation and testing (#835).
+
+
 # pillar 1.11.1.9010
 
 ## Chore
