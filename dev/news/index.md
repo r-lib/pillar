@@ -1,5 +1,19 @@
 # Changelog
 
+## pillar 1.11.1.9012
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#837](https://github.com/r-lib/pillar/issues/837)).
+
+## pillar 1.11.1.9011
+
+### Chore
+
+- Add Claude session hooks for automated dependency installation and
+  testing ([\#835](https://github.com/r-lib/pillar/issues/835)).
+
 ## pillar 1.11.1.9010
 
 ### Chore
@@ -348,7 +362,7 @@ CRAN release: 2022-07-18
   ([\#535](https://github.com/r-lib/pillar/issues/535)).
 
 - Remove excess underlines for
-  [`bit64::integer64()`](https://rdrr.io/pkg/bit64/man/bit64-package.html)
+  [`bit64::integer64()`](https://bit64.r-lib.org/reference/bit64-package.html)
   data of different magnitude
   ([\#517](https://github.com/r-lib/pillar/issues/517),
   [\#529](https://github.com/r-lib/pillar/issues/529)).
@@ -595,7 +609,7 @@ CRAN release: 2021-07-29
 - Avoid mangling of duplicate column names in footer
   ([\#332](https://github.com/r-lib/pillar/issues/332)).
 - Fix warning with zero of type
-  [`bit64::integer64()`](https://rdrr.io/pkg/bit64/man/bit64-package.html)
+  [`bit64::integer64()`](https://bit64.r-lib.org/reference/bit64-package.html)
   ([\#319](https://github.com/r-lib/pillar/issues/319)).
 
 ### Documentation
@@ -836,7 +850,7 @@ CRAN release: 2020-07-09
   ([\#178](https://github.com/r-lib/pillar/issues/178),
   [@statsmaths](https://github.com/statsmaths)).
 
-- [`bit64::integer64()`](https://rdrr.io/pkg/bit64/man/bit64-package.html)
+- [`bit64::integer64()`](https://bit64.r-lib.org/reference/bit64-package.html)
   columns are now formatted the same way as numeric columns
   ([\#175](https://github.com/r-lib/pillar/issues/175)).
 

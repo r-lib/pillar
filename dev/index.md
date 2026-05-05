@@ -6,6 +6,7 @@ and unicode characters to guide the eye.
 ## Installation
 
 ``` r
+
 # pillar is installed if you install the tidyverse package:
 install.packages("tidyverse")
 
@@ -26,6 +27,7 @@ examples) or custom table classes (like
 [sf](https://r-spatial.github.io/sf/)).
 
 ``` r
+
 library(pillar)
 
 x <- 123456789 * (10^c(-3, -5, NA, -8, -10))
@@ -63,6 +65,7 @@ tibble column can customize the display by implementing a
 method.
 
 ``` r
+
 library(pillar)
 
 percent <- vctrs::new_vctr(9:11 * 0.01, class = "percent")
@@ -90,6 +93,7 @@ pillar provides various extension points for customizing how a
 tibble-like class is printed.
 
 ``` r
+
 tbl <- vctrs::new_data_frame(list(a = 1:3), class = c("my_tbl", "tbl"))
 
 tbl_sum.my_tbl <- function(x, ...) {

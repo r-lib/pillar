@@ -1,6 +1,7 @@
 # Printing a tibble: Control and data flow
 
 ``` r
+
 library(pillar)
 ```
 
@@ -65,6 +66,7 @@ method calls [`format()`](https://rdrr.io/r/base/format.html) for the
 object and prints the output.
 
 ``` r
+
 tbl <- tibble::tibble(a = 1:3, b = tibble::tibble(c = 4:6, d = 7:9), e = 10:12)
 print(tbl, width = 23)
 #> # A tibble: 3 × 3
@@ -87,6 +89,7 @@ str(tbl)
 Source code of `pillar:::print.tbl()`
 
 ``` r
+
 print.tbl <- function(x, width = NULL, ..., n = NULL, max_extra_cols = NULL,
                       max_footer_lines = NULL) {
   print_tbl(
@@ -104,6 +107,7 @@ body and footer.
 Source code of `pillar:::format.tbl()`
 
 ``` r
+
 format.tbl <- function(x, width = NULL, ...,
                        n = NULL, max_extra_cols = NULL, max_footer_lines = NULL) {
   format_tbl(
@@ -126,6 +130,7 @@ available when calling. Setup objects print like a tibble but with a
 clear separation of header, body, and footer.
 
 ``` r
+
 setup <- tbl_format_setup(tbl, width = 24)
 setup
 #> <pillar_tbl_format_setup>
@@ -154,6 +159,7 @@ arguments before passing them on to the method.
 Source code of `tbl_format_setup()`
 
 ``` r
+
 tbl_format_setup <- function(
   x,
   width = NULL,
@@ -201,6 +207,7 @@ items.
 Source code of `pillar:::tbl_format_setup.tbl()`
 
 ``` r
+
 tbl_format_setup.tbl <- function(
   x,
   width,
@@ -305,6 +312,7 @@ They return a character vector, with one element per line printed. The
 setup object is required.
 
 ``` r
+
 tbl_format_header(tbl, setup)
 #> [1] "\033[38;5;246m# A tibble: 3 × 3\033[39m"
 tbl_format_body(tbl, setup)
@@ -323,6 +331,7 @@ tbl_format_footer(tbl, setup)
 [`character()`](https://rdrr.io/r/base/character.html) under the hood.)
 
 ``` r
+
 class(tbl_format_body(tbl, setup))
 #> [1] "glue"      "character"
 typeof(tbl_format_body(tbl, setup))
@@ -337,6 +346,7 @@ the output.
 Source code of `pillar:::tbl_format_header.tbl()`
 
 ``` r
+
 tbl_format_header.tbl <- function(x, setup, ...) {
   named_header <- setup$tbl_sum
   focus <- attr(x, "pillar_focus")
@@ -363,6 +373,7 @@ tbl_format_header.tbl <- function(x, setup, ...) {
 Source code of `pillar:::tbl_format_body.tbl()`
 
 ``` r
+
 tbl_format_body.tbl <- function(x, setup, ...) {
   force(setup)
   setup$body
@@ -372,6 +383,7 @@ tbl_format_body.tbl <- function(x, setup, ...) {
 Source code of `pillar:::tbl_format_footer.tbl()`
 
 ``` r
+
 tbl_format_footer.tbl <- function(x, setup, ...) {
   footer <- format_footer(x, setup)
   footer_comment <- wrap_footer_bullet(footer, setup)
@@ -428,6 +440,7 @@ The
 generic dispatches on the container:
 
 ``` r
+
 ctl_new_pillar_list(tbl, tbl$a, width = 20)
 #> [[1]]
 #> <pillar>
@@ -476,6 +489,7 @@ will rarely if ever need to extend or override this method.
 Source code of `pillar:::ctl_new_pillar_list.tbl()`
 
 ``` r
+
 ctl_new_pillar_list.tbl <- function(controller, x, width, ..., title = NULL, first_pillar = NULL) {
   "!!!!DEBUG ctl_new_pillar_list.tbl(`v(width)`, `v(title)`)"
 
@@ -502,6 +516,7 @@ method is called for columns that are not data frames or arrays, and
 also dispatches over the container.
 
 ``` r
+
 ctl_new_pillar(tbl, tbl$a, width = 20)
 #> <pillar>
 #> <int>
@@ -513,6 +528,7 @@ ctl_new_pillar(tbl, tbl$a, width = 20)
 Source code of `pillar:::ctl_new_pillar.tbl()`
 
 ``` r
+
 ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
   "!!!!DEBUG ctl_new_pillar.tbl(`v(width)`, `v(title)`)"
 
@@ -527,6 +543,7 @@ passing the maximum width available.
 Source code of `pillar()`
 
 ``` r
+
 pillar <- function(x, title = NULL, width = NULL, ...) {
   "!!!!DEBUG pillar(`v(class(x))`, `v(title)`, `v(width)`)"
 
@@ -565,6 +582,7 @@ with
 Source code of `new_pillar()`
 
 ``` r
+
 new_pillar <- function(components, ..., width = NULL, class = NULL,
                        extra = deprecated()) {
   "!!!!DEBUG new_pillar(`v(width)`, `v(class)`)"
@@ -603,6 +621,7 @@ width if empty:
 Source code of `pillar:::format.pillar()`
 
 ``` r
+
 format.pillar <- function(x, width = NULL, ...) {
   if (is.null(width)) {
     width <- get_width(x)

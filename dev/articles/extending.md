@@ -1,6 +1,7 @@
 # Custom formatting
 
 ``` r
+
 library(pillar)
 ```
 
@@ -24,6 +25,7 @@ customization options, we create a constructor for an example data frame
 with arbitrary subclass.
 
 ``` r
+
 example_tbl <- function(class = NULL) {
   vctrs::new_data_frame(
     list(
@@ -39,6 +41,7 @@ The `"default"` class doesn’t have any customizations yet, and prints
 like a regular tibble.
 
 ``` r
+
 example_tbl()
 #> # A data frame: 3 × 2
 #>   a       b$c    $d
@@ -58,6 +61,7 @@ to extend or replace the information shown in the header, keeping the
 original formatting.
 
 ``` r
+
 tbl_sum.default_header_extend <- function(x, ...) {
   default_header <- NextMethod()
   c(default_header, "New" = "A new header")
@@ -93,6 +97,7 @@ method. The implementation is responsible for the entire formatting and
 styling, including the leading hash.
 
 ``` r
+
 tbl_format_header.custom_header_replace <- function(x, setup, ...) {
   cli::style_italic(names(setup$tbl_sum), " = ", setup$tbl_sum)
 }
@@ -120,6 +125,7 @@ for the available fields. Again, the implementation is responsible for
 the entire formatting and styling, including the leading hash if needed.
 
 ``` r
+
 tbl_format_footer.custom_footer_extend <- function(x, setup, ...) {
   default_footer <- NextMethod()
 
@@ -163,6 +169,7 @@ object, existing elements should not be overwritten. Exception: the
 be enhanced with additional elements.
 
 ``` r
+
 tbl_format_setup.extra_info <- function(x, width, ...) {
   setup <- NextMethod()
   cells <- prod(dim(x))
@@ -198,6 +205,7 @@ the corresponding sequence and build up a row ID pillar using
 and associated methods as has been introduced previously.
 
 ``` r
+
 ctl_new_rowid_pillar.pillar_roman <- function(controller, x, width, ...) {
   out <- NextMethod()
   rowid <- utils::as.roman(seq_len(nrow(x)))
@@ -238,6 +246,7 @@ method to alter the appearance. The example below adds table rules of
 constant width to the output.
 
 ``` r
+
 ctl_new_pillar.pillar_rule <- function(controller, x, width, ..., title = NULL) {
   out <- NextMethod()
   new_pillar(list(
@@ -267,6 +276,7 @@ To make the width adaptive, we implement a `"rule"` class with a
 rules to prespecified widths.
 
 ``` r
+
 rule <- function(char = "-") {
   stopifnot(nchar(char) == 1)
   structure(char, class = "rule")
@@ -315,6 +325,7 @@ shown above. The (somewhat artificial) example hides all data frame
 columns in a column with the type `"<hidden>"`.
 
 ``` r
+
 ctl_new_pillar_list.hide_df <- function(controller, x, width, ..., title = NULL) {
   if (!is.data.frame(x)) {
     return(NextMethod())
@@ -351,6 +362,7 @@ of the body by overriding
 The example below uses plain data frame output for a tibble.
 
 ``` r
+
 tbl_format_body.oldskool <- function(x, setup, ...) {
   capture.output(print.data.frame(setup$df))
 }

@@ -14,6 +14,7 @@ By default, debugme also shows timestamps. This is disabled to keep the
 output stable.
 
 ``` r
+
 Sys.setenv(DEBUGME = "!!!!pillar")
 Sys.setenv(DEBUGME_SHOW_TIMESTAMP = "no")
 
