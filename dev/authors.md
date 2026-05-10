@@ -16,12 +16,12 @@ Source:
 [`DESCRIPTION`](https://github.com/r-lib/pillar/blob/main/DESCRIPTION)
 
 Müller K, Wickham H (2026). *pillar: Coloured Formatting for Columns*. R
-package version 1.11.1.9013, <https://pillar.r-lib.org/>.
+package version 1.11.1.9014, <https://pillar.r-lib.org/>.
 
     @Manual{,
       title = {pillar: Coloured Formatting for Columns},
       author = {Kirill Müller and Hadley Wickham},
       year = {2026},
-      note = {R package version 1.11.1.9013},
+      note = {R package version 1.11.1.9014},
       url = {https://pillar.r-lib.org/},
     }
