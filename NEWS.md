@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9015
+
+## Continuous integration
+
+- Only run fledge on pushes to main.
+
+
 # pillar 1.11.1.9014
 
 ## Continuous integration
