@@ -1,5 +1,11 @@
 # Changelog
 
+## pillar 1.11.1.9015
+
+### Continuous integration
+
+- Only run fledge on pushes to main.
+
 ## pillar 1.11.1.9014
 
 ### Continuous integration
