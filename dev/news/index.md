@@ -1,5 +1,19 @@
 # Changelog
 
+## pillar 1.11.1.9016
+
+### Chore
+
+- Add ccache to `.gitignore` and `.Rbuildignore`.
+
+### Continuous integration
+
+- Create snapshot update PR against correct branch.
+
+- Add reference to `/apply-patch` workflow in commit message.
+
+- Clarify rationale for not deploying on schedule.
+
 ## pillar 1.11.1.9015
 
 ### Continuous integration
