@@ -1,5 +1,10 @@
 # Changelog
 
+## pillar 1.11.1.9017
+
+- Ci: Unify fledge.yaml across cynkratemplate and fledge
+  ([\#86](https://github.com/r-lib/pillar/issues/86)).
+
 ## pillar 1.11.1.9016
 
 ### Chore
