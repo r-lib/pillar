@@ -29,6 +29,10 @@ set_num_opts(
   extra_sigfig = NULL
 )
 }
+\value{
+A \code{pillar_num} vector for \code{num()}, or \code{x} with pillar attributes
+set for \code{set_num_opts()}.
+}
 \description{
 These functions are reexported as \code{\link[tibble:num]{tibble::num()}} and \code{\link[tibble:set_num_opts]{tibble::set_num_opts()}}.
 }

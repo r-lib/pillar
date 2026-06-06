@@ -23,6 +23,8 @@
 #'   used "as is", no quoting will be applied.
 #' @param width Default width, optional.
 #' @param ... Passed on to [pillar_shaft()].
+#' @return A pillar object, or `NULL` if the width is insufficient
+#'   to display the data.
 #' @export
 #' @examples
 #' x <- 123456789 * (10^c(-1, -3, -5, NA, -8, -10))
@@ -129,6 +131,7 @@ pillar_from_shaft <- function(title, type, data, width) {
 #' @param class Name of subclass.
 #' @param extra Deprecated.
 #'
+#' @return A pillar object with the given components.
 #' @export
 #' @examples
 #' lines <- function(char = "-") {

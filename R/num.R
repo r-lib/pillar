@@ -2,6 +2,8 @@
 #'
 #' These functions are reexported as [tibble::num()] and [tibble::set_num_opts()].
 #'
+#' @return A `pillar_num` vector for `num()`, or `x` with pillar attributes
+#'   set for `set_num_opts()`.
 #' @keywords internal
 #' @export
 num <- function(x, ...,

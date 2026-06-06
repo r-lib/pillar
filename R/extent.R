@@ -4,6 +4,7 @@
 #' vector.
 #'
 #' @param x A character vector.
+#' @return An integer vector of display widths, one per element of `x`.
 #' @export
 #' @importFrom cli ansi_strip
 #' @importFrom cli utf8_nchar
@@ -24,6 +25,8 @@ get_extent <- function(x) {
 #' @description
 #' `get_max_extent()` calculates the maximum display width of all strings in a
 #' character vector, zero for empty vectors.
+#'
+#' @return A single integer value representing the maximum display width.
 #' @export
 #' @rdname get_extent
 #' @examples
@@ -43,6 +46,7 @@ get_max_extent <- function(x) {
 #' @param align How should strings be aligned? If `align = left` then padding
 #'   appears on the `right`, and vice versa.
 #' @param space What character should be used for the padding?
+#' @return A character vector of aligned and padded strings.
 #' @export
 #' @examples
 #' align(c("abc", "de"), align = "left")

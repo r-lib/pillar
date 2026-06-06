@@ -11,6 +11,9 @@ new_pillar_title(x, ...)
 
 \item{...}{These dots are for future extensions and must be empty.}
 }
+\value{
+A \code{"pillar_title"} object.
+}
 \description{
 Call \code{\link[=format]{format()}} on the result to render column titles.
 }

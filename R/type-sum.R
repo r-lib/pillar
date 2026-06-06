@@ -12,6 +12,7 @@
 #' @param x an object to summarise. Generally only methods of atomic vectors
 #'   and variants have been implemented.
 #'
+#' @return A string with four or less characters summarising the type of `x`.
 #' @export
 type_sum <- function(x) {
   UseMethod("type_sum")
@@ -72,6 +73,9 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' An attribute named `"short"` in the return value will be picked up by
 #' the [pillar_shaft()] method for lists, and used if space is limited.
 #'
+#' @return A string summarising the object, including its type and size
+#'   for vectors. An attribute named `"short"` may contain a shorter version.
+#'
 #' @examples
 #' obj_sum(1:10)
 #' obj_sum(matrix(1:10))
@@ -113,6 +117,9 @@ obj_sum.AsIs <- function(x) {
 #' It should always return a string (a character vector of length one),
 #' it can be an empty string `""` to omit size information,
 #' this is what the default method does for scalars.
+#'
+#' @return A string describing the size, e.g. `"[10]"` or `"[32 x 11]"`.
+#'   Returns `""` for scalars.
 #'
 #' @keywords internal
 #' @examples

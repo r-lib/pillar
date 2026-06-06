@@ -23,6 +23,7 @@
 #'   (for `pillar_component()`).
 #' @param width,min_width Width and minimum width for the new component.
 #'   If `min_width` is `NULL`, it is assumed to match `width`.
+#' @return A `"pillar_component"` object.
 #' @export
 #' @examples
 #' new_pillar_component(list(letters[1:3]), width = 1)

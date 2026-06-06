@@ -12,6 +12,11 @@ get_max_extent(x)
 \arguments{
 \item{x}{A character vector.}
 }
+\value{
+An integer vector of display widths, one per element of \code{x}.
+
+A single integer value representing the maximum display width.
+}
 \description{
 \code{get_extent()} calculates the display width for each string in a character
 vector.

@@ -17,6 +17,9 @@ new_pillar(components, ..., width = NULL, class = NULL, extra = deprecated())
 
 \item{extra}{Deprecated.}
 }
+\value{
+A pillar object with the given components.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 

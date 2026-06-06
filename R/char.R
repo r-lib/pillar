@@ -2,6 +2,8 @@
 #'
 #' These functions are reexported as [tibble::char()] and [tibble::set_char_opts()].
 #'
+#' @return A `pillar_char` vector for `char()`, or `x` with pillar attributes
+#'   set for `set_char_opts()`.
 #' @keywords internal
 #' @export
 char <- function(x, ..., min_chars = NULL,

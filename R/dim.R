@@ -5,6 +5,8 @@
 #'
 #' @param x The object to format the dimensions for
 #'
+#' @return A string describing the dimensions, e.g. `"10"` for a vector
+#'   or `"32 x 11"` for a data frame.
 #' @export
 #' @examples
 #' dim_desc(1:10)

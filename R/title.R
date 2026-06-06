@@ -6,6 +6,7 @@ style_title <- style_bold
 #'
 #' @param x A character vector of column titles.
 #' @inheritParams rlang::args_dots_empty
+#' @return A `"pillar_title"` object.
 #' @export
 #' @examples
 #' format(new_pillar_title(names(trees)))

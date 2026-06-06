@@ -27,6 +27,9 @@ style_neg(x)
 \item{negative, significant}{Logical vector the same length as \code{x} that
 indicate if the values are negative and significant, respectively}
 }
+\value{
+A styled character vector.
+}
 \description{
 Functions that allow implementers of formatters for custom data types to
 maintain a consistent style with the default data types.

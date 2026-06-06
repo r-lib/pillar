@@ -23,6 +23,9 @@ ctl_new_rowid_pillar(controller, x, width, ..., title = NULL, type = NULL)
 \item{type}{String for specifying a row ID type. Current values in use are
 \code{NULL} and \code{"*"}.}
 }
+\value{
+A pillar object, or \code{NULL} if none of the data fits the available width.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 

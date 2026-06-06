@@ -8,6 +8,7 @@
 #' @inheritDotParams ggplot2::continuous_scale -scale_name
 #' @param guide,position Passed on to [ggplot2::continuous_scale()]
 #' @param rescaler,super Must remain `NULL`.
+#' @return A ggplot2 scale object.
 #'
 #' @keywords internal
 #' @export

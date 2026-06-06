@@ -8,12 +8,15 @@ new_ornament(x, width = NULL, align = NULL)
 }
 \arguments{
 \item{x}{A character vector with formatting,
-can use ANYI styles e.g provided by the \pkg{cli} package.}
+can use ANSI styles e.g provided by the \pkg{cli} package.}
 
 \item{width}{An optional width of the resulting pillar, computed from \code{x} if
 missing}
 
 \item{align}{Alignment, one of \code{"left"} or \code{"right"}}
+}
+\value{
+A \code{pillar_ornament} object.
 }
 \description{
 This function is useful if your data renders differently depending on the

@@ -20,6 +20,9 @@ wider, it will be trimmed. Can be \code{NULL}.}
 
 \item{...}{Arguments passed to methods.}
 }
+\value{
+A styled character string summarising the type.
+}
 \description{
 Called on values returned from \code{\link[=type_sum]{type_sum()}} for defining the description
 in the capital.

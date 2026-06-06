@@ -30,6 +30,7 @@
 #'   [type_sum()].
 #' @param class The name of the subclass.
 #' @param subclass Deprecated, pass the `class` argument instead.
+#' @return A pillar shaft object of class `c(class, "pillar_shaft")`.
 #' @name new_pillar_shaft
 #' @export
 new_pillar_shaft <- function(x, ..., width = NULL, min_width = width,
@@ -62,6 +63,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width,
 #'
 #' @param x A vector to format
 #' @inheritParams rlang::args_dots_used
+#' @return A pillar shaft object.
 #' @export
 #' @examples
 #' pillar_shaft(1:3)

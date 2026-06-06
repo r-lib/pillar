@@ -221,6 +221,8 @@ tbl_format_setup.tbl <- function(
 #'
 #' @param x A tbl object.
 #' @inheritParams rlang::args_dots_empty
+#' @return A single integer, or `NA` if the number of rows is unknown
+#'   (e.g., for lazy tables).
 #' @export
 tbl_nrow <- function(x, ...) {
   check_dots_empty0(...)

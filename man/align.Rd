@@ -17,6 +17,9 @@ appears on the \code{right}, and vice versa.}
 
 \item{space}{What character should be used for the padding?}
 }
+\value{
+A character vector of aligned and padded strings.
+}
 \description{
 Facilitates easy alignment of strings within a character vector. Designed to
 help implementers of formatters for custom data types.

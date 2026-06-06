@@ -31,6 +31,8 @@
 #' @param width The available width, can be a vector for multiple tiers.
 #' @param title The title, derived from the name of the column in the data.
 #'
+#' @return A pillar object, or `NULL` if none of the data fits the available width.
+#'
 #' @seealso
 #' See [ctl_new_pillar_list()] for creating pillar objects for compound columns:
 #' packed data frames, matrices, or arrays.

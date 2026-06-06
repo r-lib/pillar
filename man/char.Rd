@@ -19,6 +19,10 @@ set_char_opts(
   shorten = c("back", "front", "mid", "abbreviate")
 )
 }
+\value{
+A \code{pillar_char} vector for \code{char()}, or \code{x} with pillar attributes
+set for \code{set_char_opts()}.
+}
 \description{
 These functions are reexported as \code{\link[tibble:char]{tibble::char()}} and \code{\link[tibble:set_char_opts]{tibble::set_char_opts()}}.
 }

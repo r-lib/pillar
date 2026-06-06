@@ -16,6 +16,15 @@ size_sum(x)
 \item{x}{an object to summarise. Generally only methods of atomic vectors
 and variants have been implemented.}
 }
+\value{
+A string with four or less characters summarising the type of \code{x}.
+
+A string summarising the object, including its type and size
+for vectors. An attribute named \code{"short"} may contain a shorter version.
+
+A string describing the size, e.g. \code{"[10]"} or \code{"[32 x 11]"}.
+Returns \code{""} for scalars.
+}
 \description{
 \code{type_sum()} gives a brief summary of object type. Objects that commonly
 occur in a data frame should return a string with four or less characters.

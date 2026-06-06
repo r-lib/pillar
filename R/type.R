@@ -13,6 +13,7 @@ style_type <- function(x) {
 #'
 #' @param x A vector for which the type is to be retrieved.
 #' @inheritParams rlang::args_dots_empty
+#' @return A `"pillar_type"` object.
 #' @export
 #' @examples
 #' format(new_pillar_type("a"))
@@ -72,6 +73,7 @@ format_full_pillar_type <- function(x) {
 #' @param width The desired total width. If the returned string still is
 #'   wider, it will be trimmed. Can be `NULL`.
 #' @inheritParams rlang::args_dots_used
+#' @return A styled character string summarising the type.
 #'
 #' @export
 #' @examples

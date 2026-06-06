@@ -7,12 +7,13 @@
 #' `pillar_shaft.numeric()` and `format.pillar_shaft_decimal()` for an example.
 #'
 #' @param x A character vector with formatting,
-#'   can use ANYI styles e.g provided by the \pkg{cli} package.
+#'   can use ANSI styles e.g provided by the \pkg{cli} package.
 #'
 #' @param width An optional width of the resulting pillar, computed from `x` if
 #'   missing
 #' @param align Alignment, one of `"left"` or `"right"`
 #'
+#' @return A `pillar_ornament` object.
 #' @export
 #' @examples
 #' new_ornament(c("abc", "de"), align = "right")

@@ -67,6 +67,9 @@ This argument, if given, takes precedence over the type summary provided by
 \code{formatted}, to be used when the available width is insufficient to show
 the full output.}
 }
+\value{
+A pillar shaft object of class \code{c(class, "pillar_shaft")}.
+}
 \description{
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"}
 class.

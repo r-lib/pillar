@@ -41,6 +41,7 @@
 #' @param first_pillar Can be passed to this method if the first pillar
 #'   for a compound pillar (or the pillar itself for a simple pillar)
 #'   has been constructed already.
+#' @return A list of pillar objects.
 #' @export
 #' @examplesIf rlang::is_installed(c("palmerpenguins", "tibble")) && requireNamespace("tibble")
 #' # Simple column

@@ -63,6 +63,9 @@ pillar_shaft(x, ...)
 \item \code{"abbreviate"}: use \code{\link[=abbreviate]{abbreviate()}}
 }}
 }
+\value{
+A pillar shaft object.
+}
 \description{
 Internal class for formatting the data for a column.
 \code{pillar_shaft()} is a coercion method that must be implemented

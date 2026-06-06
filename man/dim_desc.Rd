@@ -9,6 +9,10 @@ dim_desc(x)
 \arguments{
 \item{x}{The object to format the dimensions for}
 }
+\value{
+A string describing the dimensions, e.g. \code{"10"} for a vector
+or \code{"32 x 11"} for a data frame.
+}
 \description{
 Multi-dimensional objects are formatted as \verb{a x b x ...}, for vectors the
 length is returned.

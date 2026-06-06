@@ -19,6 +19,9 @@ or an object with \code{"width"} and \code{"min_width"} attributes
 \item{width, min_width}{Width and minimum width for the new component.
 If \code{min_width} is \code{NULL}, it is assumed to match \code{width}.}
 }
+\value{
+A \code{"pillar_component"} object.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 

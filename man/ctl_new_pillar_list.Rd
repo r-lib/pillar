@@ -29,6 +29,9 @@ If \code{NULL}, only the first pillar is instantiated.}
 for a compound pillar (or the pillar itself for a simple pillar)
 has been constructed already.}
 }
+\value{
+A list of pillar objects.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 

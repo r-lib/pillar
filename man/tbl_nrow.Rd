@@ -11,6 +11,10 @@ tbl_nrow(x, ...)
 
 \item{...}{These dots are for future extensions and must be empty.}
 }
+\value{
+A single integer, or \code{NA} if the number of rows is unknown
+(e.g., for lazy tables).
+}
 \description{
 This generic will be called by \code{\link[=tbl_format_setup]{tbl_format_setup()}} to determine the number
 of rows in a tbl object.
