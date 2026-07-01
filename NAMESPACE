@@ -162,41 +162,47 @@ export(tbl_sum)
 export(type_sum)
 import(lifecycle)
 import(rlang)
-importFrom(cli,ansi_strip)
-importFrom(cli,ansi_strwrap)
-importFrom(cli,ansi_substr)
-importFrom(cli,symbol)
-importFrom(cli,utf8_nchar)
+importFrom(cli,
+  ansi_strip,
+  ansi_strwrap,
+  ansi_substr,
+  symbol,
+  utf8_nchar
+)
 importFrom(glue,as_glue)
-importFrom(utils,head)
-importFrom(utils,str)
-importFrom(vctrs,data_frame)
-importFrom(vctrs,new_data_frame)
-importFrom(vctrs,new_list_of)
-importFrom(vctrs,new_vctr)
-importFrom(vctrs,obj_print_data)
-importFrom(vctrs,obj_print_footer)
-importFrom(vctrs,obj_print_header)
-importFrom(vctrs,unspecified)
-importFrom(vctrs,vec_arith)
-importFrom(vctrs,vec_arith.numeric)
-importFrom(vctrs,vec_arith_base)
-importFrom(vctrs,vec_assert)
-importFrom(vctrs,vec_c)
-importFrom(vctrs,vec_cast)
-importFrom(vctrs,vec_cast.double)
-importFrom(vctrs,vec_cast.integer)
-importFrom(vctrs,vec_data)
-importFrom(vctrs,vec_is)
-importFrom(vctrs,vec_math)
-importFrom(vctrs,vec_math_base)
-importFrom(vctrs,vec_proxy)
-importFrom(vctrs,vec_proxy_compare)
-importFrom(vctrs,vec_proxy_order)
-importFrom(vctrs,vec_ptype2)
-importFrom(vctrs,vec_ptype_abbr)
-importFrom(vctrs,vec_ptype_full)
-importFrom(vctrs,vec_rbind)
-importFrom(vctrs,vec_restore)
-importFrom(vctrs,vec_size)
-importFrom(vctrs,vec_slice)
+importFrom(utils,
+  head,
+  str
+)
+importFrom(vctrs,
+  data_frame,
+  new_data_frame,
+  new_list_of,
+  new_vctr,
+  obj_print_data,
+  obj_print_footer,
+  obj_print_header,
+  unspecified,
+  vec_arith,
+  vec_arith.numeric,
+  vec_arith_base,
+  vec_assert,
+  vec_c,
+  vec_cast,
+  vec_cast.double,
+  vec_cast.integer,
+  vec_data,
+  vec_is,
+  vec_math,
+  vec_math_base,
+  vec_proxy,
+  vec_proxy_compare,
+  vec_proxy_order,
+  vec_ptype2,
+  vec_ptype_abbr,
+  vec_ptype_full,
+  vec_rbind,
+  vec_restore,
+  vec_size,
+  vec_slice
+)
