@@ -1,3 +1,50 @@
+# dim_desc ----------------------------------------------------------------------------
+
+test_that("`dim_desc()` snapshot test", {
+  expect_snapshot({
+    dim_desc()
+  })
+})
+
+
+# dim2 --------------------------------------------------------------------------------
+
+test_that("`dim2()` snapshot test", {
+  expect_snapshot({
+    dim2()
+  })
+})
+
+
+# mult_sign ---------------------------------------------------------------------------
+
+test_that("`mult_sign()` snapshot test", {
+  expect_snapshot({
+    mult_sign()
+  })
+})
+
+
+# spaces_around -----------------------------------------------------------------------
+
+test_that("`spaces_around()` snapshot test", {
+  expect_snapshot({
+    spaces_around()
+  })
+})
+
+
+# big_mark ----------------------------------------------------------------------------
+
+test_that("`big_mark()` snapshot test", {
+  expect_snapshot({
+    big_mark()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("dim2() falls back to vec_size()", {
   expect_equal(dim2(1:3), 3)
   expect_equal(dim2(Titanic), dim(Titanic))

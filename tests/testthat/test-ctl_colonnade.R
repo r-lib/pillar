@@ -1,3 +1,149 @@
+# ctl_colonnade -----------------------------------------------------------------------
+
+test_that("`ctl_colonnade()` snapshot test", {
+  expect_snapshot({
+    ctl_colonnade()
+  })
+})
+
+
+# new_emit_tiers_callbacks ------------------------------------------------------------
+
+test_that("`new_emit_tiers_callbacks()` snapshot test", {
+  expect_snapshot({
+    new_emit_tiers_callbacks()
+  })
+})
+
+
+# do_emit_tiers -----------------------------------------------------------------------
+
+test_that("`do_emit_tiers()` snapshot test", {
+  expect_snapshot({
+    do_emit_tiers()
+  })
+})
+
+
+# new_emit_pillars_callbacks ----------------------------------------------------------
+
+test_that("`new_emit_pillars_callbacks()` snapshot test", {
+  expect_snapshot({
+    new_emit_pillars_callbacks()
+  })
+})
+
+
+# emit_pillars ------------------------------------------------------------------------
+
+test_that("`emit_pillars()` snapshot test", {
+  expect_snapshot({
+    emit_pillars()
+  })
+})
+
+
+# do_emit_focus_pillars ---------------------------------------------------------------
+
+test_that("`do_emit_focus_pillars()` snapshot test", {
+  expect_snapshot({
+    do_emit_focus_pillars()
+  })
+})
+
+
+# advance_emit_pillars ----------------------------------------------------------------
+
+test_that("`advance_emit_pillars()` snapshot test", {
+  expect_snapshot({
+    advance_emit_pillars()
+  })
+})
+
+
+# do_emit_pillars ---------------------------------------------------------------------
+
+test_that("`do_emit_pillars()` snapshot test", {
+  expect_snapshot({
+    do_emit_pillars()
+  })
+})
+
+
+# compute_used_width ------------------------------------------------------------------
+
+test_that("`compute_used_width()` snapshot test", {
+  expect_snapshot({
+    compute_used_width()
+  })
+})
+
+
+# compute_sub_tier_widths -------------------------------------------------------------
+
+test_that("`compute_sub_tier_widths()` snapshot test", {
+  expect_snapshot({
+    compute_sub_tier_widths()
+  })
+})
+
+
+# advance_pos -------------------------------------------------------------------------
+
+test_that("`advance_pos()` snapshot test", {
+  expect_snapshot({
+    advance_pos()
+  })
+})
+
+
+# emit_extra_cols ---------------------------------------------------------------------
+
+test_that("`emit_extra_cols()` snapshot test", {
+  expect_snapshot({
+    emit_extra_cols()
+  })
+})
+
+
+# fsi ---------------------------------------------------------------------------------
+
+test_that("`fsi()` snapshot test", {
+  expect_snapshot({
+    fsi()
+  })
+})
+
+
+# lro ---------------------------------------------------------------------------------
+
+test_that("`lro()` snapshot test", {
+  expect_snapshot({
+    lro()
+  })
+})
+
+
+# format_colonnade_tier_2 -------------------------------------------------------------
+
+test_that("`format_colonnade_tier_2()` snapshot test", {
+  expect_snapshot({
+    format_colonnade_tier_2()
+  })
+})
+
+
+# new_colonnade_body ------------------------------------------------------------------
+
+test_that("`new_colonnade_body()` snapshot test", {
+  expect_snapshot({
+    new_colonnade_body()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("output test", {
   expect_snapshot({
     ctl_colonnade(rep(list(paste(letters, collapse = " ")), 4), width = Inf)
