@@ -47,12 +47,6 @@ NULL
 
   assign_crayon_styles()
 
-  if (getRversion() < "3.3.0") {
-    strrep <<- strrep_compat
-  } else {
-    rm("strrep", inherits = TRUE)
-  }
-
   # Necessary to re-parse environment variable
   if (Sys.getenv("DEBUGME") != "" && rlang::is_installed("debugme")) {
     # activate_debugme()
