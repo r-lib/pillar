@@ -1,5 +1,20 @@
 # Changelog
 
+## pillar 1.11.1.9019
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#848](https://github.com/r-lib/pillar/issues/848)).
+
+## pillar 1.11.1.9018
+
+### Continuous integration
+
+- Update ccache-action reference.
+
+- Bump action version.
+
 ## pillar 1.11.1.9017
 
 - Ci: Unify fledge.yaml across cynkratemplate and fledge
