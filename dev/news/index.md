@@ -1,5 +1,13 @@
 # Changelog
 
+## pillar 1.11.1.9020
+
+### Continuous integration
+
+- Run on Ubuntu 26.04.
+
+- Align workflows with template.
+
 ## pillar 1.11.1.9019
 
 ### Chore
