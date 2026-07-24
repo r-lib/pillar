@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9021
+
+## Bug fixes
+
+### ci
+
+- Emit empty package matrix when there are no (rev)deps.
+
+## Uncategorized
+
+- Ci: Harden `format-suggest` against `pull_request_target` pwn requests (#93).
+
+
 # pillar 1.11.1.9020
 
 ## Continuous integration
