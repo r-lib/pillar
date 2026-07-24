@@ -123,9 +123,33 @@ tbl_format_setup
 
 The default implementation converts the input to a data frame via `as.data.frame(head(x))`, and returns an object constructed with `new_tbl_format_setup()` that contains the data frame and additional information.
 If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.
+See `vignette("extending")` for examples of extending `tbl_format_setup()` and other formatting generics.
 
 ```{r show_source = TRUE}
 pillar:::tbl_format_setup.tbl
+```
+
+
+### The `setup` argument and the two-pass mechanism
+
+The `setup` argument of `tbl_format_setup()` enables a two-pass formatting mechanism.
+This is particularly useful for lazy tables (e.g., database tables) where computing the total number of rows or the full body can be expensive.
+
+In the first pass, `format_tbl()` calls `tbl_format_setup()` with `setup` set to an expression that evaluates to `NULL`.
+If the method evaluates the `setup` argument and finds `NULL`, it returns a minimal setup object containing only the header information (via `tbl_sum()`).
+`format_tbl()` then passes the formatted header to its `transform` argument.
+When called from `print_tbl()`, `transform = writeLines` displays the header before the body and footer are computed.
+When called from `format.tbl()`, the default `transform = identity` collects the header without displaying it and returns all formatted components together after the second pass.
+
+In the second pass, `format_tbl()` calls `tbl_format_setup()` again, this time passing the setup object from the first call as `setup`.
+The method then computes the full body and footer using the header information from the first pass.
+
+This mechanism is opt-in: if the method does not evaluate the `setup` argument at all, `format_tbl()` assumes that the first call already returned the full setup object and skips the second call.
+The default `tbl_format_setup.tbl()` method supports this two-pass mechanism.
+See `?tbl_format_setup` for details on the `setup` argument.
+
+```{r show_source = TRUE}
+pillar:::format_tbl
 ```
 
 At the core, the internal function `ctl_colonnade()` composes the body.
