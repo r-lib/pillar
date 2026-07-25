@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9022
+
+## Continuous integration
+
+- Lock down `format-suggest` egress (audit → block).
+
+
 # pillar 1.11.1.9021
 
 ## Bug fixes
