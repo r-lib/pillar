@@ -1,5 +1,11 @@
 # Changelog
 
+## pillar 1.11.1.9022
+
+### Continuous integration
+
+- Lock down `format-suggest` egress (audit → block).
+
 ## pillar 1.11.1.9021
 
 ### Bug fixes
