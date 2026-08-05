@@ -1,5 +1,16 @@
 # Changelog
 
+## pillar 1.11.1.9023
+
+- Ci: Run all smoke-test checks even when one fails
+  ([\#97](https://github.com/r-lib/pillar/issues/97)).
+
+- Ci: Apply matrix `env` vars in the workflow, not in custom actions
+  ([\#95](https://github.com/r-lib/pillar/issues/95)).
+
+- Ci: Link the responsible workflow run in snapshot update PRs
+  ([\#96](https://github.com/r-lib/pillar/issues/96)).
+
 ## pillar 1.11.1.9022
 
 ### Continuous integration
