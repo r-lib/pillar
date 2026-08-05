@@ -1,5 +1,27 @@
 # Changelog
 
+## pillar 1.11.1.9024
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#854](https://github.com/r-lib/pillar/issues/854)).
+
+### Continuous integration
+
+- Remove unused pr-commands workflow.
+
+### Uncategorized
+
+- Ci: Give every workflow and job an explicit `permissions` block
+  ([\#103](https://github.com/r-lib/pillar/issues/103)).
+
+- Ci: Pass workflow context through the environment, not into script
+  text ([\#102](https://github.com/r-lib/pillar/issues/102)).
+
+- Ci: Add a Windows arm64 (`windows-11-arm`) check on R-release
+  ([\#99](https://github.com/r-lib/pillar/issues/99)).
+
 ## pillar 1.11.1.9023
 
 - Ci: Run all smoke-test checks even when one fails
