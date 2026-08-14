@@ -4,65 +4,66 @@ template:
 
   includes:
     in_header: |
+      <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script>
       <script defer data-domain="pillar.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 
 url: https://pillar.r-lib.org/
 
 reference:
-  - title: Formatting tables
-    desc: >
-      Override or extend these methods if you want to customize the appearance
-      of your tibble-like object.
-    contents:
-      - tbl_format_setup
-      - tbl_format_header
-      - tbl_format_body
-      - tbl_format_footer
-      - ctl_new_pillar
-      - ctl_new_pillar_list
-      - tbl_sum
-      - tbl_nrow
-      - glimpse
-      - format_glimpse
-  - title: Formatting pillars
-    desc: >
-      Functions and methods to implement pillar support for your data type.
-    contents:
-      - pillar
-      - new_pillar
-      - new_pillar_component
-      - pillar_shaft
-      - starts_with("new_pillar_shaft")
-      - type_sum
-      - format_type_sum
-  - title: Styling
-    desc: >
-      For consistent output.
-    contents:
-      - starts_with("style_")
-      - align
-      - get_extent
-      - new_ornament
-      - new_pillar_title
-      - new_pillar_type
-      - dim_desc
-  - title: Miscellaneous
-    contents:
-      - pillar_options
-      - pillar-package
+- title: Formatting tables
+  desc: >
+    Override or extend these methods if you want to customize the appearance
+    of your tibble-like object.
+  contents:
+  - tbl_format_setup
+  - tbl_format_header
+  - tbl_format_body
+  - tbl_format_footer
+  - ctl_new_pillar
+  - ctl_new_pillar_list
+  - tbl_sum
+  - tbl_nrow
+  - glimpse
+  - format_glimpse
+- title: Formatting pillars
+  desc: >
+    Functions and methods to implement pillar support for your data type.
+  contents:
+  - pillar
+  - new_pillar
+  - new_pillar_component
+  - pillar_shaft
+  - starts_with("new_pillar_shaft")
+  - type_sum
+  - format_type_sum
+- title: Styling
+  desc: >
+    For consistent output.
+  contents:
+  - starts_with("style_")
+  - align
+  - get_extent
+  - new_ornament
+  - new_pillar_title
+  - new_pillar_type
+  - dim_desc
+- title: Miscellaneous
+  contents:
+  - pillar_options
+  - pillar-package
 
 articles:
-  - title: Articles
-    navbar: ~
-    contents:
-    - extending
-    - printing
-    - debugme
+- title: Articles
+  navbar:
+  contents:
+  - extending
+  - printing
+  - debugme
 
-  - title: Moved elsewhere
-    contents:
-    - digits
-    - numbers
+- title: Moved elsewhere
+  contents:
+  - digits
+  - numbers
 
 navbar:
   structure:
