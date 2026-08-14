@@ -1,3 +1,59 @@
+# tibble_opt --------------------------------------------------------------------------
+
+test_that("`tibble_opt()` snapshot test", {
+  expect_snapshot({
+    tibble_opt()
+  })
+})
+
+
+# get_width_print ---------------------------------------------------------------------
+
+test_that("`get_width_print()` snapshot test", {
+  expect_snapshot({
+    get_width_print()
+  })
+})
+
+
+# get_width_glimpse -------------------------------------------------------------------
+
+test_that("`get_width_glimpse()` snapshot test", {
+  expect_snapshot({
+    get_width_glimpse()
+  })
+})
+
+
+# get_n_print -------------------------------------------------------------------------
+
+test_that("`get_n_print()` snapshot test", {
+  expect_snapshot({
+    get_n_print()
+  })
+})
+
+
+# get_max_extra_cols ------------------------------------------------------------------
+
+test_that("`get_max_extra_cols()` snapshot test", {
+  expect_snapshot({
+    get_max_extra_cols()
+  })
+})
+
+
+# get_max_footer_lines ----------------------------------------------------------------
+
+test_that("`get_max_footer_lines()` snapshot test", {
+  expect_snapshot({
+    get_max_footer_lines()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("print_max", {
   value <- 15L
 
