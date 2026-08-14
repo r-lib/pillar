@@ -283,19 +283,40 @@ pillar_shaft.POSIXt <- function(x, ...) {
 
   date <- format(x, format = "%Y-%m-%d")
   time <- format(x, format = "%H:%M:%OS")
+  time_short <- format(x, format = "%H:%M")
+  time_styled <- paste0(" ", style_subtle(time))
+  time_short_styled <- paste0(" ", style_subtle(time_short))
 
   # R < 4.3 don't support is.finite() for POSIXlt
-  time_styled <- paste0(" ", style_subtle(time))
   if (inherits(x, "POSIXct")) {
     time_styled[!is.finite(x)] <- ""
+    time_short_styled[!is.finite(x)] <- ""
   }
 
   datetime <- paste0(date, time_styled)
+  datetime_short <- paste0(date, time_short_styled)
   datetime[is.na(x)] <- NA
+  datetime_short[is.na(x)] <- NA
 
-  new_pillar_shaft_simple(datetime, width = width, align = "left")
+  new_pillar_shaft(
+    list(datetime = datetime, datetime_min = datetime_short),
+    #align = "left",
+    width = get_max_extent(datetime_short),
+    min_width = get_max_extent(datetime),
+    class = "pillar_shaft_posixt"
+  )
 }
 
+#' @export
+format.pillar_shaft_posixt <- function(x, width, ...) {
+  if (get_max_extent(x$datetime_min) <= width) {
+    ornament <- x$datetime_min
+  } else {
+    ornament <- x$datetime
+  }
+
+  new_ornament(ornament, align = "left")
+}
 
 #' @export
 #' @rdname pillar_shaft
