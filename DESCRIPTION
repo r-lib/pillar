@@ -39,6 +39,7 @@ Suggests:
     nanotime,
     nycflights13,
     palmerpenguins,
+    parallel,
     rmarkdown,
     scales,
     stringi,
