@@ -1,5 +1,13 @@
 # Changelog
 
+## pillar 1.11.1.9027
+
+### Bug fixes
+
+#### ci
+
+- Backport kit fixes from `rigraph`, `duckdb-r` and `dm`.
+
 ## pillar 1.11.1.9026
 
 ### Continuous integration
