@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9028
+
+## Chore
+
+- Add parallel to Suggests, used in tests (@MichaelChirico, #858).
+
+
 # pillar 1.11.1.9027
 
 ## Bug fixes
