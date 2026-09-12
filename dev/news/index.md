@@ -1,5 +1,13 @@
 # Changelog
 
+## pillar 1.11.1.9028
+
+### Chore
+
+- Add parallel to Suggests, used in tests
+  ([@MichaelChirico](https://github.com/MichaelChirico),
+  [\#858](https://github.com/r-lib/pillar/issues/858)).
+
 ## pillar 1.11.1.9027
 
 ### Bug fixes
