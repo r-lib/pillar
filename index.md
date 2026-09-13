@@ -1,24 +1,19 @@
 
 <!-- README.md and index.md are generated from README.Rmd. Please edit that file. -->
 
-
-
-
 # pillar
 
 <!-- badges: start -->
+
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![R build status](https://github.com/r-lib/pillar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/pillar/actions)
 [![Coverage status](https://codecov.io/gh/r-lib/pillar/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/pillar)
 [![CRAN status](https://www.r-pkg.org/badges/version/pillar)](https://cran.r-project.org/package=pillar)
 <!-- badges: end -->
 
-
 pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.
 
-
 ## Installation
-
 
 ``` r
 # pillar is installed if you install the tidyverse package:
@@ -28,13 +23,18 @@ install.packages("tidyverse")
 install.packages("pillar")
 ```
 
+Or the development version from GitHub with:
+
+``` r
+# install.packages("pak")
+pak::pak("r-lib/pillar")
+```
 
 ## Usage
 
 pillar is a developer-facing package that is not designed for end-users.
 It powers the `print()` and `format()` methods for [tibble](https://tibble.tidyverse.org/)s.
-It also and defines generics and helpers that are useful for package authors who create custom vector classes (see https://github.com/krlmlr/awesome-vctrs#readme for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or [sf](https://r-spatial.github.io/sf/)).
-
+It also and defines generics and helpers that are useful for package authors who create custom vector classes (see <https://github.com/krlmlr/awesome-vctrs#readme> for examples) or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or [sf](https://r-spatial.github.io/sf/)).
 
 ``` r
 library(pillar)
@@ -69,7 +69,6 @@ tbl_format_setup(tibble::tibble(x))
 The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which lets pillar do all the formatting work.
 Packages that implement a data type to be used in a tibble column can customize the display by implementing a `pillar_shaft()` method.
 
-
 ``` r
 library(pillar)
 
@@ -90,11 +89,9 @@ pillar(percent)
 
 See `vignette("pillar", package = "vctrs")` for details.
 
-
 ## Custom table classes
 
 pillar provides various extension points for customizing how a tibble-like class is printed.
-
 
 ``` r
 tbl <- vctrs::new_data_frame(list(a = 1:3), class = c("my_tbl", "tbl"))
@@ -113,4 +110,3 @@ tbl
 ```
 
 See `vignette("extending", package = "pillar")` for a walkthrough of the options.
-
