@@ -27,53 +27,46 @@
 #' @section Options for the pillar package:
 #'
 #' - `width`: The width option controls the output width.
-#'   Setting `options(pillar.width = )` to a larger value
-#'   will lead to printing in multiple tiers (stacks).
+#'   Setting `options(pillar.width = )` to a larger value will lead to printing in multiple tiers (stacks).
 #'
 pillar_options <- list2(
   #' - `pillar.print_max`: Maximum number of rows printed, default: `20`.
   #'   Set to \code{Inf} to always print all rows.
-  #'   For compatibility reasons, `getOption("tibble.print_max")` and
-  #'   `getOption("dplyr.print_max")` are also consulted,
+  #'   For compatibility reasons, `getOption("tibble.print_max")` and `getOption("dplyr.print_max")` are also consulted,
   #'   this will be soft-deprecated in pillar v2.0.0.
   print_max = make_option_impl(
     getOption("pillar.print_max", default = tibble_opt("print_max", 20L))
   ),
-  #' - `pillar.print_min`: Number of rows printed if the table has more than
-  #'   `print_max` rows, default: `10`.
-  #'   For compatibility reasons, `getOption("tibble.print_min")` and
-  #'   `getOption("dplyr.print_min")` are also consulted,
+  #' - `pillar.print_min`: Number of rows printed if the table has more than `print_max` rows, default: `10`.
+  #'   For compatibility reasons, `getOption("tibble.print_min")` and `getOption("dplyr.print_min")` are also consulted,
   #'   this will be soft-deprecated in pillar v2.0.0.
   print_min = make_option_impl(
     getOption("pillar.print_min", default = tibble_opt("print_min", 10L))
   ),
-  #' - `pillar.width`: Output width. Default: `NULL`
-  #'   (use `getOption("width")`).
-  #'   This can be larger than `getOption("width")`, in this case the output
-  #'   of the table's body is distributed over multiple tiers for wide tibbles.
-  #'   For compatibility reasons, `getOption("tibble.width")` and
-  #'   `getOption("dplyr.width")` are also consulted,
+  #' - `pillar.width`: Output width.
+  #'   Default: `NULL` (use `getOption("width")`).
+  #'   This can be larger than `getOption("width")`,
+  #'   in this case the output of the table's body is distributed over multiple tiers for wide tibbles.
+  #'   For compatibility reasons, `getOption("tibble.width")` and `getOption("dplyr.width")` are also consulted,
   #'   this will be soft-deprecated in pillar v2.0.0.
   width = make_option_impl(
     getOption("pillar.width", default = tibble_opt("width", getOption("width")))
   ),
-  #' - `pillar.max_footer_lines`: The maximum number of lines in the footer,
-  #'     default: `7`. Set to `Inf` to turn off truncation of footer lines.
-  #'     The `max_extra_cols` option still limits
-  #'     the number of columns printed.
+  #' - `pillar.max_footer_lines`: The maximum number of lines in the footer, default: `7`.
+  #'     Set to `Inf` to turn off truncation of footer lines.
+  #'     The `max_extra_cols` option still limits the number of columns printed.
   max_footer_lines = make_option_impl(
     getOption("pillar.max_footer_lines", default = 7L)
   ),
-  #' - `pillar.max_extra_cols`: The maximum number of columns printed in the footer,
-  #'     default: `100`. Set to `Inf` to show all columns.
-  #'     Set the more predictable `max_footer_lines` to control the number
-  #'     of footer lines instead.
+  #' - `pillar.max_extra_cols`: The maximum number of columns printed in the footer, default: `100`.
+  #'     Set to `Inf` to show all columns.
+  #'     Set the more predictable `max_footer_lines` to control the number of footer lines instead.
   max_extra_cols = make_option_impl(
     getOption("pillar.max_extra_cols", default = tibble_opt("max_extra_cols", 100L))
   ),
-  #' - `pillar.bold`: Use bold font, e.g. for column headers? This currently
-  #'     defaults to `FALSE`, because many terminal fonts have poor support for
-  #'     bold fonts.
+  #' - `pillar.bold`: Use bold font, e.g. for column headers?
+  #'     This currently defaults to `FALSE`,
+  #'     because many terminal fonts have poor support for bold fonts.
   bold = make_option_impl(
     getOption("pillar.bold", default = FALSE)
   ),
@@ -82,8 +75,8 @@ pillar_options <- list2(
   subtle = make_option_impl(
     getOption("pillar.subtle", default = TRUE)
   ),
-  #' - `pillar.subtle_num`: Use subtle style for insignificant digits? Default:
-  #'     `FALSE`, is also affected by the `subtle` option.
+  #' - `pillar.subtle_num`: Use subtle style for insignificant digits?
+  #'     Default: `FALSE`, is also affected by the `subtle` option.
   subtle_num = make_option_impl(
     getOption("pillar.subtle_num", default = FALSE)
   ),
@@ -91,9 +84,8 @@ pillar_options <- list2(
   neg = make_option_impl(
     getOption("pillar.neg", default = TRUE)
   ),
-  #' - `pillar.sigfig`: The number of significant digits that will be printed and
-  #'     highlighted, default: `3`. Set the `subtle` option to `FALSE` to
-  #'     turn off highlighting of significant digits.
+  #' - `pillar.sigfig`: The number of significant digits that will be printed and highlighted, default: `3`.
+  #'     Set the `subtle` option to `FALSE` to turn off highlighting of significant digits.
   sigfig = make_option_impl(option_name = "pillar.sigfig", {
     sigfig <- getOption("pillar.sigfig", default = 3L)
     if (!is.numeric(sigfig) || length(sigfig) != 1 || sigfig < 1L) {
@@ -103,17 +95,15 @@ pillar_options <- list2(
     }
     sigfig
   }),
-  #' - `pillar.min_title_chars`: The minimum number of characters for the column
-  #'     title, default: `20`.  Column titles may be truncated up to that width to
-  #'     save horizontal space. Set to `Inf` to turn off truncation of column
-  #'     titles.
+  #' - `pillar.min_title_chars`: The minimum number of characters for the column title,
+  #'     default: `20`.  Column titles may be truncated up to that width to save horizontal space.
+  #'     Set to `Inf` to turn off truncation of column titles.
   min_title_chars = make_option_impl(
     getOption("pillar.min_title_chars", default = 20L)
   ),
-  #' - `pillar.min_chars`: The minimum number of characters wide to
-  #'     display character columns, default: `3`.  Character columns may be
-  #'     truncated up to that width to save horizontal space. Set to `Inf` to
-  #'     turn off truncation of character columns.
+  #' - `pillar.min_chars`: The minimum number of characters wide to display character columns,
+  #'     default: `3`.  Character columns may be truncated up to that width to save horizontal space.
+  #'     Set to `Inf` to turn off truncation of character columns.
   min_chars = make_option_impl(option_name = "pillar.min_chars", {
     min_chars <- getOption("pillar.min_chars", default = 3L)
     if (!is.numeric(min_chars) || length(min_chars) != 1 || min_chars < 3L) {
@@ -129,23 +119,22 @@ pillar_options <- list2(
     getOption("pillar.max_dec_width", default = 13L)
   ),
   #' - `pillar.bidi`: Set to `TRUE` for experimental support for bidirectional scripts.
-  #'     Default: `FALSE`. When this option is set, "left right override"
-  #'     and "first strong isolate"
+  #'     Default: `FALSE`.
+  #'     When this option is set, "left right override" and "first strong isolate"
   #'     [Unicode controls](https://www.w3.org/International/questions/qa-bidi-unicode-controls)
   #'     are inserted to ensure that text appears in its intended direction
   #'     and that the column headings correspond to the correct columns.
   bidi = make_option_impl(
     getOption("pillar.bidi", default = FALSE)
   ),
-  #' - `pillar.superdigit_sep`: The string inserted between superscript digits
-  #'   and column names in the footnote. Defaults to a `"\u200b"`, a zero-width
-  #'   space, on UTF-8 platforms, and to `": "` on non-UTF-8 platforms.
+  #' - `pillar.superdigit_sep`: The string inserted between superscript digits and column names in the footnote.
+  #'   Defaults to a `"\u200b"`, a zero-width space, on UTF-8 platforms,
+  #'   and to `": "` on non-UTF-8 platforms.
   superdigit_sep = make_option_impl(
     getOption("pillar.superdigit_sep", default = superdigit_sep_default())
   ),
-  #' - `pillar.advice`: Should advice be displayed in the footer when columns or rows
-  #'   are missing from the output? Defaults to `TRUE` for interactive sessions,
-  #'   and to `FALSE` otherwise.
+  #' - `pillar.advice`: Should advice be displayed in the footer when columns or rows are missing from the output?
+  #'   Defaults to `TRUE` for interactive sessions, and to `FALSE` otherwise.
   advice = make_option_impl(
     getOption("pillar.advice", default = is_interactive())
   ),

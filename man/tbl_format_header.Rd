@@ -19,16 +19,12 @@ A character vector.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-For easier customization, the formatting of a tibble is split
-into three components: header, body, and footer.
-The \code{tbl_format_header()} method is responsible for formatting the header
-of a tibble.
+For easier customization, the formatting of a tibble is split into three components: header, body, and footer.
+The \code{tbl_format_header()} method is responsible for formatting the header of a tibble.
 
-Override this method if you need to change the appearance
-of the entire header.
+Override this method if you need to change the appearance of the entire header.
 If you only need to change or extend the components shown in the header,
-override or extend \code{\link[=tbl_sum]{tbl_sum()}} for your class which is called by the
-default method.
+override or extend \code{\link[=tbl_sum]{tbl_sum()}} for your class which is called by the default method.
 }
 \examples{
 \dontshow{if (rlang::is_installed(c("palmerpenguins", "tibble"))) withAutoprint(\{ # examplesIf}
