@@ -13,6 +13,34 @@
 
 pillar provides tools for styling columns of data, artfully using colour and unicode characters to guide the eye.
 
+## Goals and non-goals
+
+pillar aims to:
+
+- Format one column as a *pillar*:
+  a title, an abbreviation of the column type, and a body that uses colour and unicode characters to guide the eye.
+- Fit a table into a given width:
+  lay out the columns that fit, distribute them over several tiers if the width allows it,
+  and summarise the remaining columns in the footer.
+- Give vector classes a say in how their column looks,
+  through `pillar_shaft()`, `type_sum()` and the `new_pillar_shaft_*()` helpers.
+- Give table classes a say in how the whole table looks,
+  through `tbl_sum()`, `tbl_format_setup()` and the `tbl_format_header()`, `tbl_format_body()` and `tbl_format_footer()` generics.
+- Format table-like objects that are not data frames:
+  the default setup only needs `head(x)`, so a lazy table can be printed without materialising it.
+
+It is explicitly not trying to:
+
+- Serve end-users:
+  pillar is a developer-facing package,
+  and the entry point for most people is the `print()` method of the table class they are using.
+- Define the classes it formats:
+  columns are vctrs vectors and tables are `"tbl"` subclasses, both defined elsewhere;
+  `num()` and `char()` only attach formatting options to a vector that already exists.
+- Reorder or skip columns to pack more of them in:
+  pillars are shown from left to right with no holes,
+  so a first column that consumes all the available space pushes the others into the footer.
+
 ## Installation
 
 ``` r
