@@ -1,5 +1,24 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9029
+
+## Features
+
+### ci
+
+- Align the `revdep2`, `revdep4` and `revdepx` subsystems with `rigraph`.
+
+## Testing
+
+- Skip the `Surv2` snapshot on the survival versions that render … (@krlmlr, #864).
+
+## Uncategorized
+
+- Fix(ci): Survive an archived CRAN package, and install it from where it still lives.
+
+- Ci: Fail the roxygenize step on roxygen2 warnings (#111).
+
+
 # pillar 1.11.1.9028
 
 ## Chore
