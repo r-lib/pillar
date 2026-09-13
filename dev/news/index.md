@@ -1,5 +1,28 @@
 # Changelog
 
+## pillar 1.11.1.9029
+
+### Features
+
+#### ci
+
+- Align the `revdep2`, `revdep4` and `revdepx` subsystems with
+  `rigraph`.
+
+### Testing
+
+- Skip the `Surv2` snapshot on the survival versions that render …
+  ([@krlmlr](https://github.com/krlmlr),
+  [\#864](https://github.com/r-lib/pillar/issues/864)).
+
+### Uncategorized
+
+- Fix(ci): Survive an archived CRAN package, and install it from where
+  it still lives.
+
+- Ci: Fail the roxygenize step on roxygen2 warnings
+  ([\#111](https://github.com/r-lib/pillar/issues/111)).
+
 ## pillar 1.11.1.9028
 
 ### Chore
