@@ -9,17 +9,17 @@ align(x, width = NULL, align = c("left", "right"), space = " ")
 \arguments{
 \item{x}{A character vector}
 
-\item{width}{The width that each string is padded to. If \code{NULL}, the maximum
-display width of the character vector is used (see \code{\link[=get_max_extent]{get_max_extent()}}).}
+\item{width}{The width that each string is padded to.
+If \code{NULL}, the maximum display width of the character vector is used (see \code{\link[=get_max_extent]{get_max_extent()}}).}
 
-\item{align}{How should strings be aligned? If \code{align = left} then padding
-appears on the \code{right}, and vice versa.}
+\item{align}{How should strings be aligned?
+If \code{align = left} then padding appears on the \code{right}, and vice versa.}
 
 \item{space}{What character should be used for the padding?}
 }
 \description{
-Facilitates easy alignment of strings within a character vector. Designed to
-help implementers of formatters for custom data types.
+Facilitates easy alignment of strings within a character vector.
+Designed to help implementers of formatters for custom data types.
 }
 \examples{
 align(c("abc", "de"), align = "left")

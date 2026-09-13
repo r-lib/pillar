@@ -9,8 +9,8 @@ pillar(x, title = NULL, width = NULL, ...)
 \arguments{
 \item{x}{A vector to format.}
 
-\item{title}{An optional title for the column. The title will be
-used "as is", no quoting will be applied.}
+\item{title}{An optional title for the column.
+The title will be used "as is", no quoting will be applied.}
 
 \item{width}{Default width, optional.}
 
@@ -26,16 +26,14 @@ A pillar consists of arbitrary components.
 The \code{pillar()} constructor uses \code{title}, \code{type}, and \code{data}.
 \itemize{
 \item \code{title} via \code{\link[=new_pillar_title]{new_pillar_title()}}
-\item \code{type} via \code{\link[=new_pillar_type]{new_pillar_type()}}, which calls \code{\link[=type_sum]{type_sum()}}
-internally
+\item \code{type} via \code{\link[=new_pillar_type]{new_pillar_type()}}, which calls \code{\link[=type_sum]{type_sum()}} internally
 \item \code{data} via \code{\link[=pillar_shaft]{pillar_shaft()}}
 }
 
 All components are formatted via \code{\link[=format]{format()}} when displaying the pillar.
 A \code{width} argument is passed to each \code{format()} call.
 
-As of pillar 1.5.0, \code{pillar()} returns \code{NULL} if the width is insufficient
-to display the data.
+As of pillar 1.5.0, \code{pillar()} returns \code{NULL} if the width is insufficient to display the data.
 }
 \examples{
 x <- 123456789 * (10^c(-1, -3, -5, NA, -8, -10))
