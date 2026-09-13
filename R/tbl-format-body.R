@@ -4,11 +4,11 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' For easier customization, the formatting of a tibble is split into three components: header, body, and footer.
-#'  The `tbl_format_body()` method is responsible for formatting the body of a tibble.
+#' The `tbl_format_body()` method is responsible for formatting the body of a tibble.
 #'
 #' Override this method if you need to change the appearance of all parts of the body.
-#'  If you only need to change the appearance of a single data type,
-#'  override [vctrs::vec_ptype_abbr()] and [pillar_shaft()] for this data type.
+#' If you only need to change the appearance of a single data type,
+#' override [vctrs::vec_ptype_abbr()] and [pillar_shaft()] for this data type.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x A tibble-like object.

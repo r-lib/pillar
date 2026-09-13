@@ -1,13 +1,13 @@
 #' Provide a succinct summary of an object
 #'
 #' `type_sum()` gives a brief summary of object type.
-#'  Objects that commonly occur in a data frame should return a string with four or less characters.
-#'  For most inputs, the argument is forwarded to [vctrs::vec_ptype_abbr()].
+#' Objects that commonly occur in a data frame should return a string with four or less characters.
+#' For most inputs, the argument is forwarded to [vctrs::vec_ptype_abbr()].
 #'
 #' When formatting a pillar,
-#'  `type_sum()` will be called on a slice of the column vector.
-#'  The formatted type should only depend on the type and not on the data,
-#'  to avoid confusion.
+#' `type_sum()` will be called on a slice of the column vector.
+#' The formatted type should only depend on the type and not on the data,
+#' to avoid confusion.
 #'
 #' @param x an object to summarise.
 #'   Generally only methods of atomic vectors and variants have been implemented.
@@ -64,12 +64,12 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 
 #' @description
 #' `obj_sum()` also includes the size (but not the shape) of the object
-#'  if [vctrs::vec_is()] is `TRUE`.
-#'  It should always return a string (a character vector of length one).
-#'  As of pillar v1.6.1, the default method forwards to [vctrs::vec_ptype_abbr()] for vectors and to [type_sum()] for other objects.
-#'  Previous versions always forwarded to [type_sum()].
-#'  An attribute named `"short"` in the return value will be picked up by the [pillar_shaft()] method for lists,
-#'  and used if space is limited.
+#' if [vctrs::vec_is()] is `TRUE`.
+#' It should always return a string (a character vector of length one).
+#' As of pillar v1.6.1, the default method forwards to [vctrs::vec_ptype_abbr()] for vectors and to [type_sum()] for other objects.
+#' Previous versions always forwarded to [type_sum()].
+#' An attribute named `"short"` in the return value will be picked up by the [pillar_shaft()] method for lists,
+#' and used if space is limited.
 #'
 #' @examples
 #' obj_sum(1:10)
@@ -109,9 +109,9 @@ obj_sum.AsIs <- function(x) {
 
 #' @description
 #' `size_sum()` is called by `obj_sum()` to format the size of the object.
-#'  It should always return a string (a character vector of length one),
-#'  it can be an empty string `""` to omit size information,
-#'  this is what the default method does for scalars.
+#' It should always return a string (a character vector of length one),
+#' it can be an empty string `""` to omit size information,
+#' this is what the default method does for scalars.
 #'
 #' @keywords internal
 #' @examples

@@ -2,34 +2,34 @@
 #'
 #' @description
 #' `tbl_format_setup()` is called by [format.tbl()].
-#'  This method collects information that is common to the header, body, and footer parts of a tibble.
-#'  Examples:
+#' This method collects information that is common to the header, body, and footer parts of a tibble.
+#' Examples:
 #'
 #' - the dimensions sometimes are reported both in the header
 #' and (implicitly) in the footer of a tibble;
 #' - the columns shown in the body decide which columns are shown in the footer.
 #'
 #' This information is computed in `tbl_format_setup()`.
-#'  The result is passed on to the [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()] methods.
-#'  If you need to customize parts of the printed output independently,
-#'  override these methods instead.
+#' The result is passed on to the [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()] methods.
+#' If you need to customize parts of the printed output independently,
+#' override these methods instead.
 #'
 #' By checking the `setup` argument,
-#'  you can return an object that is suitable for a call to [tbl_format_header()] if `setup` is `NULL`.
-#'  In this case, the method is called a second time with the return value of the first call as `setup`.
+#' you can return an object that is suitable for a call to [tbl_format_header()] if `setup` is `NULL`.
+#' In this case, the method is called a second time with the return value of the first call as `setup`.
 #'
 #' @details
 #' Extend this method to prepare information that is used in several parts of the printed output of a tibble-like object,
-#'  or to collect additional arguments passed via `...` to [print.tbl()] or [format.tbl()].
+#' or to collect additional arguments passed via `...` to [print.tbl()] or [format.tbl()].
 #'
 #' We expect that `tbl_format_setup()` is extended only rarely,
-#'  and overridden only in exceptional circumstances, if at all.
-#'  If you override this method,
-#'  you must also implement [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()] for your class.
+#' and overridden only in exceptional circumstances, if at all.
+#' If you override this method,
+#' you must also implement [tbl_format_header()], [tbl_format_body()], and [tbl_format_footer()] for your class.
 #'
 #' Implementing a method allows to override printing and formatting of the entire object
-#'  without overriding the [print()] and [format()] methods directly.
-#'  This allows to keep the logic of the `width` and `n` arguments.
+#' without overriding the [print()] and [format()] methods directly.
+#' This allows to keep the logic of the `width` and `n` arguments.
 #'
 #' @param x
 #'   An object.
@@ -103,7 +103,7 @@ tbl_format_setup_dispatch <- function(x, width, ..., n, max_extra_cols, max_foot
 
 #' @details
 #' The default method for the `"tbl"` class collects information for standard printing for tibbles.
-#'  See [new_tbl_format_setup()] for details on the returned object.
+#' See [new_tbl_format_setup()] for details on the returned object.
 #'
 #' @rdname tbl_format_setup
 #' @export
@@ -224,10 +224,10 @@ tbl_nrow.data.frame <- tbl_nrow.tbl
 #'
 #' @description
 #' The object returned from the default method of [tbl_format_setup()] is an object with a `"class"` attribute
-#'  and the elements described in the "Parameters" section.
+#' and the elements described in the "Parameters" section.
 #'
 #' Named elements can be added to such objects without affecting the behavior.
-#'  Do not modify existing elements.
+#' Do not modify existing elements.
 #'
 #' @param x The input object unchanged.
 #' @param df A data frame representation of the intended output,
