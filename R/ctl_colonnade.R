@@ -245,8 +245,8 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
   # Side effect: populates focus_formatted_list and focus_extra_cols
   do_emit_pillars(x[focus], tier_widths, cb_focus, is_focus = TRUE)
 
-  # Can't show focus pillars that don't fit, but need to iterate
-  # to emit extra columns in the correct order
+  # Can't show focus pillars that don't fit,
+  # but need to iterate to emit extra columns in the correct order
   length(focus_extra_cols) <- length(focus)
   n_focus_shown <- length(focus_top_level_end_idx)
 
@@ -255,21 +255,19 @@ do_emit_focus_pillars <- function(x, tier_widths, cb, focus) {
 
   focus_top_level_start_idx <- vec_lag(focus_top_level_end_idx + 1L, default = 1L)
 
-  # Apply similar strategy as in do_emit_pillars(), but ensure that
-  # focus pillars are shown
+  # Apply similar strategy as in do_emit_pillars(),
+  # but ensure that focus pillars are shown
   widths_focus <- map_int(focus_formatted_list, `[[`, "max_extent")
   rev <- distribute_pillars_rev(widths_focus, tier_widths)
   stopifnot(!anyNA(rev$tier))
 
-  # This indicates the limit until which we expand non-focus column
-  # before the current focus column:
+  # This indicates the limit until which we expand non-focus column before the current focus column:
   rev$offset_before <- pmax(rev$offset_after - rev$width - 1L, 0L)
   rev_before <- rev[focus_top_level_start_idx, ]
   stopifnot(nrow(rev_before) == n_focus_shown)
 
-  # This indicates how far the current focus column (with all sub-pillars)
-  # can extend. We use it for convenience to use the same logic as
-  # do_emit_pillars().
+  # This indicates how far the current focus column (with all sub-pillars) can extend.
+  # We use it for convenience to use the same logic as do_emit_pillars().
   rev_after <- rev[focus_top_level_end_idx, ]
   stopifnot(nrow(rev_after) == n_focus_shown)
 
@@ -411,9 +409,8 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
   }
 
   # We can proceed cautiously to the next level if space permits.
-  # For each sub-pillar we allow at most as much space so that
-  # we can print all first components of all remaining pillars
-  # with the minimum width
+  # For each sub-pillar we allow at most as much space
+  # so that we can print all first components of all remaining pillars with the minimum width
   min_widths <- map_int(pillar_list, pillar_get_min_width)
   rev <- distribute_pillars_rev(min_widths, tier_widths)
   stopifnot(!anyNA(rev$tier))
@@ -450,8 +447,7 @@ do_emit_pillars <- function(x, tier_widths, cb, title = NULL, first_pillar = NUL
     }
   }
 
-  # We emit late to ensure that extra columns of compound pillars
-  # appear before top-level extra columns.
+  # We emit late to ensure that extra columns of compound pillars appear before top-level extra columns.
   emit_extra_cols(extra, x, title, cb)
 
   list(tiers = tier_pos - 1L, width = x_pos)

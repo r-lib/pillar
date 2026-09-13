@@ -67,8 +67,7 @@ format_tbl <- function(
   # We detect that by checking if the `setup` argument has been evaluated.
   setup_used <- FALSE
 
-  # In either case, we expect a `setup` object that can be passed to `tbl_format_header()`
-  # as a return from this call.
+  # In either case, we expect a `setup` object that can be passed to `tbl_format_header()` as a return from this call.
   setup <- tbl_format_setup(
     x,
     width = width,
@@ -88,10 +87,9 @@ format_tbl <- function(
   header <- transform(tbl_format_header(x, setup))
 
   # If the implementation did not request the `setup` argument in the first call,
-  # the default behavior before 1.9.1 is used: the first call already
-  # has returned the full setup object.
-  # Otherwise, we assume that a second call is required, and we pass it the
-  # setup object returned from the first call.
+  # the default behavior before 1.9.1 is used: the first call already has returned the full setup object.
+  # Otherwise, we assume that a second call is required,
+  # and we pass it the setup object returned from the first call.
   if (setup_used) {
     setup <- tbl_format_setup(
       x,
@@ -105,8 +103,7 @@ format_tbl <- function(
     )
   }
 
-  # In either case, the `setup` object is now complete and can be used to format the body
-  # and the footer.
+  # In either case, the `setup` object is now complete and can be used to format the body and the footer.
   body <- transform(tbl_format_body(x, setup))
   footer <- transform(tbl_format_footer(x, setup))
   c(header, body, footer)

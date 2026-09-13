@@ -59,18 +59,17 @@ format_full_pillar_type <- function(x) {
 
 #' Format a type summary
 #'
-#' Called on values returned from [type_sum()] for defining the description
-#' in the capital.
+#' Called on values returned from [type_sum()] for defining the description in the capital.
 #'
 #' Two methods are implemented by default for this generic: the default method,
 #' and the method for the `"AsIs"` class.
-#' Return `I("type")` from your [type_sum()] implementation to format the type
-#' without angle brackets.
+#' Return `I("type")` from your [type_sum()] implementation to format the type without angle brackets.
 #' For even more control over the formatting, implement your own method.
 #'
 #' @param x A return value from `type_sum()`
-#' @param width The desired total width. If the returned string still is
-#'   wider, it will be trimmed. Can be `NULL`.
+#' @param width The desired total width.
+#'   If the returned string still is wider, it will be trimmed.
+#'   Can be `NULL`.
 #' @inheritParams rlang::args_dots_used
 #'
 #' @export

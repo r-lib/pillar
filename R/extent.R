@@ -1,7 +1,6 @@
 #' Calculate display width
 #'
-#' `get_extent()` calculates the display width for each string in a character
-#' vector.
+#' `get_extent()` calculates the display width for each string in a character vector.
 #'
 #' @param x A character vector.
 #' @export
@@ -22,8 +21,8 @@ get_extent <- function(x) {
 }
 
 #' @description
-#' `get_max_extent()` calculates the maximum display width of all strings in a
-#' character vector, zero for empty vectors.
+#' `get_max_extent()` calculates the maximum display width of all strings in a character vector,
+#' zero for empty vectors.
 #' @export
 #' @rdname get_extent
 #' @examples
@@ -34,14 +33,14 @@ get_max_extent <- function(x) {
 
 #' Alignment helper
 #'
-#' Facilitates easy alignment of strings within a character vector. Designed to
-#' help implementers of formatters for custom data types.
+#' Facilitates easy alignment of strings within a character vector.
+#' Designed to help implementers of formatters for custom data types.
 #'
 #' @param x A character vector
-#' @param width The width that each string is padded to. If `NULL`, the maximum
-#'   display width of the character vector is used (see [get_max_extent()]).
-#' @param align How should strings be aligned? If `align = left` then padding
-#'   appears on the `right`, and vice versa.
+#' @param width The width that each string is padded to.
+#'   If `NULL`, the maximum display width of the character vector is used (see [get_max_extent()]).
+#' @param align How should strings be aligned?
+#'   If `align = left` then padding appears on the `right`, and vice versa.
 #' @param space What character should be used for the padding?
 #' @export
 #' @examples

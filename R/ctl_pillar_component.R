@@ -4,8 +4,7 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' `new_pillar_component()` constructs an object of class `"pillar_component"`.
-#' It is used by custom [ctl_new_pillar()] methods to create pillars with
-#' nonstandard components.
+#' It is used by custom [ctl_new_pillar()] methods to create pillars with nonstandard components.
 #'
 #' @details
 #' Objects of class `"pillar"` are internally a named lists of their components.
@@ -14,8 +13,7 @@
 #' Each component is a `"pillar_component"` object.
 #'
 #' This class captures contents that can be fitted in a simple column.
-#' Compound columns are represented by multiple pillar objects, each with their
-#' own components.
+#' Compound columns are represented by multiple pillar objects, each with their own components.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x A bare list of length one (for `new_pillar_component()`),
