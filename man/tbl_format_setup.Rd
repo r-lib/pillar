@@ -31,25 +31,25 @@ tbl_format_setup(
 \item{x}{An object.}
 
 \item{width}{Actual width for printing, a numeric greater than zero.
-This argument is mandatory for all implementations of this method.}
+ This argument is mandatory for all implementations of this method.}
 
 \item{...}{Extra arguments to \code{\link[=print.tbl]{print.tbl()}} or \code{\link[=format.tbl]{format.tbl()}}.}
 
 \item{setup}{This generic is first called with \code{setup = NULL} .
-If the method \emph{evaluates} this argument, the return value will only be used in a call to \code{\link[=tbl_format_header]{tbl_format_header()}},
+ If the method \emph{evaluates} this argument, the return value will only be used in a call to \code{\link[=tbl_format_header]{tbl_format_header()}},
 and after that, a second call to this generic will be made with the return value of the first call as \code{setup}
 which then will be used in calls to \code{\link[=tbl_format_body]{tbl_format_body()}} and \code{\link[=tbl_format_footer]{tbl_format_footer()}}.
-This allows displaying the header before starting the computation required for the body and footer.}
+ This allows displaying the header before starting the computation required for the body and footer.}
 
 \item{n}{Actual number of rows to print.
-No \link[=pillar_options]{options} should be considered by implementations of this method.}
+ No \link[=pillar_options]{options} should be considered by implementations of this method.}
 
 \item{max_extra_cols}{Number of columns to print abbreviated information for,
 if the width is too small for the entire tibble.
-No \link[=pillar_options]{options} should be considered by implementations of this method.}
+ No \link[=pillar_options]{options} should be considered by implementations of this method.}
 
 \item{max_footer_lines}{Maximum number of lines for the footer.
-No \link[=pillar_options]{options} should be considered by implementations of this method.}
+ No \link[=pillar_options]{options} should be considered by implementations of this method.}
 
 \item{focus}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
@@ -60,8 +60,8 @@ An object that can be passed as \code{setup} argument to \code{\link[=tbl_format
 }
 \description{
 \code{tbl_format_setup()} is called by \code{\link[=format.tbl]{format.tbl()}}.
-This method collects information that is common to the header, body, and footer parts of a tibble.
-Examples:
+ This method collects information that is common to the header, body, and footer parts of a tibble.
+ Examples:
 \itemize{
 \item the dimensions sometimes are reported both in the header
 and (implicitly) in the footer of a tibble;
@@ -69,13 +69,13 @@ and (implicitly) in the footer of a tibble;
 }
 
 This information is computed in \code{tbl_format_setup()}.
-The result is passed on to the \code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}} methods.
-If you need to customize parts of the printed output independently,
+ The result is passed on to the \code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}} methods.
+ If you need to customize parts of the printed output independently,
 override these methods instead.
 
 By checking the \code{setup} argument,
 you can return an object that is suitable for a call to \code{\link[=tbl_format_header]{tbl_format_header()}} if \code{setup} is \code{NULL}.
-In this case, the method is called a second time with the return value of the first call as \code{setup}.
+ In this case, the method is called a second time with the return value of the first call as \code{setup}.
 }
 \details{
 Extend this method to prepare information that is used in several parts of the printed output of a tibble-like object,
@@ -83,15 +83,15 @@ or to collect additional arguments passed via \code{...} to \code{\link[=print.t
 
 We expect that \code{tbl_format_setup()} is extended only rarely,
 and overridden only in exceptional circumstances, if at all.
-If you override this method,
+ If you override this method,
 you must also implement \code{\link[=tbl_format_header]{tbl_format_header()}}, \code{\link[=tbl_format_body]{tbl_format_body()}}, and \code{\link[=tbl_format_footer]{tbl_format_footer()}} for your class.
 
 Implementing a method allows to override printing and formatting of the entire object
 without overriding the \code{\link[=print]{print()}} and \code{\link[=format]{format()}} methods directly.
-This allows to keep the logic of the \code{width} and \code{n} arguments.
+ This allows to keep the logic of the \code{width} and \code{n} arguments.
 
 The default method for the \code{"tbl"} class collects information for standard printing for tibbles.
-See \code{\link[=new_tbl_format_setup]{new_tbl_format_setup()}} for details on the returned object.
+ See \code{\link[=new_tbl_format_setup]{new_tbl_format_setup()}} for details on the returned object.
 }
 \examples{
 \dontshow{if (rlang::is_installed(c("palmerpenguins", "tibble"))) withAutoprint(\{ # examplesIf}

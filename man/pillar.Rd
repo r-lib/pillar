@@ -10,7 +10,7 @@ pillar(x, title = NULL, width = NULL, ...)
 \item{x}{A vector to format.}
 
 \item{title}{An optional title for the column.
-The title will be used "as is", no quoting will be applied.}
+ The title will be used "as is", no quoting will be applied.}
 
 \item{width}{Default width, optional.}
 
@@ -18,12 +18,12 @@ The title will be used "as is", no quoting will be applied.}
 }
 \description{
 \code{pillar()} creates an object that formats a vector.
-The output uses one row for a title (if given), one row for the type,
+ The output uses one row for a title (if given), one row for the type,
 and \code{vec_size(x)} rows for the data.
 }
 \details{
 A pillar consists of arbitrary components.
-The \code{pillar()} constructor uses \code{title}, \code{type}, and \code{data}.
+ The \code{pillar()} constructor uses \code{title}, \code{type}, and \code{data}.
 \itemize{
 \item \code{title} via \code{\link[=new_pillar_title]{new_pillar_title()}}
 \item \code{type} via \code{\link[=new_pillar_type]{new_pillar_type()}}, which calls \code{\link[=type_sum]{type_sum()}} internally
@@ -31,7 +31,7 @@ The \code{pillar()} constructor uses \code{title}, \code{type}, and \code{data}.
 }
 
 All components are formatted via \code{\link[=format]{format()}} when displaying the pillar.
-A \code{width} argument is passed to each \code{format()} call.
+ A \code{width} argument is passed to each \code{format()} call.
 
 As of pillar 1.5.0, \code{pillar()} returns \code{NULL} if the width is insufficient to display the data.
 }
