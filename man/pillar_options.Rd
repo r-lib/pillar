@@ -13,55 +13,55 @@ These options can be set via \code{\link[=options]{options()}} and queried via \
 
 \itemize{
 \item \code{width}: The width option controls the output width.
-Setting \code{options(pillar.width = )} to a larger value will lead to printing in multiple tiers (stacks).
+ Setting \code{options(pillar.width = )} to a larger value will lead to printing in multiple tiers (stacks).
 \item \code{pillar.print_max}: Maximum number of rows printed, default: \code{20}.
-Set to \code{Inf} to always print all rows.
-For compatibility reasons, \code{getOption("tibble.print_max")} and \code{getOption("dplyr.print_max")} are also consulted,
+ Set to \code{Inf} to always print all rows.
+ For compatibility reasons, \code{getOption("tibble.print_max")} and \code{getOption("dplyr.print_max")} are also consulted,
 this will be soft-deprecated in pillar v2.0.0.
 \item \code{pillar.print_min}: Number of rows printed if the table has more than \code{print_max} rows, default: \code{10}.
-For compatibility reasons, \code{getOption("tibble.print_min")} and \code{getOption("dplyr.print_min")} are also consulted,
+ For compatibility reasons, \code{getOption("tibble.print_min")} and \code{getOption("dplyr.print_min")} are also consulted,
 this will be soft-deprecated in pillar v2.0.0.
 \item \code{pillar.width}: Output width.
-Default: \code{NULL} (use \code{getOption("width")}).
-This can be larger than \code{getOption("width")},
+ Default: \code{NULL} (use \code{getOption("width")}).
+ This can be larger than \code{getOption("width")},
 in this case the output of the table's body is distributed over multiple tiers for wide tibbles.
-For compatibility reasons, \code{getOption("tibble.width")} and \code{getOption("dplyr.width")} are also consulted,
+ For compatibility reasons, \code{getOption("tibble.width")} and \code{getOption("dplyr.width")} are also consulted,
 this will be soft-deprecated in pillar v2.0.0.
 \item \code{pillar.max_footer_lines}: The maximum number of lines in the footer, default: \code{7}.
-Set to \code{Inf} to turn off truncation of footer lines.
-The \code{max_extra_cols} option still limits the number of columns printed.
+ Set to \code{Inf} to turn off truncation of footer lines.
+ The \code{max_extra_cols} option still limits the number of columns printed.
 \item \code{pillar.max_extra_cols}: The maximum number of columns printed in the footer, default: \code{100}.
-Set to \code{Inf} to show all columns.
-Set the more predictable \code{max_footer_lines} to control the number of footer lines instead.
+ Set to \code{Inf} to show all columns.
+ Set the more predictable \code{max_footer_lines} to control the number of footer lines instead.
 \item \code{pillar.bold}: Use bold font, e.g. for column headers?
-This currently defaults to \code{FALSE},
+ This currently defaults to \code{FALSE},
 because many terminal fonts have poor support for bold fonts.
 \item \code{pillar.subtle}: Use subtle style, e.g. for row numbers and data types?
-Default: \code{TRUE}.
+ Default: \code{TRUE}.
 \item \code{pillar.subtle_num}: Use subtle style for insignificant digits?
-Default: \code{FALSE}, is also affected by the \code{subtle} option.
+ Default: \code{FALSE}, is also affected by the \code{subtle} option.
 \item \code{pillar.neg}: Highlight negative numbers? Default: \code{TRUE}.
 \item \code{pillar.sigfig}: The number of significant digits that will be printed and highlighted, default: \code{3}.
-Set the \code{subtle} option to \code{FALSE} to turn off highlighting of significant digits.
+ Set the \code{subtle} option to \code{FALSE} to turn off highlighting of significant digits.
 \item \code{pillar.min_title_chars}: The minimum number of characters for the column title,
 default: \code{20}.  Column titles may be truncated up to that width to save horizontal space.
-Set to \code{Inf} to turn off truncation of column titles.
+ Set to \code{Inf} to turn off truncation of column titles.
 \item \code{pillar.min_chars}: The minimum number of characters wide to display character columns,
 default: \code{3}.  Character columns may be truncated up to that width to save horizontal space.
-Set to \code{Inf} to turn off truncation of character columns.
+ Set to \code{Inf} to turn off truncation of character columns.
 \item \code{pillar.max_dec_width}: The maximum allowed width for decimal notation,
 default: \code{13}.
 \item \code{pillar.bidi}: Set to \code{TRUE} for experimental support for bidirectional scripts.
-Default: \code{FALSE}.
-When this option is set, "left right override" and "first strong isolate"
+ Default: \code{FALSE}.
+ When this option is set, "left right override" and "first strong isolate"
 \href{https://www.w3.org/International/questions/qa-bidi-unicode-controls}{Unicode controls}
 are inserted to ensure that text appears in its intended direction
 and that the column headings correspond to the correct columns.
 \item \code{pillar.superdigit_sep}: The string inserted between superscript digits and column names in the footnote.
-Defaults to a \code{"\\u200b"}, a zero-width space, on UTF-8 platforms,
+ Defaults to a \code{"\\u200b"}, a zero-width space, on UTF-8 platforms,
 and to \code{": "} on non-UTF-8 platforms.
 \item \code{pillar.advice}: Should advice be displayed in the footer when columns or rows are missing from the output?
-Defaults to \code{TRUE} for interactive sessions, and to \code{FALSE} otherwise.
+ Defaults to \code{TRUE} for interactive sessions, and to \code{FALSE} otherwise.
 }
 }
 

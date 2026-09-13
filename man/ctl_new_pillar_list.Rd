@@ -19,7 +19,7 @@ ctl_new_pillar_list(
 \item{x}{A vector, can also be a data frame, matrix, or array.}
 
 \item{width}{The available width, can be a vector for multiple tiers.
-If \code{NULL}, only the first pillar is instantiated.}
+ If \code{NULL}, only the first pillar is instantiated.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
@@ -32,27 +32,27 @@ if the first pillar for a compound pillar (or the pillar itself for a simple pil
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Gain full control over the appearance of the pillars of your tibble subclass in its body.
-This method is intended for implementers of subclasses of the \code{"tbl"} class.
-Users will rarely need them,
+ This method is intended for implementers of subclasses of the \code{"tbl"} class.
+ Users will rarely need them,
 and we also expect the default implementation to be sufficient for the vast majority of cases.
 }
 \details{
 \code{ctl_new_pillar_list()} is called to construct a list of pillars.
-If \code{x} is a regular (one-dimensional) vector,
+ If \code{x} is a regular (one-dimensional) vector,
 the list contains one pillar constructed by \code{\link[=ctl_new_pillar]{ctl_new_pillar()}}.
-This method also works for compound columns: columns that are data frames, matrices or arrays,
+ This method also works for compound columns: columns that are data frames, matrices or arrays,
 with the following behavior:
 \itemize{
 \item If \code{width} is \code{NULL},
 the method always returns a list of length one containing one pillar object
 that represents the first sub-column in this compound column.
 \item Otherwise, the returned list contains one pillar object for all sub-columns that can be fit in the available horizontal space.
-These pillar objects are obtained by calling \code{ctl_new_pillar_list()} with \code{width = NULL} on each sub-column
+ These pillar objects are obtained by calling \code{ctl_new_pillar_list()} with \code{width = NULL} on each sub-column
 until the available width is exhausted.
 }
 
 This method is called to initiate the construction of all pillars in the tibble to be printed.
-To ensure that all packed columns that fit the available space are printed,
+ To ensure that all packed columns that fit the available space are printed,
 \code{ctl_new_pillar_list()} may be called twice on the same input:
 once with \code{width = NULL}, and
 once with \code{width} corresponding to the then known available space

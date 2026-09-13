@@ -39,7 +39,7 @@ new_pillar_shaft_simple(
 \item{type_sum}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Override the type summary displayed at the top of the data.
-This argument, if given, takes precedence over the type summary provided by \code{\link[=type_sum]{type_sum()}}.}
+ This argument, if given, takes precedence over the type summary provided by \code{\link[=type_sum]{type_sum()}}.}
 
 \item{class}{The name of the subclass.}
 
@@ -67,9 +67,9 @@ to be used when the available width is insufficient to show the full output.}
 }
 \description{
 The \code{new_pillar_shaft()} constructor creates objects of the \code{"pillar_shaft"} class.
-This is a virtual or abstract class, you must specify the \code{class} argument.
-By convention, this should be a string that starts with \code{"pillar_shaft_"}.
-See \code{vignette("extending", package = "tibble")} for usage examples.
+ This is a virtual or abstract class, you must specify the \code{class} argument.
+ By convention, this should be a string that starts with \code{"pillar_shaft_"}.
+ See \code{vignette("extending", package = "tibble")} for usage examples.
 
 This method accepts a vector of arbitrary length and is expected to return an S3 object with the following properties:
 \itemize{
@@ -81,13 +81,13 @@ and has attributes \code{"align"} (with supported values \code{"left"}, \code{"r
 }
 
 The function \code{\link[=new_pillar_shaft]{new_pillar_shaft()}} returns such an object, and also correctly formats \code{NA} values.
-In many cases, the implementation of \code{pillar_shaft.your_class_name()} will format the data as a character vector
+ In many cases, the implementation of \code{pillar_shaft.your_class_name()} will format the data as a character vector
 (using color for emphasis) and simply call \code{new_pillar_shaft()}.
-See \code{pillar:::pillar_shaft.numeric} for a code that allows changing the display depending on the available width.
+ See \code{pillar:::pillar_shaft.numeric} for a code that allows changing the display depending on the available width.
 
 \code{new_pillar_shaft_simple()} provides an implementation of the \code{pillar_shaft} class suitable for output that has a fixed formatting,
 which will be truncated with a continuation character (ellipsis or \code{~}) if it doesn't fit the available width.
-By default, the required width is computed from the natural width of the \code{formatted} argument.
+ By default, the required width is computed from the natural width of the \code{formatted} argument.
 }
 \details{
 The \code{formatted} argument may also contain ANSI escapes to change color
