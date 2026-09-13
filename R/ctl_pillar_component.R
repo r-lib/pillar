@@ -4,16 +4,16 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' `new_pillar_component()` constructs an object of class `"pillar_component"`.
-#' It is used by custom [ctl_new_pillar()] methods to create pillars with nonstandard components.
+#'  It is used by custom [ctl_new_pillar()] methods to create pillars with nonstandard components.
 #'
 #' @details
 #' Objects of class `"pillar"` are internally a named lists of their components.
-#' The default components for pillars created by [pillar()] are:
-#' `title` (may be missing), `type`, and `data`.
-#' Each component is a `"pillar_component"` object.
+#'  The default components for pillars created by [pillar()] are:
+#'  `title` (may be missing), `type`, and `data`.
+#'  Each component is a `"pillar_component"` object.
 #'
 #' This class captures contents that can be fitted in a simple column.
-#' Compound columns are represented by multiple pillar objects, each with their own components.
+#'  Compound columns are represented by multiple pillar objects, each with their own components.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x A bare list of length one (for `new_pillar_component()`),
@@ -49,7 +49,7 @@ new_pillar_component <- function(x, ..., width, min_width = NULL) {
 #' pillar_component()
 #'
 #' `pillar_component()` is a convenience helper that wraps the input in a list
-#' and extracts width and minimum width.
+#'  and extracts width and minimum width.
 #'
 #' @export
 #' @rdname new_pillar_component

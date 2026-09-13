@@ -1,11 +1,11 @@
 #' @description
 #' `new_pillar_shaft_simple()` provides an implementation of the `pillar_shaft` class suitable for output that has a fixed formatting,
-#' which will be truncated with a continuation character (ellipsis or `~`) if it doesn't fit the available width.
-#' By default, the required width is computed from the natural width of the `formatted` argument.
+#'  which will be truncated with a continuation character (ellipsis or `~`) if it doesn't fit the available width.
+#'  By default, the required width is computed from the natural width of the `formatted` argument.
 #'
 #' @details
 #' The `formatted` argument may also contain ANSI escapes to change color
-#' or other attributes of the text, provided e.g. by the \pkg{cli} package.
+#'  or other attributes of the text, provided e.g. by the \pkg{cli} package.
 #'
 #' @inheritParams tibble::char
 #' @param ... Passed on to [new_pillar_shaft()].

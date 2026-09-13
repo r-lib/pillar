@@ -32,7 +32,7 @@ style_subtle <- keep_empty(function(x) {
 #' @rdname style_subtle
 #' @details
 #' `style_subtle_num()` is affected by the `subtle_num` [option][pillar_options],
-#' which is `FALSE` by default.
+#'  which is `FALSE` by default.
 #'
 #' @export
 #' @examples
@@ -60,7 +60,7 @@ style_spark_na <- function(x) {
 
 #' @details
 #' `style_bold()` is affected by the `bold` [option][pillar_options],
-#' which is `FALSE` by default.
+#'  which is `FALSE` by default.
 #'
 #' @rdname style_subtle
 #' @export

@@ -1,18 +1,18 @@
 #' Object for formatting a vector suitable for tabular display
 #'
 #' `pillar()` creates an object that formats a vector.
-#' The output uses one row for a title (if given), one row for the type,
-#' and `vec_size(x)` rows for the data.
+#'  The output uses one row for a title (if given), one row for the type,
+#'  and `vec_size(x)` rows for the data.
 #'
 #' A pillar consists of arbitrary components.
-#' The `pillar()` constructor uses `title`, `type`, and `data`.
+#'  The `pillar()` constructor uses `title`, `type`, and `data`.
 #'
 #' - `title` via [new_pillar_title()]
 #' - `type` via [new_pillar_type()], which calls [type_sum()] internally
 #' - `data` via [pillar_shaft()]
 #'
 #' All components are formatted via [format()] when displaying the pillar.
-#' A `width` argument is passed to each `format()` call.
+#'  A `width` argument is passed to each `format()` call.
 #'
 #' As of pillar 1.5.0, `pillar()` returns `NULL` if the width is insufficient to display the data.
 #'
@@ -112,13 +112,13 @@ pillar_from_shaft <- function(title, type, data, width) {
 #' `r lifecycle::badge("experimental")`
 #'
 #' `new_pillar()` is the low-level constructor for pillar objects.
-#' It supports arbitrary components.
-#' See [pillar()] for the high-level constructor with default components.
+#'  It supports arbitrary components.
+#'  See [pillar()] for the high-level constructor with default components.
 #'
 #' @details
 #' Arbitrary components are supported.
-#' If your tibble subclass needs more or different components in its pillars,
-#' override or extend [ctl_new_pillar()] and perhaps [ctl_new_pillar_list()].
+#'  If your tibble subclass needs more or different components in its pillars,
+#'  override or extend [ctl_new_pillar()] and perhaps [ctl_new_pillar_list()].
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams pillar

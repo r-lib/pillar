@@ -4,7 +4,7 @@
 #' `r lifecycle::badge("stable")`
 #'
 #' Formats tabular data in columns or rows using the full range of colours provided by modern terminals.
-#' Provides various generics for making every aspect of the display customizable.
+#'  Provides various generics for making every aspect of the display customizable.
 #'
 #' @seealso
 #' - [pillar()] for formatting a single column,

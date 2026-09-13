@@ -4,20 +4,20 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' Gain full control over the appearance of the pillars of your tibble subclass in its body.
-#' This method is intended for implementers of subclasses of the `"tbl"` class.
-#' Users will rarely need them.
+#'  This method is intended for implementers of subclasses of the `"tbl"` class.
+#'  Users will rarely need them.
 #'
 #' @details
 #' `ctl_new_pillar()` is called to construct pillars for regular (one-dimensional) vectors.
-#' The default implementation returns an object constructed with [pillar()].
-#' Extend this method to modify the pillar components returned from the default implementation.
-#' Override this method to completely change the appearance of the pillars.
-#' Components are created with [new_pillar_component()] or [pillar_component()].
-#' In order to customize printing of row IDs,
-#' a method can be supplied for the `ctl_new_rowid_pillar()` generic.
+#'  The default implementation returns an object constructed with [pillar()].
+#'  Extend this method to modify the pillar components returned from the default implementation.
+#'  Override this method to completely change the appearance of the pillars.
+#'  Components are created with [new_pillar_component()] or [pillar_component()].
+#'  In order to customize printing of row IDs,
+#'  a method can be supplied for the `ctl_new_rowid_pillar()` generic.
 #'
 #' All components must be of the same height.
-#' This restriction may be levied in the future.
+#'  This restriction may be levied in the future.
 #'
 #' Implementations should return `NULL` if none of the data fits the available width.
 #'
@@ -29,7 +29,7 @@
 #'
 #' @seealso
 #' See [ctl_new_pillar_list()] for creating pillar objects for compound columns:
-#' packed data frames, matrices, or arrays.
+#'  packed data frames, matrices, or arrays.
 #'
 #' @export
 #' @examplesIf rlang::is_installed(c("palmerpenguins", "tibble"))
@@ -125,7 +125,7 @@ ctl_new_pillar.tbl <- function(controller, x, width, ..., title = NULL) {
 }
 
 #' @param type String for specifying a row ID type.
-#' Current values in use are `NULL` and `"*"`.
+#'  Current values in use are `NULL` and `"*"`.
 #' @rdname ctl_new_pillar
 #' @export
 ctl_new_rowid_pillar <- function(controller, x, width, ..., title = NULL, type = NULL) {

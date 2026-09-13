@@ -4,16 +4,16 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' Gain full control over the appearance of the pillars of your tibble subclass in its body.
-#' This method is intended for implementers of subclasses of the `"tbl"` class.
-#' Users will rarely need them,
-#' and we also expect the default implementation to be sufficient for the vast majority of cases.
+#'  This method is intended for implementers of subclasses of the `"tbl"` class.
+#'  Users will rarely need them,
+#'  and we also expect the default implementation to be sufficient for the vast majority of cases.
 #'
 #' @details
 #' `ctl_new_pillar_list()` is called to construct a list of pillars.
-#' If `x` is a regular (one-dimensional) vector,
-#' the list contains one pillar constructed by [ctl_new_pillar()].
-#' This method also works for compound columns: columns that are data frames, matrices or arrays,
-#' with the following behavior:
+#'  If `x` is a regular (one-dimensional) vector,
+#'  the list contains one pillar constructed by [ctl_new_pillar()].
+#'  This method also works for compound columns: columns that are data frames, matrices or arrays,
+#'  with the following behavior:
 #'
 #' - If `width` is `NULL`,
 #'   the method always returns a list of length one containing one pillar object
@@ -23,11 +23,11 @@
 #'   until the available width is exhausted.
 #'
 #' This method is called to initiate the construction of all pillars in the tibble to be printed.
-#' To ensure that all packed columns that fit the available space are printed,
-#' `ctl_new_pillar_list()` may be called twice on the same input:
-#' once with `width = NULL`, and
-#' once with `width` corresponding to the then known available space
-#' and with `first_pillar` set to the pillar object constructed in the first call.
+#'  To ensure that all packed columns that fit the available space are printed,
+#'  `ctl_new_pillar_list()` may be called twice on the same input:
+#'  once with `width = NULL`, and
+#'  once with `width` corresponding to the then known available space
+#'  and with `first_pillar` set to the pillar object constructed in the first call.
 #'
 #' @inheritParams ctl_new_pillar
 #' @param x A vector, can also be a data frame, matrix, or array.

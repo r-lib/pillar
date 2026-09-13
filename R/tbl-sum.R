@@ -1,9 +1,9 @@
 #' Provide a succinct summary of an object
 #'
 #' `tbl_sum()` gives a brief textual description of a table-like object,
-#' which should include the dimensions and the data source in the first element,
-#' and additional information in the other elements (such as grouping for \pkg{dplyr}).
-#' The default implementation forwards to [pillar::obj_sum()].
+#'  which should include the dimensions and the data source in the first element,
+#'  and additional information in the other elements (such as grouping for \pkg{dplyr}).
+#'  The default implementation forwards to [pillar::obj_sum()].
 #'
 #' @return A named character vector, describing the dimensions in the first element
 #'   and the data source in the name of the first element.

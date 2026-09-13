@@ -4,11 +4,11 @@
 #' `r lifecycle::badge("experimental")`
 #'
 #' For easier customization, the formatting of a tibble is split into three components: header, body, and footer.
-#' The `tbl_format_header()` method is responsible for formatting the header of a tibble.
+#'  The `tbl_format_header()` method is responsible for formatting the header of a tibble.
 #'
 #' Override this method if you need to change the appearance of the entire header.
-#' If you only need to change or extend the components shown in the header,
-#' override or extend [tbl_sum()] for your class which is called by the default method.
+#'  If you only need to change or extend the components shown in the header,
+#'  override or extend [tbl_sum()] for your class which is called by the default method.
 #'
 #' @inheritParams tbl_format_body
 #' @inherit tbl_format_body return

@@ -9,7 +9,7 @@ style_type <- function(x) {
 #' Prepare a column type for formatting
 #'
 #' Calls [type_sum()] to format the type.
-#' Call [format()] on the result to render column types.
+#'  Call [format()] on the result to render column types.
 #'
 #' @param x A vector for which the type is to be retrieved.
 #' @inheritParams rlang::args_dots_empty
@@ -62,9 +62,9 @@ format_full_pillar_type <- function(x) {
 #' Called on values returned from [type_sum()] for defining the description in the capital.
 #'
 #' Two methods are implemented by default for this generic: the default method,
-#' and the method for the `"AsIs"` class.
-#' Return `I("type")` from your [type_sum()] implementation to format the type without angle brackets.
-#' For even more control over the formatting, implement your own method.
+#'  and the method for the `"AsIs"` class.
+#'  Return `I("type")` from your [type_sum()] implementation to format the type without angle brackets.
+#'  For even more control over the formatting, implement your own method.
 #'
 #' @param x A return value from `type_sum()`
 #' @param width The desired total width.

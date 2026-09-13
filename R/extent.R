@@ -22,7 +22,7 @@ get_extent <- function(x) {
 
 #' @description
 #' `get_max_extent()` calculates the maximum display width of all strings in a character vector,
-#' zero for empty vectors.
+#'  zero for empty vectors.
 #' @export
 #' @rdname get_extent
 #' @examples
@@ -34,7 +34,7 @@ get_max_extent <- function(x) {
 #' Alignment helper
 #'
 #' Facilitates easy alignment of strings within a character vector.
-#' Designed to help implementers of formatters for custom data types.
+#'  Designed to help implementers of formatters for custom data types.
 #'
 #' @param x A character vector
 #' @param width The width that each string is padded to.

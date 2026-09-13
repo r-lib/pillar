@@ -2,17 +2,17 @@
 #'
 #' @description
 #' `glimpse()` is like a transposed version of `print()`:
-#' columns run down the page, and data runs across.
-#' This makes it possible to see every column in a data frame.
-#' It's a little like [str()] applied to a data frame
-#' but it tries to show you as much data as possible.
-#' (And it always shows the underlying data, even when applied to a remote data source.)
+#'  columns run down the page, and data runs across.
+#'  This makes it possible to see every column in a data frame.
+#'  It's a little like [str()] applied to a data frame
+#'  but it tries to show you as much data as possible.
+#'  (And it always shows the underlying data, even when applied to a remote data source.)
 #'
 #' See [format_glimpse()] for details on the formatting.
 #'
 #' @section S3 methods:
 #' `glimpse` is an S3 generic with a customised method for `tbl`s and `data.frames`,
-#' and a default method that calls [str()].
+#'  and a default method that calls [str()].
 #'
 #' @param x An object to glimpse at.
 #' @param width Width of output: defaults to the setting of the `width` [option][pillar_options] (if finite)
@@ -96,13 +96,13 @@ glimpse.default <- function(x, width = NULL, max.level = 3, ...) {
 #' This generic provides the logic for printing vectors in [glimpse()].
 #'
 #' The output strives to be as unambiguous as possible,
-#' without compromising on readability.
-#' In a list, to distinguish between vectors and nested lists,
-#' the latter are surrounded by `[]` brackets.
-#' Empty lists are shown as `[]`.
-#' Vectors inside lists, of length not equal to one,
-#' are surrounded by `<>` angle brackets.
-#' Empty vectors are shown as `<>`.
+#'  without compromising on readability.
+#'  In a list, to distinguish between vectors and nested lists,
+#'  the latter are surrounded by `[]` brackets.
+#'  Empty lists are shown as `[]`.
+#'  Vectors inside lists, of length not equal to one,
+#'  are surrounded by `<>` angle brackets.
+#'  Empty vectors are shown as `<>`.
 #'
 #' @return A character vector of the same length as `x`.
 #' @inheritParams rlang::args_dots_used
