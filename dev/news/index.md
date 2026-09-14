@@ -1,5 +1,33 @@
 # Changelog
 
+## pillar 1.11.1.9030
+
+### Chore
+
+- Remove Copilot setup steps.
+
+### Uncategorized
+
+- Refactor(ci): Serve the actions from this repository instead of
+  copying them (cynkra/cynkratemplate#121).
+
+- Refactor(ci): Move every script out of the workflows and into a named
+  action (cynkra/cynkratemplate#120).
+
+- Refactor(ci): Make an action of what the workflows say more than once.
+
+- Refactor(ci): Move every script that could change out of the
+  workflows.
+
+- Refactor(ci): Extract the last three scripts, which only a named
+  action can hold.
+
+- Fix(ci): Make a failing `rcc` run say what failed, and link to it
+  (cynkra/cynkratemplate#115).
+
+- Fix(ci): Exempt deprecation warnings from the roxygenize warning gate
+  (cynkra/cynkratemplate#114).
+
 ## pillar 1.11.1.9029
 
 ### Features
