@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# pillar 1.11.1.9031
+
+## Documentation
+
+- Add "Supported By Posit" badge to pillar website (@jeroenjanssens, #809).
+
+
 # pillar 1.11.1.9030
 
 ## Chore
