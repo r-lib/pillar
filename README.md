@@ -28,6 +28,13 @@ install.packages("tidyverse")
 install.packages("pillar")
 ```
 
+Or the development version from GitHub with:
+
+``` r
+# install.packages("pak")
+pak::pak("r-lib/pillar")
+```
+
 ## Usage
 
 pillar is a developer-facing package that is not designed for end-users.
