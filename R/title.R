@@ -42,8 +42,8 @@ get_min_title_width <- function(width) {
     return(width)
   }
 
-  # We don't use the ellipsis if we don't truncate, a solution with min()
-  # is difficult to make work in all corner cases (and slower too)
+  # We don't use the ellipsis if we don't truncate,
+  # a solution with min() is difficult to make work in all corner cases (and slower too)
   if (width <= title_chars) {
     return(width)
   }

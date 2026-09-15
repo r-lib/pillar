@@ -22,7 +22,8 @@ library(pillar)
 ```
 
 What happens when a tibble is printed?
-This vignette documents the control flow and the data flow, explains the design choices, and shows the default implementation for the `"tbl"` class.
+This vignette documents the control flow and the data flow, explains the design choices,
+and shows the default implementation for the `"tbl"` class.
 It is mainly of interest for implementers of table subclasses.
 Customizing the formatting of a vector class in a tibble is described in `vignette("pillar", package = "vctrs")`.
 The different customization options are showcased in `vignette("extending")`.
@@ -48,7 +49,8 @@ The different customization options are showcased in `vignette("extending")`.
 
 - Pillars are always shown from left to right, no "holes" in the colonnade
 
-    - If the first column consumes all available space, the remaining columns are not shown, even if they all would fit if the first column is omitted.
+    - If the first column consumes all available space, the remaining columns are not shown,
+      even if they all would fit if the first column is omitted.
 
 - Printing pillars should take time proportional to the number of characters printed, and be "fast enough".
 
@@ -96,7 +98,8 @@ The `format.tbl()` method creates a setup object, and uses that object to format
 pillar:::format.tbl
 ```
 
-While it's possible to extend or override these methods for your `"tbl"` subclass, often overriding the more specialized methods shown below is sufficient.
+While it's possible to extend or override these methods for your `"tbl"` subclass,
+often overriding the more specialized methods shown below is sufficient.
 
 
 ## Setup
@@ -111,7 +114,8 @@ setup
 ```
 
 A setup object is required here to avoid computing information twice.
-For instance, the dimensions shown in the header or the extra columns displayed in the footer are available only after the body has been computed.
+For instance, the dimensions shown in the header or the extra columns displayed in the footer are available
+only after the body has been computed.
 
 The generic dispatches over the container, so that you can override it if necessary.
 It is responsible for assigning default values to arguments before passing them on to the method.
@@ -121,8 +125,10 @@ tbl_format_setup
 ```
 
 
-The default implementation converts the input to a data frame via `as.data.frame(head(x))`, and returns an object constructed with `new_tbl_format_setup()` that contains the data frame and additional information.
-If you override this method, e.g. to incorporate more information, you can add new items to the default setup object, but you should not overwrite existing items.
+The default implementation converts the input to a data frame via `as.data.frame(head(x))`,
+and returns an object constructed with `new_tbl_format_setup()` that contains the data frame and additional information.
+If you override this method, e.g. to incorporate more information,
+you can add new items to the default setup object, but you should not overwrite existing items.
 
 ```{r show_source = TRUE}
 pillar:::tbl_format_setup.tbl
@@ -134,7 +140,8 @@ Its functionality and the customization points it offers are detailed in the "Co
 
 ## Header, body, footer
 
-The components of a tibble are formatted with `tbl_format_*()` generics, which also dispatch on the container to allow extension or overrides.
+The components of a tibble are formatted with `tbl_format_*()` generics,
+which also dispatch on the container to allow extension or overrides.
 They return a character vector, with one element per line printed.
 The setup object is required.
 
@@ -151,7 +158,8 @@ class(tbl_format_body(tbl, setup))
 typeof(tbl_format_body(tbl, setup))
 ```
 
-Since most of the work already has been carried out in `tbl_format_setup()`, the default implementations mostly consist of code that styles and wraps the output.
+Since most of the work already has been carried out in `tbl_format_setup()`,
+the default implementations mostly consist of code that styles and wraps the output.
 
 ```{r show_source = TRUE}
 pillar:::tbl_format_header.tbl
@@ -171,7 +179,8 @@ pillar:::tbl_format_footer.tbl
 The internal function `ctl_colonnade()` composes the body.
 It performs the following tasks:
 
-1. Create a pillar object for every top-level column that fits, using the minimum width, via `ctl_new_pillar_list()`, `ctl_new_pillar()` and ultimately `pillar()` and `pillar_shaft()`
+1. Create a pillar object for every top-level column that fits, using the minimum width,
+   via `ctl_new_pillar_list()`, `ctl_new_pillar()` and ultimately `pillar()` and `pillar_shaft()`
 1. Determine the number of tiers and the width for each tier
 1. Distribute the pillars across the tiers, assigning a width to each pillar.
 1. Format each pillar via its `format()` function, passing the now known width.

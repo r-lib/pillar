@@ -3,44 +3,38 @@
 #' @description
 #' `r lifecycle::badge("experimental")`
 #'
-#' Gain full control over the appearance of the pillars of your tibble subclass
-#' in its body.
+#' Gain full control over the appearance of the pillars of your tibble subclass in its body.
 #' This method is intended for implementers of subclasses of the `"tbl"` class.
-#' Users will rarely need them, and we also expect the default implementation
-#' to be sufficient for the vast majority of cases.
+#' Users will rarely need them,
+#' and we also expect the default implementation to be sufficient for the vast majority of cases.
 #'
 #' @details
 #' `ctl_new_pillar_list()` is called to construct a list of pillars.
-#' If `x` is a regular (one-dimensional) vector, the list contains one pillar
-#' constructed by [ctl_new_pillar()].
-#' This method also works for compound columns: columns that are data frames,
-#' matrices or arrays, with the following behavior:
+#' If `x` is a regular (one-dimensional) vector,
+#' the list contains one pillar constructed by [ctl_new_pillar()].
+#' This method also works for compound columns: columns that are data frames, matrices or arrays,
+#' with the following behavior:
 #'
-#' - If `width` is `NULL`, the method always returns a list of length one
-#'   containing one pillar object that represents the first sub-column in this
-#'   compound column.
-#' - Otherwise, the returned list contains one pillar object for all sub-columns
-#'   that can be fit in the available horizontal space.
-#'   These pillar objects are obtained by calling `ctl_new_pillar_list()`
-#'   with `width = NULL` on each sub-column until the available width is
-#'   exhausted.
+#' - If `width` is `NULL`,
+#'   the method always returns a list of length one containing one pillar object
+#'   that represents the first sub-column in this compound column.
+#' - Otherwise, the returned list contains one pillar object for all sub-columns that can be fit in the available horizontal space.
+#'   These pillar objects are obtained by calling `ctl_new_pillar_list()` with `width = NULL` on each sub-column
+#'   until the available width is exhausted.
 #'
-#' This method is called to initiate the construction of all pillars
-#' in the tibble to be printed.
+#' This method is called to initiate the construction of all pillars in the tibble to be printed.
 #' To ensure that all packed columns that fit the available space are printed,
 #' `ctl_new_pillar_list()` may be called twice on the same input:
 #' once with `width = NULL`, and
 #' once with `width` corresponding to the then known available space
-#' and with `first_pillar` set to the pillar object constructed in the
-#' first call.
+#' and with `first_pillar` set to the pillar object constructed in the first call.
 #'
 #' @inheritParams ctl_new_pillar
 #' @param x A vector, can also be a data frame, matrix, or array.
 #' @param width The available width, can be a vector for multiple tiers.
 #'   If `NULL`, only the first pillar is instantiated.
-#' @param first_pillar Can be passed to this method if the first pillar
-#'   for a compound pillar (or the pillar itself for a simple pillar)
-#'   has been constructed already.
+#' @param first_pillar Can be passed to this method
+#'   if the first pillar for a compound pillar (or the pillar itself for a simple pillar) has been constructed already.
 #' @export
 #' @examplesIf rlang::is_installed(c("palmerpenguins", "tibble")) && requireNamespace("tibble")
 #' # Simple column
@@ -130,8 +124,8 @@ new_data_frame_pillar_list <- function(x, controller, width, title, first_pillar
     if (i == 1 && !is.null(first_pillar)) {
       pillar <- first_pillar
     } else {
-      # Call ctl_new_pillar_list(), return only the first sub-pillar
-      # thanks to width = NULL
+      # Call ctl_new_pillar_list(),
+      # return only the first sub-pillar thanks to width = NULL
       new_pillars <- ctl_new_pillar_list(
         controller, x[[i]],
         width = NULL,

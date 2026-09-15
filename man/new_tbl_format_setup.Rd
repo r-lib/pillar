@@ -40,18 +40,16 @@ one element per line,}
 \item{extra_cols}{Columns that did not fit into the body,
 as a character vector of formatted column names and types.}
 
-\item{extra_cols_total}{The total number of columns, may be larger than
-\code{length(extra_cols)}.}
+\item{extra_cols_total}{The total number of columns,
+may be larger than \code{length(extra_cols)}.}
 
 \item{max_footer_lines}{The maximum number of lines in the footer.}
 
-\item{abbrev_cols}{Formatted names of the columns that are shown abbreviated
-in the body.}
+\item{abbrev_cols}{Formatted names of the columns that are shown abbreviated in the body.}
 }
 \description{
-The object returned from the default method of \code{\link[=tbl_format_setup]{tbl_format_setup()}}
-is an object with a \code{"class"} attribute and the elements described in the
-"Parameters" section.
+The object returned from the default method of \code{\link[=tbl_format_setup]{tbl_format_setup()}} is an object with a \code{"class"} attribute
+and the elements described in the "Parameters" section.
 
 Named elements can be added to such objects without affecting the behavior.
 Do not modify existing elements.

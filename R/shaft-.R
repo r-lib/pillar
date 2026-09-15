@@ -1,10 +1,8 @@
 #' Constructor for column data
 #'
 #' @description
-#' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"`
-#' class.
-#' This is a virtual or abstract class, you must specify the `class`
-#' argument.
+#' The `new_pillar_shaft()` constructor creates objects of the `"pillar_shaft"` class.
+#' This is a virtual or abstract class, you must specify the `class` argument.
 #' By convention, this should be a string that starts with `"pillar_shaft_"`.
 #' See `vignette("extending", package = "tibble")` for usage examples.
 #'
@@ -13,10 +11,12 @@
 #' - It has an attribute `"width"`
 #' - It can have an attribute `"min_width"`, if missing, `"width"` is used
 #' - It must implement a method `format(x, width, ...)` that can be called with any value between `min_width` and `width`
-#' - This method must return an object that inherits from `character` and has attributes `"align"` (with supported values `"left"`, `"right"`, and `"center"`) and `"width"`
+#' - This method must return an object that inherits from `character`
+#'   and has attributes `"align"` (with supported values `"left"`, `"right"`, and `"center"`) and `"width"`
 #'
 #' The function [new_pillar_shaft()] returns such an object, and also correctly formats `NA` values.
-#' In many cases, the implementation of `pillar_shaft.your_class_name()` will format the data as a character vector (using color for emphasis) and simply call `new_pillar_shaft()`.
+#' In many cases, the implementation of `pillar_shaft.your_class_name()` will format the data as a character vector
+#' (using color for emphasis) and simply call `new_pillar_shaft()`.
 #' See `pillar:::pillar_shaft.numeric` for a code that allows changing the display depending on the available width.
 #'
 #' @param x An object
@@ -26,8 +26,7 @@
 #' @param type_sum `r lifecycle::badge("experimental")`
 #'
 #'   Override the type summary displayed at the top of the data.
-#'   This argument, if given, takes precedence over the type summary provided by
-#'   [type_sum()].
+#'   This argument, if given, takes precedence over the type summary provided by [type_sum()].
 #' @param class The name of the subclass.
 #' @param subclass Deprecated, pass the `class` argument instead.
 #' @name new_pillar_shaft
@@ -57,8 +56,7 @@ new_pillar_shaft <- function(x, ..., width = NULL, min_width = width,
 #' Column data
 #'
 #' Internal class for formatting the data for a column.
-#' `pillar_shaft()` is a coercion method that must be implemented
-#' for your data type to display it in a tibble.
+#' `pillar_shaft()` is a coercion method that must be implemented for your data type to display it in a tibble.
 #'
 #' @param x A vector to format
 #' @inheritParams rlang::args_dots_used
@@ -89,8 +87,8 @@ pillar_shaft.pillar_empty_col <- function(x, ...) {
 print.pillar_shaft <- function(x, width = NULL, ...) {
   #' @description
   #' This class comes with a default method for [print()] that calls [format()].
-  #' If `print()` is called without `width` argument, the natural width will be
-  #' used when calling `format()`.
+  #' If `print()` is called without `width` argument,
+  #' the natural width will be used when calling `format()`.
   #' Usually there's no need to implement this method for your subclass.
   if (is.null(width)) width <- get_width(x)
   print(format(x, width = width, ...))
@@ -100,8 +98,7 @@ print.pillar_shaft <- function(x, width = NULL, ...) {
 #' @rdname pillar_shaft
 format.pillar_shaft <- function(x, width, ...) {
   #' @description
-  #' Your subclass must implement `format()`, the default implementation just
-  #' raises an error.
+  #' Your subclass must implement `format()`, the default implementation just raises an error.
   #' Your `format()` method can assume a valid value for the `width` argument.
   stop("Please implement a format() method for class ", class(x)[[1]], call. = FALSE)
 }

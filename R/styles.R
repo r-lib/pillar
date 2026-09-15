@@ -11,8 +11,7 @@ keep_empty <- function(fun) {
 
 #' Styling helpers
 #'
-#' Functions that allow implementers of formatters for custom data types to
-#' maintain a consistent style with the default data types.
+#' Functions that allow implementers of formatters for custom data types to maintain a consistent style with the default data types.
 #'
 #' `style_subtle()` is affected by the `subtle` [option][pillar_options].
 #'
@@ -32,8 +31,7 @@ style_subtle <- keep_empty(function(x) {
 
 #' @rdname style_subtle
 #' @details
-#' `style_subtle_num()` is affected by the
-#' `subtle_num` [option][pillar_options],
+#' `style_subtle_num()` is affected by the `subtle_num` [option][pillar_options],
 #' which is `FALSE` by default.
 #'
 #' @export

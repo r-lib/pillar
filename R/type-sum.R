@@ -1,7 +1,7 @@
 #' Provide a succinct summary of an object
 #'
-#' `type_sum()` gives a brief summary of object type. Objects that commonly
-#' occur in a data frame should return a string with four or less characters.
+#' `type_sum()` gives a brief summary of object type.
+#' Objects that commonly occur in a data frame should return a string with four or less characters.
 #' For most inputs, the argument is forwarded to [vctrs::vec_ptype_abbr()].
 #'
 #' When formatting a pillar,
@@ -9,8 +9,8 @@
 #' The formatted type should only depend on the type and not on the data,
 #' to avoid confusion.
 #'
-#' @param x an object to summarise. Generally only methods of atomic vectors
-#'   and variants have been implemented.
+#' @param x an object to summarise.
+#'   Generally only methods of atomic vectors and variants have been implemented.
 #'
 #' @export
 type_sum <- function(x) {
@@ -66,11 +66,10 @@ vec_ptype_abbr.pillar_empty_col <- function(x, ...) {
 #' `obj_sum()` also includes the size (but not the shape) of the object
 #' if [vctrs::vec_is()] is `TRUE`.
 #' It should always return a string (a character vector of length one).
-#' As of pillar v1.6.1, the default method forwards to [vctrs::vec_ptype_abbr()]
-#' for vectors and to [type_sum()] for other objects.
+#' As of pillar v1.6.1, the default method forwards to [vctrs::vec_ptype_abbr()] for vectors and to [type_sum()] for other objects.
 #' Previous versions always forwarded to [type_sum()].
-#' An attribute named `"short"` in the return value will be picked up by
-#' the [pillar_shaft()] method for lists, and used if space is limited.
+#' An attribute named `"short"` in the return value will be picked up by the [pillar_shaft()] method for lists,
+#' and used if space is limited.
 #'
 #' @examples
 #' obj_sum(1:10)
