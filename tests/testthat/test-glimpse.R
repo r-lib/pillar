@@ -1,3 +1,95 @@
+# glimpse -----------------------------------------------------------------------------
+
+test_that("`glimpse()` snapshot test", {
+  expect_snapshot({
+    glimpse()
+  })
+})
+
+
+# glimpse.tbl -------------------------------------------------------------------------
+
+test_that("`glimpse.tbl()` snapshot test", {
+  expect_snapshot({
+    glimpse()
+  })
+})
+
+
+# glimpse.default ---------------------------------------------------------------------
+
+test_that("`glimpse.default()` snapshot test", {
+  expect_snapshot({
+    glimpse()
+  })
+})
+
+
+# format_glimpse ----------------------------------------------------------------------
+
+test_that("`format_glimpse()` snapshot test", {
+  expect_snapshot({
+    format_glimpse()
+  })
+})
+
+
+# format_glimpse_1 --------------------------------------------------------------------
+
+test_that("`format_glimpse_1()` snapshot test", {
+  expect_snapshot({
+    format_glimpse_1()
+  })
+})
+
+
+# format_glimpse_ ---------------------------------------------------------------------
+
+test_that("`format_glimpse_()` snapshot test", {
+  expect_snapshot({
+    format_glimpse_()
+  })
+})
+
+
+# format_glimpse.default --------------------------------------------------------------
+
+test_that("`format_glimpse.default()` snapshot test", {
+  expect_snapshot({
+    format_glimpse()
+  })
+})
+
+
+# format_glimpse.list -----------------------------------------------------------------
+
+test_that("`format_glimpse.list()` snapshot test", {
+  expect_snapshot({
+    format_glimpse()
+  })
+})
+
+
+# format_glimpse.character ------------------------------------------------------------
+
+test_that("`format_glimpse.character()` snapshot test", {
+  expect_snapshot({
+    format_glimpse()
+  })
+})
+
+
+# format_glimpse.factor ---------------------------------------------------------------
+
+test_that("`format_glimpse.factor()` snapshot test", {
+  expect_snapshot({
+    format_glimpse()
+  })
+})
+
+
+# Legacy tests ------------------------------------------------------------------------
+
 test_that("format_glimpse() output test", {
   expect_snapshot({
     "# Atomic numbers"
