@@ -65,15 +65,15 @@ pillar_shaft(x, ...)
 }
 \description{
 Internal class for formatting the data for a column.
-\code{pillar_shaft()} is a coercion method that must be implemented for your data type to display it in a tibble.
+ \code{pillar_shaft()} is a coercion method that must be implemented for your data type to display it in a tibble.
 
 This class comes with a default method for \code{\link[=print]{print()}} that calls \code{\link[=format]{format()}}.
-If \code{print()} is called without \code{width} argument,
+ If \code{print()} is called without \code{width} argument,
 the natural width will be used when calling \code{format()}.
-Usually there's no need to implement this method for your subclass.
+ Usually there's no need to implement this method for your subclass.
 
 Your subclass must implement \code{format()}, the default implementation just raises an error.
-Your \code{format()} method can assume a valid value for the \code{width} argument.
+ Your \code{format()} method can assume a valid value for the \code{width} argument.
 }
 \details{
 The default method will currently format via \code{\link[=format]{format()}},

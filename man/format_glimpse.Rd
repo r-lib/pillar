@@ -21,12 +21,12 @@ This generic provides the logic for printing vectors in \code{\link[=glimpse]{gl
 
 The output strives to be as unambiguous as possible,
 without compromising on readability.
-In a list, to distinguish between vectors and nested lists,
+ In a list, to distinguish between vectors and nested lists,
 the latter are surrounded by \verb{[]} brackets.
-Empty lists are shown as \verb{[]}.
-Vectors inside lists, of length not equal to one,
+ Empty lists are shown as \verb{[]}.
+ Vectors inside lists, of length not equal to one,
 are surrounded by \verb{<>} angle brackets.
-Empty vectors are shown as \verb{<>}.
+ Empty vectors are shown as \verb{<>}.
 }
 \examples{
 format_glimpse(1:3)

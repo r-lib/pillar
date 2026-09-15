@@ -52,6 +52,6 @@ The object returned from the default method of \code{\link[=tbl_format_setup]{tb
 and the elements described in the "Parameters" section.
 
 Named elements can be added to such objects without affecting the behavior.
-Do not modify existing elements.
+ Do not modify existing elements.
 }
 \keyword{internal}

@@ -21,10 +21,10 @@ allowing \code{glimpse()} to be used within a data pipe line.
 \description{
 \code{glimpse()} is like a transposed version of \code{print()}:
 columns run down the page, and data runs across.
-This makes it possible to see every column in a data frame.
-It's a little like \code{\link[=str]{str()}} applied to a data frame
+ This makes it possible to see every column in a data frame.
+ It's a little like \code{\link[=str]{str()}} applied to a data frame
 but it tries to show you as much data as possible.
-(And it always shows the underlying data, even when applied to a remote data source.)
+ (And it always shows the underlying data, even when applied to a remote data source.)
 
 See \code{\link[=format_glimpse]{format_glimpse()}} for details on the formatting.
 }
