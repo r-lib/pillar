@@ -89,7 +89,7 @@ pillar(percent)
 #>      11 %
 ```
 
-See [`vignette("pillar", package = "vctrs")`](https://cran.rstudio.com/web/packages/vctrs/vignettes/pillar.html) for details.
+See [`vignette("pillar", package = "vctrs")`](https://vctrs.r-lib.org/articles/pillar.html) for details.
 
 ## Custom table classes
 
@@ -111,7 +111,7 @@ tbl
 #> 3     3
 ```
 
-See [`vignette("extending", package = "pillar")`](https://cran.rstudio.com/web/packages/pillar/vignettes/extending.html) for a walkthrough of the options.
+See [`vignette("extending", package = "pillar")`](https://pillar.r-lib.org/articles/extending.html) for a walkthrough of the options.
 
 ------------------------------------------------------------------------
 
