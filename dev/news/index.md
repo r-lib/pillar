@@ -1,5 +1,13 @@
 # Changelog
 
+## pillar 1.11.1.9031
+
+### Documentation
+
+- Add “Supported By Posit” badge to pillar website
+  ([@jeroenjanssens](https://github.com/jeroenjanssens),
+  [\#809](https://github.com/r-lib/pillar/issues/809)).
+
 ## pillar 1.11.1.9030
 
 ### Chore

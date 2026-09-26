@@ -11,7 +11,7 @@ and vec_size(x) rows for the data."><meta name="robots" content="noindex"><scrip
 
     <a class="navbar-brand me-2" href="../index.html">pillar</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.11.1.9030</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.11.1.9031</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,8 +66,8 @@ and <code>vec_size(x)</code> rows for the data.</p>
 
 
 <dt id="arg-title">title<a class="anchor" aria-label="anchor" href="#arg-title"></a></dt>
-<dd><p>An optional title for the column. The title will be
-used "as is", no quoting will be applied.</p></dd>
+<dd><p>An optional title for the column.
+The title will be used "as is", no quoting will be applied.</p></dd>
 
 
 <dt id="arg-width">width<a class="anchor" aria-label="anchor" href="#arg-width"></a></dt>
@@ -82,13 +82,11 @@ used "as is", no quoting will be applied.</p></dd>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>A pillar consists of arbitrary components.
 The <code>pillar()</code> constructor uses <code>title</code>, <code>type</code>, and <code>data</code>.</p><ul><li><p><code>title</code> via <code><a href="new_pillar_title.html">new_pillar_title()</a></code></p></li>
-<li><p><code>type</code> via <code><a href="new_pillar_type.html">new_pillar_type()</a></code>, which calls <code><a href="type_sum.html">type_sum()</a></code>
-internally</p></li>
+<li><p><code>type</code> via <code><a href="new_pillar_type.html">new_pillar_type()</a></code>, which calls <code><a href="type_sum.html">type_sum()</a></code> internally</p></li>
 <li><p><code>data</code> via <code><a href="pillar_shaft.html">pillar_shaft()</a></code></p></li>
 </ul><p>All components are formatted via <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> when displaying the pillar.
 A <code>width</code> argument is passed to each <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> call.</p>
-<p>As of pillar 1.5.0, <code>pillar()</code> returns <code>NULL</code> if the width is insufficient
-to display the data.</p>
+<p>As of pillar 1.5.0, <code>pillar()</code> returns <code>NULL</code> if the width is insufficient to display the data.</p>
     </div>
 
     <div class="section level2">
