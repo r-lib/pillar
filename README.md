@@ -33,7 +33,7 @@ pak::pak("r-lib/pillar")
 ## Usage
 
 pillar is a developer-facing package that is not designed for end-users.
-It powers the `print()` and `format()` methods for [tibble](https://tibble.tidyverse.org/)s.
+It powers the [`print()`](https://rdrr.io/r/base/print.html) and [`format()`](https://rdrr.io/r/base/format.html) methods for [tibble](https://tibble.tidyverse.org/)s.
 It also and defines generics and helpers that are useful for package authors
 who create custom vector classes (see <https://github.com/krlmlr/awesome-vctrs#readme> for examples)
 or custom table classes (like [dbplyr](https://dbplyr.tidyverse.org/) or [sf](https://r-spatial.github.io/sf/)).
@@ -69,7 +69,7 @@ tbl_format_setup(tibble::tibble(x))
 ## Custom vector classes
 
 The primary user of this package is [tibble](https://github.com/tidyverse/tibble), which lets pillar do all the formatting work.
-Packages that implement a data type to be used in a tibble column can customize the display by implementing a `pillar_shaft()` method.
+Packages that implement a data type to be used in a tibble column can customize the display by implementing a [`pillar_shaft()`](https://pillar.r-lib.org/reference/pillar_shaft.html) method.
 
 ``` r
 library(pillar)
@@ -89,7 +89,7 @@ pillar(percent)
 #>      11 %
 ```
 
-See `vignette("pillar", package = "vctrs")` for details.
+See [`vignette("pillar", package = "vctrs")`](https://cran.rstudio.com/web/packages/vctrs/vignettes/pillar.html) for details.
 
 ## Custom table classes
 
@@ -111,7 +111,7 @@ tbl
 #> 3     3
 ```
 
-See `vignette("extending", package = "pillar")` for a walkthrough of the options.
+See [`vignette("extending", package = "pillar")`](https://cran.rstudio.com/web/packages/pillar/vignettes/extending.html) for a walkthrough of the options.
 
 ------------------------------------------------------------------------
 
