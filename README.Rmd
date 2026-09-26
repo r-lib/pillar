@@ -69,6 +69,13 @@ install.packages("tidyverse")
 install.packages("pillar")
 ```
 
+Or the development version from GitHub with:
+
+```{r, eval = FALSE}
+# install.packages("pak")
+pak::pak("r-lib/pillar")
+```
+
 
 ## Usage
 
