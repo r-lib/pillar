@@ -26,7 +26,9 @@ An overview over the control and data flow is given in `vignette("printing")`.
 This vignette assumes that the reader is familiar with S3 classes, methods, and inheritance.
 The ["S3" chapter](https://adv-r.hadley.nz/s3.html) of Hadley Wickham's "Advanced R" is a good start.
 
-To make use of pillar's printing capabilities, create a class that inherits from `"tbl"`, like tibble (classes `"tbl_df"` and `"tbl"`), dbplyr lazy tables (`"tbl_lazy"` and `"tbl"`) and sf spatial data frames (`"sf"`, `"tbl_df"` and `"tbl"`).
+To make use of pillar's printing capabilities, create a class that inherits from `"tbl"`,
+like tibble (classes `"tbl_df"` and `"tbl"`), dbplyr lazy tables (`"tbl_lazy"` and `"tbl"`)
+and sf spatial data frames (`"sf"`, `"tbl_df"` and `"tbl"`).
 Because we are presenting various customization options, we create a constructor for an example data frame with arbitrary subclass.
 
 ```{r}
@@ -90,7 +92,8 @@ example_tbl("custom_header_replace")
 ### Restyle footer
 
 Similarly, to add information the footer, or to replace it entirely, implement a `tbl_format_footer()` method.
-Here, as in all `tbl_format_*()` methods, you can use the information contained in the setup object, see `?new_tbl_format_setup` for the available fields.
+Here, as in all `tbl_format_*()` methods, you can use the information contained in the setup object,
+see `?new_tbl_format_setup` for the available fields.
 Again, the implementation is responsible for the entire formatting and styling, including the leading hash if needed.
 
 ```{r}
@@ -115,7 +118,8 @@ print(example_tbl("custom_footer_replace"), n = 2)
 
 ### Compute additional info beforehand
 
-If the same information needs to be displayed in several parts (e.g., in both header and footer), it is useful to compute it in `tbl_format_setup()` and store it in the setup object.
+If the same information needs to be displayed in several parts (e.g., in both header and footer),
+it is useful to compute it in `tbl_format_setup()` and store it in the setup object.
 New elements may be added to the setup object, existing elements should not be overwritten.
 Exception: the `tbl_sum` element contains the output of `tbl_sum()` and can be enhanced with additional elements.
 
@@ -138,7 +142,10 @@ example_tbl("extra_info")
 
 ## Row IDs
 
-By implementing the generic `ctl_new_rowid_pillar()`, printing of the row ID column can be customized. In order to print Roman instead of Arabic numerals, one could use `utils::as.roman()` to generate the corresponding sequence and build up a row ID pillar using `new_pillar()` and associated methods as has been introduced previously.
+By implementing the generic `ctl_new_rowid_pillar()`, printing of the row ID column can be customized.
+In order to print Roman instead of Arabic numerals,
+one could use `utils::as.roman()` to generate the corresponding sequence
+and build up a row ID pillar using `new_pillar()` and associated methods as has been introduced previously.
 
 ```{r}
 ctl_new_rowid_pillar.pillar_roman <- function(controller, x, width, ...) {

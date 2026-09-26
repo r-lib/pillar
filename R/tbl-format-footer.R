@@ -3,15 +3,11 @@
 #' @description
 #' `r lifecycle::badge("experimental")`
 #'
-#' For easier customization, the formatting of a tibble is split
-#' into three components: header, body, and footer.
-#' The `tbl_format_footer()` method is responsible for formatting the footer
-#' of a tibble.
+#' For easier customization, the formatting of a tibble is split into three components: header, body, and footer.
+#' The `tbl_format_footer()` method is responsible for formatting the footer of a tibble.
 #'
-#' Override or extend this method if you need to change the appearance
-#' of the footer.
-#' The default implementation adds information about rows and columns
-#' that are not shown in the body.
+#' Override or extend this method if you need to change the appearance of the footer.
+#' The default implementation adds information about rows and columns that are not shown in the body.
 #'
 #' @inheritParams tbl_format_body
 #' @inherit tbl_format_body return

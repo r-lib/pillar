@@ -9,15 +9,14 @@ glimpse(x, width = NULL, ...)
 \arguments{
 \item{x}{An object to glimpse at.}
 
-\item{width}{Width of output: defaults to the setting of the
-\code{width} \link[=pillar_options]{option} (if finite)
+\item{width}{Width of output: defaults to the setting of the \code{width} \link[=pillar_options]{option} (if finite)
 or the width of the console.}
 
 \item{...}{Unused, for extensibility.}
 }
 \value{
-x original x is (invisibly) returned, allowing \code{glimpse()} to be
-used within a data pipe line.
+x original x is (invisibly) returned,
+allowing \code{glimpse()} to be used within a data pipe line.
 }
 \description{
 \code{glimpse()} is like a transposed version of \code{print()}:
@@ -25,15 +24,14 @@ columns run down the page, and data runs across.
 This makes it possible to see every column in a data frame.
 It's a little like \code{\link[=str]{str()}} applied to a data frame
 but it tries to show you as much data as possible.
-(And it always shows the underlying data, even when applied
-to a remote data source.)
+(And it always shows the underlying data, even when applied to a remote data source.)
 
 See \code{\link[=format_glimpse]{format_glimpse()}} for details on the formatting.
 }
 \section{S3 methods}{
 
-\code{glimpse} is an S3 generic with a customised method for \code{tbl}s and
-\code{data.frames}, and a default method that calls \code{\link[=str]{str()}}.
+\code{glimpse} is an S3 generic with a customised method for \code{tbl}s and \code{data.frames},
+and a default method that calls \code{\link[=str]{str()}}.
 }
 
 \examples{

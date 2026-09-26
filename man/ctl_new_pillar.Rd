@@ -20,33 +20,29 @@ ctl_new_rowid_pillar(controller, x, width, ..., title = NULL, type = NULL)
 
 \item{title}{The title, derived from the name of the column in the data.}
 
-\item{type}{String for specifying a row ID type. Current values in use are
-\code{NULL} and \code{"*"}.}
+\item{type}{String for specifying a row ID type.
+Current values in use are \code{NULL} and \code{"*"}.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Gain full control over the appearance of the pillars of your tibble subclass
-in its body.
+Gain full control over the appearance of the pillars of your tibble subclass in its body.
 This method is intended for implementers of subclasses of the \code{"tbl"} class.
 Users will rarely need them.
 }
 \details{
-\code{ctl_new_pillar()} is called to construct pillars for regular (one-dimensional)
-vectors.
+\code{ctl_new_pillar()} is called to construct pillars for regular (one-dimensional) vectors.
 The default implementation returns an object constructed with \code{\link[=pillar]{pillar()}}.
-Extend this method to modify the pillar components returned from the default
-implementation.
+Extend this method to modify the pillar components returned from the default implementation.
 Override this method to completely change the appearance of the pillars.
 Components are created with \code{\link[=new_pillar_component]{new_pillar_component()}} or \code{\link[=pillar_component]{pillar_component()}}.
-In order to customize printing of row IDs, a method can be supplied for the
-\code{ctl_new_rowid_pillar()} generic.
+In order to customize printing of row IDs,
+a method can be supplied for the \code{ctl_new_rowid_pillar()} generic.
 
 All components must be of the same height.
 This restriction may be levied in the future.
 
-Implementations should return \code{NULL} if none of the data
-fits the available width.
+Implementations should return \code{NULL} if none of the data fits the available width.
 }
 \examples{
 \dontshow{if (rlang::is_installed(c("palmerpenguins", "tibble"))) withAutoprint(\{ # examplesIf}

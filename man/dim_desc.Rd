@@ -10,8 +10,8 @@ dim_desc(x)
 \item{x}{The object to format the dimensions for}
 }
 \description{
-Multi-dimensional objects are formatted as \verb{a x b x ...}, for vectors the
-length is returned.
+Multi-dimensional objects are formatted as \verb{a x b x ...},
+for vectors the length is returned.
 }
 \examples{
 dim_desc(1:10)

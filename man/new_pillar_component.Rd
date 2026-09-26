@@ -23,8 +23,7 @@ If \code{min_width} is \code{NULL}, it is assumed to match \code{width}.}
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 \code{new_pillar_component()} constructs an object of class \code{"pillar_component"}.
-It is used by custom \code{\link[=ctl_new_pillar]{ctl_new_pillar()}} methods to create pillars with
-nonstandard components.
+It is used by custom \code{\link[=ctl_new_pillar]{ctl_new_pillar()}} methods to create pillars with nonstandard components.
 
 \code{pillar_component()} is a convenience helper that wraps the input in a list
 and extracts width and minimum width.
@@ -36,8 +35,7 @@ The default components for pillars created by \code{\link[=pillar]{pillar()}} ar
 Each component is a \code{"pillar_component"} object.
 
 This class captures contents that can be fitted in a simple column.
-Compound columns are represented by multiple pillar objects, each with their
-own components.
+Compound columns are represented by multiple pillar objects, each with their own components.
 }
 \examples{
 new_pillar_component(list(letters[1:3]), width = 1)

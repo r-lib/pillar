@@ -1,9 +1,8 @@
 # Format numbers in decimal notation
 #
-# This formatting system is designed to make it as easy as possible to
-# compare columns of numbers. Significant digits are coloured black or red
-# (for positive and negative numbers) and non-significant digits are coloured
-# in paler gray.
+# This formatting system is designed to make it as easy as possible to compare columns of numbers.
+# Significant digits are coloured black or red (for positive and negative numbers)
+# and non-significant digits are coloured in paler gray.
 #
 # @return A list with at least the following elements:
 # * `neg`: negative sign or space, `TRUE` if needed
@@ -13,8 +12,8 @@
 #
 # @param x A numeric vector
 # @param sigfig Number of significant figures to display.
-# @param digits Number of digits after the decimal point, incompatible with
-#   `sigfig`. A negative number means the maximum number of digits to display.
+# @param digits Number of digits after the decimal point, incompatible with `sigfig`.
+#   A negative number means the maximum number of digits to display.
 # @param sci_mod Set to 1 for scientific or to 3 for engineering display.
 # @param si Set to `TRUE` for SI notation, requires `sci_mod = 3`
 # @param fixed Set to `TRUE` to use the same exponent everywhere.
@@ -49,8 +48,7 @@ split_decimal <- function(x, sigfig, digits = NULL, sci_mod = NULL, si = FALSE,
     "!!!!!!DEBUG `v(exp)`"
     unit <- attr(exp, "unit")
 
-    # Must divide by 10^exp, because 10^-exp may not be representable
-    # for very large values of exp
+    # Must divide by 10^exp, because 10^-exp may not be representable for very large values of exp
     mnt_idx <- which(num & mnt != 0)
     mnt[mnt_idx] <- safe_divide_10_to(mnt[mnt_idx], exp[mnt_idx])
     "!!!!!!DEBUG `v(mnt)`"
@@ -380,8 +378,7 @@ format_rhs <- function(s) {
   rhs_num <- sprintf("%.0f", abs(round(rhs_val)))
   rhs_num[rhs_num == "0"] <- ""
 
-  # Special treatment for leading zeros for some formatting,
-  # hand-rolling
+  # Special treatment for leading zeros for some formatting, hand-rolling
   n_zeros <- pmax(0, rhs_digits - get_extent(rhs_num))
   rhs_zero <- strrep("0", n_zeros)
 
@@ -418,8 +415,8 @@ underline_3 <- function(x) {
 }
 
 #' @export
-#' @param negative,significant Logical vector the same length as `x` that
-#'   indicate if the values are negative and significant, respectively
+#' @param negative,significant Logical vector the same length as `x`
+#'   that indicate if the values are negative and significant, respectively
 #' @rdname style_subtle
 #' @examples
 #' style_num(

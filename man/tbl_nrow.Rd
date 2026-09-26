@@ -12,6 +12,5 @@ tbl_nrow(x, ...)
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \description{
-This generic will be called by \code{\link[=tbl_format_setup]{tbl_format_setup()}} to determine the number
-of rows in a tbl object.
+This generic will be called by \code{\link[=tbl_format_setup]{tbl_format_setup()}} to determine the number of rows in a tbl object.
 }

@@ -13,22 +13,21 @@ obj_sum(x)
 size_sum(x)
 }
 \arguments{
-\item{x}{an object to summarise. Generally only methods of atomic vectors
-and variants have been implemented.}
+\item{x}{an object to summarise.
+Generally only methods of atomic vectors and variants have been implemented.}
 }
 \description{
-\code{type_sum()} gives a brief summary of object type. Objects that commonly
-occur in a data frame should return a string with four or less characters.
+\code{type_sum()} gives a brief summary of object type.
+Objects that commonly occur in a data frame should return a string with four or less characters.
 For most inputs, the argument is forwarded to \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}.
 
 \code{obj_sum()} also includes the size (but not the shape) of the object
 if \code{\link[vctrs:vec_is]{vctrs::vec_is()}} is \code{TRUE}.
 It should always return a string (a character vector of length one).
-As of pillar v1.6.1, the default method forwards to \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}}
-for vectors and to \code{\link[=type_sum]{type_sum()}} for other objects.
+As of pillar v1.6.1, the default method forwards to \code{\link[vctrs:vec_ptype_abbr]{vctrs::vec_ptype_abbr()}} for vectors and to \code{\link[=type_sum]{type_sum()}} for other objects.
 Previous versions always forwarded to \code{\link[=type_sum]{type_sum()}}.
-An attribute named \code{"short"} in the return value will be picked up by
-the \code{\link[=pillar_shaft]{pillar_shaft()}} method for lists, and used if space is limited.
+An attribute named \code{"short"} in the return value will be picked up by the \code{\link[=pillar_shaft]{pillar_shaft()}} method for lists,
+and used if space is limited.
 
 \code{size_sum()} is called by \code{obj_sum()} to format the size of the object.
 It should always return a string (a character vector of length one),

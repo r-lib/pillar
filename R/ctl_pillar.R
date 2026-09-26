@@ -8,19 +8,17 @@
 #' The `pillar()` constructor uses `title`, `type`, and `data`.
 #'
 #' - `title` via [new_pillar_title()]
-#' - `type` via [new_pillar_type()], which calls [type_sum()]
-#'   internally
+#' - `type` via [new_pillar_type()], which calls [type_sum()] internally
 #' - `data` via [pillar_shaft()]
 #'
 #' All components are formatted via [format()] when displaying the pillar.
 #' A `width` argument is passed to each `format()` call.
 #'
-#' As of pillar 1.5.0, `pillar()` returns `NULL` if the width is insufficient
-#' to display the data.
+#' As of pillar 1.5.0, `pillar()` returns `NULL` if the width is insufficient to display the data.
 #'
 #' @param x A vector to format.
-#' @param title An optional title for the column. The title will be
-#'   used "as is", no quoting will be applied.
+#' @param title An optional title for the column.
+#'   The title will be used "as is", no quoting will be applied.
 #' @param width Default width, optional.
 #' @param ... Passed on to [pillar_shaft()].
 #' @export
@@ -83,8 +81,8 @@ pillar_from_shaft <- function(title, type, data, width) {
 
   data_component <- new_pillar_component(list(data), width = data_width, min_width = data_min_width)
 
-  # The type is taken either from the shaft (e.g. in the case of num() with
-  # common exponents) or from the type provided by the caller
+  # The type is taken either from the shaft (e.g. in the case of num() with common exponents)
+  # or from the type provided by the caller
   shaft_type <- attr(data, "type", exact = TRUE)
   if (!is.null(shaft_type)) {
     type <- shaft_type
@@ -92,8 +90,7 @@ pillar_from_shaft <- function(title, type, data, width) {
     force(type)
   }
 
-  # Delay querying width of type until it is decided if we take the type_sum
-  # from the data or from the argument provided
+  # Delay querying width of type until it is decided if we take the type_sum from the data or from the argument provided
   if (get_min_width(type) > my_width) {
     "!!!!!DEBUG Early exit, (`v(get_min_width(type))`) > (`v(my_width)`)"
     return(NULL)

@@ -13,11 +13,10 @@ get_max_extent(x)
 \item{x}{A character vector.}
 }
 \description{
-\code{get_extent()} calculates the display width for each string in a character
-vector.
+\code{get_extent()} calculates the display width for each string in a character vector.
 
-\code{get_max_extent()} calculates the maximum display width of all strings in a
-character vector, zero for empty vectors.
+\code{get_max_extent()} calculates the maximum display width of all strings in a character vector,
+zero for empty vectors.
 }
 \examples{
 get_extent(c("abc", "de"))

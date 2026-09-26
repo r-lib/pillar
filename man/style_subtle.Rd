@@ -24,18 +24,16 @@ style_neg(x)
 \arguments{
 \item{x}{The character vector to style.}
 
-\item{negative, significant}{Logical vector the same length as \code{x} that
-indicate if the values are negative and significant, respectively}
+\item{negative, significant}{Logical vector the same length as \code{x}
+that indicate if the values are negative and significant, respectively}
 }
 \description{
-Functions that allow implementers of formatters for custom data types to
-maintain a consistent style with the default data types.
+Functions that allow implementers of formatters for custom data types to maintain a consistent style with the default data types.
 }
 \details{
 \code{style_subtle()} is affected by the \code{subtle} \link[=pillar_options]{option}.
 
-\code{style_subtle_num()} is affected by the
-\code{subtle_num} \link[=pillar_options]{option},
+\code{style_subtle_num()} is affected by the \code{subtle_num} \link[=pillar_options]{option},
 which is \code{FALSE} by default.
 
 \code{style_bold()} is affected by the \code{bold} \link[=pillar_options]{option},

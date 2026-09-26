@@ -1,10 +1,7 @@
 #' @description
-#' `new_pillar_shaft_simple()` provides an implementation of the `pillar_shaft`
-#' class suitable for output that has a fixed formatting, which will be
-#' truncated with a continuation character (ellipsis or `~`) if it doesn't fit
-#' the available width.
-#' By default, the required width is computed from the natural width of the
-#' `formatted` argument.
+#' `new_pillar_shaft_simple()` provides an implementation of the `pillar_shaft` class suitable for output that has a fixed formatting,
+#' which will be truncated with a continuation character (ellipsis or `~`) if it doesn't fit the available width.
+#' By default, the required width is computed from the natural width of the `formatted` argument.
 #'
 #' @details
 #' The `formatted` argument may also contain ANSI escapes to change color
@@ -14,12 +11,11 @@
 #' @param ... Passed on to [new_pillar_shaft()].
 #' @param formatted The data to show, an object coercible to [character].
 #' @param align Alignment of the column.
-#' @param na String to use as `NA` value, defaults to `"NA"` styled with
-#'   [style_na()] with fallback if color is not available.
+#' @param na String to use as `NA` value,
+#'   defaults to `"NA"` styled with [style_na()] with fallback if color is not available.
 #' @param na_indent Indentation of `NA` values.
-#' @param short_formatted If provided, a character vector of the same length as
-#'   `formatted`, to be used when the available width is insufficient to show
-#'   the full output.
+#' @param short_formatted If provided, a character vector of the same length as `formatted`,
+#'   to be used when the available width is insufficient to show the full output.
 #' @export
 #' @rdname new_pillar_shaft
 new_pillar_shaft_simple <- function(formatted, ..., width = NULL, align = "left",

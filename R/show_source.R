@@ -5,8 +5,8 @@ set_show_source_hooks <- function() {
   set_show_source_source_hook()
 }
 
-# Defines a `show_source` knitr option. If this chunk option is set,
-# the code should be a single function (use ::: for internal functions).
+# Defines a `show_source` knitr option.
+# If this chunk option is set, the code should be a single function (use ::: for internal functions).
 # The code will be replaced by the function definition, and not evaluated.
 set_show_source_opts_hook <- function(width) {
   force(width)
