@@ -17,7 +17,7 @@ and the data source in the name of the first element.
 \code{tbl_sum()} gives a brief textual description of a table-like object,
 which should include the dimensions and the data source in the first element,
 and additional information in the other elements (such as grouping for \pkg{dplyr}).
-The default implementation forwards to \code{\link[=obj_sum]{obj_sum()}}.
+ The default implementation forwards to \code{\link[=obj_sum]{obj_sum()}}.
 }
 \examples{
 tbl_sum(1:10)

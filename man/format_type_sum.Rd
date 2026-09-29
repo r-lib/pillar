@@ -16,8 +16,8 @@ format_type_sum(x, width, ...)
 \item{x}{A return value from \code{type_sum()}}
 
 \item{width}{The desired total width.
-If the returned string still is wider, it will be trimmed.
-Can be \code{NULL}.}
+ If the returned string still is wider, it will be trimmed.
+ Can be \code{NULL}.}
 
 \item{...}{Arguments passed to methods.}
 }
@@ -27,8 +27,8 @@ Called on values returned from \code{\link[=type_sum]{type_sum()}} for defining 
 \details{
 Two methods are implemented by default for this generic: the default method,
 and the method for the \code{"AsIs"} class.
-Return \code{I("type")} from your \code{\link[=type_sum]{type_sum()}} implementation to format the type without angle brackets.
-For even more control over the formatting, implement your own method.
+ Return \code{I("type")} from your \code{\link[=type_sum]{type_sum()}} implementation to format the type without angle brackets.
+ For even more control over the formatting, implement your own method.
 }
 \examples{
 # Default method: show the type with angle brackets
