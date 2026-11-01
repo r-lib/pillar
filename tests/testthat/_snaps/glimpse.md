@@ -186,7 +186,7 @@
       # non-tibble
       glimpse(5)
     Output
-       num 5
+      num 5
     Code
       trees2 <- as_unknown_rows(trees)
       glimpse(trees2, width = 70L)
